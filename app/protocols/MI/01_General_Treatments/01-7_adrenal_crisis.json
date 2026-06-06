@@ -1,0 +1,104 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 1-7 Adrenal Crisis (Revised 05/08/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_all_adrenal_crisis",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "All",
+  "level_display": "All Levels",
+  "jurisdiction": "Michigan",
+  "condition": "Adrenal Crisis",
+  "version": "2023-05-08",
+  "protocol_reference": "Michigan General Treatment Protocol Section 1-7: Adrenal Crisis — MDHHS Approved 5/8/23, Reviewed 2023",
+
+  "purpose": "Intended for management of patients with a known history of adrenal insufficiency experiencing signs of crisis.",
+
+  "indications": [
+    "Patient has a known history of adrenal insufficiency or Addison's disease",
+    "Presents with signs and symptoms of adrenal crisis: pallor, headache, weakness, dizziness, nausea and vomiting, hypotension, hypoglycemia, heart failure, decreased mental status, or abdominal pain"
+  ],
+
+  "sections": [
+    {
+      "title": "Adrenal Crisis Treatment",
+      "reference": "Michigan Protocol 1-7: Adrenal Crisis",
+      "points": [
+        "Follow General Pre-Hospital Care-Treatment Protocol",
+        "Pediatric patients (< 14 years of age): utilize MI MEDIC cards for appropriate medication dosage; when unavailable, use pediatric dosing listed within protocol",
+        "CONTACT MEDICAL CONTROL for all adrenal crisis patients prior to treatment",
+        "Administer NS or LR IV/IO fluid bolus (Specialist skill — refer to Vascular Access and IV Fluid Therapy-Procedure Protocol): Adults: up to 1 liter; Pediatrics: up to 20 mL/kg",
+        "Assist with administration of patient's own hydrocortisone sodium succinate (Solu-Cortef) (Specialist skill): Adults: 100 mg IV/IM; Pediatrics: 1–2 mg/kg IV/IM",
+        "If patient does not have their own hydrocortisone: administer prednisone tablet 50 mg PO to adults and children > 6 years of age (per MCA selection — if available); if prednisone not available, patient is < 6 y/o, or patient unable to receive PO: administer methylprednisolone IV/IO/IM (Specialist skill): Adults: 125 mg; Pediatrics: 2 mg/kg (max 125 mg)",
+        "Transport",
+        "Notify Medical Control of patient's medical history",
+        "Refer to Adult or Pediatric Altered Mental Status-Treatment Protocol if altered mental status present"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Prednisone 50 mg Tablet PO",
+      "description": "MCA may approve prednisone PO as an additional medication option for adults and children > 6 y/o",
+      "options": ["Included", "Not Included"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [
+    {
+      "name": "NS or LR IV/IO Fluid Bolus",
+      "dose": "Adults: up to 1 liter; Pediatrics: up to 20 mL/kg",
+      "route": "IV or IO",
+      "indication": "Adrenal crisis with hypotension and/or dehydration",
+      "contraindications": "None urgent in adrenal crisis",
+      "side_effects": "Pulmonary edema if over-administered",
+      "scope": "Specialist (AEMT/Paramedic) skill",
+      "notes": "Contact Medical Control before treatment."
+    },
+    {
+      "name": "Hydrocortisone Sodium Succinate (Solu-Cortef) — Patient's Own",
+      "dose": "Adults: 100 mg IV/IM; Pediatrics: 1–2 mg/kg IV/IM",
+      "route": "IV or IM",
+      "indication": "Adrenal crisis — assist with patient's own supply",
+      "contraindications": "None urgent in adrenal crisis",
+      "side_effects": "Hyperglycemia, hypertension",
+      "scope": "Specialist (AEMT/Paramedic) skill",
+      "notes": "Assist with patient's own medication. Contact Medical Control before administration."
+    },
+    {
+      "name": "Methylprednisolone",
+      "dose": "Adults: 125 mg IV/IO/IM; Pediatrics: 2 mg/kg IV/IO/IM (max 125 mg)",
+      "route": "IV, IO, or IM",
+      "indication": "Adrenal crisis when patient's own hydrocortisone not available and prednisone PO not appropriate",
+      "contraindications": "None urgent in adrenal crisis",
+      "side_effects": "Hyperglycemia, GI upset",
+      "scope": "Specialist (AEMT/Paramedic) skill",
+      "notes": "Use when prednisone not available, patient < 6 y/o, or patient unable to receive PO medication."
+    },
+    {
+      "name": "Prednisone 50 mg Tablet PO",
+      "dose": "50 mg PO — adults and children > 6 years of age",
+      "route": "PO",
+      "indication": "Adrenal crisis when patient does not have their own hydrocortisone",
+      "contraindications": "Patient < 6 years of age; patient unable to receive PO medication",
+      "side_effects": "Hyperglycemia",
+      "scope": "MCA additional medication option — requires MCA selection",
+      "notes": "Contact Medical Control before administration. If not available or not appropriate, use methylprednisolone."
+    }
+  ],
+
+  "deterioration_flags": [
+    "Hypotension — initiate IV/IO fluid bolus (Specialist skill); contact Medical Control",
+    "Altered mental status — refer to Altered Mental Status-Treatment Protocol",
+    "Hypoglycemia may accompany adrenal crisis — check blood glucose; treat per protocol"
+  ],
+
+  "scope_notes": [
+    "Contact Medical Control before treatment is required for all adrenal crisis patients",
+    "IV/IO access and fluid bolus: Specialist skill",
+    "Hydrocortisone (patient's own): Specialist skill to assist",
+    "Methylprednisolone: Specialist skill",
+    "Prednisone PO: MCA additional medication option (requires MCA selection)"
+  ]
+}

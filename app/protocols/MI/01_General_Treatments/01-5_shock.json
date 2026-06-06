@@ -1,0 +1,92 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 1-5 Shock (Revised 06/01/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_all_shock",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "All",
+  "level_display": "All Levels",
+  "jurisdiction": "Michigan",
+  "condition": "Shock",
+  "version": "2023-06-01",
+  "protocol_reference": "Michigan General Treatment Protocol Section 1-5: Shock — MDHHS Approved 6/1/23, Reviewed 2023",
+  "sections": [
+    {
+      "title": "Shock",
+      "reference": "Michigan Protocol 1-5: Shock",
+      "points": [
+        "Assessment: consider etiologies of shock and refer to specific types first if known — Anaphylaxis/Allergic Reaction-Treatment Protocol, Hemorrhagic Shock-Treatment Protocol, Pulmonary Edema/Cardiogenic Shock-Treatment Protocol",
+        "Follow General Pre-Hospital Care-Treatment Protocol",
+        "Pediatric patients (< 14 years of age): utilize MI MEDIC cards for appropriate medication dosage; when unavailable, use pediatric dosing listed within protocol",
+        "Control major bleeding per Bleeding Control (BCON)-Procedure Protocol",
+        "Remove all transdermal patches using gloves",
+        "Prompt transport per MCA Transport Protocol",
+        "Special consideration: if 3rd trimester pregnancy, position patient left lateral recumbent",
+        "Obtain vascular access in a manner that will not delay transport (Specialist skill)",
+        "Administer NS or LR IV/IO fluid bolus (Specialist skill — refer to Vascular Access and IV Fluid Therapy-Procedure Protocol); Adults: up to 1 liter wide open; Pediatrics: up to 20 mL/kg based on signs and symptoms of shock; slow to TKO when SBP > 90 mmHg",
+        "Consider establishing a second large bore IV of NS or LR enroute to the hospital (Specialist skill)",
+        "Obtain 12-lead ECG if suspected cardiac etiology (per MCA selection — may be BLS or Specialist procedure) per 12 Lead ECG-Procedure Protocol",
+        "If accompanying head injury, refer to Head Injury-Treatment Protocol: maintain SpO2 ≥ 90%; maintain SBP > 90 mmHg and < 140 mmHg; do NOT hyperventilate",
+        "Hypotensive patients should receive additional IV/IO fluid boluses as indicated (consider preparing epi push dose while administering second bolus): Adults repeat to maximum 2 liters; Pediatrics repeat 20 mL/kg to maximum 40 mL/kg; monitor for pulmonary edema — if presents, stop fluids and contact Medical Control",
+        "If hypotension persists after IV/IO fluid bolus: administer epinephrine IV/IO by push dose (dilute boluses) while administering second fluid bolus (Specialist skill — prepare epinephrine 10 mcg/mL by combining 1 mL of 1 mg/10 mL epinephrine in 9 mL NS); Adults: 10–20 mcg (1–2 mL of epi 10 mcg/mL) IV/IO, repeat q3–5 min, titrate SBP > 90 mmHg; Pediatrics: 1 mcg/kg (0.1 mL of epi 10 mcg/mL) IV/IO, maximum dose 10 mcg (1 mL), repeat q3–5 min"
+      ]
+    }
+  ],
+  "mca_selections_required": [
+    {
+      "item": "12-Lead ECG",
+      "description": "May be designated as a BLS skill or Specialist (AEMT/Paramedic) skill",
+      "options": [
+        "BLS",
+        "Specialist"
+      ],
+      "selected": null
+    }
+  ],
+  "key_drugs": [
+    {
+      "name": "NS or LR IV/IO Fluid Bolus",
+      "dose": "Adults: up to 1 liter (repeat to max 2 L); Pediatrics: up to 20 mL/kg (repeat to max 40 mL/kg)",
+      "route": "IV or IO",
+      "indication": "Shock — hypotension, signs of poor perfusion",
+      "contraindications": "Suspected cardiogenic shock or pulmonary edema — slow to TKO; refer to Pulmonary Edema/Cardiogenic Shock protocol",
+      "side_effects": "Pulmonary edema if over-administered",
+      "scope": "Specialist (AEMT/Paramedic) skill",
+      "notes": "Slow to TKO when SBP > 90 mmHg. Monitor for pulmonary edema. Contact Medical Control if pulmonary edema develops."
+    },
+    {
+      "name": "Epinephrine (Push Dose) IV/IO",
+      "dose": "Prepare 10 mcg/mL: combine 1 mL of 1 mg/10 mL epi in 9 mL NS; Adults: 10–20 mcg (1–2 mL) IV/IO q3–5 min, titrate SBP > 90 mmHg; Pediatrics: 1 mcg/kg (0.1 mL), max 10 mcg (1 mL), repeat q3–5 min",
+      "route": "IV or IO",
+      "indication": "Hypotension persisting after IV/IO fluid bolus",
+      "contraindications": "Use only after fluid bolus attempted; not for hypertensive patients",
+      "side_effects": "Tachycardia, hypertension, dysrhythmia, anxiety",
+      "scope": "Specialist (AEMT/Paramedic) skill",
+      "notes": "Administer while administering second fluid bolus. Titrate to SBP > 90 mmHg."
+    }
+  ],
+  "deterioration_flags": [
+    "Hypotension not responding to initial fluid bolus — consider push-dose epinephrine (Specialist skill); reassess for underlying etiology",
+    "Signs of pulmonary edema during fluid resuscitation — stop fluids immediately; contact Medical Control",
+    "Head injury with shock — maintain SBP > 90 mmHg AND < 140 mmHg; do NOT hyperventilate; refer to Head Injury protocol",
+    "Bleeding source identified — control with BCON protocol before fluid resuscitation",
+    "Suspected cardiac etiology — obtain 12-lead ECG; refer to appropriate Cardiac Protocol"
+  ],
+  "scope_notes": [
+    "IV/IO access: Specialist skill",
+    "IV/IO fluid bolus: Specialist skill",
+    "12-Lead ECG: scope per MCA selection — BLS or Specialist",
+    "Push-dose epinephrine IV/IO: Specialist skill",
+    "Bleeding control (BCON): all levels",
+    "Cardiac monitoring: Specialist skill unless MCA-approved otherwise"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "shock",
+      "transport_decision",
+      "vital_signs"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 10-16 SPRN Medical Isolation Transport Device (MDHHS Reviewed 2022-12-27). MCA Optional — SPRN program participation required.",
+  "id": "mi_base_special_ops_sprn_medical_isolation_transport_device",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Special Operations",
+  "level_display": "Special Operations Protocol — MCA Optional (SPRN)",
+  "jurisdiction": "Michigan",
+  "condition": "SPRN — Medical Isolation Transport Device (MITD)",
+  "version": "2022-12-27",
+  "protocol_reference": "Michigan Special Operations Protocol Section 10-16: SPRN Medical Isolation Transport Device — MDHHS Reviewed 2022",
+
+  "purpose": "Define the Medical Isolation Transport Device (MITD) — its description, indications, setup, and patient handoff procedures — for use in SPRN Type 3 (High Risk/Wet) patient transport.",
+
+  "sections": [
+    {
+      "title": "MITD Description",
+      "content": [
+        "Medical Isolation Transport Device (MITD): a specialized containment device designed to isolate infectious patients during ambulance transport",
+        "Construction: vinyl-enclosed transparent containment unit — allows visual patient assessment through clear panels",
+        "Pressure: NEGATIVE air pressure — air flows INTO the device, not outward; exhaled air filtered through HEPA before exiting",
+        "Purpose: contain infectious aerosols and body fluids to prevent EMS crew exposure during transport",
+        "Also known as: Biocell, Isolation Pod, HCID transport containment unit",
+        "MITD is REQUIRED for SPRN Type 3 (High Risk/Wet) patients — see Protocol 10-11"
+      ]
+    },
+    {
+      "title": "MITD Indications",
+      "content": [
+        "REQUIRED: SPRN Type 3 patient (High Risk/Wet) — active bleeding, vomiting, diarrhea, or significant body fluid exposure risk",
+        "OPTIONAL/RECOMMENDED: SPRN Type 1 (PUI) with significant secretion risk",
+        "NOT REQUIRED: SPRN Type 2 (Low Risk/Dry) patient — full PPE sufficient without MITD",
+        "If uncertain of patient type: use MITD — safer to over-contain than under-contain"
+      ]
+    },
+    {
+      "title": "Equipment Placement and Setup",
+      "content": [
+        "Setup MITD before patient is loaded — assemble at patient pickup location (sending facility)",
+        "MITD assembly steps:",
+        "  1. Lay flat on ambulance stretcher and unfold according to device instructions",
+        "  2. Connect blower motor to power supply and MITD intake/exhaust ports",
+        "  3. Test blower motor function — confirm negative pressure is achieved inside device",
+        "  4. Route IV lines, cardiac monitor leads, SpO2 cable, and ventilator tubing through designated ACCESS PORTS before patient placement",
+        "  5. Confirm port seals are intact around all cables/tubes",
+        "Equipment placement:",
+        "  — IV pumps, cardiac monitor, ventilator: OUTSIDE the MITD with lines/leads passing through ports",
+        "  — Patient: inside the MITD",
+        "  — SpO2 probe: attached to patient inside; cable exits through port to monitor outside",
+        "  — Defibrillator pads: apply to patient inside MITD before sealing; lead cable through port",
+        "Access during transport: avoid entering MITD during transport; all care delivered through access ports with gloved hands"
+      ]
+    },
+    {
+      "title": "Blower Motor Setup",
+      "content": [
+        "Blower motor creates and maintains negative pressure inside MITD",
+        "Setup requirements:",
+        "  — Connect to vehicle power or dedicated battery — confirm power source before departure",
+        "  — HEPA filtration on exhaust port — exhaled air filtered before release into ambulance",
+        "  — Monitor blower motor function continuously during transport — audible/visual indicator",
+        "  — Backup battery required for long transports (>2 hours)",
+        "Blower motor failure during transport:",
+        "  — Notify partner immediately",
+        "  — Contact SPRN coordinator",
+        "  — If failure cannot be immediately corrected: continue transport at maximum speed to destination with providers maintaining maximum PPE"
+      ]
+    },
+    {
+      "title": "Patient Placement in MITD",
+      "content": [
+        "Place patient in MITD at sending facility BEFORE loading into ambulance",
+        "Patient position: supine on stretcher; strapped in as per standard ambulance transport protocol",
+        "Patient comfort: explain device purpose to patient; provide pillow, communication method (patient can speak through vinyl)",
+        "Airway: if patient requires oxygen — route nasal cannula or mask through device port before sealing; do NOT use oxygen inside MITD without routing exhaust",
+        "Seal all access ports after equipment routing — inspect for gaps",
+        "Do NOT open MITD during transport unless immediate life-threatening emergency — access ports are designed for all routine interventions"
+      ]
+    },
+    {
+      "title": "Patient Handoff — Two-Team Process",
+      "content": [
+        "SPRN patient handoff at receiving facility is a TWO-TEAM process:",
+        "TEAM 1 (EMS — 'dirty' team): providers in full SPRN PPE who have been in patient contact",
+        "  — Deliver MITD with patient to receiving facility SPRN area",
+        "  — Provide verbal report to receiving team",
+        "  — Transfer MITD to hospital gurney or isolation room",
+        "TEAM 2 (Hospital — 'receiving' team): hospital SPRN team in full PPE at receiving area",
+        "  — Receive MITD from EMS team",
+        "  — Take custody of patient and MITD in isolation room",
+        "HANDOFF STEPS:",
+        "  1. EMS notifies hospital 10-15 min before arrival (Protocol 10-13)",
+        "  2. EMS arrives at designated SPRN entrance",
+        "  3. EMS team (full PPE) wheels patient to designated isolation area",
+        "  4. Brief verbal report",
+        "  5. Hospital team takes custody — EMS team does NOT enter hospital isolation room",
+        "  6. EMS team proceeds to designated doffing area",
+        "  7. Doff per Protocol 10-17 with safety officer",
+        "  8. Post-transport health monitoring per Protocol 10-17"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "id": "sprn_program_participation",
+      "label": "SPRN Program Participation — MCA authorization for SPRN protocols 10-10 through 10-18",
+      "description": "MCA Optional: All SPRN protocols apply only to SPRN-designated agencies.",
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Blower motor failure — maximum PPE; continue transport; contact SPRN coordinator",
+    "Access port seal failure (contamination breach) — alert partner; proceed to receiving facility; report breach per Protocol 10-14 PPE breach protocol",
+    "Patient clinical emergency requiring MITD opening — extreme caution; full PPE; contact online MC before opening"
+  ],
+
+  "scope_notes": "MCA Optional — SPRN only. MITD is required for Type 3 (High Risk/Wet) patients only. All medical equipment (monitors, IV pumps, defibrillator) is positioned OUTSIDE the MITD with cables passing through sealed ports. Patient handoff is a formal two-team process — EMS does NOT enter the receiving hospital isolation room."
+}

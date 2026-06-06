@@ -1,0 +1,78 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-25 Order of Disciplinary Action Appeal (Revised 07/10/2025, MDHHS Approved 07/25/2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_order_of_disciplinary_action_appeal",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Order of Disciplinary Action Appeal",
+  "version": "2025-07-10",
+  "protocol_reference": "Michigan System Protocol Section 8-25: Order of Disciplinary Action Appeal — MDHHS Approved 7/25/2025",
+  "purpose": "Define the steps an EMS clinician or Life Support Agency must take to appeal an Order of Disciplinary Action issued by the Professional Standards Review Organization committee and Medical Control Authority.",
+  "sections": [
+    {
+      "title": "Appeal Grounds and Submission",
+      "reference": "Michigan Protocol 8-25: ODA Appeal — Appeal Request",
+      "points": [
+        "An EMS clinician or LSA may request appeal of an ODA based on new evidence, procedural errors, fraud or misrepresentation, or improper application of protocols, statute, or administrative rules",
+        "The MCA must be notified in writing within seven business days of ODA receipt",
+        "The appeal must include a detailed explanation of the reasons for appeal and any relevant supporting documentation",
+        "Submitting a Request to Appeal does not stay the provisions of the ODA"
+      ]
+    },
+    {
+      "title": "MCA Initial Review and Assignment",
+      "reference": "Michigan Protocol 8-25: ODA Appeal — MCA Procedure",
+      "points": [
+        "The MCA Board chair and MCA staff review the appeal to determine whether it meets appeal requirements",
+        "If the appeal does not meet requirements, it must be returned with an explanation within three business days",
+        "The EMS clinician or LSA may resubmit within three business days with additional justification",
+        "New evidence or fraud/misrepresentation appeals are remanded to the PSRO committee that conducted the medical review",
+        "Procedural error appeals are referred to the MCA Board to determine whether the PSRO Investigation and Resolution protocol was violated",
+        "Improper application appeals are referred to the MCA Board for determination",
+        "Multiple appeal categories are referred to the MCA Board for assignment and resolution"
+      ]
+    },
+    {
+      "title": "Appeal Meeting and Outcomes",
+      "reference": "Michigan Protocol 8-25: ODA Appeal — Hearing and Outcome",
+      "points": [
+        "If assigned to the MCA Board, the appeal meeting must be scheduled not less than three and not more than thirty business days after receiving the appeal request",
+        "The EMS clinician or LSA may request one postponement of up to thirty business days; the request must be received in writing within three business days before the meeting",
+        "During open session, the EMS clinician, LSA, or their designee may present appeal information while protecting PHI",
+        "The MCA Board may enter closed session to review protected information, PSRO decisions, grounds for appeal, protocol adherence, and ODA consistency",
+        "The MCA Board must return to open session and choose one outcome: affirm the ODA, revoke the ODA, diminish the ODA to a lesser action, or suspend the ODA",
+        "The final written decision must be provided within fourteen business days of the appeal meeting start date",
+        "If new information creates additional allegations, a new investigation must be conducted under the PSRO Complaint Investigation and Resolution process"
+      ]
+    },
+    {
+      "title": "EMSCC Appeal",
+      "reference": "Michigan Protocol 8-25: ODA Appeal — EMSCC",
+      "points": [
+        "After exhausting the MCA appeal procedure, an EMS clinician or LSA may appeal to the State of Michigan Emergency Medical Services Coordination Committee under Part 209",
+        "EMSCC appeal determines whether the MCA action or decision followed Department-approved protocols, statute, or administrative rules",
+        "Specific facts of the underlying case leading to the ODA are not evaluated and must not be included in the EMSCC appeal request",
+        "The appeal must be filed in writing with MDHHS no more than 30 business days after written notification of the MCA's final determination",
+        "If appealed to EMSCC, the MCA must make available in writing the information it considered in making its decision"
+      ]
+    }
+  ],
+  "mca_selections_required": [],
+  "key_drugs": [],
+  "deterioration_flags": [],
+  "scope_notes": [
+    "All EMS provider levels",
+    "This protocol governs appeal of an ODA, not issuance of the ODA itself",
+    "Appeal grounds: new evidence, procedural error, fraud or misrepresentation, improper application",
+    "Appeal request due in writing within seven business days of ODA receipt",
+    "Appeal does not stay ODA provisions",
+    "Rejected appeal requests must be returned with explanation within three business days",
+    "Resubmission window after rejection: three business days",
+    "MCA Board appeal meeting window: not less than three and not more than thirty business days after receipt",
+    "Final MCA written decision due within fourteen business days of appeal meeting start",
+    "EMSCC appeal due within 30 business days after MCA final determination"
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-7 Do Not Resuscitate (Revised 11/17/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_dnr",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Do Not Resuscitate (DNR) — Out-of-Hospital",
+  "version": "2025-11-17",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-7: Do Not Resuscitate — MDHHS Approved 11/17/2025; MCL 333.1054",
+
+  "purpose": "Govern EMS response to patients with valid out-of-hospital Do Not Resuscitate (DNR) orders under MCL 333.1054. A valid DNR combined with absence of vital signs authorizes withholding resuscitation. Patients with vital signs who have a DNR should still be treated per appropriate protocol.",
+
+  "sections": [
+    {
+      "title": "Valid DNR Forms — Michigan",
+      "reference": "Michigan Protocol 7-7: DNR — Valid Forms (MCL 333.1054)",
+      "points": [
+        "FOUR types of valid DNR declarations recognized in Michigan:",
+        "1. Declarant form — signed by the patient",
+        "2. Minor child form — signed by parent or guardian",
+        "3. Patient advocate form — signed by legally designated patient advocate",
+        "4. Guardian form — signed by court-appointed guardian",
+        "All forms must be properly completed and signed to be considered valid",
+        "MI-POST form with Section A selecting DO NOT attempt resuscitation is also a valid DNR directive — refer to MI-POST Procedure Protocol"
+      ]
+    },
+    {
+      "title": "DNR Decision Algorithm",
+      "reference": "Michigan Protocol 7-7: DNR — Decision Algorithm",
+      "points": [
+        "STEP 1: Assess patient — does patient have vital signs?",
+        "STEP 2: If NO vital signs AND valid DNR bracelet or form is present: withhold resuscitation per this protocol (DOA/TOR criteria apply — refer to Dead on Scene Protocol)",
+        "STEP 3: If patient HAS vital signs AND has a DNR: treat patient per appropriate treatment protocol; the DNR does not restrict treatment of current condition — it applies only to cardiac/respiratory arrest",
+        "STEP 4: If DNR form is invalid, incomplete, or there is doubt about validity: initiate CPR and contact Medical Control",
+        "STEP 5: If valid DNR is found AFTER resuscitation has already been started: discontinue resuscitation and contact Medical Control",
+        "STEP 6: If DNR is revoked by declarant, patient advocate, guardian, or parent: initiate CPR and contact Medical Control"
+      ]
+    },
+    {
+      "title": "Revocation of DNR",
+      "reference": "Michigan Protocol 7-7: DNR — Revocation",
+      "points": [
+        "A DNR may be revoked at any time by the declarant (patient), patient advocate, guardian, or parent of a minor",
+        "Revocation may be verbal, written, or by any action indicating intent to revoke",
+        "Upon revocation: initiate resuscitation per appropriate cardiac arrest protocol",
+        "Contact Medical Control after initiating resuscitation",
+        "Document revocation in PCR"
+      ]
+    },
+    {
+      "title": "Documentation",
+      "reference": "Michigan Protocol 7-7: DNR — Documentation",
+      "points": [
+        "Document presence and type of DNR form or bracelet",
+        "Document whether form was valid or invalid",
+        "Document patient's vital sign status at time DNR was identified",
+        "Document any revocation of DNR",
+        "Document Medical Control contact if applicable",
+        "Attach or reference DNR form in PCR when possible"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "DNR found but form is invalid or incomplete — initiate CPR; contact Medical Control",
+    "Valid DNR found after CPR already started — discontinue resuscitation; contact Medical Control",
+    "DNR revoked by patient or authorized person — initiate CPR immediately; contact Medical Control",
+    "Patient with vital signs and DNR deteriorating — treat per appropriate protocol; DNR activates only upon arrest"
+  ],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "Valid DNR + no vital signs: withhold resuscitation per Dead on Scene / TOR protocol",
+    "Valid DNR + vital signs present: treat per appropriate treatment protocol",
+    "Invalid/incomplete DNR: initiate CPR and contact Medical Control",
+    "DNR found after CPR started: discontinue and contact Medical Control",
+    "Revocation: initiate CPR and contact Medical Control"
+  ]
+}

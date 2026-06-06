@@ -1,0 +1,78 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 1-4 Syncope (Revised 05/08/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_all_syncope",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "All",
+  "level_display": "All Levels",
+  "jurisdiction": "Michigan",
+  "condition": "Syncope",
+  "version": "2023-05-08",
+  "protocol_reference": "Michigan General Treatment Protocol Section 1-4: Syncope — MDHHS Approved 5/8/23, Reviewed 2023",
+  "sections": [
+    {
+      "title": "Syncope",
+      "reference": "Michigan Protocol 1-4: Syncope",
+      "points": [
+        "Assess for mechanism of injury; if trauma sustained, refer to General Trauma-Treatment Protocol",
+        "Follow General Pre-Hospital Care-Treatment Protocol",
+        "Pediatric patients (< 14 years of age): utilize MI MEDIC cards for appropriate medication dosage; when unavailable, use pediatric dosing listed within protocol",
+        "Position patient: if third trimester pregnancy, position left lateral recumbent; supine for all other patients",
+        "Check blood glucose (may be MFR skill per Blood Glucose Testing-Procedure Protocol)",
+        "If altered mental status: perform stroke assessment and evaluate for stroke per Stroke/Suspected Stroke-Treatment Protocol",
+        "If altered mental status: refer to Adult or Pediatric Altered Mental Status-Treatment Protocol",
+        "For signs of dehydration or hypotension: administer NS or LR IV/IO fluid bolus (Specialist skill — refer to Vascular Access and IV Fluid Therapy-Procedure Protocol); Adults: up to 1 liter; Pediatrics: up to 20 mL/kg",
+        "Hypotensive/dehydrated patients should receive additional IV/IO fluid boluses as indicated: Adults repeat to maximum 2 liters; Pediatrics repeat 20 mL/kg to maximum 40 mL/kg; monitor for pulmonary edema — if presents, stop fluids and contact Medical Control",
+        "Obtain 12-lead ECG (per MCA selection — may be BLS or Specialist procedure) per 12 Lead ECG-Procedure Protocol; if ECG indicates cardiac event or dysrhythmia, refer to appropriate Cardiac Protocol",
+        "Contact Medical Control for additional IV fluids"
+      ]
+    }
+  ],
+  "mca_selections_required": [
+    {
+      "item": "Blood Glucose Testing",
+      "description": "May be designated as an MFR skill by MCA",
+      "options": [
+        "MFR",
+        "EMT",
+        "Specialist"
+      ],
+      "selected": null
+    },
+    {
+      "item": "12-Lead ECG",
+      "description": "May be designated as a BLS skill or Specialist (AEMT/Paramedic) skill",
+      "options": [
+        "BLS",
+        "Specialist"
+      ],
+      "selected": null
+    }
+  ],
+  "key_drugs": [],
+  "deterioration_flags": [
+    "Hypotension — initiate IV/IO fluid bolus (Specialist skill); consider cardiac etiology and obtain 12-lead ECG",
+    "Altered mental status — perform stroke assessment; refer to Altered Mental Status protocol",
+    "Dysrhythmia on cardiac monitor — refer to appropriate Cardiac Protocol",
+    "Hypoglycemia on blood glucose check — refer to Altered Mental Status-Treatment Protocol",
+    "Recurrent syncope or syncope with exertion — consider cardiac etiology; ALS priority"
+  ],
+  "scope_notes": [
+    "Blood glucose testing: may be MFR skill per MCA selection",
+    "12-Lead ECG: scope per MCA selection — BLS or Specialist",
+    "IV/IO access and fluid bolus: Specialist skill",
+    "Cardiac monitoring: Specialist skill unless MCA-approved for lower level",
+    "Stroke assessment: all levels — refer to Stroke protocol"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "blood_glucose",
+      "cardiac_monitoring",
+      "syncope",
+      "transport_decision"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

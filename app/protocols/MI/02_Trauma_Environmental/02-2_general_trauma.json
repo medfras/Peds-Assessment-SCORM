@@ -1,0 +1,87 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 2-2 General Trauma (Revised 05/08/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_all_general_trauma",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "All",
+  "level_display": "All Levels",
+  "jurisdiction": "Michigan",
+  "condition": "General Trauma",
+  "version": "2023-05-08",
+  "protocol_reference": "Michigan Trauma and Environmental Protocol Section 2-2: General Trauma — MDHHS Approved 5/8/23, Reviewed 2023",
+  "purpose": "For severely injured patients meeting trauma triage guidelines, including chest injuries, and patients with symptoms of spinal cord injury, along with extremity weakness, numbness, or sensory loss. Consists of assessment, stabilization, extrication, initiation of resuscitation, and rapid transportation to the closest appropriate trauma facility.",
+  "sections": [
+    {
+      "title": "General Trauma Management",
+      "reference": "Michigan Protocol 2-2: General Trauma — General Management",
+      "points": [
+        "Follow General Pre-Hospital Care-Treatment Protocol",
+        "Stabilize spinal column while opening the airway; determine level of consciousness — refer to Spinal Injury Assessment-Treatment Protocol",
+        "Manage airway and ventilation per Airway Management-Procedure Protocol — AVOID hyperventilation/hyperoxygenation",
+        "Control major external bleeding — refer to Bleeding Control (BCON)-Treatment Protocol",
+        "If signs of shock are present, refer to Shock-Treatment Protocol",
+        "Refer to Mass Casualty Incidents-Special Operations Protocol if appropriate",
+        "Determine if the patient is taking blood thinners and document results in the PCR",
+        "Initiate transport according to the Adult/Pediatric Trauma Triage-Treatment Protocol or refer to applicable MCA Transport Protocol",
+        "Alert receiving hospital as soon as appropriate — include pertinent trauma triage criteria",
+        "Obtain vascular access in a manner that will not delay transport (Specialist skill)",
+        "Refer to Pain Management-Procedure Protocol"
+      ]
+    },
+    {
+      "title": "Chest Injury",
+      "reference": "Michigan Protocol 2-2: General Trauma — Chest Injury",
+      "points": [
+        "Control hemorrhage per Bleeding Control (BCON)-Treatment Protocol and Soft Tissue and Orthopedic Injuries-Treatment Protocol",
+        "Assess, monitor, and treat life-threatening respiratory problems",
+        "Administer high-flow oxygen — avoid positive pressure ventilation if possible",
+        "Cover open and/or sucking chest wounds with an occlusive dressing or an FDA-approved, MCA-authorized commercial device; release dressing if worsened shortness of breath or signs of tension pneumothorax",
+        "If tension pneumothorax suspected: perform needle decompression per Pleural Decompression-Procedure Protocol (Specialist skill)"
+      ]
+    },
+    {
+      "title": "Abdominal Injury",
+      "reference": "Michigan Protocol 2-2: General Trauma — Abdominal Injury",
+      "points": [
+        "Cover intestinal eviscerations with a sterile dressing moistened with sterile saline or water; cover the area with an occlusive material (aluminum foil or plastic wrap); cover with a towel or blanket to keep warm; transport with knees slightly bent if possible",
+        "DO NOT PUSH VISCERA BACK INTO ABDOMEN",
+        "If signs of shock: refer to Shock-Treatment Protocol and/or Hemorrhagic Shock-Treatment Protocol"
+      ]
+    },
+    {
+      "title": "Head Injury",
+      "reference": "Michigan Protocol 2-2: General Trauma — Head Injury",
+      "points": [
+        "Avoid hypo or hyperventilation",
+        "Refer to Head Injury-Treatment Protocol"
+      ]
+    }
+  ],
+  "mca_selections_required": [],
+  "deterioration_flags": [
+    "Signs of shock — refer to Shock-Treatment Protocol; obtain vascular access without delaying transport",
+    "Tension pneumothorax signs (tracheal deviation, absent breath sounds, distended neck veins, hypotension) — needle decompression (Specialist skill)",
+    "Suspected spinal injury — maintain spinal precautions per Spinal Injury Assessment protocol",
+    "Altered mental status with head injury — refer to Head Injury protocol; avoid hyperventilation"
+  ],
+  "scope_notes": [
+    "Scene safety, primary survey, bleeding control, spinal stabilization: all levels",
+    "Vascular access: Specialist skill",
+    "Needle decompression (pleural): Specialist skill",
+    "Airway management procedures: refer to Airway Management-Procedure Protocol for scope by level",
+    "Pain management: refer to Pain Management-Procedure Protocol for scope by level"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "hypothermia",
+      "hypothermia_prevention",
+      "multisystem_trauma",
+      "pediatric_trauma",
+      "transport_decision",
+      "trauma"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

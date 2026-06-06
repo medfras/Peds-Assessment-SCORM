@@ -1,0 +1,115 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-15 Interfacility Patient Transfers (Revised 3/3/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_interfacility_patient_transfers",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (BLS/ALS — MCA Options Apply)",
+  "jurisdiction": "Michigan",
+  "condition": "Interfacility Patient Transfers",
+  "version": "2025-03-03",
+  "protocol_reference": "Michigan System Protocol Section 8-15: Interfacility Patient Transfers — MDHHS Approved 3/3/2025",
+
+  "purpose": "Govern the requirements for interfacility patient transfers including staffing, scope of practice, and special patient populations. The staffing and licensure level of the transporting EMS unit must be appropriate for the patient's condition and the interventions required during transport. MCAs must define which transfer types are permitted and required staffing levels.",
+
+  "sections": [
+    {
+      "title": "General Interfacility Transfer Requirements",
+      "reference": "Michigan Protocol 8-15: Interfacility — General",
+      "points": [
+        "The transporting EMS unit must have the scope of practice and equipment appropriate for the patient's condition during transport",
+        "Sending facility must provide a complete verbal and written report to the transporting EMS crew before departure",
+        "The transporting crew must review the sending facility's orders and assess the patient's condition before accepting the transfer",
+        "If the patient's condition exceeds the transporting crew's scope of practice, refuse the transfer and request an appropriately staffed unit or hospital personnel accompaniment",
+        "EMS may decline a transfer that is clinically unsafe — contact Medical Control and notify MCA if needed"
+      ]
+    },
+    {
+      "title": "Staffing Requirements by Patient Condition",
+      "reference": "Michigan Protocol 8-15: Interfacility — Staffing",
+      "points": [
+        "BLS TRANSPORT: patient is hemodynamically stable; no ALS interventions in place or anticipated; no advanced airway; IV saline lock only (no medications running)",
+        "ALS TRANSPORT: IV medications running; advanced airway in place; hemodynamically unstable or at risk; ALS monitoring required (cardiac monitor, capnography)",
+        "PEEP > 5 cmH2O on mechanical ventilation: requires MICU, air medical, or hospital staff accompaniment per Section 7-27",
+        "HFNO (High-Flow Nasal Oxygen): requires Paramedic with MCA authorization per Section 7-26",
+        "Enhanced Paramedic (EP) or Critical Care Paramedic (CCP): refer to Section 8-15(S) for additional scope authorizations"
+      ]
+    },
+    {
+      "title": "Medications and Drips During Transfer",
+      "reference": "Michigan Protocol 8-15: Interfacility — Medications",
+      "points": [
+        "EMS providers may continue facility-initiated IV medication infusions within their scope of practice during interfacility transfer — providers are NOT starting new medications, they are continuing facility-ordered therapy",
+        "Paramedics may continue: standard cardiac medications (antiarrhythmics, vasopressors at maintenance rates), heparin, insulin per sending facility orders",
+        "BLS/Specialist providers may continue: normal saline, LR, or D5W infusions at ordered rates; may NOT continue vasoactive or ALS medication infusions",
+        "If an IV medication problem occurs en route: follow the appropriate protocol for the patient's condition; contact Medical Control",
+        "Blood products: require Enhanced Paramedic or Critical Care Paramedic with MCA authorization per Section 8-15(S)"
+      ]
+    },
+    {
+      "title": "HFNO — Interfacility Authorization",
+      "reference": "Michigan Protocol 8-15: Interfacility — HFNO",
+      "points": [
+        "MCA OPTIONAL: MCA may authorize Paramedics with appropriate training to continue HFNO during interfacility transport",
+        "Requires MCA selection in BOTH this protocol AND Section 7-26 (HFNO Procedure Protocol)",
+        "Refer to Section 7-26 for HFNO administration requirements"
+      ]
+    },
+    {
+      "title": "Documentation",
+      "reference": "Michigan Protocol 8-15: Interfacility — Documentation",
+      "points": [
+        "Document sending facility name and address, receiving facility name and address, and reason for transfer",
+        "Document patient condition at time of accepting transfer and at time of delivery to receiving facility",
+        "Document all medications running during transfer and any changes in patient condition en route",
+        "Copy of sending facility's transfer orders should accompany patient"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "HFNO Authorized for Interfacility Transport",
+      "description": "MCA must also select HFNO authorization in Section 7-26 (HFNO Procedure Protocol) in addition to this selection",
+      "options": ["Authorized — Paramedic with MCA-approved HFNO training", "Not authorized"],
+      "selected": null
+    },
+    {
+      "item": "Vasoactive Medications During Transfer",
+      "description": "MCA may define which vasoactive medications Paramedics may continue during interfacility transfer",
+      "options": ["Paramedic may continue MCA-defined vasoactive medications per sending facility orders", "Paramedic may continue all standard vasoactive medications per sending facility orders", "Contact Medical Control for vasoactive medications during transfer"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Patient condition exceeds transporting crew scope of practice — decline transfer; request appropriately staffed unit or hospital accompaniment; contact Medical Control",
+    "Patient deteriorates during interfacility transport — contact Medical Control; manage per appropriate protocol; consider diverting to closest appropriate facility"
+  ],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "Transporting unit scope must match patient condition and interventions required",
+    "BLS: stable, no ALS interventions, saline lock only",
+    "ALS: IV medications, advanced airway, hemodynamic instability",
+    "PEEP > 5: MICU/air medical/hospital staff required",
+    "HFNO: Paramedic + MCA authorization (both Section 8-15 and 7-26)",
+    "EP/CCP expanded scope: see Section 8-15(S)",
+    "Blood products: EP/CCP with MCA authorization only",
+    "EMS may decline unsafe transfers — contact Medical Control"
+  ],
+
+  "clinical_context": {
+    "concepts": [
+      "documentation_handoff",
+      "interfacility_transfer",
+      "medical_control",
+      "transport_decision"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

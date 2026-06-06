@@ -1,0 +1,145 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 3-1 Altered Mental Status (Revised 03/03/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured. For patients < 14 years refer to Pediatric Altered Mental Status protocol.",
+  "id": "mi_base_adult_altered_mental_status",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Adult",
+  "level_display": "Adult (≥ 14 years)",
+  "jurisdiction": "Michigan",
+  "condition": "Altered Mental Status",
+  "version": "2025-03-03",
+  "protocol_reference": "Michigan Adult Treatment Protocol Section 3-1: Altered Mental Status — MDHHS Approved 3/3/25, Reviewed 2025",
+  "purpose": "Assessment and treatment of patients with altered mental status. Consideration should be given to treatable and reversible causes (e.g., hypoglycemia, opioid overdose). For patients < 14 years refer to Pediatric Altered Mental Status-Treatment Protocol.",
+  "sections": [
+    {
+      "title": "Altered Mental Status Treatment",
+      "reference": "Michigan Protocol 3-1: Altered Mental Status",
+      "points": [
+        "Follow General Pre-hospital Care Protocol-Treatment Protocol",
+        "If patient is not alert or vital signs are abnormal: evaluate and maintain airway, provide oxygenation, and support ventilations as needed per Airway Management-Procedure Protocol; if no suspected spinal injury, place the patient in recovery position",
+        "If respiratory depression is present due to suspected opioid overdose: administer naloxone per Opioid Overdose Treatment and Prevention-Treatment Protocol",
+        "Restrain patient if necessary — refer to Patient Restraint-Procedure Protocol",
+        "For a known diabetic: consider small amounts of oral glucose if unable to measure blood glucose level",
+        "If the patient is demonstrating signs of hypoglycemia: measure blood glucose level (may be MFR skill — see Blood Glucose Testing-Procedure Protocol)",
+        "If blood glucose < 60 mg/dL: administer oral glucose (all licensure levels)",
+        "Administer IV dextrose 25 gm — may titrate to fully awake and oriented (Specialist skill)",
+        "Per MCA selection, if unable to start IV when IV dextrose is indicated: administer glucagon 1 mg IM (injectable formulation ONLY) or 3 mg IN (intranasal formulation ONLY, if available per MCA selection) — may be EMT skill per MCA selection",
+        "NOTE: Only glucagon FDA-approved for nasal administration (e.g., Baqsimi) may be given by IN route — injectable glucagon is NOT to be given via IN route; EMS clinicians may assist family/patient caregivers in administering FDA-approved IN glucagon if prescribed for the patient regardless of age",
+        "Recheck blood glucose level (may be MFR skill) 10 minutes after glucose or glucagon administration (per MCA selection)",
+        "If glucose > 250 mg/dL: administer NS or LR IV bolus up to 1 L; for patients with renal failure or heart failure decrease volume to 500 mL (Specialist skill)",
+        "Consider 12-Lead ECG — per MCA selection, may be a BLS or Specialist procedure; follow 12 Lead ECG-Procedure Protocol",
+        "If the patient is not alert and the cause is not immediately known: contact Medical Control and consider AEIOU-TIPS-CHES differential: A-Alcohol, E-Epilepsy, I-Insulin, O-Overdose, U-Uremia; T-Trauma, I-Ingestion, P-Psych, P-Phenothiazine, S-Salicylates; C-Cardiac, H-Hypoxia, E-Environmental, S-Stroke, S-Sepsis"
+      ]
+    }
+  ],
+  "mca_selections_required": [
+    {
+      "item": "Blood Glucose Testing — MFR",
+      "description": "MCA may designate blood glucose testing as an MFR skill",
+      "options": [
+        "MFR skill authorized",
+        "Not authorized for MFR"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Glucagon 1 mg IM (Injectable) — Scope",
+      "description": "MCA must select which provider levels may administer 1 mg glucagon IM (injectable formulation only)",
+      "options": [
+        "Not included",
+        "EMT",
+        "Specialist",
+        "Paramedic"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Glucagon 3 mg IN (Intranasal — Baqsimi) — Scope",
+      "description": "MCA must select which provider levels may administer 3 mg glucagon IN (intranasal FDA-approved formulation only, e.g., Baqsimi)",
+      "options": [
+        "Not included",
+        "EMT",
+        "Specialist",
+        "Paramedic"
+      ],
+      "selected": null
+    },
+    {
+      "item": "12-Lead ECG",
+      "description": "MCA must select whether 12-lead ECG is a BLS or Specialist procedure",
+      "options": [
+        "BLS",
+        "Specialist"
+      ],
+      "selected": null
+    }
+  ],
+  "key_drugs": [
+    {
+      "name": "Dextrose IV",
+      "dose": "25 gm IV — titrate to fully awake and oriented",
+      "route": "IV",
+      "indication": "Hypoglycemia (blood glucose < 60 mg/dL) when oral glucose not feasible",
+      "contraindications": "Suspected stroke without confirmed hypoglycemia — hyperglycemia worsens ischemic stroke outcomes",
+      "side_effects": "Hyperglycemia, phlebitis at injection site, tissue necrosis with extravasation",
+      "scope": "Specialist skill",
+      "notes": "Recheck blood glucose 10 minutes after administration. Follow the Dextrose medication protocol for concentration options such as D10, D25, or D50."
+    },
+    {
+      "name": "Glucagon 1 mg IM (Injectable)",
+      "dose": "1 mg IM",
+      "route": "IM (injectable formulation ONLY)",
+      "indication": "Hypoglycemia when IV access cannot be established",
+      "contraindications": "Pheochromocytoma; insulinoma; injectable formulation must NOT be given intranasally",
+      "side_effects": "Nausea, vomiting, tachycardia",
+      "scope": "Per MCA selection — EMT/Specialist/Paramedic options available",
+      "notes": "Injectable glucagon is NOT to be administered via IN route. Recheck blood glucose 10 minutes after administration."
+    },
+    {
+      "name": "Glucagon 3 mg IN (Baqsimi — Intranasal)",
+      "dose": "3 mg intranasal (one actuation in one nostril)",
+      "route": "Intranasal (FDA-approved IN formulation ONLY — e.g., Baqsimi)",
+      "indication": "Hypoglycemia when IV access cannot be established and intranasal formulation is available",
+      "contraindications": "Use only FDA-approved IN formulation; do NOT use injectable glucagon via IN route; pheochromocytoma",
+      "side_effects": "Nausea, vomiting, nasal congestion",
+      "scope": "Per MCA selection — EMT/Specialist/Paramedic options available",
+      "notes": "EMS clinicians may assist family/caregivers in administering FDA-approved IN glucagon if prescribed for patient (regardless of age). Recheck blood glucose 10 minutes after administration."
+    },
+    {
+      "name": "NS or LR IV Bolus (Hyperglycemia)",
+      "dose": "Up to 1 liter IV; reduce to 500 mL in renal or heart failure patients",
+      "route": "IV",
+      "indication": "Blood glucose > 250 mg/dL",
+      "contraindications": "Pulmonary edema; severe heart failure",
+      "side_effects": "Fluid overload",
+      "scope": "Specialist skill",
+      "notes": "Fluid administration for hyperglycemia is supportive — definitive treatment is insulin at hospital."
+    }
+  ],
+  "deterioration_flags": [
+    "GCS declining or patient becoming unresponsive — evaluate airway; place in recovery position if no spinal concern; contact Medical Control",
+    "Blood glucose < 60 mg/dL — dextrose IV if access available; glucagon IM/IN if no IV (per MCA selection)",
+    "Suspected opioid-related AMS with respiratory depression — naloxone per Opioid Overdose protocol",
+    "Blood glucose > 250 mg/dL — IV fluid bolus (Specialist skill); contact Medical Control"
+  ],
+  "scope_notes": [
+    "Airway management, recovery position, oral glucose: all levels",
+    "Blood glucose testing: all levels — may be MFR skill per MCA selection",
+    "IV dextrose: Specialist skill",
+    "Glucagon IM/IN: per MCA selection — EMT through Paramedic options",
+    "IV fluid bolus for hyperglycemia: Specialist skill",
+    "12-lead ECG: per MCA selection — BLS or Specialist"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "altered_mental_status",
+      "blood_glucose",
+      "hypoglycemia",
+      "seizure",
+      "toxins_overdose"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

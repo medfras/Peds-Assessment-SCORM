@@ -1,0 +1,62 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 4-1 Pediatric Medication Emergency Dosing and Intervention Cards (Revised 01/27/2023, MDHHS Reviewed 2023). Base Michigan template.",
+  "id": "mi_base_pediatric_mi_medic",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Pediatric",
+  "level_display": "Pediatric (< 14 years)",
+  "jurisdiction": "Michigan",
+  "condition": "Pediatric Medication Emergency Dosing and Intervention Cards (MI-MEDIC)",
+  "version": "2023-01-27",
+  "protocol_reference": "Michigan Obstetrics and Pediatrics Protocol Section 4-1: Pediatric Medication Emergency Dosing and Intervention Cards (MI-MEDIC) — MDHHS Approved 1/27/23, Reviewed 2023",
+
+  "purpose": "Instructions for using the Michigan Medication Emergency Dosing and Intervention Cards (MI-MEDIC). Pediatric patients (< 14 years) utilize MI-MEDIC cards for appropriate medication dosage. When unavailable, utilize pediatric dosing listed within the relevant protocol.",
+
+  "sections": [
+    {
+      "title": "MI-MEDIC Usage Instructions",
+      "reference": "Michigan Protocol 4-1: MI-MEDIC",
+      "points": [
+        "Obtain correct weight of the child: (a) if patient's actual weight is known, use MI-MEDIC card for that weight — DO NOT CONFUSE POUNDS and KILOGRAMS; (b) if patient's weight is not known, use length-based resuscitation tape to determine the proper color zone; (c) if a length-based resuscitation tape is not available, use patient's age to determine color of card to use — DO NOT GUESS THE WEIGHT OF THE CHILD",
+        "Select appropriate weight-based medication for intervention",
+        "Select the corresponding colored card",
+        "Select desired medication from Cardiac Resuscitation or Medical Conditions",
+        "ASSURE medication CONCENTRATION on hand is as specified on card",
+        "Some medications should be diluted as instructed on card",
+        "If dilution is required, follow steps to dilute entire vial of medication prior to drawing up final mL volume to administer",
+        "Confirm medication dose and volume to be delivered",
+        "Administer volume of medication as desired",
+        "Contact Medical Control for questions or concerns",
+        "NOTE: Some medication doses have been rounded for safety and ease of use for the prevention of medication errors. These doses may not exactly correspond with the mg/kg dose in the pediatric treatment protocols. The use of these rounded doses has been approved for use and administration will be acceptable as long as the dose was referenced from the MI-MEDIC cards."
+      ]
+    },
+    {
+      "title": "MI-MEDIC Color Zones",
+      "reference": "Michigan Protocol 4-1: MI-MEDIC Color Zones",
+      "points": [
+        "Grey: 0–2 months, 3–5 kg (6–11 lbs.)",
+        "Pink: 3–6 months, 6–7 kg (13–16 lbs.)",
+        "Red: 7–10 months, 8–9 kg (17–20 lbs.)",
+        "Purple: 11–18 months, 10–11 kg (21–25 lbs.)",
+        "Yellow: 19–35 months, 12–14 kg (26–31 lbs.)",
+        "White: 3–4 years, 15–18 kg (32–40 lbs.)",
+        "Blue: 5–6 years, 19–23 kg (41–50 lbs.)",
+        "Orange: 7–9 years, 24–29 kg (52–64 lbs.)",
+        "Green: 10–14 years, 30–36 kg (65–79 lbs.)"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [],
+
+  "scope_notes": [
+    "MI-MEDIC reference system: all levels for pediatric patients < 14 years",
+    "Always use MI-MEDIC when available for pediatric dosing — protocol tables are backup only",
+    "When MI-MEDIC unavailable: use age/weight dosing tables in individual pediatric treatment protocols"
+  ]
+}

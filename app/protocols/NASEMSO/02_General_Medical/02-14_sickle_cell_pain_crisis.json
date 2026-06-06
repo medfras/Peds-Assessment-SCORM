@@ -1,0 +1,132 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). General Medical: Sickle Cell Pain Crisis. NASEMSO national provisional base.",
+  "id": "nasemso_base_general_medical_sickle_cell_pain_crisis",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Sickle Cell Pain Crisis",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — General Medical: Sickle Cell Pain Crisis",
+  "aliases": [
+    "None noted"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — General Medical: Sickle Cell Pain Crisis",
+      "points": [
+        "Identify potentially life-threatening complications of a sickle cell disease",
+        "Improve patient comfort"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Patient with known sickle cell disease experiencing a pain crisis",
+        "EXCLUSION CRITERIA:",
+        "Pain due to acute traumatic injury [See Trauma Section]",
+        "Abdominal pain due to or related to pregnancy [See OB/GYN Section]",
+        "Patients with sickle cell trait"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Scene safety and PPE; primary survey (ABCDE)",
+        "Oxygen via NRM targeting SpO2 94-98% if indicated",
+        "Position of comfort; hemorrhage control as needed",
+        "CPR/AED if patient becomes pulseless",
+        "Epinephrine auto-injector for anaphylaxis if applicable",
+        "Naloxone intranasal unit-dose for suspected opioid involvement"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Blood glucose monitoring; oral glucose if hypoglycemic and alert",
+        "12-lead ECG acquisition and transmission",
+        "CPAP for respiratory distress",
+        "Aspirin for suspected ischemic chest pain",
+        "Albuterol SVN for bronchospasm component",
+        "IV access maintenance (non-medicated)"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation",
+        "IV/IO fluid resuscitation as indicated",
+        "Waveform capnography",
+        "IV analgesics (fentanyl, morphine) per pain management protocol",
+        "IV antiemetics (ondansetron) per protocol",
+        "IV D50W/D10W for hypoglycemia"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "12-lead ECG interpretation",
+        "Endotracheal intubation for airway compromise",
+        "RSI per protocol",
+        "Advanced antidysrhythmic or hemodynamic support per specific protocol",
+        "All parenteral medications per protocol",
+        "Vasopressors for refractory hemodynamic compromise"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Assess for life-threatening complications of sickle cell disease ' these patients have significantly higher risk of numerous complications in addition to pain crises",
+        "Provide appropriate treatment for pain, respiratory distress, and shock",
+        "These patients may have a higher tolerance to narcotic pain medications if they are taking them on a regular basis",
+        "These patients will tolerate acute blood loss poorly due to baseline anemia",
+        "Patients with sickle cell trait can have acute pain crises in extreme conditions (e.g., heat exhaustion, dehydration) and several college athlete deaths have been linked to sickle cell trait",
+        "Lung exam and assessment of respiratory distress",
+        "Altered mental status",
+        "Focal neurologic deficits"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Documentation of normal respiratory and neuro status",
+        "' Documentation of how this pain crisis compares with others in terms of location, severity, and triggers",
+        "' Documentation of home pain medications used"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Contact medical direction for clinical deterioration or interventions outside standard scope"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

@@ -1,0 +1,151 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Toxins and Environmental: Carbon Monoxide/Smoke Inhalation. NASEMSO national provisional base.",
+  "id": "nasemso_base_toxins_and_environmental_carbon_monoxide_smoke_inhalation",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Carbon Monoxide/Smoke Inhalation",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Carbon Monoxide/Smoke Inhalation",
+  "aliases": [],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Carbon Monoxide/Smoke Inhalation",
+      "points": [
+        "Remove patient from toxic environment.",
+        "Assure adequate ventilation, oxygenation, and correction of hypoperfusion.",
+        "Consider use of environmental carbon monoxide (CO) monitors on \"first in\" bags to assist in detection of occult CO toxicity."
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Patients exposed to carbon monoxide may present with a spectrum of symptoms: a. Mild intoxication: i. Nausea",
+        "ii. Fatigue",
+        "iii. Headache",
+        "iv. Vertigo",
+        "v. Lightheadedness",
+        "b. Moderate to severe: i. Altered mental status",
+        "ii. Tachypnea",
+        "iii. Tachycardia",
+        "EXCLUSION CRITERIA:",
+        "None noted"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Scene safety and PPE; primary survey (ABCDE)",
+        "Oxygen via NRM targeting SpO2 94-98% if indicated",
+        "Position of comfort; hemorrhage control as needed",
+        "CPR/AED if patient becomes pulseless",
+        "Epinephrine auto-injector for anaphylaxis if applicable",
+        "Naloxone intranasal unit-dose for suspected opioid involvement"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Blood glucose monitoring; oral glucose if hypoglycemic and alert",
+        "12-lead ECG acquisition and transmission",
+        "CPAP for respiratory distress",
+        "Aspirin for suspected ischemic chest pain",
+        "Albuterol SVN for bronchospasm component",
+        "IV access maintenance (non-medicated)"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation",
+        "IV/IO fluid resuscitation as indicated",
+        "Waveform capnography",
+        "IV analgesics (fentanyl, morphine) per pain management protocol",
+        "IV antiemetics (ondansetron) per protocol",
+        "IV D50W/D10W for hypoglycemia"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "12-lead ECG interpretation",
+        "Endotracheal intubation for airway compromise",
+        "RSI per protocol",
+        "Advanced antidysrhythmic or hemodynamic support per specific protocol",
+        "All parenteral medications per protocol",
+        "Vasopressors for refractory hemodynamic compromise"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Consider affixing a carbon monoxide detector to an equipment bag that is routinely taken into scene (if it signals alarm, don appropriate respiratory protection and exit scene) to assist with detection of occult CO toxicity",
+        "Remove patient and response personnel from potentially hazardous environment as soon as possible",
+        "Provide instruction to the patient, the patient's family, and other appropriate bystanders to not enter the environment (e.g., building, car) where the carbon monoxide exposure occurred until the source of the poisoning has been eliminated",
+        "Do not look for cherry red skin coloration as an indication of carbon monoxide poisoning, as this is an unusual finding",
+        "CO oximeter devices may yield inaccurate low/normal results for patients with CO poisoning. All patients with probable or suspected CO poisoning should be transported to the nearest appropriate hospital based on their presenting signs and symptoms"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Pulse oximetry is inaccurate due to the carbon monoxide binding with hemoglobin",
+        "As maternal carboxyhemoglobin levels do not accurately reflect fetal carboxyhemoglobin levels, pregnant patients are more likely to be treated with hyperbaric oxygen",
+        "Consider cyanide toxicity if carbon monoxide poisoning is from a fire",
+        "Early and repeat assessment of patient's mental status and motor function are extremely useful in determining response to therapy and the need for hyperbaric therapy",
+        "Identification of possible etiology of poisoning",
+        "Time of symptom onset and time of initiation of exposure-specific treatment",
+        "Response to therapy"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' If using an environmental carbon monoxide detector, record the level detected",
+        "' Evidence of soot or burns around the face, nares, or pharynx",
+        "' Early and repeat assessment of patient's mental status and motor function are extremely useful in determining response to therapy and the need for hyperbaric therapy",
+        "' Accurate exposure history o Time of ingestion/exposure",
+        "o Route of exposure",
+        "o Quantity of medication or toxin taken (safely collect all possible mediations or agents)",
+        "o Alcohol or other intoxicant taken",
+        "' Signs and symptoms of other patients encountered at same location if present"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Contact medical direction for clinical deterioration or interventions outside standard scope"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

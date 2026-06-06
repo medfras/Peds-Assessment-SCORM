@@ -1,0 +1,314 @@
+[
+  {
+    "id": "vt_sepsis_compensation_01",
+    "title": "Fever With Compensation Failing",
+    "summary": "A 7-year-old with fever, poor intake, and lethargy is being monitored during transport. Identify the earliest meaningful deterioration point.",
+    "duration_sec": 180,
+    "event_window_ms": [
+      90000,
+      120000
+    ],
+    "channels": [
+      "hr",
+      "spo2",
+      "rr"
+    ],
+    "data_points": [
+      {
+        "t": 0,
+        "hr": 132,
+        "spo2": 96,
+        "rr": 28,
+        "bp_sys": 96
+      },
+      {
+        "t": 30,
+        "hr": 138,
+        "spo2": 96,
+        "rr": 30,
+        "bp_sys": 94
+      },
+      {
+        "t": 60,
+        "hr": 146,
+        "spo2": 95,
+        "rr": 32,
+        "bp_sys": 92
+      },
+      {
+        "t": 90,
+        "hr": 158,
+        "spo2": 94,
+        "rr": 36,
+        "bp_sys": 88
+      },
+      {
+        "t": 120,
+        "hr": 166,
+        "spo2": 93,
+        "rr": 40,
+        "bp_sys": 82
+      },
+      {
+        "t": 150,
+        "hr": 172,
+        "spo2": 91,
+        "rr": 44,
+        "bp_sys": 76
+      },
+      {
+        "t": 180,
+        "hr": 178,
+        "spo2": 89,
+        "rr": 46,
+        "bp_sys": 70
+      }
+    ],
+    "etiology_question": "What is the most likely pattern?",
+    "etiology_choices": [
+      {
+        "id": "sepsis_shock",
+        "label": "Sepsis with evolving shock",
+        "correct": true
+      },
+      {
+        "id": "isolated_bronchospasm",
+        "label": "Isolated bronchospasm"
+      },
+      {
+        "id": "simple_fever",
+        "label": "Fever only, no perfusion concern"
+      }
+    ],
+    "response_question": "What is the best immediate EMS response?",
+    "response_choices": [
+      {
+        "id": "oxygen_perf_transport",
+        "label": "Support oxygenation/perfusion, reassess frequently, and expedite transport",
+        "correct": true
+      },
+      {
+        "id": "observe_only",
+        "label": "Observe only because SpO2 is initially normal"
+      },
+      {
+        "id": "withhold_transport",
+        "label": "Delay transport until the fever resolves"
+      }
+    ],
+    "feedback": {
+      "timeline": "The deterioration begins when tachycardia and tachypnea accelerate while systolic pressure starts falling.",
+      "etiology": "Fever plus worsening perfusion trend is more concerning for sepsis with shock than simple fever.",
+      "response": "The trend calls for oxygenation/perfusion support, frequent reassessment, and expedited transport."
+    },
+    "hint": "Look for the first point where more than one channel starts moving in the wrong direction, not just the most dramatic final value."
+  },
+  {
+    "id": "vt_asthma_fatigue_01",
+    "title": "Asthma Fatigue",
+    "summary": "A 10-year-old with asthma is initially working hard to breathe. Watch for the point where compensation begins to fail.",
+    "duration_sec": 180,
+    "event_window_ms": [
+      90000,
+      120000
+    ],
+    "channels": [
+      "hr",
+      "spo2",
+      "rr"
+    ],
+    "data_points": [
+      {
+        "t": 0,
+        "hr": 128,
+        "spo2": 94,
+        "rr": 38,
+        "bp_sys": 106
+      },
+      {
+        "t": 30,
+        "hr": 134,
+        "spo2": 93,
+        "rr": 42,
+        "bp_sys": 106
+      },
+      {
+        "t": 60,
+        "hr": 142,
+        "spo2": 91,
+        "rr": 46,
+        "bp_sys": 104
+      },
+      {
+        "t": 90,
+        "hr": 150,
+        "spo2": 89,
+        "rr": 40,
+        "bp_sys": 102
+      },
+      {
+        "t": 120,
+        "hr": 156,
+        "spo2": 86,
+        "rr": 32,
+        "bp_sys": 100
+      },
+      {
+        "t": 150,
+        "hr": 160,
+        "spo2": 83,
+        "rr": 24,
+        "bp_sys": 96
+      },
+      {
+        "t": 180,
+        "hr": 164,
+        "spo2": 80,
+        "rr": 18,
+        "bp_sys": 92
+      }
+    ],
+    "etiology_question": "What does this trend suggest?",
+    "etiology_choices": [
+      {
+        "id": "resp_failure",
+        "label": "Respiratory fatigue/failure risk",
+        "correct": true
+      },
+      {
+        "id": "improving_asthma",
+        "label": "Improving asthma because RR is falling"
+      },
+      {
+        "id": "primary_cardiac",
+        "label": "Primary cardiac chest pain"
+      }
+    ],
+    "response_question": "What is the best immediate EMS response?",
+    "response_choices": [
+      {
+        "id": "vent_support",
+        "label": "Escalate respiratory support and prepare for assisted ventilations",
+        "correct": true
+      },
+      {
+        "id": "reassure",
+        "label": "Reassure only because the respiratory rate is lower"
+      },
+      {
+        "id": "oral_fluids",
+        "label": "Give oral fluids and continue routine monitoring"
+      }
+    ],
+    "feedback": {
+      "timeline": "The danger point is when SpO2 keeps falling while RR drops after severe tachypnea; that can mean fatigue, not improvement.",
+      "etiology": "A falling respiratory rate with worsening oxygenation is respiratory failure risk.",
+      "response": "Escalate respiratory support and be ready to assist ventilations."
+    },
+    "hint": "Look for the first point where more than one channel starts moving in the wrong direction, not just the most dramatic final value."
+  },
+  {
+    "id": "vt_dehydration_shock_01",
+    "title": "Dehydration To Shock",
+    "summary": "A toddler has vomiting and diarrhea. Trend the vitals and identify the earliest deterioration that should change urgency.",
+    "duration_sec": 180,
+    "event_window_ms": [
+      60000,
+      90000
+    ],
+    "channels": [
+      "hr",
+      "rr",
+      "bp_sys"
+    ],
+    "data_points": [
+      {
+        "t": 0,
+        "hr": 142,
+        "spo2": 98,
+        "rr": 30,
+        "bp_sys": 92
+      },
+      {
+        "t": 30,
+        "hr": 150,
+        "spo2": 98,
+        "rr": 32,
+        "bp_sys": 88
+      },
+      {
+        "t": 60,
+        "hr": 160,
+        "spo2": 97,
+        "rr": 36,
+        "bp_sys": 82
+      },
+      {
+        "t": 90,
+        "hr": 170,
+        "spo2": 97,
+        "rr": 40,
+        "bp_sys": 76
+      },
+      {
+        "t": 120,
+        "hr": 178,
+        "spo2": 96,
+        "rr": 44,
+        "bp_sys": 70
+      },
+      {
+        "t": 150,
+        "hr": 184,
+        "spo2": 95,
+        "rr": 46,
+        "bp_sys": 66
+      },
+      {
+        "t": 180,
+        "hr": 188,
+        "spo2": 94,
+        "rr": 48,
+        "bp_sys": 62
+      }
+    ],
+    "etiology_question": "What is the most likely pattern?",
+    "etiology_choices": [
+      {
+        "id": "hypovolemic_shock",
+        "label": "Hypovolemic shock from dehydration",
+        "correct": true
+      },
+      {
+        "id": "isolated_hypoxia",
+        "label": "Isolated hypoxia"
+      },
+      {
+        "id": "normal_toddler",
+        "label": "Normal toddler vitals"
+      }
+    ],
+    "response_question": "What is the best immediate EMS response?",
+    "response_choices": [
+      {
+        "id": "shock_transport",
+        "label": "Treat as shock, reassess perfusion, and expedite transport",
+        "correct": true
+      },
+      {
+        "id": "wait_for_urine",
+        "label": "Wait for urine output before changing urgency"
+      },
+      {
+        "id": "oral_challenge",
+        "label": "Focus on oral intake challenge before transport"
+      }
+    ],
+    "feedback": {
+      "timeline": "The trend becomes urgent when tachycardia rises while blood pressure begins dropping.",
+      "etiology": "Vomiting/diarrhea plus worsening tachycardia and falling systolic pressure fits hypovolemic shock.",
+      "response": "Treat as shock and expedite transport rather than waiting for late signs."
+    },
+    "hint": "Look for the first point where more than one channel starts moving in the wrong direction, not just the most dramatic final value."
+  }
+]

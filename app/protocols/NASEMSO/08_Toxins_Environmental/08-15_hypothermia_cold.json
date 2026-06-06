@@ -1,0 +1,144 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Toxins and Environmental: Hypothermia/Cold Exposure. NASEMSO national provisional base.",
+  "id": "nasemso_base_toxins_and_environmental_hypothermia_cold_exposure",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Hypothermia/Cold Exposure",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Hypothermia/Cold Exposure",
+  "aliases": [
+    "Cold induced injuries",
+    "Frost bite",
+    "Hypothermia"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Hypothermia/Cold Exposure",
+      "points": [
+        "Maintain hemodynamic stability",
+        "Prevent further heat loss",
+        "Rewarm the patient in a safe manner",
+        "Appropriate management of hypothermia induced cardiac arrest",
+        "Prevent loss of limbs"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Patients suffering systemic or localized cold injuries.",
+        "EXCLUSION CRITERIA:",
+        "Patients without cold exposure",
+        "Patients with cold exposure but no symptoms referable to hypothermia or frostbite"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Remove from cold environment; remove wet clothing gently",
+        "Passive rewarming: warm blankets, insulate from ground",
+        "Gentle handling: avoid jostling (risk of triggering VF in cold heart)",
+        "CPR for pulseless patient — check pulse for 60 seconds before starting (cold bradycardia may be very slow)",
+        "AED: apply pads; if VF — defibrillate once, then continue CPR; withhold additional shocks until warmed to >30°C"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "IV access maintenance (non-medicated); warm IV fluids preferred",
+        "12-lead ECG: Osborn J-waves pathognomonic for hypothermia; bradycardia, VF risk with temp <28°C",
+        "Active external rewarming: heated blankets, warm packs to axilla/groin",
+        "Blood glucose monitoring (hypoglycemia common in hypothermia)",
+        "Oral warmed fluids only if alert and able to swallow"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access: warm NS at 40-42°C if available, 500 mL bolus for hypotension",
+        "Blood glucose monitoring and correction",
+        "Waveform capnography for airway monitoring",
+        "Glucagon or IV dextrose for hypoglycemia"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "Continue CPR in hypothermic cardiac arrest — do not terminate in field; transport to hospital for rewarming",
+        "Epinephrine 1 mg IV/IO q 3-5 min for cardiac arrest (may be less effective at <30°C; still give)",
+        "Limit defibrillation to 3 shocks until temp >30°C; then defibrillate per standard ACLS",
+        "RSI and intubation: avoid ETT stimulation to nasopharynx (can precipitate VF) — use video laryngoscopy smoothly",
+        "Vasopressors for refractory hypotension after rewarming begins",
+        "Sodium bicarbonate for severe acidosis",
+        "12-lead ECG interpretation: Osborn waves, VF, bradydysrhythmias",
+        "Do NOT use warmed humidified O2 alone — this is not sufficient active rewarming in severe hypothermia"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Given the additive effects of additional cold stress, the patient should be removed from the cold environment as soon as operationally feasible",
+        "In patients suffering from moderate to severe hypothermia, it is critical to not allow these patients to stand or exercise as this may cause circulatory collapse",
+        "Devices that self-generate heat (e.g., heat packs) that are being utilized during the rewarming process should be wrapped in a barrier to avoid direct contact with the skin and to prevent burns. Available evidence suggests that heat packs with peak temperatures above 45'C (113'F) are most likely to cause burns. In patients who are unresponsive, or unable to recognize a developing injury, please check the area in which the heating pad is placed regularly to ensure no tissue damage occurs."
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "The following are contraindications for initiation of resuscitation in the hypothermic patient: a. Obvious fatal injuries (such as decapitation)",
+        "Fixed and dilated pupils, apparent rigor mortis, and dependent lividity may not be contraindication for resuscitation in the severely hypothermic patient",
+        "The mainstay of therapy in severe hypothermia and cardiac arrest should be effective chest compressions and attempts at rewarming. Chest compressions",
+        "The temperature at which defibrillation should first be attempted in the severely hypothermic cardiac arrest victim and the number of defibrillation attempts is unclear. There are different approaches regarding resuscitation of the hypothermic arrest patient a. Per the American Heart Association (AHA), if the patient has a shockable rhythm (VF/VT), defibrillation should be attempted. It is reasonable to continue defibrillation attempts per AHA protocols concurrently with rewarming strategies",
+        "Manage the airway per standard care in cardiac arrest victims [See Cardiac Arrest Guideline] a. In the absence of advanced airways, ventilate the patient at the same rate as a normothermic patient",
+        "There is little evidence to guide use of medications in severe hypothermia with cardiac arrest, however 2010 AHA updates to advanced cardiac life support recommend use of vasopressors according to standard ACLS protocols while the 2014 Alaska guidelines and the Wilderness Medical Society's accidental hypothermia guideline for the management of hypothermic patients advises medications should be withheld until the patient's core temperature is greater than 30'C (86'F) a. Above 30'C (86'F), intervals between medication provision should be doubled until the",
+        "Upon ROSC, treat per Adult Post-ROSC Care Guideline",
+        "Patients with severe hypothermia and arrest may benefit from resuscitation even after prolonged downtime, and survival with intact neurologic function has been observed even after prolonged resuscitation"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Duration of cold exposure",
+        "' Ambient temperature and recent range of temperatures",
+        "' Rewarming attempts or other therapies performed prior to EMS arrival",
+        "' Patient use of alcohol/drugs"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "In patients suffering from moderate to severe hypothermia, it is critical to not allow these patients to stand or exercise as this may cause circulatory collapse"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

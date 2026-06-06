@@ -1,0 +1,79 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-3 Crime Scene Management (Revised 1/5/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_crime_scene_management",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Crime Scene Management",
+  "version": "2023-01-05",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-3: Crime Scene Management — MDHHS Approved 1/5/2023",
+
+  "purpose": "EMS providers may respond to scenes that are or become crime scenes. The first duty is emergency medical care. EMS must minimize disturbance to potential evidence while fulfilling patient care responsibilities, and must document and communicate any alterations made to the scene.",
+
+  "sections": [
+    {
+      "title": "General Principles",
+      "reference": "Michigan Protocol 7-3: Crime Scene Management — General Principles",
+      "points": [
+        "First duty is emergency medical care — scene safety and patient care take priority over evidence preservation",
+        "Attempt to preserve evidence without compromising patient care",
+        "Notify law enforcement of all alterations made to the scene as a result of patient care",
+        "Document all alterations in the patient care report (PCR)"
+      ]
+    },
+    {
+      "title": "Evidence Preservation Practices",
+      "reference": "Michigan Protocol 7-3: Crime Scene Management — Evidence Preservation",
+      "points": [
+        "NEVER cut through bullet holes or knife holes/tears in clothing — cut around them",
+        "Retain cut clothing and place in PAPER bags (not plastic — prevents moisture and DNA degradation); give to law enforcement",
+        "Do not disturb outdoor evidence when possible: shoe prints, tire marks, shell casings, blood patterns",
+        "Touch only what is necessary for patient care",
+        "Minimize the number of personnel on scene — limit foot traffic through the crime scene",
+        "Do not use crime scene sinks, toilets, or surfaces unless absolutely required for patient care",
+        "Do not move items unless required for patient access or care",
+        "Note and document the position of any items moved for patient care"
+      ]
+    },
+    {
+      "title": "Patient and Witness Considerations",
+      "reference": "Michigan Protocol 7-3: Crime Scene Management — Patient and Witness",
+      "points": [
+        "Advise the patient not to shower, bathe, change clothing, or wash hands prior to examination at the hospital (especially in sexual assault and physical assault cases)",
+        "Document the patient's emotional state objectively",
+        "Document verbatim any spontaneous statements made by the patient or bystanders — use quotation marks",
+        "Do not interrogate the patient or witnesses — that is a law enforcement function",
+        "Document the identity and relationship of any individuals present at the scene"
+      ]
+    },
+    {
+      "title": "Communication with Law Enforcement",
+      "reference": "Michigan Protocol 7-3: Crime Scene Management — Law Enforcement Coordination",
+      "points": [
+        "Notify law enforcement of all changes made to the scene as a result of patient care before leaving the scene",
+        "Inform law enforcement of: patient's position when found, items moved or touched, clothing removed or cut, medications administered, IV access established, any other interventions",
+        "If law enforcement is not on scene: notify dispatch and document in PCR",
+        "Cooperate with law enforcement while maintaining patient care responsibilities"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Scene safety threat — withdraw to safe perimeter; do not enter until law enforcement clears scene",
+    "Patient requires rapid intervention — patient care supersedes evidence preservation; document alterations thoroughly"
+  ],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "First duty is always emergency medical care — evidence preservation is secondary",
+    "All scene alterations must be communicated to law enforcement and documented in PCR",
+    "Clothing with bullet/knife holes: never cut through holes — cut around them; store in paper bags"
+  ]
+}

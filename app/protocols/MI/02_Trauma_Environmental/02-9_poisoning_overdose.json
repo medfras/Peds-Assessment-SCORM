@@ -1,0 +1,161 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 2-9 Poisoning/Overdose/Environmental Exposure (Revised 05/23/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured. NOTE: Opioid overdose covered in Section 1-9. This protocol covers non-opioid poisonings.",
+  "id": "mi_base_all_poisoning_overdose",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "All",
+  "level_display": "All Levels",
+  "jurisdiction": "Michigan",
+  "condition": "Poisoning/Overdose/Environmental Exposure",
+  "version": "2023-05-23",
+  "protocol_reference": "Michigan Trauma and Environmental Protocol Section 2-9: Poisoning/Overdose/Environmental Exposure — MDHHS Approved 5/23/23, Reviewed 2023",
+  "purpose": "For opioid overdose, refer to Opioid Overdose-Treatment Protocol (Section 1-9). This protocol covers general poisoning, specific antidotes, and environmental exposures including extrapyramidal/dystonic reactions, tricyclic antidepressant overdose, calcium channel blocker/beta blocker overdose, eye contamination, and envenomation.",
+  "sections": [
+    {
+      "title": "General Poisoning/Overdose Management",
+      "reference": "Michigan Protocol 2-9: Poisoning/Overdose — General",
+      "points": [
+        "Follow General Pre-Hospital Care-Treatment Protocol",
+        "Pediatric patients younger than 14 years use MI MEDIC cards for medication dosage when available",
+        "Use proper PPE and prepare for decontamination if necessary",
+        "Remove clothing exposed to chemicals for dry decontamination and refer to Hazardous Contaminated Patient-Special Operations when indicated",
+        "Identify the substance and bring a sample, medication, or poison container with the patient only if it does not pose a rescuer risk",
+        "If altered mental status, respiratory distress, suspected opioid overdose, seizure, cyanide gas exposure, nerve agent exposure, or organophosphate exposure is present, use the corresponding protocol pathway",
+        "Alert the receiving hospital if the patient may present a HAZMAT risk",
+        "For inhalation exposures, provide high-flow oxygen",
+        "Obtain 12-lead ECG per MCA selection and monitor cardiac rhythm; treat dysrhythmias per the appropriate protocol"
+      ]
+    },
+    {
+      "title": "Extrapyramidal/Dystonic Reaction",
+      "reference": "Michigan Protocol 2-9: Extrapyramidal/Dystonic Reaction",
+      "points": [
+        "Signs: acute muscle spasm, neck twisting (torticollis), tongue/jaw muscle spasm, oculogyric crisis, limb rigidity — typically associated with phenothiazine antipsychotics or antiemetics (e.g., haloperidol, prochlorperazine, metoclopramide)",
+        "Administer diphenhydramine IV: Adults older than 14 years: 50 mg; Pediatrics younger than 14 years: 1 mg/kg, max 50 mg"
+      ]
+    },
+    {
+      "title": "Tricyclic Antidepressant (TCA) Overdose",
+      "reference": "Michigan Protocol 2-9: TCA Overdose",
+      "points": [
+        "Signs: tachycardia and wide-complex QRS",
+        "Establish cardiac monitoring — treat dysrhythmias per appropriate protocol",
+        "For symptomatic tricyclic antidepressant ingestion, contact Medical Control for sodium bicarbonate: Adults older than 14 years: 50 mEq IV, repeat as needed per Medical Control; Pediatrics younger than 14 years: 1 mEq/kg IV, repeat as needed per Medical Control",
+        "Avoid physostigmine",
+        "Contact Medical Control"
+      ]
+    },
+    {
+      "title": "Calcium Channel Blocker / Beta Blocker Overdose",
+      "reference": "Michigan Protocol 2-9: CCB/Beta Blocker Overdose",
+      "points": [
+        "Signs: bradycardia, hypotension, heart blocks, altered mental status, cardiac arrest",
+        "Establish cardiac monitoring — treat dysrhythmias per appropriate protocol",
+        "For symptomatic calcium channel blocker overdose, contact Medical Control and consider calcium chloride: Adults older than 14 years: 1 gm IV; Pediatrics younger than 14 years: 20 mg/kg IV, max 1 gm",
+        "For other specific medications in overdose, such as beta blockers, contact Medical Control for further guidance"
+      ]
+    },
+    {
+      "title": "Eye Contamination",
+      "reference": "Michigan Protocol 2-9: Eye Contamination",
+      "points": [
+        "Irrigate continuously with normal saline, tap water, or bottled water if available for 15 minutes; attempt to continue en route or as directed by Medical Control",
+        "For alkali exposure, maintain continuous irrigation",
+        "If available per MCA selection, administer tetracaine 1–2 drops per eye every 5 minutes, maximum 5 doses, to facilitate irrigation",
+        "Ensure the patient does not rub the eye"
+      ]
+    },
+    {
+      "title": "Snake/Spider/Animal Bites and Envenomation",
+      "reference": "Michigan Protocol 2-9: Envenomation",
+      "points": [
+        "Protect rescuers; bring in a spider, snake, or scorpion only if captured and contained or dead and safe to transport",
+        "Immobilize the affected extremity below the level of the heart with sling or loose wrapping",
+        "Remove constricting items from the affected extremity",
+        "Do NOT use ice, refrigerants, tourniquets, scalpels, or suction devices for snake bites",
+        "Initiate prompt transport; transport snake-bite patients to the closest facility",
+        "Monitor for systemic symptoms: hypotension, coagulopathy, neurotoxicity, tissue necrosis",
+        "Mark margins of erythema or edema with the time measured when present",
+        "Eastern Massasauga rattlesnake is the only venomous snake native to Michigan, but exotic venomous snakes may be encountered; obtain species information and antivenom if available on scene"
+      ]
+    }
+  ],
+  "mca_selections_required": [
+    {
+      "item": "Tetracaine Ophthalmic (Eye Contamination)",
+      "description": "MCA must indicate whether tetracaine 0.5% ophthalmic solution is authorized for eye contamination irrigation facilitation",
+      "options": [
+        "Specialist only"
+      ],
+      "selected": null
+    }
+  ],
+  "key_drugs": [
+    {
+      "name": "Diphenhydramine (Extrapyramidal/Dystonic Reaction)",
+      "dose": "Adults >14 years: 50 mg; Pediatrics <14 years: 1 mg/kg (max 50 mg)",
+      "route": "IV",
+      "indication": "Extrapyramidal/dystonic reaction from antipsychotic or antiemetic medications",
+      "contraindications": "Known hypersensitivity; narrow-angle glaucoma; use caution in infants",
+      "side_effects": "Sedation, dry mouth, urinary retention, hypotension",
+      "scope": "Specialist skill",
+      "notes": "IV preferred if access available. IM if IV/IO not readily established."
+    },
+    {
+      "name": "Sodium Bicarbonate (TCA Overdose)",
+      "dose": "Adults >14 years: 50 mEq IV; Pediatrics <14 years: 1 mEq/kg IV; repeat as needed per Medical Control",
+      "route": "IV",
+      "indication": "Symptomatic tricyclic antidepressant ingestion with tachycardia or wide-complex QRS",
+      "contraindications": "Hypochloremic alkalosis; use caution with severe pulmonary edema",
+      "side_effects": "Hypernatremia, metabolic alkalosis",
+      "scope": "Specialist skill",
+      "notes": "Contact Medical Control for administration and repeat dosing."
+    },
+    {
+      "name": "Calcium Chloride (CCB/Beta Blocker Overdose)",
+      "dose": "Adults >14 years: 1 gm IV; Pediatrics <14 years: 20 mg/kg IV (max 1 gm)",
+      "route": "IV",
+      "indication": "Calcium channel blocker overdose with bradycardia or hypotension",
+      "contraindications": "Hypercalcemia; digoxin toxicity (caution)",
+      "side_effects": "Bradycardia if administered rapidly; tissue necrosis with extravasation",
+      "scope": "Specialist skill",
+      "notes": "Administer slowly. Monitor ECG during administration."
+    },
+    {
+      "name": "Tetracaine 0.5% Ophthalmic (Eye Contamination)",
+      "dose": "1–2 drops per eye every 5 minutes, maximum 5 doses",
+      "route": "Ophthalmic",
+      "indication": "Eye contamination — to facilitate irrigation by reducing pain",
+      "contraindications": "Known hypersensitivity to ester-type local anesthetics",
+      "side_effects": "Transient stinging; corneal toxicity with repeated doses",
+      "scope": "Specialist skill — per MCA selection",
+      "notes": "Use to facilitate irrigation when available per MCA selection. Continue irrigation for 15 minutes or as directed by Medical Control."
+    }
+  ],
+  "deterioration_flags": [
+    "Wide-complex QRS or tachycardia in suspected TCA overdose — contact Medical Control for sodium bicarbonate",
+    "Symptomatic calcium channel blocker overdose — contact Medical Control and consider calcium chloride",
+    "Seizure activity — airway management; contact Medical Control",
+    "Dystonic reaction unresponsive to diphenhydramine — contact Medical Control",
+    "Snake bite with systemic symptoms — prepare to manage airway and hypotension and use related respiratory distress, shock, and anaphylaxis pathways"
+  ],
+  "scope_notes": [
+    "Scene safety, decontamination, supportive care, Poison Control contact: all levels",
+    "Eye irrigation with saline: all levels",
+    "Diphenhydramine IV for dystonic reaction: Specialist skill",
+    "Sodium bicarbonate for TCA and calcium chloride for calcium channel blocker overdose: Specialist skill with Medical Control involvement where specified",
+    "Tetracaine ophthalmic: Specialist skill — per MCA selection",
+    "Cardiac monitoring and 12-lead ECG: Specialist skill",
+    "IV/IO access: Specialist skill"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "altered_mental_status",
+      "opioid_overdose",
+      "toxins_overdose"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

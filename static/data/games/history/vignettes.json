@@ -1,0 +1,282 @@
+[
+  {
+    "id": "ig_v1",
+    "presentation": "68-year-old male, sudden-onset crushing chest pressure with diaphoresis and nausea while watching TV. HR 94, BP 154/92, SpO₂ 97% RA. 12-lead shows ST elevation across V1–V4.",
+    "choices": [
+      {
+        "question": "When exactly did your chest pain start?",
+        "correct": true,
+        "priority": "primary",
+        "feedback": "Time of onset drives every downstream decision: aspirin eligibility, fibrinolytic window, catheterization lab activation, and transport priority. With an active STEMI on screen, the clock started at symptom onset — not scene arrival. This question has a fixed operational window; the others can be answered en route.",
+        "mistake_tag": null
+      },
+      {
+        "question": "Have you ever had a heart attack before?",
+        "correct": false,
+        "priority": "secondary",
+        "feedback": "Cardiac history informs risk stratification and guides nuance in treatment, but does not change immediate STEMI management. Reperfusion priority is the same whether this is a first MI or a fifth. Onset time is more operationally urgent.",
+        "mistake_tag": "missed_time_critical"
+      },
+      {
+        "question": "What medications are you currently taking?",
+        "correct": false,
+        "priority": "secondary",
+        "feedback": "Medication history matters — anticoagulants, aspirin use, beta-blockers — but it does not change the field intervention priority here. Onset time has a fixed window; medications can be reconciled en route or by the receiving team.",
+        "mistake_tag": "missed_time_critical"
+      },
+      {
+        "question": "Did you eat anything different today?",
+        "correct": false,
+        "priority": "distractor",
+        "feedback": "Dietary history has no role in acute STEMI management. When the 12-lead is diagnostic and the patient is diaphoretic, all history-taking should focus on information that changes treatment timing and destination decisions.",
+        "mistake_tag": "missed_time_critical"
+      }
+    ],
+    "hint": "Choose the question that changes immediate care or rules out the highest-risk possibility first."
+  },
+  {
+    "id": "ig_v2",
+    "presentation": "45-year-old female found unresponsive in a chair by her roommate. GCS 6 (E2V2M2). Pupils 2mm bilaterally, sluggish. RR 6 and shallow, HR 56, BP 96/60. No apparent trauma.",
+    "choices": [
+      {
+        "question": "What medications or substances could she have taken?",
+        "correct": true,
+        "priority": "primary",
+        "feedback": "Miosis, bradypnea, bradycardia, and hypotension form the classic opioid toxidrome. Confirming substance exposure is the single question most likely to change your treatment — specifically the naloxone decision. The mechanism is reversible, but only if you identify it.",
+        "mistake_tag": null
+      },
+      {
+        "question": "What is her past medical history?",
+        "correct": false,
+        "priority": "secondary",
+        "feedback": "Past medical history may clarify the differential — diabetic coma, intracranial event, cardiac arrhythmia — but it does not give you the substance confirmation needed to administer naloxone. Medications and substances is more operationally specific and more urgently actionable.",
+        "mistake_tag": "missed_medication_hx"
+      },
+      {
+        "question": "When did she last eat or drink?",
+        "correct": false,
+        "priority": "low",
+        "feedback": "Last oral intake does not change your field decision in an unresponsive patient presenting with signs of toxidrome. Airway management, ventilatory support, and the naloxone decision must drive history-taking priority here.",
+        "mistake_tag": "missed_medication_hx"
+      },
+      {
+        "question": "Does she have any known allergies?",
+        "correct": false,
+        "priority": "distractor",
+        "feedback": "Allergies are standard SAMPLE history but are not the priority question when the patient is unresponsive with a presentation consistent with a reversible toxidrome. Document it — but not before the substance question.",
+        "mistake_tag": "missed_medication_hx"
+      }
+    ],
+    "hint": "Choose the question that changes immediate care or rules out the highest-risk possibility first."
+  },
+  {
+    "id": "ig_v3",
+    "presentation": "22-year-old female, generalized hives, facial angioedema, audible stridor after eating at a restaurant. HR 128, BP 88/60, SpO₂ 93% RA. Anxious and hoarse.",
+    "choices": [
+      {
+        "question": "Have you had a severe allergic reaction before, and did you already use your EpiPen?",
+        "correct": true,
+        "priority": "primary",
+        "feedback": "Prior anaphylaxis history predicts severity and treatment response. Prior EpiPen use tells you when epinephrine was administered, whether it worked, and whether a second dose is already due — all facts that directly change your field decisions right now.",
+        "mistake_tag": null
+      },
+      {
+        "question": "What did you eat that triggered this?",
+        "correct": false,
+        "priority": "secondary",
+        "feedback": "The specific allergen matters for hospital handoff and the patient's long-term avoidance plan, but it does not change prehospital treatment. Epinephrine, airway protection, and transport cannot wait for a dietary history.",
+        "mistake_tag": "missed_pertinent_hx"
+      },
+      {
+        "question": "Do you have asthma?",
+        "correct": false,
+        "priority": "secondary",
+        "feedback": "Asthma is a significant comorbidity in anaphylaxis — it worsens bronchospasm and affects bronchodilator response. However, epinephrine is the treatment priority regardless of asthma status. Confirm EpiPen use first; asthma history is the next useful question.",
+        "mistake_tag": "missed_pertinent_hx"
+      },
+      {
+        "question": "Who is your primary care physician?",
+        "correct": false,
+        "priority": "distractor",
+        "feedback": "Provider identification is an administrative detail that is irrelevant in an anaphylaxis with airway compromise and hemodynamic instability. Do not delay treatment-relevant history for documentation.",
+        "mistake_tag": "missed_pertinent_hx"
+      }
+    ],
+    "hint": "Choose the question that changes immediate care or rules out the highest-risk possibility first."
+  },
+  {
+    "id": "ig_v4",
+    "presentation": "34-year-old male, known seizure disorder, found post-ictal by coworkers after a witnessed tonic-clonic seizure. Confused and slow to respond. HR 118, BP 148/90. Coworkers say 'he never does this.'",
+    "choices": [
+      {
+        "question": "Has he been taking his seizure medications as prescribed?",
+        "correct": true,
+        "priority": "primary",
+        "feedback": "Medication non-compliance is the most common cause of breakthrough seizures in a patient with a known seizure disorder. If he missed doses, this is a breakthrough event — the management and disposition reasoning differ from a new-onset seizure or a structural cause. Compliance status is the highest-yield single question.",
+        "mistake_tag": null
+      },
+      {
+        "question": "Has he had any recent head trauma?",
+        "correct": false,
+        "priority": "secondary",
+        "feedback": "Trauma as a seizure precipitant is critical if present — it changes both the assessment and the transport destination. But coworkers described an unusual seizure, not a trauma event. Medication compliance is more statistically likely here and should be checked first.",
+        "mistake_tag": "missed_medication_hx"
+      },
+      {
+        "question": "Has he eaten or drunk anything unusual today?",
+        "correct": false,
+        "priority": "low",
+        "feedback": "Dietary intake is rarely the key in a known seizure patient. Hypoglycemia is a valid consideration but is best confirmed by glucometry, not history — by the time the history is taken, a blood glucose should already be running.",
+        "mistake_tag": "missed_medication_hx"
+      },
+      {
+        "question": "Does he have any drug allergies?",
+        "correct": false,
+        "priority": "distractor",
+        "feedback": "Allergies are low-priority in the immediate post-ictal period when the cause is still unknown. Medication compliance, prior episode frequency, and medication history come before allergy documentation in the active management window.",
+        "mistake_tag": "missed_medication_hx"
+      }
+    ],
+    "hint": "Choose the question that changes immediate care or rules out the highest-risk possibility first."
+  },
+  {
+    "id": "ig_v5",
+    "presentation": "19-year-old male, unbelted driver in a high-speed MVC with significant vehicle deformity. Complaining of left shoulder pain only. Alert, GCS 15. HR 108, BP 118/74, SpO₂ 98% RA.",
+    "choices": [
+      {
+        "question": "How fast was the vehicle going? Did the airbags deploy? Any loss of consciousness?",
+        "correct": true,
+        "priority": "primary",
+        "feedback": "Mechanism and kinematics predict injury pattern and severity — often more accurately than initial symptoms. Normal vitals do not rule out significant internal hemorrhage. An unbelted occupant in a high-speed collision with vehicle deformity must be assessed based on mechanism, not current complaint.",
+        "mistake_tag": null
+      },
+      {
+        "question": "Rate your shoulder pain from 1 to 10.",
+        "correct": false,
+        "priority": "low",
+        "feedback": "Pain rating is a useful data point but does not drive assessment decisions in high-mechanism trauma. A patient can report 3/10 pain while internally hemorrhaging. Mechanism assessment must precede pain characterization.",
+        "mistake_tag": "missed_events_mechanism"
+      },
+      {
+        "question": "Do you have any medical conditions?",
+        "correct": false,
+        "priority": "secondary",
+        "feedback": "Past medical history is relevant in trauma — especially coagulation disorders, anticoagulant use, or prior spinal injury. However, mechanism is more immediately useful for field triage and transport decisions in this presentation.",
+        "mistake_tag": "missed_events_mechanism"
+      },
+      {
+        "question": "When did you last eat or drink?",
+        "correct": false,
+        "priority": "distractor",
+        "feedback": "Last oral intake matters for surgical planning at the hospital, not for field trauma assessment. It does not change your field interventions, injury identification, or transport priority.",
+        "mistake_tag": "missed_events_mechanism"
+      }
+    ],
+    "hint": "Choose the question that changes immediate care or rules out the highest-risk possibility first."
+  },
+  {
+    "id": "ig_v6",
+    "presentation": "72-year-old male, 3 days of progressive dyspnea, now sitting upright, unable to lie flat. Bilateral crackles to mid-lung fields. HR 110, BP 168/96, SpO₂ 88% RA. No fever.",
+    "choices": [
+      {
+        "question": "Are you on any heart or diuretic medications? Have you gained weight or had ankle swelling recently?",
+        "correct": true,
+        "priority": "primary",
+        "feedback": "Differentiating CHF from a COPD exacerbation determines whether you reach for CPAP and nitroglycerin or a bronchodilator. Cardiac medication use, recent weight gain, and dependent edema point strongly toward CHF — and this distinction drives your treatment choice before the hospital.",
+        "mistake_tag": null
+      },
+      {
+        "question": "Do you smoke, and do you have a history of COPD or emphysema?",
+        "correct": false,
+        "priority": "secondary",
+        "feedback": "COPD history shifts the differential toward obstructive exacerbation and lowers the threshold for bronchodilators. But bilateral crackles without wheezes in a hypertensive patient with orthopnea suggests CHF more strongly. Cardiac history and edema signs are higher-yield first.",
+        "mistake_tag": "missed_pertinent_hx"
+      },
+      {
+        "question": "Rate your shortness of breath from 1 to 10.",
+        "correct": false,
+        "priority": "low",
+        "feedback": "Subjective rating doesn't differentiate cause or guide treatment selection. With SpO₂ at 88%, the patient is objectively in significant distress regardless of how they rate it.",
+        "mistake_tag": "missed_pertinent_hx"
+      },
+      {
+        "question": "Have you recently traveled by plane or had a long car ride?",
+        "correct": false,
+        "priority": "distractor",
+        "feedback": "Immobility-related PE is a consideration in dyspnea, but bilateral crackles in a hypertensive 72-year-old with orthopnea points strongly toward cardiogenic pulmonary edema, not PE. Pursue the most likely diagnosis before less common ones.",
+        "mistake_tag": "missed_pertinent_hx"
+      }
+    ],
+    "hint": "Choose the question that changes immediate care or rules out the highest-risk possibility first."
+  },
+  {
+    "id": "ig_v7",
+    "presentation": "14-month-old with a 2-day fever, now increasingly lethargic. HR 168, RR 44, temp 39.8°C rectal. Capillary refill 3 seconds. Non-blanching petechial rash on abdomen and chest.",
+    "choices": [
+      {
+        "question": "Is this child up to date on vaccinations?",
+        "correct": true,
+        "priority": "primary",
+        "feedback": "Non-blanching petechial rash combined with fever, tachycardia, and altered mental status is meningococcal sepsis until proven otherwise. Meningococcus (MenACWY) immunization status immediately informs risk stratification and urgency. This child needs highest-priority transport regardless, but the vaccine gap elevates concern and changes notification.",
+        "mistake_tag": null
+      },
+      {
+        "question": "Has the child had any seizures during this illness?",
+        "correct": false,
+        "priority": "secondary",
+        "feedback": "Seizure history is clinically important — febrile seizures are common in this age group, and meningitis can trigger seizures. But the petechial rash is the overriding finding that drives urgency. Immunization status is more directly decision-relevant for this specific presentation.",
+        "mistake_tag": "missed_pertinent_hx"
+      },
+      {
+        "question": "What has the child eaten or drunk today?",
+        "correct": false,
+        "priority": "low",
+        "feedback": "Hydration and feeding history can support assessment of the child's overall state, but it is not the priority question when a petechial rash and altered mental status are present. Vaccine status and recent exposure history matter more here.",
+        "mistake_tag": "missed_pertinent_hx"
+      },
+      {
+        "question": "Has anyone in the home been sick recently?",
+        "correct": false,
+        "priority": "secondary",
+        "feedback": "Close contact exposure is highly relevant for meningococcal transmission risk and public health notification. However, it is secondary to immunization status — the exposure question amplifies risk stratification after the vaccine gap is already established.",
+        "mistake_tag": "missed_pertinent_hx"
+      }
+    ],
+    "hint": "Choose the question that changes immediate care or rules out the highest-risk possibility first."
+  },
+  {
+    "id": "ig_v8",
+    "presentation": "28-year-old female, sudden-onset right lower quadrant pain, 8/10, starting 1 hour ago. HR 122, BP 100/68. Pale, diaphoretic, and guarded on abdominal palpation. Right shoulder tip pain. No fever.",
+    "choices": [
+      {
+        "question": "When was your last menstrual period, and is there any chance you could be pregnant?",
+        "correct": true,
+        "priority": "primary",
+        "feedback": "Hemodynamic instability with lower quadrant pain and shoulder tip pain (diaphragmatic irritation from hemoperitoneum) in a reproductive-age female is ruptured ectopic pregnancy until proven otherwise. LMP and pregnancy possibility are the most operationally critical history questions — they change your destination, transport urgency, and hospital notification.",
+        "mistake_tag": null
+      },
+      {
+        "question": "Have you had this pain before?",
+        "correct": false,
+        "priority": "secondary",
+        "feedback": "Prior episodes can suggest diagnoses like ovarian cysts, endometriosis, or a previous ectopic. However, hemodynamic compromise makes the current event time-critical. LMP and pregnancy status must come before chronic history in this presentation.",
+        "mistake_tag": "missed_time_critical"
+      },
+      {
+        "question": "What did you eat in the last 24 hours?",
+        "correct": false,
+        "priority": "distractor",
+        "feedback": "Dietary history has no role in the differential for hemodynamic instability with peritoneal signs. In a reproductive-age female with this presentation, do not delay reproductive history for dietary intake.",
+        "mistake_tag": "missed_time_critical"
+      },
+      {
+        "question": "Do you have any known allergies?",
+        "correct": false,
+        "priority": "low",
+        "feedback": "Allergy documentation is important for medication administration, but it follows the highest-yield history questions. In a potentially ruptured ectopic with hemodynamic instability, LMP and pregnancy status determine destination and notification — those come first.",
+        "mistake_tag": "missed_time_critical"
+      }
+    ],
+    "hint": "Choose the question that changes immediate care or rules out the highest-risk possibility first."
+  }
+]

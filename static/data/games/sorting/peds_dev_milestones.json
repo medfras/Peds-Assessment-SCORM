@@ -1,0 +1,67 @@
+{
+  "game_id": "peds_dev_milestones_sort",
+  "version": "1.0.0",
+  "title": "Lexi's Development Toy Box",
+  "subtitle": "Sort developmental milestones into pediatric age groups.",
+  "round_size": 10,
+  "timed": false,
+  "buckets": [
+    {
+      "id": "infant",
+      "label": "Infant",
+      "age_range": "0-1",
+      "color": "blue",
+      "image": "/static/img/minigames/sorting/toybox-blue.png",
+      "stage_notes": ["Rolls and sits", "Babbling", "Strong caregiver attachment"]
+    },
+    {
+      "id": "toddler",
+      "label": "Toddler",
+      "age_range": "1-3",
+      "color": "yellow",
+      "image": "/static/img/minigames/sorting/toybox-yellow.png",
+      "stage_notes": ["2-word phrases", "Parallel play", "Runs and climbs"]
+    },
+    {
+      "id": "preschool",
+      "label": "Preschool",
+      "age_range": "3-6",
+      "color": "orange",
+      "image": "/static/img/minigames/sorting/toybox-orange.png",
+      "stage_notes": ["Cooperative play", "Longer sentences", "Hops on one foot", "Draws basic shapes"]
+    },
+    {
+      "id": "school_age",
+      "label": "School Age",
+      "age_range": "6-12",
+      "color": "red",
+      "image": "/static/img/minigames/sorting/toybox-red.png",
+      "stage_notes": ["Peer rules matter", "Reads and reasons", "Independent skills"]
+    }
+  ],
+  "cards": [
+    { "id": "dev_001", "text": "Sits without support", "correct_bucket_id": "infant", "difficulty": "easy", "explanation": "Typically infant milestone." },
+    { "id": "dev_002", "text": "Babbles consonant sounds", "correct_bucket_id": "infant", "difficulty": "easy", "explanation": "Infant speech development." },
+    { "id": "dev_003", "text": "Pulls to stand", "correct_bucket_id": "infant", "difficulty": "easy", "explanation": "Late infant gross motor milestone." },
+    { "id": "dev_004", "text": "Pincer grasp", "correct_bucket_id": "infant", "difficulty": "medium", "explanation": "Fine motor milestone in infancy." },
+    { "id": "dev_005", "text": "Responds to own name", "correct_bucket_id": "infant", "difficulty": "easy", "explanation": "Typical infant social/language sign." },
+
+    { "id": "dev_006", "text": "Uses 2-word phrases", "correct_bucket_id": "toddler", "difficulty": "easy", "explanation": "Toddler language pattern." },
+    { "id": "dev_007", "text": "Parallel play with peers", "correct_bucket_id": "toddler", "difficulty": "easy", "explanation": "Classic toddler social milestone." },
+    { "id": "dev_008", "text": "Runs with improving balance", "correct_bucket_id": "toddler", "difficulty": "easy", "explanation": "Toddler gross motor gain." },
+    { "id": "dev_009", "text": "Stacks several blocks", "correct_bucket_id": "toddler", "difficulty": "medium", "explanation": "Toddler fine motor milestone." },
+    { "id": "dev_010", "text": "Uses spoon with some spilling", "correct_bucket_id": "toddler", "difficulty": "medium", "explanation": "Toddler self-feeding skill." },
+
+    { "id": "dev_011", "text": "Cooperative pretend play", "correct_bucket_id": "preschool", "difficulty": "easy", "explanation": "Preschool social/cognitive milestone." },
+    { "id": "dev_012", "text": "Speaks in full short sentences", "correct_bucket_id": "preschool", "difficulty": "easy", "explanation": "Preschool language progression." },
+    { "id": "dev_013", "text": "Hops on one foot", "correct_bucket_id": "preschool", "difficulty": "easy", "explanation": "Typical preschool motor skill." },
+    { "id": "dev_014", "text": "Draws a person with simple features", "correct_bucket_id": "preschool", "difficulty": "medium", "explanation": "Preschool fine motor/cognitive milestone." },
+    { "id": "dev_015", "text": "Names basic colors", "correct_bucket_id": "preschool", "difficulty": "medium", "explanation": "Preschool cognitive/language milestone." },
+
+    { "id": "dev_016", "text": "Reads simple words", "correct_bucket_id": "school_age", "difficulty": "easy", "explanation": "School-age academic milestone." },
+    { "id": "dev_017", "text": "Understands game rules and fairness", "correct_bucket_id": "school_age", "difficulty": "easy", "explanation": "School-age social development." },
+    { "id": "dev_018", "text": "Rides a bicycle", "correct_bucket_id": "school_age", "difficulty": "easy", "explanation": "School-age coordination milestone." },
+    { "id": "dev_019", "text": "Can follow multi-step instructions", "correct_bucket_id": "school_age", "difficulty": "medium", "explanation": "School-age executive/language skill." },
+    { "id": "dev_020", "text": "Writes simple paragraphs", "correct_bucket_id": "school_age", "difficulty": "medium", "explanation": "School-age literacy milestone." }
+  ]
+}

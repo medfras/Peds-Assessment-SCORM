@@ -1,0 +1,95 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 5-2 Adult Bradycardia (Revised 05/25/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_adult_bradycardia",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Adult",
+  "level_display": "Adult (≥ 14 years)",
+  "jurisdiction": "Michigan",
+  "condition": "Bradycardia",
+  "version": "2023-05-25",
+  "protocol_reference": "Michigan Adult Cardiac Protocol Section 5-2: Bradycardia — MDHHS Approved 5/25/23, Reviewed 2023",
+
+  "purpose": "This protocol is for PARAMEDIC USE ONLY. Intended for patients with serious symptomatic bradycardia defined as heart rate < 60 bpm with hypotension or shock. Titrate treatments to heart rate above 60 bpm. If patient remains hypotensive after treatments, refer to Shock-Treatment Protocol.",
+
+  "sections": [
+    {
+      "title": "Bradycardia Treatment",
+      "reference": "Michigan Protocol 5-2: Bradycardia",
+      "points": [
+        "PARAMEDIC USE ONLY",
+        "Follow General Pre-Hospital Care-Treatment Protocol",
+        "Administer atropine 1 mg IV/IO rapid push — repeat every 3–5 minutes to a total dose of 3 mg IV/IO until heart rate > 60/min",
+        "Transcutaneous pacing (TCP) when available may be initiated prior to IV access and/or before atropine begins to take effect — pacing is the TREATMENT OF CHOICE for high-degree AV block (second-degree Type II, or third-degree); apply pacer pads; follow Electrical Therapy-Procedure Protocol",
+        "Transcutaneous pacemaker electrode pads may be applied without initiating pacing so pacemaker is ready if patient condition deteriorates",
+        "For symptomatic high-degree (second-degree Type II or third-degree) AV block: begin pacing WITHOUT DELAY",
+        "Per MCA selection: provide sedation per Patient Procedural Sedation-Procedure Protocol",
+        "For persistent symptomatic bradycardia: administer epinephrine by push dose (dilute boluses) — preparation: add 1 mL of epinephrine 1 mg/10 mL in 9 mL NS to make 10 mcg/mL; administer 10–20 mcg (1–2 mL) IV/IO; repeat every 3–5 minutes; titrate SBP > 90 mmHg",
+        "NOTE: Heart transplant patients may NOT respond to atropine"
+      ]
+    },
+    {
+      "title": "Consider Reversible Causes",
+      "reference": "Michigan Protocol 5-2: Reversible Causes",
+      "points": [
+        "Hyper/hypokalemia or other metabolic disorders",
+        "Hypothermia",
+        "Hypovolemia (including vomiting/diarrhea)",
+        "Hypoxia",
+        "Hydrogen ion excess (acidosis)",
+        "Toxins/overdose (e.g., beta-blocker or calcium channel-blocker)",
+        "Tamponade",
+        "Tension pneumothorax",
+        "Thrombosis (pulmonary or coronary)"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Procedural Sedation for TCP",
+      "description": "MCA must select whether sedation may be administered per Patient Procedural Sedation-Procedure Protocol for transcutaneous pacing",
+      "options": ["Authorized per Patient Procedural Sedation-Procedure Protocol", "Not authorized — contact Medical Control"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [
+    {
+      "name": "Atropine 1 mg IV/IO (Bradycardia)",
+      "dose": "1 mg IV/IO rapid push — repeat every 3–5 minutes to maximum total dose of 3 mg; titrate HR > 60 bpm",
+      "route": "IV or IO",
+      "indication": "Symptomatic bradycardia (HR < 60 with hypotension or shock)",
+      "contraindications": "High-degree AV block (2nd-degree Type II, 3rd-degree) — pacing preferred over atropine",
+      "side_effects": "Tachycardia, dry mouth, urinary retention, paradoxical bradycardia with very low doses",
+      "scope": "Paramedic only",
+      "notes": "Heart transplant patients may NOT respond to atropine. Begin pacing without delay for high-degree AV block."
+    },
+    {
+      "name": "Push-Dose Epinephrine IV/IO (Persistent Bradycardia)",
+      "dose": "10–20 mcg (1–2 mL of 10 mcg/mL solution) IV/IO — repeat every 3–5 minutes; titrate SBP > 90 mmHg",
+      "route": "IV or IO",
+      "indication": "Persistent symptomatic bradycardia not responding to atropine and/or pacing",
+      "contraindications": "Use caution in patients with suspected cardiogenic shock",
+      "side_effects": "Tachycardia, hypertension, arrhythmia",
+      "scope": "Paramedic only",
+      "notes": "Preparation: add 1 mL of epinephrine 1 mg/10 mL (1:10,000) to 9 mL NS to make 10 mcg/mL concentration."
+    }
+  ],
+
+  "deterioration_flags": [
+    "High-degree AV block (2nd-degree Type II or 3rd-degree) — begin TCP immediately WITHOUT DELAY; atropine less effective",
+    "Heart transplant with bradycardia — atropine will likely NOT work; proceed directly to pacing",
+    "Persistent hypotension after atropine and pacing — push-dose epinephrine; refer to Shock-Treatment Protocol",
+    "Suspected hyperkalemia (dialysis patient, EKG changes) — consider calcium chloride and sodium bicarbonate per Cardiac Arrest protocol guidance"
+  ],
+
+  "scope_notes": [
+    "This protocol is PARAMEDIC USE ONLY",
+    "Atropine IV/IO: Paramedic",
+    "Transcutaneous pacing: Paramedic — begin without delay for high-degree AV block",
+    "Push-dose epinephrine: Paramedic",
+    "Sedation for TCP: per MCA selection per Patient Procedural Sedation-Procedure Protocol"
+  ]
+}

@@ -1,0 +1,380 @@
+{
+  "scales": {
+    "eye": [
+      {
+        "v": 4,
+        "label": "4 — Spontaneous"
+      },
+      {
+        "v": 3,
+        "label": "3 — To voice"
+      },
+      {
+        "v": 2,
+        "label": "2 — To pain"
+      },
+      {
+        "v": 1,
+        "label": "1 — None"
+      }
+    ],
+    "verbal_child": [
+      {
+        "v": 5,
+        "label": "5 — Oriented"
+      },
+      {
+        "v": 4,
+        "label": "4 — Confused"
+      },
+      {
+        "v": 3,
+        "label": "3 — Words only"
+      },
+      {
+        "v": 2,
+        "label": "2 — Sounds only"
+      },
+      {
+        "v": 1,
+        "label": "1 — None"
+      }
+    ],
+    "verbal_infant": [
+      {
+        "v": 5,
+        "label": "5 — Coos/babbles"
+      },
+      {
+        "v": 4,
+        "label": "4 — Irritable cry"
+      },
+      {
+        "v": 3,
+        "label": "3 — Cries to pain"
+      },
+      {
+        "v": 2,
+        "label": "2 — Moans to pain"
+      },
+      {
+        "v": 1,
+        "label": "1 — None"
+      }
+    ],
+    "motor_child": [
+      {
+        "v": 6,
+        "label": "6 — Follows commands"
+      },
+      {
+        "v": 5,
+        "label": "5 — Localizes pain"
+      },
+      {
+        "v": 4,
+        "label": "4 — Withdraws"
+      },
+      {
+        "v": 3,
+        "label": "3 — Abnormal flexion"
+      },
+      {
+        "v": 2,
+        "label": "2 — Extension"
+      },
+      {
+        "v": 1,
+        "label": "1 — None"
+      }
+    ],
+    "motor_infant": [
+      {
+        "v": 6,
+        "label": "6 — Spontaneous movement"
+      },
+      {
+        "v": 5,
+        "label": "5 — Withdraws to touch"
+      },
+      {
+        "v": 4,
+        "label": "4 — Withdraws to pain"
+      },
+      {
+        "v": 3,
+        "label": "3 — Abnormal flexion"
+      },
+      {
+        "v": 2,
+        "label": "2 — Extension"
+      },
+      {
+        "v": 1,
+        "label": "1 — None"
+      }
+    ]
+  },
+  "vignettes": [
+    {
+      "id": "gcs_v1",
+      "type": "child",
+      "text": "An 8-year-old opens his eyes when you call his name. He says he doesn't know where he is or why the ambulance is here. When you apply a sternal rub, he pushes your hand away.",
+      "correct": {
+        "e": 3,
+        "v": 4,
+        "m": 5
+      },
+      "total": 12,
+      "hint": "Eyes open to voice (E3), confused speech (V4), localizes pain (M5) = 12",
+      "feedback": {
+        "e": "E cue: he opens when you call his name — a vocal stimulus, not spontaneous. E4 requires eyes already open before you do anything; E2 requires a painful stimulus.",
+        "v": "V cue: he speaks but says he doesn't know where he is — speech is present but disoriented. V4 (Confused). V5 would require accurate orientation to person, place, and event.",
+        "m": "M cue: he pushes your hand toward the source of the sternal rub — directed, purposeful movement. M5 (Localizes pain). M6 requires following a verbal command; M4 is simple withdrawal away from the stimulus without targeting it."
+      },
+      "play_hint": "Score the three components separately. Identify what opened the eyes, whether verbal response is meaningful for age, and whether movement is command-following, purposeful, withdrawal, or posturing."
+    },
+    {
+      "id": "gcs_v2",
+      "type": "child",
+      "text": "A 6-year-old does not open her eyes when you call her name. She moans when you apply nail-bed pressure. Her arms extend stiffly outward with pressure applied.",
+      "correct": {
+        "e": 2,
+        "v": 2,
+        "m": 2
+      },
+      "total": 6,
+      "hint": "Eyes open to pain (E2), moaning sounds only (V2), extension/decerebrate posturing (M2) = 6",
+      "feedback": {
+        "e": "E cue: your voice produced no eye opening — she opened only to nail-bed pressure (painful stimulus). E2 (To pain). E3 would have opened to voice.",
+        "v": "V cue: moaning is a vocal sound but not a word. V2 (Sounds only). V3 requires at least one identifiable word, even a single syllable like 'no' or 'stop'.",
+        "m": "M cue: both arms extend stiffly outward — decerebrate posturing. M2 (Extension). M3 is decorticate — arms flexed inward toward the chest. These two pathological posturing patterns are distinct and indicate different levels of brainstem dysfunction."
+      },
+      "play_hint": "Score the three components separately. Identify what opened the eyes, whether verbal response is meaningful for age, and whether movement is command-following, purposeful, withdrawal, or posturing."
+    },
+    {
+      "id": "gcs_v3",
+      "type": "child",
+      "text": "A 10-year-old opens her eyes when she hears you approach before you speak. She answers all your questions correctly and tells you her name and the school she attends. She squeezes your fingers on command.",
+      "correct": {
+        "e": 4,
+        "v": 5,
+        "m": 6
+      },
+      "total": 15,
+      "hint": "Spontaneous eye opening (E4), fully oriented (V5), follows commands (M6) = 15",
+      "feedback": {
+        "e": "E cue: she opens when she hears you approach — before you say anything. No stimulus required. E4 (Spontaneous). E3 would require your voice to trigger the opening.",
+        "v": "V cue: she correctly names herself and her school — fully oriented to person, place, and event. V5 (Oriented). V4 would mean disoriented or confused responses despite the presence of speech.",
+        "m": "M cue: she squeezes because you told her to — following a verbal command. M6 (Follows commands). M5 would be localizing a painful stimulus; there is no pain here, only a verbal instruction."
+      },
+      "play_hint": "Score the three components separately. Identify what opened the eyes, whether verbal response is meaningful for age, and whether movement is command-following, purposeful, withdrawal, or posturing."
+    },
+    {
+      "id": "gcs_v4",
+      "type": "infant",
+      "text": "A 9-month-old opens eyes only when you apply a sternal rub. The infant cries loudly but is inconsolable and cannot be calmed by the caregiver. The arms draw in toward the chest (decorticate posturing) with painful stimulation.",
+      "correct": {
+        "e": 2,
+        "v": 4,
+        "m": 3
+      },
+      "total": 9,
+      "hint": "Eyes open to pain (E2), irritable/persistent cry (V4), abnormal flexion/decorticate (M3) = 9",
+      "feedback": {
+        "e": "E cue: eyes open only during the sternal rub — a painful stimulus. E2 (To pain). Speaking to or calling the infant before the rub did not produce eye opening.",
+        "v": "V cue: crying loudly and continuously, inconsolable even by the caregiver — persistent irritable cry. V4 (Irritable cry) on the infant scale. V3 (Cries to pain) would only occur during stimulation, not spontaneously and continuously.",
+        "m": "M cue: both arms draw inward toward the chest during pain — decorticate (abnormal flexion). M3. M4 (Withdraws to pain) would be a directed movement away from the painful site, not a stereotyped bilateral flexion pattern."
+      },
+      "play_hint": "Score the three components separately. Identify what opened the eyes, whether verbal response is meaningful for age, and whether movement is command-following, purposeful, withdrawal, or posturing."
+    },
+    {
+      "id": "gcs_v5",
+      "type": "infant",
+      "text": "A 4-month-old has eyes open as you enter the room. The infant coos briefly when the caregiver speaks and moves all extremities spontaneously while you assess breathing.",
+      "correct": {
+        "e": 4,
+        "v": 5,
+        "m": 6
+      },
+      "total": 15,
+      "hint": "Spontaneous eye opening (E4), coos/babbles appropriately (V5), spontaneous movement (M6) = 15",
+      "feedback": {
+        "e": "E cue: the infant's eyes are already open before you provide voice or pain. E4 (Spontaneous).",
+        "v": "V cue: cooing in response to the caregiver is age-appropriate verbal behavior for an infant. V5 (Coos/babbles).",
+        "m": "M cue: spontaneous movement of all extremities is the top infant motor response. M6 (Spontaneous movement)."
+      },
+      "play_hint": "Use the infant scale for preverbal patients. Normal infant vocalization and spontaneous movement score differently than child command-following."
+    },
+    {
+      "id": "gcs_v6",
+      "type": "child",
+      "text": "A 13-year-old keeps his eyes closed until you apply trapezius pressure. He says 'stop' and 'ow' but cannot answer questions. He pulls his shoulder away from the painful stimulus without reaching toward your hand.",
+      "correct": {
+        "e": 2,
+        "v": 3,
+        "m": 4
+      },
+      "total": 9,
+      "hint": "Eyes open to pain (E2), words only (V3), withdraws from pain (M4) = 9",
+      "feedback": {
+        "e": "E cue: voice did not open the eyes; painful trapezius pressure did. E2 (To pain).",
+        "v": "V cue: 'stop' and 'ow' are identifiable words but not oriented conversation. V3 (Words only).",
+        "m": "M cue: moving away from pain without targeting your hand is withdrawal. M4. Localizing requires directed movement toward the painful stimulus."
+      },
+      "play_hint": "Words are not the same as orientation. For motor response, decide whether the movement targets the stimulus or only moves away from it."
+    },
+    {
+      "id": "gcs_v7",
+      "type": "infant",
+      "text": "A 2-month-old does not open eyes to your voice but opens them during a heel pinch. The infant only moans during the heel pinch and then becomes quiet. The legs pull away from the stimulus.",
+      "correct": {
+        "e": 2,
+        "v": 2,
+        "m": 4
+      },
+      "total": 8,
+      "hint": "Eyes open to pain (E2), moans to pain (V2), withdraws to pain (M4) = 8",
+      "feedback": {
+        "e": "E cue: the eyes open only during the heel pinch. E2 (To pain).",
+        "v": "V cue: moaning only during painful stimulation is lower than crying to pain. V2 (Moans to pain).",
+        "m": "M cue: pulling the legs away from the heel pinch is withdrawal to pain. M4 on the infant motor scale."
+      },
+      "play_hint": "For infants, separate persistent cry, cry only to pain, and moan only to pain. Then score the motor response using the infant anchors."
+    },
+    {
+      "id": "gcs_v8",
+      "type": "child",
+      "text": "A 5-year-old's eyes are open when you arrive. He gives inappropriate single-word answers that do not match your questions. When asked to show two fingers, he does not follow the command, but with nail-bed pressure he reaches across with the other hand and pushes you away.",
+      "correct": {
+        "e": 4,
+        "v": 3,
+        "m": 5
+      },
+      "total": 12,
+      "hint": "Spontaneous eye opening (E4), words only (V3), localizes pain (M5) = 12",
+      "feedback": {
+        "e": "E cue: eyes are open before any stimulus. E4 (Spontaneous).",
+        "v": "V cue: single inappropriate words are words, but not confused conversation. V3 (Words only).",
+        "m": "M cue: reaching across to push you away is purposeful movement toward the painful stimulus. M5 (Localizes pain)."
+      },
+      "play_hint": "Do not give M6 unless the child follows a command. If they fail commands but target the painful stimulus, that is localization."
+    },
+    {
+      "id": "gcs_v9",
+      "type": "child",
+      "text": "A 7-year-old opens eyes to your voice. She answers with confused sentences and repeatedly asks where she is. When you ask her to wiggle her toes, she does it correctly.",
+      "correct": {
+        "e": 3,
+        "v": 4,
+        "m": 6
+      },
+      "total": 13,
+      "hint": "Eyes open to voice (E3), confused conversation (V4), follows commands (M6) = 13",
+      "feedback": {
+        "e": "E cue: voice caused the eye opening. E3 (To voice).",
+        "v": "V cue: she forms sentences but is disoriented and repeatedly asks where she is. V4 (Confused).",
+        "m": "M cue: wiggling toes on request is command-following. M6."
+      },
+      "play_hint": "Confused conversation can still be full sentences. Motor command-following is scored from the best response, even when verbal orientation is impaired."
+    },
+    {
+      "id": "gcs_v10",
+      "type": "infant",
+      "text": "A 7-month-old keeps eyes closed to voice and pain. There is no cry or moan during stimulation. With nail-bed pressure, both arms extend stiffly.",
+      "correct": {
+        "e": 1,
+        "v": 1,
+        "m": 2
+      },
+      "total": 4,
+      "hint": "No eye opening (E1), no verbal response (V1), extension/decerebrate posturing (M2) = 4",
+      "feedback": {
+        "e": "E cue: no eye opening occurs to voice or pain. E1 (None).",
+        "v": "V cue: no cry, moan, or vocalization occurs during stimulation. V1 (None).",
+        "m": "M cue: stiff extension with pain is decerebrate posturing. M2 (Extension), not withdrawal."
+      },
+      "play_hint": "Absent responses score 1 for eye and verbal. For motor, extension and flexion posturing are not withdrawal."
+    },
+    {
+      "id": "gcs_adaptive_1",
+      "type": "infant",
+      "tier": "adaptive",
+      "infer_scale": true,
+      "text": "A 5-month-old has eyes open before you touch or speak. The caregiver says the baby is usually social; now the infant only cries sharply when you stimulate and does not coo or babble. The infant pulls the leg away from a heel pinch.",
+      "correct": {
+        "e": 4,
+        "v": 3,
+        "m": 4
+      },
+      "total": 11,
+      "hint": "Spontaneous eye opening (E4), cries to pain on the infant verbal scale (V3), withdraws to pain on the infant motor scale (M4) = 11",
+      "feedback": {
+        "e": "E cue: eyes are already open before any stimulus. E4 (Spontaneous).",
+        "v": "V cue: this patient is preverbal by age; crying only with painful stimulation maps to V3 on the infant verbal scale, not child words-only scoring.",
+        "m": "M cue: pulling the leg away from the heel pinch is withdrawal to pain. On the infant motor scale that is M4."
+      },
+      "play_hint": "Use the patient's age and developmental ability to choose the scale. Then score the observed behavior without relying on an explicit infant/child label."
+    },
+    {
+      "id": "gcs_adaptive_2",
+      "type": "child",
+      "tier": "adaptive",
+      "infer_scale": true,
+      "text": "A 12-year-old opens eyes when you call his name. He says real words but they do not answer the question you asked. He does not follow your command to squeeze, but he reaches toward your hand and pushes it away during trapezius pressure.",
+      "correct": {
+        "e": 3,
+        "v": 3,
+        "m": 5
+      },
+      "total": 11,
+      "hint": "Eyes open to voice (E3), inappropriate words (V3), localizes pain (M5) = 11",
+      "feedback": {
+        "e": "E cue: voice causes the eye opening. E3.",
+        "v": "V cue: this patient is old enough for the child verbal scale. Real but inappropriate words score V3, not infant crying or moaning anchors.",
+        "m": "M cue: moving toward your hand to stop the painful stimulus is localization. M5."
+      },
+      "play_hint": "Ask whether the patient is developmentally verbal. Then separate words from orientation and localization from simple withdrawal."
+    },
+    {
+      "id": "gcs_adaptive_3",
+      "type": "infant",
+      "tier": "adaptive",
+      "infer_scale": true,
+      "text": "An 11-month-old does not open eyes to the caregiver's voice, but opens them during a sternal rub. The infant moans only during the rub and then stops vocalizing. Both arms flex inward toward the chest with painful stimulation.",
+      "correct": {
+        "e": 2,
+        "v": 2,
+        "m": 3
+      },
+      "total": 7,
+      "hint": "Eyes open to pain (E2), moans to pain on the infant verbal scale (V2), abnormal flexion (M3) = 7",
+      "feedback": {
+        "e": "E cue: voice does not open the eyes; pain does. E2.",
+        "v": "V cue: moaning only during stimulation is V2 on the infant scale. It is lower than crying to pain.",
+        "m": "M cue: bilateral arms flexing inward is abnormal flexion, not withdrawal. M3."
+      },
+      "play_hint": "For preverbal patients, choose the infant verbal and motor anchors. Watch for posturing versus withdrawal."
+    },
+    {
+      "id": "gcs_adaptive_4",
+      "type": "child",
+      "tier": "adaptive",
+      "infer_scale": true,
+      "text": "A 4-year-old has eyes open as you enter. She answers in short confused sentences and cannot say where she is. When asked to wiggle her toes, she does it correctly.",
+      "correct": {
+        "e": 4,
+        "v": 4,
+        "m": 6
+      },
+      "total": 14,
+      "hint": "Spontaneous eye opening (E4), confused conversation (V4), follows commands (M6) = 14",
+      "feedback": {
+        "e": "E cue: eyes are already open. E4.",
+        "v": "V cue: this patient can speak in sentences but is disoriented. That is confused conversation, V4.",
+        "m": "M cue: wiggling toes on command is command-following. M6."
+      },
+      "play_hint": "A preschooler who can speak and follow commands should be scored with the child anchors, not the infant cry/movement anchors."
+    }
+  ]
+}

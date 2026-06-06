@@ -1,0 +1,98 @@
+{
+  "fixture_id": "pat_recorded",
+  "description": "PAT (Pediatric Assessment Triangle) was recorded in the scene entry UI (scene_entry_dict.pat_assessment='sick'). The pat_assessment critical action should receive PRE_CREDITED_PAT, not EVALUATE. Tests the PAT-specific pre-credit path that differs from the generic scene_entry_credited path — PAT gets its own tag so the debrief prompt can reference the recorded impression rather than just crediting the step.",
+
+  "inputs": {
+    "scenario": {
+      "id": "fixture_peds_resp",
+      "category": "pediatric_medical",
+      "protocol_config": {"mca": "mi_wmrmcc_kent"},
+      "turnover_target": "als",
+      "vitals": {
+        "baseline": {},
+        "interventions": {
+          "o2_nrb":        {"label": "High-flow O2 via NRB mask (15 LPM)"},
+          "albuterol_svn": {"label": "Albuterol 2.5 mg via SVN (nebulizer)"},
+          "als_intercept": {"label": "ALS intercept acknowledged"}
+        }
+      },
+      "scoring": {}
+    },
+
+    "interventions": [
+      {"name": "o2_nrb",        "applied_at": "2026-01-01T12:02:00"},
+      {"name": "albuterol_svn", "applied_at": "2026-01-01T12:04:00"},
+      {"name": "als_intercept", "applied_at": "2026-01-01T12:05:00"}
+    ],
+
+    "checklist_states": {"item_states": []},
+
+    "submitted_docs": {
+      "dmist": "D: 8yo male, dispatched for difficulty breathing. M: Asthma history. I: O2 NRB, albuterol SVN. S: SpO2 83%, HR 134. T: Transporting to Pediatric ED.",
+      "narrative": "C: Dispatched to 8-year-old presenting with asthma. H: History of asthma, 2-hour onset. A: SpO2 83%, HR 134. R: O2 NRB, albuterol SVN. T: ALS transport to Pediatric ED."
+    },
+
+    "findings": [
+      {"key": "spo2", "value": "83%", "finding_type": "vital", "captured_at": "2026-01-01T12:01:00"},
+      {"key": "hr",   "value": "134", "finding_type": "vital", "captured_at": "2026-01-01T12:01:00"}
+    ],
+
+    "student_messages": [
+      "BSI, scene is safe.",
+      "Applying O2 via NRB mask.",
+      "Albuterol SVN per protocol.",
+      "ALS intercept called."
+    ],
+
+    "scene_entry_scoring_result": {"ppe": "gloves_mask", "pat_assessment": "sick"},
+    "scene_entry_dict":           {"pat_assessment": "sick"},
+    "greeting_detected": false,
+    "greeting_text": "",
+    "prepass_result": null,
+
+    "critical_actions": [
+      {
+        "id": "scene_safety",
+        "description": "Ensure scene safety and BSI/PPE",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "pat_assessment",
+        "description": "Pediatric Assessment Triangle (appearance, work of breathing, circulation to skin)",
+        "required": true
+      },
+      {
+        "id": "o2_administration",
+        "description": "Administer high-flow O2 via NRB mask",
+        "required": true,
+        "intervention_ids": ["o2_nrb"]
+      }
+    ],
+
+    "grace_items": [],
+    "session_events": [],
+    "agency": {"transports_patients": true},
+    "effective_level": "EMT",
+    "elapsed_min": 10.0
+  },
+
+  "target_expected": {
+    "assertions": [
+      {
+        "id": "pat_pre_credited",
+        "type": "critical_action_tag",
+        "description_contains": "Pediatric Assessment Triangle",
+        "expected_tag": "PRE_CREDITED_PAT"
+      },
+      {
+        "id": "scene_safety_pre_credited",
+        "type": "critical_action_tag",
+        "description_contains": "scene safety",
+        "expected_tag": "PRE_CREDITED"
+      }
+    ]
+  },
+
+  "known_failing_baselines": []
+}

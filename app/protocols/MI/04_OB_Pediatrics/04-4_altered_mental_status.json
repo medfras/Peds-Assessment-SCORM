@@ -1,0 +1,125 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 4-4 Pediatric Altered Mental Status (Revised 03/17/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_pediatric_altered_mental_status",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Pediatric",
+  "level_display": "Pediatric (< 14 years)",
+  "jurisdiction": "Michigan",
+  "condition": "Pediatric Altered Mental Status",
+  "version": "2025-03-17",
+  "protocol_reference": "Michigan Obstetrics and Pediatrics Protocol Section 4-4: Pediatric Altered Mental Status — MDHHS Approved 3/17/25, Reviewed 2025",
+  "purpose": "Assessment and treatment of pediatric patients with altered mental status of unknown etiology such as alcohol, trauma, poisonings, seizures, behavioral problems, stroke, environmental causes, infection, etc. For pediatrics < 24 hours old: refer to Newborn/Neonatal Assessment and Resuscitation-Treatment Protocol. For critically ill patients: refer to Pediatric Crashing Patient/Impending Arrest-Treatment Protocol.",
+  "sections": [
+    {
+      "title": "Pediatric Altered Mental Status Treatment",
+      "reference": "Michigan Protocol 4-4: Pediatric AMS",
+      "points": [
+        "Follow General Pre-hospital Care-Treatment Protocol",
+        "Pediatric patients (< 14 years) utilize MI-MEDIC for appropriate medication dosage — when unavailable utilize pediatric dosing listed within protocol",
+        "Restrain patient if necessary — refer to Patient Restraint-Procedure Protocol",
+        "Ensure adequate oxygenation, ventilation, and work of breathing: monitor SpO2; consider use of capnography (Specialist skill)",
+        "Check blood glucose (may be MFR skill — see Blood Glucose Testing-Procedure Protocol)",
+        "Check temperature — if febrile, go to Pediatric Fever-Treatment Protocol",
+        "Start IV/IO if needed per Vascular Access & IV Therapy-Procedure Protocol (Specialist skill)",
+        "If blood glucose < 60 mg/dL: if altered but able to swallow AND 3 months old or older — administer oral glucose; if not alert — administer dextrose per MI-MEDIC or weight-based dosing table (Specialist skill): Grey (0–2 mo, 3–5 kg) 2.5g Dextrose 12.5% 20 mL OR D10% 25 mL; Pink (3–6 mo, 6–7 kg) 3.25g D25% 13 mL OR D10% 33 mL; Red (7–10 mo, 8–9 kg) 4.25g D25% 17 mL OR D10% 43 mL; Purple (11–18 mo, 10–11 kg) 5g D25% 20 mL OR D10% 50 mL; Yellow (19–35 mo, 12–14 kg) 6.25g D25% 25 mL OR D10% 63 mL; White (3–4 yr, 15–18 kg) 8g D25% 32 mL OR D10% 80 mL; Blue (5–6 yr, 19–23 kg) 10g D25% 40 mL OR D10% 100 mL; Orange (7–9 yr, 24–29 kg) 12.5g D50% 25 mL OR D10% 125 mL; Green (10–14 yr, 30–36 kg) 15g D50% 40 mL OR D10% 150 mL",
+        "Per MCA selection, if unable to start IV: administer glucagon IM/IN (if available per MCA selection) per MI-MEDIC — may be EMT skill per MCA selection; if MI-MEDIC unavailable: patients < 5 years administer glucagon 0.5 mg IM; patients ≥ 5 years administer glucagon 1 mg IM; for IN (Baqsimi only): patients < 5 years — DO NOT ADMINISTER; patients ≥ 5 years administer 3 mg IN",
+        "If patient respiratory depression persists and/or patient has not regained consciousness despite adequate oxygenation and ventilatory support: administer naloxone per Opioid Overdose Treatment and Prevention-Treatment Protocol",
+        "Contact Medical Control for repeat dextrose",
+        "Contact Medical Control for repeat naloxone",
+        "NOTE: To obtain D10%: discard 40 mL from D50 amp, draw up 40 mL NS; to obtain D12.5%: discard 37.5 mL from D50 amp, draw up 37.5 mL NS; to obtain D25%: discard 25 mL from D50 amp, draw up 25 mL NS; may utilize D10% for all ages 5 mL/kg (0.5 gm/kg) up to 250 mL; dextrose should always be pushed slowly (over 1–2 minutes)"
+      ]
+    }
+  ],
+  "mca_selections_required": [
+    {
+      "item": "Blood Glucose Testing — MFR",
+      "description": "MCA may designate blood glucose testing as an MFR skill",
+      "options": [
+        "MFR skill authorized",
+        "Not authorized for MFR"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Glucagon IM (Injectable) — Scope",
+      "description": "MCA must select which provider levels may administer glucagon IM (injectable formulation only): < 5 years = 0.5 mg IM; ≥ 5 years = 1 mg IM",
+      "options": [
+        "Not included",
+        "EMT",
+        "Specialist",
+        "Paramedic"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Glucagon IN (Baqsimi — Intranasal) — Scope",
+      "description": "MCA must select which provider levels may administer glucagon 3 mg IN (FDA-approved IN formulation only — DO NOT administer to patients < 5 years of age)",
+      "options": [
+        "Not included",
+        "EMT",
+        "Specialist",
+        "Paramedic"
+      ],
+      "selected": null
+    }
+  ],
+  "key_drugs": [
+    {
+      "name": "Dextrose IV (Pediatric — Weight-Based)",
+      "dose": "Per MI-MEDIC cards; backup table by color zone: Grey 2.5g, Pink 3.25g, Red 4.25g, Purple 5g, Yellow 6.25g, White 8g, Blue 10g, Orange 12.5g, Green 15g. May use D10% 5 mL/kg (0.5 gm/kg) for all ages up to 250 mL.",
+      "route": "IV (patent IV required — to avoid extravasation)",
+      "indication": "Blood glucose < 60 mg/dL and patient not alert",
+      "contraindications": "Concentrated solutions (D50) avoided in small children — dilute to appropriate concentration per table",
+      "side_effects": "Hyperglycemia, phlebitis, tissue necrosis with extravasation",
+      "scope": "Specialist skill",
+      "notes": "Always push slowly over 1–2 minutes. Contact Medical Control for repeat doses. Use MI-MEDIC first; use weight/color table when MI-MEDIC unavailable."
+    },
+    {
+      "name": "Glucagon IM (Pediatric)",
+      "dose": "Patients < 5 years: 0.5 mg IM; patients ≥ 5 years: 1 mg IM (injectable formulation ONLY)",
+      "route": "IM",
+      "indication": "Hypoglycemia when IV access cannot be established",
+      "contraindications": "Injectable formulation must NOT be given intranasally; pheochromocytoma",
+      "side_effects": "Nausea, vomiting",
+      "scope": "Per MCA selection — EMT through Paramedic options available",
+      "notes": "Do NOT use injectable glucagon via IN route. Use MI-MEDIC when available."
+    },
+    {
+      "name": "Glucagon IN — Baqsimi (Pediatric)",
+      "dose": "Patients < 5 years: DO NOT ADMINISTER; patients ≥ 5 years: 3 mg IN",
+      "route": "Intranasal (FDA-approved IN formulation ONLY — e.g., Baqsimi)",
+      "indication": "Hypoglycemia ≥ 5 years when IV access cannot be established",
+      "contraindications": "Age < 5 years — DO NOT ADMINISTER; only FDA-approved IN formulation may be used",
+      "side_effects": "Nausea, vomiting, nasal congestion",
+      "scope": "Per MCA selection — EMT through Paramedic options available",
+      "notes": "EMS clinicians may assist family/caregivers in administering FDA-approved IN glucagon if prescribed for the patient (regardless of age)."
+    }
+  ],
+  "deterioration_flags": [
+    "Blood glucose < 60 mg/dL, not alert — IV dextrose per weight table (Specialist skill); glucagon IM/IN if no IV (per MCA selection)",
+    "Persistent respiratory depression despite adequate support — naloxone per Opioid Overdose protocol",
+    "Unable to regain consciousness despite glucose correction — contact Medical Control",
+    "High glucose, febrile — check temperature; refer to Pediatric Fever protocol; consider sepsis"
+  ],
+  "scope_notes": [
+    "Airway assessment, SpO2 monitoring, oral glucose (alert patients ≥ 3 months): all levels",
+    "Blood glucose testing: all levels — may be MFR skill per MCA selection",
+    "Capnography, IV/IO access: Specialist skill",
+    "Dextrose IV: Specialist skill — use MI-MEDIC or weight table; always dilute appropriately",
+    "Glucagon IM/IN: per MCA selection — age-specific dosing; IN contraindicated < 5 years"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "altered_mental_status",
+      "blood_glucose",
+      "hypoglycemia",
+      "pediatric_patient",
+      "seizure",
+      "toxins_overdose"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

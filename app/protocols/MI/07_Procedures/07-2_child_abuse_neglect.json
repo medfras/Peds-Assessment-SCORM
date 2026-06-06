@@ -1,0 +1,82 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-2 Child Abuse and Neglect (Revised 5/23/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_child_abuse_neglect",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Child Abuse and Neglect — Mandatory Reporting",
+  "version": "2023-05-23",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-2: Child Abuse and Neglect — MDHHS Approved 5/23/2023; MCL 722.623",
+
+  "purpose": "EMS providers are mandatory reporters under MCL 722.623. All EMS personnel who have reasonable cause to suspect child abuse or neglect MUST report directly to the Department of Health and Human Services (DHHS). Reporting to a supervisor or organization does NOT fulfill the individual's mandatory reporting obligation.",
+
+  "sections": [
+    {
+      "title": "Legal Obligations",
+      "reference": "Michigan Protocol 7-2: Child Abuse — Legal Obligations (MCL 722.623)",
+      "points": [
+        "MCL 722.623: ALL EMS personnel are mandatory reporters of suspected child abuse or neglect",
+        "Reporting requirement applies even if the patient is NOT transported",
+        "Call 855-444-3911 IMMEDIATELY to report suspected abuse or neglect",
+        "Written DHS-3200 form must be completed within 72 hours of the initial verbal report",
+        "Notifying the EMS organization head does NOT fulfill the individual mandatory reporting requirement — each provider must report directly",
+        "Do NOT confront or accuse suspected abusers at the scene"
+      ]
+    },
+    {
+      "title": "Indicators of Possible Child Abuse or Neglect",
+      "reference": "Michigan Protocol 7-2: Child Abuse — Indicators",
+      "points": [
+        "Injury inconsistent with stated mechanism of injury or developmental stage of the child",
+        "Scald burns with clear immersion lines (glove, stocking, or doughnut pattern)",
+        "Cigarette or small circular burns",
+        "Bruising in non-ambulatory child (infant/young child who cannot crawl or walk)",
+        "Pregnancy in child under 12 years of age",
+        "Pattern injuries suggesting use of objects (belt, cord, hand)",
+        "Fractures inconsistent with stated mechanism or developmental stage",
+        "Multiple injuries in various stages of healing",
+        "Delayed presentation for medical care",
+        "Caregiver providing inconsistent or changing histories",
+        "Indicators of neglect: malnourishment, unsafe living environment, lack of appropriate clothing or supervision, medical neglect"
+      ]
+    },
+    {
+      "title": "Scene and Documentation Guidance",
+      "reference": "Michigan Protocol 7-2: Child Abuse — Scene and Documentation",
+      "points": [
+        "Primary duty is emergency medical care — treat and stabilize per appropriate protocol",
+        "Do NOT confront or accuse the suspected abuser at the scene",
+        "Document verbatim any excited utterances made by the child or caregiver — use quotation marks",
+        "Document the child's demeanor, affect, and behavior",
+        "Document the physical environment if relevant to suspicion of neglect",
+        "Document injuries with precise descriptions (location, size, color, shape, pattern)",
+        "Document caregiver(s) present and their relationship to the child",
+        "Do NOT delay transport to investigate or document",
+        "If patient is not transported: mandatory report is still required",
+        "Attach DHS-3200 written report within 72 hours of verbal report"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Life-threatening injuries — stabilize and transport per appropriate treatment protocol; mandatory report still required",
+    "Child in immediate danger at scene — coordinate with law enforcement for scene safety while maintaining patient care",
+    "Caregiver interfering with care — involve law enforcement; prioritize patient care"
+  ],
+
+  "scope_notes": [
+    "ALL EMS provider levels are mandatory reporters under MCL 722.623",
+    "Mandatory report hotline: 855-444-3911 — call immediately upon suspicion",
+    "Written DHS-3200 form required within 72 hours of verbal report",
+    "Reporting to supervisor alone does NOT fulfill legal obligation",
+    "Report is required even when patient is not transported",
+    "Do not confront suspected abusers — that is a law enforcement function"
+  ]
+}

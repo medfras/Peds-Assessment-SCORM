@@ -1,0 +1,85 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 3-5 Sepsis (Revised 05/30/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured. Applies to patients > 14 years of age.",
+  "id": "mi_base_adult_sepsis",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Adult",
+  "level_display": "Adult (> 14 years)",
+  "jurisdiction": "Michigan",
+  "condition": "Sepsis",
+  "version": "2023-05-30",
+  "protocol_reference": "Michigan Adult Treatment Protocol Section 3-5: Sepsis — MDHHS Approved 05/30/23, Reviewed 2023",
+
+  "purpose": "Recognize and treat sepsis early to promote optimal care and survival. Applies to patients > 14 years of age with clinical suspicion of systemic infection who have 2 or more inclusion criteria.",
+
+  "sections": [
+    {
+      "title": "Inclusion Criteria",
+      "reference": "Michigan Protocol 3-5: Sepsis — Inclusion Criteria",
+      "points": [
+        "Clinical suspicion of systemic infection AND two or more of the following:",
+        "(A) Hyperthermia: temperature > 38°C (100.4°F)",
+        "(B) Hypothermia: temperature < 36°C (96.8°F)",
+        "(C) Heart rate > 90 bpm",
+        "(D) Respiratory rate < 10 or > 20 per minute",
+        "(E) SBP < 90 mmHg or evidence of hypoperfusion"
+      ]
+    },
+    {
+      "title": "Treatment",
+      "reference": "Michigan Protocol 3-5: Sepsis — Treatment",
+      "points": [
+        "Follow General Pre-Hospital Care-Treatment Protocol",
+        "Place patient in supine position",
+        "Start large bore IV catheter per Vascular Access and IV Fluid Therapy-Procedure Protocol — start second large bore IV catheter if time permits (Specialist skill)",
+        "Place on cardiac monitor and treat rhythm according to appropriate protocol (Specialist skill)",
+        "Place on continuous pulse oximetry",
+        "Check blood glucose (may be MFR skill — see Blood Glucose Testing-Procedure Protocol)",
+        "If the patient meets inclusion criteria: administer NS or LR IV/IO fluid bolus up to 1 liter wide open; reassess patient — repeat boluses to a maximum of 2 L NS or LR as long as vital sign abnormalities persist (Specialist skill)",
+        "Monitor for pulmonary edema — if pulmonary edema presents, stop fluids and contact Medical Control for direction",
+        "If hypotension persists: refer to Shock-Treatment Protocol",
+        "Monitor ETCO2 level (see End Tidal Carbon Dioxide Monitoring-Procedure Protocol) — report levels outside of normal range (35–45 mmHg) to the receiving facility as soon as possible (Specialist skill)"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Blood Glucose Testing — MFR",
+      "description": "MCA may designate blood glucose testing as an MFR skill",
+      "options": ["MFR skill authorized", "Not authorized for MFR"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [
+    {
+      "name": "NS or LR IV/IO Fluid Bolus (Sepsis)",
+      "dose": "Up to 1 liter wide open — repeat boluses to maximum 2 L as long as vital sign abnormalities persist; reassess after each bolus",
+      "route": "IV or IO",
+      "indication": "Sepsis meeting inclusion criteria",
+      "contraindications": "Signs of pulmonary edema — stop fluids and contact Medical Control",
+      "side_effects": "Pulmonary edema with excessive volumes",
+      "scope": "Specialist skill",
+      "notes": "Maximum 2 L total. Monitor for pulmonary edema. If hypotension persists after fluid resuscitation, refer to Shock-Treatment Protocol."
+    }
+  ],
+
+  "deterioration_flags": [
+    "SBP < 90 mmHg not responding to IV fluid boluses — refer to Shock-Treatment Protocol; contact Medical Control",
+    "Signs of pulmonary edema during fluid resuscitation — stop fluids immediately; contact Medical Control for direction",
+    "ETCO2 outside 35–45 mmHg — notify receiving facility; may indicate worsening perfusion or ventilatory compromise",
+    "Altered mental status with sepsis criteria — airway assessment; expedite transport"
+  ],
+
+  "scope_notes": [
+    "Supine positioning, pulse oximetry, temperature assessment: all levels",
+    "Blood glucose testing: all levels — may be MFR skill per MCA selection",
+    "IV access (large bore, two sites if possible): Specialist skill",
+    "IV fluid bolus NS or LR: Specialist skill",
+    "Cardiac monitoring: Specialist skill",
+    "ETCO2 monitoring: Specialist skill",
+    "Dysrhythmia treatment: refer to appropriate cardiac protocol"
+  ]
+}

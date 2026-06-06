@@ -1,0 +1,73 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-30R Ketorolac (Revised 12/10/2025, MDHHS Reviewed 2026). Base Michigan template.",
+  "id": "mi_base_medication_ref_ketorolac",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Ketorolac",
+  "version": "2025-12-10",
+  "protocol_reference": "Michigan Medication Protocol Section 9-30R: Ketorolac — MDHHS Approved 1/5/2026, Reviewed 2026",
+
+  "pharmacological_category": "Analgesic — Parenteral NSAID",
+
+  "routes": ["IM", "IV"],
+
+  "indications": [
+    "Pain management"
+  ],
+
+  "contraindications": [
+    "Allergies to NSAIDs",
+    "Active labor or women who are breastfeeding",
+    "Renal impairment",
+    "Bleeding or high risk of bleeding",
+    "Pregnancy"
+  ],
+
+  "precautions": [
+    "Maximum treatment duration is 5 days (hospital and field combined) — EMS use is typically single dose",
+    "Avoid in elderly patients with renal insufficiency",
+    "Concurrent use with other NSAIDs increases GI and renal risk",
+    "Pediatric use: >5 years only per Michigan protocol"
+  ],
+
+  "expected_effects": [
+    "Analgesic effect comparable to opioids for certain pain types (renal colic, musculoskeletal)",
+    "Onset within 30-60 minutes IM; faster IV",
+    "Anti-inflammatory effect"
+  ],
+
+  "side_effects": [
+    "GI irritation, nausea",
+    "Renal impairment with overuse",
+    "Increased bleeding risk",
+    "Injection site pain (IM)"
+  ],
+
+  "notes": [
+    "Adult dose: 15 mg IM or IV (Michigan protocol — lower than some national guidelines to reduce adverse effects)",
+    "Pediatric >5 years: 0.5 mg/kg IM or IV; maximum 15 mg",
+    "Single-dose EMS use only in most cases",
+    "Good alternative to opioids when NSAID is not contraindicated"
+  ],
+
+  "dosing": [
+    {
+      "population": "Adult (>14 yr)",
+      "route": "IM or IV",
+      "dose": "15 mg IM or IV",
+      "notes": "Single dose in EMS setting"
+    },
+    {
+      "population": "Pediatric >5 yr",
+      "route": "IM or IV",
+      "dose": "0.5 mg/kg IM or IV; maximum 15 mg",
+      "notes": "Not for patients ≤5 years"
+    }
+  ],
+
+  "used_in_protocols": ["Pain Management"]
+}

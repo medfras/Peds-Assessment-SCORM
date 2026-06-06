@@ -1,0 +1,94 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 2-5 Soft Tissue and Orthopedic Injuries (Revised 08/11/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_all_soft_tissue_orthopedic",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "All",
+  "level_display": "All Levels",
+  "jurisdiction": "Michigan",
+  "condition": "Soft Tissue & Orthopedic Injuries",
+  "version": "2023-08-11",
+  "protocol_reference": "Michigan Trauma and Environmental Protocol Section 2-5: Soft Tissue and Orthopedic Injuries — MDHHS Approved 8/11/23, Reviewed 2023",
+  "sections": [
+    {
+      "title": "Soft Tissue & Orthopedic Injuries",
+      "reference": "Michigan Protocol 2-5: Soft Tissue and Orthopedic Injuries",
+      "points": [
+        "Follow General Pre-hospital Care Protocol",
+        "Pediatric patients (< 14 years of age): utilize MI MEDIC cards for appropriate medication dosage; when unavailable use pediatric dosing listed within protocol",
+        "Control bleeding per Bleeding Control (BCON)-Procedure Protocol: utilize direct pressure; consider early tourniquet use per Tourniquet Application-Procedure Protocol; consider MCA-approved hemostatic agents and hemorrhage control devices; consider pressure dressings with deep wound packing; consider pelvic binding for suspected unstable pelvic fracture",
+        "For uncontrolled bleeding with hemorrhagic shock: refer to Hemorrhagic Shock-Treatment Protocol",
+        "If appropriate, maintain spinal precautions per Spinal Injury Assessment-Treatment Protocol",
+        "Assess pain on 1–10 scale and treat per Pain Management-Procedure Protocol",
+        "Immobilize/splint orthopedic injuries as appropriate: consider traction splinting for closed femur fractures (excluding hip/femoral neck); straighten severely angulated fractures if distal extremity has signs of decreased perfusion; evaluate and document neurovascular status before and after splinting",
+        "Partial/complete amputations, major soft tissue injuries (mangled extremity), and open fractures: control bleeding; cover wounds with sterile dressings moistened with sterile solution; splint extremity; bring recoverable amputated parts to hospital as soon as possible; wrap amputated part in sterile dressing moistened with sterile solution — seal in plastic bag and if available place in container of ice and water — DO NOT place part directly on ice; obtain IV access (Specialist skill); administer antibiotics per MCA selection (Specialist skill); frequent monitoring of circulation, sensation, and motion distal to injury during transport",
+        "For severe crush injuries: refer to General Crush Injury-Treatment Protocol",
+        "Impaled objects are left in place and stabilized — removal only with approval of Medical Control",
+        "Follow MCA transport protocol",
+        "Provide pain management per Pain Management-Procedure Protocol"
+      ]
+    }
+  ],
+  "mca_selections_required": [
+    {
+      "item": "Antibiotic for Open Fractures/Amputations",
+      "description": "MCA must select antibiotic option for partial/complete amputations, open fractures, and major soft tissue injuries",
+      "options": [
+        "No antibiotic selection",
+        "Ceftriaxone Slow IV Push: 2 gm diluted with 20 mL NS — Adults: 2 gm diluted slow IVP 3–5 min; Pediatrics > 2 months: 50 mg/kg diluted slow IVP 3–5 min per MI MEDIC (max 2 gm)",
+        "Ceftriaxone Infusion: Diluted dose added to 100 mL NS bag — Adults: 2 gm diluted infuse over 15–30 min; Pediatrics > 7 years: per MI MEDIC or 50 mg/kg to 100 mL NS, max 2 gm, infuse over 15–30 min",
+        "Cefazolin Slow IV Push: 2 gm diluted with 20 mL NS — Adults: 2 gm diluted slow IVP 3–5 min; Pediatrics: per MI MEDIC or 30 mg/kg diluted slow IVP 3–5 min (max 2 gm)",
+        "Cefazolin Infusion: Diluted dose added to 100 mL NS bag — Adults: 2 gm diluted infuse over 15–30 min; Pediatrics > 7 years: per MI MEDIC or 30 mg/kg to 100 mL NS, max 2 gm, infuse over 15–30 min"
+      ],
+      "selected": null
+    }
+  ],
+  "key_drugs": [
+    {
+      "name": "Ceftriaxone (Open Fracture/Amputation)",
+      "dose": "Adults: 2 gm diluted; Pediatrics > 2 months: 50 mg/kg per MI MEDIC (max 2 gm)",
+      "route": "IV — slow IVP over 3–5 min or infusion in 100 mL NS over 15–30 min",
+      "indication": "Open fractures, partial/complete amputations, major soft tissue injuries",
+      "contraindications": "Cephalosporin allergy; < 2 months of age",
+      "side_effects": "Hypersensitivity, GI upset",
+      "scope": "Specialist skill — per MCA selection",
+      "notes": "MCA must select administration method (slow IVP vs infusion). Per MI MEDIC for pediatric dosing."
+    },
+    {
+      "name": "Cefazolin (Open Fracture/Amputation)",
+      "dose": "Adults: 2 gm diluted; Pediatrics: 30 mg/kg per MI MEDIC (max 2 gm)",
+      "route": "IV — slow IVP over 3–5 min or infusion in 100 mL NS over 15–30 min",
+      "indication": "Open fractures, partial/complete amputations, major soft tissue injuries",
+      "contraindications": "Cephalosporin allergy",
+      "side_effects": "Hypersensitivity, GI upset",
+      "scope": "Specialist skill — per MCA selection",
+      "notes": "MCA must select administration method. Per MI MEDIC for pediatric dosing."
+    }
+  ],
+  "deterioration_flags": [
+    "Hemorrhagic shock signs — refer to Hemorrhagic Shock-Treatment Protocol; tourniquet or wound packing as indicated",
+    "Neurovascular compromise distal to injury (diminished/absent pulse, loss of sensation, motor deficit) — straighten angulated fractures if perfusion compromised; expedite transport",
+    "Pelvic instability with hemodynamic compromise — apply pelvic binder; refer to Hemorrhagic Shock protocol"
+  ],
+  "scope_notes": [
+    "Bleeding control, direct pressure, tourniquet: all levels",
+    "Hemostatic agents: per MCA approval",
+    "Splinting and traction splinting: all levels",
+    "Pelvic binder: all levels",
+    "IV access: Specialist skill",
+    "Antibiotics (ceftriaxone/cefazolin): Specialist skill — per MCA selection",
+    "Pain management: refer to Pain Management-Procedure Protocol for scope by level"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "bleeding_control",
+      "extremity_injury",
+      "fracture_splinting",
+      "soft_tissue_injury",
+      "trauma"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

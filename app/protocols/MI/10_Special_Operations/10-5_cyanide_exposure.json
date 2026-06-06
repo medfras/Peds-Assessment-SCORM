@@ -1,0 +1,148 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 10-5 Cyanide Exposure (MDHHS Reviewed 2023-03-24). Base Michigan template.",
+  "id": "mi_base_special_ops_cyanide_exposure",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Special Operations",
+  "level_display": "Special Operations Protocol",
+  "jurisdiction": "Michigan",
+  "condition": "Cyanide Exposure",
+  "version": "2023-03-24",
+  "protocol_reference": "Michigan Special Operations Protocol Section 10-5: Cyanide Exposure — MDHHS Reviewed 2023",
+
+  "purpose": "Provide EMS assessment and treatment guidelines for cyanide exposure including hydrogen cyanide gas, cyanide salts, and cyanogen chloride, including administration of hydroxocobalamin (Cyanokit) antidote.",
+
+  "sections": [
+    {
+      "title": "Scene Safety",
+      "content": [
+        "Hydrogen cyanide (HCN): colorless gas or pale blue liquid; bitter almond odor (30-40% of population cannot detect)",
+        "Cyanide salts (KCN, NaCN): white/off-white powder or crystals; reaction with water or acid produces HCN gas",
+        "Cyanogen chloride (CK): gas; irritant properties in addition to cyanide toxicity",
+        "Do NOT enter contaminated area without SCBA — HCN vapor is immediately dangerous to life and health (IDLH: 50 ppm)",
+        "Decontamination before EMS treatment — remove clothing, water irrigation for skin/eye exposure",
+        "Cyanide-containing vomitus is a contamination hazard — avoid contact"
+      ]
+    },
+    {
+      "title": "Clinical Presentation — Cyanide Toxidrome",
+      "content": [
+        "CLASSIC FINDINGS (may not all be present):",
+        "  — Rapid onset of altered mental status, confusion, agitation, or coma",
+        "  — Hypotension (SBP <90 mmHg)",
+        "  — Dyspnea / tachypnea (cellular hypoxia despite adequate airway)",
+        "  — Persistent or unexplained lactic acidosis (anion gap metabolic acidosis)",
+        "  — Normal or HIGH SpO2 (hemoglobin carries O2 but cells cannot use it)",
+        "  — Pink/cherry red skin color (paradoxically well-oxygenated venous blood)",
+        "  — Seizures",
+        "  — Cardiovascular collapse",
+        "IMPORTANT: SpO2 may be NORMAL or HIGH despite severe cellular hypoxia — do NOT use SpO2 to rule out cyanide toxicity",
+        "SUSPECT CYANIDE in: industrial accidents (electroplating, metallurgy, chemical plants), house fire victims with smoke inhalation, ingestion of cyanide salts, intentional release"
+      ]
+    },
+    {
+      "title": "Smoke Inhalation — Cyanide Assessment",
+      "content": [
+        "Cyanide toxicity is a significant component of smoke inhalation injury — particularly in structure fires with synthetic materials (plastics, polyurethane, nylon, wool)",
+        "CO (carbon monoxide) and cyanide frequently co-occur in smoke inhalation — treat both",
+        "Indicators of significant cyanide exposure in smoke inhalation patient:",
+        "  — Loss of consciousness at scene or rapid deterioration",
+        "  — Persistent hemodynamic instability despite O2 therapy",
+        "  — Elevated lactate (if measurable prehospital)",
+        "  — Poor response to standard smoke inhalation treatment",
+        "Treat suspected cyanide co-poisoning in unconscious smoke inhalation patients — Cyanokit is safe with CO poisoning"
+      ]
+    },
+    {
+      "title": "Hydroxocobalamin (Cyanokit) — Antidote",
+      "content": [
+        "Mechanism: hydroxocobalamin binds cyanide ions → forms cyanocobalamin (vitamin B12) → renally excreted",
+        "Indications for Cyanokit (MCA selection required — see below):",
+                "  — Cardiac or respiratory arrest with suspected cyanide exposure",
+        "  — Hypotension (SBP <90 mmHg) with suspected cyanide exposure",
+        "  — GCS ≤9 (or LOC) with suspected cyanide exposure",
+        "  — Smoke inhalation victim with above criteria",
+                "ADULT DOSE: weight-based per protocol table; 5 grams IV/IO for adults >50 kg (or >109 lb)",
+                "PEDIATRIC DOSE: 70 mg/kg IV infusion (maximum 5 grams)",
+        "ADMINISTRATION:",
+        "  — Reconstitute with 200 mL 0.9% NaCl ONLY (not D5W, LR, or other diluents)",
+        "  — Invert/rock vial to mix — DO NOT SHAKE",
+        "  — Solution is dark red — this is normal",
+                "  — Infuse or push slowly over 15 minutes per table",
+                "  — Use a separate IV line because multiple drugs and blood products are incompatible with Cyanokit",
+                "  — A second adult dose of 5 g may be administered for a total adult dose of 10 g depending on severity and response; second-dose infusion rate may range from 15 minutes to 2 hours; contact Medical Control for pediatric second-dose instructions"
+      ]
+    },
+    {
+      "title": "Pediatric Dosing Table — Hydroxocobalamin",
+      "content": [
+        "Dose: 70 mg/kg IV (maximum 5 grams)",
+                "Weight 3–5 kg: 250 mg / 10 mL",
+                "Weight 6–7 kg: 500 mg / 20 mL",
+                "Weight 8–9 kg: 625 mg / 25 mL",
+                "Weight 10–11 kg: 750 mg / 30 mL",
+                "Weight 12–14 kg: 900 mg / 36 mL",
+                "Weight 15–18 kg: 1,100 mg / 44 mL",
+                "Weight 19–23 kg: 1,500 mg / 60 mL",
+                "Weight 24–29 kg: 1,750 mg / 70 mL",
+                "Weight 30–36 kg: 2,500 mg / 100 mL (1/2 bottle)",
+                "Adult 37–40 kg (>14 yr): 3,000 mg / 120 mL",
+                "Adult 41–49 kg (>14 yr): 3,500 mg / 140 mL",
+                "Adult ≥50 kg (>14 yr): 5,000 mg / 200 mL (full bottle)",
+                "Administer slowly over 15 minutes; lower-weight doses are pushed slowly, larger doses infused over 15 minutes"
+      ]
+    },
+    {
+      "title": "Treatment Algorithm",
+      "content": [
+        "1. Scene safety — do NOT enter without SCBA for suspected HCN environment",
+        "2. Remove from exposure; decontaminate (remove clothing, water irrigation)",
+        "3. High-flow oxygen — 100% NRB or BVM; critical for CO co-poisoning",
+        "4. Assess for cyanide toxidrome (altered mental status, hypotension, high SpO2 with distress, pink skin)",
+                "5. If Cyanokit antidote indications met (cardiac arrest, respiratory arrest, SBP <90, or GCS ≤9):",
+                "   — Dose by the protocol weight table; adults ≥50 kg receive 5g Cyanokit in 200 mL NS over 15 minutes",
+                "   — Pediatric: approximately 70 mg/kg using table volumes; administer slowly over 15 minutes",
+        "6. IV/IO access — titrate IV fluids for hypotension",
+        "7. Cardiac monitoring — treat dysrhythmias per appropriate cardiac protocols",
+        "8. Seizures — midazolam per Protocol 7-28",
+        "9. Contact online medical control",
+        "10. Transport urgently to nearest appropriate facility; continue antidote as needed"
+      ]
+    },
+    {
+      "title": "Special Considerations",
+      "content": [
+        "Cyanokit causes dark red skin discoloration — warn receiving hospital (may interfere with pulse oximetry and co-oximetry readings)",
+        "Cyanokit is SAFE in combination with CO poisoning (unlike sodium thiosulfate/nitrite antidotes)",
+                "Do NOT delay transport to administer Cyanokit — infuse during transport",
+                "Use separate IV access for Cyanokit due to incompatibility with multiple drugs and blood products",
+        "Sodium thiosulfate and sodium nitrite (older cyanide antidotes) are NOT included in Michigan prehospital protocol — use Cyanokit only"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "id": "cyanokit_hydroxocobalamin_authorization",
+      "label": "Hydroxocobalamin (Cyanokit) — MCA authorization for prehospital cyanide antidote",
+      "description": "MCA selection authorizes EMS providers to carry and administer hydroxocobalamin (Cyanokit) for suspected cyanide exposure meeting antidote indications. Without MCA selection, Cyanokit is not an authorized prehospital medication in this jurisdiction.",
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [
+        "Hydroxocobalamin (Cyanokit) — weight-table dosing; adult ≥50 kg 5g IV/IO over 15 min; pediatric approximately 70 mg/kg; 0.9% NaCl reconstitution only (MCA selection required)",
+    "Oxygen — 100% high-flow; mandatory for all suspected cyanide exposures",
+    "Midazolam — seizure management per Protocol 7-28"
+  ],
+
+  "deterioration_flags": [
+        "Cardiac or respiratory arrest — administer Cyanokit immediately if on hand; continue resuscitation",
+    "Hypotension unresponsive to fluids — administer Cyanokit; contact online MC",
+    "Rapid neurological decline (deteriorating GCS) — administer Cyanokit if threshold met",
+    "SpO2 falsely reassuring after Cyanokit — warn receiving hospital of color interference"
+  ],
+
+    "scope_notes": "Cyanokit (hydroxocobalamin) requires MCA selection for prehospital use. The standard antidote indications are: cardiac arrest, respiratory arrest, SBP <90 mmHg, or GCS ≤9 with suspected cyanide exposure. Dose by protocol weight table; adult ≥50 kg dose is 5 grams, pediatric dosing is approximately 70 mg/kg. Reconstitute with 0.9% NaCl ONLY — invert/rock to mix; the dark red color is expected."
+}

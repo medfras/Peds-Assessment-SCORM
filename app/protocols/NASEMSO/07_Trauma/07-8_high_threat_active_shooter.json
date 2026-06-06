@@ -1,0 +1,127 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Trauma: High Threat Considerations/Active Shooter Scenario. NASEMSO national provisional base.",
+  "id": "nasemso_base_trauma_high_threat_considerations_active_shooter_scenario",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "High Threat Considerations/Active Shooter Scenario",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Trauma: High Threat Considerations/Active Shooter Scenario",
+  "aliases": [
+    "None noted"
+  ],
+  "sections": [
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "High threat environment ' when greater than normal conditions exist that could cause threat to clinician or patient",
+        "EXCLUSION CRITERIA:",
+        "No significant threat exists to clinician or patient allowing for the performance of routine care"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Scene safety and PPE; primary survey (ABCDE)",
+        "Oxygen via NRM targeting SpO2 94-98% if indicated",
+        "Position of comfort; hemorrhage control as needed",
+        "CPR/AED if patient becomes pulseless",
+        "Epinephrine auto-injector for anaphylaxis if applicable",
+        "Naloxone intranasal unit-dose for suspected opioid involvement"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Blood glucose monitoring; oral glucose if hypoglycemic and alert",
+        "12-lead ECG acquisition and transmission",
+        "CPAP for respiratory distress",
+        "Aspirin for suspected ischemic chest pain",
+        "Albuterol SVN for bronchospasm component",
+        "IV access maintenance (non-medicated)"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation",
+        "IV/IO fluid resuscitation as indicated",
+        "Waveform capnography",
+        "IV analgesics (fentanyl, morphine) per pain management protocol",
+        "IV antiemetics (ondansetron) per protocol",
+        "IV D50W/D10W for hypoglycemia"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "12-lead ECG interpretation",
+        "Endotracheal intubation for airway compromise",
+        "RSI per protocol",
+        "Advanced antidysrhythmic or hemodynamic support per specific protocol",
+        "All parenteral medications per protocol",
+        "Vasopressors for refractory hemodynamic compromise"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Anticipate unique threats based on situation",
+        "During high threat situations, clinician safety should be considered in balancing the risks and benefits of patient treatment"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "In high threat situations clinician and patient safety will need to be simultaneously considered",
+        "During high threat situations, an integrated response with other public safety entities may be warranted",
+        "Risks taken and threats to responder safety must be weighed in relations to the expected benefit to patient safety and outcome",
+        "During these situations, maintaining communications and incident management concepts may be crucial to maximizing efficiency and mitigating dangers"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Hartford Consensus. Facs.org. https://www.facs.org/about-acs/hartford-consensus. Accessed March 11, 2022",
+        "Kelly JR, Levy MJ, Reyes J, Anders J. Effectiveness of the combat application tourniquet for arterial occlusion in young children. J Trauma Acute Care Surg. 2020 May;88(5):644'647",
+        "TCCC-MP Guidelines and Curriculum. NAEMT.org http://www.naemt.org/education/TCCC/guidelines_curriculum. Accessed March 11, 2022",
+        "TECC Guidelines. C-TECC.org. https://www.c-tecc.org/images/content/TECC_Guidelines_-_JUNE_2015_update.pdf. Committee for Tactical Emergency Casualty Care. Accessed March 11, 2022"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Contact medical direction for clinical deterioration or interventions outside standard scope"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

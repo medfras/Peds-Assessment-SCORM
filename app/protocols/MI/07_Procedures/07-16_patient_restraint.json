@@ -1,0 +1,104 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-16 Patient Restraint (Revised 3/17/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_patient_restraint",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (All EMS Levels — pharmacological requires Paramedic)",
+  "jurisdiction": "Michigan",
+  "condition": "Patient Restraint",
+  "version": "2025-03-17",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-16: Patient Restraint — MDHHS Approved 3/17/2025",
+
+  "purpose": "Govern the use of physical and pharmacological restraint in combative or dangerous patients. Restraint follows an escalation ladder: verbal de-escalation → soft restraints → pharmacological. Verbal de-escalation continues throughout all phases of care.",
+
+  "sections": [
+    {
+      "title": "Escalation Ladder",
+      "reference": "Michigan Protocol 7-16: Restraint — Escalation",
+      "points": [
+        "STEP 1 — VERBAL DE-ESCALATION: always the first intervention; continues throughout ALL phases of care regardless of escalation level",
+        "STEP 2 — SOFT RESTRAINTS: when verbal de-escalation is insufficient to ensure safety",
+        "STEP 3 — PHARMACOLOGICAL RESTRAINT: only when soft restraints pose a safety risk OR are ineffective"
+      ]
+    },
+    {
+      "title": "Soft Restraint Guidelines",
+      "reference": "Michigan Protocol 7-16: Restraint — Soft Restraints",
+      "points": [
+        "Soft restraints may be applied to the backboard or stretcher ONLY",
+        "NEVER place the patient in a PRONE position while restrained",
+        "NEVER secure restraints to the vehicle or to an immovable object",
+        "Check neurovascular status of restrained extremities CONTINUOUSLY",
+        "Document neurovascular checks in PCR"
+      ]
+    },
+    {
+      "title": "Prohibited Restraint Techniques",
+      "reference": "Michigan Protocol 7-16: Restraint — Prohibited",
+      "points": [
+        "Hard plastic restraint ties or zip ties",
+        "Any restraint device that cannot be immediately removed in an emergency",
+        "Backboard sandwiching (placing a board on top of the patient)",
+        "Hands and feet secured behind the patient's back",
+        "Hog-tie restraint (connecting wrists and ankles behind the patient's back)",
+        "Any device or position that restricts the patient's ability to breathe",
+        "KETAMINE is NOT authorized for patient restraint without direct online Medical Control direction"
+      ]
+    },
+    {
+      "title": "Pharmacological Restraint",
+      "reference": "Michigan Protocol 7-16: Restraint — Pharmacological",
+      "points": [
+        "Paramedic only",
+        "Indicated when soft restraints pose a safety risk to the patient or crew, or when soft restraints are ineffective",
+        "Contact Medical Control PRIOR to pharmacological restraint UNLESS there is an extreme emergency requiring immediate intervention",
+        "MIDAZOLAM 0.1 mg/kg IM or IN:",
+        "— Adult maximum: 10 mg (consider lower dose for geriatric patients due to increased sensitivity)",
+        "— Pediatric maximum: 5 mg IM",
+        "Monitor airway, ventilation, SpO2 continuously after administration",
+        "Document contact with Medical Control, indication for pharmacological restraint, and patient response"
+      ]
+    },
+    {
+      "title": "Law Enforcement Restraints",
+      "reference": "Michigan Protocol 7-16: Restraint — Law Enforcement",
+      "points": [
+        "If a patient is in law enforcement restraints (e.g., handcuffs): a law enforcement officer MUST accompany the patient to the hospital",
+        "OR: apply appropriate EMS soft restraints if safe to do so and remove law enforcement restraints",
+        "Document presence of law enforcement restraints and the name of the law enforcement officer accompanying the patient"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [
+    {
+      "name": "Midazolam (Pharmacological Restraint)",
+      "dose": "0.1 mg/kg IM or IN; adult max 10 mg (lower for geriatric); pediatric max 5 mg IM",
+      "route": "IM or IN",
+      "indication": "Pharmacological restraint when soft restraints are unsafe or ineffective",
+      "contraindications": "Contact Medical Control prior unless extreme emergency; Ketamine NOT authorized without online MC",
+      "side_effects": "Respiratory depression, hypotension, sedation",
+      "scope": "Paramedic only",
+      "notes": "Monitor airway and SpO2 continuously. Consider lower dose for geriatric patients. Contact MC prior unless extreme emergency."
+    }
+  ],
+
+  "deterioration_flags": [
+    "Prone restraint — PROHIBITED; reposition to supine or lateral; monitor breathing continuously",
+    "Airway compromise with restrained patient — immediately reposition; release restraints if needed to manage airway; airway takes absolute priority",
+    "SpO2 decreasing after midazolam — assist ventilation; monitor airway; have BVM ready"
+  ],
+
+  "scope_notes": [
+    "Verbal de-escalation: all levels; continues throughout care",
+    "Soft restraints: all levels; backboard/stretcher only; never prone; never to vehicle; continuous neurovascular checks",
+    "Pharmacological restraint: Paramedic only; contact MC prior unless extreme emergency",
+    "Midazolam: 0.1 mg/kg IM/IN; adult max 10 mg; peds max 5 mg IM",
+    "Ketamine: NOT authorized for restraint without online MC direction",
+    "Law enforcement restraints: officer must accompany or EMS soft restraints applied"
+  ]
+}

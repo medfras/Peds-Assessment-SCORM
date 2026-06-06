@@ -1,0 +1,146 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). General Medical: Agitated or Violent Patient/Behavioral Emergency. NASEMSO national provisional base.",
+  "id": "nasemso_base_general_medical_agitated_or_violent_patient_behavioral_emergency",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Agitated or Violent Patient/Behavioral Emergency",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — General Medical: Agitated or Violent Patient/Behavioral Emergency",
+  "aliases": [
+    "Acute psychosis",
+    "Patient restraint"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — General Medical: Agitated or Violent Patient/Behavioral Emergency",
+      "points": [
+        "Provision of emergency medical care to the agitated, violent, or uncooperative patient",
+        "Maximizing and maintaining safety for the patient, EMS personnel, and others"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Patients of all ages who are exhibiting agitated or violent behavior, are a danger to self or others and in the sole",
+        "EXCLUSION CRITERIA:",
+        "Patients exhibiting agitated or violent behavior due to medical conditions including, but not limited to: a. Head injury",
+        "b. Metabolic disorders (e.g., hypoglycemia, hypoxia)"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Scene safety and PPE; primary survey (ABCDE)",
+        "Oxygen via NRM targeting SpO2 94-98% if indicated",
+        "Position of comfort; hemorrhage control as needed",
+        "CPR/AED if patient becomes pulseless",
+        "Epinephrine auto-injector for anaphylaxis if applicable",
+        "Naloxone intranasal unit-dose for suspected opioid involvement"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Blood glucose monitoring; oral glucose if hypoglycemic and alert",
+        "12-lead ECG acquisition and transmission",
+        "CPAP for respiratory distress",
+        "Aspirin for suspected ischemic chest pain",
+        "Albuterol SVN for bronchospasm component",
+        "IV access maintenance (non-medicated)"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation",
+        "IV/IO fluid resuscitation as indicated",
+        "Waveform capnography",
+        "IV analgesics (fentanyl, morphine) per pain management protocol",
+        "IV antiemetics (ondansetron) per protocol",
+        "IV D50W/D10W for hypoglycemia"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "12-lead ECG interpretation",
+        "Endotracheal intubation for airway compromise",
+        "RSI per protocol",
+        "Advanced antidysrhythmic or hemodynamic support per specific protocol",
+        "All parenteral medications per protocol",
+        "Vasopressors for refractory hemodynamic compromise"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Don PPE",
+        "Do not attempt to enter or control a scene where physical violence or weapons are present",
+        "Dispatch law enforcement immediately to secure and maintain scene safety",
+        "Urgent de-escalation of patient agitation is imperative in the interest of patient safety as well as for EMS personnel and others on scene",
+        "Uncontrolled or poorly controlled patient agitation and physical violence can place the patient at risk for sudden cardiopulmonary arrest due to the following etiologies: a. Delirium with agitated behavior: A postmortem diagnosis of exclusion for sudden death thought to result from metabolic acidosis (most likely from lactate) stemming from physical agitation or physical control measures and potentially exacerbated by stimulant drugs (e.g., cocaine) or alcohol withdrawal",
+        "Apply a cardiac monitor as soon as possible, particularly when pharmacologic management medications have been administered"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Direct medical direction should be contacted at any time for advice, especially when patient's level of agitation is such that transport may place all parties at risk",
+        "Transport by air is not advised",
+        "Stretchers with adequate foam padding, particularly around the head, facilitates patient's ability to self-position the head and neck to maintain airway patency",
+        "For patients with key-locking devices, applied by another agency, consider the following options: a. Remove device and replace it with a device that does not require a key",
+        "Continuous monitoring of: a. Airway patency"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Etiology of agitated or violent behavior if known",
+        "' Patient's medications, other medications or substances found on scene",
+        "' Patient's medical history or other historic factors reported by patient, family, or bystanders",
+        "' Physical evidence or history of trauma",
+        "' Adequate oxygenation by pulse oximetry",
+        "' Blood glucose measurement",
+        "' Measures taken to establish patient rapport",
+        "' Dose, route, and number of doses of pharmacologic management medications administered"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Dispatch law enforcement immediately to secure and maintain scene safety"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

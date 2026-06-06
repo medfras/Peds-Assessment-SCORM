@@ -1,0 +1,630 @@
+{
+  "_schema": "pfd_scenario_v1",
+  "id": "newborn_resus_01_nrp",
+  "title": "Newborn Resuscitation - NRP",
+  "display_title": "Newborn Resuscitation - NRP",
+  "subtitle": "Term newborn, apneic with poor tone after delivery",
+  "category": "pediatric_medical",
+  "category_display": "Pediatric Medical Assessment",
+  "turnover_target": "als",
+  "version": "0.1.0",
+  "rubric_template": "ems_standard_v1",
+  "base_patient_care_rubric": "nrp_newborn_v1",
+  "legacy_ai_categories": [
+    "documentation",
+    "professionalism"
+  ],
+  "difficulty": "advanced",
+  "scenario_number": 22,
+  "protocol": "MI/04_OB_Pediatrics/04-3_newborn_neonatal_resuscitation",
+  "jurisdiction": "mi_base",
+  "clinical_context": {
+    "jurisdiction": "MI",
+    "concepts": [
+      "pediatric_patient",
+      "neonatal_resuscitation",
+      "obstetric_emergency",
+      "airway_management",
+      "ventilation_support",
+      "vital_signs",
+      "medical_control"
+    ],
+    "protocol_focus": [
+      "neonatal_resuscitation",
+      "airway_management",
+      "ventilation_support"
+    ]
+  },
+  "agency_context": "",
+  "readiness_criteria": {
+    "min_minutes": 2,
+    "checks": [
+      {
+        "id": "messages",
+        "label": "3 messages sent",
+        "type": "message_count",
+        "min": 3
+      },
+      {
+        "id": "vitals",
+        "label": "Vitals assessed",
+        "type": "vitals_logged"
+      },
+      {
+        "id": "treatment",
+        "label": "Newborn resuscitation challenge completed",
+        "type": "treatment_logged"
+      }
+    ]
+  },
+  "scene_entry_scoring": {
+    "ppe": {
+      "required": [
+        "gloves"
+      ],
+      "recommended": [
+        "eye_protection"
+      ],
+      "missing_required_penalty": 3,
+      "missing_recommended_penalty": 1,
+      "max_score": 10
+    },
+    "pat": {
+      "expected_impression": "sick",
+      "incorrect_impression_deduction": 2
+    }
+  },
+  "cpr_challenge": {
+    "enabled": true,
+    "challenge_id": "newborn_resus_01_nrp_cpr",
+    "arrest_type": "infant",
+    "algorithm": "infant_bls",
+    "team_model": "ems_team",
+    "cycle_seconds": 120,
+    "rhythm_sequence": ["asystole", "asystole", "asystole"],
+    "rosc_criteria": {
+      "eligible_after_cycles": 3,
+      "max_cycles_before_rosc": 5,
+      "hard_stop_cycle": 5,
+      "min_ccf": 0.8,
+      "aha_compliance_gates": ["ccf", "rhythm_decisions", "post_decision_resume", "no_critical_failure"]
+    },
+    "neonatal_interim_hr": 40,
+    "required_equipment_ids": [
+      "bvm_adult_peds_infant",
+      "oxygen_cylinder_d",
+      "stethoscope"
+    ],
+    "required_medication_ids": [],
+    "allow_aed": true,
+    "allow_manual_defib": false,
+    "allow_precharge": false,
+    "allow_advanced_airway": false,
+    "allow_medications": true,
+    "score_ventilation_ratio": true,
+    "expected_ventilation_mode": "3:1",
+    "post_rosc_vitals_profile_id": "post_rosc_default",
+    "additional_action_menu": {
+      "enabled": true,
+      "phase": "both",
+      "sections": [
+        {
+          "id": "actions",
+          "label": "Actions",
+          "kind": "action",
+          "actions": [
+            {
+              "id": "assess_airway",
+              "label": "Assess Airway",
+              "action_id": "airway_assess",
+              "finding": "Airway maintained with head-tilt and BVM mask seal. Continue coordinated 3:1 ventilations."
+            },
+            {
+              "id": "suction",
+              "label": "Suction",
+              "action_id": "airway_suction",
+              "finding": "Light secretions cleared. Airway patent; resume BVM ventilations."
+            },
+            {
+              "id": "check_bgl",
+              "label": "Check BGL",
+              "action_id": "blood_glucose_check",
+              "finding": "Blood glucose is 58 mg/dL."
+            },
+            {
+              "id": "check_pupils",
+              "label": "Check Pupils",
+              "action_id": "pupil_assessment",
+              "finding": "Pupils equal, round, sluggishly reactive."
+            },
+            {
+              "id": "supraglottic_airway",
+              "label": "Supraglottic Airway",
+              "action_id": "supraglottic_airway_insert",
+              "finding": "Supraglottic airway not indicated at this time; continue BVM mask seal with 3:1 ratio."
+            }
+          ]
+        }
+      ]
+    },
+    "rubric_integration": {
+      "dimension": "clinical_performance",
+      "item_id": "newborn_resus_01_nrp.neonatal_resuscitation_management",
+      "weight_points": 20
+    }
+  },
+  "lung_sound_challenge": {
+    "enabled": false
+  },
+  "chat_placeholder": "Talk to the mother, your partner Alex, or manage newborn resuscitation...",
+  "chat_address_hint": "Address by name: Alex (partner), Maria (mother), or family",
+  "debrief_lexi_hints": [
+    {
+      "label": "First steps?",
+      "msg": "What are the first steps for a non-vigorous newborn?"
+    },
+    {
+      "label": "Ventilation?",
+      "msg": "When should I start PPV in newborn resuscitation?"
+    },
+    {
+      "label": "Compressions?",
+      "msg": "When do newborn compressions start, and what ratio is used?"
+    }
+  ],
+  "objectives": [
+    "Recognize a non-vigorous newborn requiring immediate resuscitation",
+    "Perform initial steps: warm, dry, stimulate, and position the airway",
+    "Start PPV promptly and perform corrective ventilation steps when HR remains low",
+    "Reassess heart rate at key NRP decision points",
+    "Escalate to coordinated 3:1 compressions when HR remains below 60/min despite effective ventilation"
+  ],
+  "dispatch": {
+    "unit": "{unit}",
+    "text": "{unit}, respond to 214 Maple Street for a childbirth. Caller reports the baby was just delivered and is not crying. Priority 1.",
+    "priority": "Priority 1",
+    "time": "03:18",
+    "cross_streets": "Maple Street and Oak Avenue",
+    "response_time_minutes": 4
+  },
+  "scene": {
+    "description": "You arrive in a small bedroom where a term newborn has just been delivered before EMS arrival. The room is warm enough but chaotic. The newborn is on a towel near the mother, appears limp, and is not crying. The mother is awake and frightened. No immediate hazards are present.",
+    "image": null,
+    "video": null,
+    "hazards": [],
+    "bystanders": [
+      {
+        "name": "Maria",
+        "relation": "mother",
+        "age": 28
+      }
+    ]
+  },
+  "patient": {
+    "name": "Baby Garcia",
+    "age": 0,
+    "age_days": 0,
+    "dob_relative": "today",
+    "age_months": 0,
+    "age_display": "newborn female",
+    "sex": "female",
+    "weight_kg": 3.2,
+    "weight_display": "approximately 7 lb (3.2 kg)",
+    "pcr_demographics_deferred": true,
+    "chief_complaint": "Newborn not breathing after delivery",
+    "general_impression": "Term newborn with poor tone, no effective respirations, cyanotic color, and initial heart rate around 50/min. Requires immediate neonatal resuscitation.",
+    "gcs_assessment": {
+      "e": 1,
+      "v": 1,
+      "m": 1,
+      "total": 3,
+      "rationale": "No eye opening, no cry or verbal response, and no purposeful motor response; newborn resuscitation is primarily guided by NRP findings rather than GCS.",
+      "challenge_description": "Baby Garcia has poor tone and no effective respirations. There is no eye opening, no cry or verbal response, and no purposeful motor response. NRP findings drive care, but this GCS challenge maps the observed responsiveness."
+    },
+    "avpu_assessment": {
+      "value": "unresponsive",
+      "description": "Newborn is unresponsive with no cry, no eye opening, and no purposeful movement.",
+      "rationale": "Use AVPU = unresponsive for LOC documentation, while recognizing NRP assessment findings are clinically primary in this scenario."
+    },
+    "image": null,
+    "video": null
+  },
+  "history_response_map": {
+    "patient_identity": {
+      "label": "Patient identity / demographics",
+      "triggers": [
+        "what is her name",
+        "what's her name",
+        "who is she",
+        "patient name",
+        "baby name",
+        "how old is she",
+        "date of birth",
+        "dob",
+        "birth date",
+        "birthday"
+      ],
+      "answer": "Her name is Baby Garcia. She was born today, just a few minutes ago.",
+      "tags": [
+        "[[HISTORY: Patient Name=Baby Garcia]]",
+        "[[HISTORY: Patient Age=newborn female]]",
+        "[[HISTORY: Patient Date of Birth=born today]]"
+      ],
+      "notes": "Patient-scoped demographics only. Do not emit name, DOB, or age tags for Maria or other bystanders.",
+      "do_not_include": [
+        "weight unless asked",
+        "pregnancy history",
+        "treatment suggestions"
+      ]
+    },
+    "patient_weight": {
+      "label": "Patient weight",
+      "triggers": [
+        "how much does she weigh",
+        "what does she weigh",
+        "patient weight",
+        "baby weight",
+        "birth weight",
+        "weight",
+        "estimated weight"
+      ],
+      "answer": "She is estimated at about 7 pounds, around 3.2 kilograms.",
+      "tag": "[[HISTORY: Patient Weight=approximately 7 lb (3.2 kg)]]",
+      "notes": "Patient-scoped weight only. Do not use this tag for mother or bystander weight.",
+      "do_not_include": [
+        "diagnosis",
+        "treatment suggestions"
+      ]
+    },
+    "chief_concern": {
+      "label": "Broad opener / chief concern",
+      "speaker": "Maria",
+      "triggers": [
+        "what's going on",
+        "what happened",
+        "why did you call",
+        "how can we help",
+        "chief complaint",
+        "what's her chief complaint"
+      ],
+      "answer": "The baby just came and isn't crying like I expected.",
+      "tag": "[[HISTORY: Patient Chief Complaint=newborn not breathing after delivery]]",
+      "do_not_include": [
+        "pregnancy history",
+        "diagnosis",
+        "treatment suggestions",
+        "full OPQRST/SAMPLE"
+      ]
+    }
+  },
+  "history": {
+    "allergies": "Newborn - no known allergies.",
+    "medications": "None.",
+    "pmh": "Term pregnancy per mother. Prenatal care reported as routine.",
+    "last_oral_intake": "Newborn - not applicable.",
+    "events_leading_to_call": "The baby delivered at home minutes before EMS arrival. Family reports the baby did not cry and has not breathed normally."
+  },
+  "initial_complaint": {
+    "speaker": "Maria",
+    "lay_summary": "The baby just came and isn't crying like I expected.",
+    "allowed_in_opener": true,
+    "do_not_include": [
+      "delivery timeline",
+      "breathing assessment",
+      "pregnancy history",
+      "apgar-style assessment",
+      "diagnosis",
+      "clinical terms",
+      "treatment suggestions",
+      "negative findings",
+      "full OPQRST/SAMPLE"
+    ]
+  },
+  "personas": {
+    "baby": {
+      "name": "Baby Garcia",
+      "age": 0,
+      "role": "patient",
+      "aliases": [
+        "baby",
+        "newborn",
+        "patient",
+        "infant"
+      ],
+      "description": "Term newborn requiring resuscitation. Initially apneic with poor tone and bradycardia.",
+      "speaking_style": "Non-verbal.",
+      "clinical_state_instructions": "Before the neonatal resuscitation challenge improves the newborn, describe poor tone, absent effective respirations, cyanosis, and bradycardia. After successful challenge outcome, describe improving color, HR around 90, and spontaneous respiratory effort with ongoing support.",
+      "persona_rules": [
+        "Never provide verbal answers as the newborn",
+        "Do not imply improvement before the backend neonatal resuscitation challenge result",
+        "If asked for heart rate before actions, report about 50/min"
+      ]
+    },
+    "maria": {
+      "name": "Maria",
+      "age": 28,
+      "role": "mother",
+      "aliases": [
+        "Maria",
+        "mother",
+        "mom"
+      ],
+      "description": "Postpartum mother who is awake, scared, and focused on whether the baby is okay.",
+      "speaking_style": "Anxious, emotional, and cooperative.",
+      "clinical_state_instructions": "Reports term pregnancy, no known complications, and that the baby did not cry after delivery.",
+      "persona_rules": [
+        "Answer childbirth history questions briefly",
+        "Do not provide clinical interpretation beyond what happened",
+        "Stay emotionally distressed but cooperative"
+      ]
+    },
+    "alex": {
+      "name": "Alex",
+      "age": 28,
+      "role": "partner",
+      "aliases": [
+        "Alex",
+        "partner",
+        "my partner"
+      ],
+      "description": "Your EMT partner. Calm and ready to assist with newborn warming, airway positioning, BVM ventilation, HR checks, and 3:1 compressions.",
+      "speaking_style": "Brief and clinical.",
+      "clinical_state_instructions": "Before successful resuscitation, report HR and respiratory findings based on the authored challenge state. Do not invent improvement before the backend neonatal challenge result.",
+      "persona_rules": [
+        "Report HR findings when asked",
+        "Assist with newborn resuscitation tasks when directed",
+        "Keep responses concise"
+      ]
+    }
+  },
+  "vitals": {
+    "baseline": {
+      "hr": {
+        "label": "Heart Rate",
+        "value": 50,
+        "unit": "bpm",
+        "display": "About 50/min"
+      },
+      "rr": {
+        "label": "Respirations",
+        "value": 0,
+        "unit": "/min",
+        "display": "Apneic - no effective respirations"
+      },
+      "spo2": {
+        "label": "SpO2",
+        "value": 58,
+        "unit": "%",
+        "display": "Low initial newborn oxygen saturation; poor signal"
+      },
+      "bp": {
+        "label": "Blood Pressure",
+        "value": "Not obtained in initial newborn resuscitation",
+        "unit": "mmHg",
+        "numeric": false
+      },
+      "temp": {
+        "label": "Temperature",
+        "value": 96.8,
+        "unit": "°F",
+        "display": "96.8°F — cold stress risk"
+      },
+      "blood_glucose": {
+        "label": "Blood Glucose",
+        "value": 62,
+        "unit": "mg/dL",
+        "display": "62 mg/dL — bedside newborn glucose if checked"
+      },
+      "gcs": {
+        "label": "GCS",
+        "value": 3,
+        "unit": "/15",
+        "display": "3 — E1V1M1 — no eye opening, no cry, no purposeful movement; use NRP findings as primary guide"
+      },
+      "skin_color": {
+        "label": "Skin",
+        "numeric": false,
+        "value": "Cyanotic, wet, poor tone"
+      },
+      "cap_refill": {
+        "label": "Cap Refill",
+        "value": 4,
+        "unit": "sec",
+        "display": "Approximately 4 seconds — poor perfusion"
+      },
+      "pupils": {
+        "label": "Pupils",
+        "numeric": false,
+        "value": "Not assessed during initial resuscitation; eyelids closed, focus on HR and ventilation"
+      },
+      "lung_sounds": {
+        "label": "Lung Sounds",
+        "numeric": false,
+        "value": "No spontaneous air movement; assess chest rise with PPV"
+      },
+      "work_of_breathing": {
+        "label": "Work of Breathing",
+        "numeric": false,
+        "value": "No effective respiratory effort"
+      }
+    },
+    "deterioration": {
+      "note": "Newborn remains bradycardic and apneic until neonatal resuscitation actions are completed.",
+      "rates": {},
+      "caps": {}
+    },
+    "post_rosc_profiles": {
+      "post_rosc_default": {
+        "hr": 90,
+        "rr": 24,
+        "spo2": 82,
+        "bp": "Not obtained",
+        "gcs": 6,
+        "skin_color": "Color improving from cyanotic to centrally pink with acrocyanosis",
+        "lung_sounds": "Bilateral air movement with assisted ventilations",
+        "work_of_breathing": "Weak spontaneous effort returning; continue ventilation support",
+        "patient_presentation": "Newborn improving after effective ventilation and indicated 3:1 compressions. HR is about 90/min with improving color and weak spontaneous respiratory effort."
+      }
+    },
+    "interventions": {
+      "bvm": {
+        "label": "BVM ventilation",
+        "within_mfr_scope": true,
+        "within_bls_scope": true,
+        "within_aemt_scope": true,
+        "within_paramedic_scope": true,
+        "notes": "Neonatal PPV is managed in the newborn resuscitation challenge.",
+        "effects": {}
+      },
+      "o2_nrb": {
+        "label": "High-flow O2 via NRB mask (15 LPM)",
+        "within_mfr_scope": true,
+        "within_bls_scope": true,
+        "within_aemt_scope": true,
+        "within_paramedic_scope": true,
+        "notes": "Oxygen source available for BVM/PPV support.",
+        "effects": {}
+      }
+    },
+    "improvement": {}
+  },
+  "correct_treatment": {
+    "primary_diagnosis": "Neonatal resuscitation - non-vigorous newborn with bradycardia",
+    "critical_actions": [
+      {
+        "id": "scene_safety",
+        "description": "Scene safety confirmed and PPE used before patient contact",
+        "scene_entry_credited": true
+      },
+      {
+        "id": "non_vigorous_recognition",
+        "description": "Recognizes newborn is non-vigorous: poor tone, apneic, HR below 100/min",
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(newborn|baby).*(not breathing|apneic|poor tone|bradycardic|heart rate)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "neonatal_resuscitation_management",
+        "description": "Newborn resuscitation challenge submitted and backend-scored as the authoritative NRP workflow record",
+        "protocol_indicated": true,
+        "evidence": {
+          "session_event_type": "challenge_completed",
+          "session_event_key": "cpr:newborn_resus_01_nrp_cpr"
+        }
+      }
+    ],
+    "out_of_scope_bls": [
+      "iv_io_access",
+      "endotracheal_intubation"
+    ]
+  },
+  "scoring": {
+    "overall_considerations": [
+      "This is a neonatal resuscitation scenario. Do not score it as adult/pediatric AED cardiac arrest.",
+      "The newborn resuscitation HUD is authoritative for initial steps, PPV, HR reassessment, 3:1 escalation, and outcome.",
+      "Credit BLS care for rapid warming/drying/stimulation/positioning, prompt effective PPV, HR reassessment, appropriate 3:1 compressions when HR remains below 60/min, and avoiding unnecessary suction."
+    ],
+    "dmist_considerations": [
+      "Handoff should include delivery timing, term status, initial apnea/poor tone, HR trend, resuscitation steps, PPV effectiveness, compressions if performed, and current newborn status."
+    ],
+    "narrative_considerations": [
+      "Narrative should document newborn presentation, initial steps, PPV/MR SOPA actions, HR reassessment gates, escalation to 3:1 compressions, and response."
+    ]
+  },
+  "scoring_rubric": {
+    "clinical_performance": {
+      "full_credit": "Recognizes a non-vigorous newborn, performs initial steps promptly, starts effective PPV, reassesses HR, escalates to 3:1 compressions when HR remains below 60/min, maintains warmth, and gives a clear handoff.",
+      "partial_credit": "Provides some newborn resuscitation but delays PPV, misses HR reassessment, or delays indicated escalation.",
+      "no_credit": "Does not recognize need for newborn resuscitation, delays ventilation substantially, or performs unsafe actions."
+    },
+    "protocols_treatment": {
+      "full_credit": "Follows neonatal resuscitation protocol with ventilation-first management, HR reassessment, corrective ventilation steps, and indicated 3:1 compressions.",
+      "partial_credit": "Attempts resuscitation but with timing, ventilation, reassessment, or escalation gaps.",
+      "no_credit": "Uses adult/pediatric AED arrest workflow instead of newborn resuscitation priorities."
+    },
+    "scope_adherence": {
+      "full_credit": "Stays within BLS scope and requests/coordinates ALS for advanced neonatal interventions.",
+      "partial_credit": "Mentions ALS needs without attempting them.",
+      "no_credit": "Attempts ALS-only neonatal procedures or medications at BLS level."
+    },
+    "dmist": {
+      "full_credit": "Concise newborn handoff includes delivery context, initial status, HR trend, PPV/compressions, response, and current condition.",
+      "partial_credit": "Handoff communicates newborn resuscitation but misses timing, HR trend, or interventions.",
+      "no_credit": "No usable newborn handoff."
+    },
+    "professionalism": {
+      "full_credit": "Calm, organized, supportive communication with mother/family and clear team leadership.",
+      "partial_credit": "Mostly appropriate but disorganized.",
+      "no_credit": "Unsafe, dismissive, or abandons patient care."
+    }
+  },
+  "exemplar_narrative": "Unit responded Priority 1 to 214 Maple Street for a newborn not breathing after home delivery. Scene safe, PPE used. Term female newborn found wet, cyanotic, limp, apneic, HR about 50/min. Initial steps completed: warmed, dried, stimulated, and airway positioned. HR reassessed after initial steps at about 70/min. PPV started with neonatal mask and oxygen source; MR SOPA corrective steps performed and chest rise confirmed. HR remained about 55/min after effective PPV, so coordinated 3:1 compressions with ventilations were initiated. HR improved to about 90/min with improving color and weak spontaneous effort. Continued ventilation support and thermoregulation while preparing ALS/hospital handoff.",
+  "checklist": [
+    {
+      "id": "newborn_resus_01_nrp.non_vigorous_recognition",
+      "description": "Recognizes newborn is non-vigorous and needs resuscitation",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 2,
+      "tier3_permitted": false,
+      "schema_version": "1.0",
+      "tier2_patterns": [
+        "(?i)(non-vigorous|not breathing|apneic|poor tone|heart rate.*(50|below 100)|newborn resuscitation)"
+      ],
+      "done_feedback": "Non-vigorous newborn correctly recognized — absent breathing, poor tone, and HR below threshold identified; resuscitation initiated immediately.",
+      "missed_feedback": "Non-vigorous status not recognized — a newborn who does not cry, has poor tone, and is not breathing requires immediate resuscitation; delays worsen hypoxic injury.",
+      "clinical_rationale": "NRP defines a non-vigorous newborn as having absent or poor respiratory effort, decreased tone, and/or HR below 100/min; these findings trigger steps beyond warming and drying.",
+      "common_error": "Waiting for the newborn to 'pink up' before initiating resuscitation — cyanosis is a late sign; begin resuscitation based on respiratory effort, tone, and HR, not color."
+    },
+    {
+      "id": "newborn_resus_01_nrp.neonatal_resuscitation_management",
+      "description": "Newborn resuscitation challenge submitted and backend-scored as the authoritative NRP workflow record",
+      "subtype": "intervention",
+      "category": "clinical_performance",
+      "point_value": 20,
+      "required": "required",
+      "applicable_levels": [],
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "session_event",
+        "event_type": "challenge_completed",
+        "event_key_pattern": "(?i)^cpr:newborn_resus_01_nrp_cpr$"
+      },
+      "done_feedback": "Neonatal resuscitation challenge submitted — NRP workflow quality was scored from backend structured data.",
+      "missed_feedback": "Neonatal resuscitation challenge not completed — the NRP challenge is the authoritative record of resuscitation quality; completion is required for this item.",
+      "clinical_rationale": "The NRP algorithm (warm, dry/stimulate, position airway, assess breathing and HR, PPV if needed) must be followed in sequence; skipping steps reduces effectiveness.",
+      "common_error": "Beginning BVM ventilation before completing initial steps (warm, dry, stimulate, reposition) — initial stimulation can restore breathing in a mildly depressed newborn without PPV."
+    }
+  ],
+  "debrief": {
+    "condition_background": "Newborn resuscitation is ventilation-first. Initial steps are warming, drying, stimulation, and airway positioning. If the newborn remains apneic, gasping, or HR is below 100/min, PPV is the priority. If HR remains below 60/min despite effective ventilation, coordinated 3:1 compressions are indicated while continuing ventilation support.",
+    "key_teaching_points": [
+      "The initial 30-second block (warm, dry, stimulate, position airway) determines whether the newborn needs PPV. Complete these steps before escalating — many newborns respond to stimulation alone.",
+      "PPV rate for newborns is 40–60 breaths/min. Use a pressure-limited neonatal BVM and verify chest rise. Adequate rate and seal are more important than high pressure.",
+      "The 3:1 compression-to-ventilation ratio for newborns (90 compressions + 30 breaths per minute) is different from pediatric and adult CPR. Ventilation is part of every cycle.",
+      "HR assessment drives every decision branch. Use auscultation over the sternum, not palpation of the cord or brachial pulse, for fastest reliable rate."
+    ],
+    "common_mistakes": [
+      "Starting PPV without completing initial stimulation steps — many newborns respond to drying and airway positioning alone",
+      "Using adult or pediatric BVM — neonatal BVM with appropriate mask size is required to avoid barotrauma",
+      "Skipping HR reassessment after each intervention — the NRP algorithm is HR-driven; every branch point requires updated rate",
+      "Performing chest compressions without effective ventilation first — compressions are not indicated until PPV has been attempted and HR is still below 60/min"
+    ]
+  }
+}

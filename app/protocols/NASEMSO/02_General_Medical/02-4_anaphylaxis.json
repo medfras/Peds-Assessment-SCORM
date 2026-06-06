@@ -1,0 +1,153 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). General Medical: Anaphylaxis and Allergic Reaction. NASEMSO national provisional base.",
+  "id": "nasemso_base_general_medical_anaphylaxis_and_allergic_reaction",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Anaphylaxis and Allergic Reaction",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — General Medical: Anaphylaxis and Allergic Reaction",
+  "aliases": [
+    "Anaphylactic Shock"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — General Medical: Anaphylaxis and Allergic Reaction",
+      "points": [
+        "Provide timely therapy for potentially life-threatening reactions to known or suspected allergens to prevent cardiorespiratory collapse and shock",
+        "Provide symptomatic relief for symptoms due to known or suspected allergens"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Patients of all ages with suspected allergic reaction and/or anaphylaxis",
+        "EXCLUSION CRITERIA:",
+        "None noted"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Remove or stop offending agent if possible",
+        "Epinephrine IM auto-injector 0.3-0.5 mg (adult) or 0.15 mg (pediatric <30 kg) into anterolateral mid-thigh",
+        "Oxygen via NRM targeting SpO2 94-98%",
+        "Supine position with legs elevated; semi-recumbent if respiratory distress",
+        "CPR/AED if pulseless anaphylactic shock develops",
+        "Prepare for airway management — anaphylaxis can cause rapid airway edema"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Epinephrine IM agency-stocked 0.3-0.5 mg (adult) q 5-15 min as needed",
+        "Diphenhydramine (Benadryl) 25-50 mg IM/IV/IO for antihistamine effect",
+        "Albuterol 2.5 mg SVN for bronchospasm component",
+        "CPAP for severe bronchospasm component",
+        "12-lead ECG acquisition",
+        "IV/IO maintenance (non-medicated)"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "Epinephrine 0.01 mg/kg (max 0.5 mg) IM if auto-injector not available",
+        "IV/IO access initiation; IV NS bolus 1-2 L (adult) or 20 mL/kg (pediatric) for hypotension",
+        "IV/IO epinephrine for cardiovascular collapse: 0.1-0.5 mg IV/IO (or dilute to 0.1 mg/mL)",
+        "IV ondansetron (Zofran) 4 mg for nausea/vomiting",
+        "IV diphenhydramine 50 mg for antihistamine effect",
+        "Waveform capnography"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "Epinephrine infusion: 2-10 mcg/min IV for refractory anaphylactic shock (titrate to MAP >65 mmHg)",
+        "Methylprednisolone 125 mg IV (reduce late-phase reaction; does not affect acute response)",
+        "H1 and H2 blocker combination: diphenhydramine + ranitidine or famotidine",
+        "Glucagon 1-2 mg IV/IO for anaphylaxis in beta-blocker patients (bypasses beta receptor)",
+        "RSI and intubation for impending airway loss from angioedema — early preferred over late",
+        "Surgical airway (cricothyrotomy) if intubation impossible due to glottic edema",
+        "12-lead ECG interpretation for dysrhythmia",
+        "Vasopressors (norepinephrine, dopamine) for refractory hypotension"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Time to epinephrine delivery",
+        "Concentration of epinephrine in relation to route",
+        "Weight-based dosing of medications"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "When anaphylaxis is suspected, EMS personnel should always consider epinephrine as first-line treatment",
+        "Allergic reactions and anaphylaxis are serious and potentially life-threatening medical emergencies. It is the body's adverse reaction to a foreign protein (e.g., food, medicine, pollen, insect sting or any ingested, inhaled, or injected substance). A localized allergic reaction (e.g., urticaria or angioedema that does not compromise the airway) may be treated with antihistamine therapy. Cardiovascular collapse may occur abruptly, without the prior development of skin or respiratory symptoms. Constant monitoring of the patient's airway and breathing is essential",
+        "Contrary to common belief that all cases of anaphylaxis present with cutaneous manifestations, such as urticaria or mucocutaneous swelling, a significant portion of anaphylactic episodes may not involve these signs and symptoms on initial presentation. Moreover, most fatal reactions to food-induced anaphylaxis in children were not associated with cutaneous manifestations",
+        "A thorough assessment and a high index of suspicion are required for all potential allergic reaction patients ' consider: a. History of Present Illness i. Onset and location",
+        "Gastrointestinal symptoms occur most commonly in food-induced anaphylaxis, but can occur with other causes a. Oral pruritus is often the first symptom observed in patients experiencing food-induced anaphylaxis",
+        "Patients with asthma are at high-risk for a severe allergic reaction",
+        "There is no proven benefit to using steroids in the management of allergic reactions and/or anaphylaxis",
+        "There is controversy among experts with very low-quality evidence to guide management for the use of empiric IM epinephrine after exposure to a known allergen in asymptomatic patients with a history of prior anaphylaxis"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Medications given",
+        "' Dose and concentration of epinephrine given",
+        "' Route of epinephrine administration",
+        "' Time of epinephrine administration",
+        "' Signs and symptoms of the patient"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Contact medical direction for clinical deterioration or interventions outside standard scope"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": [],
+  "clinical_context": {
+    "concepts": [
+      "airway_management",
+      "allergic_reaction",
+      "anaphylaxis",
+      "shock"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

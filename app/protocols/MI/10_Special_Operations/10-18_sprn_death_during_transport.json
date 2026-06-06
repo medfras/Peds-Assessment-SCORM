@@ -1,0 +1,100 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 10-18 SPRN Death During Transport (MDHHS Reviewed 2022-12-27). MCA Optional — SPRN program participation required.",
+  "id": "mi_base_special_ops_sprn_death_during_transport",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Special Operations",
+  "level_display": "Special Operations Protocol — MCA Optional (SPRN)",
+  "jurisdiction": "Michigan",
+  "condition": "SPRN — Death During Transport",
+  "version": "2022-12-27",
+  "protocol_reference": "Michigan Special Operations Protocol Section 10-18: SPRN Death During Transport — MDHHS Reviewed 2022",
+
+  "purpose": "Define EMS procedures when a SPRN patient dies or suffers cardiac arrest during transport, including cessation of interventions, body containment, and coordination with CHECC and state authorities.",
+
+  "sections": [
+    {
+      "title": "Cardiac Arrest During SPRN Transport",
+      "content": [
+        "IF SPRN PATIENT SUFFERS CARDIAC ARREST DURING TRANSPORT:",
+        "  1. DO NOT initiate resuscitation interventions",
+        "  2. STOP TRANSPORT — safely pull over at nearest appropriate location",
+        "  3. Contact CHECC (Community Health Emergency Coordination Center) immediately",
+        "  4. Contact online medical control",
+        "  5. Await instructions from CHECC and MDHHS before any further action",
+        "RATIONALE: Resuscitation interventions (CPR, intubation, defibrillation) markedly increase aerosolization risk and crew exposure to HCID-contaminated body fluids. The risk to the transport crew is unacceptably high with confirmed HCID patient.",
+        "EXCEPTION: If patient had a pre-established RESUSCITATION STATUS CONFIRMED before transport (rare in SPRN context): contact online MC before initiating; proceed only with MC authorization and maximum PPE"
+      ]
+    },
+    {
+      "title": "Body Containment — Bio Seal",
+      "content": [
+        "After confirmed death (or cessation of resuscitation per CHECC/MC direction):",
+        "  — DO NOT remove patient from MITD if MITD is in use — Bio Seal the device",
+        "  — Bio Seal: apply biological containment seals (provided in MITD kit) to all access ports and zipper",
+        "  — If patient is NOT in MITD: place patient in Category A biohazard-compatible body bag",
+        "BODY BAGS:",
+        "  — Use TWO body bags (inner and outer) — double-bag",
+        "  — Inner bag: sealed and labeled; outer bag: sealed and labeled UN 2814",
+        "  — Label: decedent identifier (if known), date, 'CAUTION — CATEGORY A BIOHAZARD — HCID'",
+        "  — Body remains double-bagged for all subsequent handling until cremation or designated disposition"
+      ]
+    },
+    {
+      "title": "CHECC Coordination",
+      "content": [
+        "CHECC: Community Health Emergency Coordination Center — state-level coordination center",
+        "Contact CHECC immediately upon SPRN patient death or cardiac arrest",
+        "CHECC provides:",
+        "  — Authorization to stop transport and declare death",
+        "  — Body disposition instructions — HCID decedents cannot go to standard funeral homes or mortuaries",
+        "  — Coordinates with MDHHS, medical examiner, and public health for body release chain of custody",
+        "  — Mortuary support: CHECC maintains a list of licensed crematoria approved to handle Category A HCID remains",
+        "  — Provides guidance on law enforcement notification and death investigation",
+        "Do NOT contact local medical examiner independently — CHECC coordinates all HCID death notifications"
+      ]
+    },
+    {
+      "title": "Body Disposition",
+      "content": [
+        "HCID decedent body disposition requires MDHHS/CHECC authorization:",
+        "  — Standard funeral home or mortuary services: NOT APPROPRIATE for confirmed HCID decedent — risk to mortuary personnel",
+        "  — CREMATION at CHECC-approved facility: preferred disposition for confirmed HCID decedent",
+        "  — CHECC maintains a list of approved crematoria equipped for Category A biohazardous remains",
+        "  — Traditional burial: not recommended for confirmed HCID — requires special casket and burial protocols",
+        "  — Family notification: MDHHS/CHECC coordinates with next of kin regarding HCID-specific body disposition requirements",
+        "Ambulance: remains out of service with body until CHECC provides body removal instructions; continue Protocol 10-15 decontamination after body removal"
+      ]
+    },
+    {
+      "title": "EMS Team Procedures After Death",
+      "content": [
+        "Remain at stopped vehicle location until CHECC provides instructions — do NOT proceed to hospital or transport body without CHECC direction",
+        "Maintain full SPRN PPE until body is removed and decontamination of vehicle is authorized",
+        "Contact agency supervisor and SPRN coordinator in addition to CHECC",
+        "Document: time of cardiac arrest/death, contact times and numbers called, CHECC instructions received",
+        "Crew health monitoring: heightened post-exposure monitoring given confirmed patient death; notify MDHHS medical officer",
+        "Critical incident debriefing: all SPRN team members involved in patient death should receive CISD (critical incident stress debriefing) — coordinate through agency"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "id": "sprn_program_participation",
+      "label": "SPRN Program Participation — MCA authorization for SPRN protocols 10-10 through 10-18",
+      "description": "MCA Optional: All SPRN protocols apply only to SPRN-designated agencies.",
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "SPRN patient cardiac arrest — STOP; no resuscitation; contact CHECC immediately",
+    "Unable to reach CHECC — contact MDHHS SPRN coordinator (backup); contact online MC; do NOT proceed without guidance"
+  ],
+
+  "scope_notes": "MCA Optional — SPRN only. Resuscitation is NOT performed for SPRN patient cardiac arrest due to extreme crew exposure risk. Contact CHECC immediately — CHECC coordinates body disposition through MDHHS-approved crematoria. Standard funeral homes cannot accept HCID remains. All team members involved in SPRN patient death should receive CISD."
+}

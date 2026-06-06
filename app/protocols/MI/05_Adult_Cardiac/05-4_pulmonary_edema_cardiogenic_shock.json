@@ -1,0 +1,105 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 5-4 Adult Pulmonary Edema/Cardiogenic Shock (Revised 06/03/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_adult_pulmonary_edema_cardiogenic_shock",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Adult",
+  "level_display": "Adult (≥ 14 years)",
+  "jurisdiction": "Michigan",
+  "condition": "Pulmonary Edema / Cardiogenic Shock",
+  "version": "2023-06-03",
+  "protocol_reference": "Michigan Adult Cardiac Protocol Section 5-4: Pulmonary Edema/Cardiogenic Shock — MDHHS Approved 6/3/23, Reviewed 2023",
+
+  "purpose": "Protocol for patients in respiratory distress due to pulmonary edema with or without hypotension (CHF/fluid overload or Cardiogenic Shock). Pulmonary edema usually presents with crackles — continuously evaluate as they may evolve with treatments.",
+
+  "sections": [
+    {
+      "title": "Pulmonary Edema / Cardiogenic Shock Treatment",
+      "reference": "Michigan Protocol 5-4: Pulmonary Edema/Cardiogenic Shock",
+      "points": [
+        "Follow General Pre-Hospital Care-Treatment Protocol",
+        "Initiate supplemental oxygen by non-rebreather mask",
+        "Position patient upright with legs dependent if possible",
+        "Consider CPAP per CPAP-Procedure Protocol",
+        "Establish IV access without delaying treatment per Vascular Access & IV Fluid Therapy-Procedure Protocol",
+        "If WHEEZING: administer albuterol 2.5 mg/3 mL NS nebulized (per MCA selection may be EMT skill) per Medication Administration-Medication Protocol",
+        "If CRACKLES (with or without wheezing): administer nitroglycerin as outlined below — inquire of ALL patients regardless of identified gender if they have taken an erectile dysfunction medication or medications used to treat pulmonary hypertension in the last 48 hours",
+        "If ED/pulmonary hypertension medication taken in last 48 hours: DO NOT ADMINISTER NITROGLYCERIN — contact Medical Control",
+        "Prior to IV establishment, if no ED medication and SBP > 120 mmHg: administer nitroglycerin 0.4 mg SL up to maximum 3 doses",
+        "With IV in place, if SBP > 100 mmHg: administer nitroglycerin 0.4 mg SL — repeat every 3–5 minutes while SBP remains > 100 mmHg",
+        "If wheezing continues: continue nitroglycerin 0.4 mg SL and consider albuterol/ipratropium bromide per Respiratory Distress-Treatment Protocol",
+        "If SBP < 100 mmHg — TREAT FOR CARDIOGENIC SHOCK: push-dose epinephrine 10 mcg/mL (prepare by adding 1 mL of epinephrine 1 mg/10 mL in 9 mL NS); administer 20 mcg (2 mL) IV/IO; repeat every 3–5 minutes; titrate SBP > 90 mmHg",
+        "If indicated: consider advanced airway per Airway Management-Procedure Protocol",
+        "Obtain 12-lead ECG (per MCA selection: BLS or Specialist — see 12 Lead ECG-Procedure Protocol); if positive for STEMI follow MCA transport protocol and alert hospital as soon as possible"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Nebulized Albuterol — EMT",
+      "description": "MCA may authorize EMT to administer nebulized albuterol 2.5 mg/3 mL NS for pulmonary edema patients with wheezing",
+      "options": ["EMT authorized", "Specialist only"],
+      "selected": null
+    },
+    {
+      "item": "12-Lead ECG — Scope",
+      "description": "MCA must select provider level authorized to obtain 12-lead ECG",
+      "options": ["BLS authorized", "Specialist authorized", "Both BLS and Specialist authorized"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [
+    {
+      "name": "Albuterol 2.5 mg/3 mL NS Nebulized (Wheezing/Pulmonary Edema)",
+      "dose": "2.5 mg/3 mL NS nebulized",
+      "route": "Inhaled (nebulizer)",
+      "indication": "Wheezing in pulmonary edema",
+      "contraindications": "Known hypersensitivity",
+      "side_effects": "Tachycardia, tremor",
+      "scope": "Per MCA selection — EMT option available",
+      "notes": "May be given concurrently with nitroglycerin if both wheezing and crackles present."
+    },
+    {
+      "name": "Nitroglycerin 0.4 mg SL (Pulmonary Edema)",
+      "dose": "0.4 mg SL — repeat every 3–5 minutes; prior to IV max 3 doses (SBP > 120); with IV continue while SBP > 100",
+      "route": "Sublingual",
+      "indication": "Crackles (with or without wheezing) due to pulmonary edema — SBP > 120 (pre-IV) or SBP > 100 (with IV)",
+      "contraindications": "ED medications (sildenafil, tadalafil, vardenafil) or pulmonary hypertension medications in last 48 hours — DO NOT ADMINISTER; SBP < 100 (with IV); SBP < 120 (without IV)",
+      "side_effects": "Hypotension, headache",
+      "scope": "Specialist skill",
+      "notes": "ALWAYS inquire about ED/pulmonary hypertension medications regardless of patient's identified gender. Contact Medical Control if contraindicated."
+    },
+    {
+      "name": "Push-Dose Epinephrine IV/IO (Cardiogenic Shock)",
+      "dose": "20 mcg (2 mL of 10 mcg/mL solution) IV/IO — repeat every 3–5 minutes; titrate SBP > 90 mmHg",
+      "route": "IV or IO",
+      "indication": "Cardiogenic shock — SBP < 100 mmHg",
+      "contraindications": "SBP ≥ 100 mmHg — use nitroglycerin pathway instead",
+      "side_effects": "Tachycardia, hypertension, arrhythmia",
+      "scope": "Specialist skill",
+      "notes": "Preparation: add 1 mL of epinephrine 1 mg/10 mL (1:10,000) to 9 mL NS to make 10 mcg/mL concentration. Dose is 20 mcg (2 mL) — higher than bradycardia protocol's 10–20 mcg."
+    }
+  ],
+
+  "deterioration_flags": [
+    "SBP < 100 mmHg — cardiogenic shock pathway; push-dose epinephrine; do NOT give nitroglycerin",
+    "ED/pulmonary hypertension medication in last 48 hours — DO NOT give nitroglycerin; contact Medical Control; consider CPAP and push-dose epi if hypotensive",
+    "STEMI on 12-lead ECG — notify hospital immediately; follow MCA STEMI transport protocol",
+    "Worsening respiratory failure despite CPAP and nitroglycerin — consider advanced airway",
+    "Pulmonary edema worsening after fluid administration — stop fluids; contact Medical Control"
+  ],
+
+  "scope_notes": [
+    "NRB oxygen, upright positioning: all levels",
+    "CPAP: Specialist skill in base Michigan protocol — EMT scope at MCAs with cpap_bls expansion",
+    "IV access: Specialist skill",
+    "Albuterol nebulized: per MCA selection — EMT option available",
+    "Nitroglycerin SL: Specialist skill",
+    "Push-dose epinephrine IV/IO (cardiogenic shock): Specialist skill",
+    "Advanced airway: Specialist skill",
+    "12-lead ECG: per MCA selection — BLS or Specialist"
+  ]
+}

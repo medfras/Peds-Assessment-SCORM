@@ -1,0 +1,128 @@
+{
+  "_schema": "pfd_agency_v1",
+  "_comment": "Generic open-join agency for fire departments without a dedicated EMS program. Provides first responder-level medical care pending EMS arrival. No provider level ceiling — student operates at their own license level.",
+  "id": "generic_fire",
+  "display_name": "Fire — Non-EMS",
+  "display_name_short": "Fire",
+  "unit_designator": "Engine 1",
+  "unit_designators": [
+    "Engine 1"
+  ],
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base Protocols)",
+  "jurisdiction": "Michigan",
+  "open_join": true,
+  "service_type": {
+    "transport": false,
+    "als_on_unit": false,
+    "fire_suppression": true,
+    "notes": "Fire department without a dedicated EMS program. Crew provides first responder medical care until EMS arrives. Does not transport patients."
+  },
+  "als_dispatch": {
+    "co_dispatched": true,
+    "arrival_minutes": 12,
+    "unit_name": "EMS",
+    "notes": "EMS is dispatched on all medical calls. Fire crew initiates care and prepares for EMS arrival and patient transfer."
+  },
+  "provider_levels": {
+    "primary": "Paramedic",
+    "primary_display": "Unrestricted — student selects their own license level",
+    "notes": "No agency-enforced ceiling. The student's self-reported license level determines scope."
+  },
+  "equipment": {
+    "items": [
+      {
+        "id": "bvm_adult_peds_infant",
+        "source": "master",
+        "carried": true
+      },
+      {
+        "id": "opa_npa_assorted",
+        "source": "master",
+        "carried": true
+      },
+      {
+        "id": "suction_unit_portable",
+        "source": "master",
+        "carried": true
+      },
+      {
+        "id": "oxygen_cylinder_d",
+        "source": "master",
+        "carried": true
+      },
+      {
+        "id": "nrb_mask",
+        "source": "master",
+        "carried": true
+      },
+      {
+        "id": "nasal_cannula",
+        "source": "master",
+        "carried": true
+      },
+      {
+        "id": "pulse_oximeter",
+        "source": "master",
+        "carried": true
+      },
+      {
+        "id": "manual_bp_cuff_stethoscope",
+        "source": "master",
+        "carried": true
+      },
+      {
+        "id": "aed",
+        "source": "master",
+        "carried": true
+      },
+      {
+        "id": "tourniquets",
+        "source": "master",
+        "carried": true
+      },
+      {
+        "id": "pressure_bandages",
+        "source": "master",
+        "carried": true
+      },
+      {
+        "id": "hemostatic_gauze",
+        "source": "master",
+        "carried": true
+      },
+      {
+        "id": "trauma_dressings",
+        "source": "master",
+        "carried": true
+      },
+      {
+        "id": "cervical_collars_assorted",
+        "source": "master",
+        "carried": true
+      },
+      {
+        "id": "ob_kit_basic",
+        "source": "master",
+        "carried": true
+      },
+      {
+        "id": "epi_autoinjector_adult",
+        "source": "master",
+        "carried": true
+      },
+      {
+        "id": "naloxone_2mg",
+        "source": "master",
+        "carried": true
+      },
+      {
+        "id": "oral_glucose_gel",
+        "source": "master",
+        "carried": true
+      }
+    ]
+  },
+  "sops": [],
+  "ai_prompt_context": "This is a fire department first response unit without a dedicated EMS program. This unit does NOT transport patients — EMS is dispatched separately. Provide first responder medical care at the student's license level until EMS arrives. Follow base Michigan protocols for the student's provider level. No agency-specific SOPs or MCA BLS expansions are active."
+}

@@ -1,0 +1,1560 @@
+{
+  "_schema": "pfd_scenario_v1",
+  "id": "peds_diabetic_emergency_01",
+  "title": "Pediatric Diabetic Emergency — 8-Year-Old Male",
+  "display_title": "Pediatric Altered Mental Status — 8-Year-Old Male",
+  "subtitle": "8-Year-Old Male, Altered Mental Status",
+  "category": "pediatric_medical",
+  "category_display": "Pediatric Medical Assessment",
+  "turnover_target": "als",
+  "version": "1.0",
+  "rubric_template": "ems_standard_v1",
+  "call_type": "hypoglycemia",
+  "base_patient_care_rubric": "nremt_e202_medical_v1",
+  "difficulty": "beginner",
+  "protocol": "MI/04_OB_Pediatrics/04-4_altered_mental_status",
+  "jurisdiction": "mi_base",
+  "clinical_context": {
+    "jurisdiction": "MI",
+    "concepts": [
+      "pediatric_patient",
+      "altered_mental_status",
+      "hypoglycemia",
+      "blood_glucose",
+      "oxygen_therapy"
+    ],
+    "protocol_focus": [
+      "hypoglycemia",
+      "blood_glucose",
+      "oxygen_therapy"
+    ]
+  },
+  "agency_context": "",
+  "readiness_criteria": {
+    "min_minutes": 3,
+    "checks": [
+      {
+        "id": "messages",
+        "label": "5 messages sent",
+        "type": "message_count",
+        "min": 5
+      },
+      {
+        "id": "vitals",
+        "label": "Vitals assessed",
+        "type": "vitals_logged"
+      },
+      {
+        "id": "exam",
+        "label": "Exam/history obtained",
+        "type": "exam_logged"
+      },
+      {
+        "id": "treatment",
+        "label": "Treatment applied",
+        "type": "treatment_logged"
+      }
+    ]
+  },
+  "scene_entry_scoring": {
+    "ppe": {
+      "required": [
+        "gloves"
+      ],
+      "recommended": [
+        "eye_protection"
+      ],
+      "missing_required_penalty": 3,
+      "missing_recommended_penalty": 1,
+      "max_score": 10
+    },
+    "pat": {
+      "expected_impression": "sick",
+      "incorrect_impression_deduction": 2
+    }
+  },
+  "impression_challenge": {
+    "enabled": true,
+    "trigger_milestone": "primary_survey_complete",
+    "prompt": "Based on your initial assessment and blood glucose check, what is your primary clinical impression?",
+    "options": [
+      "Severe hypoglycemia / diabetic emergency",
+      "Postictal state after seizure",
+      "Head injury with altered mental status",
+      "Sepsis with altered mental status"
+    ],
+    "correct": "Severe hypoglycemia / diabetic emergency",
+    "acceptable": [
+      "Hypoglycemia",
+      "Diabetic emergency",
+      "Low blood sugar"
+    ]
+  },
+  "lung_sound_challenge": {
+    "enabled": true,
+    "required": false,
+    "audio_file": "/static/audio/lung sounds/clear.mp3",
+    "prompt": "Auscultate Marcus — what do you hear?",
+    "accepted_answers": [
+      "clear",
+      "clear bilateral",
+      "clear bilaterally",
+      "clear lung sounds",
+      "no adventitious sounds",
+      "good air movement",
+      "normal",
+      "equal air movement"
+    ],
+    "correct_choice_id": "clear",
+    "finding": "Clear bilaterally — equal air movement, no adventitious sounds",
+    "feedback_correct": "Correct — lung sounds are clear bilaterally. The respiratory concern in hypoglycemia is airway protection, not bronchospasm. A confused or deteriorating patient loses the ability to guard their airway — that's why swallowing assessment before oral glucose is critical.",
+    "feedback_incorrect": "Listen again — this patient's lungs are actually clear bilaterally. No wheeze, crackles, or stridor. The airway risk in a hypoglycemic child is aspiration if he loses consciousness after oral glucose administration — not a primary pulmonary problem."
+  },
+  "chat_placeholder": "Talk to Marcus, Mom (Diane), or partner Alex.",
+  "chat_address_hint": "Address by name: Marcus · Mom/Diane · Alex (partner/vitals)",
+  "debrief_lexi_hints": [
+    {
+      "label": "Next step?",
+      "msg": "What should I do next in this scenario?"
+    },
+    {
+      "label": "Diabetes?",
+      "msg": "What is diabetes?"
+    },
+    {
+      "label": "BLS scope?",
+      "msg": "What is within my BLS scope for a pediatric diabetic emergency?"
+    },
+    {
+      "label": "Type 1 vs 2?",
+      "msg": "What is the difference between type 1 and type 2 diabetes?"
+    },
+    {
+      "label": "Missing info?",
+      "msg": "What history or assessment information am I still missing?"
+    }
+  ],
+  "objectives": [
+    "Recognize altered mental status in a pediatric patient and apply the Pediatric Assessment Triangle",
+    "Obtain a focused history identifying Type 1 diabetes and insulin use as the likely etiology",
+    "Assess whether the patient meets criteria for oral glucose: altered, able to swallow, ≥ 3 months old, and BG < 60 when obtainable; for a known diabetic, small amounts may be considered if BG cannot be measured",
+    "Administer oral glucose correctly using the 6 Rights and medication cross-check protocol",
+    "Reassess GCS and mental status after oral glucose administration",
+    "Recognize when oral glucose is contraindicated, withhold oral medication, protect the airway, and request or hand off to ALS",
+    "Deliver a complete DMIST including glucose value, treatment given, and patient response"
+  ],
+  "dispatch": {
+    "unit": "{unit}",
+    "text": "{unit}, respond to 5512 Cedarwood Court for an 8-year-old male, altered mental status. Mother states the child is not acting right, seems confused.",
+    "priority": "Priority 1",
+    "time": "16:14",
+    "cross_streets": "Cedarwood Court and Pinehurst Drive",
+    "response_time_minutes": 4
+  },
+  "scene": {
+    "description": "You arrive at a split-level home on a quiet cul-de-sac. A woman opens the front door before you can knock — she waves you in urgently. You follow her to the kitchen where a boy is sitting slumped at the kitchen table, head down on his folded arms. A half-eaten after-school snack sits in front of him — crackers and an apple slice. A backpack is on the floor. He looks up briefly when you enter the room but makes no attempt to sit up or respond to you.",
+    "image": null,
+    "video": null,
+    "hazards": [],
+    "bystanders": [
+      {
+        "name": "Diane",
+        "relation": "mother",
+        "age": 41
+      }
+    ]
+  },
+  "patient": {
+    "name": "Marcus",
+    "age": 8,
+    "dob_month_day": "May 13",
+    "age_display": "8-year-old male",
+    "sex": "male",
+    "weight_kg": 27,
+    "weight_display": "60 lbs (approximately 27 kg — Broselow Orange)",
+    "pcr_demographics_deferred": true,
+    "chief_complaint": "Altered mental status — confusion, slurred speech, diaphoresis in a known Type 1 diabetic",
+    "general_impression": "8-year-old boy sitting slumped at the kitchen table. He is conscious but confused — glazed expression, slow to respond, speech is slurred and difficult to understand. He is diaphoretic — forehead and upper lip visibly sweaty despite cool indoor temperature. Skin is pale. He can make eye contact but cannot follow a multi-step command. He tries to answer questions but his words come out jumbled. He is NOT seizing. He is NOT combative. He can swallow — you observe him swallow spontaneously.",
+    "image": "/static/images/diabetic_8yom.jpeg",
+    "video": null,
+    "gcs_assessment": {
+      "e": 4,
+      "v": 4,
+      "m": 6,
+      "total": 14,
+      "rationale": "Eyes open spontaneously, verbal response is confused/slurred but conversational, and motor response obeys commands slowly.",
+      "challenge_description": "Marcus is sitting slumped at the kitchen table. His eyes are open without prompting. He is confused and slow to answer; speech is slurred/jumbled but conversational. He obeys simple commands slowly, such as squeezing a hand or sitting upright when asked.",
+      "acceptable": [
+        {
+          "e": 4,
+          "v": 3,
+          "m": 6,
+          "total": 13,
+          "rationale": "Also acceptable if the learner interprets the slurred, jumbled speech as inappropriate words rather than confused conversation."
+        }
+      ],
+      "after_interventions": [
+        {
+          "intervention": "oral_glucose",
+          "e": 4,
+          "v": 5,
+          "m": 6,
+          "total": 15,
+          "rationale": "After oral glucose begins working, Marcus is alert, oriented, conversational, and obeys commands.",
+          "challenge_description": "After oral glucose, Marcus is awake with eyes open, recognizes his mother, asks for food, answers orientation questions appropriately, and follows commands normally."
+        }
+      ],
+      "deterioration_descriptions": [
+        {
+          "gcs_below": 12,
+          "description": "Marcus is harder to keep engaged. He opens his eyes to voice, gives confused or inappropriate words, and localizes or follows only simple stimulation."
+        },
+        {
+          "gcs_below": 8,
+          "description": "Marcus is no longer protecting his airway reliably. He opens his eyes only to pain or not at all, makes incomprehensible sounds, and withdraws from painful stimulus."
+        }
+      ]
+    },
+    "avpu_assessment": {
+      "value": "verbal",
+      "description": "Patient responds to voice but is confused and has slurred speech. He is not fully alert or oriented.",
+      "rationale": "Use AVPU = verbal for this scenario because Marcus is altered, slow to respond, and not interacting normally despite being conscious.",
+      "after_interventions": [
+        {
+          "intervention": "oral_glucose",
+          "value": "alert",
+          "description": "Patient is alert and oriented, recognizes his mother, and asks for food.",
+          "rationale": "Oral glucose improves cerebral glucose delivery and resolves the altered mental status."
+        }
+      ]
+    },
+    "pat": {
+      "impression": "8-year-old boy slumped at the kitchen table — conscious but confused, glazed expression, diaphoretic. Skin pale. Slow to respond to your approach.",
+      "appearance": "Abnormal — conscious but significantly altered. Glazed expression, slow response, slurred speech, unable to follow multi-step commands. Makes eye contact but not interacting normally. Not limp, not seizing, not combative.",
+      "work_of_breathing": "Normal — unlabored, adequate rate and depth, no accessory muscle use or retractions. WOB is not a concern.",
+      "circulation": "Abnormal — pale, cool, diaphoretic. Forehead and upper lip visibly sweaty despite cool room. Pallor and diaphoresis indicate sympathetic surge from hypoglycemia.",
+      "expected": "sick",
+      "teaching": "Appearance and circulation are both abnormal — this is SICK. The altered mental status (confused, slurred, not following commands) combined with diaphoresis and pallor in a known diabetic is hypoglycemia until proven otherwise. The normal WOB helps distinguish this from respiratory illness. Key clinical point: check blood glucose immediately — this child can swallow and glucose gel or oral glucose is an option if BGL is confirmed low."
+    }
+  },
+  "history": {
+    "pmh": [
+      "Type 1 Diabetes Mellitus — diagnosed age 5",
+      "Uses insulin pump (Omnipod — tubeless patch pump on left upper arm)",
+      "No other medical history"
+    ],
+    "medications": [
+      "Insulin — continuous subcutaneous infusion via Omnipod pump (currently on left upper arm)",
+      "Prescribed Glucagon emergency kit (GlucaGen 1 mg) — in kitchen cabinet"
+    ],
+    "allergies": "NKDA",
+    "last_oral_intake": "Lunch at school approximately 4 hours ago — school lunch",
+    "events_leading_to_call": "Marcus came home from school about 20 minutes ago. Diane noticed immediately that he seemed off — stumbling slightly walking in, very quiet. When she tried to talk to him he gave confused answers and his speech seemed slurred. She sat him down at the kitchen table with a snack but he barely touched it. She checked his Omnipod pump app on her phone — it showed his CGM (continuous glucose monitor) reading 38 mg/dL and alarming. She tried to get him to drink juice, but he was confused and would not cooperate with drinking from the cup. She did NOT observe choking, gagging, vomiting, drooling, or inability to swallow; he has been swallowing his saliva. She called 911. He has had two prior hypoglycemic episodes — both resolved with juice at home. This one is worse than before."
+  },
+  "initial_complaint": {
+    "speaker": "Diane",
+    "lay_summary": "Marcus seems confused. I am worried.",
+    "allowed_in_opener": true,
+    "do_not_include": [
+      "diabetes history",
+      "CGM reading",
+      "timeline",
+      "slurred speech",
+      "prior episodes",
+      "medications",
+      "oral intake",
+      "treatment attempts",
+      "diagnosis",
+      "clinical terms",
+      "treatment suggestions",
+      "full OPQRST/SAMPLE"
+    ]
+  },
+  "history_response_map": {
+    "chief_concern": {
+      "label": "Broad opener / chief concern",
+      "speaker": "Diane",
+      "triggers": [
+        "what's going on",
+        "what happened",
+        "why did you call",
+        "how can we help",
+        "chief complaint",
+        "what's his chief complaint",
+        "what is his chief complaint"
+      ],
+      "answer": "Marcus seems confused. I am worried.",
+      "tags": [
+        "[[HISTORY: Patient Name=Marcus]]",
+        "[[HISTORY: Patient Chief Complaint=acting strange and confused]]"
+      ],
+      "notes": "Patient-scoped complaint only. Diane's fear or request for help is not the patient's chief complaint.",
+      "do_not_include": [
+        "diabetes history",
+        "CGM reading",
+        "timeline",
+        "slurred speech",
+        "prior episodes",
+        "medications",
+        "oral intake",
+        "family or bystander complaints",
+        "treatment suggestions"
+      ]
+    },
+    "patient_identity": {
+      "label": "Patient identity / demographics",
+      "triggers": [
+        "what is his name",
+        "what's his name",
+        "patient name",
+        "who is he",
+        "how old is he"
+      ],
+      "answer": "His name is Marcus. He's 8 years old.",
+      "tags": [
+        "[[HISTORY: Patient Name=Marcus]]",
+        "[[HISTORY: Patient Age=8-year-old male]]"
+      ],
+      "notes": "Patient-scoped demographics only. Do not emit name, DOB, or age tags for Diane or other family/bystanders.",
+      "do_not_include": [
+        "weight unless asked",
+        "family or bystander demographics",
+        "diabetes history unless asked",
+        "treatment suggestions"
+      ]
+    },
+    "patient_dob": {
+      "label": "Patient date of birth",
+      "speaker": "Diane",
+      "triggers": [
+        "date of birth",
+        "dob",
+        "birth date",
+        "birthday",
+        "when was he born"
+      ],
+      "answer": "Marcus is 8 years old. His birthday is May 13.",
+      "tag": "[[HISTORY: Patient Date of Birth=May 13]]",
+      "notes": "Use a month/day birthday answer for spoken dialogue; the UI derives the PCR DOB year from the authored patient age at runtime.",
+      "do_not_include": [
+        "family or bystander demographics",
+        "diabetes history unless asked",
+        "treatment suggestions"
+      ]
+    },
+    "patient_weight": {
+      "label": "Patient weight",
+      "triggers": [
+        "how much does he weigh",
+        "what does he weigh",
+        "patient weight",
+        "weight",
+        "broselow",
+        "broslow"
+      ],
+      "answer": "He weighs about 60 pounds, around 27 kilograms.",
+      "tag": "[[HISTORY: Patient Weight=60 lbs (approximately 27 kg — Broselow Orange)]]",
+      "notes": "Patient-scoped weight only. Do not use this tag for parent, family, caregiver, or bystander weight.",
+      "do_not_include": [
+        "family or bystander demographics",
+        "diabetes history unless asked",
+        "treatment suggestions"
+      ]
+    },
+    "sample_full": {
+      "label": "Full SAMPLE history",
+      "speaker": "Diane",
+      "triggers": [
+        "signs and symptoms allergies medications medical history last oral intake events",
+        "signs and symptoms allergies medications past medical history last oral intake events",
+        "signs or symptoms allergies medications past medical history last oral intake events leading up to",
+        "sample",
+        "full sample",
+        "complete sample"
+      ],
+      "answer": "He's confused with slurred speech and he's sweaty and pale. No known allergies. He uses insulin through an Omnipod pump on his left upper arm, and he has a glucagon emergency kit in the kitchen cabinet. He has Type 1 Diabetes Mellitus and no other medical problems. He ate lunch at school about four hours ago and barely touched the snack I gave him after he got home. He came home from school about 20 minutes ago acting strange; the CGM alarm showed about 38 mg/dL, and I tried juice but he was too confused to cooperate with drinking. No fall, seizure, choking, vomiting, or suspected ingestion.",
+      "tags": [
+        "[[HISTORY: Signs and Symptoms=confusion, slurred speech, diaphoresis, pallor]]",
+        "[[HISTORY: Allergies=NKDA]]",
+        "[[HISTORY: Medications=insulin via Omnipod pump on left upper arm; prescribed glucagon emergency kit in kitchen cabinet]]",
+        "[[HISTORY: PMH=Type 1 Diabetes Mellitus, diagnosed age 5; no other known medical problems]]",
+        "[[HISTORY: Last Oral Intake=lunch at school approximately 4 hours ago; barely touched after-school snack]]",
+        "[[HISTORY: Events=came home from school about 20 minutes ago acting strange; CGM alarm about 38 mg/dL; mother attempted juice but he was too confused to cooperate; no fall, seizure, choking, vomiting, or suspected ingestion]]"
+      ],
+      "notes": "Priority entry — use this response whenever the learner asks about multiple SAMPLE components together, especially when signs/symptoms, allergies, medications, medical history, last oral intake, or events are included together. Prefer this entry over narrower diabetes_history when the question spans more than PMH.",
+      "do_not_include": [
+        "treatment suggestions",
+        "vital-sign tag",
+        "EMS finger-stick value unless Alex checks it"
+      ]
+    },
+    "onset_time": {
+      "label": "OPQRST onset / time course",
+      "speaker": "Diane",
+      "triggers": [
+        "when did this start",
+        "when did it start",
+        "when did he start acting strange",
+        "how long has this been going on",
+        "how long has he been like this",
+        "time course",
+        "onset",
+        "duration"
+      ],
+      "answer": "He started acting strange right after we got home from school — about 20 minutes ago, when the pump's CGM alarm went off.",
+      "tags": [
+        "[[HISTORY: Onset=about 20 minutes ago when he arrived home and CGM alarmed low]]",
+        "[[HISTORY: Time=approximately 20 minutes, persistent until treatment]]"
+      ],
+      "notes": "Standalone onset/time-course entry. Use this when the learner asks only when symptoms started or how long they have been present.",
+      "do_not_include": [
+        "full SAMPLE unless asked",
+        "EMS finger-stick value unless Alex checks it",
+        "treatment suggestions"
+      ]
+    },
+    "diabetes_history": {
+      "label": "SAMPLE PMH / diabetes history",
+      "triggers": [
+        "is he diabetic",
+        "is she diabetic",
+        "diabetic",
+        "does he have diabetes",
+        "does she have diabetes",
+        "diabetes",
+        "type 1",
+        "type one",
+        "past medical",
+        "medical history",
+        "pmh",
+        "any conditions",
+        "any history",
+        "past history"
+      ],
+      "answer": "Yes, Marcus has Type 1 Diabetes Mellitus.",
+      "tag": "[[HISTORY: PMH=Type 1 Diabetes Mellitus, diagnosed age 5]]",
+      "do_not_include": [
+        "CGM reading unless asked",
+        "insulin pump details unless asked",
+        "oral intake",
+        "treatment suggestions"
+      ]
+    },
+    "cgm_reading": {
+      "label": "Historical CGM / pump-app reading",
+      "speaker": "Diane",
+      "triggers": [
+        "what was his last blood sugar",
+        "what was his last glucose",
+        "last blood sugar",
+        "last glucose",
+        "what was the reading",
+        "what was it reading",
+        "what did the cgm say",
+        "what did the pump say",
+        "what did the omnipod say",
+        "cgm reading",
+        "pump reading",
+        "omnipod reading",
+        "what was his sugar",
+        "what was his glucose",
+        "blood sugar reading",
+        "glucose reading"
+      ],
+      "answer": "The pump's CGM alarm went off at about 38 mg/dL a little while ago.",
+      "tag": "[[HISTORY: CGM Reading=38 mg/dL alarm about 20 minutes ago]]",
+      "notes": "This is a caregiver-reported historical device reading, not an EMS-obtained vital sign. Do not emit a VITAL tag or treat it as an on-scene finger-stick blood glucose.",
+      "do_not_include": [
+        "finger-stick or glucometer result unless the learner asks Alex to check one",
+        "vital-sign tag",
+        "treatment suggestions"
+      ]
+    }
+  },
+  "vitals": {
+    "baseline": {
+      "hr": {
+        "value": 112,
+        "unit": "bpm",
+        "label": "Heart Rate"
+      },
+      "rr": {
+        "value": 18,
+        "unit": "breaths/min",
+        "label": "Resp Rate"
+      },
+      "spo2": {
+        "value": 99,
+        "unit": "%",
+        "label": "SpO2"
+      },
+      "bp": {
+        "value": "96/58",
+        "unit": "mmHg",
+        "label": "Blood Pressure",
+        "numeric": false
+      },
+      "temp": {
+        "value": 98.4,
+        "unit": "°F",
+        "label": "Temperature"
+      },
+      "gcs": {
+        "value": 14,
+        "unit": "",
+        "label": "GCS",
+        "detail": "E4V4M6 — eyes open spontaneously, confused/slurred but conversational, obeys commands slowly"
+      },
+      "blood_glucose": {
+        "value": 38,
+        "unit": "mg/dL",
+        "label": "Blood Glucose",
+        "detail": "Initially severely low; expected to rise after oral glucose if the patient can swallow safely."
+      },
+      "skin_color": {
+        "value": "Pale, cool, diaphoretic — forehead and upper lip visibly sweaty",
+        "numeric": false,
+        "label": "Skin"
+      },
+      "cap_refill": {
+        "value": 2.0,
+        "unit": "sec",
+        "label": "Cap Refill"
+      },
+      "pupils": {
+        "value": "PERRL 4 mm bilaterally — equal and reactive",
+        "numeric": false,
+        "label": "Pupils"
+      },
+      "lung_sounds": {
+        "value": "Clear bilaterally — equal air movement, no adventitious sounds",
+        "numeric": false,
+        "label": "Lung Sounds"
+      },
+      "work_of_breathing": {
+        "value": "Unlabored — adequate rate and depth, no accessory muscle use",
+        "numeric": false,
+        "label": "Work of Breathing"
+      }
+    },
+    "deterioration": {
+      "note": "Without glucose: BG continues to fall, GCS worsens progressively. If oral glucose is given while patient can swallow (GCS ≥ 12), GCS improves. If BG drops further before treatment, patient becomes unresponsive and oral glucose becomes contraindicated — ALS dextrose IV required.",
+      "rates": {
+        "gcs": -0.25,
+        "hr": 0.3,
+        "spo2": 0.0,
+        "rr": 0.0,
+        "blood_glucose": -2.0,
+        "cap_refill": 0.0
+      },
+      "caps": {
+        "hr": {
+          "max": 150,
+          "min": 80
+        },
+        "rr": {
+          "max": 28,
+          "min": 12
+        },
+        "spo2": {
+          "min": 90,
+          "max": 100
+        },
+        "gcs": {
+          "min": 3,
+          "max": 15
+        },
+        "blood_glucose": {
+          "min": 20,
+          "max": 250
+        }
+      },
+      "string_thresholds": {
+        "skin_color": [
+          {
+            "gcs_below": 10,
+            "value": "Pale, ashen, profusely diaphoretic — deteriorating perfusion"
+          },
+          {
+            "gcs_below": 7,
+            "value": "Ashen, cool, mottled — pre-arrest appearance"
+          }
+        ],
+        "work_of_breathing": [
+          {
+            "gcs_below": 8,
+            "value": "Inadequate — shallow, irregular, airway protection at risk"
+          }
+        ]
+      }
+    },
+    "interventions": {
+      "blood_glucose_check": {
+        "label": "Blood Glucose Check — Fingerstick (glucometer)",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "blood glucose",
+          "\\bbgl\\b",
+          "\\bbg\\b",
+          "glucometer",
+          "finger.?stick",
+          "check.*glucose",
+          "glucose.*check",
+          "blood sugar"
+        ],
+        "effects": {},
+        "notes": "Protocol-indicated assessment for altered mental status and suspected diabetic emergency. Confirms hypoglycemia before oral glucose when the patient can swallow."
+      },
+      "oral_glucose": {
+        "label": "Oral glucose gel administered",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "oral glucose",
+          "glucose gel",
+          "insta.?glucose",
+          "glutose",
+          "give.*glucose",
+          "administer.*glucose",
+          "oral.*sugar"
+        ],
+        "effects": {
+          "gcs": {
+            "immediate_change": 1,
+            "rate_modifier": 0.0
+          },
+          "blood_glucose": {
+            "immediate_change": 32,
+            "rate_modifier": -3.0
+          }
+        },
+        "notes": "Oral glucose is the definitive BLS treatment for hypoglycemia when the patient can swallow. GCS ≥ 12 required for safe administration. Administer gel between cheek and gum — have suction immediately available. Reassess every 5 minutes. Notify ALS of administration and response. blood_glucose rate_modifier is -3.0 intentionally: base deterioration rate is -2.0/min, so multiplier -3.0 yields -2.0 × -3.0 = +6.0/min net rise post-treatment.",
+        "requires_popup": true,
+        "popup_type": "medication",
+        "popup_config": {
+          "drug": "Oral Glucose Gel",
+          "concentration": "15 g per tube (e.g., Glutose 15 / Insta-Glucose)",
+          "dose": "One tube (15 g) — not weight-based",
+          "route": "PO — between inner cheek and lower gum; allow to dissolve",
+          "scope": "EMT — BLS scope per protocol",
+          "drug_ref": "MI/09_Medications/9-19S_oral_glucose",
+          "cross_check_notice": "5-rights cross-check: verbally state drug name and dose to your partner before administering.",
+          "cross_checks": [
+            {
+              "label": "Right Patient — altered AND able to swallow AND ≥ 3 months old AND BG < 60 mg/dL (or strongly suspected hypoglycemia)",
+              "right": "patient"
+            },
+            {
+              "label": "Right Medication — label reads 'Oral Glucose Gel' (e.g., Glutose 15 or Insta-Glucose); check expiration date",
+              "right": "medication"
+            },
+            {
+              "label": "Right Dose — one tube (15 g); dose is NOT weight-based for oral glucose gel",
+              "right": "dose"
+            },
+            {
+              "label": "Right Route — oral (PO); patient can swallow safely — gag reflex intact, no active vomiting, not seizing",
+              "right": "route"
+            },
+            {
+              "label": "Right Time — BG confirmed or strongly suspected < 60 mg/dL; patient currently able to protect airway",
+              "right": "time"
+            },
+            {
+              "label": "Medication cross-check verbalized — stated drug name and dose to partner (per protocol)",
+              "right": "crosscheck"
+            }
+          ],
+          "procedure_steps": [
+            "Confirm patient can swallow — ask them to swallow, check for gag reflex, confirm not seizing",
+            "Position patient upright or sitting — never administer supine if avoidable",
+            "Have suction immediately available before administering",
+            "Open glucose gel tube",
+            "Place gel between inner cheek and lower gum (buccal) — allow to dissolve; or have patient sip from tube if alert enough",
+            "Remain at bedside — monitor for vomiting, aspiration, or decreasing LOC after administration",
+            "Reassess GCS and mental status every 5 minutes",
+            "Notify Medic 2 of administration time, amount, and patient response"
+          ]
+        }
+      },
+      "o2_supplemental": {
+        "label": "Supplemental O2 — nasal cannula",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "\\bnasal\\s+cannula\\b",
+          "\\bnc\\b.*o2",
+          "oxygen.*cannula",
+          "nasal cannula",
+          "supplemental.*o2",
+          "supplemental.*oxygen",
+          "low.?flow.*o2",
+          "give.*o2",
+          "apply.*o2",
+          "apply.*oxygen"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 0,
+            "rate_modifier": 1.0
+          }
+        },
+        "notes": "SpO2 is 99%. Low-flow NC at 2–4 LPM is acceptable supportive care. NRB is not appropriate for a patient with normal SpO2 and no respiratory distress.",
+        "requires_popup": true,
+        "popup_type": "oxygen",
+        "popup_default": {
+          "device": "nc",
+          "flow": 2
+        }
+      },
+      "o2_nrb": {
+        "label": "High-flow O2 via NRB mask (15 LPM)",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "\\bnrb\\b",
+          "non.?rebreather",
+          "high.?flow.*o2",
+          "15\\s*lpm",
+          "non rebreather"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 0,
+            "rate_modifier": 1.0
+          }
+        },
+        "notes": "High-flow O2 delivery option for hypoxia or respiratory compromise.",
+        "indication_gate": {
+          "status": "not_indicated_now",
+          "reason": "NRB is not indicated — SpO2 is 99% with no respiratory distress. NRB is for hypoxia or respiratory compromise, not routine use.",
+          "allowed_when": [
+            "hypoxia",
+            "respiratory_distress",
+            "spo2_below_94"
+          ]
+        },
+        "requires_popup": true,
+        "popup_type": "oxygen",
+        "popup_default": {
+          "device": "nrb",
+          "flow": 15
+        }
+      },
+      "positioning": {
+        "label": "Position of comfort — sitting upright",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "sit.*up",
+          "upright",
+          "position of comfort",
+          "keep.*sitting",
+          "recovery position",
+          "lateral.*recumbent",
+          "side.*position"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 0,
+            "rate_modifier": 1.0
+          }
+        },
+        "notes": "Keep patient seated upright for oral glucose administration. If LOC decreases to GCS < 10, shift to recovery position (lateral) to protect the airway."
+      },
+      "als_intercept": {
+        "label": "ALS intercept acknowledged",
+        "within_bls_scope": true,
+        "detection_patterns": [],
+        "effects": {},
+        "notes": "ALS/intercept expectations are determined by the active agency configuration. ALS will confirm blood glucose, establish IV access, and can administer IV dextrose if the patient deteriorates beyond the ability to safely swallow."
+      }
+    },
+    "improvement": {
+      "note": "With oral glucose administered, GCS improves progressively as blood glucose rises. Diaphoresis resolves, patient becomes more alert and oriented. Full recovery expected over 10-20 minutes.",
+      "requires_intervention": "oral_glucose",
+      "string_thresholds": {
+        "skin_color": [
+          {
+            "gcs_above": 14,
+            "value": "Pink, warm, dry — diaphoresis resolved, normal color returning"
+          },
+          {
+            "gcs_above": 12,
+            "value": "Improving — less pale, diaphoresis decreasing, color better than initial"
+          }
+        ],
+        "work_of_breathing": [
+          {
+            "gcs_above": 13,
+            "value": "Unlabored — adequate, airway protective reflexes intact"
+          }
+        ]
+      },
+      "presentation_milestones": [
+        {
+          "gcs_above": 14,
+          "text": "Marcus is noticeably better. He sits up on his own and looks around the kitchen with genuine awareness. His speech is clearer now — he asks 'What happened?' and 'Why are you here?' His forehead is dry. Diane clutches her hands together: 'Oh thank God — Marcus, baby, you scared me.' He looks embarrassed and slightly annoyed. He says he's hungry. His skin is pink and warm."
+        },
+        {
+          "gcs_above": 13,
+          "text": "Marcus is coming around. He makes better eye contact now and is answering questions with short but coherent sentences. He's still confused about what happened but is tracking your questions and responding appropriately. Diane says 'He's talking — that's better than a few minutes ago.' Diaphoresis is decreasing."
+        },
+        {
+          "gcs_above": 12,
+          "text": "Marcus shows early improvement — he lifts his head and tries to answer questions more clearly, though his speech is still a bit slow. He makes consistent eye contact. Diaphoresis is slightly less than on arrival. Diane: 'Is he getting better? He looks a little better.' The glucose gel is having an effect."
+        }
+      ]
+    }
+  },
+  "standard_exam_findings": {
+    "dcap_btls_head_neck": {
+      "label": "DCAP-BTLS Head/Neck",
+      "exam_key": "DCAP-BTLS Head/Neck",
+      "aliases": [
+        "DCAP-BTLS head",
+        "DCAP-BTLS neck",
+        "head and neck trauma screen",
+        "inspect and palpate head",
+        "scalp assessment"
+      ],
+      "finding": "no deformity, contusion, abrasion, puncture, burn, tenderness, laceration, or swelling noted",
+      "notes": "Use when the learner rules out trauma as a cause of altered mental status. Do not invent head injury findings in this hypoglycemia scenario."
+    },
+    "skin_assessment": {
+      "label": "Skin",
+      "exam_key": "Skin",
+      "aliases": [
+        "skin assessment",
+        "skin color",
+        "skin temperature",
+        "skin moisture",
+        "assess skin"
+      ],
+      "finding": "pale, cool, diaphoretic skin with visible sweating on the forehead and upper lip",
+      "notes": "This is a clinically important hypoglycemia finding and should be documented consistently when asked."
+    }
+  },
+  "personas": {
+    "patient": {
+      "name": "Marcus",
+      "age": 8,
+      "role": "patient",
+      "sex": "male",
+      "aliases": [
+        "Marcus",
+        "buddy",
+        "the patient",
+        "the boy",
+        "the child"
+      ],
+      "tts": {
+        "enabled": true,
+        "voice_role": "patient",
+        "gender": "male",
+        "age_band": "child",
+        "provider_voice": "alloy",
+        "speed": 0.98,
+        "demeanor": "8-year-old American boy who is sleepy, weak, confused, mildly scared, and embarrassed; more alert after glucose but still tired",
+        "delivery": "quiet child voice with slow, slightly slurred, uneven phrases before treatment; after glucose, speak clearer but still subdued and worn out",
+        "avoid": "do not sound calm and adult, flat, like an adult man, narrator, clinician, parent, performer, energetic child, or like you have a British or English accent"
+      },
+      "description": "8-year-old boy with severe hypoglycemia. He is conscious and sitting at the kitchen table but significantly altered — confused, slow, slurred speech. He can make eye contact and respond to direct questions but his answers are slow, jumbled, and often don't make sense. He can swallow — he does so spontaneously. He is not combative. He is NOT seizing. As glucose is administered and blood sugar rises, he becomes progressively more alert and coherent. He is embarrassed once he recovers.",
+      "speaking_style": "Slow, slurred, confused. Short incomplete responses — 'I dunno', 'huh?', 'I'm okay', 'I want to go to bed'. Cannot provide medical history. May say 'I'm cold' or 'I feel weird'. As he recovers: short but coherent sentences — 'What happened?', 'I'm hungry', 'I don't feel good'. Never speaks in full paragraphs.",
+      "what_they_know": [
+        "He knows he has diabetes — he may say 'I have diabetes' if asked directly",
+        "He knows he wears a pump on his arm",
+        "He cannot tell you his BG or pump settings",
+        "He knows he came home from school"
+      ],
+      "what_they_dont_know": "Anything else medically. He is too altered to provide useful history on arrival."
+    },
+    "mother_diane": {
+      "name": "Diane",
+      "age": 41,
+      "role": "family",
+      "relation": "mother",
+      "sex": "female",
+      "aliases": [
+        "Diane",
+        "mom",
+        "mother",
+        "ma'am"
+      ],
+      "tts": {
+        "enabled": true,
+        "voice_role": "bystander",
+        "gender": "female",
+        "age_band": "adult",
+        "provider_voice": "coral",
+        "speed": 1.26,
+        "demeanor": "frightened mother trying to stay composed while her child is confused and hypoglycemic; protective, urgent, tense, and shaky",
+        "delivery": "speak faster than normal with worried urgency and a noticeable tremble; answer directly but emotionally, then soften with audible relief when Marcus improves",
+        "avoid": "do not sound calm, flat, level, detached, clinical, physically ill, short of breath, sedated, playful, theatrical, or like the patient"
+      },
+      "description": "Marcus's mother. Anxious but composed — she has managed Marcus's diabetes for 3 years and has seen low blood sugar before, but this episode is worse than prior ones and she is frightened. She knows his history and device settings in detail. She is cooperative and will answer every question directly. She may ask emotionally, 'Can you help him?' She knows where his diabetes supplies are but will not recommend care steps. She is relieved as Marcus improves. Important: Diane must not say Marcus cannot swallow; if asked about juice, explain that he was confused and would not cooperate with drinking from the cup, but she has not seen choking, gagging, vomiting, drooling, or inability to swallow.",
+      "speaking_style": "Anxious but coherent. Speaks quickly. Answers targeted questions directly but does not dump details unprompted. May ask: 'His pump read low — is that why he's like this?' or 'He's never been this bad before.' Will visibly relax as Marcus improves.",
+      "what_she_knows": [
+        "Marcus was diagnosed with Type 1 Diabetes at age 5",
+        "He uses an Omnipod tubeless insulin pump on his left upper arm — the pod is currently active",
+        "His CGM (continuous glucose monitor, integrated in the Omnipod system) alarmed at 38 mg/dL about 20 minutes ago",
+        "She attempted to give him apple juice, but he was confused and would not cooperate with drinking from the cup",
+        "She has not seen choking, gagging, vomiting, drooling, or inability to swallow; he has been swallowing his saliva",
+        "He came home from school about 20 minutes ago — seemed off immediately on walking in",
+        "He had lunch at school about 4 hours ago — she doesn't know exactly what he ate",
+        "He had PE class today — she thinks extra physical activity may have caused the drop",
+        "He has had two prior hypoglycemia episodes at home — both resolved with juice",
+        "This episode is worse than previous ones — he was more confused on arrival",
+        "He has a prescribed GlucaGen 1 mg glucagon emergency kit in the kitchen cabinet above the refrigerator — she will mention this if asked about medications or if the student asks about the glucagon kit",
+        "No known drug allergies",
+        "His endocrinologist is Dr. Kim at Spectrum Health Pediatric Endocrinology",
+        "No other medical conditions — no prior ER visits for diabetes",
+        "He weighs about 60 pounds — weighed at his last endo appointment 3 weeks ago",
+        "The insulin pump was programmed 3 days ago at his last appointment — she doesn't think it malfunctioned"
+      ]
+    },
+    "partner": {
+      "name": "Alex",
+      "role": "ems_partner",
+      "sex": "male",
+      "aliases": [
+        "Alex",
+        "partner",
+        "crew"
+      ],
+      "tts": {
+        "enabled": true,
+        "voice_role": "alex",
+        "gender": "male",
+        "age_band": "adult",
+        "provider_voice": "echo",
+        "speed": 1.32,
+        "demeanor": "calm, competent EMT partner; focused, practical, alert, and reassuring",
+        "delivery": "brisk field-report style with clear vitals and actions; concise, engaged pace with no extra explanation",
+        "avoid": "do not sound flat, like a narrator, instructor, parent, or patient"
+      },
+      "description": "Your EMT partner on Squad 1. Professional and calm. Alex can check the blood glucose or observe the Omnipod CGM reading on the app if directed. Alex can assist with all BLS interventions and will note the glucagon kit if the student asks about it. Alex supports the student's decisions without leading. DEFAULT OXYGEN RULE: If student gives any generic oxygen command without specifying a method, apply NC by default — this patient has SpO2 99% with no respiratory distress; NRB is not indicated. Only apply NRB if student explicitly requests it. Never describe two delivery methods in the same response.",
+      "speaking_style": "Professional, brief, calm. Reports vitals in EMS format. If asked about the glucagon kit: 'Glucagon IM is Paramedic scope — let's see if he can take the oral glucose first.'",
+      "capabilities": [
+        "Report individual vitals or full vital set when asked",
+        "Assist with oral glucose administration when directed",
+        "Apply O2 via NC when directed",
+        "Checks BG level with glucometer when directed",
+        "Observe and read CGM value from Diane's phone when directed",
+        "Note glucagon kit location if student asks about it",
+        "Prepare BVM if directed",
+        "Reassess mental status and report changes",
+        "Notify dispatch of patient status and updates when directed"
+      ],
+      "persona_rules": [
+        "When student gives any generic oxygen command, default to NC — NRB is not indicated with SpO2 99% and no respiratory distress",
+        "Never describe two mutually exclusive oxygen delivery methods in the same response"
+      ]
+    }
+  },
+  "correct_treatment": {
+    "critical_actions": [
+      {
+        "id": "scene_safety",
+        "description": "Ensure scene safety and BSI/PPE prior to patient contact",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "pat_assessment",
+        "description": "Pediatric Assessment Triangle — Appearance (altered, confused, not interactive), Work of Breathing (unlabored, adequate), Circulation to Skin (pale, diaphoretic, cool)",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "history_diabetes",
+        "description": "Obtain history identifying Type 1 diabetes, insulin pump use, and CGM glucose reading of 38 mg/dL as the likely etiology",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)((diabet|type\\s*1|t1d).{0,120}(insulin|pump|cgm|blood\\s*sugar|low\\s*sugar|hypoglyc)|(?:insulin|pump|cgm|blood\\s*sugar|low\\s*sugar|hypoglyc).{0,120}(diabet|type\\s*1|t1d)|cgm.{0,40}(38|low|hypoglyc))"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "swallow_assessment",
+        "description": "Assess patient's ability to swallow safely before administering oral glucose — confirm GCS ≥ 12, gag reflex present, not seizing, not vomiting",
+        "required": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(swallow|swallowing|gag|vomit|seiz|chok|protect.*airway|able to take|can take|can safely take|\\bAVPU\\b|\\bLOC\\b|level of consciousness|\\bGCS\\b|\\balert\\b|\\bconscious\\b)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "oral_glucose",
+        "description": "Oral glucose gel administered",
+        "required": true,
+        "protocol_indicated": true,
+        "intervention_ids": [
+          "oral_glucose"
+        ],
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(oral.*glucose|glucose.*gel|instaglucose|dextrose.*gel|sugar.*gel|give.*glucose)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "repeat_vitals",
+        "description": "Reassess GCS and mental status after oral glucose administration — document response and continue every 5 minutes",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(reassess|repeat.*vital|check.*again|mental.*status|gcs|after.*glucose|after.*treatment|response)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "blood_glucose_check",
+        "description": "Check and document on-scene blood glucose with a glucometer when available",
+        "required": true,
+        "evidence": {
+          "finding_types": [
+            "vital"
+          ],
+          "finding_key_patterns": [
+            "(?i)blood.glucose|blood.sugar|bgl|glucometer|finger.?stick"
+          ],
+          "transcript_patterns": [
+            "(?i)(blood glucose|blood sugar|glucometer|finger.?stick|\\bbgl\\b|\\bbg\\b|check.*sugar|check.*glucose|check.*blood)"
+          ],
+          "min_matches": 1
+        }
+      }
+    ],
+    "recommended_actions": [
+      {
+        "id": "glucagon_awareness",
+        "description": "Recognize oral glucose is contraindicated if the patient cannot swallow — withhold oral medication, protect the airway, and request or hand off to ALS",
+        "required": false
+      },
+      {
+        "id": "suction_ready",
+        "description": "Prepare suction before and during oral glucose administration — vomiting and aspiration risk if LOC decreases after gel",
+        "required": false
+      },
+      {
+        "id": "monitor_pump",
+        "description": "Note insulin pump location (left upper arm) and report to ALS — pump may need to be suspended pending endocrinology guidance",
+        "required": false
+      }
+    ],
+    "out_of_scope_bls": [
+      "glucagon_im_in",
+      "iv_io_access",
+      "dextrose_iv_io",
+      "insulin_pump"
+    ],
+    "out_of_scope_aemt": [
+      "Glucagon IM/IN administration (Paramedic scope)",
+      "Insulin pump programming or suspension (endocrinology/ALS decision)"
+    ],
+    "clinical_decision_points": {
+      "als_trigger": "ALS/intercept expectations are determined by the active agency configuration. Notify ALS if patient deteriorates below GCS 12 — oral glucose becomes contraindicated and IV dextrose is required.",
+      "oral_glucose_window": "Administer while GCS ≥ 12 and patient can swallow. If GCS drops to ≤ 10 before treatment — oral glucose is contraindicated. Position laterally, maintain airway, and wait for ALS for IV dextrose.",
+      "glucagon_decision": "Glucagon kit is in the home and is prescribed to Marcus. Glucagon IM is Paramedic scope. BLS cannot administer IM glucagon. Baqsimi (glucagon IN) — if prescribed — is an EMT-assist skill, but this kit is GlucaGen (IM), not Baqsimi.",
+      "destination": "Nearest appropriate emergency department with pediatric capability — all hypoglycemia patients should be evaluated"
+    }
+  },
+  "scoring": {
+    "overall_considerations": [
+      "Primary focus: recognition of hypoglycemia as the etiology, safe swallowing assessment, and timely oral glucose administration — this is the critical BLS intervention in this scenario.",
+      "Patient weight is known (60 lbs/~27 kg) — Broselow tape NOT required.",
+      "Blood glucose check (BG 38 mg/dL per CGM confirmed by finger stick) is an expected and critical assessment — credit if performed or clearly indicated as planned.",
+      "Swallowing assessment MUST be documented before oral glucose administration — this is a patient safety step and a protocol requirement.",
+      "Oral glucose administration criteria: altered mental status + able to swallow safely + age ≥ 3 months + BG < 60 mg/dL when obtainable. Per MI protocol, for a known diabetic, consider small amounts of oral glucose if unable to measure blood glucose level.",
+      "Glucagon IM (GlucaGen kit present in home) is Paramedic scope — do NOT penalize EMT or AEMT for not administering it, and do not require BLS learners to recommend ALS medication selection.",
+      "Reassessment of GCS/mental status every 5 minutes after oral glucose is a protocol requirement — credit for documented reassessment with response noted.",
+      "Insulin pump (Omnipod) should be noted and reported to ALS — location and presence are relevant for ALS and endocrinology."
+    ],
+    "dmist_considerations": [
+      "D: Should clearly identify pediatric hypoglycemia in a known Type 1 diabetic — include BG value (38 mg/dL) and source (CGM confirmed by finger stick).",
+      "M: Age, weight, Type 1 DM, insulin pump (Omnipod), high PE activity today without adequate carbohydrate compensation, CGM alarming.",
+      "I: Oral glucose administered — dose, time, route, and patient response (GCS trend, ability to follow commands). Glucagon IM deferred (Paramedic scope).",
+      "S: Current GCS/mental status, BG trend if reassessed, SpO2, HR — particularly GCS trajectory post-oral glucose.",
+      "T: Current patient status and response to treatment at time of ALS report, insulin pump on board, disposition.",
+      "Conciseness is a strength — the BG value and oral glucose administration time/response are the most critical DMIST elements.",
+      "Noting ALS arrival NOT required."
+    ],
+    "narrative_considerations": [
+      "Do NOT require medications, allergies, complete vital sign tables, or full PMH — these belong in other PCR fields.",
+      "Narrative should capture: altered mental status in known Type 1 diabetic, blood glucose of 38 mg/dL, swallowing assessment confirmed, oral glucose administered, patient response, and disposition.",
+      "Swallowing assessment should be documented in the narrative — it is a protocol step and a clinical decision point.",
+      "Evaluate objectivity: flag vague descriptions (e.g., 'patient was confused') and suggest objective replacements (e.g., 'patient made eye contact but speech was slurred and patient unable to follow multi-step commands; GCS 14').",
+      "Evaluate accuracy: BG value, oral glucose dose, and GCS trajectory should be consistent with simulation findings."
+    ],
+    "dmist_components": {
+      "D": {
+        "description": "Patient demographics — pediatric hypoglycemia in a known Type 1 diabetic",
+        "required_elements": [
+          "name: Marcus",
+          "age: 8-year-old",
+          "weight: 27 kg or 60 lbs",
+          "Type 1 DM",
+          "insulin pump (Omnipod)"
+        ],
+        "corroboration_source": "scenario_patient_fields"
+      },
+      "M": {
+        "description": "Mechanism — why hypoglycemia occurred",
+        "required_elements": [
+          "Type 1 DM / known diabetic",
+          "CGM alarm or BG reading (~38 mg/dL)",
+          "precipitating context (PE activity, missed snack, or similar)"
+        ],
+        "scoring_note": "Primary M elements for hypoglycemia: known diabetes context (type 1 diabetes, insulin pump, prior episodes) and the BGL finding (~38 mg/dL) that confirms hypoglycemia. Precipitating context (PE activity, missed snack) is supplementary — its absence alone does not reduce M when both primary elements are present.",
+        "corroboration_source": "any"
+      },
+      "I": {
+        "description": "Illness details — hypoglycemia presentation, onset context, and relevant medical history",
+        "required_elements": [
+          "altered mental status or confusion",
+          "BGL ~38 mg/dL (initial clinical finding)",
+          "known type 1 diabetes",
+          "precipitating context: missed breakfast or delayed meal",
+          "no traumatic mechanism or other focal findings"
+        ],
+        "corroboration_source": "history_and_findings",
+        "note": "I is illness/injury, not interventions. Treatments (oral glucose, dose, route, time) belong under T."
+      },
+      "S": {
+        "description": "Current signs — BGL trend and mental status are the primary required elements for a hypoglycemia handoff",
+        "required_elements": [
+          "BGL initial value (primary)",
+          "BGL post-treatment value or trend (primary)",
+          "mental status / GCS description (primary)",
+          "SpO2 (supplementary)",
+          "HR (supplementary)"
+        ],
+        "scoring_note": "Primary S elements for hypoglycemia: BGL (initial value and/or post-treatment trend) and mental status or GCS. HR and SpO2 are supplementary — do not require them for full S credit on a hypoglycemia call.",
+        "corroboration_source": "vitals_and_findings"
+      },
+      "T": {
+        "description": "Transfer/disposition — current patient status, treatment response, and readiness for ALS handoff",
+        "required_elements": [
+          "patient improving or current status at handoff (primary)",
+          "disposition or transfer to ALS (primary)",
+          "insulin pump on board — ALS awareness item (supplementary)"
+        ],
+        "scoring_note": "T covers current patient status, response to treatment (oral glucose), and transfer readiness. Medications, allergies, and PMH belong in M/D — do not require them here. Insulin pump awareness is supplementary context, not required for full T credit.",
+        "corroboration_source": "any"
+      }
+    },
+    "required_assessments": [
+      {
+        "id": "blood_glucose_check",
+        "description": "Check blood glucose with an on-scene meter when available (confirm hypoglycemia before treatment)",
+        "keywords": [
+          "blood glucose",
+          "blood sugar",
+          "glucose",
+          "glucometer",
+          "BGL",
+          "BG",
+          "finger stick",
+          "hypoglycemia",
+          "sugar"
+        ],
+        "missing_deduction": 3,
+        "note": "BG confirmation is the critical diagnostic step when obtainable. Historical CGM/Omnipod alarm values support etiology but do not replace obtaining an on-scene blood glucose when a glucometer is available. Per MI protocol, a known diabetic exception exists: consider small amounts of oral glucose if unable to measure blood glucose level."
+      },
+      {
+        "id": "swallowing_assessment",
+        "description": "Assess swallowing ability before oral glucose administration",
+        "keywords": [
+          "swallow",
+          "swallowing",
+          "gag",
+          "airway",
+          "protect",
+          "conscious",
+          "can you swallow",
+          "drink",
+          "mouth",
+          "follow commands",
+          "GCS"
+        ],
+        "missing_deduction": 3,
+        "note": "Swallowing assessment is a protocol-required patient safety step before oral glucose — aspiration risk in an altered patient is a life threat."
+      }
+    ],
+    "required_screens": [
+      {
+        "id": "ams_differential_screen",
+        "description": "AMS differential screen (consider alternative causes of altered mental status — trauma, seizure, stroke, toxic ingestion — beyond confirmed hypoglycemia)",
+        "keywords": [
+          "trauma",
+          "hit head",
+          "fall",
+          "seizure",
+          "stroke",
+          "ingestion",
+          "toxic",
+          "swallow",
+          "ate",
+          "head injury",
+          "other cause",
+          "rule out",
+          "meningitis",
+          "infection"
+        ],
+        "missing_deduction": 2,
+        "note": "Even with a known BG of 38 mg/dL, clinical reasoning at the EMT level includes briefly screening for co-occurring causes of AMS. A single question about trauma, seizure, or ingestion satisfies this screen."
+      }
+    ],
+    "by_level": {
+      "MFR": {
+        "critical_focus": [
+          "Scene safety and BSI/PPE.",
+          "PAT: appearance (altered, confused, not interactive), work of breathing (unlabored), circulation (pale, diaphoretic, cool).",
+          "Obtain history identifying Type 1 diabetes and likely hypoglycemia etiology.",
+          "Assess blood glucose if within MFR scope — document value.",
+          "Recognize need for ALS/intercept support according to agency configuration — communicate patient status.",
+          "Monitor LOC and be prepared to protect airway."
+        ],
+        "additional_expectations": [],
+        "grace_items": [
+          "Oral glucose administration scope varies at MFR level — defer to protocol; do not penalize for deferring to higher level.",
+          "Glucagon IM is Paramedic scope — do not penalize for not administering at any level, and do not require BLS medication recommendations."
+        ]
+      },
+      "EMT": {
+        "critical_focus": [
+          "Scene safety and BSI/PPE.",
+          "PAT and recognition of altered mental status — hypoglycemia triad (AMS + diaphoresis + tachycardia).",
+          "Check blood glucose — confirm hypoglycemia (BG 38 mg/dL).",
+          "Assess swallowing ability — confirm patient can swallow safely before administering oral glucose.",
+          "Administer oral glucose gel per protocol — document dose, route, time.",
+          "Reassess GCS and mental status every 5 minutes post-treatment and document each reassessment.",
+          "Note insulin pump (Omnipod) on left upper arm — report to ALS.",
+          "Prepare suction — altered patients are vomiting risk during and after oral glucose.",
+          "If oral glucose is unsafe, withhold oral medication, protect the airway as appropriate, and request or hand off to ALS."
+        ],
+        "additional_expectations": [
+          "Do not delay oral glucose while waiting for ALS confirmation if patient meets all criteria now.",
+          "Organize DMIST with BG value, oral glucose time/dose, and GCS response for ALS."
+        ],
+        "grace_items": [
+          "Broselow tape NOT required — weight already known (60 lbs/27 kg).",
+          "ALS request is not required when the active agency configuration co-dispatches ALS.",
+          "PAT acronym not required — credit assessment of its three elements.",
+          "Noting ALS arrival NOT required.",
+          "Glucagon IM (GlucaGen) in the home — Paramedic scope; do NOT penalize for not administering or not recommending it.",
+          "Supplemental O2 is acceptable supportive care but not urgently required with SpO2 99%."
+        ]
+      },
+      "AEMT": {
+        "critical_focus": [
+          "All EMT expectations above.",
+          "Establish IV access — preparation for dextrose administration if needed or for ALS.",
+          "Recognize that AEMT does NOT administer dextrose IV — this is Paramedic scope.",
+          "IV access should not delay oral glucose if patient meets criteria."
+        ],
+        "additional_expectations": [
+          "AEMT's primary addition is IV access preparation — oral glucose remains the primary BLS intervention.",
+          "If oral glucose is contraindicated (patient cannot swallow), IV is established and ALS is the pathway for dextrose."
+        ],
+        "grace_items": [
+          "Same grace items as EMT level.",
+          "Dextrose IV is Paramedic scope — do NOT penalize AEMT for not administering it."
+        ]
+      },
+      "Paramedic": {
+        "critical_focus": [
+          "All AEMT expectations above.",
+          "Establish IV/IO access — dextrose 25g IV if patient cannot swallow or does not respond to oral glucose.",
+          "Administer glucagon IM if oral glucose is contraindicated and IV access is unavailable.",
+          "Continuous reassessment of GCS and BG — document response to each intervention.",
+          "Insulin pump assessment — note pump settings if available and report to endocrinology via ED.",
+          "Consider cardiac monitoring (EKG) for altered patient with tachycardia.",
+          "All hypoglycemia patients transport to ED — no release after normalization."
+        ],
+        "additional_expectations": [
+          "Document complete pharmacology rationale: why oral glucose vs. IV dextrose vs. glucagon IM was chosen.",
+          "Clear communication with receiving ED about insulin pump and endocrinology follow-up needs."
+        ],
+        "grace_items": [
+          "Same grace items as EMT level.",
+          "If patient responds well to oral glucose, dextrose IV is not required — document response and rationale for not escalating."
+        ]
+      }
+    }
+  },
+  "scoring_rubric": {
+    "clinical_performance": {
+      "max": 67,
+      "full_credit": "PAT completed, diabetes history obtained, blood glucose confirmed when obtainable or known-diabetic exception documented, swallow assessed before oral glucose, oral glucose gel administered; plus base rubric: scene safety, primary assessment, history, focused assessment, reassessment, handoff",
+      "partial_credit": "Oral glucose given but swallow assessment not explicitly documented; or reassessment not performed after administration",
+      "minimal_credit": "Oral glucose not given (critical BLS intervention) despite correct recognition; or oral glucose given without swallow assessment to a deeply altered patient"
+    },
+    "narrative": {
+      "max": 20,
+      "full_credit": "CHART: dispatch (altered 8-year-old), T1DM history, insulin pump, CGM 38 mg/dL, altered appearance on arrival, swallow assessment performed, oral glucose gel with time documented, response (GCS improving, oriented), ALS disposition. Objective language.",
+      "partial_credit": "Most CHART elements present but BG value, swallow assessment documentation, or treatment response missing",
+      "minimal_credit": "Narrative present but glucose administration not documented or blood glucose not referenced as etiology"
+    },
+    "scope_adherence": {
+      "max": 10,
+      "full_credit": "Stayed within effective provider scope and MCA rules: IV/IO access not attempted — outside BLS scope when oral glucose is indicated and contraindications are absent. No out-of-scope attempts or orders.",
+      "partial_credit": "No dangerous out-of-scope intervention attempted, but scope reasoning, level-specific escalation, or MCA-specific scope recognition was incomplete.",
+      "minimal_credit": "Out-of-scope intervention attempted or ordered, or provider-level limits materially ignored."
+    },
+    "dmist": {
+      "max": 10,
+      "full_credit": "D: 8-year-old male, 28 kg; M: T1DM, insulin pump, CGM alarm at 38 mg/dL, altered; I: oral glucose gel 15g at [time], swallow assessment confirmed; S: GCS trend, current LOC, skin signs, repeat BG if available; T: GCS improving, needs IV access for continued management",
+      "partial_credit": "3–4 of 5 DMIST components present; CGM reading or oral glucose details absent — both critical for ALS decision-making on insulin pump management",
+      "minimal_credit": "Blood glucose value absent or insulin pump not mentioned in DMIST"
+    },
+    "professionalism": {
+      "max": 10,
+      "full_credit": "Explained actions to both patient and mother, acknowledged Marcus's confused state with appropriate reassurance, addressed Marcus by name throughout, explained oral glucose and expected improvement timeline",
+      "partial_credit": "Communication with mother present but Marcus not addressed directly given his altered state; or no explanation of what was being administered",
+      "minimal_credit": "Minimal communication or harsh interaction with confused, frightened child"
+    },
+    "protocols_treatment": {
+      "max": 10,
+      "full_credit": "Protocol-aligned treatment completed: hypoglycemia confirmed when obtainable or known-diabetic exception documented, swallowing ability verified, and oral glucose gel administered per protocol. Supplemental O2 is supportive only when clinically indicated and is not required with normal oxygenation and no respiratory distress. Contraindicated care avoided and in-scope treatment priorities addressed.",
+      "partial_credit": "Most treatment priorities addressed, but one important protocol-aligned intervention, escalation step, or contraindication check was incomplete or delayed.",
+      "minimal_credit": "Key protocol/treatment priority missed, contraindicated care performed, or treatment plan materially inconsistent with protocol."
+    }
+  },
+  "exemplar_dmist": "D — Marcus, 8-year-old male, approximately 28 kg per mother.\nM — Type 1 diabetic, insulin pump (Omnipod, left arm) and CGM user. CGM alarmed approximately 10 minutes ago — reading 38 mg/dL. Missed afternoon snack following PE class. Presenting with altered mental status consistent with severe hypoglycemia.\nI — Swallow assessment confirmed: GCS 14, gag intact, no vomiting, no active seizure. Oral glucose gel 15 g administered at [time]. Suction on standby throughout.\nS — SpO2 99%. Finger-stick blood glucose [initial value] mg/dL before treatment and [repeat value] mg/dL after oral glucose. Mental status improving — more alert, answering questions more clearly, asking for food. Skin improving from pale/diaphoretic. No seizure activity.\nT — Patient clinically improved. Continue glucose monitoring and transfer care to ALS. Insulin pump on left arm — ALS be aware.",
+  "exemplar_narrative": "Squad 1 was dispatched to 5512 Cedarwood Court for an 8-year-old male with altered mental status. Upon arrival, patient Marcus, an 8-year-old male weighing approximately 28 kg, was found seated at the kitchen table in a confused, lethargic state. Mother reported Marcus has Type 1 diabetes managed with an Omnipod insulin pump (left arm) and a continuous glucose monitor. The CGM had alarmed approximately 10 minutes prior with a reading of 38 mg/dL. Marcus had participated in an active PE class that afternoon without adequate carbohydrate compensation and had skipped his afternoon snack. No other acute illness reported.\n\nPrimary assessment: GCS 14 (E4 V4 M6 — eyes open, confused/slurred but conversational, obeying commands), SpO2 99%, HR 112 bpm, RR 18, skin pale, cool, and diaphoretic. PAT: abnormal appearance (altered, not fully interactive), adequate and unlabored work of breathing, pale skin to periphery. Swallow assessment performed prior to treatment: GCS ≥ 12, gag reflex intact, no active seizure or vomiting activity — oral glucose administration appropriate. One tube of oral glucose gel (15 g) administered at [time] with patient seated upright. Suction unit prepared and positioned at bedside. Mother assisted Marcus in swallowing the gel.\n\nReassessment at 5 minutes: GCS improved to 15 — patient fully oriented, recognizing mother by name, asking for food. Skin color and moisture improving. Patient care transferred to Medic 3 ALS crew for IV access and continued glucose monitoring. ALS advised of insulin pump location (left arm) and need for IV access for ongoing management.",
+  "debrief": {
+    "condition_background": "Marcus is an 8-year-old male with Type 1 Diabetes Mellitus presenting with severe hypoglycemia (BG 38 mg/dL) following unusually high physical activity (PE class) without adequate carbohydrate compensation. He uses a continuous subcutaneous insulin pump (Omnipod) and a continuous glucose monitor. The classic hypoglycemic triad is present: altered mental status, diaphoresis, and tachycardia. At a GCS of 14, he is altered but retains the ability to protect his airway — placing him in the critical treatment window where oral glucose is the definitive, appropriate BLS intervention. The primary BLS challenge is recognizing hypoglycemia as the etiology, confirming the patient can safely swallow, and administering oral glucose before the patient deteriorates further and loses airway protective reflexes. A significant scope boundary defines this scenario: glucagon IM is Paramedic scope. Oral glucose is the one pharmacologic BLS tool available — and it is effective if administered in the correct clinical window.",
+    "key_teaching_points": [
+      "The hypoglycemic triad in children: altered mental status + diaphoresis + tachycardia — know this pattern; it is the most common diabetic emergency in pediatric patients",
+      "Oral glucose criteria — ALL must be met: (1) altered mental status, (2) able to swallow safely, (3) age ≥ 3 months, (4) BG < 60 mg/dL (or strongly suspected hypoglycemia). If ANY criterion is not met — defer to ALS",
+      "SWALLOWING ASSESSMENT IS A CLINICAL STEP — before administering any oral medication to an altered patient, actively confirm they can swallow: ask them to swallow, check gag reflex, confirm they are not seizing or vomiting",
+      "If oral glucose is unsafe, BLS should withhold oral medication, protect the airway as appropriate, and request or hand off to ALS; do not expect the EMT to recommend ALS medication selection",
+      "Insulin pumps and CGMs are increasingly common — know what an Omnipod looks like, note its location on the body, and report it to ALS; do NOT attempt to modify or remove the pump",
+      "REASSESSMENT IS NON-OPTIONAL — after administering oral glucose, reassess GCS and mental status every 5 minutes and document each reassessment with a timestamp; the debrief will evaluate this",
+      "The treatment window for oral glucose narrows as the patient deteriorates — a GCS of 14 now can become GCS 8 in minutes without treatment; recognize urgency without panicking the family",
+      "All hypoglycemia patients go to the hospital regardless of how well they respond — rebound hypoglycemia is common and the insulin pump settings may need adjustment by endocrinology"
+    ],
+    "common_mistakes": [
+      "Not assessing swallowing ability before administering oral glucose — never assume a confused patient can swallow",
+      "Delaying oral glucose while waiting for ALS confirmation of BG — if the patient is clearly hypoglycemic and able to swallow, administer per protocol; do not wait 11 minutes for Medic 2 if criteria are met now",
+      "Administering oral glucose to an unresponsive or seizing patient — this is a contraindication; aspiration risk is severe",
+      "Attempting to administer glucagon IM (Paramedic scope) or coaching family/crew toward ALS medication selection instead of focusing on BLS airway safety and ALS handoff",
+      "Not reassessing and documenting GCS after oral glucose — the response to treatment is a critical data point for ALS and the hospital",
+      "Not noting or reporting the insulin pump to ALS — the pump location, current basal rate, and any recent boluses are critical information for the endocrinology team",
+      "Incomplete DMIST — must include: blood glucose value (38 mg/dL per CGM), oral glucose administered (time, dose, route), patient response at time of ALS arrival, current GCS, insulin pump on board"
+    ]
+  },
+  "scenario_number": 2,
+  "prerequisites": [
+    "peds_croup_01"
+  ],
+  "legacy_ai_categories": [
+    "documentation",
+    "professionalism"
+  ],
+  "checklist": [
+    {
+      "id": "peds_diabetic_emergency_01.pat_assessment",
+      "description": "PAT completed — appearance (altered, confused, not interactive), work of breathing (unlabored), circulation to skin (pale, diaphoretic, cool) assessed",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "scene_entry",
+        "scene_entry_path": "pat_assessment"
+      },
+      "tier2_patterns": [
+        "(?i)(pat|appearance|altered|confused|work of breath|circulation|pale|diaphoretic|skin)"
+      ],
+      "done_feedback": "PAT completed — altered appearance (confused, not interactive), unlabored breathing, and pale/diaphoretic skin correctly identified before hands-on assessment.",
+      "missed_feedback": "PAT not completed — the Pediatric Assessment Triangle is the first structured step; altered appearance in a child with known T1DM requires immediate hypoglycemia recognition.",
+      "clinical_rationale": "PAT rapidly identifies the SICK/not-sick classification; in diabetic emergencies the appearance domain (altered LOC) is the most critical early finding that drives treatment urgency.",
+      "common_error": "Focusing on glucose measurement before completing the PAT — systematic approach prevents tunnel vision and identifies additional threats like airway compromise."
+    },
+    {
+      "id": "peds_diabetic_emergency_01.history_diabetes",
+      "description": "History identifies Type 1 diabetes plus insulin pump/CGM/low-glucose context as the likely etiology",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "finding",
+        "finding_type": "history",
+        "finding_key_pattern": "(?i)(pmh|medical history|medications|events|diabetes|insulin|cgm|blood glucose|blood sugar)",
+        "finding_value_pattern": "(?i)((diabet|type\\s*1|T1D).{0,120}(insulin|pump|CGM|blood sugar|low sugar|hypoglyc)|(?:insulin|pump|CGM|blood sugar|low sugar|hypoglyc).{0,120}(diabet|type\\s*1|T1D)|CGM.{0,40}(38|low|hypoglyc)|insulin\\s+via\\s+Omnipod\\s+pump|Omnipod\\s+pump|insulin\\s+pump|continuous\\s+glucose|CGM)"
+      },
+      "tier2_patterns": [
+        "(?i)((diabet|type\\s*1|T1D).{0,120}(insulin|pump|CGM|blood sugar|low sugar|hypoglyc|38)|(?:insulin|pump|CGM|blood sugar|low sugar|hypoglyc|38).{0,120}(diabet|type\\s*1|T1D)|CGM.{0,40}(38|low|hypoglyc)|insulin\\s+via\\s+Omnipod\\s+pump|Omnipod\\s+pump|insulin\\s+pump|continuous\\s+glucose|CGM)"
+      ],
+      "done_feedback": "Diabetes history obtained — T1DM, insulin pump use, and CGM low-glucose alert correctly identified as the etiological context.",
+      "missed_feedback": "Diabetes history not obtained — without establishing hypoglycemia etiology, oral glucose cannot be safely administered and ALS activation decision is uninformed.",
+      "clinical_rationale": "Known T1DM plus a low-glucose alert on the CGM makes hypoglycemia the primary diagnosis; this history directly guides the treatment algorithm and eligibility check for oral glucose.",
+      "common_error": "Proceeding to treatment without confirming hypoglycemia history — glucose measurement or history is required before oral glucose to avoid treating a normoglycemic altered patient."
+    },
+    {
+      "id": "peds_diabetic_emergency_01.protocol_oral_glucose",
+      "description": "Protocol-aligned hypoglycemia treatment — oral glucose gel administered after confirming eligibility criteria; supplemental O2 is supportive only if clinically indicated",
+      "subtype": "intervention",
+      "category": "protocols_treatment",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "timing_constraint": {
+        "type": "after_item",
+        "reference_item_id": "hypoglycemia.swallow_assessment",
+        "violation_consequence": "deduction_override"
+      },
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "oral_glucose"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "Oral glucose gel administered after swallow confirmation — reverses hypoglycemia in a patient who can protect her airway.",
+      "missed_feedback": "Oral glucose not administered — patient met all eligibility criteria (confirmed hypoglycemia, able to swallow, age ≥ 1 year); withholding it allows neuroglycopenia to progress.",
+      "clinical_rationale": "Oral glucose gel is the BLS first-line treatment for symptomatic hypoglycemia in a patient who can protect the airway; it reverses symptoms within 15 minutes without IV access.",
+      "common_error": "Administering oral glucose before confirming the patient can swallow — if the patient cannot protect the airway, oral glucose is contraindicated due to aspiration risk."
+    },
+    {
+      "id": "peds_diabetic_emergency_01.scope_no_iv_io",
+      "description": "Out-of-scope medications or procedures not attempted — no IV/IO access, IV dextrose, IM/IN glucagon, or insulin-pump manipulation by BLS",
+      "subtype": "intervention",
+      "category": "scope_adherence",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [
+        "MFR",
+        "EMT"
+      ],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "no_out_of_scope_actions"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "IV/IO correctly avoided — IV dextrose and IM glucagon are ALS interventions; BLS treatment is oral glucose after swallow confirmation.",
+      "missed_feedback": "IV/IO or IV dextrose attempted — outside BLS scope; correct BLS path is oral glucose gel when eligibility is confirmed, ALS activation for patients who cannot swallow.",
+      "clinical_rationale": "BLS scope for pediatric hypoglycemia is oral glucose gel when the patient meets eligibility criteria; IV access and dextrose infusion require ALS."
+    },
+    {
+      "id": "ems.medical.repeat_vitals",
+      "description": "Repeats vital signs during reassessment",
+      "subtype": "reassessment",
+      "category": "clinical_performance",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "post_intervention_finding",
+        "finding_type": "vital",
+        "finding_key_pattern": "(?i)(spo2|rr|resp|pulse|hr|heart|bp|blood pressure|vital|blood.glucose|bgl|glucose|gcs)"
+      },
+      "tier2_patterns": [
+        "(?i)(repeat vitals|recheck vitals|repeat BP|repeat pulse|repeat respiratory|another set of vitals|check.*glucose|glucose.*check|recheck.*glucose|check.*gcs|gcs.*again)"
+      ]
+    },
+    {
+      "id": "ems.medical.treatment_response",
+      "description": "Evaluates response to treatments",
+      "subtype": "reassessment",
+      "category": "clinical_performance",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "post_intervention_finding",
+        "finding_type": "vital",
+        "finding_key_pattern": "(?i)(blood.glucose|bgl|glucose|gcs|loc|mental)"
+      },
+      "tier2_patterns": [
+        "(?i)(response to treatment|any better|improved|worse|reassess.*after|after.*treatment|working|gcs.*15|glucose.*improv|blood.*sugar.*improv|getting better|waking up|alert.*oriented|improving|resolved|came around)"
+      ]
+    },
+    {
+      "id": "ems.medical.sample_history",
+      "description": "Past pertinent medical history obtained",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        2
+      ],
+      "preferred_tier": 2,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier2_patterns": [
+        "(?i)(medical history|past history|PMH|diagnosed|asthma|diabetes|seizure|cardiac|allergy history|diabetic|is he diabetic|is she diabetic|type 1|type 2|T1D|T2D|insulin pump|pump history|CGM|continuous glucose)"
+      ]
+    }
+  ]
+}

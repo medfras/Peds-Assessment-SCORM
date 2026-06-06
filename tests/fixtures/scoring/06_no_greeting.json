@@ -1,0 +1,102 @@
+{
+  "fixture_id": "no_greeting",
+  "description": "Student completed a clinically adequate run but never introduced themselves or greeted the patient/family. greeting_detected=false. All other professionalism elements and critical actions are present. Tests that absence of greeting is correctly surfaced in professionalism without affecting corroboration tier or critical action tags.",
+
+  "inputs": {
+    "scenario": {
+      "id": "fixture_peds_resp",
+      "category": "pediatric_medical",
+      "protocol_config": {"mca": "mi_wmrmcc_kent"},
+      "turnover_target": "als",
+      "vitals": {
+        "baseline": {},
+        "interventions": {
+          "o2_nrb":        {"label": "High-flow O2 via NRB mask (15 LPM)"},
+          "albuterol_svn": {"label": "Albuterol 2.5 mg via SVN (nebulizer)"},
+          "positioning":   {"label": "Position of comfort — sitting upright"},
+          "als_intercept": {"label": "ALS intercept acknowledged"}
+        }
+      },
+      "scoring": {}
+    },
+
+    "interventions": [
+      {"name": "o2_nrb",        "applied_at": "2026-01-01T12:02:00"},
+      {"name": "albuterol_svn", "applied_at": "2026-01-01T12:04:00"},
+      {"name": "positioning",   "applied_at": "2026-01-01T12:03:00"},
+      {"name": "als_intercept", "applied_at": "2026-01-01T12:05:00"}
+    ],
+
+    "checklist_states": {"item_states": []},
+
+    "submitted_docs": {
+      "dmist": "D: 8yo male, difficulty breathing. M: History of asthma, no known allergies. I: O2 NRB 15 LPM, albuterol SVN. S: SpO2 83%, HR 134. T: Transporting to Pediatric ED via ALS intercept.",
+      "narrative": "C: Dispatched to 8-year-old male presenting with asthma. H: History of asthma, 2-hour onset of wheezing. A: SpO2 83%, HR 134. R: O2 NRB, albuterol SVN, positioned upright. T: Transporting to Pediatric ED."
+    },
+
+    "findings": [
+      {"key": "spo2", "value": "83%", "finding_type": "vital", "captured_at": "2026-01-01T12:01:00"}
+    ],
+
+    "student_messages": [
+      "BSI, scene is safe.",
+      "Applying O2 via NRB mask.",
+      "Albuterol SVN per protocol.",
+      "ALS intercept called."
+    ],
+
+    "scene_entry_scoring_result": {"ppe": "gloves_mask"},
+    "scene_entry_dict":           {},
+    "greeting_detected": false,
+    "greeting_text": "",
+    "prepass_result": null,
+
+    "critical_actions": [
+      {
+        "id": "scene_safety",
+        "description": "Ensure scene safety and BSI/PPE",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "o2_administration",
+        "description": "Administer high-flow O2 via NRB mask",
+        "required": true,
+        "intervention_ids": ["o2_nrb"]
+      }
+    ],
+
+    "grace_items": [],
+    "session_events": [],
+    "agency": {"transports_patients": true},
+    "effective_level": "EMT",
+    "elapsed_min": 10.0
+  },
+
+  "target_expected": {
+    "assertions": [
+      {
+        "id": "greeting_not_detected",
+        "type": "greeting_detected",
+        "expected": false
+      },
+      {
+        "id": "corroboration_tier_1",
+        "type": "corroboration_tier",
+        "expected": 1
+      },
+      {
+        "id": "no_dmist_ceiling",
+        "type": "no_dmist_ceiling"
+      },
+      {
+        "id": "scene_safety_pre_credited",
+        "type": "critical_action_tag",
+        "description_contains": "scene safety",
+        "expected_tag": "PRE_CREDITED"
+      }
+    ]
+  },
+
+  "known_failing_baselines": []
+}

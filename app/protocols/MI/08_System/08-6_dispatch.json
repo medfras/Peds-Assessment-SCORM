@@ -1,0 +1,89 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-6 Dispatch (Revised 3/24/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_dispatch",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Dispatch",
+  "version": "2023-03-24",
+  "protocol_reference": "Michigan System Protocol Section 8-6: Dispatch — MDHHS Approved 3/24/2023",
+
+  "purpose": "Govern EMS dispatch processes, pre-arrival instructions, and dispatch-level prearrival protocols. Dispatch plays a critical role in initiating appropriate response, gathering essential patient information, and providing pre-arrival instructions that may save lives before EMS arrival.",
+
+  "sections": [
+    {
+      "title": "Dispatch Response Priority",
+      "reference": "Michigan Protocol 8-6: Dispatch — Response Priority",
+      "points": [
+        "Dispatch must assign appropriate response priority based on caller information using a medically approved dispatch protocol (e.g., Medical Priority Dispatch System — MPDS or equivalent)",
+        "Priority 1 (Emergency): L&S response — life-threatening conditions",
+        "Priority 2 (Urgent): Expedited response — urgent but not immediately life-threatening",
+        "Priority 3 (Non-Emergency): Routine response",
+        "Dispatch protocols must include criteria for upgrading or downgrading response priority based on additional caller information",
+        "MCAs must have a medically approved dispatch protocol in use within their jurisdiction"
+      ]
+    },
+    {
+      "title": "Pre-Arrival Instructions",
+      "reference": "Michigan Protocol 8-6: Dispatch — Pre-Arrival Instructions",
+      "points": [
+        "Dispatch must provide pre-arrival instructions for life-threatening conditions including:",
+        "— CPR instructions for cardiac arrest (call before confirm protocol if indicated)",
+        "— Airway positioning instructions",
+        "— Bleeding control instructions",
+        "— Instructions for imminent delivery",
+        "— Choking instructions",
+        "Pre-arrival instructions must follow MCA-approved dispatch scripts",
+        "Dispatch must remain on the line to support callers providing care until EMS arrives when feasible"
+      ]
+    },
+    {
+      "title": "Information Gathering",
+      "reference": "Michigan Protocol 8-6: Dispatch — Information Gathering",
+      "points": [
+        "Dispatch must obtain: location, callback number, chief complaint, patient age and gender, level of consciousness, and any known hazards",
+        "For cardiac arrest calls: confirm pulselessness and breathing status; initiate CPR instructions immediately",
+        "Scene safety information: weapons present, hazmat, violence, access difficulties — relay to responding units",
+        "Notify responding units of any additional information received after initial dispatch"
+      ]
+    },
+    {
+      "title": "Multi-Agency Coordination",
+      "reference": "Michigan Protocol 8-6: Dispatch — Multi-Agency",
+      "points": [
+        "Dispatch must notify responding units of co-responding agencies (fire, law enforcement, air medical)",
+        "Dispatch must coordinate ALS intercept requests per MCA protocol (Section 8-5)",
+        "Major incidents: activate MCI protocol as directed by MCA; notify appropriate supervisory and administrative contacts",
+        "Air medical activation: follow criteria per Section 8-9 Helicopter Utilization Protocol"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Medically Approved Dispatch Protocol",
+      "description": "MCA must have a medically approved dispatch protocol adopted for their jurisdiction",
+      "options": ["Medical Priority Dispatch System (MPDS) adopted", "MCA-approved equivalent medically-directed dispatch protocol adopted"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Caller reports patient deterioration after initial dispatch — upgrade response immediately; initiate appropriate pre-arrival instructions",
+    "Cardiac arrest reported — initiate CPR instructions immediately; do not wait for unit confirmation"
+  ],
+
+  "scope_notes": [
+    "All EMS levels — dispatch is a system function",
+    "MCA must have medically approved dispatch protocol",
+    "Pre-arrival instructions mandatory for: cardiac arrest, airway, bleeding, delivery, choking",
+    "Dispatch must relay all additional scene/patient information to responding units",
+    "Response priority: Priority 1 (L&S), Priority 2 (urgent), Priority 3 (routine)",
+    "Major incidents: activate MCI protocol per MCA"
+  ]
+}

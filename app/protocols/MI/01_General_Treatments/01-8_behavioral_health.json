@@ -1,0 +1,59 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 1-8 Behavioral Health Emergencies (Revised 10/19/2022, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_all_behavioral_health",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "All",
+  "level_display": "All Levels",
+  "jurisdiction": "Michigan",
+  "condition": "Behavioral Health Emergencies",
+  "version": "2022-10-19",
+  "protocol_reference": "Michigan General Treatment Protocol Section 1-8: Behavioral Health Emergencies — MDHHS Approved 10/19/22, Reviewed 2023",
+
+  "sections": [
+    {
+      "title": "Behavioral Health Emergencies",
+      "reference": "Michigan Protocol 1-8: Behavioral Health Emergencies",
+      "points": [
+        "Assure scene is secure",
+        "Follow General Pre-Hospital Care-Treatment Protocol",
+        "Respect the dignity of the patient",
+        "Treat known conditions such as hypoglycemia, hypoxia, or poisoning — refer to appropriate protocol",
+        "Patients experiencing behavioral health emergencies should be transported for treatment if they: can be reasonably expected to intentionally or unintentionally physically injure themselves or others (or has made threats); are unable to attend to basic physical needs; have judgement so impaired they are unable to understand the need for treatment and whose behavior will cause significant physical harm; have weakened mental processes due to age, epilepsy, alcohol or drug dependence which impairs treatment decisions",
+        "Communicate in a calm and nonthreatening manner — be conscious of personal body language and tone of voice",
+        "Keep contacts to a minimum; when prudent, utilize a single rescuer for assessment",
+        "Offer your assistance to the patient",
+        "Constantly monitor and observe patient to prevent injury or harm",
+        "Control environmental factors; attempt to move patient to a private area — maintain escape route",
+        "Attempt de-escalation using an empathetic approach — avoid confrontation",
+        "If patient becomes violent or actions present a threat to patient's safety or that of others, restraint may be necessary — refer to Patient Restraint-Procedure Protocol",
+        "If patient is severely agitated, combative/aggressive, and shows signs of sweating, delirium, elevated temperature, and lack of fatiguing — refer to Hyperactive Delirium Syndrome with Severe Agitation-Treatment Protocol"
+      ]
+    },
+    {
+      "title": "Protective Custody (Michigan Mental Health Code Reference)",
+      "reference": "Michigan Mental Health Code 330.1100c(7), Sec. 100c",
+      "points": [
+        "Protective Custody: the temporary custody of an individual by a law enforcement officer — with or without the individual's consent — for the purpose of protecting that individual's health and safety, or the health and safety of the public, and for the purpose of transporting the individual if the individual appears, in the judgment of the law enforcement officer, to be a person requiring treatment",
+        "Protective custody is civil in nature and is not to be construed as an arrest (330.1100c(7), Sec. 100c, Michigan Mental Health Code)"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "deterioration_flags": [
+    "Severe agitation with signs of sweating, delirium, elevated temperature, and lack of fatiguing — refer to Hyperactive Delirium Syndrome with Severe Agitation protocol",
+    "Violence or physical threat to crew or patient — consider restraint per Patient Restraint-Procedure Protocol; ensure scene safety",
+    "Underlying medical cause suspected (hypoglycemia, hypoxia, poisoning) — treat underlying condition per appropriate protocol before attributing behavior to psychiatric cause"
+  ],
+
+  "scope_notes": [
+    "De-escalation and assessment: all levels",
+    "Patient restraint: refer to Patient Restraint-Procedure Protocol",
+    "Hyperactive delirium management: refer to Hyperactive Delirium Syndrome-Treatment Protocol",
+    "Sedation: Specialist skill — refer to applicable protocol",
+    "Protective custody: law enforcement function — not EMS authority"
+  ]
+}

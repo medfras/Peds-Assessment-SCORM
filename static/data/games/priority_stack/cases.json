@@ -1,0 +1,66 @@
+{
+  "title": "Priority Stack",
+  "subtitle": "Rank competing priorities for high-acuity pediatric calls.",
+  "cases": [
+    {
+      "id": "ps_01",
+      "prompt": "A 5-year-old after MVC is pale, confused, tachycardic, and has abdominal bruising. Airway is patent, breathing is rapid but adequate, radial pulses are weak.",
+      "hint": "Sort by immediate threats: airway/breathing first if failing, then perfusion and transport for suspected internal bleeding.",
+      "steps": [
+        {"id": "oxygenation", "label": "Support oxygenation and monitor ventilation"},
+        {"id": "hemorrhage_shock", "label": "Treat for shock / suspect internal hemorrhage"},
+        {"id": "rapid_transport", "label": "Rapid transport / trauma notification"},
+        {"id": "secondary_assessment", "label": "Focused secondary assessment en route"},
+        {"id": "comfort_history", "label": "Detailed history and comfort measures"}
+      ],
+      "correct_order": ["oxygenation", "hemorrhage_shock", "rapid_transport", "secondary_assessment", "comfort_history"],
+      "explanation": "The patient is perfusing poorly after significant mechanism. Support ABCs, treat shock, and move toward definitive trauma care while continuing assessment.",
+      "mistake_tag": "priority_stack_trauma_shock"
+    },
+    {
+      "id": "ps_02",
+      "prompt": "A toddler with severe respiratory distress is tiring: shallow respirations, cyanosis, decreasing LOC, and bradycardia.",
+      "hint": "Bradycardia with respiratory failure is a peri-arrest pattern. Ventilation jumps to the top.",
+      "steps": [
+        {"id": "ventilate", "label": "Open airway and begin assisted ventilations"},
+        {"id": "oxygen", "label": "High-concentration oxygen / monitor SpO2"},
+        {"id": "cpr_ready", "label": "Prepare for CPR if pulse remains slow with poor perfusion"},
+        {"id": "als_transport", "label": "ALS intercept / rapid transport"},
+        {"id": "history", "label": "Focused history after life threats addressed"}
+      ],
+      "correct_order": ["ventilate", "oxygen", "cpr_ready", "als_transport", "history"],
+      "explanation": "Respiratory failure with bradycardia requires immediate ventilation support; history waits until oxygenation/ventilation and perfusion are addressed.",
+      "mistake_tag": "priority_stack_resp_failure"
+    },
+    {
+      "id": "ps_03",
+      "prompt": "A child with hives, wheezing, vomiting, and hypotension after a peanut exposure is awake but worsening.",
+      "hint": "Multisystem allergic reaction with hypotension is anaphylaxis. The priority is not diphenhydramine first.",
+      "steps": [
+        {"id": "epi", "label": "Administer epinephrine per scope/protocol"},
+        {"id": "airway_breathing", "label": "Support airway, oxygenation, and ventilation"},
+        {"id": "position_shock", "label": "Treat shock / appropriate positioning"},
+        {"id": "transport", "label": "Rapid transport / ALS intercept as available"},
+        {"id": "secondary_meds", "label": "Secondary meds/history after epinephrine"}
+      ],
+      "correct_order": ["epi", "airway_breathing", "position_shock", "transport", "secondary_meds"],
+      "explanation": "Anaphylaxis with respiratory and perfusion compromise is epinephrine-first, with airway/breathing and shock management in parallel.",
+      "mistake_tag": "priority_stack_anaphylaxis"
+    },
+    {
+      "id": "ps_04",
+      "prompt": "A teen is altered, diaphoretic, and combative. Airway is patent, breathing adequate, pulses strong. Friends mention diabetes.",
+      "hint": "A reversible cause should be checked early when ABCs are not failing.",
+      "steps": [
+        {"id": "safety_abcs", "label": "Maintain safety and confirm ABCs"},
+        {"id": "glucose", "label": "Check blood glucose"},
+        {"id": "treat_glucose", "label": "Treat hypoglycemia if confirmed per protocol"},
+        {"id": "reassess", "label": "Reassess mental status and vitals"},
+        {"id": "broaden_differential", "label": "Broaden AMS differential / transport"}
+      ],
+      "correct_order": ["safety_abcs", "glucose", "treat_glucose", "reassess", "broaden_differential"],
+      "explanation": "Once immediate ABC failure is not present, glucose is a high-yield reversible AMS screen and treatment target.",
+      "mistake_tag": "priority_stack_ams_glucose"
+    }
+  ]
+}

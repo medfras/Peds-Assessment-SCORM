@@ -1,0 +1,152 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Toxins and Environmental: Hyperthermia/Heat Exposure. NASEMSO national provisional base.",
+  "id": "nasemso_base_toxins_and_environmental_hyperthermia_heat_exposure",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Hyperthermia/Heat Exposure",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Hyperthermia/Heat Exposure",
+  "aliases": [
+    "Heat cramps",
+    "Heat edema",
+    "Heat exhaustion",
+    "Heat stroke",
+    "Heat syncope",
+    "Hyperthermia"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Hyperthermia/Heat Exposure",
+      "points": [
+        "Cooling and rehydration",
+        "Mitigate high-risk for decompensation",
+        "Mitigate high-risk for agitation and uncooperative behavior"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Heat cramps",
+        "Heat exhaustion",
+        "Heat stroke",
+        "Heat syncope",
+        "Heat edema",
+        "Stimulant drug abuse",
+        "Delirium with agitated behavior [See Agitated or Violent Patient/Behavioral Emergency Guideline]",
+        "EXCLUSION CRITERIA:",
+        "Fever from infectious or inflammatory conditions",
+        "Malignant hyperthermia",
+        "Serotonin syndrome",
+        "Neuroleptic malignant syndrome"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Move patient to cool environment; remove excess clothing",
+        "Aggressive cooling: cool water misting + fanning (preferred); ice packs to axilla, groin, neck",
+        "Oxygen via NRM; BVM for respiratory failure",
+        "CPR/AED for cardiac arrest (do NOT defer CPR because of high temperature)",
+        "Oral water or electrolyte drink for mild heat exhaustion (alert patient only)"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Aggressive cooling: ice immersion (bath/sheet) for heat stroke (temp >40°C with AMS) — most effective method",
+        "IV access maintenance (non-medicated); cool IV fluids preferred",
+        "12-lead ECG: dysrhythmias common with severe hyperthermia",
+        "Blood glucose monitoring",
+        "Supraglottic airway for airway compromise in heat stroke coma"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access: cool NS 1-2 L IV for hypotension in heat exhaustion (caution with heat stroke + myocardial dysfunction)",
+        "Blood glucose monitoring and correction",
+        "Waveform capnography for monitoring",
+        "Benzodiazeines (midazolam IV) for heat stroke with seizures"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "Cold IV saline 1-2 L at 4°C (if available) — internal cooling method",
+        "Target core temperature: cool aggressively to ≤39°C; stop active cooling to prevent overshoot hypothermia",
+        "Benzodiazepines for shivering or seizures: lorazepam 2-4 mg IV; avoid phenothiazines (impair thermoregulation)",
+        "RSI and intubation for heat stroke coma or seizures with airway compromise",
+        "Vasopressors (norepinephrine) for refractory hypotension unresponsive to cooling and fluids",
+        "12-lead ECG interpretation: treat dysrhythmias per specific protocol",
+        "Monitor for rhabdomyolysis, DIC, hepatic failure, renal failure — fluid resuscitation and hospital notification"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Consider use of physical securing devices [See Agitated or Violent Patient/Behavioral Emergency Guideline] to protect vascular access sites."
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Patients at risk for heat emergencies include neonates, infants, geriatric patients, and patients with mental illness",
+        "Contributory risk factors may come from: a. Prescription and over-the-counter herbal supplements",
+        "Heat exposure can occur either due to increased environmental temperatures or prolonged exercise or a combination of both a. Environments with temperature greater than 90'F and humidity greater than 60% present the most risk",
+        "Heat stroke is associated with cardiac arrhythmias independent of drug ingestion/overdose Heat stroke has also been associated with cerebral edema",
+        "For patients with signs and symptoms of heat stroke, rapid cooling takes priority over other interventions (e.g., cardiac monitoring, IV access)",
+        "Do not forget to look for other causes of altered mental status such as low blood glucose level, or, in the proper circumstances (i.e., endurance exercise events), consider exercise associated hyponatremia (EAH), especially in the patient with altered mental status, normal blood glucose, and normal temperature",
+        "Controversy: shivering may occur while treating heat stroke a. It is uncertain how harmful shivering is to heat stroke patients",
+        "Hyperthermia not from environmental factors has a differential that includes the following: a. Fever and delirium"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Patient assessment includes all types of medication/drug use and detailed past medical history",
+        "' Environmental assessment performed",
+        "' Cooling interventions considered and implemented",
+        "' Decision-making regarding securing devices",
+        "' Decision-making regarding monitoring ABCs (Airway, Breathing, Circulation)"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Consider use of physical securing devices [See Agitated or Violent Patient/Behavioral Emergency Guideline] to protect vascular access sites.",
+    "Delirium with agitated behavior [See Agitated or Violent Patient/Behavioral Emergency Guideline]"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

@@ -1,0 +1,141 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Toxins and Environmental: Radiation Exposure. NASEMSO national provisional base.",
+  "id": "nasemso_base_toxins_and_environmental_radiation_exposure",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Radiation Exposure",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Radiation Exposure",
+  "aliases": [
+    "None noted"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Radiation Exposure",
+      "points": [
+        "Prioritize identification and treatment of immediately life-threatening medical conditions and traumatic injuries above any radiation-associated injury",
+        "Identify and appropriately treat acute radiation injury",
+        "Reduce risk for contamination of personnel while caring for patients potentially or known to be contaminated with radioactive material"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Patients who have been acutely exposed to ionizing radiation from accidental environmental release of a radioactive source",
+        "Patients who have been acutely exposed to ionizing radiation from a non-accidental environmental release of a radioactive source",
+        "Patients who have been contaminated with material emitting ionizing radiation",
+        "EXCLUSION CRITERIA:",
+        "Patients exposed to normal doses of ionizing radiation from medical imaging studies",
+        "Patients exposed to normal doses of ionizing radiation from therapeutic medical procedures"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Scene safety and PPE; primary survey (ABCDE)",
+        "Oxygen via NRM targeting SpO2 94-98% if indicated",
+        "Position of comfort; hemorrhage control as needed",
+        "CPR/AED if patient becomes pulseless",
+        "Epinephrine auto-injector for anaphylaxis if applicable",
+        "Naloxone intranasal unit-dose for suspected opioid involvement"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Blood glucose monitoring; oral glucose if hypoglycemic and alert",
+        "12-lead ECG acquisition and transmission",
+        "CPAP for respiratory distress",
+        "Aspirin for suspected ischemic chest pain",
+        "Albuterol SVN for bronchospasm component",
+        "IV access maintenance (non-medicated)"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation",
+        "IV/IO fluid resuscitation as indicated",
+        "Waveform capnography",
+        "IV analgesics (fentanyl, morphine) per pain management protocol",
+        "IV antiemetics (ondansetron) per protocol",
+        "IV D50W/D10W for hypoglycemia"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "12-lead ECG interpretation",
+        "Endotracheal intubation for airway compromise",
+        "RSI per protocol",
+        "Advanced antidysrhythmic or hemodynamic support per specific protocol",
+        "All parenteral medications per protocol",
+        "Vasopressors for refractory hemodynamic compromise"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Treat life-threatening medical problems and traumatic injuries prior to assessing for and treating radiation injuries or performing decontamination"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Irradiated patients pose no threat to medical clinicians",
+        "Contaminated patients pose very little threat to medical clinicians who use appropriate PPE including N95 masks or respirators, gloves, gowns, and face and eye protection",
+        "Sources of radiation a. Legal i. Industrial plants",
+        "Physiology of radiation poisoning c. Contamination: Poisoning from direct exposure to a radioactive source, contaminated debris, liquids, or clothing where radiation continues to be emitted from particles on surface",
+        "Common types of radioactivity that cause poisoning e. Gamma rays i. Highest frequency of ionizing rays",
+        "In general, trauma patients who have been exposed to or contaminated by radiation should be triaged and treated based on the severity of their conventional injuries",
+        "A patient who is contaminated with radioactive material (i.e., flecks of radioactive material embedded in their clothing and skin) generally poses a minimal exposure risk to medical personnel, although should not be placed in a contained space before decontamination",
+        "EMS clinicians may be asked to assist public health agencies in the distribution and"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Duration of exposure to the radioactive source or environment",
+        "' Distance (if able to be determined) from the radioactive source (if known)",
+        "' Time of onset of vomiting"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Treat life-threatening medical problems and traumatic injuries prior to assessing for and treating radiation injuries or performing decontamination"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

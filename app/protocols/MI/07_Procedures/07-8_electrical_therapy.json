@@ -1,0 +1,120 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-8 Electrical Therapy (Revised 3/3/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_electrical_therapy",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (All EMS Levels — scope varies by modality)",
+  "jurisdiction": "Michigan",
+  "condition": "Electrical Therapy — Defibrillation, Cardioversion, Transcutaneous Pacing",
+  "version": "2025-03-03",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-8: Electrical Therapy — MDHHS Approved 3/3/2025",
+
+  "purpose": "Govern the use of AED, manual defibrillation, synchronized cardioversion, and transcutaneous pacing (TCP). Scope varies by modality and provider level. Pad placement, precautions, and energy selection guidelines are standardized.",
+
+  "sections": [
+    {
+      "title": "Universal Precautions Before Electrical Therapy",
+      "reference": "Michigan Protocol 7-8: Electrical Therapy — Precautions",
+      "points": [
+        "Ensure patient's chest is dry before pad application",
+        "Remove nitroglycerin paste or transdermal medication patches from the chest wall",
+        "Avoid placing pads directly over an implanted pacemaker or ICD device (position pads at least 1 inch away)",
+        "Clear all personnel from patient contact before shock delivery — announce 'Clear' and visually confirm no contact before firing",
+        "Preferred pad placement: anterior/posterior (A/P) — anterior pad left of sternum; posterior pad below left scapula",
+        "Alternative: anterior/lateral (A/L) — anterior pad right of sternum; lateral pad at left anterior axillary line"
+      ]
+    },
+    {
+      "title": "AED (Automated External Defibrillator)",
+      "reference": "Michigan Protocol 7-8: Electrical Therapy — AED",
+      "points": [
+        "ALL EMS provider levels",
+        "DO NOT use AED on patients with a confirmed Left Ventricular Assist Device (LVAD) — refer to LVAD-Procedure Protocol",
+        "Indication: cardiac arrest only",
+        "No minimum age or weight restriction for AED use",
+        "Pediatric attenuated pads preferred for children — if adult pads are the only option: anterior/posterior pad placement REQUIRED",
+        "Anterior/posterior pad placement preferred for all AED use",
+        "Follow device prompts — analyze, shock if advised, immediately resume CPR"
+      ]
+    },
+    {
+      "title": "Manual Defibrillation (Unsynchronized)",
+      "reference": "Michigan Protocol 7-8: Electrical Therapy — Manual Defibrillation",
+      "points": [
+        "Paramedic and Specialist (per MCA)",
+        "Indications: ventricular fibrillation (V-fib), pulseless ventricular tachycardia (pVT), unstable irregular wide complex tachycardia",
+        "Energy selection per device manufacturer and cardiac arrest protocol",
+        "If rhythm is shockable after the 4th defibrillation: contact Medical Control",
+        "Refractory V-fib: consider double sequential defibrillation per MCA selection — refer to 7-8(S) Double Sequential Defibrillation Protocol",
+        "If only one defibrillator available for refractory V-fib: change pad vector (A/P to A/L or vice versa)",
+        "Electrical therapy may be less effective in hypothermic patients — continue HQCPR and warming"
+      ]
+    },
+    {
+      "title": "Synchronized Cardioversion",
+      "reference": "Michigan Protocol 7-8: Electrical Therapy — Synchronized Cardioversion",
+      "points": [
+        "Paramedic only",
+        "Indication: hemodynamically UNSTABLE patient with heart rate ≥ 150/min as a primary cause of hemodynamic compromise",
+        "CONTRAINDICATED if heart rate is < 150/min UNLESS ordered by Medical Control",
+        "Synchronize the defibrillator to deliver shock on the R-wave (avoid T-wave shock)",
+        "Polymorphic VT and Torsades de Pointes: treat with UNSYNCHRONIZED defibrillation (not cardioversion) — refer to Tachycardia Protocol",
+        "Sedation may be used per Patient Procedural Sedation-Procedure Protocol if patient is conscious",
+        "Energy selection per device manufacturer and tachycardia protocol"
+      ]
+    },
+    {
+      "title": "Transcutaneous Pacing (TCP)",
+      "reference": "Michigan Protocol 7-8: Electrical Therapy — TCP",
+      "points": [
+        "Paramedic only",
+        "Indication: symptomatic bradycardia per Bradycardia Treatment Protocol",
+        "Starting rate: 60 beats per minute",
+        "Increase mA (milliamps) to achieve capture:",
+        "— Unconscious patient: increase in 20 mA increments until capture",
+        "— Conscious patient: increase in 5 mA increments to minimize discomfort while achieving capture",
+        "Electrical capture: pacing spike followed by wide QRS and change in T-wave morphology",
+        "Mechanical capture: confirm by palpating pulse (radial or femoral) — do not rely solely on ECG capture",
+        "Sedation for conscious patients may be used per Patient Procedural Sedation-Procedure Protocol (MCA selection in Bradycardia protocol)"
+      ]
+    },
+    {
+      "title": "Double Sequential Defibrillation (DSD)",
+      "reference": "Michigan Protocol 7-8: Electrical Therapy — Double Sequential (MCA Optional)",
+      "points": [
+        "MCA Optional — Paramedic only",
+        "Refer to Section 7-8(S) Double Sequential Defibrillation Protocol for complete guidance",
+        "Requires ≥ 3 prior shocks and availability of a second defibrillator",
+        "100% quality assurance/quality improvement review required"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Double Sequential Defibrillation",
+      "description": "MCA may optionally authorize double sequential defibrillation for refractory ventricular fibrillation. If authorized, refer to Section 7-8(S).",
+      "options": ["Authorized per 7-8(S) Double Sequential Defibrillation Protocol", "Not authorized — contact Medical Control for refractory V-fib"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "V-fib refractory after 4 shocks — contact Medical Control; consider double sequential (MCA selection) or vector change",
+    "Transcutaneous pacing — failure to achieve mechanical capture (palpable pulse) despite electrical capture requires contact Medical Control",
+    "Synchronized cardioversion fails to restore rhythm — reassess rhythm; consider unsynchronized shock if polymorphic or rate-related",
+    "Hypothermia with V-fib — continue HQCPR and active rewarming; electrical therapy may be less effective"
+  ],
+
+  "scope_notes": [
+    "AED: all EMS provider levels; arrest only; no age/weight minimum; do NOT use on LVAD patients",
+    "Manual defibrillation: Paramedic (Specialist per MCA); V-fib, pVT, unstable irregular wide complex",
+    "Synchronized cardioversion: Paramedic only; unstable HR ≥ 150; contraindicated < 150 without MC order",
+    "TCP: Paramedic only; rate 60 bpm starting; mA titrated to capture (20 mA increments unconscious; 5 mA conscious)",
+    "Double sequential defibrillation: MCA Optional, Paramedic only — refer to 7-8(S)"
+  ]
+}

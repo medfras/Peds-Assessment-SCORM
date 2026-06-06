@@ -1,0 +1,86 @@
+{
+  "title": "Stop the Bleed",
+  "subtitle": "Sequence hemorrhage-control escalation for the wound in front of you.",
+  "cases": [
+    {
+      "id": "stb_01",
+      "prompt": "A 9-year-old has a deep forearm laceration from broken glass with brisk dark-red bleeding that soaks through gauze.",
+      "hint": "Start simple, then escalate when pressure is failing. Extremity wounds can receive a tourniquet when bleeding is uncontrolled.",
+      "steps": [
+        {"id": "ppe_expose", "label": "Expose wound and use PPE"},
+        {"id": "direct_pressure", "label": "Apply firm direct pressure"},
+        {"id": "pressure_dressing", "label": "Apply pressure dressing / hemostatic dressing"},
+        {"id": "tourniquet", "label": "Apply tourniquet proximal to wound if uncontrolled"},
+        {"id": "reassess", "label": "Reassess bleeding, distal perfusion, and shock signs"},
+        {"id": "transport", "label": "Prioritize transport / notify receiving facility"}
+      ],
+      "correct_order": ["ppe_expose", "direct_pressure", "pressure_dressing", "tourniquet", "reassess", "transport"],
+      "explanation": "For an extremity wound, begin with exposure and direct pressure. If bleeding remains uncontrolled, escalate to pressure/hemostatic dressing and tourniquet, then reassess perfusion and shock during transport.",
+      "mistake_tag": "hemorrhage_sequence_extremity"
+    },
+    {
+      "id": "stb_02",
+      "prompt": "A child fell onto a metal fence and has a deep groin wound with ongoing heavy bleeding.",
+      "hint": "A junctional wound cannot be controlled by a standard limb tourniquet. Think packing and continuous pressure.",
+      "steps": [
+        {"id": "ppe_expose", "label": "Expose wound and use PPE"},
+        {"id": "direct_pressure", "label": "Apply direct pressure immediately"},
+        {"id": "wound_packing", "label": "Pack wound with hemostatic/plain gauze"},
+        {"id": "hold_pressure", "label": "Hold continuous pressure after packing"},
+        {"id": "reassess", "label": "Reassess bleeding and perfusion"},
+        {"id": "transport", "label": "Rapid transport / trauma notification"}
+      ],
+      "correct_order": ["ppe_expose", "direct_pressure", "wound_packing", "hold_pressure", "reassess", "transport"],
+      "explanation": "Junctional hemorrhage requires packing and sustained pressure. A standard limb tourniquet is not the primary control for a groin wound.",
+      "mistake_tag": "hemorrhage_sequence_junctional"
+    },
+    {
+      "id": "stb_03",
+      "prompt": "A teenager has a chest stab wound with bubbling blood and increasing respiratory distress.",
+      "hint": "Torso bleeding is not managed with a limb tourniquet. Seal the chest and reassess breathing.",
+      "steps": [
+        {"id": "ppe_expose", "label": "Expose wound and use PPE"},
+        {"id": "direct_pressure", "label": "Apply direct pressure around wound"},
+        {"id": "occlusive_dressing", "label": "Apply vented/occlusive chest seal"},
+        {"id": "breathing_reassess", "label": "Reassess breathing and signs of tension physiology"},
+        {"id": "shock_care", "label": "Treat shock and maintain oxygenation/ventilation"},
+        {"id": "transport", "label": "Rapid transport / trauma notification"}
+      ],
+      "correct_order": ["ppe_expose", "direct_pressure", "occlusive_dressing", "breathing_reassess", "shock_care", "transport"],
+      "explanation": "A sucking chest wound needs a chest seal and frequent respiratory reassessment. Tourniquets and wound packing are not the correct primary intervention for this torso wound.",
+      "mistake_tag": "hemorrhage_sequence_torso"
+    },
+    {
+      "id": "stb_04",
+      "prompt": "A 6-year-old has traumatic partial amputation of the lower leg from farm equipment with pulsatile bleeding.",
+      "hint": "Life-threatening extremity bleeding can justify early tourniquet use after immediate exposure/pressure.",
+      "steps": [
+        {"id": "ppe_expose", "label": "Expose injury and use PPE"},
+        {"id": "direct_pressure", "label": "Apply immediate direct pressure"},
+        {"id": "tourniquet", "label": "Apply tourniquet proximal to amputation"},
+        {"id": "time_mark", "label": "Document tourniquet time"},
+        {"id": "reassess", "label": "Reassess bleeding, perfusion, and shock"},
+        {"id": "transport", "label": "Rapid transport / trauma notification"}
+      ],
+      "correct_order": ["ppe_expose", "direct_pressure", "tourniquet", "time_mark", "reassess", "transport"],
+      "explanation": "Massive extremity hemorrhage may require rapid tourniquet placement. After placement, document time and continuously reassess bleeding and shock.",
+      "mistake_tag": "hemorrhage_sequence_tourniquet"
+    },
+    {
+      "id": "stb_05",
+      "prompt": "A child has scalp bleeding after a fall. The wound is oozing steadily, but bleeding slows with firm pressure.",
+      "hint": "If pressure is working, do not jump to interventions designed for uncontrolled extremity hemorrhage.",
+      "steps": [
+        {"id": "ppe_expose", "label": "Expose wound and use PPE"},
+        {"id": "direct_pressure", "label": "Apply firm direct pressure"},
+        {"id": "pressure_dressing", "label": "Secure pressure dressing"},
+        {"id": "neuro_check", "label": "Reassess LOC/neuro status and mechanism"},
+        {"id": "bleed_reassess", "label": "Reassess bleeding frequently"},
+        {"id": "transport", "label": "Transport based on mechanism and findings"}
+      ],
+      "correct_order": ["ppe_expose", "direct_pressure", "pressure_dressing", "neuro_check", "bleed_reassess", "transport"],
+      "explanation": "Controlled scalp bleeding calls for direct pressure and pressure dressing while reassessing neuro status and mechanism. A tourniquet is not appropriate.",
+      "mistake_tag": "hemorrhage_sequence_overescalation"
+    }
+  ]
+}

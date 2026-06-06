@@ -1,0 +1,353 @@
+{
+  "_schema": "pfd_scenario_v1",
+  "id": "orientation_01",
+  "title": "Station Skills Drill",
+  "display_title": "Station Skills Drill",
+  "subtitle": "Orientation — Station 1 assessment drill with your partner Jake",
+  "category": "orientation",
+  "category_display": "Orientation",
+  "is_orientation": true,
+  "debrief_exempt": true,
+  "turnover_target": "none",
+  "version": "1.0.0",
+  "rubric_template": "ems_standard_v1",
+  "difficulty": "orientation",
+  "scenario_number": 0,
+  "jurisdiction": "mi_base",
+  "clinical_context": {
+    "jurisdiction": "MI",
+    "concepts": ["patient_assessment", "documentation_handoff"],
+    "protocol_focus": ["patient_assessment"]
+  },
+  "agency_context": "",
+  "impression_challenge": {
+    "enabled": false
+  },
+  "readiness_criteria": {
+    "min_minutes": 1,
+    "checks": [
+      {
+        "id": "messages",
+        "label": "Introduced yourself",
+        "type": "message_count",
+        "min": 1
+      },
+      {
+        "id": "vitals",
+        "label": "Vitals assessed",
+        "type": "vitals_logged"
+      },
+      {
+        "id": "exam",
+        "label": "Exam practiced",
+        "type": "exam_logged"
+      },
+      {
+        "id": "treatment",
+        "label": "Treatment practiced",
+        "type": "treatment_logged"
+      },
+      {
+        "id": "med_control",
+        "label": "Medical Control called",
+        "type": "med_control_logged"
+      },
+      {
+        "id": "lexi",
+        "label": "Lexi chat used",
+        "type": "lexi_logged"
+      }
+    ]
+  },
+  "scene_entry_scoring": {
+    "ppe": {
+      "required": [],
+      "recommended": [],
+      "missing_required_penalty": 0,
+      "missing_recommended_penalty": 0,
+      "max_score": 0
+    },
+    "pat": {
+      "expected_impression": "not_sick",
+      "incorrect_impression_deduction": 0
+    }
+  },
+  "cpr_challenge": {
+    "enabled": false
+  },
+  "lung_sound_challenge": {
+    "enabled": true,
+    "audio_file": "/static/audio/lung sounds/clear.mp3",
+    "prompt": "Auscultate Jake bilaterally — what do you hear?",
+    "correct_choice_id": "clear",
+    "accepted_answers": [
+      "clear",
+      "clear bilaterally",
+      "normal",
+      "normal lung sounds",
+      "clear lung sounds",
+      "no wheezes",
+      "no crackles",
+      "no diminished breath sounds",
+      "good air movement"
+    ],
+    "finding": "Lung sounds clear bilaterally with good air movement. No wheezes, crackles, rhonchi, stridor, or diminished breath sounds.",
+    "feedback_correct": "Correct — clear bilateral lung sounds. In a normal assessment drill, that finding should be documented plainly without inventing abnormal sounds.",
+    "feedback_incorrect": "Listen again for the absence of adventitious sounds. This clip represents clear bilateral lung sounds with good air movement."
+  },
+  "chat_placeholder": "Introduce yourself and talk to Jake to start the drill...",
+  "chat_address_hint": "Address by name: Jake (training patient) or Alex (partner)",
+  "debrief_lexi_hints": [
+    {
+      "label": "What's the goal?",
+      "msg": "This is a station skills drill with your partner Jake. Walk through the full assessment workflow: introduce yourself, take vitals, perform an exam, and document."
+    },
+    {
+      "label": "Where do I start?",
+      "msg": "Start by sending a message to introduce yourself to Jake."
+    }
+  ],
+  "objectives": [
+    "Navigate the chat interface by introducing yourself to the patient",
+    "Take and log baseline vitals using the Vitals panel",
+    "Perform a brief physical exam using the Exams panel",
+    "Indicate readiness for turnover when your assessment is complete",
+    "Write a basic narrative documenting the call"
+  ],
+  "dispatch": {
+    "unit": "{unit}",
+    "text": "Training drill — Station 1 training room. Your partner Jake is playing the role of a practice patient. Normal vitals expected. This is a station skills review, not a real emergency.",
+    "priority": "Non-emergency",
+    "time": "08:30",
+    "cross_streets": "Station 1, Training Room",
+    "response_time_minutes": 0
+  },
+  "scene": {
+    "description": "You're in the Station 1 training room. Mats cover part of the floor. Jake Moreno, your EMT partner, is seated on a bench with his arms crossed, grinning at you. The Training Officer leans against the doorframe with a clipboard. 'Whenever you're ready,' the T.O. says.",
+    "image": "/static/images/station1_tc.jpeg",
+    "video": null,
+    "hazards": [],
+    "bystanders": [
+      {
+        "name": "Training Officer",
+        "relation": "station training officer",
+        "age": 45
+      }
+    ]
+  },
+  "patient": {
+    "name": "Jake",
+    "age": 28,
+    "sex": "male",
+    "weight_kg": 83,
+    "weight_display": "83 kg (approximately 183 lbs)",
+    "chief_complaint": "None — I'm your guinea pig today.",
+    "general_impression": "28-year-old male seated comfortably on a bench. He is alert, cooperative, and in no distress. Normal skin color, breathing effortlessly. This is a station training drill — the patient has no complaints and no acute findings.",
+    "gcs_assessment": {
+      "e": 4,
+      "v": 5,
+      "m": 6,
+      "total": 15,
+      "rationale": "Eyes open spontaneously, he is oriented and conversational, and he follows commands normally.",
+      "challenge_description": "Jake is seated comfortably and looks at you without prompting. He is oriented, conversational, answers appropriately, and follows commands normally."
+    },
+    "avpu_assessment": {
+      "value": "alert",
+      "description": "Patient is alert, oriented, conversational, and follows commands normally.",
+      "rationale": "Use AVPU = alert because the training patient is awake and interacting normally."
+    }
+  },
+  "history": {
+    "allergies": "None.",
+    "medications": "None.",
+    "pmh": "None. Healthy adult, no known medical history.",
+    "last_oral_intake": "Coffee, about 20 minutes ago.",
+    "events_leading_to_call": "This is a planned station skills drill. Jake is playing the role of a training patient at the request of the Training Officer. There is no emergency and no medical complaint."
+  },
+  "initial_complaint": {
+    "speaker": "Jake",
+    "lay_summary": "I'm here for the station skills drill.",
+    "allowed_in_opener": true,
+    "do_not_include": [
+      "medical complaint",
+      "diagnosis",
+      "treatment suggestions",
+      "full OPQRST/SAMPLE"
+    ]
+  },
+  "personas": {
+    "jake": {
+      "name": "Jake",
+      "age": 28,
+      "role": "patient",
+      "aliases": [
+        "Jake",
+        "Jake Moreno",
+        "patient",
+        "the patient",
+        "partner",
+        "he",
+        "him"
+      ],
+      "description": "28-year-old EMT playing the role of a training patient. He is healthy, cooperative, and slightly amused at being assessed. He knows he has no medical problems and will say so when asked.",
+      "speaking_style": "Casual and friendly. Answers questions directly but occasionally jokes about being a training patient. Never performs symptoms or distress.",
+      "clinical_state_instructions": "Jake is completely healthy. All vitals are normal. He will accurately answer any SAMPLE history questions with 'none', 'nothing', or 'I'm fine'. He knows this is a drill and he's playing along. Do not invent any complaints or abnormal findings.",
+      "persona_rules": [
+        "Never claim symptoms, pain, or distress of any kind",
+        "Respond naturally and cooperatively to assessment questions",
+        "Acknowledge that this is a training drill if asked",
+        "If asked about medications, allergies, or medical history, answer 'none' or equivalent",
+        "Maintain a slightly amused tone — he's a colleague who finds this mildly funny"
+      ]
+    },
+    "alex": {
+      "name": "Alex",
+      "age": 29,
+      "role": "partner",
+      "aliases": [
+        "Alex",
+        "partner",
+        "my partner"
+      ],
+      "description": "Your EMT partner. Present and available to assist with any part of the assessment drill.",
+      "speaking_style": "Professional and helpful. Ready to assist with vitals, exams, or any task.",
+      "clinical_state_instructions": "Alex is available to assist with all assessment tasks. All findings will be normal. Confirm normal vitals if asked to check them independently.",
+      "persona_rules": [
+        "Assist with any requested assessment task",
+        "Report only normal findings",
+        "This is a training drill — respond in that spirit"
+      ]
+    }
+  },
+  "vitals": {
+    "baseline": {
+      "hr": {
+        "label": "Heart Rate",
+        "value": 72,
+        "unit": "bpm",
+        "display": "72 bpm, regular"
+      },
+      "rr": {
+        "label": "Respirations",
+        "value": 14,
+        "unit": "/min",
+        "display": "14/min, unlabored"
+      },
+      "spo2": {
+        "label": "SpO2",
+        "value": 99,
+        "unit": "%",
+        "display": "99% on room air"
+      },
+      "bp": {
+        "label": "Blood Pressure",
+        "value": "118/76",
+        "unit": "mmHg",
+        "numeric": false
+      },
+      "gcs": {
+        "label": "GCS",
+        "value": 15,
+        "unit": "/15",
+        "display": "15 (E4 V5 M6)"
+      },
+      "skin_color": {
+        "label": "Skin",
+        "numeric": false,
+        "value": "Normal color, warm, dry"
+      },
+      "cap_refill": {
+        "label": "Cap Refill",
+        "value": 2,
+        "unit": "sec",
+        "display": "Less than 2 seconds"
+      },
+      "pupils": {
+        "label": "Pupils",
+        "numeric": false,
+        "value": "Equal and reactive to light (PERL)"
+      },
+      "lung_sounds": {
+        "label": "Lung Sounds",
+        "numeric": false,
+        "value": "Clear bilaterally, no wheezes, crackles, or diminishment"
+      },
+      "work_of_breathing": {
+        "label": "Work of Breathing",
+        "numeric": false,
+        "value": "None — breathing effortlessly"
+      },
+      "temp": {
+        "label": "Temperature",
+        "value": 98.6,
+        "unit": "°F",
+        "display": "98.6°F (oral)"
+      },
+      "blood_glucose": {
+        "label": "Blood Glucose",
+        "value": 98,
+        "unit": "mg/dL",
+        "display": "98 mg/dL"
+      }
+    },
+    "deterioration": {
+      "note": "No deterioration — Jake is healthy and all vitals remain stable throughout.",
+      "rates": {},
+      "caps": {}
+    },
+    "interventions": {}
+  },
+  "correct_treatment": {
+    "out_of_scope_bls": [],
+    "primary_interventions": [],
+    "acceptable_interventions": [],
+    "notes": "Orientation scenario — no clinical treatment is indicated. Completion is the only goal."
+  },
+  "scoring": {
+    "is_orientation": true,
+    "method": "completion_only",
+    "notes": "No point-based scoring. The debrief is static. Completion is recorded when the narrative is submitted and POST /api/me/orientation/complete is called."
+  },
+  "scoring_rubric": {},
+  "checklist": [],
+  "exemplar_narrative": "Responded to Station 1 training room for an orientation skills drill. Found a 28-year-old male EMT, Jake Moreno, playing the role of a training patient in no distress. Patient alert and oriented x4, GCS 15. Skin warm, dry, and normal color. Vitals: HR 72 regular, RR 14 unlabored, SpO2 99% on room air, BP 118/76, GCS 15. Lung sounds clear bilaterally. No complaints, no PMH, no medications, no allergies, last oral intake coffee 20 minutes ago. Training drill completed per station Training Officer direction. No treatment indicated. Turned over to Training Officer.",
+  "orientation_guidance": [
+    {
+      "trigger": "session_start",
+      "delay_seconds": 0,
+      "message": "Start by introducing yourself to Jake in the chat. Type something like: **\"Hi Jake, I'm [your name] with [agency]. I'll be doing your assessment today.\"**"
+    },
+    {
+      "trigger": "after_first_message",
+      "message": "Good start. Now tap the **Vitals** button in the action bar at the bottom to take Jake's initial set of vitals."
+    },
+    {
+      "trigger": "after_first_vitals",
+      "message": "Vitals logged and recorded in your Notes. Tap **Exams** to run your physical assessment — head, neck, chest, abdomen, whatever you want to practice."
+    },
+    {
+      "trigger": "after_first_exam",
+      "message": "Good work. Exam findings are recorded in your Notes. Next try administering a medication or treatment."
+    },
+    {
+      "trigger": "after_first_treatment",
+      "message": "Treatment logged and recorded in your Notes. Now try calling Medical Control"
+    },
+    {
+      "trigger": "after_first_med_control",
+      "message": "Medical Control logged. Now tap **Lexi** and ask a question such as **\"What can you do?\"** Hints do not earn credit in graded scenarios, so use them sparingly."
+    },
+    {
+      "trigger": "after_first_lexi",
+      "message": "Lexi chat checked. You're ready to document. Tap the red Pt. Turnover button to open your turnover report, then write your narrative (optional)."
+    },
+    {
+      "trigger": "on_readiness_ready",
+      "message": "All required orientation steps are complete. Tap the red Pt. Turnover button to open your turnover report, then give your turnover report."
+    },
+    {
+      "trigger": "on_narrative_open",
+      "message": "Last step — write your narrative in the box below. Describe the call start to finish in plain language, just like you'd write a PCR."
+    }
+  ]
+}

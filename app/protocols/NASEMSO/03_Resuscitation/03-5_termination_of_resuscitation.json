@@ -1,0 +1,136 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Resuscitation: Termination of Resuscitative Efforts. NASEMSO national provisional base.",
+  "id": "nasemso_base_resuscitation_termination_of_resuscitative_efforts",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Termination of Resuscitative Efforts",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Resuscitation: Termination of Resuscitative Efforts",
+  "aliases": [
+    "Call the code"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Resuscitation: Termination of Resuscitative Efforts",
+      "points": [
+        "When there is no response to prehospital cardiac arrest treatment, it is acceptable and often preferable to cease futile resuscitation efforts in the field",
+        "In patients with cardiac arrest, prehospital resuscitation is initiated with the goal of returning spontaneous circulation before permanent neurologic damage occurs. In most situations, ALS clinicians are capable of performing an initial resuscitation that is equivalent to an in-hospital resuscitation attempt, and there is usually no additional benefit to emergency department resuscitation in most cases",
+        "CPR that is performed during patient packaging and transport is much less effective than CPR done at the scene. Additionally, EMS clinicians risk physical injury while attempting to perform CPR in a moving ambulance while unrestrained. In addition, continuing resuscitation in futile cases places other motorists and pedestrians at risk, increases the time that EMS crews are not available for another call, impedes emergency department care of other patients, and incurs unnecessary hospital charges. Lastly, return of spontaneous circulation is dependent on a focused, timely resuscitation. The patient in arrest should be treated as expeditiously as possible, including quality, uninterrupted CPR and timely defibrillation as indicated",
+        "When cardiac arrest resuscitation becomes futile, the patient's family should become the focus of the EMS clinicians. Families need to be informed of what is being done and that transporting all cardiac arrest patients to the hospital is not supported by evidence. This practice also inconveniences the family by requiring a trip to the hospital where they must begin grieving in an unfamiliar setting. Most families understand the futility of the situation and are accepting of ceasing resuscitation efforts in the field",
+        "Consider potential for organ donation if feasible."
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Any cardiac arrest patient that has received resuscitation in the field but has not responded to",
+        "EXCLUSION CRITERIA:",
+        "Consider continuing resuscitation for patients in cardiac arrest associated with medical conditions that may have a better outcome despite prolonged resuscitation, including hypothermia (although under certain circumstances, medical direction may order termination of resuscitation in these conditions)"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Scene safety and PPE; primary survey (ABCDE)",
+        "Oxygen via NRM targeting SpO2 94-98% if indicated",
+        "Position of comfort; hemorrhage control as needed",
+        "CPR/AED if patient becomes pulseless",
+        "Epinephrine auto-injector for anaphylaxis if applicable",
+        "Naloxone intranasal unit-dose for suspected opioid involvement"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Blood glucose monitoring; oral glucose if hypoglycemic and alert",
+        "12-lead ECG acquisition and transmission",
+        "CPAP for respiratory distress",
+        "Aspirin for suspected ischemic chest pain",
+        "Albuterol SVN for bronchospasm component",
+        "IV access maintenance (non-medicated)"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation",
+        "IV/IO fluid resuscitation as indicated",
+        "Waveform capnography",
+        "IV analgesics (fentanyl, morphine) per pain management protocol",
+        "IV antiemetics (ondansetron) per protocol",
+        "IV D50W/D10W for hypoglycemia"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "12-lead ECG interpretation",
+        "Endotracheal intubation for airway compromise",
+        "RSI per protocol",
+        "Advanced antidysrhythmic or hemodynamic support per specific protocol",
+        "All parenteral medications per protocol",
+        "Vasopressors for refractory hemodynamic compromise"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "All patients who are found in ventricular fibrillation or whose rhythm changes to ventricular fibrillation should in general have full resuscitation continued on scene"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Recent evidence has shown that, to capture over 99% of potential survivors from medical cardiac arrest (especially VF and pulseless VT arrests), resuscitation should be continued for approximately 40 minutes. This does not imply, however, that all resuscitations should continue this long (e.g., asystolic rhythms)",
+        "In remote or wilderness situations, EMS clinicians should make every effort to contact medical direction, but resuscitation may be terminated in the field without contacting medical direction when the following have occurred: a. There has been no return of pulse despite greater than 30 minutes of CPR (this does not apply in the case of hypothermia)",
+        "Logistical factors should be considered, such as collapse in a public place, family wishes, and safety of the crew and public",
+        "Survival and functional neurologic outcomes are unlikely if ROSC is not obtained by EMS. It is dangerous to crew, pedestrians, and other motorists to attempt to resuscitate a patient during ambulance transport",
+        "Quantitative EtCO2 measurements of less than 10 mmHg or falling greater than 25% despite resuscitation indicates a poor prognosis and provide additional support for termination"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' All items (a'f in Non-traumatic or Traumatic arrest) listed under patient management must be clearly documented in the EMS patient care report in addition to the assessment findings supporting this medical decision making",
+        "' If resuscitation is continued for special circumstance or despite satisfying the criteria in this guideline, the rationale for such decision making must be documented"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Any cardiac arrest patient that has received resuscitation in the field but has not responded to"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

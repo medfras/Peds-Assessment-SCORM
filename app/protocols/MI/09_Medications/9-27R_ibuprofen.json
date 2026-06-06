@@ -1,0 +1,72 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-27R Ibuprofen (Revised 12/10/2025, MDHHS Reviewed 2026). Base Michigan template.",
+  "id": "mi_base_medication_ref_ibuprofen",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Ibuprofen",
+  "version": "2025-12-10",
+  "protocol_reference": "Michigan Medication Protocol Section 9-27R: Ibuprofen — MDHHS Approved 1/5/2026, Reviewed 2026",
+
+  "pharmacological_category": "Analgesic / Antipyretic / Anti-inflammatory — NSAID",
+
+  "routes": ["PO (oral)"],
+
+  "indications": [
+    "Mild to moderate pain",
+    "Fever"
+  ],
+
+  "contraindications": [
+    "Active bleeding or coagulation disorder",
+    "Age <6 months",
+    "Pregnancy (third trimester — risk of premature closure of ductus arteriosus; generally avoid in all trimesters unless authorized by online MC)",
+    "Known NSAID or aspirin hypersensitivity (including aspirin-exacerbated respiratory disease)",
+    "Significant renal impairment"
+  ],
+
+  "precautions": [
+    "Ask about ibuprofen use within the past 6 hours — avoid repeat dosing within 6 hours",
+    "Caution with GI ulcer history, liver disease",
+    "Concomitant aspirin use: ibuprofen may interfere with aspirin's antiplatelet effect"
+  ],
+
+  "expected_effects": [
+    "Analgesia within 30-60 minutes",
+    "Antipyretic effect within 30-60 minutes"
+  ],
+
+  "side_effects": [
+    "GI irritation, nausea",
+    "Increased bleeding risk",
+    "Renal impairment with chronic use",
+    "Bronchospasm in NSAID-sensitive patients"
+  ],
+
+  "notes": [
+    "Adult dose: 400 mg PO",
+    "Pediatric >6 months: per MI-MEDIC or weight/age-based table; standard pediatric liquid: 100 mg/5 mL",
+    "Do not give if ibuprofen was taken within the past 6 hours",
+    "Contraindicated <6 months of age"
+  ],
+
+  "dosing": [
+    {
+      "population": "Adult (>14 yr)",
+      "route": "PO",
+      "dose": "400 mg PO",
+      "notes": "Do not give if taken within 6 hours; avoid in pregnancy"
+    },
+    {
+      "population": "Pediatric >6 months",
+      "route": "PO",
+      "dose": "Per MI-MEDIC or weight/age-based dosing table",
+      "notes": "Standard pediatric suspension: 100 mg/5 mL; do not give if taken within 6 hours; contraindicated <6 months"
+    }
+  ],
+
+  "used_in_protocols": ["Pain Management", "Fever"]
+}

@@ -1,0 +1,137 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Toxins and Environmental: Beta Blocker Poisoning/Overdose. NASEMSO national provisional base.",
+  "id": "nasemso_base_toxins_and_environmental_beta_blocker_poisoning_overdose",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Beta Blocker Poisoning/Overdose",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Beta Blocker Poisoning/Overdose",
+  "aliases": [
+    "Anti-hypertensive"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Beta Blocker Poisoning/Overdose",
+      "points": [
+        "Reduce GI absorption of oral agents with some form of binding agent (activated charcoal) especially for extended release",
+        "Early airway protection is required as patients may have rapid mental status deterioration",
+        "Assure adequate ventilation, oxygenation, and correction of hypoperfusion"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Patients may present with: a. Bradycardia",
+        "Beta blocker agent examples: a. Acebutolol hydrochloride (Sectral')",
+        "Alpha/beta-adrenergic blocking agents' examples: a. Carvedilol (Coreg')",
+        "EXCLUSION CRITERIA:",
+        "None noted"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Scene safety; activate ALS",
+        "Oxygen via NRM; BVM for respiratory depression",
+        "CPR/AED for cardiac arrest",
+        "Supine position; protect airway"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "12-lead ECG: bradycardia, hypotension, widened QRS common",
+        "IV access maintenance",
+        "Oral activated charcoal if: conscious, alert, recent ingestion (<2 hrs), intact gag reflex — only per medical direction order"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation; IV NS bolus 500-1000 mL for hypotension",
+        "Atropine 0.5-1 mg IV for symptomatic bradycardia (often ineffective in BB OD)",
+        "Glucagon 1-5 mg IV/IO bolus (bypasses beta receptor) for bradycardia/hypotension",
+        "Waveform capnography; blood glucose monitoring"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "Glucagon 3-5 mg IV bolus, then 2-5 mg/hour infusion for bradycardia/hypotension",
+        "High-dose insulin euglycemia (HDIE): regular insulin 1 unit/kg IV bolus + dextrose; maintain euglycemia",
+        "Lipid emulsion therapy (intralipid 20%) 1.5 mL/kg IV bolus for cardiac toxicity (per medical direction)",
+        "Calcium chloride 1 g IV for CCB co-ingestion",
+        "Transcutaneous pacing for refractory bradycardia (may not capture at normal outputs — increase mA)",
+        "Vasopressors: norepinephrine or epinephrine infusion for refractory hypotension",
+        "Sodium bicarbonate 1-2 mEq/kg IV if QRS >120 ms",
+        "RSI and intubation for airway compromise: avoid succinylcholine (hyperkalemia risk); use rocuronium 1.2 mg/kg"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Transcutaneous pacing may not always capture nor correct hypotension when capture is successful",
+        "Aspiration of activated charcoal can cause airway management to be nearly impossible. Do not administer activated charcoal to any patients that may have a worsening mental status"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Pediatric Considerations a. Pediatric patient may develop hypoglycemia from beta blocker overdose therefore it is important to perform glucose evaluation",
+        "Glucagon has a side effect of increased vomiting at these doses and ondansetron prophylaxis may be considered",
+        "Atropine may have little or no effect (likely to be more helpful in mild overdoses) ' the hypotension and bradycardia may be mutually exclusive, and the blood pressure may not respond to correction of bradycardia",
+        "Propranolol crosses the blood brain barrier and can cause altered mental status, seizure, and widened QRS similar to TCA toxicity",
+        "Certain beta-blockers, such as acebutolol and propranolol, may increase QRS duration",
+        "Certain beta-blockers, such as acebutolol and pindolol, may produce tachycardia and hypertension",
+        "Sotalol can produce increase in QTc interval and ventricular dysrhythmias",
+        "Frequent reassessment is essential as patient deterioration can be rapid and catastrophic"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Repeat evaluation and documentation of signs and symptoms and vital signs as patient clinical conditions may deteriorate rapidly",
+        "' Identification of possible etiology of poisoning",
+        "' Time of symptoms onset and time of initiation of exposure-specific treatment",
+        "' Therapy and response to therapy"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Contact medical direction for clinical deterioration or interventions outside standard scope"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

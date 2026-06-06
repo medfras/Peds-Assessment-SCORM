@@ -1,0 +1,967 @@
+{
+  "_schema": "pfd_scenario_v1",
+  "rubric_template": "ems_standard_v1",
+  "base_patient_care_rubric": "nremt_e202_medical_v1",
+  "id": "adult_acs_01_stemi",
+  "title": "Chest Pain — Inferior STEMI",
+  "category": "adult_medical",
+  "category_display": "Adult Medical Emergency",
+  "turnover_target": "hospital",
+  "jurisdiction": "MI",
+  "clinical_context": {
+    "jurisdiction": "MI",
+    "concepts": [
+      "chest_pain_acs",
+      "stemi",
+      "cardiac_monitoring",
+      "transport_decision",
+      "medical_control",
+      "oxygen_therapy"
+    ],
+    "protocol_focus": [
+      "chest_pain_acs",
+      "stemi",
+      "cardiac_monitoring"
+    ]
+  },
+  "advanced_monitoring": {
+    "cardiac_monitor_4lead": true,
+    "ecg_12lead": true,
+    "capnography": false
+  },
+  "transport_phase": {
+    "applicable": true,
+    "destination": "Central City Medical Center",
+    "priority": "emergent",
+    "reassessment_expectations": [
+      "Reassess HR, SpO2, and BP at least once en route",
+      "Reassess cardiac rhythm on 4-lead monitor",
+      "Document patient response to aspirin (pain change, tolerance)",
+      "Document any change in hemodynamic status or level of consciousness"
+    ],
+    "transport_events": []
+  },
+  "als_phase": {
+    "indicated": false,
+    "auto_dispatched": false
+  },
+  "prearrival_report": {
+    "required": true,
+    "trigger_conditions": [
+      "Inferior STEMI identified on 12-lead ECG",
+      "Emergent transport to PCI-capable facility"
+    ],
+    "required_elements": [
+      "patient age and sex",
+      "chief complaint — chest pain with STEMI identification",
+      "current vitals — HR, SpO2, BP at time of report",
+      "interventions applied and patient response",
+      "ETA to Central City Medical Center",
+      "cardiac activation flag — cath lab notification"
+    ],
+    "recommended_elements": [
+      "lead involvement — II, III, aVF",
+      "time of symptom onset",
+      "relevant history — HTN, DM, current medications"
+    ]
+  },
+  "patient": {
+    "pcr_demographics_deferred": true,
+    "name": "Robert Lawson",
+    "age": 58,
+    "dob_month_day": "September 4",
+    "sex": "male",
+    "weight_kg": 91,
+    "weight_display": "91 kg / ~200 lbs",
+    "chief_complaint": "Substernal chest pain with diaphoresis, onset ~30 minutes ago",
+    "general_impression": "Middle-aged male sitting on the edge of his couch clutching his chest, pale and diaphoretic. Appears acutely ill and uncomfortable.",
+    "gcs_assessment": {
+      "e": 4,
+      "v": 5,
+      "m": 6,
+      "total": 15,
+      "rationale": "Eyes open spontaneously, he is oriented and answers appropriately, and he obeys commands despite chest pain.",
+      "challenge_description": "Robert is sitting on the edge of the couch clutching his chest. His eyes are open spontaneously. He is oriented, answers questions appropriately despite pain, and obeys commands such as squeezing your hand or sitting still for assessment."
+    },
+    "avpu_assessment": {
+      "value": "alert",
+      "description": "Patient is alert, oriented, and answers appropriately despite chest pain.",
+      "rationale": "Use AVPU = alert because he is awake, spontaneously interactive, and following commands."
+    }
+  },
+  "history": {
+    "pmh": [
+      "Hypertension",
+      "Type 2 diabetes mellitus"
+    ],
+    "medications": [
+      "Metoprolol 25 mg daily",
+      "Lisinopril 10 mg daily",
+      "Metformin 500 mg twice daily"
+    ],
+    "allergies": "NKDA",
+    "last_oral_intake": "Lunch approximately 3 hours ago",
+    "events_leading_to_call": "Patient developed substernal chest pain while watching television approximately 30 minutes ago. Pain has not improved with rest. Wife called 9-1-1. Patient minimizes symptoms — describes it as 'probably just indigestion.'"
+  },
+  "initial_complaint": {
+    "speaker": "Robert",
+    "lay_summary": "My chest has been bothering me and I don't feel right.",
+    "allowed_in_opener": true,
+    "do_not_include": [
+      "onset time",
+      "radiation",
+      "severity",
+      "associated symptoms",
+      "cardiac history",
+      "medications",
+      "diagnosis",
+      "clinical terms",
+      "treatment suggestions",
+      "negative findings",
+      "full OPQRST/SAMPLE"
+    ]
+  },
+  "history_response_map": {
+    "patient_identity": {
+      "label": "Patient identity / demographics",
+      "speaker": "Robert",
+      "triggers": ["what is your name", "what's your name", "patient name", "how old are you", "age", "date of birth", "dob", "birthday"],
+      "answer": "My name is Robert Lawson. I'm 58 years old. My birthday is September 4.",
+      "tags": ["[[HISTORY: Patient Name=Robert Lawson]]", "[[HISTORY: Patient Age=58-year-old male]]", "[[HISTORY: Patient Date of Birth=September 4]]"],
+      "notes": "Patient-scoped demographics only.",
+      "do_not_include": ["weight unless asked", "chest pain details", "medical history", "medications", "treatment suggestions"]
+    },
+    "patient_weight": {
+      "label": "Patient weight",
+      "speaker": "Robert",
+      "triggers": ["how much do you weigh", "what do you weigh", "patient weight", "weight", "estimated weight"],
+      "answer": "I weigh about 91 kilograms, around 200 pounds.",
+      "tag": "[[HISTORY: Patient Weight=91 kg / ~200 lbs]]",
+      "notes": "Patient-scoped weight only.",
+      "do_not_include": ["diagnosis", "treatment suggestions"]
+    },
+    "chief_concern": {
+      "label": "Broad opener / chief concern",
+      "speaker": "Robert",
+      "triggers": ["what's going on", "what happened", "why did you call", "how can we help", "chief complaint"],
+      "answer": "My chest hurts and I'm sweating.",
+      "tag": "[[HISTORY: Patient Chief Complaint=substernal chest pain with diaphoresis]]",
+      "notes": "Patient-scoped complaint only.",
+      "do_not_include": ["onset", "radiation", "cardiac history", "medications", "treatment suggestions"]
+    }
+  },
+  "personas": [
+    {
+      "role": "patient",
+      "name": "Robert",
+      "age": 58,
+      "description": "Retired schoolteacher. Calm but clearly uncomfortable. Minimizes symptoms — insists 'it's probably nothing, just indigestion.' Answers questions but keeps responses brief due to pain. Becomes more cooperative when asked directly about specific symptoms."
+    },
+    {
+      "role": "family",
+      "name": "Carol Lawson",
+      "relationship": "wife",
+      "description": "Visibly frightened, hovering near Robert. Cooperative and gives full answers. Will say 'He never complains about pain — I knew something was really wrong' if asked. Asks what is happening and where you are taking him."
+    },
+    {
+      "role": "ems_partner",
+      "name": "Alex",
+      "description": "Your EMT partner — experienced, calm, waits for your direction. DEFAULT OXYGEN RULE: If student gives any generic oxygen command without specifying a method, apply nasal cannula (NC) by default — NC is the protocol default for STEMI with SpO2 ≥ 90%. Only apply high-flow O2 (NRB) if student explicitly requests it or if SpO2 drops below 90%. Never describe two delivery methods in the same response.",
+      "persona_rules": [
+        "When student gives any generic oxygen command, default to nasal cannula — never apply or describe NRB/high-flow unprompted unless SpO2 < 90%",
+        "Never describe two mutually exclusive oxygen delivery methods in the same response"
+      ]
+    }
+  ],
+  "vitals": {
+    "baseline": {
+      "hr": {
+        "value": 60,
+        "numeric": true,
+        "label": "Heart Rate",
+        "unit": " bpm"
+      },
+      "rr": {
+        "value": 18,
+        "numeric": true,
+        "label": "Resp Rate",
+        "unit": " breaths/min"
+      },
+      "spo2": {
+        "value": 96.0,
+        "numeric": true,
+        "label": "SpO2",
+        "unit": "%"
+      },
+      "bp": {
+        "value": "108/70",
+        "numeric": false,
+        "label": "Blood Pressure",
+        "unit": " mmHg"
+      },
+      "temp": {
+        "value": "37.0°C / 98.6°F",
+        "numeric": false,
+        "label": "Temperature"
+      },
+      "blood_glucose": {
+        "value": 104,
+        "numeric": true,
+        "label": "Blood Glucose",
+        "unit": "mg/dL"
+      },
+      "gcs": {
+        "value": 15,
+        "numeric": true,
+        "label": "GCS",
+        "unit": "",
+        "detail": "E4V5M6 — alert, oriented, obeys commands despite chest pain"
+      },
+      "cardiac_rhythm": {
+        "value": "Unknown — monitor not yet applied",
+        "numeric": false,
+        "label": "Cardiac Rhythm",
+        "image_asset": null
+      },
+      "ecg_findings": {
+        "value": "Unknown — 12-lead not yet acquired",
+        "numeric": false,
+        "label": "12-Lead Findings",
+        "image_asset": null
+      },
+      "skin_color": {
+        "value": "Pale, cool, diaphoretic",
+        "numeric": false,
+        "label": "Skin"
+      },
+      "cap_refill": {
+        "value": "3 seconds",
+        "numeric": false,
+        "label": "Cap Refill"
+      },
+      "pupils": {
+        "value": "4 mm, equal, reactive",
+        "numeric": false,
+        "label": "Pupils"
+      },
+      "lung_sounds": {
+        "value": "Clear bilaterally — equal air movement, no adventitious sounds",
+        "numeric": false,
+        "label": "Lung Sounds"
+      },
+      "work_of_breathing": {
+        "value": "Regular, unlabored",
+        "numeric": false,
+        "label": "Work of Breathing"
+      }
+    },
+    "deterioration": {
+      "rates": {
+        "hr": -0.1,
+        "spo2": -0.25,
+        "gcs": 0
+      },
+      "caps": {
+        "hr": {
+          "min": 40,
+          "max": 180
+        },
+        "spo2": {
+          "min": 82.0,
+          "max": 100.0
+        },
+        "gcs": {
+          "min": 3,
+          "max": 15
+        }
+      },
+      "string_thresholds": {
+        "skin_color": [
+          {
+            "spo2_below": 88,
+            "value": "Cyanotic lips, cool, diaphoretic"
+          }
+        ]
+      }
+    },
+    "interventions": {
+      "o2_nrb": {
+        "label": "High-flow O2 via NRB mask (15 LPM)",
+        "scope": [
+          "MFR",
+          "EMT",
+          "AEMT",
+          "Paramedic"
+        ],
+        "notes": "Indicated if SpO2 < 94%; aggressive O2 support for hypoxic cardiac patient",
+        "effects": {
+          "spo2": {
+            "immediate_change": 2.0,
+            "rate_modifier": 0.05
+          }
+        }
+      },
+      "o2_nc": {
+        "label": "Supplemental O2 via nasal cannula",
+        "scope": [
+          "MFR",
+          "EMT",
+          "AEMT",
+          "Paramedic"
+        ],
+        "notes": "Appropriate for mild hypoxia; titrate to keep SpO2 ≥ 94%",
+        "effects": {
+          "spo2": {
+            "immediate_change": 0.8,
+            "rate_modifier": 0.4
+          }
+        }
+      },
+      "positioning": {
+        "label": "Position of comfort — sitting upright",
+        "scope": [
+          "MFR",
+          "EMT",
+          "AEMT",
+          "Paramedic"
+        ],
+        "notes": "High-fowler or position of comfort; reduces preload and patient anxiety",
+        "effects": {}
+      },
+      "ekg_monitoring": {
+        "label": "Cardiac Monitor — 4-Lead",
+        "scope": [
+          "EMT",
+          "AEMT",
+          "Paramedic"
+        ],
+        "notes": "Apply leads; reveals cardiac rhythm for monitoring and rhythm recognition",
+        "effects": {
+          "string_override": {
+            "cardiac_rhythm": "Sinus bradycardia — rate 60, regular rhythm"
+          }
+        }
+      },
+      "12_lead_ecg": {
+        "label": "12-Lead ECG",
+        "scope": [
+          "EMT",
+          "AEMT",
+          "Paramedic"
+        ],
+        "notes": "Acquire and interpret — transmit to receiving facility if capable",
+        "effects": {
+          "string_override": {
+            "ecg_findings": "ST elevation 2–3 mm leads II, III, aVF; reciprocal ST depression leads I and aVL — inferior STEMI pattern"
+          }
+        }
+      },
+      "aspirin_po": {
+        "label": "Aspirin 324 mg PO (4 × 81 mg chewable)",
+        "scope": [
+          "EMT",
+          "AEMT",
+          "Paramedic"
+        ],
+        "notes": "First-line antiplatelet for suspected ACS; verify no allergy and patient can swallow and protect airway",
+        "effects": {}
+      },
+      "load_and_go": {
+        "label": "Load and Go / Rapid Transport Decision",
+        "scope": [
+          "MFR",
+          "EMT",
+          "AEMT",
+          "Paramedic"
+        ],
+        "notes": "Priority transport — STEMI is a load-and-go; minimize scene time; definitive treatment is PCI at the cath lab",
+        "effects": {}
+      }
+    },
+    "improvement": {}
+  },
+  "correct_treatment": {
+    "primary_diagnosis": "Inferior STEMI (ST-elevation myocardial infarction — RCA occlusion, inferior wall involvement)",
+    "critical_actions": [
+      {
+        "id": "scene_safety",
+        "description": "Scene safety confirmed and BSI/PPE donned prior to patient contact",
+        "scene_entry_credited": true
+      },
+      {
+        "id": "primary_assessment",
+        "description": "Primary assessment performed — LOC/GCS, airway, breathing, circulation, skin signs",
+        "protocol_indicated": true,
+        "evidence": {
+          "finding_types": [
+            "vital",
+            "exam"
+          ],
+          "transcript_patterns": [
+            "(?i)(primary|assessment|airway|breathing|circulation|pulse|skin|level of)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "cardiac_monitoring_applied",
+        "description": "Cardiac monitor (4-lead) applied and rhythm identified as sinus bradycardia",
+        "protocol_indicated": true,
+        "evidence": {
+          "finding_types": [
+            "exam"
+          ],
+          "finding_key_patterns": [
+            "(?i)ECG"
+          ],
+          "transcript_patterns": [
+            "(?i)(monitor|4.lead|cardiac monitor|ekg|ecg)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "12lead_obtained",
+        "description": "12-Lead ECG obtained and inferior STEMI pattern recognized (II, III, aVF)",
+        "protocol_indicated": true,
+        "evidence": {
+          "finding_types": [
+            "exam"
+          ],
+          "finding_key_patterns": [
+            "(?i)12.Lead"
+          ],
+          "transcript_patterns": [
+            "(?i)(12.lead|twelve.lead|stemi|st.elev)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "aspirin_admin",
+        "description": "Aspirin 324 mg PO (chewable) administered — no allergy, no contraindication present",
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(aspirin|asa)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "priority_transport",
+        "description": "Priority transport decision — load and go to PCI-capable facility (Central City Medical Center)",
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(transport|load|go|hospital|lights)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "hospital_notification",
+        "description": "Pre-arrival cardiac alert called to Central City Medical Center — cath lab activated",
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(alert|notif|radio|central city|cath|hospital)"
+          ],
+          "min_matches": 1
+        }
+      }
+    ],
+    "recommended_actions": [
+      {
+        "id": "cardiac_monitoring_applied",
+        "description": "Cardiac monitor (4-lead) applied — rhythm confirmed and monitored throughout"
+      },
+      {
+        "id": "twelve_lead_ecg_performed",
+        "description": "12-Lead ECG performed and inferior STEMI pattern identified"
+      },
+      {
+        "id": "hospital_pre_arrival_notification",
+        "description": "Pre-arrival cardiac alert — Central City Medical Center cath lab notified"
+      },
+      {
+        "id": "transport_destination_verbalized",
+        "description": "Transport destination verbalized to patient and family"
+      }
+    ],
+    "out_of_scope_bls": [
+      "iv_io_access",
+      "iv_pain_medication",
+      "push_dose_epinephrine",
+      "fibrinolytic_als_only"
+    ]
+  },
+  "scoring_rubric": {
+    "clinical_performance": {
+      "max": 50,
+      "full_credit": "4-lead cardiac monitor applied; 4-lead cardiac monitor applied with sinus bradycardia identified; 12-lead ECG acquired with inferior STEMI pattern recognized (II, III, aVF); aspirin 324 mg PO administered without contraindication; supplemental O2 appropriately applied; position of comfort; priority transport decision made with minimal scene time; pre-arrival cardiac alert called to Central City Medical Center.",
+      "partial_credit": "Monitor applied and STEMI recognized but aspirin omitted despite no contraindication; or priority transport initiated but pre-arrival cardiac alert not made; or 12-lead obtained but STEMI pattern not verbalized or acted upon.",
+      "minimal_credit": "Basic scene management and primary assessment completed but 12-lead not obtained and STEMI not recognized — patient transported without cardiac alert activation and without aspirin."
+    },
+    "narrative": {
+      "max": 20,
+      "full_credit": "CHART complete: EMS response to 58-year-old male with substernal chest pain onset 30 minutes; history of HTN and T2DM, NKDA; sinus bradycardia on 4-lead, inferior STEMI on 12-lead (II/III/aVF); aspirin 324 mg PO given without adverse reaction; supplemental O2 applied; priority transport to Central City Medical Center with pre-arrival cardiac alert; patient hemodynamically stable at time of transport.",
+      "partial_credit": "Most CHART elements present but 12-lead findings or cardiac alert documentation absent or undocumented",
+      "minimal_credit": "Narrative present but STEMI not identified in the documented assessment, or aspirin documented as withheld without documented contraindication"
+    },
+    "scope_adherence": {
+      "max": 10,
+      "full_credit": "Stayed within effective provider scope and MCA rules: IV/IO access not attempted — outside BLS scope for STEMI management. No out-of-scope attempts or orders.",
+      "partial_credit": "No dangerous out-of-scope intervention attempted, but scope reasoning, level-specific escalation, or MCA-specific scope recognition was incomplete.",
+      "minimal_credit": "Out-of-scope intervention attempted or ordered, or provider-level limits materially ignored."
+    },
+    "dmist": {
+      "max": 10,
+      "full_credit": "D: Robert Lawson, 58-year-old male, 91 kg; M: substernal chest pain onset 30 minutes, HTN and T2DM, sinus bradycardia on 4-lead, inferior STEMI on 12-lead (II/III/aVF), NKDA; I: aspirin 324 mg PO given — tolerated without reaction, O2 applied; S: HR 60 bradycardic, SpO2 96%, BP 108/70, GCS 15, pale and diaphoretic; T: priority transport Central City Medical Center — cath lab pre-notified, ETA stated.",
+      "partial_credit": "3–4 of 5 DMIST components present; 12-lead findings or cath lab pre-notification absent from handoff report",
+      "minimal_credit": "2 or fewer DMIST components, or STEMI identification completely absent from handoff"
+    },
+    "professionalism": {
+      "max": 10,
+      "full_credit": "Introduced themselves to Robert and Carol; used Robert's name; explained the cardiac monitor and 12-lead purpose without causing alarm; acknowledged Carol's fear directly; explained transport plan and destination to both patient and family; prepared Robert for what to expect at the hospital.",
+      "partial_credit": "Communication present but transport plan not explained to patient and family, or Carol's concern not acknowledged during critical interventions",
+      "minimal_credit": "Minimal communication with Robert or Carol — procedures performed without explanation and family concern not acknowledged; patient not informed about critical findings or transport decision"
+    },
+    "protocols_treatment": {
+      "max": 20,
+      "full_credit": "Protocol-aligned ACS treatment completed: aspirin 324 mg PO administered after contraindication check, patient positioned for comfort, priority transport/cardiac alert priorities addressed, and contraindicated care avoided.",
+      "partial_credit": "Most treatment priorities addressed, but one important protocol-aligned intervention, escalation step, or contraindication check was incomplete or delayed.",
+      "minimal_credit": "Key protocol/treatment priority missed, contraindicated care performed, or treatment plan materially inconsistent with protocol."
+    }
+  },
+  "scoring": {
+    "overall_considerations": [
+      "STEMI is a time-critical emergency — scene time directly affects patient outcome. The door-to-balloon clock starts at first medical contact.",
+      "The pre-arrival cardiac alert is not optional — it is the single action that activates the cath lab team and reduces time to reperfusion.",
+      "Sinus bradycardia is expected in inferior STEMI (RCA supplies the SA node) — do not penalize the student for not treating the bradycardia at BLS scope."
+    ],
+    "required_assessments": [
+      {
+        "id": "twelve_lead_ecg",
+        "description": "Obtain and interpret 12-lead ECG (inferior STEMI pattern in leads II, III, aVF)",
+        "keywords": [
+          "12-lead",
+          "12 lead",
+          "twelve lead",
+          "ECG",
+          "EKG",
+          "ST elevation",
+          "STEMI",
+          "inferior",
+          "II",
+          "III",
+          "aVF",
+          "leads",
+          "rhythm",
+          "cardiac monitor"
+        ],
+        "missing_deduction": 5,
+        "note": "12-lead ECG acquisition and STEMI recognition is the central diagnostic action in this scenario — it drives the cardiac alert, destination decision, and treatment priority."
+      },
+      {
+        "id": "cardiac_history",
+        "description": "Obtain cardiac-focused history (onset, radiation, associated symptoms, prior cardiac history, medications, allergies)",
+        "keywords": [
+          "chest pain",
+          "onset",
+          "how long",
+          "radiate",
+          "radiation",
+          "jaw",
+          "arm",
+          "shoulder",
+          "nausea",
+          "diaphoresis",
+          "shortness of breath",
+          "history",
+          "medications",
+          "aspirin",
+          "allergies",
+          "NKDA"
+        ],
+        "missing_deduction": 2,
+        "note": "OPQRST and SAMPLE focused on the cardiac presentation is required to establish the STEMI picture and confirm aspirin safety before administration."
+      },
+      {
+        "id": "swallowing_aspirin_check",
+        "description": "Confirm patient can swallow and has no aspirin allergy before administering aspirin",
+        "keywords": [
+          "swallow",
+          "allergy",
+          "allergic",
+          "aspirin",
+          "NKDA",
+          "no known",
+          "can you swallow",
+          "able to swallow"
+        ],
+        "missing_deduction": 2,
+        "note": "Aspirin safety check (allergy + ability to swallow) is a protocol-required step before administration — credit even if confirmed as part of the 5-rights verbalization."
+      }
+    ],
+    "required_screens": [
+      {
+        "id": "stemi_vs_aortic_dissection",
+        "description": "Screen for aortic dissection (tearing quality, back pain, asymmetric BP/pulses — contraindicates aspirin and thrombolytics)",
+        "keywords": [
+          "aortic",
+          "dissection",
+          "tearing",
+          "ripping",
+          "back pain",
+          "radiation to back",
+          "asymmetric",
+          "pulses",
+          "both arms",
+          "contraindicated",
+          "dissect"
+        ],
+        "missing_deduction": 2,
+        "note": "Aortic dissection mimics STEMI and aspirin/thrombolytics are contraindicated. Brief screening for tearing quality and back radiation is expected clinical reasoning for any ACS presentation."
+      }
+    ],
+    "by_level": {
+      "EMT": {
+        "critical_focus": [
+          "Scene safety and BSI/PPE.",
+          "Rapid primary assessment — LOC, airway, breathing, circulation, skin.",
+          "Cardiac monitor (4-lead) applied — sinus bradycardia recognized.",
+          "12-Lead ECG obtained — inferior STEMI pattern recognized in leads II, III, aVF.",
+          "Aspirin 324 mg PO (four 81 mg chewable) — verify NKDA and patient can swallow before administering.",
+          "Supplemental O2 — nasal cannula to maintain SpO2 ≥ 94%; NRB if SpO2 drops below 90%.",
+          "Position of comfort — high-fowler or sitting upright.",
+          "Priority transport — load and go; minimize scene time; STEMI is not a treat-on-scene call.",
+          "Pre-arrival cardiac alert to Central City Medical Center — cath lab notification."
+        ],
+        "additional_expectations": [
+          "OPQRST assessment of chest pain (onset, quality, radiation, severity, time course).",
+          "SAMPLE history — allergy screen required before aspirin.",
+          "Reassessment of vitals and rhythm en route."
+        ],
+        "grace_items": [
+          "Nitroglycerin — not in EMT scope under this MCA without specific protocol authorization; do not penalize for not using it.",
+          "12-lead interpretation beyond recognizing STEMI pattern (axis, bundle branch block, intervals) — EMT is expected to identify ST elevation in inferior leads only.",
+          "IV access — ALS-only skill; do not penalize for not placing a line.",
+          "Bradycardia treatment (atropine) — not indicated at EMT scope and not required; inferior STEMI bradycardia is expected and not emergent at this rate."
+        ]
+      }
+    },
+    "dmist_considerations": [
+      "This is a hospital turnover scenario — evaluate pre-arrival radio report and receiving-facility verbal handoff.",
+      "Pre-arrival cardiac alert is the key transport action — verify the student communicated STEMI identification and cath lab activation to the hospital.",
+      "The DMIST framing applies to the verbal handoff content; brevity is a strength as long as the critical clinical information is present."
+    ],
+    "narrative_considerations": [
+      "The transport/T element must reference the cardiac alert and the receiving PCI-capable facility.",
+      "12-lead findings and STEMI identification are the most important assessment findings — their absence from the narrative is a substantive gap."
+    ],
+    "corroboration_rules": {
+      "dmist": {
+        "I": {
+          "max_deduction_per_violation": 3,
+          "note": "Aspirin dose, O2 delivery method, and 12-lead findings in the DMIST handoff are clinically critical — wrong medication documentation in a cardiac emergency can mislead the receiving cardiologist and delay cath lab preparation"
+        },
+        "T": {
+          "max_deduction_per_violation": 3,
+          "note": "Documentation of the pre-arrival cardiac alert and correct destination is the single most impactful prehospital action in STEMI — missing or incorrect alert documentation is a significant handoff failure"
+        }
+      },
+      "narrative": {
+        "A": {
+          "max_deduction_per_violation": 3,
+          "note": "12-lead ECG findings and STEMI identification in the narrative must match the run record — fabricated or incorrect ECG documentation is clinically dangerous and would affect reperfusion decisions"
+        }
+      }
+    }
+  },
+  "debrief": {
+    "key_teaching_points": [
+      "Inferior STEMI (ST elevation in II, III, aVF) results from RCA occlusion — the most time-critical cardiac emergency in the field. Door-to-balloon time begins at first medical contact.",
+      "The 12-lead ECG is the single most important tool on this call — acquire it early, recognize the inferior pattern, and call ahead. Transmit if capable.",
+      "Aspirin 324 mg PO is the only antiplatelet available at BLS — confirm NKDA and that the patient can swallow before administering. It matters.",
+      "Scene time kills on STEMI calls — definitive treatment is PCI in the cath lab. Everything else is supportive. Load and go.",
+      "Sinus bradycardia is expected with inferior STEMI (the RCA supplies the SA node) — recognize this as part of the presentation, not a separate emergency requiring atropine.",
+      "The pre-arrival cardiac alert is a critical clinical action — it activates the cath lab team and directly reduces time from hospital arrival to balloon inflation. It is not a formality."
+    ],
+    "common_mistakes": [
+      "Delayed 12-lead acquisition or failure to recognize the inferior STEMI pattern (ST elevation in II, III, aVF)",
+      "Omitting aspirin despite no contraindication (no allergy, patient can swallow)",
+      "Excessive scene time — STEMI patients need to move; the cath lab is the treatment",
+      "Failure to call the pre-arrival cardiac alert — this delays cath lab activation and directly worsens outcome",
+      "Attempting nitroglycerin (not in EMT scope; also contraindicated with right ventricular involvement, which is common in inferior STEMI)",
+      "Treating bradycardia with atropine — not indicated at this scope; inferior STEMI bradycardia at rate 60 is expected and stable"
+    ],
+    "condition_background": {
+      "pathophysiology": "Inferior STEMI results from acute thrombotic occlusion of the right coronary artery (RCA), causing transmural ischemia of the inferior wall of the left ventricle. The RCA also supplies the SA node and AV node in approximately 80% of patients, explaining the sinus bradycardia and predisposition to heart blocks seen in inferior MI. Without reperfusion, ischemia progresses to irreversible infarction within 20–40 minutes.",
+      "assessment_pearls": "Classic presentation: substernal or epigastric chest pain with diaphoresis, nausea, and pallor. Patients often minimize — 'it's just indigestion' is a classic STEMI presentation. Key findings: sinus bradycardia on 4-lead (due to RCA supplying the SA node), ST elevation 2+ mm in leads II, III, and aVF, and reciprocal ST depression in leads I and aVL. Right ventricular involvement is common — avoid nitroglycerin as it can cause severe hypotension.",
+      "treatment_rationale": "Aspirin inhibits thromboxane A2-mediated platelet aggregation, reducing clot burden. Supplemental O2 supports myocardial oxygen delivery when SpO2 is borderline. Position of comfort reduces preload and patient anxiety. Priority transport to a PCI-capable center is the definitive treatment — door-to-balloon time under 90 minutes is the target. The pre-arrival cardiac alert activates the cath lab team before the patient arrives, directly compressing this timeline."
+    }
+  },
+  "protocol_config": {
+    "level": "EMT",
+    "jurisdiction": "PFD",
+    "mca": "MCMCA",
+    "mca_display": "Michigan MCA",
+    "protocol_reference": "MCMCA Cardiac Emergencies — Chest Pain / Suspected ACS Protocol",
+    "protocol_sections": [
+      {
+        "title": "Chest Pain / Suspected ACS — EMT",
+        "content": "Scene safety and BSI. Primary assessment. Supplemental O2 to maintain SpO2 ≥ 94%. Position of comfort. Cardiac monitor (4-lead) — identify rhythm. 12-Lead ECG if available — acquire and transmit. Aspirin 324 mg PO (four 81 mg chewable) if no allergy and patient can protect airway. Priority transport to nearest PCI-capable facility — minimize scene time. Pre-arrival notification with STEMI alert if 12-lead confirms ST elevation. ALS intercept if available and does not delay transport to definitive care."
+      }
+    ],
+    "key_drugs": [
+      {
+        "name": "Aspirin",
+        "dose": "324 mg (four 81 mg chewable tablets)",
+        "route": "PO — chew, do not swallow whole",
+        "indication": "Suspected ACS / STEMI — antiplatelet therapy to reduce clot progression",
+        "side_effects": "GI upset; contraindicated with active GI bleeding, known aspirin allergy, or inability to swallow/protect airway"
+      }
+    ]
+  },
+  "exemplar_dmist": "D: Robert Lawson, 58-year-old male, approximately 200 pounds. M: Substernal chest pain onset 30 minutes — inferior STEMI confirmed on 12-lead, ST elevation leads II, III, aVF. History of hypertension and type 2 diabetes. NKDA. I: Aspirin 324 mg chewable administered without adverse reaction. Supplemental O2 via nasal cannula. 4-lead monitor in place, sinus bradycardia rate 60. S: Vitals at transport — HR 60, SpO2 96%, BP 108/70, GCS 15 — pale and diaphoretic, pain unchanged at 8 out of 10. T: Priority transport, lights and sirens — Central City Medical Center. Cardiac alert called, cath lab notified. ETA approximately 7 minutes.",
+  "exemplar_narrative": "EMS responded for a 58-year-old male with substernal chest pain onset 30 minutes prior. Patient found sitting on couch — pale, cool, diaphoretic, clutching chest. Primary assessment: alert and oriented, airway patent, breathing regular and unlabored, radial pulse present — rate 60, regular, mild weakness noted. Cardiac monitor applied — sinus bradycardia, rate 60, regular. 12-Lead ECG obtained — ST elevation 2–3 mm in leads II, III, and aVF with reciprocal depression in I and aVL, consistent with inferior STEMI. Patient confirmed NKDA. Aspirin 324 mg (four 81 mg chewable) administered — tolerated without adverse reaction. Supplemental O2 via nasal cannula applied. Patient positioned upright for comfort. Priority transport initiated to Central City Medical Center. Pre-arrival cardiac alert called — cath lab team notified with STEMI identification, patient demographics, current vitals, and ETA. No change in patient condition en route. Patient transferred to receiving facility team upon arrival.",
+  "legacy_ai_categories": [
+    "documentation",
+    "professionalism"
+  ],
+  "checklist": [
+    {
+      "id": "adult_acs_01_stemi.cardiac_monitoring",
+      "description": "Cardiac monitor (4-lead) applied and sinus bradycardia rhythm identified",
+      "subtype": "intervention",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "ekg_monitoring"
+      },
+      "tier2_patterns": [
+        "(?i)(monitor|4.?lead|cardiac monitor|EKG|ECG|rhythm|strip)"
+      ],
+      "done_feedback": "Cardiac monitor applied and sinus bradycardia identified — rhythm recognition guides transport urgency and ALS alert content.",
+      "missed_feedback": "Cardiac monitor not applied — 4-lead monitoring is required for any suspected ACS; dysrhythmia detection is a critical early step in STEMI management.",
+      "clinical_rationale": "Inferior STEMI can produce bradycardia through RCA ischemia of the SA and AV nodes; early monitoring allows recognition of Mobitz II or complete heart block.",
+      "common_error": "Applying the monitor after aspirin and transport decisions — monitoring should begin simultaneously with history and be established before ACS-specific interventions."
+    },
+    {
+      "id": "adult_acs_01_stemi.twelve_lead_ecg",
+      "description": "12-Lead ECG obtained and inferior STEMI pattern recognized (ST elevation in II, III, aVF)",
+      "subtype": "intervention",
+      "category": "clinical_performance",
+      "point_value": 8,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "12_lead_ecg"
+      },
+      "tier2_patterns": [
+        "(?i)(12.lead|twelve.lead|STEMI|ST.elev|II.*III.*aVF|inferior|12L)"
+      ],
+      "done_feedback": "12-lead ECG obtained and inferior STEMI pattern recognized (ST elevation II, III, aVF) — cath lab activation depends on this finding.",
+      "missed_feedback": "12-lead ECG not obtained — STEMI recognition requires 12-lead; inferior ST elevation is not reliably visible on 4-lead monitoring alone.",
+      "clinical_rationale": "ST elevation in inferior leads (II, III, aVF) with reciprocal changes in I and aVL identifies RCA occlusion; this is the specific finding that triggers cath lab activation.",
+      "common_error": "Assuming the 4-lead rhythm strip is sufficient — normal sinus rhythm on 4-lead does not exclude STEMI; 12-lead is required for any chest pain presentation."
+    },
+    {
+      "id": "adult_acs_01_stemi.aspirin_admin",
+      "description": "Aspirin 324 mg PO (chewable) administered — no allergy, no active GI bleed contraindication present",
+      "subtype": "intervention",
+      "category": "clinical_performance",
+      "point_value": 7,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "aspirin_po"
+      },
+      "tier2_patterns": [
+        "(?i)(aspirin|ASA|325|324|chew|acetylsalicylic)"
+      ],
+      "done_feedback": "Aspirin 324 mg PO administered after allergy and contraindication check — antiplatelet therapy initiated before transport reduces clot propagation.",
+      "missed_feedback": "Aspirin not administered — 324 mg chewable aspirin is a time-critical BLS intervention for STEMI with proven mortality benefit.",
+      "clinical_rationale": "Aspirin irreversibly inhibits platelet thromboxane A2 production, reducing platelet aggregation and clot propagation; early administration improves outcomes independently of reperfusion.",
+      "common_error": "Administering aspirin without first asking about allergy and GI bleed history — active GI bleeding and aspirin allergy are contraindications; always check before administering."
+    },
+    {
+      "id": "adult_acs_01_stemi.priority_transport",
+      "description": "Priority transport to PCI-capable facility (Central City Medical Center) initiated — load-and-go decision made",
+      "subtype": "transport",
+      "category": "clinical_performance",
+      "point_value": 4,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "load_and_go"
+      },
+      "tier2_patterns": [
+        "(?i)(transport|load|go|PCI|cath|priority|lights|hospital|Central City)"
+      ],
+      "applicable_if": {
+        "non_transport_agency": false
+      },
+      "done_feedback": "Priority transport to PCI-capable facility initiated — load-and-go decision correctly made; door-to-balloon time begins at field contact.",
+      "missed_feedback": "Priority transport not initiated — STEMI is time-critical; every minute of delay worsens myocardial salvage; load-and-go with minimal scene time is the standard.",
+      "clinical_rationale": "Primary PCI is the definitive treatment for STEMI; the EMS team's responsibility is rapid transport to the closest PCI-capable facility and early cath lab activation.",
+      "common_error": "Spending time on scene attempting additional interventions — for STEMI, scene time should be minimized; definitive treatment is cath lab balloon, not field stabilization."
+    },
+    {
+      "id": "adult_acs_01_stemi.hospital_notification",
+      "description": "Pre-arrival cardiac alert called to Central City Medical Center — cath lab activation communicated",
+      "subtype": "documentation_handoff",
+      "category": "clinical_performance",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 2,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": null,
+      "tier2_patterns": [
+        "(?i)(alert|notif|radio|Central City|cath lab|hospital|STEMI alert|cardiac alert|activate)"
+      ],
+      "done_feedback": "Pre-arrival cardiac alert called — cath lab team activated before patient arrival reduces door-to-balloon time.",
+      "missed_feedback": "Hospital notification not made — pre-arrival STEMI alert allows the cath lab team to mobilize en route; failure to notify adds 20–30 minutes to time-to-balloon.",
+      "clinical_rationale": "Direct cath lab activation from the field (bypassing the ED) is the standard of care for STEMI; it requires a pre-arrival ECG transmission or a specific verbal STEMI alert.",
+      "common_error": "Notifying the hospital of 'possible cardiac' rather than 'STEMI' — a specific STEMI alert triggers cath lab activation; a vague cardiac call does not mobilize the team."
+    },
+    {
+      "id": "adult_acs_01_stemi.protocol_aspirin_admin",
+      "description": "Protocol-aligned ACS treatment — aspirin 324 mg PO administered after allergy/contraindication check",
+      "subtype": "intervention",
+      "category": "protocols_treatment",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "aspirin_po"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "Protocol-aligned ACS treatment — aspirin administered after contraindication check; correct protocol sequence followed.",
+      "missed_feedback": "Protocol aspirin step not completed — aspirin 324 mg PO after allergy/contraindication screening is the mandated BLS protocol step for confirmed or suspected STEMI.",
+      "clinical_rationale": "The ACS treatment protocol mandates aspirin as the first pharmacologic step; it is within BLS scope and does not require an ALS intercept."
+    },
+    {
+      "id": "adult_acs_01_stemi.scope_position_comfort",
+      "description": "Patient positioned for comfort (sitting upright) — appropriate first-line positioning for ACS",
+      "subtype": "intervention",
+      "category": "protocols_treatment",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "positioning"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "Patient positioned upright for comfort — appropriate; sitting upright reduces cardiac preload and dyspnea in ACS.",
+      "missed_feedback": "Patient not positioned for comfort — ACS patients should be allowed to assume a position of comfort (typically seated upright); supine positioning increases preload and may worsen pulmonary edema.",
+      "clinical_rationale": "Most ACS patients prefer to sit upright; this reduces venous return and LV filling pressure, decreasing myocardial oxygen demand and dyspnea.",
+      "common_error": "Laying the STEMI patient flat by default — supine positioning is appropriate for hemodynamically unstable patients; alert ACS patients should sit upright."
+    },
+    {
+      "id": "adult_acs_01_stemi.scope_no_iv_io",
+      "description": "IV/IO access not attempted — outside BLS scope for STEMI management",
+      "subtype": "intervention",
+      "category": "scope_adherence",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [
+        "MFR",
+        "EMT"
+      ],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "absence_check",
+        "absence_intervention_key": "iv_io_access"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "IV/IO correctly avoided — aspirin is the only BLS pharmacologic intervention for STEMI; IV access is outside BLS scope.",
+      "missed_feedback": "IV/IO attempted — outside BLS scope; field nitroglycerin and morphine administration require ALS-level certification.",
+      "clinical_rationale": "BLS ACS management is aspirin, O2 if hypoxic, monitoring, positioning, and rapid transport; IV access and additional pharmacotherapy require ALS."
+    }
+  ]
+}

@@ -1,0 +1,482 @@
+[
+  {
+    "id": "resp_dx_01",
+    "presentation": "You are called for a 7-year-old female with difficulty breathing. Mom says it started about 10 minutes ago after she ate a birthday cake at a party. She looks anxious, is breathing fast, and you can see her lips are puffy. She says her throat feels tight.",
+    "correct_diagnosis": "anaphylaxis",
+    "differentials": ["asthma", "croup", "epiglottitis", "anaphylaxis", "fbao"],
+    "differential_labels": {
+      "asthma": "Asthma",
+      "croup": "Croup",
+      "epiglottitis": "Epiglottitis",
+      "anaphylaxis": "Anaphylaxis",
+      "fbao": "Foreign Body (FBAO)"
+    },
+    "investigations": [
+      {
+        "id": "inv_skin",
+        "label": "Assess Skin & Face",
+        "finding": "Lip and perioral swelling visible. Urticaria (hives) spreading across the chest and arms. Skin is flushed.",
+        "is_high_yield": true
+      },
+      {
+        "id": "inv_lungs",
+        "label": "Auscultate Lungs",
+        "finding": "Bilateral expiratory wheeze, mildly decreased air entry bilaterally.",
+        "is_high_yield": false,
+        "anchoring_trap": true,
+        "anchoring_trap_target": "asthma"
+      },
+      {
+        "id": "inv_pmh",
+        "label": "Past Medical History",
+        "finding": "No prior asthma or reactive airway disease. No known food allergies on record, but mom says they've never tested her.",
+        "is_high_yield": false
+      },
+      {
+        "id": "inv_vitals",
+        "label": "Check Vitals",
+        "finding": "HR 128, RR 28, BP 88/54, SpO2 93% on room air. Skin warm and flushed.",
+        "is_high_yield": false
+      }
+    ],
+    "feedback": {
+      "correct_high_yield": "The skin exam was the key here. Urticaria plus angioedema (lip swelling) plus wheeze after food exposure — that triad calls anaphylaxis, not asthma. Asthma doesn't cause hives or facial swelling. The field action is epinephrine IM, not albuterol alone.",
+      "correct_other": "Correct. Even without the skin exam first, you pulled together the post-food exposure, lip swelling, wheeze, and hypotension. The skin finding would have sealed it faster, but you got there. Anaphylaxis is confirmed — epinephrine IM is first priority.",
+      "incorrect_after_trap": "The wheeze pulled you toward asthma, which is a classic trap. But asthma does not cause hives or lip swelling. When wheeze travels with urticaria and angioedema after food exposure, you're looking at anaphylaxis. The bronchospasm here is allergic mediator-driven — albuterol alone is insufficient.",
+      "incorrect_generic": "Look at the full picture: food exposure, lip swelling, urticaria, wheeze, hypotension. No single finding explains asthma or croup. The multi-system involvement — airway, skin, and circulation — is the hallmark of anaphylaxis. Epinephrine IM is the intervention that addresses the mechanism."
+    },
+    "hint": "Think about which clinical system — airway level, skin/systemic signs, onset pattern, or sound quality — would distinguish this from all four alternatives."
+  },
+  {
+    "id": "resp_dx_02",
+    "presentation": "You are called at 2:45 AM for a 2-year-old male. Mom says he woke up screaming with a strange cough that sounds like a seal barking. He had a runny nose and mild fever for 3 days before this. He is sitting in bed, alert, and the cough gets worse when he cries.",
+    "correct_diagnosis": "croup",
+    "differentials": ["asthma", "croup", "epiglottitis", "anaphylaxis", "fbao"],
+    "differential_labels": {
+      "asthma": "Asthma",
+      "croup": "Croup",
+      "epiglottitis": "Epiglottitis",
+      "anaphylaxis": "Anaphylaxis",
+      "fbao": "Foreign Body (FBAO)"
+    },
+    "investigations": [
+      {
+        "id": "inv_onset",
+        "label": "Onset & Recent Events",
+        "finding": "URI symptoms for 3 days prior (rhinorrhea, low-grade fever). Woke from sleep with sudden barking cough and noisy breathing. Symptoms worsen with crying and agitation.",
+        "is_high_yield": true
+      },
+      {
+        "id": "inv_lungs",
+        "label": "Auscultate Lungs",
+        "finding": "Referred upper-airway sounds transmitted to the chest. No true lower-airway wheeze. Inspiratory stridor audible at the bedside.",
+        "is_high_yield": false,
+        "anchoring_trap": true,
+        "anchoring_trap_target": "asthma"
+      },
+      {
+        "id": "inv_appearance",
+        "label": "Overall Appearance & Position",
+        "finding": "Alert, anxious, crying intermittently. No drooling. Willing to lie down. No tripod positioning.",
+        "is_high_yield": false
+      },
+      {
+        "id": "inv_vitals",
+        "label": "Check Vitals",
+        "finding": "HR 118, RR 32, Temp 38.1°C, SpO2 97%. Mild intercostal retractions.",
+        "is_high_yield": false
+      }
+    ],
+    "feedback": {
+      "correct_high_yield": "The onset story was the key. URI 3 days prior, nocturnal symptom onset, barking seal cough that worsens with crying — this is the classic croup constellation. The night-waking pattern after a prodromal viral illness is highly specific. Keep the child calm, avoid agitation, follow your protocol for upper-airway obstruction.",
+      "correct_other": "Correct. The URI prodrome followed by barking cough, nocturnal onset, and inspiratory stridor points clearly to croup. The onset pattern would have gotten you there fastest, but you identified the right diagnosis. Management: minimize agitation, position of comfort, follow upper-airway obstruction protocol.",
+      "incorrect_after_trap": "The lung sounds pulled you toward asthma, but the transmitted upper-airway sounds weren't true lower-airway wheeze. Croup causes subglottic narrowing — the sound originates above the chest. The barking cough, URI prodrome, and night-waking pattern rule asthma in or out. Asthma doesn't cause a seal bark.",
+      "incorrect_generic": "The barking cough plus inspiratory stridor plus URI prodrome plus nocturnal onset is croup until proven otherwise. Epiglottitis produces a toxic, quiet child in tripod who doesn't cry and doesn't have a barking cough. FBAO is sudden with no URI prodrome. Asthma produces expiratory wheeze, not inspiratory stridor."
+    },
+    "hint": "Think about which clinical system — airway level, skin/systemic signs, onset pattern, or sound quality — would distinguish this from all four alternatives."
+  },
+  {
+    "id": "resp_dx_03",
+    "presentation": "You are called for a 5-year-old male at a daycare. Staff say he has been sick for two days and is getting worse. He is sitting upright at the table with his arms braced in front of him, leaning forward. He is very quiet. When you approach and ask his name, he doesn't answer loudly — his voice sounds muffled and wet.",
+    "correct_diagnosis": "epiglottitis",
+    "differentials": ["asthma", "croup", "epiglottitis", "anaphylaxis", "fbao"],
+    "differential_labels": {
+      "asthma": "Asthma",
+      "croup": "Croup",
+      "epiglottitis": "Epiglottitis",
+      "anaphylaxis": "Anaphylaxis",
+      "fbao": "Foreign Body (FBAO)"
+    },
+    "investigations": [
+      {
+        "id": "inv_position",
+        "label": "Positioning & Appearance",
+        "finding": "Tripod positioning with arms braced forward. Drooling — unable to swallow secretions. Muffled 'hot potato' voice. No barking cough. Appears toxic and still — does not want to be touched or moved.",
+        "is_high_yield": true
+      },
+      {
+        "id": "inv_temp",
+        "label": "Check Temperature",
+        "finding": "Temp 39.4°C (103°F). Elevated but does not reliably distinguish epiglottitis from croup or other respiratory infections.",
+        "is_high_yield": false,
+        "anchoring_trap": true,
+        "anchoring_trap_target": "croup"
+      },
+      {
+        "id": "inv_lungs",
+        "label": "Auscultate Lungs",
+        "finding": "Inspiratory stridor heard at the bedside. Air entry present bilaterally but decreased. No lower-airway wheeze.",
+        "is_high_yield": false
+      },
+      {
+        "id": "inv_pmh",
+        "label": "Past Medical History",
+        "finding": "No known asthma or allergies. Parents confirm immunizations — they mention vaccines were 'on a delayed schedule.' Hib vaccine delayed and incomplete.",
+        "is_high_yield": false
+      }
+    ],
+    "feedback": {
+      "correct_high_yield": "Tripod positioning, drooling, muffled voice, and a toxic quiet appearance are the four pillars of epiglottitis. This child is protecting an airway so swollen he cannot swallow. Do not examine the throat, do not agitate him, do not force him to lie down. Position of comfort, high-flow O2, and immediate transport with ALS backup.",
+      "correct_other": "Correct. Even without the positioning exam first, the muffled voice and toxic quiet appearance stood out. These together with 2 days of worsening illness and stridor point to epiglottitis. Do not agitate this child. Transport immediately — this airway can close.",
+      "incorrect_after_trap": "Temperature is present in many respiratory infections — it does not separate epiglottitis from croup. The distinguishing features are the appearance: tripod, drooling, muffled voice, toxic stillness, refusal to speak or be touched. Croup children are upset and barking; this child is silent and terrified.",
+      "incorrect_generic": "The tripod position, drooling, muffled ('hot potato') voice, and toxic stillness are the cardinal signs of epiglottitis. Croup produces a barking seal cough and the child cries. Asthma produces wheeze. FBAO has sudden onset. Anaphylaxis involves skin findings. Only epiglottitis produces this particular cluster of 'the child is protecting a critically narrowed airway.'"
+    },
+    "hint": "Think about which clinical system — airway level, skin/systemic signs, onset pattern, or sound quality — would distinguish this from all four alternatives."
+  },
+  {
+    "id": "resp_dx_04",
+    "presentation": "You are called for a 4-year-old male at home. Mom found him in his room coughing and choking suddenly. She says he was playing with small toy blocks a few minutes before. He has no fever and no history of respiratory illness. He is awake but scared, and his cough is productive and forceful.",
+    "correct_diagnosis": "fbao",
+    "differentials": ["asthma", "croup", "epiglottitis", "anaphylaxis", "fbao"],
+    "differential_labels": {
+      "asthma": "Asthma",
+      "croup": "Croup",
+      "epiglottitis": "Epiglottitis",
+      "anaphylaxis": "Anaphylaxis",
+      "fbao": "Foreign Body (FBAO)"
+    },
+    "investigations": [
+      {
+        "id": "inv_onset",
+        "label": "Onset & Recent Events",
+        "finding": "Completely sudden onset with no prodrome. Playing with small toy blocks immediately before. No fever, no URI, no allergen exposure. Mom heard him coughing forcefully from the other room.",
+        "is_high_yield": true
+      },
+      {
+        "id": "inv_lungs",
+        "label": "Auscultate Lungs",
+        "finding": "Decreased air entry on the right compared to the left. Occasional unilateral expiratory wheeze on the right side.",
+        "is_high_yield": false,
+        "anchoring_trap": true,
+        "anchoring_trap_target": "asthma"
+      },
+      {
+        "id": "inv_vitals",
+        "label": "Check Vitals",
+        "finding": "HR 112, RR 30, SpO2 95%, Temp 37.0°C (normal). No fever. No hypotension.",
+        "is_high_yield": false
+      },
+      {
+        "id": "inv_pmh",
+        "label": "Past Medical History",
+        "finding": "Healthy child. No asthma, no prior breathing problems, no allergies, no recent illness.",
+        "is_high_yield": false
+      }
+    ],
+    "feedback": {
+      "correct_high_yield": "Sudden onset during play with small objects is the key finding. FBAO is a diagnosis of mechanism and onset — when a healthy child goes from asymptomatic to choking with no prodrome while playing with small parts, the story tells you what happened. The lung asymmetry on exam confirms partial obstruction. Encourage effective cough; if cough fails or consciousness drops, follow your FBAO protocol.",
+      "correct_other": "Correct. The sudden onset in a healthy child with no prior history, playing with small objects — that story drives the diagnosis. Unilateral decreased air entry confirms the object is in a bronchus. Asthma and croup both have prior symptoms. Good diagnostic reasoning.",
+      "incorrect_after_trap": "The unilateral wheeze pulled you toward asthma, but asthma doesn't cause unilateral findings — asthma is diffuse. A single-lung wheeze with decreased air entry points to a partially obstructing lesion in one bronchus. The onset story completes the picture: sudden, no prodrome, playing with small toys. That's FBAO.",
+      "incorrect_generic": "The onset story rules out everything except FBAO. No fever rules out infection. No allergen exposure or skin findings rule out anaphylaxis. No URI prodrome rules out croup. Epiglottitis requires a toxic appearance with drooling. Only FBAO matches sudden choking in a healthy child playing with small objects, with no prior symptoms."
+    },
+    "hint": "Think about which clinical system — airway level, skin/systemic signs, onset pattern, or sound quality — would distinguish this from all four alternatives."
+  },
+  {
+    "id": "resp_dx_05",
+    "presentation": "You are called for an 8-year-old female with difficulty breathing that has been worsening over the past 2 hours. Her mom says she has had breathing problems before. She is sitting up on the couch looking tired, pursing her lips, and her breathing is noisy. You hear audible wheeze from across the room.",
+    "correct_diagnosis": "asthma",
+    "differentials": ["asthma", "croup", "epiglottitis", "anaphylaxis", "fbao"],
+    "differential_labels": {
+      "asthma": "Asthma",
+      "croup": "Croup",
+      "epiglottitis": "Epiglottitis",
+      "anaphylaxis": "Anaphylaxis",
+      "fbao": "Foreign Body (FBAO)"
+    },
+    "investigations": [
+      {
+        "id": "inv_pmh",
+        "label": "Past Medical History",
+        "finding": "Diagnosed asthma at age 5. Albuterol MDI prescribed — she has been using it more than twice a week for the past month and ran out of her controller inhaler 3 weeks ago.",
+        "is_high_yield": true
+      },
+      {
+        "id": "inv_lungs",
+        "label": "Auscultate Lungs",
+        "finding": "Bilateral diffuse expiratory wheeze with prolonged expiratory phase. Air entry present but decreased bilaterally. Accessory muscle use.",
+        "is_high_yield": false,
+        "anchoring_trap": true,
+        "anchoring_trap_target": "anaphylaxis"
+      },
+      {
+        "id": "inv_skin",
+        "label": "Assess Skin & Face",
+        "finding": "No urticaria, no angioedema, no facial swelling, no flushing. Skin appears normal.",
+        "is_high_yield": false
+      },
+      {
+        "id": "inv_vitals",
+        "label": "Check Vitals",
+        "finding": "HR 116, RR 34, BP 108/72 (normal), SpO2 91%. No hypotension.",
+        "is_high_yield": false
+      }
+    ],
+    "feedback": {
+      "correct_high_yield": "The PMH confirmed it: prior asthma diagnosis, prescribed albuterol, missed controller doses for 3 weeks, now using rescue inhaler more than twice a week. This is a poorly controlled asthmatic in exacerbation. The high-yield finding was the clinical history — it turns a vague wheeze into a confirmed pattern. Albuterol via nebulizer or MDI with spacer is the first-line field intervention.",
+      "correct_other": "Correct. The history combined with bilateral diffuse expiratory wheeze and no skin findings drove the diagnosis. A child with a known asthma history, escalating rescue inhaler use, and no controller medication for 3 weeks is set up for exactly this presentation. Treat with bronchodilator therapy.",
+      "incorrect_after_trap": "The bilateral wheeze looks identical to the bronchospasm component of anaphylaxis, but the absence of skin findings (no urticaria, no angioedema) and normal blood pressure exclude anaphylaxis. When bilateral wheeze appears in a child with a documented asthma history and no allergen exposure, asthma is far more likely. Check the skin — if it's clear, the wheeze alone isn't enough to call anaphylaxis.",
+      "incorrect_generic": "Bilateral diffuse expiratory wheeze plus known asthma plus discontinued controller inhaler plus increased rescue use equals asthma exacerbation. No hives or lip swelling excludes anaphylaxis. No barking cough or URI prodrome excludes croup. No drooling or toxic stillness excludes epiglottitis. No sudden onset or unilateral finding excludes FBAO."
+    },
+    "hint": "Think about which clinical system — airway level, skin/systemic signs, onset pattern, or sound quality — would distinguish this from all four alternatives."
+  },
+  {
+    "id": "resp_dx_06",
+    "presentation": "You are called for a 6-year-old male at a park. Bystanders say he was stung by a bee about 15 minutes ago. He is sitting on the ground holding his throat, saying 'it feels tight.' He is visibly anxious. No prior history is immediately available.",
+    "correct_diagnosis": "anaphylaxis",
+    "differentials": ["asthma", "croup", "epiglottitis", "anaphylaxis", "fbao"],
+    "differential_labels": {
+      "asthma": "Asthma",
+      "croup": "Croup",
+      "epiglottitis": "Epiglottitis",
+      "anaphylaxis": "Anaphylaxis",
+      "fbao": "Foreign Body (FBAO)"
+    },
+    "investigations": [
+      {
+        "id": "inv_onset",
+        "label": "Onset & Recent Events",
+        "finding": "Bee sting to the right forearm 15 minutes ago. Throat tightness began within 5 minutes of the sting. No prior known allergy — this may be first sensitization or first known severe reaction.",
+        "is_high_yield": true
+      },
+      {
+        "id": "inv_lungs",
+        "label": "Auscultate Lungs",
+        "finding": "Mild bilateral expiratory wheeze. Air entry present but slightly decreased bilaterally.",
+        "is_high_yield": false,
+        "anchoring_trap": true,
+        "anchoring_trap_target": "asthma"
+      },
+      {
+        "id": "inv_skin",
+        "label": "Assess Skin & Face",
+        "finding": "Mild generalized flushing. Sting site on forearm is swollen. No urticaria yet visible — early presentation.",
+        "is_high_yield": false
+      },
+      {
+        "id": "inv_vitals",
+        "label": "Check Vitals",
+        "finding": "HR 124, RR 26, BP 92/60 (low for age), SpO2 95%. Early signs of hypoperfusion.",
+        "is_high_yield": false
+      }
+    ],
+    "feedback": {
+      "correct_high_yield": "The onset story was decisive: bee sting 15 minutes ago, throat tightness within 5 minutes. That temporal relationship — antigen exposure followed rapidly by multi-system symptoms — defines anaphylaxis by mechanism. You don't need urticaria to confirm it. Epinephrine IM is the intervention. Do not wait for hives to appear.",
+      "correct_other": "Correct. Bee sting plus throat tightness plus early hypotension in a child is anaphylaxis until proven otherwise. The mild wheeze is bronchospasm driven by allergic mediators, not intrinsic airway disease. The onset story and vital signs together confirm the diagnosis. Epinephrine IM, IV access, supine positioning, transport.",
+      "incorrect_after_trap": "The mild wheeze anchored on asthma, but asthma doesn't follow a bee sting with throat tightness and a BP of 92/60. Anaphylaxis frequently includes bronchospasm as one component of a multi-system allergic response. A child who develops wheeze, throat tightness, and hypotension within 15 minutes of a sting has anaphylaxis — albuterol alone will not address the underlying mechanism.",
+      "incorrect_generic": "Bee sting plus throat tightness plus early hypotension is the anaphylaxis triad. The mechanism (antigen exposure) plus rapid onset plus cardiovascular involvement separates this from asthma, which is a chronic airway disease without cardiovascular collapse. Croup and epiglottitis don't follow insect stings. FBAO requires aspiration. This is anaphylaxis — treat with epinephrine IM."
+    },
+    "hint": "Think about which clinical system — airway level, skin/systemic signs, onset pattern, or sound quality — would distinguish this from all four alternatives."
+  },
+  {
+    "id": "resp_dx_07",
+    "presentation": "You are called for a 3-year-old male at home at 11:30 PM. Parents say he has had a cold for 4 days and now has a harsh, barky cough and noisy breathing. He is awake and crying when you arrive, which makes the breathing sounds worse. Mom is holding him.",
+    "correct_diagnosis": "croup",
+    "differentials": ["asthma", "croup", "epiglottitis", "anaphylaxis", "fbao"],
+    "differential_labels": {
+      "asthma": "Asthma",
+      "croup": "Croup",
+      "epiglottitis": "Epiglottitis",
+      "anaphylaxis": "Anaphylaxis",
+      "fbao": "Foreign Body (FBAO)"
+    },
+    "investigations": [
+      {
+        "id": "inv_onset",
+        "label": "Onset & Recent Events",
+        "finding": "4-day viral URI (runny nose, mild cough, congestion). Symptoms worsened tonight — barky cough began around 10 PM and woke him from sleep. Symptoms clearly worsen when he cries or is agitated.",
+        "is_high_yield": true
+      },
+      {
+        "id": "inv_vitals",
+        "label": "Check Vitals",
+        "finding": "HR 124, RR 34, Temp 38.3°C, SpO2 96%. Low-grade fever present. Blood pressure within normal range for age.",
+        "is_high_yield": false,
+        "anchoring_trap": true,
+        "anchoring_trap_target": "epiglottitis"
+      },
+      {
+        "id": "inv_appearance",
+        "label": "Overall Appearance & Position",
+        "finding": "Crying, agitated, clinging to mom — but responds appropriately. No drooling. Willing to be comforted. Sitting upright in mom's lap, not in tripod. Voice is hoarse but not muffled.",
+        "is_high_yield": false
+      },
+      {
+        "id": "inv_lungs",
+        "label": "Auscultate Lungs",
+        "finding": "Inspiratory stridor audible. Transmitted upper-airway sounds in the chest. No true expiratory lower-airway wheeze. Mild subcostal retractions.",
+        "is_high_yield": false
+      }
+    ],
+    "feedback": {
+      "correct_high_yield": "The onset story clinched it: 4-day viral URI followed by nocturnal onset of barky cough that worsens with crying. That progression — viral prodrome to subglottic inflammation to nighttime stridor — is the croup natural history. Keep him calm with mom, minimize agitation, position of comfort. Follow your protocol for upper-airway obstruction.",
+      "correct_other": "Correct. The URI prodrome, barky cough, nighttime worsening, inspiratory stridor, and agitation-responsive pattern confirm croup. The fever and stridor together might have prompted epiglottitis concern, but the behavior — crying, consolable, hoarse not muffled voice, no drooling — excludes it. You identified the right diagnosis.",
+      "incorrect_after_trap": "A fever of 38.3°C is very common in croup — it reflects the underlying viral illness. Temperature alone does not differentiate croup from epiglottitis. The critical differentiator is behavior and appearance: this child is crying, consolable, hoarse but not silent, and will be held by mom. Epiglottitis produces a toxic quiet child who drools, whispers, and sits rigidly forward.",
+      "incorrect_generic": "The barky cough plus viral URI prodrome plus nocturnal worsening plus stridor that gets worse when upset is croup. Epiglottitis produces a toxic, still, drooling child who cannot speak normally. Asthma produces expiratory wheeze without barking cough. FBAO is sudden with no URI. Anaphylaxis requires allergen exposure with skin findings. This is croup."
+    },
+    "hint": "Think about which clinical system — airway level, skin/systemic signs, onset pattern, or sound quality — would distinguish this from all four alternatives."
+  },
+  {
+    "id": "resp_dx_09",
+    "presentation": "You are called for a 6-year-old male with breathing difficulty for the past 45 minutes. His father says he has never had this before. He is awake, anxious, and sitting up. You can hear a faint wheeze without a stethoscope. He has no rash and no fever. Father says he was playing outside before it started.",
+    "correct_diagnosis": "asthma",
+    "differentials": ["asthma", "croup", "epiglottitis", "anaphylaxis", "fbao"],
+    "differential_labels": {
+      "asthma": "Asthma",
+      "croup": "Croup",
+      "epiglottitis": "Epiglottitis",
+      "anaphylaxis": "Anaphylaxis",
+      "fbao": "Foreign Body (FBAO)"
+    },
+    "investigations": [
+      {
+        "id": "inv_lungs",
+        "label": "Auscultate Lungs",
+        "finding": "Bilateral diffuse expiratory wheeze throughout all lung fields. Prolonged expiratory phase. Air entry present but decreased bilaterally. No crackles.",
+        "is_high_yield": true
+      },
+      {
+        "id": "inv_skin",
+        "label": "Assess Skin & Face",
+        "finding": "No urticaria. No angioedema. No flushing. Skin is normal. No signs of allergic reaction.",
+        "is_high_yield": false,
+        "anchoring_trap": true,
+        "anchoring_trap_target": "anaphylaxis"
+      },
+      {
+        "id": "inv_onset",
+        "label": "Onset & Recent Events",
+        "finding": "Gradual onset over 45 minutes. Playing outside in cold air. No food exposure, no insect sting, no ingestion of anything. Father notes the child's older brother has asthma.",
+        "is_high_yield": false
+      },
+      {
+        "id": "inv_vitals",
+        "label": "Check Vitals",
+        "finding": "HR 122, RR 36, SpO2 92% on room air, BP 104/68 (normal for age). No fever. No hypotension.",
+        "is_high_yield": false
+      }
+    ],
+    "feedback": {
+      "correct_high_yield": "Bilateral diffuse expiratory wheeze with prolonged expiration and decreased bilateral air entry without skin findings or fever — this is the bronchospasm pattern of asthma. No rash or angioedema excludes anaphylaxis. No barking cough or URI prodrome excludes croup. No sudden onset or eating episode excludes FBAO. Treat with a bronchodilator per protocol.",
+      "correct_other": "Correct. Diffuse bilateral wheeze, no fever, no skin findings, no sudden onset during eating — the pattern points to asthma. Family history (sibling with asthma) supports atopic predisposition. First-time presentation is common — asthma often debuts in childhood without prior diagnosis. Albuterol via nebulizer or MDI with spacer is first-line.",
+      "incorrect_after_trap": "The negative skin exam is reassuring but it does not diagnose anaphylaxis — you need skin findings to make that call. Anaphylaxis requires urticaria, angioedema, or flushing in addition to wheeze. Bilateral diffuse wheeze with no allergen exposure and no skin signs is bronchospasm from airway inflammation — that is asthma.",
+      "incorrect_generic": "Bilateral diffuse expiratory wheeze in a 6-year-old with a sibling with asthma, triggered by cold-air exercise, with no fever, no rash, and no sudden onset during eating is first-time asthma. Croup produces barking cough with a viral prodrome. Anaphylaxis requires allergen exposure with skin involvement. FBAO is sudden with no prodrome and often unilateral. Epiglottitis produces a toxic, drooling, silent child."
+    },
+    "hint": "Think about which clinical system — airway level, skin/systemic signs, onset pattern, or sound quality — would distinguish this from all four alternatives."
+  },
+  {
+    "id": "resp_dx_10",
+    "presentation": "You are called for a 4-year-old female at home who has been sick for one day with fever and sore throat. Over the last two hours she has gotten much worse and is now sitting forward in her dad's lap, leaning on her hands. She is very quiet and won't speak when you ask her name. Dad says her voice sounds different.",
+    "correct_diagnosis": "epiglottitis",
+    "differentials": ["asthma", "croup", "epiglottitis", "anaphylaxis", "fbao"],
+    "differential_labels": {
+      "asthma": "Asthma",
+      "croup": "Croup",
+      "epiglottitis": "Epiglottitis",
+      "anaphylaxis": "Anaphylaxis",
+      "fbao": "Foreign Body (FBAO)"
+    },
+    "investigations": [
+      {
+        "id": "inv_appearance",
+        "label": "Positioning & Appearance",
+        "finding": "Tripod positioning — leaning forward on hands in dad's lap. Drooling visible on her chin; she is not swallowing. Voice is muffled and thick ('hot potato' quality). Appears toxic and still. Does not want to be moved or examined.",
+        "is_high_yield": true
+      },
+      {
+        "id": "inv_onset",
+        "label": "Onset & Recent Events",
+        "finding": "Fever and sore throat for one day. Rapid deterioration in last 2 hours. No barking cough. No allergen exposure. No choking episode. No URI prodrome before the fever.",
+        "is_high_yield": false,
+        "anchoring_trap": true,
+        "anchoring_trap_target": "croup"
+      },
+      {
+        "id": "inv_lungs",
+        "label": "Auscultate Lungs",
+        "finding": "Inspiratory stridor, audible at the bedside without a stethoscope. Bilateral air entry present but decreased. No lower-airway wheeze.",
+        "is_high_yield": false
+      },
+      {
+        "id": "inv_vitals",
+        "label": "Check Vitals",
+        "finding": "HR 142, RR 36, Temp 39.8°C, SpO2 94%. High fever, tachycardia, and borderline oxygenation. Blood pressure within normal range.",
+        "is_high_yield": false
+      }
+    ],
+    "feedback": {
+      "correct_high_yield": "Tripod positioning, drooling, muffled voice, toxic stillness, and refusal to be touched or moved — these are the cardinal signs of epiglottitis. This child is guarding a critically narrowed supraglottic airway. Do not examine the throat. Do not agitate her. Do not lay her flat. Place her in a position of comfort, apply oxygen if tolerated, and transport immediately with ALS backup.",
+      "correct_other": "Correct. The muffled voice plus drooling plus toxic appearance plus rapid deterioration after fever onset points to epiglottitis. Even without confirming the tripod position first, the refusal to speak and the 'different voice' the father noted are classic warnings. Immediate transport with airway management on standby.",
+      "incorrect_after_trap": "The 1-day fever onset looks similar to croup's viral prodrome, but the clinical appearance separates them. Croup children cry, bark, and are consolable. This child is silent, drooling, and will not move. A fever alone does not determine the diagnosis — the behavior and appearance do. Epiglottitis produces a toxic, still child who is protecting a closing airway.",
+      "incorrect_generic": "Tripod positioning, drooling, muffled voice, and toxic stillness in a febrile child who won't be touched — this is epiglottitis. Croup produces a crying, barking child with a viral URI prodrome. Asthma produces expiratory wheeze. Anaphylaxis requires allergen exposure with skin findings. FBAO has sudden onset during eating. Only epiglottitis explains this combination of airway compromise signs with toxic appearance."
+    },
+    "hint": "Think about which clinical system — airway level, skin/systemic signs, onset pattern, or sound quality — would distinguish this from all four alternatives."
+  },
+  {
+    "id": "resp_dx_08",
+    "presentation": "You are called for a 10-year-old female at her school cafeteria. She was eating lunch when she suddenly started coughing forcefully and complaining of difficulty breathing. A teacher ran to get help. She is now breathing, but you can tell she is working hard. No prior respiratory history noted.",
+    "correct_diagnosis": "fbao",
+    "differentials": ["asthma", "croup", "epiglottitis", "anaphylaxis", "fbao"],
+    "differential_labels": {
+      "asthma": "Asthma",
+      "croup": "Croup",
+      "epiglottitis": "Epiglottitis",
+      "anaphylaxis": "Anaphylaxis",
+      "fbao": "Foreign Body (FBAO)"
+    },
+    "investigations": [
+      {
+        "id": "inv_onset",
+        "label": "Onset & Recent Events",
+        "finding": "Sudden onset while eating lunch — she was mid-bite when she started choking. No URI, no fever, no allergen exposure known. Completely asymptomatic immediately before.",
+        "is_high_yield": true
+      },
+      {
+        "id": "inv_lungs",
+        "label": "Auscultate Lungs",
+        "finding": "Decreased air entry on the right side. Left lung sounds clear. Right side has diminished breath sounds and a faint expiratory wheeze.",
+        "is_high_yield": false,
+        "anchoring_trap": true,
+        "anchoring_trap_target": "asthma"
+      },
+      {
+        "id": "inv_vitals",
+        "label": "Check Vitals",
+        "finding": "HR 108, RR 28, SpO2 94% on room air, Temp 37.0°C (normal). No fever, no hypotension.",
+        "is_high_yield": false
+      },
+      {
+        "id": "inv_pmh",
+        "label": "Past Medical History",
+        "finding": "No asthma, no allergies, no prior respiratory illness. Healthy 10-year-old with no prescriptions.",
+        "is_high_yield": false
+      }
+    ],
+    "feedback": {
+      "correct_high_yield": "The onset story while eating was the decisive finding. Sudden choking during a meal in a healthy child with no prior history is aspirated foreign body until proven otherwise — the story of onset is the diagnosis. Unilateral decreased right-sided air entry on exam confirms a partially obstructing object in the right mainstem bronchus (the right is straighter and wider, making it the more common aspiration site).",
+      "correct_other": "Correct. You connected the sudden onset during eating, healthy baseline, and unilateral lung finding to reach FBAO. The right-sided decreased air entry fits aspiration into the right mainstem bronchus. If the cough is effective and she is maintaining her airway, encourage coughing. If she deteriorates, follow FBAO protocol.",
+      "incorrect_after_trap": "Unilateral wheeze and decreased right-sided air entry look like they might anchor on asthma, but asthma is a diffuse lower-airway disease — it does not cause findings on one side only. A focal right-sided obstruction during eating in a healthy child is a partially obstructed bronchus from an aspirated food bolus. Onset during a meal plus unilateral findings equals FBAO.",
+      "incorrect_generic": "Sudden onset while eating plus unilateral decreased right-sided air entry in a healthy child with no prior history is FBAO. Asthma is bilateral and gradual. Croup follows a viral URI. Epiglottitis produces a toxic, drooling, silent child. Anaphylaxis requires allergen exposure with skin/cardiovascular involvement. Only FBAO explains instantaneous distress during eating in a previously healthy child."
+    },
+    "hint": "Think about which clinical system — airway level, skin/systemic signs, onset pattern, or sound quality — would distinguish this from all four alternatives."
+  }
+]

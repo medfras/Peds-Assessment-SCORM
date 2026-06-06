@@ -1,0 +1,145 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 10-6 Mass Casualty Incidents (MDHHS Reviewed 2018-10-26). Base Michigan template.",
+  "id": "mi_base_special_ops_mass_casualty_incidents",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Special Operations",
+  "level_display": "Special Operations Protocol",
+  "jurisdiction": "Michigan",
+  "condition": "Mass Casualty Incidents (MCI)",
+  "version": "2018-10-26",
+  "protocol_reference": "Michigan Special Operations Protocol Section 10-6: Mass Casualty Incidents — MDHHS Reviewed 2018",
+
+  "purpose": "Establish EMS response framework for Mass Casualty Incidents (MCI) including SALT triage, ICS integration, treatment sector operations, and patient transport coordination in Michigan.",
+
+  "sections": [
+    {
+      "title": "MCI Definition and Activation",
+      "content": [
+                "Mass Casualty Incident (MCI): any incident which, because of physical size, number and criticality of victims, or complexity, is likely to overwhelm the local resources typically available",
+                "MCI is a resource and complexity problem — not a fixed casualty count",
+                "If MCI is detected, immediately declare to dispatch and assure hospitals and other stakeholders are made aware",
+                "For major incidents, including incidents involving multiple counties/MCA resources, RMCC should be alerted"
+      ]
+    },
+    {
+      "title": "DISASTER Paradigm",
+      "content": [
+        "D — Detection: recognize that an incident has occurred; identify scope and hazard type",
+        "I — Incident Command: establish ICS; designate Incident Commander; integrate EMS Branch",
+        "S — Safety/Security: establish scene safety perimeter; identify hazards; ensure responder safety",
+        "A — Assess Hazards: identify threats to responders and patients (CBRNE, structural, secondary device)",
+        "S — Support: identify needed resources; activate mutual aid; request additional assets",
+        "T — Triage/Treatment: initiate SALT triage; establish treatment sectors; begin life-saving interventions",
+        "E — Evacuation: coordinate patient transport to appropriate hospitals via Transport Unit Leader",
+        "R — Recovery: demobilization; documentation; resource restocking; critical incident debriefing"
+      ]
+    },
+    {
+      "title": "ICS — EMS Branch Structure",
+      "content": [
+        "INCIDENT COMMANDER (IC): overall scene command; may be fire, law enforcement, or EMS",
+        "EMS BRANCH DIRECTOR: commands all EMS operations at incident",
+        "TRIAGE UNIT LEADER: oversees triage sector; assigns triage personnel; tracks triage counts",
+        "TREATMENT UNIT LEADER: oversees Red/Yellow/Green treatment sectors; coordinates medical care",
+        "  — Red Treatment Sector (Immediate): immediate life-threatening injuries requiring immediate intervention",
+        "  — Yellow Treatment Sector (Delayed): serious but stable injuries; can tolerate brief delay",
+        "  — Green Treatment Sector (Minor): minor injuries; ambulatory patients ('walking wounded')",
+        "TRANSPORT UNIT LEADER: coordinates hospital destinations; tracks patients transported; interfaces with RMCC/CHECC",
+        "STAGING OFFICER: manages ambulance and personnel staging",
+        "REHABILITATION OFFICER: manages responder rehab and rest area"
+      ]
+    },
+    {
+      "title": "SALT Triage Algorithm",
+      "content": [
+        "SALT: Sort — Assess — Life Saving Interventions — Treatment/Transport",
+        "STEP 1 — SORT (Global Sorting):",
+        "  — Command: 'If you can walk, move to [Green area]' — ambulatory patients → GREEN",
+        "  — Remaining: wave hand or follow commands → YELLOW (delayed)",
+        "  — Still/not responding → assess individually",
+        "STEP 2 — ASSESS (Individual Assessment of non-ambulatory patients):",
+        "  — Assess in order: Still patients first (highest priority), then non-ambulatory but responsive",
+        "STEP 3 — LIFE SAVING INTERVENTIONS (LSI) — perform ONLY these before assigning category:",
+        "  — Control major hemorrhage (tourniquet, wound packing)",
+                "  — Open airway; if child, provide 2 rescue breaths",
+        "  — 2 rescue breaths for children only (not adults in SALT)",
+                "  — Chest decompression as needed (Paramedic only)",
+        "  — Auto-injectors for nerve agent (CHEMPACK — Protocol 10-4)",
+        "STEP 4 — ASSIGN TRIAGE CATEGORY:",
+        "  — RED (Immediate): life-threatening injury with high likelihood of survival with immediate intervention; breathing present after LSI",
+        "  — YELLOW (Delayed): serious injury but stable; breathing present; no immediate life threat",
+        "  — GREEN (Minor): minor injuries; ambulatory; 'walking wounded'",
+        "  — GRAY (Expectant): injuries incompatible with survival even with maximal intervention; or requires resources that would deprive salvageable patients; breathing NOT present after LSI in adult; still receive comfort care",
+        "  — BLACK (Dead/Deceased): no respirations after airway repositioning (and 2 breaths in children); pulseless; obvious death"
+      ]
+    },
+    {
+      "title": "Triage Category Definitions",
+      "content": [
+        "RED — Immediate: life-threatening conditions with likely survivability; examples: tension pneumothorax, severe hemorrhage, airway compromise — responds to LSI",
+        "YELLOW — Delayed: serious injuries but can tolerate brief delay; examples: long bone fractures, burns <30% BSA, moderate hemorrhage controlled",
+        "GREEN — Minor: minor injuries; ambulatory; minimal care required; examples: lacerations, contusions, mild burns",
+        "GRAY — Expectant: expected to die regardless of intervention OR injuries require resources disproportionate to likely outcome; may receive comfort care; examples: massive burns (>60%), multi-system trauma without vitals, penetrating brain injury",
+        "BLACK — Dead/Deceased: confirmed dead; no breathing after LSI; obvious fatal injuries",
+        "NOTE: GRAY category is ethically and legally authorized during declared MCI — resources must benefit the greatest number of salvageable patients"
+      ]
+    },
+    {
+      "title": "Non-Ambulance Transport — MCL 333.20939",
+      "content": [
+                "Non-licensed vehicles may be used for emergency transport when licensed ambulances are not readily available",
+                "Non-licensed vehicles include, but are not limited to, wheelchair vans, buses, and other public safety vehicles",
+                "If an ambulance operation cannot respond within a reasonable time, exceptional circumstances may allow spontaneous use of another vehicle without charge or fee as a humane service under MCL 333.20939",
+                "EMS personnel who transport or decide to transport by non-licensed vehicle must file a written report describing the incident with the Medical Control Authority",
+                "Licensed EMS personnel should accompany injured patients in non-licensed vehicles whenever possible"
+      ]
+    },
+    {
+      "title": "RMCC and CHECC — Regional and State Coordination",
+      "content": [
+                "RMCC: Regional Medical Coordination Center — regional multi-agency coordination center and single regional point of contact for healthcare resource coordination",
+                "CHECC: Community Health Emergency Coordination Center — statewide multi-agency coordination entity for state-level healthcare and public health resources",
+        "MCL 333.20965: provides liability immunity for RMCC and CHECC coordination decisions made in good faith during declared emergencies",
+        "Transport Unit Leader interfaces with RMCC for hospital destination decisions — do NOT self-select hospitals without RMCC coordination in MCI",
+        "RMCC and CHECC have authority to divert patients from closest facility to prevent overwhelming single hospital"
+      ]
+    },
+    {
+      "title": "Treatment Sector Operations",
+      "content": [
+        "RED TREATMENT SECTOR: ALS providers; most critical patients; prioritize: airway, hemorrhage, decompression",
+        "YELLOW TREATMENT SECTOR: ALS or BLS; reassess RED patients who improve or worsen; prepare for transport",
+        "GREEN TREATMENT SECTOR: BLS or first aid providers; ambulatory patients; triage for treatment",
+        "GRAY SECTOR: separate from treatment areas; comfort measures only; do NOT consume scarce resources",
+        "Reassess categories continuously — patients may upgrade or downgrade",
+        "Track all patients with triage tags or written log — patient tracking is critical for accountability"
+      ]
+    },
+    {
+      "title": "Documentation and Patient Tracking",
+      "content": [
+        "Triage tags: apply to all patients; record category, interventions, patient identifier, and destination",
+        "Transport Unit Leader: maintain running log of patients transported, receiving hospital, and EMS unit",
+        "EMS agencies must submit MCI documentation to MCA within 24 hours",
+        "NIMS/ICS compliance required — use standard ICS forms (ICS 214, ICS 205A) as available"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [
+    "Tourniquets — first-line hemorrhage control in SALT triage LSI phase",
+    "Nerve agent antidote auto-injectors — SALT LSI for mass nerve agent exposure (Protocol 10-3/10-4)"
+  ],
+
+  "deterioration_flags": [
+    "SALT triage reveals greater than expected RED/GRAY patients — activate additional resources immediately; notify RMCC",
+    "Hospital capacity exceeded — contact RMCC for distribution guidance; activate CHECC if regional capacity threatened",
+    "CBRNE agent identified at MCI scene — halt triage; protect responders; activate CBRNE protocols 10-1 through 10-5 as appropriate"
+  ],
+
+    "scope_notes": "SALT triage is the preferred Michigan MCI triage method; other triage systems must comply with MUCC. The GRAY (Expectant) category is used when patients are unlikely to survive given available resources. Non-licensed vehicle transport may be used when licensed ambulances are not readily available and requires written reporting to the MCA under MCL 333.20939. RMCC is the regional coordination entity; CHECC is the Community Health Emergency Coordination Center."
+}

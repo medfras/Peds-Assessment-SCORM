@@ -1,0 +1,634 @@
+[
+  {
+    "id": "dm_01",
+    "encounter_summary": "You are on scene with a 58-year-old male who called 9-1-1 for crushing substernal chest pain radiating to the left arm, onset 40 minutes ago at rest. Your 12-lead ECG shows ST elevation in leads V1 through V4 consistent with an anterior STEMI. He is diaphoretic, pale, and increasingly anxious.",
+    "elements": [
+      {
+        "id": "dm_01_e01",
+        "label": "58-year-old male, crushing chest pain 40 minutes",
+        "inclusion": "required",
+        "priority_band": 1
+      },
+      {
+        "id": "dm_01_e02",
+        "label": "ST elevation leads V1 through V4, anterior STEMI",
+        "inclusion": "required",
+        "priority_band": 1
+      },
+      {
+        "id": "dm_01_e03",
+        "label": "Pain radiates to left arm, 9 out of 10",
+        "inclusion": "required",
+        "priority_band": 2
+      },
+      {
+        "id": "dm_01_e04",
+        "label": "BP 102/68, HR 96, SpO2 94% on room air",
+        "inclusion": "required",
+        "priority_band": 2
+      },
+      {
+        "id": "dm_01_e05",
+        "label": "Diaphoretic and pale, onset at rest",
+        "inclusion": "required",
+        "priority_band": 2
+      },
+      {
+        "id": "dm_01_e06",
+        "label": "Aspirin 324 mg given, IV established",
+        "inclusion": "required",
+        "priority_band": 3
+      },
+      {
+        "id": "dm_01_e07",
+        "label": "Nitroglycerin 0.4 mg SL given once",
+        "inclusion": "required",
+        "priority_band": 3
+      },
+      {
+        "id": "dm_01_e08",
+        "label": "Pain decreased from 9 to 7 after nitro",
+        "inclusion": "optional",
+        "priority_band": 4
+      },
+      {
+        "id": "dm_01_e09",
+        "label": "History of hypertension, takes lisinopril daily",
+        "inclusion": "optional",
+        "priority_band": 2
+      },
+      {
+        "id": "dm_01_e10",
+        "label": "ETA 6 minutes, cath lab activation requested",
+        "inclusion": "required",
+        "priority_band": 5
+      },
+      {
+        "id": "dm_01_e11",
+        "label": "Patient divorced, lives alone with two cats",
+        "inclusion": "omit",
+        "priority_band": 1
+      },
+      {
+        "id": "dm_01_e12",
+        "label": "Neighbor called 9-1-1 after hearing him yell",
+        "inclusion": "omit",
+        "priority_band": 1
+      }
+    ],
+    "hint": "Ask what the receiving team needs in the first minute: demographics, mechanism/complaint, key findings, interventions/response, and ETA. Social details only belong if they change care."
+  },
+  {
+    "id": "dm_02",
+    "encounter_summary": "You respond to a 4-year-old female in moderate respiratory distress. Her mother reports progressive wheeze and work of breathing over the past two hours that is not responding to home albuterol. The child is sitting upright and using accessory muscles; you can hear audible wheezing and see subcostal retractions. She has a history of asthma.",
+    "elements": [
+      {
+        "id": "dm_02_e01",
+        "label": "4-year-old female, known asthma, moderate distress",
+        "inclusion": "required",
+        "priority_band": 1
+      },
+      {
+        "id": "dm_02_e02",
+        "label": "Wheeze and increased work of breathing two hours",
+        "inclusion": "required",
+        "priority_band": 1
+      },
+      {
+        "id": "dm_02_e03",
+        "label": "SpO2 91% on room air, RR 34, HR 138",
+        "inclusion": "required",
+        "priority_band": 2
+      },
+      {
+        "id": "dm_02_e04",
+        "label": "Subcostal retractions, audible wheeze bilaterally",
+        "inclusion": "required",
+        "priority_band": 2
+      },
+      {
+        "id": "dm_02_e05",
+        "label": "No improvement with three home albuterol treatments",
+        "inclusion": "required",
+        "priority_band": 2
+      },
+      {
+        "id": "dm_02_e06",
+        "label": "Albuterol 2.5 mg nebulized en route, O2 applied",
+        "inclusion": "required",
+        "priority_band": 3
+      },
+      {
+        "id": "dm_02_e07",
+        "label": "SpO2 improved to 96% after nebulizer treatment",
+        "inclusion": "required",
+        "priority_band": 4
+      },
+      {
+        "id": "dm_02_e08",
+        "label": "Allergic to amoxicillin per mother",
+        "inclusion": "optional",
+        "priority_band": 2
+      },
+      {
+        "id": "dm_02_e09",
+        "label": "ETA 4 minutes, pediatric team requested",
+        "inclusion": "required",
+        "priority_band": 5
+      },
+      {
+        "id": "dm_02_e10",
+        "label": "Wheezing less prominent after treatment, still present",
+        "inclusion": "optional",
+        "priority_band": 4
+      },
+      {
+        "id": "dm_02_e11",
+        "label": "Child attends preschool, father works from home",
+        "inclusion": "omit",
+        "priority_band": 1
+      },
+      {
+        "id": "dm_02_e12",
+        "label": "Mother mentioned dog in home, possible new trigger",
+        "inclusion": "omit",
+        "priority_band": 2
+      }
+    ],
+    "hint": "Ask what the receiving team needs in the first minute: demographics, mechanism/complaint, key findings, interventions/response, and ETA. Social details only belong if they change care."
+  },
+  {
+    "id": "dm_03",
+    "encounter_summary": "You are treating a 34-year-old unbelted male driver following a high-speed T-bone collision with airbag deployment. On arrival he was alert but now has a GCS of 12, significant left flank pain, an unstable pelvis on exam, and progressively worsening hypotension despite two large-bore IVs. You are 11 minutes from the trauma center.",
+    "elements": [
+      {
+        "id": "dm_03_e01",
+        "label": "34-year-old male, unbelted driver, high-speed T-bone",
+        "inclusion": "required",
+        "priority_band": 1
+      },
+      {
+        "id": "dm_03_e02",
+        "label": "Airbag deployed, significant intrusion driver door",
+        "inclusion": "required",
+        "priority_band": 1
+      },
+      {
+        "id": "dm_03_e03",
+        "label": "BP 84/60 and dropping, HR 128, GCS 12",
+        "inclusion": "required",
+        "priority_band": 2
+      },
+      {
+        "id": "dm_03_e04",
+        "label": "Unstable pelvis, left flank ecchymosis, guarding",
+        "inclusion": "required",
+        "priority_band": 2
+      },
+      {
+        "id": "dm_03_e05",
+        "label": "Two large-bore IVs, warm normal saline running",
+        "inclusion": "required",
+        "priority_band": 3
+      },
+      {
+        "id": "dm_03_e06",
+        "label": "Pelvic binder applied, C-spine precautions in place",
+        "inclusion": "required",
+        "priority_band": 3
+      },
+      {
+        "id": "dm_03_e07",
+        "label": "BP trending down, 92 to 84 over 8 minutes",
+        "inclusion": "required",
+        "priority_band": 4
+      },
+      {
+        "id": "dm_03_e08",
+        "label": "Decreased breath sounds left base, possible hemo",
+        "inclusion": "optional",
+        "priority_band": 2
+      },
+      {
+        "id": "dm_03_e09",
+        "label": "ETA 11 minutes, activate trauma team now",
+        "inclusion": "required",
+        "priority_band": 5
+      },
+      {
+        "id": "dm_03_e10",
+        "label": "No significant past medical history per bystander",
+        "inclusion": "optional",
+        "priority_band": 2
+      },
+      {
+        "id": "dm_03_e11",
+        "label": "Other driver was cited at scene by police",
+        "inclusion": "omit",
+        "priority_band": 1
+      },
+      {
+        "id": "dm_03_e12",
+        "label": "Patient's car was totaled, airbags cost about $3,000",
+        "inclusion": "omit",
+        "priority_band": 1
+      }
+    ],
+    "hint": "Ask what the receiving team needs in the first minute: demographics, mechanism/complaint, key findings, interventions/response, and ETA. Social details only belong if they change care."
+  },
+  {
+    "id": "dm_04",
+    "encounter_summary": "You respond to a report of an unresponsive adult male found in a park restroom. On arrival the patient is a 29-year-old male, unresponsive and apneic, with a GCS of 3. Drug paraphernalia and a used syringe are found at the scene. Pupils are 1 mm bilaterally and he has slow, gurgling respirations that resolved after airway positioning.",
+    "elements": [
+      {
+        "id": "dm_04_e01",
+        "label": "29-year-old male, unresponsive, suspected opioid OD",
+        "inclusion": "required",
+        "priority_band": 1
+      },
+      {
+        "id": "dm_04_e02",
+        "label": "Found unresponsive in restroom, syringe at scene",
+        "inclusion": "required",
+        "priority_band": 1
+      },
+      {
+        "id": "dm_04_e03",
+        "label": "GCS 3, pupils 1 mm bilateral, RR 4 and agonal",
+        "inclusion": "required",
+        "priority_band": 2
+      },
+      {
+        "id": "dm_04_e04",
+        "label": "SpO2 74% on arrival, improved with airway positioning",
+        "inclusion": "required",
+        "priority_band": 2
+      },
+      {
+        "id": "dm_04_e05",
+        "label": "Naloxone 2 mg IN given on scene",
+        "inclusion": "required",
+        "priority_band": 3
+      },
+      {
+        "id": "dm_04_e06",
+        "label": "BVM ventilations initiated before naloxone",
+        "inclusion": "required",
+        "priority_band": 3
+      },
+      {
+        "id": "dm_04_e07",
+        "label": "Patient responsive to voice, RR 14 after naloxone",
+        "inclusion": "required",
+        "priority_band": 4
+      },
+      {
+        "id": "dm_04_e08",
+        "label": "SpO2 98% on 15L NRB after airway management",
+        "inclusion": "optional",
+        "priority_band": 4
+      },
+      {
+        "id": "dm_04_e09",
+        "label": "ETA 5 minutes, repeat dose may be needed",
+        "inclusion": "required",
+        "priority_band": 5
+      },
+      {
+        "id": "dm_04_e10",
+        "label": "Bystander says patient uses heroin regularly",
+        "inclusion": "optional",
+        "priority_band": 2
+      },
+      {
+        "id": "dm_04_e11",
+        "label": "Bystander mentioned patient recently lost his job",
+        "inclusion": "omit",
+        "priority_band": 1
+      },
+      {
+        "id": "dm_04_e12",
+        "label": "Police found an open warrant when running his name",
+        "inclusion": "omit",
+        "priority_band": 1
+      }
+    ],
+    "hint": "Ask what the receiving team needs in the first minute: demographics, mechanism/complaint, key findings, interventions/response, and ETA. Social details only belong if they change care."
+  },
+  {
+    "id": "dm_05",
+    "encounter_summary": "You are transporting a 4-year-old male with severe respiratory distress after two days of cough and fever. He is tripod-positioned with retractions, nasal flaring, and poor air movement. Initial SpO2 was 84% RA and improved to 93% after blow-by oxygen and assisted nebulized albuterol. HR 162, RR 44, BP 88/52. Parents report asthma and no known medication allergies.",
+    "elements": [
+      {
+        "id": "dm_05_e01",
+        "label": "4-year-old male, severe pediatric respiratory distress",
+        "inclusion": "required",
+        "priority_band": 1
+      },
+      {
+        "id": "dm_05_e02",
+        "label": "Two days cough/fever, history of asthma",
+        "inclusion": "required",
+        "priority_band": 1
+      },
+      {
+        "id": "dm_05_e03",
+        "label": "Tripod, retractions, nasal flaring, poor air movement",
+        "inclusion": "required",
+        "priority_band": 2
+      },
+      {
+        "id": "dm_05_e04",
+        "label": "SpO2 84% RA improved to 93% with oxygen and nebulizer",
+        "inclusion": "required",
+        "priority_band": 2
+      },
+      {
+        "id": "dm_05_e05",
+        "label": "HR 162, RR 44, BP 88/52",
+        "inclusion": "required",
+        "priority_band": 2
+      },
+      {
+        "id": "dm_05_e06",
+        "label": "Assisted albuterol nebulizer given with partial improvement",
+        "inclusion": "required",
+        "priority_band": 3
+      },
+      {
+        "id": "dm_05_e07",
+        "label": "Parent states no known medication allergies",
+        "inclusion": "optional",
+        "priority_band": 3
+      },
+      {
+        "id": "dm_05_e08",
+        "label": "Considering CPAP/ALS intercept if work of breathing worsens",
+        "inclusion": "required",
+        "priority_band": 4
+      },
+      {
+        "id": "dm_05_e09",
+        "label": "ETA 8 minutes to pediatric-capable ED",
+        "inclusion": "required",
+        "priority_band": 5
+      },
+      {
+        "id": "dm_05_e10",
+        "label": "Child's favorite toy is a green dinosaur",
+        "inclusion": "omit",
+        "priority_band": 1
+      },
+      {
+        "id": "dm_05_e11",
+        "label": "Parents gave acetaminophen 4 hours ago",
+        "inclusion": "optional",
+        "priority_band": 3
+      },
+      {
+        "id": "dm_05_e12",
+        "label": "Family dog has also been coughing this week",
+        "inclusion": "omit",
+        "priority_band": 1
+      }
+    ],
+    "hint": "A respiratory handoff should lead with age, distress severity, oxygenation, work of breathing, interventions, response, escalation concerns, and ETA."
+  },
+  {
+    "id": "dm_06",
+    "encounter_summary": "You are bringing in a 67-year-old female with sudden right facial droop, right arm drift, and slurred speech. Last known well was 42 minutes ago while eating breakfast. BGL is 118 mg/dL. BP 184/96, HR 82, SpO2 97% RA. Cincinnati stroke screen is positive. No anticoagulant information is available yet.",
+    "elements": [
+      {
+        "id": "dm_06_e01",
+        "label": "67-year-old female, suspected acute stroke",
+        "inclusion": "required",
+        "priority_band": 1
+      },
+      {
+        "id": "dm_06_e02",
+        "label": "Last known well 42 minutes ago",
+        "inclusion": "required",
+        "priority_band": 1
+      },
+      {
+        "id": "dm_06_e03",
+        "label": "Right facial droop, right arm drift, slurred speech",
+        "inclusion": "required",
+        "priority_band": 2
+      },
+      {
+        "id": "dm_06_e04",
+        "label": "Positive Cincinnati stroke screen",
+        "inclusion": "required",
+        "priority_band": 2
+      },
+      {
+        "id": "dm_06_e05",
+        "label": "BGL 118 mg/dL",
+        "inclusion": "required",
+        "priority_band": 2
+      },
+      {
+        "id": "dm_06_e06",
+        "label": "BP 184/96, HR 82, SpO2 97% RA",
+        "inclusion": "required",
+        "priority_band": 3
+      },
+      {
+        "id": "dm_06_e07",
+        "label": "Stroke alert requested on arrival",
+        "inclusion": "required",
+        "priority_band": 4
+      },
+      {
+        "id": "dm_06_e08",
+        "label": "No anticoagulant information available yet",
+        "inclusion": "optional",
+        "priority_band": 3
+      },
+      {
+        "id": "dm_06_e09",
+        "label": "ETA 6 minutes to stroke center",
+        "inclusion": "required",
+        "priority_band": 5
+      },
+      {
+        "id": "dm_06_e10",
+        "label": "Breakfast was oatmeal and coffee",
+        "inclusion": "omit",
+        "priority_band": 1
+      },
+      {
+        "id": "dm_06_e11",
+        "label": "Family is following in a private vehicle",
+        "inclusion": "optional",
+        "priority_band": 5
+      },
+      {
+        "id": "dm_06_e12",
+        "label": "Patient normally gardens on weekends",
+        "inclusion": "omit",
+        "priority_band": 1
+      }
+    ],
+    "hint": "For stroke, the receiving team needs last-known-well, objective deficits, glucose, vitals, destination capability, and ETA."
+  },
+  {
+    "id": "dm_07",
+    "encounter_summary": "You respond to a 16-year-old female with sudden hives, facial swelling, wheezing, and dizziness after eating a cookie containing peanuts. BP is 82/48, HR 132, RR 30, SpO2 91% RA. She has a prescribed epinephrine auto-injector that was administered by EMS with improvement in wheezing and BP to 96/58.",
+    "elements": [
+      {
+        "id": "dm_07_e01",
+        "label": "16-year-old female, anaphylaxis after peanut exposure",
+        "inclusion": "required",
+        "priority_band": 1
+      },
+      {
+        "id": "dm_07_e02",
+        "label": "Hives, facial swelling, wheezing, dizziness",
+        "inclusion": "required",
+        "priority_band": 2
+      },
+      {
+        "id": "dm_07_e03",
+        "label": "Initial BP 82/48, HR 132, RR 30, SpO2 91% RA",
+        "inclusion": "required",
+        "priority_band": 2
+      },
+      {
+        "id": "dm_07_e04",
+        "label": "Prescribed epinephrine auto-injector administered by EMS",
+        "inclusion": "required",
+        "priority_band": 3
+      },
+      {
+        "id": "dm_07_e05",
+        "label": "Wheezing improved and BP rose to 96/58 after epinephrine",
+        "inclusion": "required",
+        "priority_band": 4
+      },
+      {
+        "id": "dm_07_e06",
+        "label": "Oxygen applied and airway swelling monitored",
+        "inclusion": "required",
+        "priority_band": 3
+      },
+      {
+        "id": "dm_07_e07",
+        "label": "Known peanut allergy",
+        "inclusion": "optional",
+        "priority_band": 2
+      },
+      {
+        "id": "dm_07_e08",
+        "label": "Second epinephrine dose may be needed if symptoms recur",
+        "inclusion": "required",
+        "priority_band": 4
+      },
+      {
+        "id": "dm_07_e09",
+        "label": "ETA 4 minutes, requesting immediate room assignment",
+        "inclusion": "required",
+        "priority_band": 5
+      },
+      {
+        "id": "dm_07_e10",
+        "label": "Cookie was from a school bake sale",
+        "inclusion": "omit",
+        "priority_band": 1
+      },
+      {
+        "id": "dm_07_e11",
+        "label": "Parent is bringing the epinephrine package",
+        "inclusion": "optional",
+        "priority_band": 5
+      },
+      {
+        "id": "dm_07_e12",
+        "label": "Patient has a math test tomorrow",
+        "inclusion": "omit",
+        "priority_band": 1
+      }
+    ],
+    "hint": "Anaphylaxis handoff should make the trigger, airway/breathing/circulation findings, epinephrine timing, response, recurrence risk, and ETA unmistakable."
+  },
+  {
+    "id": "dm_08",
+    "encounter_summary": "You are transporting a 44-year-old male from a head-on MVC. He was restrained with significant front-end intrusion. He has chest wall tenderness, abdominal guarding, pale cool skin, HR 128, BP 86/54, RR 26, SpO2 95% on oxygen. Pelvic binder applied, two large-bore IVs established by ALS, and rapid transport is underway.",
+    "elements": [
+      {
+        "id": "dm_08_e01",
+        "label": "44-year-old male, head-on MVC with major intrusion",
+        "inclusion": "required",
+        "priority_band": 1
+      },
+      {
+        "id": "dm_08_e02",
+        "label": "Restrained driver, significant front-end intrusion",
+        "inclusion": "required",
+        "priority_band": 1
+      },
+      {
+        "id": "dm_08_e03",
+        "label": "Chest wall tenderness and abdominal guarding",
+        "inclusion": "required",
+        "priority_band": 2
+      },
+      {
+        "id": "dm_08_e04",
+        "label": "Pale cool skin, HR 128, BP 86/54",
+        "inclusion": "required",
+        "priority_band": 2
+      },
+      {
+        "id": "dm_08_e05",
+        "label": "RR 26, SpO2 95% on oxygen",
+        "inclusion": "required",
+        "priority_band": 2
+      },
+      {
+        "id": "dm_08_e06",
+        "label": "Pelvic binder applied for suspected pelvic injury",
+        "inclusion": "required",
+        "priority_band": 3
+      },
+      {
+        "id": "dm_08_e07",
+        "label": "Two large-bore IVs established by ALS",
+        "inclusion": "required",
+        "priority_band": 3
+      },
+      {
+        "id": "dm_08_e08",
+        "label": "Rapid transport to trauma center underway",
+        "inclusion": "required",
+        "priority_band": 4
+      },
+      {
+        "id": "dm_08_e09",
+        "label": "ETA 7 minutes, trauma team activation requested",
+        "inclusion": "required",
+        "priority_band": 5
+      },
+      {
+        "id": "dm_08_e10",
+        "label": "Airbags deployed",
+        "inclusion": "optional",
+        "priority_band": 1
+      },
+      {
+        "id": "dm_08_e11",
+        "label": "Vehicle color was blue",
+        "inclusion": "omit",
+        "priority_band": 1
+      },
+      {
+        "id": "dm_08_e12",
+        "label": "Patient was driving to work",
+        "inclusion": "omit",
+        "priority_band": 1
+      }
+    ],
+    "hint": "For trauma, lead with mechanism, suspected injuries, shock signs, life-saving interventions, destination/activation need, and ETA."
+  }
+]

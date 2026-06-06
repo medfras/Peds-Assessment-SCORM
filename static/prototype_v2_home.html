@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RescueTrails — Home (V2 Theme Prototype)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --page-bg:     #f2f0eb;
+      --topbar-bg:   #1b2028;
+      --nav-bg:      #161c23;
+      --nav-border:  #0c1016;
+      --call-bg:     #1e252e;
+      --card-bg:     #ffffff;
+      --border:      #d5d2cb;
+      --text:        #1b2028;
+      --text-2:      #4b5563;
+      --text-muted:  #6b7280;
+      --text-light:  #f0ede7;
+      --text-dim:    #9ca3af;
+      --red:         #c41e3a;
+      --red-dk:      #9b1c2f;
+      --blue:        #1a56db;
+      --gold:        #9a7d0a;
+      --gold-lt:     #b8970f;
+      --amber:       #d97706;
+      --d-peds:      #0284c7;
+      --d-med:       #1d4ed8;
+      --d-trauma:    #b91c1c;
+      --d-complex:   #334155;
+      --nav-w:       224px;
+      --nav-w-col:   52px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--page-bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ═══════════════════════════════ TOPBAR ═══════════════════════════════ */
+    .topbar {
+      height: 52px;
+      background: var(--topbar-bg);
+      border-bottom: 1px solid var(--nav-border);
+      display: flex; align-items: center;
+      padding: 0 16px 0 0;
+      gap: 12px; flex-shrink: 0; z-index: 20;
+    }
+    /* toggle lives inside topbar, same width as nav */
+    .nav-toggle-wrap {
+      width: var(--nav-w-col);
+      height: 52px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      border-right: 1px solid #ffffff08;
+      transition: width 0.22s cubic-bezier(.4,0,.2,1);
+    }
+    .nav-expanded .nav-toggle-wrap { width: var(--nav-w); }
+    .nav-toggle {
+      width: 32px; height: 32px; border-radius: 6px;
+      background: transparent; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-dim);
+      transition: background .14s, color .14s;
+    }
+    .nav-toggle:hover { background: #ffffff10; color: var(--text-light); }
+    .nav-toggle svg { width: 18px; height: 18px; }
+
+    .logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+    .logo-mark {
+      width: 28px; height: 28px; background: var(--red); border-radius: 5px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px; font-weight: 700; color: #fff; letter-spacing: -.3px;
+    }
+    .logo-text { font-size: 15px; font-weight: 700; color: var(--text-light); letter-spacing: -.2px; }
+    .logo-text .r { color: var(--red); }
+    .proto-tag {
+      font-size: 10px; font-weight: 600; letter-spacing: .6px; text-transform: uppercase;
+      background: #f59e0b18; border: 1px solid #f59e0b44; color: #f59e0b;
+      padding: 2px 7px; border-radius: 3px;
+    }
+    .topbar-spacer { flex: 1; }
+    .shift-pill {
+      display: flex; align-items: center; gap: 6px;
+      background: #ffffff09; border: 1px solid #ffffff11; border-radius: 5px;
+      padding: 4px 10px; font-size: 11.5px; color: var(--text-dim);
+    }
+    .dot-g { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; }
+    .xp-group { display: flex; align-items: center; gap: 7px; }
+    .rank-pill {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase;
+      background: var(--red-dk); color: #fff; padding: 3px 8px; border-radius: 4px;
+    }
+    .xp-track { width: 72px; height: 5px; background: #ffffff1a; border-radius: 3px; overflow: hidden; }
+    .xp-fill { height: 100%; width: 62%; background: var(--gold-lt); border-radius: 3px; }
+    .xp-lbl { font-size: 11px; color: var(--text-dim); white-space: nowrap; }
+    .treats {
+      display: flex; align-items: center; gap: 5px;
+      background: #ffffff09; border: 1px solid #ffffff11; border-radius: 5px;
+      padding: 4px 10px; font-size: 13px; font-weight: 600; color: var(--text-light);
+    }
+
+    /* ═══════════════════════════════ BODY WRAP ═══════════════════════════════ */
+    .body-wrap { display: flex; flex: 1; overflow: hidden; }
+
+    /* ═══════════════════════════════ LEFT NAV ═══════════════════════════════ */
+    .left-nav {
+      width: var(--nav-w-col);
+      background: var(--nav-bg);
+      border-right: 1px solid var(--nav-border);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+      transition: width 0.22s cubic-bezier(.4,0,.2,1);
+      flex-shrink: 0;
+      z-index: 10;
+    }
+    .nav-expanded .left-nav { width: var(--nav-w); }
+
+    /* profile block */
+    .nav-profile {
+      padding: 14px 10px 12px;
+      border-bottom: 1px solid #ffffff09;
+      display: flex; align-items: center; gap: 10px;
+      overflow: hidden; white-space: nowrap;
+    }
+    .nav-ava {
+      width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, #c41e3a44, #c41e3a22);
+      border: 2px solid var(--red-dk);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: #fca5a5;
+    }
+    .nav-profile-text { overflow: hidden; }
+    .nav-name { font-size: 12.5px; font-weight: 600; color: var(--text-light); overflow: hidden; text-overflow: ellipsis; }
+    .nav-meta { font-size: 10px; color: #4b5563; margin-top: 1px; overflow: hidden; text-overflow: ellipsis; }
+    .nav-agency { font-size: 10px; color: #374151; overflow: hidden; text-overflow: ellipsis; }
+
+    /* nav sections */
+    .nav-sections { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 6px 0; }
+    .nav-section-hd {
+      padding: 8px 14px 4px;
+      font-size: 9px; font-weight: 600; letter-spacing: .9px; text-transform: uppercase;
+      color: #2d3748; white-space: nowrap; overflow: hidden;
+      opacity: 0; transition: opacity .15s;
+    }
+    .nav-expanded .nav-section-hd { opacity: 1; }
+
+    .nav-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 10px; cursor: pointer;
+      transition: background .12s;
+      overflow: hidden; white-space: nowrap;
+      border: none; background: transparent;
+      width: 100%; text-align: left;
+    }
+    .nav-item:hover { background: #ffffff08; }
+    .nav-item.active { background: #ffffff0d; }
+    .nav-icon {
+      width: 32px; height: 32px; border-radius: 7px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; background: #ffffff08; border: 1px solid #ffffff0a;
+      transition: background .12s;
+    }
+    .nav-item:hover .nav-icon { background: #ffffff12; }
+    .nav-item.active .nav-icon { background: #ffffff15; }
+    .nav-item-body { overflow: hidden; }
+    .nav-item-label { font-size: 12px; font-weight: 500; color: #c9cdd4; overflow: hidden; text-overflow: ellipsis; }
+    .nav-item-sub { font-size: 10px; color: #4b5563; overflow: hidden; text-overflow: ellipsis; margin-top: 1px; }
+    .nav-badge {
+      margin-left: auto; flex-shrink: 0;
+      background: var(--red); color: #fff;
+      font-size: 9px; font-weight: 700; padding: 1px 5px; border-radius: 8px;
+      opacity: 0; transition: opacity .15s;
+      min-width: 16px; text-align: center;
+    }
+    .nav-expanded .nav-badge { opacity: 1; }
+    /* collapsed: show badge as dot on icon */
+    .nav-item .icon-dot {
+      position: absolute; top: 5px; right: 5px;
+      width: 7px; height: 7px; border-radius: 50%; background: var(--red);
+      opacity: 1; transition: opacity .15s;
+    }
+    .nav-icon-wrap { position: relative; flex-shrink: 0; }
+    .nav-expanded .icon-dot { opacity: 0; }
+
+    .nav-divider { height: 1px; background: #ffffff08; margin: 6px 0; }
+
+    /* bottom nav items (settings/signout) */
+    .nav-bottom { padding: 6px 0 8px; border-top: 1px solid #ffffff08; }
+    .nav-item-danger .nav-item-label { color: #ef4444; }
+    .nav-item-danger .nav-icon { background: #ef444410; border-color: #ef444418; }
+
+    /* collectibles inline */
+    .nav-collectibles {
+      display: flex; gap: 6px; padding: 4px 10px 10px;
+      overflow: hidden;
+    }
+    .nav-coll-item {
+      width: 36px; height: 36px; border-radius: 6px;
+      background: #ffffff08; border: 1px solid #ffffff0c;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px; flex-shrink: 0;
+    }
+    .nav-coll-more { font-size: 10px; color: #4b5563; padding-top: 4px; white-space: nowrap; }
+
+    /* leaderboard inline */
+    .nav-leaderboard { padding: 2px 10px 10px; }
+    .lb-row {
+      display: flex; align-items: center; gap: 8px;
+      padding: 5px 8px; border-radius: 6px;
+      margin-bottom: 3px;
+      background: #ffffff07; border: 1px solid #ffffff0a;
+    }
+    .lb-row.lb-me { background: #b8970f12; border-color: #b8970f25; }
+    .lb-rank {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px; font-weight: 700; color: #4b5563;
+      width: 16px; text-align: center; flex-shrink: 0;
+    }
+    .lb-row.lb-me .lb-rank { color: var(--gold-lt); }
+    .lb-rank-1 { color: #f59e0b; }
+    .lb-rank-2 { color: #9ca3af; }
+    .lb-name { font-size: 11px; color: #c9cdd4; flex: 1; overflow: hidden; text-overflow: ellipsis; }
+    .lb-row.lb-me .lb-name { color: var(--text-light); font-weight: 600; }
+    .lb-xp { font-size: 9.5px; color: #4b5563; white-space: nowrap; }
+    .lb-more { font-size: 10px; color: #374151; padding: 2px 8px; cursor: pointer; }
+
+    /* challenges inline */
+    .nav-challenges { padding: 2px 10px 10px; }
+    .challenge-item {
+      display: flex; align-items: center; gap: 7px;
+      padding: 6px 8px; border-radius: 6px;
+      background: #ffffff07; border: 1px solid #ffffff0a;
+      margin-bottom: 5px;
+    }
+    .challenge-icon { font-size: 13px; flex-shrink: 0; }
+    .challenge-title { font-size: 10.5px; color: #c9cdd4; flex: 1; overflow: hidden; text-overflow: ellipsis; }
+    .challenge-prog { font-size: 9.5px; color: #4b5563; white-space: nowrap; }
+    .challenge-bar-wrap { margin-top: 4px; }
+    .challenge-bar { height: 3px; background: #ffffff10; border-radius: 2px; overflow: hidden; }
+    .challenge-fill { height: 100%; background: var(--gold-lt); border-radius: 2px; }
+
+    /* ═══════════════════════════════ MAIN BOARD ═══════════════════════════════ */
+    .main-board {
+      flex: 1; overflow-y: auto; min-width: 0;
+      padding: 22px 22px;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .board-hd { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+    .board-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 21px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase;
+    }
+    .board-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 10.5px; font-weight: 500; color: var(--blue);
+      background: #1a56db10; border: 1px solid #1a56db22;
+      border-radius: 4px; padding: 2px 8px;
+    }
+    .board-sub { font-size: 12.5px; color: var(--text-muted); margin-top: 3px; }
+
+    .district-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 12px;
+      flex: 1; min-height: 0;
+    }
+    .d-card {
+      background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;
+      overflow: hidden; display: flex; flex-direction: column;
+      cursor: pointer; transition: box-shadow .14s, transform .1s;
+      box-shadow: 0 1px 3px rgba(0,0,0,.07);
+    }
+    .d-card:hover { box-shadow: 0 5px 14px rgba(0,0,0,.13); transform: translateY(-1px); }
+    .d-bar { height: 4px; flex-shrink: 0; }
+    .d-body { padding: 13px 15px; flex: 1; display: flex; flex-direction: column; gap: 8px; min-height: 0; }
+    .d-hd { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+    .d-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 17px; font-weight: 700; letter-spacing: .3px;
+      line-height: 1.18; text-transform: uppercase;
+    }
+    .d-icon {
+      width: 34px; height: 34px; border-radius: 7px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 16px;
+    }
+    .d-desc { font-size: 11.5px; color: var(--text-2); line-height: 1.5; }
+    .d-stats { display: flex; gap: 16px; margin-top: auto; }
+    .sval {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20px; font-weight: 700; line-height: 1;
+    }
+    .slbl { font-size: 9.5px; color: var(--text-muted); text-transform: uppercase; letter-spacing: .5px; margin-top: 1px; }
+    .d-prog { margin-top: 2px; }
+    .prog-row { display: flex; justify-content: space-between; font-size: 9.5px; color: var(--text-muted); margin-bottom: 3px; }
+    .prog-track { height: 4px; background: #e5e7eb; border-radius: 3px; overflow: hidden; }
+    .prog-fill { height: 100%; border-radius: 3px; }
+    .d-btn {
+      margin-top: 7px; width: 100%; padding: 8px 0;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase;
+      border: none; border-radius: 6px; cursor: pointer; transition: filter .14s; color: #fff;
+    }
+    .d-btn:hover { filter: brightness(1.1); }
+
+    /* district accent tokens */
+    .peds    { --acc: #0284c7; }
+    .med     { --acc: #1d4ed8; }
+    .trauma  { --acc: #b91c1c; }
+    .complex { --acc: #334155; }
+    .d-bar   { background: var(--acc); }
+    .d-icon  { background: color-mix(in srgb, var(--acc) 11%, transparent); color: var(--acc); }
+    .sval.c  { color: var(--acc); }
+    .prog-fill { background: var(--acc); }
+    .d-btn   { background: var(--acc); }
+
+    /* lexi in call board */
+    .cb-lexi {
+      padding: 12px 14px 11px;
+      border-bottom: 1px solid #ffffff09;
+      display: flex; gap: 10px; align-items: flex-start;
+      flex-shrink: 0;
+    }
+    .cb-lexi-ava {
+      width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, #1f2937, #111827);
+      border: 2px solid #ffffff14;
+      display: flex; align-items: center; justify-content: center; font-size: 15px;
+    }
+    .cb-lexi-bubble {
+      background: #ffffff0c; border: 1px solid #ffffff10;
+      border-radius: 8px; border-top-left-radius: 2px;
+      padding: 8px 10px; font-size: 11.5px; color: #c9cdd4; line-height: 1.5; flex: 1;
+    }
+    .cb-lexi-bubble strong { color: var(--text-light); }
+
+    /* ═══════════════════════════════ CALL BOARD (right) ═══════════════════════════════ */
+    .call-board {
+      width: 258px; flex-shrink: 0;
+      background: var(--call-bg);
+      border-left: 1px solid var(--nav-border);
+      overflow-y: auto;
+      display: flex; flex-direction: column;
+    }
+    .cb-header {
+      padding: 12px 14px 10px;
+      border-bottom: 1px solid #ffffff09;
+      flex-shrink: 0;
+    }
+    .cb-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--text-dim);
+    }
+    .cb-district-badge {
+      margin-top: 6px;
+      display: flex; align-items: center; gap: 7px;
+      background: #0284c710; border: 1px solid #0284c725;
+      border-radius: 6px; padding: 6px 9px;
+    }
+    .cb-district-dot { width: 8px; height: 8px; border-radius: 50%; background: #0284c7; flex-shrink: 0; }
+    .cb-district-name { font-size: 11.5px; font-weight: 600; color: #93c5fd; }
+    .cb-district-prog { font-size: 10px; color: #4b5563; margin-top: 1px; }
+
+    /* active call card */
+    .cb-active {
+      padding: 12px 14px;
+      border-bottom: 1px solid #ffffff09;
+      flex-shrink: 0;
+    }
+    .cb-section-lbl { font-size: 9.5px; font-weight: 600; letter-spacing: .9px; text-transform: uppercase; color: #374151; margin-bottom: 8px; }
+    .active-call-card {
+      background: #ffffff0c; border: 1px solid #ffffff10;
+      border-left: 3px solid #0284c7;
+      border-radius: 7px; padding: 10px 11px;
+    }
+    .active-tag {
+      display: inline-flex; align-items: center; gap: 4px;
+      background: #22c55e18; border: 1px solid #22c55e30;
+      color: #4ade80; font-size: 9.5px; font-weight: 600; letter-spacing: .4px; text-transform: uppercase;
+      padding: 2px 6px; border-radius: 3px; margin-bottom: 6px;
+    }
+    .active-dot { width: 5px; height: 5px; border-radius: 50%; background: #22c55e; }
+    .active-call-name { font-size: 12.5px; font-weight: 600; color: var(--text-light); line-height: 1.3; margin-bottom: 4px; }
+    .active-call-meta { font-size: 10px; color: #4b5563; }
+    .continue-btn {
+      width: 100%; margin-top: 9px; padding: 8px 0;
+      background: #0284c7; border: none; border-radius: 6px;
+      color: #fff; font-size: 12.5px; font-weight: 600; cursor: pointer;
+      font-family: 'Barlow Condensed', sans-serif; letter-spacing: .5px; text-transform: uppercase;
+      transition: filter .14s;
+    }
+    .continue-btn:hover { filter: brightness(1.1); }
+
+    /* call log */
+    .cb-log { flex: 1; padding: 12px 14px; min-height: 0; }
+    .call-log-item {
+      display: flex; align-items: flex-start; gap: 9px;
+      padding: 9px 0;
+      border-bottom: 1px solid #ffffff07;
+    }
+    .call-log-item:last-child { border-bottom: none; }
+    .call-accent-bar {
+      width: 3px; border-radius: 3px; align-self: stretch;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .call-info { flex: 1; min-width: 0; }
+    .call-name { font-size: 11.5px; font-weight: 500; color: #c9cdd4; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .call-detail { display: flex; align-items: center; gap: 6px; margin-top: 3px; flex-wrap: wrap; }
+    .call-dist-tag {
+      font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 3px;
+      background: #ffffff0a; color: #6b7280; border: 1px solid #ffffff0d;
+    }
+    .call-when { font-size: 9.5px; color: #374151; }
+    .call-result {
+      flex-shrink: 0; font-size: 9.5px; font-weight: 600; padding: 2px 6px; border-radius: 3px;
+    }
+    .result-pass { background: #14532d20; color: #4ade80; border: 1px solid #14532d40; }
+    .result-fail { background: #7f1d1d20; color: #f87171; border: 1px solid #7f1d1d40; }
+    .result-inc  { background: #78350f20; color: #fcd34d; border: 1px solid #78350f40; }
+
+    /* dispatch section */
+    .cb-dispatch {
+      padding: 12px 14px;
+      border-top: 1px solid #ffffff09;
+      flex-shrink: 0;
+    }
+    .dispatch-btn {
+      width: 100%; padding: 11px 0;
+      background: var(--red); border: none; border-radius: 7px;
+      color: #fff; cursor: pointer;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px; font-weight: 700; letter-spacing: .7px; text-transform: uppercase;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      transition: filter .14s;
+    }
+    .dispatch-btn:hover { filter: brightness(1.1); }
+    .dispatch-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .dispatch-sub { font-size: 10px; color: #374151; text-align: center; margin-top: 6px; }
+
+    /* ═══════════════════════════════ BOTTOM BAR ═══════════════════════════════ */
+    .bottom-bar {
+      height: 32px; background: var(--topbar-bg);
+      border-top: 1px solid var(--nav-border);
+      display: flex; align-items: center; padding: 0 22px;
+      flex-shrink: 0;
+    }
+    .ori-link { font-size: 11px; color: #2d3748; cursor: pointer; }
+    .ori-link:hover { color: #4b5563; }
+
+    /* scrollbars */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #ffffff12; border-radius: 2px; }
+
+    /* text visibility toggle */
+    .nav-txt { overflow: hidden; transition: opacity .15s; }
+    .left-nav:not(.expanded) .nav-txt { opacity: 0; pointer-events: none; }
+    .left-nav.expanded .nav-txt { opacity: 1; }
+    .left-nav:not(.expanded) .nav-section-hd { opacity: 0; }
+    .left-nav.expanded .nav-section-hd { opacity: 1; }
+    .left-nav:not(.expanded) .nav-badge { opacity: 0; }
+    .left-nav.expanded .nav-badge { opacity: 1; }
+    .left-nav:not(.expanded) .icon-dot { opacity: 1; }
+    .left-nav.expanded .icon-dot { opacity: 0; }
+    .left-nav:not(.expanded) .nav-challenges,
+    .left-nav:not(.expanded) .nav-collectibles,
+    .left-nav:not(.expanded) .nav-coll-more,
+    .left-nav:not(.expanded) .nav-leaderboard { display: none; }
+  </style>
+</head>
+<body>
+
+  <!-- ── TOPBAR ── -->
+  <header class="topbar" id="topbar">
+    <div class="nav-toggle-wrap">
+      <button class="nav-toggle" id="nav-toggle" title="Toggle menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <a class="logo" href="#">
+      <div class="logo-mark">RT</div>
+      <span class="logo-text"><span class="r">Rescue</span>Trails</span>
+    </a>
+    <div class="proto-tag">V2 Prototype</div>
+
+    <div class="topbar-spacer"></div>
+
+    <div class="shift-pill"><div class="dot-g"></div>On-Shift</div>
+    <div class="xp-group">
+      <div class="rank-pill">EMT-B</div>
+      <div class="xp-track"><div class="xp-fill"></div></div>
+      <span class="xp-lbl">1,240 / 2,000 XP</span>
+    </div>
+    <div class="treats">🦴 48</div>
+  </header>
+
+  <!-- ── BODY ── -->
+  <div class="body-wrap" id="body-wrap">
+
+    <!-- ── LEFT NAV ── -->
+    <nav class="left-nav" id="left-nav">
+
+      <!-- Profile -->
+      <div class="nav-profile">
+        <div class="nav-ava">JF</div>
+        <div class="nav-profile-text nav-txt">
+          <div class="nav-name">Jonathan F.</div>
+          <div class="nav-meta">EMT-Basic · Level 4</div>
+          <div class="nav-agency">PFD Station 1 · Central Valley EMS</div>
+        </div>
+      </div>
+
+      <div class="nav-sections">
+
+        <!-- Streak -->
+        <button class="nav-item" title="Streak">
+          <div class="nav-icon-wrap">
+            <div class="nav-icon">🔥</div>
+          </div>
+          <div class="nav-item-body nav-txt">
+            <div class="nav-item-label">5-Day Streak</div>
+            <div class="nav-item-sub">Last run 2 hours ago</div>
+          </div>
+        </button>
+
+        <div class="nav-divider"></div>
+
+        <!-- Agency Leaderboard -->
+        <div class="nav-section-hd">Agency Leaderboard</div>
+        <button class="nav-item" title="Agency Leaderboard">
+          <div class="nav-icon-wrap">
+            <div class="nav-icon">🏆</div>
+          </div>
+          <div class="nav-item-body nav-txt">
+            <div class="nav-item-label">Agency Leaderboard</div>
+            <div class="nav-item-sub">You're #3 of 24</div>
+          </div>
+        </button>
+        <div class="nav-leaderboard">
+          <div class="lb-row">
+            <span class="lb-rank lb-rank-1">1</span>
+            <span class="lb-name">M. Torres</span>
+            <span class="lb-xp">3,840 XP</span>
+          </div>
+          <div class="lb-row">
+            <span class="lb-rank lb-rank-2">2</span>
+            <span class="lb-name">K. Okafor</span>
+            <span class="lb-xp">2,990 XP</span>
+          </div>
+          <div class="lb-row lb-me">
+            <span class="lb-rank">3</span>
+            <span class="lb-name">You</span>
+            <span class="lb-xp">1,240 XP</span>
+          </div>
+          <div class="lb-row">
+            <span class="lb-rank">4</span>
+            <span class="lb-name">R. Nguyen</span>
+            <span class="lb-xp">980 XP</span>
+          </div>
+          <div class="lb-more nav-txt">View full leaderboard →</div>
+        </div>
+
+        <div class="nav-divider"></div>
+
+        <!-- Active Challenges -->
+        <div class="nav-section-hd">Active Challenges</div>
+        <button class="nav-item active" title="Active Challenges">
+          <div class="nav-icon-wrap">
+            <div class="nav-icon">🎯</div>
+            <div class="icon-dot"></div>
+          </div>
+          <div class="nav-item-body nav-txt">
+            <div class="nav-item-label">Challenges</div>
+            <div class="nav-item-sub">2 in progress</div>
+          </div>
+          <div class="nav-badge">2</div>
+        </button>
+        <div class="nav-challenges">
+          <div class="challenge-item">
+            <span class="challenge-icon">🔬</span>
+            <div style="flex:1;min-width:0;">
+              <div class="challenge-title">Peds Assessment Streak</div>
+              <div class="challenge-bar-wrap">
+                <div class="challenge-bar"><div class="challenge-fill" style="width:60%"></div></div>
+              </div>
+            </div>
+            <span class="challenge-prog">3/5</span>
+          </div>
+          <div class="challenge-item">
+            <span class="challenge-icon">💊</span>
+            <div style="flex:1;min-width:0;">
+              <div class="challenge-title">Med-Math Accuracy</div>
+              <div class="challenge-bar-wrap">
+                <div class="challenge-bar"><div class="challenge-fill" style="width:80%"></div></div>
+              </div>
+            </div>
+            <span class="challenge-prog">4/5</span>
+          </div>
+        </div>
+
+        <div class="nav-divider"></div>
+
+        <!-- Collectibles -->
+        <div class="nav-section-hd">Collectibles</div>
+        <button class="nav-item" title="Collectibles">
+          <div class="nav-icon-wrap">
+            <div class="nav-icon">🪙</div>
+          </div>
+          <div class="nav-item-body nav-txt">
+            <div class="nav-item-label">Station Display</div>
+            <div class="nav-item-sub">2 coins · 1 patch · 3 pins</div>
+          </div>
+        </button>
+        <div class="nav-collectibles">
+          <div class="nav-coll-item">🪙</div>
+          <div class="nav-coll-item">🛡️</div>
+          <div class="nav-coll-item">📌</div>
+        </div>
+        <div class="nav-coll-more nav-txt" style="padding: 0 10px 10px; font-size:10px; color:#374151; cursor:pointer;">View full station display →</div>
+
+        <div class="nav-divider"></div>
+
+        <!-- Training Center -->
+        <button class="nav-item" title="Training Center">
+          <div class="nav-icon-wrap">
+            <div class="nav-icon">🏋</div>
+          </div>
+          <div class="nav-item-body nav-txt">
+            <div class="nav-item-label">Training Center</div>
+            <div class="nav-item-sub">Drills &amp; mini-games</div>
+          </div>
+        </button>
+
+        <div class="nav-divider"></div>
+
+        <!-- Notebook -->
+        <button class="nav-item" title="Notebook">
+          <div class="nav-icon-wrap">
+            <div class="nav-icon">📓</div>
+          </div>
+          <div class="nav-item-body nav-txt">
+            <div class="nav-item-label">Notebook</div>
+            <div class="nav-item-sub">12 entries</div>
+          </div>
+        </button>
+
+      </div><!-- /nav-sections -->
+
+      <!-- Bottom nav -->
+      <div class="nav-bottom">
+        <!-- Admin -->
+        <button class="nav-item" title="Admin Dashboard">
+          <div class="nav-icon-wrap">
+            <div class="nav-icon">🛠️</div>
+          </div>
+          <div class="nav-item-body nav-txt">
+            <div class="nav-item-label">Admin Dashboard</div>
+          </div>
+        </button>
+        <button class="nav-item" title="Account Settings">
+          <div class="nav-icon-wrap">
+            <div class="nav-icon">⚙️</div>
+          </div>
+          <div class="nav-item-body nav-txt">
+            <div class="nav-item-label">Account Settings</div>
+          </div>
+        </button>
+        <button class="nav-item nav-item-danger" title="Sign Out">
+          <div class="nav-icon-wrap">
+            <div class="nav-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                <polyline points="16 17 21 12 16 7"/>
+                <line x1="21" y1="12" x2="9" y2="12"/>
+              </svg>
+            </div>
+          </div>
+          <div class="nav-item-body nav-txt">
+            <div class="nav-item-label">Sign Out</div>
+          </div>
+        </button>
+      </div>
+
+    </nav><!-- /left-nav -->
+
+    <!-- ── MAIN BOARD ── -->
+    <main class="main-board">
+      <div>
+        <div class="board-hd">
+          <span class="board-title">Training Districts</span>
+          <div class="board-badge">
+            <svg width="6" height="6" viewBox="0 0 6 6"><circle cx="3" cy="3" r="3" fill="#1a56db"/></svg>
+            All 4 districts active — no prerequisites
+          </div>
+        </div>
+        <div class="board-sub">Select any district. Districts are independent — complete them in any order.</div>
+      </div>
+
+      <div class="district-grid">
+
+        <!-- PEDIATRIC -->
+        <div class="d-card peds">
+          <div class="d-bar"></div>
+          <div class="d-body">
+            <div class="d-hd">
+              <div class="d-name">Pediatric<br>Community Response</div>
+              <div class="d-icon">🏫</div>
+            </div>
+            <div class="d-desc">Pediatric medical and trauma — schools, daycares, playgrounds, homes, parks, and public events.</div>
+            <div class="d-stats">
+              <div><div class="sval">12</div><div class="slbl">Scenarios</div></div>
+              <div><div class="sval c">4</div><div class="slbl">Completed</div></div>
+              <div><div class="sval">1</div><div class="slbl">Mastered</div></div>
+            </div>
+            <div class="d-prog">
+              <div class="prog-row"><span>Coverage</span><span>33%</span></div>
+              <div class="prog-track"><div class="prog-fill" style="width:33%"></div></div>
+            </div>
+            <button class="d-btn">Enter District →</button>
+          </div>
+        </div>
+
+        <!-- ADULT MEDICAL -->
+        <div class="d-card med">
+          <div class="d-bar"></div>
+          <div class="d-body">
+            <div class="d-hd">
+              <div class="d-name">Adult Medical<br>Response</div>
+              <div class="d-icon">🏢</div>
+            </div>
+            <div class="d-desc">Adult illness and collapse — respiratory, cardiac, neuro, endocrine, and general medical calls.</div>
+            <div class="d-stats">
+              <div><div class="sval">18</div><div class="slbl">Scenarios</div></div>
+              <div><div class="sval c">2</div><div class="slbl">Completed</div></div>
+              <div><div class="sval">0</div><div class="slbl">Mastered</div></div>
+            </div>
+            <div class="d-prog">
+              <div class="prog-row"><span>Coverage</span><span>11%</span></div>
+              <div class="prog-track"><div class="prog-fill" style="width:11%"></div></div>
+            </div>
+            <button class="d-btn">Enter District →</button>
+          </div>
+        </div>
+
+        <!-- TRAUMA -->
+        <div class="d-card trauma">
+          <div class="d-bar"></div>
+          <div class="d-body">
+            <div class="d-hd">
+              <div class="d-name">Adult Trauma &<br>Rescue Response</div>
+              <div class="d-icon">🚧</div>
+            </div>
+            <div class="d-desc">Mechanism-driven calls — MVCs, falls, bleeding, industrial incidents, and rescue/extrication contexts.</div>
+            <div class="d-stats">
+              <div><div class="sval">15</div><div class="slbl">Scenarios</div></div>
+              <div><div class="sval c">0</div><div class="slbl">Completed</div></div>
+              <div><div class="sval">0</div><div class="slbl">Mastered</div></div>
+            </div>
+            <div class="d-prog">
+              <div class="prog-row"><span>Coverage</span><span>0%</span></div>
+              <div class="prog-track"><div class="prog-fill" style="width:0%"></div></div>
+            </div>
+            <button class="d-btn">Enter District →</button>
+          </div>
+        </div>
+
+        <!-- COMPLEX -->
+        <div class="d-card complex">
+          <div class="d-bar"></div>
+          <div class="d-body">
+            <div class="d-hd">
+              <div class="d-name">Complex Incident<br>Response</div>
+              <div class="d-icon">⚡</div>
+            </div>
+            <div class="d-desc">Mixed-domain convergence — multi-system emergencies, command-heavy incidents, and synthesis scenarios.</div>
+            <div class="d-stats">
+              <div><div class="sval">10</div><div class="slbl">Scenarios</div></div>
+              <div><div class="sval c">0</div><div class="slbl">Completed</div></div>
+              <div><div class="sval">0</div><div class="slbl">Mastered</div></div>
+            </div>
+            <div class="d-prog">
+              <div class="prog-row"><span>Coverage</span><span>0%</span></div>
+              <div class="prog-track"><div class="prog-fill" style="width:0%"></div></div>
+            </div>
+            <button class="d-btn">Enter District →</button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- ── CALL BOARD ── -->
+    <aside class="call-board">
+
+      <!-- Lexi -->
+      <div class="cb-lexi">
+        <div class="cb-lexi-ava">🐾</div>
+        <div class="cb-lexi-bubble">
+          Good start on peds. <strong>Anaphylaxis</strong> is your next rep — worth running before moving on to adult med.
+        </div>
+      </div>
+
+      <div class="cb-header">
+        <div class="cb-title">Call Board</div>
+        <!-- current district -->
+        <div class="cb-district-badge">
+          <div class="cb-district-dot"></div>
+          <div>
+            <div class="cb-district-name">Pediatric Community Response</div>
+            <div class="cb-district-prog">4 of 12 complete · 33% coverage</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active / last call -->
+      <div class="cb-active">
+        <div class="cb-section-lbl">Last Active</div>
+        <div class="active-call-card">
+          <div class="active-tag"><div class="active-dot"></div>In Progress</div>
+          <div class="active-call-name">Pediatric Anaphylaxis — Community Park</div>
+          <div class="active-call-meta">Started today · 0% complete</div>
+          <button class="continue-btn">Continue Call →</button>
+        </div>
+      </div>
+
+      <!-- Call history -->
+      <div class="cb-log">
+        <div class="cb-section-lbl">Call History</div>
+
+        <div class="call-log-item">
+          <div class="call-accent-bar" style="background:#0284c7"></div>
+          <div class="call-info">
+            <div class="call-name">Pediatric Asthma — Home Response</div>
+            <div class="call-detail">
+              <span class="call-dist-tag">Peds</span>
+              <span class="call-when">Yesterday 14:22</span>
+            </div>
+          </div>
+          <div class="call-result result-pass">Pass</div>
+        </div>
+
+        <div class="call-log-item">
+          <div class="call-accent-bar" style="background:#0284c7"></div>
+          <div class="call-info">
+            <div class="call-name">Pediatric Croup — Daycare</div>
+            <div class="call-detail">
+              <span class="call-dist-tag">Peds</span>
+              <span class="call-when">2 days ago</span>
+            </div>
+          </div>
+          <div class="call-result result-inc">Incomplete</div>
+        </div>
+
+        <div class="call-log-item">
+          <div class="call-accent-bar" style="background:#1d4ed8"></div>
+          <div class="call-info">
+            <div class="call-name">Adult CHF — Apartment</div>
+            <div class="call-detail">
+              <span class="call-dist-tag">Adult Med</span>
+              <span class="call-when">3 days ago</span>
+            </div>
+          </div>
+          <div class="call-result result-pass">Pass</div>
+        </div>
+
+        <div class="call-log-item">
+          <div class="call-accent-bar" style="background:#0284c7"></div>
+          <div class="call-info">
+            <div class="call-name">Pediatric Seizure — School</div>
+            <div class="call-detail">
+              <span class="call-dist-tag">Peds</span>
+              <span class="call-when">4 days ago</span>
+            </div>
+          </div>
+          <div class="call-result result-pass">Pass</div>
+        </div>
+
+        <div class="call-log-item">
+          <div class="call-accent-bar" style="background:#1d4ed8"></div>
+          <div class="call-info">
+            <div class="call-name">Adult Stroke — Office Building</div>
+            <div class="call-detail">
+              <span class="call-dist-tag">Adult Med</span>
+              <span class="call-when">5 days ago</span>
+            </div>
+          </div>
+          <div class="call-result result-fail">Needs Review</div>
+        </div>
+
+      </div><!-- /cb-log -->
+
+      <!-- Dispatch -->
+      <div class="cb-dispatch">
+        <button class="dispatch-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+          Receive Dispatch
+        </button>
+        <div class="dispatch-sub">Random call from current district</div>
+      </div>
+
+    </aside>
+
+  </div><!-- /body-wrap -->
+
+  <!-- ── BOTTOM BAR ── -->
+  <footer class="bottom-bar">
+    <a class="ori-link">↩ Replay orientation</a>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav    = document.getElementById('left-nav');
+    const wrap   = document.getElementById('body-wrap');
+    const tbWrap = document.querySelector('.nav-toggle-wrap');
+
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('expanded');
+      wrap.classList.toggle('nav-expanded', open);
+      // sync topbar toggle-wrap width
+      tbWrap.style.width = open ? 'var(--nav-w)' : 'var(--nav-w-col)';
+      // update nav width
+      nav.style.width = open ? 'var(--nav-w)' : 'var(--nav-w-col)';
+    });
+  </script>
+
+</body>
+</html>

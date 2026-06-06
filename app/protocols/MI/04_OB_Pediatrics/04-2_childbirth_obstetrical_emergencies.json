@@ -1,0 +1,142 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 4-2 Childbirth & Related Obstetrical Emergencies (Revised 05/26/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_obstetrics_childbirth",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Obstetrics",
+  "level_display": "Obstetrics",
+  "jurisdiction": "Michigan",
+  "condition": "Childbirth & Related Obstetrical Emergencies",
+  "version": "2023-05-26",
+  "protocol_reference": "Michigan Obstetrics and Pediatrics Protocol Section 4-2: Childbirth & Related Obstetrical Emergencies — MDHHS Approved 5/26/23, Reviewed 2023",
+
+  "purpose": "Assessment and management of the mother for childbirth and childbirth-related emergencies. NOTE: There are two patients to assess, manage, and transport during childbirth — request resources as appropriate. Assessment and care of newborns and infants under 30 days old: see Newborn/Neonatal Assessment and Resuscitation-Treatment Protocol.",
+
+  "sections": [
+    {
+      "title": "Assessment",
+      "reference": "Michigan Protocol 4-2: Childbirth — Assessment",
+      "points": [
+        "Follow General Pre-hospital Care-Treatment Protocol",
+        "Past Medical History: previous births, previous complications, history of preeclampsia/eclampsia",
+        "Current History: duration of gestation (weeks), single or multiple births expected, prior pregnancy complications",
+        "Specific Objective Findings: vital signs, assess contractions (duration, frequency)",
+        "In the presence of licensed health care providers (physician, licensed midwife): contact Medical Control for care not consistent with protocols",
+        "Determine whether to transport or remain at scene due to imminent delivery — indications of imminent delivery: multiple pregnancy, strong regular contractions every 2 minutes or less, ruptured membrane, bloody show, need to push or bear down, crowning",
+        "Obtain vascular access if time permits per Vascular Access and IV Fluid Therapy-Procedure Protocol (Specialist skill)"
+      ]
+    },
+    {
+      "title": "Management of Normal Delivery",
+      "reference": "Michigan Protocol 4-2: Normal Delivery",
+      "points": [
+        "If signs of newborn delivery are imminent and there is no time to transport: prepare for delivery",
+        "Have oxygen and suction readily available for care of the newborn",
+        "Try to find a place for maximum privacy, cleanliness, and warmth; allow safe birth position of choice",
+        "Monitor patient for signs of hypotension — if signs develop, position patient so weight of uterus is to patient's left side",
+        "Drape if possible using clean sheets; encourage mother to relax and take slow deep breaths through her mouth; reassure her throughout",
+        "As baby's head begins to emerge from vagina: support it gently with hand and towel to assist in delivery — do not pull baby's head or neck once head is delivered",
+        "After head is delivered: look and feel to see if cord is wrapped around baby's neck (see Nuchal Cord management)",
+        "As the shoulders deliver: carefully hold and support the head and shoulders as the body delivers — may be suddenly and the baby is very slippery; use a sterile towel if available",
+        "Note the time of delivery",
+        "Begin newborn assessment per Newborn/Neonatal Assessment and Resuscitation-Treatment Protocol",
+        "After 1 minute: clamp cord about 5–6 inches from the abdomen with two clamps; cut the cord between the clamps — while cord is attached, take care to ensure the baby is not significantly higher than the mother to prevent blood from flowing backwards from baby to placenta; if resuscitation is needed, baby can still benefit from a 1-minute delay in cord clamping but start resuscitation immediately",
+        "Place the baby skin to skin on the mother's abdomen on its side with head lower than the body — suction with a bulb syringe should be reserved for infants with obvious obstruction",
+        "Prevent heat loss: gently dry baby off and remove all wet linen; ensure the environment is warm; place infant cap on baby",
+        "For near/at term vigorous newborns with conscious stable mothers: allow infant to remain on mother's chest during assessment and cover both with warm dry blankets until transport — refer to Safe Transport of Children in Ambulances-Treatment Protocol"
+      ]
+    },
+    {
+      "title": "Management of Mother Post-Delivery",
+      "reference": "Michigan Protocol 4-2: Post-Delivery Mother",
+      "points": [
+        "Obtain vital signs",
+        "Assess for signs of preeclampsia/eclampsia",
+        "Assess for signs of postpartum hemorrhage",
+        "If blood loss is significant: place IV and administer NS or LR fluid bolus of 1 liter wide open (Specialist skill); monitor for pulmonary edema — if pulmonary edema presents, stop fluids and contact Medical Control for direction; administer oxygen NRB at 15 LPM if not already",
+        "Contact Medical Control for severe hemorrhage for consideration of TXA per Hemorrhagic Shock-Treatment Protocol; fundal massage should take place concurrently",
+        "Placenta delivery: generally takes place within 20 minutes of delivery; place placenta in basin or plastic bag and transport with mother; following placental delivery, massage the uterus to aid in contraction; continue to assess uterus and bleeding en route — report blood loss upon arrival at hospital"
+      ]
+    },
+    {
+      "title": "Management of Abnormal Deliveries",
+      "reference": "Michigan Protocol 4-2: Abnormal Deliveries",
+      "points": [
+        "Apply high flow oxygen to mother; contact Medical Control as soon as appropriate",
+        "NUCHAL CORD (cord wrapped around neck): if loose, slide gently over the head — DO NOT TUG; if loop is too tight to slip over the head, attempt to slip the cord over the shoulders and deliver the body through the loop; if cord is snug, clamp cord with 2 clamps and cut between the clamps; wait for the next contraction for completion of delivery of the body — DO NOT PULL on the baby",
+        "SHOULDER DYSTOCIA: if delivery fails to progress after head delivers — (i) hyperflex mother's hips to severe supine knee-chest position (McRoberts' maneuver); (ii) apply firm suprapubic pressure to attempt to dislodge shoulder — often requires two EMS clinicians, allows for delivery in up to 75% of cases; (iii) attempt to angle baby's head as posteriorly as possible but NEVER pull; (iv) continue with delivery as normal once anterior shoulder is delivered",
+        "BREECH POSITION: place mother supine, allow buttocks/feet/trunk to deliver spontaneously, then support the body while the head is delivered; may need to rotate baby's trunk clockwise or sweep legs from vagina; once legs are delivered support body to avoid hyperextension of head; keep fetus elevated off umbilical cord; if needed, put mother in prone kneeling position; assess for prolapsed cord; if head fails to deliver, place gloved hand into vagina with fingers between infant's face and uterine wall to create an open airway — place index and ring fingers on baby's cheeks forming a 'V' taking care not to block the mouth, allowing chin to be tilted toward chest; NEVER pull on the body, especially a preterm or previable baby",
+        "PROLAPSED CORD: place mother supine with hips supported on a pillow; place gloved hand into vagina and gently lift head/body off the cord; assess for pulsations in cord — if no pulses felt, lift the presenting part off the cord; wrap the prolapsed cord in moist sterile gauze; maintain until relieved by hospital staff; if previous techniques not successful, mother should be placed in prone knee chest position or extreme Trendelenburg with hips elevated; DO NOT ATTEMPT TO PUSH CORD BACK INTO THE PATIENT",
+        "ARM OR LIMB PRESENTATION — life threatening condition: immediate transportation in prone knee chest position or extreme Trendelenburg with hips elevated; delivery should not be attempted outside the hospital",
+        "MULTIPLE BIRTHS: immediate transportation; multiple birth infants are typically small birth weight and need careful management to maintain body heat; for imminent delivery proceed with normal delivery procedures including clamping of cord and skin to skin; prepare additional supplies for subsequent births; there may be time to transport between births",
+        "NOTES: Hyperextension = head back; Hyperflexion = head to chest"
+      ]
+    },
+    {
+      "title": "Management of Preeclampsia or Eclampsia",
+      "reference": "Michigan Protocol 4-2: Preeclampsia/Eclampsia",
+      "points": [
+        "Applies to women 20 weeks gestation up to 6 weeks post childbirth — magnesium sulfate can be administered prior, during, or post childbirth; be prepared to support respirations for infants born post magnesium sulfate administration",
+        "SIGNS OF ECLAMPSIA: seizure — any pregnant patient who is seizing should be assumed to have eclampsia and treated as such until arrival at the hospital",
+        "TREATMENT OF ECLAMPSIA (actively seizing): high flow oxygen; establish IV access; administer magnesium sulfate 4 gm over 10 minutes IV/IO until seizure stops — add 4 gm to 100 or 250 mL NS and infuse over approximately 10 minutes; if eclamptic seizure does not stop after magnesium sulfate, refer to Seizure-Treatment Protocol (Specialist skill)",
+        "SIGNS OF SEVERE PREECLAMPSIA: BP systolic > 160 mmHg or diastolic > 110 mmHg with one or more of: (i) headache; (ii) confusion/altered mental status; (iii) vision changes including blurred vision, spots/floaters, loss of vision — often a precursor to seizure; (iv) right upper quadrant or epigastric pain; (v) shortness of breath/pulmonary edema; (vi) ecchymosis suggestive of low platelets (bruising, petechiae); (vii) vaginal bleeding suggestive of placental abruption; (viii) focal neurologic deficits suggesting hemorrhagic or thromboembolic stroke; (ix) marked peripheral edema",
+        "PROPHYLAXIS TREATMENT FOR SEVERE PREECLAMPSIA: high flow oxygen; IV access; administer magnesium sulfate (per MCA selection) — 4 gm IV/IO added to 100 or 250 mL NS infused over approximately 10 minutes; immediate transport (Specialist skill)"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Magnesium Sulfate Administration — Timing",
+      "description": "MCA must select whether magnesium sulfate for severe preeclampsia prophylaxis may be administered pre-radio (without Medical Control contact) or post-radio (contact Medical Control prior to administration)",
+      "options": [
+        "Pre-radio magnesium sulfate administration (without Medical Control contact)",
+        "Post-radio magnesium sulfate administration (contact Medical Control prior to administration)"
+      ],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [
+    {
+      "name": "Magnesium Sulfate 4 gm IV/IO (Eclampsia/Severe Preeclampsia)",
+      "dose": "4 gm IV/IO — add to 100 or 250 mL NS and infuse over approximately 10 minutes",
+      "route": "IV or IO infusion",
+      "indication": "Eclampsia (actively seizing) or severe preeclampsia prophylaxis — women 20 weeks gestation to 6 weeks post birth",
+      "contraindications": "Renal failure (use with caution); hypermagnesemia; monitor for respiratory depression",
+      "side_effects": "Flushing, hypotension, loss of deep tendon reflexes, respiratory depression at high levels",
+      "scope": "Specialist skill — severe preeclampsia prophylaxis requires MCA selection for pre vs. post radio",
+      "notes": "Be prepared to support respirations for infants born post magnesium sulfate administration. If eclamptic seizure does not stop after magnesium, refer to Seizure-Treatment Protocol."
+    },
+    {
+      "name": "NS or LR IV Fluid Bolus (Postpartum Hemorrhage)",
+      "dose": "1 liter wide open IV",
+      "route": "IV",
+      "indication": "Significant postpartum hemorrhage",
+      "contraindications": "Signs of pulmonary edema — stop fluids and contact Medical Control",
+      "side_effects": "Pulmonary edema",
+      "scope": "Specialist skill",
+      "notes": "Concurrent fundal massage. Contact Medical Control for severe hemorrhage — consider TXA per Hemorrhagic Shock-Treatment Protocol."
+    }
+  ],
+
+  "deterioration_flags": [
+    "Eclamptic seizure — magnesium sulfate 4 gm IV/IO immediately; if seizure does not stop, refer to Seizure protocol; contact Medical Control",
+    "Severe preeclampsia signs (BP > 160/110 with symptoms) — magnesium sulfate (per MCA selection, pre or post radio); immediate transport",
+    "Shoulder dystocia — McRoberts' maneuver + suprapubic pressure; contact Medical Control; DO NOT PULL",
+    "Prolapsed cord — lift presenting part off cord; do NOT push cord back; prone knee chest or extreme Trendelenburg; immediate transport",
+    "Arm/limb presentation — do NOT attempt delivery; immediate transport in prone knee chest or extreme Trendelenburg",
+    "Postpartum hemorrhage — IV fluid bolus; fundal massage; oxygen; contact Medical Control for TXA consideration"
+  ],
+
+  "scope_notes": [
+    "Normal delivery, nuchal cord management, postpartum assessment: all levels",
+    "Abnormal delivery management (shoulder dystocia, breech, prolapsed cord): all levels — contact Medical Control",
+    "IV/IO access: Specialist skill",
+    "Magnesium sulfate IV/IO (eclampsia): Specialist skill — always indicated for active eclamptic seizure",
+    "Magnesium sulfate IV/IO (severe preeclampsia prophylaxis): Specialist skill — timing (pre vs. post radio) per MCA selection",
+    "IV fluid bolus (postpartum hemorrhage): Specialist skill",
+    "TXA consideration: contact Medical Control per Hemorrhagic Shock-Treatment Protocol"
+  ]
+}

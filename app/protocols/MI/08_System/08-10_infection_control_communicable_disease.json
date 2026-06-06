@@ -1,0 +1,84 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-10 Infection Control and Communicable Disease (Revised 6/27/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_infection_control_communicable_disease",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Infection Control and Communicable Disease",
+  "version": "2023-06-27",
+  "protocol_reference": "Michigan System Protocol Section 8-10: Infection Control and Communicable Disease — MDHHS Approved 6/27/2023",
+
+  "purpose": "Govern infection control practices, personal protective equipment (PPE) requirements, and communicable disease exposure management for Michigan EMS providers. Universal precautions are the standard of care for all patient contacts. MCAs must have a written infection control plan and an exposure response program.",
+
+  "sections": [
+    {
+      "title": "Standard and Universal Precautions",
+      "reference": "Michigan Protocol 8-10: Infection Control — Universal Precautions",
+      "points": [
+        "Universal precautions must be applied on ALL patient contacts — assume all blood and body fluids are potentially infectious",
+        "Minimum PPE for ALL patient contacts: gloves",
+        "PPE based on exposure risk:",
+        "— Gloves: all patient contacts",
+        "— Eye protection (goggles/face shield) and mask: risk of splash or spray of blood/body fluids",
+        "— Gown: risk of splash or extensive contact with blood/body fluids",
+        "— N95 or higher respirator: airborne precaution situations (suspected TB, COVID-19, measles, varicella)",
+        "Hand hygiene: wash hands or use alcohol-based hand sanitizer after every patient contact and after glove removal"
+      ]
+    },
+    {
+      "title": "Airborne Precautions — Enhanced PPE",
+      "reference": "Michigan Protocol 8-10: Infection Control — Airborne",
+      "points": [
+        "N95 (or higher) REQUIRED for: suspected or confirmed tuberculosis (TB), COVID-19, measles, varicella, SARS, MERS, or other airborne-transmitted disease",
+        "Place a surgical mask on the patient when airborne pathogen is suspected and patient can tolerate it",
+        "Place patient in negative pressure transport area if equipped; otherwise maximize ventilation (open windows) in patient compartment",
+        "High-flow nasal oxygen (HFNO) and nebulized medications generate aerosols — use N95 and face shield during these interventions",
+        "Full PPE (N95, face shield, gown, gloves) for intubation and other aerosol-generating procedures"
+      ]
+    },
+    {
+      "title": "Post-Exposure Procedures",
+      "reference": "Michigan Protocol 8-10: Infection Control — Post-Exposure",
+      "points": [
+        "NEEDLE STICK or BLOOD/BODY FLUID EXPOSURE: immediately wash exposed area with soap and water (skin) or flush mucous membranes with water for 15 minutes",
+        "Report exposure to supervisor immediately and follow MCA/employer exposure response protocol",
+        "Complete MDHHS or employer-required exposure report forms",
+        "Seek medical evaluation promptly — post-exposure prophylaxis (PEP) for HIV, hepatitis B, and other pathogens must be initiated within 2 hours for maximum effectiveness",
+        "MCAs must have a designated post-exposure response program including access to occupational health or emergency department evaluation"
+      ]
+    },
+    {
+      "title": "Vehicle and Equipment Decontamination",
+      "reference": "Michigan Protocol 8-10: Infection Control — Decontamination",
+      "points": [
+        "Decontaminate all equipment and patient compartment surfaces after patient contacts involving blood, body fluids, or suspected communicable disease",
+        "Use EPA-registered hospital-grade disinfectant per manufacturer instructions",
+        "Single-use items: discard appropriately — do NOT reuse single-use equipment",
+        "Sharps containers: fill to no more than 3/4 full before sealing and disposing per biohazardous waste regulations",
+        "Remove soiled linens and equipment immediately; bag and label biohazardous materials"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Needle stick or blood/body fluid exposure — wash immediately; report to supervisor; seek medical evaluation within 2 hours for PEP consideration",
+    "Suspected or confirmed airborne pathogen (TB, COVID-19, measles) — ensure N95 is on; place mask on patient; maximize ventilation"
+  ],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "Universal precautions: gloves on ALL patient contacts",
+    "N95 required: TB, COVID-19, measles, varicella, aerosol-generating procedures",
+    "Post-exposure: wash immediately; report to supervisor; seek medical eval within 2 hours",
+    "PEP for HIV/hepatitis B must begin within 2 hours of exposure",
+    "MCA must have written infection control plan and post-exposure program",
+    "Decontaminate all surfaces and equipment after blood/body fluid contact"
+  ]
+}

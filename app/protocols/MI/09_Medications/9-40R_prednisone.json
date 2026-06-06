@@ -1,0 +1,67 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-40R Prednisone (MDHHS Reviewed 2025). Base Michigan template.",
+  "id": "mi_base_medication_ref_prednisone",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Prednisone",
+  "version": "2025-03-31",
+  "protocol_reference": "Michigan Medication Protocol Section 9-40R: Prednisone — MDHHS Reviewed 2025",
+
+  "pharmacological_category": "Corticosteroid — Oral Anti-inflammatory / Immunosuppressant",
+
+  "routes": ["PO (oral)"],
+
+  "indications": [
+    "Anaphylaxis (adjunct to epinephrine — reduces biphasic reaction risk)",
+    "Adrenal crisis (when patient can swallow and IV access not yet established)",
+    "Respiratory distress — asthma or COPD exacerbation (preferred oral steroid when patient can take PO)"
+  ],
+
+  "contraindications": [
+    "Age <6 years (do not give prednisone to children <6 years — use methylprednisolone IV/IM instead)",
+    "Inability to take oral medications (vomiting, AMS, swallowing difficulty — use methylprednisolone IV/IM)",
+    "Known hypersensitivity to corticosteroids",
+    "Known systemic fungal infection (relative)"
+  ],
+
+  "precautions": [
+    "Preferred over methylprednisolone for respiratory distress when patient can take oral medication",
+    "Do NOT cut tablets — 50 mg tablets should be swallowed whole",
+    "Delayed onset — hours to days for anti-inflammatory effect; not useful for immediate relief",
+    "Single prehospital dose is generally safe"
+  ],
+
+  "expected_effects": [
+    "Delayed anti-inflammatory effect — reduces airway inflammation",
+    "Reduction in biphasic anaphylaxis risk (late-phase reaction)",
+    "Cortisol replacement in adrenal crisis"
+  ],
+
+  "side_effects": [
+    "Hyperglycemia",
+    "GI irritation",
+    "Single dose side effects are generally minimal"
+  ],
+
+  "notes": [
+    "Available as 50 mg tablet — swallow whole; do NOT cut",
+    "Adult and pediatric >6 years: 50 mg PO",
+    "Contraindicated <6 years — use methylprednisolone IV/IM instead",
+    "Preferred over IV methylprednisolone for respiratory distress when patient can swallow"
+  ],
+
+  "dosing": [
+    {
+      "population": "Adult (>14 yr) and Pediatric >6 yr",
+      "route": "PO",
+      "dose": "50 mg PO (tablet swallowed whole)",
+      "notes": "Do not cut tablets; patient must be able to swallow; contraindicated <6 years"
+    }
+  ],
+
+  "used_in_protocols": ["Anaphylaxis", "Adrenal Crisis", "Respiratory Distress (Asthma/COPD)"]
+}

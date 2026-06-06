@@ -1,0 +1,94 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 6-4 Pediatric Return of Spontaneous Circulation (Revised 06/06/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_pediatric_rosc",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Pediatric",
+  "level_display": "Pediatric (< 14 years)",
+  "jurisdiction": "Michigan",
+  "condition": "Pediatric Return of Spontaneous Circulation (ROSC)",
+  "version": "2023-06-06",
+  "protocol_reference": "Michigan Pediatric Cardiac Protocol Section 6-4: Pediatric Return of Spontaneous Circulation — MDHHS Approved 6/6/23, Reviewed 2023",
+
+  "purpose": "This protocol should be followed for all pediatric cardiac arrests with ROSC. If arrest is of known traumatic origin, refer to Traumatic Arrest-Treatment Protocol and MCA Transport Protocol. After ROSC, patients should be stabilized on scene prior to transport — ideally at least 5 minutes before moving. Refer to Pediatric Crashing Patient/Impending Arrest-Treatment Protocol.",
+
+  "sections": [
+    {
+      "title": "Post-ROSC Pediatric Care",
+      "reference": "Michigan Protocol 6-4: Pediatric ROSC",
+      "points": [
+        "Pediatric patients (< 14 years) utilize MI-MEDIC cards for appropriate medication dosage — when unavailable utilize pediatric dosing listed within protocol",
+        "Stabilize on scene ideally at least 5 minutes before moving — initiate ALS response if available",
+        "If ventilation assistance required: ventilate at 10–12 breaths per minute — do NOT hyperventilate",
+        "Monitor waveform ETCO2 — if ventilation assistance required, target ETCO2 35–45 mmHg per End Tidal Carbon Dioxide Monitoring-Procedure Protocol",
+        "Reassess patient continuously — if patient becomes pulseless: begin CPR and follow Pediatric Cardiac Arrest-Treatment Protocol",
+        "Monitor vital signs",
+        "Check blood glucose (may be MFR skill — see Blood Glucose Testing-Procedure Protocol)",
+        "Start IV/IO NS or LR KVO",
+        "Treat hypotension with IV/IO fluid bolus 20 mL/kg consistent with Shock-Treatment Protocol",
+        "May perform 12-lead ECG (per MCA selection: BLS or Specialist — see 12 Lead ECG-Procedure Protocol) — must NOT delay or take precedence over other critical assessments and interventions",
+        "If hypotension persists after IV/IO fluid bolus: administer push-dose epinephrine per MI-MEDIC cards; if MI-MEDIC not available: prepare 10 mcg/mL by adding 1 mL of epinephrine 1 mg/10 mL in 9 mL NS; administer 1 mcg/kg (0.1 mL/kg of 10 mcg/mL solution); maximum dose 10 mcg (1 mL); repeat every 3–5 minutes; titrate to age-appropriate SBP per MI-MEDIC; if MI-MEDIC unavailable: titrate SBP > 70 mmHg + (2 x age in years) up to 100 mmHg",
+        "Anticipate airway intolerance and prepare for patient sedation — if patient becomes agitated with advanced airway in place, refer to Patient Procedural Sedation-Procedure Protocol"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Blood Glucose Testing — MFR",
+      "description": "MCA may designate blood glucose testing as an MFR skill",
+      "options": ["MFR skill authorized", "Not authorized for MFR"],
+      "selected": null
+    },
+    {
+      "item": "12-Lead ECG — Scope",
+      "description": "MCA must select provider level authorized to obtain 12-lead ECG post-ROSC. NOTE: 12-lead must not delay other critical pediatric interventions.",
+      "options": ["BLS authorized", "Specialist authorized", "Both BLS and Specialist authorized"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [
+    {
+      "name": "NS or LR IV/IO Fluid Bolus 20 mL/kg (Pediatric Post-ROSC)",
+      "dose": "20 mL/kg IV/IO per Shock-Treatment Protocol",
+      "route": "IV or IO",
+      "indication": "Hypotension post-ROSC",
+      "contraindications": "Signs of pulmonary edema or cardiogenic shock — reassess after bolus",
+      "side_effects": "Pulmonary edema, fluid overload",
+      "scope": "Specialist skill",
+      "notes": "Consistent with Shock-Treatment Protocol. Reassess after each bolus. If hypotension persists, initiate push-dose epinephrine."
+    },
+    {
+      "name": "Push-Dose Epinephrine IV/IO (Pediatric Post-ROSC Hypotension)",
+      "dose": "Per MI-MEDIC cards; backup: 1 mcg/kg (0.1 mL/kg of 10 mcg/mL solution) IV/IO; maximum dose 10 mcg (1 mL); repeat every 3–5 minutes; titrate to age-appropriate SBP",
+      "route": "IV or IO",
+      "indication": "Hypotension persisting after IV/IO fluid bolus",
+      "contraindications": "Use caution — ensure fluid bolus completed first",
+      "side_effects": "Tachycardia, hypertension, re-arrest",
+      "scope": "Specialist skill",
+      "notes": "Use MI-MEDIC for weight-based dosing. Preparation: add 1 mL of epinephrine 1 mg/10 mL (1:10,000) to 9 mL NS = 10 mcg/mL concentration. Maximum dose 10 mcg (1 mL). Age-appropriate SBP target: > 70 + (2 x age in years) up to 100 mmHg if MI-MEDIC unavailable."
+    }
+  ],
+
+  "deterioration_flags": [
+    "Patient becomes pulseless — begin CPR immediately; follow Pediatric Cardiac Arrest-Treatment Protocol",
+    "Hypotension (SBP < 70 + 2 x age, or per MI-MEDIC) — IV/IO 20 mL/kg fluid bolus; if persists, push-dose epinephrine",
+    "ETCO2 < 35 mmHg — reduce ventilation rate; avoid hyperventilation",
+    "ETCO2 > 45 mmHg — increase ventilation rate; reassess airway",
+    "Agitation with advanced airway — Patient Procedural Sedation-Procedure Protocol",
+    "Blood glucose < 60 mg/dL — IV dextrose per MI-MEDIC or Pediatric AMS weight/color table"
+  ],
+
+  "scope_notes": [
+    "Vital sign monitoring, SpO2, ETCO2, ventilation rate management: all levels",
+    "Blood glucose testing: all levels — may be MFR skill per MCA selection",
+    "IV/IO access: Specialist skill",
+    "IV/IO fluid bolus 20 mL/kg: Specialist skill",
+    "Push-dose epinephrine: Specialist skill — use MI-MEDIC; max 10 mcg per dose",
+    "12-lead ECG: per MCA selection — BLS or Specialist; must NOT delay other critical interventions",
+    "Advanced airway sedation: Specialist skill per Patient Procedural Sedation-Procedure Protocol",
+    "Age-appropriate SBP target (MI-MEDIC unavailable): > 70 + (2 x age in years) up to 100 mmHg"
+  ]
+}

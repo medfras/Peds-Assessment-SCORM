@@ -1,0 +1,144 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Toxins and Environmental: Topical Chemical Burn. NASEMSO national provisional base.",
+  "id": "nasemso_base_toxins_and_environmental_topical_chemical_burn",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Topical Chemical Burn",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Topical Chemical Burn",
+  "aliases": [
+    "Chemical Burn"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Topical Chemical Burn",
+      "points": [
+        "Rapid recognition of a topical chemical burn",
+        "Initiation of emergent and appropriate intervention and patient transport"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Patients of all ages who have sustained exposure to a chemical that can cause a topical chemical burn may develop immediate or in some cases a delayed clinical presentation",
+        "Agents that are known to cause chemical burns include alkalis, acids, mustard agent, and lewisite",
+        "EXCLUSION CRITERIA:",
+        "None noted"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Scene safety and PPE; primary survey (ABCDE)",
+        "Oxygen via NRM targeting SpO2 94-98% if indicated",
+        "Position of comfort; hemorrhage control as needed",
+        "CPR/AED if patient becomes pulseless",
+        "Epinephrine auto-injector for anaphylaxis if applicable",
+        "Naloxone intranasal unit-dose for suspected opioid involvement"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Blood glucose monitoring; oral glucose if hypoglycemic and alert",
+        "12-lead ECG acquisition and transmission",
+        "CPAP for respiratory distress",
+        "Aspirin for suspected ischemic chest pain",
+        "Albuterol SVN for bronchospasm component",
+        "IV access maintenance (non-medicated)"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation",
+        "IV/IO fluid resuscitation as indicated",
+        "Waveform capnography",
+        "IV analgesics (fentanyl, morphine) per pain management protocol",
+        "IV antiemetics (ondansetron) per protocol",
+        "IV D50W/D10W for hypoglycemia"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "12-lead ECG interpretation",
+        "Endotracheal intubation for airway compromise",
+        "RSI per protocol",
+        "Advanced antidysrhythmic or hemodynamic support per specific protocol",
+        "All parenteral medications per protocol",
+        "Vasopressors for refractory hemodynamic compromise"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Don PPE",
+        "Take measures to prevent the patient from further contamination through decontamination",
+        "Take measures to protect the EMS clinician and others from contamination",
+        "Do not attempt to neutralize an acid with an alkali or an alkali with an acid as an exothermic reaction will occur and cause serious thermal injury to the patient",
+        "Expeditious transport or transfer to a designated burn center should be considered for burns that involve a significant percentage of total body surface area or burns that involve the eyes, face, hands, feet, or genitals"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "IV fluid resuscitation should be guided by patient age, percentage of body surface area involved in burn, body habitus and calculated by the Parkland Formula [See Appendix VI. Burn and Burn Fluid Charts]",
+        "Since the severity of topical chemical burns is largely dependent upon the type, concentration, and pH of the chemical involved as well as the body site and surface area involved, it is imperative to obtain as much information as possible while on scene about the chemical substance by which the patient was exposed. The information gathering process will often include: a. Transport of the sealed container of the chemical to the receiving facility",
+        "Inhalation of HF should be considered in any dermal exposure involving the face and neck or if clothing is soaked in the product",
+        "Decontamination is critical for both acid and alkali agents to reduce injury ' removal of chemicals with a low pH (acids) is more easily accomplished than chemicals with a high pH (alkalis) because alkalis tend to penetrate and bind to deeper tissues",
+        "Some chemicals will also manifest local and systemic signs, symptoms, and bodily damage",
+        "An estimate of the total body surface area that is involved",
+        "Patient response to therapeutic interventions",
+        "Patient response to fluid resuscitation"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Burn site",
+        "' Body surface area involved",
+        "' Identification of the chemical",
+        "' Reported or measured pH of the chemical",
+        "' Acquisition and transfer of MSDS, chemical container, or other pertinent substance information to the receiving the facility"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Patients of all ages who have sustained exposure to a chemical that can cause a topical chemical burn may develop immediate or in some cases a delayed clinical presentation"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

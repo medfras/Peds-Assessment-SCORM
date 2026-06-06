@@ -1,0 +1,119 @@
+{
+  "title": "OPQRST/SAMPLE Pair Match",
+  "subtitle": "Round 1: match each history clue to the OPQRST or SAMPLE category it supports.",
+  "completion_threshold": "two_round_sequence_foundation",
+  "rounds": 4,
+  "pairs_per_round": 3,
+  "round_nudges": [
+    {
+      "prompt": "OPQRST frames the chief complaint.",
+      "text": "Start with the symptom story: when it began, what changes it, what it feels like, where it goes, how bad it is, and how it is trending."
+    },
+    {
+      "prompt": "SAMPLE widens the patient context.",
+      "text": "After the symptom story, look for associated findings, allergies, medications, history, intake, and the events that led to the call."
+    },
+    {
+      "prompt": "Next round: build the question.",
+      "text": "Matching the category is the scaffold. In Round 2 you will build the actual field question from the patient's presentation."
+    }
+  ],
+  "pairs": [
+    {
+      "id": "hm_pair_onset",
+      "category_letter": "O",
+      "category_label": "O - Onset",
+      "finding": "Pain began suddenly while the child was running during PE class",
+      "explanation": "Onset asks when the symptom started and what the patient was doing at the start.",
+      "hint": "Look for the clue that tells you when the problem began."
+    },
+    {
+      "id": "hm_pair_provocation",
+      "category_letter": "P",
+      "category_label": "P - Provocation/Palliation",
+      "finding": "Breathing gets worse when lying flat and improves when sitting upright",
+      "explanation": "Provocation/Palliation asks what makes the symptom better or worse.",
+      "hint": "Look for the clue that changes the symptom intensity."
+    },
+    {
+      "id": "hm_pair_quality",
+      "category_letter": "Q",
+      "category_label": "Q - Quality",
+      "finding": "Patient describes the pain as sharp and stabbing",
+      "explanation": "Quality captures what the symptom feels like in the patient's own words.",
+      "hint": "Look for descriptive language about what the symptom feels like."
+    },
+    {
+      "id": "hm_pair_radiation",
+      "category_letter": "R",
+      "category_label": "R - Radiation/Region",
+      "finding": "Pain starts near the belly button and moves to the right lower abdomen",
+      "explanation": "Radiation/Region asks where the symptom is and whether it spreads or moves.",
+      "hint": "Look for location, spread, or movement."
+    },
+    {
+      "id": "hm_pair_severity",
+      "category_letter": "Sv",
+      "category_label": "S - Severity",
+      "finding": "Rates pain as 8 out of 10 on the faces pain scale",
+      "explanation": "Severity asks how intense the symptom is using an age-appropriate scale.",
+      "hint": "Look for intensity or distress level."
+    },
+    {
+      "id": "hm_pair_time",
+      "category_letter": "T",
+      "category_label": "T - Time",
+      "finding": "Symptoms have been present for 45 minutes and are getting worse",
+      "explanation": "Time asks how long the symptom has been present and how it has changed.",
+      "hint": "Look for duration or trend."
+    },
+    {
+      "id": "hm_pair_signs_symptoms",
+      "category_letter": "Sx",
+      "category_label": "S - Signs & Symptoms",
+      "finding": "SpO2 88% on room air with visible retractions",
+      "explanation": "Signs and symptoms capture what the patient is experiencing and what you observe now.",
+      "hint": "Look for current findings rather than past context."
+    },
+    {
+      "id": "hm_pair_allergies",
+      "category_letter": "A",
+      "category_label": "A - Allergies",
+      "finding": "Allergic to penicillin; caregiver reports hives and facial swelling with prior exposure",
+      "explanation": "Allergies identifies medication, food, or environmental reactions that can change care.",
+      "hint": "Look for a substance and the reaction it caused."
+    },
+    {
+      "id": "hm_pair_medications",
+      "category_letter": "M",
+      "category_label": "M - Medications",
+      "finding": "Uses albuterol by MDI for asthma symptoms",
+      "explanation": "Medications includes prescribed, over-the-counter, and rescue medications the patient uses.",
+      "hint": "Look for something the patient takes or carries for treatment."
+    },
+    {
+      "id": "hm_pair_past_hx",
+      "category_letter": "PMH",
+      "category_label": "P - Past Medical Hx",
+      "finding": "History of asthma diagnosed at age 4 with two prior ED visits",
+      "explanation": "Past medical history captures known conditions, hospitalizations, and surgeries.",
+      "hint": "Look for a prior diagnosis or important medical background."
+    },
+    {
+      "id": "hm_pair_last_oral",
+      "category_letter": "L",
+      "category_label": "L - Last Oral Intake",
+      "finding": "Last ate about 3 hours ago: peanut butter sandwich and apple juice",
+      "explanation": "Last oral intake asks when and what the patient last ate or drank.",
+      "hint": "Look for food, fluids, and timing."
+    },
+    {
+      "id": "hm_pair_events",
+      "category_letter": "E",
+      "category_label": "E - Events / Environment",
+      "finding": "Was stung by a bee near the school garden approximately 20 minutes ago",
+      "explanation": "Events/Environment asks what happened before the illness or injury.",
+      "hint": "Look for the surrounding event that led to the call."
+    }
+  ]
+}

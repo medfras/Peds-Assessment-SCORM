@@ -1,0 +1,213 @@
+{
+  "fixture_id": "excellent_run",
+  "description": "All required items satisfied — baseline regression guard. Every critical action credited, all UB elements present, full DMIST and narrative submitted, greeting detected. Nothing should be flagged as EVALUATE or LIKELY_MISSED.",
+
+  "inputs": {
+    "scenario": {
+      "id": "fixture_peds_resp",
+      "category": "pediatric_medical",
+      "protocol_config": {"mca": "mi_wmrmcc_kent"},
+      "turnover_target": "als",
+      "vitals": {
+        "baseline": {},
+        "interventions": {
+          "o2_nrb":        {"label": "High-flow O2 via NRB mask (15 LPM)"},
+          "albuterol_svn": {"label": "Albuterol 2.5 mg via SVN (nebulizer)"},
+          "positioning":   {"label": "Position of comfort — sitting upright"},
+          "als_intercept": {"label": "ALS intercept acknowledged"}
+        }
+      },
+      "scoring": {
+        "required_assessments": [
+          {
+            "id": "lung_sounds",
+            "description": "Lung sounds auscultated bilaterally",
+            "keywords": ["lung sounds", "auscultate", "breath sounds"],
+            "missing_deduction": 3
+          }
+        ]
+      }
+    },
+
+    "interventions": [
+      {"name": "o2_nrb",        "applied_at": "2026-01-01T12:02:00"},
+      {"name": "albuterol_svn", "applied_at": "2026-01-01T12:04:00"},
+      {"name": "positioning",   "applied_at": "2026-01-01T12:03:00"},
+      {"name": "als_intercept", "applied_at": "2026-01-01T12:05:00"}
+    ],
+
+    "checklist_states": {
+      "item_states": [
+        {"item_id": "ems.medical.o2_administration", "state": "satisfied"},
+        {"item_id": "ems.medical.albuterol_svn",     "state": "satisfied"}
+      ]
+    },
+
+    "submitted_docs": {
+      "dmist": "D: 8-year-old male, 25 kg, dispatched for difficulty breathing and wheezing. M: History of asthma. No known drug allergies. Mother reports 2 prior ER visits. I: Applied high-flow O2 via NRB at 15 LPM. Albuterol 2.5 mg via SVN per protocol. Positioned upright. ALS intercept acknowledged. S: Initial SpO2 83%, HR 134, RR 32. After treatment SpO2 96%, WOB decreased, bilateral expiratory wheeze. T: Transporting to Pediatric ED via ALS intercept. ETA 8 minutes.",
+      "narrative": "C: Dispatched to 8-year-old male in respiratory distress from asthma exacerbation. H: Mother states progressive wheezing for 2 hours. History of asthma. Albuterol PRN inhaler. No known allergies. A: Child appeared pale and anxious with significant WOB, retractions, audible wheeze. SpO2 83%, HR 134, RR 32. Lung sounds bilateral expiratory wheeze. R: High-flow O2 via NRB 15 LPM. Albuterol 2.5 mg SVN per protocol. Positioned upright. ALS intercept requested and acknowledged. T: Transported to Pediatric ED priority 1 via ALS intercept. SpO2 improved to 96% en route."
+    },
+
+    "findings": [
+      {"key": "spo2",       "value": "83%",  "finding_type": "vital",    "captured_at": "2026-01-01T12:01:00"},
+      {"key": "hr",         "value": "134",  "finding_type": "vital",    "captured_at": "2026-01-01T12:01:00"},
+      {"key": "rr",         "value": "32",   "finding_type": "vital",    "captured_at": "2026-01-01T12:01:00"},
+      {"key": "spo2",       "value": "96%",  "finding_type": "vital",    "captured_at": "2026-01-01T12:08:00"},
+      {"key": "onset",      "value": "2 hours ago", "finding_type": "history", "captured_at": "2026-01-01T12:02:30"}
+    ],
+
+    "student_messages": [
+      "BSI, scene is safe. My name is Sarah, I'm an EMT with county EMS.",
+      "General impression: 8-year-old male in significant respiratory distress. Airway patent. Breathing labored with increased WOB and audible wheezing.",
+      "When did this start? Any allergies? Any medical history or medications?",
+      "Let me auscultate lung sounds bilaterally — bilateral expiratory wheeze noted.",
+      "Let's apply high-flow O2 via NRB mask.",
+      "Administering albuterol via SVN per protocol.",
+      "Let's call for ALS intercept given the respiratory distress.",
+      "Let's reassess after albuterol. SpO2 is improving."
+    ],
+
+    "scene_entry_scoring_result": {"ppe": "gloves_mask", "pat_assessment": "sick"},
+    "scene_entry_dict":           {"pat_assessment": "sick", "ppe_donned": ["Gloves", "Mask"]},
+    "greeting_detected": true,
+    "greeting_text": "Hi, I'm Sarah, an EMT (message 1).",
+
+    "prepass_result": null,
+
+    "critical_actions": [
+      {
+        "id": "scene_safety",
+        "description": "Ensure scene safety and BSI/PPE",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "pat_assessment",
+        "description": "Pediatric Assessment Triangle (appearance, work of breathing, circulation to skin)",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "o2_administration",
+        "description": "Administer high-flow O2 via NRB mask",
+        "required": true,
+        "intervention_ids": ["o2_nrb", "o2_nc"]
+      },
+      {
+        "id": "positioning",
+        "description": "Position patient upright / position of comfort to improve work of breathing",
+        "required": true,
+        "intervention_ids": ["positioning"]
+      },
+      {
+        "id": "opqrst_sample",
+        "description": "Obtain OPQRST and SAMPLE history from patient and parents",
+        "required": true,
+        "evidence": {
+          "finding_types": ["history", "exam"],
+          "finding_key_patterns": ["(?i)onset|provocation|quality|severity|time|allerg|medication|pmh"],
+          "transcript_patterns": ["(?i)when did|started|worse|better|allerg|medication|medical history"],
+          "min_matches": 2
+        }
+      },
+      {
+        "id": "albuterol_svn",
+        "description": "Administer albuterol 2.5 mg via SVN per protocol",
+        "required": true
+      },
+      {
+        "id": "reassess_vitals",
+        "description": "Reassess vitals after interventions and document changes",
+        "required": true,
+        "evidence": {
+          "finding_types": ["vital", "exam"],
+          "finding_key_patterns": ["(?i)spo2|resp|heart|wob|lung|breath|wheeze"],
+          "transcript_patterns": ["(?i)reassess|again|after|repeat|spo2|work of breathing"],
+          "min_matches": 1
+        }
+      }
+    ],
+
+    "grace_items": [],
+    "session_events": [],
+    "agency": {"transports_patients": true},
+    "effective_level": "EMT",
+    "elapsed_min": 10.0
+  },
+
+  "target_expected": {
+    "assertions": [
+      {
+        "id": "no_evaluate_tags",
+        "type": "no_evaluate_tags"
+      },
+      {
+        "id": "no_likely_missed_tags",
+        "type": "no_likely_missed_tags"
+      },
+      {
+        "id": "scene_safety_pre_credited",
+        "type": "critical_action_tag",
+        "description_contains": "scene safety",
+        "expected_tag": "PRE_CREDITED"
+      },
+      {
+        "id": "pat_pre_credited",
+        "type": "critical_action_tag",
+        "description_contains": "Pediatric Assessment Triangle",
+        "expected_tag": "PRE_CREDITED_PAT"
+      },
+      {
+        "id": "ub_scene_safety_present",
+        "type": "universal_base_present",
+        "element": "scene_safety"
+      },
+      {
+        "id": "ub_ppe_present",
+        "type": "universal_base_present",
+        "element": "ppe"
+      },
+      {
+        "id": "ub_vitals_present",
+        "type": "universal_base_present",
+        "element": "vitals"
+      },
+      {
+        "id": "ub_history_present",
+        "type": "universal_base_present",
+        "element": "history"
+      },
+      {
+        "id": "ub_disposition_present",
+        "type": "universal_base_present",
+        "element": "disposition"
+      },
+      {
+        "id": "corroboration_tier_1",
+        "type": "corroboration_tier",
+        "expected": 1
+      },
+      {
+        "id": "no_dmist_ceiling",
+        "type": "no_dmist_ceiling"
+      },
+      {
+        "id": "no_narrative_ceiling",
+        "type": "no_narrative_ceiling"
+      },
+      {
+        "id": "greeting_detected_true",
+        "type": "greeting_detected",
+        "expected": true
+      },
+      {
+        "id": "reassess_vitals_done_evidenced",
+        "type": "critical_action_tag",
+        "description_contains": "Reassess vitals",
+        "expected_tag": "DONE_EVIDENCED"
+      }
+    ]
+  },
+
+  "known_failing_baselines": []
+}

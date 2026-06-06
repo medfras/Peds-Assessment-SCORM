@@ -1,0 +1,69 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-42R Racepinephrine (MDHHS Reviewed 2025). Base Michigan template.",
+  "id": "mi_base_medication_ref_racepinephrine",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference — Pediatric Only",
+  "jurisdiction": "Michigan",
+  "condition": "Racepinephrine",
+  "version": "2025-03-31",
+  "protocol_reference": "Michigan Medication Protocol Section 9-42R: Racepinephrine — MDHHS Reviewed 2025",
+  "pharmacological_category": "Adrenergic Agonist — Topical Airway Vasoconstrictor / Bronchodilator",
+  "routes": [
+    "Nebulized"
+  ],
+  "indications": [
+    "Pediatric stridor at rest WITHOUT obstruction (croup — laryngotracheobronchitis)",
+    "Upper airway mucosal edema with stridor (pediatric)"
+  ],
+  "contraindications": [
+    "Known mechanical airway obstruction (foreign body, epiglottitis — do NOT nebulize)",
+    "Adult use — PEDIATRIC ONLY in Michigan EMS protocol",
+    "Known hypersensitivity to racepinephrine or epinephrine"
+  ],
+  "precautions": [
+    "PEDIATRIC USE ONLY — not indicated for adults in Michigan EMS protocol",
+    "Only for stridor at rest without obstruction — if obstruction suspected (foreign body, epiglottitis), do NOT use; manage airway directly",
+    "Rebound effect: airway edema may recur as medication wears off (1-2 hours) — all patients receiving racepinephrine require transport and hospital evaluation",
+    "Monitor heart rate — racepinephrine can cause tachycardia"
+  ],
+  "expected_effects": [
+    "Vasoconstriction of upper airway mucosa → reduction of subglottic edema",
+    "Relief of inspiratory stridor",
+    "Improved air entry"
+  ],
+  "side_effects": [
+    "Tachycardia",
+    "Rebound airway edema after effect wears off",
+    "Tremor",
+    "Pallor"
+  ],
+  "notes": [
+    "Standard dose: 0.5 mL of 2.25% racepinephrine solution in 3 mL NS nebulized",
+    "Croup/stridor at rest only — must not have obstruction",
+    "Transport required regardless of improvement — rebound edema risk",
+    "Nebulize via mask held near face if child cannot tolerate mask on face ('blow-by')"
+  ],
+  "dosing": [
+    {
+      "population": "Pediatric (≤14 yr) — croup / stridor at rest",
+      "route": "Nebulized",
+      "dose": "0.5 mL of 2.25% racepinephrine solution in 3 mL NS via nebulizer",
+      "notes": "PEDIATRIC ONLY; stridor at rest WITHOUT obstruction; transport required regardless of improvement due to rebound risk"
+    }
+  ],
+  "used_in_protocols": [
+    "Respiratory Distress — Pediatric Croup / Stridor"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "croup",
+      "pediatric_respiratory_distress",
+      "upper_airway_obstruction"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

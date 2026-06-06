@@ -1,0 +1,59 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 1-2 Abdominal Pain (Non-Traumatic) (Revised 05/03/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_all_abdominal_pain",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "All",
+  "level_display": "All Levels",
+  "jurisdiction": "Michigan",
+  "condition": "Abdominal Pain (Non-Traumatic)",
+  "version": "2023-05-03",
+  "protocol_reference": "Michigan General Treatment Protocol Section 1-2: Abdominal Pain (Non-Traumatic) — MDHHS Approved 5/3/23, Reviewed 2023",
+  "sections": [
+    {
+      "title": "Abdominal Pain (Non-Traumatic)",
+      "reference": "Michigan Protocol 1-2: Abdominal Pain (Non-Traumatic)",
+      "points": [
+        "Follow General Pre-Hospital Care-Treatment Protocol",
+        "Conduct physical exam of abdomen including assessment of central and bilateral distal pulses",
+        "If symptoms of shock present, refer to Shock-Treatment Protocol",
+        "Position patient in a position of comfort if pain is non-traumatic; if trauma related, refer to General Trauma-Treatment Protocol",
+        "Do not allow patient to drink or eat anything (does not include ODT medications)",
+        "If patient is experiencing nausea and vomiting, refer to Nausea and Vomiting-Treatment Protocol",
+        "Treat pain per Pain Management-Procedure Protocol",
+        "Consider 12-lead ECG (per MCA selection — may be a BLS or Specialist procedure) per 12 Lead ECG-Procedure Protocol"
+      ]
+    }
+  ],
+  "mca_selections_required": [
+    {
+      "item": "12-Lead ECG",
+      "description": "May be designated as a BLS skill or Specialist (AEMT/Paramedic) skill",
+      "options": [
+        "BLS",
+        "Specialist"
+      ],
+      "selected": null
+    }
+  ],
+  "key_drugs": [],
+  "deterioration_flags": [
+    "Signs of shock (hypotension, tachycardia, diaphoresis, altered mental status) — refer to Shock-Treatment Protocol immediately",
+    "Absent or asymmetric distal pulses — consider vascular emergency (AAA); prompt transport, ALS response"
+  ],
+  "scope_notes": [
+    "12-Lead ECG: scope per MCA selection — BLS or Specialist",
+    "Pain management: refer to Pain Management-Procedure Protocol for scope by level",
+    "IV/IO access and fluids: Specialist skill unless MCA-approved otherwise"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "patient_assessment",
+      "transport_decision",
+      "vital_signs"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

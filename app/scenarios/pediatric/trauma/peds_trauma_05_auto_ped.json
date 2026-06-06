@@ -1,0 +1,1175 @@
+{
+  "_schema": "pfd_scenario_v1",
+  "id": "peds_trauma_05_auto_ped",
+  "title": "Auto vs. Pedestrian — 7-Year-Old Female",
+  "display_title": "Pediatric Multi-System Trauma",
+  "subtitle": "7-year-old female, struck by vehicle — altered mental status, decompensated shock",
+  "category": "pediatric_trauma",
+  "call_type": "nremt_trauma",
+  "category_display": "Pediatric Trauma Assessment",
+  "turnover_target": "als",
+  "version": "1.0",
+  "rubric_template": "ems_standard_v1",
+  "base_patient_care_rubric": "nremt_trauma_v1",
+  "difficulty": "hard",
+  "scenario_number": 5,
+  "prerequisites": null,
+  "protocol": "MI/02_Trauma_Environmental/02-2_general_trauma",
+  "jurisdiction": "mi_base",
+  "clinical_context": {
+    "jurisdiction": "MI",
+    "concepts": [
+      "pediatric_patient",
+      "pediatric_trauma",
+      "trauma",
+      "multisystem_trauma",
+      "shock",
+      "bleeding_control",
+      "transport_decision",
+      "ventilation_support",
+      "spinal_motion_restriction"
+    ],
+    "protocol_focus": [
+      "multisystem_trauma",
+      "shock",
+      "bleeding_control",
+      "transport_decision",
+      "ventilation_support",
+      "spinal_motion_restriction"
+    ]
+  },
+  "agency_context": "",
+  "spinal_injury_possible": true,
+  "non_transport_agency": false,
+  "multiple_patients_possible": false,
+  "diagnostics_indicated": false,
+  "opqrst_radiation_relevant": false,
+  "readiness_criteria": {
+    "min_minutes": 3,
+    "checks": [
+      {
+        "id": "messages",
+        "label": "5 messages sent",
+        "type": "message_count",
+        "min": 5
+      },
+      {
+        "id": "vitals",
+        "label": "Vitals assessed",
+        "type": "vitals_logged"
+      },
+      {
+        "id": "exam",
+        "label": "Exam/history obtained",
+        "type": "exam_logged"
+      },
+      {
+        "id": "treatment",
+        "label": "Treatment applied",
+        "type": "treatment_logged"
+      }
+    ]
+  },
+  "scene_entry_scoring": {
+    "ppe": {
+      "required": [
+        "gloves"
+      ],
+      "recommended": [
+        "eye_protection"
+      ],
+      "missing_required_penalty": 3,
+      "missing_recommended_penalty": 1,
+      "max_score": 10
+    },
+    "pat": {
+      "expected_impression": null,
+      "incorrect_impression_deduction": 2
+    }
+  },
+  "chat_placeholder": "Talk to Sophia, Maria (mom), or your partner Alex...",
+  "chat_address_hint": "Address by name: Maria/Mom · Alex (partner/vitals) — Sophia is unresponsive to voice",
+  "debrief_lexi_hints": [
+    {
+      "label": "Next step?",
+      "msg": "What should I do next in this scenario?"
+    },
+    {
+      "label": "Shock in peds?",
+      "msg": "What are the signs of decompensated shock in a pediatric patient?"
+    },
+    {
+      "label": "Pelvic binder?",
+      "msg": "When is a pelvic binder indicated and how is it applied?"
+    },
+    {
+      "label": "Load and go?",
+      "msg": "What is a 'load and go' decision and when does it apply?"
+    },
+    {
+      "label": "Airway peds?",
+      "msg": "How do I manage a pediatric airway in a trauma patient?"
+    }
+  ],
+  "objectives": [
+    "Recognize decompensated hemorrhagic shock in a pediatric patient — tachycardia, hypotension, altered mental status, mottled skin",
+    "Perform a rapid trauma assessment (MARCH or ABCDE) appropriate to the mechanism",
+    "Manage a compromised airway with jaw thrust and BVM ventilation",
+    "Apply spinal motion restriction based on clinical criteria for a high-energy MOI",
+    "Identify pelvic instability and apply a pelvic binder",
+    "Make a correct 'load and go' decision — minimize scene time for multi-system trauma with hemodynamic instability"
+  ],
+  "dispatch": {
+    "unit": "{unit}",
+    "text": "{unit}, respond to 456 Oak Street for a child struck by a vehicle. Caller reports a 7-year-old girl was hit by an SUV backing out of a driveway. Child is not moving.",
+    "priority": "Priority 1",
+    "time": "17:30",
+    "cross_streets": "Oak St and Pine St",
+    "response_time_minutes": 4
+  },
+  "scene": {
+    "description": "You arrive to a residential street. A woman is on her knees on the asphalt, screaming. A 7-year-old girl is supine on the ground at the end of a driveway. A large black SUV is parked with its rear bumper nearby. A bystander is trying to hold the mother back. The girl is completely still — she is not moving or crying. There is no obvious external hemorrhage. Abrasions and a large contusion are visible on her left flank and left torso where her shirt has ridden up.",
+    "image": null,
+    "video": null,
+    "hazards": [
+      "Parked vehicle — ensure scene secured, parking brake on before working near vehicle"
+    ],
+    "bystanders": [
+      {
+        "name": "Maria",
+        "relation": "mother",
+        "age": 40
+      }
+    ]
+  },
+  "patient": {
+    "pcr_demographics_deferred": true,
+    "name": "Sophia",
+    "age": 7,
+    "dob_month_day": "December 11",
+    "sex": "female",
+    "weight_kg": 25,
+    "weight_display": "approx 55 lbs (25 kg)",
+    "chief_complaint": "Altered mental status, tachycardia, hypotension — decompensated hemorrhagic shock after being struck by an SUV",
+    "general_impression": "7-year-old female, supine on asphalt, motionless. She does not respond to your voice but moans when you apply a sternal rub. Skin is pale, cool, and mottled. Respirations are rapid and shallow — you can see her chest moving but barely. There are abrasions and contusions on her left torso and flank. No obvious external hemorrhage. This patient is in decompensated shock.",
+    "gcs_assessment": {
+      "e": 2,
+      "v": 3,
+      "m": 5,
+      "total": 10,
+      "rationale": "Eyes open only to pain, verbal response is inappropriate words or confused moaning, and she localizes painful stimulus.",
+      "challenge_description": "Sophia is supine and motionless after being struck. She does not open her eyes to voice, but opens them to painful stimulus. She gives inappropriate words or confused moaning. She localizes painful stimulus."
+    },
+    "avpu_assessment": {
+      "value": "pain",
+      "description": "Patient opens eyes only to pain, makes inappropriate words or confused moaning, and localizes painful stimulus.",
+      "rationale": "Use AVPU = pain because eye opening is only to painful stimulus and she is not responsive to normal verbal interaction."
+    },
+    "image": null,
+    "video": null
+  },
+  "history": {
+    "allergies": "None known.",
+    "medications": "None.",
+    "pmh": "Healthy 7-year-old.",
+    "last_oral_intake": "After-school snack approximately 2 hours ago.",
+    "events_leading_to_call": "Sophia was riding her scooter on the sidewalk. She rode behind a neighbor's SUV as it was backing out. The driver did not see her. She was struck at low speed but knocked to the ground and the left rear tire rolled over her left leg and lower torso. Bystanders report she was briefly responsive immediately after impact but rapidly deteriorated to the current state."
+  },
+  "initial_complaint": {
+    "speaker": "Maria",
+    "lay_summary": "She was hit by a car and she's getting worse.",
+    "allowed_in_opener": true,
+    "do_not_include": [
+      "vehicle movement",
+      "body regions involved",
+      "timeline",
+      "mental status trend details",
+      "medical history",
+      "diagnosis",
+      "clinical terms",
+      "treatment suggestions",
+      "negative findings",
+      "full OPQRST/SAMPLE"
+    ]
+  },
+  "history_response_map": {
+    "patient_identity": {
+      "label": "Patient identity / demographics",
+      "speaker": "Maria",
+      "triggers": [
+        "what is her name",
+        "what's her name",
+        "patient name",
+        "how old is she",
+        "age",
+        "date of birth",
+        "dob",
+        "birthday"
+      ],
+      "answer": "Her name is Sophia. She's 7 years old. Her birthday is December 11.",
+      "tags": [
+        "[[HISTORY: Patient Name=Sophia]]",
+        "[[HISTORY: Patient Age=7-year-old female]]",
+        "[[HISTORY: Patient Date of Birth=December 11]]"
+      ],
+      "notes": "Patient-scoped demographics only.",
+      "do_not_include": [
+        "weight unless asked",
+        "mechanism details",
+        "medical history",
+        "medications",
+        "treatment suggestions"
+      ]
+    },
+    "patient_weight": {
+      "label": "Patient weight",
+      "speaker": "Maria",
+      "triggers": [
+        "how much does she weigh",
+        "what does she weigh",
+        "patient weight",
+        "weight",
+        "estimated weight"
+      ],
+      "answer": "She weighs about 55 pounds, around 25 kilograms.",
+      "tag": "[[HISTORY: Patient Weight=approx 55 lbs (25 kg)]]",
+      "notes": "Patient-scoped weight only.",
+      "do_not_include": [
+        "diagnosis",
+        "treatment suggestions"
+      ]
+    },
+    "chief_concern": {
+      "label": "Broad opener / chief concern",
+      "speaker": "Maria",
+      "triggers": [
+        "what's going on",
+        "what happened",
+        "why did you call",
+        "how can we help",
+        "chief complaint"
+      ],
+      "answer": "She was hit by a car and she's not acting right.",
+      "tag": "[[HISTORY: Patient Chief Complaint=altered mental status after being struck by an SUV]]",
+      "notes": "Patient-scoped complaint only.",
+      "do_not_include": [
+        "speed",
+        "shock signs",
+        "injury details",
+        "treatment suggestions"
+      ]
+    }
+  },
+  "vitals": {
+    "baseline": {
+      "hr": {
+        "label": "Heart Rate",
+        "value": 162,
+        "unit": "bpm",
+        "display": "162 bpm — severe tachycardia; decompensated shock"
+      },
+      "rr": {
+        "label": "Respirations",
+        "value": 38,
+        "unit": "/min",
+        "display": "38/min — tachypneic; rapid and shallow"
+      },
+      "spo2": {
+        "label": "SpO2",
+        "value": 88,
+        "unit": "%",
+        "display": "88% — critically low; inadequate ventilatory effort"
+      },
+      "bp": {
+        "label": "Blood Pressure",
+        "value": "70/40",
+        "unit": "mmHg",
+        "display": "70/40 mmHg — hypotension; decompensated shock"
+      },
+      "temp": {
+        "label": "Temperature",
+        "value": 97.5,
+        "unit": "°F",
+        "display": "97.5°F — cool from shock/exposure"
+      },
+      "blood_glucose": {
+        "label": "Blood Glucose",
+        "value": 142,
+        "unit": "mg/dL",
+        "display": "142 mg/dL — stress hyperglycemia"
+      },
+      "gcs": {
+        "label": "GCS",
+        "value": 10,
+        "unit": "/15",
+        "display": "10 — E2V3M5; eyes open only to pain, inappropriate words/confused moaning, localizes pain"
+      },
+      "skin_color": {
+        "label": "Skin",
+        "numeric": false,
+        "value": "Pale, cool, mottled — classic decompensated shock appearance"
+      },
+      "cap_refill": {
+        "label": "Cap Refill",
+        "value": 4,
+        "unit": "sec",
+        "display": "4 seconds — severely delayed; decompensated shock"
+      },
+      "pupils": {
+        "label": "Pupils",
+        "numeric": false,
+        "value": "Equal, sluggish — 5 mm bilaterally; decreased reactivity"
+      },
+      "lung_sounds": {
+        "label": "Lung Sounds",
+        "numeric": false,
+        "value": "Decreased bilaterally — shallow effort; no wheeze, no pneumothorax on initial assessment"
+      },
+      "work_of_breathing": {
+        "label": "Work of Breathing",
+        "numeric": false,
+        "value": "Inadequate — rapid and shallow; agonal-appearing respirations; not moving sufficient tidal volume"
+      }
+    },
+    "deterioration": {
+      "note": "Without airway and ventilatory support plus rapid transport, this patient deteriorates rapidly. BVM ventilation improves SpO2. Pelvic binder slows internal hemorrhage. Load-and-go decision is mandatory — scene time kills in multi-system trauma with hemodynamic instability.",
+      "rates": {
+        "hr": 5,
+        "rr": -1,
+        "spo2": -3,
+        "gcs": -0.5,
+        "cap_refill": 0.2
+      },
+      "caps": {
+        "hr": {
+          "max": 200,
+          "min": 100
+        },
+        "rr": {
+          "max": 50,
+          "min": 4
+        },
+        "spo2": {
+          "min": 60,
+          "max": 100
+        },
+        "gcs": {
+          "min": 3,
+          "max": 15
+        },
+        "cap_refill": {
+          "max": 6.0,
+          "min": 2.0
+        }
+      },
+      "string_thresholds": {
+        "skin_color": [
+          {
+            "spo2_below": 80,
+            "value": "Cyanotic — lips and nail beds blue; mottling extending to extremities"
+          },
+          {
+            "gcs_above": 3,
+            "value": "Mottling worsening — profound shock; patient becoming limp"
+          }
+        ],
+        "work_of_breathing": [
+          {
+            "rr_below": 10,
+            "value": "Agonal breathing — gasping, near-apneic; BVM required immediately"
+          },
+          {
+            "spo2_below": 80,
+            "value": "Hypoxic apnea — BVM ventilation critical"
+          }
+        ],
+        "lung_sounds": [
+          {
+            "spo2_below": 80,
+            "value": "Chest barely moving — critically inadequate tidal volume; BVM essential"
+          }
+        ]
+      }
+    },
+    "interventions": {
+      "bvm": {
+        "label": "BVM ventilation",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "\\bbvm\\b",
+          "bag.*valve.*mask",
+          "bag.*her",
+          "assist.*ventilation",
+          "bag.*ventilat",
+          "positive.*pressure"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 8,
+            "rate_modifier": 0.2
+          },
+          "rr": {
+            "immediate_change": 0,
+            "rate_modifier": 0.5
+          },
+          "hr": {
+            "immediate_change": -10,
+            "rate_modifier": 0.85
+          }
+        },
+        "notes": "Critical — shallow, rapid respirations are not moving adequate tidal volume. BVM at 10–12 breaths/min with high-flow O2. This is the most urgent intervention. Use jaw thrust (not head-tilt) for C-spine protection.",
+        "requires_popup": true,
+        "popup_type": "oxygen",
+        "popup_default": {
+          "device": "bvm",
+          "flow": 15
+        }
+      },
+      "jaw_thrust": {
+        "label": "Jaw Thrust Airway Maneuver",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "jaw thrust",
+          "jaw.?thrust",
+          "open.*airway.*trauma",
+          "airway.*maneuver.*trauma"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 3,
+            "rate_modifier": 0.6
+          }
+        },
+        "notes": "Jaw thrust is the trauma airway maneuver of choice — maintains C-spine neutrality. Do NOT use head-tilt chin-lift when spinal injury is possible."
+      },
+      "smr": {
+        "label": "Spinal Motion Restriction",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "c-spine",
+          "c spine",
+          "spinal motion restriction",
+          "smr",
+          "backboard",
+          "long board",
+          "cervical collar",
+          "c-collar"
+        ],
+        "effects": {},
+        "notes": "High-energy MOI with altered mental status — spinal motion restriction is indicated. Apply C-collar and long board. Do not delay airway management for SMR — airway first."
+      },
+      "pelvic_binder": {
+        "label": "Pelvic Binder Application",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "pelvic binder",
+          "bind.*pelvis",
+          "sheet.*wrap",
+          "pelvic.*stabilize",
+          "pelvis.*wrap",
+          "circumferential.*pelvis"
+        ],
+        "effects": {
+          "hr": {
+            "immediate_change": -15,
+            "rate_modifier": 0.7
+          }
+        },
+        "notes": "Pelvic instability in a pedestrian struck by a vehicle is a major source of internal hemorrhage — an unstable pelvis can lose 2–4 liters of blood. Pelvic binder (or improvised sheet wrap) compresses the pelvic ring and tamponades hemorrhage. Apply at the level of the greater trochanters — NOT the iliac crests."
+      },
+      "load_and_go": {
+        "label": "Load and Go / Rapid Transport Decision",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "load and go",
+          "load-and-go",
+          "rapid transport",
+          "get her to the truck",
+          "move her now",
+          "pack and go"
+        ],
+        "effects": {
+          "hr": {
+            "immediate_change": -5,
+            "rate_modifier": 0.9
+          },
+          "spo2": {
+            "immediate_change": 0,
+            "rate_modifier": 1.0
+          }
+        },
+        "notes": "Correct decision for multi-system trauma with hemodynamic instability. Scene time should be under 10 minutes. Further deterioration is better managed in the ED with surgical capability."
+      }
+    },
+    "improvement": {
+      "note": "BVM ventilation produces the most significant improvement — SpO2 rises toward the high 80s/low 90s. Pelvic binder reduces HR somewhat. Load-and-go is the overall treatment decision — improvement is limited by internal hemorrhage.",
+      "requires_intervention": "bvm",
+      "string_thresholds": {
+        "skin_color": [
+          {
+            "spo2_above": 92,
+            "value": "Pallor remains — pale and cool, but mottling slightly decreased with oxygenation"
+          }
+        ],
+        "work_of_breathing": [
+          {
+            "spo2_above": 92,
+            "value": "BVM ventilations delivering adequate tidal volume — chest rise visible with each assisted breath"
+          }
+        ],
+        "lung_sounds": [
+          {
+            "spo2_above": 92,
+            "value": "Bilateral breath sounds with BVM ventilations — equal chest rise; no pneumothorax signs"
+          }
+        ]
+      },
+      "presentation_milestones": [
+        {
+          "spo2_above": 92,
+          "text": "With BVM ventilation, Sophia's SpO2 is rising. She appears slightly less mottled. She still moans to sternal rub — no deterioration of GCS with assisted ventilation."
+        }
+      ]
+    }
+  },
+  "personas": {
+    "sophia": {
+      "name": "Sophia",
+      "age": 7,
+      "role": "patient",
+      "aliases": [
+        "Sophia",
+        "the child",
+        "the girl",
+        "the patient",
+        "she",
+        "her"
+      ],
+      "description": "7-year-old female with altered mental status — GCS 10 (E2V3M5). She does not respond to voice, but moans and withdraws from painful stimuli. She cannot communicate meaningfully. She is supine and motionless unless pain is applied.",
+      "speaking_style": "Non-verbal — moaning to sternal rub, withdrawal from pain. No coherent responses.",
+      "clinical_state_instructions": "Sophia does not respond to voice. If student calls her name: no response. If student applies sternal rub or nail bed pressure: Sophia moans and withdraws the stimulated limb. If BVM is applied and ventilations assisted: 'Sophia's chest rises with each ventilation — she does not fight the BVM.' If pelvic binder is applied: no verbal response, but HR decreases on monitor.",
+      "persona_rules": [
+        "No verbal responses — moaning only to painful stimuli",
+        "Does not respond to voice at any point on arrival",
+        "Tolerate BVM without fighting if properly applied",
+        "GCS deteriorates further if no airway intervention"
+      ]
+    },
+    "maria": {
+      "name": "Maria",
+      "age": 40,
+      "role": "family",
+      "relation": "mother",
+      "aliases": [
+        "Maria",
+        "Mom",
+        "mom",
+        "mother",
+        "the mother",
+        "ma'am"
+      ],
+      "description": "Sophia's mother — hysterical, screaming at the scene. She is trying to push past bystanders to get to her daughter. She needs to be directed to a safe location. Once EMS makes brief eye contact and gives her a clear, calm command, she can be redirected. She will provide history if asked — but EMS needs to take control of the scene first.",
+      "speaking_style": "Screaming: 'My baby! Is she alive?! Someone do something! Sophia! SOPHIA!' Only calms when given a direct, firm, calm command from EMS.",
+      "what_she_knows": [
+        "Sophia was riding her scooter on the sidewalk when the neighbor backed out without seeing her",
+        "The left rear tire of the SUV rolled over Sophia's lower body",
+        "Sophia was briefly conscious immediately after and said 'Mommy' once — then became unresponsive",
+        "No prior medical history, no medications, no known allergies",
+        "Last ate an after-school snack about 2 hours ago"
+      ],
+      "clinical_state_instructions": "On initial arrival Maria is hysterical and trying to reach Sophia. If EMS makes eye contact and says 'Ma'am, I need you to step back so we can help her — right now': Maria stops, still crying. 'Is she alive? Tell me she's alive!' If asked for history: provide from what_she_knows. If student takes too long getting history from Maria: Alex should interject — 'We need to move — get history en route.' Maria should never physically impede patient care.",
+      "persona_rules": [
+        "Initially hysterical — needs one direct command from EMS to redirect",
+        "Provides accurate history when asked and calm enough to answer",
+        "Do not allow Maria's distress to consume more than 20 seconds of scene time — redirect",
+        "Ask 'Is she alive?' once early in the encounter"
+      ]
+    },
+    "alex": {
+      "name": "Alex",
+      "age": 28,
+      "role": "ems_partner",
+      "aliases": [
+        "Alex",
+        "partner",
+        "my partner",
+        "crew"
+      ],
+      "description": "Your EMT partner on Squad 5. Experienced, recognizes severity immediately. Will prompt rapid action if student is moving slowly. 'She's in bad shape — we need to move.' Does not wait for direction to start setting up — will ask what you want while setting up the stretcher.",
+      "speaking_style": "Urgent and focused but controlled. 'She's in decompensated shock. What do you want first — BVM or board?' 'I'll get the pelvi-binder from the rig.' 'We're at 4 minutes — we need to package and go.'",
+      "capabilities": [
+        "Report individual vitals when asked — including GCS",
+        "Report full set of vitals",
+        "Set up BVM with high-flow O2 when directed",
+        "Apply C-collar and assist with long board SMR",
+        "Get pelvic binder from rig",
+        "Assist with packaging for rapid transport",
+        "Notify ALS of patient status and ETA",
+        "Radio ahead to trauma center"
+      ]
+    }
+  },
+  "correct_treatment": {
+    "critical_actions": [
+      {
+        "id": "scene_safety",
+        "description": "Scene safety — ensure vehicle is secured; BSI/PPE",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "pat",
+        "description": "PAT — motionless 7yo, mottled skin, rapid shallow breathing = immediately life-threatening; ALS priority",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "airway_bvm",
+        "description": "Jaw thrust to open airway; BVM ventilation — respirations are rapid and shallow, SpO2 88%; assisted ventilation required",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(jaw.?thrust|bvm|bag.?valve|ventilat|assist.*breath|bagging|airway.*open|open.*airway)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "shock_recognition",
+        "description": "Recognize and document decompensated hemorrhagic shock — HR 162, BP 70/40, GCS 10, mottled/pale/cool, cap refill 4 sec",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(shock|hemor|hypotens|decompensated|bp.*low|mottled|pale.*cool|cap refill.*[3-9]|hemodynamic.*unstable)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "pelvic_binder",
+        "description": "Assess pelvic stability — mechanism (tire rolled over pelvis) warrants binder; apply at greater trochanters to tamponade internal hemorrhage",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(pelvi.*bind|bind.*pelvi|pelvi.*stable|pelvi.*assess|pelvic.*binder|binder.*pelvi|compress.*pelvi|trochan)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "load_and_go",
+        "description": "Load and go — multi-system trauma + hemodynamic instability; scene time under 10 minutes; definitive care is the OR, not the street",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(load.*go|load.and.go|rapid.*transport|transport.*priority|scoop.*run|time.*critical|scene.*time|minimize.*scene)"
+          ],
+          "min_matches": 1
+        }
+      }
+    ],
+    "recommended_actions": [
+      {
+        "id": "smr",
+        "description": "Spinal motion restriction — high-energy MOI, altered mental status; C-collar and long board",
+        "required": false
+      },
+      {
+        "id": "als_update",
+        "description": "Notify ALS and trauma center — pediatric multi-system trauma, decompensated shock, BVM in progress",
+        "required": false
+      },
+      {
+        "id": "exposure",
+        "description": "Expose torso to assess for other injuries — contusion on left flank visible",
+        "required": false
+      }
+    ],
+    "out_of_scope_bls": [
+      "iv_fluid_resuscitation",
+      "chest_decompression",
+      "endotracheal_intubation",
+      "blood_products"
+    ],
+    "out_of_scope_aemt": [],
+    "out_of_scope_paramedic": [],
+    "clinical_decision_points": {
+      "airway_priority": "Airway and ventilation before EVERYTHING else — SpO2 88% with agonal respirations is immediately life-threatening. Jaw thrust + BVM first. SMR does not take priority over airway.",
+      "pelvic_assessment": "Mechanism (rear tire rolled over lower body) creates high suspicion for pelvic ring fracture with internal hemorrhage. Do NOT aggressively compress the pelvis to test — if mechanism is present, apply binder. Apply at greater trochanter level, NOT iliac crests.",
+      "load_and_go_definition": "Multi-system trauma + hemodynamic instability = load and go. BVM en route, pelvic binder applied on scene, SMR en route if not compromising airway management. Scene time goal: < 10 minutes.",
+      "als_trigger": "ALS/intercept expectations are determined by the active agency configuration. Consider ALS intercept en route or meet at hospital. Communicate: 7yo MVA, GCS 10, decompensated shock, BVM in progress, pelvic binder applied.",
+      "destination": "Nearest trauma center with pediatric surgical capability — NOT the closest community ED."
+    }
+  },
+  "scoring": {
+    "overall_considerations": [
+      "This is a load-and-go scenario — the most dangerous error is excessive scene time. Credit rapid packaging and transport decisions.",
+      "Airway management with BVM is the most urgent intervention — SpO2 88% with agonal respirations is immediately life-threatening. This must come first.",
+      "Recognizing decompensated shock (all four signs: tachycardia, hypotension, altered mental status, mottled/pale/cool skin) is the central clinical assessment skill.",
+      "SMR is recommended but should NOT delay airway management — do NOT penalize for performing BVM before applying C-collar.",
+      "Do NOT penalize for not naming individual shock signs by textbook terms — credit recognition of shock pattern as a clinical gestalt.",
+      "Pelvic binder indication is based on mechanism — the student does not need to apply manual compression to assess; mechanism alone is sufficient justification."
+    ],
+    "dmist_considerations": [
+      "D: Sophia, 7-year-old female, 55 lbs (25 kg).",
+      "M: Auto vs. pedestrian — struck by SUV backing out; left rear tire rolled over lower body/pelvis. High-energy MOI.",
+      "I: Jaw thrust airway, BVM with 15 LPM O2. Pelvic binder applied at greater trochanters. SMR — C-collar and long board. SpO2 improving to 93%.",
+      "S: GCS 10 (E2V3M5), HR 162→150, BP 70/40, SpO2 88%→93%, pale/cool/mottled, cap refill 4 sec.",
+      "T: Load and go. ALS Medic 5 notified — meet at trauma center. Trauma center radio notification requested."
+    ],
+    "dmist_components": {
+      "D": {
+        "description": "Patient demographics",
+        "required_elements": [
+          "name: Sophia",
+          "age: 7",
+          "sex: female",
+          "weight: 25 kg or 55 lbs"
+        ],
+        "corroboration_source": "scenario_patient_fields"
+      },
+      "M": {
+        "description": "Mechanism and chief complaint",
+        "required_elements": [
+          "struck by SUV",
+          "auto vs pedestrian",
+          "altered mental status or traumatic injury"
+        ],
+        "corroboration_source": "any"
+      },
+      "I": {
+        "description": "Injury details — injury pattern from high-energy mechanism, multi-system trauma findings",
+        "required_elements": [
+          "struck by SUV as pedestrian (high-energy mechanism)",
+          "altered mental status at scene",
+          "apparent head trauma (scalp injury or AMS from head strike)",
+          "suspected abdominal or thoracic involvement",
+          "possible extremity fractures — multi-system injury pattern"
+        ],
+        "corroboration_source": "history_and_findings",
+        "note": "I is illness/injury, not interventions. Treatments (airway method, SMR, pelvic binder, transport decision) belong under T."
+      },
+      "S": {
+        "description": "Signs and current status",
+        "required_elements": [
+          "GCS or AVPU",
+          "heart rate and blood pressure (shock indicators)",
+          "SpO2",
+          "respiratory status"
+        ],
+        "corroboration_source": "vitals_and_findings"
+      },
+      "T": {
+        "description": "Critical condition and ALS rendezvous",
+        "required_elements": [
+          "current hemodynamic status",
+          "ALS intercept or rendezvous decision",
+          "transport priority"
+        ],
+        "corroboration_source": "any"
+      }
+    },
+    "narrative_considerations": [
+      "CHART format: dispatch (child struck by vehicle), mechanism (SUV rear tire — lower body/pelvis), assessment (PAT findings, GCS 10, decompensated shock signs, contusion left flank), treatment (jaw thrust, BVM, pelvic binder, SMR, load-and-go decision), transport.",
+      "Key documentation: mechanism detail (tire rolled over body), GCS, vital signs (HR, BP, SpO2), shock recognition, treatments applied and patient response (SpO2 improvement with BVM).",
+      "Objective: 'GCS 10 (E2V3M5), HR 162, BP 70/40, SpO2 88%, pale, cool, mottled skin, cap refill 4 sec — consistent with decompensated hemorrhagic shock' is objective."
+    ],
+    "required_assessments": [
+      {
+        "id": "shock_recognition_assessment",
+        "description": "Identify and document the four signs of decompensated hemorrhagic shock (tachycardia, hypotension, altered mental status, poor perfusion)",
+        "keywords": [
+          "shock",
+          "tachycardia",
+          "heart rate",
+          "HR",
+          "blood pressure",
+          "BP",
+          "hypotension",
+          "altered",
+          "mental status",
+          "pale",
+          "cool",
+          "mottled",
+          "cap refill",
+          "perfusion",
+          "decompensated"
+        ],
+        "missing_deduction": 3,
+        "note": "Recognizing all four decompensated shock signs is the central clinical assessment task — the scenario is designed around this skill. Missing shock recognition leads to delayed load-and-go decision."
+      },
+      {
+        "id": "airway_ventilation_assessment",
+        "description": "Assess airway and ventilation adequacy (SpO2, respiratory rate, agonal breathing recognition)",
+        "keywords": [
+          "airway",
+          "breathing",
+          "SpO2",
+          "oxygen saturation",
+          "respiratory",
+          "respirations",
+          "agonal",
+          "gasping",
+          "BVM",
+          "ventilate",
+          "breath",
+          "ventilation"
+        ],
+        "missing_deduction": 3,
+        "note": "SpO2 88% with agonal respirations is an immediately life-threatening finding — airway and ventilation assessment must precede all packaging decisions."
+      }
+    ],
+    "by_level": {
+      "MFR": {
+        "critical_focus": [
+          "Scene safety",
+          "Call for ALS immediately — this child is in critical condition",
+          "Open airway with jaw thrust",
+          "BVM ventilation if respirations inadequate",
+          "Keep patient still — high-energy MOI with altered mental status"
+        ],
+        "additional_expectations": [],
+        "grace_items": [
+          "Pelvic binder may not be within MFR scope at all agencies — credit mechanism recognition",
+          "Formal shock classification not required — credit recognition of critical presentation"
+        ]
+      },
+      "EMT": {
+        "critical_focus": [
+          "Scene safety first — secure vehicle",
+          "PAT immediately — motionless child = critical",
+          "Jaw thrust + BVM — airway before all other packaging",
+          "Recognize all four signs of decompensated hemorrhagic shock",
+          "Pelvic binder — mechanism indicates likely pelvic ring fracture; apply at greater trochanters",
+          "SMR — C-collar and long board; do not delay for airway",
+          "Load-and-go decision — < 10 min scene time; definitive care is the OR"
+        ],
+        "additional_expectations": [
+          "Communicate critical patient status to ALS en route",
+          "Radio ahead to trauma center — 7yo multi-system trauma, decompensated shock, BVM in progress"
+        ],
+        "grace_items": [
+          "PAT acronym not required — credit immediate critical recognition",
+          "Manual pelvic compression to confirm instability NOT required — mechanism alone justifies binder",
+          "ALS request is not required when the active agency configuration co-dispatches ALS",
+          "GCS component breakdown not required — E2V3M5 detail is bonus; GCS 10 with notation is sufficient"
+        ]
+      },
+      "AEMT": {
+        "critical_focus": [
+          "All EMT expectations",
+          "IV access — attempt en route; bolus 20 mL/kg NS for decompensated shock (Parkland approach)"
+        ],
+        "additional_expectations": [
+          "Blood glucose check if AMS persists after ventilatory correction"
+        ],
+        "grace_items": [
+          "Same EMT grace items"
+        ]
+      },
+      "Paramedic": {
+        "critical_focus": [
+          "All EMT/AEMT expectations",
+          "Advanced airway consideration (LMA or ETT) if BVM is ineffective or prolonged transport",
+          "Permissive hypotension — do not aggressively fluid resuscitate to normal BP in hemorrhagic trauma; target MAP ~50–60 until surgical control",
+          "Chest needle decompression if tension pneumothorax signs develop"
+        ],
+        "additional_expectations": [
+          "Full trauma assessment head-to-toe en route"
+        ],
+        "grace_items": [
+          "Same base grace items"
+        ]
+      }
+    },
+    "corroboration_rules": {
+      "dmist": {
+        "I": {
+          "max_deduction_per_violation": 3,
+          "note": "Airway intervention type (BVM vs. NRB) is clinically critical for a patient with agonal respirations and SpO2 88% — wrong airway documentation misleads the trauma team about the severity of respiratory compromise on arrival"
+        }
+      },
+      "narrative": {
+        "A": {
+          "max_deduction_per_violation": 3,
+          "note": "Vital signs and shock signs in the assessment section must match the run record — fabricated or incorrect hemodynamic documentation in a decompensated trauma patient affects trauma team activation and blood product preparation"
+        }
+      }
+    }
+  },
+  "scoring_rubric": {
+    "clinical_performance": {
+      "max": 50,
+      "full_credit": "PAT with immediate critical recognition, jaw thrust airway, BVM with high-flow O2, decompensated shock documented (all four signs), pelvic binder applied at correct level, SMR applied, load-and-go decision made, ALS and trauma center notified — plus base rubric: scene safety, primary assessment, mechanism, hemorrhage control, secondary assessment, handoff",
+      "partial_credit": "BVM applied and shock recognized, but pelvic binder omitted or load-and-go decision significantly delayed",
+      "minimal_credit": "Airway not managed — BVM not applied with SpO2 88% and agonal respirations (critical failure)"
+    },
+    "narrative": {
+      "max": 20,
+      "full_credit": "CHART complete: dispatch, mechanism (tire rolled over lower body — detail matters), PAT (immediate critical recognition), decompensated shock (HR/BP/GCS/skin documented), airway (jaw thrust + BVM + SpO2 trend), pelvic binder, SMR, load-and-go rationale, ALS notification.",
+      "partial_credit": "Most CHART elements present but shock documentation incomplete or pelvic binder rationale absent",
+      "minimal_credit": "Narrative present but mechanism detail absent or airway management not documented"
+    },
+    "scope_adherence": {
+      "max": 10,
+      "full_credit": "Stayed within effective provider scope and MCA rules: IV fluid resuscitation not attempted — outside BLS scope; definitive hemorrhage control requires surgical intervention. No out-of-scope attempts or orders.",
+      "partial_credit": "No dangerous out-of-scope intervention attempted, but scope reasoning, level-specific escalation, or MCA-specific scope recognition was incomplete.",
+      "minimal_credit": "Out-of-scope intervention attempted or ordered, or provider-level limits materially ignored."
+    },
+    "dmist": {
+      "max": 10,
+      "full_credit": "D: 7yo female, 25 kg; M: auto-ped, tire over pelvis; I: jaw thrust, BVM 15 LPM, pelvic binder, SMR; S: GCS 10, HR 162, BP 70/40, SpO2 88%→93%, mottled; T: load-and-go to trauma center.",
+      "partial_credit": "3–4 components; mechanism or shock vitals missing",
+      "minimal_credit": "2 or fewer components or airway management not mentioned"
+    },
+    "professionalism": {
+      "max": 10,
+      "full_credit": "Took control of scene, redirected Maria with one calm command, provided Maria a brief update ('We are helping her — she is breathing with our help'), kept scene organized and purposeful throughout",
+      "partial_credit": "Scene controlled but Maria's distress either ignored or consumed excessive time",
+      "minimal_credit": "Scene not controlled — excessive scene time due to family management or inadequate task delegation"
+    },
+    "protocols_treatment": {
+      "max": 10,
+      "full_credit": "Protocol-aligned treatment completed: BVM ventilation initiated for inadequate respirations — required BLS airway intervention for agonal breathing with SpO2 88%. Contraindicated care avoided and in-scope treatment priorities addressed.",
+      "partial_credit": "Most treatment priorities addressed, but one important protocol-aligned intervention, escalation step, or contraindication check was incomplete or delayed.",
+      "minimal_credit": "Key protocol/treatment priority missed, contraindicated care performed, or treatment plan materially inconsistent with protocol."
+    }
+  },
+  "exemplar_dmist": "D — Sophia, 7-year-old female, approximately 55 lbs (25 kg).\nM — Auto vs. pedestrian — struck by a backing SUV; left rear tire rolled over lower body and pelvis. Bystanders report brief LOC on impact then rapid deterioration.\nI — Scene: jaw thrust airway immediately on contact. BVM with 15 LPM O2 — 10–12 assisted ventilations/min (respirations agonal on arrival). Pelvic binder applied at greater trochanter level — mechanism (tire over pelvis) indicates high risk for pelvic ring fracture. Cervical collar applied. Long board packaging en route to truck. Scene time approximately 8 minutes.\nS — GCS 10 (E2V3M5) on arrival, improved to 11 with oxygenation. SpO2 88%→93% with BVM. HR 162→148. BP 70/40. Skin pale, cool, mottled — cap refill 4 sec. Abrasions and contusion left flank.\nT — Transporting Priority 1 to Regional Trauma Center. ALS Medic 5 meeting en route — pediatric multi-system trauma, decompensated shock, BVM in progress. Trauma team activation requested.",
+  "exemplar_narrative": "Squad 5 responded Priority 1 to 456 Oak Street for a child struck by a vehicle. Upon arrival, patient Sophia, a 7-year-old female weighing approximately 55 lbs (25 kg), was found supine on the asphalt at the end of a driveway. A large SUV was parked nearby with the rear bumper within feet of the patient. Bystanders report Sophia was riding her scooter when the vehicle backed out without seeing her. The left rear tire rolled over her lower body and pelvis. She was briefly responsive on impact then rapidly deteriorated.\n\nPAT on contact: motionless, no response to voice — critical appearance. Respirations rapid and shallow — inadequate tidal volume. Skin pale, cool, mottled. Jaw thrust applied immediately. BVM with 15 LPM O2 initiated — assisted ventilations at 10–12/min. Chest rising bilaterally with ventilations.\n\nBaseline vitals: SpO2 88% (rising to 93% with BVM), HR 162, BP 70/40 mmHg, GCS 10 (E2V3M5), cap refill 4 seconds. Skin pale, cool, mottled — decompensated hemorrhagic shock. Abrasions and large contusion left flank and lower torso. Pupils equal at 5 mm, sluggishly reactive.\n\nBased on mechanism (tire rolled over pelvis), pelvic binder applied at greater trochanter level. Cervical collar applied; long board packaging completed en route. Load-and-go decision made — < 10-minute scene time; definitive care requires OR capability. Mother directed to bystander and will meet patient at trauma center.\n\nALS Medic 5 notified en route — pediatric multi-system trauma, decompensated shock, BVM in progress, pelvic binder placed. Regional Trauma Center notified with ETA and pediatric trauma activation request. Patient care transferred to trauma team on arrival.",
+  "debrief": {
+    "condition_background": "Sophia presents with decompensated hemorrhagic shock following a pedestrian strike where the vehicle tire rolled over her lower body and pelvis. Pediatric patients are remarkable compensators — they maintain their blood pressure through intense vasoconstriction until they suddenly lose the ability to compensate. By the time a pediatric trauma patient is hypotensive (BP 70/40), they have typically lost 25–40% of their circulating blood volume. This is not early shock — this is late, decompensated shock. The combination of tachycardia (HR 162), hypotension (BP 70/40), altered mental status (GCS 10), and mottled/cool skin tells the complete picture. The respiratory compromise (SpO2 88%, agonal respirations) is a separate, immediately life-threatening problem that must be addressed before anything else — a dead airway produces a dead patient faster than any other single finding. The pelvic binder addresses the most likely major source of internal hemorrhage — the pelvis can accommodate 2–4 liters of blood loss in a displaced ring fracture. Scene time in multi-system trauma should be under 10 minutes. The operating room is the definitive treatment — not the ambulance.",
+    "key_teaching_points": [
+      "Decompensated shock in children has four signs: tachycardia (HR 162), hypotension (BP 70/40), altered mental status (GCS 10), and mottled/cool/pale skin. When you see all four — this child is near death.",
+      "Pediatric compensation: children maintain blood pressure until they've lost 25–40% of circulating volume. By the time BP drops, the child has been profoundly shocked for some time. A dropping BP in a child is a late finding.",
+      "Airway before packaging — SpO2 88% with agonal respirations is immediately life-threatening. Jaw thrust + BVM comes before C-collar, board, or binder. Hypoxia kills faster than spinal injury.",
+      "Jaw thrust, not head-tilt chin-lift — in any suspected spinal injury, jaw thrust maintains C-spine neutrality while opening the airway.",
+      "Pelvic binder indication — mechanism alone is sufficient. Manual compression testing for instability is dangerous and no longer recommended. Apply at greater trochanters (not iliac crests) to compress the pelvic ring.",
+      "Load and go — the decision to package rapidly and transport with treatments en route rather than prolonged on-scene stabilization. The OR is the definitive care for hemorrhagic shock. Every minute on scene is a minute the patient is NOT getting surgical hemorrhage control.",
+      "Trauma center destination — a community ED without surgical capability is the wrong destination. Call ahead, activate the trauma team."
+    ],
+    "common_mistakes": [
+      "Not opening the airway first — attempting C-spine packaging before addressing the 88% SpO2 with agonal respirations",
+      "Using head-tilt chin-lift in a trauma patient — jaw thrust is the correct maneuver",
+      "Compressing the pelvis manually to 'test' for instability — this can worsen hemorrhage",
+      "Applying pelvic binder at the iliac crests instead of the greater trochanters — ineffective",
+      "Excessive scene time — spending more than 10 minutes on scene in a hemodynamically unstable multi-system trauma patient",
+      "Transporting to the nearest ED instead of the nearest trauma center"
+    ]
+  },
+  "legacy_ai_categories": [
+    "documentation",
+    "professionalism"
+  ],
+  "checklist": [
+    {
+      "id": "peds_trauma_05_auto_ped.pat_assessment",
+      "description": "PAT completed — appearance (motionless, unresponsive), work of breathing (rapid, shallow), circulation to skin (mottled) assessed as immediately life-threatening",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "scene_entry",
+        "scene_entry_path": "pat_assessment"
+      },
+      "tier2_patterns": [
+        "(?i)(pat|motionless|unresponsive|rapid.*breath|shallow|mottled|circulat|life.*threat|critical)"
+      ],
+      "done_feedback": "PAT completed — motionless/unresponsive (SICK), rapid shallow breathing, and mottled skin correctly identified before hands-on assessment.",
+      "missed_feedback": "PAT not completed — an auto-pedestrian mechanism with a sick-appearing child requires immediate systematic assessment; PAT drives the initial priority decision.",
+      "clinical_rationale": "In multi-system trauma, PAT identifies which component of the primary survey is most compromised; unresponsive/apneic with poor circulation indicates load-and-go without delay.",
+      "common_error": "Beginning the primary survey without PAT — the visual PAT informs which aspect of the primary survey to prioritize first."
+    },
+    {
+      "id": "peds_trauma_05_auto_ped.airway_bvm",
+      "description": "Jaw thrust airway opening applied; BVM ventilation initiated for rapid shallow breathing and SpO2 of 88%",
+      "subtype": "intervention",
+      "category": "clinical_performance",
+      "point_value": 8,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "bvm"
+      },
+      "tier2_patterns": [
+        "(?i)(BVM|bag.*valve.*mask|jaw thrust|ventilat|assist.*breath|airway|two.?person|seal)"
+      ],
+      "done_feedback": "Jaw thrust and BVM ventilation initiated for agonal respirations — correct for a pediatric trauma patient with potential cervical spine injury.",
+      "missed_feedback": "BVM ventilation not initiated — RR 4 with shallow tidal volume is inadequate; positive pressure ventilation must begin immediately.",
+      "clinical_rationale": "Pediatric respiratory arrest from inadequate ventilation produces hypoxic arrest within 2 minutes; inadequate breathing requires BVM assistance, not passive oxygen.",
+      "common_error": "Applying oxygen via NRB to a patient with agonal respirations — NRB does not provide positive pressure; BVM with positive pressure is required when respirations are inadequate."
+    },
+    {
+      "id": "peds_trauma_05_auto_ped.shock_recognition",
+      "description": "Decompensated hemorrhagic shock recognized and documented — HR 162, BP 70/40, GCS 10, mottled/pale/cool skin, cap refill 4 sec",
+      "subtype": "screen",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 2,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": null,
+      "tier2_patterns": [
+        "(?i)(shock|hemorrhag|decompensated|HR.*162|BP.*70|hypotens|mottled|pale|cool|cap refill|perfusion)"
+      ],
+      "done_feedback": "Decompensated hemorrhagic shock recognized — HR 162, BP 70/40, GCS 8, mottled skin correctly identified and documented.",
+      "missed_feedback": "Hemorrhagic shock not recognized — tachycardia, hypotension, altered mental status, and poor perfusion are hallmarks of decompensated shock; failure to recognize delays load-and-go.",
+      "clinical_rationale": "Hypotension in a child indicates massive hemorrhage with loss of compensatory mechanisms — this is a pre-arrest state requiring immediate transport, not field stabilization.",
+      "common_error": "Treating tachycardia as anxiety rather than shock — tachycardia in a pediatric trauma patient must be assumed to indicate shock until proven otherwise."
+    },
+    {
+      "id": "peds_trauma_05_auto_ped.pelvic_binder",
+      "description": "Pelvic stability assessed and pelvic binder applied at greater trochanters — indicated by tire-rolled-over-pelvis mechanism",
+      "subtype": "intervention",
+      "category": "clinical_performance",
+      "point_value": 7,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "pelvic_binder"
+      },
+      "tier2_patterns": [
+        "(?i)(pelvic binder|pelvis|pelvic stab|greater trochanter|tamponade|internal hemorrhage|pelvic fracture)"
+      ],
+      "done_feedback": "Pelvic stability assessed and pelvic binder applied at the greater trochanters — correct for suspected pelvic ring fracture with this mechanism and shock state.",
+      "missed_feedback": "Pelvic binder not applied — auto-pedestrian with pelvic instability and hemorrhagic shock is a strong indication; an unstable pelvis can lose 2+ L of blood into the retroperitoneum.",
+      "clinical_rationale": "Pelvic ring fractures are a major source of occult hemorrhage; binder applied at the greater trochanters reduces pelvic volume and tamponades retroperitoneal bleeding.",
+      "common_error": "Applying the pelvic binder at the iliac crests — the binder must be placed at the greater trochanters to close the pelvic ring; iliac crest placement is ineffective."
+    },
+    {
+      "id": "peds_trauma_05_auto_ped.load_and_go",
+      "description": "Load-and-go decision made — scene time kept under 10 minutes; multi-system trauma with hemodynamic instability requires OR, not extended scene care",
+      "subtype": "transport",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "load_and_go"
+      },
+      "tier2_patterns": [
+        "(?i)(load and go|load.?n.?go|transport|go.*hospital|rapid.*transport|lights.*siren|scene time|OR|trauma center)"
+      ],
+      "applicable_if": {
+        "non_transport_agency": false
+      },
+      "done_feedback": "Load-and-go decision made correctly — scene time minimized; multi-system trauma with decompensated shock requires definitive care at a trauma center.",
+      "missed_feedback": "Load-and-go not decided or scene time excessive — multi-system pediatric trauma with decompensated shock has a narrow survival window; scene time must be < 10 minutes.",
+      "clinical_rationale": "Definitive hemorrhage control (surgery) is the only treatment for decompensated traumatic hemorrhage; BLS cannot reverse shock — only transport to the OR can.",
+      "common_error": "Attempting to stabilize the patient fully on scene before transport — stay-and-play in multi-system trauma with shock increases mortality; load-and-go with on-the-way care is correct."
+    },
+    {
+      "id": "peds_trauma_05_auto_ped.scope_no_iv_fluids",
+      "description": "IV fluid resuscitation not attempted — outside BLS scope; definitive hemorrhage control requires surgical intervention",
+      "subtype": "intervention",
+      "category": "scope_adherence",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [
+        "MFR",
+        "EMT"
+      ],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "absence_check",
+        "absence_intervention_key": "iv_fluid_resuscitation"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "IV fluid resuscitation correctly avoided — outside BLS scope; definitive hemorrhage control is surgical.",
+      "missed_feedback": "IV fluid resuscitation attempted — outside BLS scope; permissive hypotension and surgical hemorrhage control are the evidence-based management strategy.",
+      "clinical_rationale": "Aggressive IV fluid resuscitation in hemorrhagic shock dilutes clotting factors and worsens coagulopathy without treating the source; BLS should prioritize transport."
+    },
+    {
+      "id": "peds_trauma_05_auto_ped.scope_bvm_required",
+      "description": "BVM ventilation initiated for inadequate respirations — required BLS airway intervention for agonal breathing with SpO2 88%",
+      "subtype": "intervention",
+      "category": "protocols_treatment",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "bvm"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "BVM ventilation initiated for inadequate respirations — required BLS intervention when respiratory rate and tidal volume are insufficient.",
+      "missed_feedback": "BVM ventilation not initiated — RR 4 with agonal breathing is an immediate life threat requiring positive pressure ventilation; O2 by mask alone is insufficient.",
+      "clinical_rationale": "Inadequate respirations (rate < 8 or agonal) require positive pressure ventilation; bag-valve-mask with 100% O2 is the BLS-level positive pressure device."
+    }
+  ]
+}

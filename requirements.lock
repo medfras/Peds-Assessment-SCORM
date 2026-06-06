@@ -1,0 +1,176 @@
+aiofiles==23.2.1
+    # via -r requirements.txt
+annotated-doc==0.0.4
+    # via fastapi
+annotated-types==0.7.0
+    # via pydantic
+anyio==4.13.0
+    # via
+    #   groq
+    #   httpx
+    #   starlette
+    #   watchfiles
+async-lru==2.0.4
+    # via -r requirements.txt
+async-timeout==5.0.1
+    # via asyncpg
+asyncpg==0.29.0
+    # via -r requirements.txt
+bcrypt==3.2.2
+    # via
+    #   -r requirements.txt
+    #   passlib
+certifi==2026.4.22
+    # via
+    #   httpcore
+    #   httpx
+    #   requests
+    #   sentry-sdk
+cffi==2.0.0
+    # via
+    #   bcrypt
+    #   cryptography
+charset-normalizer==3.4.7
+    # via requests
+click==8.3.3
+    # via uvicorn
+cryptography==48.0.0
+    # via google-auth
+deprecated==1.3.1
+    # via limits
+distro==1.9.0
+    # via groq
+fastapi==0.135.1
+    # via
+    #   -r requirements.txt
+    #   sentry-sdk
+google-api-core==2.30.3
+    # via google-cloud-texttospeech
+google-auth==2.52.0
+    # via
+    #   google-api-core
+    #   google-cloud-texttospeech
+google-cloud-texttospeech==2.36.0
+    # via -r requirements.txt
+googleapis-common-protos==1.75.0
+    # via
+    #   google-api-core
+    #   grpcio-status
+greenlet==3.5.0
+    # via sqlalchemy
+groq==0.13.1
+    # via -r requirements.txt
+grpcio==1.80.0
+    # via
+    #   google-api-core
+    #   google-cloud-texttospeech
+    #   grpcio-status
+grpcio-status==1.80.0
+    # via google-api-core
+h11==0.16.0
+    # via
+    #   httpcore
+    #   uvicorn
+httpcore==1.0.9
+    # via httpx
+httptools==0.7.1
+    # via uvicorn
+httpx==0.27.2
+    # via
+    #   -r requirements.txt
+    #   groq
+idna==3.15
+    # via
+    #   anyio
+    #   httpx
+    #   requests
+limits==5.8.0
+    # via slowapi
+packaging==26.2
+    # via limits
+passlib==1.7.4
+    # via -r requirements.txt
+proto-plus==1.28.0
+    # via
+    #   google-api-core
+    #   google-cloud-texttospeech
+protobuf==6.33.6
+    # via
+    #   google-api-core
+    #   google-cloud-texttospeech
+    #   googleapis-common-protos
+    #   grpcio-status
+    #   proto-plus
+pyasn1==0.6.3
+    # via pyasn1-modules
+pyasn1-modules==0.4.2
+    # via google-auth
+pycparser==3.0
+    # via cffi
+pydantic==2.7.1
+    # via
+    #   -r requirements.txt
+    #   fastapi
+    #   groq
+    #   pydantic-settings
+pydantic-core==2.18.2
+    # via pydantic
+pydantic-settings==2.2.1
+    # via -r requirements.txt
+pyjwt==2.12.1
+    # via -r requirements.txt
+python-dotenv==1.2.2
+    # via
+    #   -r requirements.txt
+    #   pydantic-settings
+    #   uvicorn
+python-multipart==0.0.28
+    # via -r requirements.txt
+pyyaml==6.0.3
+    # via uvicorn
+requests==2.34.2
+    # via google-api-core
+sentry-sdk==2.60.0
+    # via -r requirements.txt
+slowapi==0.1.9
+    # via -r requirements.txt
+sniffio==1.3.1
+    # via
+    #   groq
+    #   httpx
+sqlalchemy==2.0.30
+    # via -r requirements.txt
+starlette==1.0.0
+    # via fastapi
+structlog==24.4.0
+    # via -r requirements.txt
+tenacity==8.3.0
+    # via -r requirements.txt
+typing-extensions==4.15.0
+    # via
+    #   anyio
+    #   fastapi
+    #   groq
+    #   grpcio
+    #   limits
+    #   pydantic
+    #   pydantic-core
+    #   sqlalchemy
+    #   starlette
+    #   typing-inspection
+typing-inspection==0.4.2
+    # via fastapi
+urllib3==2.7.0
+    # via
+    #   requests
+    #   sentry-sdk
+uvicorn==0.29.0
+    # via -r requirements.txt
+uvloop==0.22.1
+    # via uvicorn
+watchfiles==1.1.1
+    # via uvicorn
+websockets==16.0
+    # via uvicorn
+wrapt==2.1.2
+    # via deprecated

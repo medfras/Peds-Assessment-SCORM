@@ -1,0 +1,142 @@
+{
+  "title": "CPR Mastery: Key Metrics",
+  "subtitle": "Match each clinical context to the correct AHA CPR metric.",
+  "rounds": 5,
+  "pairs_per_round": 2,
+  "round_nudges": [
+    {
+      "prompt": "What changes the C:V ratio in the field?",
+      "text": "Two things shift the ratio: the number of rescuers and the patient's age. Single rescuer always uses 30:2 regardless of age. Two rescuers with a child or infant switch to 15:2 — because pediatric arrest is usually respiratory, and more frequent ventilations improve outcomes. Advanced airway placement eliminates the ratio entirely: switch to continuous compressions at 100–120/min with asynchronous ventilations — 1 breath every 6 seconds for adults, or 1 breath every 2–3 seconds for infants and children."
+    },
+    {
+      "prompt": "When do pauses in compressions actually matter most?",
+      "text": "Every pause drops coronary perfusion pressure toward zero — and it takes 15–20 seconds of compressions to rebuild it. The most damaging pauses are the ones that occur repeatedly: post-shock pulse checks, disorganized handoffs, extended airway attempts, and delayed AED pad placement. A chest compression fraction below 80% means the patient is spending more than 20% of resuscitation time without circulation. The analysis window and shock delivery should never exceed 10 seconds combined."
+    }
+  ],
+  "pairs": [
+    {
+      "id": "cpr_c_01",
+      "category_id": "depth_adult",
+      "category_letter": "depth_adult",
+      "category_label": "At least 2 in / 5 cm",
+      "finding": "Adult chest compression depth — allow full recoil after each",
+      "explanation": "Adequate compression depth generates sufficient intrathoracic pressure to drive blood to the coronary arteries and brain. Shallow compressions in adults — a common field error — significantly reduce coronary perfusion pressure. Full recoil is equally important: leaning on the chest between compressions keeps intrathoracic pressure elevated and reduces venous return, undermining the next compression's output.",
+      "hint": "Think about how deep you actually need to push on an adult sternum to generate meaningful cardiac output."
+    },
+    {
+      "id": "cpr_c_02",
+      "category_id": "rate",
+      "category_letter": "rate",
+      "category_label": "100–120 per minute",
+      "finding": "Target compression rate — applies to adults, children, and infants",
+      "explanation": "This rate window exists because both extremes are harmful. Slower than 100/min reduces the number of compressions delivered per minute, directly cutting cardiac output. Faster than 120/min shortens diastolic filling time and degrades compression quality — rescuers also tend to become shallow when fatiguing at high rates. The same rate target applies across all ages, making it one fewer variable to track in a chaotic arrest.",
+      "hint": "The rate target is the same whether you are compressing an infant chest or an adult sternum — what range does the AHA specify?"
+    },
+    {
+      "id": "cpr_c_03",
+      "category_id": "recoil",
+      "category_letter": "recoil",
+      "category_label": "Full recoil between compressions",
+      "finding": "Allow the chest to fully decompress — do not lean — to restore venous return",
+      "explanation": "The heart fills during the decompression phase, not during the compression itself. Incomplete recoil — often from rescuer fatigue or leaning — keeps the chest partially compressed, elevating right atrial pressure and impeding venous return. The result is reduced preload and lower output with each subsequent compression. Mechanical CPR devices eliminate this problem; human rescuers must actively release pressure after each compression.",
+      "hint": "Ask what happens to cardiac filling if the chest never fully returns to its resting position between pushes."
+    },
+    {
+      "id": "cpr_c_04",
+      "category_id": "ratio_30_2",
+      "category_letter": "ratio_30_2",
+      "category_label": "30:2",
+      "finding": "All single-rescuer CPR (all ages); two-rescuer adult CPR; before advanced airway in all patients",
+      "explanation": "The 30:2 ratio applies broadly to keep the algorithm simple for single rescuers and to preserve it for two-rescuer adults. Thirty compressions before a brief ventilation pause balances perfusion pressure (sustained by more compressions) against the respiratory needs of the patient (served by ventilations). Before an advanced airway is placed, every ventilation requires a pause — so the ratio determines how often you stop compressions.",
+      "hint": "30:2 is the default across the widest range of situations — consider when it does NOT apply instead."
+    },
+    {
+      "id": "cpr_c_05",
+      "category_id": "ratio_15_2",
+      "category_letter": "ratio_15_2",
+      "category_label": "15:2",
+      "finding": "Two-rescuer CPR for infants and children — before advanced airway",
+      "explanation": "Pediatric cardiac arrest is frequently respiratory in origin, meaning the heart stopped because the airway failed — not because the heart failed electrically. More frequent ventilations (every 15 compressions rather than every 30) are therefore clinically justified. This ratio requires two rescuers because one compressor cannot safely pause, ventilate, and resume quality compressions at this frequency. Once an advanced airway is placed, the ratio is abandoned in favor of continuous compressions.",
+      "hint": "Think about what causes most pediatric arrests and how that changes how often you need to ventilate."
+    },
+    {
+      "id": "cpr_c_06",
+      "category_id": "post_airway_rate_adult",
+      "category_letter": "post_airway_rate_adult",
+      "category_label": "1 breath every 6 seconds (~10/min)",
+      "finding": "Adult patient — after advanced airway placed, deliver ventilations asynchronously without pausing compressions",
+      "explanation": "Once a cuffed endotracheal tube or supraglottic airway is in place in an adult, ventilations can be delivered asynchronously — without stopping compressions. One breath every 6 seconds equals approximately 10 breaths per minute, which prevents hyperventilation (a common error that increases intrathoracic pressure and reduces venous return). Note: the pediatric post-airway target is higher — 1 breath every 2–3 seconds — because most pediatric arrests are respiratory in origin.",
+      "hint": "After you secure an adult airway with an advanced device, what is the AHA target ventilation rate?"
+    },
+    {
+      "id": "cpr_c_10",
+      "category_id": "post_airway_rate_peds",
+      "category_letter": "post_airway_rate_peds",
+      "category_label": "1 breath every 2–3 seconds (~20–30/min)",
+      "finding": "Infant or child — after advanced airway placed, higher ventilation rate reflects respiratory origin of most pediatric arrests",
+      "explanation": "For infants and children, the AHA specifies approximately 20–30 breaths per minute after advanced airway placement — roughly 1 breath every 2–3 seconds. This is higher than the adult target of 10 breaths/min (1 every 6 sec) because pediatric arrest is predominantly respiratory: the lungs failed before the heart. Compressions continue uninterrupted; the increased ventilation rate serves the primary pathophysiology. Hyperventilation remains harmful — faster than 30/min raises intrathoracic pressure and reduces venous return.",
+      "hint": "Pediatric arrest is usually respiratory — does the post-airway ventilation rate match adult targets, or is it higher?"
+    },
+    {
+      "id": "cpr_c_07",
+      "category_id": "ccf",
+      "category_letter": "ccf",
+      "category_label": "Greater than 80%",
+      "finding": "Target chest compression fraction — minimize hands-off time throughout the resuscitation",
+      "explanation": "Chest compression fraction (CCF) measures the proportion of total resuscitation time during which compressions are actually in progress. Achieving CCF greater than 80% is associated with improved survival. Every unnecessary pause — post-shock pulse check, prolonged airway attempt, disorganized team handoff — reduces CCF. High-performing teams rehearse seamless transitions precisely because those transitions are where CCF is lost.",
+      "hint": "CCF is a fraction — what percentage of total arrest time should compressions be happening?"
+    },
+    {
+      "id": "cpr_c_08",
+      "category_id": "aed_pause",
+      "category_letter": "aed_pause",
+      "category_label": "Less than 10 seconds",
+      "finding": "Maximum pause allowed for AED analysis and shock delivery",
+      "explanation": "Coronary perfusion pressure drops toward zero within seconds of stopping compressions. Analysis requires motion to stop — but the window must be as brief as possible. AED devices are optimized to analyze quickly; the limiting factor is almost always team behavior: checking pulse post-shock, delayed button press, or waiting for a 'clear' call. The 10-second ceiling applies to the entire interruption, not just the analysis itself.",
+      "hint": "What is the outer time limit the AHA sets for the analysis and shock pause — measure from when you stop compressions to when you restart them?"
+    },
+    {
+      "id": "cpr_c_09",
+      "category_id": "depth_peds",
+      "category_letter": "depth_peds",
+      "category_label": "At least 1/3 AP diameter",
+      "finding": "Compression depth for infants (~1.5 in / 4 cm) and children (~2 in / 5 cm)",
+      "explanation": "Pediatric chest walls are smaller and more compliant than adults, so absolute depth targets are lower — but the physiologic principle is the same: you must compress deeply enough to generate meaningful intrathoracic pressure. The 'at least one-third AP diameter' rule accounts for size variation across the infant and child age spectrum. For infants this approximates 1.5 inches (4 cm); for children, approximately 2 inches (5 cm) — though individual anatomy varies.",
+      "hint": "Pediatric depth targets are expressed as a fraction of the chest's front-to-back measurement — what fraction does the AHA specify?"
+    }
+  ],
+  "action_cases": [
+    {
+      "id": "cpr_action_01",
+      "presentation": "You arrive to a 4-year-old in cardiac arrest. Your partner is already ventilating with a BVM. No advanced airway is in place. What compression-to-ventilation ratio do you use?",
+      "choices": ["15:2 — two-rescuer pediatric CPR before advanced airway", "30:2 — standard ratio regardless of age or rescuers", "Continuous compressions at 100–120/min with no ventilations", "10:1 — modified ratio for children under 8"],
+      "correct": "15:2 — two-rescuer pediatric CPR before advanced airway",
+      "feedback": "With two rescuers and no advanced airway in a child, the AHA specifies 15:2. Pediatric arrests are commonly respiratory in origin, making more frequent ventilations clinically important. Once an advanced airway is placed in a child or infant, the ratio is abandoned in favor of continuous compressions with approximately 1 breath every 2–3 seconds (~20–30/min) — a higher rate than adults because the respiratory origin of the arrest persists.",
+      "mistake_tag": "cpr_metric_confusion"
+    },
+    {
+      "id": "cpr_action_02",
+      "presentation": "Your team successfully places a King LT supraglottic airway on an adult cardiac arrest patient. How does your ventilation and compression strategy change?",
+      "choices": ["Switch to continuous compressions — deliver 1 breath every 6 seconds asynchronously", "Continue 30:2 — ratio does not change until ETT is confirmed", "Stop compressions for 2 seconds with each ventilation to confirm chest rise", "Increase ventilation rate to 20 breaths per minute to compensate for compressions"],
+      "correct": "Switch to continuous compressions — deliver 1 breath every 6 seconds asynchronously",
+      "feedback": "Advanced airway placement eliminates the need to pause compressions for ventilation. Continuous compressions improve chest compression fraction. One breath every 6 seconds prevents hyperventilation, which raises intrathoracic pressure and reduces venous return. This change applies to any supraglottic airway or cuffed ETT, not only endotracheal intubation.",
+      "mistake_tag": "cpr_metric_confusion"
+    },
+    {
+      "id": "cpr_action_03",
+      "presentation": "During CPR on an adult patient, your supervisor observes that your compression depth is consistently 1.5 inches. They ask you to correct it. What is the correct target?",
+      "choices": ["At least 2 inches (5 cm) — and allow full chest recoil after each compression", "1.5–2 inches is acceptable for all adult patients", "Depth does not matter as long as rate is 100–120/min", "At least 3 inches (7.5 cm) to ensure adequate perfusion"],
+      "correct": "At least 2 inches (5 cm) — and allow full chest recoil after each compression",
+      "feedback": "The AHA minimum adult compression depth is 2 inches (5 cm), with an upper limit of 2.4 inches (6 cm) to avoid injury. Shallow compressions are one of the most common CPR quality errors and directly reduce coronary perfusion pressure. Full recoil after each compression is equally critical — leaning on the chest between compressions prevents the heart from refilling.",
+      "mistake_tag": "cpr_metric_confusion"
+    },
+    {
+      "id": "cpr_action_04",
+      "presentation": "After delivering a shock, your partner says 'let's check a pulse.' Your monitor shows flat line. How long should you pause compressions before resuming?",
+      "choices": ["Resume CPR immediately — limit any pause to less than 10 seconds total", "Check pulse for up to 30 seconds to confirm ROSC before resuming", "Wait 2 minutes before resuming to allow the heart to reorganize", "Only resume if the rhythm changes — flat line means no CPR needed"],
+      "correct": "Resume CPR immediately — limit any pause to less than 10 seconds total",
+      "feedback": "The AHA limits the peri-shock pause to less than 10 seconds — from when compressions stop for analysis to when they resume after the shock decision. A routine pulse check after every shock dramatically increases hands-off time. Resume CPR immediately after shock or no-shock decision; check rhythm after the next two-minute cycle. Flat line after shock is expected and does not indicate CPR should stop.",
+      "mistake_tag": "cpr_metric_confusion"
+    }
+  ]
+}

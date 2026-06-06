@@ -1,0 +1,100 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Scenario-facing Michigan trauma protocol composite for pediatric head injury with spinal-motion-restriction decision-making. Source material: Michigan MDHHS 2-2 General Trauma, 2-6 Spinal Injury Assessment, and 2-12 Head Injury Moderate and Severe TBI. Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_all_head_spine_trauma",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "All",
+  "level_display": "All Levels",
+  "jurisdiction": "Michigan",
+  "condition": "Head Injury with Spinal Motion Restriction Assessment",
+  "version": "2025-03-31",
+  "protocol_reference": "Michigan Trauma and Environmental Protocols Sections 2-2 General Trauma, 2-6 Spinal Injury Assessment, and 2-12 Head Injury Moderate and Severe TBI",
+  "purpose": "Guide assessment, stabilization, spinal-motion-restriction decision-making, prevention of secondary brain injury, and rapid trauma transport for patients with head injury and possible spine injury.",
+  "sections": [
+    {
+      "title": "General Trauma Priorities",
+      "reference": "Michigan Protocol 2-2: General Trauma",
+      "points": [
+        "Follow General Pre-Hospital Care-Treatment Protocol",
+        "Determine level of consciousness and identify immediate life threats",
+        "Stabilize the spinal column while opening the airway when mechanism suggests possible spine injury",
+        "Control major external bleeding per Bleeding Control protocol",
+        "Assess and treat airway, breathing, circulation, disability/neurologic status, and exposure/environmental concerns without delaying transport",
+        "Initiate transport according to Adult/Pediatric Trauma Triage or applicable MCA Transport Protocol and alert the receiving hospital as soon as appropriate"
+      ]
+    },
+    {
+      "title": "Head Injury and Neurologic Assessment",
+      "reference": "Michigan Protocol 2-12: Head Injury Moderate and Severe TBI",
+      "points": [
+        "Use head injury guidance when physical trauma has mechanism for brain injury plus altered mental status, GCS less than 15, seizure, persistent neurologic abnormality, or decreased responsiveness",
+        "Assess and trend GCS, mental status, pupils, motor/sensory findings, vomiting, seizure activity, and signs of worsening neurologic status",
+        "Place the patient on continuous oxygen saturation monitoring and reassess blood pressure frequently",
+        "Check blood glucose and treat hypoglycemia when indicated",
+        "Avoid hypotension, hypoxia, and inappropriate ventilation because these worsen secondary brain injury",
+        "Pre-notify the receiving facility with mechanism, GCS/mental status, oxygenation, ventilation status, blood pressure trends, neurologic findings, hemorrhage control, and treatments provided"
+      ]
+    },
+    {
+      "title": "Airway, Oxygenation, and Ventilation",
+      "reference": "Michigan Protocol 2-12: TBI — Airway and Ventilation",
+      "points": [
+        "Administer high-flow oxygen for moderate or severe head injury and maintain SpO2 at or above 90%",
+        "Avoid positive-pressure ventilation whenever possible",
+        "If hypoxia persists despite high-flow oxygen, reposition the airway and reevaluate",
+        "If airway repositioning does not restore SpO2 to at least 90%, or ventilatory effort is inadequate, use two-person BVM with oxygen and basic airway adjuncts",
+        "When ventilating, maintain normal ventilation and avoid hypo- or hyperventilation",
+        "Use continuous quantitative ETCO2 when positive-pressure ventilation is used; target ETCO2 35-45 mmHg when available"
+      ]
+    },
+    {
+      "title": "Spinal Injury Assessment and Precautions",
+      "reference": "Michigan Protocol 2-6: Spinal Injury Assessment",
+      "points": [
+        "A mechanism with potential for spine injury requires a spine injury clinical assessment",
+        "Assess for altered mental status, intoxicants, distracting injury, motor and/or sensory deficit, and spine pain or tenderness",
+        "If any clinical criterion is present, or the assessment cannot be completed, the patient has a positive spine injury assessment",
+        "For a positive spine injury assessment, maintain spinal precautions during movement and transport per Spinal Precautions procedure",
+        "Use patient-centered spinal motion restriction and avoid unnecessary immobilization when assessment is negative and local protocol criteria are met"
+      ]
+    },
+    {
+      "title": "Transport Considerations",
+      "reference": "Michigan Protocols 2-2 and 2-12: Trauma Transport",
+      "points": [
+        "Do not delay transport for interventions that can be performed en route",
+        "Use appropriate trauma destination guidance and ALS rendezvous when indicated by patient condition or local dispatch plan",
+        "Communicate mechanism, neurologic status/GCS, pupil findings, spinal assessment, vital trends, treatments, and patient response in handoff"
+      ]
+    }
+  ],
+  "mca_selections_required": [],
+  "key_drugs": [],
+  "deterioration_flags": [
+    "Declining GCS, new focal neurologic deficit, unequal or sluggish pupils, repeated vomiting, seizure, or worsening headache — expedite trauma transport and ALS handoff",
+    "SpO2 below 90% despite high-flow oxygen — reposition airway; if unresolved, begin two-person BVM with oxygen and airway adjuncts",
+    "Positive-pressure ventilation being used without ETCO2 monitoring — add continuous quantitative ETCO2 when available",
+    "Systolic blood pressure below age target or trending down — manage shock and avoid hypotension",
+    "Motor/sensory deficit, altered mental status, distracting injury, intoxication, or spine pain/tenderness after a concerning mechanism — positive spine assessment; maintain precautions"
+  ],
+  "scope_notes": [
+    "Trauma primary assessment, bleeding control, GCS, pupil assessment, spinal injury clinical assessment, oxygen administration, airway repositioning, and basic airway adjuncts: all levels",
+    "Two-person BVM ventilation and spinal motion restriction during movement and transport: per scope and agency practice",
+    "ETCO2 monitoring, vascular access, fluid bolus, and advanced airway: per provider level, MCA selection, and available equipment",
+    "Rapid transport and early receiving-facility notification are protocol priorities and should not be delayed for nonessential scene care"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "gcs_assessment",
+      "head_injury",
+      "neurological_assessment",
+      "pediatric_trauma",
+      "spinal_motion_restriction",
+      "trauma",
+      "traumatic_brain_injury"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

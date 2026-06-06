@@ -1,0 +1,74 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-16 Licensure Level Requirement for Attendant (Revised 12/27/2022, MDHHS Reviewed 2022). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_licensure_level_requirement_attendant",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (All EMS Levels — MCA Optional)",
+  "jurisdiction": "Michigan",
+  "condition": "Licensure Level Requirement for Attendant in Charge",
+  "version": "2022-12-27",
+  "protocol_reference": "Michigan System Protocol Section 8-16: Licensure Level Requirement for Attendant — MDHHS Approved 12/27/2022",
+
+  "purpose": "MCA OPTIONAL. Govern the minimum licensure level required for the Attendant in Charge (AIC) of an EMS unit within an MCA's jurisdiction. Michigan law defines minimum AIC requirements; MCAs may adopt higher standards. The AIC is responsible for patient care decisions and crew supervision during an EMS response.",
+
+  "sections": [
+    {
+      "title": "Attendant in Charge (AIC) Responsibilities",
+      "reference": "Michigan Protocol 8-16: AIC — Responsibilities",
+      "points": [
+        "The AIC is the licensed EMS provider responsible for patient care on the responding unit",
+        "AIC responsibilities include: patient assessment and treatment decisions, crew supervision, documentation accountability, and communication with medical control",
+        "The AIC must be the highest-licensed provider on the unit, or as otherwise defined by MCA protocol",
+        "The AIC is responsible for ensuring that all care provided on the unit is within their scope and the scope of their crew members"
+      ]
+    },
+    {
+      "title": "Minimum AIC Licensure",
+      "reference": "Michigan Protocol 8-16: AIC — Minimum Licensure",
+      "points": [
+        "Michigan minimum: the AIC must hold a current Michigan EMS provider license at the appropriate level for the unit type",
+        "BLS unit: AIC must be licensed at minimum EMT level",
+        "ALS unit: AIC must be licensed at minimum Paramedic level",
+        "LALS unit: AIC must be licensed at minimum Specialist (AEMT) level",
+        "MCAs may adopt higher AIC licensure requirements within their jurisdiction"
+      ]
+    },
+    {
+      "title": "MCA Higher Standards",
+      "reference": "Michigan Protocol 8-16: AIC — MCA Standards",
+      "points": [
+        "MCA OPTIONAL — MCAs may establish higher licensure requirements for AIC within their jurisdiction",
+        "MCAs may require: Paramedic as AIC on all ALS calls regardless of response type, specific credentialing for interfacility AIC roles, or continuous AIC training/recertification requirements",
+        "Higher MCA standards must be documented in MCA protocols and communicated to all licensed EMS agencies within the MCA's jurisdiction"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "MCA AIC Licensure Standard",
+      "description": "MCA may adopt higher AIC licensure standards beyond the Michigan minimum",
+      "options": [
+        "Michigan minimum standards adopted (EMT for BLS; Specialist for LALS; Paramedic for ALS)",
+        "MCA higher standard adopted — specify in MCA protocols"
+      ],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [],
+
+  "scope_notes": [
+    "MCA OPTIONAL for higher standards — Michigan minimum applies by default",
+    "AIC: highest-licensed provider on unit; responsible for patient care decisions",
+    "BLS AIC minimum: EMT",
+    "LALS AIC minimum: Specialist (AEMT)",
+    "ALS AIC minimum: Paramedic",
+    "MCA may adopt higher standards — document and communicate to agencies",
+    "AIC responsible for ensuring all care is within scope of crew members"
+  ]
+}

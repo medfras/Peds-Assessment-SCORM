@@ -1,0 +1,66 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-13 Electronic Records and EMS Information System (Revised 5/30/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_electronic_records_ems_information_system",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Electronic Records and EMS Information System",
+  "version": "2023-05-30",
+  "protocol_reference": "Michigan System Protocol Section 8-13: Electronic Records and EMS Information System — MDHHS Approved 5/30/2023",
+
+  "purpose": "Govern EMS electronic patient care record (ePCR) and EMS information system (EMSIS) requirements for Michigan EMS providers. All Michigan licensed EMS agencies are required to submit ePCR data to MDHHS through the Michigan EMSIS. Data submission supports quality improvement, public health surveillance, and system performance evaluation.",
+
+  "sections": [
+    {
+      "title": "ePCR Requirements",
+      "reference": "Michigan Protocol 8-13: ePCR — Requirements",
+      "points": [
+        "All EMS agencies licensed in Michigan are required to maintain and submit ePCR data",
+        "ePCR must be completed for every EMS response — including responses that do not result in transport",
+        "ePCR data elements must conform to NEMSIS (National EMS Information System) standards as adopted by Michigan EMSIS",
+        "ePCRs must be completed within the timeframe specified by the MCA (see Documentation Protocol, Section 7-16)",
+        "System downtime: paper PCR must be available as a backup; paper records must be transcribed into ePCR when system is restored"
+      ]
+    },
+    {
+      "title": "EMSIS Data Submission",
+      "reference": "Michigan Protocol 8-13: EMSIS — Submission",
+      "points": [
+        "Michigan EMSIS: all Michigan licensed EMS agencies must submit ePCR data to the Michigan EMSIS",
+        "Data submission must be compliant with Michigan EMSIS data submission standards",
+        "Agencies must submit data in a timely manner — delays in submission may affect MCA QI processes and MDHHS reporting",
+        "MDHHS uses EMSIS data for: state EMS system oversight, quality improvement, and public health surveillance"
+      ]
+    },
+    {
+      "title": "Data Security and Patient Privacy",
+      "reference": "Michigan Protocol 8-13: ePCR — Data Security",
+      "points": [
+        "ePCR data is protected health information (PHI) — must be handled per HIPAA and Michigan privacy laws",
+        "Access to ePCR systems must be restricted to authorized personnel",
+        "ePCR systems must have audit logs tracking who accessed patient records and when",
+        "Lost or stolen devices containing ePCR data must be reported per agency breach notification policies",
+        "Refer to Section 8-14: Protected Health Information Protocol for additional PHI requirements"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "ePCR required for every EMS response — including no-transport calls",
+    "NEMSIS-compliant data elements required",
+    "Paper backup required for system downtime; transcribe to ePCR when restored",
+    "All Michigan agencies must submit to Michigan EMSIS",
+    "ePCR is PHI — HIPAA and Michigan privacy law protections apply",
+    "Refer to Section 8-14 for additional PHI requirements"
+  ]
+}

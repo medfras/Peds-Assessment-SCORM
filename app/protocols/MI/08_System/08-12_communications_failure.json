@@ -1,0 +1,74 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-12 Communications Failure (Revised 12/27/2022, MDHHS Reviewed 2022). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_communications_failure",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Communications Failure",
+  "version": "2022-12-27",
+  "protocol_reference": "Michigan System Protocol Section 8-12: Communications Failure — MDHHS Approved 12/27/2022",
+
+  "purpose": "Govern EMS provider actions when communications with medical control or dispatch are lost or unavailable. Providers must be able to operate safely and effectively using standing protocols when communications fail. Communications failure does not suspend the obligation to provide care — providers must act in the patient's best interest using protocol-directed care.",
+
+  "sections": [
+    {
+      "title": "Response to Communications Failure",
+      "reference": "Michigan Protocol 8-12: Communications Failure — Response",
+      "points": [
+        "If unable to reach Medical Control: attempt all available communication methods (primary radio, alternate radio channel, cell phone, text, hospital landline)",
+        "Do NOT withhold time-sensitive care while attempting to restore communications — follow standing protocols",
+        "Document all communication attempts in PCR, including time of attempts and methods used",
+        "If communications cannot be restored, proceed per standing protocols for the patient's condition"
+      ]
+    },
+    {
+      "title": "Standing Order Operations During Communications Failure",
+      "reference": "Michigan Protocol 8-12: Communications Failure — Standing Orders",
+      "points": [
+        "All STANDING ORDER treatments in protocols may be performed without medical control contact",
+        "Medical control ONLINE ORDER requirements: if communications fail and an online order is required, use clinical judgment and standing protocols to guide care",
+        "Procedures requiring online medical control contact may be performed on a one-time basis without contact if: patient condition is life-threatening, all communication attempts have failed, and delay would result in patient harm",
+        "Document the circumstances fully in the PCR — the medical director will review"
+      ]
+    },
+    {
+      "title": "Transport During Communications Failure",
+      "reference": "Michigan Protocol 8-12: Communications Failure — Transport",
+      "points": [
+        "Transport to most appropriate facility based on patient condition and MCA destination protocols",
+        "Attempt to restore communications en route",
+        "Notify receiving facility of patient status and estimated arrival time — use all available communication methods",
+        "Provide full verbal report to receiving facility upon arrival"
+      ]
+    },
+    {
+      "title": "Reporting",
+      "reference": "Michigan Protocol 8-12: Communications Failure — Reporting",
+      "points": [
+        "Report communications failure to MCA and medical director as soon as possible after the call",
+        "Document the following in PCR: time communications lost, methods attempted, time communications restored or confirmed lost, all clinical decisions made under communications failure"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Life-threatening condition requiring online order and communications have failed — use standing protocol and clinical judgment; document fully; report to medical director"
+  ],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "Communications failure does NOT suspend patient care obligations",
+    "Attempt all available communication methods before declaring failure",
+    "Standing orders continue without restriction during communications failure",
+    "Online order required but comms failed: proceed clinically if life-threatening; document fully",
+    "Transport to most appropriate facility per standing protocols",
+    "Report failure to MCA and medical director after call"
+  ]
+}

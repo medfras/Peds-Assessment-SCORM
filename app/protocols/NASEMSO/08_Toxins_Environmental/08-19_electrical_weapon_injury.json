@@ -1,0 +1,144 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Toxins and Environmental: Conducted Electrical Weapon Injury (i.e., TASER). NASEMSO national provisional base.",
+  "id": "nasemso_base_toxins_and_environmental_conducted_electrical_weapon_injury_i_e_taser",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Conducted Electrical Weapon Injury (i.e., TASER)",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Conducted Electrical Weapon Injury (i.e., TASER)",
+  "aliases": [
+    "Tased"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Conducted Electrical Weapon Injury (i.e., TASER)",
+      "points": [
+        "Manage the condition that triggered the application of the conducted electrical weapon with special attention to patients meeting criterion for delirium with agitated behavior [See Agitated or Violent Patient/Behavioral Emergency Guideline ]",
+        "Ensure patient is appropriately secured or restrained with assistance of law enforcement to protect the patient and clinicians [See Agitated or Violent Patient/Behavioral Emergency Guideline]",
+        "Perform comprehensive trauma and medical assessment for injuries (e.g., from falls or altercations or concomitant medical issues)",
+        "If discharged from a distance, up to two single barbed darts (13 mm length) should be located a. Do not remove barbed dart from sensitive areas (head, neck, hands, feet, or genitals)"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Patient received either a weapon's direct-contact discharge or struck by the barbed dart of a conducted electrical weapon",
+        "Patient may have sustained fall or physical confrontation trauma",
+        "Patient may be under the influence of toxic substances and or may have underlying medical or psychiatric disorder",
+        "EXCLUSION CRITERIA:",
+        "None noted"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Scene safety and PPE; primary survey (ABCDE)",
+        "Oxygen via NRM targeting SpO2 94-98% if indicated",
+        "Position of comfort; hemorrhage control as needed",
+        "CPR/AED if patient becomes pulseless",
+        "Epinephrine auto-injector for anaphylaxis if applicable",
+        "Naloxone intranasal unit-dose for suspected opioid involvement"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Blood glucose monitoring; oral glucose if hypoglycemic and alert",
+        "12-lead ECG acquisition and transmission",
+        "CPAP for respiratory distress",
+        "Aspirin for suspected ischemic chest pain",
+        "Albuterol SVN for bronchospasm component",
+        "IV access maintenance (non-medicated)"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation",
+        "IV/IO fluid resuscitation as indicated",
+        "Waveform capnography",
+        "IV analgesics (fentanyl, morphine) per pain management protocol",
+        "IV antiemetics (ondansetron) per protocol",
+        "IV D50W/D10W for hypoglycemia"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "12-lead ECG interpretation",
+        "Endotracheal intubation for airway compromise",
+        "RSI per protocol",
+        "Advanced antidysrhythmic or hemodynamic support per specific protocol",
+        "All parenteral medications per protocol",
+        "Vasopressors for refractory hemodynamic compromise"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Before removal of the barbed dart, make sure the cartridge has been removed from the conducted electrical weapon",
+        "Patient should not be restrained in the prone, face down, or hog-tied position as respiratory compromise is a significant risk",
+        "The patient may have underlying pathology before being tased (refer to appropriate guidelines for managing the underlying medical/traumatic pathology)",
+        "Perform a comprehensive assessment with special attention looking for signs and symptoms of active medical decompensation",
+        "Transport the patient to the hospital",
+        "EMS clinicians who respond for a conducted electrical weapon patient should not perform a \"medical clearance\" for law enforcement to then take the patient to a nonmedical facility"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Conducted electrical weapon can be discharged in three fashions: a. Direct contact without the use of the darts",
+        "The device delivers 19 pulses per second with an average current per pulse of 2.1 milliamps which, in combination with toxins/drugs, patient's underlying diseases, excessive physical exertion, and trauma, may precipitate arrhythmias. Thus, consider cardiac monitoring and 12-lead EKG assessment",
+        "Drive Stun is a direct weapon two-point contact which is designed to generate pain and not incapacitate the subject. Only local muscle groups are stimulated with the Drive Stun technique",
+        "Thoroughly assess the patient for trauma as the patient may have fallen from standing or higher",
+        "Ascertain if more than one TASER' cartridge was used (by one or more officers, in effort to identify total number of possible darts and contacts)"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' If darts removed, document the removal location in the patient care report",
+        "' Physical exam trauma findings",
+        "' Cardiac rhythm and changes",
+        "' Neurologic status assessment findings"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Contact medical direction for clinical deterioration or interventions outside standard scope"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

@@ -1,0 +1,1535 @@
+{
+  "_schema": "pfd_scenario_v1",
+  "id": "peds_ams_tox_01",
+  "title": "Pediatric AMS — Suspected Opioid Exposure",
+  "display_title": "Altered Mental Status — 10-Year-Old Male",
+  "subtitle": "10-year-old male, found unresponsive at school bus loop",
+  "category": "pediatric_medical",
+  "category_display": "Pediatric Medical Assessment",
+  "turnover_target": "als",
+  "version": "1.0.0",
+  "rubric_template": "ems_standard_v1",
+  "base_patient_care_rubric": "nremt_e202_medical_v1",
+  "difficulty": "advanced",
+  "protocol": "MI/01_General_Treatments/01-7_opioid_overdose",
+  "jurisdiction": "mi_base",
+  "clinical_context": {
+    "jurisdiction": "MI",
+    "concepts": [
+      "pediatric_patient",
+      "altered_mental_status",
+      "opioid_overdose",
+      "toxins_overdose",
+      "airway_management",
+      "ventilation_support",
+      "blood_glucose"
+    ],
+    "protocol_focus": [
+      "opioid_overdose",
+      "airway_management",
+      "ventilation_support",
+      "blood_glucose"
+    ]
+  },
+  "agency_context": "",
+  "readiness_criteria": {
+    "min_minutes": 3,
+    "checks": [
+      {
+        "id": "messages",
+        "label": "5 messages sent",
+        "type": "message_count",
+        "min": 5
+      },
+      {
+        "id": "vitals",
+        "label": "Vitals assessed",
+        "type": "vitals_logged"
+      },
+      {
+        "id": "exam",
+        "label": "Exam/history obtained",
+        "type": "exam_logged"
+      },
+      {
+        "id": "treatment",
+        "label": "Treatment applied",
+        "type": "treatment_logged"
+      }
+    ]
+  },
+  "scene_entry_scoring": {
+    "ppe": {
+      "required": [
+        "gloves",
+        "eye_protection"
+      ],
+      "recommended": [
+        "mask"
+      ],
+      "missing_required_penalty": 3,
+      "missing_recommended_penalty": 1,
+      "max_score": 10
+    },
+    "pat": {
+      "expected_impression": "sick",
+      "incorrect_impression_deduction": 2
+    }
+  },
+  "lung_sound_challenge": {
+    "enabled": false
+  },
+  "chat_placeholder": "Talk to the patient, school staff, the classmate, or your partner Jordan...",
+  "chat_address_hint": "Address the patient directly, or say 'school staff', 'classmate', or 'Jordan'",
+  "debrief_lexi_hints": [
+    {
+      "label": "Next step?",
+      "msg": "What should I do next in this scenario?"
+    },
+    {
+      "label": "Why is BGL important?",
+      "msg": "Why do I need to check blood glucose in an unresponsive patient?"
+    },
+    {
+      "label": "Airway before Narcan?",
+      "msg": "Should I open the airway before giving naloxone?"
+    },
+    {
+      "label": "Narcan dose?",
+      "msg": "What is the correct naloxone dose for this patient and what route should I use?"
+    },
+    {
+      "label": "After Narcan?",
+      "msg": "The patient woke up after naloxone — what do I do next?"
+    },
+    {
+      "label": "Opioid toxidrome?",
+      "msg": "What are the classic signs of opioid toxidrome?"
+    }
+  ],
+  "objectives": [
+    "Recognize the opioid toxidrome: altered mental status + respiratory depression + pinpoint pupils in context of possible substance exposure",
+    "Systematically rule out competing differentials: check blood glucose (hypoglycemia) and sweep for DCAP-BTLS (traumatic etiology)",
+    "Manage the airway FIRST — head-tilt/chin-lift to open snoring airway before reaching for Narcan",
+    "Provide BVM-assisted ventilations for respiratory depression (RR ≤ 6) — ventilation is life-saving and must not be delayed for Narcan",
+    "Administer naloxone 2 mg intranasal (MAD atomizer) per protocol — IN is the preferred BLS route",
+    "Recognize post-naloxone agitation as expected — do not restrain pharmacologically; reassure and monitor",
+    "Monitor for re-sedation — naloxone wears off in 30–90 minutes; the opioid may still be active",
+    "Document scene details accurately for law enforcement and receiving facility — note location of foreign substance without handling it"
+  ],
+  "dispatch": {
+    "unit": "{unit}",
+    "text": "{unit}, respond to Lincoln Middle School, 4800 Coit Ave NE — bus loop, east side, for a 10-year-old male found unresponsive on a bench. School staff on scene. Unknown cause. Patient is reportedly breathing but not responsive to voice. Priority 1.",
+    "priority": "Priority 1",
+    "time": "15:17",
+    "cross_streets": "Coit Ave NE and Knapp St NE",
+    "response_time_minutes": 5
+  },
+  "scene": {
+    "description": "You arrive at the east bus loop of Lincoln Middle School. It’s 3:17 PM — dismissal rush. Students stream out of the main building. Staff are frantically waving you to a concrete bench at the far end of the loop, near the fence line. A 10-year-old boy — Elijah — is slumped forward on the bench, chin nearly to his chest, eyes closed. His face is pale and his lips have a faint gray cast. A slow, snoring sound is audible as you approach. A school aide — Ms. Nguyen — is crouched next to him with one hand on his shoulder, looking back at you with wide eyes. Another student — Tyler, about the same age — is standing nearby, arms crossed, visibly rattled. Near the chain-link fence approximately 6 feet away, you can see a small brightly colored object on the ground. You do not know what it is. Scene appears safe — no immediate hazards — but the unknown object warrants precaution. Do not approach or handle the object.",
+    "image": null,
+    "video": null,
+    "hazards": [
+      "Unknown foreign substance/object near fence — do not handle; note location for law enforcement"
+    ]
+  },
+  "patient": {
+    "pcr_demographics_deferred": true,
+    "name": "Elijah",
+    "age": 10,
+    "dob_month_day": "February 12",
+    "sex": "male",
+    "weight_kg": 33,
+    "weight_display": "73 lbs (approximately 33 kg — Broselow Gray)",
+    "chief_complaint": "Unresponsive — unknown cause; slow, snoring respirations",
+    "general_impression": "10-year-old boy slumped on a concrete bench, eyes closed, chin dropped toward his chest. Pale and diaphoretic. Slow, snoring respirations audible before you touch him — the snoring is caused by his tongue falling against the back of his pharynx from complete loss of muscle tone. No visible injuries. He does not respond when you call his name or tap his shoulder. His skin is pale and faintly moist. Lips are grayish. He is breathing — but just barely.",
+    "gcs_assessment": {
+      "e": 1,
+      "v": 1,
+      "m": 4,
+      "total": 6,
+      "rationale": "No eye opening, no verbal response, and withdrawal from painful stimulus.",
+      "challenge_description": "Elijah is slumped with eyes closed and does not respond to voice. He makes no verbal sounds. With painful stimulus, he withdraws from the stimulus but does not localize or follow commands."
+    },
+    "avpu_assessment": {
+      "value": "pain",
+      "description": "Patient does not respond to voice and withdraws from painful stimulus.",
+      "rationale": "Use AVPU = pain because the only documented response is withdrawal to painful stimulus."
+    },
+    "image": null,
+    "video": null,
+    "pat": {
+      "impression": "10-year-old boy on a bus loop bench — slumped, pale, gray lips. Snoring respirations audible at distance. No response to voice.",
+      "appearance": "Abnormal — unresponsive to verbal and tactile stimulation, limp tone, no purposeful movement. Eyes closed. No eye contact. No interaction.",
+      "work_of_breathing": "Severely abnormal — RR 6/min, markedly bradypneic. Slow, snoring, agonal-quality effort. No accessory muscle use because there is insufficient drive. Snoring indicates partial upper airway obstruction from loss of pharyngeal muscle tone.",
+      "circulation": "Abnormal — pale, diaphoretic, gray cast to lips suggesting early hypoxia. Cap refill delayed. No external bleeding. No rash or urticaria.",
+      "expected": "sick",
+      "teaching": "All three PAT components are abnormal. The snoring alone should trigger immediate airway intervention before anything else. This patient is pre-arrest without airway management. The PAT takes seconds — act on what you see: unresponsive, bradypneic, pale. Sick. Open the airway now."
+    }
+  },
+  "history": {
+    "allergies": "Unknown — no medical records on scene; Ms. Nguyen is not aware of any allergies.",
+    "medications": "Unknown — no medications reported by school staff. No medical alert bracelet visible.",
+    "pmh": "Unknown — Ms. Nguyen says Elijah is a 5th-grade student. She is not aware of any medical history. No asthma, no diabetes documented in school records that she knows of.",
+    "last_oral_intake": "Unknown. Lunch was approximately 3.5 hours ago (school lunch). Ms. Nguyen does not know if he ate anything since.",
+    "events_leading_to_call": "Ms. Nguyen was doing bus loop duty at 3:10 PM when she noticed Elijah sitting alone on the bench near the fence, slumped over. She thought he was tired at first, then realized he wasn’t moving. She shook his shoulder — no response. She called 911 immediately. Tyler, a classmate, says he saw Elijah walking near the fence earlier and picking something up off the ground. Tyler says it looked like 'a vape or one of those rainbow colored candy things.' Tyler did not see Elijah eat or use whatever he picked up. The object is still near the fence."
+  },
+  "initial_complaint": {
+    "speaker": "Ms. Nguyen",
+    "lay_summary": "I found him slumped over and I couldn't wake him up.",
+    "allowed_in_opener": true,
+    "do_not_include": [
+      "timeline",
+      "possible exposure",
+      "classmate observations",
+      "school record details",
+      "medications",
+      "allergies",
+      "diagnosis",
+      "clinical terms",
+      "treatment suggestions",
+      "negative findings",
+      "full OPQRST/SAMPLE"
+    ]
+  },
+  "history_response_map": {
+    "patient_identity": {
+      "label": "Patient identity / demographics",
+      "speaker": "Ms. Nguyen",
+      "triggers": [
+        "what is his name",
+        "what's his name",
+        "patient name",
+        "how old is he",
+        "age",
+        "date of birth",
+        "dob",
+        "birthday"
+      ],
+      "answer": "His name is Elijah. He's 10 years old. His birthday is February 12.",
+      "tags": [
+        "[[HISTORY: Patient Name=Elijah]]",
+        "[[HISTORY: Patient Age=10-year-old male]]",
+        "[[HISTORY: Patient Date of Birth=February 12]]"
+      ],
+      "notes": "Patient-scoped demographics only.",
+      "do_not_include": [
+        "weight unless asked",
+        "tox details",
+        "medical history",
+        "medications",
+        "treatment suggestions"
+      ]
+    },
+    "patient_weight": {
+      "label": "Patient weight",
+      "speaker": "Ms. Nguyen",
+      "triggers": [
+        "how much does he weigh",
+        "what does he weigh",
+        "patient weight",
+        "weight",
+        "estimated weight"
+      ],
+      "answer": "His school record lists him at about 73 pounds, around 33 kilograms.",
+      "tag": "[[HISTORY: Patient Weight=73 lbs (approximately 33 kg — Broselow Gray)]]",
+      "notes": "Patient-scoped weight only.",
+      "do_not_include": [
+        "diagnosis",
+        "treatment suggestions"
+      ]
+    },
+    "chief_concern": {
+      "label": "Broad opener / chief concern",
+      "speaker": "Ms. Nguyen",
+      "triggers": [
+        "what's going on",
+        "what happened",
+        "why did you call",
+        "how can we help",
+        "chief complaint"
+      ],
+      "answer": "He's unresponsive and breathing strangely.",
+      "tag": "[[HISTORY: Patient Chief Complaint=unresponsive with slow snoring respirations]]",
+      "notes": "Patient-scoped complaint only.",
+      "do_not_include": [
+        "medication exposure details",
+        "diagnosis",
+        "treatment suggestions"
+      ]
+    }
+  },
+  "vitals": {
+    "baseline": {
+      "hr": {
+        "label": "Heart Rate",
+        "value": 52,
+        "unit": "bpm",
+        "display": "52 bpm — bradycardic"
+      },
+      "rr": {
+        "label": "Respirations",
+        "value": 6,
+        "unit": "/min",
+        "display": "6/min — severely bradypneic, snoring quality"
+      },
+      "spo2": {
+        "label": "SpO2",
+        "value": 82,
+        "unit": "%",
+        "display": "82% (room air, pre-airway intervention)"
+      },
+      "bp": {
+        "label": "Blood Pressure",
+        "value": "88/56",
+        "unit": "mmHg",
+        "display": "88/56 mmHg — hypotensive (age-appropriate normal ~100/64)"
+      },
+      "temp": {
+        "label": "Temperature",
+        "value": 97.8,
+        "unit": "°F",
+        "display": "97.8°F — low-normal (mild hypothermia from CNS depression)"
+      },
+      "gcs": {
+        "label": "GCS",
+        "value": 6,
+        "unit": "/15",
+        "display": "6 (E1V1M4) — no eye opening, no verbal, withdraws to pain"
+      },
+      "skin_color": {
+        "label": "Skin",
+        "value": "Pale, diaphoretic, faint gray cast to lips — no rash, no urticaria, no visible trauma",
+        "unit": ""
+      },
+      "cap_refill": {
+        "label": "Cap Refill",
+        "value": 3.5,
+        "unit": "sec",
+        "display": "3.5 seconds — delayed"
+      },
+      "pupils": {
+        "label": "Pupils",
+        "value": "2 mm bilateral, equal, minimally reactive to light — pinpoint",
+        "unit": ""
+      },
+      "lung_sounds": {
+        "label": "Lung Sounds",
+        "value": "Shallow, slow movement bilaterally — no wheeze, no crackles; primary finding is severely diminished rate and depth",
+        "unit": ""
+      },
+      "work_of_breathing": {
+        "label": "Work of Breathing",
+        "value": "Minimal effort — agonal-quality slow respiratory drive; partial upper airway obstruction causing snoring; no accessory muscle use",
+        "unit": ""
+      },
+      "blood_glucose": {
+        "label": "Blood Glucose",
+        "value": "95 mg/dL",
+        "unit": "mg/dL",
+        "display": "95 mg/dL — normal (rules out hypoglycemia as primary cause)"
+      },
+      "dcap_btls_head_neck": {
+        "label": "DCAP-BTLS Head/Neck",
+        "value": "No deformity, contusions, abrasions, punctures, burns, tenderness, lacerations, or swelling noted to head, face, or cervical spine. No midline cervical tenderness. No evidence of traumatic mechanism.",
+        "unit": ""
+      }
+    },
+    "deterioration": {
+      "note": "Without airway management and/or ventilatory support, respiratory depression progresses to apnea and hypoxic cardiac arrest within 2–4 minutes. SpO2 falls rapidly below 75%; bradycardia worsens to PEA arrest. Opioid-induced CNS depression continues to deepen without reversal agent.",
+      "rates": {
+        "rr": -0.5,
+        "spo2": -2.0,
+        "gcs": -0.4,
+        "hr": -1.5,
+        "cap_refill": 0.15
+      },
+      "caps": {
+        "rr": {
+          "max": 6,
+          "min": 0
+        },
+        "spo2": {
+          "min": 60,
+          "max": 100
+        },
+        "gcs": {
+          "min": 3,
+          "max": 15
+        },
+        "hr": {
+          "min": 20,
+          "max": 60
+        },
+        "cap_refill": {
+          "max": 6.0,
+          "min": 1.0
+        }
+      },
+      "string_thresholds": {
+        "skin_color": [
+          {
+            "gcs_below": 5,
+            "value": "Ashen, profusely diaphoretic — cyanotic tinge around lips worsening; impending cardiorespiratory arrest"
+          },
+          {
+            "gcs_below": 4,
+            "value": "Cyanotic — central cyanosis to lips and fingernail beds; agonal breathing"
+          }
+        ],
+        "work_of_breathing": [
+          {
+            "rr_below": 4,
+            "value": "Near-apneic — one gasping effort every 15–20 seconds; BVM ventilation is immediately life-saving"
+          },
+          {
+            "rr_below": 2,
+            "value": "Apneic — no spontaneous respiratory effort; BVM ventilation required"
+          }
+        ]
+      }
+    },
+    "interventions": {
+      "head_tilt_chin_lift": {
+        "label": "Head-Tilt / Chin-Lift Airway Maneuver",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "head.?tilt",
+          "chin.?lift",
+          "tilt.*head",
+          "lift.*chin",
+          "open.*airway",
+          "airway.*maneuver",
+          "manual.*airway",
+          "reposition.*head",
+          "open his airway",
+          "airway open",
+          "head back",
+          "extend.*neck",
+          "sniffing.*position"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 5,
+            "rate_modifier": 0.7
+          },
+          "rr": {
+            "immediate_change": 1,
+            "rate_modifier": 0.8
+          }
+        },
+        "notes": "Head-tilt/chin-lift relieves partial upper airway obstruction from tongue falling against pharynx. Snoring resolves with proper positioning. This is the mandatory first step — airway before everything. If C-spine injury is suspected, use jaw thrust instead (jaw_thrust key).",
+        "requires_popup": false
+      },
+      "jaw_thrust": {
+        "label": "Jaw Thrust Airway Maneuver",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "jaw.?thrust",
+          "thrust.*jaw",
+          "modified jaw",
+          "c.?spine.*airway"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 5,
+            "rate_modifier": 0.7
+          },
+          "rr": {
+            "immediate_change": 1,
+            "rate_modifier": 0.8
+          }
+        },
+        "notes": "Jaw thrust is appropriate if C-spine mechanism is suspected. Same airway benefit as head-tilt/chin-lift without neck extension. C-spine precaution is optional here — no confirmed traumatic mechanism, but DCAP-BTLS negative does not completely exclude spinal injury.",
+        "requires_popup": false
+      },
+      "bvm": {
+        "label": "BVM ventilation",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "\\bbvm\\b",
+          "bag.?valve.?mask",
+          "bag.*mask",
+          "assist.*ventilat",
+          "ventilat.*assist",
+          "bag.*him",
+          "breathing.*for.*him",
+          "ventilat",
+          "bagging",
+          "\\bbag\\b",
+          "positive pressure",
+          "ppm.*vent"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 10,
+            "rate_modifier": 0.3
+          },
+          "rr": {
+            "immediate_change": 5,
+            "rate_modifier": 0.2
+          },
+          "gcs": {
+            "immediate_change": 0,
+            "rate_modifier": 0.9
+          },
+          "hr": {
+            "immediate_change": 3,
+            "rate_modifier": 0.8
+          }
+        },
+        "notes": "BVM delivers positive-pressure ventilation at the pediatric respiratory-failure rate: 1 breath every 3 seconds (20/min) for this child. Requires patent airway — head-tilt/chin-lift or jaw thrust should be established first. Two-person BVM preferred: one maintains mask seal and head position, one squeezes the bag. SpO2 should improve significantly within 1–2 minutes. Do NOT delay BVM ventilation for Narcan; ventilation is immediately life-saving.",
+        "requires_popup": true,
+        "popup_type": "procedure",
+        "popup_config": {
+          "procedure": "BVM-Assisted Ventilation",
+          "indication": "RR ≤ 6/min with inadequate tidal volume — respiratory depression requiring ventilatory support",
+          "procedure_steps": [
+            "Ensure airway is open: head-tilt/chin-lift (or jaw thrust if C-spine concern) established",
+            "Select pediatric BVM with appropriate mask size for a 10-year-old (medium pediatric or small adult mask)",
+            "Connect O2 tubing to BVM reservoir; set O2 flow at 15 LPM",
+            "Position behind patient's head; apply mask over nose and mouth with C-E grip technique",
+            "Deliver one breath every 3 seconds (20 ventilations/min) — use only enough volume to see chest rise",
+            "Do NOT hyperventilate — over-ventilation increases ICP and reduces venous return",
+            "Two-person BVM: partner maintains mask seal and head tilt; you squeeze bag with consistent, moderate pressure",
+            "Monitor chest rise with each ventilation — inadequate rise indicates mask leak or airway obstruction",
+            "Continue BVM ventilation; prepare to administer naloxone without stopping ventilatory support"
+          ]
+        }
+      },
+      "blood_glucose_check": {
+        "label": "Blood Glucose Check — Fingerstick (glucometer)",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "blood.*glucose",
+          "blood.*sugar",
+          "\\bbgl\\b",
+          "glucometer",
+          "fingerstick",
+          "finger.?stick",
+          "check.*sugar",
+          "check.*glucose",
+          "sugar.*level",
+          "glucose.*level",
+          "\\bdiabetic\\b",
+          "\\bhypoglycemia\\b",
+          "rule.*out.*sugar",
+          "glucos"
+        ],
+        "effects": {},
+        "notes": "Diagnostic only. Result: 95 mg/dL — normal range for a 10-year-old (70–100 mg/dL fasting). Hypoglycemia is ruled out as the primary cause of AMS.",
+        "requires_popup": false
+      },
+      "dcap_btls_head_neck": {
+        "label": "DCAP-BTLS Assessment — Head, Neck, and Cervical Spine",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "dcap.?btls",
+          "\\bdcap\\b",
+          "trauma.*head",
+          "head.*trauma",
+          "c.?spine",
+          "cervical",
+          "palpate.*neck",
+          "palpate.*head",
+          "skull",
+          "head.*to.*toe",
+          "secondary.*survey",
+          "check.*head",
+          "check.*neck",
+          "feel.*head",
+          "feel.*skull",
+          "look.*head",
+          "wounds.*head",
+          "laceration.*head",
+          "blood.*head",
+          "contusion.*head"
+        ],
+        "effects": {},
+        "notes": "Diagnostic only. Findings: No deformity, contusions, abrasions, punctures, burns, tenderness, lacerations, or swelling to head, face, or cervical spine. No midline cervical tenderness. No evidence of traumatic mechanism on physical exam. Traumatic etiology cannot be excluded entirely by exam alone, but physical exam does not support it.",
+        "requires_popup": false
+      },
+      "naloxone_in": {
+        "label": "Naloxone 2 mg intranasal (MAD atomizer)",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "naloxone",
+          "\\bnarcan\\b",
+          "nasal",
+          "intranasal",
+          "\\bin\\b.*naloxone",
+          "naloxone.*nasal",
+          "narcan.*nasal",
+          "give.*narcan",
+          "administer.*naloxone",
+          "\\batom",
+          "\\bmad\\b",
+          "2.*mg.*nasal",
+          "narcan.*spray",
+          "nasal.*spray.*narcan"
+        ],
+        "effects": {
+          "rr": {
+            "immediate_change": 6,
+            "rate_modifier": -0.5
+          },
+          "spo2": {
+            "immediate_change": 8,
+            "rate_modifier": -0.3
+          },
+          "gcs": {
+            "immediate_change": 6,
+            "rate_modifier": -0.5
+          },
+          "hr": {
+            "immediate_change": 20,
+            "rate_modifier": -0.4
+          },
+          "cap_refill": {
+            "immediate_change": -0.8,
+            "rate_modifier": 0.4
+          }
+        },
+        "notes": "Naloxone IN onset approximately 2–5 minutes (slower than IV; comparable to IM). Expect dramatic improvement in respiratory rate, GCS, and SpO2 over 3–5 minutes. Patient will arouse — may be confused, frightened, or combative. Post-naloxone agitation is expected and is NOT a reason to restrain chemically. Half-life of naloxone is 30–90 minutes; fentanyl or long-acting opioids may re-sedate the patient after naloxone wears off. Monitor continuously and maintain IV access (ALS skill). May repeat naloxone × 1 at 3–5 minutes if no response or partial response.",
+        "requires_popup": true,
+        "popup_type": "medication",
+        "popup_config": {
+          "drug": "Naloxone (Narcan)",
+          "concentration": "2 mg/2 mL (1 mg/mL)",
+          "dose": "2 mg — patient 33 kg, age 10 (≥ 5 years and ≥ 20 kg → standard adult/pediatric dose)",
+          "route": "IN — intranasal via MAD atomizer (0.5 mL per nostril × 2 nostrils = 2 mg total)",
+          "scope": "EMT/BLS — intranasal naloxone per Michigan BLS protocol",
+          "drug_ref": "MI/09_Medications/9-21_naloxone",
+          "cross_check_notice": "Confirm: opioid toxidrome criteria met (CNS depression + respiratory depression + pinpoint pupils). Confirm dose: 2 mg IN for age ≥ 5 years or weight ≥ 20 kg. Administer without stopping BVM ventilation if possible.",
+          "cross_checks": [
+            {
+              "label": "Right Patient — opioid toxidrome confirmed: GCS 6, RR 6, pinpoint pupils 2 mm bilateral; BGL 95 mg/dL rules out hypoglycemia; no DCAP-BTLS to suggest isolated trauma; possible substance exposure per bystander history",
+              "right": "patient"
+            },
+            {
+              "label": "Right Medication — label reads 'Naloxone 2 mg/2 mL (1 mg/mL)'; prefilled syringe or unit-dose vial verified; expiration date checked",
+              "right": "medication"
+            },
+            {
+              "label": "Right Dose — 2 mg total IN; patient is 33 kg and age 10 (≥ 5 years and ≥ 20 kg); standard dose is 2 mg; weight-based dosing (0.1 mg/kg) would yield 3.3 mg — use 2 mg standard dose per protocol",
+              "right": "dose"
+            },
+            {
+              "label": "Right Route — IN via MAD atomizer; divide dose: 0.5 mL (1 mg) per nostril; do NOT inject IV (ALS scope only for titrated IV dosing)",
+              "right": "route"
+            },
+            {
+              "label": "Right Time — administer now; opioid toxidrome criteria met; BVM ventilation established first; do not delay further",
+              "right": "time"
+            }
+          ],
+          "procedure_steps": [
+            "Confirm opioid toxidrome: CNS depression (GCS ≤ 8) + respiratory depression (RR ≤ 8) + pinpoint pupils + possible exposure history",
+            "Confirm BVM ventilation is in progress — do not stop ventilating to give naloxone",
+            "Confirm dose: 2 mg naloxone for age ≥ 5 years or ≥ 20 kg per protocol",
+            "Attach MAD atomizer to naloxone prefilled syringe; confirm 1 mg/mL concentration, 2 mL total",
+            "Insert MAD tip into right nostril; administer 0.5 mL (1 mg) with a firm, quick thrust",
+            "Insert MAD tip into left nostril; administer 0.5 mL (1 mg) with a firm, quick thrust",
+            "Note administration time in documentation",
+            "Continue BVM ventilation while awaiting naloxone onset (2–5 minutes for IN route)",
+            "Monitor for response: watch for RR increase, eye opening, purposeful movement",
+            "Prepare for post-naloxone agitation: patient may awaken confused, combative, or frightened; do not restrain pharmacologically",
+            "If no response or partial response at 3–5 minutes: may repeat naloxone 2 mg IN × 1 additional dose (maximum 4 mg total without ALS)",
+            "Notify ALS: drug, dose, route, time, and patient response"
+          ]
+        }
+      },
+      "naloxone_im": {
+        "label": "Naloxone 0.4–2 mg IM (vastus lateralis)",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "naloxone.*im",
+          "narcan.*im",
+          "\\bim\\b.*naloxone",
+          "intramuscular.*naloxone",
+          "inject.*naloxone",
+          "inject.*narcan",
+          "narcan.*inject",
+          "shot.*narcan"
+        ],
+        "effects": {
+          "rr": {
+            "immediate_change": 5,
+            "rate_modifier": -0.5
+          },
+          "spo2": {
+            "immediate_change": 7,
+            "rate_modifier": -0.3
+          },
+          "gcs": {
+            "immediate_change": 5,
+            "rate_modifier": -0.5
+          },
+          "hr": {
+            "immediate_change": 18,
+            "rate_modifier": -0.4
+          },
+          "cap_refill": {
+            "immediate_change": -0.7,
+            "rate_modifier": 0.4
+          }
+        },
+        "notes": "IM route is an acceptable alternative if nasal atomizer (MAD device) is unavailable. Onset similar to IN (2–5 minutes). Dose: 2 mg IM for patients ≥ 5 years or ≥ 20 kg. Inject into anterolateral (outer) thigh. Same monitoring, re-dosing, and post-reversal precautions apply as for IN route.",
+        "requires_popup": false
+      },
+      "o2_nrb": {
+        "label": "High-flow O2 via NRB mask (15 LPM)",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "\\bnrb\\b",
+          "non.?rebreather",
+          "high.?flow.*o2",
+          "15\\s*lpm",
+          "high flow oxygen"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 3,
+            "rate_modifier": 0.5
+          }
+        },
+        "notes": "NRB is appropriate after patient is breathing adequately (post-naloxone reversal, RR ≥ 10). During active respiratory depression with RR ≤ 6, passive NRB is insufficient — BVM ventilation is required. Switch from BVM to NRB once RR is adequate and patient is protecting their airway.",
+        "requires_popup": true,
+        "popup_type": "oxygen",
+        "popup_default": {
+          "device": "nrb",
+          "flow": 15
+        }
+      },
+      "recovery_position": {
+        "label": "Recovery position — lateral recumbent",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "recovery.*position",
+          "lateral.*recumbent",
+          "on.*side",
+          "side.*position",
+          "roll.*side",
+          "side.*recovery"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 2,
+            "rate_modifier": 0.8
+          }
+        },
+        "notes": "Recovery position (lateral recumbent) is appropriate once the patient is breathing spontaneously at an adequate rate and protecting their airway. It reduces aspiration risk if the patient vomits (common post-naloxone). Switch from BVM management to NRB + recovery position once RR ≥ 10 and GCS is improving.",
+        "requires_popup": false
+      },
+      "suction_airway": {
+        "label": "Suction airway — oral suctioning for secretions",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "suction",
+          "\\bsuction.*airway\\b",
+          "oral.*suction",
+          "clear.*secretion",
+          "vomit.*suction"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 2,
+            "rate_modifier": 0.9
+          },
+          "rr": {
+            "immediate_change": 1,
+            "rate_modifier": 0.9
+          }
+        },
+        "notes": "Suction if the patient vomits (common post-naloxone). Use rigid Yankauer or soft catheter. Opioid-induced vomiting is a real risk during reversal — be ready.",
+        "requires_popup": false
+      },
+      "als_intercept": {
+        "label": "ALS intercept acknowledged",
+        "within_bls_scope": true,
+        "detection_patterns": [],
+        "effects": {},
+        "notes": "ALS/intercept expectations are determined by the active agency configuration for unresponsive patients. If ALS is involved, give patient report including: GCS, RR, SpO2, BGL (95 mg/dL), DCAP-BTLS result (negative), pinpoint pupils, suspected opioid exposure, naloxone dose/route/time, and patient response.",
+        "requires_popup": false
+      }
+    },
+    "improvement": {
+      "note": "With airway management and naloxone, opioid reversal occurs over 2–5 minutes. RR improves toward normal (12–16/min), SpO2 rises to 94–98%, GCS improves toward 14–15. Patient awakens — may be confused, agitated, or combative. Pallor and diaphoresis resolve. HR normalizes. Re-sedation is possible after naloxone wears off (30–90 min) if a long-acting opioid is involved.",
+      "requires_intervention": "naloxone_in",
+      "string_thresholds": {
+        "skin_color": [
+          {
+            "gcs_above": 12,
+            "value": "Color improved — pink and warmer, no longer pale; lips no longer gray; diaphoresis resolving"
+          },
+          {
+            "gcs_above": 9,
+            "value": "Less pale than arrival; grayish color fading; still diaphoretic"
+          }
+        ],
+        "work_of_breathing": [
+          {
+            "rr_above": 14,
+            "value": "Unlabored, normal rate — no snoring; spontaneous effective respirations; airway protection improving"
+          },
+          {
+            "rr_above": 10,
+            "value": "Improved — RR approaching normal; snoring resolved; some purposeful movement"
+          }
+        ]
+      },
+      "presentation_milestones": [
+        {
+          "gcs_above": 12,
+          "text": "Elijah’s eyes open. He looks around, disoriented and panicked. He tries to push away the BVM mask. He says 'stop — get off me — what’s happening?!' His voice is hoarse and confused. His color has improved dramatically. He’s breathing on his own. Ms. Nguyen gasps with relief and reaches forward — you calmly keep her back and focus on Elijah. This is expected post-naloxone arousal. He doesn’t know where he is or what happened. Talk him down calmly."
+        },
+        {
+          "gcs_above": 10,
+          "text": "Elijah’s eyes are open but unfocused. He’s making sounds but not coherent words. He’s moving his arms weakly. His RR is coming up — around 10–12 now. SpO2 climbing. Color improving. He’s not out of the woods yet, but the reversal is working."
+        }
+      ]
+    }
+  },
+  "personas": {
+    "elijah": {
+      "name": "Elijah",
+      "age": 10,
+      "role": "patient",
+      "aliases": [
+        "Elijah",
+        "the child",
+        "the boy",
+        "the patient",
+        "buddy",
+        "little guy",
+        "the kid"
+      ],
+      "description": "10-year-old boy who ingested or was exposed to an unknown opioid (found near a brightly colored pill or vape near the school fence). He was unresponsive on arrival and cannot provide any history initially. After naloxone administration (approximately 2–5 minutes), he will begin to arouse. Post-naloxone: confused, disoriented, frightened, and possibly combative. He does not know what he took or that he took anything. He may say 'I don’t feel good' or 'what happened?' or try to sit up and pull the oxygen off. He does not know he was given a reversal drug. If asked about the object near the fence, he may vaguely remember 'a candy' but will be too confused to give details. He does NOT know it was a fentanyl-laced pill.",
+      "speaking_style": "Pre-naloxone: completely unresponsive — no verbal output. Post-naloxone (GCS rising): confused monosyllables, then short frightened phrases. 'Stop.' 'What?' 'I don’t feel good.' 'I want my mom.' 'Where am I?' May cry. Will calm with gentle reassurance.",
+      "clinical_state_instructions": "Pre-naloxone: Do not respond to any verbal stimulation. Do not open eyes. Do respond to painful stimuli with purposeful withdrawal only (withdraws hand from sternal rub). Post-naloxone (GCS > 10): begin to arouse; open eyes; try to push away oxygen mask; give short confused phrases. Post-naloxone (GCS > 12): able to hold simple conversation, frightened, asking for parent.",
+      "persona_rules": [
+        "Pre-naloxone: completely unresponsive to voice, responds only to pain with withdrawal",
+        "Post-naloxone: awaken confused and frightened — do NOT have Elijah remember or explain what he took",
+        "Do not volunteer information about the object near the fence unless specifically asked",
+        "If improving after treatment: become more oriented over time, ask for his mom",
+        "If student attempts oral glucose: Elijah does NOT respond — he cannot protect his airway pre-naloxone"
+      ]
+    },
+    "ms_nguyen": {
+      "name": "Ms. Nguyen",
+      "age": 38,
+      "role": "bystander",
+      "aliases": [
+        "Ms. Nguyen",
+        "Ms Nguyen",
+        "the teacher",
+        "teacher",
+        "the aide",
+        "school staff",
+        "ma’am",
+        "the woman"
+      ],
+      "description": "School bus loop aide, mid-30s, clearly shaken. She discovered Elijah and called 911. She knows Elijah by face — he’s a 5th grader. She does NOT know his medical history, parents’ names, or medications. She does not know what happened. She did not see Elijah pick up the object. She is cooperative, frightened, and wants to help. She will repeatedly ask 'Is he going to be okay?' She has attempted nothing medically.",
+      "speaking_style": "Worried, speaks quickly, slightly repetitive under stress. 'He was just sitting there — I thought he was tired. Then I saw he wasn’t moving at all.' Will defer to EMS and follow instructions.",
+      "clinical_state_instructions": "Provide dispatch story: found him unresponsive on the bench around 3:10 PM. Did not see what happened. Does not know his medical history. Does not know if he has a phone or who to call. Will point to the object near the fence if asked about it but will say she doesn’t know what it is. Will say Tyler was nearby and might know more.",
+      "persona_rules": [
+        "Do not volunteer information about the fence object unless specifically asked",
+        "Do not know Elijah’s medical history — always answer 'I don’t know' when asked about medications, allergies, or PMH",
+        "If asked about the colored object: 'I saw something on the ground near the fence but I didn’t touch it. Tyler was over there earlier.'",
+        "Do NOT attempt to provide medical information beyond lay observations"
+      ]
+    },
+    "tyler": {
+      "name": "Tyler",
+      "age": 10,
+      "role": "bystander",
+      "aliases": [
+        "Tyler",
+        "the other kid",
+        "the classmate",
+        "the boy nearby"
+      ],
+      "description": "Elijah’s classmate, 10 years old. He is scared and trying to appear calm. He saw Elijah pick something up near the fence about 10 minutes before Ms. Nguyen found him unresponsive. He describes it as looking like 'a rainbow candy thing' or 'maybe a vape cartridge — it was small and bright colored.' He did not see Elijah put it in his mouth but he ‘thought maybe he did.’ Tyler did not touch the object. He is NOT lying. He genuinely does not know what it was.",
+      "speaking_style": "Nervous, short answers, not meeting eye contact. 'I don’t know, I just saw him pick something up.' Scared he’ll get in trouble.",
+      "clinical_state_instructions": "If asked: saw Elijah near the fence about 10 minutes ago. Elijah picked something small and colorful off the ground near the fence. 'I think he maybe put it in his mouth? I don’t know.' He does not know what it was. He did not touch it. He is worried Elijah is in trouble.",
+      "persona_rules": [
+        "Only provide information if directly asked",
+        "Do not know what the object was — describe appearance only: 'small, bright colors, maybe the size of a Skittle or smaller'",
+        "Do not have Tyler lie or minimize — he is being honest and is scared",
+        "Express fear of getting in trouble but cooperate with EMS"
+      ]
+    },
+    "jordan": {
+      "name": "Jordan",
+      "age": 26,
+      "role": "partner",
+      "aliases": [
+        "Jordan",
+        "partner",
+        "my partner"
+      ],
+      "description": "Your EMT partner. Calm, experienced, follows directions. Will assist with BVM, airway, and medication preparation when directed. Will prompt if student attempts oral glucose: 'He can’t protect his airway — oral glucose would aspirate.' Will prompt if student attempts IV access: 'IV is ALS scope — Medic 8 is 8 minutes out.' Will prompt if student gives Narcan without opening the airway first: 'Want to open his airway first? Bag him?' Will note pinpoint pupils if student misses neuro assessment: 'Hey — did you check his pupils yet?' when prompted or if simulation time exceeds 3 minutes without neuro assessment.",
+      "speaking_style": "Brief, practical, calm. 'Copy.' 'Bag’s ready.' 'MAD is loaded — 2 mg.' 'BGL came back 95.' 'Pupils look pinpoint — both sides.'",
+      "persona_rules": [
+        "Never take the lead — respond to directions from the student",
+        "Prompt airway management if student reaches for Narcan first: 'Airway first? He’s snoring.'",
+        "Prompt BVM if student tries NRB with RR 6: 'He’s only breathing 6 times a minute — should we bag him?'",
+        "Flag oral glucose as contraindicated if student attempts it",
+        "Flag IV access as ALS scope if student attempts it",
+        "Confirm BGL result verbally when glucometer is used: '95 milligrams per deciliter — sugar’s normal'",
+        "Confirm DCAP-BTLS findings verbally if student performs head/neck exam: 'Head and neck look clean — no obvious trauma'"
+      ]
+    }
+  },
+  "correct_treatment": {
+    "critical_actions": [
+      {
+        "id": "scene_safety",
+        "description": "Scene safety and BSI/PPE prior to patient contact — note unknown substance near fence; gloves and eye protection required; do not touch or approach foreign object",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "pat_assessment",
+        "description": "Pediatric Assessment Triangle — Appearance (unresponsive, limp), Work of Breathing (severely bradypneic, snoring, agonal quality), Circulation to Skin (pale, diaphoretic, gray lips)",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "airway_management",
+        "description": "Open airway immediately — head-tilt/chin-lift (or jaw thrust) to relieve snoring upper airway obstruction from loss of pharyngeal muscle tone. Airway must be established BEFORE administering naloxone.",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(airway|head.?tilt|chin.?lift|jaw.?thrust|open.*airway|snoring|obstruct)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "bvm_ventilations",
+        "description": "Provide BVM-assisted ventilations for respiratory depression (RR ≤ 6) — two-person BVM preferred; 1 breath every 3 seconds for this child; O2 at 15 LPM via reservoir; this is life-saving and must not be delayed for Narcan.",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(bvm|bag.?valve|ventilat|assist.*breath|bagging|two.?person)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "differential_workup",
+        "description": "Systematically evaluate AMS differential: (1) blood glucose check to rule out hypoglycemia — result 95 mg/dL; (2) DCAP-BTLS head and neck to rule out traumatic etiology — negative; (3) pupil exam confirming opioid toxidrome — pinpoint, bilateral, minimally reactive.",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "finding_key_patterns": [
+            "(?i)glucose|pupils"
+          ],
+          "transcript_patterns": [
+            "(?i)(glucose|blood.sugar|pupils|pinpoint|dcap|hypoglycemia|toxidrome|differential|rule.out)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "naloxone_administration",
+        "description": "Administer naloxone 2 mg intranasal (MAD) per protocol — opioid toxidrome confirmed: GCS ≤ 8, RR ≤ 6, pinpoint pupils, possible exposure history. IN preferred BLS route. May repeat × 1 at 3–5 minutes if no response.",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(naloxone|narcan|intranasal|nasal.*dose|mad)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "als_intercept",
+        "description": "Confirm ALS intercept/handoff according to the active agency configuration — update ALS with: GCS, RR, SpO2, BGL (95 mg/dL), DCAP-BTLS (negative), pupils (pinpoint), suspected opioid exposure, naloxone dose/route/time, and patient response.",
+        "required": true
+      }
+    ],
+    "recommended_actions": [
+      {
+        "id": "reassessment",
+        "description": "Reassess vital signs and GCS every 2–3 minutes — monitor for post-naloxone re-sedation; naloxone wears off in 30–90 minutes; maintain BVM readiness",
+        "required": false
+      },
+      {
+        "id": "post_reversal_airway",
+        "description": "After naloxone reversal — when RR ≥ 10 and patient protecting airway: transition from BVM to NRB mask 15 LPM; consider recovery position to prevent aspiration",
+        "required": false
+      },
+      {
+        "id": "suction_readiness",
+        "description": "Keep suction ready — post-naloxone vomiting is common; Yankauer suction at bedside",
+        "required": false
+      },
+      {
+        "id": "scene_documentation",
+        "description": "Document location and description of unknown substance near fence for law enforcement — do not handle; note object color, location, and approximate size; preserve scene",
+        "required": false
+      },
+      {
+        "id": "family_notification",
+        "description": "Request school staff attempt to contact parent/guardian — Elijah is a minor; family must be notified and consent for transport obtained or overridden by emergency doctrine",
+        "required": false
+      }
+    ],
+    "out_of_scope_bls": [
+      "iv_io_access",
+      "dextrose_iv_io",
+      "oral_glucose_contraindicated",
+      "glucagon_im_in",
+      "advanced_airway_als"
+    ],
+    "out_of_scope_aemt": [
+      "Endotracheal intubation / LMA (Paramedic skill — bag-mask is adequate for transport with this presentation)",
+      "Titrated IV naloxone infusion (Paramedic skill — prevents re-sedation for longer opioid half-life)"
+    ],
+    "clinical_decision_points": {
+      "airway_before_narcan": "Airway maneuver and BVM ventilation are the first priority — oxygenation is immediately life-saving and must not be delayed for Narcan. BVM can maintain SpO2 while naloxone takes effect (2–5 minutes for IN route).",
+      "differential_requirement": "Three differentials must be actively addressed: (1) hypoglycemia — blood glucose required to rule out; (2) traumatic etiology — DCAP-BTLS to head/neck required; (3) opioid/toxicological — pupil exam + history + tox findings. Do not assume opioid without completing the differential.",
+      "bgl_result": "Blood glucose 95 mg/dL — normal. Hypoglycemia ruled out. Do NOT give oral glucose (airway protection absent) and do NOT give IV/IO dextrose (ALS scope).",
+      "pinpoint_pupils": "Pinpoint (miotic) pupils in the setting of CNS depression and respiratory depression are the classic opioid toxidrome triad. Other causes of pinpoint pupils (pontine hemorrhage, organophosphate toxicity) exist but are far less likely in this scenario.",
+      "re_sedation_risk": "Fentanyl and synthetic opioids have highly variable half-lives. After naloxone reversal, the opioid may outlast the naloxone (30–90 min half-life). Monitor for re-sedation during transport and maintain BVM readiness. ALS should establish IV access for repeat dosing capability.",
+      "post_naloxone_agitation": "Post-naloxone agitation is expected and does NOT indicate treatment failure. The patient is experiencing sudden opioid withdrawal superimposed on a frightening situation. Calm verbal reassurance is the first-line response — do NOT attempt chemical restraint at BLS level.",
+      "scene_preservation": "Do not touch or handle the unknown substance near the fence. Note its location and description for law enforcement. This is a potential crime scene — involve law enforcement for chain-of-custody.",
+      "destination": "Transport to nearest emergency department with pediatric capability — re-sedation risk, tox workup, and family notification required."
+    }
+  },
+  "scoring": {
+    "overall_considerations": [
+      "This is a capstone scenario — the learner must work the full differential independently without priming games. Do not credit 'opioid' as the only acceptable impression — credit any student who actively works the differential (BGL, DCAP-BTLS, pupils).",
+      "Airway management order matters: head-tilt/chin-lift and BVM BEFORE naloxone is the correct sequence. If student gives Narcan without first opening the airway, note this as a sequencing error but do not zero the naloxone credit.",
+      "Do NOT penalize for not identifying the specific opioid or naming 'fentanyl' — the toxidrome recognition and clinical response are what matter.",
+      "BGL check is required for AMS differential even if the opioid toxidrome is clinically obvious — do not credit full differential workup without it.",
+      "DCAP-BTLS is required for AMS differential — missing it means incomplete differential.",
+      "Do NOT penalize for using jaw thrust instead of head-tilt/chin-lift if the student expresses C-spine concern (no traumatic mechanism confirmed).",
+      "Do NOT penalize for not identifying the colored object as fentanyl-laced specifically — 'unknown substance' or 'possible drug exposure' is the correct pre-hospital framing.",
+      "Post-naloxone agitation management: credit any student who verbally reassures Elijah and does NOT attempt chemical restraint.",
+      "Do NOT require Elijah to provide history pre-naloxone — he is unresponsive; bystander history from Tyler and Ms. Nguyen is the available source."
+    ],
+    "dmist_considerations": [
+      "D: Age, sex, and weight (critical for naloxone dose verification and pediatric care framing).",
+      "M: Unresponsive 10-year-old, possible substance exposure (unknown opioid vs unknown tox), no traumatic mechanism on exam, no known medical history.",
+      "I: Airway maneuver (specify type), BVM ventilations (duration/rate), naloxone 2 mg IN (time, route, dose), BGL result (95 mg/dL), DCAP-BTLS finding (negative).",
+      "S: Current GCS, RR, SpO2, and HR at handoff — response to naloxone (improved vs no change), pupil status.",
+      "T: AMS with suspected opioid exposure, naloxone administered, re-sedation risk, law enforcement notification for scene, transport to pediatric-capable ED.",
+      "ALS must know naloxone dose, time, and response before arrival — this determines whether they will repeat dosing or initiate IV naloxone infusion."
+    ],
+    "dmist_components": {
+      "D": {
+        "description": "Patient demographics",
+        "required_elements": [
+          "name: Elijah",
+          "age: 10",
+          "sex: male",
+          "weight: 33 kg or 73 lbs (Broselow Gray)"
+        ],
+        "corroboration_source": "scenario_patient_fields"
+      },
+      "M": {
+        "description": "Mechanism and chief complaint",
+        "required_elements": [
+          "found unresponsive",
+          "possible substance exposure",
+          "no traumatic mechanism",
+          "unknown medical history"
+        ],
+        "corroboration_source": "any"
+      },
+      "I": {
+        "description": "Illness details — altered mental status, clinical presentation, and exposure context",
+        "required_elements": [
+          "unresponsive or altered mental status at scene",
+          "suspected toxic exposure (unknown substance — no confirmed identification)",
+          "no traumatic mechanism found on exam",
+          "pinpoint bilateral pupils (clinical finding)",
+          "BGL 95 mg/dL (clinical assessment result — rules out hypoglycemia)"
+        ],
+        "corroboration_source": "history_and_findings",
+        "note": "I is illness/injury, not interventions. Treatments (airway maneuver, BVM, naloxone) belong under T."
+      },
+      "S": {
+        "description": "Signs and current status; GCS, pupils, and naloxone response are the primary signs for an AMS/toxicology handoff",
+        "required_elements": [
+          "GCS or LOC at handoff (primary)",
+          "pupil status (primary)",
+          "response to naloxone if administered (primary)",
+          "SpO2 (passively observed — acceptable)",
+          "RR (supplementary)"
+        ],
+        "scoring_note": "Primary S elements for AMS/toxicology: GCS or LOC description, pupil status (pinpoint = opioid toxidrome), and naloxone response if administered. These three are the authoritative clinical signs for this handoff. SpO2 is passively observed and acceptable; RR is supplementary. Do not require a full traditional vital set.",
+        "corroboration_source": "vitals_and_findings"
+      },
+      "T": {
+        "description": "Treatment response and ALS readiness",
+        "required_elements": [
+          "response to naloxone",
+          "re-sedation risk acknowledged",
+          "law enforcement notification"
+        ],
+        "corroboration_source": "any"
+      }
+    },
+    "narrative_considerations": [
+      "Narrative must include: unresponsive child at school dismissal, bystander report of possible substance exposure, PAT findings, differential workup (BGL result + DCAP-BTLS + pupils), airway management sequence, naloxone administration with dose/route/time, patient response, and disposition.",
+      "Evaluate objectivity: avoid 'patient was overdosing' (conclusion not confirmed pre-hospital) — use 'clinical presentation consistent with opioid toxidrome' or 'possible toxic ingestion/exposure.'",
+      "Evaluate accuracy: naloxone dose, route, time, and patient response must match simulation events.",
+      "Do NOT penalize for not naming 'fentanyl' or a specific opioid — correct documentation is 'unknown substance exposure, clinical opioid toxidrome.'"
+    ],
+    "required_assessments": [
+      {
+        "id": "pupil_assessment",
+        "description": "Assess pupils as part of neurological assessment — pinpoint bilateral pupils are the clinical key to opioid toxidrome",
+        "keywords": [
+          "pupils",
+          "pupil",
+          "pinpoint",
+          "miotic",
+          "eyes",
+          "neuro",
+          "GCS",
+          "neurological",
+          "look at his eyes",
+          "check his pupils",
+          "constricted"
+        ],
+        "missing_deduction": 3,
+        "note": "Pupil exam is the differentiating clinical finding for opioid toxidrome. Missing this assessment means the differential is incomplete and the toxidrome recognition is unjustified without the pupil finding.",
+        "phase": "primary_survey"
+      },
+      {
+        "id": "blood_glucose_assessment",
+        "description": "Check blood glucose to rule out hypoglycemia as cause of AMS",
+        "keywords": [
+          "blood glucose",
+          "glucose",
+          "blood sugar",
+          "sugar",
+          "BGL",
+          "glucometer",
+          "fingerstick",
+          "diabetic",
+          "hypoglycemia"
+        ],
+        "missing_deduction": 3,
+        "note": "Hypoglycemia is a must-not-miss differential for AMS in any age group. Missing the BGL check is an incomplete assessment even if the final diagnosis is opioid toxidrome.",
+        "phase": "assessment"
+      },
+      {
+        "id": "dcap_btls_assessment",
+        "description": "DCAP-BTLS assessment of head and neck to rule out traumatic etiology",
+        "keywords": [
+          "DCAP",
+          "BTLS",
+          "trauma",
+          "head injury",
+          "neck",
+          "cervical",
+          "skull",
+          "check his head",
+          "head to toe",
+          "secondary survey",
+          "trauma screen"
+        ],
+        "missing_deduction": 2,
+        "note": "Traumatic AMS (head injury, intracranial hemorrhage) must be ruled out by physical exam. A negative DCAP-BTLS does not exclude occult injury but is a required assessment step for the AMS differential at BLS level.",
+        "phase": "assessment"
+      }
+    ],
+    "by_level": {
+      "MFR": {
+        "critical_focus": [
+          "Scene safety and BSI/PPE — note unknown substance near fence; do not approach.",
+          "PAT: unresponsive appearance, severely bradypneic work of breathing (snoring), pale/gray circulation to skin.",
+          "Open airway immediately: head-tilt/chin-lift. Snoring should resolve with proper positioning.",
+          "Assist ventilations with BVM: RR 6 requires positive-pressure support.",
+          "Call for ALS immediately when not already dispatched by agency configuration; provide a report if ALS is involved.",
+          "Basic neurological exam: pupils (pinpoint), GCS.",
+          "Blood glucose check if available at MFR scope — rules out hypoglycemia.",
+          "Do NOT administer naloxone if not in MFR scope per local protocol."
+        ],
+        "additional_expectations": [],
+        "grace_items": [
+          "Naloxone may not be within MFR scope — do not penalize for not administering it if agency protocol restricts it.",
+          "Full differential workup (DCAP-BTLS + BGL + pupils) still expected at MFR level for AMS."
+        ]
+      },
+      "EMT": {
+        "critical_focus": [
+          "Scene safety and BSI/PPE — note unknown foreign substance; do not handle; eye protection required.",
+          "PAT and immediate airway management: open airway before everything else.",
+          "BVM-assisted ventilations for RR ≤ 6 — this is not optional; inadequate ventilation is life-threatening.",
+          "Systematic AMS differential: blood glucose (BGL 95 — normal), DCAP-BTLS to head/neck (negative), pupil exam (pinpoint, bilateral — opioid toxidrome confirmed).",
+          "Administer naloxone 2 mg intranasal (MAD) per protocol — opioid toxidrome criteria met.",
+          "Monitor for post-naloxone agitation — expected; calm verbal reassurance, no chemical restraint.",
+          "Monitor for re-sedation during transport — naloxone wears off; maintain BVM readiness.",
+          "DMIST to Medic 8 — include BGL result, DCAP-BTLS finding, naloxone dose/time/response.",
+          "Notify law enforcement or dispatch of unknown substance found at school."
+        ],
+        "additional_expectations": [
+          "Recognize that BVM ventilation must continue during naloxone onset (2–5 minutes) — do not hold ventilation waiting for Narcan to work.",
+          "Recognize that oral glucose is contraindicated — airway protection is absent pre-naloxone.",
+          "Transition from BVM to NRB after reversal when RR ≥ 10 and patient protecting airway."
+        ],
+        "grace_items": [
+          "Broselow tape not required — weight can be estimated (33 kg / 73 lbs).",
+          "ALS request is not required when the active agency configuration co-dispatches ALS.",
+          "Jaw thrust acceptable if student expresses C-spine concern despite no confirmed traumatic mechanism.",
+          "Not naming the specific opioid — 'unknown substance / opioid toxidrome' is the correct pre-hospital framing.",
+          "Post-naloxone agitation is expected — do not penalize for not having a specific script for managing it, as long as chemical restraint is not attempted."
+        ]
+      },
+      "AEMT": {
+        "critical_focus": [
+          "All EMT expectations above.",
+          "Establish IV access after airway and naloxone — IV is required for repeat dosing capability and fluid access.",
+          "IV normal saline TKO (not a fluid bolus — no clear hypovolemia) — access only.",
+          "Prepare for re-sedation: IV access enables rapid repeat naloxone or IV naloxone infusion (ALS/Paramedic skill)."
+        ],
+        "additional_expectations": [
+          "IV access should not delay BVM or naloxone — airway and reversal first, IV after."
+        ],
+        "grace_items": [
+          "Same grace items as EMT level.",
+          "IV naloxone infusion is Paramedic scope — do not penalize AEMT for not initiating it."
+        ]
+      },
+      "Paramedic": {
+        "critical_focus": [
+          "All AEMT expectations above.",
+          "Initiate IV access and prepare for titrated IV naloxone if re-sedation occurs.",
+          "Consider 12-lead ECG — bradycardia may have a cardiac component in mixed overdose.",
+          "Consider waveform capnography (ETCO2) to monitor ventilation quality and confirm naloxone effectiveness.",
+          "Anticipate and prepare for naloxone-precipitated opioid withdrawal — agitation, diaphoresis, vomiting, tachycardia.",
+          "Brief ED on possible fentanyl-laced substance — consider toxicology consult and urine tox screen on arrival.",
+          "Law enforcement notification and scene preservation guidance."
+        ],
+        "additional_expectations": [
+          "Communicate clearly with receiving ED: pediatric opioid toxidrome, age 10, source unknown, naloxone administered and dose, re-sedation risk, and toxicology screen request."
+        ],
+        "grace_items": [
+          "Same grace items as EMT level.",
+          "Endotracheal intubation is not required — BVM is adequate for transport in this patient if maintained correctly."
+        ]
+      }
+    },
+    "corroboration_rules": {
+      "dmist": {
+        "I": {
+          "max_deduction_per_violation": 3,
+          "note": "Naloxone dose, route, and time are critical handoff elements — ALS must know this to decide on repeat dosing and IV naloxone infusion plan"
+        }
+      },
+      "narrative": {
+        "A": {
+          "max_deduction_per_violation": 2,
+          "note": "Assessment findings must be objective: 'GCS 6, RR 6, SpO2 82%, pupils 2 mm pinpoint bilateral' — not 'patient appeared overdosed'"
+        },
+        "R": {
+          "max_deduction_per_violation": 2,
+          "note": "Treatment response claims must match the actual patient trajectory — if naloxone was given and patient improved, document the improvement with objective findings"
+        }
+      }
+    }
+  },
+  "scoring_rubric": {
+    "clinical_performance": {
+      "max": 40,
+      "full_credit": "PAT completed (unresponsive appearance, snoring bradypneic WOB, pale gray circulation); airway opened immediately (head-tilt/chin-lift) before any other intervention; BVM ventilations initiated for RR 6; systematic AMS differential completed (BGL 95 mg/dL documented, DCAP-BTLS head/neck negative, pupils pinpoint bilateral); opioid toxidrome recognized from clinical findings; naloxone 2 mg IN administered per protocol; post-naloxone monitoring for re-sedation; ALS DMIST with naloxone details",
+      "partial_credit": "Critical airway and naloxone steps completed but AMS differential incomplete (BGL or DCAP-BTLS omitted); or BVM not initiated before naloxone (sequencing error); or post-naloxone reassessment omitted",
+      "minimal_credit": "Airway opened and/or naloxone administered but differential workup not performed (assumed opioid without ruling out hypoglycemia and trauma); or ventilatory support not provided despite RR 6"
+    },
+    "narrative": {
+      "max": 20,
+      "full_credit": "CHART complete: dispatched for unresponsive 10-year-old at school; bystander report of possible substance exposure noted; PAT findings (unresponsive appearance, snoring bradypneic WOB, pale circulation); BGL 95 mg/dL (normal, hypoglycemia ruled out); DCAP-BTLS head/neck negative; pupils pinpoint bilateral; airway opened, BVM initiated; naloxone 2 mg IN with time and patient response; transition to NRB or recovery position post-reversal; DMIST to ALS with re-sedation risk noted; law enforcement/dispatch notification of unknown substance",
+      "partial_credit": "Most CHART elements present but naloxone dose, time, or patient response absent — ALS cannot safely continue care without this information",
+      "minimal_credit": "Narrative present but frames assessment as definitive ('patient overdosed on fentanyl') without objective findings, or differential workup not documented, or critical intervention sequence (airway before Narcan) not reflected"
+    },
+    "scope_adherence": {
+      "max": 5,
+      "full_credit": "Stayed within effective provider scope and MCA rules: IV/IO access not attempted — outside BLS scope; naloxone IN is the correct BLS route. No out-of-scope attempts or orders.",
+      "partial_credit": "No dangerous out-of-scope intervention attempted, but scope reasoning, level-specific escalation, or MCA-specific scope recognition was incomplete.",
+      "minimal_credit": "Out-of-scope intervention attempted or ordered, or provider-level limits materially ignored."
+    },
+    "dmist": {
+      "max": 10,
+      "full_credit": "D: Elijah, 10-year-old male, 33 kg; M: unresponsive at school dismissal, possible substance exposure per bystander, no traumatic mechanism on exam, no known medical history; I: airway maneuver type, BVM ventilations, BGL 95 mg/dL, DCAP-BTLS negative, naloxone 2 mg IN with time and response; S: GCS, RR, SpO2 and pupil status at handoff; T: opioid toxidrome suspected, re-sedation risk, law enforcement notification, transport to pediatric-capable ED",
+      "partial_credit": "3–4 of 5 DMIST components present; naloxone dose, route, or time absent — ALS cannot assess re-dosing need without this",
+      "minimal_credit": "2 or fewer DMIST components, or naloxone information completely absent from handoff"
+    },
+    "professionalism": {
+      "max": 10,
+      "full_credit": "Calm, age-appropriate reassurance to Elijah post-naloxone (frightened 10-year-old — spoke directly to him); did not dismiss post-naloxone agitation as non-compliance; communicated with Ms. Nguyen and Tyler appropriately; did not handle unknown substance; involved dispatch/law enforcement for scene documentation; maintained professional demeanor under pressure of pediatric unresponsive patient",
+      "partial_credit": "Communication present but Elijah not addressed directly post-naloxone, or post-naloxone agitation managed by physical force without verbal de-escalation attempt",
+      "minimal_credit": "No attempt to communicate with or reassure Elijah after reversal; or hostile or dismissive interaction with a frightened post-naloxone 10-year-old"
+    },
+    "protocols_treatment": {
+      "max": 5,
+      "full_credit": "Protocol-aligned treatment completed: Oral glucose correctly withheld — patient cannot protect airway pre-naloxone; oral glucose contraindicated. Contraindicated care avoided and in-scope treatment priorities addressed.",
+      "partial_credit": "Most treatment priorities addressed, but one important protocol-aligned intervention, escalation step, or contraindication check was incomplete or delayed.",
+      "minimal_credit": "Key protocol/treatment priority missed, contraindicated care performed, or treatment plan materially inconsistent with protocol."
+    }
+  },
+  "exemplar_dmist": "D — Elijah, 10-year-old male, approximately 33 kg (73 lbs).\nM — Found unresponsive by school aide at bus loop dismissal approximately 3:10 PM. Bystander classmate reports patient was seen picking up an unknown small colored object near the fence approximately 10 minutes prior — possible ingestion. No confirmed traumatic mechanism. No known medical history, medications, or allergies available on scene.\nI — Head-tilt/chin-lift established — snoring resolved. BVM ventilations initiated, 1 breath every 3 seconds, O2 at 15 LPM. BGL 95 mg/dL — hypoglycemia ruled out. DCAP-BTLS head and neck — negative. Pupils 2 mm bilateral pinpoint — opioid toxidrome criteria met. Naloxone 2 mg intranasal (MAD) administered at [time] per protocol. Patient began to arouse at approximately 3–5 minutes post-administration.\nS — Current GCS 11 (improving from 6), RR 12/min (improving from 6), SpO2 94% (improving from 82%), HR 72. Patient is confused but arousable. Pupils 3 mm, improving. Color improved, no longer gray. Transitioned to NRB 15 LPM.\nT — Suspected opioid toxidrome with good response to naloxone. Re-sedation risk present — naloxone wears off in 30–90 min; maintain BVM readiness. Law enforcement notified of unknown substance at school fence — scene preserved. Transporting to pediatric-capable ED.",
+  "exemplar_narrative": "Squad 1 was dispatched to Lincoln Middle School, bus loop east side, for a 10-year-old male found unresponsive. Upon arrival, patient Elijah, a 10-year-old male weighing approximately 33 kg, was found slumped on a concrete bench at school dismissal, unresponsive to verbal and tactile stimulation. School aide reports patient appeared normal at school entry and was discovered unresponsive approximately 3:10 PM. Classmate bystander reports patient was observed picking up an unknown small brightly colored object from the ground near the fence approximately 10 minutes prior. Unknown substance remained on the ground near the fence — not handled; location documented for law enforcement; dispatch notified.\n\nPrimary assessment: Appearance — unresponsive, limp, no purposeful movement. Work of breathing — slow snoring respirations 6/min, partial upper airway obstruction from loss of pharyngeal tone. Circulation to skin — pale, diaphoretic, gray cast to lips. PAT: sick. Airway immediately opened via head-tilt/chin-lift — snoring resolved. BVM ventilations initiated via two-person technique, O2 at 15 LPM, 1 breath every 3 seconds. SpO2 improving.\n\nSecondary assessment and AMS differential: Blood glucose 95 mg/dL (normal) — hypoglycemia ruled out. DCAP-BTLS to head and neck: no deformity, contusions, abrasions, punctures, tenderness, or lacerations noted — negative for traumatic mechanism. Neurological assessment: GCS 6 (E1V1M4), pupils 2 mm bilateral, equal, minimally reactive — pinpoint. Clinical presentation consistent with opioid toxidrome: CNS depression, respiratory depression, pinpoint pupils, possible substance exposure per bystander.\n\nNaloxone 2 mg intranasal (MAD) administered at [time] per Michigan BLS protocol. Patient began to arouse at approximately 3 minutes post-administration. Eyes opened, purposeful movement noted, began vocalizing (confused). Post-naloxone: GCS improving to 11, RR 12/min, SpO2 94%. Color improved significantly. Patient confused and frightened — spoke directly to patient, provided calm reassurance, instructed patient to breathe normally. Transitioned from BVM to NRB 15 LPM once RR adequate and patient protecting airway. Yankauer suction at bedside given vomiting risk.\n\nDMIST provided to Medic 8 prior to arrival: naloxone dose, time, route, and response included. Re-sedation risk communicated. Patient care transferred to ALS crew. Transport to pediatric-capable emergency department.",
+  "debrief": {
+    "condition_background": "Elijah is a 10-year-old male with suspected accidental opioid exposure at school — most likely a fentanyl-laced counterfeit pill, consistent with the 'rainbow' colored pill description and the modern prevalence of fentanyl in illicit pill supplies. Pediatric fentanyl exposure is an emerging public health emergency: brightly colored 'rainbow fentanyl' pills are designed to look like candy and have been found in schools, playgrounds, and community settings. A single pill can contain a lethal dose for a child. This patient's clinical presentation is textbook opioid toxidrome: altered mental status (GCS 6), severe respiratory depression (RR 6), and pinpoint bilateral pupils (2 mm). The three required differentials are: (1) hypoglycemia — blood glucose checks out normal at 95 mg/dL; (2) traumatic AMS — DCAP-BTLS is negative with no trauma history; (3) toxicological/opioid — clinical findings and exposure history make this the primary diagnosis. The foundational BLS priority is the same as any unresponsive patient: airway first. Head-tilt/chin-lift relieves the pharyngeal obstruction. BVM ventilation keeps the patient alive while naloxone takes effect (2–5 minutes for IN route). Naloxone reversal is dramatic and expected — but so is post-reversal agitation and re-sedation risk if the opioid outlasts the Narcan.",
+    "key_teaching_points": [
+      "Opioid toxidrome triad: CNS depression + respiratory depression + miosis (pinpoint pupils). All three must be recognized as a pattern, not individual isolated findings.",
+      "Airway BEFORE Narcan. Snoring means partial obstruction. Head-tilt/chin-lift and BVM ventilation are immediately life-saving and take 30 seconds to initiate. Naloxone takes 2–5 minutes to work. Do not withhold BVM ventilation waiting for Narcan.",
+      "AMS requires a differential. Never assume opioid without ruling out hypoglycemia (BGL) and traumatic etiology (DCAP-BTLS). This is non-negotiable at any provider level.",
+      "Naloxone 2 mg intranasal is EMT scope in Michigan. IN is the preferred BLS route — safe, fast, and requires no IV access. May repeat at 3–5 minutes if no response.",
+      "Post-naloxone agitation is expected, not a complication. The patient awakens in sudden opioid withdrawal — confused, frightened, sometimes combative. Verbal de-escalation is first-line. Do not chemically restrain at BLS level.",
+      "Re-sedation risk is real. Fentanyl half-life can exceed naloxone's 30–90 minute window. Patient can re-sedate during transport. BVM must remain immediately accessible. ALS IV access enables repeat dosing.",
+      "Oral glucose is contraindicated in unresponsive patients. Absent airway protection means aspiration. Even if BGL was low (it is not here), oral glucose administration to an unresponsive patient is a medication error.",
+      "'Rainbow fentanyl' and pediatric opioid exposure: brightly colored counterfeit pills designed to resemble candy are a real and active public health threat. School-age children and adolescents are primary victims. EMS providers should be prepared for this presentation and understand mandatory scene documentation and law enforcement notification obligations.",
+      "Scene documentation matters: note, but do not handle, the unknown substance. Describe location and appearance accurately. Preserve the scene for law enforcement. This is not just clinical — it is a potential criminal investigation."
+    ],
+    "common_mistakes": [
+      "Giving Narcan before opening the airway — the snoring tells you the airway is obstructed. One-second head-tilt/chin-lift relieves the obstruction and improves SpO2 immediately. Narcan takes minutes.",
+      "Using NRB mask instead of BVM for RR 6 — passive O2 delivery does nothing for a patient who is barely breathing. BVM is required for positive-pressure ventilatory support.",
+      "Skipping the AMS differential — assuming opioid without checking BGL and DCAP-BTLS is a clinical shortcut that can miss hypoglycemia or a traumatic subdural hematoma.",
+      "Attempting to give oral glucose — even if the student suspects hypoglycemia (BGL rules it out here), administering oral glucose to an unresponsive patient causes aspiration.",
+      "Attempting IV access at EMT scope — IV is an AEMT/ALS skill. Naloxone IN is the correct BLS route.",
+      "Not accounting for re-sedation — declaring the patient 'fine' after Narcan reversal and discontinuing monitoring. Fentanyl can outlast naloxone. Stay vigilant.",
+      "Restraining the agitated post-naloxone patient physically or chemically — agitation is expected and resolves with reassurance as orientation improves. Attempting pharmacological restraint is outside BLS scope and clinically inappropriate here.",
+      "Handling the unknown substance — fentanyl-laced pills can cause exposure through mucous membrane contact or incidental transfer. Gloves and eye protection are required. The substance must be preserved for law enforcement, not picked up or pocketed."
+    ]
+  },
+  "scenario_number": 7,
+  "prerequisites": [],
+  "legacy_ai_categories": [
+    "documentation",
+    "professionalism"
+  ],
+  "impression_challenge": {
+    "enabled": true,
+    "trigger_milestone": "primary_survey_complete",
+    "prompt": "After your initial assessment, what is your primary working impression?",
+    "options": [
+      "Diabetic emergency — hypoglycemia",
+      "Traumatic head injury",
+      "Opioid or toxicological emergency",
+      "Cardiac syncope / dysrhythmia"
+    ],
+    "correct": "Opioid or toxicological emergency",
+    "acceptable": [
+      "Traumatic head injury"
+    ]
+  },
+  "checklist": [
+    {
+      "id": "peds_ams_tox_01.pat_assessment",
+      "description": "PAT completed — appearance (unresponsive, limp), work of breathing (snoring, RR 6, bradypneic), and circulation to skin (pale, diaphoretic, gray lips) assessed",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "scene_entry",
+        "scene_entry_path": "pat_assessment"
+      },
+      "tier2_patterns": [
+        "(?i)(pat|appearance|work of breath|snoring|bradypneic|pale|gray|circulation|skin|unresponsive|limp)"
+      ],
+      "done_feedback": "PAT completed — unresponsive/limp (SICK), snoring respirations, and mottled skin correctly identified; airway-first priority established before any diagnostic step.",
+      "missed_feedback": "PAT not completed — an unresponsive, limp child with snoring respirations is an immediate life threat; PAT drives the airway-first priority before differential workup.",
+      "clinical_rationale": "In AMS/toxicology, PAT rapidly identifies altered appearance and respiratory compromise that mandate airway-first management before any diagnostic steps.",
+      "common_error": "Checking glucose before opening the airway — airway management precedes all diagnostic steps in an unconscious patient."
+    },
+    {
+      "id": "peds_ams_tox_01.airway_management",
+      "description": "Airway opened before administering naloxone — head-tilt/chin-lift or jaw thrust; snoring resolves",
+      "subtype": "intervention",
+      "category": "clinical_performance",
+      "point_value": 8,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "head_tilt_chin_lift"
+      },
+      "tier2_patterns": [
+        "(?i)(head.?tilt|chin.?lift|jaw.?thrust|open.*airway|airway.*maneuver|manual.*airway|reposition|snoring|airway open)"
+      ],
+      "done_feedback": "Airway opened with head-tilt/chin-lift or jaw thrust before administering naloxone — correct; airway management takes priority over pharmacotherapy.",
+      "missed_feedback": "Airway not opened before naloxone — naloxone takes 1–2 minutes to work; the patient needs ventilation support now, not just reversal agent.",
+      "clinical_rationale": "In opioid overdose, respiratory depression causes hypoxic arrest within minutes; airway positioning and BVM ventilation are immediate life-saving interventions that precede naloxone.",
+      "common_error": "Administering naloxone before opening the airway — naloxone reverses the cause but takes time; the airway must be opened and ventilation supported immediately."
+    },
+    {
+      "id": "peds_ams_tox_01.bvm_ventilations",
+      "description": "BVM-assisted ventilations provided for respiratory depression (RR 6) — positive-pressure support before and during naloxone onset",
+      "subtype": "intervention",
+      "category": "clinical_performance",
+      "point_value": 8,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "bvm"
+      },
+      "tier2_patterns": [
+        "(?i)(bvm|bag.?valve|bag.*mask|ventilat|bagging|positive pressure|assist.*breath)"
+      ],
+      "done_feedback": "BVM ventilations provided for RR 6 — positive pressure ventilation corrects respiratory depression while awaiting naloxone effect.",
+      "missed_feedback": "BVM ventilations not provided — RR 6 with shallow tidal volume is inadequate; passive O2 does not correct hypoventilation.",
+      "clinical_rationale": "RR 6 with poor tidal volume produces hypercarbia and hypoxia; positive pressure ventilation with BVM is the only BLS method to correct inadequate ventilation.",
+      "common_error": "Applying NRB at 15 LPM and calling it sufficient — NRB provides high FiO2 but no positive pressure; RR 6 requires BVM, not passive oxygen."
+    },
+    {
+      "id": "peds_ams_tox_01.differential_workup",
+      "description": "AMS differential completed: blood glucose checked (95 mg/dL — normal), DCAP-BTLS head/neck assessed (negative), and pupils evaluated (pinpoint bilateral)",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 6,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 2,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": null,
+      "tier2_patterns": [
+        "(?i)(?=.*\\b(?:glucose|BGL|sugar|glucomet|finger.?stick)\\b)(?=.*\\b(?:dcap|btls|trauma.*head|skull|cervical|pupils?|pinpoint|miosis)\\b)",
+        "(?i)(?=.*\\b(?:dcap|btls|trauma.*head|skull|cervical)\\b)(?=.*\\b(?:pupils?|pinpoint|miosis)\\b)"
+      ],
+      "done_feedback": "AMS differential completed — glucose checked (95 mg/dL normal), DCAP-BTLS trauma screen, and opioid toxidrome confirmed before treatment.",
+      "missed_feedback": "AMS differential not completed — glucose and trauma screen are required for any pediatric AMS before attributing it to opioid toxicity.",
+      "clinical_rationale": "The AMS differential requires glucose check, trauma screen, and toxicology consideration before settling on a single etiology; concurrent causes are common.",
+      "common_error": "Assuming opioid overdose based on circumstantial evidence without checking glucose or screening for trauma — multiple conditions can mimic opioid toxidrome."
+    },
+    {
+      "id": "peds_ams_tox_01.naloxone_administration",
+      "description": "Naloxone 2 mg administered intranasally (MAD) or IM per protocol — opioid toxidrome criteria met",
+      "subtype": "intervention",
+      "category": "clinical_performance",
+      "point_value": 8,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "naloxone_in"
+      },
+      "tier2_patterns": [
+        "(?i)(naloxone|narcan|2.*mg|nasal|intranasal|atomizer|\\bMAD\\b|inject.*narcan)"
+      ],
+      "done_feedback": "Naloxone 2 mg administered intranasally (MAD) after airway management and BVM support — correct; pharmacotherapy follows airway and ventilation.",
+      "missed_feedback": "Naloxone not administered — opioid reversal is the definitive BLS pharmacotherapy for confirmed or suspected opioid overdose after airway and ventilation are established.",
+      "clinical_rationale": "Naloxone competitively antagonizes mu-opioid receptors; at 2 mg IN it reverses respiratory depression within 2–5 minutes; it must follow, not precede, airway management.",
+      "common_error": "Administering naloxone without supporting ventilation first — the 2-minute onset of IN naloxone means the patient will be apneic or hypoventilating during that window; BVM is required."
+    },
+    {
+      "id": "peds_ams_tox_01.scope_no_oral_glucose",
+      "description": "Oral glucose correctly withheld — patient cannot protect airway pre-naloxone; oral glucose contraindicated",
+      "subtype": "intervention",
+      "category": "protocols_treatment",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [
+        "MFR",
+        "EMT"
+      ],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "absence_check",
+        "absence_intervention_key": "oral_glucose"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "Oral glucose correctly withheld — patient cannot protect airway pre-naloxone; glucose is 95 mg/dL; no indication exists.",
+      "missed_feedback": "Oral glucose given to an unresponsive patient — contraindicated; aspiration risk is immediate in a patient who cannot protect the airway.",
+      "clinical_rationale": "Oral glucose is contraindicated in any patient with decreased LOC who cannot swallow and protect the airway; aspiration of glucose gel causes aspiration pneumonitis.",
+      "common_error": "Administering oral glucose reflexively to any AMS patient — glucose is indicated only for documented hypoglycemia in a patient who can swallow and protect the airway."
+    },
+    {
+      "id": "peds_ams_tox_01.scope_no_iv_io",
+      "description": "IV/IO access not attempted — outside BLS scope; naloxone IN is the correct BLS route",
+      "subtype": "intervention",
+      "category": "scope_adherence",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [
+        "MFR",
+        "EMT"
+      ],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "absence_check",
+        "absence_intervention_key": "iv_io_access"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "IV/IO correctly avoided — naloxone IN via MAD is the correct BLS route; IV access is an ALS skill.",
+      "missed_feedback": "IV/IO attempted — outside BLS scope; naloxone via intranasal MAD (2 mg) is the BLS-approved route.",
+      "clinical_rationale": "BLS scope permits naloxone via intranasal route with MAD; IV naloxone requires ALS-level certification."
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Toxins and Environmental: Airway Respiratory Irritants. NASEMSO national provisional base.",
+  "id": "nasemso_base_toxins_and_environmental_airway_respiratory_irritants",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Airway Respiratory Irritants",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Airway Respiratory Irritants",
+  "aliases": [
+    "Airway injury",
+    "Chemical respiratory",
+    "Injury",
+    "Respiratory injury",
+    "Respiratory irritant",
+    "Toxic inhalation"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Airway Respiratory Irritants",
+      "points": [
+        "Rapid recognition of the signs and symptoms of confirmed or suspected airway respiratory irritants"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Inhalation of a variety of gases, mists, fumes, aerosols, or dusts may cause irritation or injury to the airways, pharynx, lung, asphyxiation, or other systemic effects",
+        "Inhaled airway/respiratory irritant agents will interact with the mucous membranes, upper and lower airways based on solubility, concentration, particle size, and duration of exposure",
+        "The less soluble and smaller the particle size of the agent the deeper it will travel into the airway and respiratory systems the inhaled toxic agent will go before reacting with adjoining tissues thus causing a greater delay in symptom onset",
+        "As the type, severity and rapidity of signs and symptom onset depends on agent, water solubility, concentration, particle size, and duration of exposure, the below signs and symptoms are often overlapping and escalating in severity",
+        "Many airways and respiratory irritant agents have \"warning properties\" such as identifiable or unpleasant smells or irritation to eyes or airways",
+        "Some agents do not have clear warning properties and will often have delayed onset of any sign or symptom:",
+        "High water solubility/highly irritating (oral/nasal and pharynx, particle size greater than",
+        "Intermediate water solubility (bronchus and bronchiole, particle size 5'10 micrometers) a. Chlorine"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Head tilt-chin lift (use jaw-thrust if C-spine injury suspected)",
+        "Oral airway (OPA) for unconscious patient without gag reflex",
+        "Suction upper airway",
+        "BVM ventilation (15 L/min O2) with oral airway: 1 breath/5-6 sec; pediatric: 1 breath/3 sec",
+        "Oxygen via NRM targeting SpO2 94-98%"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Nasopharyngeal airway (NPA) for conscious or semiconscious patient",
+        "Supraglottic airway (LMA, i-Gel, King LT) for airway management in unconscious patient",
+        "CPAP 5-10 cmH2O for respiratory distress with spontaneous breathing",
+        "Upper airway suction; positioning",
+        "Pulse oximetry continuous monitoring"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "Waveform capnography for all invasive airway devices and ventilated patients",
+        "IO access for medication delivery if needed",
+        "IV access for sedation before intubation (per state/local protocol)",
+        "Tracheobronchial suctioning of intubated patient",
+        "Bag-valve mask with PEEP valve for ventilation",
+        "Glucometer and glucose correction as indicated"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "Endotracheal intubation: video laryngoscopy preferred; confirm with waveform capnography",
+        "RSI: succinylcholine 1.5 mg/kg IV/IO + ketamine 1-2 mg/kg IV/IO or etomidate 0.3 mg/kg",
+        "Rocuronium 1.2 mg/kg IV/IO as alternative neuromuscular blockade",
+        "Surgical cricothyrotomy or needle cricothyrotomy for cannot-intubate-cannot-oxygenate",
+        "Mechanical ventilator settings: VT 6-8 mL/kg IBW, RR 10-12/min, PEEP 5 cmH2O, FiO2 titrate to SpO2 94-98%",
+        "Waveform capnography: target EtCO2 35-45 mmHg (25-35 mmHg for herniation)",
+        "NG/OG tube for gastric decompression after intubation",
+        "Sedation/analgesia post-intubation: fentanyl, midazolam, ketamine"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Generally, speaking to patients with exposure to highly soluble airway/respiratory irritants you will find that they have self-extricated due to the warning properties such as the smell, rapidity of onset of irritation, and other symptoms",
+        "The less soluble agents may generate only an odor (e.g., mowed hay smell for Phosgene) and will have delayed serious symptoms such as acute pulmonary edema, hypoxia, and shortness of breath with minimal exertion"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Airway respiratory irritants can exacerbate underlying reactive airway diseases (e.g., asthma, chronic obstructive pulmonary disease (COPD)) and precipitate or exacerbate bronchospasm, respiratory distress, and hypoxia",
+        "As patients may be off gassing (particularly hydrogen sulfide and hydrogen cyanide) in the back of the transport vehicle, it is important to have adequate ventilation of the patient compartment",
+        "Removal from the toxic environment, oxygen (humidified if available), general supportive therapy, bronchodilators, respiratory support, and rapid transport are core elements of care as there are no specific antidotes for any of these inhaled agents except for heavy metals that may be chelated in-hospital after agent identification",
+        "Hydrogen sulfide causes the cells responsible for the sense of smell to be stunned into inaction and therefore with a very short exposure will shut down and the exposed victim will not perceive the smell, yet the victim continues to absorb the gas as it is still present",
+        "Inhaled agents have become popular as a means of committing suicide. If there is some form of suicide signage, hoses, or buckets of substances visible as you arrive at the vehicle or residence, immediately retreat to well ventilated area and don self-contained breathing apparatus (SCBA) before opening the vehicle or making entry as these gases may be highly concentrated and potentially lethal to EMS responders",
+        "Household bathroom, kitchen, and oven cleaners when mixed can generate various airway respiratory irritants (ammonia, chloramine, and chlorine gas releases are particularly common). A very common exposure is to chloramine, a gas liberated when bleach (hypochlorite) and ammonia are combined. Chloramine then hydrolyzes in the distal airways and alveoli to ammonia and hypochlorous acid",
+        "Sudden sniffing death can result from a single use of inhalant of abuse a. Some inhalants can cause cardiac arrest due to dysrhythmias from irritated myocardium",
+        "Patient may describe a specific odor (chlorine swimming pool smell, ammonia smell,"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Document key aspects of the exam to assess for a change after each intervention: o Respiratory rate",
+        "o Oxygen saturation",
+        "o Use of accessory muscles or tracheal tugging",
+        "o Breath sounds",
+        "o Air entry/stridor",
+        "o Mental status",
+        "o Reduction of burning sensation in airway/pharynx"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Contact medical direction for clinical deterioration or interventions outside standard scope"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

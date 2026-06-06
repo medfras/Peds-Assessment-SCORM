@@ -1,0 +1,81 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-30 Active Compression-Decompression Device (Revised 6/27/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_active_compression_decompression_device",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (All EMS Levels — MCA Optional)",
+  "jurisdiction": "Michigan",
+  "condition": "Active Compression-Decompression (ACD) Device",
+  "version": "2023-06-27",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-30: Active Compression-Decompression Device — MDHHS Approved 6/27/2023",
+
+  "purpose": "MCA OPTIONAL. The Active Compression-Decompression (ACD) device provides both active compression AND active decompression of the chest during CPR, enhancing venous return. MUST be used in conjunction with the Impedance Threshold Device (ITD). MCAs are responsible for provider training and submitting training documentation to MDHHS.",
+
+  "sections": [
+    {
+      "title": "Authorization and Training",
+      "reference": "Michigan Protocol 7-30: ACD — Authorization",
+      "points": [
+        "MCA OPTIONAL — only authorized if MCA has approved ACD device use",
+        "Device must be FDA-approved",
+        "MCAs are responsible for: provider training AND submission of training documentation to MDHHS",
+        "All providers using the ACD device must be trained per MCA requirements"
+      ]
+    },
+    {
+      "title": "Indication and Required Pairing",
+      "reference": "Michigan Protocol 7-30: ACD — Indication",
+      "points": [
+        "INDICATION: cardiac arrest",
+        "REQUIRED PAIRING: ACD device MUST be used in conjunction with the Impedance Threshold Device (ITD) — refer to Section 7-11 ITD Protocol",
+        "The ACD device and ITD work synergistically — the ACD creates active decompression that works with the ITD to enhance venous return during CPR decompression phase"
+      ]
+    },
+    {
+      "title": "Discontinuation",
+      "reference": "Michigan Protocol 7-30: ACD — Discontinuation",
+      "points": [
+        "RETURN OF SPONTANEOUS CIRCULATION (ROSC): discontinue ACD device IMMEDIATELY upon ROSC",
+        "Manage patient per ROSC Protocol after discontinuation"
+      ]
+    },
+    {
+      "title": "Documentation",
+      "reference": "Michigan Protocol 7-30: ACD — Documentation",
+      "points": [
+        "Document ACD device use in PCR",
+        "Document time of initiation and discontinuation",
+        "Document concurrent ITD use",
+        "Document patient outcome relative to ACD use (ROSC achieved, continued arrest, TOR)"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "ACD Device Authorized",
+      "description": "MCA must select whether an ACD device is authorized for use in cardiac arrest",
+      "options": ["Authorized — FDA-approved ACD device; MCA-required training completed; training submitted to MDHHS", "Not authorized"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "ROSC achieved — STOP ACD device IMMEDIATELY; manage per ROSC Protocol",
+    "ITD not available — do NOT use ACD device alone; ACD requires concurrent ITD use; use standard manual CPR"
+  ],
+
+  "scope_notes": [
+    "MCA OPTIONAL — only authorized if MCA has approved and submitted training to MDHHS",
+    "Device must be FDA-approved",
+    "MUST be used in conjunction with ITD (Section 7-11)",
+    "Indication: cardiac arrest only",
+    "Discontinue immediately upon ROSC",
+    "MCAs responsible for training and MDHHS training submission",
+    "Document in PCR: device use, times, concurrent ITD use, patient outcome"
+  ]
+}

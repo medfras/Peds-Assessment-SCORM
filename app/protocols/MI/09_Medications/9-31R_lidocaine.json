@@ -1,0 +1,83 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-31R Lidocaine (MDHHS Reviewed 2025). Base Michigan template.",
+  "id": "mi_base_medication_ref_lidocaine",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Lidocaine",
+  "version": "2025-03-31",
+  "protocol_reference": "Michigan Medication Protocol Section 9-31R: Lidocaine — MDHHS Reviewed 2025",
+
+  "pharmacological_category": "Antidysrhythmic — Class IB / Local Anesthetic",
+
+  "routes": ["IV", "IO"],
+
+  "indications": [
+    "Cardiac arrest — ventricular fibrillation (V-Fib) or pulseless ventricular tachycardia (pVT) — alternative to amiodarone",
+    "Wide complex tachycardia with pulse (suspected ventricular tachycardia)",
+    "Intraosseous (IO) site anesthesia in conscious patients before IO medication administration"
+  ],
+
+  "contraindications": [
+    "Bradycardia or high-degree AV block",
+    "Known hypersensitivity to lidocaine or amide-type local anesthetics",
+    "Stokes-Adams syndrome (second or third degree AV block without pacemaker)"
+  ],
+
+  "precautions": [
+    "Monitor ECG and mental status for toxicity signs: tinnitus, perioral numbness, confusion, seizures",
+    "Reduce dose in hepatic failure (lidocaine is hepatically metabolized)",
+    "Do not exceed maximum cumulative dose",
+    "IO anesthesia: use 2% concentration (20 mg/mL)"
+  ],
+
+  "expected_effects": [
+    "Suppression of ventricular ectopy and dysrhythmia",
+    "Local anesthetic effect at IO site (reduces pain of intraosseous pressure injection)"
+  ],
+
+  "side_effects": [
+    "CNS toxicity (tinnitus, metallic taste, paresthesias, confusion, seizures) with excessive dosing",
+    "Bradycardia",
+    "Hypotension"
+  ],
+
+  "notes": [
+    "Cardiac arrest V-Fib/pVT: 1 mg/kg IV/IO; repeat 0.5 mg/kg q5-10 minutes; maximum total 3 mg/kg",
+    "Wide complex tachy with pulse: 1 mg/kg IV/IO; then 0.5-1 mg/kg; maximum total 3 mg/kg",
+    "IO anesthesia — conscious adult: 2% lidocaine (20 mg/mL) — 20 mg slow IO flush before medication delivery",
+    "IO anesthesia — conscious pediatric: 0.5 mg/kg slow IO flush; maximum 20 mg"
+  ],
+
+  "dosing": [
+    {
+      "population": "Adult (>14 yr) — cardiac arrest (V-Fib/pVT)",
+      "route": "IV/IO",
+      "dose": "1 mg/kg IV/IO; repeat 0.5 mg/kg q5-10 minutes; maximum total 3 mg/kg",
+      "notes": "Alternative to amiodarone in refractory V-Fib/pVT"
+    },
+    {
+      "population": "Adult (>14 yr) — wide complex tachycardia with pulse",
+      "route": "IV/IO",
+      "dose": "1 mg/kg IV/IO; then 0.5-1 mg/kg; maximum total 3 mg/kg",
+      "notes": "For suspected V-Tach with pulse"
+    },
+    {
+      "population": "Adult (>14 yr) — IO site anesthesia (conscious patient)",
+      "route": "IO (slow flush)",
+      "dose": "20 mg (1 mL of 2% solution) slow IO flush before medication infusion",
+      "notes": "Use 2% (20 mg/mL) concentration; give slowly into IO site; wait ~60 seconds before medication delivery"
+    },
+    {
+      "population": "Pediatric (≤14 yr) — IO site anesthesia (conscious patient)",
+      "route": "IO (slow flush)",
+      "dose": "0.5 mg/kg slow IO flush; maximum 20 mg",
+      "notes": "2% concentration; slow flush into IO; reduces discomfort of IO pressure infusion"
+    }
+  ],
+
+  "used_in_protocols": ["Cardiac Arrest (V-Fib/pVT)", "Tachycardia — Wide Complex", "Intraosseous Access — Conscious Patient"]
+}

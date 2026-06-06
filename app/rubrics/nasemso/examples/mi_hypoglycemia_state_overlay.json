@@ -1,0 +1,85 @@
+{
+  "_comment": "EXAMPLE OVERLAY — not a real Michigan protocol. Illustrates all four overlay operations against the NASEMSO hypoglycemia base rubric. Each operation includes the required governance fields. Validate with tests/test_call_type_overlay_schema.py.",
+  "_schema": "ems_call_type_overlay_v1",
+  "id": "mi_hypoglycemia_state_v1",
+  "version": "2026-05-13",
+  "call_type": "hypoglycemia",
+  "overlay_type": "state",
+  "jurisdiction": "Michigan",
+  "effective_date": "2026-06-01",
+  "approved_by": "Michigan Bureau of EMS",
+  "notes": "Michigan state protocol adjustments to NASEMSO hypoglycemia rubric. Glucagon intranasal added as ALS-only evidence path. D10 included alongside D50 for Paramedic glucose administration. ALS-assist item scoped to Paramedic-only per Michigan protocol.",
+
+  "operations": [
+
+    {
+      "op": "modify_item",
+      "item_id": "hypoglycemia.oral_glucose_administered",
+      "reason": "Michigan EMT scope includes oral glucose without restriction to AEMT/Paramedic for this step; base rubric applicable_levels are already EMT+ but point value reflects Michigan's emphasis on this intervention.",
+      "protocol_ref": "Michigan BLS/ALS Statewide Treatment Protocols, Adult Medical, Hypoglycemia, Rev. 2025",
+      "changes": {
+        "point_value": 6
+      }
+    },
+
+    {
+      "op": "add_to_item",
+      "item_id": "hypoglycemia.oral_glucose_administered",
+      "reason": "Michigan protocol explicitly permits D10W IV/IO as an alternative glucose delivery route; also recognizes intranasal glucagon (Baqsimi) as a Paramedic-level option. The NASEMSO base tier2 patterns do not capture these phrasing variants.",
+      "protocol_ref": "Michigan BLS/ALS Statewide Treatment Protocols, Adult Medical, Hypoglycemia, Rev. 2025",
+      "append_tier2_patterns": [
+        "(?i)\\b(d10|dextrose.10|ten.percent.dextrose|10%.dextrose)\\b",
+        "(?i)\\b(glucagon.intranasal|intranasal.glucagon|nasal.glucagon|baqsimi)\\b"
+      ],
+      "append_evidence_requirements": [
+        {
+          "type": "intervention",
+          "intervention_key": "d10_iv",
+          "note": "D10W intravenous — Michigan preferred low-concentration glucose solution"
+        },
+        {
+          "type": "intervention",
+          "intervention_key": "glucagon_intranasal",
+          "note": "Intranasal glucagon (e.g. Baqsimi) — Paramedic-level alternative when IV access is not established"
+        }
+      ]
+    },
+
+    {
+      "op": "add_item",
+      "reason": "Michigan protocol requires EMS to contact medical control before administering oral glucose to any patient with altered mental status, regardless of BGL. This step is not in the NASEMSO base rubric.",
+      "protocol_ref": "Michigan BLS/ALS Statewide Treatment Protocols, General Principles, Medical Control Contact, Rev. 2025",
+      "item": {
+        "id": "mi.hypoglycemia.medical_control_contact",
+        "description": "Contacts medical control before administering oral glucose to a patient with altered mental status, per Michigan protocol",
+        "category": "protocols_treatment",
+        "subtype": "intervention",
+        "point_value": 2,
+        "required": "required",
+        "applicable_levels": ["EMT", "AEMT", "Paramedic"],
+        "evidence_requirements": [
+          {
+            "type": "session_event",
+            "event_type": "medical_control_contact",
+            "event_key_pattern": "(?i)oral.glucose|glucose"
+          }
+        ],
+        "tier2_patterns": [
+          "(?i)\\b(medical.control|online.medical.control|base.hospital|med.control)\\b",
+          "(?i)\\b(contact(ed)?|call(ed)?|radio(ed)?).*(medical.control|base|hospital)\\b"
+        ],
+        "done_feedback": "Medical control contacted before oral glucose administration — correct Michigan protocol sequence.",
+        "missed_feedback": "Michigan protocol requires medical control contact before giving oral glucose to an altered patient. Document the contact and orders received.",
+        "unsafe_if_missed": false
+      }
+    },
+
+    {
+      "op": "suppress_item",
+      "item_id": "hypoglycemia.als_request_if_indicated",
+      "reason": "Michigan non-transport EMS agencies operating under standing orders and direct ALS intercept dispatch do not score ALS request as a separate checklist step — ALS intercept is auto-dispatched at first report of hypoglycemia and is not a student decision point in the Michigan training context.",
+      "protocol_ref": "Michigan BLS/ALS Statewide Treatment Protocols, General Principles, ALS Intercept, Rev. 2025"
+    }
+
+  ]
+}

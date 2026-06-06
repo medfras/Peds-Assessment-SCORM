@@ -1,0 +1,110 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-17 Patient Procedural Sedation (Revised 2/24/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_patient_procedural_sedation",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (Paramedic only)",
+  "jurisdiction": "Michigan",
+  "condition": "Patient Procedural Sedation",
+  "version": "2023-02-24",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-17: Patient Procedural Sedation — MDHHS Approved 2/24/2023",
+
+  "purpose": "PARAMEDIC USE ONLY. Procedural sedation is authorized for: electrical therapy (cardioversion and TCP), post-intubation sedation, and CPAP/HFNC with DIRECT Medical Control order. CPAP/HFNC sedation: KETAMINE IS NOT PERMITTED for this indication. Only ONE MCA-authorized medication may be given pre-radio contact; Medical Control must be contacted if a different medication is needed.",
+
+  "sections": [
+    {
+      "title": "Authorized Indications",
+      "reference": "Michigan Protocol 7-17: Sedation — Indications",
+      "points": [
+        "PARAMEDIC USE ONLY",
+        "Electrical therapy: synchronized cardioversion or transcutaneous pacing (TCP)",
+        "Post-intubation sedation",
+        "CPAP or HFNC: ONLY with direct Medical Control order — KETAMINE IS NOT PERMITTED for this indication"
+      ]
+    },
+    {
+      "title": "Pre-Radio Contact Authorization",
+      "reference": "Michigan Protocol 7-17: Sedation — Pre-Radio",
+      "points": [
+        "Only ONE MCA-authorized sedation medication may be given prior to Medical Control contact",
+        "If the clinical situation requires a medication OTHER than the pre-radio authorized medication: contact Medical Control first",
+        "Document all sedation medications, doses, times, and patient response"
+      ]
+    },
+    {
+      "title": "Adult Sedation Options",
+      "reference": "Michigan Protocol 7-17: Sedation — Adult Dosing",
+      "points": [
+        "MIDAZOLAM (Versed): 1–5 mg (0.05 mg/kg) IV/IO; titrate slowly; IN if IV not available; repeat once in 5 minutes to maximum 0.1 mg/kg",
+        "DIAZEPAM (Valium): 5–10 mg (0.1 mg/kg) IV/IO; repeat every 5 minutes to maximum 0.3 mg/kg",
+        "FENTANYL: 50–100 mcg (1 mcg/kg) IV/IO; repeat every 4 minutes to maximum 3 mcg/kg",
+        "KETAMINE: 4 mg/kg IM OR 1.5 mg/kg IV/IO; IN if IV not available; maximum 500 mg; NOT for CPAP or HFNO"
+      ]
+    },
+    {
+      "title": "Pediatric Sedation Options",
+      "reference": "Michigan Protocol 7-17: Sedation — Pediatric Dosing",
+      "points": [
+        "Pediatric dosing per MI-MEDIC cards when available",
+        "BACKUP MIDAZOLAM: 0.05 mg/kg IV/IO (IN if IV not available); repeat once to maximum 0.1 mg/kg",
+        "BACKUP FENTANYL: 1 mcg/kg IV/IO (IN if IV not available); repeat every 5 minutes to maximum 3 mcg/kg",
+        "BACKUP KETAMINE: 4 mg/kg IM OR 1.5 mg/kg IV/IO; NOT for CPAP or HFNO"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Pre-Radio Sedation Medication Authorization (Adult)",
+      "description": "MCA must select which sedation medication(s) are authorized for Paramedic use prior to Medical Control contact for procedural sedation in adults",
+      "options": ["Midazolam 1–5 mg IV/IO (0.05 mg/kg, titrate, repeat once to max 0.1 mg/kg)", "Diazepam 5–10 mg IV/IO (0.1 mg/kg, repeat q5 min to max 0.3 mg/kg)", "Fentanyl 50–100 mcg IV/IO (1 mcg/kg, repeat q4 min to max 3 mcg/kg)", "Ketamine 4 mg/kg IM or 1.5 mg/kg IV/IO (max 500 mg — NOT for CPAP/HFNO)"],
+      "selected": null
+    },
+    {
+      "item": "Pre-Radio Sedation Medication Authorization (Pediatric)",
+      "description": "MCA must select which sedation medication(s) are authorized for Paramedic use prior to Medical Control contact for procedural sedation in pediatric patients",
+      "options": ["Midazolam per MI-MEDIC / backup 0.05 mg/kg IV/IO, repeat once to max 0.1 mg/kg", "Fentanyl per MI-MEDIC / backup 1 mcg/kg IV/IO, repeat q5 min to max 3 mcg/kg", "Ketamine per MI-MEDIC / backup 4 mg/kg IM or 1.5 mg/kg IV/IO — NOT for CPAP/HFNO"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [
+    {
+      "name": "Midazolam (Procedural Sedation — Adult)",
+      "dose": "1–5 mg (0.05 mg/kg) IV/IO titrated slowly; IN if IV unavailable; repeat once in 5 min to max 0.1 mg/kg",
+      "route": "IV, IO, or IN",
+      "indication": "Procedural sedation for electrical therapy, post-intubation sedation, or CPAP/HFNC (MC order required for CPAP/HFNC)",
+      "contraindications": "Titrate slowly; monitor airway and SpO2; only one pre-radio medication per MCA selection",
+      "side_effects": "Respiratory depression, hypotension",
+      "scope": "Paramedic only",
+      "notes": "Adult maximum via any route: 0.1 mg/kg. Titrate slowly to effect. Only authorized for CPAP/HFNC with direct MC order."
+    },
+    {
+      "name": "Ketamine (Procedural Sedation)",
+      "dose": "4 mg/kg IM OR 1.5 mg/kg IV/IO; IN if IV unavailable; maximum 500 mg",
+      "route": "IM, IV, IO, or IN",
+      "indication": "Procedural sedation for electrical therapy or post-intubation sedation",
+      "contraindications": "NOT for CPAP or HFNO; NOT for patient restraint without online MC",
+      "side_effects": "Emergence phenomena, nausea, laryngospasm (with rapid IV), increased secretions",
+      "scope": "Paramedic only",
+      "notes": "KETAMINE IS NOT PERMITTED for CPAP or HFNO sedation."
+    }
+  ],
+
+  "deterioration_flags": [
+    "Respiratory depression after sedation — assist ventilation; maintain airway; have reversal agents available (flumazenil for benzodiazepines, naloxone for opioids)",
+    "Different sedation medication needed than pre-radio authorized — contact Medical Control before administering",
+    "CPAP/HFNC sedation needed — contact Medical Control; ketamine NOT permitted for this indication"
+  ],
+
+  "scope_notes": [
+    "PARAMEDIC USE ONLY",
+    "Indications: electrical therapy (cardioversion/TCP), post-intubation sedation, CPAP/HFNC (MC order required for CPAP/HFNC)",
+    "CPAP/HFNC: KETAMINE NOT PERMITTED",
+    "Pre-radio: only one MCA-authorized medication permitted; contact MC for different medication",
+    "Adult: midazolam, diazepam, fentanyl, or ketamine per MCA selection",
+    "Pediatric: per MI-MEDIC; backup midazolam, fentanyl, or ketamine per MCA selection"
+  ]
+}

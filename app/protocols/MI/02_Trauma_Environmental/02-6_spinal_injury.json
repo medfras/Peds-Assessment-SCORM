@@ -1,0 +1,49 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 2-6 Spinal Injury Assessment (Revised 05/22/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured. Source: NASEMSO Clinical Guidelines.",
+  "id": "mi_base_all_spinal_injury",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "All",
+  "level_display": "All Levels",
+  "jurisdiction": "Michigan",
+  "condition": "Spinal Injury Assessment",
+  "version": "2023-05-22",
+  "protocol_reference": "Michigan Trauma and Environmental Protocol Section 2-6: Spinal Injury Assessment — MDHHS Approved 5/22/23, Reviewed 2023. Source: NASEMSO Clinical Guidelines.",
+  "sections": [
+    {
+      "title": "Spinal Injury Assessment",
+      "reference": "Michigan Protocol 2-6: Spinal Injury Assessment",
+      "points": [
+        "Follow General Pre-hospital Care-Treatment Protocol",
+        "Assess the mechanism of injury: negative mechanism does NOT require a spine injury clinical assessment; patients with mechanism of injury WITH the potential for causing spine injury SHALL have a spine injury clinical assessment performed",
+        "Clinical criteria are used as the basis for assessment — if ANY clinical criteria are present OR if the assessment cannot be completed, the patient has a POSITIVE spine injury assessment",
+        "If mechanism with potential for spine injury exists, assess the following clinical criteria: (A) altered mental status; (B) use of intoxicants; (C) a painful injury that distracts the patient from assessment of the spine; (D) motor and/or sensory deficit; (E) spine pain and/or tenderness",
+        "If ANY clinical criteria are present → POSITIVE spine injury assessment → maintain spinal precautions during movement and transport per Spinal Precautions-Procedure Protocol",
+        "If NONE of the clinical criteria are present → NEGATIVE spine injury assessment",
+        "Patients over the age of 65 with evidence of a head strike mechanism of injury WILL have a rigid extrication collar applied even if the spinal injury clinical assessment is negative"
+      ]
+    }
+  ],
+  "mca_selections_required": [],
+  "deterioration_flags": [
+    "New or worsening motor/sensory deficit — positive spine assessment; maintain precautions",
+    "Altered mental status in trauma patient — automatically positive spine assessment; cannot be cleared",
+    "Intoxicated patient — cannot clear spine; treat as positive assessment",
+    "Patient age ≥ 65 with head strike — apply rigid collar regardless of assessment result"
+  ],
+  "scope_notes": [
+    "Spine injury clinical assessment: all levels",
+    "Rigid extrication collar application: all levels",
+    "Spinal precautions during movement and transport: all levels — refer to Spinal Precautions-Procedure Protocol"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "pediatric_trauma",
+      "spinal_motion_restriction",
+      "trauma"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

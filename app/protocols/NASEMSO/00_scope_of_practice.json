@@ -1,0 +1,217 @@
+{
+  "_schema": "nasemso_scope_of_practice_v1",
+  "_comment": "Source: National EMS Scope of Practice Model 2019 including Change Notices 1.0 and 2.0 (August 2021, DOT HS 813 151). NHTSA/NASEMSO. This represents the MINIMUM national standard skill set for each provider level.",
+  "id": "nasemso_base_scope_of_practice",
+  "version": "2021-08",
+  "document_reference": "National EMS Scope of Practice Model 2019: Including Change Notices 1.0 and 2.0 — NHTSA/NASEMSO, August 2021",
+  "note": "State scopes of practice may be more restrictive or expansive than this national model. All interventions require education, national certification, state licensure, AND medical director credentialing.",
+  "levels": {
+    "EMR": {
+      "full_name": "Emergency Medical Responder",
+      "description": "First-responder level. Provides initial, basic, life-saving care while awaiting ALS arrival. Often a secondary job function (firefighter, law enforcement, industrial responder). Foundational assessment and life-safety skills.",
+      "airway_ventilation": [
+        "Airway — oral (OPA)",
+        "Bag-valve-mask (BVM) ventilation",
+        "Head tilt-chin lift",
+        "Jaw-thrust",
+        "Mouth-to-barrier/mask/mouth/nose/stoma",
+        "Airway obstruction manual dislodgement techniques (back blows, abdominal thrusts)",
+        "Suctioning — upper airway",
+        "Oxygen — nasal cannula",
+        "Oxygen — non-rebreather mask",
+        "Manual cervical stabilization"
+      ],
+      "cardiovascular": [
+        "CPR (cardiopulmonary resuscitation)",
+        "AED — automated/semi-automated defibrillation",
+        "Hemorrhage control — direct pressure",
+        "Hemorrhage control — tourniquet",
+        "Hemorrhage control — wound packing",
+        "Manual blood pressure"
+      ],
+      "immobilization": [
+        "Cervical collar",
+        "Manual cervical stabilization",
+        "Extremity stabilization — manual",
+        "Extremity splinting",
+        "Emergency moves for endangered patients",
+        "Eye irrigation"
+      ],
+      "medications": [
+        "Auto-injector antidotes for chemical/hazardous material exposures",
+        "Epinephrine IM auto-injector for anaphylaxis (supplied/carried by EMS agency)",
+        "Naloxone intranasal — unit-dosed, premeasured (for suspected opioid overdose)",
+        "Opioid antagonist auto-injector for suspected opioid overdose"
+      ],
+      "other": [
+        "Assisted delivery (childbirth)",
+        "Blood pressure — manual"
+      ]
+    },
+    "EMT": {
+      "full_name": "Emergency Medical Technician",
+      "description": "Primary scope for BLS ambulance transport. Builds on EMR with enhanced airway, medication, and assessment skills. Full-time primary job function. Transport-capable.",
+      "airway_ventilation": [
+        "Airway — nasal (NPA)",
+        "Airway — supraglottic (LMA, King LT, i-Gel)",
+        "CPAP",
+        "End-tidal CO2 monitoring — capnometry (digital/colorimetric)",
+        "Oxygen — humidifiers, partial rebreather, simple face mask, Venturi mask",
+        "Pulse oximetry",
+        "Suctioning — upper airway",
+        "All EMR airway skills"
+      ],
+      "cardiovascular": [
+        "Cardiac monitoring — 12-lead ECG acquisition and transmission",
+        "Defibrillation — automated/semi-automated (AED)",
+        "Mechanical CPR device",
+        "Telemetric monitoring and transmission of clinical data",
+        "All EMR cardiovascular skills"
+      ],
+      "immobilization": [
+        "Long spine board",
+        "Seated SMR (KED, etc.)",
+        "Traction splint (femur fracture)",
+        "Mechanical patient restraint",
+        "All EMR immobilization skills"
+      ],
+      "medication_routes": [
+        "Aerosolized/nebulized (SVN)",
+        "Inhaled",
+        "Intramuscular (IM)",
+        "Intranasal — unit-dosed, premeasured",
+        "Mucosal/sublingual",
+        "Oral",
+        "Oral — over-the-counter (OTC)"
+      ],
+      "medications": [
+        "Aspirin — oral, for suspected ischemic chest pain (162-325 mg)",
+        "Beta-agonist/bronchodilator inhaled (albuterol) for dyspnea/wheezing",
+        "Anticholinergic inhaled (ipratropium) for dyspnea/wheezing",
+        "Epinephrine IM (agency-stocked, 0.3-0.5 mg) for anaphylaxis",
+        "Epinephrine auto-injector for anaphylaxis",
+        "Immunizations — during public health emergency",
+        "Naloxone — intranasal unit-dosed/premeasured; IM auto-injector",
+        "Nitroglycerin sublingual — patient's own prescribed medication, for suspected ischemic chest pain",
+        "Oral glucose for suspected hypoglycemia",
+        "OTC oral analgesics for pain or fever (acetaminophen, ibuprofen)",
+        "All EMR medications"
+      ],
+      "iv_fluids": [
+        "IV maintenance — non-medicated IV fluids (maintenance of existing IV access only; not initiation)"
+      ],
+      "other": [
+        "Blood glucose monitoring",
+        "Assisted complicated delivery (childbirth)",
+        "Patient transport",
+        "Specimen collection via nasal swab"
+      ]
+    },
+    "AEMT": {
+      "full_name": "Advanced Emergency Medical Technician",
+      "description": "Mid-level provider between EMT and Paramedic. Adds IV/IO access, select IV medications, and capnography. In areas without paramedic coverage, AEMT is the highest level of prehospital care.",
+      "airway_ventilation": [
+        "End-tidal CO2 monitoring AND interpretation of waveform capnography",
+        "Suctioning — tracheobronchial of intubated patient",
+        "All EMT airway skills"
+      ],
+      "cardiovascular": [
+        "Intraosseous (IO) access initiation — adult and pediatric",
+        "Intravenous (IV) access initiation — peripheral",
+        "IV maintenance of non-medicated IV fluids",
+        "IV maintenance of medicated IV fluids",
+        "All EMT cardiovascular skills"
+      ],
+      "medication_routes": [
+        "Intranasal (not just unit-dose)",
+        "Intraosseous (IO)",
+        "Intravenous (IV)",
+        "Subcutaneous (SQ)",
+        "All EMT medication routes"
+      ],
+      "medications": [
+        "Analgesics — parenteral (morphine, fentanyl, ketorolac) for pain",
+        "Antiemetics — IV/IO (ondansetron, promethazine)",
+        "Dextrose — IV/IO (D50W, D10W) for hypoglycemia",
+        "Epinephrine — IV/IO for cardiac arrest or anaphylaxis",
+        "Glucagon — IM/IV/IO for hypoglycemia or beta-blocker overdose",
+        "Immunizations",
+        "Inhaled nitrous oxide (monitoring patient-administered)",
+        "Naloxone — IV/IO/IN for opioid overdose",
+        "Nitroglycerin sublingual — agency stock, for suspected ischemic chest pain",
+        "Venous blood sampling",
+        "All EMT medications"
+      ],
+      "other": [
+        "Venous blood sampling",
+        "Tracheobronchial suctioning of intubated patient"
+      ]
+    },
+    "Paramedic": {
+      "full_name": "Paramedic",
+      "description": "Highest level of prehospital EMS provider. Full ALS scope. Invasive airway management, advanced cardiac interventions, medication administration via all routes, RSI, and pharmacological management of complex presentations.",
+      "airway_ventilation": [
+        "Endotracheal intubation (oral/nasal)",
+        "RSI — rapid sequence intubation",
+        "Surgical cricothyrotomy",
+        "Needle cricothyrotomy",
+        "Gastric decompression — NG Tube",
+        "Gastric decompression — OG Tube",
+        "Chest tube placement — assist only",
+        "Chest tube — monitoring and management",
+        "Chest decompression — needle (tension pneumothorax)",
+        "Airway obstruction dislodgement by direct laryngoscopy",
+        "Oxygen therapy — high-flow nasal cannula",
+        "All AEMT airway skills"
+      ],
+      "cardiovascular": [
+        "Manual defibrillation",
+        "Cardioversion — synchronized electrical",
+        "Transcutaneous cardiac pacing",
+        "Transvenous cardiac pacing — monitoring and maintenance",
+        "Cardiac monitoring — 12-lead ECG acquisition AND interpretation",
+        "Access indwelling catheters and implanted central IV ports",
+        "Central line — monitoring",
+        "All AEMT cardiovascular skills"
+      ],
+      "medication_routes": [
+        "Endotracheal tube (ETT) medications",
+        "Intradermal",
+        "Nasogastric",
+        "Rectal",
+        "Subcutaneous",
+        "Topical",
+        "Transdermal",
+        "All AEMT medication routes"
+      ],
+      "medications": [
+        "Antidysrhythmics: amiodarone, lidocaine, adenosine, atropine IV, procainamide, magnesium",
+        "Blood products maintenance",
+        "Blood chemistry analysis",
+        "OTC medications — oral and topical",
+        "RSI agents: succinylcholine, rocuronium, ketamine, etomidate, midazolam",
+        "Thrombolytics (per medical direction)",
+        "Vasopressors: epinephrine infusion, norepinephrine, dopamine, vasopressin",
+        "All AEMT medications plus full pharmacological formulary per state/MCA/agency"
+      ]
+    }
+  },
+  "cascade_principle": "Each level includes all skills of the level below it. A Paramedic can perform all EMT skills. An AEMT can perform all EMT skills. State/MCA scope may restrict OR expand upon this minimum national model.",
+  "important_notes": [
+    "This model represents MINIMUM competencies — states may expand beyond this",
+    "All skill performance requires education, certification, licensure, AND medical director credentialing",
+    "Medical director authorization determines what specific medications and procedures are used within each level",
+    "Scope floors: a lower level in the cascade CANNOT expand scope beyond what the state base allows",
+    "Atropine IV: listed under Paramedic but some states authorize at AEMT level per local protocol",
+    "Nitroglycerin (agency stock): listed under AEMT but some states authorize at EMT level",
+    "RSI: Paramedic-only — requires specific training and medical director credentialing",
+    "IO access: AEMT and above nationally; some states authorize at EMT level"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "medical_control"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

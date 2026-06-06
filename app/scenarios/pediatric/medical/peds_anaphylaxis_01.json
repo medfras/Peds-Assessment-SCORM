@@ -1,0 +1,1491 @@
+{
+  "_schema": "pfd_scenario_v1",
+  "id": "peds_anaphylaxis_01",
+  "title": "Pediatric Anaphylaxis — Bee Sting",
+  "display_title": "Pediatric Allergic Reaction — 8-Year-Old Male",
+  "subtitle": "8-year-old male, bee sting at school playground",
+  "category": "pediatric_medical",
+  "category_display": "Pediatric Medical Assessment",
+  "turnover_target": "als",
+  "version": "1.0.0",
+  "rubric_template": "ems_standard_v1",
+  "base_patient_care_rubric": "nremt_e202_medical_v1",
+  "difficulty": "intermediate",
+  "protocol": "MI/01_General_Treatments/01-6_anaphylaxis",
+  "jurisdiction": "mi_base",
+  "clinical_context": {
+    "jurisdiction": "MI",
+    "concepts": [
+      "pediatric_patient",
+      "anaphylaxis",
+      "allergic_reaction",
+      "shock",
+      "transport_decision",
+      "airway_management",
+      "oxygen_therapy"
+    ],
+    "protocol_focus": [
+      "anaphylaxis",
+      "oxygen_therapy",
+      "airway_management"
+    ]
+  },
+  "agency_context": "",
+  "readiness_criteria": {
+    "min_minutes": 3,
+    "checks": [
+      {
+        "id": "messages",
+        "label": "5 messages sent",
+        "type": "message_count",
+        "min": 5
+      },
+      {
+        "id": "vitals",
+        "label": "Vitals assessed",
+        "type": "vitals_logged"
+      },
+      {
+        "id": "exam",
+        "label": "Exam/history obtained",
+        "type": "exam_logged"
+      },
+      {
+        "id": "treatment",
+        "label": "Treatment applied",
+        "type": "treatment_logged"
+      }
+    ]
+  },
+  "scene_entry_scoring": {
+    "ppe": {
+      "required": [
+        "gloves"
+      ],
+      "recommended": [
+        "eye_protection"
+      ],
+      "missing_required_penalty": 3,
+      "missing_recommended_penalty": 1,
+      "max_score": 10
+    },
+    "pat": {
+      "expected_impression": "sick",
+      "incorrect_impression_deduction": 2
+    }
+  },
+  "lung_sound_challenge": {
+    "enabled": true,
+    "audio_file": "/static/audio/lung sounds/AsthmaWheezing.mp3",
+    "prompt": "Auscultate Jayden — what do you hear?",
+    "accepted_answers": [
+      "wheeze",
+      "wheezing",
+      "expiratory wheeze",
+      "bilateral wheeze",
+      "expiratory wheezing",
+      "bilateral wheezing",
+      "diffuse wheeze",
+      "diffuse wheezing"
+    ],
+    "correct_choice_id": "expiratory_wheeze",
+    "finding": "Expiratory wheeze bilateral — diffuse, decreased air movement at bases",
+    "feedback_correct": "Correct — bilateral expiratory wheeze with decreased air movement. This is bronchospasm — diffuse, from the lower airways, not an upper airway obstruction.",
+    "feedback_incorrect": "Listen again — this patient has an expiratory wheeze bilaterally. It is continuous, lower-pitched, and heard throughout expiration — diffuse bronchospasm, not an upper airway sound.",
+    "post_treatment": {
+      "requires_intervention_id": "epinephrine_im",
+      "audio_file": "/static/audio/lung sounds/clear.mp3",
+      "prompt": "Epinephrine has been administered — re-auscultate Jayden. What do you hear now?",
+      "accepted_answers": [
+        "clear",
+        "clear bilateral",
+        "clear bilaterally",
+        "improved",
+        "no wheeze",
+        "wheeze resolved",
+        "absent wheeze",
+        "wheeze absent",
+        "good air movement",
+        "clear lung sounds",
+        "clearing"
+      ],
+      "correct_choice_id": "clear",
+      "finding": "Lung sounds clear bilaterally — good air movement throughout, wheeze resolved after epinephrine",
+      "feedback_correct": "Correct — epinephrine has rapidly improved the bronchospasm. Document the improvement and reassessment time. Monitor for biphasic reaction — symptoms can return hours later.",
+      "feedback_incorrect": "Listen again — after epinephrine, lung sounds are clear bilaterally with good air movement."
+    }
+  },
+  "chat_placeholder": "Talk to the patient, the teacher, or your partner Alex...",
+  "chat_address_hint": "Address the patient directly, or say 'teacher' or 'Alex'",
+  "debrief_lexi_hints": [
+    {
+      "label": "Next step?",
+      "msg": "What should I do next in this scenario?"
+    },
+    {
+      "label": "Anaphylaxis vs. allergy?",
+      "msg": "How do I tell the difference between anaphylaxis and a simple allergic reaction?"
+    },
+    {
+      "label": "Epi dose?",
+      "msg": "What is the correct epinephrine dose for this patient?"
+    },
+    {
+      "label": "BLS scope?",
+      "msg": "Can I give epinephrine as an EMT without a Paramedic on scene?"
+    },
+    {
+      "label": "After epi?",
+      "msg": "I gave the epinephrine — what do I do next?"
+    }
+  ],
+  "objectives": [
+    "Recognize anaphylaxis criteria: wheezing AND hypotension distinguishes anaphylaxis from simple allergic reaction",
+    "Administer draw-up epinephrine IM without delay — BLS scope per MCA protocol",
+    "Apply weight-based dosing: 27 kg patient → 10–30 kg range → 0.15 mg (0.15 mL) of epinephrine 1 mg/mL IM",
+    "Perform 5-rights cross-check: verbalize drug, concentration, volume, and dose to partner before drawing up and before administering",
+    "Administer albuterol 2.5 mg SVN for persistent bronchospasm after epinephrine",
+    "Apply high-flow oxygen via NRB mask",
+    "Position patient supine with legs elevated — optimize venous return for distributive shock",
+    "Request ALS intercept early — diphenhydramine, IV fluids, and push-dose epinephrine are ALS skills",
+    "Recognize diphenhydramine and IV fluid bolus are ALS skills — not BLS scope"
+  ],
+  "dispatch": {
+    "unit": "{unit}",
+    "text": "{unit}, respond to Washington Elementary School, 4124 Plainfield Ave NE — east playground, for an 8-year-old male with a bee sting and known allergy. Teacher reports hives and difficulty breathing. Patient is conscious.",
+    "priority": "Priority 1",
+    "time": "13:47",
+    "cross_streets": "Plainfield Ave NE and 4 Mile Rd",
+    "response_time_minutes": 4
+  },
+  "scene": {
+    "description": "You arrive at the east playground of Washington Elementary School. It's a warm afternoon, recess just ended. Three teachers are clustered around an 8-year-old boy sitting on the blacktop near the swing set. A female teacher in her 30s — Ms. Hernandez — is crouched next to him, holding his hand. She waves you over urgently. The boy is visibly distressed — he's scratching his arms and neck, he has welts (hives) visible on his forearms and face, and his face looks puffy around the eyes. He is breathing with audible effort. Other students have been moved inside. Scene is safe.",
+    "image": null,
+    "video": null,
+    "hazards": []
+  },
+  "patient": {
+    "pcr_demographics_deferred": true,
+    "name": "Jayden",
+    "age": 8,
+    "dob_month_day": "July 8",
+    "sex": "male",
+    "weight_kg": 27,
+    "weight_display": "60 lbs (approximately 27 kg — Broselow Orange)",
+    "chief_complaint": "Bee sting — hives, throat tightness, difficulty breathing",
+    "general_impression": "8-year-old boy sitting on the blacktop, leaning forward on his hands. He is alert and frightened — eyes wide, looking back and forth between you and his teacher. His face is flushed and puffy around the eyes and lips. Hives are visible on his forearms, neck, and face — red raised welts spreading as you watch. He is breathing fast and you can hear an audible wheeze with each breath even before auscultation. He is sweating despite the mild temperature. He looks scared and is scratching at his arm near a small red mark on his right forearm — the sting site.",
+    "gcs_assessment": {
+      "e": 4,
+      "v": 5,
+      "m": 6,
+      "total": 15,
+      "rationale": "Eyes open spontaneously, he answers appropriately, and he follows commands while frightened.",
+      "challenge_description": "Jayden is awake and frightened with eyes open spontaneously. He answers questions appropriately between breaths and follows commands while sitting forward on the blacktop."
+    },
+    "avpu_assessment": {
+      "value": "alert",
+      "description": "Patient is alert, frightened, answers appropriately, and follows commands.",
+      "rationale": "Use AVPU = alert because he is awake, spontaneously interactive, and responding appropriately."
+    },
+    "image": "/static/images/anaphylaxis_8yom.png",
+    "video": null,
+    "pat": {
+      "impression": "8-year-old boy on the blacktop — leaning forward, flushed, puffy face and lips, hives spreading visibly. Audible wheeze before you reach him. Alert and frightened.",
+      "appearance": "Alert and frightened — eyes wide, interactive, making eye contact. Not limp or unresponsive. Tone is normal. Clearly distressed but conscious and communicating.",
+      "work_of_breathing": "Significantly increased — audible wheeze present without auscultation, rapid respirations, speaking in short phrases. Angioedema around lips and periorbital region adds upper airway concern.",
+      "circulation": "Abnormal — flushed face and trunk, spreading urticaria (hives) on forearms, neck, and face, early angioedema around lips and eyes, diaphoretic. Vasodilation and mast cell release visible on skin.",
+      "expected": "sick",
+      "teaching": "Both WOB and circulation are abnormal — this is immediately SICK. The combination of audible wheeze (bronchospasm) and spreading urticaria with angioedema is a classic anaphylaxis presentation requiring immediate epinephrine. The preserved appearance (alert, interactive) should not delay treatment — anaphylaxis can progress to airway loss rapidly. Epinephrine is the priority intervention; do not delay for full assessment."
+    }
+  },
+  "history": {
+    "allergies": "Bees — anaphylaxis (prior reaction 2 years ago, hospitalized). No known drug allergies.",
+    "medications": "EpiPen 0.15 mg prescribed — NOT on scene, left at home this morning.",
+    "pmh": "One prior anaphylactic reaction to bee sting at age 6 — transported by EMS, treated with epinephrine and diphenhydramine in ED. No cardiac history. No asthma. No other medical history.",
+    "last_oral_intake": "Lunch approximately 1 hour ago — peanut butter sandwich, apple juice, crackers. (Teacher confirms — no new food since lunch; sting is confirmed cause.)",
+    "events_leading_to_call": "Jayden was on the playground during afternoon recess when he was stung on the right forearm by a bee. Ms. Hernandez saw it happen. Within approximately 5–8 minutes he started scratching and developed visible hives. He told Ms. Hernandez his throat felt 'scratchy' and his chest felt 'tight.' She called 911 immediately and sent another teacher to get the school nurse. The school nurse does not have epinephrine on hand. Jayden's mother is en route — ETA approximately 15 minutes."
+  },
+  "initial_complaint": {
+    "speaker": "Ms. Hernandez",
+    "lay_summary": "He got stung and now he looks really uncomfortable.",
+    "allowed_in_opener": true,
+    "do_not_include": [
+      "onset time",
+      "hives",
+      "throat tightness",
+      "chest tightness",
+      "prior allergy history",
+      "EpiPen availability",
+      "medications",
+      "diagnosis",
+      "clinical terms",
+      "treatment suggestions",
+      "negative findings",
+      "full OPQRST/SAMPLE"
+    ]
+  },
+  "history_response_map": {
+    "patient_identity": {
+      "label": "Patient identity / demographics",
+      "speaker": "Ms. Hernandez",
+      "triggers": [
+        "what is his name",
+        "what's his name",
+        "patient name",
+        "how old is he",
+        "age",
+        "date of birth",
+        "dob",
+        "birthday"
+      ],
+      "answer": "His name is Jayden. He's 8 years old. His birthday is July 8.",
+      "tags": [
+        "[[HISTORY: Patient Name=Jayden]]",
+        "[[HISTORY: Patient Age=8-year-old male]]",
+        "[[HISTORY: Patient Date of Birth=July 8]]"
+      ],
+      "notes": "Patient-scoped demographics only.",
+      "do_not_include": [
+        "weight unless asked",
+        "allergen details",
+        "medical history",
+        "medications",
+        "treatment suggestions"
+      ]
+    },
+    "patient_weight": {
+      "label": "Patient weight",
+      "speaker": "Ms. Hernandez",
+      "triggers": [
+        "how much does he weigh",
+        "what does he weigh",
+        "patient weight",
+        "weight",
+        "estimated weight"
+      ],
+      "answer": "He weighs about 60 pounds, around 27 kilograms.",
+      "tag": "[[HISTORY: Patient Weight=60 lbs (approximately 27 kg — Broselow Orange)]]",
+      "notes": "Patient-scoped weight only.",
+      "do_not_include": [
+        "diagnosis",
+        "treatment suggestions"
+      ]
+    },
+    "chief_concern": {
+      "label": "Broad opener / chief concern",
+      "speaker": "Ms. Hernandez",
+      "triggers": [
+        "what's going on",
+        "what happened",
+        "why did you call",
+        "how can we help",
+        "chief complaint"
+      ],
+      "answer": "He got stung and now he has hives and trouble breathing.",
+      "tag": "[[HISTORY: Patient Chief Complaint=bee sting with hives, throat tightness, and difficulty breathing]]",
+      "notes": "Patient-scoped complaint only.",
+      "do_not_include": [
+        "timing",
+        "medications",
+        "treatment suggestions"
+      ]
+    }
+  },
+  "vitals": {
+    "baseline": {
+      "hr": {
+        "label": "Heart Rate",
+        "value": 128,
+        "unit": "bpm",
+        "display": "128 bpm — tachycardic"
+      },
+      "rr": {
+        "label": "Respirations",
+        "value": 24,
+        "unit": "/min",
+        "display": "24/min — tachypneic, labored"
+      },
+      "spo2": {
+        "label": "SpO2",
+        "value": 93,
+        "unit": "%",
+        "display": "93% (room air)"
+      },
+      "bp": {
+        "label": "Blood Pressure",
+        "value": "82/50",
+        "unit": "mmHg",
+        "display": "82/50 mmHg — hypotensive (age-appropriate normal ~100/65)"
+      },
+      "temp": {
+        "label": "Temperature",
+        "value": 99.0,
+        "unit": "°F",
+        "display": "99.0°F"
+      },
+      "blood_glucose": {
+        "label": "Blood Glucose",
+        "value": 102,
+        "unit": "mg/dL",
+        "display": "102 mg/dL"
+      },
+      "gcs": {
+        "label": "GCS",
+        "value": 15,
+        "unit": "/15",
+        "display": "15 (E4V5M6) — alert, frightened"
+      },
+      "skin_color": {
+        "label": "Skin",
+        "value": "Flushed face and trunk; diffuse urticaria (hives) spreading across forearms, neck, face; early angioedema around lips and periorbital region; diaphoretic",
+        "unit": ""
+      },
+      "cap_refill": {
+        "label": "Cap Refill",
+        "value": 4.0,
+        "unit": "sec",
+        "display": "4 seconds — delayed (poor perfusion)"
+      },
+      "pupils": {
+        "label": "Pupils",
+        "value": "Equal, round, reactive bilaterally — 4 mm",
+        "unit": ""
+      },
+      "lung_sounds": {
+        "label": "Lung Sounds",
+        "value": "Expiratory wheeze bilateral — diffuse, decreased air movement at bases",
+        "unit": ""
+      },
+      "work_of_breathing": {
+        "label": "Work of Breathing",
+        "value": "Increased — subcostal retractions, nasal flaring, tachypnea; speaking in short phrases between breaths",
+        "unit": ""
+      }
+    },
+    "deterioration": {
+      "note": "Without epinephrine, anaphylaxis progresses — distributive shock deepens, bronchospasm worsens, and hypoxia compounds. Rates are per minute of elapsed time without treatment.",
+      "rates": {
+        "hr": 1.5,
+        "rr": 0.4,
+        "spo2": -0.5,
+        "gcs": -0.25,
+        "cap_refill": 0.1
+      },
+      "caps": {
+        "hr": {
+          "max": 180,
+          "min": 90
+        },
+        "rr": {
+          "max": 48,
+          "min": 20
+        },
+        "spo2": {
+          "min": 78,
+          "max": 100
+        },
+        "gcs": {
+          "min": 3,
+          "max": 15
+        },
+        "cap_refill": {
+          "max": 6.0,
+          "min": 1.0
+        }
+      },
+      "string_thresholds": {
+        "skin_color": [
+          {
+            "gcs_below": 12,
+            "value": "Pale, profusely diaphoretic, urticaria coalescing into large plaques — angioedema of lips and tongue worsening"
+          },
+          {
+            "gcs_below": 8,
+            "value": "Ashen, cyanotic tinge to lips — impending cardiorespiratory collapse"
+          }
+        ],
+        "lung_sounds": [
+          {
+            "spo2_below": 88,
+            "value": "Severe bilateral wheeze — markedly diminished air movement, near-silent chest with severe obstruction"
+          },
+          {
+            "spo2_below": 84,
+            "value": "Diminished throughout — minimal air movement, severe obstructive physiology"
+          }
+        ],
+        "work_of_breathing": [
+          {
+            "gcs_below": 10,
+            "value": "Severe respiratory distress — tripod positioning, maximal accessory muscle use, unable to speak full words"
+          },
+          {
+            "gcs_below": 7,
+            "value": "Agonal — gasping, unable to maintain airway protective reflexes"
+          }
+        ]
+      }
+    },
+    "interventions": {
+      "epinephrine_im": {
+        "label": "Epinephrine 0.15 mg IM (draw-up)",
+        "within_bls_scope": true,
+        "required_expansion": "epi_drawup_im",
+        "detection_patterns": [
+          "epinephrine.*im",
+          "epi.*im",
+          "\\bdraw.?up.*epi",
+          "epi.*draw",
+          "give.*epi",
+          "administer.*epi",
+          "epinephrine.*inject",
+          "0\\.15.*mg.*epi",
+          "\\bepi\\b",
+          "\\bepinephrine\\b"
+        ],
+        "effects": {
+          "hr": {
+            "immediate_change": 15,
+            "rate_modifier": 0.6
+          },
+          "rr": {
+            "immediate_change": -4,
+            "rate_modifier": 0.6
+          },
+          "spo2": {
+            "immediate_change": 3,
+            "rate_modifier": 0.5
+          },
+          "cap_refill": {
+            "immediate_change": -0.8,
+            "rate_modifier": 0.4
+          },
+          "gcs": {
+            "immediate_change": 1,
+            "rate_modifier": 0.0
+          },
+          "string_override": {
+            "bp": "94/60"
+          }
+        },
+        "notes": "Epinephrine IM onset begins quickly. Expect a brief tachycardia spike from beta-1 effect and rising BP from alpha-1 vasoconstriction — expected, do not withhold. Bronchospasm should improve rapidly in this pilot scenario. May repeat once at 3–5 min if patient remains hypotensive.",
+        "requires_popup": true,
+        "popup_type": "medication",
+        "popup_config": {
+          "drug": "Epinephrine",
+          "concentration": "1 mg/mL (1:1000)",
+          "dose": "0.15 mg (0.15 mL) — patient 27 kg, 10–30 kg range",
+          "route": "IM — anterolateral (outer) thigh at 90°",
+          "scope": "EMT/BLS — draw-up approved per MCA protocol (training required)",
+          "drug_ref": "MI/09_Medications/9-23R_epinephrine",
+          "cross_check_notice": "5-rights cross-check: verbally state drug name, concentration, volume, and dose to your partner before drawing up AND before injecting.",
+          "cross_checks": [
+            {
+              "label": "Right Patient — anaphylaxis confirmed: wheezing AND hypotension; Jayden 27 kg (10–30 kg range); draw-up epi is the correct BLS option on this unit",
+              "right": "patient"
+            },
+            {
+              "label": "Right Medication — label reads 'Epinephrine 1 mg/mL (1:1000)'; expiration date checked; correct vial selected",
+              "right": "medication"
+            },
+            {
+              "label": "Right Dose — 0.15 mg (0.15 mL) of 1 mg/mL; patient weighs 27 kg → 10–30 kg range → 0.15 mg; volume in syringe verified with partner",
+              "right": "dose"
+            },
+            {
+              "label": "Right Route — IM injection; anterolateral (outer) thigh; 90-degree angle; needle length appropriate for muscle depth",
+              "right": "route"
+            },
+            {
+              "label": "Right Time — administer NOW; anaphylaxis criteria met; unit carries draw-up only; do not delay for ALS arrival; may repeat at 3–5 min if still hypotensive",
+              "right": "time"
+            },
+            {
+              "label": "Cross-check verbalized to partner — stated 'Epinephrine 1 mg/mL — 0.15 mL — 0.15 mg — IM' before drawing up and before injecting (per protocol)",
+              "right": "crosscheck"
+            }
+          ],
+          "procedure_steps": [
+            "Confirm anaphylaxis criteria: wheezing AND/OR hypotension — BOTH present; this is anaphylaxis, not a simple allergic reaction",
+            "Confirm equipment: this unit carries draw-up epinephrine 1 mg/mL — no auto-injectors on this unit; draw-up is the approved BLS option per protocol",
+            "Confirm patient weight: 27 kg → 10–30 kg range → dose is 0.15 mg (0.15 mL) of epinephrine 1 mg/mL",
+            "Verbalize to partner before draw-up: 'Epinephrine 1 mg/mL — drawing up 0.15 mL for 0.15 mg — IM' (medication cross-check step 1)",
+            "Draw 0.15 mL from epinephrine 1 mg/mL vial into syringe; partner verifies label, concentration, and volume",
+            "Verbalize to partner before injection: 'Epinephrine 0.15 mg — 0.15 mL of 1 mg/mL — IM — right outer thigh' (medication cross-check step 2)",
+            "Expose anterolateral (outer) right thigh; cleanse site",
+            "Inject at 90-degree angle into outer thigh; deliver medication; withdraw needle; apply gentle pressure",
+            "Dispose of needle in sharps container immediately — do not recap",
+            "Note administration time; document: drug, concentration (1 mg/mL), volume (0.15 mL), dose (0.15 mg), site (right outer thigh), time",
+            "Reassess vital signs every 5 minutes — expect BP to improve and HR to spike briefly (expected beta-1 effect)",
+            "Notify ALS of dose, time, and patient response; may repeat once at 3–5 minutes if patient remains hypotensive"
+          ]
+        }
+      },
+      "albuterol_svn": {
+        "label": "Albuterol 2.5 mg via SVN (nebulizer)",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "\\bsvn\\b",
+          "\\bnebulizer\\b",
+          "\\bneb\\b",
+          "albuterol.*neb",
+          "set up.*albuterol",
+          "albuterol.*treatment",
+          "breathing treatment",
+          "nebulized albuterol"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 5,
+            "rate_modifier": 0.2
+          },
+          "rr": {
+            "immediate_change": -6,
+            "rate_modifier": 0.4
+          },
+          "hr": {
+            "immediate_change": 10,
+            "rate_modifier": 1.1
+          }
+        },
+        "notes": "Administer after epinephrine IM — epi is the priority drug. Albuterol treats residual bronchospasm. Tachycardia increase expected from beta-2 stimulation — do not withhold for this reason.",
+        "requires_popup": true,
+        "popup_type": "medication",
+        "popup_config": {
+          "drug": "Albuterol Sulfate",
+          "concentration": "2.5 mg / 3 mL NS",
+          "dose": "2.5 mg / 3 mL NS",
+          "route": "SVN nebulized — O₂ at 6 LPM driving gas",
+          "scope": "EMT — per MCA protocol",
+          "procedure_ref": "MI/09_Medications/9-1_medication_administration",
+          "drug_ref": "MI/09_Medications/9-12R_albuterol",
+          "cross_check_notice": "5-rights cross-check: verbally state drug name, concentration, and dose to your partner before administering.",
+          "cross_checks": [
+            {
+              "label": "Right Patient — indication confirmed: persistent wheezing/bronchospasm in anaphylaxis per Protocol 1-6",
+              "right": "patient"
+            },
+            {
+              "label": "Right Medication — label reads 'Albuterol Sulfate 2.5 mg / 3 mL NS'; label verified against verbalization",
+              "right": "medication"
+            },
+            {
+              "label": "Right Dose — 2.5 mg / 3 mL NS (pediatric dose is NOT weight/age based — same unit-dose as adult)",
+              "right": "dose"
+            },
+            {
+              "label": "Right Route — SVN nebulized; O₂ at 6 LPM driving gas; pediatric mask selected for 8-year-old",
+              "right": "route"
+            },
+            {
+              "label": "Right Time — epinephrine IM already administered; albuterol now indicated for residual bronchospasm; patient tolerating mask",
+              "right": "time"
+            },
+            {
+              "label": "Cross-check verbalized — stated 'Albuterol 2.5 mg SVN' to partner before administering (per protocol)",
+              "right": "crosscheck"
+            }
+          ],
+          "procedure_steps": [
+            "Confirm epinephrine IM has been administered (albuterol is adjunct — epi is the priority drug in anaphylaxis)",
+            "Place 3 mL unit-dose vial contents (2.5 mg albuterol in 3 mL NS) in the nebulizer chamber",
+            "Assemble nebulizer unit and attach to T-piece with pediatric mask (appropriate for 8-year-old)",
+            "Connect oxygen tubing from nebulizer to oxygen source; set O₂ flow at 6 LPM as driving gas",
+            "Apply nebulizer mask to Jayden; instruct him to breathe normally",
+            "Continue until medication delivered; tap reservoir gently if misting stops",
+            "Monitor for tachycardia — expected beta-2 side effect; do NOT discontinue for this reason alone",
+            "Reassess lung sounds and SpO2 after treatment completion"
+          ]
+        }
+      },
+      "o2_nrb": {
+        "label": "High-flow O2 via NRB mask (15 LPM)",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "\\bnrb\\b",
+          "non.?rebreather",
+          "high.?flow.*o2",
+          "15\\s*lpm",
+          "non rebreather"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 5,
+            "rate_modifier": 0.3
+          },
+          "rr": {
+            "immediate_change": -3,
+            "rate_modifier": 0.8
+          },
+          "hr": {
+            "immediate_change": -5,
+            "rate_modifier": 0.9
+          }
+        },
+        "notes": "High-flow O2 is appropriate given SpO2 93% and respiratory distress. Note: NRB cannot be run simultaneously with albuterol SVN — switch to O2 driving albuterol neb at 6 LPM during treatment, then return to NRB.",
+        "requires_popup": true,
+        "popup_type": "oxygen",
+        "popup_default": {
+          "device": "nrb",
+          "flow": 15
+        }
+      },
+      "positioning_supine": {
+        "label": "Position supine, legs elevated (Trendelenburg-modified)",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "supine",
+          "lay.*down",
+          "lie.*down",
+          "legs.*elevat",
+          "elevat.*legs",
+          "elevat.*feet",
+          "feet.*up",
+          "lay.*flat",
+          "trendelenburg",
+          "position of comfort",
+          "lay him down"
+        ],
+        "effects": {
+          "hr": {
+            "immediate_change": -8,
+            "rate_modifier": 0.85
+          }
+        },
+        "notes": "Supine with legs elevated increases venous return and partially offsets distributive hypotension. Monitor respiratory tolerance — if breathing becomes significantly worse flat, allow sitting position. Do NOT place upright as first-line in hypotensive anaphylaxis.",
+        "requires_popup": false
+      },
+      "remove_stinger": {
+        "label": "Remove bee stinger from right forearm",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "remove.*stinger",
+          "stinger",
+          "scrape.*stinger",
+          "remove.*sting"
+        ],
+        "effects": {},
+        "notes": "Removes ongoing venom delivery. Scrape away — do not pinch or squeeze (squeezing injects remaining venom). Clinical effect is minimal once systemic reaction is underway, but appropriate care.",
+        "requires_popup": false
+      },
+      "als_intercept": {
+        "label": "ALS intercept acknowledged",
+        "within_bls_scope": true,
+        "detection_patterns": [],
+        "effects": {},
+        "notes": "ALS/intercept expectations are determined by the active agency configuration. If ALS is involved, give patient report and notify of epinephrine IM administered.",
+        "requires_popup": false
+      }
+    },
+    "improvement": {
+      "note": "With epinephrine IM, distributive shock reverses: BP rises, urticaria begins to fade, and bronchospasm improves rapidly in this pilot scenario. Full recovery expected but biphasic reaction possible hours later.",
+      "requires_intervention": "epinephrine_im",
+      "string_thresholds": {
+        "skin_color": [
+          {
+            "gcs_above": 14,
+            "value": "Flushing resolving, urticaria fading — hives less prominent, angioedema decreasing around lips; no longer diaphoretic"
+          },
+          {
+            "gcs_above": 12,
+            "value": "Still flushed with visible hives but angioedema less pronounced than on arrival"
+          }
+        ],
+        "lung_sounds": [
+          {
+            "spo2_above": 98,
+            "value": "Clear bilaterally — good air movement throughout"
+          },
+          {
+            "spo2_above": 94,
+            "value": "Clear bilaterally — good air movement throughout"
+          }
+        ],
+        "work_of_breathing": [
+          {
+            "gcs_above": 14,
+            "value": "Unlabored — no retractions, speaking in full sentences, respiratory distress resolved"
+          },
+          {
+            "gcs_above": 12,
+            "value": "Improved — reduced retractions, able to speak in longer phrases, less anxious"
+          }
+        ]
+      },
+      "presentation_milestones": [
+        {
+          "gcs_above": 14,
+          "text": "Jayden looks noticeably better. He's sitting up straighter and taking longer, easier breaths. The scratching has stopped. He looks at you with big eyes and says 'I feel a little better... my throat doesn't feel as tight.' Ms. Hernandez covers her mouth and exhales sharply — relief flooding her face. The hives are still visible but less angry. His skin is less sweaty."
+        },
+        {
+          "gcs_above": 13,
+          "text": "Jayden is still anxious but more alert. He says 'I'm itchy everywhere.' He's breathing easier. The wheezing is less audible at rest."
+        }
+      ]
+    }
+  },
+  "standard_exam_findings": {
+    "skin_assessment": {
+      "label": "Skin",
+      "exam_key": "Skin",
+      "aliases": [
+        "skin assessment",
+        "skin color",
+        "hives",
+        "urticaria",
+        "rash",
+        "angioedema",
+        "assess skin"
+      ],
+      "finding": "flushed face and trunk with diffuse urticaria across forearms, neck, and face; early angioedema around lips and eyes; diaphoretic",
+      "notes": "This is a required systemic allergic finding. Keep hives/urticaria and angioedema explicit."
+    },
+    "sting_site_right_forearm": {
+      "label": "Right Forearm Sting Site",
+      "exam_key": "Right Forearm",
+      "aliases": [
+        "bee sting site",
+        "right forearm",
+        "inspect sting",
+        "stinger",
+        "arm rash"
+      ],
+      "finding": "bee sting site on the right forearm with local redness and swelling; diffuse hives extend beyond the sting site",
+      "notes": "Use for focused extremity/skin inspection at the sting site."
+    },
+    "airway_oropharynx": {
+      "label": "Airway / Oropharynx",
+      "exam_key": "Airway",
+      "aliases": [
+        "mouth swelling",
+        "throat swelling",
+        "airway exam",
+        "oral exam",
+        "tongue swelling"
+      ],
+      "finding": "scratchy throat with early lip and periorbital angioedema; no complete airway obstruction at initial assessment",
+      "notes": "Supports anaphylaxis recognition while avoiding invented severe tongue obstruction unless deterioration thresholds apply."
+    }
+  },
+  "personas": {
+    "jayden": {
+      "name": "Jayden",
+      "age": 8,
+      "role": "patient",
+      "aliases": [
+        "Jayden",
+        "Jaden",
+        "the child",
+        "the boy",
+        "the patient",
+        "buddy",
+        "little guy",
+        "the kid"
+      ],
+      "tts": {
+        "enabled": true,
+        "voice_role": "patient",
+        "gender": "male",
+        "age_band": "child",
+        "provider_voice": "alloy",
+        "speed": 1.02,
+        "demeanor": "8-year-old American boy who is frightened, itchy, breathless, and worried about the shot",
+        "delivery": "short child phrases with breath pauses, fear, and itchy distress; clearer and calmer after treatment but still shaken",
+        "avoid": "do not sound calm, flat, like an adult man, narrator, clinician, parent, performer, energetic child, or like you have a British or English accent"
+      },
+      "description": "8-year-old boy having a severe allergic reaction — frightened, itchy everywhere, and working to breathe. He is alert and can answer questions but speaks in short phrases and sometimes stops mid-sentence to cough. He is cooperative. He knows he is allergic to bees and knows his usual allergy shot is at home. He is scared that he forgot it today. He does NOT know medical terms for the reaction or medication — he will ask 'Is that a shot?' and needs gentle reassurance.",
+      "speaking_style": "Short phrases with pauses to breathe. 'It hurts to breathe.' 'I'm really itchy.' 'My throat feels weird.' 'Am I going to be okay?' Will cry if scared by procedures but calms with reassurance.",
+      "clinical_state_instructions": "Answer questions honestly about symptoms. Report throat tightness ('scratchy inside'), itching 'everywhere,' chest tightness with breathing. If asked about the EpiPen: 'I forgot it at home, it's usually in my backpack.' If GCS drops below 12 due to deterioration: become confused and less responsive — unable to answer complex questions.",
+      "persona_rules": [
+        "Always answer as Jayden in first person",
+        "Use simple 8-year-old vocabulary",
+        "Express fear about the shot but allow it with reassurance",
+        "If improving after treatment: become noticeably more talkative and calm"
+      ]
+    },
+    "ms_hernandez": {
+      "name": "Ms. Hernandez",
+      "age": 34,
+      "role": "bystander",
+      "aliases": [
+        "Ms. Hernandez",
+        "Ms Hernandez",
+        "the teacher",
+        "teacher",
+        "Ms H",
+        "the woman",
+        "ma'am"
+      ],
+      "tts": {
+        "enabled": true,
+        "voice_role": "bystander",
+        "gender": "female",
+        "age_band": "adult",
+        "provider_voice": "coral",
+        "speed": 1.34,
+        "demeanor": "scared teacher trying to hold it together; urgent, guilty, protective, breath-held, and deferential to EMS",
+        "delivery": "speak faster than normal with anxious urgency, a tight voice, and a slight tremble; sound worried and grateful, never calm or detached",
+        "avoid": "do not sound calm, flat, detached, clinical, playful, theatrical, physically ill, or like the patient"
+      },
+      "description": "Jayden's 4th grade teacher — in her 30s, scared but trying to hold it together for Jayden's sake. She called 911 immediately when she saw the reaction developing. She knows Jayden has a bee allergy and that he has an EpiPen 'somewhere' but he didn't have it on him today. She does NOT have medical training beyond basic first aid. She is very cooperative with EMS and will answer all questions accurately. She has already called Jayden's mother (en route ~15 min). She feels guilty that his usual shot was not available but will not recommend treatments.",
+      "speaking_style": "Anxious, speaks quickly, may repeat herself. 'He was fine and then — I've never seen it happen so fast.' Grateful and deferential to EMS.",
+      "clinical_state_instructions": "Provide full SAMPLE history when asked. Confirm saw the bee sting happen — right forearm, approximately 10 minutes ago. Confirm EpiPen is at home (left in backpack this morning). Confirm no food allergy exposure — lunch was 1 hour ago, no new food. Confirm prior reaction 2 years ago — 'they gave him a shot at the hospital and he was okay.' If she asks anything unprompted, keep it emotional: 'Please help him. I'm scared.'",
+      "persona_rules": [
+        "Provide accurate history if asked",
+        "Do not volunteer medical information — wait to be asked",
+        "Do not recommend epinephrine, medications, transport, or any care step",
+        "Express relief visibly when Jayden improves"
+      ]
+    },
+    "alex": {
+      "name": "Alex",
+      "age": 28,
+      "role": "partner",
+      "aliases": [
+        "Alex",
+        "partner",
+        "my partner"
+      ],
+      "tts": {
+        "enabled": true,
+        "voice_role": "alex",
+        "gender": "male",
+        "age_band": "adult",
+        "provider_voice": "echo",
+        "speed": 1.32,
+        "demeanor": "calm, competent, practical EMT partner during a high-risk allergic reaction",
+        "delivery": "brisk, concise field tone with clear EMS cadence; natural, direct, and reassuring without sounding sleepy or theatrical",
+        "avoid": "do not sound flat, like a narrator, instructor, parent, patient, or anxious bystander"
+      },
+      "description": "Your EMT partner. Calm and professional. Will assist with setup, cross-checks, and documentation when directed. If asked to confirm a cross-check (e.g., 'Alex, confirm the label'), Alex will respond as a competent partner verifying the information. If the student asks for an epi-pen or auto-injector: 'We don't carry EpiPens — Squad 1 uses draw-up epi. It's on the drug box.' If the student attempts a procedure outside BLS scope (e.g., 'give Benadryl'): 'That's ALS scope — hold for Medic 5?' If the student skips the weight-based dose check: 'You want to confirm the dose for his weight?'",
+      "speaking_style": "Brief, calm, practical. 'Copy that.' 'Label confirms epinephrine 1 mg/mL, not expired.' 'Medic 5 is 11 minutes — you want to update them?' 'Dose verified — 0.15 mL in the syringe.'",
+      "persona_rules": [
+        "Never take the lead — respond to directions from the student",
+        "Prompt weight-based dose check if student skips it",
+        "Verbally confirm cross-check items when student asks",
+        "Flag ALS-scope interventions if student attempts them independently"
+      ]
+    }
+  },
+  "correct_treatment": {
+    "critical_actions": [
+      {
+        "id": "scene_safety",
+        "description": "Scene safety and BSI/PPE prior to patient contact",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "pat_assessment",
+        "description": "Pediatric Assessment Triangle — Appearance (alert, frightened, speaking in short phrases), Work of Breathing (increased, audible wheeze), Circulation to Skin (flushed, urticaria, diaphoretic, poor cap refill)",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "anaphylaxis_recognition",
+        "description": "Recognize anaphylaxis criteria: wheezing (bronchospasm) AND hypotension (distributive shock) — not a simple allergic reaction. Obtain weight for dosing.",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(anaphylaxis|anaphylactic|allergic.*reaction|hives|urticaria|angioedema|wheezing.*allerg|stridor.*allerg|epi.*indicat|recognize)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "epinephrine_im",
+        "description": "Administer epinephrine 0.15 mg (0.15 mL of 1 mg/mL) IM to right or left anterolateral thigh — BLS draw-up scope per MCA protocol. Complete 5-rights cross-check before drawing up AND before injecting.",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(epinephrine|epi|auto.?injector|epipen|intramuscular|im.*epi|epi.*im|anterolateral|thigh)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "als_intercept",
+        "description": "Confirm ALS intercept/handoff readiness according to the active agency configuration — update ALS with patient weight, epinephrine dose, time, and patient response when ALS is involved",
+        "required": true
+      }
+    ],
+    "recommended_actions": [
+      {
+        "id": "o2_nrb",
+        "description": "Apply high-flow O2 via NRB mask 15 LPM — SpO2 93% and respiratory distress indicate need",
+        "required": false
+      },
+      {
+        "id": "albuterol_svn",
+        "description": "Administer albuterol 2.5 mg SVN for persistent bronchospasm after epinephrine IM — EMT scope per protocol",
+        "required": false
+      },
+      {
+        "id": "positioning_supine",
+        "description": "Position supine with legs elevated — addresses distributive hypotension; monitor respiratory tolerance",
+        "required": false
+      },
+      {
+        "id": "remove_stinger",
+        "description": "Remove bee stinger from right forearm by scraping — do not squeeze (forces remaining venom)",
+        "required": false
+      },
+      {
+        "id": "reassessment",
+        "description": "Reassess vital signs every 5 minutes post-epinephrine — expect brief HR spike (beta-1 effect); watch for repeat-dose indication if BP remains low at 3–5 min",
+        "required": false
+      },
+      {
+        "id": "repeat_epi_consideration",
+        "description": "If patient remains hypotensive at 3–5 minutes post-first dose: may repeat epinephrine IM 0.15 mg × 1 from draw-up supply (maximum 2 total epinephrine doses)",
+        "required": false
+      }
+    ],
+    "out_of_scope_bls": [
+      "diphenhydramine_im_iv",
+      "iv_io_access",
+      "iv_fluid_resuscitation",
+      "push_dose_epinephrine",
+      "albuterol_ipratropium_combo",
+      "methylprednisolone"
+    ],
+    "out_of_scope_aemt": [
+      "Push-dose epinephrine IV/IO (Paramedic skill)",
+      "Albuterol/ipratropium combination (Paramedic only — not approved for Specialist/AEMT)",
+      "Methylprednisolone IV/IO/IM (Paramedic skill)"
+    ],
+    "clinical_decision_points": {
+      "als_trigger": "ALS/intercept expectations are determined by the active agency configuration. If ALS is involved, update immediately with: patient weight (27 kg), epinephrine dose (0.15 mg IM), time administered, and patient response. ALS may administer diphenhydramine IM, establish IV, and assess for repeat epinephrine or push-dose epi need.",
+      "repeat_epi": "If patient remains hypotensive and/or severely symptomatic at 3–5 minutes after first dose: may repeat epinephrine IM 0.15 mg × 1 time if draw-up available. Maximum 2 total epinephrine doses (all sources combined).",
+      "position_conflict": "Hypotension favors supine with legs elevated; bronchospasm favors sitting. If respiratory distress is severe, allow position of comfort that maximizes breathing. Once epinephrine improves bronchospasm, transition to supine with legs elevated for BP support.",
+      "no_autoinjector": "This unit does not carry epinephrine auto-injectors — draw-up epinephrine IM is the standard option on this unit per MCA protocol. Do not delay treatment waiting for ALS.",
+      "biphasic_reaction": "All anaphylaxis patients require hospital evaluation — biphasic (delayed) anaphylaxis can occur 1–12 hours after initial reaction without re-exposure. Transport regardless of apparent recovery.",
+      "destination": "Transport to nearest appropriate emergency department — all anaphylaxis patients require ED evaluation and minimum 4–6 hour observation for biphasic reaction risk"
+    }
+  },
+  "scoring": {
+    "overall_considerations": [
+      "Primary focus: recognition of anaphylaxis (not just allergic reaction) and timely administration of epinephrine IM — this is the defining BLS intervention.",
+      "Anaphylaxis criteria in this scenario: urticaria PLUS bronchospasm AND hypotension — both systemic features must be recognized.",
+      "Patient weight is known (60 lbs/~27 kg) — Broselow tape NOT required. Weight-based dose selection (10–30 kg range → 0.15 mg) IS expected.",
+      "Draw-up epinephrine IM is BLS scope per MCA protocol for providers with MCA-approved training — do NOT penalize for using draw-up instead of auto-injector.",
+      "5-rights cross-check is required: verbalization before drawing up AND before injecting (two steps). Credit both steps if performed.",
+      "Positioning: supine with legs elevated is correct for hypotensive anaphylaxis — do NOT penalize for this over sitting upright.",
+      "Albuterol SVN for residual bronchospasm after epinephrine is appropriate — should come after epi, not before.",
+      "Do NOT require that student note ALS arrival specifically — only document handoff if one occurred."
+    ],
+    "dmist_considerations": [
+      "D: Should clearly identify pediatric anaphylaxis from bee sting (not just allergic reaction) and note severity (bronchospasm + hypotension).",
+      "M: Age, weight, bee sting allergy, prior anaphylaxis history, EpiPen not available, sting site.",
+      "I: Epinephrine 0.15 mg IM (time, site, dose) — this is the single most critical DMIST element; include albuterol SVN if given and patient response to each.",
+      "S: BP, HR, SpO2, wheeze quality, urticaria distribution, current mental status — ALS needs to know response to epi before arriving.",
+      "T: Current patient status at time of report, trajectory (improving/stable/deteriorating), destination.",
+      "Conciseness is a strength — reward focused information. Do NOT penalize brevity when critical details (especially epi timing and dose) are present.",
+      "Missing epinephrine timing or dose from DMIST is a meaningful gap — ALS needs this to decide on repeat dosing."
+    ],
+    "dmist_components": {
+      "D": {
+        "description": "Patient demographics",
+        "required_elements": [
+          "name: Jayden (accept common voice-transcription variant: Jaden)",
+          "age: 8",
+          "sex: male",
+          "weight: 27 kg or 60 lbs (Broselow Orange)"
+        ],
+        "corroboration_source": "scenario_patient_fields"
+      },
+      "M": {
+        "description": "Mechanism and chief complaint",
+        "required_elements": [
+          "bee sting",
+          "anaphylaxis or allergic reaction",
+          "hives",
+          "throat tightness or difficulty breathing"
+        ],
+        "corroboration_source": "any"
+      },
+      "I": {
+        "description": "Illness details — anaphylaxis onset, allergic reaction findings, and exposure history",
+        "required_elements": [
+          "sudden onset allergic reaction after bee sting",
+          "known allergy history (bee sting / venom)",
+          "skin findings: hives, urticaria, or angioedema",
+          "airway involvement: throat tightness or stridor",
+          "no prior epinephrine use before EMS arrival"
+        ],
+        "corroboration_source": "history_and_findings",
+        "note": "I is illness/injury, not interventions. Treatments (epinephrine dose/route, O2) belong under T."
+      },
+      "S": {
+        "description": "Signs and current status; skin findings and airway status are the primary signs for an anaphylaxis handoff",
+        "required_elements": [
+          "skin findings: hive distribution, angioedema, or urticaria (primary)",
+          "airway and respiratory status (primary)",
+          "SpO2 (primary — passively observed acceptable)",
+          "HR or perfusion/skin color (supplementary)",
+          "blood pressure (supplementary)"
+        ],
+        "scoring_note": "Primary S elements for anaphylaxis: skin findings (urticaria, hives, or angioedema) AND airway/respiratory status (stridor, wheeze, or work of breathing). These two are the defining clinical signs — their presence earns full S credit without a complete vital set. At least one quantitative sign (SpO2, HR, or BP) strengthens S but is not required when both primary signs are documented.",
+        "corroboration_source": "vitals_and_findings"
+      },
+      "T": {
+        "description": "Treatment response and current respiratory status",
+        "required_elements": [
+          "response to epinephrine",
+          "current respiratory status"
+        ],
+        "corroboration_source": "any"
+      }
+    },
+    "narrative_considerations": [
+      "Do NOT require medications, allergies, complete vital sign tables, or full PMH — these belong in other PCR fields.",
+      "Narrative should capture: bee sting mechanism, anaphylaxis recognition (urticaria + wheeze + hypotension), epinephrine administration with dose/route/time, patient response, and disposition.",
+      "Evaluate objectivity: flag subjective language (e.g., 'patient was in bad shape') and suggest objective replacements (e.g., 'patient seated on pavement with audible wheeze, BP 82/50, urticaria to face and forearms').",
+      "Evaluate accuracy: epinephrine dose, timing, and patient response must be factually consistent with simulation events."
+    ],
+    "required_assessments": [
+      {
+        "id": "skin_assessment",
+        "description": "Assess skin for urticaria, hives, or angioedema (systemic allergic involvement confirmation)",
+        "keywords": [
+          "hives",
+          "urticaria",
+          "rash",
+          "swelling",
+          "angioedema",
+          "skin",
+          "welt",
+          "red",
+          "blotch",
+          "flushed",
+          "raised"
+        ],
+        "missing_deduction": 2,
+        "note": "Urticaria is one of the three anaphylaxis criteria in this scenario — failure to assess skin means inability to confirm systemic allergic involvement.",
+        "phase": "primary_survey"
+      },
+      {
+        "id": "lung_sound_assessment",
+        "description": "Auscultate lung sounds (bronchospasm component of anaphylaxis confirmation)",
+        "keywords": [
+          "lung sounds",
+          "breath sounds",
+          "wheeze",
+          "wheezing",
+          "auscultate",
+          "listen",
+          "bronchospasm",
+          "lower airway"
+        ],
+        "missing_deduction": 2,
+        "note": "Bronchospasm is one of the three anaphylaxis criteria — lung sounds required to confirm systemic respiratory involvement.",
+        "phase": "primary_survey"
+      },
+      {
+        "id": "weight_assessment",
+        "description": "Obtain or confirm patient weight (required for weight-based epinephrine dose selection)",
+        "keywords": [
+          "weight",
+          "how much",
+          "pounds",
+          "lbs",
+          "kilograms",
+          "kg",
+          "27",
+          "60",
+          "Broselow",
+          "dose",
+          "0.15"
+        ],
+        "missing_deduction": 2,
+        "note": "Weight-based dose selection (10–30 kg → 0.15 mg; >30 kg → 0.3 mg) is an explicit EMT expectation. Administering epi without confirmed weight is a medication safety gap."
+      }
+    ],
+    "by_level": {
+      "MFR": {
+        "critical_focus": [
+          "Scene safety and BSI/PPE.",
+          "PAT: appearance (frightened, hives visible), work of breathing (audible wheeze, increased RR), circulation (flushed, diaphoretic, poor cap refill).",
+          "Recognize systemic allergic reaction — call for ALS immediately when not already dispatched by agency configuration.",
+          "High-flow O2 via NRB mask.",
+          "Position of comfort — supine with legs elevated for hypotension.",
+          "Remove bee stinger by scraping.",
+          "Monitor vitals and be prepared to assist ventilations."
+        ],
+        "additional_expectations": [],
+        "grace_items": [
+          "Epinephrine draw-up IM is NOT within MFR scope — do not penalize for not administering it.",
+          "Albuterol SVN is NOT within MFR scope — do not penalize for not administering it."
+        ]
+      },
+      "EMT": {
+        "critical_focus": [
+          "Scene safety and BSI/PPE.",
+          "PAT and recognition of anaphylaxis (not just allergic reaction) — systemic involvement (wheeze + hypotension) distinguishes anaphylaxis.",
+          "High-flow O2 via NRB mask.",
+          "Obtain patient weight — required for weight-based epinephrine dosing.",
+          "Administer epinephrine 0.15 mg IM to anterolateral thigh — this is the primary and most critical intervention.",
+          "Complete 5-rights cross-check before drawing up AND before injecting (two-step verbalization).",
+          "Position supine with legs elevated for hypotension.",
+          "Administer albuterol 2.5 mg SVN for persistent bronchospasm after epinephrine.",
+          "Remove bee stinger by scraping (do not squeeze).",
+          "Reassess vitals at 3–5 minutes post-epinephrine — note response and communicate to ALS.",
+          "Organize DMIST for ALS — must include epi dose, time, and patient response."
+        ],
+        "additional_expectations": [
+          "Recognize that epinephrine causes expected tachycardia — this is not a reason to withhold the drug.",
+          "Notify ALS of epinephrine administration before their arrival so they can prepare for potential repeat dose."
+        ],
+        "grace_items": [
+          "Broselow tape NOT required — weight already known (60 lbs/27 kg).",
+          "ALS request is not required when the active agency configuration co-dispatches ALS.",
+          "PAT acronym not required — credit assessment of its three elements.",
+          "Noting ALS arrival NOT required.",
+          "Auto-injector vs. draw-up — either is acceptable; draw-up is the only option in this scenario since auto-injectors are not on the unit."
+        ]
+      },
+      "AEMT": {
+        "critical_focus": [
+          "All EMT expectations above.",
+          "Establish IV access after epinephrine administration.",
+          "IV normal saline fluid bolus for hypotension (per protocol) if BP does not respond to epinephrine.",
+          "Consider second dose of epinephrine 0.15 mg IM if no improvement at 3–5 minutes."
+        ],
+        "additional_expectations": [
+          "IV access should not delay epinephrine — epi first, IV after.",
+          "Document IV site, fluid volume, and patient response to fluid."
+        ],
+        "grace_items": [
+          "Same grace items as EMT level.",
+          "Diphenhydramine IV is ALS scope — do NOT penalize AEMT for not administering it."
+        ]
+      },
+      "Paramedic": {
+        "critical_focus": [
+          "All AEMT expectations above.",
+          "IV access and NS bolus for hypotension.",
+          "Diphenhydramine IV as adjunct after epinephrine — antihistamine role, not primary treatment.",
+          "Recognize repeat epinephrine criteria (persistent hypotension or bronchospasm at 3–5 min) and administer second dose if indicated.",
+          "Consider methylprednisolone IV to reduce risk of biphasic reaction.",
+          "Continuous cardiac monitoring for dysrhythmia post-epinephrine.",
+          "Anticipate and prepare for potential airway compromise — have RSI/surgical airway plan ready if angioedema progresses."
+        ],
+        "additional_expectations": [
+          "Communicate clearly with receiving ED: STEMI alert equivalent — anaphylaxis with hypotension and bronchospasm warrants early notification."
+        ],
+        "grace_items": [
+          "Same grace items as EMT level.",
+          "Push-dose epinephrine IV is not expected for this presentation severity unless patient is in cardiovascular collapse."
+        ]
+      }
+    },
+    "corroboration_rules": {
+      "dmist": {
+        "I": {
+          "max_deduction_per_violation": 3,
+          "note": "Epinephrine route (IM vs auto-injector) and dose are clinically critical — wrong route or dose in the DMIST is a significant documentation error"
+        }
+      },
+      "narrative": {
+        "A": {
+          "max_deduction_per_violation": 2,
+          "note": "Assessment findings (bronchospasm, hypotension) must match the run record — unsupported severity claims mislead the receiving team"
+        },
+        "R": {
+          "max_deduction_per_violation": 2,
+          "note": "Treatment response claims must match the actual patient trajectory recorded in findings"
+        }
+      }
+    }
+  },
+  "scoring_rubric": {
+    "clinical_performance": {
+      "max": 50,
+      "full_credit": "PAT completed, anaphylaxis recognized (bronchospasm + distributive hypotension), epinephrine 0.15 mg IM administered with 5-rights cross-check, weight confirmed for dosing; plus base rubric: scene safety, primary assessment, history, focused assessment, reassessment, handoff",
+      "partial_credit": "Epinephrine administered but cross-check incomplete; or O2 omitted; or ALS update missing critical drug information (dose, time, response)",
+      "minimal_credit": "Anaphylaxis not recognized (treated as simple allergic reaction only) or epinephrine not administered despite correct recognition"
+    },
+    "narrative": {
+      "max": 20,
+      "full_credit": "CHART complete: bee sting dispatch, anaphylaxis presentation (urticaria, wheeze, hypotension, SpO2), epinephrine IM dose/time/response documented, O2, stinger removal, ALS update with drug info, disposition. Objective throughout.",
+      "partial_credit": "Most CHART elements present but epinephrine dose/time or patient response to epi missing",
+      "minimal_credit": "Narrative present but anaphylaxis not correctly framed or epinephrine documentation incomplete"
+    },
+    "scope_adherence": {
+      "max": 10,
+      "full_credit": "Stayed within effective provider scope and MCA rules: IV/IO access not attempted — outside BLS scope for anaphylaxis management. No out-of-scope attempts or orders.",
+      "partial_credit": "No dangerous out-of-scope intervention attempted, but scope reasoning, level-specific escalation, or MCA-specific scope recognition was incomplete.",
+      "minimal_credit": "Out-of-scope intervention attempted or ordered, or provider-level limits materially ignored."
+    },
+    "dmist": {
+      "max": 10,
+      "full_credit": "D: age and weight (critical for dose verification); M: anaphylaxis, bee sting, no EpiPen available; I: epi 0.15 mg IM with time and response + O2; S: BP trend, SpO2, wheeze quality, urticaria; T: current status and biphasic reaction monitoring",
+      "partial_credit": "3–4 of 5 DMIST components present; weight or epinephrine details (dose/time/response) absent — both are clinically critical for ALS continuation of care",
+      "minimal_credit": "Drug information absent from DMIST or fewer than 3 components present"
+    },
+    "professionalism": {
+      "max": 10,
+      "full_credit": "Calm reassurance to frightened child and panicked parent, explained epinephrine administration and expected side effects (injection site sensation, heart rate increase), addressed child by name, kept parents informed",
+      "partial_credit": "Communication present but epinephrine injection not explained to child or parent, or child not addressed directly",
+      "minimal_credit": "Minimal communication or no preparation of patient/family prior to epinephrine administration"
+    },
+    "protocols_treatment": {
+      "max": 10,
+      "full_credit": "Protocol-aligned treatment completed: epinephrine IM administered as the defining anaphylaxis intervention; high-flow O2 applied for respiratory distress and hypoxia; patient positioned supine with legs elevated to address distributive hypotension. Contraindicated care avoided and in-scope treatment priorities addressed.",
+      "partial_credit": "Epinephrine IM administered but one adjunct protocol action such as O2 or shock positioning was incomplete; or most treatment priorities addressed but an escalation step or contraindication check was incomplete.",
+      "minimal_credit": "Epinephrine missed or treatment plan materially inconsistent with anaphylaxis protocol; contraindicated care performed."
+    }
+  },
+  "exemplar_dmist": "D — Jayden, 8-year-old male, 27 kg per parents.\nM — Anaphylaxis — bee sting to right forearm approximately 15 minutes ago at school. Known bee allergy. No prescribed EpiPen on scene — not available. Urticaria to trunk and extremities, bilateral wheeze, hypotension — anaphylaxis criteria met.\nI — High-flow O2 via NRB at 15 LPM. Bee stinger removed from right forearm by scraping. Epinephrine 0.15 mg (0.15 mL of 1 mg/mL) administered IM to left anterolateral thigh at [time] per protocol — 5-rights cross-check verbalized to partner before draw-up and before injection. Patient advised of expected effects.\nS — Post-epi: SpO2 improved from 91% to 95%. BP improving from 82/50. HR 140. Wheeze significantly reduced. Urticaria persisting but no further spread. GCS 15, alert.\nT — Patient clinically improving. Monitoring for biphasic reaction. Transport to nearest ED with pediatric capability.",
+  "exemplar_narrative": "Squad 1 was dispatched to 5512 Cedar Lane for a pediatric patient with a possible allergic reaction. Upon arrival, patient Jayden, an 8-year-old male weighing approximately 27 kg, was found standing in the front yard in moderate distress. Parents reported a bee sting to the right forearm approximately 15 minutes prior. Jayden developed diffuse urticaria to trunk and upper extremities, audible wheeze, appeared pale and diaphoretic, and reported 'feeling funny.' A bee stinger was identified in the right forearm and removed by scraping. Prescribed EpiPen was not available on scene — left at home. History of prior anaphylaxis at age 6 requiring epinephrine. NKDA to medications.\n\nPrimary assessment: SpO2 91%, bilateral expiratory wheeze audible, BP 82/50, HR 136, GCS 15, diffuse urticaria to trunk and extremities, diaphoretic, cap refill 3.5 seconds. Anaphylaxis criteria met: bronchospasm plus hypotension in the setting of known allergen exposure. High-flow O2 applied via NRB mask at 15 LPM. Epinephrine 0.15 mg (0.15 mL of 1 mg/mL) drawn up and administered IM to the left anterolateral thigh at [time] per protocol. Five-rights cross-check verbalized to partner prior to draw-up and again prior to injection. Jayden and parents advised of expected effects including injection site discomfort and increased heart rate. ALS updated via radio with patient weight, drug, dose, time, and initial response for pre-arrival preparation.\n\nPost-treatment reassessment at 5 minutes: SpO2 95%, wheeze significantly decreased, BP 88/58 (improving), HR 140, patient more alert and reporting 'feeling a little better.' Urticaria persisting but not spreading. Patient care transferred to Medic 5 ALS crew with full DMIST report — ALS briefed on epinephrine administration details and biphasic reaction monitoring.",
+  "debrief": {
+    "condition_background": "Jayden is an 8-year-old male with a known bee sting allergy presenting with anaphylaxis following a bee sting on the right forearm at school. He has a prior history of anaphylaxis at age 6 requiring epinephrine in the ED. He has a prescribed EpiPen 0.15 mg that was left at home. Anaphylaxis is defined by systemic involvement beyond the sting site — in this case, bronchospasm (bilateral expiratory wheeze) AND distributive hypotension (BP 82/50 with compensatory tachycardia). This is the critical distinction: urticaria alone is an allergic reaction; urticaria PLUS wheezing and/or hypotension is anaphylaxis. The primary treatment is epinephrine — it is the only drug that addresses all three pathophysiological components of anaphylaxis simultaneously: alpha-1 vasoconstriction reverses hypotension, beta-2 bronchodilation reverses bronchospasm, and stabilization of mast cells slows ongoing mediator release. Squad 1 does not carry epinephrine auto-injectors — draw-up epinephrine IM is the only option on this unit. Draw-up epinephrine IM is approved for BLS (EMT-Basic) per MCA protocol, provided the provider has completed MCA-approved training. The weight-based dosing decision (27 kg → 10–30 kg range → 0.15 mg) must be made and verified before drawing up. This scenario tests whether the student will act within their BLS scope rather than waiting for ALS to administer the definitive intervention.",
+    "key_teaching_points": [
+      "Anaphylaxis vs. allergic reaction: the presence of wheezing AND/OR hypotension defines anaphylaxis — not just hives. The distinction determines whether epinephrine is required.",
+      "Epinephrine IM is the ONLY first-line drug for anaphylaxis. Antihistamines (diphenhydramine) treat histamine-mediated symptoms but do NOT reverse anaphylaxis — they are adjuncts, not primary treatment, and are ALS scope.",
+      "Draw-up epinephrine IM is BLS scope per MCA protocol — providers who have completed MCA-approved training may and should administer this drug without waiting for ALS.",
+      "Weight-based dosing decision is a BLS skill: 27 kg falls in the 10–30 kg range → 0.15 mg (0.15 mL) of 1 mg/mL. Confirm weight, confirm range, confirm volume before injecting.",
+      "5-rights cross-check: verbalize to partner before drawing up AND before injecting. This is a two-step safety check, not one.",
+      "Positioning in anaphylaxis with hypotension: supine with legs elevated (NOT sitting upright) — the same position used for any distributive shock. Respiratory needs may require compromise, but the hemodynamic goal drives the default position.",
+      "Albuterol SVN is appropriate for residual bronchospasm AFTER epinephrine. Do not lead with albuterol — it does not treat the cardiovascular collapse. Epi first, albuterol second.",
+      "Biphasic anaphylaxis: all patients require hospital transport and observation even if symptoms resolve. Delayed recurrence can occur 1–12 hours later without re-exposure — this is why ED evaluation is mandatory."
+    ],
+    "common_mistakes": [
+      "Waiting for ALS before administering epinephrine — draw-up IM is BLS scope per MCA protocol. This delay can be fatal.",
+      "Leading with diphenhydramine (Benadryl) — this is a common public assumption. Antihistamines are ALS scope and are adjuncts, not primary treatment.",
+      "Skipping weight-based dose check — assuming adult dose (0.3 mg) for a 27 kg child. Patient is in the 10–30 kg range requiring 0.15 mg.",
+      "Skipping the 5-rights cross-check or doing it only once — the cross-check is required before draw-up AND before injection.",
+      "Positioning the patient sitting upright — appropriate for isolated respiratory distress but wrong for hypotensive anaphylaxis. Supine with legs elevated addresses the distributive shock.",
+      "Not requesting albuterol SVN after epinephrine — if wheeze persists after epi, albuterol is appropriate and is EMT scope.",
+      "Not notifying ALS of epinephrine administration time and dose — critical for ALS to know before deciding on repeat dosing or additional interventions."
+    ]
+  },
+  "scenario_number": 5,
+  "prerequisites": [
+    "peds_croup_01",
+    "peds_diabetic_emergency_01"
+  ],
+  "legacy_ai_categories": [
+    "documentation",
+    "professionalism"
+  ],
+  "checklist": [
+    {
+      "id": "peds_anaphylaxis_01.pat_assessment",
+      "description": "PAT completed — appearance, work of breathing (audible wheeze), and circulation to skin (urticaria, flushed, diaphoretic) assessed",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "scene_entry",
+        "scene_entry_path": "pat_assessment"
+      },
+      "tier2_patterns": [
+        "(?i)(pat|appearance|work of breath|wheeze|hives|urticaria|flush|diaphoretic|circulation|skin)"
+      ],
+      "done_feedback": "PAT completed — appearance, audible wheeze (WOB), and hives/flushed skin (circulation) correctly assessed before intervention.",
+      "missed_feedback": "PAT not completed — anaphylaxis involves multiple organ systems simultaneously; PAT identifies which component (airway, breathing, or circulation) is most threatened.",
+      "clinical_rationale": "PAT in anaphylaxis identifies whether the primary threat is upper airway angioedema, lower airway bronchospasm, or distributive shock; this determines treatment urgency.",
+      "common_error": "Treating the visible skin findings first — the airway and breathing domains of PAT must be assessed before any intervention is directed at skin or GI symptoms."
+    },
+    {
+      "id": "peds_anaphylaxis_01.anaphylaxis_recognition",
+      "description": "Anaphylaxis recognized — treatment plan and actions reflect understanding of both bronchospasm and distributive hypotension (not simple allergic reaction)",
+      "subtype": "screen",
+      "category": "clinical_performance",
+      "point_value": 7,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 2,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": null,
+      "tier2_patterns": [
+        "(?i)(anaphylaxis|anaphylactic|epi|epinephrine|bronchospasm|distributive|hypotension.*wheeze|wheeze.*hypotension|systemic|severe.*allerg)"
+      ],
+      "done_feedback": "Anaphylaxis correctly recognized — treatment plan reflects multi-system involvement with epinephrine as first-line therapy.",
+      "missed_feedback": "Anaphylaxis not recognized or treatment plan reflected incomplete understanding — anaphylaxis requires epinephrine, not antihistamines, as the first treatment.",
+      "clinical_rationale": "Anaphylaxis is a severe allergic reaction involving ≥ 2 organ systems; epinephrine IM is the only treatment that addresses all pathophysiologic components simultaneously.",
+      "common_error": "Administering diphenhydramine as first-line treatment — antihistamines block histamine but do not reverse bronchospasm or distributive shock; epinephrine is always first."
+    },
+    {
+      "id": "peds_anaphylaxis_01.epinephrine_im",
+      "description": "Epinephrine IM administered — 0.15 mg (0.15 mL of 1 mg/mL) to anterolateral thigh with 5-rights cross-check verbalized before drawing up and before injecting",
+      "subtype": "intervention",
+      "category": "protocols_treatment",
+      "point_value": 6,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "epinephrine_im"
+      },
+      "tier2_patterns": [
+        "(?i)(epinephrine|epi|0\\.15|draw.?up|thigh|anterolateral|IM|inject)"
+      ],
+      "done_feedback": "Epinephrine 0.15 mg IM administered to anterolateral thigh — correct dose, route, and site for a 27 kg pediatric patient.",
+      "missed_feedback": "Epinephrine IM not administered — epinephrine is the only intervention that reverses all components of anaphylaxis; delay increases the risk of biphasic reaction and death.",
+      "clinical_rationale": "Epinephrine IM (anterolateral thigh) reverses bronchospasm (beta-2), restores BP via vasoconstriction (alpha-1), and reduces mast cell degranulation; no other agent has this combined profile.",
+      "common_error": "Administering epinephrine subcutaneously (SC) rather than IM — SC absorption is slower and less reliable; IM to the anterolateral thigh is the required route."
+    },
+    {
+      "id": "peds_anaphylaxis_01.weight_dosing_check",
+      "description": "Patient weight obtained or confirmed (27 kg / 60 lbs) for dose selection before administering epinephrine",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 2,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "epinephrine_im"
+      },
+      "tier2_patterns": [
+        "(?i)(weight|weigh|kg|pounds?|lbs?|broselow|dose|how much|how big|how heavy|27|60\\s*lb)"
+      ],
+      "done_feedback": "Patient weight confirmed before dose selection — 27 kg correctly identifies the 0.15 mg epinephrine dose (10–30 kg range).",
+      "missed_feedback": "Weight not confirmed before epinephrine dosing — pediatric epinephrine dose is weight-based; administering an adult dose (0.3 mg) to a 27 kg child is a medication error.",
+      "clinical_rationale": "Pediatric epinephrine dosing is weight-stratified: < 10 kg: 0.1 mg; 10–30 kg: 0.15 mg; > 30 kg: 0.3 mg; confirming weight before administration prevents overdosing.",
+      "common_error": "Using the adult auto-injector (0.3 mg) for all pediatric patients — the pediatric auto-injector (0.15 mg) is the correct selection for children 10–30 kg."
+    },
+    {
+      "id": "peds_anaphylaxis_01.scope_o2_nrb",
+      "description": "High-flow O2 via NRB mask applied for respiratory distress and hypoxia",
+      "subtype": "intervention",
+      "category": "protocols_treatment",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "o2_nrb"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "High-flow O2 via NRB applied — indicated for respiratory distress and wheeze in anaphylaxis.",
+      "missed_feedback": "High-flow O2 not applied — respiratory distress and wheeze in anaphylaxis indicate lower airway involvement; supplemental O2 is protocol-mandated.",
+      "clinical_rationale": "Anaphylactic bronchospasm causes V/Q mismatch and hypoxia; high-flow O2 addresses the hypoxia while epinephrine reverses the bronchospasm.",
+      "common_error": "Withholding O2 because the patient 'doesn't look that bad' — any anaphylaxis with respiratory involvement or SpO₂ concern requires high-flow O2."
+    },
+    {
+      "id": "peds_anaphylaxis_01.scope_positioning_supine",
+      "description": "Patient positioned supine with legs elevated to address distributive hypotension",
+      "subtype": "intervention",
+      "category": "protocols_treatment",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "positioning_supine"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "Patient positioned supine with legs elevated — correct for the distributive shock component of anaphylaxis.",
+      "missed_feedback": "Supine positioning not performed — anaphylaxis causes distributive shock through vasodilation; supine with legs elevated increases venous return and cardiac preload.",
+      "clinical_rationale": "Anaphylactic distributive shock causes relative hypovolemia through vasodilation; supine/Trendelenburg position augments venous return while epinephrine's vasoconstriction takes effect.",
+      "common_error": "Sitting the patient upright because of respiratory distress — when anaphylaxis presents with both airway and circulatory involvement, supine is preferred when shock is present."
+    },
+    {
+      "id": "peds_anaphylaxis_01.scope_no_iv_io",
+      "description": "IV/IO access not attempted — outside BLS scope for anaphylaxis management",
+      "subtype": "intervention",
+      "category": "scope_adherence",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [
+        "MFR",
+        "EMT"
+      ],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "absence_check",
+        "absence_intervention_key": "iv_io_access"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "IV/IO correctly avoided — epinephrine IM and O2 are the complete BLS interventions for anaphylaxis.",
+      "missed_feedback": "IV/IO attempted — outside BLS scope; epinephrine IM (auto-injector) and O2 are the complete BLS anaphylaxis interventions.",
+      "clinical_rationale": "BLS anaphylaxis management is epinephrine IM, O2, positioning, and transport; IV fluid resuscitation and IV epinephrine infusion are ALS interventions."
+    }
+  ],
+  "impression_challenge": {
+    "enabled": true,
+    "trigger_milestone": "primary_survey_complete",
+    "prompt": "Based on your initial assessment, what is your primary clinical impression?",
+    "options": [
+      "Anaphylaxis",
+      "Reactive airway disease / asthma",
+      "Severe urticaria without systemic involvement",
+      "Angioedema — isolated (no bronchospasm)"
+    ],
+    "correct": "Anaphylaxis",
+    "acceptable": [
+      "Angioedema — isolated (no bronchospasm)"
+    ]
+  }
+}

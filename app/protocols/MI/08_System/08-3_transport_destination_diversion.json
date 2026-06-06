@@ -1,0 +1,108 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-3 Transport Destination and Diversion (Revised 1/27/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_transport_destination_diversion",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Transport Destination and Diversion",
+  "version": "2023-01-27",
+  "protocol_reference": "Michigan System Protocol Section 8-3: Transport Destination and Diversion — MDHHS Approved 1/27/2023",
+
+  "sections": [
+    {
+      "title": "Transport Destination — General Principles",
+      "reference": "Michigan Protocol 8-3: Transport Destination — General",
+      "points": [
+        "Transport to the most appropriate facility based on patient condition, distance, and facility capabilities",
+        "Patient preference for a specific hospital should be honored when clinically appropriate and the facility is capable of managing the patient's condition",
+        "Patient preference does NOT override medical necessity — transport to the closest appropriate facility when time-sensitive condition exists",
+        "MCA-defined destination protocols and bypass criteria take precedence over patient preference in time-sensitive emergencies"
+      ]
+    },
+    {
+      "title": "Time-Sensitive Destination Protocols",
+      "reference": "Michigan Protocol 8-3: Transport Destination — Time-Sensitive",
+      "points": [
+        "STEMI: transport to PCI-capable facility per MCA STEMI destination protocol; notify cath lab en route",
+        "STROKE: transport to Stroke Center per MCA stroke destination protocol; use stroke scale results to guide facility selection (Primary vs. Comprehensive Stroke Center)",
+        "TRAUMA: transport to highest-level trauma center within reasonable transport time per MCA trauma destination criteria",
+        "CARDIAC ARREST: transport to nearest appropriate ED or as directed by MCA protocol",
+        "PEDIATRIC CRITICAL: transport to pediatric-capable facility per MCA protocol",
+        "OB EMERGENCY: transport per MCA OB/High-Risk Delivery Transport Protocol (Section 8-4)"
+      ]
+    },
+    {
+      "title": "Diversion",
+      "reference": "Michigan Protocol 8-3: Diversion",
+      "points": [
+        "Hospitals may request diversion status — EMS is not obligated to honor diversion for critical or time-sensitive patients",
+        "CRITICAL PATIENTS (cardiac arrest, STEMI with cath lab activation, major trauma, active delivery): do NOT divert — transport to closest appropriate facility regardless of diversion status",
+        "Diversion may be considered for stable, non-time-sensitive patients when MCA protocols permit",
+        "Contact Medical Control if uncertainty exists about diversion and patient condition",
+        "STEMI destination override: if the nearest PCI facility is on diversion, contact medical control and receiving facility — diversion for STEMI cath lab activation patients is not standard practice"
+      ]
+    },
+    {
+      "title": "Interfacility Transport",
+      "reference": "Michigan Protocol 8-3: Interfacility Transport",
+      "points": [
+        "Interfacility transports: destination is typically determined by the sending facility's order and the patient's condition and insurance",
+        "EMS may decline an interfacility transport that exceeds their scope of care — contact Medical Control",
+        "Refer to Section 8-15: Interfacility Patient Transfers Protocol for staffing and scope requirements"
+      ]
+    },
+    {
+      "title": "Documentation",
+      "reference": "Michigan Protocol 8-3: Transport Destination — Documentation",
+      "points": [
+        "Document destination selection rationale in PCR",
+        "Document any diversion status and crew decision regarding diversion",
+        "Document patient or family preference if different from destination selected",
+        "Document medical control contact if applicable"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "STEMI Destination Protocol",
+      "description": "MCA must define STEMI destination criteria including preferred PCI-capable facilities and transport thresholds",
+      "options": ["MCA-defined STEMI destination protocol in place", "Contact Medical Control for STEMI destination"],
+      "selected": null
+    },
+    {
+      "item": "Stroke Destination Protocol",
+      "description": "MCA must define stroke center destination criteria (Primary vs. Comprehensive) based on stroke scale score",
+      "options": ["MCA-defined stroke destination protocol in place", "Contact Medical Control for stroke destination"],
+      "selected": null
+    },
+    {
+      "item": "Trauma Destination Protocol",
+      "description": "MCA must define trauma destination criteria based on mechanism, injury, and facility capabilities",
+      "options": ["MCA-defined trauma destination protocol in place", "Contact Medical Control for trauma destination"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Patient deteriorates during transport — consider diverting to closer facility; contact Medical Control",
+    "Receiving facility on diversion for critical patient — do NOT divert; notify receiving facility; contact Medical Control if needed"
+  ],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "Destination: most appropriate facility based on condition, distance, and capability",
+    "Patient preference honored when clinically appropriate",
+    "Time-sensitive override: STEMI, stroke, trauma, cardiac arrest, critical pediatric, OB emergency",
+    "Critical patients: do NOT honor diversion",
+    "Document destination rationale and any diversion decision",
+    "MCA must define STEMI, stroke, and trauma destination protocols"
+  ],
+
+  "purpose": "Govern transport destination selection and diversion decisions for prehospital EMS. Patient preference is considered but does not override medical necessity. Time-sensitive conditions (STEMI, stroke, trauma) require destination decisions based on facility capability, not proximity alone. Critical patients should not be diverted."
+}

@@ -1,0 +1,63 @@
+# Production Docker Compose (INF-02/05/06/07/08)
+# Prerequisites: copy .env.example to .env and fill in all required secrets.
+# Start: docker compose -f docker-compose.prod.yml up -d
+# Logs:  docker compose -f docker-compose.prod.yml logs -f app
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: ems_user
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ems_sim
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    # Port intentionally NOT exposed to host — reachable only within internal network (INF-07)
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ems_user -d ems_sim"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    restart: always
+    env_file: .env
+    environment:
+      ENV: production
+      DATABASE_URL: "postgresql+asyncpg://ems_user:${POSTGRES_PASSWORD}@postgres:5432/ems_sim"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    # No bind-mounts — all code is baked into the image (INF-06)
+    networks:
+      - internal
+
+  proxy:
+    image: caddy:2-alpine
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"   # HTTP/3 / QUIC
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./static:/app/static:ro          # served by Caddy directly (INF-03)
+      - caddy_data:/data                 # TLS certificates — persisted across restarts
+      - caddy_config:/config
+    depends_on:
+      - app
+    networks:
+      - internal
+
+volumes:
+  pg_data:
+  caddy_data:
+  caddy_config:
+
+networks:
+  internal:
+    driver: bridge

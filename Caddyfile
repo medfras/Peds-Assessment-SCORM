@@ -1,0 +1,36 @@
+# Caddyfile — production reverse proxy (INF-03)
+# Replace "example.com" with your actual domain before deploying.
+# Caddy automatically provisions a Let's Encrypt TLS certificate when a
+# real domain is configured and port 80/443 are reachable from the internet.
+#
+# For local testing without a public domain:
+#   Replace "example.com" with "localhost" and remove the tls block.
+
+example.com {
+    # Static files served by Caddy directly — bypass FastAPI for faster delivery
+    handle /static/* {
+        root * /app
+        file_server
+    }
+
+    # All other traffic (API, WebSocket) proxied to the FastAPI backend
+    handle {
+        reverse_proxy app:8000 {
+            header_up Host {host}
+            header_up X-Real-IP {remote}
+            header_up X-Forwarded-For {remote}
+            header_up X-Forwarded-Proto {scheme}
+
+            # SSE and WebSocket connections stay open for minutes
+            transport http {
+                dial_timeout 10s
+                response_header_timeout 300s
+            }
+        }
+    }
+
+    # Security headers (belt-and-suspenders with app-level headers)
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    }
+}

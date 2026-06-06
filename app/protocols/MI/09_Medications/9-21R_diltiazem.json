@@ -1,0 +1,69 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-21R Diltiazem (Revised 8/11/2023, MDHHS Reviewed 2023). Base Michigan template.",
+  "id": "mi_base_medication_ref_diltiazem",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Diltiazem",
+  "version": "2023-08-11",
+  "protocol_reference": "Michigan Medication Protocol Section 9-21R: Diltiazem — MDHHS Approved 8/11/2023, Reviewed 2023",
+
+  "pharmacological_category": "Antidysrhythmic — Calcium Channel Blocker (Non-Dihydropyridine)",
+
+  "routes": ["IV"],
+
+  "indications": [
+    "Narrow complex tachycardia — regular (SVT/AVNRT)",
+    "Narrow complex tachycardia — irregular (atrial fibrillation or atrial flutter with rapid ventricular response)"
+  ],
+
+  "contraindications": [
+    "Sinus node dysfunction (sick sinus syndrome) without pacemaker",
+    "High-degree AV block (2nd degree Mobitz II or 3rd degree) without pacemaker",
+    "Hypotension (SBP <90 mmHg)",
+    "Wide complex tachycardia (do not use — may precipitate decompensation in V-Tach)",
+    "WPW (Wolff-Parkinson-White) with pre-excitation — may accelerate conduction through accessory pathway",
+    "Known hypersensitivity to diltiazem"
+  ],
+
+  "precautions": [
+    "Monitor BP and ECG continuously during and after administration",
+    "Can cause significant hypotension and bradycardia",
+    "Concurrent beta-blockers significantly increase risk of AV block and hypotension",
+    "Administer slowly to reduce hypotension risk"
+  ],
+
+  "expected_effects": [
+    "Reduction in ventricular rate in atrial fibrillation / flutter",
+    "Conversion of SVT to sinus rhythm (less reliable than adenosine)",
+    "Slowing of AV node conduction"
+  ],
+
+  "side_effects": [
+    "Hypotension",
+    "Bradycardia",
+    "AV block",
+    "Dizziness, flushing"
+  ],
+
+  "notes": [
+    "Administer slowly IV over 2-3 minutes to reduce hypotension",
+    "Standard adult dose: 15-20 mg (0.25 mg/kg) IV",
+    "No standard pediatric EMS dosing in Michigan protocol — consult online MC for pediatric use",
+    "Preferred over adenosine for rate control in atrial fibrillation/flutter"
+  ],
+
+  "dosing": [
+    {
+      "population": "Adult (>14 yr) — narrow complex tachycardia (regular or irregular)",
+      "route": "IV slow push",
+      "dose": "15-20 mg (0.25 mg/kg) IV slowly over 2-3 minutes",
+      "notes": "Monitor BP and ECG during administration; stop if hypotension develops"
+    }
+  ],
+
+  "used_in_protocols": ["Tachycardia — Narrow Complex Regular (SVT)", "Tachycardia — Narrow Complex Irregular (A-Fib/A-Flutter)"]
+}

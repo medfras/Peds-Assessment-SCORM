@@ -1,0 +1,26 @@
+{
+  "_schema": "ems_call_type_overlay_v1",
+  "id": "peds_asthma_01_respiratory_distress_scenario_v1",
+  "version": "2026-05-14",
+  "call_type": "respiratory_distress",
+  "overlay_type": "scenario",
+  "jurisdiction": "Training Scenario",
+  "effective_date": "2026-05-14",
+  "scenario_id": "peds_asthma_01",
+  "approved_by": "scoring_integration_review_2026-05-14",
+  "notes": "Suppresses respiratory-distress call-type rubric items already owned by the universal NREMT base rubric in this training scenario. These items remain in the NASEMSO respiratory distress rubric for standalone QA/QI use but must not double-score or produce false misses when the base patient-care rubric is active.",
+  "operations": [
+    {
+      "op": "suppress_item",
+      "item_id": "resp_distress.scene_safety_ppe",
+      "reason": "Universal NREMT base rubric owns PPE and scene safety via scene_entry evidence path. The respiratory-distress call-type item duplicates the same base expectation and can create a second Call Specific row for a universal assessment step.",
+      "protocol_ref": "NREMT EMT Patient Assessment/Management Medical E202 — scene safety and PPE are base rubric items"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "resp_distress.general_impression",
+      "reason": "Universal NREMT base rubric owns general impression. The respiratory-distress call-type item is redundant in this training scenario and should not double-score the same scene-entry/general-impression action.",
+      "protocol_ref": "NREMT EMT Patient Assessment/Management Medical E202 — general impression is a base rubric item"
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 6-3 Pediatric Tachycardia (Revised 11/17/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_pediatric_tachycardia",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Pediatric",
+  "level_display": "Pediatric (< 14 years)",
+  "jurisdiction": "Michigan",
+  "condition": "Pediatric Tachycardia",
+  "version": "2025-11-17",
+  "protocol_reference": "Michigan Pediatric Cardiac Protocol Section 6-3: Pediatric Tachycardia — MDHHS Approved 11/17/25, Reviewed 2025",
+
+  "purpose": "PARAMEDIC USE ONLY. Intended for symptomatic pediatric patients with elevated heart rate relative to their age. Refer to MI-MEDIC for appropriate vital signs and medication doses.",
+
+  "sections": [
+    {
+      "title": "General Assessment and Initial Treatment",
+      "reference": "Michigan Protocol 6-3: Pediatric Tachycardia — General",
+      "points": [
+        "PARAMEDIC USE ONLY",
+        "Follow General Pre-Hospital Care-Treatment Protocol",
+        "Determine if patient is stable or unstable",
+        "Manage airway as necessary",
+        "Provide supplemental oxygen as needed to maintain SpO2 > 94%",
+        "Initiate monitoring",
+        "Perform 12-lead EKG — do NOT delay care for 12-lead EKG on unstable patients",
+        "Establish vascular access",
+        "Pediatric patients (< 14 years) utilize MI-MEDIC cards for appropriate medication dosage — when unavailable utilize pediatric dosing listed within protocol",
+        "Identify and treat UNDERLYING causes: dehydration, fever, vomiting, sepsis, pain",
+        "Administer NS or LR bolus 20 mL/kg with possible hypovolemia"
+      ]
+    },
+    {
+      "title": "UNSTABLE — Regular Narrow Complex Tachycardia",
+      "reference": "Michigan Protocol 6-3: Unstable Narrow",
+      "points": [
+        "Prepare for IMMEDIATE cardioversion — in conscious patients consider sedation per Patient Procedural Sedation-Procedure Protocol",
+        "Perform synchronized cardioversion 1 J/kg",
+        "Increase dose to 2 J/kg for additional synchronized cardioversion if needed",
+        "DO NOT EXCEED ADULT DOSING",
+        "If able to convert: maintain full cardiac monitoring including pulse oximetry and supportive care until transfer of care at receiving facility"
+      ]
+    },
+    {
+      "title": "UNSTABLE — Regular Wide Complex Tachycardia",
+      "reference": "Michigan Protocol 6-3: Unstable Wide Regular",
+      "points": [
+        "Prepare for IMMEDIATE cardioversion — in conscious patients consider sedation per Patient Procedural Sedation-Procedure Protocol",
+        "Perform synchronized cardioversion 1 J/kg",
+        "For recurrent or refractory wide complex unstable tachycardia: consult Medical Control PRIOR to medication administration (medication per MCA selection — amiodarone or lidocaine per MI-MEDIC dosing)",
+        "NOTE: MI-MEDIC includes amiodarone for shock-resistant V-fib — dosage is the SAME for unstable wide complex tachycardia with a pulse, administered slow IV push",
+        "If able to convert: maintain full cardiac monitoring and supportive care until transfer"
+      ]
+    },
+    {
+      "title": "UNSTABLE — Irregular Wide Complex Tachycardia",
+      "reference": "Michigan Protocol 6-3: Unstable Wide Irregular",
+      "points": [
+        "Defibrillate according to Electrical Therapy-Procedure Protocol",
+        "Refer to Pediatric General Cardiac Arrest Protocol"
+      ]
+    },
+    {
+      "title": "STABLE — Regular Narrow Complex Tachycardia (SVT)",
+      "reference": "Michigan Protocol 6-3: Stable SVT",
+      "points": [
+        "Perform vagal maneuvers — ensure patient is on oxygen and cardiac monitor; run ECG strip during procedure; DO NOT USE CAROTID MASSAGE",
+        "If child IS ABLE to follow instructions: (a) blow into a 10 mL syringe for 15 seconds; (b) squat and bear down",
+        "If child is NOT ABLE to follow instructions: (a) while supine, elevate patient's legs to knee-chest position for 60 seconds; (b) if available, consider QUICKLY placing a bag of ice on the eyes and forehead — do NOT occlude the nose or place below the bridge of the nose; results generally seen within 15 seconds; this is an ABRUPT maneuver — do NOT maintain for more than 15 seconds",
+        "Contact Medical Control PRIOR to adenosine administration",
+        "Administer adenosine per MI-MEDIC cards if vagal maneuvers are ineffective; if MI-MEDIC not available: 0.1 mg/kg (maximum 6 mg) rapid IV push through most proximal injection site, immediately followed by 10 mL flush; may repeat ONCE with 0.2 mg/kg (maximum 12 mg) using same technique"
+      ]
+    },
+    {
+      "title": "STABLE — Regular Wide Complex Monomorphic QRS Tachycardia",
+      "reference": "Michigan Protocol 6-3: Stable Wide Monomorphic",
+      "points": [
+        "Contact Medical Control",
+        "Consider adenosine per MI-MEDIC cards; if MI-MEDIC not available: 0.1 mg/kg (maximum 6 mg) rapid IV push through most proximal injection site, immediately followed by 10 mL flush",
+        "May repeat ONCE with 0.2 mg/kg (maximum 12 mg) using same technique"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Antidysrhythmic — Refractory/Recurrent Wide Complex Unstable Tachycardia",
+      "description": "MCA must select antidysrhythmic for refractory or recurrent wide complex unstable tachycardia (with Medical Control contact required prior to administration). Use MI-MEDIC for dosing.",
+      "options": [
+        "Amiodarone 5 mg/kg IV/IO slow push over 10 minutes (max single dose 300 mg; may repeat twice; total max 450 mg IV/IO)",
+        "Lidocaine 1 mg/kg IV/IO (may repeat 0.5 mg/kg twice at 5–10 minute intervals; maximum 3 doses total)"
+      ],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [
+    {
+      "name": "Adenosine IV (Pediatric SVT — First Dose)",
+      "dose": "Per MI-MEDIC cards; backup: 0.1 mg/kg (maximum 6 mg) rapid IV push through most proximal injection site, immediately followed by 10 mL flush",
+      "route": "IV (rapid push at most proximal injection site + 10 mL flush)",
+      "indication": "Stable SVT not converting with vagal maneuvers — requires Medical Control contact PRIOR to administration",
+      "contraindications": "Irregular rhythms; Wolff-Parkinson-White with A-Fib; contact Medical Control before administration",
+      "side_effects": "Transient asystole, flushing, chest pressure, dyspnea",
+      "scope": "Paramedic only",
+      "notes": "Use MI-MEDIC for weight-based dosing. MUST contact Medical Control before administration. Rapid push technique with immediate 10 mL flush."
+    },
+    {
+      "name": "Adenosine IV (Pediatric SVT — Second Dose)",
+      "dose": "Per MI-MEDIC cards; backup: 0.2 mg/kg (maximum 12 mg) rapid IV push + 10 mL flush",
+      "route": "IV (rapid push at most proximal injection site + 10 mL flush)",
+      "indication": "SVT not converting after first adenosine dose",
+      "contraindications": "Same as first dose",
+      "side_effects": "Transient asystole, flushing, chest pressure, dyspnea",
+      "scope": "Paramedic only",
+      "notes": "Use MI-MEDIC when available. Same rapid push technique."
+    },
+    {
+      "name": "Amiodarone IV/IO (Pediatric Refractory Wide Complex)",
+      "dose": "5 mg/kg IV/IO slow push over 10 minutes (max single dose 300 mg) — may repeat twice; total maximum 450 mg IV/IO; per MI-MEDIC when available",
+      "route": "IV or IO (slow push over 10 minutes)",
+      "indication": "Refractory or recurrent wide complex unstable tachycardia — requires Medical Control contact prior; per MCA selection",
+      "contraindications": "Must consult Medical Control before administration in refractory/recurrent wide complex",
+      "side_effects": "Hypotension, bradycardia",
+      "scope": "Paramedic — per MCA selection with Medical Control contact",
+      "notes": "NOTE: MI-MEDIC dosage for amiodarone in shock-resistant V-fib is the SAME dose used for unstable wide complex tachycardia with a pulse — administer as slow IV push."
+    },
+    {
+      "name": "Lidocaine IV/IO (Pediatric Wide Complex)",
+      "dose": "1 mg/kg IV/IO — may repeat 0.5 mg/kg twice at 5–10 minute intervals; maximum 3 doses total; per MI-MEDIC when available",
+      "route": "IV or IO",
+      "indication": "Refractory wide complex unstable tachycardia — per MCA selection with Medical Control contact",
+      "contraindications": "Must consult Medical Control before administration",
+      "side_effects": "CNS toxicity at high doses",
+      "scope": "Paramedic — per MCA selection with Medical Control contact",
+      "notes": "Use MI-MEDIC for dosing. Maximum 3 doses total."
+    }
+  ],
+
+  "deterioration_flags": [
+    "Stable patient becomes unstable (hypotension, AMS, shock signs) — immediate synchronized cardioversion; consider sedation",
+    "Irregular wide complex (Torsades or A-fib with aberrancy) — DEFIBRILLATE (unsynchronized); refer to Pediatric Cardiac Arrest protocol",
+    "Wide complex regular tachycardia (stable) — contact Medical Control; consider adenosine before antidysrhythmic",
+    "Cardioversion failure at maximum energy — contact Medical Control for antidysrhythmic per MCA selection",
+    "SVT with adenosine failure — contact Medical Control before repeat adenosine dose"
+  ],
+
+  "scope_notes": [
+    "This protocol is PARAMEDIC USE ONLY",
+    "Vagal maneuvers (age-appropriate techniques): Paramedic",
+    "Synchronized cardioversion/defibrillation: Paramedic",
+    "Adenosine IV: Paramedic — Medical Control contact REQUIRED before administration for stable SVT",
+    "Amiodarone, lidocaine: Paramedic — per MCA selection; Medical Control contact required for refractory wide complex",
+    "NS/LR 20 mL/kg bolus: Specialist skill",
+    "Refer to MI-MEDIC for all age-appropriate vital sign ranges and medication doses"
+  ]
+}

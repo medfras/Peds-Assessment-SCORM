@@ -1,0 +1,129 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). General Medical: Pain Management. NASEMSO national provisional base.",
+  "id": "nasemso_base_general_medical_pain_management",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Pain Management",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — General Medical: Pain Management",
+  "aliases": [
+    "Analgesia",
+    "Pain control"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — General Medical: Pain Management",
+      "points": [
+        "Compassionately manage all patients with pain",
+        "Minimize adverse events in the treatment of pain"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Patients who are experiencing pain regardless of transport interval",
+        "EXCLUSION CRITERIA:",
+        "Pregnancy with active labor"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Position of comfort; splint/immobilize injured extremities",
+        "Cold therapy (ice pack) for musculoskeletal pain",
+        "Reassurance and communication; minimize unnecessary movement"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Oral acetaminophen 650-1000 mg or ibuprofen 400-800 mg for mild-moderate pain",
+        "Nitrous oxide 50%/O2 50% (methoxyflurane where available) for moderate pain per protocol",
+        "Ice application, positioning, splinting for extremity pain",
+        "TENS device if available per protocol"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "Ketorolac (Toradol) 15-30 mg IV or 30-60 mg IM for moderate-severe pain",
+        "Morphine 2-4 mg IV q 5-10 min titrated to pain reduction (max 0.1 mg/kg)",
+        "Fentanyl 1-2 mcg/kg IV/IO/IN for moderate-severe pain",
+        "Ondansetron (Zofran) 4 mg IV for opioid-induced nausea"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "Fentanyl 1-2 mcg/kg IV titrated q 5 min (max 3-4 mcg/kg) for severe pain",
+        "Morphine 0.05-0.1 mg/kg IV titrated for severe pain (monitor respiratory status)",
+        "Ketamine 0.1-0.3 mg/kg IV (sub-dissociative) for acute severe pain as opioid adjunct or alternative",
+        "Ketamine 1-2 mg/kg IV dissociative for procedural pain or combative patient",
+        "Midazolam 1-2 mg IV as anxiolytic adjunct to pain management",
+        "Lidocaine IO 0.5 mg/kg before IO medication administration to reduce pain",
+        "Regional nerve blocks per protocol (digital block, femoral nerve block)",
+        "Acetaminophen 1 g IV over 15 min for multimodal analgesia"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "All patients should have drug allergies identified prior to administration of pain medication",
+        "Administer opioids with caution to patients with Glasgow Coma Score (GCS) less than 15, hypotension, identified medication allergy, hypoxia (SPO2 less than 90%) after maximal supplemental oxygen therapy, or signs of hypoventilation",
+        "Opioids are contraindicated for patients who have taken monoamine oxidase inhibitors (MAOI) during the previous 14 days",
+        "Avoid non-steroidal anti-inflammatory medications such as ibuprofen and ketorolac in patients with NSAID allergy, aspirin-sensitive asthma, renal insufficiency, pregnancy, or known peptic ulcer disease",
+        "Ketorolac should not be used in patients with hypotension (due to renal toxicity)",
+        "Use of splinting techniques and application of ice should be done to reduce the total amount of medication used to keep the patient comfortable"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Intranasal routes of opioid analgesia are preferred as the initial dosing route in pediatrics where IV access may be problematic; consider in other patient populations when an IV in not otherwise indicated",
+        "Onset of action is dependent on the pharmacokinetics of the drug class as well as route of administration; oral analgesics are effective for pain control but",
+        "Pain severity scores should be recorded before and after analgesic medication administration and upon arrival at destination",
+        "Patients with acute abdominal pain should receive analgesic interventions ' Use of analgesics for acute abdominal pain does not mask clinical findings or delay diagnosis",
+        "Opiates may cause a rise in intracranial pressure",
+        "Mental status (Glasgow Coma Score (GCS) and pain level)",
+        "Respiratory system (tidal volume, chest rigidity)",
+        "Gastrointestinal (assess for tenderness, rebound, guarding, and nausea) ' 9914071 ' General - Pain Control ' Documentation of patient vital signs (pulse, blood pressure, respiratory rate, neurologic status assessment) with pulse oximetry"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Contact medical direction for clinical deterioration or interventions outside standard scope"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

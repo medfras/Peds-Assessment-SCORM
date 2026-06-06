@@ -1,0 +1,80 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-22 Tourniquet Application (Revised 5/27/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_tourniquet_application",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Tourniquet Application",
+  "version": "2023-05-27",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-22: Tourniquet Application — MDHHS Approved 5/27/2023",
+
+  "purpose": "Tourniquet application for life-threatening extremity hemorrhage. Once hemorrhage is controlled, the tourniquet is NOT adjusted or removed in the prehospital setting. Notify receiving hospital of tourniquet application and time.",
+
+  "sections": [
+    {
+      "title": "Indications",
+      "reference": "Michigan Protocol 7-22: Tourniquet — Indications",
+      "points": [
+        "Life-threatening extremity hemorrhage not controlled by direct pressure",
+        "Traumatic amputation with uncontrolled bleeding",
+        "Mass Casualty Incident (MCI): tourniquet for temporary hemorrhage control during triage and treatment"
+      ]
+    },
+    {
+      "title": "Contraindications",
+      "reference": "Michigan Protocol 7-22: Tourniquet — Contraindications",
+      "points": [
+        "NEVER apply over a joint (knee, elbow) — risk of peroneal or ulnar nerve damage; apply PROXIMAL to the joint",
+        "NEVER apply over an impaled object",
+        "Tourniquets are for EXTREMITY hemorrhage only — not applicable to truncal, neck, or junctional hemorrhage (use wound packing and hemostatic agents)"
+      ]
+    },
+    {
+      "title": "Application Technique",
+      "reference": "Michigan Protocol 7-22: Tourniquet — Technique",
+      "points": [
+        "Apply tourniquet directly to SKIN (not over clothing if possible) — proximal 2–3 inches from the wound",
+        "Tighten until arterial blood flow is occluded (no pulsatile bleeding distal to tourniquet)",
+        "Document time of application clearly on the tourniquet itself AND in the PCR",
+        "Perform neurovascular check distal to tourniquet every 5 minutes post-application",
+        "Notify receiving hospital of tourniquet presence, location, and time applied",
+        "Do NOT adjust or remove tourniquet once hemorrhage is controlled in the prehospital setting",
+        "If bleeding continues after first tourniquet: apply a second tourniquet ADJACENT (proximal) to the first — do not attempt to tighten the first"
+      ]
+    },
+    {
+      "title": "Clinical Considerations",
+      "reference": "Michigan Protocol 7-22: Tourniquet — Clinical Considerations",
+      "points": [
+        "Risk of ischemic limb damage is minimal if total time from extrication to hospital arrival is less than 180 minutes (3 hours)",
+        "Contact Medical Control before considering loosening a tourniquet if clinical judgment raises questions about its appropriateness",
+        "Use commercial tourniquets (CAT, SOFT-T, etc.) when available — improvised tourniquets are less reliable",
+        "Cover tourniquet with bandage during transport but keep visible — do NOT conceal from receiving providers"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Continued bleeding after first tourniquet — apply second tourniquet adjacent and proximal to first; do NOT re-tighten first",
+    "Tourniquet applied > 60 minutes — notify hospital; do not loosen prehospital without MC order",
+    "Signs of distal ischemia — monitor neurovascular status; do not remove without MC order; expedite transport"
+  ],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "Apply to skin, proximal 2–3 inches from wound, not over joints or impaled objects",
+    "Tighten until arterial occlusion — no pulsatile bleeding",
+    "Document time on tourniquet AND in PCR",
+    "Neurovascular check every 5 minutes",
+    "Do NOT adjust or remove once hemorrhage is controlled",
+    "Second tourniquet if first fails: apply adjacent proximal to first",
+    "Contact MC before loosening tourniquet prehospital"
+  ]
+}

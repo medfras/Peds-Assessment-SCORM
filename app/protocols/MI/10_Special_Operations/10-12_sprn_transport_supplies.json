@@ -1,0 +1,119 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 10-12 SPRN Transport Supplies (MDHHS Reviewed 2022-12-27). MCA Optional — SPRN program participation required.",
+  "id": "mi_base_special_ops_sprn_transport_supplies",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Special Operations",
+  "level_display": "Special Operations Protocol — MCA Optional (SPRN)",
+  "jurisdiction": "Michigan",
+  "condition": "SPRN — Transport Supplies",
+  "version": "2022-12-27",
+  "protocol_reference": "Michigan Special Operations Protocol Section 10-12: SPRN Transport Supplies — MDHHS Reviewed 2022",
+
+  "purpose": "Define required supply lists for SPRN transport vehicles, including immediately available supplies and accompanying vehicle supplies, and specify PPE requirements for SPRN transport personnel.",
+
+  "sections": [
+    {
+      "title": "Supply Categories",
+      "content": [
+        "SPRN transport supplies are organized into two categories:",
+        "  1. IMMEDIATELY AVAILABLE SUPPLIES: must be on the primary transport vehicle at time of dispatch",
+        "  2. ACCOMPANYING VEHICLE SUPPLIES: carried by chase team or second vehicle that travels with the SPRN transport",
+        "All SPRN vehicles must undergo pre-transport supply check before accepting a SPRN patient"
+      ]
+    },
+    {
+      "title": "Immediately Available Supplies — Primary Transport Vehicle",
+      "content": [
+        "PPE for all crew members (per Protocol 10-12 PPE section):",
+        "  — PAPR units (powered air-purifying respirators) with hoods — one per crew member + spares",
+        "  — Full-face respirator (backup if PAPR unavailable)",
+        "  — Fluid-resistant coveralls (Tyvek or equivalent) — per crew member + spares",
+        "  — Double gloves (nitrile) — multiple pairs per crew member",
+        "  — Boot covers / shoe covers — per crew member",
+        "  — Head covers — per crew member",
+        "  — Eye protection (if full-face respirator used instead of PAPR)",
+        "Patient care supplies:",
+        "  — Biohazard bags (red, labeled) — minimum 6",
+        "  — Bleach solution (1:10 dilution) or EPA-registered HCID disinfectant wipes",
+        "  — Disposable absorbent pads / chux pads",
+        "  — Disposable patient care supplies (BP cuff, SpO2 probe, stethoscope — single-use or dedicated SPRN equipment)",
+        "  — Surgical masks for patient",
+        "  — Tape and labels for biohazard bagging of patient belongings",
+        "  — Pre-printed patient transfer documentation forms",
+        "Vehicle supplies:",
+        "  — Biohazard waste container with lid",
+        "  — Spare PAPR batteries and filters"
+      ]
+    },
+    {
+      "title": "Accompanying Vehicle Supplies — Chase Team Vehicle",
+      "content": [
+        "Additional PPE (backup for primary vehicle crew):",
+        "  — Spare PAPR units and hoods",
+        "  — Additional fluid-resistant coveralls",
+        "  — Additional gloves, boot covers, head covers",
+        "Medical Isolation Transport Device (MITD) components (if not on primary vehicle):",
+        "  — MITD/Biocell containment device",
+        "  — MITD blower motor and power supply",
+        "  — MITD access ports and cable sets",
+        "Additional patient care and decontamination supplies:",
+        "  — Spare biohazard bags",
+        "  — Additional disinfectant solution/wipes",
+        "  — Spare disposable medical supplies",
+        "  — Patient transfer gurney cover/barrier",
+        "Team support:",
+        "  — Communications equipment (radio, phone)",
+        "  — Route maps and GPS for MDHHS-coordinated travel plan (Protocol 10-13)",
+        "  — Crew hydration supplies",
+        "  — Emergency doffing PPE area materials (Protocol 10-14)"
+      ]
+    },
+    {
+      "title": "PPE Requirements — SPRN Transport Personnel",
+      "content": [
+        "MINIMUM PPE for all SPRN transport crew in patient care area:",
+        "  — PAPR (powered air-purifying respirator) with hood: preferred; provides continuous positive pressure filtered air",
+        "  — OR Full-face air-purifying respirator with appropriate P100/HEPA filter (if PAPR unavailable)",
+        "  — Fluid-resistant coveralls (Tyvek or equivalent) covering entire body",
+        "  — Double nitrile gloves (inner + outer layer)",
+        "  — Boot covers",
+        "  — Head cover",
+        "DRIVER (clean cab): minimum surgical mask + gloves if patient compartment is accessed; full PPE if any patient contact anticipated",
+        "Chase team members: full PPE if they will enter patient care zone",
+        "PPE donning must occur BEFORE patient contact — follow standardized agency donning sequence",
+        "PPE doffing: follow trained doffing sequence with partner assist to prevent self-contamination (Protocol 10-17)"
+      ]
+    },
+    {
+      "title": "Equipment Inspection and Maintenance",
+      "content": [
+        "All SPRN vehicles and supply caches must be inspected monthly and after each SPRN transport",
+        "PAPR units: filter replacement per manufacturer schedule; battery check before each transport",
+        "MITD: inspect for tears, port integrity, and blower motor function before each transport",
+        "Expired supplies: replace per individual item expiration dates",
+        "Post-SPRN transport: all potentially contaminated supplies disposed of as Category A biological waste (Protocol 10-15)",
+        "Restock completed within 24 hours of transport — agency responsible"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "id": "sprn_program_participation",
+      "label": "SPRN Program Participation — MCA authorization for SPRN protocols 10-10 through 10-18",
+      "description": "MCA Optional: All SPRN protocols apply only to SPRN-designated agencies.",
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "PAPR failure during transport — switch to backup full-face respirator; do not continue without respiratory protection",
+    "Supply shortage discovered before SPRN transport — do NOT accept patient until minimum required supplies are available; notify SPRN coordinator"
+  ],
+
+  "scope_notes": "MCA Optional — SPRN only. PAPR is the preferred respiratory protection for SPRN transport; full-face respirator is acceptable backup. All PPE must be donned before patient contact. Biohazard waste from SPRN transports is Category A biological waste — handle per Protocol 10-15."
+}

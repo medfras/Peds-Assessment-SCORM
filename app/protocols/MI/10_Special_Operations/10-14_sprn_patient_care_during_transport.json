@@ -1,0 +1,114 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 10-14 SPRN Patient Care During Transport (MDHHS Reviewed 2022-12-27). MCA Optional — SPRN program participation required.",
+  "id": "mi_base_special_ops_sprn_patient_care_during_transport",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Special Operations",
+  "level_display": "Special Operations Protocol — MCA Optional (SPRN)",
+  "jurisdiction": "Michigan",
+  "condition": "SPRN — Patient Care During Transport",
+  "version": "2022-12-27",
+  "protocol_reference": "Michigan Special Operations Protocol Section 10-14: SPRN Patient Care During Transport — MDHHS Reviewed 2022",
+
+  "purpose": "Define patient care procedures, physical needs assessment, and crew safety protocols for EMS personnel providing care to SPRN patients during transport.",
+
+  "sections": [
+    {
+      "title": "Pre-Transport Coordination with Facilities",
+      "content": [
+        "Coordinate with SENDING FACILITY before patient pickup:",
+        "  — Confirm patient clinical status, current vital signs, and recent medications",
+        "  — Confirm life support status decision (resuscitation status) — this must be established BEFORE transport",
+        "  — Confirm IV access and current infusions (if any)",
+        "  — Obtain current medication list and any pending treatments",
+        "Coordinate with RECEIVING FACILITY before transport:",
+        "  — Confirm capability to receive SPRN patient in appropriate isolation",
+        "  — Provide patient classification (Protocol 10-11) and expected ETA",
+        "  — Discuss any anticipated interventions en route so receiving team is prepared"
+      ]
+    },
+    {
+      "title": "Physical Needs Assessment",
+      "content": [
+        "Minimize physical contact and invasive procedures during SPRN transport — each touch = contamination risk",
+        "Vital signs: use NON-INVASIVE methods preferentially",
+        "  — SpO2: use disposable or dedicated SPRN pulse oximetry probe",
+        "  — BP: non-invasive cuff — use dedicated SPRN equipment (decontaminate or dispose after)",
+        "  — Bluetooth/wireless vital sign monitoring preferred if available — reduces direct contact",
+        "Temperature: tympanic or non-contact thermometer — dispose or decontaminate after use",
+        "Cardiac monitoring: attach leads before transport; do NOT reach into MITD for lead adjustment during transport if possible",
+        "IV access: maintain existing access; do NOT start new IV/IO inside MITD if avoidable — pass IV lines through MITD access ports",
+        "Avoid sharps: sharps injury in SPRN transport is a critical safety event — use needleless systems; never recap needles; dispose in sharps container immediately"
+      ]
+    },
+    {
+      "title": "Sharps Safety",
+      "content": [
+        "AVOID sharps during SPRN transport whenever possible",
+        "If sharps use is unavoidable:",
+        "  — Use needleless IV systems and prefilled syringes",
+        "  — Immediate disposal in sharps container — never recap",
+        "  — Two-provider acknowledgment before any sharps use in patient compartment",
+        "Sharps injury during SPRN transport:",
+        "  — Immediately notify partner and SPRN coordinator",
+        "  — Flush wound with water if available",
+        "  — Continue transport to receiving facility — do NOT stop mid-transport",
+        "  — At receiving facility: report injury; receive immediate medical evaluation",
+        "  — Follow agency and MDHHS HCID post-exposure protocol"
+      ]
+    },
+    {
+      "title": "Life Support Status",
+      "content": [
+        "Life support status (full resuscitation vs. comfort care vs. DNR) MUST be confirmed before SPRN transport begins",
+        "Do NOT initiate resuscitation in an SPRN transport without prior confirmation of resuscitation status",
+        "Cardiac arrest during SPRN transport: Protocol 10-18 applies — STOP transport; no interventions; contact CHECC",
+        "Advanced airway management in SPRN transport: extremely high-risk for PPE breach and crew exposure — contact online MC; use only if life-threatening and patient has resuscitation status"
+      ]
+    },
+    {
+      "title": "Crew Safety — PPE Breach Protocol",
+      "content": [
+        "PPE BREACH: any event where potentially infectious material contacts provider skin or mucous membrane through a defect in PPE",
+        "Examples: glove tear, PAPR hood failure, splash to face, needlestick",
+        "IF PPE BREACH OCCURS:",
+        "  1. Alert partner immediately — stop all patient care tasks",
+        "  2. If possible, partner provides replacement PPE layer",
+        "  3. Minor breach (glove only): replace outer glove layer; continue transport",
+        "  4. Major breach (PAPR failure, face splash): exit patient compartment if possible; notify SPRN coordinator; contact online MC",
+        "  5. Continue transport to receiving facility — do NOT abandon patient",
+        "  6. Document breach type, time, and exposure location",
+        "  7. At receiving facility: report breach to safety officer; receive immediate medical evaluation"
+      ]
+    },
+    {
+      "title": "Emergency Doffing Area",
+      "content": [
+        "An emergency doffing area must be identified and pre-planned before each SPRN transport",
+        "Emergency doffing area: a safe, contained location where a provider can safely remove contaminated PPE in an emergency",
+        "Identify location during pre-transport briefing — may be at sending facility, along route, or at Patient Transfer Point",
+        "Emergency doffing supplies: additional PPE, biohazard bags, disinfectant wipes — carried in chase vehicle (Protocol 10-12)"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "id": "sprn_program_participation",
+      "label": "SPRN Program Participation — MCA authorization for SPRN protocols 10-10 through 10-18",
+      "description": "MCA Optional: All SPRN protocols apply only to SPRN-designated agencies.",
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Sharps injury — notify partner and SPRN coordinator immediately; continue transport; do NOT stop mid-transport for injury management; receive evaluation at destination",
+    "Major PPE breach — exit patient area if possible; notify SPRN coordinator; continue transport; receive evaluation at destination",
+    "Cardiac arrest — STOP; Protocol 10-18 applies; contact CHECC"
+  ],
+
+  "scope_notes": "MCA Optional — SPRN only. Minimize interventions and sharps use during SPRN transport. Life support status must be confirmed BEFORE transport begins — resuscitation during SPRN transport requires Protocol 10-18. PPE breach is treated as a safety emergency — alert partner, document, and receive evaluation at destination. Continue transport — do NOT abandon patient mid-transport."
+}

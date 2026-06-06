@@ -1,0 +1,96 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-22R Diphenhydramine (Revised 12/10/2025, MDHHS Reviewed 2026). Base Michigan template.",
+  "id": "mi_base_medication_ref_diphenhydramine",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Diphenhydramine",
+  "version": "2025-12-10",
+  "protocol_reference": "Michigan Medication Protocol Section 9-22R: Diphenhydramine — MDHHS Approved 1/5/2026, Reviewed 2026",
+
+  "pharmacological_category": "Antihistamine — H1 Receptor Antagonist",
+
+  "routes": ["IV", "IO", "IM"],
+
+  "indications": [
+    "Anaphylaxis (adjunct to epinephrine — not a replacement)",
+    "Nausea and vomiting",
+    "Extrapyramidal symptoms (EPS) — dystonic reaction from antipsychotic or antiemetic medications"
+  ],
+
+  "contraindications": [
+    "Known hypersensitivity to diphenhydramine",
+    "Nausea/vomiting in patients <2 years old or <12 kg (pediatric safety concern)"
+  ],
+
+  "precautions": [
+    "Causes drowsiness — monitor mental status and airway",
+    "Anticholinergic effects: urinary retention, dry mouth, tachycardia",
+    "Elderly patients: increased risk of confusion and delirium",
+    "Pediatric N/V indication: only for patients >2 years AND >12 kg"
+  ],
+
+  "expected_effects": [
+    "Reduction in histamine-mediated anaphylaxis symptoms (urticaria, itching, angioedema — secondary to epinephrine)",
+    "Antiemetic effect for nausea and vomiting",
+    "Reversal of dystonic reactions (EPS)"
+  ],
+
+  "side_effects": [
+    "Sedation / drowsiness",
+    "Anticholinergic effects (dry mouth, urinary retention, blurred vision, tachycardia)",
+    "Confusion (elderly)",
+    "Paradoxical excitation (children)"
+  ],
+
+  "notes": [
+    "Anaphylaxis: 50 mg IV/IM — ADJUNCT only; epinephrine is the primary treatment; do not delay epi to give diphenhydramine",
+    "N/V adult: 12.5-25 mg IV/IM; maximum 25 mg",
+    "N/V pediatric: 1 mg/kg IV/IM; maximum 25 mg; only >2 yr AND >12 kg",
+    "Extrapyramidal (EPS): 50 mg adult IV/IM; 1 mg/kg pediatric IV/IM max 50 mg"
+  ],
+
+  "dosing": [
+    {
+      "population": "Adult (>14 yr) — anaphylaxis adjunct",
+      "route": "IV/IO/IM",
+      "dose": "50 mg",
+      "notes": "ADJUNCT — epinephrine is primary; do not delay epinephrine to administer diphenhydramine"
+    },
+    {
+      "population": "Adult (>14 yr) — nausea/vomiting",
+      "route": "IV/IO/IM",
+      "dose": "12.5-25 mg; maximum 25 mg",
+      "notes": ""
+    },
+    {
+      "population": "Adult (>14 yr) — extrapyramidal symptoms (EPS)",
+      "route": "IV/IO/IM",
+      "dose": "50 mg",
+      "notes": ""
+    },
+    {
+      "population": "Pediatric (>2 yr AND >12 kg) — nausea/vomiting",
+      "route": "IV/IO/IM",
+      "dose": "1 mg/kg; maximum 25 mg",
+      "notes": "Only for patients >2 years AND >12 kg; not for N/V in younger or smaller patients"
+    },
+    {
+      "population": "Pediatric (≤14 yr) — anaphylaxis adjunct",
+      "route": "IV/IO/IM",
+      "dose": "1 mg/kg; maximum 50 mg",
+      "notes": "ADJUNCT — epinephrine is primary"
+    },
+    {
+      "population": "Pediatric (≤14 yr) — extrapyramidal symptoms (EPS)",
+      "route": "IV/IO/IM",
+      "dose": "1 mg/kg; maximum 50 mg",
+      "notes": ""
+    }
+  ],
+
+  "used_in_protocols": ["Anaphylaxis", "Nausea and Vomiting", "Toxicological Emergencies — EPS/Dystonic Reaction"]
+}

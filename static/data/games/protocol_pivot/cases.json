@@ -1,0 +1,522 @@
+[
+  {
+    "id": "pp_01",
+    "presentation": "72-year-old male with a history of COPD presents with increasing shortness of breath over the past 4 hours. He is seated upright, using accessory muscles, with audible expiratory wheezing bilaterally. HR 108, BP 148/88, SpO₂ 88% on room air, RR 28.",
+    "act1": {
+      "question": "What is your most important immediate action?",
+      "choices": [
+        {
+          "label": "Administer nebulized albuterol and apply supplemental oxygen",
+          "correct": true,
+          "feedback": "Expiratory wheezing with a COPD history and low SpO₂ points to bronchospasm as the working diagnosis, making bronchodilator therapy and oxygen correction the appropriate initial treatment. This manages the most likely cause while you continue your assessment.",
+          "mistake_tag": null
+        },
+        {
+          "label": "Apply CPAP at 5 cm H₂O immediately",
+          "correct": false,
+          "feedback": "CPAP is effective for cardiogenic pulmonary edema but is not first-line for a presentation that currently fits COPD exacerbation with bronchospasm. Starting CPAP before bronchodilators when wheezing is the dominant finding delays the most targeted intervention.",
+          "mistake_tag": "impression_anchoring"
+        },
+        {
+          "label": "Obtain IV access and administer furosemide",
+          "correct": false,
+          "feedback": "Furosemide targets fluid overload in heart failure; administering it based on dyspnea alone without evidence of volume overload risks hypotension and is outside standard BLS/ALS COPD protocol. The current presentation does not yet support a cardiogenic diagnosis.",
+          "mistake_tag": "impression_anchoring"
+        },
+        {
+          "label": "Assist ventilations with BVM immediately",
+          "correct": false,
+          "feedback": "BVM ventilation is appropriate for respiratory failure with inadequate ventilatory effort, not for a patient who is conscious, using accessory muscles, and maintaining some oxygenation. This escalates intervention beyond the clinical picture.",
+          "mistake_tag": "impression_anchoring"
+        }
+      ],
+      "hint": "Start with the most dangerous plausible impression from the initial presentation, not the most familiar one."
+    },
+    "pivot_finding": "After your initial treatment the patient’s wheezing has diminished, but his SpO₂ remains at 89% and he is more tachycardic at 118. Auscultation now reveals bilateral fine crackles at the bases, and you note a faint S3 gallop on cardiac exam.",
+    "act2": {
+      "question": "Given this new finding, what do you do now?",
+      "choices": [
+        {
+          "label": "Apply CPAP and consider sublingual nitroglycerin for suspected cardiogenic pulmonary edema",
+          "correct": true,
+          "feedback": "Bilateral crackles with an S3 gallop and persistent hypoxia after bronchodilator therapy strongly indicate cardiogenic pulmonary edema as the primary etiology. CPAP reduces the work of breathing and decreases preload, and nitroglycerin provides additional afterload reduction in patients without contraindication.",
+          "mistake_tag": null
+        },
+        {
+          "label": "Repeat the albuterol nebulizer treatment",
+          "correct": false,
+          "feedback": "Wheezing has already diminished, making a second bronchodilator treatment unlikely to address the worsening picture. Repeating bronchodilators ignores the pivot findings and delays treatment of cardiogenic pulmonary edema.",
+          "mistake_tag": "missed_pivot_finding"
+        },
+        {
+          "label": "Increase oxygen flow rate via non-rebreather mask only",
+          "correct": false,
+          "feedback": "High-flow oxygen alone does not address the underlying pulmonary edema flooding the alveoli. Without positive pressure to recruit alveoli and reduce fluid transudation, oxygenation will not improve meaningfully.",
+          "mistake_tag": "impression_anchoring"
+        },
+        {
+          "label": "Administer IV furosemide as the sole intervention",
+          "correct": false,
+          "feedback": "Furosemide has a delayed diuretic onset and is not the most immediately effective intervention in acute cardiogenic pulmonary edema in the prehospital setting. CPAP and nitroglycerin act faster and are better supported by current ALS protocols as first-line prehospital therapy.",
+          "mistake_tag": "impression_anchoring"
+        }
+      ],
+      "hint": "The new finding is the point of the case. Ask whether it confirms your first impression or forces a protocol pivot."
+    }
+  },
+  {
+    "id": "pp_02",
+    "presentation": "58-year-old male presents with sudden-onset substernal chest pain and diaphoresis that started 20 minutes ago while mowing the lawn. He rates pain 9/10. HR 94, BP 142/86, SpO₂ 98% RA, RR 18. 12-lead shows no acute ST changes.",
+    "act1": {
+      "question": "What is your most important immediate action?",
+      "choices": [
+        {
+          "label": "Administer aspirin and obtain IV access for potential ACS",
+          "correct": true,
+          "feedback": "Exertional chest pain with diaphoresis in a middle-aged male is ACS until proven otherwise, and aspirin is a time-sensitive intervention that should not be delayed pending a definitive diagnosis. IV access positions you to give nitroglycerin or analgesics once contraindications are screened.",
+          "mistake_tag": null
+        },
+        {
+          "label": "Administer sublingual nitroglycerin immediately",
+          "correct": false,
+          "feedback": "Nitroglycerin before aspirin and before ruling out contraindications (PDE-5 inhibitor use, hypotension) risks a severe hypotensive event. Aspirin is safer to give first and does not require the same contraindication screen in this presentation.",
+          "mistake_tag": "impression_anchoring"
+        },
+        {
+          "label": "Apply supplemental oxygen and transport without further intervention",
+          "correct": false,
+          "feedback": "Routine oxygen in normoxic ACS patients is not beneficial and may be harmful per current guidelines; more importantly, withholding aspirin delays a proven, time-sensitive intervention. Passive transport without ACS treatment is not acceptable when the diagnosis is suspected.",
+          "mistake_tag": "impression_anchoring"
+        },
+        {
+          "label": "Reassure the patient and monitor for ST changes before treating",
+          "correct": false,
+          "feedback": "Waiting for ECG evolution before treating suspected ACS loses irreplaceable treatment time; the decision to give aspirin does not require confirmed ST changes. Clinical suspicion based on presentation is sufficient to initiate protocol.",
+          "mistake_tag": "impression_anchoring"
+        }
+      ],
+      "hint": "Start with the most dangerous plausible impression from the initial presentation, not the most familiar one."
+    },
+    "pivot_finding": "The patient mentions the pain “tears” from his chest straight through to his back. You obtain bilateral arm BPs: right arm 148/86, left arm 98/60 — a 50 mmHg discrepancy.",
+    "act2": {
+      "question": "Given this new finding, what do you do now?",
+      "choices": [
+        {
+          "label": "Withhold aspirin and nitroglycerin, initiate large-bore IV access, and transport urgently for suspected aortic dissection",
+          "correct": true,
+          "feedback": "Tearing pain radiating to the back combined with a significant bilateral BP discrepancy is the classic presentation of aortic dissection, for which anticoagulants and thrombolytics are absolutely contraindicated and could be fatal. The priority shifts to large-bore IV access, pain management per protocol, and rapid transport to a capable surgical center.",
+          "mistake_tag": null
+        },
+        {
+          "label": "Administer aspirin and continue ACS protocol as planned",
+          "correct": false,
+          "feedback": "Administering aspirin to a patient with aortic dissection introduces antiplatelet therapy that is contraindicated and could worsen hemorrhage into the false lumen. The pivot findings change the primary impression and contraindicate the initial ACS treatment plan.",
+          "mistake_tag": "missed_pivot_finding"
+        },
+        {
+          "label": "Give sublingual nitroglycerin to relieve the pain",
+          "correct": false,
+          "feedback": "Nitroglycerin-induced hypotension is dangerous in aortic dissection, where controlled blood pressure is critical to preventing propagation. Vasodilators without controlled BP management in this context worsen the patient’s condition.",
+          "mistake_tag": "impression_anchoring"
+        },
+        {
+          "label": "Recheck the 12-lead and wait for ST changes before changing the plan",
+          "correct": false,
+          "feedback": "Aortic dissection rarely produces ST changes and waiting for them delays recognition of a surgical emergency. The clinical signs — tearing quality, back radiation, and arm BP discrepancy — are sufficient to change the management plan without waiting for ECG confirmation.",
+          "mistake_tag": "impression_anchoring"
+        }
+      ],
+      "hint": "The new finding is the point of the case. Ask whether it confirms your first impression or forces a protocol pivot."
+    }
+  },
+  {
+    "id": "pp_03",
+    "presentation": "34-year-old male restrained driver in a high-speed MVC. He is ambulatory at the scene, complaining of left chest wall pain. GCS 15, HR 104, BP 118/72, SpO₂ 96% on 15 LPM NRB, RR 22. Breath sounds are diminished on the left.",
+    "act1": {
+      "question": "What is your most important immediate action?",
+      "choices": [
+        {
+          "label": "Stabilize the cervical spine, apply supplemental oxygen, and perform a rapid trauma assessment",
+          "correct": true,
+          "feedback": "This patient has a plausible mechanism for pneumothorax, rib fractures, or hemothorax, but is currently compensating with acceptable vital signs. Spinal precautions, oxygen support, and a systematic rapid trauma assessment are the correct priorities before committing to a more invasive intervention.",
+          "mistake_tag": null
+        },
+        {
+          "label": "Perform needle decompression on the left immediately",
+          "correct": false,
+          "feedback": "Needle decompression is indicated for tension pneumothorax — not simple pneumothorax — and should not be performed prophylactically on a hemodynamically stable patient. Proceeding without clinical confirmation of tension wastes a critical intervention and carries unnecessary risk.",
+          "mistake_tag": "impression_anchoring"
+        },
+        {
+          "label": "Apply a vented chest seal to the left chest",
+          "correct": false,
+          "feedback": "A vented chest seal is appropriate for an open chest wound with a visible defect, which is not present in this case. Applying one to an intact chest wall is both ineffective and delays the proper assessment.",
+          "mistake_tag": "impression_anchoring"
+        },
+        {
+          "label": "Initiate rapid transport without further assessment",
+          "correct": false,
+          "feedback": "Load-and-go is appropriate for unstable trauma patients, but this patient is currently stable and a brief rapid trauma assessment will identify life threats that require on-scene treatment before or during transport. Skipping assessment entirely may cause you to miss a developing tension pneumothorax.",
+          "mistake_tag": "impression_anchoring"
+        }
+      ],
+      "hint": "Start with the most dangerous plausible impression from the initial presentation, not the most familiar one."
+    },
+    "pivot_finding": "During transport the patient suddenly becomes anxious and confused. BP drops to 76/50, HR spikes to 130. Repeat assessment reveals the trachea deviated to the right, and breath sounds are absent on the left.",
+    "act2": {
+      "question": "Given this new finding, what do you do now?",
+      "choices": [
+        {
+          "label": "Perform needle decompression at the second intercostal space, midclavicular line on the left",
+          "correct": true,
+          "feedback": "Tracheal deviation away from the affected side, absent breath sounds, and hemodynamic collapse are the definitive signs of tension pneumothorax, which requires immediate needle decompression. This is a life threat that cannot wait for hospital intervention.",
+          "mistake_tag": null
+        },
+        {
+          "label": "Increase IV fluid rate and continue transport without intervention",
+          "correct": false,
+          "feedback": "Fluid resuscitation alone will not relieve the obstructive shock caused by mediastinal shift in tension pneumothorax. Continuing to transport without decompression allows the condition to become fatal within minutes.",
+          "mistake_tag": "missed_pivot_finding"
+        },
+        {
+          "label": "Apply supplemental oxygen and reassess in 2 minutes",
+          "correct": false,
+          "feedback": "Tension pneumothorax is a time-critical obstructive emergency; reassessment delay is not appropriate when all cardinal signs are present. Supplemental oxygen without decompression does not relieve the mechanical problem.",
+          "mistake_tag": "impression_anchoring"
+        },
+        {
+          "label": "Prepare for rapid sequence intubation to secure the airway",
+          "correct": false,
+          "feedback": "Intubating a patient in tension pneumothorax before decompression worsens the condition by adding positive pressure to a non-venting thorax. Decompression must come first; airway management is secondary.",
+          "mistake_tag": "impression_anchoring"
+        }
+      ],
+      "hint": "The new finding is the point of the case. Ask whether it confirms your first impression or forces a protocol pivot."
+    }
+  },
+  {
+    "id": "pp_04",
+    "presentation": "48-year-old male with a known history of alcohol use disorder found unresponsive by a neighbor. Bystander reports he has been drinking heavily for days. GCS 8, HR 98, BP 110/70, SpO₂ 96%, RR 14. Point-of-care blood glucose is 38 mg/dL.",
+    "act1": {
+      "question": "What is your most important immediate action?",
+      "choices": [
+        {
+          "label": "Administer dextrose (D50 IV or oral glucose if able to swallow) to correct hypoglycemia",
+          "correct": true,
+          "feedback": "A blood glucose of 38 mg/dL in an unresponsive patient is a treatable, reversible cause of altered mental status that must be corrected immediately. Dextrose administration in documented hypoglycemia is the highest-priority intervention at this point.",
+          "mistake_tag": null
+        },
+        {
+          "label": "Administer naloxone for presumed opioid intoxication",
+          "correct": false,
+          "feedback": "While naloxone is reasonable to consider in an unresponsive patient with unknown ingestion history, a documented blood glucose of 38 mg/dL is the most actionable finding and must be treated first. Naloxone is not indicated as the primary intervention when hypoglycemia is confirmed.",
+          "mistake_tag": "impression_anchoring"
+        },
+        {
+          "label": "Secure the airway with endotracheal intubation before any other treatment",
+          "correct": false,
+          "feedback": "With a GCS of 8 and adequate SpO₂ and respiratory rate, immediate intubation before attempting to reverse the cause of AMS is premature. Correcting hypoglycemia may restore consciousness and make intubation unnecessary.",
+          "mistake_tag": "impression_anchoring"
+        },
+        {
+          "label": "Transport immediately without on-scene treatment",
+          "correct": false,
+          "feedback": "Hypoglycemia is a reversible field-treatable emergency; transporting without dextrose administration needlessly prolongs severe hypoglycemia and risks permanent neurological injury. On-scene glucose correction is appropriate before or during transport.",
+          "mistake_tag": "impression_anchoring"
+        }
+      ],
+      "hint": "Start with the most dangerous plausible impression from the initial presentation, not the most familiar one."
+    },
+    "pivot_finding": "You administer dextrose IV. Repeat glucose is now 94 mg/dL, but the patient remains unresponsive with a GCS of 8 and shows no improvement. The neighbor also mentions the patient has barely eaten in four days.",
+    "act2": {
+      "question": "Given this new finding, what do you do now?",
+      "choices": [
+        {
+          "label": "Administer thiamine (100 mg IV/IM) and transport for further evaluation",
+          "correct": true,
+          "feedback": "Persistent unresponsiveness after glucose correction in a malnourished, chronic alcohol-using patient raises strong concern for Wernicke’s encephalopathy, caused by thiamine (B1) deficiency. Thiamine should accompany or follow dextrose in this population to prevent precipitating or worsening Wernicke’s from glucose loading without cofactor repletion.",
+          "mistake_tag": null
+        },
+        {
+          "label": "Repeat the dextrose dose since the patient is still unresponsive",
+          "correct": false,
+          "feedback": "Glucose is now normalized at 94 mg/dL; repeating dextrose treats a problem that is already corrected and does nothing to address the underlying thiamine deficiency causing persistent AMS. Glucose loading without thiamine in thiamine-deficient patients can precipitate Wernicke’s encephalopathy.",
+          "mistake_tag": "missed_pivot_finding"
+        },
+        {
+          "label": "Administer naloxone and reassess for opioid contribution",
+          "correct": false,
+          "feedback": "While naloxone is a reasonable empiric consideration when AMS etiology is unclear, the dominant clinical picture here — chronic alcohol use, multi-day starvation, failure to respond to glucose — points to thiamine deficiency rather than opioid reversal as the priority. Naloxone without thiamine does not address the most likely remaining diagnosis.",
+          "mistake_tag": "impression_anchoring"
+        },
+        {
+          "label": "Assume the patient is simply intoxicated and transport without further intervention",
+          "correct": false,
+          "feedback": "Persistent GCS of 8 after glucose correction in a malnourished patient is not explained by alcohol intoxication alone and warrants a broader differential. Defaulting to ‘drunk’ as the diagnosis without investigating thiamine deficiency misses a treatable, potentially fatal condition.",
+          "mistake_tag": "impression_anchoring"
+        }
+      ],
+      "hint": "The new finding is the point of the case. Ask whether it confirms your first impression or forces a protocol pivot."
+    }
+  },
+  {
+    "id": "pp_05",
+    "presentation": "3-year-old female brought in by parents after a witnessed generalized tonic-clonic seizure lasting 90 seconds that self-resolved. Temperature is 39.8°C (103.6°F), HR 138, BP 88/54, SpO₂ 98% RA. She is now postictal but arousable. Parents report no prior seizure history.",
+    "act1": {
+      "question": "What is your most important immediate action?",
+      "choices": [
+        {
+          "label": "Maintain a patent airway, apply oxygen, and monitor for recurrent seizure per febrile seizure protocol",
+          "correct": true,
+          "feedback": "A single brief febrile seizure that has self-resolved in a febrile toddler is most consistent with a simple febrile seizure, for which supportive airway management and monitoring are the appropriate field treatment. Antipyretics and transport for evaluation are standard next steps.",
+          "mistake_tag": null
+        },
+        {
+          "label": "Administer midazolam immediately for seizure suppression",
+          "correct": false,
+          "feedback": "Benzodiazepines are indicated for active, ongoing seizures — not for a postictal child whose seizure has already terminated. Administering sedation to a child who is no longer seizing risks respiratory depression without clinical benefit.",
+          "mistake_tag": "impression_anchoring"
+        },
+        {
+          "label": "Obtain IV access and administer an antipyretic medication IV",
+          "correct": false,
+          "feedback": "Antipyretics can be appropriate in febrile seizure management, but IV access is not the most important immediate action in a child who is arousable with a self-resolved seizure and adequate oxygenation. Airway management and seizure monitoring take priority before obtaining access.",
+          "mistake_tag": "impression_anchoring"
+        },
+        {
+          "label": "Perform a full glucose check and blood draw before any treatment",
+          "correct": false,
+          "feedback": "A glucose check is a reasonable part of the secondary assessment for pediatric seizure, but it is not the most important immediate action when the airway and seizure status are the primary concerns. Delaying airway management and monitoring to obtain diagnostics misorders priorities.",
+          "mistake_tag": "impression_anchoring"
+        }
+      ],
+      "hint": "Start with the most dangerous plausible impression from the initial presentation, not the most familiar one."
+    },
+    "pivot_finding": "While preparing for transport you notice a spreading non-blanching petechial rash on the child’s trunk and proximal extremities that was not present on arrival. The child is becoming increasingly difficult to arouse.",
+    "act2": {
+      "question": "Given this new finding, what do you do now?",
+      "choices": [
+        {
+          "label": "Declare a time-critical emergency, establish IV access en route, and initiate immediate transport to a pediatric-capable facility for suspected meningococcal sepsis",
+          "correct": true,
+          "feedback": "A non-blanching petechial or purpuric rash in a febrile child with declining mentation is a hallmark of meningococcal disease and a pediatric emergency with very high mortality if not treated rapidly. This completely changes the priority from febrile seizure management to sepsis protocol and urgent transport, as early IV antibiotics in-hospital are time-critical.",
+          "mistake_tag": null
+        },
+        {
+          "label": "Continue febrile seizure protocol and transport at routine priority",
+          "correct": false,
+          "feedback": "A non-blanching petechial rash in a febrile child is never explained by a simple febrile seizure and must change the field impression immediately. Continuing routine febrile seizure transport ignores a life-threatening finding and wastes the narrow treatment window for meningococcal sepsis.",
+          "mistake_tag": "missed_pivot_finding"
+        },
+        {
+          "label": "Administer midazolam for the rash-associated seizure recurrence risk",
+          "correct": false,
+          "feedback": "The rash is not a seizure precursor — it is a sign of systemic sepsis requiring urgent hospital-based antibiotic treatment. Sedating a deteriorating child for a seizure that has not recurred delays transport and does not address the underlying diagnosis.",
+          "mistake_tag": "impression_anchoring"
+        },
+        {
+          "label": "Apply a cooling blanket and administer rectal antipyretics to treat the fever",
+          "correct": false,
+          "feedback": "Fever management alone does not address meningococcal bacteremia, for which the definitive treatment is IV antibiotics available only in-hospital. Prioritizing antipyretics over rapid transport delays the only intervention that can change the outcome.",
+          "mistake_tag": "impression_anchoring"
+        }
+      ],
+      "hint": "The new finding is the point of the case. Ask whether it confirms your first impression or forces a protocol pivot."
+    }
+  },
+  {
+    "id": "pp_06",
+    "presentation": "49-year-old female with substernal chest pressure, nausea, and diaphoresis for 35 minutes. HR 88, BP 136/84, SpO2 98% RA. She denies tearing pain and has equal radial pulses. Initial 12-lead shows subtle ST depression in V2-V4.",
+    "act1": {
+      "question": "What is your most important immediate action?",
+      "choices": [
+        {
+          "label": "Treat as suspected ACS: aspirin, serial ECGs, IV access, and transport to a cardiac-capable facility",
+          "correct": true,
+          "feedback": "Chest pressure with diaphoresis and ischemic ECG changes is ACS until proven otherwise. Aspirin, serial ECGs, IV access, and appropriate destination planning are the correct initial priorities.",
+          "mistake_tag": null
+        },
+        {
+          "label": "Treat as anxiety because vital signs are stable",
+          "correct": false,
+          "feedback": "Stable vital signs do not rule out ACS. Diaphoresis and ischemic-appearing ECG changes make reassurance-only care unsafe.",
+          "mistake_tag": "impression_anchoring"
+        },
+        {
+          "label": "Withhold aspirin because the ECG does not show ST elevation",
+          "correct": false,
+          "feedback": "Aspirin is indicated for suspected ACS and does not require ST elevation. Waiting for STEMI criteria delays a time-sensitive treatment.",
+          "mistake_tag": "impression_anchoring"
+        },
+        {
+          "label": "Administer albuterol for nausea-related dyspnea",
+          "correct": false,
+          "feedback": "There is no bronchospasm or respiratory finding supporting bronchodilator therapy. This distracts from the cardiac presentation.",
+          "mistake_tag": "impression_anchoring"
+        }
+      ],
+      "hint": "Start with the most dangerous plausible impression from the initial presentation, not the most familiar one."
+    },
+    "pivot_finding": "Ten minutes later her pain worsens and repeat 12-lead shows 2 mm ST elevation in II, III, and aVF with reciprocal depression in I and aVL. She now feels lightheaded and BP is 92/58.",
+    "act2": {
+      "question": "Given this new finding, what do you do now?",
+      "choices": [
+        {
+          "label": "Activate STEMI pathway, avoid nitroglycerin until right-sided involvement is assessed, and expedite transport",
+          "correct": true,
+          "feedback": "Inferior STEMI with hypotension raises concern for right ventricular involvement, where nitroglycerin can cause severe preload-dependent collapse. The protocol pivots from suspected ACS to STEMI activation with careful medication screening.",
+          "mistake_tag": null
+        },
+        {
+          "label": "Give nitroglycerin immediately because chest pain worsened",
+          "correct": false,
+          "feedback": "Worsening pain alone is not enough to give nitroglycerin when inferior STEMI and hypotension suggest possible right-sided involvement. The new ECG and BP findings change the safety screen.",
+          "mistake_tag": "missed_pivot_finding"
+        },
+        {
+          "label": "Continue routine ACS transport without STEMI activation",
+          "correct": false,
+          "feedback": "The repeat ECG now meets STEMI criteria. Failing to activate the STEMI pathway delays definitive reperfusion care.",
+          "mistake_tag": "missed_pivot_finding"
+        },
+        {
+          "label": "Treat the hypotension as anxiety-related and coach breathing",
+          "correct": false,
+          "feedback": "Hypotension with inferior STEMI is not an anxiety finding. It is a clinical pivot that changes medication safety and destination urgency.",
+          "mistake_tag": "impression_anchoring"
+        }
+      ],
+      "hint": "The new finding is the point of the case. Ask whether it confirms your first impression or forces a protocol pivot."
+    }
+  },
+  {
+    "id": "pp_07",
+    "presentation": "18-month-old male with barky cough, low-grade fever, and inspiratory stridor only when crying. He is alert, sitting upright on caregiver's lap, SpO2 96% RA, RR 32, mild retractions.",
+    "act1": {
+      "question": "What is your most important immediate action?",
+      "choices": [
+        {
+          "label": "Keep the child calm, allow position of comfort, and monitor airway/respiratory effort",
+          "correct": true,
+          "feedback": "Mild croup-like presentation with stridor only when agitated is best managed by minimizing distress, maintaining position of comfort, and monitoring for deterioration.",
+          "mistake_tag": null
+        },
+        {
+          "label": "Lay the child supine for a full airway exam",
+          "correct": false,
+          "feedback": "Forcing supine positioning can worsen upper-airway obstruction and distress. Calm assessment is safer than a complete exam that agitates the child.",
+          "mistake_tag": "impression_anchoring"
+        },
+        {
+          "label": "Use a tongue depressor to inspect the posterior throat",
+          "correct": false,
+          "feedback": "Aggressive throat inspection can worsen upper-airway obstruction, especially if epiglottitis is in the differential. Do not provoke the airway.",
+          "mistake_tag": "impression_anchoring"
+        },
+        {
+          "label": "Administer albuterol as first-line treatment",
+          "correct": false,
+          "feedback": "Stridor is an upper-airway sound, not lower-airway bronchospasm. Albuterol does not address croup-like upper-airway swelling.",
+          "mistake_tag": "impression_anchoring"
+        }
+      ],
+      "hint": "Start with the most dangerous plausible impression from the initial presentation, not the most familiar one."
+    },
+    "pivot_finding": "During reassessment the child becomes drooling, refuses to swallow, sits in tripod position, and now has stridor at rest with a muffled cry.",
+    "act2": {
+      "question": "Given this new finding, what do you do now?",
+      "choices": [
+        {
+          "label": "Treat as a critical upper-airway emergency: keep calm, avoid airway manipulation, request ALS, and expedite transport",
+          "correct": true,
+          "feedback": "Drooling, refusal to swallow, tripod positioning, muffled voice/cry, and stridor at rest pivot the case from mild croup toward a high-risk upper-airway obstruction such as epiglottitis. Airway manipulation can precipitate complete obstruction.",
+          "mistake_tag": null
+        },
+        {
+          "label": "Perform an immediate visual throat inspection to confirm swelling",
+          "correct": false,
+          "feedback": "The pivot findings are enough to change management. Attempting to visualize the airway can trigger complete obstruction and should be avoided in the field.",
+          "mistake_tag": "missed_pivot_finding"
+        },
+        {
+          "label": "Continue mild croup management and reassess after transport begins",
+          "correct": false,
+          "feedback": "Stridor at rest with drooling and tripod positioning is no longer mild croup. Waiting to reassess delays airway-risk escalation.",
+          "mistake_tag": "missed_pivot_finding"
+        },
+        {
+          "label": "Force nebulized treatment with a tight mask seal",
+          "correct": false,
+          "feedback": "Forcing a mask can agitate the child and worsen obstruction. Calm transport and avoiding provocation matter more than forcing a treatment the child will fight.",
+          "mistake_tag": "impression_anchoring"
+        }
+      ],
+      "hint": "The new finding is the point of the case. Ask whether it confirms your first impression or forces a protocol pivot."
+    }
+  },
+  {
+    "id": "pp_08",
+    "presentation": "76-year-old female from a nursing facility with weakness and mild confusion. Staff report poor oral intake for two days. HR 104, BP 104/68, RR 20, SpO2 96% RA, temp 37.4°C. BGL 112 mg/dL. She has a history of dementia.",
+    "act1": {
+      "question": "What is your most important immediate action?",
+      "choices": [
+        {
+          "label": "Perform focused AMS assessment, check reversible causes, trend vitals, and gather baseline mental status",
+          "correct": true,
+          "feedback": "Mild confusion in an older adult with dementia requires checking reversible causes and comparing to baseline. Initial vitals are not dramatic, but trending and collateral history are essential.",
+          "mistake_tag": null
+        },
+        {
+          "label": "Assume this is baseline dementia and transport non-urgent",
+          "correct": false,
+          "feedback": "Dementia history does not explain an acute change without collateral confirmation. Assuming baseline creates anchoring risk.",
+          "mistake_tag": "impression_anchoring"
+        },
+        {
+          "label": "Treat with naloxone because confusion is altered mental status",
+          "correct": false,
+          "feedback": "There is no respiratory depression or opioid toxidrome cue. AMS protocols require targeted reversible-cause assessment, not reflex naloxone for every confused patient.",
+          "mistake_tag": "impression_anchoring"
+        },
+        {
+          "label": "Give oral glucose because poor intake suggests hypoglycemia",
+          "correct": false,
+          "feedback": "The measured BGL is 112 mg/dL, so oral glucose does not address the current presentation and may distract from other causes.",
+          "mistake_tag": "impression_anchoring"
+        }
+      ],
+      "hint": "Start with the most dangerous plausible impression from the initial presentation, not the most familiar one."
+    },
+    "pivot_finding": "Five minutes later she becomes more lethargic. Repeat vitals: HR 124, BP 86/50, RR 26, temp 38.9°C, SpO2 94%. Staff now report foul-smelling urine and a new indwelling catheter placed yesterday.",
+    "act2": {
+      "question": "Given this new finding, what do you do now?",
+      "choices": [
+        {
+          "label": "Pivot to suspected sepsis: support perfusion/oxygenation, notify receiving facility, and transport urgently",
+          "correct": true,
+          "feedback": "Fever, hypotension, tachycardia, tachypnea, worsening mentation, and urinary source information pivot this from nonspecific weakness to suspected sepsis. Early recognition and hospital notification matter.",
+          "mistake_tag": null
+        },
+        {
+          "label": "Continue non-urgent dementia transport because confusion was present at baseline",
+          "correct": false,
+          "feedback": "The new vital-sign trend and infectious source are incompatible with simple baseline dementia. Anchoring on the initial label misses shock developing in front of you.",
+          "mistake_tag": "missed_pivot_finding"
+        },
+        {
+          "label": "Treat only with antipyretics and wait for fever to improve",
+          "correct": false,
+          "feedback": "Antipyretics do not reverse septic shock. Hypotension and worsening mentation require urgent transport and perfusion support.",
+          "mistake_tag": "impression_anchoring"
+        },
+        {
+          "label": "Delay transport until staff locate a complete medication list",
+          "correct": false,
+          "feedback": "Medication history is useful, but delaying transport in suspected sepsis with hypotension is unsafe. Gather what you can en route.",
+          "mistake_tag": "impression_anchoring"
+        }
+      ],
+      "hint": "The new finding is the point of the case. Ask whether it confirms your first impression or forces a protocol pivot."
+    }
+  }
+]

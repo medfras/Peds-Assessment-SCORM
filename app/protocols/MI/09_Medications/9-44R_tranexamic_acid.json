@@ -1,0 +1,69 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-44R Tranexamic Acid (TXA) (MDHHS Reviewed 2025). Base Michigan template.",
+  "id": "mi_base_medication_ref_tranexamic_acid",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Tranexamic Acid (TXA)",
+  "version": "2025-03-31",
+  "protocol_reference": "Michigan Medication Protocol Section 9-44R: Tranexamic Acid — MDHHS Reviewed 2025",
+
+  "pharmacological_category": "Antifibrinolytic — Hemostatic Agent",
+
+  "routes": ["IV", "IO"],
+
+  "indications": [
+    "Traumatic hemorrhage — significant bleeding in patients with injury within 3 hours"
+  ],
+
+  "contraindications": [
+    "Injury >3 hours before administration (evidence suggests harm after 3 hours — do NOT give)",
+    "Suspected intracranial bleeding (relative — avoid; contact online MC)",
+    "Active thromboembolic disease (DVT, PE, arterial thrombosis — relative)",
+    "Known hypersensitivity to tranexamic acid"
+  ],
+
+  "precautions": [
+    "Adults >18 years only — Michigan EMS protocol does not include pediatric dosing",
+    "Time-critical: must be within 3 hours of injury for benefit; do NOT delay transport to administer",
+    "TXA prehospital is the FIRST DOSE — hospital will administer second dose; communicate TXA given to receiving facility",
+    "Label IV bag clearly with fluorescent 'TXA added' label so receiving facility knows first dose has been given",
+    "Administer as infusion over 10 minutes — do NOT rapid bolus (convulsions and hypotension risk with rapid infusion)"
+  ],
+
+  "expected_effects": [
+    "Reduction in fibrinolysis — prevents breakdown of existing clot",
+    "Reduced mortality in significant traumatic hemorrhage when given early",
+    "No significant hemostatic effect beyond 3 hours from injury"
+  ],
+
+  "side_effects": [
+    "Nausea and vomiting (with rapid infusion)",
+    "Hypotension (with rapid infusion)",
+    "Seizures (with rapid infusion or very high doses)",
+    "Allergic reaction (rare)"
+  ],
+
+  "notes": [
+    "Dose: 1 gram in 100 mL NS piggyback infusion over 10 minutes",
+    "Adults >18 years only",
+    "Injury must be within 3 hours — do NOT give if >3 hours",
+    "Label IV bag with fluorescent 'TXA added' label",
+    "TXA is FIRST DOSE prehospital — hospital must be notified and will give second dose",
+    "Do NOT delay transport to administer — infuse during transport"
+  ],
+
+  "dosing": [
+    {
+      "population": "Adult >18 yr — traumatic hemorrhage within 3 hours of injury",
+      "route": "IV/IO infusion",
+      "dose": "1 gram in 100 mL NS; infuse over 10 minutes (piggyback)",
+      "notes": "Within 3 hours of injury ONLY; label IV bag 'TXA added'; notify receiving hospital; do NOT delay transport; adults >18 yr only"
+    }
+  ],
+
+  "used_in_protocols": ["Trauma — Hemorrhagic Shock", "Trauma — Significant Bleeding"]
+}

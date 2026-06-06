@@ -1,0 +1,44 @@
+{
+  "_schema": "ems_call_type_overlay_v1",
+  "id": "peds_diabetic_emergency_01_hypoglycemia_scenario_v1",
+  "version": "2026-05-14",
+  "call_type": "hypoglycemia",
+  "overlay_type": "scenario",
+  "jurisdiction": "Training Scenario",
+  "effective_date": "2026-05-14",
+  "scenario_id": "peds_diabetic_emergency_01",
+  "approved_by": "scoring_integration_review_2026-05-14",
+  "notes": "Suppresses call-type rubric items that are already owned by the universal NREMT base rubric. BGL check, swallow assessment, and oral glucose are intentionally owned by the hypoglycemia call-type rubric after the semantic duplicate migration. ALS-request applicability is resolved from active agency configuration, not scenario overlay content.",
+  "operations": [
+    {
+      "op": "suppress_item",
+      "item_id": "hypoglycemia.scene_safety_ppe",
+      "reason": "Universal NREMT base rubric owns PPE and scene safety via scene_entry evidence path; call-type item is not credited despite scene_entry being completed, creating a false miss alongside the credited base item.",
+      "protocol_ref": "NREMT EMT Patient Assessment/Management Medical E202 — scene safety and PPE are base rubric items"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "hypoglycemia.general_impression",
+      "reason": "Universal base rubric owns general impression; call-type item requires ems_performed_exam source which is not stamped in training context, creating a false miss alongside the credited base item.",
+      "protocol_ref": "NREMT EMT Patient Assessment/Management Medical E202 — general impression is a base rubric item"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "hypoglycemia.loc_assessed",
+      "reason": "Universal base rubric owns LOC/AVPU assessment; both base (1pt) and call-type (3pt) items were credited for the same student action, producing double-credit for a single clinical assessment.",
+      "protocol_ref": "NREMT EMT Patient Assessment/Management Medical E202 — LOC/responsiveness is a base rubric item"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "hypoglycemia.airway_breathing",
+      "reason": "Universal base rubric owns primary airway and breathing assessment; both base (3pt) and call-type (2pt) items were credited for the same student action, producing double-credit.",
+      "protocol_ref": "NREMT EMT Patient Assessment/Management Medical E202 — airway and breathing assessment is a base rubric item"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "hypoglycemia.hpi_diabetic_history",
+      "reason": "Scenario item peds_diabetic_emergency_01.history_diabetes (3pt) covers Type 1 diabetes and insulin pump history; both scenario and call-type items were credited for the same history questions, producing double-credit. Migrate when scenario item is removed.",
+      "protocol_ref": "NASEMSO Hypoglycemia Rubric v1 — hpi_diabetic_history superseded by scenario-specific item pending migration"
+    }
+  ]
+}

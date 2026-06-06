@@ -1,0 +1,94 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-2 Patient Prioritization and Lights and Sirens (Revised 3/31/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_patient_prioritization_lights_sirens",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Patient Prioritization and Lights and Sirens",
+  "version": "2025-03-31",
+  "protocol_reference": "Michigan System Protocol Section 8-2: Patient Prioritization and Lights and Sirens — MDHHS Approved 3/31/2025",
+
+  "purpose": "Govern EMS patient prioritization and use of emergency lights and sirens (L&S) during response and transport. L&S use increases risk to crew, patient, and public — L&S must be clinically justified. Time savings from L&S use are minimal; patient benefit must outweigh the risk.",
+
+  "sections": [
+    {
+      "title": "Priority Levels",
+      "reference": "Michigan Protocol 8-2: Patient Prioritization — Priority Levels",
+      "points": [
+        "PRIORITY 1 (EMERGENT): Life-threatening condition — immediate intervention required; L&S response and transport indicated",
+        "PRIORITY 2 (URGENT): Serious but not immediately life-threatening — may benefit from expedited response; L&S at crew discretion",
+        "PRIORITY 3 (NON-EMERGENT): Stable, no time-sensitive intervention required — routine response and transport; no L&S",
+        "DEAD ON SCENE / DOA: No L&S transport required"
+      ]
+    },
+    {
+      "title": "Conditions Typically Warranting Priority 1 (L&S Transport)",
+      "reference": "Michigan Protocol 8-2: L&S — Priority 1 Conditions",
+      "points": [
+        "Cardiac arrest (including post-ROSC transport when indicated)",
+        "Active STEMI with cath lab activation",
+        "Respiratory failure or arrest",
+        "Airway compromise",
+        "Altered mental status with hemodynamic instability",
+        "Stroke with large vessel occlusion or hemorrhagic presentation",
+        "Major trauma with hemodynamic instability",
+        "Obstetric emergency (active delivery, prolapsed cord, eclampsia)",
+        "Septic shock",
+        "Anaphylaxis with hemodynamic compromise",
+        "Status epilepticus",
+        "Pediatric patients with critical illness or injury"
+      ]
+    },
+    {
+      "title": "L&S Use — Key Principles",
+      "reference": "Michigan Protocol 8-2: L&S — Key Principles",
+      "points": [
+        "L&S use is a clinical decision — the crew chief is responsible for determining whether L&S are indicated",
+        "L&S do not guarantee faster arrival and carry inherent risk — use only when patient benefit is expected",
+        "Routine transport of stable patients does NOT warrant L&S — L&S transport for stable patients increases risk without benefit",
+        "MCAs may define specific conditions that require or prohibit L&S transport",
+        "Patient or family preference alone is NOT sufficient justification for L&S transport",
+        "All L&S transport decisions must be documented in the PCR with clinical justification"
+      ]
+    },
+    {
+      "title": "L&S Use Considerations",
+      "reference": "Michigan Protocol 8-2: L&S — Considerations",
+      "points": [
+        "Consider road conditions, traffic, and weather when determining benefit of L&S",
+        "Consider proximity to receiving facility — very short transport distances reduce benefit of L&S",
+        "Notify receiving facility of incoming Priority 1 patient",
+        "Use of L&S does not change standard of care — patient assessment and treatment continue regardless of transport mode",
+        "Transport without L&S is appropriate for stable post-cardiac arrest patients without hemodynamic compromise at crew chief discretion"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "MCA L&S Transport Criteria",
+      "description": "MCA may define specific conditions requiring or prohibiting L&S transport in their jurisdiction",
+      "options": ["MCA-defined criteria adopted", "State base criteria only"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Patient condition deteriorates during non-L&S transport — upgrade to L&S; notify receiving facility",
+    "Crew safety concern during L&S response — downgrade to routine; reassess L&S need on scene"
+  ],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "L&S is a clinical decision by the crew chief",
+    "Priority 1 conditions: cardiac arrest, STEMI, respiratory failure, stroke, major trauma, OB emergency, septic shock, anaphylaxis, status epilepticus, critical pediatric",
+    "Stable patients do NOT warrant L&S transport",
+    "Document L&S use decision and clinical justification in PCR",
+    "Patient/family preference alone does not justify L&S"
+  ]
+}

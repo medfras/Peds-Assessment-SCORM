@@ -1,0 +1,70 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-3 Medication Shortage (Revised 3/31/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_medication_shortage",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Medication Shortage",
+  "version": "2025-03-31",
+  "protocol_reference": "Michigan Medication Protocol Section 9-3: Medication Shortage — MDHHS Approved 3/31/2025",
+
+  "purpose": "Govern EMS operations and patient care during medication shortages. Defines shortage categories, provider and agency obligations, and MCA responsibilities. Medication shortages may affect all care levels. MCAs must establish processes for managing shortages and communicating alternatives to providers.",
+
+  "sections": [
+    {
+      "title": "Medication Shortage Definitions",
+      "reference": "Michigan Protocol 9-3: Medication Shortage — Definitions",
+      "points": [
+        "Type 1 — National Shortage: FDA or manufacturer declares nationwide shortage; may affect all EMS systems nationally",
+        "Type 2 — State Shortage: MDHHS declares statewide shortage affecting Michigan EMS systems",
+        "Type 3 — Regional Shortage: shortage affecting a specific region or group of MCAs within Michigan",
+        "Type 4 — MCA Shortage: shortage declared at the MCA level; may affect all or a subset of agencies within the MCA",
+        "Type 5 — Agency Shortage: shortage affecting a single EMS agency; agency must notify MCA immediately",
+        "Type 6 — Vehicle/Unit Shortage: shortage limited to a specific vehicle or unit; agency must address within established timeframe",
+        "Type 7 — Temporary Shortage: intermittent or anticipatory shortage with an expected resolution timeframe"
+      ]
+    },
+    {
+      "title": "EMS Provider and Agency Obligations",
+      "reference": "Michigan Protocol 9-3: Medication Shortage — Provider and Agency Obligations",
+      "points": [
+        "EMS agencies must immediately notify the MCA when a shortage is identified at the agency or unit level",
+        "Providers must not knowingly deploy without required medications unless authorized by MCA shortage protocols",
+        "Providers must document any case in which a medication shortage affected patient care or treatment capability",
+        "Agencies must implement MCA-directed shortage protocols and communicate availability status to crews",
+        "Providers must follow online medical control guidance when a shortage impacts treatment options for a specific patient"
+      ]
+    },
+    {
+      "title": "MCA Responsibilities During Shortage",
+      "reference": "Michigan Protocol 9-3: Medication Shortage — MCA Responsibilities",
+      "points": [
+        "MCAs must establish written shortage response plans as part of their system operations",
+        "When a shortage is identified, the MCA must notify affected agencies and providers as soon as practicable",
+        "MCA Medical Director must authorize any protocol modifications or alternative agents during a shortage",
+        "MCAs must communicate shortage status and authorized alternatives to MDHHS per MDHHS reporting requirements",
+        "MCAs must document shortage events including duration, scope, alternatives authorized, and patient care impacts"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Required medication unavailable — notify online medical control immediately; document shortage impact in PCR"
+  ],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "Seven shortage types defined: National, State, Regional, MCA, Agency, Vehicle/Unit, Temporary",
+    "Agency-level shortage: notify MCA immediately",
+    "Shortage impacting patient care must be documented in PCR",
+    "MCA Medical Director must authorize alternative agents",
+    "MCA must report shortage status to MDHHS"
+  ]
+}

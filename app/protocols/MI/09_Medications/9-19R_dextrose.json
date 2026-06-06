@@ -1,0 +1,80 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-19R Dextrose (Revised 3/3/2025, MDHHS Reviewed 2025). Base Michigan template.",
+  "id": "mi_base_medication_ref_dextrose",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Dextrose",
+  "version": "2025-03-03",
+  "protocol_reference": "Michigan Medication Protocol Section 9-19R: Dextrose — MDHHS Approved 3/3/2025, Reviewed 2025",
+  "pharmacological_category": "Carbohydrate — Glucose Supplement",
+  "routes": [
+    "IV",
+    "IO"
+  ],
+  "indications": [
+    "Hypoglycemia",
+    "Altered mental status"
+  ],
+  "contraindications": [
+    "No medication-specific contraindications listed in the Michigan medication reference"
+  ],
+  "precautions": [
+    "Extravasation of hypertonic dextrose (D25, D50) causes tissue injury — confirm IV patency before administration",
+    "Dextrose should be pushed slowly, for example over 1-2 minutes",
+    "May utilize D10 for all ages at 5 mL/kg (0.5 g/kg) up to 250 mL"
+  ],
+  "expected_effects": [
+    "Rapid increase in blood glucose (effect within 1-3 minutes IV)",
+    "Improvement in mental status, seizure cessation, or behavioral improvement in hypoglycemia"
+  ],
+  "side_effects": [
+    "Hyperglycemia if excessive",
+    "Tissue necrosis if hypertonic solution extravasates",
+    "Phlebitis with concentrated solutions"
+  ],
+  "notes": [
+    "Adult dose: 25 grams IV/IO",
+    "Dextrose dilution instructions from standard 50 mL D50W bag (500 mg/mL = 50%):",
+    "— D10 (10%): discard 40 mL from D50W bag, replace with 40 mL NS",
+    "— D12.5 (12.5%): discard 37.5 mL from D50W bag, replace with 37.5 mL NS",
+    "— D25 (25%): discard 25 mL from D50W bag, replace with 25 mL NS",
+    "May use D10 at 5 mL/kg for all ages as universal dose",
+    "Pediatric color-coded dosing table by weight and age (Grey/Pink/Red/Purple/Yellow/White/Blue/Orange/Green — reference MI-MEDIC)"
+  ],
+  "dosing": [
+    {
+      "population": "Adult (>14 yr)",
+      "route": "IV/IO",
+      "dose": "25 grams IV/IO",
+      "notes": "If using D50W: give 50 mL; if using D25: give 100 mL; if using D10: give 250 mL. Confirm IV patency before administering hypertonic solution"
+    },
+    {
+      "population": "All ages — universal D10 dose",
+      "route": "IV/IO",
+      "dose": "D10 at 5 mL/kg IV/IO",
+      "notes": "Universal dose applicable to all ages using D10 concentration; maximum dose per adult weight"
+    },
+    {
+      "population": "Pediatric (≤14 yr)",
+      "route": "IV/IO",
+      "dose": "Per MI-MEDIC color-coded weight/age-based dosing table",
+      "notes": "Color bands: Grey, Pink, Red, Purple, Yellow, White, Blue, Orange, Green — reference MI-MEDIC for exact doses by weight band"
+    }
+  ],
+  "used_in_protocols": [
+    "Hypoglycemia / Diabetic Emergencies",
+    "Altered Mental Status"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "blood_glucose",
+      "hypoglycemia"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

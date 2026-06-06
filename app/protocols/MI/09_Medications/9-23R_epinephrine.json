@@ -1,0 +1,170 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-23R Epinephrine (MDHHS Reviewed 2025). Base Michigan template.",
+  "id": "mi_base_medication_ref_epinephrine",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Epinephrine",
+  "version": "2025-03-31",
+  "protocol_reference": "Michigan Medication Protocol Section 9-23R: Epinephrine — MDHHS Reviewed 2025",
+  "pharmacological_category": "Catecholamine — Alpha/Beta Adrenergic Agonist",
+  "routes": [
+    "IV",
+    "IO",
+    "IM",
+    "Nebulized"
+  ],
+  "indications": [
+    "Cardiac arrest — pulseless VF/pVT/asystole/PEA",
+    "Anaphylaxis",
+    "Severe respiratory distress with bronchospasm (IM)",
+    "Symptomatic bradycardia refractory to atropine and pacing (push dose — IV/IO)",
+    "Shock / hypotension refractory to fluid (push dose — IV/IO)",
+    "Post-ROSC hypotension (push dose — IV/IO)"
+  ],
+  "contraindications": [
+    "Known hypersensitivity to epinephrine (relative — life-threatening indications override)"
+  ],
+  "precautions": [
+    "Push dose epinephrine requires careful preparation to avoid dosing errors — use 1 mg/10 mL (0.1 mg/mL) concentration; dilute 1 mL into 9 mL NS to yield 10 mcg/mL for push dose",
+    "Anaphylaxis IM: anterolateral thigh preferred; NOT deltoid",
+    "Nebulized route: not used for cardiac arrest; primarily for upper airway obstruction/croup (racepinephrine, 9-42R) — standard epinephrine nebulized for bronchospasm/anaphylaxis",
+    "Monitor for hypertension, tachycardia, and dysrhythmias with push dose",
+    "Cardiac arrest dose is different from anaphylaxis dose and push dose — confirm indication before drawing up"
+  ],
+  "expected_effects": [
+    "Cardiac arrest: increased coronary perfusion pressure; improved defibrillation success",
+    "Anaphylaxis: reversal of bronchospasm, vasodilation, and urticaria; most critical anaphylaxis treatment",
+    "Push dose: transient increase in SVR and BP",
+    "Bradycardia: increased HR via beta-1 stimulation"
+  ],
+  "side_effects": [
+    "Tachycardia, hypertension",
+    "Dysrhythmia",
+    "Anxiety, tremor",
+    "Local tissue necrosis if IV extravasation with concentrated solution"
+  ],
+  "notes": [
+    "PUSH DOSE PREPARATION: Take 1 mL from 1 mg/10 mL epinephrine vial, add to 9 mL NS = 10 mcg/mL push dose solution",
+    "Push dose for shock: 10-20 mcg IV/IO q3-5 minutes, titrate to SBP >90 mmHg",
+    "Anaphylaxis adult IM: 0.3 mg IM anterolateral thigh",
+    "Anaphylaxis peds IM: 0.15 mg IM (<30 kg); 0.3 mg IM (>30 kg)",
+    "Cardiac arrest IV/IO: 1 mg q3-5 minutes",
+    "Cardiac arrest peds IV/IO: 0.01 mg/kg (0.1 mL/kg of 0.1 mg/mL), maximum 1 mg",
+    "Bradycardia push dose: 10-20 mcg IV/IO; same preparation as shock push dose"
+  ],
+  "dosing": [
+    {
+      "population": "Adult (>14 yr) — cardiac arrest",
+      "route": "IV/IO",
+      "dose": "1 mg IV/IO q3-5 minutes",
+      "notes": "Continue until ROSC or resuscitation discontinued"
+    },
+    {
+      "population": "Pediatric (≤14 yr) — cardiac arrest",
+      "route": "IV/IO",
+      "dose": "0.01 mg/kg (0.1 mL/kg of 0.1 mg/mL); maximum 1 mg; q3-5 minutes",
+      "notes": "Use 0.1 mg/mL concentration for pediatric arrest dosing"
+    },
+    {
+      "population": "Adult (>14 yr) — anaphylaxis",
+      "route": "IM",
+      "dose": "0.3 mg IM anterolateral thigh",
+      "notes": "First-line anaphylaxis treatment; may repeat after 5-15 minutes if no improvement"
+    },
+    {
+      "population": "Pediatric <30 kg — anaphylaxis",
+      "route": "IM",
+      "dose": "0.15 mg IM anterolateral thigh",
+      "notes": "EpiPen Jr equivalent dose"
+    },
+    {
+      "population": "Pediatric >30 kg — anaphylaxis",
+      "route": "IM",
+      "dose": "0.3 mg IM anterolateral thigh",
+      "notes": "Standard EpiPen dose"
+    },
+    {
+      "population": "Adult (>14 yr) — severe respiratory distress with bronchospasm",
+      "route": "IM",
+      "dose": "0.3 mg IM anterolateral thigh",
+      "notes": "When bronchospasm is severe and not responding to nebulized bronchodilators"
+    },
+    {
+      "population": "Adult (>14 yr) — push dose (shock / bradycardia / post-ROSC hypotension)",
+      "route": "IV/IO",
+      "dose": "10-20 mcg IV/IO q3-5 minutes; titrate to SBP >90 mmHg",
+      "notes": "PUSH DOSE PREP: 1 mL of 1 mg/10 mL epinephrine + 9 mL NS = 10 mcg/mL; give 1-2 mL per dose"
+    }
+  ],
+  "used_in_protocols": [
+    "Cardiac Arrest",
+    "Anaphylaxis",
+    "Respiratory Distress",
+    "Bradycardia",
+    "Shock / Hypotension",
+    "Post-ROSC Care"
+  ],
+  "name": "Epinephrine",
+  "type": "medication_monograph",
+  "administration": {
+    "im_anaphylaxis": {
+      "setup": [
+        "Confirm indication: anaphylaxis with wheezing AND/OR hypotension",
+        "Confirm patient weight to select correct dose (0.15 mg for <30 kg; 0.3 mg for ≥30 kg / adult; contact Medical Control for <10 kg)",
+        "Verbalize to partner: 'Epinephrine 1 mg/mL — [dose in mg] — IM' before drawing up",
+        "Draw correct volume from epinephrine 1 mg/mL vial: 0.15 mL for 0.15 mg OR 0.3 mL for 0.3 mg",
+        "Have partner verify label, concentration, and drawn volume",
+        "Select injection site: anterolateral (outer) thigh — outer mid-thigh",
+        "Cleanse injection site",
+        "Inject at 90-degree angle into muscle belly",
+        "Deliver medication, withdraw needle, apply gentle pressure",
+        "Dispose of needle in sharps container immediately",
+        "Document time, dose, volume, site, and patient response",
+        "Reassess vitals and patient condition every 5 minutes"
+      ]
+    },
+    "push_dose_preparation": {
+      "note": "ALS/Paramedic scope — prepare push-dose (10 mcg/mL): combine 1 mL of 1 mg/10 mL epinephrine in 9 mL NS to yield 10 mL of 10 mcg/mL solution"
+    }
+  },
+  "six_rights_for_this_drug": [
+    {
+      "right": "Right Patient",
+      "verification": "Life-threatening anaphylaxis with wheezing AND/OR hypotension; or as directed by applicable protocol"
+    },
+    {
+      "right": "Right Medication",
+      "verification": "Epinephrine 1 mg/mL (1:1000) — verify label reads 'Epinephrine 1 mg/mL'; check expiration date; confirm concentration"
+    },
+    {
+      "right": "Right Dose",
+      "verification": "IM anaphylaxis: 0.15 mg (0.15 mL) for <30 kg; 0.3 mg (0.3 mL) for ≥30 kg or adult; contact Medical Control for <10 kg"
+    },
+    {
+      "right": "Right Route",
+      "verification": "IM — anterolateral (outer) thigh preferred; inject at 90-degree angle into muscle belly"
+    },
+    {
+      "right": "Right Time",
+      "verification": "Administer as soon as anaphylaxis confirmed; note time of each dose; second dose not before 3–5 minutes after first"
+    },
+    {
+      "right": "Right Documentation",
+      "verification": "Document: concentration drawn (1 mg/mL), volume drawn (mL), calculated dose (mg), site, time, patient weight, patient response"
+    }
+  ],
+  "clinical_context": {
+    "concepts": [
+      "allergic_reaction",
+      "anaphylaxis",
+      "pediatric_respiratory_distress",
+      "shock"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

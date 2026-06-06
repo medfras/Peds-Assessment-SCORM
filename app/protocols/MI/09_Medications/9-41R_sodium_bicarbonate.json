@@ -1,0 +1,78 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-41R Sodium Bicarbonate (Revised 12/10/2025, MDHHS Reviewed 2026). Base Michigan template.",
+  "id": "mi_base_medication_ref_sodium_bicarbonate",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Sodium Bicarbonate",
+  "version": "2025-12-10",
+  "protocol_reference": "Michigan Medication Protocol Section 9-41R: Sodium Bicarbonate — MDHHS Approved 1/5/2026, Reviewed 2026",
+
+  "pharmacological_category": "Alkalinizing Agent / Electrolyte",
+
+  "routes": ["IV", "IO"],
+
+  "indications": [
+    "Tricyclic antidepressant (TCA) overdose with wide QRS complex or tachycardia (sodium channel blockade treatment)",
+    "Cardiac arrest secondary to TCA overdose or suspected severe hyperkalemia"
+  ],
+
+  "contraindications": [
+    "Severe pulmonary edema (relative — alkalinization can worsen respiratory failure)",
+    "Metabolic alkalosis (will worsen alkalosis)",
+    "Known hypersensitivity to sodium bicarbonate"
+  ],
+
+  "precautions": [
+    "NOT compatible with calcium chloride or calcium gluconate — will precipitate; flush IV line between administrations",
+    "NOT compatible with epinephrine — may inactivate; give via separate IV lines when possible",
+    "Hypernatremia and metabolic alkalosis may develop with repeated dosing",
+    "Confirm IV/IO patency — hyperosmolar solution can cause tissue injury if extravasation"
+  ],
+
+  "expected_effects": [
+    "TCA overdose: increases serum pH → reduces sodium channel blockade → narrows QRS; reduces dysrhythmia risk",
+    "Hyperkalemia arrest: pH increase drives potassium intracellularly",
+    "Improved hemodynamic stability in TCA toxidrome"
+  ],
+
+  "side_effects": [
+    "Metabolic alkalosis",
+    "Hypernatremia",
+    "Paradoxical intracellular acidosis (controversial in cardiac arrest)",
+    "CO2 generation — ensure adequate ventilation"
+  ],
+
+  "notes": [
+    "TCA overdose with wide QRS (>120 ms) or hemodynamic instability: 50 mEq adult IV; 1 mEq/kg pediatric IV",
+    "Cardiac arrest (TCA or hyperkalemia): 1 mEq/kg IV/IO",
+    "Incompatible with calcium and epinephrine — flush line or use separate IV site",
+    "After giving: ensure adequate ventilation to offgas CO2 produced"
+  ],
+
+  "dosing": [
+    {
+      "population": "Adult (>14 yr) — TCA overdose (wide QRS / tachy)",
+      "route": "IV",
+      "dose": "50 mEq (50 mL of 8.4% solution) IV",
+      "notes": "Incompatible with calcium and epinephrine; flush line; ensure adequate ventilation"
+    },
+    {
+      "population": "Adult (>14 yr) — cardiac arrest (TCA / hyperkalemia)",
+      "route": "IV/IO",
+      "dose": "1 mEq/kg IV/IO",
+      "notes": "During resuscitation; incompatible with Ca and epinephrine"
+    },
+    {
+      "population": "Pediatric (≤14 yr) — TCA overdose or cardiac arrest",
+      "route": "IV/IO",
+      "dose": "1 mEq/kg IV/IO",
+      "notes": "Same incompatibilities as adult; ensure adequate ventilation"
+    }
+  ],
+
+  "used_in_protocols": ["Toxicological Emergencies — TCA Overdose", "Cardiac Arrest — Hyperkalemia"]
+}

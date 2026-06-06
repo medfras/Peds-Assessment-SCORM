@@ -1,0 +1,75 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-20 Protocol Deviation (Revised 12/27/2022, MDHHS Reviewed 2022). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_protocol_deviation",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Protocol Deviation",
+  "version": "2022-12-27",
+  "protocol_reference": "Michigan System Protocol Section 8-20: Protocol Deviation — MDHHS Approved 12/27/2022",
+
+  "purpose": "Define the process for managing and reporting protocol deviations. A protocol deviation occurs when an EMS provider acts outside of established protocols without online medical control authorization. Protocol deviations must be reported and reviewed. Not all deviations are negligent — the review process determines appropriateness.",
+
+  "sections": [
+    {
+      "title": "Definition of Protocol Deviation",
+      "reference": "Michigan Protocol 8-20: Protocol Deviation — Definition",
+      "points": [
+        "A protocol deviation is any action or omission by an EMS provider that departs from established MCA protocols without prior online medical control authorization",
+        "Deviations may be: unintentional (error), intentional (clinical judgment in unusual circumstances), or ordered by an on-scene physician without appropriate MC authorization",
+        "Communications failure acting per standing orders is NOT a protocol deviation — see Section 8-12",
+        "Performing a skill above licensure level is a protocol deviation AND a scope of practice violation — both must be reported"
+      ]
+    },
+    {
+      "title": "Provider Obligations When a Deviation Occurs",
+      "reference": "Michigan Protocol 8-20: Protocol Deviation — Provider Obligations",
+      "points": [
+        "Report the deviation to online medical control as soon as possible if still on scene or in transport",
+        "Document the deviation fully in the PCR: what occurred, why it occurred, and patient response",
+        "Report the deviation to the EMS agency supervisor after the call",
+        "The EMS agency must report the deviation to the MCA per MCA reporting requirements",
+        "Do NOT attempt to conceal a protocol deviation — concealment is a separate and more serious violation"
+      ]
+    },
+    {
+      "title": "MCA Review Process",
+      "reference": "Michigan Protocol 8-20: Protocol Deviation — MCA Review",
+      "points": [
+        "MCAs must have a process for reviewing protocol deviations through QI and PSRO mechanisms",
+        "The MCA Medical Director reviews deviations to determine appropriateness and whether corrective action is needed",
+        "Corrective actions may include: education, remediation, counseling, or referral to PSRO for formal review",
+        "Not all deviations result in disciplinary action — the goal of review is to improve system performance and patient safety"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "Protocol deviation: action outside protocols without MC authorization",
+    "Communications failure is NOT a deviation if acting per standing orders",
+    "Scope-of-practice violation is a deviation AND a separate reportable offense",
+    "Report deviation to online MC; document in PCR; report to agency supervisor; agency reports to MCA",
+    "Do NOT conceal a deviation — concealment is a more serious violation",
+    "MCA Medical Director reviews; corrective actions range from education to PSRO referral"
+  ],
+
+  "clinical_context": {
+    "concepts": [
+      "documentation_handoff",
+      "medical_control",
+      "quality_improvement_review"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

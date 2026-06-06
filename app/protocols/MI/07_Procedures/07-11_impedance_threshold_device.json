@@ -1,0 +1,87 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-11 Impedance Threshold Device (Revised 5/30/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_impedance_threshold_device",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (All EMS Levels — MCA Optional)",
+  "jurisdiction": "Michigan",
+  "condition": "Impedance Threshold Device (ITD) — ResQPOD",
+  "version": "2023-05-30",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-11: Impedance Threshold Device — MDHHS Approved 5/30/2023",
+
+  "purpose": "MCA OPTIONAL. The Impedance Threshold Device (ITD) enhances venous return during CPR decompression by restricting passive air entry into the lungs. It is used only in medical cardiac arrest for patients > 10 kg. Must not delay compressions if unavailable. ETCO2 must always be placed BETWEEN the ITD and the ventilation source.",
+
+  "sections": [
+    {
+      "title": "Indications and Contraindications",
+      "reference": "Michigan Protocol 7-11: ITD — Indications and Contraindications",
+      "points": [
+        "INDICATION: Medical cardiac arrest in patients weighing > 10 kg (22 lbs)",
+        "CONTRAINDICATION: Traumatic cardiac arrest",
+        "CONTRAINDICATION: Patients ≤ 10 kg (22 lbs)"
+      ]
+    },
+    {
+      "title": "Application on Face Mask (Without Advanced Airway)",
+      "reference": "Michigan Protocol 7-11: ITD — Face Mask Application",
+      "points": [
+        "Connect the ITD between the face mask and the BVM",
+        "Assembly order: Face Mask — ITD — BVM",
+        "Maintain a TIGHT mask seal throughout — the seal must be maintained for the device to function properly",
+        "Timing lights are NOT used when the ITD is on a face mask",
+        "Deliver ventilations at standard rates per Airway Management Protocol"
+      ]
+    },
+    {
+      "title": "Application on ETT or Supraglottic Airway (Advanced Airway)",
+      "reference": "Michigan Protocol 7-11: ITD — Advanced Airway Application",
+      "points": [
+        "First confirm advanced airway placement with ETCO2 BEFORE attaching ITD",
+        "Assembly order (from patient to BVM): ETT or SGA — ITD — ETCO2 monitor — BVM",
+        "CRITICAL: ETCO2 monitor MUST be placed BETWEEN the ITD and the BVM (ventilation source) in all configurations",
+        "Enable the TIMING LIGHTS on the ITD device when used with an advanced airway (ETT or SGA)",
+        "Ventilate asynchronously — deliver ventilation of 1 second each time the timing light flashes",
+        "Do NOT over-ventilate — deliver only when the light flashes"
+      ]
+    },
+    {
+      "title": "General Principles",
+      "reference": "Michigan Protocol 7-11: ITD — General Principles",
+      "points": [
+        "Do NOT delay chest compressions if the ITD is unavailable — HQCPR takes priority",
+        "DISCONTINUE the ITD IMMEDIATELY upon ROSC (return of spontaneous circulation)",
+        "After ROSC: remove ITD from the airway circuit and continue ventilations per ROSC protocol",
+        "ETCO2 must always be between the ITD and the ventilation source regardless of airway type"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "ITD Authorized for Use",
+      "description": "MCA must select whether the ITD is authorized for use in medical cardiac arrest patients > 10 kg",
+      "options": ["Authorized — ITD may be used per protocol", "Not authorized — do not use ITD"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "ITD unavailable — do not delay compressions; proceed with standard cardiac arrest protocol without ITD",
+    "ROSC achieved — DISCONTINUE ITD IMMEDIATELY; remove from airway circuit; continue ventilations per ROSC protocol",
+    "Mask seal loss with face mask ITD — reposition mask; seal is essential for device function"
+  ],
+
+  "scope_notes": [
+    "MCA OPTIONAL — only authorized if MCA has selected ITD in protocol",
+    "Indication: medical cardiac arrest, patients > 10 kg (22 lbs)",
+    "Contraindications: traumatic arrest; patients ≤ 10 kg",
+    "Face mask: Mask — ITD — BVM; no timing lights",
+    "Advanced airway: ETT/SGA — ITD — ETCO2 — BVM; timing lights ON; ventilate 1 sec when light flashes",
+    "ETCO2 ALWAYS between ITD and BVM in all configurations",
+    "Discontinue immediately on ROSC"
+  ]
+}

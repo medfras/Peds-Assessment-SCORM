@@ -1,0 +1,86 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-16R Calcium Chloride (MDHHS Reviewed 2025). Base Michigan template.",
+  "id": "mi_base_medication_ref_calcium_chloride",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Calcium Chloride",
+  "version": "2025-03-31",
+  "protocol_reference": "Michigan Medication Protocol Section 9-16R: Calcium Chloride — MDHHS Reviewed 2025",
+
+  "pharmacological_category": "Electrolyte — Calcium Supplement / Cardiac Membrane Stabilizer",
+
+  "routes": ["IV", "IO"],
+
+  "indications": [
+    "Crush injury with suspected hyperkalemia",
+    "Calcium channel blocker (CCB) overdose — cardiac membrane stabilization",
+    "Cardiac arrest with suspected hyperkalemia (dialysis patient, known hyperkalemia)"
+  ],
+
+  "contraindications": [
+    "Hypercalcemia",
+    "Known hypersensitivity to calcium chloride",
+    "Concurrent digitalis (digoxin) toxicity — calcium may worsen digoxin toxicity"
+  ],
+
+  "precautions": [
+    "Calcium chloride is caustic — vesicant; extravasation causes significant tissue injury; confirm IV patency before administration",
+    "Administer slowly to avoid bradycardia and cardiac arrest",
+    "NOT compatible with sodium bicarbonate — will precipitate if given in same line; flush line between agents",
+    "Caution in patients on digoxin — calcium may precipitate ventricular dysrhythmia in digoxin toxicity"
+  ],
+
+  "expected_effects": [
+    "Stabilizes cardiac cell membranes against hyperkalemia-induced toxicity",
+    "Reverses hemodynamic effects of CCB overdose by restoring intracellular calcium",
+    "Protective effect in cardiac arrest secondary to hyperkalemia"
+  ],
+
+  "side_effects": [
+    "Bradycardia or cardiac arrest if given too rapidly",
+    "Hypercalcemia with repeat dosing",
+    "Tissue necrosis if IV extravasation occurs",
+    "Nausea, vomiting, flushing"
+  ],
+
+  "notes": [
+    "Calcium chloride (10% solution): 1 gram = 10 mL; contains approximately 3× more elemental calcium than calcium gluconate",
+    "Crush injury/CCB overdose: 1 gram slow IVP over 5 minutes",
+    "Arrest (dialysis/known hyperkalemia): 1 gram = 1 g / 10 mL IV/IO",
+    "NOT compatible with sodium bicarbonate — precipitates; flush IV line between agents",
+    "Digoxin patients: avoid calcium — consult online MC"
+  ],
+
+  "dosing": [
+    {
+      "population": "Adult (>14 yr) — crush injury / suspected hyperkalemia",
+      "route": "IV slow push",
+      "dose": "1 gram (10 mL of 10% solution) slow IVP over 5 minutes",
+      "notes": "Verify IV patency; administer slowly; monitor ECG and BP"
+    },
+    {
+      "population": "Adult (>14 yr) — CCB overdose",
+      "route": "IV",
+      "dose": "1 gram IV",
+      "notes": "Cardiac membrane stabilization; may repeat per online MC guidance"
+    },
+    {
+      "population": "Adult (>14 yr) — cardiac arrest (dialysis / known hyperkalemia)",
+      "route": "IV/IO",
+      "dose": "1 gram IV/IO",
+      "notes": "Give during arrest resuscitation when hyperkalemia suspected"
+    },
+    {
+      "population": "Pediatric (≤14 yr)",
+      "route": "IV/IO",
+      "dose": "20 mg/kg; maximum 1 gram",
+      "notes": "Same cautions as adult; verify IV patency; administer slowly"
+    }
+  ],
+
+  "used_in_protocols": ["Crush Injury / Hyperkalemia", "Toxicological Emergencies — CCB Overdose", "Cardiac Arrest"]
+}

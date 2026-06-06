@@ -1,0 +1,110 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 10-13 SPRN Transport Procedure (MDHHS Reviewed 2022-12-27). MCA Optional — SPRN program participation required.",
+  "id": "mi_base_special_ops_sprn_transport_procedure",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Special Operations",
+  "level_display": "Special Operations Protocol — MCA Optional (SPRN)",
+  "jurisdiction": "Michigan",
+  "condition": "SPRN — Transport Procedure",
+  "version": "2022-12-27",
+  "protocol_reference": "Michigan Special Operations Protocol Section 10-13: SPRN Transport Procedure — MDHHS Reviewed 2022",
+
+  "purpose": "Define the step-by-step transport procedure for SPRN patient transport including patient belongings, documentation, travel planning, and destination arrival protocols.",
+
+  "sections": [
+    {
+      "title": "Pre-Transport Coordination",
+      "content": [
+        "Contact MDHHS SPRN coordinator before accepting patient — receive patient classification (Protocol 10-11) and destination (Protocol 10-10)",
+        "Confirm receiving hospital SPRN readiness — receiving team must be in PPE before EMS arrives",
+        "Confirm travel plan with MDHHS coordinator — MDHHS coordinates route for long-distance transports",
+        "Brief all crew on patient classification, route, hospital destination, and emergency contact numbers",
+        "Complete pre-transport supply checklist (Protocol 10-12)",
+        "Don PPE before departure to patient location"
+      ]
+    },
+    {
+      "title": "Patient Belongings",
+      "content": [
+        "All patient belongings (clothing, personal items, electronics) must be handled as potentially contaminated",
+        "Place all belongings in BIOHAZARD bags — use two bags (double-bag)",
+        "Label bags: patient name, date, 'BIOHAZARD — POTENTIAL HCID EXPOSURE'",
+        "DO NOT allow patient to handle unbagged personal items during transport",
+        "Belongings accompany patient to receiving facility — handled per hospital HCID procedures",
+        "Cell phones and electronics: if patient must use phone during transport, wipe with disinfectant after use; place in biohazard bag"
+      ]
+    },
+    {
+      "title": "Travel Plan — MDHHS Coordination",
+      "content": [
+        "For transports >2 hours: MDHHS coordinates a formal travel plan including:",
+        "  — Route selection (major roads preferred — minimizes stops/detours)",
+        "  — Patient Transfer Points (PTPs): pre-identified locations at approximately 2-hour intervals where:",
+        "    * Team rotation occurs (care provider team swap if multi-hour transport)",
+        "    * Crew can take breaks and doff/re-don PPE safely",
+        "    * Vehicle fuel stop if needed",
+        "  — Law enforcement escort coordination if required",
+        "  — Emergency diversion hospitals along route",
+        "For transports <2 hours: informal travel plan; MDHHS coordinator advises if stops needed",
+        "Do NOT deviate from MDHHS-coordinated route without notification — contact SPRN coordinator if route change needed"
+      ]
+    },
+    {
+      "title": "Documentation During Transport",
+      "content": [
+        "All documentation must occur AFTER transport is complete if possible — minimize paper/equipment contamination in patient care area",
+        "If documentation required during transport: use disposable forms or tablet that can be decontaminated",
+        "Written documentation completed after doff at receiving facility",
+        "PCR: identify as SPRN transport; note patient type, PPE used, interventions, and transport time",
+        "MDHHS SPRN incident number must be recorded on all documentation",
+        "Any contaminated paper or electronic devices: treat as Category A biohazard waste"
+      ]
+    },
+    {
+      "title": "Destination Arrival — Receiving Hospital",
+      "content": [
+        "Notify receiving hospital 10-15 minutes before arrival — confirm receiving team is in position",
+        "Approach designated SPRN ambulance entrance (pre-coordinated with hospital) — do NOT use standard EMS entrance",
+        "Patient handoff to hospital SPRN receiving team:",
+        "  — Verbal report including patient type, interventions en route, and clinical status",
+        "  — Transfer patient from ambulance stretcher to hospital team in designated isolation area",
+        "  — Transfer of patient belongings (bagged biohazard bags)",
+        "  — Transfer of patient care documentation",
+        "After patient handoff: EMS crew remains in designated doffing area at hospital",
+        "Doff PPE with hospital safety officer assistance per Protocol 10-17 doffing sequence",
+        "Vehicle remains in designated contaminated vehicle area until decontaminated — Protocol 10-15",
+        "Take post-transport vital signs per Protocol 10-17 (team member health monitoring)"
+      ]
+    },
+    {
+      "title": "Decommissioning Contaminated Materials",
+      "content": [
+        "All supplies used during SPRN transport are considered potentially contaminated",
+        "Dispose of: single-use PPE components, used medical supplies, contaminated forms — Category A biohazard waste",
+        "Reusable equipment (PAPR, MITD components): decontaminate per manufacturer specifications and Protocol 10-15",
+        "Vehicle: do NOT return to service until decontamination per Protocol 10-15 is complete",
+        "Timeline: ambulance decontamination must be completed before vehicle returns to service — coordinate with hospital or MDHHS decon team"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "id": "sprn_program_participation",
+      "label": "SPRN Program Participation — MCA authorization for SPRN protocols 10-10 through 10-18",
+      "description": "MCA Optional: All SPRN protocols apply only to SPRN-designated agencies.",
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Patient clinical deterioration during transport — contact SPRN coordinator and online MC; consider diversion to nearest SPRN-capable facility; life support decisions per Protocol 10-14",
+    "PPE breach during transport — alert partner; do NOT panic; contact SPRN coordinator; document breach; post-transport health monitoring Protocol 10-17"
+  ],
+
+  "scope_notes": "MCA Optional — SPRN only. MDHHS coordinates the travel plan for SPRN transports — EMS does not independently plan routing. Patient Transfer Points (PTPs) enable team rotation and safe crew breaks on long transports. All contaminated materials are Category A biohazard waste. Ambulance is out of service until decontaminated per Protocol 10-15."
+}

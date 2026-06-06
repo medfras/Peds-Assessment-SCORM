@@ -1,0 +1,642 @@
+[
+  {
+    "id": "lsm_clear_01",
+    "audio_url": "/static/audio/lung%20sounds/F_N_RUA.wav",
+    "license_source": "CC BY 4.0 \u2014 Torabi Y, Shirani S, Reilly JP. Heart and Lung Sounds Dataset Recorded from a Clinical Manikin using Digital Stethoscope (HLS-CMDS). Mendeley Data V3. doi:10.17632/8972jxbpmp.3",
+    "prompt": "Play the sound, then choose the best match.",
+    "correct": "clear",
+    "distractors": [
+      "crackles",
+      "wheezes",
+      "rhonchi",
+      "stridor",
+      "pleural friction rub"
+    ],
+    "explanation": "Clear breath sounds represent expected air movement through the airways without any adventitious (abnormal added) sounds.",
+    "mistake_tag": "missed_clear",
+    "follow_up": {
+      "prompt": "RR 30, anxious and tingling after a panic trigger. Work of breathing is mild, SpO2 99%, clear bilateral breath sounds, skin warm/dry, no chest trauma or allergy signs. Choose the best intervention.",
+      "choices": [
+        {
+          "id": "coach_position",
+          "label": "Coach breathing, position of comfort, reassess vitals",
+          "score": 2,
+          "min_scope": "MFR",
+          "feedback": "Best available care: clear sounds and normal oxygenation point away from lung pathology; coach breathing while reassessing for hidden causes."
+        },
+        {
+          "id": "oxygen",
+          "label": "Supplemental oxygen",
+          "score": 1,
+          "min_scope": "MFR",
+          "feedback": "Acceptable if distress persists, but oxygen is not the best intervention when SpO2 is normal and ventilation is adequate."
+        },
+        {
+          "id": "albuterol",
+          "label": "Albuterol nebulizer",
+          "score": 0,
+          "min_scope": "AEMT",
+          "feedback": "Bronchodilator therapy targets bronchospasm; clear sounds do not support that as the priority."
+        },
+        {
+          "id": "bvm",
+          "label": "BVM ventilations",
+          "score": 0,
+          "min_scope": "MFR",
+          "feedback": "BVM is for inadequate ventilation, not an alert patient with adequate oxygenation and mild work of breathing."
+        }
+      ],
+      "feedback": "Clear breath sounds do not rule out respiratory complaint, but they push you to reassess ventilation, perfusion, anxiety, metabolic causes, and scene context before treating bronchospasm.",
+      "mistake_tag": "clear_intervention",
+      "hint": "If air is moving clearly and oxygenation is normal, ask whether the problem is oxygenation, ventilation, perfusion, or anxiety."
+    },
+    "hint": "Listen for the absence of added sounds. Then ask whether the distress could still come from an airway, perfusion, or ventilation problem outside the lung fields."
+  },
+  {
+    "id": "lsm_crackles_01",
+    "audio_url": "/static/audio/lung%20sounds/LS/F_CC_LUA.wav",
+    "license_source": "CC BY 4.0 \u2014 Torabi Y, Shirani S, Reilly JP. Heart and Lung Sounds Dataset Recorded from a Clinical Manikin using Digital Stethoscope (HLS-CMDS). Mendeley Data V3. doi:10.17632/8972jxbpmp.3",
+    "prompt": "Play the sound, then choose the best match.",
+    "correct": "crackles",
+    "distractors": [
+      "clear",
+      "wheezes",
+      "rhonchi",
+      "stridor",
+      "pleural friction rub"
+    ],
+    "explanation": "Crackles are discontinuous, intermittent popping, clicking, or bubbling sounds. Coarse crackles are lower-pitched with a wet, bubbling quality; fine crackles are higher-pitched, like hair rubbed near the ear. They are typically heard on inspiration.",
+    "mistake_tag": "missed_crackles",
+    "follow_up": {
+      "prompt": "RR 32 with severe dyspnea, tripod posture, diffuse crackles, SpO2 86%, BP 184/104, pink frothy sputum, and marked work of breathing. Choose the best intervention.",
+      "choices": [
+        {
+          "id": "cpap",
+          "label": "CPAP with oxygen",
+          "score": 2,
+          "min_scope": "AEMT",
+          "feedback": "Best ALS/AEMT-level choice when available: pulmonary edema with severe work of breathing benefits from CPAP if the patient can tolerate it and BP supports it."
+        },
+        {
+          "id": "oxygen",
+          "label": "High-flow oxygen and position upright",
+          "score": 2,
+          "min_scope": "MFR",
+          "feedback": "Best BLS-available choice when CPAP is outside scope: maximize oxygenation, sit upright, and request/expedite ALS."
+        },
+        {
+          "id": "bvm",
+          "label": "BVM ventilations",
+          "score": 1,
+          "min_scope": "MFR",
+          "feedback": "Acceptable if ventilation becomes inadequate or mental status falls, but this alert patient is better managed with oxygen/CPAP first."
+        },
+        {
+          "id": "albuterol",
+          "label": "Albuterol nebulizer",
+          "score": 0,
+          "min_scope": "AEMT",
+          "feedback": "Crackles with frothy sputum and hypertension point to fluid, not primary bronchospasm."
+        }
+      ],
+      "feedback": "Diffuse crackles with hypoxia and frothy sputum indicate pulmonary edema physiology. Match care to oxygenation and pressure support within your scope.",
+      "mistake_tag": "crackles_intervention",
+      "hint": "Think alveolar fluid plus severe work of breathing. Which option improves oxygenation and reduces work of breathing fastest within your scope?"
+    },
+    "hint": "Listen for discontinuous popping or bubbling, especially on inspiration. Think alveoli/fluid, not narrowed bronchi."
+  },
+  {
+    "id": "lsm_crackles_02",
+    "audio_url": "/static/audio/lung%20sounds/LS/F_FC_LLA.wav",
+    "license_source": "CC BY 4.0 \u2014 Torabi Y, Shirani S, Reilly JP. Heart and Lung Sounds Dataset Recorded from a Clinical Manikin using Digital Stethoscope (HLS-CMDS). Mendeley Data V3. doi:10.17632/8972jxbpmp.3",
+    "prompt": "Play the sound, then choose the best match.",
+    "correct": "crackles",
+    "distractors": [
+      "clear",
+      "wheezes",
+      "rhonchi",
+      "stridor",
+      "pleural friction rub"
+    ],
+    "explanation": "Fine end-inspiratory crackles (like hair being rubbed between fingers near the ear) indicate alveolar pathology \u2014 fluid from pulmonary edema or pneumonia, or fibrosis causing stiff alveoli to pop open late in inspiration.",
+    "mistake_tag": "missed_crackles",
+    "follow_up": {
+      "prompt": "RR 28, moderate work of breathing, SpO2 90%, fine basilar crackles, fever, productive cough, and pleuritic chest pain. Choose the best intervention.",
+      "choices": [
+        {
+          "id": "oxygen",
+          "label": "Supplemental oxygen and position of comfort",
+          "score": 2,
+          "min_scope": "MFR",
+          "feedback": "Best choice: suspected pneumonia with hypoxia needs oxygenation support, positioning, reassessment, and transport."
+        },
+        {
+          "id": "bvm",
+          "label": "BVM ventilations",
+          "score": 1,
+          "min_scope": "MFR",
+          "feedback": "Acceptable only if ventilation becomes inadequate; this presentation still supports spontaneous breathing with oxygen."
+        },
+        {
+          "id": "cpap",
+          "label": "CPAP",
+          "score": 1,
+          "min_scope": "AEMT",
+          "feedback": "May be considered in severe distress per protocol, but this infectious presentation is not the classic best CPAP case."
+        },
+        {
+          "id": "needle_decompression",
+          "label": "Needle decompression",
+          "score": 0,
+          "min_scope": "Paramedic",
+          "feedback": "No unilateral absent sounds, trauma, or shock pattern suggests tension pneumothorax."
+        }
+      ],
+      "feedback": "Fine crackles with fever and cough point toward pneumonia/consolidation. The prehospital priority is oxygenation and transport, not bronchodilator-first care.",
+      "mistake_tag": "crackles_intervention",
+      "hint": "Pair fever/cough with hypoxia. Treat the oxygenation problem while transporting."
+    },
+    "hint": "Listen for discontinuous popping or bubbling, especially on inspiration. Think alveoli/fluid, not narrowed bronchi."
+  },
+  {
+    "id": "lsm_crackles_pneumonia",
+    "audio_url": "/static/audio/lung%20sounds/Crackles_pneumonia.mp3",
+    "license_source": "CC BY-SA 3.0 \u2014 James Heilman MD (Jmh649). Crackles_pneumoniaO.ogg. Wikimedia Commons. https://commons.wikimedia.org/wiki/File:Crackles_pneumoniaO.ogg",
+    "prompt": "Play the sound, then choose the best match.",
+    "correct": "crackles",
+    "distractors": [
+      "clear",
+      "wheezes",
+      "rhonchi",
+      "stridor",
+      "pleural friction rub"
+    ],
+    "explanation": "Crackles heard over a consolidated lung field with fever and productive cough suggest pneumonia. Localized crackles are more characteristic of infectious consolidation; bilateral crackles suggest fluid overload or bilateral pneumonia.",
+    "mistake_tag": "missed_crackles",
+    "follow_up": {
+      "prompt": "RR 34, nasal flaring, SpO2 88%, unilateral crackles and diminished air entry, fever 103 F, productive cough, and increasing fatigue. Choose the best intervention.",
+      "choices": [
+        {
+          "id": "oxygen",
+          "label": "High-flow oxygen and position of comfort",
+          "score": 2,
+          "min_scope": "MFR",
+          "feedback": "Best BLS care: correct hypoxia, reduce work of breathing with positioning, and transport."
+        },
+        {
+          "id": "bvm",
+          "label": "BVM ventilations",
+          "score": 1,
+          "min_scope": "MFR",
+          "feedback": "Acceptable if fatigue progresses to inadequate ventilation; not first if they can still maintain ventilation."
+        },
+        {
+          "id": "albuterol",
+          "label": "Albuterol nebulizer",
+          "score": 0,
+          "min_scope": "AEMT",
+          "feedback": "Albuterol targets bronchospasm; unilateral crackles with fever point to infection/consolidation."
+        },
+        {
+          "id": "suction",
+          "label": "Oropharyngeal suctioning",
+          "score": 0,
+          "min_scope": "MFR",
+          "feedback": "Suction helps upper-airway secretions, not consolidated lung tissue."
+        }
+      ],
+      "feedback": "Unilateral crackles with fever and hypoxia support pneumonia. Oxygen and transport are the priority; ventilatory support if fatigue worsens.",
+      "mistake_tag": "crackles_intervention",
+      "hint": "The sound is focal and the patient is hypoxic. Which intervention directly supports oxygenation?"
+    },
+    "hint": "Listen for discontinuous popping or bubbling, especially on inspiration. Think alveoli/fluid, not narrowed bronchi."
+  },
+  {
+    "id": "lsm_wheezes_01",
+    "audio_url": "/static/audio/lung%20sounds/LS/F_W_RUA.wav",
+    "license_source": "CC BY 4.0 \u2014 Torabi Y, Shirani S, Reilly JP. Heart and Lung Sounds Dataset Recorded from a Clinical Manikin using Digital Stethoscope (HLS-CMDS). Mendeley Data V3. doi:10.17632/8972jxbpmp.3",
+    "prompt": "Play the sound, then choose the best match.",
+    "correct": "wheezes",
+    "distractors": [
+      "clear",
+      "crackles",
+      "rhonchi",
+      "stridor",
+      "pleural friction rub"
+    ],
+    "explanation": "Wheezes are continuous, musical, high-pitched sounds produced when air is forced through narrowed lower airways. They are most commonly heard on expiration but can occur on inspiration in severe obstruction.",
+    "mistake_tag": "missed_wheezes",
+    "follow_up": {
+      "prompt": "RR 36, moderate retractions, SpO2 91%, bilateral expiratory wheezes, known asthma, speaking short phrases, alert. Choose the best intervention.",
+      "choices": [
+        {
+          "id": "albuterol",
+          "label": "Albuterol bronchodilator treatment",
+          "score": 2,
+          "min_scope": "AEMT",
+          "feedback": "Best when in scope: wheezes with asthma indicate lower-airway bronchospasm and bronchodilator therapy."
+        },
+        {
+          "id": "assist_inhaler",
+          "label": "Assist with prescribed rescue inhaler and give oxygen",
+          "score": 2,
+          "min_scope": "EMT",
+          "feedback": "Best BLS-available care when nebulized albuterol is outside scope: assist prescribed bronchodilator per protocol and support oxygenation."
+        },
+        {
+          "id": "oxygen",
+          "label": "Supplemental oxygen only",
+          "score": 1,
+          "min_scope": "MFR",
+          "feedback": "Acceptable support, but oxygen alone does not treat bronchospasm."
+        },
+        {
+          "id": "needle_decompression",
+          "label": "Needle decompression",
+          "score": 0,
+          "min_scope": "Paramedic",
+          "feedback": "Bilateral wheezes with asthma history do not suggest tension pneumothorax."
+        }
+      ],
+      "feedback": "Wheezes plus asthma point to bronchospasm. Full credit depends on the best bronchodilator option available in your provider scope.",
+      "mistake_tag": "wheeze_intervention",
+      "hint": "This is lower-airway narrowing. Which available option opens bronchi rather than only adding oxygen?"
+    },
+    "hint": "Listen for a continuous musical tone from narrowed lower airways. Do not confuse pitch with upper-airway harshness."
+  },
+  {
+    "id": "lsm_wheezes_02",
+    "audio_url": "/static/audio/lung%20sounds/LS/M_W_LLA.wav",
+    "license_source": "CC BY 4.0 \u2014 Torabi Y, Shirani S, Reilly JP. Heart and Lung Sounds Dataset Recorded from a Clinical Manikin using Digital Stethoscope (HLS-CMDS). Mendeley Data V3. doi:10.17632/8972jxbpmp.3",
+    "prompt": "Play the sound, then choose the best match.",
+    "correct": "wheezes",
+    "distractors": [
+      "clear",
+      "crackles",
+      "rhonchi",
+      "stridor",
+      "pleural friction rub"
+    ],
+    "explanation": "Wheezes are continuous, high-pitched sounds indicating air movement through narrowed or constricted lower airways. Assess whether air movement sounds are equal and adequate bilaterally.",
+    "mistake_tag": "missed_wheezes",
+    "follow_up": {
+      "prompt": "RR 40, severe retractions, SpO2 84%, wheezes becoming quieter, exhausted appearance, history of asthma, poor single-word speech. Choose the best intervention.",
+      "choices": [
+        {
+          "id": "bvm",
+          "label": "Assist ventilations with BVM and oxygen",
+          "score": 2,
+          "min_scope": "MFR",
+          "feedback": "Best priority: fatigue, hypoxia, and quieting wheezes signal impending respiratory failure. Support ventilation immediately."
+        },
+        {
+          "id": "albuterol",
+          "label": "Albuterol bronchodilator treatment",
+          "score": 1,
+          "min_scope": "AEMT",
+          "feedback": "Acceptable as part of care if ventilation is adequate, but this patient is failing and needs ventilatory support first."
+        },
+        {
+          "id": "cpap",
+          "label": "CPAP",
+          "score": 1,
+          "min_scope": "AEMT",
+          "feedback": "May help selected alert bronchospasm patients, but exhaustion and poor speech should push you toward assisted ventilations."
+        },
+        {
+          "id": "oxygen",
+          "label": "Oxygen by non-rebreather only",
+          "score": 1,
+          "min_scope": "MFR",
+          "feedback": "Acceptable temporizing support, but oxygen alone may not correct inadequate ventilation."
+        }
+      ],
+      "feedback": "Severe bronchospasm can become a ventilation problem. Quieter sounds with worsening fatigue are danger signs, not improvement.",
+      "mistake_tag": "wheeze_intervention",
+      "hint": "When the patient is tiring, ask whether they need medication, oxygen, or help moving air."
+    },
+    "hint": "Listen for a continuous musical tone from narrowed lower airways. Do not confuse pitch with upper-airway harshness."
+  },
+  {
+    "id": "lsm_rhonchi_01",
+    "audio_url": "/static/audio/lung%20sounds/LS/M_R_LMA.wav",
+    "license_source": "CC BY 4.0 \u2014 Torabi Y, Shirani S, Reilly JP. Heart and Lung Sounds Dataset Recorded from a Clinical Manikin using Digital Stethoscope (HLS-CMDS). Mendeley Data V3. doi:10.17632/8972jxbpmp.3",
+    "prompt": "Play the sound, then choose the best match.",
+    "correct": "rhonchi",
+    "distractors": [
+      "clear",
+      "crackles",
+      "wheezes",
+      "stridor",
+      "pleural friction rub"
+    ],
+    "explanation": "Rhonchi are continuous, low-pitched, sonorous sounds resembling snoring, moaning, or gurgling. They are caused by air moving through larger central airways partially obstructed by secretions and may temporarily clear with coughing.",
+    "mistake_tag": "missed_rhonchi",
+    "follow_up": {
+      "prompt": "RR 24, gurgling respirations, SpO2 89%, weak cough after vomiting, rhonchi that change with cough, moderate work of breathing. Choose the best intervention.",
+      "choices": [
+        {
+          "id": "suction",
+          "label": "Suction the airway, then reassess oxygenation",
+          "score": 2,
+          "min_scope": "MFR",
+          "feedback": "Best choice: rhonchi/gurgling after emesis suggests large-airway secretions that need suction if the patient cannot clear them."
+        },
+        {
+          "id": "oxygen",
+          "label": "Supplemental oxygen",
+          "score": 1,
+          "min_scope": "MFR",
+          "feedback": "Acceptable support after airway clearing, but oxygen alone does not remove secretions."
+        },
+        {
+          "id": "bvm",
+          "label": "BVM ventilations",
+          "score": 1,
+          "min_scope": "MFR",
+          "feedback": "Acceptable if ventilations are inadequate after suctioning; first clear the airway."
+        },
+        {
+          "id": "albuterol",
+          "label": "Albuterol nebulizer",
+          "score": 0,
+          "min_scope": "AEMT",
+          "feedback": "Rhonchi point to secretions, not bronchospasm."
+        }
+      ],
+      "feedback": "Rhonchi that change with cough suggest movable secretions. Suction/airway clearance is the intervention that changes the problem.",
+      "mistake_tag": "rhonchi_intervention",
+      "hint": "If the sound is gurgly and changes with cough, think airway clearance before medication."
+    },
+    "hint": "Listen for low, snoring or gurgling central-airway noise that may change with coughing or suction."
+  },
+  {
+    "id": "lsm_stridor_01",
+    "audio_url": "/static/audio/lung%20sounds/InspiratoryStridor.mp3",
+    "license_source": "UNRESOLVED \u2014 source requires separate verification. Mendeley HLS-CMDS does not include stridor recordings. Do not ship to production until cleared.",
+    "license_cleared": false,
+    "prompt": "Play the sound, then choose the best match.",
+    "correct": "stridor",
+    "distractors": [
+      "clear",
+      "crackles",
+      "wheezes",
+      "rhonchi",
+      "pleural friction rub"
+    ],
+    "explanation": "Stridor is a loud, harsh, high-pitched crowing or whistling sound produced by obstruction at the upper airway level. It is typically heard predominantly on inspiration and is often audible without a stethoscope.",
+    "mistake_tag": "missed_stridor",
+    "follow_up": {
+      "prompt": "RR 32, inspiratory upper-airway noise, suprasternal retractions, SpO2 90%, anxious but alert, no wheezes in the chest. Choose the best intervention.",
+      "choices": [
+        {
+          "id": "oxygen_calm",
+          "label": "Keep calm, position of comfort, oxygen as tolerated",
+          "score": 2,
+          "min_scope": "MFR",
+          "feedback": "Best initial care: suspected upper-airway obstruction needs calm handling, oxygen as tolerated, and rapid reassessment/transport."
+        },
+        {
+          "id": "bvm",
+          "label": "Prepare BVM ventilations if mental status or ventilation worsens",
+          "score": 1,
+          "min_scope": "MFR",
+          "feedback": "Acceptable preparation, but do not force BVM on an alert child who is still moving air."
+        },
+        {
+          "id": "nebulized_epi",
+          "label": "Nebulized epinephrine per protocol",
+          "score": 2,
+          "min_scope": "Paramedic",
+          "feedback": "Best ALS option when indicated and in scope for severe upper-airway swelling/croup pattern."
+        },
+        {
+          "id": "albuterol",
+          "label": "Albuterol nebulizer",
+          "score": 0,
+          "min_scope": "AEMT",
+          "feedback": "Albuterol treats lower-airway bronchospasm, not upper-airway stridor."
+        }
+      ],
+      "feedback": "Stridor is an upper-airway problem. Avoid agitation, support oxygenation, and prepare for deterioration within scope.",
+      "mistake_tag": "stridor_intervention",
+      "hint": "Upper airway obstruction often worsens with agitation. Choose the option that protects airway and oxygenation without provoking collapse."
+    },
+    "hint": "Ask whether the sound is harsh/crowing and louder over the upper airway rather than musical in the chest."
+  },
+  {
+    "id": "lsm_stridor_02",
+    "audio_url": "/static/audio/lung%20sounds/Croup-Laryngotracheitis-Stridor-Barking-Cough-theSimTech.mp3",
+    "license_source": "UNRESOLVED \u2014 theSimTech source; license not confirmed from provided sources. Verify with theSimTech before production use.",
+    "license_cleared": false,
+    "prompt": "Play the sound, then choose the best match.",
+    "correct": "stridor",
+    "distractors": [
+      "clear",
+      "crackles",
+      "wheezes",
+      "rhonchi",
+      "pleural friction rub"
+    ],
+    "explanation": "Stridor indicates upper-airway narrowing. Listen for the high-pitched inspiratory noise that distinguishes stridor from the musical quality of lower-airway wheezes. A barking cough alongside stridor in a toddler is characteristic of croup.",
+    "mistake_tag": "missed_stridor",
+    "follow_up": {
+      "prompt": "Two-year-old with RR 34, barking cough, inspiratory upper-airway noise when crying, mild fever, moderate retractions, SpO2 92%. Choose the best intervention.",
+      "choices": [
+        {
+          "id": "oxygen_calm",
+          "label": "Keep child calm, position of comfort, oxygen as tolerated",
+          "score": 2,
+          "min_scope": "MFR",
+          "feedback": "Best BLS care: keep the child calm, avoid unnecessary procedures, support oxygenation, and transport."
+        },
+        {
+          "id": "nebulized_epi",
+          "label": "Nebulized epinephrine per protocol",
+          "score": 2,
+          "min_scope": "Paramedic",
+          "feedback": "Best ALS option for severe croup/upper-airway swelling when protocol and scope allow."
+        },
+        {
+          "id": "albuterol",
+          "label": "Albuterol nebulizer",
+          "score": 0,
+          "min_scope": "AEMT",
+          "feedback": "Croup is upper-airway swelling; albuterol targets lower-airway bronchospasm."
+        },
+        {
+          "id": "needle_decompression",
+          "label": "Needle decompression",
+          "score": 0,
+          "min_scope": "Paramedic",
+          "feedback": "No tension pneumothorax pattern is present."
+        }
+      ],
+      "feedback": "Croup physiology is upper-airway edema. Calm oxygenation and epinephrine when in scope are the key branches.",
+      "mistake_tag": "stridor_intervention",
+      "hint": "Barking cough plus upper-airway noise: avoid upsetting the child and think upper-airway edema."
+    },
+    "hint": "Ask whether the sound is harsh/crowing and louder over the upper airway rather than musical in the chest."
+  },
+  {
+    "id": "lsm_stridor_03",
+    "audio_url": "/static/audio/lung%20sounds/Compressed_Audacity_Baby_Inspiratory-Stridor-With-Epiglottis-or-Foreign-Body-Obstruction.mp3",
+    "license_source": "UNRESOLVED \u2014 source requires separate verification. Mendeley HLS-CMDS does not include stridor recordings. Do not ship to production until cleared.",
+    "license_cleared": false,
+    "prompt": "Play the sound, then choose the best match.",
+    "correct": "stridor",
+    "distractors": [
+      "clear",
+      "crackles",
+      "wheezes",
+      "rhonchi",
+      "pleural friction rub"
+    ],
+    "explanation": "Inspiratory stridor has a distinctive high-pitched, crowing quality that differs from the musical pitch of lower-airway wheezes. The location of the obstruction \u2014 upper versus lower airway \u2014 determines which sound is produced.",
+    "mistake_tag": "missed_stridor",
+    "follow_up": {
+      "prompt": "Toddler suddenly developed severe upper-airway noise while eating grapes. RR 38, strong cough, anxious, SpO2 91%, marked work of breathing. Choose the best intervention.",
+      "choices": [
+        {
+          "id": "encourage_cough",
+          "label": "Encourage coughing, avoid blind sweeps, prepare obstruction care",
+          "score": 2,
+          "min_scope": "MFR",
+          "feedback": "Best while cough is effective: do not interfere with a strong cough; be ready for back blows/thrusts if obstruction becomes complete."
+        },
+        {
+          "id": "bvm",
+          "label": "BVM ventilations if cough becomes ineffective or LOC drops",
+          "score": 1,
+          "min_scope": "MFR",
+          "feedback": "Acceptable preparation, but not first while a strong cough is moving air."
+        },
+        {
+          "id": "albuterol",
+          "label": "Albuterol nebulizer",
+          "score": 0,
+          "min_scope": "AEMT",
+          "feedback": "The sudden choking history points to obstruction, not bronchospasm."
+        },
+        {
+          "id": "needle_decompression",
+          "label": "Needle decompression",
+          "score": 0,
+          "min_scope": "Paramedic",
+          "feedback": "This is an airway obstruction story, not pleural-space pressure."
+        }
+      ],
+      "feedback": "Sudden upper-airway noise during eating should trigger foreign body thinking. Effective cough gets coached; ineffective cough gets obstruction maneuvers.",
+      "mistake_tag": "stridor_intervention",
+      "hint": "The onset story is the intervention clue: sudden during eating changes the plan."
+    },
+    "hint": "Ask whether the sound is harsh/crowing and louder over the upper airway rather than musical in the chest."
+  },
+  {
+    "id": "lsm_stridor_04",
+    "audio_url": "/static/audio/lung%20sounds/Compressed_Audacity_Baby-Lung-Sounds-Audio-MP3-Laryngomalacia-Inspiratory-Expiratory-Stridor.mp3",
+    "license_source": "UNRESOLVED \u2014 source requires separate verification. Mendeley HLS-CMDS does not include stridor recordings. Do not ship to production until cleared.",
+    "license_cleared": false,
+    "prompt": "Play the sound, then choose the best match.",
+    "correct": "stridor",
+    "distractors": [
+      "clear",
+      "crackles",
+      "wheezes",
+      "rhonchi",
+      "pleural friction rub"
+    ],
+    "explanation": "Stridor is an upper-airway sound; wheezes originate from the lower airways. Both can be noisy, but stridor has a harsher, crowing quality and is typically loudest on inspiration.",
+    "mistake_tag": "missed_stridor",
+    "follow_up": {
+      "prompt": "Three-month-old has chronic positional noisy inspiration, RR 42, mild retractions with feeding, SpO2 94%, worse supine, improves upright. Choose the best intervention.",
+      "choices": [
+        {
+          "id": "position_transport",
+          "label": "Position upright, oxygen as needed, transport/monitor feeding risk",
+          "score": 2,
+          "min_scope": "MFR",
+          "feedback": "Best field care: positioning and monitoring are key; transport if distress, feeding difficulty, or hypoxia is present."
+        },
+        {
+          "id": "bvm",
+          "label": "BVM ventilations",
+          "score": 1,
+          "min_scope": "MFR",
+          "feedback": "Acceptable only if ventilation becomes inadequate; not needed for a stable infant maintaining oxygenation."
+        },
+        {
+          "id": "nebulized_epi",
+          "label": "Nebulized epinephrine",
+          "score": 0,
+          "min_scope": "Paramedic",
+          "feedback": "Chronic positional stridor is not the same as acute croup/airway edema."
+        },
+        {
+          "id": "albuterol",
+          "label": "Albuterol nebulizer",
+          "score": 0,
+          "min_scope": "AEMT",
+          "feedback": "This is upper-airway positional noise, not lower-airway bronchospasm."
+        }
+      ],
+      "feedback": "Chronic positional stridor suggests structural upper-airway dynamics. Support position, oxygenation, and transport decision-making.",
+      "mistake_tag": "stridor_intervention",
+      "hint": "Chronic and positional is different from sudden obstruction or acute viral swelling."
+    },
+    "hint": "Ask whether the sound is harsh/crowing and louder over the upper airway rather than musical in the chest."
+  },
+  {
+    "id": "lsm_pleural_friction_01",
+    "audio_url": "/static/audio/lung%20sounds/LS/F_PR_LUA.wav",
+    "license_source": "CC BY 4.0 \u2014 Torabi Y, Shirani S, Reilly JP. Heart and Lung Sounds Dataset Recorded from a Clinical Manikin using Digital Stethoscope (HLS-CMDS). Mendeley Data V3. doi:10.17632/8972jxbpmp.3",
+    "prompt": "Play the sound, then choose the best match.",
+    "correct": "pleural friction rub",
+    "distractors": [
+      "clear",
+      "crackles",
+      "wheezes",
+      "rhonchi",
+      "stridor"
+    ],
+    "explanation": "A pleural friction rub is a harsh, grating, or creaking sound \u2014 similar to rubbing two pieces of leather together \u2014 produced by inflamed pleural membranes rubbing during breathing. It is heard on both inspiration and expiration.",
+    "mistake_tag": "missed_pleural_rub",
+    "follow_up": {
+      "prompt": "RR 26, sharp pleuritic chest pain, shallow guarded breathing, SpO2 93%, grating sound on inspiration and expiration, fever and cough history. Choose the best intervention.",
+      "choices": [
+        {
+          "id": "oxygen_position",
+          "label": "Oxygen as needed, position of comfort, transport",
+          "score": 2,
+          "min_scope": "MFR",
+          "feedback": "Best field care: support oxygenation, allow position of comfort, monitor for worsening respiratory status, and transport."
+        },
+        {
+          "id": "bvm",
+          "label": "BVM ventilations",
+          "score": 1,
+          "min_scope": "MFR",
+          "feedback": "Acceptable only if ventilation becomes inadequate; this patient is guarding but still breathing."
+        },
+        {
+          "id": "albuterol",
+          "label": "Albuterol nebulizer",
+          "score": 0,
+          "min_scope": "AEMT",
+          "feedback": "A pleural rub is not bronchospasm."
+        },
+        {
+          "id": "needle_decompression",
+          "label": "Needle decompression",
+          "score": 0,
+          "min_scope": "Paramedic",
+          "feedback": "No unilateral absent sounds with shock pattern suggests tension pneumothorax."
+        }
+      ],
+      "feedback": "A pleural rub points to inflamed pleura. EMS care is supportive unless another immediate threat emerges.",
+      "mistake_tag": "pleural_rub_intervention",
+      "hint": "Treat the patient, not just the sound: oxygenation, comfort, and transport are the priorities here."
+    },
+    "hint": "Listen for a grating, leathery sound linked to pleural surfaces moving against each other."
+  }
+]

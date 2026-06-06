@@ -1,0 +1,149 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Pediatric: Neonatal Resuscitation. NASEMSO national provisional base.",
+  "id": "nasemso_base_pediatric_neonatal_resuscitation",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Neonatal Resuscitation",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Pediatric: Neonatal Resuscitation",
+  "aliases": [
+    "None noted"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Pediatric: Neonatal Resuscitation",
+      "points": [
+        "Plan for resources based on number of anticipated patients (e.g., mother and newborn or multiple births)",
+        "Provide routine care to the newly born infant",
+        "Perform a neonatal assessment",
+        "Rapidly identify newly born infants requiring resuscitative efforts",
+        "Provide appropriate interventions to minimize distress in the newly born infant",
+        "Recognize the need for additional resources based on patient condition and/or environmental factors"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Newly born infants",
+        "EXCLUSION CRITERIA:",
+        "Documented gestational age less than 20 weeks (usually calculated by date of last menstrual period). If any doubt about accuracy of gestational age, initiate resuscitation"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "High-quality CPR: 100-120 compressions/min, 2-inch depth, allow full recoil",
+        "AED — apply as soon as available; minimize pause in compressions",
+        "BVM ventilation: 30:2 until advanced airway placed, then 1 breath/6 sec",
+        "Control external hemorrhage if traumatic mechanism",
+        "Epinephrine auto-injector if anaphylactic cause"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Supraglottic airway (LMA/King) for airway management",
+        "CPAP/BVM with PEEP if prearrest respiratory failure",
+        "Mechanical CPR device (LUCAS, AutoPulse) when available",
+        "12-lead ECG acquisition to identify reversible causes (hyperkalemia, STEMI)",
+        "IV access maintenance (existing access only)",
+        "Oral glucose if hypoglycemic cause suspected"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IO access initiation for medication and fluid delivery",
+        "Peripheral IV access initiation",
+        "Epinephrine 1 mg IV/IO q 3-5 min (standard arrest dose)",
+        "IV/IO fluid resuscitation if hypovolemic cause suspected",
+        "IV D50W or dextrose for hypoglycemic cause",
+        "IV naloxone for opioid-induced cardiac arrest",
+        "Waveform capnography for CPR quality feedback (EtCO2 >20 mmHg suggests effective CPR; >40 mmHg suggests ROSC)"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "Endotracheal intubation: continuous waveform capnography after placement",
+        "Amiodarone 300 mg IV/IO (VF/pVT shock-refractory); 150 mg additional dose",
+        "Lidocaine 1-1.5 mg/kg IV/IO as alternative to amiodarone",
+        "Sodium bicarbonate 1 mEq/kg IV/IO for prolonged arrest, hyperkalemia, TCA overdose",
+        "Calcium chloride 1 g IV/IO for hyperkalemia or CCB overdose",
+        "ROSC: post-ROSC care protocol — targeted temperature management, avoid hypoxia/hypotension",
+        "Transcutaneous pacing for PEA with bradycardia mechanism",
+        "Point-of-care ultrasound (POCUS) to identify reversible causes (pneumothorax, tamponade)"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Hypothermia is common in newborns and worsens outcomes of nearly all post-natal complications a. Ensure heat retention by drying the infant thoroughly, covering the head, and wrapping the baby in dry cloth",
+        "During transport, neonate should be appropriately secured (e.g., secured to mother with approved neonatal restraint system, car seat or isolette) and mother should be appropriately secured"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Approximately 10% of newly born infants require some assistance to begin breathing at birth and 1% require resuscitation to support perfusion",
+        "Most newborns require only drying, warming, and stimulating to help them transition from fetal respiration to newborn respiration. The resuscitation sequence can be remembered as Dry, Warm, and Stimulate ' Ventilate ' Evaluate ' and Resuscitate",
+        "Deliveries complicated by maternal bleeding (placenta previa, vas previa, or placental abruption) place the infant at risk for hypovolemia secondary to blood loss",
+        "Low birth weight infants are at high-risk for hypothermia due to heat loss",
+        "Measuring the pulse oximetry on the right hand provides the most accurate oxygen saturation (SpO2) in infants that are transitioning from fetal to normal circulation. At 60 seconds, 60% is the target with an increase of 5% every minute until 5 minutes of life when pulse oximetry is 80'85%",
+        "Both hypoxia and excess oxygen administration can result in harm to the infant. If prolonged oxygen use is required, titrate to maintain an SPO2 of 85'95%",
+        "While not ideal, a larger facemask than indicated for patient size may be used to provide BVM ventilation if an appropriately sized mask is not available. Avoid pressure over the eyes as this may result in bradycardia",
+        "Increase in heart rate is the most reliable indicator of effective resuscitative efforts"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Historical elements o Prenatal complications",
+        "o Delivery complications",
+        "o Date and time of birth",
+        "o Estimated gestational age",
+        "' Physical exam findings o Heart rate",
+        "o Respiratory rate",
+        "o Respiratory effort",
+        "o Appearance"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Contact medical direction for clinical deterioration or interventions outside standard scope"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

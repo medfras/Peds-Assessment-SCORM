@@ -1,0 +1,209 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 4-5 Pediatric Respiratory Distress (Revised 10/24/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_pediatric_respiratory_distress",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Pediatric",
+  "level_display": "Pediatric (< 14 years)",
+  "jurisdiction": "Michigan",
+  "condition": "Pediatric Respiratory Distress",
+  "version": "2025-10-24",
+  "protocol_reference": "Michigan Obstetrics and Pediatrics Protocol Section 4-5: Pediatric Respiratory Distress — MDHHS Approved 10/24/25, Reviewed 2025",
+  "sections": [
+    {
+      "title": "General Pediatric Respiratory Distress",
+      "reference": "Michigan Protocol 4-5: Pediatric Respiratory Distress — General",
+      "points": [
+        "Follow General Pre-hospital Care-Treatment Protocol",
+        "Pediatric patients (< 14 years) utilize MI-MEDIC cards for appropriate medication dosage — when unavailable, utilize pediatric dosing listed within protocol",
+        "Assess the patient's airway: if unable to ventilate after repositioning, refer to Foreign Body Airway Obstruction-Treatment Protocol and/or Airway Management-Procedure Protocol; if respiratory failure or arrest, refer to Pediatric Crashing Patient/Impending Arrest-Treatment Protocol; consider anaphylaxis — refer to Allergic Reaction/Anaphylaxis-Treatment Protocol",
+        "Allow the patient a position of comfort that also maintains an open airway",
+        "Titrate SpO2 to 94% — have a parent assist with oxygen via blow-by or mask support if needed",
+        "Airway should be managed by least invasive method possible",
+        "Suction secretions if needed",
+        "Consider CPAP if appropriate size available — follow CPAP-Procedure Protocol (Specialist skill)",
+        "Do not delay transport for interventions",
+        "Attempt vascular access only if necessary for patient treatment (Specialist skill)"
+      ]
+    },
+    {
+      "title": "Suspected Bronchospasm (Wheezing)",
+      "reference": "Michigan Protocol 4-5: Pediatric Bronchospasm",
+      "points": [
+        "Assist the patient in using their own albuterol inhaler if available, prescribed to the patient, and not expired",
+        "Administer albuterol 2.5 mg/3 mL NS nebulized (per MCA selection, may be EMT skill) per Medication Administration-Medication Protocol",
+        "Consider CPAP if appropriate size available — follow CPAP-Procedure Protocol (Specialist skill)",
+        "In cases of respiratory failure administer epinephrine auto-injector (per MCA selection — MFR): if child appears to weigh less than 10 kg (approximately 20 lbs.), contact Medical Control prior to administering epinephrine if possible; if child weighs 10–30 kg (approximately 20–60 lbs.), administer pediatric epinephrine auto-injector IM; if child weighs > 30 kg (approximately 60 lbs.), administer adult epinephrine auto-injector IM",
+        "In cases of respiratory failure administer epinephrine 1 mg/mL IM (per MCA selection, may be BLS or MFR skill): NOTE — BLS not carrying epinephrine auto-injector MUST participate in draw-up epinephrine; if child < 10 kg — contact Medical Control prior to epinephrine if possible; if child 10–30 kg — administer epinephrine (1 mg/1 mL) 0.15 mg (0.15 mL) IM; if child ≥ 30 kg — administer epinephrine (1 mg/1 mL) 0.3 mg (0.3 mL) IM",
+        "If available per MCA selection: administer prednisone 50 mg PO to children > 6 years of age; if prednisone not available, patient ≤ 6 years, or patient unable to take PO — administer methylprednisolone 2 mg/kg IV/IO/IM (Specialist skill)"
+      ]
+    },
+    {
+      "title": "Stridor / Suspected Croup",
+      "reference": "Michigan Protocol 4-5: Pediatric Croup",
+      "points": [
+        "Croup is most common in children 6 months to 6 years of age; commonly associated with recent upper airway infection or fever",
+        "If foreign body is suspected and unable to be removed: contact Medical Control prior to administration of nebulized racepinephrine/epinephrine — see Foreign Body Airway Obstruction-Treatment Protocol",
+        "Consider humidified oxygen",
+        "If patient presents with stridor at rest WITHOUT suspected airway obstruction: Paramedic/ALS may administer nebulized racepinephrine/epinephrine per MCA agent selection — Medical Control contact NOT required for stridor at rest without obstruction",
+        "Do not delay transport"
+      ]
+    },
+    {
+      "title": "Respiratory Failure or Arrest",
+      "reference": "Michigan Protocol 4-5: Pediatric Respiratory Failure",
+      "points": [
+        "Ventilate the patient using an appropriately sized BVM with supplemental oxygen — chest rise is the best indicator of successful ventilation",
+        "Ventilation rates: Infant: 30 breaths per minute; Child: 20 breaths per minute",
+        "Utilize capnography per End Tidal Carbon Dioxide Monitoring-Procedure Protocol to maintain ETCO2 35–45 mmHg (Specialist skill)",
+        "BVM is the preferred method of ventilation for patients under 8 years old — when unable to ventilate with BVM and basic airway adjuncts, consider advanced airway per Airway Management-Procedure Protocol (Specialist skill)",
+        "If opioid overdose is suspected: administer naloxone per MI-MEDIC cards; if MI-MEDIC unavailable, administer naloxone per Opioid Overdose Treatment and Prevention-Treatment Protocol",
+        "Monitor EKG and refer to Pediatric Crashing Patient/Impending Arrest-Treatment Protocol or appropriate cardiac protocol as required (Specialist skill)"
+      ]
+    }
+  ],
+  "mca_selections_required": [
+    {
+      "item": "Nebulized Albuterol — EMT",
+      "description": "MCA may authorize EMT to administer nebulized albuterol 2.5 mg/3 mL NS for pediatric patients",
+      "options": [
+        "EMT authorized",
+        "Specialist only"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Epinephrine Auto-Injector IM — MFR",
+      "description": "MCA may authorize MFR to administer epinephrine auto-injector IM for pediatric patients with respiratory failure. MCA responsible for maintaining roster of participating agencies submitted to MDHHS.",
+      "options": [
+        "MFR authorized",
+        "Not authorized for MFR"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Draw-Up Epinephrine — MFR/BLS",
+      "description": "MCA may authorize MFR and/or BLS to administer drawn-up epinephrine 1 mg/1 mL IM for pediatric respiratory failure. Personnel must complete MCA-approved training. MCA responsible for maintaining roster submitted to MDHHS.",
+      "options": [
+        "MFR authorized",
+        "BLS authorized",
+        "Both MFR and BLS authorized",
+        "Not authorized"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Prednisone 50 mg PO (Children > 6 years)",
+      "description": "MCA may include prednisone 50 mg PO as an additional medication option for pediatric patients > 6 years with bronchospasm",
+      "options": [
+        "Included",
+        "Not included"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Nebulized Racepinephrine/Epinephrine for Croup",
+      "description": "MCA must select which Paramedic/ALS agent is used for croup (stridor at rest without obstruction) — this selection does not authorize BLS/EMT administration. Medical Control contact NOT required when the selected Paramedic/ALS agent is used for stridor at rest without suspected obstruction",
+      "options": [
+        "Racepinephrine 2.25% inhalation solution via nebulizer — 0.5 mL in nebulizer diluted with 3 mL NS",
+        "Epinephrine 5 mg (1 mg/1 mL) nebulized"
+      ],
+      "selected": null
+    }
+  ],
+  "key_drugs": [
+    {
+      "name": "Albuterol 2.5 mg/3 mL NS Nebulized (Pediatric)",
+      "dose": "2.5 mg/3 mL NS nebulized — may repeat",
+      "route": "Inhaled (nebulizer)",
+      "indication": "Suspected bronchospasm/wheezing",
+      "contraindications": "Known hypersensitivity",
+      "side_effects": "Tachycardia, tremor",
+      "scope": "Per MCA selection — EMT option available",
+      "notes": "Assist with patient's own MDI first if available and prescribed."
+    },
+    {
+      "name": "Epinephrine Auto-Injector IM (Pediatric)",
+      "dose": "< 10 kg: contact Medical Control; 10–30 kg: pediatric auto-injector IM; > 30 kg: adult auto-injector IM",
+      "route": "IM (auto-injector)",
+      "indication": "Respiratory failure with inability to tolerate nebulizer therapy",
+      "contraindications": "< 10 kg — contact Medical Control first if possible",
+      "side_effects": "Tachycardia, hypertension, tremor",
+      "scope": "Per MCA selection — MFR option available",
+      "notes": "BLS not carrying auto-injector MUST participate in draw-up epinephrine procedure."
+    },
+    {
+      "name": "Epinephrine 1 mg/mL IM (Draw-Up, Pediatric)",
+      "dose": "< 10 kg: contact Medical Control; 10–30 kg: 0.15 mg (0.15 mL) IM; ≥ 30 kg: 0.3 mg (0.3 mL) IM",
+      "route": "IM",
+      "indication": "Respiratory failure unable to tolerate nebulizer therapy",
+      "contraindications": "< 10 kg — contact Medical Control prior if possible",
+      "side_effects": "Tachycardia, hypertension",
+      "scope": "Per MCA selection — BLS or MFR option with MCA-approved training",
+      "notes": "Requires MCA-approved draw-up training. MCA maintains roster submitted to MDHHS."
+    },
+    {
+      "name": "Methylprednisolone IV/IO/IM (Pediatric)",
+      "dose": "2 mg/kg IV/IO/IM",
+      "route": "IV, IO, or IM",
+      "indication": "Bronchospasm when prednisone unavailable, patient ≤ 6 years, or unable to take PO",
+      "contraindications": "Known hypersensitivity",
+      "side_effects": "Hyperglycemia, transient hypertension",
+      "scope": "Specialist skill",
+      "notes": "Use MI-MEDIC for weight-based dosing. Parenteral corticosteroid when oral route not feasible."
+    },
+    {
+      "name": "Racepinephrine 2.25% Nebulized (Croup)",
+      "dose": "0.5 mL racepinephrine 2.25% inhalation solution in nebulizer, diluted with 3 mL NS",
+      "route": "Inhaled (nebulizer)",
+      "indication": "Stridor at rest without suspected airway obstruction (croup) — Medical Control contact NOT required",
+      "contraindications": "Suspected foreign body — contact Medical Control before use",
+      "side_effects": "Tachycardia, rebound stridor",
+      "scope": "Paramedic/ALS skill — MCA selects agent; Medical Control contact not required for stridor at rest",
+      "notes": "MCA must select between racepinephrine 2.25% and epinephrine 5 mg nebulized. This MCA selection is not a BLS/EMT scope expansion."
+    },
+    {
+      "name": "Epinephrine 5 mg Nebulized (Croup)",
+      "dose": "5 mg (5 mL of 1 mg/1 mL solution) nebulized",
+      "route": "Inhaled (nebulizer)",
+      "indication": "Stridor at rest without suspected airway obstruction (croup) — Medical Control contact NOT required",
+      "contraindications": "Suspected foreign body — contact Medical Control before use",
+      "side_effects": "Tachycardia, rebound stridor",
+      "scope": "Paramedic/ALS skill — MCA selects agent; Medical Control contact not required for stridor at rest",
+      "notes": "MCA must select between racepinephrine 2.25% and epinephrine 5 mg nebulized. This MCA selection is not a BLS/EMT scope expansion."
+    }
+  ],
+  "deterioration_flags": [
+    "SpO2 < 90% — BVM ventilation; CPAP if appropriate size and respirations > 10; advanced airway if BVM inadequate (Specialist skill)",
+    "Respiratory failure with inability to tolerate nebulizer — epinephrine auto-injector or draw-up IM (per MCA selection and weight)",
+    "Stridor at rest without obstruction — nebulized racepinephrine or epinephrine by Paramedic/ALS per MCA agent selection; do not delay transport",
+    "Suspected foreign body with stridor — DO NOT give nebulized racepinephrine/epinephrine without Medical Control contact; refer to FBAO protocol"
+  ],
+  "scope_notes": [
+    "Position of comfort, own MDI assistance, blow-by oxygen, SpO2 titration to 94%: all levels",
+    "Albuterol nebulized: per MCA selection — EMT option available",
+    "CPAP: Specialist skill in base Michigan protocol — EMT scope at MCAs with cpap_bls expansion (if appropriate size available)",
+    "Epinephrine auto-injector IM: per MCA selection — MFR option available",
+    "Draw-up epinephrine IM: per MCA selection — MFR/BLS with MCA-approved training",
+    "Methylprednisolone IV/IM: Specialist skill",
+    "Prednisone 50 mg PO (children > 6 yr): per MCA selection",
+    "Racepinephrine/epinephrine nebulized (croup): Paramedic/ALS skill; MCA selects agent — no Medical Control required for stridor at rest; not a BLS/EMT scope expansion",
+    "BVM ventilation (preferred under 8 years old), advanced airway: Specialist skill"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "airway_management",
+      "bronchospasm",
+      "croup",
+      "oxygen_therapy",
+      "pediatric_patient",
+      "pediatric_respiratory_distress",
+      "respiratory_distress",
+      "upper_airway_obstruction",
+      "ventilation_support"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

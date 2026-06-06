@@ -1,0 +1,83 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-21 Violent, Chemical, and Hazardous Scene (Revised 12/27/2022, MDHHS Reviewed 2022). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_violent_chemical_hazardous_scene",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Violent, Chemical, and Hazardous Scene",
+  "version": "2022-12-27",
+  "protocol_reference": "Michigan System Protocol Section 8-21: Violent, Chemical, and Hazardous Scene — MDHHS Approved 12/27/2022",
+
+  "purpose": "Govern EMS provider safety protocols for violent, chemical, and hazardous scenes. EMS provider safety is the first priority — providers do not enter unsafe scenes. EMS providers are not trained or equipped for law enforcement or hazmat entry operations. Stage at a safe distance and wait for scene clearance before entering.",
+
+  "sections": [
+    {
+      "title": "Scene Safety — General Principles",
+      "reference": "Michigan Protocol 8-21: Scene Safety — General",
+      "points": [
+        "Scene safety assessment begins with dispatch information and continues throughout the call",
+        "EMS providers are NOT required to enter scenes that pose an immediate threat to their safety",
+        "Stage at a safe distance and request law enforcement or hazmat to clear/secure the scene before EMS entry",
+        "Scene safety is a dynamic assessment — a scene that appears safe may become unsafe; be prepared to retreat",
+        "If a scene becomes unsafe after EMS arrival: retreat immediately; do not attempt to continue patient care in an unsafe environment"
+      ]
+    },
+    {
+      "title": "Violent Scene",
+      "reference": "Michigan Protocol 8-21: Violent Scene",
+      "points": [
+        "DO NOT enter: active shooting, active fight/assault, uncontrolled violent suspect on scene",
+        "Stage at safe distance (minimum one block or out of visual line); await law enforcement scene clearance",
+        "Active Threat / Warm Zone operations: only if specifically trained and authorized for tactical EMS (TEMS); standard EMS is NOT trained or equipped for warm zone operations",
+        "After scene is cleared by law enforcement: enter and provide care",
+        "Restrained patients: law enforcement must accompany the patient per Section 7-17 (Patient Restraint)",
+        "Crime scene: preserve evidence per Section 7-3 (Crime Scene Management)"
+      ]
+    },
+    {
+      "title": "Hazardous Materials Scene",
+      "reference": "Michigan Protocol 8-21: Hazmat Scene",
+      "points": [
+        "DO NOT enter the hazmat hot zone or warm zone without appropriate PPE and hazmat training",
+        "Stage in the cold zone — uphill, upwind, upstream from the hazmat incident",
+        "Hazmat-trained teams must perform patient decontamination before EMS patient care",
+        "EMS provides medical support in the cold zone after decontamination",
+        "Contaminated patients entering an ambulance can incapacitate the crew — ensure decontamination is complete",
+        "Contact poison control or CHEMTREC for hazardous substance exposure guidance: 1-800-424-9300"
+      ]
+    },
+    {
+      "title": "Chemical/Nerve Agent Exposure",
+      "reference": "Michigan Protocol 8-21: Chemical/Nerve Agent",
+      "points": [
+        "SLUDGE/SLUDGEM symptoms (Salivation, Lacrimation, Urination, Defecation, GI distress, Emesis, Miosis): suspect organophosphate or nerve agent exposure",
+        "Follow nerve agent/organophosphate protocols if available and trained",
+        "Decontaminate patient thoroughly before providing care",
+        "Self-protection: do NOT become a secondary victim — stay out of contamination zone until hazmat clears scene"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Scene becomes unsafe after EMS arrival — retreat immediately; do not delay for patient care; request law enforcement",
+    "SLUDGE/SLUDGEM symptoms in multiple patients — suspect nerve agent/organophosphate mass casualty; stage upwind; notify hazmat and public health"
+  ],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "Scene safety FIRST — do not enter unsafe scene",
+    "Violent scene: stage at safe distance; await law enforcement clearance",
+    "Active threat/warm zone: only TEMS-trained providers; standard EMS does NOT enter warm zone",
+    "Hazmat: cold zone only after decontamination; uphill, upwind, upstream",
+    "Contaminated patients must be decontaminated before entering ambulance",
+    "SLUDGE/SLUDGEM: nerve agent/organophosphate; decontaminate; poison control 1-800-424-9300",
+    "Self-protection: do NOT become a secondary victim"
+  ]
+}

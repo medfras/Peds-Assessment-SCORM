@@ -1,0 +1,102 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-34R Midazolam (MDHHS Reviewed 2025). Base Michigan template.",
+  "id": "mi_base_medication_ref_midazolam",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Midazolam",
+  "version": "2025-03-31",
+  "protocol_reference": "Michigan Medication Protocol Section 9-34R: Midazolam — MDHHS Reviewed 2025",
+
+  "pharmacological_category": "Benzodiazepine — Anxiolytic / Anticonvulsant / Sedative",
+
+  "routes": ["IV", "IO", "IM", "IN (intranasal)"],
+
+  "indications": [
+    "Seizure — active seizure (status epilepticus or prolonged seizure)",
+    "Hyperactive delirium (behavioral emergency requiring sedation for patient/provider safety)",
+    "Chemical restraint for patient safety",
+    "Procedural sedation"
+  ],
+
+  "contraindications": [
+    "Shock or hemodynamic instability (relative — contact online MC; titrate carefully)",
+    "Known hypersensitivity to midazolam or benzodiazepines",
+    "Respiratory depression or apnea"
+  ],
+
+  "precautions": [
+    "Monitor respiratory rate, SpO2, and mental status continuously",
+    "Have BVM and airway management immediately available",
+    "Combining with opioids significantly increases respiratory depression risk — reduce doses",
+    "IM route for seizure: give without IV when IV not immediately available — preferred approach for active seizure",
+    "Elderly or debilitated patients: use lower end of dosing range and titrate carefully"
+  ],
+
+  "expected_effects": [
+    "Seizure cessation",
+    "Sedation and anxiolysis",
+    "Amnesia for procedure",
+    "Muscle relaxation"
+  ],
+
+  "side_effects": [
+    "Respiratory depression / apnea",
+    "Hypotension",
+    "Paradoxical agitation (rare — more common in pediatric and elderly)",
+    "Sedation prolonged with repeat dosing"
+  ],
+
+  "notes": [
+    "Seizure adult: 10 mg IM (if no IV) OR 5 mg IV/IO; if seizure persists: repeat 5 mg IV/IO/IM/IN",
+    "Hyperactive delirium adult: 10 mg IM or IN",
+    "Chemical restraint adult: 0.1 mg/kg IM or IV; maximum 10 mg",
+    "Procedural sedation: 1-5 mg IV; maximum 0.1 mg/kg",
+    "Pediatric seizure: 0.1 mg/kg IM; maximum 10 mg",
+    "Contraindicated in shock"
+  ],
+
+  "dosing": [
+    {
+      "population": "Adult (>14 yr) — seizure",
+      "route": "IM (if no IV)",
+      "dose": "10 mg IM",
+      "notes": "Preferred when IV not immediately available; if seizure persists after 5 min: repeat 5 mg IV/IO/IM/IN"
+    },
+    {
+      "population": "Adult (>14 yr) — seizure with IV",
+      "route": "IV/IO",
+      "dose": "5 mg IV/IO; may repeat 5 mg if seizure persists",
+      "notes": "IV route when access available; repeat once if seizure continues"
+    },
+    {
+      "population": "Adult (>14 yr) — hyperactive delirium",
+      "route": "IM or IN",
+      "dose": "10 mg IM or 10 mg IN via MAD",
+      "notes": "For severe behavioral emergency; monitor airway after administration"
+    },
+    {
+      "population": "Adult (>14 yr) — chemical restraint",
+      "route": "IM or IV",
+      "dose": "0.1 mg/kg; maximum 10 mg",
+      "notes": "Titrate to effect; monitor closely"
+    },
+    {
+      "population": "Adult (>14 yr) — procedural sedation",
+      "route": "IV",
+      "dose": "1-5 mg IV; maximum 0.1 mg/kg",
+      "notes": "Titrate slowly; combine with fentanyl for painful procedures when appropriate"
+    },
+    {
+      "population": "Pediatric (≤14 yr) — seizure",
+      "route": "IM",
+      "dose": "0.1 mg/kg IM; maximum 10 mg",
+      "notes": "Preferred route when IV not available; for pediatric procedural sedation see applicable protocol"
+    }
+  ],
+
+  "used_in_protocols": ["Seizure", "Behavioral Emergency / Hyperactive Delirium", "Chemical Restraint", "Procedural Sedation"]
+}

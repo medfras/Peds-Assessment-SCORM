@@ -1,0 +1,98 @@
+{
+  "_comment": "Canonical schema for EMS call-type rubric files. Rubrics at this layer are portable and environment-agnostic: source role resolution (training vs. qaqi) happens at deployment context, not in the rubric file. Validate with tests/test_call_type_rubric_schema.py.",
+  "_schema_version": "1.1",
+
+  "top_level_required": ["_schema", "id", "version", "call_type", "domain", "protocol_refs", "source_role_map", "checklist_items"],
+
+  "top_level_fields": {
+    "_schema":          { "type": "string", "const": "ems_call_type_rubric_v1" },
+    "id":               { "type": "string", "pattern": "^[a-z][a-z0-9_]*$", "note": "Stable ID — never rename once in use." },
+    "version":          { "type": "string", "note": "ISO date string YYYY-MM-DD or semver." },
+    "call_type":        { "type": "string", "note": "Canonical call type slug, e.g. respiratory_distress." },
+    "domain":           { "type": "string", "enum": ["medical", "trauma", "pediatric", "environmental", "obstetric", "cardiac_arrest"] },
+    "overlays_supported": { "type": "array", "items": { "enum": ["state", "agency", "scenario"] } },
+    "protocol_refs":    { "type": "array", "minItems": 1, "items": { "$ref": "#/defs/ProtocolRef" } },
+    "source_role_map":  { "type": "object", "note": "Maps abstract source roles to concrete source strings per deployment context. See defs.SourceRoleMap.", "$ref": "#/defs/SourceRoleMap" },
+    "checklist_items":  { "type": "array", "minItems": 1, "items": { "$ref": "#/defs/ChecklistItem" } }
+  },
+
+  "defs": {
+
+    "ProtocolRef": {
+      "required": ["id", "title"],
+      "fields": {
+        "id":      { "type": "string", "note": "Unique within this rubric file. Referenced by checklist_item.protocol_refs." },
+        "title":   { "type": "string" },
+        "version": { "type": "string" },
+        "url":     { "type": ["string", "null"] }
+      }
+    },
+
+    "SourceRoleMap": {
+      "note": "Each key is an abstract source role (e.g. ems_measured_vital). Each value maps deployment context names to lists of concrete FindingSource strings. Canonical role taxonomy: 'ems_measured_vital' — EMS on-scene measurement (glucometer, pulse ox, BP cuff); 'ems_performed_exam' — exam action performed by EMS provider (auscultation, palpation, structured exam); do NOT include ai_roleplay_tag (prevents caregiver/patient roleplay responses from satisfying EMS-performed exam items); NOTE: 'authored_vitals' findings carry finding_type 'vital' not 'exam', so ems_performed_exam has no effective Tier 1 training path until a dedicated 'student_stated_exam' source is implemented — include tier2_patterns on all ems_performed_exam items; 'challenge_performed_exam' — structured challenge-gated exam result such as lung_sound_challenge in training and ePCR exam evidence in QA/QI; 'challenge_calculated_gcs' — structured GCS calculator/modal result such as gcs_modal in training and ePCR neuro/GCS component evidence in QA/QI; 'challenge_measured_bgl' — structured EMS glucometer/fingerstick result such as glucometer_check in training and ePCR/monitor BGL evidence in QA/QI; challenge roles are Tier 1 only and require a concrete non-NULL source match; 'caregiver_reported' — information stated by caregiver/bystander; 'patient_reported' — information stated by patient; 'history_obtained' — aggregate for either caregiver or patient source (use specific role when the distinction matters clinically); 'ems_administered_intervention' — intervention administered by EMS (Tier 1 evidence comes from the intervention table for type:intervention requirements; this role is metadata for QA/QI cross-referencing); 'scene_entry_data' — structured scene entry popup data.",
+      "additionalProperties": {
+        "required": ["training"],
+        "fields": {
+          "training": { "type": "array", "items": { "type": "string" }, "note": "Concrete sources valid in training simulator context." },
+          "qaqi":     { "type": "array", "items": { "type": "string" }, "note": "Concrete sources valid in QA/QI real-call context." }
+        }
+      }
+    },
+
+    "ChecklistItem": {
+      "required": ["id", "description", "category", "subtype", "point_value", "required", "applicable_levels", "evidence_requirements", "done_feedback", "missed_feedback"],
+      "fields": {
+        "id":                  { "type": "string", "pattern": "^[a-z][a-z0-9_.]*$", "note": "Stable. Format: {call_type}.{item_slug}" },
+        "description":         { "type": "string" },
+        "category":            { "type": "string", "enum": ["clinical_performance", "protocols_treatment", "scope_adherence", "documentation", "professionalism"] },
+        "subtype":             { "type": "string", "enum": ["scene_entry", "assessment", "screen", "intervention", "reassessment", "transport", "documentation_handoff", "documentation_narrative", "professionalism"] },
+        "point_value":         { "type": "integer", "minimum": 0 },
+        "required":            { "type": "string", "enum": ["required", "optional", "bonus"] },
+        "applicable_levels":   { "type": "array", "items": { "enum": ["EMR", "EMT", "AEMT", "Paramedic"] }, "minItems": 1, "note": "Canonical level keys. 'EMR' is the correct canonical form; do not use 'MFR', 'First Responder', or other local aliases. Map non-standard agency level names to these four before applying applicability filtering." },
+        "applicable_if":       { "type": "object", "note": "Optional scenario/adapted-context applicability gate. Use this for agency-derived flags such as als_codispatched rather than scenario overlays." },
+        "protocol_refs":       { "type": "array", "items": { "type": "string" }, "note": "Must reference IDs defined in top-level protocol_refs." },
+        "requirement_logic":   { "type": "string", "enum": ["any", "all"], "default": "any", "note": "'any' (default, OR semantics): first satisfied evidence_requirement satisfies the item. 'all' (AND semantics): every evidence_requirement must be independently satisfied. Use 'all' when the item description connects distinct components with 'and' (e.g., 'respiratory rate AND work of breathing'). Each requirement is resolved via the normal tier cascade; partial satisfaction under 'all' semantics does not credit the item." },
+        "evidence_requirements": { "type": "array", "minItems": 1, "items": { "$ref": "#/defs/EvidenceRequirement" }, "note": "Satisfaction semantics controlled by requirement_logic (default: 'any'). With 'any': first satisfied requirement satisfies the item. With 'all': every requirement must be independently satisfied." },
+        "tier2_patterns":      { "type": "array", "items": { "type": "string" }, "note": "Regex patterns for transcript fallback (Tier 2). Optional but recommended." },
+        "timing_constraints":  { "type": ["array", "null"], "items": { "$ref": "#/defs/TimingConstraint" } },
+        "contraindications":   { "type": "array", "items": { "type": "string" }, "note": "Free-text patient conditions under which this item is not applicable." },
+        "done_feedback":       { "type": "string", "note": "Shown when item is satisfied. Clinical rationale for why this matters." },
+        "missed_feedback":     { "type": "string", "note": "Shown when item is missed. Specific, actionable." },
+        "common_errors":       { "type": "array", "items": { "type": "string" } },
+        "unsafe_if_missed":    { "type": "boolean" }
+      }
+    },
+
+    "EvidenceRequirement": {
+      "required": ["type"],
+      "note": "Describes one structural path by which this checklist item can be satisfied. Multiple requirements use OR semantics.",
+      "fields": {
+        "type": {
+          "type": "string",
+          "enum": ["finding", "post_intervention_finding", "intervention", "session_event", "scene_entry", "absence_check"],
+          "note": "Maps directly to TierOneMatchSpec.source in ChecklistItem."
+        },
+        "finding_type":             { "type": "string",  "enum": ["vital", "exam", "history"], "when": "type in [finding, post_intervention_finding]" },
+        "key_pattern":              { "type": "string",  "note": "Regex matched against SessionFinding.key or ePCR field name.", "when": "type in [finding, post_intervention_finding]" },
+        "value_pattern":            { "type": "string",  "note": "Optional regex matched against finding value.", "when": "type in [finding, post_intervention_finding]" },
+        "eligible_source_roles":    { "type": "array",   "items": { "type": "string" }, "note": "Abstract roles from source_role_map. If absent, all sources are eligible.", "when": "type in [finding, post_intervention_finding]" },
+        "intervention_key":         { "type": "string",  "when": "type == intervention" },
+        "intervention_keys":        { "type": "array",   "items": { "type": "string" }, "when": "type == intervention, use when multiple keys are acceptable" },
+        "event_type":               { "type": "string",  "when": "type == session_event" },
+        "event_key_pattern":        { "type": "string",  "when": "type == session_event" },
+        "scene_entry_path":         { "type": "string",  "note": "Dot-separated path into scene_entry JSONB.", "when": "type == scene_entry" },
+        "absence_intervention_key": { "type": "string",  "note": "Item is satisfied when this intervention was NOT applied.", "when": "type == absence_check" }
+      }
+    },
+
+    "TimingConstraint": {
+      "required": ["type", "violation_consequence"],
+      "fields": {
+        "type":                { "type": "string", "enum": ["within_minutes", "before_item", "after_item"] },
+        "value":               { "type": "integer", "note": "Minutes; required when type == within_minutes." },
+        "reference_item_id":   { "type": "string",  "note": "Required when type in [before_item, after_item]." },
+        "violation_consequence": { "type": "string", "enum": ["partial", "deduction_override", "informational"] }
+      }
+    }
+  }
+}

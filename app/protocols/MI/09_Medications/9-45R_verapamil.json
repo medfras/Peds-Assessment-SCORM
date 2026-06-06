@@ -1,0 +1,72 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-45R Verapamil (Revised 8/11/2023, MDHHS Reviewed 2023). Base Michigan template.",
+  "id": "mi_base_medication_ref_verapamil",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Verapamil",
+  "version": "2023-08-11",
+  "protocol_reference": "Michigan Medication Protocol Section 9-45R: Verapamil — MDHHS Approved 8/11/2023, Reviewed 2023",
+
+  "pharmacological_category": "Antidysrhythmic — Calcium Channel Blocker (Non-Dihydropyridine)",
+
+  "routes": ["IV"],
+
+  "indications": [
+    "Narrow complex tachycardia — regular (SVT/AVNRT)",
+    "Narrow complex tachycardia — irregular (atrial fibrillation or atrial flutter with rapid ventricular response)"
+  ],
+
+  "contraindications": [
+    "Age <1 year (CONTRAINDICATED — may cause fatal cardiovascular collapse in infants)",
+    "Hypotension (SBP <90 mmHg)",
+    "Wide complex tachycardia (do NOT use — may cause decompensation in V-Tach)",
+    "WPW (Wolff-Parkinson-White) with pre-excitation — may accelerate conduction through accessory pathway",
+    "Sinus node dysfunction (sick sinus syndrome) without pacemaker",
+    "High-degree AV block without pacemaker",
+    "Concurrent IV beta-blocker use — high risk of asystole",
+    "Known hypersensitivity to verapamil"
+  ],
+
+  "precautions": [
+    "ABSOLUTE CONTRAINDICATION: age <1 year — fatal cardiovascular collapse reported; do NOT use in infants",
+    "Monitor BP and ECG continuously during and after administration",
+    "Do NOT use concurrently with IV beta-blockers — risk of profound bradycardia and asystole",
+    "Administer slowly IV to minimize hypotension"
+  ],
+
+  "expected_effects": [
+    "AV node slowing and refractoriness — rate control in atrial fibrillation/flutter",
+    "SVT conversion to sinus rhythm",
+    "Reduced ventricular rate"
+  ],
+
+  "side_effects": [
+    "Hypotension",
+    "Bradycardia",
+    "AV block",
+    "Asystole (especially with beta-blocker co-administration)",
+    "Flushing, dizziness"
+  ],
+
+  "notes": [
+    "Adult standard dose: 5 mg IV; administer slowly over 2-3 minutes",
+    "Preferred over adenosine for recurrent SVT or rate control in atrial fibrillation",
+    "CONTRAINDICATED in patients <1 year — use adenosine for pediatric SVT instead",
+    "Diltiazem (9-21R) is an alternative calcium channel blocker with similar indications and slightly different dosing profile"
+  ],
+
+  "dosing": [
+    {
+      "population": "Adult (>14 yr) — narrow complex tachycardia (regular or irregular)",
+      "route": "IV",
+      "dose": "5 mg IV slowly over 2-3 minutes",
+      "notes": "Monitor BP and ECG during administration; stop if hypotension; CONTRAINDICATED <1 year"
+    }
+  ],
+
+  "used_in_protocols": ["Tachycardia — Narrow Complex Regular (SVT)", "Tachycardia — Narrow Complex Irregular (A-Fib/A-Flutter)"]
+}

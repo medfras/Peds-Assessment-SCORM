@@ -1,0 +1,116 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 10-9 Suspected Pandemic (MDHHS Reviewed 2022-12-27). Base Michigan template.",
+  "id": "mi_base_special_ops_suspected_pandemic",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Special Operations",
+  "level_display": "Special Operations Protocol",
+  "jurisdiction": "Michigan",
+  "condition": "Suspected Pandemic — Acute Febrile Respiratory Illness (AFRI)",
+  "version": "2022-12-27",
+  "protocol_reference": "Michigan Special Operations Protocol Section 10-9: Suspected Pandemic — MDHHS Reviewed 2022",
+
+  "purpose": "Establish EMS infection control, patient management, and provider health guidelines for responding to patients with Acute Febrile Respiratory Illness (AFRI) during a suspected or declared pandemic.",
+
+  "sections": [
+    {
+      "title": "AFRI Definition",
+      "content": [
+        "AFRI — Acute Febrile Respiratory Illness: acute onset illness characterized by:",
+        "  — Fever (measured or subjective)",
+        "  — One or more respiratory symptoms: cough, sore throat, runny nose, shortness of breath",
+        "  — Onset within previous 10 days",
+        "AFRI is the surveillance definition used to identify potential pandemic influenza and other respiratory pathogens requiring enhanced EMS precautions",
+        "During declared or suspected pandemic: all patients meeting AFRI criteria receive enhanced precaution response"
+      ]
+    },
+    {
+      "title": "MCA and Agency Recommendations — Baseline Pandemic Preparedness",
+      "content": [
+        "MCAs and EMS agencies should pre-position and maintain supplies of:",
+        "  — N-95 respirators (fit-tested) for EMS providers",
+        "  — Isolation gowns / fluid-resistant gowns",
+        "  — Gloves (non-latex, examination grade)",
+        "  — Hand sanitizer / soap for all vehicles",
+        "  — Surgical masks for patient placement",
+        "STAFF HEALTH: EMS providers who are ill (fever, respiratory symptoms) should NOT report to work — sick provider stay-home policy",
+        "Agencies should establish clear sick leave and return-to-work criteria in coordination with occupational health"
+      ]
+    },
+    {
+      "title": "EMS Provider PPE — AFRI Patient Contact",
+      "content": [
+        "Minimum PPE for AFRI patient contact:",
+        "  — N-95 respirator (must be fit-tested — surgical mask acceptable as MINIMUM if N-95 unavailable)",
+        "  — Eye protection (goggles or face shield) for procedures generating respiratory droplets",
+        "  — Examination gloves",
+        "  — Isolation gown for close patient contact",
+        "Don PPE BEFORE patient contact — do not don after entering patient environment",
+        "Doff PPE carefully after patient delivery — follow gloves-off sequence; hand hygiene immediately after doff",
+        "N-95 must be fit-tested per OSHA 1910.134 standards — annual fit testing required"
+      ]
+    },
+    {
+      "title": "Patient Management — AFRI Suspected",
+      "content": [
+        "1. Don appropriate PPE before patient contact (N-95, gown, gloves, eye protection as needed)",
+        "2. Place surgical mask on PATIENT as early as possible — source control",
+        "3. Notify receiving hospital and medical control of AFRI/pandemic patient before arrival",
+        "4. Provide standard supportive care per applicable protocols (respiratory, cardiac, etc.)",
+        "5. Minimize number of personnel in patient care area — only essential providers in patient compartment",
+        "6. Ventilate ambulance: open partition window (if present), run exhaust fan, maximize fresh air circulation",
+        "7. Post-transport: perform enhanced cleaning and disinfection of ambulance per agency infection control protocols",
+        "8. EMS providers with significant AFRI patient exposure: follow post-exposure monitoring protocols below"
+      ]
+    },
+    {
+      "title": "Ambulance Ventilation and Engineering Controls",
+      "content": [
+        "Patient compartment: maximize air exchange — open vent windows, rear exhaust fan if equipped",
+        "Driver/patient compartment partition: keep closed (if present) to reduce droplet transmission to driver",
+        "HEPA filtration: use HEPA filter exhaust systems if vehicle-equipped",
+        "Post-transport: leave rear doors open and vehicle ventilating for minimum 15-30 minutes before cleaning",
+        "High-touch surfaces: wipe down with EPA-registered disinfectant before and after each AFRI transport"
+      ]
+    },
+    {
+      "title": "Post-Exposure Guidelines",
+      "content": [
+        "EMS provider with unprotected exposure (no N-95, patient coughed/sneezed in face, splash to mucous membranes):",
+        "  — Report exposure to supervisor immediately",
+        "  — File exposure report per agency protocol",
+        "  — Contact occupational health or agency infection control officer",
+        "  — Self-monitor for AFRI symptoms for 10 days post-exposure",
+        "  — If fever or respiratory symptoms develop: do NOT work; contact supervisor and occupational health",
+        "Antiviral prophylaxis (e.g., oseltamivir): per occupational health guidance — NOT a prehospital EMS decision",
+        "Return to work criteria: per MCA/agency pandemic policy and occupational health guidance"
+      ]
+    },
+    {
+      "title": "Special Pathogen — SPRN Escalation",
+      "content": [
+        "If AFRI patient is suspected of being a HIGH-CONSEQUENCE infectious disease (Ebola, Marburg, SARS, novel highly pathogenic influenza):",
+        "  — Standard AFRI precautions are INSUFFICIENT — escalate to SPRN protocols",
+        "  — Contact online medical control and MDHHS immediately",
+        "  — Refer to Protocols 10-10 through 10-18 (SPRN series)",
+        "Indicators for SPRN escalation:",
+        "  — Recent travel to MDHHS-designated high-risk country with current outbreak",
+        "  — Known contact with confirmed high-consequence infectious disease case",
+        "  — Unexplained hemorrhagic symptoms with fever",
+        "  — MDHHS or CDC outbreak advisory for specific pathogen"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "AFRI patient with hemorrhagic symptoms (bleeding from multiple sites, unexplained bruising) — escalate to SPRN protocols 10-10 through 10-18; contact MDHHS",
+    "EMS provider develops acute fever/respiratory symptoms within 10 days of AFRI patient exposure — stay home; contact supervisor; seek occupational health evaluation"
+  ],
+
+  "scope_notes": "This protocol applies to AFRI (Acute Febrile Respiratory Illness) during suspected or declared pandemic. For HIGH-CONSEQUENCE pathogens (Ebola-class), escalate to SPRN protocols 10-10 through 10-18. N-95 respirator use requires annual OSHA fit testing. Sick EMS providers should NOT report to work — this is a primary pandemic containment measure."
+}

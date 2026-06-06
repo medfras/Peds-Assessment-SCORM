@@ -1,0 +1,824 @@
+{
+  "_schema": "pfd_scenario_v1",
+  "id": "peds_trauma_08_nat",
+  "title": "Suspected Non-Accidental Trauma — 6-Year-Old Female",
+  "display_title": "Pediatric Suspected Abuse",
+  "subtitle": "6-year-old female, inconsistent injury history with bruise pattern in TEN-4 FACESp distribution",
+  "category": "pediatric_trauma",
+  "call_type": "nremt_trauma",
+  "category_display": "Pediatric Trauma Assessment",
+  "turnover_target": "als",
+  "version": "1.0",
+  "rubric_template": "ems_standard_v1",
+  "base_patient_care_rubric": "nremt_trauma_v1",
+  "difficulty": "intermediate",
+  "scenario_number": 8,
+  "prerequisites": [],
+  "protocol": "MI/02_Trauma_Environmental/02-9_child_abuse_mandatory_reporting",
+  "jurisdiction": "mi_base",
+  "clinical_context": {
+    "jurisdiction": "MI",
+    "concepts": [
+      "pediatric_patient",
+      "pediatric_trauma",
+      "non_accidental_trauma",
+      "mandatory_reporting",
+      "ten_4_bruising_pattern",
+      "objective_documentation",
+      "scene_safety",
+      "behavioral_assessment"
+    ],
+    "protocol_focus": [
+      "child_abuse_recognition",
+      "mandatory_reporting",
+      "objective_documentation",
+      "patient_behavior_assessment",
+      "inconsistent_history"
+    ]
+  },
+  "agency_context": "",
+  "spinal_injury_possible": false,
+  "non_transport_agency": false,
+  "multiple_patients_possible": false,
+  "diagnostics_indicated": false,
+  "opqrst_radiation_relevant": false,
+  "readiness_criteria": {
+    "min_minutes": 3,
+    "checks": [
+      {
+        "id": "messages",
+        "label": "5 messages sent",
+        "type": "message_count",
+        "min": 5
+      },
+      {
+        "id": "vitals",
+        "label": "Vitals assessed",
+        "type": "vitals_logged"
+      },
+      {
+        "id": "exam",
+        "label": "Exam/history obtained",
+        "type": "exam_logged"
+      },
+      {
+        "id": "treatment",
+        "label": "Treatment applied",
+        "type": "treatment_logged"
+      }
+    ]
+  },
+  "scene_entry_scoring": {
+    "ppe": {
+      "required": [
+        "gloves"
+      ],
+      "recommended": [
+        "eye_protection"
+      ],
+      "missing_required_penalty": 3,
+      "missing_recommended_penalty": 1,
+      "max_score": 10
+    },
+    "pat": {
+      "expected_impression": "not_sick",
+      "incorrect_impression_deduction": 2
+    }
+  },
+  "chat_placeholder": "Talk to Emma, Amber (caregiver), or your partner Alex...",
+  "chat_address_hint": "Address by name: Emma · Amber (caregiver) · Alex (partner/vitals)",
+  "debrief_lexi_hints": [
+    {
+      "label": "Next step?",
+      "msg": "What should I do next in this scenario?"
+    },
+    {
+      "label": "TEN-4?",
+      "msg": "What is the TEN-4 FACESp bruising pattern and how do I recognize it in the field?"
+    },
+    {
+      "label": "Mandatory reporting?",
+      "msg": "What is the Michigan mandatory reporter law for EMS and what is the threshold for reporting?"
+    },
+    {
+      "label": "How to document?",
+      "msg": "How do I objectively document physical findings without making conclusory statements about abuse?"
+    },
+    {
+      "label": "EMS role?",
+      "msg": "What is the EMS provider's role when non-accidental trauma is suspected — what should and shouldn't I do?"
+    }
+  ],
+  "objectives": [
+    "Perform the Pediatric Assessment Triangle (PAT) and correctly identify a hemodynamically stable child whose clinical tension is behavioral and historical rather than physiologic",
+    "Recognize behavioral indicators of possible non-accidental trauma: child withdrawal near caregiver, inconsistent history, caregiver answering for the patient",
+    "Perform a thorough head-to-toe DCAP-BTLS assessment and systematically document objective physical findings",
+    "Identify bruise characteristics (location, size, color/age estimate, pattern) consistent with TEN-4 FACESp criteria",
+    "Apply Michigan mandatory reporter standards: EMS has a legal duty to report reasonable suspicion — certainty is not required",
+    "Document findings objectively (descriptive, not conclusory) to support downstream investigations without prejudicing the record"
+  ],
+  "dispatch": {
+    "unit": "{unit}",
+    "text": "{unit}, respond to 714 Birchwood Drive for a pediatric patient — 6-year-old female. Neighbor reports the child was found crying alone in the front yard. Caller does not know the extent of the injury.",
+    "priority": "Priority 1",
+    "time": "10:44",
+    "cross_streets": "Birchwood Dr and Maple St",
+    "response_time_minutes": 5
+  },
+  "scene": {
+    "description": "You arrive at a residential single-family home on a quiet street. A 6-year-old girl, Emma, is sitting on the front porch steps. She is crying softly, holding her left arm close to her body. A woman in her late 20s — who introduces herself as Emma's mother, Amber — comes quickly out of the front door as you approach. Amber says 'She just fell off the couch, she does this all the time. We really don't need an ambulance.' Emma does not look up when Amber speaks. Your partner Alex is with you.",
+    "image": null,
+    "video": null,
+    "hazards": [],
+    "bystanders": [
+      {
+        "name": "Amber",
+        "relation": "caregiver (states mother)",
+        "age": 28
+      },
+      {
+        "name": "Neighbor",
+        "relation": "caller (may still be on scene)",
+        "age": 52
+      }
+    ]
+  },
+  "patient": {
+    "pcr_demographics_deferred": true,
+    "name": "Emma",
+    "age": 6,
+    "dob_month_day": "March 5",
+    "sex": "female",
+    "weight_kg": 22,
+    "weight_display": "approx 48 lbs (22 kg)",
+    "chief_complaint": "Crying in front yard — caregiver reports fall from couch",
+    "general_impression": "6-year-old female sitting quietly on front porch steps. Crying softly but not in visible acute distress. Holding her left arm close to her body. Eyes downcast — does not look up at you as you approach. When you kneel down and use her name, she makes brief eye contact. Skin color appears normal. No visible external bleeding. She appears small for her age.",
+    "gcs_assessment": {
+      "e": 4,
+      "v": 5,
+      "m": 6,
+      "total": 15,
+      "rationale": "Eyes open spontaneously (E4). Verbal: oriented and appropriate — knows her name, age, and recognizes her house (V5). Motor: obeys commands appropriately (M6). GCS 15. Fully alert and neurologically intact.",
+      "challenge_description": "Emma is sitting quietly. When you ask her name, she says it softly. She knows how old she is. She can follow simple commands like 'show me your fingers.' She is neurologically normal."
+    },
+    "avpu_assessment": {
+      "value": "alert",
+      "description": "Patient is alert, oriented to person and place, responding appropriately to questions.",
+      "rationale": "AVPU = Alert. GCS 15. No neurological concern."
+    },
+    "image": "/static/images/peds/trauma/nat_6yof.jpg",
+    "video": null,
+    "pat": {
+      "impression": "Quiet, tearful 6-year-old sitting on porch steps. Normal respiratory effort. Normal skin color.",
+      "appearance": "Emma is tearful but not inconsolably so. She is interactive when directly addressed — makes brief eye contact and answers simple questions quietly. Muscle tone appears normal. She is not stimulated or agitated. She is calm but withdrawn.",
+      "work_of_breathing": "No audible respiratory distress. No retractions, no nasal flaring. Respiratory effort is normal.",
+      "circulation": "Skin appears pink and warm, no visible cyanosis or mottling. No active hemorrhage.",
+      "expected": "not_sick",
+      "teaching": "PAT impression: NOT SICK — hemodynamically stable. All three PAT components are normal: Appearance is interactive and age-appropriate (though quiet and withdrawn). Work of Breathing is normal. Circulation is normal. This child does not require immediate life-saving intervention — but the behavioral signs (not looking up, withdrawn, holding arm close) combined with the dispatch and caregiver demeanor should raise clinical suspicion. The PAT tells you this is not a code — it does not tell you she is safe. Stay systematic."
+    }
+  },
+  "history": {
+    "allergies": "None known (per caregiver — not yet independently confirmed).",
+    "medications": "None (per caregiver).",
+    "pmh": "Per caregiver: healthy, no prior medical history. Emma does not volunteer medical history information when asked directly.",
+    "last_oral_intake": "Per caregiver: breakfast about two hours ago.",
+    "events_leading_to_call": "Caregiver (Amber) reports Emma 'fell off the couch' inside the house. She states Emma was playing and fell and started crying. She does not know exactly when it happened — 'not long ago.' She says she did not call 911 herself and states the neighbor 'overreacted.' When asked where Emma fell from and how high the couch was, Amber says 'it's just a regular couch, like a foot off the ground.' She becomes evasive when asked about the lip injury, saying it happened 'a while back' and 'kids get hurt all the time.' When Emma is assessed away from Amber's direct line of sight, Emma is more forthcoming — she says her 'arm hurts' and that her 'tummy hurt a few days ago.' She does not spontaneously describe the mechanism of any injury."
+  },
+  "initial_complaint": {
+    "speaker": "Amber",
+    "lay_summary": "She fell off the couch. She's fine — she's just being dramatic. I don't know why the neighbor called.",
+    "allowed_in_opener": true,
+    "do_not_include": [
+      "physical examination findings",
+      "bruise descriptions",
+      "TEN-4 pattern",
+      "abuse suspicion language",
+      "Emma's behavioral observations in detail",
+      "clinical terms",
+      "mandatory reporting obligations",
+      "diagnosis or conclusory statements",
+      "full OPQRST/SAMPLE",
+      "treatment suggestions"
+    ]
+  },
+  "history_response_map": {
+    "patient_identity": {
+      "label": "Patient identity / demographics",
+      "speaker": "Amber",
+      "triggers": ["what is her name", "what's her name", "patient name", "how old is she", "age", "date of birth", "dob", "birthday"],
+      "answer": "Her name is Emma. She's 6 years old. Her birthday is March 5.",
+      "tags": ["[[HISTORY: Patient Name=Emma]]", "[[HISTORY: Patient Age=6-year-old female]]", "[[HISTORY: Patient Date of Birth=March 5]]"],
+      "notes": "Patient-scoped demographics only.",
+      "do_not_include": ["weight unless asked", "injury details", "medical history", "medications", "treatment suggestions"]
+    },
+    "patient_weight": {
+      "label": "Patient weight",
+      "speaker": "Amber",
+      "triggers": ["how much does she weigh", "what does she weigh", "patient weight", "weight", "estimated weight"],
+      "answer": "She weighs about 48 pounds, around 22 kilograms.",
+      "tag": "[[HISTORY: Patient Weight=approx 48 lbs (22 kg)]]",
+      "notes": "Patient-scoped weight only.",
+      "do_not_include": ["diagnosis", "treatment suggestions"]
+    },
+    "chief_concern": {
+      "label": "Broad opener / chief concern",
+      "speaker": "Amber",
+      "triggers": ["what's going on", "what happened", "why did you call", "how can we help", "chief complaint"],
+      "answer": "She's crying outside. I think she fell from the couch.",
+      "tag": "[[HISTORY: Patient Chief Complaint=crying in front yard after reported fall from couch]]",
+      "notes": "Patient-scoped complaint only.",
+      "do_not_include": ["injury pattern", "mandatory reporting", "diagnosis", "treatment suggestions"]
+    }
+  },
+  "vitals": {
+    "baseline": {
+      "hr": {
+        "label": "Heart Rate",
+        "value": 96,
+        "unit": "bpm",
+        "display": "96 bpm — normal for age"
+      },
+      "rr": {
+        "label": "Respirations",
+        "value": 16,
+        "unit": "/min",
+        "display": "16/min — normal"
+      },
+      "spo2": {
+        "label": "SpO2",
+        "value": 99,
+        "unit": "%",
+        "display": "99% on room air"
+      },
+      "bp": {
+        "label": "Blood Pressure",
+        "value": "94/60",
+        "unit": "mmHg",
+        "display": "94/60 mmHg — normal for age"
+      },
+      "temp": {
+        "label": "Temperature",
+        "value": 98.6,
+        "unit": "°F"
+      },
+      "blood_glucose": {
+        "label": "Blood Glucose",
+        "value": 92,
+        "unit": "mg/dL",
+        "display": "92 mg/dL — normal"
+      },
+      "gcs": {
+        "label": "GCS",
+        "value": 15,
+        "unit": "/15",
+        "display": "15 — E4V5M6; alert and oriented"
+      },
+      "skin_color": {
+        "label": "Skin",
+        "numeric": false,
+        "value": "Pink, warm, dry — no pallor or mottling"
+      },
+      "cap_refill": {
+        "label": "Cap Refill",
+        "value": 1,
+        "unit": "sec"
+      },
+      "pupils": {
+        "label": "Pupils",
+        "numeric": false,
+        "value": "Equal, round, reactive bilaterally — 3 mm, brisk"
+      },
+      "lung_sounds": {
+        "label": "Lung Sounds",
+        "numeric": false,
+        "value": "Clear and equal bilaterally"
+      },
+      "work_of_breathing": {
+        "label": "Work of Breathing",
+        "numeric": false,
+        "value": "Non-labored, normal depth and rate"
+      }
+    },
+    "deterioration": null
+  },
+  "physical_exam": {
+    "general": "Emma is tearful but cooperative during the exam. She becomes visibly more cooperative and slightly more verbal when Amber is asked to step back. She continues to hold her left arm close to her body.",
+    "head": "No scalp tenderness. No deformity. Fontanelle not assessed (age-inappropriate). Hair is unremarkable.",
+    "face": "Small healing laceration at the inner lower lip/frenulum area — approximately 0.5 cm, appears 3–4 days old (edges beginning to epithelialize). Inconsistent with stated mechanism (couch fall from approximately 12 inches). Frenular tears in children >2 years of age without a plausible accidental mechanism are a TEN-4 FACESp indicator.",
+    "neck": "No midline tenderness. No deformity. No lymphadenopathy.",
+    "chest": "No deformity. No tenderness to palpation. Lung sounds clear bilaterally.",
+    "torso": "Right flank: one 2 cm oval contusion, purple-yellow — estimated 3–5 days old. Torso bruising in a child is a TEN-4 positive criterion.",
+    "upper_extremities": "Left upper arm: one 3 cm oval contusion, yellow-green — estimated 5–7 days old. Located on the outer upper arm in a region not typically contacted during accidental falls from furniture. Additionally, 2–3 small rounded contusions (0.5–1 cm each) bilaterally on upper arms in various healing stages — some yellow, some fading green. Four or more bruises of varying ages in a child is a TEN-4 positive criterion.",
+    "lower_extremities": "No contusions. No deformity. No tenderness.",
+    "back": "Not examined on scene — note in documentation as deferred for ED."
+  },
+  "caregiver_behavior_notes": {
+    "description": "Amber consistently speaks for Emma, interrupting or answering questions before Emma can respond. She minimizes Emma's distress ('she's fine, she's just being dramatic') and the stated mechanism does not account for the frenular laceration or upper-arm bruising. Amber becomes visibly tense when you ask about the bruises and the timing of each injury. She states each one is from 'normal kid stuff.' She does not provide specific activities or mechanisms for the older bruises. When you ask Emma directly (in Amber's presence) about her arm, Emma looks at Amber before answering. When Amber briefly goes inside to 'get Emma's insurance card,' Emma says quietly that her 'arm has been hurting for a few days.'",
+    "ems_guidance": "Do not share your suspicions with Amber. Do not accuse her or confront her. Do not conduct a forensic interview of Emma. Your role is to assess, treat, document objectively, transport, and report. Do not allow concerns about caregiver reaction to delay transport. Do not leave Emma alone with Amber during your assessment."
+  },
+  "correct_treatment": {
+    "critical_actions": [
+      {
+        "id": "scene_safety",
+        "description": "Scene safety and BSI verified before patient contact",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "pat",
+        "description": "Pediatric Assessment Triangle — Appearance (quiet, tearful, interactive), Work of Breathing (normal), Circulation (pink, warm, dry). PAT impression: not_sick",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "neuro_assessment",
+        "description": "Mental status assessment — GCS 15 (E4V5M6), oriented, following commands appropriately. Pupils equal and reactive.",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "finding_types": [
+            "exam",
+            "vital"
+          ],
+          "finding_key_patterns": [
+            "\\bgcs\\b",
+            "\\bavpu\\b",
+            "mental",
+            "orient",
+            "alert",
+            "pupils?"
+          ],
+          "transcript_patterns": [
+            "\\bgcs\\b",
+            "\\bavpu\\b",
+            "oriented",
+            "alert",
+            "mental status",
+            "know.*name",
+            "pupils?"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "dcap_btls_head_neck",
+        "description": "Systematic head-to-toe DCAP-BTLS assessment performed — includes head/face (frenular laceration), torso (right flank contusion), and upper extremities (upper-arm bruising in multiple healing stages). Full body survey is mandatory to identify the injury pattern.",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(dcap|btls|palpat|check.*head|assess.*head|feel.*arm|inspect|bruise|contusion|lacerat|injury pattern|body survey|head to toe|assess.*torso|check.*torso|lip|frenul|arm)"
+          ],
+          "min_matches": 1
+        }
+      }
+    ],
+    "recommended_actions": [
+      {
+        "id": "separate_assessment",
+        "description": "Attempt brief assessment with child separated from caregiver — not required but best practice for observing behavioral changes",
+        "required": false
+      },
+      {
+        "id": "objective_documentation",
+        "description": "Document physical findings objectively: size, color, location, estimated healing stage of each contusion. Avoid conclusory language.",
+        "required": false
+      },
+      {
+        "id": "transport_decision",
+        "description": "Transport to ED for full evaluation. Do not delay transport to complete investigation on scene.",
+        "required": false,
+        "intervention_ids": [
+          "load_and_go",
+          "rapid_transport"
+        ]
+      }
+    ],
+    "out_of_scope_bls": [
+      "iv_io_access",
+      "endotracheal_intubation"
+    ],
+    "out_of_scope_aemt": [],
+    "out_of_scope_paramedic": [],
+    "documentation_guidance": {
+      "required_elements": [
+        "Each contusion documented by location, size (cm), color (age estimate), and shape",
+        "Lip/frenular laceration documented with location, size, and healing stage",
+        "Child's behavioral observations documented objectively (e.g., 'patient avoided eye contact when caregiver was present', not 'patient appeared scared of caregiver')",
+        "Caregiver's stated mechanism documented in quotes — do not paraphrase conclusorily",
+        "Transport destination and mandatory reporting obligation noted"
+      ],
+      "prohibited_language": [
+        "'Patient was abused'",
+        "'Signs of abuse present'",
+        "'Caregiver caused injuries'",
+        "'Non-accidental trauma confirmed'",
+        "Any statement assigning fault or certainty of cause"
+      ],
+      "preferred_language": [
+        "'Multiple contusions in various stages of healing noted over torso and upper arms'",
+        "'3 cm yellow-green contusion over left upper arm — estimated 5–7 days old'",
+        "'Healing laceration at inner lower lip — approximately 0.5 cm, edges epithelializing'",
+        "'Stated mechanism (fall from couch, approximately 12 inches high) was reviewed — injury pattern discussed with receiving ED staff'",
+        "'Patient was transported to ED per protocol; mandatory report filed per MCL 722.623'"
+      ]
+    },
+    "clinical_decision_points": {
+      "mandatory_reporting": "Michigan mandatory reporter law (MCL 722.623): EMS providers are mandatory reporters. The legal threshold is REASONABLE SUSPICION — not certainty, not proof. Multiple bruises in TEN-4 distribution, a frenular laceration, and a stated mechanism inconsistent with the injury pattern meet this threshold. Report to CPS, not to law enforcement directly (though law enforcement may be notified by the hospital).",
+      "transport": "Transport Emma to the ED for full evaluation including imaging and specialist consultation. Do not delay transport to resolve inconsistencies on scene — that is the ED's and CPS's job. Ideally transport without Amber if possible (request law enforcement assist), but do not delay care to wait.",
+      "do_not_share": "Do not share your suspicions, your documentation, or your plans to report with the caregiver. Doing so can compromise child safety investigations. Inform the receiving ED team verbally of your concerns on arrival."
+    }
+  },
+  "scoring": {
+    "overall_considerations": [
+      "This scenario tests recognition and documentation skills, not acute clinical intervention. A perfect performance includes systematic exam, behavioral observation, objective documentation, and appropriate transport/reporting — not a dramatic intervention sequence.",
+      "PAT impression 'not_sick' is correct. Emma is hemodynamically stable. Deduct points if provider identifies her as 'sick' based on physiologic status — she is not in acute distress requiring immediate life-saving action.",
+      "The critical miss is an incomplete DCAP-BTLS survey that fails to find the bruise pattern. A student who only examines the chief-complaint arm and misses the torso and frenular findings has missed the most clinically significant parts of this call.",
+      "Documentation quality is a primary scoring domain. A student who describes bruises objectively (size, color, location) earns full credit. A student who writes 'signs of abuse' or 'patient was abused' loses documentation points for using conclusory language.",
+      "Do not penalize for NOT confronting the caregiver — that is the correct action. Do penalize if the student shares their suspicions with the caregiver or conducts a forensic interview.",
+      "Transport and reporting are implied in the clinical decision section. Students do not need to explicitly invoke a statute by number but should identify that a report is required."
+    ],
+    "dmist_considerations": [
+      "D: Emma, 6-year-old female, approximately 48 lbs (22 kg).",
+      "M: Caregiver reports fall from couch (approx 12 inches). Neighbor called 911 after observing child crying alone in front yard.",
+      "I: Multiple contusions in various healing stages — left upper arm (3 cm, yellow-green), right flank (2 cm, purple-yellow), bilateral upper arms (multiple small rounded contusions). Healing frenular laceration approximately 0.5 cm. Stated mechanism inconsistent with injury distribution.",
+      "S: GCS 15, SpO2 99%, HR 96, BP 94/60, RR 16. Skin warm/dry/pink. Pupils equal and reactive.",
+      "T: Head-to-toe assessment completed. Patient transported to ED. Mandatory report per protocol."
+    ],
+    "dmist_components": {
+      "D": {
+        "description": "Patient demographics",
+        "required_elements": [
+          "name: Emma",
+          "age: 6",
+          "sex: female",
+          "weight: 22 kg or 48 lbs"
+        ],
+        "corroboration_source": "scenario_patient_fields"
+      },
+      "M": {
+        "description": "Mechanism and chief complaint",
+        "required_elements": [
+          "fall from couch per caregiver",
+          "neighbor called 911",
+          "child found crying alone in front yard"
+        ],
+        "corroboration_source": "scenario_history_events"
+      },
+      "I": {
+        "description": "Injuries found",
+        "required_elements": [
+          "contusion left upper arm",
+          "contusion right flank",
+          "frenular/lip laceration",
+          "multiple bruises in various healing stages"
+        ],
+        "corroboration_source": "scenario_vitals_and_exam"
+      },
+      "S": {
+        "description": "Signs and symptoms; GCS/LOC and perfusion status are the primary signs for a pediatric NAT handoff",
+        "required_elements": [
+          "GCS or LOC description (primary)",
+          "skin perfusion or color (primary)",
+          "SpO2 (passively observed — acceptable)",
+          "HR (supplementary — if assessed)",
+          "BP (supplementary — if assessed)"
+        ],
+        "scoring_note": "Primary S elements for pediatric NAT: GCS or LOC description and perfusion/skin findings (mottling, pallor, cap refill). SpO2 may be passively observed. HR and BP are supplementary context.",
+        "corroboration_source": "scenario_vitals_and_exam"
+      },
+      "T": {
+        "description": "ALS handoff and mandatory reporting obligation",
+        "required_elements": [
+          "mandatory report"
+        ],
+        "corroboration_source": "session_interventions"
+      }
+    },
+    "required_findings": [
+      {
+        "finding_key": "dcap_btls_head_neck",
+        "display_label": "Full DCAP-BTLS / Body Survey",
+        "must_include": [
+          "bruise",
+          "contusion",
+          "laceration"
+        ],
+        "missing_deduction": 8,
+        "note": "A full head-to-toe DCAP-BTLS is mandatory. Partial exam that misses the torso or frenular findings is a significant deficit."
+      },
+      {
+        "finding_key": "objective_documentation",
+        "display_label": "Objective Injury Documentation",
+        "must_include": [
+          "location",
+          "color",
+          "size"
+        ],
+        "missing_deduction": 5,
+        "note": "Each contusion should be documented by location, size (cm), color (age estimate), and shape. Conclusory language should not appear."
+      }
+    ],
+    "by_level": {
+      "MFR": {
+        "critical_focus": [
+          "Scene safety and BSI",
+          "PAT — recognize hemodynamically stable child",
+          "Head-to-toe assessment — note bruising pattern",
+          "Call for additional resources / transport"
+        ],
+        "additional_expectations": [],
+        "grace_items": [
+          "TEN-4 FACESp terminology not required — recognition of bruising pattern inconsistent with stated mechanism is sufficient",
+          "Mandatory reporting law citation not required — awareness of reporting duty is expected"
+        ]
+      },
+      "EMT": {
+        "critical_focus": [
+          "Scene safety and BSI",
+          "PAT — correctly identify not_sick impression",
+          "GCS / neuro assessment — GCS 15, oriented",
+          "Systematic DCAP-BTLS: find frenular laceration, torso contusion, upper-arm bruise pattern",
+          "Objective DMIST and narrative documentation",
+          "Transport decision — do not delay",
+          "Awareness of mandatory reporting obligation"
+        ],
+        "additional_expectations": [
+          "Recognize behavioral indicators: child withdrawal near caregiver, caregiver answering for patient, inconsistent history",
+          "Attempt assessment with child separated from caregiver for behavioral comparison",
+          "Do not share suspicions with caregiver"
+        ],
+        "grace_items": [
+          "Not required to cite MCL 722.623 by statute number",
+          "Not required to conduct a forensic interview — EMS role is recognition, documentation, and transport",
+          "Not penalized for being thorough in head-to-toe assessment beyond chief complaint"
+        ]
+      },
+      "AEMT": {
+        "critical_focus": [
+          "All EMT expectations above",
+          "SpO2 monitoring confirmed — reassuring at 99% room air",
+          "IV/IO access not routinely indicated for a hemodynamically stable patient — initiate only if status changes"
+        ],
+        "additional_expectations": [
+          "Recognize that routine IV placement is not clinically indicated — escalate only if hemodynamic status deteriorates",
+          "Same objective documentation and mandatory reporting standards apply regardless of provider level"
+        ],
+        "grace_items": [
+          "IV/IO not required for stable patient — if initiated, must have clinical indication documented",
+          "Capnography not indicated unless airway intervention performed"
+        ]
+      },
+      "Paramedic": {
+        "critical_focus": [
+          "All EMT and AEMT expectations above",
+          "Advanced airway readiness — intubation not indicated unless GCS drops or airway is compromised",
+          "Transport to pediatric-capable ED when possible — abusive head trauma may require pediatric neurosurgical resources"
+        ],
+        "additional_expectations": [
+          "Document neurological exam thoroughly — a Paramedic's detailed neuro baseline is clinically and legally significant",
+          "Pharmacologic sedation/restraint not indicated for a cooperative, stable patient",
+          "Same mandatory reporting and documentation standards apply at all provider levels"
+        ],
+        "grace_items": [
+          "Advanced airway not required for GCS 15 patient",
+          "12-lead ECG not routinely required for NAT without cardiovascular symptoms"
+        ]
+      }
+    }
+  },
+  "scoring_rubric": {
+    "clinical_performance": {
+      "max": 50,
+      "full_credit": "PAT performed (not_sick impression correct), GCS assessed (15), full head-to-toe DCAP-BTLS completed (frenular laceration, torso contusion, upper-arm bruise pattern identified), behavioral observations noted, transport initiated without delay, mandatory reporting obligation identified",
+      "partial_credit": "Assessment performed and most findings identified, but one significant finding missed (e.g., frenular laceration or torso contusion), or transport decision delayed",
+      "minimal_credit": "Assessment limited to chief-complaint area only, major physical findings missed, no recognition of inconsistent mechanism"
+    },
+    "narrative": {
+      "max": 20,
+      "full_credit": "CHART complete with objective injury documentation: each contusion described by location, size (cm), color, and healing-stage estimate; frenular laceration described objectively; caregiver stated mechanism in quotes; behavioral observations stated factually; transport destination and mandatory reporting noted. No conclusory language.",
+      "partial_credit": "Most injuries documented but some described without color/size/location detail, or minor conclusory language present without gross characterization as abuse",
+      "minimal_credit": "Injuries not individually described, or 'signs of abuse' or similar conclusory language used, or caregiver stated mechanism not captured"
+    },
+    "scope_adherence": {
+      "max": 10,
+      "full_credit": "Stayed within BLS scope — no invasive interventions (IV, intubation), no interrogation of caregiver or forensic interview of child, no sharing suspicions with caregiver, appropriate separation attempted, EMS role appropriately bounded",
+      "partial_credit": "Generally appropriate but caregiver approached confrontationally or assessment somewhat suggestive/leading",
+      "minimal_credit": "Suspicions shared with caregiver, forensic interview conducted, or care delayed to resolve scene-level investigation"
+    },
+    "dmist": {
+      "max": 10,
+      "full_credit": "D: Emma, 6yo female, 48 lbs; M: fall from couch per caregiver, neighbor called; I: multiple contusions with locations/colors, frenular laceration; S: GCS 15, SpO2 99%, HR 96, BP 94/60; T: transported to ED, mandatory report.",
+      "partial_credit": "3–4 of 5 components present; injury descriptions missing color/size, or 'T' component omits mandatory report",
+      "minimal_credit": "2 or fewer components, or injuries described conclusorily rather than objectively"
+    },
+    "professionalism": {
+      "max": 10,
+      "full_credit": "Introduced self, used Emma's name and spoke to her at a developmentally appropriate level, kept communication calm and non-alarming, did not discuss suspicions with caregiver, appropriately redirected caregiver when needed, maintained professional demeanor throughout",
+      "partial_credit": "Generally appropriate but communication with Emma was not age-adjusted, or redirection of caregiver was abrupt without professional framing",
+      "minimal_credit": "Confrontational with caregiver, failed to address Emma directly, or demeanor contributed to child distress"
+    },
+    "protocols_treatment": {
+      "max": 10,
+      "full_credit": "Full DCAP-BTLS performed, transport initiated without delay, mandatory reporting obligation identified, documentation objectively framed, no out-of-scope interventions",
+      "partial_credit": "Most protocol elements met but assessment was incomplete or transport was briefly delayed",
+      "minimal_credit": "Scene time excessive due to caregiver conflict or investigation attempts, or mandatory reporting not identified"
+    }
+  },
+  "exemplar_dmist": "D — Emma, 6-year-old female, approximately 48 lbs (22 kg) per caregiver.\nM — Caregiver (states mother, Amber) reports Emma fell from a residential couch estimated at approximately 12 inches in height. Neighbor called 911 after observing Emma crying alone in front yard. Caregiver did not call EMS. Caregiver unable to provide specific timing for injuries.\nI — Physical findings: (1) Left upper arm: 3 cm oval contusion, yellow-green — estimated age 5–7 days. (2) Right flank: 2 cm oval contusion, purple-yellow — estimated age 3–5 days. (3) Bilateral upper arms: 2–3 small rounded contusions (0.5–1 cm) per side in various healing stages. (4) Inner lower lip/frenulum: approximately 0.5 cm healing laceration — edges epithelializing, estimated age 3–4 days. Stated mechanism reviewed — injury distribution discussed with receiving ED staff.\nS — GCS 15 (E4V5M6), SpO2 99% room air, HR 96 bpm, BP 94/60 mmHg, RR 16/min. Skin warm, dry, pink. Pupils equal and reactive bilaterally.\nT — Head-to-toe DCAP-BTLS assessment completed. Patient transported to Sparrow Hospital ED. Mandatory report per MCL 722.623 initiated.",
+  "exemplar_narrative": "Dispatched for a 6-year-old female reported crying alone in front yard. Neighbor called 911. Upon arrival, patient Emma, a 6-year-old female weighing approximately 48 lbs (22 kg), was seated on front porch steps. Caregiver (who states she is Emma's mother, Amber) was also present and stated Emma 'fell off the couch.'\n\nPAT: Appearance — tearful but interactive, age-appropriate mental status (NORMAL). Work of Breathing — non-labored (NORMAL). Circulation — skin pink, warm, dry (NORMAL). PAT impression: NOT SICK.\n\nVitals: SpO2 99% room air, HR 96 bpm, BP 94/60 mmHg, RR 16/min, GCS 15 (E4V5M6). Pupils equal, round, reactive, 3 mm bilaterally. Patient alert and oriented to person and place. Follows commands appropriately.\n\nHEAD-TO-TOE DCAP-BTLS: Head — no deformity, no scalp tenderness. Face — healing laceration at inner lower lip/frenulum, approximately 0.5 cm, edges epithelializing (estimated 3–4 days old). Neck — no tenderness, no deformity. Chest — no deformity, no tenderness, lung sounds clear bilaterally. Torso — right flank: one 2 cm oval contusion, purple-yellow discoloration (estimated 3–5 days old). Upper extremities — left upper arm: one 3 cm oval contusion, yellow-green discoloration (estimated 5–7 days old). Bilateral upper arms: 2–3 small rounded contusions per side, 0.5–1 cm each, in varying stages of healing (yellow, fading green). Lower extremities — no contusions, no deformity, no tenderness. Back — deferred to ED evaluation.\n\nCaregiver (Amber) stated mechanism: fall from residential couch estimated at approximately 12 inches height. Stated mechanism was reviewed. Injury distribution communicated to receiving ED staff on arrival.\n\nBehavioral observations (documented factually): Patient maintained downcast gaze in caregiver's presence and became briefly more interactive when caregiver was not in direct proximity. Patient stated arm 'hurts.' Patient avoided direct answers when caregiver was nearby.\n\nSAMPLE (per caregiver): No known allergies. No medications. No prior medical history. Last oral intake approximately 2 hours ago (breakfast). Events as stated above.\n\nPatient was transported to Sparrow Hospital ED in stable condition. Mandatory report initiated per MCL 722.623. Receiving ED staff verbally briefed on arrival.",
+  "debrief": {
+    "condition_background": "Non-accidental trauma (NAT) — also called physical child abuse — is a leading cause of pediatric injury morbidity and mortality in the United States. It is estimated that 1 in 8 child protective services investigations involves a child under 12 months, but NAT occurs across all pediatric age groups. EMS providers are on the front lines of recognition. Unlike child protective services or the ED, EMS arrives at the scene — they see the home, the caregiver behavior, and the physical environment firsthand. This information is irreplaceable and must be documented accurately. The TEN-4 FACESp criteria (Torso, Ears, Neck, 4+ contusions; Frenulum, Angle of jaw, Cheek/Eyes/Subconjunctival, patterned injuries) were developed to help clinicians recognize bruising patterns associated with NAT. The frenular tear (inner lip laceration) is a particularly high-specificity finding in children over 2 years — it is rarely produced by simple accidental mechanisms. A child found alone in the front yard, with a caregiver minimizing the call and providing an inconsistent history, in the context of multiple bruises in various healing stages represents a pattern — even when each individual finding might be explainable in isolation. Michigan mandatory reporter law (MCL 722.623) requires EMS to report reasonable suspicion. Certainty is not required. The report is not a conviction — it initiates an investigation.",
+    "key_teaching_points": [
+      "TEN-4 FACESp: Torso bruises, Ear bruises, Neck bruises, 4+ bruises of any age — Frenulum, Angle of jaw, Cheek, Eyes, Subconjunctival hemorrhage, patterned injuries. Any one of these in a child under 4, or torso bruise in a child of any age, should prompt a mandatory report. Emma is 6 and has a torso bruise and a frenular laceration — two independent TEN-4 FACESp positive criteria.",
+      "Michigan mandatory reporter law (MCL 722.623): EMS providers are mandatory reporters. The threshold is reasonable suspicion — not certainty, not proof. If a reasonable person in your role would suspect that a child has been abused, you have a legal duty to report. The report goes to CPS (DHHS); you document your report in your PCR.",
+      "Documentation language: write what you see, not what you conclude. '3 cm yellow-green contusion over left upper arm' is correct. 'Signs of abuse' is conclusory and inappropriate in a prehospital PCR — it prejudices the investigation and may be challenged in court. Describe size, color, location, and shape. Note inconsistency with stated mechanism as a factual observation ('stated mechanism reviewed — injury distribution communicated to receiving ED'), not as a conclusion.",
+      "EMS role boundaries: your role is to assess, document, treat, transport, and report. You are not an investigator. Do not conduct a forensic interview of Emma. Do not interrogate the caregiver about inconsistencies. Do not share your suspicions or your reporting intent with the caregiver — this is not required, and it can compromise child safety if the caregiver removes the child or flees before law enforcement arrives.",
+      "Behavioral observations are part of the assessment. A child who becomes more forthcoming when the caregiver steps away, or who avoids eye contact in the caregiver's presence, is providing clinically relevant information. Document behavioral observations factually ('patient was more interactive when caregiver was not in direct proximity') rather than interpretively ('patient appeared afraid of caregiver').",
+      "The PAT was correctly 'not sick' — Emma is hemodynamically stable. Do not let the absence of a medical emergency lower your guard. Non-accidental trauma is frequently identified on calls that appear minor on dispatch and at first glance."
+    ],
+    "common_mistakes": [
+      "Limiting the physical exam to the chief complaint area (the arm) and missing the torso contusion and frenular laceration — the injury pattern is the diagnosis trigger, not any single finding",
+      "Using conclusory language in documentation ('signs of abuse,' 'appears to have been abused') instead of objective descriptors",
+      "Attempting to resolve inconsistencies by confronting or interrogating the caregiver on scene — this is not EMS's role and can compromise the investigation",
+      "Sharing reporting intentions with the caregiver before transport — this can prompt the caregiver to attempt to take the child or flee",
+      "Assuming that a hemodynamically stable patient is not a priority — NAT is a patient safety emergency even without acute physiologic compromise",
+      "Not documenting behavioral observations — scene observations (home environment, caregiver demeanor, child's behavior) are only accessible to EMS and must be in the record"
+    ]
+  },
+  "legacy_ai_categories": [
+    "documentation",
+    "professionalism"
+  ],
+  "checklist": [
+    {
+      "id": "peds_trauma_08_nat.pat_assessment",
+      "description": "PAT completed — appearance (tearful but interactive = not sick), work of breathing (normal), circulation (pink, warm, dry) assessed; PAT impression: not_sick",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "scene_entry",
+        "scene_entry_path": "pat_assessment"
+      },
+      "tier2_patterns": [
+        "(?i)(pat|appearance|alert|work of breath|circulat|skin|pink|pale|tearful|crying|interact)"
+      ],
+      "done_feedback": "PAT completed — tearful but interactive (not sick), unlabored breathing, and intact circulation correctly assessed before hands-on examination.",
+      "missed_feedback": "PAT not completed — even in suspected abuse, systematic PAT is the first step; concurrent unrecognized injury is common in NAT.",
+      "clinical_rationale": "NAT victims often have multiple injuries; PAT ensures no acute life-threatening injury is missed before the skin survey begins.",
+      "common_error": "Beginning the skin survey before completing PAT — occult head injury or internal hemorrhage can present subtly in abuse cases."
+    },
+    {
+      "id": "peds_trauma_08_nat.neuro_assessment",
+      "description": "Mental status / neurological assessment — GCS 15 (E4V5M6), oriented, pupils equal and reactive",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "neuro_assessment"
+      },
+      "tier2_patterns": [
+        "(?i)(?=.*\\b(?:GCS|AVPU|mental status|orient|alert|know.*name|follow.*command)\\b)(?=.*\\bpupils?)",
+        "(?i)(?=.*\\bneurolog(?:ical)?\\b)(?=.*\\bpupils?)"
+      ],
+      "done_feedback": "Neurological assessment performed — GCS 15, oriented, equal/reactive pupils; reassuring baseline documented for comparison.",
+      "missed_feedback": "Neurological assessment not performed — abusive head trauma can present with normal or near-normal initial exam; a documented baseline is essential.",
+      "clinical_rationale": "Occult intracranial injury is common in NAT; a normal initial GCS does not exclude injury; documentation creates a legal and clinical baseline.",
+      "common_error": "Assuming normal behavior means no head injury in a NAT patient — subdural hematoma in abusive head trauma can present with subtle or no initial symptoms."
+    },
+    {
+      "id": "peds_trauma_08_nat.dcap_btls_body_survey",
+      "description": "Full DCAP-BTLS head-to-toe body survey performed — reveals frenular laceration, torso contusion, and upper-arm bruise pattern",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 15,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "dcap_btls_head_neck"
+      },
+      "tier2_patterns": [
+        "(?i)(dcap|btls|head.to.toe|body survey|palpat|inspect|bruise|contusion|lacerat|lip|frenul|torso|flank|upper arm|arm.*injury|check.*body)"
+      ],
+      "done_feedback": "Full DCAP-BTLS head-to-toe body survey performed — frenular laceration, patterned bruising, and posterior body findings documented.",
+      "missed_feedback": "Full body survey not performed — NAT victims often have injuries in multiple locations and stages; posterior body and genital area must be examined and documented.",
+      "clinical_rationale": "Injuries in multiple locations, multiple stages of healing, or atypical locations (back, buttocks, frenulum) are sentinel findings for NAT; only identified with a comprehensive body survey.",
+      "common_error": "Examining only visible injuries rather than performing a head-to-toe survey — patterned bruising on the back and posterior thighs is only visible with log roll and full exposure."
+    },
+    {
+      "id": "peds_trauma_08_nat.objective_documentation",
+      "description": "Physical findings documented objectively — each contusion described by location, size, color, healing-stage; no conclusory language (e.g., 'signs of abuse')",
+      "subtype": "documentation_narrative",
+      "category": "documentation",
+      "point_value": 12,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        2
+      ],
+      "preferred_tier": 2,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": null,
+      "tier2_patterns": [
+        "(?i)(cm|contusion|bruise|yellow.green|purple.yellow|lacerat|healing|location|left upper arm|right flank|frenul|inner lip|objective|size|color)"
+      ],
+      "done_feedback": "Physical findings documented objectively — each contusion described by location, size, color, and pattern without speculative language.",
+      "missed_feedback": "Objective documentation not completed — EMS documentation in NAT is legal evidence; injuries must be described factually with location, size, color, and shape.",
+      "clinical_rationale": "EMS records are admissible in child abuse proceedings; objective, factual documentation of each finding is required; speculative conclusions belong to the physician, not the PCR.",
+      "common_error": "Writing 'injuries consistent with abuse' in the PCR — document findings, not conclusions; write 'multiple bruises at varying stages of healing, posterior thighs and back.'"
+    },
+    {
+      "id": "peds_trauma_08_nat.transport_and_reporting",
+      "description": "Transport decision made — transport to ED without delay; mandatory reporting obligation identified",
+      "subtype": "transport",
+      "category": "clinical_performance",
+      "point_value": 8,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 2,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": null,
+      "tier2_patterns": [
+        "(?i)(transport|hospital|ED|mandatory report|CPS|DHHS|report|child protective|MCL|load|go)"
+      ],
+      "applicable_if": {
+        "non_transport_agency": false
+      },
+      "done_feedback": "Transport to ED initiated without delay and mandatory reporting obligation verbalized — correct; EMS providers are mandatory reporters under Michigan law.",
+      "missed_feedback": "Transport not initiated or mandatory reporting obligation not addressed — EMS providers are mandatory reporters; suspicion of NAT must be reported to the receiving facility.",
+      "clinical_rationale": "Michigan mandatory reporter law requires EMS to notify the receiving facility of abuse suspicion; reasonable suspicion is sufficient — certainty is not required.",
+      "common_error": "Waiting for supervisor permission before transporting — transport to the ED should not be delayed; notify the receiving ED on arrival and report through the hospital to CPS."
+    },
+    {
+      "id": "peds_trauma_08_nat.behavioral_observation",
+      "description": "Behavioral observations documented — child demeanor near vs. away from caregiver, caregiver behavior (answering for patient, evasive history), factual not interpretive language",
+      "subtype": "documentation_narrative",
+      "category": "professionalism",
+      "point_value": 5,
+      "required": "optional",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        2
+      ],
+      "preferred_tier": 2,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": null,
+      "tier2_patterns": [
+        "(?i)(behavior|withdraw|avoid|caregiver|evasive|answer for|inconsistent|demeanor|calm.*without|away from|presence of)"
+      ]
+    }
+  ]
+}

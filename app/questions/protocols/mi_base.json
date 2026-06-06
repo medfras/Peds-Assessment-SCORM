@@ -1,0 +1,251 @@
+{
+  "_comment": "Protocol-specific trivia questions for the Michigan base (mi_base) MCA set. Questions cover BLS protocols. 'min_level' indicates the minimum provider level this question applies to: MFR, EMT, AEMT, or Paramedic.",
+  "mca": "mi_base",
+  "mca_display": "Michigan Base",
+  "questions": [
+
+    {
+      "question": "Under WMRMCC protocols, which provider levels are authorized to administer a drawn-up epinephrine IM injection (from a vial) for anaphylaxis?",
+      "options": ["Paramedic only", "EMT and above only", "BLS (EMT) AND MFR — both require MCA-approved training", "ALS only (AEMT and Paramedic)"],
+      "correct": 2,
+      "explanation": "WMRMCC approves drawn-up epinephrine IM for BLS (EMT) AND MFR scope — both require completion of MCA-approved training per Section 9-23R.",
+      "min_level": "MFR",
+      "tags": ["anaphylaxis", "epinephrine", "scope", "pharmacology"]
+    },
+    {
+      "question": "Per WMRMCC protocols, what distinguishes anaphylaxis from a simple allergic reaction?",
+      "options": ["Anaphylaxis only occurs after bee stings", "Anaphylaxis requires wheezing AND/OR hypotension — allergic reaction has only itching or hives", "Anaphylaxis must include a rash covering more than 50% of the body", "Any allergic response is automatically classified as anaphylaxis"],
+      "correct": 1,
+      "explanation": "WMRMCC Protocol 1-6 distinguishes anaphylaxis (wheezing AND/OR hypotension) from allergic reaction (itching, hives without systemic involvement). Management differs significantly.",
+      "min_level": "MFR",
+      "tags": ["anaphylaxis", "assessment", "protocols"]
+    },
+    {
+      "question": "For a pediatric patient weighing 10–30 kg presenting with anaphylaxis at WMRMCC, what is the correct epinephrine auto-injector dose?",
+      "options": ["Standard auto-injector (0.3 mg) IM", "Pediatric auto-injector (0.15 mg) IM", "Contact Medical Control — no dosing without online authorization", "Draw-up 0.5 mg IM"],
+      "correct": 1,
+      "explanation": "WMRMCC protocols specify the pediatric auto-injector (0.15 mg IM) for children 10–30 kg. Contact Medical Control before administering to children appearing to weigh less than 10 kg.",
+      "min_level": "MFR",
+      "tags": ["anaphylaxis", "epinephrine", "pediatrics", "pharmacology"]
+    },
+    {
+      "question": "Under WMRMCC protocols, how many total doses of epinephrine (all sources combined) are permitted for anaphylaxis?",
+      "options": ["1 dose maximum", "2 doses maximum (all sources — auto-injector, EMS auto-injector, and draw-up combined)", "3 doses maximum", "Unlimited with Medical Control approval"],
+      "correct": 1,
+      "explanation": "WMRMCC Protocol 1-6 specifies a maximum of 2 total epinephrine doses from all sources combined (prescribed auto-injector + EMS auto-injector + draw-up). The second dose may be given 3–5 minutes after the first if patient remains hypotensive.",
+      "min_level": "MFR",
+      "tags": ["anaphylaxis", "epinephrine", "pharmacology", "protocols"]
+    },
+    {
+      "question": "At WMRMCC, which provider can administer nebulized albuterol for wheezing in an anaphylaxis patient (Section B)?",
+      "options": ["MFR and above", "EMT and above", "AEMT and Paramedic only", "Paramedic only"],
+      "correct": 1,
+      "explanation": "Per WMRMCC Scope Notes for Protocol 1-6, nebulized albuterol is EMT scope and is approved for BLS administration in both Section B (Anaphylaxis) and Section C (Allergic Reaction).",
+      "min_level": "EMT",
+      "tags": ["anaphylaxis", "albuterol", "scope", "respiratory"]
+    },
+    {
+      "question": "Is diphenhydramine within BLS scope at WMRMCC?",
+      "options": ["Yes — EMTs can administer diphenhydramine IM for allergic reactions", "Yes — MFR and above can administer it", "No — diphenhydramine is ALS scope at WMRMCC", "Yes — but only with online Medical Control authorization"],
+      "correct": 2,
+      "explanation": "Per WMRMCC Scope Notes, diphenhydramine IM/IV is an ALS skill at WMRMCC. BLS providers cannot administer it independently.",
+      "min_level": "EMT",
+      "tags": ["anaphylaxis", "diphenhydramine", "scope", "pharmacology"]
+    },
+    {
+      "question": "Per WMRMCC Protocol 1-6, can BLS administer the albuterol/ipratropium combination nebulizer for persistent wheezing in anaphylaxis?",
+      "options": ["Yes — EMT scope at WMRMCC", "Yes — AEMT scope at WMRMCC", "No — albuterol/ipratropium combination is Paramedic only at WMRMCC", "Yes — any BLS provider with training"],
+      "correct": 2,
+      "explanation": "The albuterol/ipratropium combination is NOT approved for AEMT (Specialist) at WMRMCC — it is Paramedic only. AEMT option was not selected by WMRMCC.",
+      "min_level": "EMT",
+      "tags": ["anaphylaxis", "albuterol", "ipratropium", "scope"]
+    },
+    {
+      "question": "What is the epinephrine auto-injector IM scope at WMRMCC for treating anaphylaxis (EMS-administered, not patient's own)?",
+      "options": ["EMT scope at WMRMCC", "MFR scope at WMRMCC", "AEMT scope at WMRMCC", "Paramedic scope only"],
+      "correct": 1,
+      "explanation": "Per WMRMCC Scope Notes, the EMS-administered epinephrine auto-injector IM is MFR scope at WMRMCC — EMT-Basic alone (without MFR designation) cannot perform this independently. However, BLS providers CAN perform draw-up epinephrine with MCA-approved training.",
+      "min_level": "MFR",
+      "tags": ["anaphylaxis", "epinephrine", "scope", "MFR"]
+    },
+
+    {
+      "question": "Under WMRMCC Pediatric Seizure Protocol (4-7), what blood glucose level triggers treatment for hypoglycemia?",
+      "options": ["Less than 70 mg/dL", "Less than 60 mg/dL", "Less than 80 mg/dL", "Less than 50 mg/dL"],
+      "correct": 1,
+      "explanation": "WMRMCC Protocol 4-7 specifies treatment when blood glucose is less than 60 mg/dL. Oral glucose may be given if the patient is altered, able to swallow, and ≥3 months old.",
+      "min_level": "MFR",
+      "tags": ["seizures", "pediatrics", "hypoglycemia", "glucose"]
+    },
+    {
+      "question": "Per WMRMCC Protocol 4-7, who can administer midazolam for an actively seizing pediatric patient?",
+      "options": ["Any EMT with training", "MFR and above", "AEMT and Paramedic", "Paramedic only — WMRMCC approved pre-radio for first dose"],
+      "correct": 3,
+      "explanation": "Midazolam is Paramedic scope at WMRMCC. However, WMRMCC has approved pre-radio administration (no Medical Control contact required) for the first dose of midazolam in pediatric seizures.",
+      "min_level": "Paramedic",
+      "tags": ["seizures", "pediatrics", "midazolam", "scope"]
+    },
+    {
+      "question": "What is the IM dose of midazolam for a pediatric patient in active generalized tonic-clonic seizure, when IV access is not available?",
+      "options": ["0.05 mg/kg IM, max 5 mg", "0.1 mg/kg IM, max 10 mg", "0.2 mg/kg IM, max 20 mg", "5 mg IM flat dose regardless of weight"],
+      "correct": 1,
+      "explanation": "Per WMRMCC Protocol 4-7, midazolam for active tonic-clonic seizure (no IV): 0.1 mg/kg IM, maximum single dose 10 mg. If IV was established before seizure: 0.05 mg/kg IV/IO, max 5 mg.",
+      "min_level": "Paramedic",
+      "tags": ["seizures", "pediatrics", "midazolam", "pharmacology"]
+    },
+    {
+      "question": "At WMRMCC, who can check blood glucose in a pediatric seizing patient?",
+      "options": ["Paramedic only", "AEMT and Paramedic only", "MFR skill at WMRMCC", "Only with online Medical Control authorization"],
+      "correct": 2,
+      "explanation": "Blood glucose testing is an MFR (and above) skill at WMRMCC per Protocol 4-7 scope notes.",
+      "min_level": "MFR",
+      "tags": ["seizures", "pediatrics", "blood-glucose", "scope"]
+    },
+    {
+      "question": "Per WMRMCC Pediatric Seizures Protocol, what should be done if seizures persist 10 minutes after the initial midazolam dose and blood glucose has been corrected?",
+      "options": ["Administer lorazepam IV", "Repeat midazolam one time — WMRMCC pre-radio approved for second dose", "Administer diazepam PR", "Contact Medical Control immediately before any further medication"],
+      "correct": 1,
+      "explanation": "If seizures persist 10 minutes after initial midazolam AND glucose correction, repeat midazolam one time. WMRMCC has pre-radio approval for this second dose as well. If seizures persist after the second dose, contact Medical Control.",
+      "min_level": "Paramedic",
+      "tags": ["seizures", "pediatrics", "midazolam", "protocols"]
+    },
+    {
+      "question": "Can a WMRMCC EMT assist a patient/caregiver in administering intranasal glucagon (Baqsimi) to a pediatric patient who has it prescribed?",
+      "options": ["No — glucagon is Paramedic scope only at WMRMCC", "Yes — EMT may assist patient/caregiver if Baqsimi is prescribed to the patient, regardless of age", "Only if the patient is under 2 years old", "Only with Medical Control authorization"],
+      "correct": 1,
+      "explanation": "Per WMRMCC Protocol 4-7 scope notes, EMTs may assist a patient or caregiver in administering prescribed Baqsimi (intranasal glucagon) regardless of age. Independently administered glucagon IM/IN by EMS is Paramedic scope at WMRMCC.",
+      "min_level": "EMT",
+      "tags": ["seizures", "pediatrics", "glucagon", "scope"]
+    },
+    {
+      "question": "Naloxone is within which scope for WMRMCC providers responding to a pediatric seizure with suspected opioid involvement?",
+      "options": ["Paramedic only", "AEMT and Paramedic", "BLS (MFR/EMT) scope per WMRMCC Opioid Overdose protocol", "Requires Medical Control authorization for all levels"],
+      "correct": 2,
+      "explanation": "Per WMRMCC Protocol 4-7 scope notes, naloxone is BLS scope per WMRMCC per the Opioid Overdose protocol. It can be administered by MFR/EMT providers.",
+      "min_level": "MFR",
+      "tags": ["seizures", "pediatrics", "naloxone", "scope"]
+    },
+
+    {
+      "question": "Under WMRMCC Pediatric Respiratory Distress Protocol (4-5), what is the SpO₂ target for pediatric respiratory patients?",
+      "options": ["88%", "90%", "94%", "98–100%"],
+      "correct": 2,
+      "explanation": "WMRMCC Protocol 4-5 specifies titrating oxygen to achieve SpO₂ of 94%. The protocol also notes that a parent can assist with blow-by O₂ or mask support for uncooperative children.",
+      "min_level": "MFR",
+      "tags": ["respiratory", "pediatrics", "oxygen", "protocols"]
+    },
+    {
+      "question": "What age range is croup most commonly seen in, per WMRMCC Protocol 4-5?",
+      "options": ["0–3 months", "6 months to 6 years", "6–12 years", "All ages equally"],
+      "correct": 1,
+      "explanation": "WMRMCC Protocol 4-5 notes that croup is most common in children 6 months to 6 years of age and is commonly associated with recent upper respiratory infection or fever.",
+      "min_level": "EMT",
+      "tags": ["respiratory", "pediatrics", "croup", "protocols"]
+    },
+    {
+      "question": "At WMRMCC, which provider can administer racepinephrine 2.25% nebulized for a pediatric patient with stridor at rest (croup)?",
+      "options": ["EMT", "AEMT", "MFR with training", "Paramedic — WMRMCC approved"],
+      "correct": 3,
+      "explanation": "Per WMRMCC Protocol 4-5, racepinephrine 2.25% nebulized (0.5 mL diluted in 3 mL NS) for croup is a Paramedic skill approved at WMRMCC.",
+      "min_level": "Paramedic",
+      "tags": ["respiratory", "pediatrics", "croup", "racepinephrine", "scope"]
+    },
+    {
+      "question": "What is the correct dose of racepinephrine 2.25% for a pediatric patient with stridor at rest (croup) per WMRMCC Protocol 4-5?",
+      "options": ["0.5 mL undiluted via nebulizer", "0.5 mL of racepinephrine 2.25% diluted in 3 mL normal saline, nebulized", "1 mL diluted in 5 mL NS", "2.5 mg in 3 mL NS (same as albuterol)"],
+      "correct": 1,
+      "explanation": "Racepinephrine for croup: 0.5 mL of the 2.25% solution diluted with 3 mL normal saline, administered via nebulizer. Medical Control contact is not required per WMRMCC selection.",
+      "min_level": "Paramedic",
+      "tags": ["respiratory", "pediatrics", "croup", "racepinephrine", "pharmacology"]
+    },
+    {
+      "question": "Per WMRMCC Protocol 4-5, in pediatric respiratory FAILURE (not just distress), what medication can a WMRMCC EMT administer?",
+      "options": ["Racepinephrine nebulized", "Methylprednisolone IV", "Epinephrine draw-up IM or auto-injector IM — both EMT/MFR scope with required training", "Dopamine IV drip"],
+      "correct": 2,
+      "explanation": "WMRMCC Protocol 4-5 authorizes draw-up epinephrine IM and the auto-injector IM for pediatric respiratory FAILURE at EMT/MFR scope (training required). This is distinct from distress — failure indicates critical compromise.",
+      "min_level": "EMT",
+      "tags": ["respiratory", "pediatrics", "epinephrine", "scope", "protocols"]
+    },
+    {
+      "question": "Is CPAP within EMT scope at WMRMCC for pediatric respiratory patients?",
+      "options": ["No — CPAP is AEMT scope only at WMRMCC", "Yes — CPAP is EMT scope at WMRMCC, if appropriate size is available", "CPAP requires Medical Control authorization for all levels", "No — BVM only for pediatric patients"],
+      "correct": 1,
+      "explanation": "WMRMCC Protocol 4-5 explicitly notes that CPAP is an EMT skill at WMRMCC, provided an appropriately sized mask is available and the patient can tolerate it.",
+      "min_level": "EMT",
+      "tags": ["respiratory", "pediatrics", "CPAP", "scope"]
+    },
+    {
+      "question": "When using BVM ventilation on a child in respiratory arrest per WMRMCC Protocol 4-5, what is the preferred method for children under 8 years old?",
+      "options": ["Advanced airway (supraglottic or ET tube) is preferred", "BVM with supplemental oxygen is the preferred method", "Mouth-to-mask only", "High-flow NRB mask is sufficient"],
+      "correct": 1,
+      "explanation": "WMRMCC Protocol 4-5 specifies that BVM is the preferred ventilation method for children under 8 years old. Advanced airway is considered when unable to ventilate with BVM and basic adjuncts.",
+      "min_level": "EMT",
+      "tags": ["respiratory", "pediatrics", "airway", "BVM"]
+    },
+    {
+      "question": "What ventilation rate does WMRMCC Protocol 4-5 specify for an infant in respiratory failure?",
+      "options": ["12 breaths/min", "20 breaths/min", "30 breaths/min", "40 breaths/min"],
+      "correct": 2,
+      "explanation": "WMRMCC Protocol 4-5 specifies: Infant (approximately under 1 year) — 30 breaths/min; Child — 20 breaths/min when BVM ventilation is required.",
+      "min_level": "EMT",
+      "tags": ["respiratory", "pediatrics", "airway", "BVM", "ventilation"]
+    },
+    {
+      "question": "What clinical finding in a wheezing pediatric patient is described as 'critically reduced air movement' and an ominous sign in WMRMCC Protocol 4-5?",
+      "options": ["Mild retractions with wheeze on auscultation", "Near-silent chest — loss of wheeze in a previously wheezing patient", "Respiratory rate of 30 breaths/min", "SpO₂ of 92% on room air"],
+      "correct": 1,
+      "explanation": "A near-silent chest in a wheezing patient indicates critically reduced air movement — so little air is flowing that wheeze cannot be generated. WMRMCC Protocol 4-5 describes this as a deterioration flag requiring immediate escalation.",
+      "min_level": "EMT",
+      "tags": ["respiratory", "pediatrics", "asthma", "assessment"]
+    },
+
+    {
+      "question": "Per WMRMCC Pediatric Altered Mental Status Protocol (4-4), who can administer oral glucose to an altered pediatric patient with hypoglycemia?",
+      "options": ["Paramedic only", "AEMT and above", "EMT scope — if patient is altered, able to swallow, and ≥3 months old", "MFR and above with Medical Control authorization"],
+      "correct": 2,
+      "explanation": "Oral glucose is EMT scope at WMRMCC per Protocol 4-4. Requirements: patient must be altered, able to swallow, AND at least 3 months of age.",
+      "min_level": "EMT",
+      "tags": ["altered-mental-status", "pediatrics", "oral-glucose", "scope"]
+    },
+    {
+      "question": "Under WMRMCC Protocol 4-4, can BLS independently administer glucagon IM for a hypoglycemic pediatric patient who cannot receive IV dextrose?",
+      "options": ["Yes — glucagon IM is EMT scope at WMRMCC", "Yes — with Medical Control authorization", "No — glucagon IM is Paramedic scope at WMRMCC", "Yes — AEMT scope at WMRMCC"],
+      "correct": 2,
+      "explanation": "Glucagon IM is Paramedic scope at WMRMCC per Protocol 4-4. BLS providers cannot independently administer glucagon IM. EMTs may only assist with a patient's prescribed Baqsimi (intranasal glucagon).",
+      "min_level": "EMT",
+      "tags": ["altered-mental-status", "pediatrics", "glucagon", "scope"]
+    },
+    {
+      "question": "Per WMRMCC Protocol 4-4, when should naloxone be considered for a persistently altered pediatric patient?",
+      "options": ["Immediately for any altered pediatric patient", "After glucose correction, if respiratory depression persists and patient has not regained consciousness despite adequate oxygenation/ventilation", "Only if the patient is known to have used opioids", "Before blood glucose testing"],
+      "correct": 1,
+      "explanation": "WMRMCC Protocol 4-4 states: if respiratory depression persists AND the patient has not regained consciousness despite adequate oxygenation/ventilation support, administer naloxone per the Opioid Overdose protocol.",
+      "min_level": "EMT",
+      "tags": ["altered-mental-status", "pediatrics", "naloxone", "protocols"]
+    },
+    {
+      "question": "What blood glucose threshold triggers treatment for hypoglycemia in WMRMCC Pediatric Altered Mental Status Protocol?",
+      "options": ["Less than 80 mg/dL", "Less than 70 mg/dL", "Less than 60 mg/dL", "Less than 50 mg/dL"],
+      "correct": 2,
+      "explanation": "WMRMCC Protocol 4-4 initiates hypoglycemia treatment when blood glucose is less than 60 mg/dL. This is consistent with Protocol 4-7 (Pediatric Seizures).",
+      "min_level": "MFR",
+      "tags": ["altered-mental-status", "pediatrics", "hypoglycemia", "glucose"]
+    },
+    {
+      "question": "In WMRMCC Protocol 4-4, what concentration of dextrose may be used for all pediatric age groups for IV dextrose administration?",
+      "options": ["D50% — full concentration", "D25% — standard concentration", "D10% — 5 mL/kg (0.5 g/kg) up to 250 mL", "D5W — standard maintenance concentration"],
+      "correct": 2,
+      "explanation": "WMRMCC Protocol 4-4 states D10% may be used for all ages at 5 mL/kg (0.5 g/kg) up to 250 mL, always pushed slowly over 1–2 minutes. Higher concentrations require dilution and age-based calculations.",
+      "min_level": "AEMT",
+      "tags": ["altered-mental-status", "pediatrics", "dextrose", "pharmacology"]
+    },
+    {
+      "question": "What does WMRMCC Protocol 4-4 specify regarding newborns (less than 24 hours old) presenting with altered mental status?",
+      "options": ["Treat per standard Pediatric AMS protocol", "Refer to the Newborn/Neonatal Assessment and Resuscitation-Treatment Protocol", "Administer oral glucose immediately", "Contact Medical Control before any interventions"],
+      "correct": 1,
+      "explanation": "WMRMCC Protocol 4-4 explicitly states: for pediatric patients less than 24 hours old, refer to the Newborn/Neonatal Assessment and Resuscitation-Treatment Protocol rather than the standard Pediatric AMS protocol.",
+      "min_level": "EMT",
+      "tags": ["altered-mental-status", "pediatrics", "neonatal", "protocols"]
+    }
+  ]
+}

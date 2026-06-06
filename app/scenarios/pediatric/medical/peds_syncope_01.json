@@ -1,0 +1,1155 @@
+{
+  "_schema": "pfd_scenario_v1",
+  "rubric_template": "ems_standard_v1",
+  "base_patient_care_rubric": "nremt_e202_medical_v1",
+  "id": "peds_syncope_01",
+  "title": "Syncope — Adolescent Female",
+  "display_title": "Syncope",
+  "subtitle": "14-Year-Old Female — Cafeteria Collapse",
+  "category": "pediatric_medical",
+  "category_display": "Pediatric Medical Emergency",
+  "turnover_target": "als",
+  "version": "1.0",
+  "difficulty": "intermediate",
+  "protocol": "MI/04_OB_Pediatrics/04-3_altered_mental_status",
+  "jurisdiction": "PFD",
+  "clinical_context": {
+    "jurisdiction": "MI",
+    "concepts": [
+      "pediatric_patient",
+      "syncope",
+      "cardiac_monitoring",
+      "blood_glucose",
+      "seizure",
+      "transport_decision"
+    ],
+    "protocol_focus": [
+      "syncope",
+      "cardiac_monitoring",
+      "blood_glucose"
+    ]
+  },
+  "agency_context": "",
+  "readiness_criteria": {
+    "min_minutes": 3,
+    "checks": [
+      {
+        "id": "messages",
+        "label": "5 messages sent",
+        "type": "message_count",
+        "min": 5
+      },
+      {
+        "id": "vitals",
+        "label": "Vitals assessed",
+        "type": "vitals_logged"
+      },
+      {
+        "id": "exam",
+        "label": "Exam/history obtained",
+        "type": "exam_logged"
+      },
+      {
+        "id": "treatment",
+        "label": "Treatment applied",
+        "type": "treatment_logged"
+      }
+    ]
+  },
+  "scene_entry_scoring": {
+    "ppe": {
+      "required": [
+        "gloves"
+      ],
+      "recommended": [
+        "eye_protection"
+      ],
+      "missing_required_penalty": 3,
+      "missing_recommended_penalty": 1,
+      "max_score": 10
+    },
+    "pat": {
+      "expected_impression": "sick",
+      "incorrect_impression_deduction": 1
+    }
+  },
+  "lung_sound_challenge": null,
+  "chat_placeholder": "Talk to the patient or the teacher, or direct your partner Alex...",
+  "chat_address_hint": "Address the patient directly or say 'teacher' to ask the witness.",
+  "debrief_lexi_hints": [
+    {
+      "id": "prodrome",
+      "trigger": "syncope differential",
+      "hint": "The most important question in any syncopal episode is whether there was a prodrome — any warning symptoms before losing consciousness. Vasovagal syncope almost always has one. Cardiac syncope often doesn't. Ask specifically about nausea, tunnel vision, warmth, or lightheadedness before the event."
+    },
+    {
+      "id": "glucose",
+      "trigger": "blood glucose syncopal",
+      "hint": "Blood glucose is mandatory for any altered or syncopal patient — hypoglycemia can cause loss of consciousness and looks just like vasovagal syncope. Always check glucose first before committing to a vasovagal diagnosis."
+    },
+    {
+      "id": "position",
+      "trigger": "positioning vasovagal",
+      "hint": "Supine with legs elevated is your first intervention for suspected vasovagal syncope. It rapidly restores preload and cerebral perfusion. Keeping a vasovagal patient sitting up prolongs the recovery. Get her flat and elevate the legs — that's your treatment."
+    },
+    {
+      "id": "cardiac_screen",
+      "trigger": "cardiac red flags syncope",
+      "hint": "Every syncopal adolescent needs a cardiac screen. Red flags: no prodrome (or prodrome under 5 seconds), syncope during exercise, palpitations or chest pain before the event, family history of sudden cardiac death under 50, and prior syncopal episodes without clear trigger. One red flag changes your management — get ALS early and expedite transport."
+    }
+  ],
+  "objectives": [
+    "Perform a primary assessment and rapid history for a post-syncopal adolescent",
+    "Obtain a prodrome history to differentiate vasovagal from cardiac syncope",
+    "Screen for cardiac syncope red flags — family history SCD, exertional context, palpitations, absent prodrome",
+    "Screen for seizure and hypoglycemia as alternative diagnoses",
+    "Check blood glucose — mandatory for any syncopal or AMS presentation",
+    "Apply supine positioning with legs elevated as the primary intervention",
+    "Apply cardiac monitoring (4-lead) to evaluate rhythm",
+    "Formulate a complete DMIST handoff to the ALS crew"
+  ],
+  "dispatch": {
+    "unit": "{unit}",
+    "text": "{unit}, respond to Lincoln Middle School, 1400 Clearwater Drive — cafeteria. Reports of a 14-year-old female who fainted while standing in the lunch line. Patient is now conscious and breathing. Teacher is on scene.",
+    "priority": "Priority 2",
+    "time": "12:24",
+    "cross_streets": "Clearwater Drive and Oak Street",
+    "response_time_minutes": 4
+  },
+  "scene": {
+    "description": "You arrive at a large middle school and are waved through to the cafeteria by a staff member. Inside, the lunch period is still underway — a cluster of students is standing back from a table where a girl is sitting on the floor, leaning against the wall. A middle-aged woman in a lanyard badge — a teacher — is kneeling beside her, speaking calmly. The girl appears alert, pale, and slightly sweaty, but she is sitting upright and looking around. The cafeteria is loud and warm.",
+    "image": null,
+    "video": null,
+    "hazards": [],
+    "bystanders": [
+      {
+        "name": "Ms. Rodriguez",
+        "relation": "teacher (witness)",
+        "age": 38
+      }
+    ]
+  },
+  "patient": {
+    "pcr_demographics_deferred": true,
+    "name": "Maya Chen",
+    "age": 14,
+    "dob_month_day": "August 27",
+    "sex": "female",
+    "weight_kg": 52,
+    "weight_display": "52 kg / ~114 lbs",
+    "chief_complaint": "I fainted — I got really dizzy and then I was on the floor.",
+    "general_impression": "Teenage girl sitting on the cafeteria floor against the wall, alert and oriented, speaking in complete sentences. Pale, mildly diaphoretic, slightly anxious but cooperative. No signs of acute respiratory distress.",
+    "gcs_assessment": {
+      "e": 4,
+      "v": 5,
+      "m": 6,
+      "total": 15,
+      "rationale": "Eyes open spontaneously, she is oriented and speaks appropriately, and she obeys commands.",
+      "challenge_description": "Maya is sitting upright against the cafeteria wall with eyes open spontaneously. She is oriented, speaks in complete appropriate sentences, and obeys commands."
+    },
+    "avpu_assessment": {
+      "value": "alert",
+      "description": "Patient is alert, oriented, speaks appropriately, and obeys commands after the syncopal episode.",
+      "rationale": "Use AVPU = alert because she has returned to normal responsiveness."
+    }
+  },
+  "history": {
+    "pmh": [
+      "No known medical history",
+      "No prior syncopal episodes"
+    ],
+    "medications": [
+      "None"
+    ],
+    "allergies": "NKDA",
+    "last_oral_intake": "Breakfast approximately 4 hours ago — did not eat lunch yet",
+    "events_leading_to_call": "Maya was standing in the lunch line for approximately 5 minutes when she felt nauseous, then noticed tunnel vision and felt warm and weak. She reached for the table but went down. Ms. Rodriguez witnessed the fall — no head trauma. LOC lasted approximately 30 seconds. Maya was alert and talking when she came around. She has never fainted before. No cardiac history. She ran track last fall with no episodes."
+  },
+  "initial_complaint": {
+    "speaker": "Maya",
+    "lay_summary": "I passed out and I still feel a little weird.",
+    "allowed_in_opener": true,
+    "do_not_include": [
+      "prodrome details",
+      "duration",
+      "standing time",
+      "head trauma negatives",
+      "prior episode history",
+      "cardiac history",
+      "oral intake",
+      "diagnosis",
+      "clinical terms",
+      "treatment suggestions",
+      "full OPQRST/SAMPLE"
+    ]
+  },
+  "history_response_map": {
+    "patient_identity": {
+      "label": "Patient identity / demographics",
+      "speaker": "Maya",
+      "triggers": [
+        "what is your name",
+        "what's your name",
+        "who are you",
+        "patient name",
+        "what is her name",
+        "what's her name",
+        "how old are you",
+        "how old is she",
+        "age",
+        "date of birth",
+        "dob",
+        "birth date",
+        "birthday"
+      ],
+      "answer": "My name is Maya Chen. I'm 14 years old. My birthday is August 27.",
+      "tags": [
+        "[[HISTORY: Patient Name=Maya Chen]]",
+        "[[HISTORY: Patient Age=14-year-old female]]",
+        "[[HISTORY: Patient Date of Birth=August 27]]"
+      ],
+      "notes": "Patient-scoped demographics only. Do not emit name, DOB, or age tags for Ms. Rodriguez or other bystanders.",
+      "do_not_include": [
+        "weight unless asked",
+        "prodrome details",
+        "medical history",
+        "medications",
+        "treatment suggestions"
+      ]
+    },
+    "patient_weight": {
+      "label": "Patient weight",
+      "speaker": "Maya",
+      "triggers": [
+        "how much do you weigh",
+        "how much does she weigh",
+        "what do you weigh",
+        "patient weight",
+        "weight",
+        "estimated weight"
+      ],
+      "answer": "I weigh about 52 kilograms, around 114 pounds.",
+      "tag": "[[HISTORY: Patient Weight=52 kg / ~114 lbs]]",
+      "notes": "Patient-scoped weight only.",
+      "do_not_include": [
+        "diagnosis",
+        "treatment suggestions"
+      ]
+    },
+    "chief_concern": {
+      "label": "Broad opener / chief concern",
+      "speaker": "Maya",
+      "triggers": [
+        "what's going on",
+        "what happened",
+        "why did you call",
+        "how can we help",
+        "chief complaint",
+        "what is your chief complaint",
+        "what's your chief complaint",
+        "what is her chief complaint",
+        "what's her chief complaint"
+      ],
+      "answer": "I passed out and I still feel a little weird.",
+      "tag": "[[HISTORY: Patient Chief Complaint=fainted and still feels a little weird]]",
+      "notes": "Patient-scoped complaint only.",
+      "do_not_include": [
+        "prodrome details",
+        "duration",
+        "standing time",
+        "head trauma negatives",
+        "prior episode history",
+        "cardiac history",
+        "oral intake",
+        "treatment suggestions"
+      ]
+    }
+  },
+  "personas": [
+    {
+      "role": "patient",
+      "name": "Maya",
+      "age": 14,
+      "description": "Cooperative and articulate but embarrassed. Slightly anxious — 'I don't know what happened, I've never done that before.' She will answer all questions accurately. If asked about family history or prior episodes, she will confirm: no family members died suddenly, no prior episodes. If asked about what she felt before she fainted: 'I felt really hot and my vision went all narrow, then I felt sick to my stomach — and then I woke up on the floor.' She is improving steadily throughout the call."
+    },
+    {
+      "role": "family",
+      "name": "Ms. Rodriguez",
+      "relationship": "teacher (witness)",
+      "aliases": [
+        "Ms. Rodriguez",
+        "Ms Rodriguez",
+        "teacher",
+        "the teacher",
+        "witness"
+      ],
+      "description": "Calm, reliable witness. She saw the entire event: 'She grabbed the table and said she felt sick, then just went down. She was out maybe 30 seconds — no shaking, no convulsions. She woke up right away and knew who she was.' She has Maya's emergency contact information but has not yet reached the parents. Cooperative with any EMS request. She confirms the cafeteria is warm and crowded and Maya had been standing in line for 5 minutes."
+    },
+    {
+      "role": "ems_partner",
+      "name": "Alex",
+      "description": "Your EMT partner — experienced and calm, waits for your direction. DEFAULT OXYGEN RULE: If student gives any generic oxygen command, apply nasal cannula (NC) by default for this presentation. SpO2 is 99% so oxygen is supportive rather than urgent — NC is appropriate; do not apply NRB unless explicitly directed.",
+      "persona_rules": [
+        "When student gives any generic oxygen command, default to nasal cannula — Maya's SpO2 is 99%; NRB is not indicated",
+        "When directed to position Maya supine, help lower her to the floor and elevate her legs to a modified Trendelenburg position",
+        "Never describe two mutually exclusive oxygen delivery methods in the same response"
+      ]
+    }
+  ],
+  "vitals": {
+    "baseline": {
+      "hr": {
+        "value": 72,
+        "numeric": true,
+        "label": "Heart Rate",
+        "unit": " bpm"
+      },
+      "rr": {
+        "value": 16,
+        "numeric": true,
+        "label": "Resp Rate",
+        "unit": " breaths/min"
+      },
+      "spo2": {
+        "value": 99.0,
+        "numeric": true,
+        "label": "SpO2",
+        "unit": "%"
+      },
+      "bp": {
+        "value": "98/62",
+        "numeric": false,
+        "label": "Blood Pressure",
+        "unit": " mmHg"
+      },
+      "temp": {
+        "value": 98.2,
+        "numeric": true,
+        "label": "Temperature",
+        "unit": "°F"
+      },
+      "gcs": {
+        "value": 15,
+        "numeric": true,
+        "label": "GCS",
+        "unit": "",
+        "detail": "E4V5M6 — alert, oriented, speaking normally after syncopal episode"
+      },
+      "blood_glucose": {
+        "value": 94,
+        "numeric": false,
+        "label": "Blood Glucose",
+        "unit": "mg/dL",
+        "detail": "Normal — 94 mg/dL. Hypoglycemia excluded as the cause of syncope."
+      },
+      "skin_color": {
+        "value": "Pale, mildly cool and diaphoretic — improving",
+        "numeric": false,
+        "label": "Skin"
+      },
+      "cap_refill": {
+        "value": "2 seconds",
+        "numeric": false,
+        "label": "Cap Refill"
+      },
+      "pupils": {
+        "value": "PERRL 4 mm bilaterally",
+        "numeric": false,
+        "label": "Pupils"
+      },
+      "cardiac_rhythm": {
+        "value": "Unknown — monitor not yet applied",
+        "numeric": false,
+        "label": "Cardiac Rhythm",
+        "image_asset": null
+      },
+      "work_of_breathing": {
+        "value": "Easy and unlabored — no retractions, no accessory muscle use",
+        "numeric": false,
+        "label": "Work of Breathing"
+      },
+      "lung_sounds": {
+        "value": "Clear bilaterally — equal air entry, no adventitious sounds",
+        "numeric": false,
+        "label": "Lung Sounds"
+      }
+    },
+    "deterioration": {
+      "rates": {
+        "hr": 0.05,
+        "spo2": 0,
+        "gcs": 0
+      },
+      "caps": {
+        "hr": {
+          "min": 60,
+          "max": 110
+        },
+        "spo2": {
+          "min": 98.0,
+          "max": 100.0
+        },
+        "gcs": {
+          "min": 15,
+          "max": 15
+        }
+      },
+      "string_thresholds": {
+        "skin_color": [
+          {
+            "spo2_below": 95,
+            "value": "Pale, cool, diaphoretic — still recovering"
+          }
+        ]
+      }
+    },
+    "interventions": {
+      "positioning_supine": {
+        "label": "Position supine, legs elevated (Trendelenburg-modified)",
+        "scope": [
+          "MFR",
+          "EMT",
+          "AEMT",
+          "Paramedic"
+        ],
+        "notes": "First-line intervention for vasovagal syncope — restores venous return and cerebral perfusion; reduces orthostatic component. Maya's BP should improve with supine positioning.",
+        "effects": {
+          "string_override": {
+            "bp": "108/70",
+            "skin_color": "Improving — less pale, diaphoresis clearing"
+          }
+        }
+      },
+      "o2_nc": {
+        "label": "Supplemental O2 via nasal cannula",
+        "scope": [
+          "MFR",
+          "EMT",
+          "AEMT",
+          "Paramedic"
+        ],
+        "notes": "Supportive oxygen — SpO2 is 99% so this is comfort/precautionary rather than urgent. Nasal cannula at 2–4 LPM is appropriate.",
+        "effects": {
+          "spo2": {
+            "immediate_change": 0,
+            "rate_modifier": 0
+          }
+        }
+      },
+      "ekg_monitoring": {
+        "label": "Cardiac Monitor — 4-Lead",
+        "scope": [
+          "EMT",
+          "AEMT",
+          "Paramedic"
+        ],
+        "notes": "Apply 4-lead monitoring to evaluate cardiac rhythm and screen for arrhythmia as an etiology. Normal sinus rhythm reduces urgency of cardiac cause.",
+        "effects": {
+          "string_override": {
+            "cardiac_rhythm": "Normal sinus rhythm — rate 72, regular, no ectopy"
+          }
+        }
+      },
+      "blood_glucose_check": {
+        "label": "Blood Glucose Check — Fingerstick (glucometer)",
+        "scope": [
+          "EMT",
+          "AEMT",
+          "Paramedic"
+        ],
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "blood glucose",
+          "\\bbgl\\b",
+          "\\bbg\\b",
+          "glucometer",
+          "finger.?stick",
+          "check.*glucose",
+          "glucose.*check"
+        ],
+        "notes": "Protocol-indicated for any syncope or altered mental status presentation to exclude hypoglycemia. Expected result: 94 mg/dL.",
+        "effects": {
+          "string_override": {
+            "blood_glucose": "94 mg/dL — normal"
+          }
+        }
+      },
+      "als_intercept": {
+        "label": "ALS intercept acknowledged",
+        "scope": [
+          "MFR",
+          "EMT",
+          "AEMT",
+          "Paramedic"
+        ],
+        "notes": "ALS/intercept expectations are determined by the active agency configuration for pediatric LOC/syncope calls.",
+        "effects": {}
+      }
+    },
+    "improvement": {}
+  },
+  "correct_treatment": {
+    "primary_diagnosis": "Vasovagal syncope (neurocardiogenic syncope) — adolescent female, prodrome-positive, situational trigger (prolonged standing, warm environment, skipped meal), normal cardiac rhythm, normal glucose, rapid recovery",
+    "critical_actions": [
+      {
+        "id": "scene_safety",
+        "description": "Scene safety confirmed and BSI/PPE donned prior to patient contact",
+        "scene_entry_credited": true
+      },
+      {
+        "id": "primary_assessment",
+        "description": "Primary assessment performed — LOC/GCS, airway, breathing, circulation, skin signs",
+        "protocol_indicated": true,
+        "evidence": {
+          "finding_types": [
+            "vital",
+            "exam"
+          ],
+          "transcript_patterns": [
+            "(?i)(primary|assessment|airway|breathing|circulation|pulse|skin|level of|alert|gcs|avpu)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "supine_positioning",
+        "description": "Patient repositioned supine with legs elevated — first-line intervention for vasovagal syncope",
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(supine|flat|lie|legs?\\s+up|elevat|trendelenburg|lay\\s+her\\s+down|lay\\s+down|lower\\s+to\\s+the\\s+floor)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "blood_glucose_checked",
+        "description": "Blood glucose obtained to rule out hypoglycemia as the etiology — result: 94 mg/dL (normal)",
+        "protocol_indicated": true,
+        "evidence": {
+          "finding_types": [
+            "vital"
+          ],
+          "finding_key_patterns": [
+            "(?i)blood.glucose|glucose|blood.sugar"
+          ],
+          "transcript_patterns": [
+            "(?i)(blood\\s+glucose|blood\\s+sugar|glucose|glucometer|finger.?stick|sugar|bgl|check\\s+a|check\\s+her\\s+glucose)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "prodrome_history",
+        "description": "Prodrome history obtained — nausea, tunnel vision, warmth before LOC establishes vasovagal over cardiac etiology",
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(before|warning|prodrome|nausea|dizzy|tunnel|vision|warm|hot|weak|lightheaded|feel\\s+before|happen\\s+before|feel\\s+anything|notice)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "cardiac_screen",
+        "description": "Cardiac syncope screen performed — family history, exertional context, palpitations, prior episodes",
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(family|history|cardiac|heart|sudden|palpitation|racing|exercise|exertion|running|sports|episode|before|prior|arrhythmia|rhythm)"
+          ],
+          "min_matches": 1
+        }
+      }
+    ],
+    "recommended_actions": [
+      {
+        "id": "cardiac_monitoring_applied",
+        "description": "Cardiac monitor (4-lead) applied — normal sinus rhythm confirmed, arrhythmia excluded as acute cause"
+      },
+      {
+        "id": "als_intercept_requested",
+        "description": "ALS intercept/handoff completed according to the active agency configuration for pediatric LOC; patient appropriately handed to ALS when ALS is involved"
+      },
+      {
+        "id": "transport_destination_verbalized",
+        "description": "Transport plan and destination explained to Maya and to Ms. Rodriguez (proxy for absent parent)"
+      }
+    ],
+    "out_of_scope_bls": [
+      "iv_io_access",
+      "dextrose_iv_io",
+      "antiarrhythmic_als_only",
+      "cardioversion_als_only",
+      "oral_glucose_contraindicated"
+    ]
+  },
+  "scoring_rubric": {
+    "clinical_performance": {
+      "max": 50,
+      "full_credit": "Prodrome history obtained (nausea, tunnel vision, warmth — classic vasovagal); cardiac red flags screened (no family SCD, no exertional context, no palpitations); blood glucose checked normal; seizure features screened; patient repositioned supine with legs elevated; reassessment and ALS handoff documented.",
+      "partial_credit": "Supine positioning and glucose check performed but prodrome history incomplete or cardiac screen not explicitly documented; or cardiac monitor applied but differential reasoning not verbalized.",
+      "minimal_credit": "Primary assessment completed and patient assessed but no positioning performed or glucose not checked despite AMS presentation; or history focused on symptoms only without differential reasoning."
+    },
+    "narrative": {
+      "max": 20,
+      "full_credit": "CHART complete: 14-year-old female, syncopal episode in cafeteria (~30 seconds), prodrome of nausea, tunnel vision, and warmth — consistent with vasovagal syncope; no cardiac red flags (no family history SCD, no exertion, no palpitations); blood glucose 94 mg/dL normal; cardiac monitor — normal sinus rhythm if applied; supine positioning applied with clinical improvement; transported to hospital for evaluation.",
+      "partial_credit": "Narrative captures the event and vitals but prodrome documentation absent or differential reasoning missing from the assessment section.",
+      "minimal_credit": "Narrative present but reads as symptom list only — no differential reasoning, no documentation of blood glucose result, or no documentation of positioning and patient response."
+    },
+    "scope_adherence": {
+      "max": 10,
+      "full_credit": "Stayed within effective provider scope and MCA rules: IV/IO access not attempted — IV/IO is an ALS skill outside BLS scope for this presentation. No out-of-scope attempts or orders.",
+      "partial_credit": "No dangerous out-of-scope intervention attempted, but scope reasoning, level-specific escalation, or MCA-specific scope recognition was incomplete.",
+      "minimal_credit": "Out-of-scope intervention attempted or ordered, or provider-level limits materially ignored."
+    },
+    "dmist": {
+      "max": 10,
+      "full_credit": "D: Maya Chen, 14-year-old female, 52 kg; M: syncopal episode ~30 seconds, witnessed, prodrome-positive (nausea/tunnel vision/warmth), no cardiac history, no family history SCD, no prior episodes, NKDA; I: supine positioning — BP improved; cardiac monitor applied if available; S: HR 72, SpO2 99%, BP improved to 108/70, GCS 15, glucose 94 mg/dL normal; T: patient improving, alert and oriented, vasovagal presentation most likely — no acute cardiac concern identified.",
+      "partial_credit": "3–4 of 5 DMIST components present — glucose result or prodrome description missing from handoff",
+      "minimal_credit": "2 or fewer DMIST components or syncope etiology assessment absent from handoff"
+    },
+    "professionalism": {
+      "max": 10,
+      "full_credit": "Introduced to Maya and Ms. Rodriguez by name; explained what was happening in age-appropriate, non-alarming terms; reassured Maya that fainting can happen and that evaluation is appropriate; informed Ms. Rodriguez of the transport plan and the need to reach Maya's parents; maintained Maya's dignity in the cafeteria setting (crowded, embarrassing situation).",
+      "partial_credit": "Clinically thorough but communication with Maya was procedure-focused without reassurance, or Ms. Rodriguez not informed of the transport plan.",
+      "minimal_credit": "Minimal verbal communication with patient or witness — procedures performed without explanation; no attempt to address the patient's anxiety or explain the evaluation plan."
+    },
+    "protocols_treatment": {
+      "max": 15,
+      "full_credit": "Protocol-aligned syncope care completed: patient repositioned supine with legs elevated as first-line vasovagal treatment; glucose and red-flag assessment priorities addressed; cardiac monitor applied when available; supplemental oxygen is supportive only if clinically indicated.",
+      "partial_credit": "Most treatment priorities addressed, but one important protocol-aligned intervention, escalation step, or contraindication check was incomplete or delayed.",
+      "minimal_credit": "Key protocol/treatment priority missed, contraindicated care performed, or treatment plan materially inconsistent with protocol."
+    }
+  },
+  "scoring": {
+    "overall_considerations": [
+      "Syncope in adolescents is common and usually benign (vasovagal), but cardiac arrhythmias, structural heart disease, and channelopathies (long QT, WPW) can present identically and are life-threatening. The differential is the most important clinical task on this call.",
+      "Prodrome is the single most important differentiator: vasovagal syncope almost always has a warning (nausea, tunnel vision, warmth, lightheadedness). Cardiac syncope often has no warning, or a prodrome under 5 seconds.",
+      "Blood glucose is mandatory for any syncopal or AMS presentation — hypoglycemia must be excluded before committing to vasovagal.",
+      "Supine positioning with legs elevated is the definitive BLS treatment for vasovagal syncope — it restores preload more effectively than any medication available at this scope.",
+      "Do NOT penalize for not administering oral glucose — blood glucose is normal (94 mg/dL). Oral glucose with a normal blood glucose is not indicated.",
+      "Credit any thorough cardiac screen even if the student does not verbalize the word 'arrhythmia' — asking about family history of sudden death, prior episodes, palpitations, or exertional symptoms is the screen."
+    ],
+    "required_assessments": [
+      {
+        "id": "prodrome_history",
+        "description": "Obtain prodrome history — ask specifically what Maya felt before losing consciousness (nausea, tunnel vision, warmth, lightheadedness, weakness)",
+        "keywords": [
+          "before",
+          "warning",
+          "prodrome",
+          "nausea",
+          "dizzy",
+          "dizziness",
+          "tunnel",
+          "vision",
+          "warm",
+          "hot",
+          "weak",
+          "lightheaded",
+          "feel before",
+          "notice anything",
+          "happen before",
+          "feel anything",
+          "feel sick",
+          "feel funny"
+        ],
+        "missing_deduction": 4,
+        "note": "Prodrome history is the primary clinical tool for differentiating vasovagal from cardiac syncope. Its absence means the differential cannot be completed — the most critical historical element in any syncopal call."
+      },
+      {
+        "id": "cardiac_red_flag_screen",
+        "description": "Screen for cardiac red flags — family history of sudden cardiac death, exertional context, palpitations or racing heart before syncope, prior episodes, no prodrome",
+        "keywords": [
+          "family history",
+          "family",
+          "sudden death",
+          "cardiac",
+          "heart",
+          "palpitations",
+          "racing",
+          "exercise",
+          "running",
+          "sports",
+          "exertion",
+          "before",
+          "prior",
+          "previous",
+          "episode",
+          "arrhythmia",
+          "rhythm",
+          "history of heart"
+        ],
+        "missing_deduction": 3,
+        "note": "Cardiac screen is mandatory for all pediatric syncope — channelopathies and structural heart disease can present identically to vasovagal and are not survivable without expedited evaluation."
+      },
+      {
+        "id": "blood_glucose_check",
+        "description": "Check blood glucose — mandatory for any syncopal or AMS presentation to exclude hypoglycemia as the etiology",
+        "keywords": [
+          "glucose",
+          "blood glucose",
+          "blood sugar",
+          "sugar",
+          "glucometer",
+          "finger stick",
+          "fingerstick",
+          "bgl",
+          "dextro",
+          "diabetic",
+          "check sugar",
+          "check glucose"
+        ],
+        "missing_deduction": 2,
+        "note": "Blood glucose is a required assessment for all altered/syncopal patients regardless of suspected etiology — hypoglycemia can mimic vasovagal syncope and must be excluded."
+      },
+      {
+        "id": "seizure_screen",
+        "description": "Screen for seizure vs. syncope — ask about limb jerking, incontinence, tongue biting, duration of confusion, post-ictal state",
+        "keywords": [
+          "seizure",
+          "convulsion",
+          "jerk",
+          "twitch",
+          "shaking",
+          "tongue",
+          "bite",
+          "incontinence",
+          "urine",
+          "wet",
+          "post-ictal",
+          "confused",
+          "confusion",
+          "slow to wake",
+          "stiff",
+          "tonic",
+          "clonic"
+        ],
+        "missing_deduction": 2,
+        "note": "Seizure and syncope have overlapping presentations — brief myoclonic jerks can occur in both. Distinguishing features (post-ictal confusion, incontinence, bite marks, prolonged recovery) must be actively screened."
+      }
+    ],
+    "required_screens": [
+      {
+        "id": "cardiac_syncope",
+        "description": "Screen for cardiac etiology — no prodrome or very brief prodrome, exertional onset, palpitations preceding syncope, family history of sudden death under 50 or unexplained death, structural heart history",
+        "keywords": [
+          "cardiac",
+          "heart",
+          "arrhythmia",
+          "palpitation",
+          "racing heart",
+          "exertional",
+          "exercise",
+          "sports",
+          "family history",
+          "sudden death",
+          "structural",
+          "QT",
+          "WPW",
+          "SVT",
+          "no warning",
+          "no prodrome",
+          "brief warning"
+        ],
+        "missing_deduction": 3,
+        "note": "Cardiac syncope (long QT, WPW, HCM, SVT) can be clinically indistinguishable from vasovagal in the field. The absence of a cardiac screen in a syncopal adolescent is a clinical reasoning gap — this is the most dangerous miss in pediatric syncope."
+      },
+      {
+        "id": "hypoglycemia_screen",
+        "description": "Screen for hypoglycemia — diabetic history, insulin use, missed meals, fasting state, glucose check",
+        "keywords": [
+          "glucose",
+          "sugar",
+          "diabetic",
+          "diabetes",
+          "insulin",
+          "medication",
+          "fasting",
+          "eat",
+          "meal",
+          "breakfast",
+          "lunch",
+          "hypoglycemia",
+          "low blood sugar",
+          "check glucose",
+          "blood sugar"
+        ],
+        "missing_deduction": 2,
+        "note": "Hypoglycemia is on the differential for all pediatric syncope — skipped meals and undiagnosed diabetes are common in adolescents. Blood glucose check is the clinical screen."
+      }
+    ],
+    "by_level": {
+      "EMT": {
+        "critical_focus": [
+          "Scene safety and BSI/PPE.",
+          "Primary assessment — LOC, airway, breathing, circulation, skin signs.",
+          "Supine positioning with legs elevated (Trendelenburg-modified) — FIRST intervention for suspected vasovagal.",
+          "Blood glucose check — mandatory for any syncopal or AMS presentation (result: 94 mg/dL normal).",
+          "Prodrome history — specifically ask what Maya felt before losing consciousness.",
+          "Cardiac red flag screen — family history sudden cardiac death, exertional context, palpitations.",
+          "Seizure screen — limb jerking, incontinence, tongue biting, prolonged confusion.",
+          "Supplemental O2 — nasal cannula supportive; SpO2 is 99% so not urgent.",
+          "Cardiac monitor (4-lead) — evaluate rhythm; confirms normal sinus rhythm.",
+          "Transport for hospital evaluation — vasovagal diagnosis is not confirmed prehospital; evaluation and possibly ECG are appropriate."
+        ],
+        "additional_expectations": [
+          "SAMPLE history including medications, allergies, last oral intake (skipped lunch — relevant to orthostatic component).",
+          "Witness account from Ms. Rodriguez — description of event, duration of LOC, any convulsive activity.",
+          "Reassessment of vitals and patient response after positioning."
+        ],
+        "grace_items": [
+          "Oral glucose — not indicated since blood glucose is 94 mg/dL; do not penalize for not administering.",
+          "IV/IO access — ALS skill; do not penalize for not placing a line.",
+          "12-Lead ECG — EMT scope in some MCA protocols; credit if performed but do not deduct if not attempted given normal 4-lead rhythm.",
+          "Calling additional ALS units when ALS is already dispatched by agency configuration — do not penalize for correctly not calling additional resources.",
+          "Adenosine or antiarrhythmics — not indicated (normal rhythm); ALS-only anyway."
+        ]
+      }
+    },
+    "dmist_components": {
+      "D": {
+        "description": "Patient demographics",
+        "required_elements": [
+          "name: Maya Chen",
+          "age: 14-year-old or adolescent",
+          "weight: 52 kg or ~114 lbs"
+        ],
+        "corroboration_source": "scenario_patient_fields"
+      },
+      "M": {
+        "description": "Mechanism and history establishing vasovagal syncope as the most likely etiology",
+        "required_elements": [
+          "syncopal episode (~30 seconds)",
+          "witnessed by teacher — no head trauma",
+          "prodrome: nausea, tunnel vision, warmth (vasovagal pre-syncopal warning)",
+          "no prior episodes",
+          "no family history of sudden cardiac death",
+          "no cardiac history",
+          "last meal: breakfast 4 hours ago — skipped lunch"
+        ],
+        "corroboration_source": "any"
+      },
+      "I": {
+        "description": "Illness details — syncopal episode, prodrome, and relevant clinical context",
+        "required_elements": [
+          "brief loss of consciousness during gym class",
+          "prodrome: dizziness and visual changes before collapse",
+          "spontaneous recovery before EMS arrival",
+          "no head trauma on fall",
+          "no prior cardiac history or prior syncopal episodes"
+        ],
+        "corroboration_source": "history_and_findings",
+        "note": "I is illness/injury, not interventions. Treatments (positioning, O2, cardiac monitor) belong under T."
+      },
+      "S": {
+        "description": "Current status at handoff — GCS/LOC and clinical resolution are the primary signs for a syncope handoff",
+        "required_elements": [
+          "GCS 15 or alert and oriented (primary)",
+          "clinical resolution — patient improved, no further syncope (primary)",
+          "HR (supplementary — if assessed)",
+          "SpO2 (supplementary — passively observed acceptable)",
+          "blood glucose if checked (supplementary)",
+          "BP improved or normalized (supplementary — if assessed)"
+        ],
+        "scoring_note": "Primary S elements for syncope: GCS 15 or alert/oriented description AND clinical resolution (patient improved, no further syncopal episode). At least one quantitative sign (HR, SpO2, or BGL if checked) consistent with student-assessed data is expected alongside the clinical resolution. Required_elements lists target values — not all are required when primary signs are well-documented.",
+        "corroboration_source": "vitals_engine"
+      },
+      "T": {
+        "description": "Trajectory and transport plan",
+        "required_elements": [
+          "patient improving — less pale, improving BP after positioning",
+          "vasovagal syncope most likely etiology — no cardiac red flags identified",
+          "transport for hospital evaluation — ECG and further workup appropriate"
+        ],
+        "corroboration_source": "any"
+      }
+    },
+    "dmist_considerations": [
+      "This is an ALS turnover — document the vasovagal differential reasoning clearly. ALS will want to know the prodrome description and the cardiac red flag screen result.",
+      "Blood glucose result (94 mg/dL normal) should be in the S or M section — it's a critical piece of the differential.",
+      "The trajectory element is particularly important here: is the patient improving with BLS care? This directly informs the ALS decision about further intervention.",
+      "Conciseness is a strength — reward focused information. Prodrome description and cardiac screen are the most critical DMIST elements for this call."
+    ],
+    "narrative_considerations": [
+      "The History of event section must capture the prodrome — this is the clinical cornerstone of the vasovagal diagnosis.",
+      "Assessment should document the differential reasoning (vasovagal vs. cardiac) with the supporting evidence.",
+      "Document the intervention response — BP improved and pallor improved after supine positioning. This documents clinical judgment.",
+      "Evaluate accuracy: blood glucose value, vital signs, and cardiac rhythm should be consistent with simulation findings."
+    ],
+    "corroboration_rules": {
+      "dmist": {
+        "M": {
+          "max_deduction_per_violation": 3,
+          "note": "The mechanism section is the differential reasoning in this scenario — if prodrome is absent from the documentation or a cardiac history is invented that was not elicited, the handoff misrepresents the clinical picture to ALS and could drive unnecessary escalation"
+        }
+      },
+      "narrative": {
+        "A": {
+          "max_deduction_per_violation": 2,
+          "note": "Assessment documentation must match the actual findings — fabricated or inconsistent vital signs, glucose values, or cardiac rhythm descriptions are documentation errors that would appear in the patient's chart"
+        }
+      }
+    }
+  },
+  "debrief": {
+    "key_teaching_points": [
+      "Syncope in adolescents is usually vasovagal — but cardiac arrhythmias and channelopathies (long QT syndrome, WPW, HCM) can present identically and are fatal without treatment. The differential is non-negotiable.",
+      "Prodrome is your most important clinical tool: vasovagal syncope almost always has a pre-syncopal warning (nausea, tunnel vision, warmth, lightheadedness) lasting 10–60 seconds. Cardiac syncope usually has no prodrome or a very brief one (under 5 seconds). Ask specifically and document the answer.",
+      "Supine positioning with legs elevated is the treatment — it restores venous return and cerebral perfusion more effectively than any medication at this scope. Get the patient flat and elevate the legs first, before anything else.",
+      "Blood glucose is mandatory for every syncopal patient — hypoglycemia mimics vasovagal syncope and is easily reversible if caught. Never skip this step.",
+      "Cardiac red flags that change your clinical picture immediately: no prodrome, syncope during or after exercise, palpitations or racing heart before LOC, family history of sudden cardiac death under 50, and prior unexplained syncopal episodes. One red flag means expedite transport and ALS involvement.",
+      "Vasovagal syncope is a diagnosis of exclusion prehospital — you can document a vasovagal presentation, but the hospital still needs to do an ECG to rule out QT prolongation, WPW, and other structural causes. Always transport."
+    ],
+    "common_mistakes": [
+      "Not obtaining a prodrome history — this is the most important question in any syncopal workup and the primary differentiator between vasovagal and cardiac etiology",
+      "Skipping blood glucose — glucose is mandatory for all syncopal and AMS presentations regardless of apparent cause",
+      "Leaving the patient sitting up or semi-recumbent — supine with legs elevated is the first intervention and provides the most rapid clinical improvement",
+      "Failing to screen for cardiac red flags — family history of sudden death, exertional context, and absent prodrome must be specifically asked about, not assumed absent",
+      "Administering oral glucose with a normal glucose level (94 mg/dL) — oral glucose is only indicated for hypoglycemia in a patient who can protect their airway",
+      "Treating this as a 'simple faint' without completing a differential — syncope is a serious chief complaint with potentially fatal cardiac causes until proven otherwise"
+    ],
+    "condition_background": {
+      "pathophysiology": "Vasovagal (neurocardiogenic) syncope results from a sudden drop in sympathetic tone combined with paradoxical vagal activation, causing simultaneous bradycardia and peripheral vasodilation. Venous pooling reduces preload, cardiac output falls, and cerebral hypoperfusion produces loss of consciousness. Prolonged standing in a warm environment is a classic trigger — venous pooling in the legs accelerates the cascade. The prodrome (nausea, tunnel vision, diaphoresis, pallor) reflects the compensatory sympathetic surge that precedes the vagal reflex.",
+      "assessment_pearls": "Classic vasovagal presentation: prolonged standing or sitting, warm environment, emotional stress, or pain as a trigger; clear prodrome (10–60 seconds of nausea, tunnel vision, warmth, or lightheadedness); brief LOC (typically under 60 seconds); rapid and complete recovery; pale, cool, and diaphoretic skin during the event clearing quickly afterward. Cardiac syncope red flags: onset during exertion or immediately post-exertion; absent or very brief prodrome (under 5 seconds); palpitations or chest pain before LOC; family history of sudden cardiac death or cardiomyopathy; prior unexplained syncopal episodes; syncope with activity rather than with prolonged standing.",
+      "treatment_rationale": "Supine positioning with passive leg raise restores 200–500 mL of venous return from the lower extremities within 30–60 seconds — the fastest available preload restoration at BLS scope. Blood glucose check rules out hypoglycemia as a competing cause. Cardiac monitoring allows real-time rhythm evaluation and can identify an arrhythmia that would require expedited ALS escalation. Supplemental oxygen is supportive rather than urgent when SpO2 is normal. The most important disposition decision is transport for evaluation: vasovagal syncope cannot be confirmed prehospital, and the first episode of syncope in an adolescent always requires a 12-lead ECG and cardiology follow-up."
+    }
+  },
+  "exemplar_dmist": "D: Maya Chen, 14-year-old female, approximately 114 pounds. M: Syncopal episode in school cafeteria — witnessed by teacher, LOC approximately 30 seconds, no head trauma. Pre-syncopal prodrome confirmed: nausea, tunnel vision, and warmth prior to loss of consciousness — consistent with vasovagal etiology. No prior syncopal episodes. No cardiac history. No family history of sudden cardiac death. Last meal was breakfast approximately 4 hours ago — did not eat lunch. NKDA. I: Positioned supine with legs elevated — blood pressure improved to 108/70. Supplemental O2 via nasal cannula. Cardiac monitor applied — normal sinus rhythm, rate 72. S: HR 72, SpO2 99%, BP 108/70 after positioning, GCS 15 — alert and oriented. Blood glucose 94 mg/dL, normal. Skin improving — less pale, diaphoresis clearing. Cardiac rhythm normal sinus. T: Patient improving with BLS care. Vasovagal syncope most likely — no cardiac red flags identified on initial assessment. Transporting to Central City Medical Center for evaluation and 12-lead ECG.",
+  "exemplar_narrative": "EMS responded for a 14-year-old female with reported syncope in the school cafeteria. Teacher (Ms. Rodriguez) witnessed the event: patient grabbed a table, said she felt sick, and went to the floor. LOC lasted approximately 30 seconds — no convulsive activity, no incontinence, no tongue biting observed. Patient was alert and oriented when she regained consciousness. Upon arrival, patient was sitting against the cafeteria wall — pale, mildly diaphoretic, anxious but cooperative. Primary assessment: alert, GCS 15, airway patent, breathing easy and unlabored at 16 per minute, SpO2 99%, pulse present and regular. History: patient reports pre-syncopal prodrome of nausea, tunnel vision, and warmth immediately preceding the event, consistent with vasovagal etiology. No prior syncopal episodes. No cardiac history. No family history of sudden cardiac death or unexplained death. Skipped lunch — last meal breakfast approximately 4 hours prior. NKDA, no medications. No red flags for cardiac etiology identified. Blood glucose checked: 94 mg/dL — normal, hypoglycemia excluded. Patient repositioned supine with legs elevated — blood pressure improved from 98/62 to 108/70. Supplemental oxygen via nasal cannula applied. Cardiac monitor applied — normal sinus rhythm, rate 72, no ectopy. Patient improving throughout call — pallor and diaphoresis resolving. Transported to Central City Medical Center for evaluation and 12-lead ECG per protocol.",
+  "scenario_number": 13,
+  "prerequisites": [
+    "peds_febrile_seizure_01"
+  ],
+  "legacy_ai_categories": [
+    "documentation",
+    "professionalism"
+  ],
+  "checklist": [
+    {
+      "id": "peds_syncope_01.prodrome_history",
+      "description": "Prodrome history obtained — asked specifically what patient felt before losing consciousness (nausea, tunnel vision, warmth, lightheadedness, or weakness)",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 8,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 2,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": null,
+      "tier2_patterns": [
+        "(?i)(before|warning|prodrome|nausea|dizzy|dizziness|tunnel|vision|warm|hot|weak|lightheaded|feel\\s+before|notice\\s+anything|happen\\s+before|feel\\s+anything|feel\\s+sick|feel\\s+funny)"
+      ],
+      "done_feedback": "Prodrome history obtained — nausea, tunnel vision, and warmth before loss of consciousness are classic vasovagal warning signs.",
+      "missed_feedback": "Prodrome history not obtained — the pre-syncopal prodrome is the single most important differentiator between vasovagal and cardiac syncope.",
+      "clinical_rationale": "Vasovagal syncope has a classic prodrome (nausea, lightheadedness, warmth, tunnel vision); cardiac syncope typically has no warning and occurs during or after exertion.",
+      "common_error": "Asking only 'did you pass out?' without asking what the patient felt before — the prodrome sequence is more diagnostic than the syncopal event itself."
+    },
+    {
+      "id": "peds_syncope_01.cardiac_red_flag_screen",
+      "description": "Cardiac syncope screen performed — asked about family history of sudden cardiac death, exertional context, palpitations before LOC, or prior syncopal episodes",
+      "subtype": "screen",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 2,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": null,
+      "tier2_patterns": [
+        "(?i)(family\\s+histor|sudden\\s+death|cardiac|heart\\s+histor|palpitation|racing\\s+heart|exercise|exertion|running|sports|prior\\s+episode|previous\\s+episode|happen\\s+before|ever\\s+faint|arrhythmia|rhythm)"
+      ],
+      "done_feedback": "Cardiac syncope screen performed — family history of sudden cardiac death, exertional context, and palpitations before LOC all assessed.",
+      "missed_feedback": "Cardiac syncope screen not performed — in adolescents, cardiac syncope can present identically to vasovagal; missed red flags can be fatal.",
+      "clinical_rationale": "Cardiac syncope in a teenager is often caused by HCM, long QT syndrome, or WPW; family history of sudden death and exertional onset are the highest-yield red flags.",
+      "common_error": "Assuming adolescent syncope is vasovagal without screening — syncope during exercise, with palpitations, or with a family history of sudden cardiac death requires urgent cardiac evaluation."
+    },
+    {
+      "id": "peds_syncope_01.blood_glucose_checked",
+      "description": "Blood glucose obtained via glucometer to rule out hypoglycemia as the syncopal etiology",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "finding",
+        "finding_type": "vital",
+        "finding_key_pattern": "(?i)blood.glucose|blood.sugar|glucose|bgl"
+      },
+      "tier2_patterns": [
+        "(?i)(blood\\s+glucose|blood\\s+sugar|glucose|glucometer|finger.?stick|sugar|bgl|check\\s+a\\s+sugar|check\\s+glucose|dextro)"
+      ],
+      "done_feedback": "Blood glucose obtained — hypoglycemia excluded as a syncopal etiology; glucose within normal limits.",
+      "missed_feedback": "Blood glucose not obtained — hypoglycemia is a common and treatable cause of LOC in adolescents; it must be excluded before attributing the event to vasovagal mechanism.",
+      "clinical_rationale": "Neuroglycopenia causes loss of consciousness through metabolic pathway; a glucometer check takes 30 seconds and rules out a rapidly correctable etiology.",
+      "common_error": "Skipping the glucometer because the patient looks like vasovagal syncope — glucose should be checked in any patient with unexplained LOC regardless of the working diagnosis."
+    },
+    {
+      "id": "peds_syncope_01.seizure_screen",
+      "description": "Seizure vs. syncope differentiation performed — asked about limb jerking, incontinence, tongue biting, or prolonged post-event confusion",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 2,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": null,
+      "tier2_patterns": [
+        "(?i)(seizure|convulsion|jerk|twitch|shak|tongue|bite|incontinence|urine|wet\\s+herself|post.?ictal|confused|confusion|slow\\s+to\\s+wake|stiff|tonic|clonic)"
+      ],
+      "done_feedback": "Seizure screen performed — no tonic-clonic activity, no incontinence, no tongue bite, brief post-event confusion consistent with vasovagal rather than seizure.",
+      "missed_feedback": "Seizure screen not performed — tonic-clonic activity with incontinence and prolonged post-ictal confusion distinguishes seizure from syncope; without asking, the field impression is incomplete.",
+      "clinical_rationale": "Syncope can cause brief clonic movements (convulsive syncope) that mimic seizure; the history of post-event period, tongue biting, and incontinence helps differentiate.",
+      "common_error": "Assuming brief jerking movements during syncope always indicate a seizure — convulsive syncope (brief myoclonic jerks) is common and does not require anticonvulsant treatment."
+    },
+    {
+      "id": "peds_syncope_01.supine_positioning",
+      "description": "Patient repositioned supine with legs elevated (modified Trendelenburg) — first-line intervention for vasovagal syncope",
+      "subtype": "intervention",
+      "category": "clinical_performance",
+      "point_value": 4,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "positioning_supine"
+      },
+      "tier2_patterns": [
+        "(?i)(supine|flat|lie\\s+her|legs?\\s+up|elevat|trendelenburg|lay\\s+her\\s+down|lay\\s+down|lower\\s+to\\s+the\\s+floor|put\\s+her\\s+down|position\\s+her\\s+flat)"
+      ],
+      "done_feedback": "Patient repositioned supine with legs elevated — first-line intervention for vasovagal syncope; increases venous return and cerebral perfusion.",
+      "missed_feedback": "Supine positioning with legs elevated not performed — this is the most effective immediate intervention for vasovagal syncope; failing to position correctly delays symptom resolution.",
+      "clinical_rationale": "Modified Trendelenburg position augments venous return and cardiac preload, reversing the transient hypotension and cerebral hypoperfusion of vasovagal syncope.",
+      "common_error": "Sitting the patient upright immediately after recovery — resuming upright posture before the vasovagal episode fully resolves commonly causes recurrence."
+    },
+    {
+      "id": "peds_syncope_01.protocol_supine_positioning",
+      "description": "Protocol-aligned syncope treatment — patient placed supine with legs elevated; supplemental O2 is supportive only if clinically indicated",
+      "subtype": "intervention",
+      "category": "protocols_treatment",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "positioning_supine"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "Protocol-aligned treatment applied — supine positioning is the mandated first-line intervention; supplemental O2 applied as indicated.",
+      "missed_feedback": "Protocol-aligned positioning not performed — supine with legs elevated is the protocol first-line for syncope; the vast majority of vasovagal episodes resolve with positioning alone.",
+      "clinical_rationale": "Syncope protocol mandates positional treatment before pharmacologic intervention; supplemental O2 is supportive when SpO₂ is below target."
+    },
+    {
+      "id": "peds_syncope_01.scope_cardiac_monitor",
+      "description": "Cardiac monitor (4-lead) applied to evaluate rhythm — within EMT/AEMT/Paramedic scope",
+      "subtype": "intervention",
+      "category": "protocols_treatment",
+      "point_value": 5,
+      "required": "optional",
+      "applicable_levels": [
+        "EMT",
+        "AEMT",
+        "Paramedic"
+      ],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "ekg_monitoring"
+      },
+      "tier2_patterns": []
+    },
+    {
+      "id": "peds_syncope_01.scope_no_iv_io",
+      "description": "IV/IO access not attempted — IV/IO is an ALS skill outside BLS scope for this presentation",
+      "subtype": "intervention",
+      "category": "scope_adherence",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [
+        "MFR",
+        "EMT"
+      ],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "absence_check",
+        "absence_intervention_key": "iv_io_access"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "IV/IO correctly avoided — vasovagal syncope in a fully recovered adolescent is a BLS call; IV access is outside scope for this presentation.",
+      "missed_feedback": "IV/IO attempted — outside BLS scope for vasovagal syncope in a fully recovered patient; BLS management is positioning, glucose check, monitoring, and transport.",
+      "clinical_rationale": "BLS scope for syncope is positioning, glucose check, O2 as indicated, and transport; IV access and pharmacologic intervention belong to ALS scope."
+    }
+  ]
+}

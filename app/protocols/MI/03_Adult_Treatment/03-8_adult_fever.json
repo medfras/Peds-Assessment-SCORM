@@ -1,0 +1,77 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 3-8 Adult Fever (Initial 10/24/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured. Applies to adult patients > 14 years of age.",
+  "id": "mi_base_adult_fever",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Adult",
+  "level_display": "Adult (> 14 years)",
+  "jurisdiction": "Michigan",
+  "condition": "Adult Fever",
+  "version": "2025-10-24",
+  "protocol_reference": "Michigan Adult Treatment Protocol Section 3-8: Adult Fever — MDHHS Approved 10/24/25, Reviewed 2025",
+
+  "purpose": "Intended to assist EMS providers in reducing fever in the adult patient (> 14 years of age) prior to arrival to the emergency department. Fever is defined as a temperature of 100.4°F (38°C) or greater. Emergency management involves assessment to determine if any associated problems require emergency treatment.",
+
+  "sections": [
+    {
+      "title": "Adult Fever Treatment",
+      "reference": "Michigan Protocol 3-8: Adult Fever",
+      "points": [
+        "Follow General Pre-hospital Care-Treatment Protocol",
+        "Assess for sepsis and treat according to Sepsis-Treatment Protocol if applicable",
+        "Obtain baseline temperature and document method used",
+        "Facilitate passive cooling by removing excess clothing and blankets",
+        "If patient has not received an antipyretic in the last four (4) hours, is alert, and is able to swallow: administer antipyretic according to MCA selection — must select at least one: ibuprofen 400 mg PO (do NOT use in pregnant patients) or acetaminophen 650 mg PO",
+        "Dosing questions should be directed to online medical control"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Antipyretic Selection",
+      "description": "MCA must select at least one antipyretic option for adult fever management",
+      "options": [
+        "Ibuprofen 400 mg PO (do NOT use in pregnant patients)",
+        "Acetaminophen 650 mg PO"
+      ],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [
+    {
+      "name": "Ibuprofen 400 mg PO",
+      "dose": "400 mg PO",
+      "route": "Oral",
+      "indication": "Adult fever (temp ≥ 100.4°F / 38°C) — patient alert, able to swallow, no antipyretic in past 4 hours",
+      "contraindications": "Pregnant patients — DO NOT USE; known allergy to NSAIDs; active GI bleeding; renal impairment (use with caution)",
+      "side_effects": "GI upset, renal effects with chronic use",
+      "scope": "Per MCA selection",
+      "notes": "Do NOT administer to pregnant patients. Contact Medical Control for dosing questions."
+    },
+    {
+      "name": "Acetaminophen 650 mg PO",
+      "dose": "650 mg PO",
+      "route": "Oral",
+      "indication": "Adult fever (temp ≥ 100.4°F / 38°C) — patient alert, able to swallow, no antipyretic in past 4 hours",
+      "contraindications": "Known hypersensitivity; severe hepatic impairment; confirm patient has not taken acetaminophen within 4 hours",
+      "side_effects": "Hepatotoxicity with overdose; generally well-tolerated at therapeutic doses",
+      "scope": "Per MCA selection",
+      "notes": "Safe in pregnancy. Contact Medical Control for dosing questions."
+    }
+  ],
+
+  "deterioration_flags": [
+    "Sepsis criteria met (temp abnormality + HR > 90, RR < 10 or > 20, SBP < 90, or hypoperfusion) — refer to Sepsis-Treatment Protocol",
+    "Patient unable to swallow or altered mental status — do NOT administer oral medications; passive cooling only; contact Medical Control",
+    "Temperature > 40°C (104°F) with altered mental status — consider heat stroke; refer to Heat Emergencies-Treatment Protocol"
+  ],
+
+  "scope_notes": [
+    "Temperature assessment, passive cooling, sepsis screening: all levels",
+    "Antipyretic administration (ibuprofen or acetaminophen PO): per MCA selection — may be all levels",
+    "IV access and fluid administration: Specialist skill (per Sepsis protocol if criteria met)"
+  ]
+}

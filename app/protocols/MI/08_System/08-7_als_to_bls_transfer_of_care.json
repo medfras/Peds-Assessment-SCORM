@@ -1,0 +1,95 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-7 ALS to BLS Transfer of Care (Revised 2/24/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_als_to_bls_transfer_of_care",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (ALS/BLS — MCA Optional)",
+  "jurisdiction": "Michigan",
+  "condition": "ALS to BLS Transfer of Care",
+  "version": "2023-02-24",
+  "protocol_reference": "Michigan System Protocol Section 8-7: ALS to BLS Transfer of Care — MDHHS Approved 2/24/2023",
+
+  "purpose": "MCA OPTIONAL. Govern the conditions under which an ALS unit may transfer care of a patient to a BLS unit for transport. ALS to BLS transfer must only occur when the patient's condition is appropriate for BLS transport and the patient does not require ongoing ALS intervention. MCAs must define the criteria and process for ALS to BLS transfer.",
+
+  "sections": [
+    {
+      "title": "Authorization",
+      "reference": "Michigan Protocol 8-7: ALS to BLS — Authorization",
+      "points": [
+        "MCA OPTIONAL — only authorized if MCA has approved ALS to BLS transfer of care",
+        "ALS to BLS transfer requires MCA-defined criteria to be met",
+        "Medical control authorization may be required per MCA protocol before ALS to BLS transfer",
+        "The ALS provider retains responsibility for the patient until formal transfer is complete"
+      ]
+    },
+    {
+      "title": "Eligibility Criteria for ALS to BLS Transfer",
+      "reference": "Michigan Protocol 8-7: ALS to BLS — Eligibility",
+      "points": [
+        "Patient condition is stable and NOT expected to deteriorate during transport",
+        "No ongoing ALS interventions are required (IV access not needed, no ALS medications running, no advanced airway in place)",
+        "Patient does NOT have a time-sensitive condition (STEMI, stroke, major trauma, septic shock)",
+        "Vital signs are within normal limits and stable",
+        "Patient pain is adequately managed with no expected need for ALS pain management during transport",
+        "BLS transport is sufficient to reach the appropriate receiving facility"
+      ]
+    },
+    {
+      "title": "Conditions That PROHIBIT ALS to BLS Transfer",
+      "reference": "Michigan Protocol 8-7: ALS to BLS — Contraindications",
+      "points": [
+        "Active cardiac dysrhythmia requiring monitoring or treatment",
+        "Advanced airway in place (ETT or SGA)",
+        "Ongoing IV medication administration",
+        "Hemodynamic instability",
+        "STEMI, stroke, or major trauma",
+        "Altered mental status or declining level of consciousness",
+        "Post-cardiac arrest (ROSC) patients",
+        "Any patient the ALS provider clinically assesses as requiring continued ALS monitoring"
+      ]
+    },
+    {
+      "title": "Transfer Process",
+      "reference": "Michigan Protocol 8-7: ALS to BLS — Transfer Process",
+      "points": [
+        "ALS provider must conduct face-to-face verbal report with BLS crew including: patient name, age, chief complaint, assessment, vitals, interventions, response to treatment, and clinical rationale for BLS transfer",
+        "BLS crew must acknowledge receipt of report before ALS is released",
+        "Both units document transfer in respective PCRs",
+        "ALS provider documents clinical rationale for ALS to BLS transfer in PCR"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "ALS to BLS Transfer Authorized",
+      "description": "MCA must authorize ALS to BLS transfer and define eligibility criteria",
+      "options": ["Authorized — MCA criteria and process defined", "Not authorized"],
+      "selected": null
+    },
+    {
+      "item": "Medical Control Authorization Required",
+      "description": "MCA may require online medical control authorization before ALS to BLS transfer",
+      "options": ["Medical control authorization required for ALS to BLS transfer", "Medical control authorization not required — ALS provider discretion per protocol"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Patient deteriorates after ALS to BLS transfer — BLS crew must contact ALS/Medical Control immediately; initiate BLS protocols appropriate to condition",
+    "ALS provider has concern patient does not meet BLS transfer criteria — do NOT transfer; maintain ALS care; contact medical control"
+  ],
+
+  "scope_notes": [
+    "MCA OPTIONAL — MCA must authorize and define criteria",
+    "Transfer requires: stable patient, no ongoing ALS interventions, no time-sensitive conditions, normal vitals",
+    "Prohibited: dysrhythmia, advanced airway, IV drips, hemodynamic instability, STEMI, stroke, trauma, ROSC, declining AMS",
+    "Face-to-face verbal report required before transfer",
+    "Both units document transfer in respective PCRs",
+    "ALS provider documents clinical rationale for transfer"
+  ]
+}

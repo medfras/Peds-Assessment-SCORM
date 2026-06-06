@@ -1,0 +1,299 @@
+{
+  "_schema": "michigan_scope_of_practice_v1",
+  "_comment": "Source: Michigan EMS Scope of Practice — Michigan DHHS Bureau of Emergency Preparedness, EMS and Systems of Care (Updated 04/2024). Per MCL 333.20956: no provider shall practice at a level inconsistent with their education, licensure, and approved MCA protocols.",
+  "id": "mi_base_scope_of_practice",
+  "jurisdiction": "Michigan",
+  "version": "2024-04",
+  "document_reference": "Michigan EMS Scope of Practice — MDHHS Bureau of Emergency Preparedness, EMS and Systems of Care (Updated 04/2024)",
+  "legal_authority": "MCL 333.20956: A MFR/EMR, EMT, AEMT, or Paramedic shall not provide life support at a level inconsistent with education, licensure, and approved MCA protocols.",
+  "note": "Michigan scope expands on the NASEMSO national minimum in several areas (e.g., MFR/EMR NPA, i-gel, pulse ox, blood glucose, aspirin, oral glucose, traction splint). All interventions are subject to MCA protocol approval and medical director credentialing. Michigan uses 'Specialist/AEMT' for the AEMT level.",
+  "levels": {
+    "MFR": {
+      "full_name": "Medical First Responder (Emergency Medical Responder)",
+      "description": "Michigan's first responder level, equivalent to the national EMR. Michigan MFR scope is expanded relative to the NASEMSO national minimum in several skills (NPA, i-gel, pulse oximetry, blood glucose, aspirin, oral glucose, traction splint).",
+      "michigan_expansions_vs_national": [
+        "NPA (nasal airway) — authorized at MFR level in Michigan; national minimum is EMT",
+        "i-gel supraglottic airway — authorized at MFR level in Michigan; national minimum is EMT",
+        "Pulse oximetry — authorized at MFR level in Michigan; national minimum is EMT",
+        "Blood glucose monitoring — authorized at MFR level in Michigan; national minimum is EMT",
+        "Aspirin — authorized at MFR level in Michigan; national minimum is EMT",
+        "Oral glucose — authorized at MFR level in Michigan; national minimum is EMT",
+        "Cervical collar — authorized at MFR level in Michigan",
+        "Long spine board — authorized at MFR level in Michigan; national minimum is EMT",
+        "Traction splint — authorized at MFR level in Michigan; national minimum is EMT",
+        "Intramuscular auto-injector and draw-up epinephrine — MFR authorized (if MCA approved)"
+      ],
+      "airway_ventilation": [
+        "Airway — nasal (NPA)",
+        "Airway — oral (OPA)",
+        "Airway — i-gel supraglottic",
+        "Bag-valve-mask (BVM)",
+        "CO2 colorimetric device (if MCA approved)",
+        "Head tilt-chin lift",
+        "Jaw-thrust",
+        "Mouth-to-barrier/mask/mouth/nose/stoma",
+        "Airway obstruction — manual dislodgement techniques",
+        "Oxygen — nasal cannula",
+        "Oxygen — non-rebreather mask",
+        "Pulse oximetry",
+        "Suctioning — upper airway"
+      ],
+      "cardiovascular": [
+        "CPR",
+        "Defibrillation — automated/semi-automated (AED)",
+        "Hemorrhage control — direct pressure",
+        "Hemorrhage control — tourniquet",
+        "Hemorrhage control — wound packing",
+        "Mechanical CPR device (if MCA approved)",
+        "Active compression-decompression device (if MCA approved)"
+      ],
+      "immobilization": [
+        "Cervical collar",
+        "Long spine board",
+        "Manual cervical stabilization",
+        "Extremity stabilization — manual",
+        "Extremity splinting",
+        "Splint — traction",
+        "Emergency moves for endangered patients",
+        "Eye irrigation"
+      ],
+      "medication_routes": [
+        "Intramuscular — auto-injector and draw-up epinephrine (if MCA approved)",
+        "Intranasal — narcotic antagonist (unit-dose only)",
+        "Oral"
+      ],
+      "medications": [
+        "Aspirin (for suspected ischemic chest pain)",
+        "Auto-injectors: epinephrine, narcotic antagonist, HazMat exposure",
+        "Draw-up epinephrine",
+        "Epinephrine 1:1 IM/SQ (draw-up, for anaphylaxis)",
+        "Oral glucose",
+        "Auto-injector antidotes (HazMat/nerve agent exposure)"
+      ],
+      "other": [
+        "Blood glucose monitoring",
+        "Childbirth — uncomplicated",
+        "Vital signs (BP manual, pulse, respiratory rate)",
+        "Eye irrigation"
+      ]
+    },
+    "EMT": {
+      "full_name": "Emergency Medical Technician",
+      "description": "Michigan EMT. Builds on MFR with additional airway, monitoring, and medication capabilities. Includes supraglottic airway (King, Air-Qsp3/3G, LMA Supreme, Combitube), CPAP, 12-lead ECG acquisition.",
+      "airway_ventilation": [
+        "Airway — supraglottic (King LT, Air-Qsp3 or 3G, Combitube, LMA Supreme)",
+        "Airway — i-gel (EMT also authorized)",
+        "CPAP",
+        "CO2 colorimetric device",
+        "End-tidal CO2 monitoring and waveform capnography interpretation (if MCA approved and trained)",
+        "Oxygen — humidifiers, partial rebreather, simple face mask, Venturi mask",
+        "All MFR airway skills"
+      ],
+      "cardiovascular": [
+        "Cardiac 12-lead ECG acquisition and transmission",
+        "Mechanical CPR device (if MCA approved)",
+        "Active compression-decompression device (if MCA approved)",
+        "Telemetric monitoring devices and transmission of clinical data (including video)",
+        "All MFR cardiovascular skills"
+      ],
+      "immobilization": [
+        "Mechanical patient restraint",
+        "All MFR immobilization skills"
+      ],
+      "medication_routes": [
+        "Aerosolized/nebulized (SVN)",
+        "Inhaled",
+        "Intramuscular (IM)",
+        "Intranasal (full — not just unit-dose)",
+        "Mucosal/sublingual",
+        "Oral",
+        "Intramuscular — auto-injector and draw-up epinephrine"
+      ],
+      "medications": [
+        "Beta-agonist bronchodilator (MDI or nebulized, including duoneb) for dyspnea/wheezing",
+        "Dextrose (oral)",
+        "Draw-up epinephrine",
+        "Epinephrine 1:1 IM/SQ for anaphylaxis",
+        "Auto-injectors: epinephrine, narcotic antagonist, HazMat",
+        "Glucagon IM and/or IN (only with MCA approval)",
+        "Immunizations during a public health emergency",
+        "Ondansetron ODT (orally dissolving tablet/meltable)",
+        "Oral glucose",
+        "Oral OTC analgesics (acetaminophen, ibuprofen) for pain or fever",
+        "Sublingual nitroglycerin (patient's own prescribed and agency-stocked per MCA)",
+        "IV antibiotics for interfacility transports (hospital-established; only if MCA approved)"
+      ],
+      "iv_fluids": [
+        "IV maintenance — peripheral site (non-medicated, maintenance of existing IV access)"
+      ],
+      "other": [
+        "Blood glucose monitoring",
+        "Childbirth — complicated",
+        "Vital signs",
+        "Eye irrigation",
+        "Patient transport"
+      ]
+    },
+    "AEMT": {
+      "full_name": "Emergency Medical Technician Specialist (Advanced EMT)",
+      "description": "Michigan AEMT, officially titled 'Emergency Medical Technician Specialist.' Adds IV/IO access initiation, IV medications, waveform capnography, and expanded medication formulary including antiemetics and parenteral analgesia (per Paramedic in Michigan — see note).",
+      "michigan_notes": [
+        "Michigan AEMT does NOT include parenteral analgesia (morphine, fentanyl) — that is Paramedic-only in Michigan",
+        "Epinephrine 1:10 IV is authorized at AEMT level in Michigan",
+        "Antiemetics are authorized at AEMT level",
+        "Glucagon IM/IN authorized at AEMT",
+        "Waveform capnography authorized at AEMT (and EMT if MCA approved)"
+      ],
+      "airway_ventilation": [
+        "End-tidal CO2 monitoring and interpretation of waveform capnography",
+        "Suctioning — tracheobronchial of intubated patient (Paramedic only per Michigan SOP — see note)",
+        "All EMT airway skills"
+      ],
+      "cardiovascular": [
+        "Intraosseous (IO) initiation and therapy",
+        "Intravenous (IV) initiation and therapy",
+        "IV maintenance — peripheral site",
+        "Telemetric monitoring devices",
+        "All EMT cardiovascular skills"
+      ],
+      "medication_routes": [
+        "Aerosolized/nebulized",
+        "Inhaled",
+        "Intramuscular (IM)",
+        "Intranasal (full)",
+        "Intraosseous (IO)",
+        "Intravenous (IV)",
+        "Mucosal/sublingual",
+        "Oral",
+        "Subcutaneous (SQ)",
+        "All EMT medication routes"
+      ],
+      "medications": [
+        "Antiemetics (ondansetron IV/ODT, etc.)",
+        "Aspirin",
+        "Auto-injectors: epinephrine, narcotic antagonist, HazMat",
+        "Beta-agonist bronchodilator (SVN, MDI, including duoneb)",
+        "Dextrose IV/IO",
+        "Draw-up epinephrine",
+        "Epinephrine 1:10 IV (for cardiac indications)",
+        "Epinephrine 1:1 IM/SQ for anaphylaxis",
+        "Glucagon IM and IN",
+        "Immunizations",
+        "Immunizations during public health emergency",
+        "Ondansetron ODT (meltable)",
+        "Oral glucose",
+        "Oral OTC analgesics",
+        "Sublingual nitroglycerin",
+        "IV antibiotics for interfacility transports (hospital-established, MCA approved)"
+      ],
+      "other": [
+        "Blood glucose monitoring",
+        "Venous blood sampling",
+        "Childbirth — complicated",
+        "Eye irrigation",
+        "Patient transport"
+      ]
+    },
+    "Paramedic": {
+      "full_name": "Paramedic",
+      "description": "Michigan Paramedic. Full ALS scope. Includes all skills of lower levels plus advanced airway (ETI, cricothyrotomy), manual defibrillation, cardioversion, transcutaneous pacing, RSI agents, vasopressors, antidysrhythmics, thrombolytics, and all medication routes.",
+      "airway_ventilation": [
+        "Endotracheal intubation",
+        "Cricothyrotomy",
+        "Chest decompression — needle or commercial device",
+        "Chest tube — monitoring and management",
+        "Airway obstruction — dislodgement by direct laryngoscopy",
+        "Oxygen therapy — high flow nasal cannula",
+        "Suctioning — tracheobronchial of intubated patient",
+        "All AEMT airway skills"
+      ],
+      "cardiovascular": [
+        "Cardiac monitoring — 12-lead ECG interpretation",
+        "Cardioversion — electrical (synchronized)",
+        "Defibrillation — manual",
+        "Transcutaneous pacing",
+        "Transvenous cardiac pacing — monitoring and maintenance",
+        "Access indwelling catheters and implanted central IV ports",
+        "Central line monitoring",
+        "IV maintenance of medicated IV fluids",
+        "All AEMT cardiovascular skills"
+      ],
+      "medication_routes": [
+        "Endotracheal tube (ETT)",
+        "Intradermal",
+        "Nasogastric",
+        "Rectal",
+        "Subcutaneous",
+        "Topical",
+        "Transdermal",
+        "All AEMT medication routes"
+      ],
+      "medications": [
+        "Antiarrhythmics (amiodarone, lidocaine, adenosine, atropine, procainamide, magnesium)",
+        "Antibiotics (IV)",
+        "Antiemetics",
+        "Antihemorrhagic agents",
+        "Aspirin",
+        "Calcium channel blockers",
+        "Calcium chloride",
+        "Dopamine",
+        "Draw-up epinephrine",
+        "Epinephrine 1:10 IV",
+        "Epinephrine 1:1 IM/SQ",
+        "Glucagon",
+        "Immunizations",
+        "Magnesium sulfate",
+        "Maintain infusion of blood or blood products",
+        "Ondansetron ODT (meltable)",
+        "Oral glucose",
+        "Oral OTC analgesics",
+        "Parenteral analgesia for pain (morphine, fentanyl, ketorolac, ketamine)",
+        "Racemic epinephrine",
+        "Sodium bicarbonate",
+        "Steroids (methylprednisolone, dexamethasone)",
+        "Sublingual nitroglycerin",
+        "Tetracaine (topical ophthalmic)",
+        "Thrombolytics",
+        "IV antibiotics for interfacility transports"
+      ],
+      "other": [
+        "Blood chemistry analysis",
+        "Blood glucose monitoring",
+        "Childbirth — uncomplicated and complicated",
+        "Eye irrigation",
+        "Patient transport",
+        "Venous blood sampling",
+        "Vital signs"
+      ]
+    }
+  },
+  "key_michigan_differences_from_nasemso_national": [
+    "MFR/EMR: NPA authorized (national EMT minimum)",
+    "MFR/EMR: i-gel authorized (national EMT minimum for supraglottic)",
+    "MFR/EMR: Pulse oximetry authorized (national EMT minimum)",
+    "MFR/EMR: Blood glucose monitoring authorized (national EMT minimum)",
+    "MFR/EMR: Aspirin authorized (national EMT minimum)",
+    "MFR/EMR: Oral glucose authorized (national EMT minimum)",
+    "MFR/EMR: Long spine board, traction splint authorized (national EMT minimum)",
+    "EMT: Sublingual nitroglycerin from agency stock authorized (national AEMT minimum for stock; national EMT only for patient's own Rx)",
+    "EMT: Glucagon IM/IN with MCA approval (national AEMT minimum)",
+    "EMT: End-tidal CO2 with MCA approval (national AEMT minimum for interpretation)",
+    "AEMT: Parenteral analgesia is NOT listed — Michigan places this at Paramedic level only",
+    "Paramedic: Michigan includes racemic epinephrine, tetracaine, antihemorrhagic agents explicitly"
+  ],
+  "mca_selection_required_items": [
+    "End-tidal CO2 waveform capnography at EMT level — requires MCA approval and training",
+    "CO2 colorimetric device at MFR level — requires MCA approval",
+    "Mechanical CPR device at MFR/EMT level — requires MCA approval",
+    "Active compression-decompression device — requires MCA approval",
+    "Glucagon IM at EMT level — requires MCA approval",
+    "Intramuscular auto-injector and draw-up epinephrine at MFR level — requires MCA approval"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "medical_control"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

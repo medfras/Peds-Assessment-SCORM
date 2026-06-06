@@ -1,0 +1,93 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 2-15 Sexual Assault (Revised 05/23/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_all_sexual_assault",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "All",
+  "level_display": "All Levels",
+  "jurisdiction": "Michigan",
+  "condition": "Sexual Assault",
+  "version": "2023-05-23",
+  "protocol_reference": "Michigan Trauma and Environmental Protocol Section 2-15: Sexual Assault — MDHHS Approved 5/23/23, Reviewed 2023",
+
+  "sections": [
+    {
+      "title": "General Management",
+      "reference": "Michigan Protocol 2-15: Sexual Assault — General Management",
+      "points": [
+        "Follow General Pre-Hospital Care-Treatment Protocol",
+        "Victims commonly require psychological support; be thoughtful with speech and movement",
+        "Touching may be traumatic: explain what you are doing before procedures or assessment",
+        "Treat life-threatening injuries or other emergencies first according to protocol",
+        "During transport, allow the patient to choose the preferred attendant when possible"
+      ]
+    },
+    {
+      "title": "Evidence Preservation",
+      "reference": "Michigan Protocol 2-15: Sexual Assault — Evidence Preservation",
+      "points": [
+        "Maintain evidence and refer to Crime Scene Management-Procedure Protocol",
+        "Do not cut through tears or stains; cleanse skin only when necessary for immediate treatment",
+        "If clothing is removed, place each item in a paper bag and bring it with the patient when possible",
+        "Explain why the patient should not eat, drink, smoke, bathe, change clothing, or go to the bathroom before forensic evaluation; if they must urinate, ask that they not wipe",
+        "Do not communicate details of a sexual assault over an open radio channel; use telephone or another secure electronic communication method"
+      ]
+    },
+    {
+      "title": "Strangulation Assessment",
+      "reference": "Michigan Protocol 2-15: Sexual Assault — Strangulation",
+      "points": [
+        "Strangulation is frequently underrecognized — ask about and assess specifically",
+        "Signs and symptoms of strangulation or neck injury are not visible more than 50% of the time",
+        "Evaluate for loss of consciousness, inability to recall how they became unconscious, voice change, involuntary urination, or defecation",
+        "Visible signs may include neck injury, redness, scratches, rope marks, bruising, thumb-print bruising, and red eyes",
+        "Symptoms may include spasms of the neck or throat",
+        "Patients may initially appear uninjured — internal injuries and delayed vascular or neurological complications can occur",
+        "If strangulation is suspected: obtain IV access (Specialist skill); cardiac monitoring (Specialist skill); transport to emergency department for advanced imaging",
+        "Airway compromise may develop — be prepared to manage airway; refer to Airway Management-Procedure Protocol (Specialist skill)"
+      ]
+    },
+    {
+      "title": "Reporting Requirements",
+      "reference": "Michigan Protocol 2-15: Sexual Assault — Reporting",
+      "points": [
+        "If the patient desires and/or mandatory reporting is indicated, notify law enforcement if they are not present",
+        "Any incident involving a minor or vulnerable adult is a mandatory reporting event",
+        "At the patient's request, further assessment and treatment may be delayed for law enforcement arrival only if no life-threatening condition is present",
+        "If the patient declines transport, advise them of risks and document per Refusal of Care, Adult and Minor-Procedure Protocol; encourage follow-up at a local specialized treatment center"
+      ]
+    },
+    {
+      "title": "Patient Communication and Support",
+      "reference": "Michigan Protocol 2-15: Sexual Assault — Communication",
+      "points": [
+        "Communicate with compassion — do NOT express disbelief, assign blame, or make judgments",
+        "Explain all procedures before performing them; obtain verbal consent when possible",
+        "Allow patient to have a support person present if desired and safe",
+        "Minimize painful/invasive interventions to those medically necessary — detailed forensic examination is performed at hospital by trained SANE personnel, not in the field",
+        "Mental health support: be prepared to manage acute behavioral health crisis — refer to Behavioral Health-Treatment Protocol as needed"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Active hemorrhage from traumatic injury — hemorrhage control per Bleeding Control (BCON)-Treatment Protocol; preserve evidence when possible",
+    "Strangulation with airway compromise — prepare for advanced airway; transport immediately",
+    "Strangulation with altered mental status or neurological symptoms — IV access, cardiac monitoring (Specialist skill); expedite transport; delayed vascular injury possible",
+    "Acute behavioral health crisis — refer to Behavioral Health-Treatment Protocol; involve law enforcement if scene safety concern"
+  ],
+
+  "scope_notes": [
+    "Traumatic injury management, evidence preservation, patient communication, mandatory reporting: all levels",
+    "Strangulation assessment documentation: all levels",
+    "IV/IO access for strangulation with compromise: Specialist skill",
+    "Cardiac monitoring (strangulation): Specialist skill",
+    "Advanced airway for airway compromise: Specialist skill",
+    "SANE exam coordination: receiving hospital responsibility — pre-notify early"
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 3-4 Seizures (Revised 03/03/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured. For patients < 14 years refer to Pediatric Seizure protocol. Source: NAEMSO Clinical Guidelines.",
+  "id": "mi_base_adult_seizures",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Adult",
+  "level_display": "Adult (≥ 14 years)",
+  "jurisdiction": "Michigan",
+  "condition": "Seizures",
+  "version": "2025-03-03",
+  "protocol_reference": "Michigan Adult Treatment Protocol Section 3-4: Seizures — MDHHS Approved 3/3/25, Reviewed 2025. Source: NAEMSO Clinical Guidelines.",
+  "purpose": "For patients < 14 years refer to Pediatric Seizure-Treatment Protocol.",
+  "sections": [
+    {
+      "title": "Actively Seizing",
+      "reference": "Michigan Protocol 3-4: Seizures — Actively Seizing",
+      "points": [
+        "Follow General Pre-hospital Care-Treatment Protocol",
+        "IF PATIENT IS ACTIVELY SEIZING: protect patient from injury; do not force anything between teeth",
+        "Pregnant women 20 weeks gestation up to 6 weeks post birth WITHOUT a seizure disorder history: treat as eclampsia — see magnesium sulfate administration below",
+        "Administer midazolam 10 mg IM prior to IV start (Specialist skill)",
+        "Check blood glucose (may be MFR skill — see Blood Glucose Testing-Procedure Protocol)",
+        "If blood glucose < 60 mg/dL or hypoglycemia is suspected: administer dextrose 25 gm IV per Dextrose-Medication Protocol (Specialist skill)",
+        "If no IV access, per MCA selection: administer glucagon 1 mg IM (injectable formulation ONLY) or 3 mg IN (intranasal formulation ONLY, if available per MCA selection) — may be EMT skill per MCA selection",
+        "NOTE: Only FDA-approved intranasal glucagon (e.g., Baqsimi) may be given by IN route — injectable glucagon must NOT be given intranasally",
+        "If patient is pregnant (eclampsia): administer magnesium sulfate 4 gm over 10 minutes IV/IO until seizure stops — add 4 gm to 100 or 250 mL NS and infuse over approximately 10 minutes; if eclamptic seizure does not stop after magnesium, administer benzodiazepine per below (Specialist skill)",
+        "If IV already established and midazolam IM/IN has not been administered: administer midazolam 5 mg IV/IO (Specialist skill)",
+        "If seizures persist: repeat midazolam 5 mg IV/IO/IM/IN; contact Medical Control (Specialist skill)"
+      ]
+    },
+    {
+      "title": "Not Actively Seizing",
+      "reference": "Michigan Protocol 3-4: Seizures — Post-Ictal/Alert",
+      "points": [
+        "IF PATIENT IS NOT ACTIVELY SEIZING:",
+        "Altered level of consciousness: refer to Altered Mental Status-Treatment Protocol",
+        "Alert: monitor for changes; obtain vascular access (Specialist skill); check blood glucose (may be MFR skill)"
+      ]
+    }
+  ],
+  "mca_selections_required": [
+    {
+      "item": "Blood Glucose Testing — MFR",
+      "description": "MCA may designate blood glucose testing as an MFR skill",
+      "options": [
+        "MFR skill authorized",
+        "Not authorized for MFR"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Glucagon 1 mg IM (Injectable) — Scope",
+      "description": "MCA must select which provider levels may administer 1 mg glucagon IM (injectable formulation only) when IV access is not available",
+      "options": [
+        "Not included",
+        "EMT",
+        "Specialist",
+        "Paramedic"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Glucagon 3 mg IN (Intranasal — Baqsimi) — Scope",
+      "description": "MCA must select which provider levels may administer 3 mg glucagon IN (FDA-approved intranasal formulation only, e.g., Baqsimi) when IV access is not available",
+      "options": [
+        "Not included",
+        "EMT",
+        "Specialist",
+        "Paramedic"
+      ],
+      "selected": null
+    }
+  ],
+  "key_drugs": [
+    {
+      "name": "Midazolam 10 mg IM (Initial Seizure)",
+      "dose": "10 mg IM — administer prior to IV start",
+      "route": "IM",
+      "indication": "Active seizure — first-line treatment before IV access is established",
+      "contraindications": "Known hypersensitivity to benzodiazepines; use with caution in respiratory depression",
+      "side_effects": "Respiratory depression, hypotension, sedation",
+      "scope": "Specialist skill",
+      "notes": "Administer IM first while IV access is being established. Monitor airway closely after administration."
+    },
+    {
+      "name": "Midazolam 5 mg IV/IO (With IV Access)",
+      "dose": "5 mg IV/IO",
+      "route": "IV or IO",
+      "indication": "Active seizure when IV access is already established and IM midazolam has not been given",
+      "contraindications": "Known hypersensitivity; respiratory compromise — have airway support ready",
+      "side_effects": "Respiratory depression, hypotension",
+      "scope": "Specialist skill",
+      "notes": "If seizures persist: repeat 5 mg IV/IO/IM/IN and contact Medical Control."
+    },
+    {
+      "name": "Dextrose 25 gm IV",
+      "dose": "25 gm IV",
+      "route": "IV",
+      "indication": "Blood glucose < 60 mg/dL or suspected hypoglycemic seizure",
+      "contraindications": "Confirmed normo- or hyperglycemia without hypoglycemic cause",
+      "side_effects": "Hyperglycemia, phlebitis",
+      "scope": "Specialist skill",
+      "notes": "Recheck blood glucose after administration."
+    },
+    {
+      "name": "Glucagon 1 mg IM / 3 mg IN",
+      "dose": "1 mg IM (injectable only) or 3 mg IN (FDA-approved IN formulation only)",
+      "route": "IM or Intranasal",
+      "indication": "Hypoglycemic seizure when IV access cannot be established",
+      "contraindications": "Do NOT use injectable formulation via IN route; pheochromocytoma",
+      "side_effects": "Nausea, vomiting",
+      "scope": "Per MCA selection — EMT through Paramedic options available",
+      "notes": "Only Baqsimi (or equivalent FDA-approved IN glucagon) may be given intranasally."
+    },
+    {
+      "name": "Magnesium Sulfate 4 gm IV/IO (Eclampsia)",
+      "dose": "4 gm over 10 minutes IV/IO — add to 100 or 250 mL NS and infuse over approximately 10 minutes",
+      "route": "IV or IO infusion",
+      "indication": "Eclamptic seizure — pregnant woman ≥ 20 weeks gestation to 6 weeks post birth without prior seizure disorder",
+      "contraindications": "Renal failure (use with caution); hypermagnesemia",
+      "side_effects": "Flushing, hypotension, loss of deep tendon reflexes, respiratory depression at high levels",
+      "scope": "Specialist skill",
+      "notes": "If eclamptic seizure does not stop after magnesium: proceed to benzodiazepine (midazolam). Monitor respiratory status closely."
+    }
+  ],
+  "deterioration_flags": [
+    "Status epilepticus (seizure > 5 minutes or multiple seizures without return to baseline) — midazolam IM immediately; IV access; repeat midazolam if persistent; contact Medical Control",
+    "Eclamptic seizure (pregnant ≥ 20 wks without seizure history) — magnesium sulfate 4 gm IV/IO (Specialist skill); if fails, midazolam; contact Medical Control",
+    "Post-seizure hypoglycemia — blood glucose check; dextrose IV or glucagon if no IV (per MCA selection)",
+    "Respiratory depression after benzodiazepine — airway management priority; prepare for advanced airway"
+  ],
+  "scope_notes": [
+    "Patient protection, scene safety: all levels",
+    "Blood glucose testing: all levels — may be MFR skill per MCA selection",
+    "Midazolam IM/IV/IO: Specialist skill",
+    "Dextrose IV: Specialist skill",
+    "Glucagon IM/IN: per MCA selection — EMT through Paramedic options",
+    "Magnesium sulfate IV/IO (eclampsia): Specialist skill",
+    "IV access: Specialist skill"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "altered_mental_status",
+      "seizure"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

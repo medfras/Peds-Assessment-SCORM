@@ -1,0 +1,740 @@
+{
+  "_schema": "pfd_scenario_v1",
+  "id": "peds_cardiac_arrest_01_bls",
+  "title": "Pediatric Cardiac Arrest - BLS AED",
+  "display_title": "Pediatric Cardiac Arrest - BLS AED",
+  "subtitle": "7-year-old male, sudden collapse at a soccer field",
+  "category": "pediatric_medical",
+  "category_display": "Pediatric Medical Assessment",
+  "turnover_target": "als",
+  "version": "1.0.0",
+  "rubric_template": "ems_standard_v1",
+  "base_patient_care_rubric": "nremt_cardiac_arrest_aed_v1",
+  "legacy_ai_categories": [
+    "documentation",
+    "professionalism"
+  ],
+  "difficulty": "advanced",
+  "scenario_number": 21,
+  "protocol": "MI/06_Pediatric_Cardiac/06-1_cardiac_arrest_general",
+  "jurisdiction": "mi_base",
+  "clinical_context": {
+    "jurisdiction": "MI",
+    "concepts": [
+      "pediatric_patient",
+      "cardiac_arrest",
+      "pediatric_cardiac_arrest",
+      "cpr",
+      "high_performance_cpr",
+      "ventilation_support",
+      "airway_management",
+      "cardiac_monitoring",
+      "rosc",
+      "medical_control",
+      "transport_decision"
+    ],
+    "protocol_focus": [
+      "cardiac_arrest",
+      "pediatric_cardiac_arrest",
+      "cpr",
+      "high_performance_cpr",
+      "rosc",
+      "ventilation_support",
+      "airway_management",
+      "cardiac_monitoring"
+    ]
+  },
+  "mca_expansions": ["i_gel_bls"],
+  "agency_context": "",
+  "readiness_criteria": {
+    "min_minutes": 2,
+    "checks": [
+      {
+        "id": "messages",
+        "label": "3 messages sent",
+        "type": "message_count",
+        "min": 3
+      },
+      {
+        "id": "vitals",
+        "label": "Vitals assessed",
+        "type": "vitals_logged"
+      },
+      {
+        "id": "treatment",
+        "label": "CPR/AED management completed",
+        "type": "treatment_logged"
+      }
+    ]
+  },
+  "scene_entry_scoring": {
+    "ppe": {
+      "required": [
+        "gloves"
+      ],
+      "recommended": [
+        "eye_protection"
+      ],
+      "missing_required_penalty": 3,
+      "missing_recommended_penalty": 1,
+      "max_score": 10
+    },
+    "pat": {
+      "expected_impression": "sick",
+      "incorrect_impression_deduction": 2
+    }
+  },
+  "cpr_challenge": {
+    "enabled": true,
+    "training_auto_debrief_on_rosc": false,
+    "challenge_id": "peds_cardiac_arrest_01_bls_cpr",
+    "arrest_type": "pediatric",
+    "algorithm": "pediatric_bls",
+    "team_model": "ems_team",
+    "initial_rhythm": "pulseless_vt",
+    "rhythm_sequence": [
+      "pulseless_vt",
+      "vf",
+      "pea"
+    ],
+    "cycle_seconds": 120,
+    "rosc_criteria": {
+      "eligible_after_cycles": 3,
+      "max_cycles_before_rosc": 3,
+      "hard_stop_cycle": 3,
+      "min_ccf": 0.8,
+      "min_ccf_window": "consecutive_eligible_cycles",
+      "aha_compliance_gates": [
+        "ccf",
+        "rhythm_decisions",
+        "post_decision_resume",
+        "ventilation_ratio",
+        "no_critical_failure"
+      ]
+    },
+    "allow_aed": true,
+    "allow_manual_defib": false,
+    "allow_precharge": false,
+    "allow_advanced_airway": false,
+    "allow_medications": false,
+    "score_ventilation_ratio": true,
+    "expected_ventilation_mode": "15:2",
+    "required_equipment_ids": [
+      "aed",
+      "bvm_adult_peds_infant",
+      "oxygen_cylinder_d",
+      "oxygen_cylinder_m"
+    ],
+    "additional_action_menu": {
+      "enabled": true,
+      "phase": "both",
+      "sections": [
+        {
+          "id": "actions",
+          "label": "Actions",
+          "kind": "action",
+          "actions": [
+            {
+              "id": "reassess_airway_bvm",
+              "label": "Reassess Airway / BVM",
+              "action_id": "airway_bvm_reassess",
+              "finding": "Airway remains patent with BVM support; bilateral chest rise is present with ventilations. Avoid excessive ventilation."
+            },
+            {
+              "id": "suction_airway",
+              "label": "Suction Airway",
+              "action_id": "airway_suction",
+              "finding": "Airway suction performed. No significant secretions or vomitus are present; continue BVM ventilation."
+            },
+            {
+              "id": "place_supraglottic_airway",
+              "label": "Place Supraglottic Airway",
+              "action_id": "supraglottic_airway_insert",
+              "finding": "Supraglottic airway placed successfully. Continue ventilations and avoid hyperventilation."
+            },
+            {
+              "id": "check_bgl",
+              "label": "Check BGL",
+              "action_id": "blood_glucose_check",
+              "finding": "Blood glucose is 102 mg/dL. Hypoglycemia is not driving this arrest."
+            },
+            {
+              "id": "check_pupils",
+              "label": "Check Pupils",
+              "action_id": "pupil_assessment",
+              "finding": "Pupils are mid-position and sluggish. There is no strong opioid toxidrome signal in this presentation."
+            }
+          ]
+        },
+        {
+          "id": "meds",
+          "label": "Meds",
+          "kind": "medication",
+          "actions": [
+            {
+              "id": "consider_naloxone_if_opioid_suspected",
+              "label": "Consider Naloxone if Opioid Suspected",
+              "action_id": "naloxone_consider",
+              "finding": "Naloxone is considered only if opioid overdose is suspected and the medication is available. This scenario has no opioid toxidrome evidence; continue CPR/AED and ventilation."
+            }
+          ]
+        }
+      ]
+    },
+    "post_rosc_vitals_profile_id": "post_rosc_default",
+    "rubric_integration": {
+      "dimension": "clinical_performance",
+      "item_id": "peds_cardiac_arrest_01_bls.cpr_challenge_management",
+      "weight_points": 20
+    }
+  },
+  "lung_sound_challenge": {
+    "enabled": false
+  },
+  "chat_placeholder": "Talk to bystanders, your partner Alex, or manage the pediatric arrest...",
+  "chat_address_hint": "Address by name: Alex (partner), Coach Maya, or bystanders",
+  "debrief_lexi_hints": [
+    {
+      "label": "Ratio?",
+      "msg": "For a pediatric arrest with two EMS rescuers, which CPR ratio should I use?"
+    },
+    {
+      "label": "AED timing?",
+      "msg": "How do I coordinate pediatric CPR with AED analysis?"
+    },
+    {
+      "label": "Pause discipline?",
+      "msg": "What should I do during AED analysis to keep pauses short?"
+    }
+  ],
+  "objectives": [
+    "Recognize pediatric pulseless cardiac arrest immediately",
+    "Begin two-rescuer pediatric CPR using the correct 15:2 ratio",
+    "Apply pediatric AED pads or attenuator when available and follow AED prompts while minimizing pauses",
+    "Resume compressions immediately after shock or no-shock decisions",
+    "Provide BVM oxygenation and concise ALS handoff"
+  ],
+  "dispatch": {
+    "unit": "{unit}",
+    "text": "{unit}, respond to Riverside Soccer Complex, 1150 Riverbend Dr, for a 7-year-old male who collapsed during practice. Caller reports he is not waking up. AED on site. Priority 1.",
+    "priority": "Priority 1",
+    "time": "18:22",
+    "cross_streets": "Riverbend Dr and Park Loop",
+    "response_time_minutes": 4
+  },
+  "scene": {
+    "description": "You arrive at a soccer field. A 7-year-old boy is supine on the grass near the sideline. A coach is waving you over and another adult is holding an AED case. The field is clear, dry, and safe. Several children are being moved away by parents.",
+    "image": null,
+    "video": null,
+    "hazards": [],
+    "bystanders": [
+      {
+        "name": "Maya",
+        "relation": "soccer coach",
+        "age": 31
+      }
+    ]
+  },
+  "patient": {
+    "name": "Ethan",
+    "age": 7,
+    "dob_month_day": "November 6",
+    "sex": "male",
+    "weight_kg": 24,
+    "weight_display": "approximately 53 lbs (24 kg)",
+    "pcr_demographics_deferred": true,
+    "chief_complaint": "Sudden collapse - pulseless and apneic",
+    "general_impression": "7-year-old male lying supine on the soccer field. He is unresponsive, not breathing normally, and has no purposeful movement. Skin is pale and cyanotic around the lips. Coach reports he suddenly slowed down, collapsed, and stopped responding.",
+    "gcs_assessment": {
+      "e": 1,
+      "v": 1,
+      "m": 1,
+      "total": 3,
+      "rationale": "No eye opening, no verbal response, and no motor response while in cardiac arrest.",
+      "challenge_description": "Ethan is supine on the soccer field in cardiac arrest. He has no eye opening, makes no verbal sounds, and has no motor response or purposeful movement when assessed."
+    },
+    "avpu_assessment": {
+      "value": "unresponsive",
+      "description": "Patient is unresponsive with no eye opening, no verbal response, and no motor response.",
+      "rationale": "Use AVPU = unresponsive because the patient is in cardiac arrest and does not respond to voice or pain."
+    },
+    "image": null,
+    "video": null
+  },
+  "history_response_map": {
+    "patient_identity": {
+      "label": "Patient identity / demographics",
+      "triggers": [
+        "what is his name",
+        "what's his name",
+        "who is he",
+        "patient name",
+        "how old is he",
+        "date of birth",
+        "dob",
+        "birth date",
+        "birthday"
+      ],
+      "answer": "His name is Ethan. He's 7 years old. His birthday is November 6.",
+      "tags": [
+        "[[HISTORY: Patient Name=Ethan]]",
+        "[[HISTORY: Patient Age=7-year-old male]]", "[[HISTORY: Patient Date of Birth=November 6]]"
+      ],
+      "notes": "Patient-scoped demographics only. Do not emit name, DOB, or age tags for Maya or other bystanders.",
+      "do_not_include": [
+        "weight unless asked",
+        "medical history",
+        "medications",
+        "treatment suggestions"
+      ]
+    },
+    "patient_weight": {
+      "label": "Patient weight",
+      "triggers": [
+        "how much does he weigh",
+        "what does he weigh",
+        "patient weight",
+        "weight",
+        "estimated weight"
+      ],
+      "answer": "The registration card has him at about 53 pounds, around 24 kilograms.",
+      "tag": "[[HISTORY: Patient Weight=approximately 53 lbs (24 kg)]]",
+      "notes": "Patient-scoped weight only. Do not use this tag for coach or bystander weight.",
+      "do_not_include": [
+        "diagnosis",
+        "treatment suggestions"
+      ]
+    },
+    "chief_concern": {
+      "label": "Broad opener / chief concern",
+      "speaker": "Maya",
+      "triggers": [
+        "what's going on",
+        "what happened",
+        "why did you call",
+        "how can we help",
+        "chief complaint",
+        "what's his chief complaint"
+      ],
+      "answer": "He collapsed during practice and he's not responding.",
+      "tag": "[[HISTORY: Patient Chief Complaint=sudden collapse; unresponsive]]",
+      "do_not_include": [
+        "timeline",
+        "medical history",
+        "medications",
+        "treatment suggestions"
+      ]
+    }
+  },
+  "history": {
+    "allergies": "Unknown.",
+    "medications": "Unknown.",
+    "pmh": "Unknown. Coach reports no known medical problems from the registration form.",
+    "last_oral_intake": "Unknown.",
+    "events_leading_to_call": "Ethan was running during soccer practice when he suddenly slowed, stumbled, and collapsed. No known trauma, choking episode, or seizure-like movement was witnessed."
+  },
+  "initial_complaint": {
+    "speaker": "Maya",
+    "lay_summary": "He collapsed during practice and he's not responding.",
+    "allowed_in_opener": true,
+    "do_not_include": [
+      "timeline",
+      "running details",
+      "trauma negatives",
+      "choking negatives",
+      "seizure negatives",
+      "medical history",
+      "diagnosis",
+      "clinical terms",
+      "treatment suggestions",
+      "full OPQRST/SAMPLE"
+    ]
+  },
+  "personas": {
+    "ethan": {
+      "name": "Ethan",
+      "age": 7,
+      "role": "patient",
+      "aliases": [
+        "Ethan",
+        "patient",
+        "child",
+        "he",
+        "him"
+      ],
+      "description": "7-year-old male in cardiac arrest after sudden collapse. He is unresponsive, pulseless, apneic except for rare agonal gasps, and unable to answer questions.",
+      "speaking_style": "Non-verbal. Never speaks or follows commands while in arrest.",
+      "clinical_state_instructions": "Describe only observable arrest findings until the CPR challenge produces ROSC. Before ROSC: no purposeful movement, no pulse, no normal breathing, pale/cyanotic skin. After ROSC: palpable carotid pulse, weak spontaneous respirations, still unresponsive.",
+      "persona_rules": [
+        "Never provide verbal answers as Ethan during arrest",
+        "Do not imply improvement before the backend CPR challenge reports ROSC",
+        "If asked for pulse before ROSC, report no palpable carotid pulse"
+      ]
+    },
+    "maya": {
+      "name": "Maya",
+      "age": 31,
+      "role": "bystander",
+      "aliases": [
+        "Maya",
+        "coach",
+        "bystander"
+      ],
+      "description": "Soccer coach who witnessed the collapse and directed another adult to bring the AED.",
+      "speaking_style": "Anxious but cooperative. Gives short, direct answers.",
+      "clinical_state_instructions": "Reports that Ethan was running, slowed down, stumbled, and collapsed. CPR was not started before EMS arrival. AED is on site and available.",
+      "persona_rules": [
+        "Provide witnessed-collapse history when asked",
+        "Follow simple scene instructions such as clearing space or retrieving the AED",
+        "Do not offer clinical interpretation beyond what you saw"
+      ]
+    },
+    "alex": {
+      "name": "Alex",
+      "age": 28,
+      "role": "partner",
+      "aliases": [
+        "Alex",
+        "partner",
+        "my partner"
+      ],
+      "description": "Your EMT partner. Calm, concise, and ready to assist with BLS pediatric arrest care. Alex can check pulses, ventilate with BVM, apply AED pads, clear bystanders, and help maintain high-performance CPR.",
+      "speaking_style": "Brief and clinical. 'Copy.' 'No pulse.' 'AED pads are on.'",
+      "clinical_state_instructions": "When asked to manually check for a pulse before ROSC, report: 'No carotid pulse felt.' If asked for pulse quality before ROSC, report: 'Absent - no palpable central pulse.' After backend CPR challenge ROSC, report: 'Carotid pulse present, weak, about 118.' Do not invent ROSC before the backend CPR challenge result.",
+      "persona_rules": [
+        "When asked for pulse quality before ROSC, report absent central pulse without error",
+        "Do not report a pulse or organized improvement until the CPR challenge produces ROSC",
+        "Assist with AED, BVM, and CPR tasks when directed",
+        "Keep arrest-care responses concise"
+      ]
+    }
+  },
+  "vitals": {
+    "baseline": {
+      "hr": {
+        "label": "Heart Rate",
+        "value": 0,
+        "unit": "bpm",
+        "display": "No pulse"
+      },
+      "rr": {
+        "label": "Respirations",
+        "value": 0,
+        "unit": "/min",
+        "display": "Apneic - occasional agonal gasps only"
+      },
+      "spo2": {
+        "label": "SpO2",
+        "value": 68,
+        "unit": "%",
+        "display": "68% with poor waveform - arrest physiology"
+      },
+      "bp": {
+        "label": "Blood Pressure",
+        "value": "No palpable pulse / unable to obtain BP",
+        "unit": "mmHg",
+        "numeric": false
+      },
+      "temp": {
+        "label": "Temperature",
+        "value": 98.4,
+        "unit": "°F"
+      },
+      "blood_glucose": {
+        "label": "Blood Glucose",
+        "value": 102,
+        "unit": "mg/dL",
+        "display": "102 mg/dL — not the cause of arrest"
+      },
+      "gcs": {
+        "label": "GCS",
+        "value": 3,
+        "unit": "/15",
+        "display": "3 (E1 V1 M1)"
+      },
+      "skin_color": {
+        "label": "Skin",
+        "numeric": false,
+        "value": "Pale, cool, perioral cyanosis"
+      },
+      "cap_refill": {
+        "label": "Cap Refill",
+        "value": 5,
+        "unit": "sec",
+        "display": "Greater than 5 seconds"
+      },
+      "pupils": {
+        "label": "Pupils",
+        "numeric": false,
+        "value": "Mid-position, sluggish"
+      },
+      "lung_sounds": {
+        "label": "Lung Sounds",
+        "numeric": false,
+        "value": "No spontaneous air movement; bilateral chest rise when ventilated"
+      },
+      "work_of_breathing": {
+        "label": "Work of Breathing",
+        "numeric": false,
+        "value": "Apneic with rare agonal gasp"
+      },
+      "cardiac_rhythm": {
+        "label": "Cardiac Rhythm",
+        "numeric": false,
+        "value": "Pulseless VT/VF on AED analysis"
+      }
+    },
+    "deterioration": {
+      "note": "Cardiac arrest physiology remains unchanged until the CPR challenge produces ROSC.",
+      "rates": {},
+      "caps": {}
+    },
+    "post_rosc_profiles": {
+      "post_rosc_default": {
+        "hr": 118,
+        "rr": 12,
+        "spo2": 94,
+        "bp": "86/50",
+        "gcs": 6,
+        "skin_color": "Pale and cool, improving after ROSC",
+        "cap_refill": 3,
+        "pupils": "Mid-position, sluggish",
+        "lung_sounds": "Bilateral breath sounds with BVM ventilation",
+        "work_of_breathing": "Spontaneous respirations weak and irregular; continue assisted ventilations",
+        "cardiac_rhythm": "Organized rhythm after ROSC",
+        "patient_presentation": "ROSC achieved. Patient has a palpable carotid pulse, weak spontaneous respiratory effort, and remains unresponsive. Continue airway support, oxygenation, reassessment, and ALS handoff."
+      }
+    },
+    "interventions": {
+      "bvm": {
+        "label": "BVM ventilation",
+        "within_mfr_scope": true,
+        "within_bls_scope": true,
+        "within_aemt_scope": true,
+        "within_paramedic_scope": true,
+        "notes": "Ventilate with BVM and high-flow oxygen during CPR. In the CPR HUD, ventilation mode is abstracted as partner-managed.",
+        "effects": {}
+      },
+      "o2_nrb": {
+        "label": "High-flow O2 via NRB mask (15 LPM)",
+        "within_mfr_scope": true,
+        "within_bls_scope": true,
+        "within_aemt_scope": true,
+        "within_paramedic_scope": true,
+        "notes": "Oxygen source for BVM/AED arrest care.",
+        "effects": {}
+      },
+      "airway_bvm_reassess": {
+        "label": "Reassess airway / BVM ventilation",
+        "within_mfr_scope": true,
+        "within_bls_scope": true,
+        "within_aemt_scope": true,
+        "within_paramedic_scope": true,
+        "notes": "Structured CPR HUD action for reassessing airway patency and visible chest rise during BVM ventilation.",
+        "effects": {}
+      },
+      "airway_suction": {
+        "label": "Suction airway",
+        "within_mfr_scope": true,
+        "within_bls_scope": true,
+        "within_aemt_scope": true,
+        "within_paramedic_scope": true,
+        "notes": "Structured CPR HUD airway procedure. Does not change arrest physiology.",
+        "effects": {}
+      },
+      "blood_glucose_check": {
+        "label": "Blood Glucose Check — Fingerstick (glucometer)",
+        "within_mfr_scope": true,
+        "within_bls_scope": true,
+        "within_aemt_scope": true,
+        "within_paramedic_scope": true,
+        "notes": "Structured CPR HUD diagnostic check. Captures authored BGL as a scenario vital.",
+        "effects": {}
+      },
+      "supraglottic_airway_insert": {
+        "label": "Supraglottic airway insertion",
+        "within_mfr_scope": false,
+        "within_bls_scope": false,
+        "within_aemt_scope": true,
+        "within_paramedic_scope": true,
+        "notes": "Advanced airway is outside BLS scope for this BLS/AED arrest challenge.",
+        "effects": {}
+      }
+    },
+    "improvement": {}
+  },
+  "correct_treatment": {
+    "primary_diagnosis": "Pediatric cardiac arrest - BLS AED management",
+    "critical_actions": [
+      {
+        "id": "scene_safety",
+        "description": "Scene safety confirmed and PPE used before patient contact",
+        "scene_entry_credited": true
+      },
+      {
+        "id": "arrest_recognition",
+        "description": "Pediatric cardiac arrest recognized: unresponsive, apneic or agonal, pulseless",
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(no pulse|pulseless|cardiac arrest|not breathing|apneic|agonal)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "cpr_challenge_management",
+        "description": "CPR/AED challenge completed with pediatric high-performance CPR management",
+        "protocol_indicated": true,
+        "evidence": {
+          "session_event_type": "challenge_completed",
+          "session_event_key": "cpr:peds_cardiac_arrest_01_bls_cpr"
+        }
+      }
+    ],
+    "recommended_actions": [
+      {
+        "id": "post_rosc_assessment",
+        "description": "After ROSC, reassess airway, breathing, circulation, mental status, and pediatric post-ROSC vital signs"
+      },
+      {
+        "id": "als_handoff",
+        "description": "Provide a concise ALS handoff including age, weight, witnessed arrest, downtime estimate, CPR ratio, AED decisions, ROSC status, and current condition"
+      }
+    ],
+    "out_of_scope_bls": [
+      "iv_io_access",
+      "push_dose_epinephrine",
+      "endotracheal_intubation"
+    ]
+  },
+  "scoring": {
+    "overall_considerations": [
+      "This is a pediatric BLS/AED arrest-management scenario. Do not require ALS medications, manual defibrillation, intubation, IV/IO access, or transcutaneous pacing.",
+      "The CPR HUD is authoritative for CPR initiation, AED rhythm decisions, pause duration, CCF, pediatric 15:2 ratio selection, and ROSC/no-ROSC outcome.",
+      "Credit BLS care for rapid recognition, pediatric CPR ratio selection, AED use with pediatric pads/attenuator when available, BVM/oxygen support, and concise ALS handoff."
+    ],
+    "dmist_considerations": [
+      "Handoff should include age/weight, witnessed collapse, estimated downtime, CPR ratio, AED shocks/no-shock decisions, ROSC status, and current patient condition."
+    ],
+    "narrative_considerations": [
+      "Narrative should document witnessed pediatric collapse, initial arrest findings, CPR/AED timeline, ratio selection, shock/no-shock decisions, ROSC or no-ROSC outcome, and ALS transfer."
+    ]
+  },
+  "scoring_rubric": {
+    "clinical_performance": {
+      "full_credit": "Recognizes pediatric cardiac arrest, starts CPR promptly, chooses 15:2 for two-rescuer pediatric CPR, uses AED correctly, maintains high CCF, minimizes pauses, and gives an accurate ALS handoff.",
+      "partial_credit": "Recognizes arrest and starts CPR/AED but has ratio, timing, pause, or handoff gaps.",
+      "no_credit": "Does not recognize arrest, does not initiate CPR/AED, abandons CPR, or shocks non-shockable rhythms."
+    },
+    "protocols_treatment": {
+      "full_credit": "Follows pediatric BLS cardiac arrest protocol: CPR, AED, shock VF/pVT, no shock for PEA/asystole, immediate resumption of compressions, BVM/oxygen support, and correct two-rescuer ratio.",
+      "partial_credit": "Provides CPR/AED care but with delayed rhythm checks, prolonged pauses, incorrect ratio, or incomplete ventilation support.",
+      "no_credit": "Performs unsafe or protocol-inappropriate arrest management."
+    },
+    "scope_adherence": {
+      "full_credit": "Stays within BLS scope and does not attempt ALS-only medications, manual defibrillation, intubation, or IV/IO therapy.",
+      "partial_credit": "Mentions ALS interventions as ALS needs without attempting them.",
+      "no_credit": "Attempts or orders ALS-only interventions at BLS level."
+    },
+    "dmist": {
+      "full_credit": "Concise arrest handoff includes demographics, weight, witnessed collapse/downtime, CPR/AED actions, rhythm/shocks, ROSC status, and current condition.",
+      "partial_credit": "Handoff communicates arrest and CPR/AED but misses timing, rhythm/shock, ratio, or current status.",
+      "no_credit": "No usable arrest handoff."
+    },
+    "professionalism": {
+      "full_credit": "Calm command presence, clear task delegation, and respectful bystander communication.",
+      "partial_credit": "Mostly appropriate but disorganized or unclear.",
+      "no_credit": "Unsafe, disrespectful, or abandons patient care."
+    }
+  },
+  "exemplar_narrative": "Unit responded Priority 1 to Riverside Soccer Complex for a 7-year-old male collapse. Patient Ethan found supine on field, unresponsive, apneic with agonal gasps, and pulseless. Scene safe. Pediatric two-rescuer CPR initiated at 15:2 and AED applied using pediatric pads/attenuator if available. AED analyzed shockable rhythm and shocks were delivered per prompts with immediate resumption of compressions and minimized pauses. BVM ventilations with high-flow oxygen provided during CPR. After three cycles of AHA-compliant CPR/AED management, ROSC achieved per scenario outcome. ALS received handoff including age, weight, witnessed collapse, estimated downtime, AED shocks, CPR quality, ROSC status, and current condition.",
+  "checklist": [
+    {
+      "id": "peds_cardiac_arrest_01_bls.arrest_recognition",
+      "description": "Pediatric cardiac arrest recognized: unresponsive, apneic or agonal, and pulseless",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 2,
+      "tier3_permitted": false,
+      "schema_version": "1.0",
+      "tier2_patterns": [
+        "(?i)(cardiac arrest|pulseless|no pulse|apneic|agonal|unresponsive)"
+      ],
+      "done_feedback": "Pediatric cardiac arrest correctly recognized — unresponsive, apneic/agonal, and pulseless; pediatric arrest protocol initiated.",
+      "missed_feedback": "Pediatric cardiac arrest not recognized — pediatric arrests are often respiratory in origin; early recognition and high-quality CPR are critical regardless of mechanism.",
+      "clinical_rationale": "Unlike adult arrest (primarily cardiac), pediatric arrest is most often respiratory; high-quality CPR and AED are still the primary BLS interventions.",
+      "common_error": "Checking the brachial pulse for more than 10 seconds — use the brachial artery in infants, carotid in children; begin CPR within 10 seconds if there is any doubt."
+    },
+    {
+      "id": "peds_cardiac_arrest_01_bls.cpr_challenge_management",
+      "description": "CPR challenge completed and backend-scored as the authoritative pediatric arrest-management record",
+      "subtype": "intervention",
+      "category": "clinical_performance",
+      "point_value": 20,
+      "required": "required",
+      "applicable_levels": [],
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "session_event",
+        "event_type": "challenge_completed",
+        "event_key_pattern": "(?i)^cpr:peds_cardiac_arrest_01_bls_cpr$"
+      },
+      "done_feedback": "Pediatric CPR challenge completed — compressions and AED/defibrillation scored as the authoritative arrest management record.",
+      "missed_feedback": "CPR challenge not completed — the CPR challenge is the authoritative record of compression quality and AED use; completion is required for this item.",
+      "clinical_rationale": "Pediatric CPR uses modified rates and depths (infants: 1.5 in; children: 2 in); BLS principles of rate, recoil, and minimized interruptions apply equally.",
+      "common_error": "Using adult CPR technique without adjusting for patient size — depth and hand positioning differ between infants, small children, and adults."
+    },
+    {
+      "id": "peds_cardiac_arrest_01_bls.scope_no_als_interventions",
+      "description": "Does not attempt ALS-only arrest interventions in the BLS AED scenario",
+      "subtype": "intervention",
+      "category": "scope_adherence",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [
+        "EMT"
+      ],
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "absence_check",
+        "absence_intervention_key": "ekg_monitoring"
+      },
+      "done_feedback": "ALS-only interventions correctly avoided — pediatric BLS is compressions, AED, and BVM; epinephrine and advanced airway require ALS.",
+      "missed_feedback": "ALS-only interventions attempted — BLS scope in pediatric arrest is CPR, AED, and BVM ventilation; epinephrine and advanced airway devices require ALS certification.",
+      "clinical_rationale": "BLS scope is defined regardless of patient age; attempting IV epinephrine or intubation at BLS level delays compressions and violates scope."
+    }
+  ],
+  "debrief": {
+    "condition_background": "Ethan is a 7-year-old male who collapsed on a soccer field. Bystanders witnessed a sudden collapse without antecedent chest pain; the cause is likely a primary respiratory arrest progressing to cardiac arrest, which is the most common pediatric arrest mechanism. He is pulseless and apneic on arrival. Pediatric cardiac arrest outcomes are strongly linked to bystander CPR quality and early ALS escalation.",
+    "key_teaching_points": [
+      "Pediatric cardiac arrests are usually respiratory in origin — high-quality ventilation and oxygenation during CPR is even more critical than in adult arrests. Use a child-sized BVM and ensure good seal and chest rise.",
+      "The Pediatric Assessment Triangle (PAT) should be completed in the first 15 seconds. In an unresponsive, apneic child on arrival, arrest recognition must be immediate — do not delay CPR for a full assessment.",
+      "Compression depth for a 7-year-old is approximately 2 inches — same target as adults. Do not under-compress out of concern for fragility.",
+      "ALS handoff DMIST must document: witnessed vs unwitnessed, estimated downtime, mechanism (respiratory vs cardiac), CPR quality, any ROSC, and current rhythm."
+    ],
+    "common_mistakes": [
+      "Using an adult BVM on a pediatric patient — size-appropriate equipment matters for adequate ventilation",
+      "Under-compressing due to concern about hurting the child — 2-inch depth is required for adequate output",
+      "Prolonged pulse check — in a motionless, apneic child, start CPR immediately and check after 2 minutes",
+      "Omitting mechanism and downtime from the ALS handoff — pediatric arrests require context about whether CPR was in progress before EMS arrival"
+    ]
+  }
+}

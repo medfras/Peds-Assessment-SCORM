@@ -1,0 +1,54 @@
+{
+  "title": "BLS Sequence",
+  "subtitle": "Commit to the full BLS sequence before seeing the reveal.",
+  "cases": [
+    {
+      "id": "bls_01",
+      "prompt": "Adult found unresponsive and not breathing normally. AED is available with a two-person crew.",
+      "hint": "Start with responsiveness and breathing, activate help/AED, then compressions and AED cycle.",
+      "steps": [
+        {"id": "scene_check", "label": "Confirm scene safety and responsiveness"},
+        {"id": "breathing_pulse", "label": "Check breathing and pulse no more than 10 sec"},
+        {"id": "activate_aed", "label": "Activate EMS/help and get/apply AED"},
+        {"id": "start_cpr", "label": "Start high-quality CPR"},
+        {"id": "analyze", "label": "Pause for AED rhythm analysis"},
+        {"id": "shock_or_resume", "label": "Shock if advised, then immediately resume CPR"}
+      ],
+      "correct_order": ["scene_check", "breathing_pulse", "activate_aed", "start_cpr", "analyze", "shock_or_resume"],
+      "explanation": "BLS prioritizes rapid recognition, help/AED activation, high-quality compressions, brief analysis pauses, and immediate CPR resumption after shock/no-shock decisions.",
+      "mistake_tag": "bls_sequence_adult"
+    },
+    {
+      "id": "bls_02",
+      "prompt": "Pediatric arrest with two rescuers and AED available after initial assessment.",
+      "hint": "For a two-rescuer pediatric arrest, the compression-to-ventilation ratio differs from adult CPR.",
+      "steps": [
+        {"id": "scene_check", "label": "Confirm scene safety and responsiveness"},
+        {"id": "breathing_pulse", "label": "Check breathing and pulse no more than 10 sec"},
+        {"id": "activate_aed", "label": "Activate help and apply AED"},
+        {"id": "start_15_2", "label": "Start two-rescuer CPR at 15:2"},
+        {"id": "analyze", "label": "Pause for AED analysis when prompted"},
+        {"id": "shock_or_resume", "label": "Shock if advised, then resume 15:2 CPR"}
+      ],
+      "correct_order": ["scene_check", "breathing_pulse", "activate_aed", "start_15_2", "analyze", "shock_or_resume"],
+      "explanation": "With two rescuers, pediatric CPR uses 15:2 until an advanced airway changes the ventilation strategy. AED analysis pauses should remain brief.",
+      "mistake_tag": "bls_sequence_peds_ratio"
+    },
+    {
+      "id": "bls_03",
+      "prompt": "Witnessed collapse with AED already beside the patient. A second rescuer can start compressions while pads are applied.",
+      "hint": "AED application and compressions can happen in parallel with multiple rescuers, but analysis requires stopping motion.",
+      "steps": [
+        {"id": "scene_check", "label": "Confirm unresponsive / abnormal breathing"},
+        {"id": "pulse_check", "label": "Check pulse no more than 10 sec"},
+        {"id": "parallel_cpr_aed", "label": "Start CPR while pads are applied"},
+        {"id": "stop_motion", "label": "Pause compressions for AED analysis"},
+        {"id": "shock_or_resume", "label": "Shock if advised or resume CPR if no shock"},
+        {"id": "two_min_cycle", "label": "Continue CPR until next AED analysis cycle"}
+      ],
+      "correct_order": ["scene_check", "pulse_check", "parallel_cpr_aed", "stop_motion", "shock_or_resume", "two_min_cycle"],
+      "explanation": "AED-first availability does not remove the need for pulse/breathing check and high-quality CPR. Stop motion only for analysis and shock delivery.",
+      "mistake_tag": "bls_sequence_aed_first"
+    }
+  ]
+}

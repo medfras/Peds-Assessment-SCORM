@@ -1,0 +1,106 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 10-11 SPRN Patient Containment Algorithm (MDHHS Reviewed 2022-12-27). MCA Optional — SPRN program participation required.",
+  "id": "mi_base_special_ops_sprn_patient_containment_algorithm",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Special Operations",
+  "level_display": "Special Operations Protocol — MCA Optional (SPRN)",
+  "jurisdiction": "Michigan",
+  "condition": "SPRN — Patient Containment Algorithm",
+  "version": "2022-12-27",
+  "protocol_reference": "Michigan Special Operations Protocol Section 10-11: SPRN Patient Containment Algorithm — MDHHS Reviewed 2022",
+
+  "purpose": "Define the three SPRN patient classification types and corresponding containment/transport requirements for Special Pathogen patients.",
+
+  "sections": [
+    {
+      "title": "SPRN Patient Classification Overview",
+      "content": [
+        "SPRN patients are classified into THREE types based on exposure history and symptom status:",
+        "  — TYPE 1: Person Under Investigation (PUI)",
+        "  — TYPE 2: Low Risk / Dry",
+        "  — TYPE 3: High Risk / Wet",
+        "Classification determines containment level, PPE requirements, and transport procedures",
+        "Classification is determined by MDHHS/SPRN coordinator and public health — EMS receives classification before or upon patient contact"
+      ]
+    },
+    {
+      "title": "Type 1 — Person Under Investigation (PUI)",
+      "content": [
+        "Definition: individual with possible exposure to HCID and symptoms meeting PUI criteria, but not yet confirmed as SPRN case",
+        "Examples: recent travel from outbreak region with fever; healthcare worker with potential exposure to confirmed HCID case",
+        "PPE requirement: standard SPRN PPE (PAPR or full-face respirator + fluid-resistant coveralls + gloves + boot covers)",
+        "Containment: standard SPRN transport precautions; patient isolation in ambulance",
+        "Transport: to SPRN-capable facility; no isolation device required for PUI unless patient is 'wet'",
+        "Coordinate with MDHHS before transport — do NOT self-dispatch PUI to hospital without coordination"
+      ]
+    },
+    {
+      "title": "Type 2 — Low Risk / Dry",
+      "content": [
+        "Definition: patient with known or confirmed HCID exposure but WITHOUT active bleeding, vomiting, diarrhea, or excessive secretions (dry patient)",
+        "Containment: no specialized isolation transport device required",
+        "PPE requirement: full SPRN PPE (PAPR or full-face respirator + fluid-resistant coveralls + gloves + boot covers)",
+        "Transport: standard SPRN transport precautions; EMS crew uses full SPRN PPE; patient wears surgical mask",
+        "No Medical Isolation Transport Device (MITD) required for dry patient",
+        "Vehicle cleaning per Protocol 10-15 after transport"
+      ]
+    },
+    {
+      "title": "Type 3 — High Risk / Wet",
+      "content": [
+        "Definition: patient with confirmed or highly suspected HCID WITH active or recent bleeding, vomiting, diarrhea, excessive secretions, or body fluid exposure risk (wet patient)",
+        "Containment: REQUIRES Medical Isolation Transport Device (MITD) — vinyl enclosed negative air pressure containment unit (Protocol 10-16)",
+        "PPE requirement: maximum SPRN PPE (PAPR + full-face respirator + fluid-resistant coveralls + double gloves + boot covers + head cover)",
+        "Transport: SPRN transport procedures per Protocols 10-13 and 10-14; MITD assembled and patient placed before transport",
+        "Two-team handoff required at receiving facility (Protocol 10-16)",
+        "Death during transport: Protocol 10-18 applies — no interventions; notify CHECC"
+      ]
+    },
+    {
+      "title": "Classification Algorithm",
+      "content": [
+        "STEP 1: Is patient a confirmed or suspected HCID case?",
+        "  — YES → proceed to Step 2",
+        "  — NO → standard protocols; consider Protocol 10-9 (AFRI) if pandemic suspected",
+        "STEP 2: Does patient have active symptoms (fever, malaise)?",
+        "  — NO → not currently a SPRN transport indication; monitor; re-evaluate",
+        "  — YES → proceed to Step 3",
+        "STEP 3: Is confirmation status PUI or confirmed HCID?",
+        "  — PUI (unconfirmed) → TYPE 1: SPRN transport with full PPE; no MITD required",
+        "  — Confirmed HCID → proceed to Step 4",
+        "STEP 4: Does patient have active bleeding, vomiting, diarrhea, or significant secretions?",
+        "  — NO (dry) → TYPE 2: SPRN transport with full PPE; no MITD",
+        "  — YES (wet) → TYPE 3: SPRN transport with full PPE + MITD"
+      ]
+    },
+    {
+      "title": "Inter-Facility SPRN Transport",
+      "content": [
+        "Inter-facility (hospital to hospital) SPRN transport follows the same containment algorithm",
+        "Sending hospital must provide classification (Type 1/2/3) to SPRN transport team before patient transfer",
+        "MITD assembled at sending hospital if Type 3 transport",
+        "All cross-MCA transport rules apply per Protocol 10-10"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "id": "sprn_program_participation",
+      "label": "SPRN Program Participation — MCA authorization for SPRN protocols 10-10 through 10-18",
+      "description": "MCA Optional: All SPRN protocols apply only to SPRN-designated agencies.",
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Type 2 (Dry) patient develops active bleeding, vomiting, or diarrhea during transport — reclassify as Type 3 (Wet); initiate MITD protocol if available; contact SPRN coordinator",
+    "Unable to confirm patient classification before transport — treat as highest risk (Type 3) until confirmed otherwise"
+  ],
+
+  "scope_notes": "MCA Optional — SPRN only. Patient type classification (PUI, Low Risk/Dry, High Risk/Wet) drives the containment and transport decisions. Type 3 (Wet) requires the Medical Isolation Transport Device (MITD) — see Protocol 10-16. Classification is provided by MDHHS/SPRN coordinator, not independently determined by EMS."
+}

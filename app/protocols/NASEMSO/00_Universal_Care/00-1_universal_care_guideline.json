@@ -1,0 +1,158 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Universal Care: Universal Care Guideline. NASEMSO national provisional base.",
+  "id": "nasemso_base_universal_care_universal_care_guideline",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Universal Care Guideline",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Universal Care: Universal Care Guideline",
+  "aliases": [
+    "Patient assessment",
+    "Patient history",
+    "Physical assessment",
+    "Primary survey",
+    "Secondary survey"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Universal Care: Universal Care Guideline",
+      "points": [
+        "Facilitate appropriate initial assessment and management of any EMS patient and link to appropriate specific guidelines as dictated by the findings within the Universal Care guideline"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "All patient encounters with and care delivery by EMS personnel",
+        "EXCLUSION CRITERIA:",
+        "None"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Scene safety and PPE; primary survey (ABCDE)",
+        "Oxygen via NRM targeting SpO2 94-98% if indicated",
+        "Position of comfort; hemorrhage control as needed",
+        "CPR/AED if patient becomes pulseless",
+        "Epinephrine auto-injector for anaphylaxis if applicable",
+        "Naloxone intranasal unit-dose for suspected opioid involvement"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Blood glucose monitoring; oral glucose if hypoglycemic and alert",
+        "12-lead ECG acquisition and transmission",
+        "CPAP for respiratory distress",
+        "Aspirin for suspected ischemic chest pain",
+        "Albuterol SVN for bronchospasm component",
+        "IV access maintenance (non-medicated)"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation",
+        "IV/IO fluid resuscitation as indicated",
+        "Waveform capnography",
+        "IV analgesics (fentanyl, morphine) per pain management protocol",
+        "IV antiemetics (ondansetron) per protocol",
+        "IV D50W/D10W for hypoglycemia"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "12-lead ECG interpretation",
+        "Endotracheal intubation for airway compromise",
+        "RSI per protocol",
+        "Advanced antidysrhythmic or hemodynamic support per specific protocol",
+        "All parenteral medications per protocol",
+        "Vasopressors for refractory hemodynamic compromise"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Routine use of lights and sirens is not warranted",
+        "Even when lights and sirens are in use, always limit speeds to level that is safe for the emergency vehicle being driven and road conditions on which it is being operated",
+        "Be aware of legal issues and patient rights as they pertain to and impact patient care (e.g., patients with functional needs or children with special healthcare needs)",
+        "Be aware of potential need to adjust management based on patient age and comorbidities, including medication dosages",
+        "The maximum weight-based dose of medication administered to a pediatric patient should not exceed the maximum adult dose except where specifically stated in a patient care guideline",
+        "Medical direction should be contacted when mandated or as needed"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Pediatrics: use a weight-based assessment tool (length-based tape or other system) to estimate patient weight and guide medication therapy and adjunct choice a. Although the defined age varies by state, the pediatric population is generally defined by those patients who weigh up to 40 kg or up to 14 years of age, whichever comes first",
+        "Geriatrics: although the defined age varies by state, the geriatric population is generally defined as those patients who are 65 years old or more a. In these patients, as well as all adult patients, reduced medication dosages may apply to patients with renal disease (i.e., on dialysis or a diagnosis of chronic renal insufficiency) or hepatic disease (i.e., severe cirrhosis or end-stage liver disease)",
+        "Co-morbidities: reduced medication dosages may apply to patients with renal disease (i.e., on dialysis or a diagnosis of chronic renal insufficiency) or hepatic disease (i.e., severe cirrhosis or end-stage liver disease)",
+        "Vital Signs: a. Oxygen i. Administer oxygen as appropriate with a target of achieving 94'98% saturation",
+        "Secondary Survey: if patient has critical primary survey problems, it may not be possible to complete",
+        "Critical Patients: proactive patient management should occur simultaneously with assessment a. Ideally, one clinician should be assigned to exclusively monitor and facilitate patient-focused care",
+        "Air Medical Transport: air transport of trauma patients should generally be reserved for higher acuity trauma patients where there is a significant time saved over ground transport, where the appropriate destination is not accessible by ground due to systemic or logistical issues, and for patients who meet the American College of Surgeons Committee on Trauma (ACS-COT) 2022 National Guideline for the Field Triage of Injured Patients anatomic, physiologic, and situational high-acuity triage criteria. In selected circumstances, air medical resources may be helpful for non-trauma care (e.g., stroke, STEMI when geographically constrained)",
+        "Additional Protective Measures for the EMS Clinician: Due to suspected or confirmed hazards and/or highly infectious contagious diseases, traditional patient treatment and care delivery may be altered due to recommendations by federal, state, local or jurisdictional officials"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' At least two sets of vital signs should be documented for every patient",
+        "' All patient interventions and response to care should be documented",
+        "' All major changes in clinical status including, but not limited to, vital signs and data from monitoring equipment, should be documented"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Even when lights and sirens are in use, always limit speeds to level that is safe for the emergency vehicle being driven and road conditions on which it is being operated"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": [],
+  "clinical_context": {
+    "concepts": [
+      "medical_control",
+      "patient_assessment",
+      "ppe_precautions",
+      "primary_survey",
+      "scene_safety",
+      "transport_decision",
+      "vital_signs"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

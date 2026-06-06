@@ -1,0 +1,78 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-29 Professional Standards Review Organization and Committees (Initial 07/02/2025, MDHHS Approved 07/25/2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_psro_and_committees",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "PSRO and Committees",
+  "version": "2025-07-02",
+  "protocol_reference": "Michigan System Protocol Section 8-29: Professional Standards Review Organization and Committees — MDHHS Approved 7/25/2025",
+  "purpose": "Establish a policy for appointing a Professional Standards Review Organization (PSRO) and committees by the Medical Control Authority and define PSRO authorities, composition, roles, and responsibilities.",
+  "sections": [
+    {
+      "title": "PSRO Authority and Structure",
+      "reference": "Michigan Protocol 8-29: PSRO — Authority and Structure",
+      "points": [
+        "MCAs must appoint a Professional Standards Review Organization under MCL 333.20919(1)(g) and administrative rules R 325.22202 and R 325.22207",
+        "All meetings of the PSRO are closed meetings",
+        "For this protocol, PSRO refers to the PSRO of the MCA",
+        "The PSRO has authority to request and compel pertinent records, information, data, recordings, and other materials related to EMS practice within the MCA jurisdiction",
+        "Requests for materials must be honored in accordance with MCA statutory obligations and turned over in a timely manner unless prohibited by law",
+        "PSRO committees must include at least one licensed prehospital EMS clinician, one participating Life Support Agency representative, MCA Board and/or MCA staff representative(s), and a representative from a participating MCA hospital"
+      ]
+    },
+    {
+      "title": "PSRO Functions",
+      "reference": "Michigan Protocol 8-29: PSRO — Functions",
+      "points": [
+        "The MCA Board is responsible for ensuring PSRO duties related to complaints, investigations, and QI activities are performed",
+        "PSRO may request and review EMS PCRs, hospital charts, data, audio, video, professional credentials, and other materials relevant to professional practice",
+        "PSRO assesses adherence to statutes, administrative rules, and protocols governing EMS practice",
+        "PSRO reviews and makes recommendations on professional standards and practices outlined in protocols",
+        "Incident reviews include unusual occurrences, protocol-required reviews, and complaints or allegations; complaints follow the PSRO Investigation and Resolution Protocol",
+        "QI activities include identifying needs and recommending training or development to enhance professional competencies",
+        "Mi-EMSIS data should be used as a tool to evaluate performance and function for quality improvement",
+        "PSRO responsibilities may include research projects, special studies, and audits"
+      ]
+    },
+    {
+      "title": "Confidentiality",
+      "reference": "Michigan Protocol 8-29: PSRO — Confidentiality",
+      "points": [
+        "All records, data, and knowledge obtained for or by individuals assigned a professional review function of the PSRO are confidential",
+        "PSRO materials must not be made public or available for subpoena and are protected from disclosure under Michigan law, including 1967 PA 270 and MCL 333.20919(1)(g)",
+        "All PSRO members and subjects of a PSRO inquiry are subject to confidentiality obligations for materials and discussions reviewed",
+        "Participants may not remove materials from PSRO meetings or disclose materials or discussions outside the PSRO without appropriate authorization",
+        "The PSRO may disclose deidentified aggregate data for review by MCA committees, stakeholders, and the public"
+      ]
+    },
+    {
+      "title": "MCA Committees and LSA Responsibilities",
+      "reference": "Michigan Protocol 8-29: PSRO — Committees and LSA Responsibilities",
+      "points": [
+        "MCAs may choose PSRO committees with specific responsibilities based on content expertise",
+        "Potential committees include Quality Review Committee, Systems of Care, Emergency Medical Dispatching, or others determined by the MCA Board",
+        "PSRO committee members are responsible for attending professional training activities as determined by the MCA Board or Department",
+        "Each Life Support Agency within the MCA must develop and maintain a PSRO subgroup for peer review functions and audits requested by the MCA",
+        "Each Life Support Agency must ensure staff are trained and provided current MCA protocols"
+      ]
+    }
+  ],
+  "mca_selections_required": [],
+  "key_drugs": [],
+  "deterioration_flags": [],
+  "scope_notes": [
+    "All EMS provider levels",
+    "PSRO means Professional Standards Review Organization",
+    "All PSRO meetings are closed meetings",
+    "Authority: 1978 PA 368 MCL 333.20919(1)(g), R 325.22202, R 325.22207, and 1967 PA 270",
+    "PSRO may compel EMS-related records, data, recordings, and materials from MCA participants unless prohibited by law",
+    "Minimum committee composition includes licensed prehospital EMS clinician, Life Support Agency representative, MCA Board/staff representative, and MCA hospital representative",
+    "PSRO materials are confidential and protected from subpoena/disclosure under Michigan law",
+    "Deidentified aggregate data may be disclosed for committee, stakeholder, and public review",
+    "LSAs must maintain PSRO subgroup review functions and train staff on current MCA protocols"
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-9 Airway Management (Revised 12/17/2024, MDHHS Reviewed 2024). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_airway_management",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (All EMS Levels — scope varies by intervention)",
+  "jurisdiction": "Michigan",
+  "condition": "Airway Management",
+  "version": "2024-12-17",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-9: Airway Management — MDHHS Approved 12/17/2024",
+  "purpose": "Govern prehospital airway management across all EMS provider levels. BVM ventilation is the primary standard. Advanced airways are used only when basic airways fail. Sedation to facilitate advanced airway placement is PROHIBITED. MCAs are responsible for training documentation and 100% review of pediatric advanced airways and all cricothyroidotomy procedures.",
+  "sections": [
+    {
+      "title": "Airway Management Scope by Provider Level",
+      "reference": "Michigan Protocol 7-9: Airway — Scope Table",
+      "points": [
+        "MFR: oropharyngeal airway (OPA), nasopharyngeal airway (NPA), bag-valve mask (BVM), suction, colorimetric capnometry",
+        "EMT: all MFR skills PLUS CPAP (per 7-5), supraglottic airway (SGA) devices (except i-Gel pediatric), Air-Qsp3/AirQsp3G (> 35 kg), LMA Supreme (adult), King airway (adult), numeric capnometry; waveform capnography per MCA selection",
+        "SPECIALIST: all EMT skills PLUS waveform capnography (authorized)",
+        "PARAMEDIC: all Specialist skills PLUS i-Gel pediatric, oral endotracheal intubation (ETI), tracheal suctioning, needle cricothyroidotomy, surgical cricothyroidotomy (MCA selection for surgical and commercial percutaneous options)"
+      ]
+    },
+    {
+      "title": "BVM Ventilation Rates",
+      "reference": "Michigan Protocol 7-9: Airway — BVM Rates",
+      "points": [
+        "Adults > 8 years: 10 breaths per minute (1 breath every 6 seconds)",
+        "Children 1–8 years: 20 breaths per minute (1 breath every 3 seconds)",
+        "Infants < 1 year: 25 breaths per minute (1 breath every 2.4 seconds)",
+        "Two-rescuer BVM is always preferred — one provider maintains mask seal, one delivers breaths",
+        "Two-rescuer BVM with supplemental oxygen at 15 LPM",
+        "After advanced airway (ETT or SGA with confirmed placement): asynchronous ventilations — adults 10/min; adjust per specific protocol for cardiac arrest vs. other conditions"
+      ]
+    },
+    {
+      "title": "Pediatric Advanced Airway — Restrictive Criteria",
+      "reference": "Michigan Protocol 7-9: Airway — Pediatric Advanced Airway",
+      "points": [
+        "Pediatric patients should NOT receive an advanced airway (intubation) unless ALL THREE criteria are met simultaneously:",
+        "1. Patient has no gag reflex",
+        "2. Patient requires sustained positive pressure ventilation (PPV)",
+        "3. ALL basic airway interventions AND ALL available supraglottic airway devices have failed",
+        "Sedation to facilitate advanced airway placement is PROHIBITED in prehospital EMS in Michigan",
+        "Supraglottic airway is the FIRST CHOICE advanced airway when appropriate size is available",
+        "ALL advanced airways (ETT and SGA) require ETCO2 confirmation of placement",
+        "100% QA/QI review required for all pediatric advanced airways"
+      ]
+    },
+    {
+      "title": "Advanced Airway Documentation Requirements",
+      "reference": "Michigan Protocol 7-9: Airway — Documentation",
+      "points": [
+        "All advanced airway placements must document:",
+        "— Device type and size",
+        "— Direct visualization of passage through cords (ETT) or placement confirmation method",
+        "— Number of attempts",
+        "— Tube position in cm at teeth (ETT)",
+        "— ETCO2 confirmation type (waveform capnography, numeric capnometry, or colorimetric)",
+        "— Serial ETCO2 readings",
+        "— Chest rise and fall (bilateral)",
+        "— Bilateral lung sounds (confirmed by auscultation)",
+        "— Absence of epigastric sounds",
+        "— Securing method",
+        "— Any complications",
+        "— Gastric decompression performed (if applicable)",
+        "— Tracheal suctioning performed (if applicable)"
+      ]
+    },
+    {
+      "title": "Supraglottic Airway (SGA) — MCA Selections Required",
+      "reference": "Michigan Protocol 7-9: Airway — SGA MCA Selections",
+      "points": [
+        "MCA must select ONE primary SGA device",
+        "MCA must select AT LEAST ONE additional allowable SGA device",
+        "Available SGA options for MCA selection: i-Gel (adult/pediatric), MFR use of i-Gel, Air-Qsp3/AirQsp3G, King airway, Combitube, LMA Supreme",
+        "i-Gel pediatric: Paramedic only",
+        "All SGA devices require ETCO2 confirmation of placement"
+      ]
+    },
+    {
+      "title": "Cricothyroidotomy — MCA Selections Required",
+      "reference": "Michigan Protocol 7-9: Airway — Cricothyroidotomy",
+      "points": [
+        "Paramedic only",
+        "MCA must select one of the following authorized methods:",
+        "— None (cricothyroidotomy not authorized)",
+        "— Surgical cricothyroidotomy",
+        "— Needle cricothyroidotomy",
+        "— MCA-approved commercial percutaneous cricothyroidotomy kit",
+        "100% QA/QI review required for all cricothyroidotomy procedures"
+      ]
+    },
+    {
+      "title": "Tracheal Suctioning Time Limits",
+      "reference": "Michigan Protocol 7-9: Airway — Suctioning Limits",
+      "points": [
+        "Adults > 14 years: maximum 10 seconds per suction attempt",
+        "Pediatric patients ≥ 1 year: maximum 10 seconds per suction attempt",
+        "Pediatric patients < 1 year (infants): maximum 5 seconds per suction attempt",
+        "Hyperoxygenate before and after tracheal suctioning if possible"
+      ]
+    }
+  ],
+  "mca_selections_required": [
+    {
+      "item": "Waveform Capnography at EMT Level",
+      "description": "MCA must select whether EMT-level providers are authorized to use waveform capnography (numeric capnometry is authorized by default for EMTs without this selection)",
+      "options": [
+        "Authorized for EMT",
+        "Not authorized at EMT level — Specialist and above only"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Primary Supraglottic Airway Device",
+      "description": "MCA must select ONE primary SGA device for prehospital use",
+      "options": [
+        "i-Gel (adult)",
+        "Air-Qsp3/AirQsp3G",
+        "King Airway (adult)",
+        "Combitube (adult)",
+        "LMA Supreme (adult)"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Allowable Supraglottic Airway Devices (Additional)",
+      "description": "MCA must select at least one additional SGA device authorized for use (in addition to the primary selection)",
+      "options": [
+        "i-Gel (adult)",
+        "i-Gel pediatric (Paramedic only)",
+        "MFR use of i-Gel",
+        "Air-Qsp3/AirQsp3G",
+        "King Airway (adult)",
+        "Combitube (adult)",
+        "LMA Supreme (adult)"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Cricothyroidotomy Method Authorized",
+      "description": "MCA must select which cricothyroidotomy method(s) are authorized for Paramedic use",
+      "options": [
+        "None — cricothyroidotomy not authorized",
+        "Surgical cricothyroidotomy",
+        "Needle cricothyroidotomy",
+        "MCA-approved commercial percutaneous cricothyroidotomy kit"
+      ],
+      "selected": null
+    }
+  ],
+  "key_drugs": [],
+  "deterioration_flags": [
+    "ETCO2 = 0 or no waveform with advanced airway in place — ensure adequate CPR/ventilation/circulation; verify tubing connections; if still zero with advanced airway → REMOVE immediately and assist ventilation manually",
+    "Failed intubation — attempt SGA; if SGA fails, optimize BVM; consider surgical airway per MCA selection",
+    "Pediatric advanced airway — ensure ALL THREE criteria met; 100% QA/QI review required",
+    "Cricothyroidotomy performed — 100% QA/QI review required; notify receiving hospital"
+  ],
+  "scope_notes": [
+    "Sedation to facilitate advanced airway is PROHIBITED in Michigan prehospital EMS",
+    "BVM two-rescuer preferred at all levels; BVM rates: adults > 8yr = 10/min; children 1–8yr = 20/min; infants < 1yr = 25/min",
+    "Pediatric advanced airway: only when no gag + needs sustained PPV + all basic AND SGA failed",
+    "100% QA/QI review: all pediatric advanced airways and all cricothyroidotomy procedures",
+    "ETT/SGA placement confirmation: ETCO2 is mandatory",
+    "MCA selects primary SGA, additional allowable SGAs, and cricothyroidotomy method",
+    "I-Gel (adult): EMT scope at MCAs with i_gel_bls expansion — not in base Michigan EMT scope"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "airway_management",
+      "oxygen_therapy",
+      "ventilation_support"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

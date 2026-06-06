@@ -1,0 +1,106 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 10-15 SPRN Ambulance Cleaning and Disinfection (MDHHS Reviewed 2022-12-27). MCA Optional — SPRN program participation required.",
+  "id": "mi_base_special_ops_sprn_ambulance_cleaning_disinfection",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Special Operations",
+  "level_display": "Special Operations Protocol — MCA Optional (SPRN)",
+  "jurisdiction": "Michigan",
+  "condition": "SPRN — Ambulance Cleaning and Disinfection",
+  "version": "2022-12-27",
+  "protocol_reference": "Michigan Special Operations Protocol Section 10-15: SPRN Ambulance Cleaning and Disinfection — MDHHS Reviewed 2022",
+
+  "purpose": "Define procedures for decontamination and disinfection of SPRN transport vehicles after transport of patients with High Consequence Infectious Diseases (HCIDs).",
+
+  "sections": [
+    {
+      "title": "General Principles",
+      "content": [
+        "SPRN ambulance decontamination requires EPA-registered hospital disinfectant with DEMONSTRATED EFFICACY against non-enveloped viruses",
+        "Non-enveloped virus claim = highest tier of EPA disinfectant efficacy — suitable for HCID pathogens including filoviruses (Ebola/Marburg)",
+        "Standard ambulance disinfection protocols are INSUFFICIENT for SPRN — must use appropriate EPA-registered product",
+        "Vehicle is OUT OF SERVICE from time of patient contact until decontamination is certified complete",
+        "Decontamination team must wear full SPRN PPE (Protocol 10-12) during cleaning"
+      ]
+    },
+    {
+      "title": "Decontamination Zone Setup",
+      "content": [
+        "Establish THREE ZONES for decontamination operations:",
+        "  — HOT ZONE: inside the ambulance patient compartment — most contaminated; requires full SPRN PPE",
+        "  — WARM ZONE: immediately outside ambulance doors — transition area; requires full SPRN PPE",
+        "  — COLD ZONE: staging and clean equipment area; minimal PPE required",
+        "Clearly delineate zones with physical markers or tape",
+        "All waste (Biocell/Visquine covers, MITD components, PPE, supplies) removed from hot zone before cleaning begins",
+        "Remove and dispose of Biocell/Visquine patient containment covers as Category A biological waste before surface cleaning"
+      ]
+    },
+    {
+      "title": "Cleaning and Disinfection — Sequential Steps",
+      "content": [
+        "STEP 1 — REMOVE VISIBLE CONTAMINATION:",
+        "  — Remove all patient care supplies, equipment, used PPE, biohazard waste from patient compartment",
+        "  — Place in biohazard bags; seal and label as Category A biological waste",
+        "  — Remove Biocell or Visquine covers from MITD if used",
+        "STEP 2 — CLEAN (remove organic material before disinfecting):",
+        "  — Wipe all surfaces with detergent solution to remove organic material (blood, secretions, body fluids)",
+        "  — Work from ENTRANCE to DEEPEST/DIRTIEST area (entrance to rear/patient area = dirty direction)",
+        "  — Use disposable wipes or cloths — dispose as biohazard waste after use",
+        "STEP 3 — DISINFECT (apply EPA-registered non-enveloped virus disinfectant):",
+        "  — Apply to ALL surfaces: walls, ceiling, floor, handles, equipment mounts, oxygen fittings, seat cushions",
+        "  — Follow manufacturer DWELL TIME (contact time) — typically 5-10 minutes; do NOT wipe off early",
+        "  — Re-apply to any surface that dries before dwell time is met",
+        "STEP 4 — FINAL WIPE AND DRY:",
+        "  — Wipe surfaces after dwell time with clean disposable cloths",
+        "  — Allow vehicle to air dry with doors open",
+        "STEP 5 — OPTIONAL TERMINAL DISINFECTION METHODS (as available/authorized):",
+        "  — UV-C germicidal irradiation: whole-ambulance UV cycle per device protocol",
+        "  — Chlorine dioxide gas: facility-level treatment; specialized team required",
+        "  — Hydrogen peroxide vapor: vaporized H2O2 system; specialized team required",
+        "  — These methods supplement but do NOT replace Steps 1-4"
+      ]
+    },
+    {
+      "title": "Category A Biological Waste",
+      "content": [
+        "All waste from SPRN transport and decontamination is CATEGORY A BIOLOGICAL WASTE",
+        "Category A: UN 2814 — infectious substance affecting humans; regulated by DOT, IATA, and Michigan DEQ",
+        "Handling requirements:",
+        "  — Double-bag in red biohazard bags; place in rigid outer container; label UN 2814",
+        "  — Do NOT dispose of in standard medical waste containers or municipal waste",
+        "  — Coordinate with hospital, state, or contracted medical waste vendor for Category A disposal",
+        "  — MDHHS or BEPESOC can provide guidance on Category A waste disposal for unusual situations",
+        "Sharps from SPRN transport: sharps container (labeled HCID/Category A), then into outer biohazard bag"
+      ]
+    },
+    {
+      "title": "Return to Service",
+      "content": [
+        "Vehicle may NOT return to service until decontamination is certified complete",
+        "Certification: documented by EMS supervisor or safety officer reviewing completed decon checklist",
+        "Restock with clean supplies per Protocol 10-12 supply list before next deployment",
+        "Notify MCA medical director and agency supervisor of decontamination completion",
+        "Document decontamination: date, time, disinfectant product name/lot number, crew performing decon, dwell time achieved"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "id": "sprn_program_participation",
+      "label": "SPRN Program Participation — MCA authorization for SPRN protocols 10-10 through 10-18",
+      "description": "MCA Optional: All SPRN protocols apply only to SPRN-designated agencies.",
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Disinfectant product does not have non-enveloped virus EPA claim — do NOT use for SPRN decontamination; contact agency for appropriate product",
+    "Visible contamination (body fluids) found after initial cleaning pass — repeat cleaning step before re-disinfecting"
+  ],
+
+  "scope_notes": "MCA Optional — SPRN only. Must use EPA-registered disinfectant with non-enveloped virus claim — standard ambulance disinfectants are insufficient. Dwell time must be achieved before wiping. All SPRN waste is Category A (UN 2814) biological waste — not standard medical waste. Optional terminal disinfection methods (UV, chlorine dioxide, H2O2 vapor) supplement but do not replace manual cleaning."
+}

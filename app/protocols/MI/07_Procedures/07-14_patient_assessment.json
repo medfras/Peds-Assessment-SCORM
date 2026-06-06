@@ -1,0 +1,122 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-14 Patient Assessment (Revised 5/30/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_patient_assessment",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Patient Assessment",
+  "version": "2023-05-30",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-14: Patient Assessment — MDHHS Approved 5/30/2023",
+  "purpose": "Standardized prehospital patient assessment framework covering scene size-up, primary survey, GCS, AMS differential, and secondary survey.",
+  "sections": [
+    {
+      "title": "Scene Size-Up",
+      "reference": "Michigan Protocol 7-14: Assessment — Scene Size-Up",
+      "points": [
+        "Scene safety: identify and mitigate hazards before patient approach",
+        "Mechanism of injury or nature of illness",
+        "Number of patients — request additional resources if needed",
+        "Standard precautions / PPE",
+        "Pediatric patients: use Pediatric Assessment Triangle (PAT) — appearance, work of breathing, circulation to skin",
+        "Check for DNR or MI-POST form on or near the patient before initiating care"
+      ]
+    },
+    {
+      "title": "Primary Survey — CAB (ABC for Drowning/Respiratory Arrest)",
+      "reference": "Michigan Protocol 7-14: Assessment — Primary Survey",
+      "points": [
+        "C — CIRCULATION / CRITICAL BLEEDING: check pulse; control life-threatening hemorrhage",
+        "A — AIRWAY: open and assess airway; suction as needed",
+        "B — BREATHING: assess rate, depth, effort; provide supplemental oxygen or ventilatory support as needed",
+        "D — DISABILITY: level of consciousness (AVPU or GCS); pupils; gross motor/sensory",
+        "Identify and treat life threats during primary survey — do not defer treatment to complete assessment",
+        "Drowning and primary respiratory arrest: use ABC sequence (Airway first)"
+      ]
+    },
+    {
+      "title": "Glasgow Coma Scale (GCS) — Adult (> 2 years)",
+      "reference": "Michigan Protocol 7-14: Assessment — GCS Adult",
+      "points": [
+        "EYE OPENING: Spontaneous = 4; To voice = 3; To pain = 2; None = 1",
+        "VERBAL: Oriented = 5; Confused = 4; Inappropriate words = 3; Incomprehensible sounds = 2; None = 1",
+        "MOTOR: Obeys commands = 6; Localizes pain = 5; Withdraws from pain = 4; Abnormal flexion = 3; Extension = 2; None = 1",
+        "Total GCS range: 3–15",
+        "GCS < 8: significant mortality risk; consider advanced airway management"
+      ]
+    },
+    {
+      "title": "Glasgow Coma Scale (GCS) — Pediatric (< 2 years)",
+      "reference": "Michigan Protocol 7-14: Assessment — GCS Pediatric",
+      "points": [
+        "EYE OPENING: Spontaneous = 4; To voice = 3; To pain = 2; None = 1",
+        "VERBAL: Coos/babbles = 5; Irritable cries = 4; Cries to pain = 3; Moans to pain = 2; None = 1",
+        "MOTOR: Normal spontaneous = 6; Withdraws to touch = 5; Withdraws from pain = 4; Abnormal flexion = 3; Extension = 2; None = 1",
+        "Total GCS range: 3–15",
+        "GCS < 8: significant mortality risk"
+      ]
+    },
+    {
+      "title": "AMS Differential Diagnosis (AEIOU-TIPPS-CHESS)",
+      "reference": "Michigan Protocol 7-14: Assessment — AMS Differential",
+      "points": [
+        "A — Alcohol",
+        "E — Epilepsy",
+        "I — Insulin (hypoglycemia/hyperglycemia)",
+        "O — Overdose",
+        "U — Uremia (renal failure)",
+        "T — Trauma",
+        "I — Ingestion (toxic)",
+        "P — Psychiatric",
+        "P — Phenothiazines (antipsychotics)",
+        "S — Salicylates (aspirin toxicity)",
+        "C — Cardiac",
+        "H — Hypoxia",
+        "E — Environmental (heat/cold)",
+        "S — Stroke",
+        "S — Sepsis"
+      ]
+    },
+    {
+      "title": "Secondary Survey",
+      "reference": "Michigan Protocol 7-14: Assessment — Secondary Survey",
+      "points": [
+        "Vital signs: pulse (rate/quality), respirations (rate/quality), blood pressure, SpO2, temperature (when indicated), blood glucose (when indicated), pain score",
+        "Head and face: scalp, skull, face, eyes, ears, nose, mouth",
+        "Neck: tracheal position, JVD, crepitus, cervical spine tenderness",
+        "Chest: inspection, auscultation, percussion, palpation — bilateral breath sounds",
+        "Abdomen: inspection, auscultation, palpation — tenderness, rigidity, guarding",
+        "Pelvis: stability, tenderness — compress once; do not repeatedly compress unstable pelvis",
+        "Extremities: motor, sensory, circulation, deformity, wounds",
+        "Back: posterior thoracic and lumbar spine, flanks",
+        "SAMPLE history: Signs/symptoms, Allergies, Medications, Pertinent past history, Last oral intake, Events leading up"
+      ]
+    }
+  ],
+  "mca_selections_required": [],
+  "key_drugs": [],
+  "deterioration_flags": [
+    "GCS < 8 — significant mortality risk; manage airway; consider advanced airway if deteriorating",
+    "Unequal or non-reactive pupils with AMS — consider head trauma, herniation, stroke; load and go",
+    "Hemodynamic instability on primary survey — treat immediately; do not defer for complete assessment"
+  ],
+  "scope_notes": [
+    "All EMS provider levels",
+    "Pediatric patients: use PAT (Pediatric Assessment Triangle) on scene size-up",
+    "Check for DNR or MI-POST before initiating care",
+    "AMS differential: AEIOU-TIPPS-CHESS mnemonic",
+    "GCS < 8 is associated with significant mortality — escalate management"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "documentation_handoff",
+      "patient_assessment",
+      "primary_survey",
+      "vital_signs"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

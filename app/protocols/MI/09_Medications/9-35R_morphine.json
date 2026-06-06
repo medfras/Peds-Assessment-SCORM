@@ -1,0 +1,83 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-35R Morphine (Revised 12/10/2025, MDHHS Reviewed 2026). Base Michigan template.",
+  "id": "mi_base_medication_ref_morphine",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Morphine",
+  "version": "2025-12-10",
+  "protocol_reference": "Michigan Medication Protocol Section 9-35R: Morphine — MDHHS Approved 1/5/2026, Reviewed 2026",
+  "pharmacological_category": "Opioid Analgesic — Mu-Receptor Agonist",
+  "routes": [
+    "IV",
+    "IO",
+    "IM"
+  ],
+  "indications": [
+    "Pain"
+  ],
+  "contraindications": [
+    "Hypotension",
+    "Children < 18 months old"
+  ],
+  "precautions": [
+    "Monitor respiratory rate, SpO2, and mental status continuously",
+    "Have naloxone (9-36R) immediately available",
+    "Minimum 10 minutes between IV/IO repeat doses",
+    "IM route: single dose — no repeat",
+    "Elderly patients: reduce dose; increased sensitivity to opioids"
+  ],
+  "expected_effects": [
+    "Significant analgesia within 5-10 minutes IV, 20-30 minutes IM",
+    "Duration of effect: 2-4 hours"
+  ],
+  "side_effects": [
+    "Respiratory depression",
+    "Apnea",
+    "Hypotension (especially with rapid IV push or hypovolemia)",
+    "Nausea, vomiting",
+    "Histamine release (pruritus, flushing)"
+  ],
+  "notes": [
+    "Maximum single dose: 0.1 mg/kg; maximum 5 mg per dose",
+    "IV/IO: may repeat up to 3 times total; maximum cumulative 20 mg; minimum 10 minutes between doses",
+    "IM: single dose only — no repeat",
+    "Contraindicated <18 months — use fentanyl for infant pain management",
+    "Pediatric >18 months: same dosing as adult (0.1 mg/kg max 5 mg)"
+  ],
+  "dosing": [
+    {
+      "population": "Adult (>14 yr) — pain management",
+      "route": "IV/IO",
+      "dose": "0.1 mg/kg; maximum 5 mg per dose; may repeat up to 3 times (max total 20 mg); minimum 10 minutes between doses",
+      "notes": "Slow IV push; monitor respiratory status; have naloxone available"
+    },
+    {
+      "population": "Adult (>14 yr) — pain management",
+      "route": "IM",
+      "dose": "0.1 mg/kg; maximum 5 mg; single dose — NO repeat",
+      "notes": "IM: single dose only"
+    },
+    {
+      "population": "Pediatric >18 months",
+      "route": "IV/IO/IM",
+      "dose": "0.1 mg/kg; maximum 5 mg per dose; same dosing structure as adult",
+      "notes": "Same dosing and restrictions as adult; NOT for patients ≤18 months"
+    }
+  ],
+  "used_in_protocols": [
+    "Pain Management"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "burns",
+      "fracture_splinting",
+      "trauma"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

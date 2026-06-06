@@ -1,0 +1,74 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-29 Mechanical Chest Compression Device (Revised 5/26/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_mechanical_chest_compression_device",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (All EMS Levels — MCA Optional)",
+  "jurisdiction": "Michigan",
+  "condition": "Mechanical Chest Compression Device",
+  "version": "2023-05-26",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-29: Mechanical Chest Compression Device — MDHHS Approved 5/26/2023",
+
+  "purpose": "MCA OPTIONAL. Manual CPR remains the standard of care in Michigan prehospital EMS. Mechanical chest compression devices may only be used as an alternative to conventional CPR in specific settings where high-quality manual compressions may be challenging or dangerous for the provider, such as limited rescuers, hypothermic cardiac arrest, or CPR in a moving ambulance. MCAs must specify the FDA-approved device by brand and model name. Providers must be trained. LVAD patients are contraindicated.",
+
+  "sections": [
+    {
+      "title": "Authorization and Training",
+      "reference": "Michigan Protocol 7-29: Mechanical CPR — Authorization",
+      "points": [
+        "MCA OPTIONAL — only authorized if MCA has approved mechanical chest compression device use",
+        "MCA must specify the FDA-approved device brand name and model in their authorization",
+        "All providers using the device must be trained per MCA requirements",
+        "Manual CPR remains the standard of care — mechanical device use does not replace the need for high-quality manual CPR when device is unavailable or inappropriate"
+      ]
+    },
+    {
+      "title": "Indications and Contraindications",
+      "reference": "Michigan Protocol 7-29: Mechanical CPR — Indications/Contraindications",
+      "points": [
+        "INDICATION: cardiac arrest in a setting where high-quality manual CPR may be challenging or dangerous, such as limited rescuers, hypothermic cardiac arrest, or CPR in a moving ambulance",
+        "CONTRAINDICATION: RETURN OF SPONTANEOUS CIRCULATION (ROSC) — discontinue device immediately upon ROSC",
+        "CONTRAINDICATION: Age or weight outside the manufacturer's specified limits for the device",
+        "CONTRAINDICATION: LVAD patients — refer to LVAD-Procedure Protocol"
+      ]
+    },
+    {
+      "title": "Documentation",
+      "reference": "Michigan Protocol 7-29: Mechanical CPR — Documentation",
+      "points": [
+        "Document device type and brand name in PCR",
+        "Document times when device was initiated and discontinued",
+        "Document compressions rate confirmed by device (if displayed)",
+        "Document device use in relation to outcome (ROSC, TOR, continued arrest)"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Mechanical Chest Compression Device Authorized",
+      "description": "MCA must select whether mechanical chest compression devices are authorized and specify the FDA-approved brand and model",
+      "options": ["Authorized — device brand/model specified by MCA", "Not authorized — manual CPR only"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "ROSC achieved — STOP mechanical device IMMEDIATELY; assess pulse and hemodynamics; manage per ROSC protocol",
+    "Patient weight or size outside device manufacturer limits — use manual CPR only",
+    "LVAD patient — DO NOT use mechanical CPR device; consult Medical Control"
+  ],
+
+  "scope_notes": [
+    "MCA OPTIONAL — only authorized if MCA specifies FDA-approved device brand and model",
+    "Manual CPR remains the standard of care",
+    "Providers must be trained on the specific authorized device",
+    "Contraindications: ROSC, age/weight outside manufacturer limits, LVAD patients",
+    "Discontinue device immediately upon ROSC",
+    "Document device type, times in use, rate"
+  ]
+}

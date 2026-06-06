@@ -1,0 +1,242 @@
+[
+  {
+    "id": "ap_c_airway_01",
+    "decision": "child",
+    "prompt": "You are preparing to bag-valve-mask ventilate a non-breathing toddler. Without a pad under the shoulders, the large occiput will passively flex the neck and occlude the airway. Which patient group requires this positioning adjustment?",
+    "explanation": "Pediatric patients have a proportionally larger occiput than adults. Without a thin shoulder pad, the head falls into neck flexion, kinking the airway. Adults do not have this positioning concern.",
+    "mistake_tag": "airway_ap",
+    "hint": "Think about whether this changes airway size, airway position, or work of breathing for one age group more than the other.",
+    "follow_up": {
+      "prompt": "What field-care adjustment follows from this finding?",
+      "choices": ["Place a thin pad under the shoulders to maintain neutral airway alignment", "Use adult head-tilt positioning without padding", "Delay ventilation until a definitive airway is available", "Avoid BVM ventilation because the occiput increases aspiration risk"],
+      "correct": "Place a thin pad under the shoulders to maintain neutral airway alignment",
+      "hint": "Think about positioning before you squeeze the bag.",
+      "feedback": "A proportionally large occiput can flex the neck and obstruct the pediatric airway. Shoulder padding helps restore neutral alignment.",
+      "mistake_tag": "airway_ap"
+    }
+  },
+  {
+    "id": "ap_c_airway_02",
+    "decision": "child",
+    "prompt": "A 10-month-old is in respiratory distress with clear lungs and no fever — the only finding is significant nasal congestion. This degree of distress from nasal obstruction alone is specific to which patient group?",
+    "explanation": "Infants are obligate nose breathers for approximately the first 6 months of life. Nasal obstruction alone — without any lower-airway disease — can cause significant respiratory distress in this age group.",
+    "mistake_tag": "airway_ap",
+    "hint": "Look for the clinical consequence first, then decide whether it is adult-specific, pediatric-specific, or shared.",
+    "follow_up": {
+      "prompt": "What should you address early in this infant's respiratory assessment?",
+      "choices": ["Clear nasal obstruction and reassess work of breathing", "Treat as lower-airway bronchospasm first", "Ignore nasal congestion if lung sounds are clear", "Use adult airway positioning only"],
+      "correct": "Clear nasal obstruction and reassess work of breathing",
+      "hint": "Ask whether the obstruction is above or below the glottis.",
+      "feedback": "Young infants depend heavily on nasal breathing; clearing obstruction can meaningfully reduce distress.",
+      "mistake_tag": "airway_ap"
+    }
+  },
+  {
+    "id": "ap_c_airway_03",
+    "decision": "child",
+    "prompt": "A 3-year-old in respiratory distress has visible intercostal and subcostal retractions. An adult exerting the same level of respiratory effort would show far less visible retracting. Which structural difference explains this?",
+    "explanation": "A child's rib cage is cartilaginous and highly compliant. Accessory muscle use pulls inward visibly, producing retractions that reliably signal increased work of breathing. An adult's calcified rib cage resists inward deformation.",
+    "mistake_tag": "airway_ap",
+    "hint": "Think about whether this changes airway size, airway position, or work of breathing for one age group more than the other.",
+    "follow_up": {
+      "prompt": "What does visible pediatric retraction tell you operationally?",
+      "choices": ["Work of breathing is increased and respiratory failure risk is rising", "Retractions are cosmetic and not useful for triage", "This finding mainly indicates dehydration", "Visible retractions only matter when SpO2 is below 90%"],
+      "correct": "Work of breathing is increased and respiratory failure risk is rising",
+      "hint": "Connect chest-wall compliance to what you can see from the doorway.",
+      "feedback": "A compliant pediatric chest wall makes increased work of breathing visible early. Retractions are a high-value severity cue.",
+      "mistake_tag": "airway_ap"
+    }
+  },
+  {
+    "id": "ap_c_airway_04",
+    "decision": "child",
+    "prompt": "A 2-year-old has abdominal distension from air swallowing during a prolonged cry. Work of breathing has noticeably increased. This direct link between abdominal distension and ventilation is specific to which patients?",
+    "explanation": "Young children rely almost entirely on diaphragmatic breathing. Anything compressing the diaphragm — gastric distension, tension pneumothorax — directly reduces tidal volume. Adults can recruit intercostal muscles more effectively as compensation.",
+    "mistake_tag": "airway_ap",
+    "hint": "Think about whether this changes airway size, airway position, or work of breathing for one age group more than the other.",
+    "follow_up": {
+      "prompt": "Which care priority follows from abdominal distension in a young child with respiratory distress?",
+      "choices": ["Reduce gastric/diaphragm compromise while supporting ventilation", "Give oral fluids to relieve crying", "Treat abdominal distension as unrelated to breathing", "Use larger tidal volumes to overcome restriction"],
+      "correct": "Reduce gastric/diaphragm compromise while supporting ventilation",
+      "hint": "Think about the diaphragm as the main pediatric breathing muscle.",
+      "feedback": "Young children rely heavily on diaphragmatic breathing; gastric distension can worsen ventilation and may require repositioning, ventilation adjustment, or decompression per scope.",
+      "mistake_tag": "airway_ap"
+    }
+  },
+  {
+    "id": "ap_c_airway_05",
+    "decision": "child",
+    "prompt": "You are managing croup in a 3-year-old. Even a 1 mm increase in subglottic mucosal edema can produce severe obstruction in this patient. This sensitivity to small amounts of edema is due to which property of the pediatric airway?",
+    "explanation": "Airway resistance increases with the 4th power of the radius reduction. A child's trachea is narrower than an adult's, so a 1 mm reduction represents a much larger percentage of total lumen and dramatically increases resistance.",
+    "mistake_tag": "airway_ap",
+    "hint": "Think about whether this changes airway size, airway position, or work of breathing for one age group more than the other.",
+    "follow_up": {
+      "prompt": "Why does mild edema change your urgency in this child?",
+      "choices": ["Small radius loss can create a large resistance increase", "Subglottic edema rarely affects pediatric airflow", "A 1 mm change matters only in adults", "Edema should be ignored if breath sounds are present"],
+      "correct": "Small radius loss can create a large resistance increase",
+      "hint": "Recall how airway radius affects resistance.",
+      "feedback": "Because pediatric airways are narrow, small edema produces disproportionate resistance. That should raise urgency in croup/upper-airway disease.",
+      "mistake_tag": "airway_ap"
+    }
+  },
+  {
+    "id": "ap_c_airway_06",
+    "decision": "child",
+    "prompt": "A febrile 7-month-old has a tense, bulging anterior fontanelle. This sign of elevated intracranial pressure is available in this patient but not in older patients. What anatomical feature provides this clinical window?",
+    "explanation": "The anterior fontanelle remains open until approximately 18 months. Bulging suggests elevated ICP; sunken suggests dehydration. After closure, this direct assessment window is no longer available.",
+    "mistake_tag": "airway_ap",
+    "hint": "Look for the clinical consequence first, then decide whether it is adult-specific, pediatric-specific, or shared.",
+    "follow_up": {
+      "prompt": "What should a bulging fontanelle add to your field impression?",
+      "choices": ["Concern for elevated intracranial pressure or serious infection", "Reassurance that hydration is normal", "A reason to avoid neurologic assessment", "Proof that trauma is the only cause"],
+      "correct": "Concern for elevated intracranial pressure or serious infection",
+      "hint": "Think about what the open fontanelle lets you assess.",
+      "feedback": "A bulging fontanelle is an objective high-risk neurologic/ICP cue in infants and should influence transport and escalation.",
+      "mistake_tag": "airway_ap"
+    }
+  },
+  {
+    "id": "ap_c_airway_07",
+    "decision": "child",
+    "prompt": "A pediatric trauma patient struck by a vehicle has no rib fractures on exam but presents with decreasing SpO2 and ipsilateral decreased breath sounds. Significant pulmonary injury without rib fractures is characteristic of which age group?",
+    "explanation": "A child's cartilaginous rib cage is highly compliant and transmits blunt force directly to underlying lung tissue without fracturing. Pulmonary contusion, pneumothorax, and hemothorax in pediatric trauma frequently occur with an intact rib cage. In adults, the calcified rib cage tends to fracture under significant force, making rib fractures a common indicator of substantial chest injury.",
+    "mistake_tag": "airway_ap",
+    "hint": "Think about whether this changes airway size, airway position, or work of breathing for one age group more than the other.",
+    "follow_up": {
+      "prompt": "What should you suspect when a child has major chest findings without rib fractures?",
+      "choices": ["Pulmonary contusion, pneumothorax, or hemothorax can still be present", "Serious chest injury is unlikely without fractured ribs", "The mechanism is probably minor", "Only abdominal injury should be considered"],
+      "correct": "Pulmonary contusion, pneumothorax, or hemothorax can still be present",
+      "hint": "Think about force transmission through a flexible chest wall.",
+      "feedback": "A compliant pediatric rib cage can transmit energy to lung tissue without fracturing. Do not let absent rib fractures falsely reassure you.",
+      "mistake_tag": "airway_ap"
+    }
+  },
+  {
+    "id": "ap_c_circ_01",
+    "decision": "child",
+    "prompt": "A 2-year-old is pale, has a capillary refill of 4 seconds and a HR of 168 bpm, but BP is 94/60 (age-appropriate). This presentation — shock with normal blood pressure — is characteristic of which age group?",
+    "explanation": "Children have robust compensatory mechanisms that can maintain blood pressure until shock is severe. Hypotension in a child is a late and pre-arrest finding. Treat compensated shock aggressively before BP falls.",
+    "mistake_tag": "circulation_ap",
+    "hint": "Focus on compensation: which patients preserve blood pressure longer, and which rely more heavily on heart rate?",
+    "follow_up": {
+      "prompt": "What is the safest interpretation of this child's normal blood pressure?",
+      "choices": ["This can still be compensated shock and needs early treatment", "Normal BP rules out shock", "Wait for hypotension before treating perfusion", "Tachycardia is expected and not clinically useful"],
+      "correct": "This can still be compensated shock and needs early treatment",
+      "hint": "Ask whether pediatric hypotension is early or late.",
+      "feedback": "Children maintain BP until late. Tachycardia, pallor, and delayed cap refill with normal BP should still trigger shock management.",
+      "mistake_tag": "circulation_ap"
+    }
+  },
+  {
+    "id": "ap_c_circ_02",
+    "decision": "child",
+    "prompt": "A pediatric patient has a heart rate of 54 bpm and decreasing responsiveness. In this age group, bradycardia almost always reflects severe hypoxia rather than a primary cardiac dysrhythmia. Which age group does this hypoxia-bradycardia pattern primarily describe?",
+    "explanation": "Pediatric bradycardia is an ominous sign indicating severe hypoxia or decompensated shock. In adults, bradycardia more often reflects primary cardiac conditions, medications, or vagal tone. Treat the hypoxia first in a child.",
+    "mistake_tag": "circulation_ap",
+    "hint": "Focus on compensation: which patients preserve blood pressure longer, and which rely more heavily on heart rate?",
+    "follow_up": {
+      "prompt": "What should you treat first when a child becomes bradycardic with decreased responsiveness?",
+      "choices": ["Oxygenation and ventilation", "Immediate cardioversion for primary dysrhythmia", "Observation until blood pressure falls", "Oral glucose only"],
+      "correct": "Oxygenation and ventilation",
+      "hint": "In children, bradycardia is often a sign of what failing system?",
+      "feedback": "Pediatric bradycardia commonly reflects severe hypoxia or decompensation. Ventilation and oxygenation are immediate priorities.",
+      "mistake_tag": "circulation_ap"
+    }
+  },
+  {
+    "id": "ap_c_circ_03",
+    "decision": "child",
+    "prompt": "A pediatric heart has limited ability to increase stroke volume, making heart rate the primary determinant of cardiac output. A tachycardic child in shock cannot compensate by increasing contractility the way an adult can. Which patient group does this physiology describe?",
+    "explanation": "Children have limited stroke volume reserve. Adults can more effectively increase stroke volume via sympathetic stimulation. This difference makes tachycardia a more critical and less compensable finding in children.",
+    "mistake_tag": "circulation_ap",
+    "hint": "Focus on compensation: which patients preserve blood pressure longer, and which rely more heavily on heart rate?",
+    "follow_up": {
+      "prompt": "Why is tachycardia especially important in pediatric shock?",
+      "choices": ["Children rely heavily on heart rate to maintain cardiac output", "Tachycardia is usually anxiety only in children", "Children increase stroke volume easily", "Heart rate is less useful than blood pressure in compensated shock"],
+      "correct": "Children rely heavily on heart rate to maintain cardiac output",
+      "hint": "Think about stroke-volume reserve.",
+      "feedback": "Limited stroke-volume reserve makes heart rate central to pediatric cardiac output. Persistent tachycardia can be a major compensation clue.",
+      "mistake_tag": "circulation_ap"
+    }
+  },
+  {
+    "id": "ap_a_circ_04",
+    "decision": "adult",
+    "prompt": "A trauma patient with significant mechanism is only mildly tachycardic and blood pressure is 108/74. In this age group, normal blood pressure can be maintained until approximately 30% of blood volume is lost. Which patient group does this compensation curve describe?",
+    "explanation": "Adults have a more robust stroke volume response and greater total blood volume. They can lose a significant percentage of circulating volume before blood pressure falls. Mild tachycardia alone may significantly underestimate hemorrhage severity.",
+    "mistake_tag": "circulation_ap",
+    "hint": "Focus on compensation: which patients preserve blood pressure longer, and which rely more heavily on heart rate?"
+  },
+  {
+    "id": "ap_b_circ_05",
+    "decision": "both",
+    "prompt": "Oxygen delivery to tissues is the product of cardiac output, hemoglobin concentration, and arterial oxygen saturation. Interventions targeting all three improve tissue perfusion in any patient in shock. Which population does this physiology apply to?",
+    "explanation": "The oxygen delivery equation (DO2 = CO × CaO2) is fundamental physiology that applies equally to pediatric and adult patients. Treatment for poor perfusion — address rate, volume, hemoglobin, and saturation — is the same across age groups.",
+    "mistake_tag": "circulation_ap",
+    "hint": "Focus on compensation: which patients preserve blood pressure longer, and which rely more heavily on heart rate?"
+  },
+  {
+    "id": "ap_c_med_01",
+    "decision": "child",
+    "prompt": "A child in anaphylaxis weighs 22 kg. The correct epinephrine 1:1000 IM dose is 0.22 mg (0.01 mg/kg). Using a standard adult dose of 0.3–0.5 mg without weight adjustment would significantly overdose this patient. Weight-based dosing is required for which patient group?",
+    "explanation": "All pediatric medication doses are weight-based. Standard adult doses do not apply below a weight threshold. For epinephrine, the pediatric dose is 0.01 mg/kg IM, max 0.3 mg. Using an adult landmark dose without weight-based calculation is a preventable error.",
+    "mistake_tag": "medication_dosing_ap",
+    "hint": "Ask whether the safety issue comes from weight-based calculation, standard dosing, or a principle shared by all patients."
+  },
+  {
+    "id": "ap_c_med_02",
+    "decision": "child",
+    "prompt": "Atropine for bradycardia has a minimum dose of 0.1 mg in one age group to prevent paradoxical bradycardia from vagal blockade at very low doses. This minimum dose constraint is specific to which patient group?",
+    "explanation": "In children, doses below 0.1 mg may paradoxically worsen bradycardia through incomplete parasympathetic blockade. Adults receive doses based on indication without this lower bound. The pediatric minimum is a safety floor that does not carry over to adult dosing.",
+    "mistake_tag": "medication_dosing_ap",
+    "hint": "Focus on compensation: which patients preserve blood pressure longer, and which rely more heavily on heart rate?"
+  },
+  {
+    "id": "ap_c_med_03",
+    "decision": "child",
+    "prompt": "A 10 kg toddler needs a dopamine infusion. Writing the order as 'standard adult rate' without weight-based calculation is a patient safety hazard specific to which group?",
+    "explanation": "Pediatric vasoactive drug dosing is calculated in mcg/kg/min. Adult-standard infusion rates without weight-based titration represent a dosing hazard unique to pediatric patients.",
+    "mistake_tag": "medication_dosing_ap",
+    "hint": "Ask whether the safety issue comes from weight-based calculation, standard dosing, or a principle shared by all patients."
+  },
+  {
+    "id": "ap_b_med_04",
+    "decision": "both",
+    "prompt": "Tidal volume for manual ventilation should target 6–8 mL/kg of ideal body weight. Ventilating a child with an adult-default volume without weight-based calculation is a common cause of lung injury. Which populations does this tidal volume target apply to?",
+    "explanation": "The 6–8 mL/kg tidal volume target is the standard for both pediatric and adult ventilation. The critical difference is that failing to apply weight-based calculation when ventilating a small child results in volume-induced lung injury — the formula is shared, but the calculation must be performed.",
+    "mistake_tag": "medication_dosing_ap",
+    "hint": "Ask whether the safety issue comes from weight-based calculation, standard dosing, or a principle shared by all patients."
+  },
+  {
+    "id": "ap_c_comm_01",
+    "decision": "child",
+    "prompt": "A 2-year-old in moderate respiratory distress is quiet, limp, and staring blankly. A more agitated and crying child with the same SpO2 might actually be less critical. Quiet disengagement as an ominous late sign is characteristic of which patient group?",
+    "explanation": "Decreased interactivity, hypotonia, and lack of response to caregivers are late signs of decompensation in children. A child who is quiet and 'not fighting' may be more critically ill than one who is distressed and combative.",
+    "mistake_tag": "communication_ap",
+    "hint": "Look for the clinical consequence first, then decide whether it is adult-specific, pediatric-specific, or shared."
+  },
+  {
+    "id": "ap_c_comm_02",
+    "decision": "child",
+    "prompt": "You are preparing to start an IV on a school-age child. Briefly explaining the procedure in honest, simple terms reduces anticipatory fear and improves cooperation more effectively than false reassurance ('this won't hurt'). This communication strategy is most specific to which group?",
+    "explanation": "School-age children understand simple explanations and benefit from honest, step-by-step communication. False reassurance erodes trust. Toddlers respond better to distraction and caregiver presence. Adults rely on informed consent and autonomy frameworks.",
+    "mistake_tag": "communication_ap",
+    "hint": "Look for the clinical consequence first, then decide whether it is adult-specific, pediatric-specific, or shared."
+  },
+  {
+    "id": "ap_c_comm_03",
+    "decision": "child",
+    "prompt": "Keeping a caregiver present during assessment and procedures reduces a child's physiologic stress response, improves cooperation, and provides critical history. Routine separation without clinical reason is contraindicated in which patient group?",
+    "explanation": "Caregiver presence during pediatric care reduces cortisol response, procedure duration, and distress. Separating young children from their caregiver without a specific clinical reason increases distress and reduces information quality.",
+    "mistake_tag": "communication_ap",
+    "hint": "Look for the clinical consequence first, then decide whether it is adult-specific, pediatric-specific, or shared."
+  },
+  {
+    "id": "ap_a_comm_04",
+    "decision": "adult",
+    "prompt": "A patient is declining a recommended intervention. The appropriate response is to explain risks and benefits, confirm decision-making capacity, and document the refusal. This autonomy-based informed refusal process applies primarily to which patient group?",
+    "explanation": "Informed consent and patient autonomy are the framework for adult clinical communication. Pediatric patients rely on caregiver consent (with assent from older children). Capacity assessment and the documentation of refusal are primarily adult-encounter obligations.",
+    "mistake_tag": "communication_ap",
+    "hint": "Look for the clinical consequence first, then decide whether it is adult-specific, pediatric-specific, or shared."
+  }
+]

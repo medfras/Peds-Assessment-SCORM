@@ -1,0 +1,1982 @@
+{
+  "_schema": "pfd_scenario_v1",
+  "id": "peds_febrile_seizure_01",
+  "title": "Pediatric Febrile Seizure — 6-Month-Old Female",
+  "display_title": "Pediatric Febrile Seizure — 6-Month-Old Female",
+  "subtitle": "6-Month-Old Female, Active Febrile Seizure",
+  "category": "pediatric_medical",
+  "category_display": "Pediatric Medical Assessment",
+  "turnover_target": "als",
+  "version": "1.1",
+  "rubric_template": "ems_standard_v1",
+  "base_patient_care_rubric": "nremt_e202_medical_v1",
+  "difficulty": "intermediate",
+  "protocol": "MI/04_OB_Pediatrics/04-7_seizures",
+  "jurisdiction": "mi_base",
+  "clinical_context": {
+    "jurisdiction": "MI",
+    "concepts": [
+      "pediatric_patient",
+      "altered_mental_status",
+      "seizure",
+      "febrile_seizure",
+      "airway_management",
+      "oxygen_therapy",
+      "vital_signs"
+    ],
+    "protocol_focus": [
+      "febrile_seizure",
+      "seizure",
+      "airway_management",
+      "oxygen_therapy"
+    ]
+  },
+  "agency_context": "",
+  "impression_challenge": {
+    "enabled": true,
+    "trigger_milestone": "primary_survey_complete",
+    "prompt": "Based on your initial assessment, what is your primary clinical impression?",
+    "options": [
+      "Active seizure / likely febrile seizure",
+      "Hypoglycemic seizure",
+      "Meningitis / CNS infection",
+      "Foreign body airway obstruction"
+    ],
+    "correct": "Active seizure / likely febrile seizure",
+    "acceptable": [
+      "Active seizure",
+      "Febrile seizure",
+      "Seizure with fever"
+    ]
+  },
+  "readiness_criteria": {
+    "min_minutes": 3,
+    "checks": [
+      {
+        "id": "messages",
+        "label": "5 messages sent",
+        "type": "message_count",
+        "min": 5
+      },
+      {
+        "id": "vitals",
+        "label": "Vitals assessed",
+        "type": "vitals_logged"
+      },
+      {
+        "id": "exam",
+        "label": "Exam/history obtained",
+        "type": "exam_logged"
+      },
+      {
+        "id": "treatment",
+        "label": "Treatment applied",
+        "type": "treatment_logged"
+      }
+    ]
+  },
+  "scene_entry_scoring": {
+    "ppe": {
+      "required": [
+        "gloves"
+      ],
+      "recommended": [
+        "eye_protection"
+      ],
+      "missing_required_penalty": 3,
+      "missing_recommended_penalty": 1,
+      "max_score": 10
+    },
+    "pat": {
+      "expected_impression": "sick",
+      "incorrect_impression_deduction": 2
+    }
+  },
+  "lung_sound_challenge": {
+    "enabled": true,
+    "audio_file": "/static/audio/lung sounds/DeathRattle.mp3",
+    "prompt": "Assess Chloe's airway and breath sounds — what do you hear?",
+    "accepted_answers": [
+      "gurgling",
+      "secretions",
+      "upper airway gurgling",
+      "wet gurgling",
+      "airway secretions",
+      "clear lungs with upper airway noise"
+    ],
+    "correct_choice_id": "upper_airway_gurgling",
+    "finding": "Wet upper-airway gurgling from pooled oral secretions; lower lung fields are difficult to assess during seizure but air movement is present",
+    "feedback_correct": "Correct — the key finding is wet upper-airway gurgling from pooled secretions during active seizure; position laterally and suction visible secretions.",
+    "feedback_incorrect": "Listen for the upper airway first — wet gurgling during active seizure means pooled secretions need lateral positioning and suction."
+  },
+  "chat_placeholder": "Talk to the infant's parents or partner Alex. E.g. 'Jennifer, what happened?' or 'Alex, check airway and breathing.'",
+  "chat_address_hint": "Address by name: Chloe · Mom/Jennifer · Dad/Tom · Alex (partner/vitals)",
+  "debrief_lexi_hints": [
+    {
+      "label": "Next step?",
+      "msg": "What should I do first for an actively seizing infant?"
+    },
+    {
+      "label": "Febrile seizure?",
+      "msg": "How do febrile seizures present in infants and how do I manage them at BLS level?"
+    },
+    {
+      "label": "Airway position?",
+      "msg": "How should I position an actively seizing infant, and what airway findings would make suction appropriate?"
+    },
+    {
+      "label": "BLS scope?",
+      "msg": "What is within my BLS scope for a pediatric seizure patient?"
+    },
+    {
+      "label": "Missing info?",
+      "msg": "What history or assessment information am I still missing?"
+    }
+  ],
+  "objectives": [
+    "Recognize an actively seizing 6-month-old with fever and impaired airway protection",
+    "Protect the airway using lateral/recovery positioning and suction for visible pooled secretions",
+    "Protect the infant from injury without restraint and without placing anything in the mouth",
+    "Apply appropriate oxygen therapy and monitor SpO2 after basic airway clearing",
+    "Obtain a focused seizure and fever history from caregivers while care continues",
+    "Recognize BLS scope limitations — benzodiazepines are Paramedic scope for persistent seizure",
+    "Monitor seizure activity, airway status, respiratory status, and oxygenation continuously",
+    "Deliver a complete DMIST turnover including seizure duration/status, airway interventions, fever, and response"
+  ],
+  "dispatch": {
+    "unit": "{unit}",
+    "text": "{unit}, respond to 1441 Birchwood Drive for a 6-month-old female seizing.",
+    "priority": "Priority 1",
+    "time": "08:47",
+    "cross_streets": "Birchwood Drive and Creekside Lane",
+    "response_time_minutes": 3
+  },
+  "scene": {
+    "description": "You arrive at an apartment in a quiet residential building. A man is standing by the open front doorway, waving you inside. In the living room, a visibly distressed and tearful mother is kneeling on the carpet beside her 6-month-old infant. The infant is lying on her back and actively seizing — arms and legs jerking rhythmically, eyes deviated upward, and jaw clenched. The mother is anxiously watching the baby seize. A knocked-over baby bottle, burp cloth, and scattered infant toys are nearby.",
+    "image": "/static/images/febrile_seizure_6mof.jpeg",
+    "video": null,
+    "hazards": [],
+    "bystanders": [
+      {
+        "name": "Jennifer",
+        "relation": "mother",
+        "age": 29
+      },
+      {
+        "name": "Tom",
+        "relation": "father",
+        "age": 31
+      }
+    ]
+  },
+  "patient": {
+    "pcr_demographics_deferred": true,
+    "name": "Chloe",
+    "age": 0,
+    "sex": "female",
+    "weight_kg": 7,
+    "weight_display": "16 lbs (approximately 7 kg — infant Broselow estimate)",
+    "chief_complaint": "Active first-time seizure with fever",
+    "general_impression": "6-month-old infant lying supine on the living room carpet actively seizing. Her arms and legs are jerking rhythmically, eyes deviated upward, and jaw clenched. Skin is flushed, hot, and slightly diaphoretic. She is not responding purposefully to her mother or the environment.",
+    "gcs_assessment": {
+      "e": 1,
+      "v": 1,
+      "m": 4,
+      "total": 6,
+      "rationale": "Eyes do not open purposefully during seizure, there are no purposeful verbal sounds, and extremity movement is non-purposeful seizure activity with withdrawal/flexion response only if stimulated.",
+      "challenge_description": "Chloe is actively seizing on the carpet. Her eyes are deviated upward and do not open purposefully. She has no purposeful verbal response. Extremity movement is rhythmic seizure activity rather than command-following."
+    },
+    "avpu_assessment": {
+      "value": "unresponsive",
+      "description": "Patient is actively seizing with no purposeful response to voice or environment.",
+      "rationale": "Use AVPU = unresponsive during active generalized seizure because there is no purposeful response."
+    },
+    "airway_assessment": {
+      "status": "compromised",
+      "description": "Airway is NOT patent. Oral secretions are pooling at the mouth with audible wet upper-airway gurgling between irregular breaths. Airway is unprotected — patient is actively seizing, supine, jaw clenched, unable to protect her own airway.",
+      "rationale": "Active generalized seizure in supine infant with pooled oral secretions produces partial upper-airway obstruction audible as wet gurgling. Lateral positioning and gentle suction are the immediate airway interventions. Do NOT say 'Airway appears patent' for this patient."
+    },
+    "image": "/static/images/febrile_seizure_6mof.jpeg",
+    "video": null,
+    "pat": {
+      "impression": "6-month-old infant lying supine, actively seizing, flushed/hot/diaphoretic, with no purposeful response to caregiver or environment.",
+      "appearance": "Severely abnormal — active generalized seizure, no purposeful interaction, eyes deviated upward, no tracking, no consolable cry.",
+      "work_of_breathing": "Abnormal from the doorway — irregular chest rise between seizure activity; detailed airway sounds and secretion burden require a breathing/airway assessment.",
+      "circulation": "Flushed, hot, and slightly diaphoretic from fever. No cyanosis initially and no major bleeding. Perfusion requires monitoring.",
+      "expected": "sick",
+      "teaching": "Appearance and airway drive the SICK impression. An actively seizing infant with pooled secretions needs lateral positioning, gentle suction of visible secretions, oxygenation/SpO2 monitoring, glucose/temperature assessment, and frequent reassessment."
+    },
+    "age_months": 6,
+    "age_display": "6-month-old female",
+    "dob_relative": "about 6 months before today's date"
+  },
+  "history": {
+    "pmh": [
+      "Recent viral upper respiratory symptoms with fever since last night",
+      "First seizure today — no prior seizures before this event",
+      "No neurological conditions",
+      "Born full term with no NICU stay",
+      "Immunizations up to date per pediatrician"
+    ],
+    "medications": [
+      "Infant acetaminophen given once overnight for fever; no daily medications"
+    ],
+    "allergies": "NKDA",
+    "last_oral_intake": "Formula approximately 90 minutes ago",
+    "events_leading_to_call": "Chloe has had congestion and fever since last night. About 2 minutes before EMS arrival she suddenly stiffened, her eyes rolled upward, and then both arms and legs began jerking rhythmically. She is still seizing when EMS enters the room. This is her first seizure ever — she has had no prior seizures before today. No known trauma, choking episode, or suspected ingestion."
+  },
+  "initial_complaint": {
+    "speaker": "Jennifer",
+    "lay_summary": "She's seizing. She started shaking and her eyes rolled up.",
+    "allowed_in_opener": true,
+    "do_not_include": [
+      "full seizure duration",
+      "airway secretions unless airway or breathing is assessed",
+      "fever details",
+      "medications",
+      "prior episode history",
+      "diagnosis",
+      "treatment suggestions",
+      "negative findings",
+      "full OPQRST/SAMPLE"
+    ]
+  },
+  "history_response_map": {
+    "patient_identity_full_with_weight": {
+      "label": "Patient identity / full demographics with weight",
+      "speaker": "Jennifer",
+      "triggers": [
+        "name age date of birth and weight",
+        "name age dob weight",
+        "name age date of birth weight",
+        "name and age and date of birth and weight",
+        "what's her name age date of birth and weight",
+        "name date of birth and weight"
+      ],
+      "answer": "Her name is Chloe. She's 6 months old. She was born about 6 months ago, and she weighs about 16 pounds, around 7 kilograms.",
+      "tags": [
+        "[[HISTORY: Patient Name=Chloe]]",
+        "[[HISTORY: Patient Age=6-month-old female]]",
+        "[[HISTORY: Patient Date of Birth=about 6 months before today's date]]",
+        "[[HISTORY: Patient Weight=16 lbs (approximately 7 kg — infant Broselow estimate)]]"
+      ],
+      "notes": "Use only when the learner asks for patient name/age/DOB and weight together.",
+      "do_not_include": [
+        "seizure details",
+        "medical history",
+        "medications",
+        "treatment suggestions"
+      ]
+    },
+    "patient_identity_full": {
+      "label": "Patient identity / full demographics",
+      "speaker": "Jennifer",
+      "triggers": [
+        "name and dob",
+        "name and date of birth",
+        "name and birthday",
+        "name age dob",
+        "name and age",
+        "name, age",
+        "patient demographics"
+      ],
+      "answer": "Her name is Chloe. She's 6 months old. She was born about 6 months ago.",
+      "tags": [
+        "[[HISTORY: Patient Name=Chloe]]",
+        "[[HISTORY: Patient Age=6-month-old female]]",
+        "[[HISTORY: Patient Date of Birth=about 6 months before today's date]]"
+      ],
+      "notes": "Use only when the learner asks for combined patient demographics.",
+      "do_not_include": [
+        "weight unless asked",
+        "seizure details",
+        "medical history",
+        "medications",
+        "treatment suggestions"
+      ]
+    },
+    "patient_name": {
+      "label": "Patient name",
+      "speaker": "Jennifer",
+      "triggers": [
+        "what is her name",
+        "what's her name",
+        "patient name",
+        "her name",
+        "name?"
+      ],
+      "answer": "Her name is Chloe.",
+      "tags": [
+        "[[HISTORY: Patient Name=Chloe]]"
+      ],
+      "notes": "Patient-scoped name only.",
+      "do_not_include": [
+        "age unless asked",
+        "date of birth unless asked",
+        "weight unless asked",
+        "seizure details",
+        "medical history",
+        "medications",
+        "treatment suggestions"
+      ]
+    },
+    "patient_age_dob_weight": {
+      "label": "Patient age, DOB, and weight",
+      "speaker": "Jennifer",
+      "triggers": [
+        "age and date of birth and weight",
+        "age dob weight",
+        "age date of birth weight",
+        "date of birth and weight",
+        "dob and weight"
+      ],
+      "answer": "She's 6 months old, she was born about 6 months ago, and she weighs about 16 pounds, around 7 kilograms.",
+      "tags": [
+        "[[HISTORY: Patient Age=6-month-old female]]",
+        "[[HISTORY: Patient Date of Birth=about 6 months before today's date]]",
+        "[[HISTORY: Patient Weight=16 lbs (approximately 7 kg — infant Broselow estimate)]]"
+      ],
+      "notes": "Patient-scoped age/DOB/weight bundle without revealing name unless asked.",
+      "do_not_include": [
+        "name unless asked",
+        "seizure details",
+        "medical history",
+        "medications",
+        "treatment suggestions"
+      ]
+    },
+    "patient_age": {
+      "label": "Patient age",
+      "speaker": "Jennifer",
+      "triggers": [
+        "how old is she",
+        "how old",
+        "patient age",
+        "age"
+      ],
+      "answer": "She's 6 months old.",
+      "tags": [
+        "[[HISTORY: Patient Age=6-month-old female]]"
+      ],
+      "notes": "Patient-scoped age only.",
+      "do_not_include": [
+        "name unless asked",
+        "date of birth unless asked",
+        "weight unless asked",
+        "seizure details",
+        "medical history",
+        "medications",
+        "treatment suggestions"
+      ]
+    },
+    "patient_dob": {
+      "label": "Patient DOB",
+      "speaker": "Jennifer",
+      "triggers": [
+        "date of birth",
+        "dob",
+        "birthday",
+        "when was she born",
+        "birth date"
+      ],
+      "answer": "She was born about 6 months ago.",
+      "tags": [
+        "[[HISTORY: Patient Date of Birth=about 6 months before today's date]]"
+      ],
+      "notes": "Patient-scoped DOB source only. Infant DOB is relative by design.",
+      "do_not_include": [
+        "name unless asked",
+        "age unless asked",
+        "weight unless asked",
+        "seizure details",
+        "medical history",
+        "medications",
+        "treatment suggestions"
+      ]
+    },
+    "patient_weight": {
+      "label": "Patient weight",
+      "speaker": "Jennifer",
+      "triggers": [
+        "how much does she weigh",
+        "what does she weigh",
+        "patient weight",
+        "weight",
+        "estimated weight"
+      ],
+      "answer": "She weighs about 16 pounds, around 7 kilograms.",
+      "tag": "[[HISTORY: Patient Weight=16 lbs (approximately 7 kg — infant Broselow estimate)]]",
+      "notes": "Patient-scoped weight only.",
+      "do_not_include": [
+        "diagnosis",
+        "treatment suggestions"
+      ]
+    },
+    "chief_concern": {
+      "label": "Broad opener / chief concern",
+      "speaker": "Jennifer",
+      "triggers": [
+        "what's going on",
+        "what happened",
+        "why did you call",
+        "how can we help",
+        "chief complaint"
+      ],
+      "answer": "She's seizing. She started shaking and her eyes rolled up.",
+      "tag": "[[HISTORY: Patient Chief Complaint=active seizure]]",
+      "notes": "Patient-scoped complaint only.",
+      "do_not_include": [
+        "airway secretions unless airway or breathing is assessed",
+        "duration",
+        "fever",
+        "medications",
+        "treatment suggestions"
+      ]
+    },
+    "opqrst_full": {
+      "label": "Full OPQRST seizure history",
+      "speaker": "Jennifer",
+      "triggers": [
+        "onset provocation quality radiation severity time",
+        "opqrst",
+        "onset provocation quality region severity time",
+        "onset provocation palliation quality radiation severity time"
+      ],
+      "answer": "It started about two minutes before you got here. Nothing seemed to set it off or make it better or worse. Her whole body went stiff and then both arms and legs started jerking all over. The shaking did not spread from one spot; it was generalized all over. It looked severe, with vigorous full-body shaking. She is still seizing right now.",
+      "tags": [
+        "[[HISTORY: Onset=about 2 minutes before EMS arrival]]",
+        "[[HISTORY: Provocation=none observed, started spontaneously while lying on the carpet]]",
+        "[[HISTORY: Quality=generalized tonic-clonic appearance, whole-body jerking]]",
+        "[[HISTORY: Radiation=none, seizure activity was generalized]]",
+        "[[HISTORY: Severity=severe, vigorous full-body shaking]]",
+        "[[HISTORY: Time=active seizure on EMS arrival]]",
+        "[[HISTORY: Seizure Status=active seizure on EMS patient contact]]"
+      ],
+      "do_not_include": [
+        "medications unless asked",
+        "treatment suggestions"
+      ]
+    },
+    "seizure_onset_duration": {
+      "label": "Seizure onset / duration",
+      "speaker": "Jennifer",
+      "triggers": [
+        "when did it start",
+        "how long",
+        "duration",
+        "how long has she been seizing",
+        "when started",
+        "how many minutes"
+      ],
+      "answer": "It started about two minutes before you got here. She's still shaking right now.",
+      "tags": [
+        "[[HISTORY: Seizure Onset=about 2 minutes before EMS arrival]]",
+        "[[HISTORY: Seizure Duration=ongoing on EMS arrival]]",
+        "[[HISTORY: Seizure Status=active seizure on EMS patient contact]]"
+      ],
+      "do_not_include": [
+        "treatment suggestions"
+      ]
+    },
+    "seizure_description": {
+      "label": "Seizure description",
+      "speaker": "Jennifer",
+      "triggers": [
+        "describe seizure",
+        "what did it look like",
+        "shaking",
+        "jerking",
+        "eyes",
+        "full body",
+        "focal"
+      ],
+      "answer": "Her whole body went stiff, then both arms and legs started jerking. Her eyes rolled up. It looks like her whole body, not just one side, and she is still shaking.",
+      "tags": [
+        "[[HISTORY: Seizure Type=generalized tonic-clonic appearing]]"
+      ],
+      "do_not_include": [
+        "diagnosis"
+      ]
+    },
+    "fever_illness": {
+      "label": "Fever / recent illness",
+      "speaker": "Jennifer",
+      "triggers": [
+        "fever",
+        "sick",
+        "illness",
+        "temperature",
+        "temp",
+        "hot",
+        "congestion",
+        "cough"
+      ],
+      "answer": "She felt hot last night and had congestion. I gave infant Tylenol once overnight, but I have not checked her temperature since then.",
+      "tags": [
+        "[[HISTORY: Fever=felt hot since last night]]",
+        "[[HISTORY: Recent Illness=congestion and fever since last night]]"
+      ],
+      "do_not_include": [
+        "seizure duration unless asked"
+      ]
+    },
+    "sample_full": {
+      "label": "Full SAMPLE history",
+      "speaker": "Jennifer",
+      "triggers": [
+        "signs and symptoms allergies medications past medical history last oral intake events",
+        "signs and symptoms allergies medications past medical history last oral intake and events leading up to",
+        "signs and symptoms allergies medication past medical history last oral intake events",
+        "signs and symptoms allergies medication past medical history last oral intake and events leading up to",
+        "sample",
+        "sample history",
+        "signs symptoms allergies medications past medical history last oral intake events",
+        "signs symptoms allergies medication past medical history last oral intake events",
+        "signs and symptoms allergies medications past medical history intake events",
+        "signs symptoms allergies medications past medical history intake events",
+        "signs and symptoms allergies meds pmh last oral intake events",
+        "signs and symptoms allergies medication pmh last oral intake events"
+      ],
+      "answer": "She is having a full-body shaking seizure with fever, runny nose, congestion, and irregular noisy breathing. No known allergies. She does not take daily medications; I gave infant Tylenol once overnight for the fever. She was born full term, no NICU stay, no known medical problems, and her vaccines are up to date. She had formula about an hour and a half ago. She was lying on the carpet when it started; there was no fall, no choking, and nothing she could have swallowed.",
+      "tags": [
+        "[[HISTORY: Signs and Symptoms=active generalized seizure, fever, congestion/runny nose, irregular noisy breathing]]",
+        "[[HISTORY: Allergies=NKDA]]",
+        "[[HISTORY: Medications=infant acetaminophen once overnight; no daily medications]]",
+        "[[HISTORY: PMH=full-term birth, no NICU stay, no known chronic conditions, immunizations up to date]]",
+        "[[HISTORY: Last Oral Intake=formula approximately 90 minutes ago]]",
+        "[[HISTORY: Events=lying on carpet when seizure began; no fall, no choking, no suspected ingestion]]"
+      ],
+      "do_not_include": [
+        "treatment suggestions"
+      ],
+      "notes": "Priority entry — use this response whenever the learner asks about multiple SAMPLE components together, especially when signs/symptoms, last oral intake, or events are included alongside allergies/medications/history. Always prefer this entry over allergies_meds_pmh when the question spans more than just A/M/PMH. Extra spaces and singular vs plural \"medication\" both match."
+    },
+    "allergies_meds_pmh": {
+      "label": "Allergies, medications, and medical history",
+      "speaker": "Jennifer",
+      "triggers": [
+        "allergies",
+        "medications",
+        "meds",
+        "medical history",
+        "pmh",
+        "past history",
+        "health problems",
+        "takes anything"
+      ],
+      "answer": "No known allergies. She does not take daily medications. I gave infant Tylenol once overnight for the fever. She was born full term, no NICU stay, no medical problems, and her vaccines are up to date.",
+      "tags": [
+        "[[HISTORY: Allergies=NKDA]]",
+        "[[HISTORY: Medications=infant acetaminophen once overnight; no daily medications]]",
+        "[[HISTORY: PMH=full-term birth, no NICU stay, no known chronic conditions, immunizations up to date]]"
+      ],
+      "do_not_include": [
+        "seizure duration unless asked",
+        "treatment suggestions"
+      ],
+      "notes": "Use only when the learner asks specifically about allergies, medications, or medical history alone — NOT when the learner also asks about signs and symptoms, last oral intake, or events in the same question. When those additional components are present, use sample_full instead."
+    },
+    "last_oral_intake": {
+      "label": "Last oral intake",
+      "speaker": "Jennifer",
+      "triggers": [
+        "last oral",
+        "last ate",
+        "last drink",
+        "formula",
+        "feeding",
+        "when did she eat",
+        "when did she drink"
+      ],
+      "answer": "She had formula about an hour and a half ago.",
+      "tag": "[[HISTORY: Last Oral Intake=formula approximately 90 minutes ago]]",
+      "do_not_include": [
+        "treatment suggestions"
+      ]
+    },
+    "last_oral_intake_and_events": {
+      "label": "Last oral intake and events",
+      "speaker": "Jennifer",
+      "triggers": [
+        "last oral intake and events",
+        "last oral and events",
+        "last oral intake events",
+        "last oral intake and events leading up",
+        "last oral intake and events leading up to this starting"
+      ],
+      "answer": "She had formula about an hour and a half ago. She was lying on the carpet when it started; there was no fall, no choking, and nothing she could have swallowed.",
+      "tags": [
+        "[[HISTORY: Last Oral Intake=formula approximately 90 minutes ago]]",
+        "[[HISTORY: Events=lying on carpet when seizure began; no fall, no choking, no suspected ingestion]]"
+      ],
+      "do_not_include": [
+        "treatment suggestions"
+      ]
+    },
+    "prior_seizures": {
+      "label": "Prior seizure history",
+      "speaker": "Jennifer",
+      "triggers": [
+        "prior seizure",
+        "history of seizures",
+        "ever had a seizure",
+        "first seizure",
+        "epilepsy",
+        "happened before"
+      ],
+      "answer": "No, this has never happened before. This is her first seizure ever — no prior seizures before today.",
+      "tags": [
+        "[[HISTORY: Prior Seizures=none before today; first seizure ever]]"
+      ],
+      "do_not_include": [
+        "treatment suggestions"
+      ]
+    },
+    "events_when_started": {
+      "label": "Activity at seizure onset",
+      "speaker": "Jennifer",
+      "triggers": [
+        "what was she doing when it started",
+        "what was she doing",
+        "what was happening when it started",
+        "what happened before it started",
+        "events leading up"
+      ],
+      "answer": "She was just lying on the carpet when it started. There was no fall, no choking, and nothing she could have swallowed.",
+      "tags": [
+        "[[HISTORY: Events=lying on carpet when seizure began; no fall, no choking, no suspected ingestion]]"
+      ],
+      "do_not_include": [
+        "treatment suggestions"
+      ]
+    },
+    "trauma_choking_ingestion": {
+      "label": "Trauma, choking, or ingestion screen",
+      "speaker": "Tom",
+      "triggers": [
+        "fall",
+        "hit her head",
+        "trauma",
+        "choking",
+        "choke",
+        "foreign body",
+        "ingestion",
+        "swallowed",
+        "ate something",
+        "poison"
+      ],
+      "answer": "No fall or head injury. She was lying on the carpet when it started. No choking that we saw and nothing she could have swallowed.",
+      "tags": [
+        "[[HISTORY: Trauma=no fall or head injury]]",
+        "[[HISTORY: Choking/Foreign Body=no choking episode witnessed]]",
+        "[[HISTORY: Ingestion=no suspected ingestion]]"
+      ],
+      "do_not_include": [
+        "seizure duration unless asked",
+        "treatment suggestions"
+      ]
+    }
+  },
+  "vitals": {
+    "baseline": {
+      "hr": {
+        "value": 172,
+        "unit": "bpm",
+        "label": "Heart Rate"
+      },
+      "rr": {
+        "value": 32,
+        "unit": "irregular breaths/min",
+        "label": "Resp Rate"
+      },
+      "spo2": {
+        "value": 90,
+        "unit": "%",
+        "label": "SpO2"
+      },
+      "bp": {
+        "value": "82/48",
+        "unit": "mmHg",
+        "label": "Blood Pressure",
+        "numeric": false
+      },
+      "temp": {
+        "value": 103.6,
+        "unit": "°F",
+        "label": "Temperature"
+      },
+      "gcs": {
+        "value": 6,
+        "unit": "",
+        "label": "GCS",
+        "detail": "E1V1M4 — active generalized seizure; no purposeful eye opening or verbal response"
+      },
+      "blood_glucose": {
+        "value": 92,
+        "unit": "mg/dL",
+        "label": "Blood Glucose",
+        "numeric": false,
+        "detail": "Normal — 92 mg/dL."
+      },
+      "skin_color": {
+        "value": "Flushed, hot to touch, diaphoretic; no cyanosis initially",
+        "numeric": false,
+        "label": "Skin"
+      },
+      "cap_refill": {
+        "value": 2.0,
+        "unit": "sec",
+        "label": "Cap Refill"
+      },
+      "pupils": {
+        "value": "Eyes deviated upward during seizure; pupils difficult to assess initially, equal when briefly visible",
+        "numeric": false,
+        "label": "Pupils"
+      },
+      "lung_sounds": {
+        "value": "Wet upper-airway gurgling from pooled oral secretions; lower lung fields difficult to assess during seizure but air movement present",
+        "numeric": false,
+        "label": "Lung Sounds"
+      },
+      "work_of_breathing": {
+        "value": "Irregular spontaneous respirations between seizure activity with wet gurgling from pooled secretions at the mouth",
+        "numeric": false,
+        "label": "Work of Breathing"
+      }
+    },
+    "deterioration": {
+      "note": "Without lateral positioning, suction, and oxygen: pooled secretions can worsen upper-airway obstruction and aspiration risk while seizure activity continues. SpO2 may fall and respirations may become shallow or ineffective.",
+      "rates": {
+        "spo2": -1.0,
+        "gcs": -0.2,
+        "hr": 0.8,
+        "rr": -0.3,
+        "cap_refill": 0.1
+      },
+      "caps": {
+        "hr": {
+          "max": 190,
+          "min": 110
+        },
+        "rr": {
+          "max": 52,
+          "min": 8
+        },
+        "spo2": {
+          "min": 70,
+          "max": 100
+        },
+        "gcs": {
+          "min": 3,
+          "max": 15
+        }
+      },
+      "string_thresholds": {
+        "skin_color": [
+          {
+            "spo2_below": 90,
+            "value": "Pale with mottled patches — mild perioral cyanosis developing"
+          },
+          {
+            "spo2_below": 85,
+            "value": "Dusky — prominent cyanosis, lips and perioral area"
+          }
+        ],
+        "work_of_breathing": [
+          {
+            "spo2_below": 90,
+            "value": "Airway compromise increasing — louder wet gurgling with pooled secretions and irregular respirations during active seizure"
+          },
+          {
+            "spo2_below": 84,
+            "value": "Severe airway compromise — poor chest rise, wet gurgling, cyanosis developing during active seizure"
+          }
+        ]
+      }
+    },
+    "interventions": {
+      "blood_glucose_check": {
+        "label": "Blood Glucose Check — Fingerstick (glucometer)",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "blood glucose",
+          "\\bbgl\\b",
+          "\\bbg\\b",
+          "glucometer",
+          "finger.?stick",
+          "check.*glucose",
+          "glucose.*check"
+        ],
+        "effects": {
+          "string_override": {
+            "blood_glucose": "92 mg/dL — normal"
+          }
+        },
+        "notes": "Protocol-indicated for seizure or altered mental status presentations to exclude hypoglycemia as a reversible cause."
+      },
+      "o2_nrb": {
+        "label": "High-flow O2 via NRB mask (15 LPM)",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "\\bnrb\\b",
+          "non.?rebreather",
+          "high.?flow.*o2",
+          "15\\s*lpm",
+          "non rebreather"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 4,
+            "rate_modifier": 0.25
+          },
+          "hr": {
+            "immediate_change": -4,
+            "rate_modifier": 0.8
+          },
+          "gcs": {
+            "immediate_change": 0,
+            "rate_modifier": 1.0
+          }
+        },
+        "notes": "Oxygen support for active seizure with hypoxia/impaired airway protection. Use after or while performing immediate airway positioning and suction.",
+        "requires_popup": true,
+        "popup_type": "oxygen",
+        "popup_default": {
+          "device": "nrb",
+          "flow": 15
+        }
+      },
+      "o2_blowby": {
+        "label": "Blow-by O2 (NRB mask held near face, high flow)",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "blow.?by",
+          "blow by",
+          "blowby",
+          "held near face",
+          "near.*face.*oxygen",
+          "nrb.*near.*face",
+          "oxygen.*near.*face"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 3,
+            "rate_modifier": 0.35
+          },
+          "hr": {
+            "immediate_change": -3,
+            "rate_modifier": 0.85
+          }
+        },
+        "notes": "Appropriate oxygen delivery option for an infant who does not tolerate a sealed mask. Airway positioning remains the priority when LOC is depressed.",
+        "requires_popup": true,
+        "popup_type": "oxygen",
+        "popup_default": {
+          "device": "nrb",
+          "flow": 15,
+          "blow_by": true
+        }
+      },
+      "o2_nc": {
+        "label": "Supplemental O2 via nasal cannula",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "\\bnasal\\s+cannula\\b",
+          "\\bnc\\b.*o2",
+          "2\\s*lpm",
+          "4\\s*lpm",
+          "nasal cannula"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 1,
+            "rate_modifier": 0.6
+          }
+        },
+        "notes": "Low-flow oxygen may be less effective during active seizure with airway secretions; continue lateral positioning and suction visible secretions.",
+        "requires_popup": true,
+        "popup_type": "oxygen",
+        "popup_default": {
+          "device": "nc",
+          "flow": 4
+        }
+      },
+      "recovery_position": {
+        "label": "Recovery position — lateral recumbent",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "recovery position",
+          "lateral.*recumbent",
+          "left.*lateral",
+          "side.*position",
+          "roll.*side",
+          "lateral position",
+          "on.*her.*side",
+          "place.*side",
+          "put.*side",
+          "lay.*side",
+          "roll.*her",
+          "turn.*side"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 2,
+            "rate_modifier": 0.35
+          },
+          "string_override": {
+            "work_of_breathing": "Airway position improved — lateral positioning supports drainage of pooled secretions during active seizure"
+          }
+        },
+        "notes": "Critical first-line BLS airway intervention for an actively seizing infant with pooled oral secretions. Lateral positioning supports drainage and reduces aspiration risk."
+      },
+      "cooling_measures": {
+        "label": "Cooling — remove excess clothing and blankets",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "remov.*cloth",
+          "remov.*blanket",
+          "cool.*patient",
+          "cool.*down",
+          "take off.*cloth",
+          "loosen.*cloth",
+          "undress",
+          "cooling measure",
+          "reduce.*fever",
+          "fever.*management"
+        ],
+        "effects": {
+          "hr": {
+            "immediate_change": -4,
+            "rate_modifier": 0.9
+          }
+        },
+        "notes": "Remove excess clothing and heavy blankets to assist heat dissipation. Do NOT use cold water, ice, or alcohol — risk of shivering and seizure recurrence. Tepid passive cooling only. Fever treatment in the field is supportive — definitive management at the hospital."
+      },
+      "protect_from_injury": {
+        "label": "Protect from injury — clear hazards, no restraint, nothing in mouth",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "protect.*injur",
+          "protect.*trauma",
+          "prevent.*injur",
+          "keep.*safe.*injur",
+          "safe.*from.*injur",
+          "clear.*area",
+          "clear.*object",
+          "move.*object",
+          "move.*toy",
+          "do not restrain",
+          "don't restrain",
+          "nothing.*mouth",
+          "do not put.*mouth",
+          "pad.*head"
+        ],
+        "notes": "Seizure safety: clear nearby hazards, do not restrain the infant, and place nothing in the mouth."
+      },
+      "suction_airway": {
+        "label": "Suction airway — oral suctioning for secretions",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "suction.*airway",
+          "suction.*mouth",
+          "suction.*oral",
+          "clear.*airway",
+          "clear.*mouth",
+          "clear.*oral",
+          "clear.*secret",
+          "clear.*saliva",
+          "suction.*secret",
+          "suction.*saliva",
+          "bulb.*suction",
+          "yankauer",
+          "oral.*suction"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 3,
+            "rate_modifier": 0.25
+          },
+          "string_override": {
+            "lung_sounds": "Upper-airway gurgling improved after suction; lower lungs moving air bilaterally"
+          }
+        },
+        "notes": "Visible pooled saliva and wet gurgling are present; use gentle oral suction while avoiding aggressive stimulation or attempts to pry the jaw open."
+      },
+      "bvm": {
+        "label": "BVM ventilation",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "\\bbvm\\b",
+          "bag.*valve.*mask",
+          "assist.*ventilation",
+          "bag.*her",
+          "bag her",
+          "bag the patient",
+          "positive pressure"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 5,
+            "rate_modifier": 0.1
+          },
+          "rr": {
+            "immediate_change": -8,
+            "rate_modifier": 0.1
+          }
+        },
+        "notes": "Indicated if apnea, inadequate respirations, or persistent hypoxia after lateral positioning, suction, and O2. Current patient has irregular spontaneous respirations with airway secretions.",
+        "requires_popup": true,
+        "popup_type": "oxygen",
+        "popup_default": {
+          "device": "bvm",
+          "flow": 15
+        }
+      },
+      "als_intercept": {
+        "label": "ALS intercept acknowledged",
+        "within_bls_scope": true,
+        "detection_patterns": [],
+        "effects": {},
+        "notes": "ALS/intercept expectations are determined by the active agency configuration. If ALS is involved, document notification and keep them updated on status changes."
+      }
+    },
+    "improvement": {
+      "note": "SpO2 improves after suction of visible secretions and oxygen. Lateral/recovery positioning provides additional airway protection and should be credited only when performed. Seizure activity may stop spontaneously; continue monitoring for recurrence and airway compromise.",
+      "requires_intervention": "suction_airway",
+      "string_thresholds": {
+        "skin_color": [
+          {
+            "spo2_above": 95,
+            "value": "Flushed and hot but no cyanosis; perfusion appears improved after airway clearing"
+          }
+        ],
+        "work_of_breathing": [
+          {
+            "spo2_above": 94,
+            "value": "Wet upper-airway gurgling decreases after suction; respirations remain spontaneous but irregular. If lateral/recovery positioning is also performed, pooled secretions drain more effectively."
+          }
+        ]
+      },
+      "presentation_milestones": [
+        {
+          "spo2_above": 94,
+          "text": "After suction, the wet gurgling is less prominent and Chloe's chest rise is easier to see. She is still actively seizing, so you continue timing the seizure and monitoring airway status. Lateral/recovery positioning is still needed to help secretions drain and reduce aspiration risk."
+        },
+        {
+          "gcs_above": 8,
+          "spo2_above": 95,
+          "text": "The rhythmic jerking slows and then stops. Chloe remains very sleepy and post-ictal, but her airway sounds are improved after suction. Jennifer asks, \"Is she starting to wake up?\" Continue airway positioning and monitoring."
+        }
+      ]
+    }
+  },
+  "standard_exam_findings": {
+    "dcap_btls_head_neck": {
+      "label": "DCAP-BTLS Head/Neck",
+      "exam_key": "DCAP-BTLS Head/Neck",
+      "aliases": [
+        "DCAP-BTLS head",
+        "DCAP-BTLS neck",
+        "head and neck trauma screen",
+        "inspect and palpate head",
+        "scalp assessment"
+      ],
+      "finding": "no deformity, contusion, abrasion, puncture, burn, tenderness, laceration, or swelling noted",
+      "notes": "Use when the learner screens for traumatic seizure mimics. This febrile seizure scenario has no authored traumatic injury."
+    },
+    "skin_assessment": {
+      "label": "Skin",
+      "exam_key": "Skin",
+      "aliases": [
+        "skin assessment",
+        "skin color",
+        "skin temperature",
+        "skin moisture",
+        "assess skin",
+        "rash check"
+      ],
+      "finding": "flushed, hot to touch, diaphoretic; no cyanosis initially and no petechial rash noted",
+      "notes": "Includes fever skin findings and a meningitis-differential rash screen without adding unsupported findings."
+    }
+  },
+  "personas": {
+    "patient": {
+      "name": "Chloe",
+      "age": 0,
+      "role": "patient",
+      "aliases": [
+        "Chloe",
+        "the child",
+        "the girl",
+        "the baby",
+        "the patient",
+        "little one",
+        "sweetie",
+        "honey"
+      ],
+      "description": "6-month-old infant in an active first-time generalized seizure. She is supine initially with rhythmic extremity jerking, eyes deviated upward, jaw clenched, saliva pooling at the mouth, and wet gurgling respirations. She cannot answer questions or follow commands. If the seizure stops, she becomes deeply post-ictal and provides no history.",
+      "speaking_style": "No verbal communication. During active seizure: no purposeful cry, no words, no command following. If she improves, weak post-ictal whimpering or brief crying only. Do NOT have her answer questions.",
+      "tts": {
+        "enabled": false,
+        "voice_role": "patient",
+        "gender": "female",
+        "age_band": "infant",
+        "demeanor": "infant with active seizure or post-ictal whimpering",
+        "delivery": "non-verbal infant; display observable behavior only",
+        "avoid": "do not synthesize spoken words for Chloe"
+      },
+      "what_they_know": [],
+      "what_they_dont_know": "Everything. She is a 6-month-old infant in an active seizure and cannot provide history.",
+      "age_months": 6
+    },
+    "mother_jennifer": {
+      "name": "Jennifer",
+      "age": 29,
+      "role": "family",
+      "relation": "mother",
+      "aliases": [
+        "Jennifer",
+        "Jenny",
+        "mom",
+        "mother",
+        "ma'am"
+      ],
+      "tts": {
+        "enabled": true,
+        "voice_role": "bystander",
+        "gender": "female",
+        "age_band": "adult",
+        "provider_voice": "coral",
+        "speed": 1.3,
+        "demeanor": "terrified mother near tears while her infant is seizing; frantic, breath-catching, and cooperative when EMS gives clear instructions",
+        "delivery": "rapid, shaky, frightened parent voice with broken urgency at first; become clearer but still scared after reassurance",
+        "avoid": "do not sound calm, flat, level, detached, clinical, playful, theatrical, physically ill, or like the patient"
+      },
+      "description": "Chloe's mother. Extremely panicked and tearful — she is terrified because Chloe is actively seizing and there is saliva in her mouth with wet breathing sounds. She is kneeling beside Chloe and trying not to interfere. She is cooperative if given clear, calm directions.",
+      "speaking_style": "Initially hysterical — rapid, fragmented, crying, voice shaking. Responds well to calm reassurance from the student. Once partially calmed, provides clear, accurate, detailed answers to direct questions. Will ask questions back between answers.",
+      "what_she_knows": [
+        "Chloe is 6 months old and was born about 6 months ago",
+        "Chloe weighs about 16 pounds / 7 kilograms",
+        "Chloe has had congestion and fever since last night",
+        "Infant acetaminophen was given once overnight for fever",
+        "About 2 minutes before EMS arrival Chloe suddenly stiffened, eyes rolled upward, and both arms and legs began jerking",
+        "Chloe is still shaking when EMS enters the room",
+        "There is saliva in Chloe's mouth and her breathing sounds wet",
+        "This is Chloe's first seizure ever — no prior seizures before today",
+        "Chloe has not vomited before EMS arrival",
+        "Chloe last had formula about 90 minutes ago",
+        "No known drug allergies",
+        "No daily medications",
+        "Born full term, no NICU stay, immunizations up to date",
+        "No fall, head strike, choking episode, or suspected ingestion"
+      ]
+    },
+    "father_tom": {
+      "name": "Tom",
+      "age": 31,
+      "role": "family",
+      "relation": "father",
+      "aliases": [
+        "Tom",
+        "dad",
+        "father",
+        "sir"
+      ],
+      "tts": {
+        "enabled": true,
+        "voice_role": "bystander",
+        "gender": "male",
+        "age_band": "adult",
+        "provider_voice": "echo",
+        "speed": 1.24,
+        "demeanor": "scared father trying to stay useful and steady during an infant seizure while clearly frightened",
+        "delivery": "controlled but tense; direct practical questions with quiet urgency and occasional voice strain",
+        "avoid": "do not sound calm and flat, detached, clinical, theatrical, playful, or like an EMS provider"
+      },
+      "description": "Chloe's father. Scared but trying to stay useful. He is standing near the open doorway waving EMS in and can confirm the timing. He can help move objects away, bring the medication/thermometer, or support Jennifer when directed.",
+      "speaking_style": "Controlled but frightened. Direct, practical questions: 'What's wrong with her?', 'Is this because of the fever?', 'Will this happen again?', 'Did she hit her head?' Will support Jennifer and step back when directed.",
+      "what_he_knows": [
+        "He saw Chloe stiffen and begin whole-body jerking about 2 minutes before EMS arrival",
+        "She is still seizing when EMS enters the room",
+        "She was lying on the carpet and did not fall or strike her head",
+        "No choking episode or foreign body concern",
+        "No prior seizures before today",
+        "He can retrieve the thermometer or medication bottle if asked"
+      ]
+    },
+    "partner": {
+      "name": "Alex",
+      "role": "ems_partner",
+      "aliases": [
+        "Alex",
+        "partner",
+        "crew"
+      ],
+      "tts": {
+        "enabled": true,
+        "voice_role": "alex",
+        "gender": "male",
+        "age_band": "adult",
+        "provider_voice": "echo",
+        "speed": 1.32,
+        "demeanor": "calm, competent, professional EMT partner in a high-anxiety scene",
+        "delivery": "brisk, concise field tone with clear EMS cadence; natural, direct, and reassuring without sounding sleepy or theatrical",
+        "avoid": "do not sound flat, like a narrator, instructor, parent, patient, or anxious bystander"
+      },
+      "description": "Your EMT partner on Squad 1. Alex is calm and professional in a high-anxiety scene. When directed, Alex can assist with BLS interventions: turn the infant laterally, prepare or use suction, apply oxygen, obtain vitals, monitor seizure activity, and keep the parents calm. Alex follows directions and may ask for clarification on method or equipment; Alex should not suggest clinical actions unprompted.",
+      "speaking_style": "Professional, calm, brief. States vitals clearly in EMS format. Helps keep family calm if directed.",
+      "capabilities": [
+        "Report individual vitals when asked",
+        "Report full vital set when asked",
+        "Help turn infant laterally/recovery position when directed",
+        "Prepare and operate suction when directed",
+        "Apply O2 by specified method when directed",
+        "Prepare BVM when directed",
+        "Monitor for recurrent seizure activity when directed",
+        "Help manage the family if directed",
+        "Notify ALS/receiving crew of patient status updates when directed",
+        "Document interventions and timeline"
+      ],
+      "persona_rules": [
+        "Follow the student's directions; do not recommend actions or treatments unprompted",
+        "For generic oxygen commands, ask for or open the oxygen delivery-method confirmation rather than inventing a method in free text",
+        "If asked to hold or protect the patient, avoid restraint unless needed for safety and never place anything in the mouth"
+      ]
+    }
+  },
+  "correct_treatment": {
+    "critical_actions": [
+      {
+        "id": "scene_safety",
+        "description": "Ensure scene safety and BSI/PPE prior to patient contact",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "pat_assessment",
+        "description": "Pediatric Assessment Triangle — Appearance (active seizure/no purposeful response), Work of Breathing (gurgling secretions/airway risk), Circulation to Skin (flushed, warm, febrile)",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "protect_from_injury",
+        "description": "Protect the actively seizing infant from injury — clear nearby objects, do not restrain, do not place anything in the mouth",
+        "required": true,
+        "protocol_indicated": true,
+        "intervention_ids": [
+          "protect_from_injury"
+        ],
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(protect.*injur|prevent.*injur|keep.*safe.*injur|safe.*from.*injur|clear.*area|move.*object|do not restrain|don't restrain|nothing.*mouth|do not put.*mouth|pad)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "recovery_position",
+        "description": "Turn infant laterally/recovery position to allow secretions to drain and reduce aspiration risk",
+        "required": true,
+        "protocol_indicated": true,
+        "intervention_ids": [
+          "recovery_position"
+        ],
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(recovery.*position|lateral|side|roll.*side|turn.*side|on.*her.*side|airway.*protect|aspiration)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "suction_airway",
+        "description": "Suction visible pooled saliva/secretions from the mouth to clear the airway",
+        "required": true,
+        "protocol_indicated": true,
+        "intervention_ids": [
+          "suction_airway"
+        ],
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(suction.*(airway|mouth|oral|secretions?|saliva)|(airway|mouth|oral|secretions?|saliva).*suction|clear.*(mouth|airway|oral|secretions?|saliva)|yankauer|bulb.*suction)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "o2_administration",
+        "description": "Apply supplemental O2 after basic airway clearing; target SpO2 ≥ 94%",
+        "required": true,
+        "protocol_indicated": true,
+        "intervention_ids": [
+          "o2_nrb",
+          "o2_blowby",
+          "o2_nc"
+        ],
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(o2|oxygen|nrb|non.?rebreather|supplemental.*oxygen|apply.*oxygen|blow.?by)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "seizure_history",
+        "description": "Obtain focused seizure history from family — onset, ongoing duration, generalized vs focal activity, prior seizure history, fever, recent illness, medications",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(how.*long|duration|started|first.*time|prior.*seizure|history.*seizure|fever|illness|sick|jerking|shaking|focal|general)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "temperature_assessment",
+        "description": "Assess and document temperature to support febrile seizure impression",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "finding_key_patterns": [
+            "(?i)temp|temperature|fever"
+          ],
+          "transcript_patterns": [
+            "(?i)(temperature|fever|thermometer|temp|febrile|tympanic|fever.*check)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "monitor_and_protect",
+        "description": "Monitor seizure activity, airway, LOC, SpO2, and respirations continuously; time the seizure and update ALS/receiving crew of status changes",
+        "required": true,
+        "evidence": {
+          "finding_types": [
+            "vital",
+            "exam"
+          ],
+          "finding_key_patterns": [
+            "(?i)loc|gcs|resp|spo2|seizure|airway"
+          ],
+          "transcript_patterns": [
+            "(?i)monitor|watch|protect|airway|seizure|time|timing|loc|breathing|respir"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "reassess",
+        "description": "Reassess airway sounds, SpO2, respiratory status, and seizure activity after positioning, suction, and O2",
+        "required": true,
+        "evidence": {
+          "finding_types": [
+            "vital",
+            "exam"
+          ],
+          "finding_key_patterns": [
+            "(?i)loc|gcs|spo2|resp|breath|wob|airway|lung"
+          ],
+          "transcript_patterns": [
+            "(?i)reassess|again|after|repeat|check.*again|spo2|breathing|airway|seizure"
+          ],
+          "min_matches": 1
+        }
+      }
+    ],
+    "recommended_actions": [
+      {
+        "id": "cooling_measures",
+        "description": "Remove excess clothing and blankets to assist passive cooling — do not use cold water or ice",
+        "required": false
+      },
+      {
+        "id": "blood_glucose_awareness",
+        "description": "Check blood glucose for seizure/AMS differential after immediate airway actions are underway",
+        "required": false
+      },
+      {
+        "id": "family_management",
+        "description": "Brief, calm reassurance and clear parent directions to support airway care and history-taking",
+        "required": false
+      }
+    ],
+    "out_of_scope_bls": [
+      "midazolam",
+      "blood_glucose_independent",
+      "iv_io_access",
+      "dextrose_iv_io",
+      "glucagon_im_in",
+      "ekg_monitoring",
+      "waveform_capnography",
+      "oral_glucose_contraindicated"
+    ],
+    "clinical_decision_points": {
+      "als_trigger": "ALS/intercept expectations are determined by the active agency configuration; active seizure with airway compromise should be communicated early when ALS is involved.",
+      "bvm_trigger": "Apnea, RR < 8, inadequate chest rise, or SpO2 remaining < 90% despite lateral positioning, suction, and oxygen",
+      "active_seizure": "Do NOT restrain, do NOT place anything in mouth, clear hazards, turn laterally when safe, suction visible secretions, oxygenate, time seizure, and prepare ALS handoff.",
+      "oral_glucose_criteria": "Oral glucose is contraindicated during active seizure and without confirmed ability to swallow safely.",
+      "destination": "Nearest appropriate emergency department with pediatric capability"
+    }
+  },
+  "scoring": {
+    "overall_considerations": [
+      "Primary focus: active seizure with airway compromise — lateral/recovery positioning and suction are required immediate BLS actions.",
+      "Patient weight is known (16 lbs/~7 kg) — Broselow tape NOT required if parent provides weight, but weight should be communicated in handoff.",
+      "Do NOT credit oxygen alone as airway management when pooled secretions and gurgling are present; airway clearing requires lateral positioning and suction.",
+      "Temperature assessment is key to establishing febrile seizure as likely etiology, but it should not delay airway protection.",
+      "Blood glucose check is expected after immediate airway/seizure safety priorities are addressed.",
+      "Midazolam is Paramedic scope — do NOT penalize EMT for not administering it; do penalize BLS attempts to order/administer benzodiazepines.",
+      "Oral glucose is contraindicated during active seizure and without safe swallow ability."
+    ],
+    "dmist_considerations": [
+      "D: Identify Chloe as a 6-month-old female, approximately 7 kg/16 lb.",
+      "M: Active generalized seizure on EMS arrival, ongoing duration, fever/recent illness, no trauma/choking/ingestion, first seizure ever with no prior seizures before today.",
+      "I: Lateral/recovery position, suction of pooled secretions, oxygen delivery, temperature and blood glucose if obtained.",
+      "S: Current seizure status, airway sounds/secretions, SpO2, respiratory status, temperature, blood glucose, LOC/GCS if assessed.",
+      "T: Patient trajectory and response to airway clearing/O2, current seizure status, ALS/transport handoff status.",
+      "Conciseness is a strength — active seizure status, duration, airway interventions, and current oxygenation are the most critical handoff elements.",
+      "Noting ALS arrival NOT required."
+    ],
+    "narrative_considerations": [
+      "Narrative should capture: active seizure on arrival, supine position with pooled oral secretions/gurgling, lateral positioning, suction, oxygen, fever, and patient response/trajectory.",
+      "History of event should include seizure onset/duration, generalized vs focal features, fever/illness, prior seizure history, and no choking/trauma if obtained.",
+      "Evaluate objectivity: use observable language such as rhythmic bilateral extremity jerking, eyes deviated upward, saliva pooling, gurgling respirations.",
+      "Evaluate accuracy: do not fabricate seizure termination, vitals, BG, temperature, or ALS medication administration unless documented in the session."
+    ],
+    "dmist_components": {
+      "D": {
+        "description": "Patient demographics",
+        "required_elements": [
+          "name: Chloe",
+          "age: 6-month-old female or infant",
+          "weight: 7 kg or 16 lbs"
+        ],
+        "corroboration_source": "scenario_patient_fields"
+      },
+      "M": {
+        "description": "MOI or chief complaint / nature of illness",
+        "required_elements": [
+          "active seizure or seizure chief complaint"
+        ],
+        "corroboration_source": "any"
+      },
+      "I": {
+        "description": "Injuries or illness — clinical problem details and relevant illness history",
+        "required_elements": [
+          "generalized seizure activity",
+          "duration/ongoing timing",
+          "fever or recent illness",
+          "first seizure ever / no prior seizures before today",
+          "no trauma/choking/ingestion if known"
+        ],
+        "corroboration_source": "history_and_findings"
+      },
+      "S": {
+        "description": "Signs and symptoms — current patient status, exam findings, and vitals",
+        "required_elements": [
+          "active seizure or current seizure status",
+          "airway secretions/gurgling or airway status",
+          "SpO2 or respiratory status",
+          "temperature value or febrile"
+        ],
+        "scoring_note": "Primary S elements for active seizure: current seizure status (ongoing vs resolved) and airway/oxygenation status. Temperature and BGL are supplementary — they strengthen S but do not replace airway status as the primary finding.",
+        "corroboration_source": "vitals_and_findings"
+      },
+      "T": {
+        "description": "Treatment or transport — care performed and response to treatment",
+        "required_elements": [
+          "suctioned oral secretions",
+          "supplemental O2",
+          "response to suction/O2",
+          "lateral/recovery position if performed"
+        ],
+        "scoring_note": "Do not require a formal handoff plan phrase for full T credit when the report accurately includes treatments performed and the response to treatment.",
+        "corroboration_source": "intervention_timeline_and_disposition"
+      }
+    },
+    "required_assessments": [
+      {
+        "id": "blood_glucose_check",
+        "description": "Check blood glucose (post-seizure hypoglycemia risk assessment)",
+        "keywords": [
+          "blood glucose",
+          "blood sugar",
+          "glucose",
+          "glucometer",
+          "BGL",
+          "BG",
+          "hypoglycemia",
+          "sugar",
+          "check glucose"
+        ],
+        "missing_deduction": 2,
+        "note": "Blood glucose is expected after immediate airway safety actions are underway; hypoglycemia is a reversible seizure cause."
+      },
+      {
+        "id": "temperature_assessment",
+        "description": "Obtain temperature (critical for establishing febrile seizure as likely etiology)",
+        "keywords": [
+          "temperature",
+          "temp",
+          "thermometer",
+          "fever",
+          "febrile",
+          "degrees",
+          "103",
+          "hot"
+        ],
+        "missing_deduction": 2,
+        "note": "Temperature supports febrile seizure etiology but should not delay airway clearing in an actively seizing infant."
+      }
+    ],
+    "required_screens": [
+      {
+        "id": "meningitis_screen",
+        "description": "Meningitis differential screen (assess or inquire about neck stiffness, photophobia, rash, or petechiae in the context of febrile seizure without prior history)",
+        "keywords": [
+          "meningitis",
+          "neck stiff",
+          "nuchal",
+          "photophobia",
+          "rash",
+          "petechiae",
+          "kernig",
+          "brudzinski",
+          "stiff neck",
+          "light sensitivity",
+          "neck",
+          "rigid"
+        ],
+        "missing_deduction": 2,
+        "note": "A first-time febrile seizure with no prior seizure history warrants brief meningitis consideration — neck assessment or verbal ruling-out is expected clinical reasoning at the EMT level and above."
+      }
+    ],
+    "by_level": {
+      "MFR": {
+        "critical_focus": [
+          "Scene safety and BSI/PPE.",
+          "PAT: active seizure, airway secretions/gurgling, flushed febrile skin.",
+          "Turn infant laterally/recovery position when safe.",
+          "Suction visible oral secretions.",
+          "Protect from injury without restraining and put nothing in the mouth.",
+          "Apply supplemental O2.",
+          "Attempt history from caregiver while monitoring seizure duration and airway."
+        ],
+        "additional_expectations": [],
+        "grace_items": [
+          "Blood glucose check scope at MFR level — defer to protocol; do not penalize for deferring to ALS.",
+          "Midazolam is Paramedic scope — do not penalize for not administering it at any level below Paramedic."
+        ]
+      },
+      "EMT": {
+        "critical_focus": [
+          "Scene safety and BSI/PPE.",
+          "PAT and recognition of active seizure with airway risk.",
+          "Turn infant laterally/recovery position immediately when safe.",
+          "Suction pooled saliva/secretions from the mouth.",
+          "Protect from injury without restraining; do not place anything in the mouth.",
+          "Apply supplemental O2 and monitor SpO2.",
+          "Obtain seizure history: onset/duration, generalized vs focal, prior history, fever, recent illness, medications.",
+          "Assess and document temperature.",
+          "Check blood glucose after immediate airway priorities.",
+          "Remove excess clothing to assist passive cooling — no ice or cold water.",
+          "Monitor airway, respirations, SpO2, and seizure activity continuously.",
+          "Brief family reassurance and calm communication."
+        ],
+        "additional_expectations": [
+          "Recognize benzodiazepines as Paramedic scope — communicate active seizure status to ALS/receiving crew.",
+          "Organize DMIST with active seizure status, duration, airway interventions, temperature, BG, and response."
+        ],
+        "grace_items": [
+          "Broselow tape NOT required — weight already known (16 lbs per parents).",
+          "ALS request is not required when the active agency configuration co-dispatches ALS.",
+          "PAT acronym not required — credit assessment of its three elements.",
+          "Oral glucose is contraindicated at current GCS — do NOT penalize for not administering it.",
+          "Noting ALS arrival NOT required."
+        ]
+      },
+      "AEMT": {
+        "critical_focus": [
+          "All EMT expectations above.",
+          "IV access may support ALS care depending on local scope, but should not delay BLS airway positioning, suction, oxygen, or transport.",
+          "Consider NS fluid — not typically indicated unless hypotension is present."
+        ],
+        "additional_expectations": [
+          "AEMT scope does not add significantly to treatment for this presentation — EMT management is the primary pathway.",
+          "IV access preparation for ALS handoff is the primary AEMT addition."
+        ],
+        "grace_items": [
+          "Same grace items as EMT level.",
+          "Midazolam is Paramedic scope — do NOT penalize AEMT for not administering it."
+        ]
+      },
+      "Paramedic": {
+        "critical_focus": [
+          "All AEMT expectations above.",
+          "Administer midazolam if active seizure persists per protocol after immediate airway/oxygenation priorities.",
+          "Waveform capnography for altered patient — monitor ventilation quality.",
+          "EKG monitoring — rule out dysrhythmia in febrile patient.",
+          "Dextrose IV if blood glucose confirms hypoglycemia.",
+          "IV access — establish peripheral IV for medication administration."
+        ],
+        "additional_expectations": [
+          "Paramedic should document medication decision-making for active seizure, including dose, route, and response if midazolam is administered."
+        ],
+        "grace_items": [
+          "Same grace items as EMT level.",
+          "Midazolam is indicated for active/prolonged seizure per protocol; do not expect BLS providers to administer it."
+        ]
+      }
+    }
+  },
+  "scoring_rubric": {
+    "clinical_performance": {
+      "max": 50,
+      "full_credit": "PAT (scene entry), active seizure recognized, infant turned laterally/recovery position, pooled oral secretions suctioned, protected from injury without restraint, focused seizure/fever history obtained, temperature assessed, reassessment and ALS handoff documented",
+      "partial_credit": "Airway positioning and/or suction completed but seizure history, temperature, or reassessment incomplete",
+      "minimal_credit": "Infant left supine with secretions, suction not performed, patient restrained, or active seizure/airway risk not recognized"
+    },
+    "narrative": {
+      "max": 20,
+      "full_credit": "CHART: dispatch (active seizure), presentation (6-month-old supine with pooled secretions/gurgling), airway positioning + suction + O2, seizure/fever history, temperature/BG if obtained, serial reassessment, ALS/transport disposition. Objective language.",
+      "partial_credit": "Most CHART elements present but airway interventions, temperature, seizure timing, or reassessment not documented; or subjective language not corrected",
+      "minimal_credit": "Narrative present but active seizure management approach incorrect or airway risk not recognized in narrative"
+    },
+    "scope_adherence": {
+      "max": 10,
+      "full_credit": "Stayed within effective provider scope and MCA rules: no BLS benzodiazepine, IV/IO, or advanced airway attempts; immediate care focused on airway positioning, suction, oxygen, injury protection, and transport/ALS handoff.",
+      "partial_credit": "No dangerous out-of-scope intervention attempted, but scope reasoning, level-specific escalation, or MCA-specific scope recognition was incomplete.",
+      "minimal_credit": "Out-of-scope intervention attempted or ordered, or provider-level limits materially ignored."
+    },
+    "dmist": {
+      "max": 10,
+      "full_credit": "D: 6-month-old female, ~7 kg/16 lb; M: active seizure / febrile seizure chief complaint; I: generalized seizure illness details, ongoing duration, fever/recent illness, no prior seizures, no trauma/choking/ingestion if known; S: seizure status, airway/secretions, SpO2/resp status, temp/BG if obtained; T: lateral/recovery position, suction, O2, response, and ALS/transport handoff",
+      "partial_credit": "3–4 of 5 DMIST components present; seizure duration or temperature absent — both clinically important for ALS",
+      "minimal_credit": "2 or fewer components or seizure duration not documented in DMIST"
+    },
+    "professionalism": {
+      "max": 10,
+      "scoring_attributes": [
+        "empathy",
+        "communications",
+        "teamwork_diplomacy",
+        "respect",
+        "patient_advocacy",
+        "self_confidence"
+      ],
+      "full_credit": "Empathy: acknowledged Jennifer's panic before asking clinical questions, used reassuring but honest language; Communications: explained lateral positioning and suction to Jennifer before or while performing them, gave Alex specific clear directions (e.g., 'Alex, suction her mouth while I hold her in the recovery position'); Teamwork: coordinated partner tasks explicitly; Respect: addressed Chloe by name throughout, used Jennifer and Tom by name; Patient Advocacy: did not delay airway care due to family distress or panic; Self-Confidence: decisive directions during active seizure without excessive hedging",
+      "partial_credit": "Care performed correctly but Jennifer's panic not acknowledged before clinical questions, or Chloe and family never addressed by name, or partner given only vague directions rather than task-specific coordination",
+      "minimal_credit": "Jennifer and Tom visibly panicked throughout the call with no acknowledgment, reassurance, or explanation of what was being done — clinical tasks performed over family distress without communication; or partner never directed, scene treated as solo with no team coordination; or Chloe never addressed by name despite name being known from scene entry"
+    },
+    "protocols_treatment": {
+      "max": 10,
+      "full_credit": "Protocol-aligned BLS treatment completed: active seizure protected from injury, lateral positioning, oral suction for visible secretions, supplemental O2, contraindicated care avoided, ALS/transport readiness maintained.",
+      "partial_credit": "Most treatment priorities addressed, but one important protocol-aligned intervention, escalation step, or contraindication check was incomplete or delayed.",
+      "minimal_credit": "Key protocol/treatment priority missed, contraindicated care performed, or treatment plan materially inconsistent with protocol."
+    }
+  },
+  "exemplar_dmist": "D — Chloe, 6-month-old female, approximately 7 kg / 16 lb per mother.\nM — Active generalized seizure on EMS arrival, started about 2 minutes before arrival and still ongoing initially. Fever and congestion since last night. This is her first seizure ever — no prior seizures before today. No trauma/choking/ingestion reported.\nI — Turned laterally/recovery position, oral secretions suctioned, high-flow O2 applied, protected from injury without restraint. Temperature 103.6°F and BG 92 mg/dL obtained.\nS — Initially supine with pooled saliva and wet gurgling; SpO2 90% improving after suction/O2. HR 172, irregular RR 32, flushed hot skin. AVPU unresponsive during active seizure / GCS 6 baseline if calculated.\nT — Continuing airway monitoring and seizure timing, preparing ALS/transport handoff; update if seizure stops or airway worsens.",
+  "exemplar_narrative": "Squad 1 was dispatched to 1441 Birchwood Drive for a 6-month-old female actively seizing. On arrival, patient Chloe was found supine on the living room carpet with generalized rhythmic extremity jerking, eyes deviated upward, pooled saliva at the mouth, and wet gurgling respirations. Mother reported seizure onset approximately 2 minutes before EMS arrival with fever/congestion since last night. Parents report this is Chloe's first seizure ever, with no prior seizures before today. No trauma, choking episode, or suspected ingestion.\n\nPrimary assessment: PAT sick. Airway not protected due to active seizure and pooled oral secretions. SpO2 90%, HR 172, irregular RR 32, skin flushed/hot, temp 103.6°F, BG 92 mg/dL. Infant was turned laterally/recovery position, oral secretions suctioned gently, and high-flow oxygen applied while protecting from injury without restraint. Nothing was placed in the mouth.\n\nReassessment: upper-airway gurgling improved after suction and lateral positioning; SpO2 improving with oxygen. Seizure activity and airway status monitored continuously. DMIST provided to ALS/receiving crew with active seizure duration, airway interventions, fever, BG, and current oxygenation status.",
+  "debrief": {
+    "condition_background": "Chloe is a 6-month-old female with fever and an active generalized seizure on EMS arrival. The immediate BLS threat is airway protection: she is supine with pooled saliva and wet gurgling, so lateral/recovery positioning and gentle oral suction are priorities before extended history. Febrile seizures occur from 6 months to 5 years and are often self-limited, but an active seizure with impaired airway protection requires rapid supportive care, oxygenation, timing of the seizure, and ALS/transport readiness. Benzodiazepines are Paramedic scope; BLS care is protecting from injury, clearing the airway, oxygen support, temperature/BG assessment, and clear handoff.",
+    "key_teaching_points": [
+      "Active seizure plus pooled secretions is an airway problem first — turn laterally/recovery position and suction visible secretions.",
+      "Do not restrain a seizing infant and do not place anything in the mouth; protect from injury and clear hazards.",
+      "Oxygen is important, but oxygen alone does not clear pooled saliva or prevent aspiration.",
+      "Febrile seizures occur in children 6 months to 5 years; fever supports the diagnosis but does not replace airway management.",
+      "Time the seizure and ask caregivers about onset, generalized vs focal activity, prior seizures, fever/illness, trauma, choking, or ingestion.",
+      "Check blood glucose after immediate airway priorities to rule out a reversible metabolic cause.",
+      "Midazolam is Paramedic scope; BLS should communicate active/prolonged seizure status and prepare for ALS handoff.",
+      "DMIST should include seizure status/duration, airway findings, suction/positioning/O2, fever, BG, and patient response."
+    ],
+    "common_mistakes": [
+      "Leaving the infant supine with saliva pooling in the mouth.",
+      "Applying oxygen but failing to suction visible secretions.",
+      "Trying to pry the mouth open or place an object in the mouth during seizure activity.",
+      "Restraining limbs instead of protecting from injury.",
+      "Delaying airway actions while obtaining a long history.",
+      "Not timing the seizure or documenting whether it was ongoing on arrival.",
+      "Forgetting BG and temperature after immediate airway/seizure safety steps.",
+      "Requesting or administering benzodiazepines as a BLS provider.",
+      "Incomplete handoff that omits airway interventions or current seizure status."
+    ]
+  },
+  "scenario_number": 3,
+  "prerequisites": [
+    "peds_croup_01",
+    "peds_diabetic_emergency_01"
+  ],
+  "legacy_ai_categories": [
+    "documentation",
+    "professionalism"
+  ],
+  "checklist": [
+    {
+      "id": "peds_febrile_seizure_01.pat_assessment",
+      "description": "PAT completed — appearance (active seizure/no purposeful response), work of breathing/airway (gurgling secretions, airway risk), circulation to skin (flushed, warm, febrile) assessed",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "scene_entry",
+        "scene_entry_path": "pat_assessment"
+      },
+      "tier2_patterns": [
+        "(?i)(pat|appearance|active.*seiz|seizing|work of breath|airway|gurg|secret|flush|warm|febrile|circulat|skin)"
+      ],
+      "done_feedback": "PAT completed — active seizure, airway secretion burden, and flushed febrile skin correctly identified before extended history.",
+      "missed_feedback": "PAT not completed — an actively seizing infant with gurgling secretions needs immediate airway and breathing assessment before extended history.",
+      "clinical_rationale": "PAT rapidly identifies the sick infant and prioritizes airway protection during active seizure.",
+      "common_error": "Beginning history-taking before addressing visible airway risk from pooled secretions."
+    },
+    {
+      "id": "peds_febrile_seizure_01.recovery_position",
+      "description": "Infant turned laterally/recovery position to drain secretions and reduce aspiration risk during active seizure",
+      "subtype": "intervention",
+      "category": "clinical_performance",
+      "point_value": 7,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "recovery_position"
+      },
+      "tier2_patterns": [
+        "(?i)(recovery position|lateral|side|roll.*side|turn.*side|on.*her.*side|airway protection|aspiration|drain.*secret)"
+      ],
+      "done_feedback": "Lateral/recovery position applied — this allows pooled secretions to drain and reduces aspiration risk during active seizure.",
+      "missed_feedback": "Lateral/recovery position not applied — leaving a seizing infant supine with pooled saliva increases obstruction and aspiration risk.",
+      "clinical_rationale": "Gravity-assisted lateral positioning is a core BLS airway maneuver when an infant cannot protect the airway.",
+      "common_error": "Leaving the infant flat on the back while focusing on history or oxygen setup."
+    },
+    {
+      "id": "peds_febrile_seizure_01.suction_airway",
+      "description": "Visible pooled oral secretions suctioned to clear the airway during active seizure",
+      "subtype": "intervention",
+      "category": "clinical_performance",
+      "point_value": 7,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "suction_airway"
+      },
+      "tier2_patterns": [
+        "(?i)(suction.*(airway|mouth|oral|secretions?|saliva)|(airway|mouth|oral|secretions?|saliva).*suction|clear.*(mouth|airway|oral|secretions?|saliva)|yankauer|bulb.*suction)"
+      ],
+      "done_feedback": "Oral suction performed — visible secretions were cleared, improving airway patency.",
+      "missed_feedback": "Oral suction not performed — visible pooled saliva with gurgling respirations requires airway clearing, not oxygen alone.",
+      "clinical_rationale": "Pooled secretions obstruct the upper airway and increase aspiration risk; gentle suction is an immediate BLS airway intervention.",
+      "common_error": "Preparing oxygen but leaving visible secretions in the mouth."
+    },
+    {
+      "id": "peds_febrile_seizure_01.protect_from_injury",
+      "description": "Seizing infant protected from injury without restraint and nothing placed in mouth",
+      "subtype": "intervention",
+      "category": "clinical_performance",
+      "point_value": 4,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "protect_from_injury"
+      },
+      "tier2_patterns": [
+        "(?i)(protect.*injur|prevent.*injur|keep.*safe.*injur|safe.*from.*injur|clear.*area|move.*object|pad|do not restrain|don't restrain|nothing.*mouth|do not put.*mouth)"
+      ],
+      "done_feedback": "Seizure safety managed — hazards cleared and the infant was protected without restraint or objects in the mouth.",
+      "missed_feedback": "Seizure safety not documented — active seizure care requires protecting from injury without restraining or placing anything in the mouth.",
+      "clinical_rationale": "Restraint can injure the patient; objects in the mouth can damage teeth/soft tissue or obstruct the airway.",
+      "common_error": "Trying to hold the child still instead of clearing hazards and supporting the airway."
+    },
+    {
+      "id": "peds_febrile_seizure_01.seizure_history",
+      "description": "Focused seizure history obtained from caregivers — onset/duration, ongoing status, generalized vs focal activity, prior seizures, fever/recent illness, medications asked",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 7,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 2,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": null,
+      "tier2_patterns": [
+        "(?i)(?=.*\\b(?:how long|duration|started|began|ongoing|still|before you got here)\\b)(?=.*\\b(?:seiz|shak|jerk|convuls|generalized|focal))",
+        "(?i)(?=.*\\b(?:prior|previous|before|first|ever|history)\\b)(?=.*\\bseiz)"
+      ],
+      "done_feedback": "Seizure history obtained — onset, ongoing duration, generalized activity, fever/illness, and prior history documented.",
+      "missed_feedback": "Seizure history not obtained — active/prolonged seizure timing and focal vs generalized features guide ALS and hospital differential.",
+      "clinical_rationale": "Simple febrile seizure (< 15 min, generalized, single episode, with fever) has a benign course; complex febrile seizure (focal, prolonged, recurrent) requires urgent evaluation.",
+      "common_error": "Asking only about seizure duration — duration alone is insufficient; type (focal vs. generalized), number of episodes, and presence of fever are all required for accurate classification."
+    },
+    {
+      "id": "peds_febrile_seizure_01.temperature_assessment",
+      "description": "Temperature assessed and documented to confirm fever as likely etiology",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "finding",
+        "finding_type": "vital",
+        "finding_key_pattern": "(?i)temp|temperature|fever"
+      },
+      "tier2_patterns": [
+        "(?i)(temperature|temp|fever|thermometer|how hot|degrees|warm|febrile)"
+      ],
+      "done_feedback": "Temperature assessed — fever confirmed as likely etiology; fever plus the clinical seizure presentation is consistent with febrile seizure.",
+      "missed_feedback": "Temperature not assessed — temperature is required to confirm fever as the etiology; a normothermic child with a seizure shifts the differential to CNS infection, metabolic cause, or toxic ingestion.",
+      "clinical_rationale": "Febrile seizure by definition requires fever; normothermia in a seizing child mandates consideration of non-febrile causes including meningitis, hypoglycemia, or toxin.",
+      "common_error": "Assuming fever is present because the child 'felt warm' — tactile assessment is unreliable; temperature must be measured to confirm and document the febrile etiology."
+    },
+    {
+      "id": "peds_febrile_seizure_01.protocol_suction_airway",
+      "description": "Visible oral secretions suctioned when gurgling/secretions are present during seizure",
+      "subtype": "intervention",
+      "category": "protocols_treatment",
+      "point_value": 6,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "suction_airway"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "Oral secretions suctioned per protocol — suction addressed the visible secretion burden and improved airway patency.",
+      "missed_feedback": "Oral suction not performed — visible secretions/gurgling during seizure require suction rather than relying on oxygen alone.",
+      "clinical_rationale": "Gentle oral suction helps relieve upper-airway obstruction from pooled secretions. Lateral/recovery positioning is scored separately and should not be implied unless performed.",
+      "common_error": "Treating hypoxia with oxygen while pooled secretions remain in the mouth."
+    },
+    {
+      "id": "peds_febrile_seizure_01.scope_o2_protocol",
+      "description": "Supplemental O2 applied after/with airway clearing; target SpO2 ≥ 94% for active seizure with hypoxia or impaired airway protection",
+      "subtype": "intervention",
+      "category": "protocols_treatment",
+      "point_value": 4,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_keys": [
+          "o2_nrb",
+          "o2_blowby",
+          "o2_nc"
+        ]
+      },
+      "tier2_patterns": [],
+      "done_feedback": "Supplemental O2 applied — appropriate for active seizure with SpO₂ 90% and airway compromise.",
+      "missed_feedback": "Supplemental O2 not applied — active seizure with hypoxia/impaired airway protection requires oxygen support after immediate airway clearing.",
+      "clinical_rationale": "Seizure activity increases oxygen demand; hypoxia worsens neurologic injury risk. Oxygen supports but does not replace suction/positioning.",
+      "common_error": "Applying O2 without clearing visible secretions — oxygen supports oxygenation but does not remove airway obstruction or aspiration risk."
+    },
+    {
+      "id": "peds_febrile_seizure_01.scope_no_iv_io",
+      "description": "BLS scope maintained — benzodiazepines, IV/IO access, and advanced airway attempts not performed by EMT/MFR",
+      "subtype": "intervention",
+      "category": "scope_adherence",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [
+        "MFR",
+        "EMT"
+      ],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "absence_check",
+        "absence_intervention_key": "iv_io_access"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "BLS scope maintained — airway positioning, suction, oxygen, injury protection, and transport/ALS handoff are appropriate BLS actions.",
+      "missed_feedback": "Out-of-scope seizure intervention attempted — benzodiazepines, IV/IO access, or advanced airway procedures are not BLS interventions.",
+      "clinical_rationale": "BLS manages active seizure supportively; seizure-terminating medication is ALS/Paramedic scope."
+    }
+  ]
+}

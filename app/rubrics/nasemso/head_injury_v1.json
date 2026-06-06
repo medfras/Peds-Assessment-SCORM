@@ -1,0 +1,243 @@
+{
+  "_schema": "ems_call_type_rubric_v1",
+  "id": "nasemso_head_injury_v1",
+  "version": "2026-05-19",
+  "call_type": "head_injury",
+  "domain": "trauma",
+  "overlays_supported": ["state", "agency", "scenario"],
+  "protocol_refs": [
+    {
+      "id": "nasemso_head_injury",
+      "title": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Head Injury",
+      "version": "2022-03-11",
+      "url": null
+    },
+    {
+      "id": "mi_head_spine_trauma",
+      "title": "Michigan Head and Spine Trauma / Head Injury TBI Protocol",
+      "version": "2025",
+      "url": null
+    }
+  ],
+  "source_role_map": {
+    "ems_performed_exam": {
+      "training": ["authored_vitals", "student_stated_exam", "gcs_modal"],
+      "qaqi": ["epcr_exam", "epcr_neuro", "monitor_import"]
+    },
+    "challenge_calculated_gcs": {
+      "training": ["gcs_modal"],
+      "qaqi": ["epcr_neuro", "epcr_gcs_component"]
+    },
+    "history_obtained": {
+      "training": ["caregiver_reported_history", "patient_reported_history", "ai_roleplay_tag"],
+      "qaqi": ["epcr_history", "dispatch_notes", "caregiver_statement", "patient_statement"]
+    }
+  },
+  "checklist_items": [
+    {
+      "id": "head_injury.neuro_assessment",
+      "description": "Neurological assessment performed — formal GCS with subscores plus LOC and vomiting history",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 7,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_head_injury"],
+      "requirement_logic": "all",
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "vital",
+          "key_pattern": "(?i)^GCS$",
+          "eligible_source_roles": ["challenge_calculated_gcs"]
+        },
+        {
+          "type": "finding",
+          "finding_type": "history",
+          "key_pattern": "(?i)^(Events?|LOC|Loss of Consciousness)$",
+          "value_pattern": "(?i)loss of consciousness|LOC|cried right after|no loss",
+          "eligible_source_roles": ["history_obtained"]
+        },
+        {
+          "type": "finding",
+          "finding_type": "history",
+          "key_pattern": "(?i)^(Events?|Vomiting|Nausea)$",
+          "value_pattern": "(?i)vomit|threw up|emesis",
+          "eligible_source_roles": ["history_obtained"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)(GCS|AVPU|neurolog|LOC|loss of consciousness|vomit|mental status|alert|orient|confused|glasgow)"
+      ],
+      "done_feedback": "Neurological assessment performed — formal GCS with E/V/M subscores and LOC/vomiting history documented.",
+      "missed_feedback": "Complete neurological assessment not performed — AVPU or confusion alone is not a formal head-injury neuro package. Calculate GCS with E/V/M subscores and obtain LOC plus vomiting history.",
+      "common_errors": ["Documenting only the GCS total without eye, verbal, and motor components."],
+      "unsafe_if_missed": true
+    },
+    {
+      "id": "head_injury.pupil_assessment",
+      "description": "Pupil assessment performed — pupils checked bilaterally for size, equality, and reactivity",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_head_injury"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)\\bpupils?\\b|perrla|pupil.*reactive|reactive.*pupil|pupil.*sluggish|sluggish.*pupil|pupil.*unequal|unequal.*pupil|pupil.*asymm|asymm.*pupil",
+          "eligible_source_roles": ["ems_performed_exam"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)(pupils?|perrla|pupil.*reactive|reactive.*pupil|pupil.*sluggish|sluggish.*pupil|pupil.*unequal|unequal.*pupil|pupil.*asymm|asymm.*pupil)"
+      ],
+      "done_feedback": "Pupils assessed bilaterally — size, equality, and reactivity documented for TBI trend monitoring.",
+      "missed_feedback": "Pupil assessment missing — a head-injured patient needs bilateral pupil size, equality, and reactivity documented because asymmetry can indicate rising ICP.",
+      "common_errors": ["Recording GCS but skipping pupils."],
+      "unsafe_if_missed": true
+    },
+    {
+      "id": "head_injury.dcap_btls_head",
+      "description": "Focused head/scalp DCAP-BTLS assessment performed",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_head_injury"],
+      "evidence_requirements": [
+        {
+          "type": "intervention",
+          "intervention_key": "dcap_btls_head_neck"
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)(dcap|btls|palpat.*head|check.*head|feel.*head|assess.*head|head.*deformity|head.*contusion|head.*tenderness|head.*step.?off)"
+      ],
+      "done_feedback": "Focused head DCAP-BTLS assessment performed — scalp/skull tenderness, deformity, and step-offs documented.",
+      "missed_feedback": "Focused head DCAP-BTLS assessment not performed — scalp lacerations, tenderness, swelling, and skull step-offs are structural findings that change triage and neuro concern.",
+      "common_errors": ["Assessing mental status only and skipping the scalp/skull exam."],
+      "unsafe_if_missed": false
+    },
+    {
+      "id": "head_injury.smr",
+      "description": "Spinal motion restriction applied when mechanism and neurological status indicate it",
+      "category": "clinical_performance",
+      "subtype": "intervention",
+      "point_value": 12,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["mi_head_spine_trauma"],
+      "evidence_requirements": [
+        {
+          "type": "intervention",
+          "intervention_key": "smr"
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)(smr|spinal|c-spine|cervical.*collar|backboard|in-line|manual.*stab|immobilize|spinal motion)"
+      ],
+      "done_feedback": "Spinal motion restriction applied when indicated by mechanism and neurological status.",
+      "missed_feedback": "SMR not applied — head injury with concerning mechanism or altered mental status requires spinal precautions according to local protocol.",
+      "common_errors": ["Ruling out SMR using midline tenderness alone in an altered patient."],
+      "unsafe_if_missed": true
+    },
+    {
+      "id": "head_injury.priority_transport",
+      "description": "Priority transport initiated for head injury with altered mental status, vomiting, or focal neurological concern",
+      "category": "clinical_performance",
+      "subtype": "transport",
+      "point_value": 8,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "applicable_if": {
+        "non_transport_agency": false
+      },
+      "protocol_refs": ["nasemso_head_injury"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "history",
+          "key_pattern": "(?i)(transport|priority|destination|trauma center|hospital)"
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)(transport|hospital|take.*in|load|go|emergency department|priority|expedite|trauma center|pediatric)"
+      ],
+      "done_feedback": "Priority transport initiated — head injury with neurological concern requires rapid ED/trauma-center evaluation.",
+      "missed_feedback": "Transport decision not made or delayed — head injury with altered mental status, vomiting, or focal neurological findings requires urgent transport.",
+      "common_errors": ["Extending scene time for a detailed exam after identifying concerning head-injury signs."],
+      "unsafe_if_missed": true
+    },
+    {
+      "id": "head_injury.scope_no_als_only_interventions",
+      "description": "No ALS-only interventions attempted by BLS provider",
+      "category": "scope_adherence",
+      "subtype": "intervention",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT"],
+      "protocol_refs": ["nasemso_head_injury"],
+      "evidence_requirements": [
+        {
+          "type": "absence_check",
+          "absence_intervention_key": "iv_io_access"
+        }
+      ],
+      "tier2_patterns": [],
+      "done_feedback": "ALS-only interventions correctly avoided — BLS head injury management is airway, oxygenation, SMR, and transport.",
+      "missed_feedback": "ALS-only interventions attempted — IV access, advanced airway, and medications are outside BLS scope for isolated head injury.",
+      "common_errors": ["Attempting IV/IO access or medication administration at BLS level."],
+      "unsafe_if_missed": false
+    },
+    {
+      "id": "head_injury.protocols_smr",
+      "description": "SMR applied according to local head/spine trauma protocol when indicated",
+      "category": "protocols_treatment",
+      "subtype": "intervention",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["mi_head_spine_trauma"],
+      "evidence_requirements": [
+        {
+          "type": "intervention",
+          "intervention_key": "smr"
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)(smr|spinal|c-spine|cervical.*collar|backboard|in-line|manual.*stab|immobilize|spinal motion)"
+      ],
+      "done_feedback": "SMR applied per protocol — mechanism and neurological status support spinal precautions.",
+      "missed_feedback": "SMR not applied per protocol — concerning head-injury mechanism or altered LOC requires spinal precautions according to the active protocol.",
+      "common_errors": ["Waiting for neck pain or midline tenderness before applying SMR to an altered head-injury patient."],
+      "unsafe_if_missed": true
+    },
+    {
+      "id": "head_injury.high_flow_o2",
+      "description": "Continuous high-flow O2 via NRB applied for suspected TBI/head injury with altered mental status",
+      "category": "protocols_treatment",
+      "subtype": "intervention",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_head_injury"],
+      "evidence_requirements": [
+        {
+          "type": "intervention",
+          "intervention_key": "o2_nrb"
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)(high.?flow.*(o2|oxygen)|nrb|non.?rebreather|15\\s*lpm|15\\s*liters)"
+      ],
+      "done_feedback": "High-flow O2 via NRB applied — protocol-aligned oxygenation support for suspected TBI/head injury with altered mental status.",
+      "missed_feedback": "High-flow O2 via NRB not documented — head-injury protocols call for preventing hypoxia and maintaining oxygenation in suspected TBI.",
+      "common_errors": ["Relying on normal room-air SpO2 alone in a suspected TBI patient with altered mental status."],
+      "unsafe_if_missed": true
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+[
+  {
+    "id": "sound_clear_01",
+    "audio_url": "/static/audio/lung%20sounds/F_N_RUA.wav",
+    "license_source": "CC BY 4.0 - Torabi Y, Shirani S, Reilly JP. Heart and Lung Sounds Dataset Recorded from a Clinical Manikin using Digital Stethoscope (HLS-CMDS). Mendeley Data V3. doi:10.17632/8972jxbpmp.3",
+    "license_cleared": true,
+    "prompt": "Play the clip, then choose the best breath-sound finding.",
+    "correct": "clear",
+    "distractors": ["crackles", "wheezes", "rhonchi", "stridor", "pleural friction rub"],
+    "explanation": "Clear breath sounds mean expected air movement without added adventitious sounds. Respiratory distress can still come from causes outside lower-airway obstruction.",
+    "mistake_tag": "normal_vs_abnormal",
+    "follow_up": {
+      "prompt": "Clear bilateral breath sounds in a child with tachypnea and anxiety. What should you avoid assuming?",
+      "choices": ["That respiratory danger is ruled out", "That bronchospasm is certain", "That suction is required", "That crackles are present"],
+      "correct": "That respiratory danger is ruled out",
+      "feedback": "Clear lung sounds reduce the likelihood of lower-airway bronchospasm, but they do not rule out upper-airway, perfusion, metabolic, anxiety, or early respiratory problems.",
+      "mistake_tag": "normal_vs_abnormal",
+      "hint": "Ask what a normal lung-field sound does not prove."
+    },
+    "hint": "Listen for the absence of added sounds. Then ask what could still make the patient look short of breath."
+  },
+  {
+    "id": "sound_crackles_01",
+    "audio_url": "/static/audio/lung%20sounds/LS/F_CC_LUA.wav",
+    "license_source": "CC BY 4.0 - Torabi Y, Shirani S, Reilly JP. Heart and Lung Sounds Dataset Recorded from a Clinical Manikin using Digital Stethoscope (HLS-CMDS). Mendeley Data V3. doi:10.17632/8972jxbpmp.3",
+    "license_cleared": true,
+    "prompt": "Play the clip, then choose the best breath-sound finding.",
+    "correct": "crackles",
+    "distractors": ["clear", "wheezes", "rhonchi", "stridor", "pleural friction rub"],
+    "explanation": "Crackles are discontinuous popping or bubbling sounds, commonly tied to fluid, pneumonia, or other alveolar pathology.",
+    "mistake_tag": "rhonchi_vs_crackles",
+    "follow_up": {
+      "prompt": "Bilateral crackles with dyspnea and edema most strongly point toward which field concern?",
+      "choices": ["Pulmonary edema", "Upper-airway obstruction", "Simple anxiety", "Foreign body obstruction"],
+      "correct": "Pulmonary edema",
+      "feedback": "Bilateral crackles with edema should raise concern for pulmonary edema and impaired gas exchange. Wheezes point toward bronchospasm; stridor points upper airway.",
+      "mistake_tag": "rhonchi_vs_crackles",
+      "hint": "Think alveoli and fluid, not narrowed bronchi."
+    },
+    "hint": "Listen for separate wet pops rather than one continuous musical tone."
+  },
+  {
+    "id": "sound_crackles_02",
+    "audio_url": "/static/audio/lung%20sounds/LS/F_FC_LUA.wav",
+    "license_source": "CC BY 4.0 - Torabi Y, Shirani S, Reilly JP. Heart and Lung Sounds Dataset Recorded from a Clinical Manikin using Digital Stethoscope (HLS-CMDS). Mendeley Data V3. doi:10.17632/8972jxbpmp.3",
+    "license_cleared": true,
+    "prompt": "Play the clip, then choose the best breath-sound finding.",
+    "correct": "crackles",
+    "distractors": ["clear", "wheezes", "rhonchi", "stridor", "pleural friction rub"],
+    "explanation": "Fine crackles are short, discontinuous sounds often heard late in inspiration when small airways or alveoli pop open.",
+    "mistake_tag": "rhonchi_vs_crackles",
+    "follow_up": {
+      "prompt": "Fine crackles at the bases should make you reassess which trend closely?",
+      "choices": ["Oxygenation and work of breathing", "Pupil size only", "Skin temperature only", "Pain score only"],
+      "correct": "Oxygenation and work of breathing",
+      "feedback": "Fine crackles can indicate alveolar fluid or disease. Track SpO2, respiratory effort, and whether the patient is tiring.",
+      "mistake_tag": "rhonchi_vs_crackles",
+      "hint": "Focus on the respiratory trend that tells you whether gas exchange is worsening."
+    },
+    "hint": "Listen for fine popping, especially near inspiration, instead of a low central gurgle."
+  },
+  {
+    "id": "sound_wheeze_01",
+    "audio_url": "/static/audio/lung%20sounds/LS/F_W_RUA.wav",
+    "license_source": "CC BY 4.0 - Torabi Y, Shirani S, Reilly JP. Heart and Lung Sounds Dataset Recorded from a Clinical Manikin using Digital Stethoscope (HLS-CMDS). Mendeley Data V3. doi:10.17632/8972jxbpmp.3",
+    "license_cleared": true,
+    "prompt": "Play the clip, then choose the best breath-sound finding.",
+    "correct": "wheezes",
+    "distractors": ["clear", "crackles", "rhonchi", "stridor", "pleural friction rub"],
+    "explanation": "Wheezes are continuous musical sounds caused by airflow through narrowed lower airways.",
+    "mistake_tag": "wheeze_vs_stridor",
+    "follow_up": {
+      "prompt": "Bilateral expiratory wheezes in moderate distress most directly support which intervention?",
+      "choices": ["Bronchodilator therapy", "Blind finger sweep", "Chest seal", "Passive rewarming"],
+      "correct": "Bronchodilator therapy",
+      "feedback": "Wheezing points to lower-airway bronchoconstriction. Bronchodilator therapy and reassessment are the field-action link.",
+      "mistake_tag": "wheeze_vs_stridor",
+      "hint": "Ask whether the sound comes from narrowed lower airways."
+    },
+    "hint": "Listen for a continuous musical sound. Location matters: lower airway, not upper airway."
+  },
+  {
+    "id": "sound_wheeze_02",
+    "audio_url": "/static/audio/lung%20sounds/LS/M_W_LLA.wav",
+    "license_source": "CC BY 4.0 - Torabi Y, Shirani S, Reilly JP. Heart and Lung Sounds Dataset Recorded from a Clinical Manikin using Digital Stethoscope (HLS-CMDS). Mendeley Data V3. doi:10.17632/8972jxbpmp.3",
+    "license_cleared": true,
+    "prompt": "Play the clip, then choose the best breath-sound finding.",
+    "correct": "wheezes",
+    "distractors": ["clear", "crackles", "rhonchi", "stridor", "pleural friction rub"],
+    "explanation": "Wheezes are continuous high-pitched sounds from lower-airway narrowing. Severe obstruction can reduce air movement and make wheezing quieter.",
+    "mistake_tag": "wheeze_vs_stridor",
+    "follow_up": {
+      "prompt": "Wheezes become quieter while the patient looks more tired. What is the danger?",
+      "choices": ["Impending respiratory failure", "Clear improvement", "Resolved bronchospasm", "Normal pediatric finding"],
+      "correct": "Impending respiratory failure",
+      "feedback": "Quieter wheezes with worsening fatigue can mean reduced air movement, not improvement. Reassess ventilation and prepare for escalation.",
+      "mistake_tag": "wheeze_vs_stridor",
+      "hint": "Do not judge improvement by volume alone; compare it with work of breathing."
+    },
+    "hint": "Listen for continuous musical narrowing, then ask if the patient is moving enough air."
+  },
+  {
+    "id": "sound_rhonchi_01",
+    "audio_url": "/static/audio/lung%20sounds/LS/M_R_LMA.wav",
+    "license_source": "CC BY 4.0 - Torabi Y, Shirani S, Reilly JP. Heart and Lung Sounds Dataset Recorded from a Clinical Manikin using Digital Stethoscope (HLS-CMDS). Mendeley Data V3. doi:10.17632/8972jxbpmp.3",
+    "license_cleared": true,
+    "prompt": "Play the clip, then choose the best breath-sound finding.",
+    "correct": "rhonchi",
+    "distractors": ["clear", "crackles", "wheezes", "stridor", "pleural friction rub"],
+    "explanation": "Rhonchi are low-pitched snoring or gurgling sounds from larger central airways, often related to secretions.",
+    "mistake_tag": "rhonchi_vs_crackles",
+    "follow_up": {
+      "prompt": "Rhonchi that improve after coughing most directly indicate what?",
+      "choices": ["Moveable secretions", "Upper-airway swelling", "Pleural inflammation", "Silent chest"],
+      "correct": "Moveable secretions",
+      "feedback": "Rhonchi that change with coughing point to secretions in larger airways. Positioning, cough encouragement, or suction may matter more than bronchodilator alone.",
+      "mistake_tag": "rhonchi_vs_crackles",
+      "hint": "Ask whether the sound changes when secretions move."
+    },
+    "hint": "Listen for low central gurgling or snoring, not small wet pops."
+  },
+  {
+    "id": "sound_pleural_rub_01",
+    "audio_url": "/static/audio/lung%20sounds/PleuralFriction.mp3",
+    "license_source": "CC0 1.0 - Wikimedia Commons. Pleural Friction Rub audio sample.",
+    "license_cleared": true,
+    "prompt": "Play the clip, then choose the best breath-sound finding.",
+    "correct": "pleural friction rub",
+    "distractors": ["clear", "crackles", "wheezes", "rhonchi", "stridor"],
+    "explanation": "A pleural friction rub is a harsh, grating sound caused by inflamed pleural surfaces rubbing during breathing.",
+    "mistake_tag": "pleural_rub_vs_crackles",
+    "follow_up": {
+      "prompt": "A pleural friction rub should make you consider which problem type?",
+      "choices": ["Pleural inflammation", "Simple bronchospasm", "Normal air movement", "Upper-airway croup"],
+      "correct": "Pleural inflammation",
+      "feedback": "Pleural rubs are linked to inflamed pleural surfaces, including pleuritis, pneumonia involving the pleura, or pulmonary embolism patterns.",
+      "mistake_tag": "pleural_rub_vs_crackles",
+      "hint": "Think surfaces rubbing, not fluid popping inside the alveoli."
+    },
+    "hint": "Listen for a leathery or grating quality on breathing."
+  },
+  {
+    "id": "sound_crackles_pneumonia_01",
+    "audio_url": "/static/audio/lung%20sounds/Crackles_pneumonia.mp3",
+    "license_source": "CC BY-SA 3.0 - James Heilman MD (Jmh649). Crackles_pneumoniaO.ogg. Wikimedia Commons. https://commons.wikimedia.org/wiki/File:Crackles_pneumoniaO.ogg",
+    "license_cleared": true,
+    "prompt": "Play the clip, then choose the best breath-sound finding.",
+    "correct": "crackles",
+    "distractors": ["clear", "wheezes", "rhonchi", "stridor", "pleural friction rub"],
+    "explanation": "Localized crackles with fever or productive cough can support pneumonia or consolidation, while bilateral crackles can point toward fluid overload.",
+    "mistake_tag": "rhonchi_vs_crackles",
+    "follow_up": {
+      "prompt": "Unilateral crackles with fever and increased work of breathing should push you toward what field priority?",
+      "choices": ["Oxygenation, positioning, and transport", "Ignoring the finding", "Naloxone first", "Tourniquet placement"],
+      "correct": "Oxygenation, positioning, and transport",
+      "feedback": "Suspected pneumonia or consolidation is supported by localized crackles plus fever and distress. Oxygenation, position of comfort, reassessment, and transport are the immediate priorities.",
+      "mistake_tag": "rhonchi_vs_crackles",
+      "hint": "Pair the sound with fever and work of breathing."
+    },
+    "hint": "Listen for discontinuous crackling and connect it to the patient context."
+  }
+]

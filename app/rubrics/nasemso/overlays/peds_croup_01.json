@@ -1,0 +1,26 @@
+{
+  "_schema": "ems_call_type_overlay_v1",
+  "id": "peds_croup_01_pediatric_croup_scenario_v1",
+  "version": "2026-05-14",
+  "call_type": "pediatric_croup",
+  "overlay_type": "scenario",
+  "jurisdiction": "Training Scenario",
+  "effective_date": "2026-05-14",
+  "scenario_id": "peds_croup_01",
+  "approved_by": "scoring_integration_review_2026-05-14",
+  "notes": "Suppresses call-type rubric items that are already owned by the universal NREMT base rubric. ALS-request applicability is resolved from active agency configuration, not scenario overlay content.",
+  "operations": [
+    {
+      "op": "suppress_item",
+      "item_id": "croup.scene_safety_ppe",
+      "reason": "Universal NREMT base rubric owns PPE and scene safety via scene_entry evidence path. The call-type item uses the same scene_entry_path but does not credit even when the scene entry popup is completed, creating a false miss alongside the credited base item.",
+      "protocol_ref": "NREMT EMT Patient Assessment/Management Medical E202 — scene safety and PPE are base rubric items"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "croup.als_request_if_severe",
+      "reason": "This authored croup scenario already sends ALS/EMS by dispatch/turnover context. Do not score the learner for explicitly requesting an intercept; DMIST covers communication of weight, stridor severity, SpO2, and response to BLS care.",
+      "protocol_ref": "Scenario dispatch/turnover context — ALS request is not a learner action when advanced care is already dispatched"
+    }
+  ]
+}

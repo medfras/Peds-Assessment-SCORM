@@ -1,0 +1,129 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 10-1 General CBRNE Identification (MDHHS Reviewed 2023-05-08). Base Michigan template.",
+  "id": "mi_base_special_ops_cbrne_identification",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Special Operations",
+  "level_display": "Special Operations Protocol",
+  "jurisdiction": "Michigan",
+  "condition": "General CBRNE Identification",
+  "version": "2023-05-08",
+  "protocol_reference": "Michigan Special Operations Protocol Section 10-1: General CBRNE Identification — MDHHS Reviewed 2023",
+
+  "purpose": "Provide EMS providers with recognition criteria, safety guidance, and initial medical response for Chemical, Biological, Radiological, Nuclear, and Explosive (CBRNE) events.",
+
+  "sections": [
+    {
+      "title": "CBRNE Agent Categories",
+      "content": [
+        "Chemical (C): Nerve agents, vesicants, choking agents, blood agents, lacrimators — typically rapid onset, multiple simultaneous casualties with similar presentations",
+        "Biological (B): Bacteria, viruses, toxins — often delayed presentation (hours to days); may present as unusual disease cluster",
+        "Radiological (R): Radioactive material dispersal (RDD/'dirty bomb') — no immediate symptoms; long-term exposure risk; detect with dosimeter",
+        "Nuclear (N): Nuclear detonation — blast, thermal, radiation effects; mass destruction; near-total EMS system involvement",
+        "Explosive (E): Conventional or improvised explosive devices — blast overpressure, fragmentation, thermal burns; secondary device risk"
+      ]
+    },
+    {
+      "title": "Scene Recognition — Indicators of CBRNE Event",
+      "content": [
+        "Multiple patients with similar unexplained symptoms in a common area or timeframe",
+        "Unusual odors (bitter almonds = cyanide; garlic/mustard = vesicants; freshly cut grass/new-mown hay = phosgene)",
+        "Unusual vapor clouds, mists, oily films, or residues",
+        "Dead or dying animals in area",
+        "Suspicious devices, containers, or packages",
+        "Reported explosion with or without fire",
+        "Patients with unexplained neurological symptoms (seizures, miosis, excessive secretions — nerve agent)",
+        "Patients with unexplained burns, blistering, skin/eye irritation (vesicant/lacrimator)",
+        "Unexplained mass casualty event"
+      ]
+    },
+    {
+      "title": "Scene Safety — Initial Approach",
+      "content": [
+        "Do NOT enter scene without appropriate PPE — identify hazard level before approach",
+        "Isolate and deny entry — establish hot/warm/cold zones with fire/HazMat",
+        "Notify incident command, HazMat, and online medical control immediately",
+        "Approach from upwind and uphill when possible",
+        "Limit number of EMS personnel in hot zone — only trained HazMat/EMS personnel with appropriate PPE",
+        "Self-protection is the first priority — a contaminated rescuer becomes a second victim"
+      ]
+    },
+    {
+      "title": "Personal Protective Equipment (PPE) Levels",
+      "content": [
+        "Level A: Highest protection — fully encapsulated chemical-resistant suit with SCBA; used when agent is unknown or highest vapor/liquid risk; NOT typically worn by EMS",
+        "Level B: SCBA with non-encapsulating chemical-resistant suit; liquid splash protection; used when agent identified but vapor threat low",
+        "Level C: Air-purifying respirator (APR/PAPR) with chemical-resistant clothing; used when agent type and concentration known and APR is adequate",
+        "Level D: Standard work uniform with minimal protection; used when no respiratory or skin hazard present (clean/cold zone only)"
+      ]
+    },
+    {
+      "title": "Chemical Agent Sub-Types",
+      "content": [
+        "Nerve Agents (persistent and non-persistent): GA (Tabun), GB (Sarin), GD (Soman), VX — cholinergic toxidrome (SLUDGEM); miosis; refer to Protocol 10-3",
+        "Vesicants/Blister Agents: Mustard (HD), Lewisite (L), Phosgene Oxime (CX) — delayed blistering, airway burns; decontaminate immediately",
+        "Choking/Pulmonary Agents: Chlorine, Phosgene, Diphosgene — airway/pulmonary irritation; pulmonary edema; refer to Protocol 10-2",
+        "Blood Agents/Cyanide: Hydrogen cyanide (HCN), Cyanogen chloride — cellular hypoxia; refer to Protocol 10-5",
+        "Lacrimators/Riot Control Agents: CS, CN, OC (pepper spray) — eye/airway irritation; rarely life-threatening; refer to Protocol 10-2",
+        "Persistent agents: remain hazardous in environment for hours to days (VX, mustard); non-persistent: dissipate rapidly (sarin, cyanide)"
+      ]
+    },
+    {
+      "title": "Biological Agent Indicators",
+      "content": [
+        "Sudden appearance of large numbers of ill patients with similar febrile illness",
+        "Unusual disease or presentation not normally seen in region",
+        "Higher morbidity/mortality than expected for apparent illness",
+        "Multiple simultaneous outbreaks in geographically distinct areas",
+        "Illness concentrated in area consistent with plume or aerosol exposure",
+        "Notify public health authorities and medical control early — biological events are primarily a public health response"
+      ]
+    },
+    {
+      "title": "Radiological/Nuclear Indicators",
+      "content": [
+        "Reported explosion in area with known or suspected radiological material",
+        "Unusual number of patients with nausea, vomiting, hair loss, skin burns without obvious thermal source",
+        "Detection via radiation dosimeter or Geiger counter (fire/HazMat responsibility)",
+        "EMS role: limit exposure (time, distance, shielding), treat conventional injuries, decontaminate externally contaminated patients before transport",
+        "Acute radiation syndrome (ARS): nausea/vomiting, fatigue, skin erythema — dose-dependent; no specific prehospital antidote"
+      ]
+    },
+    {
+      "title": "Explosive Incident Considerations",
+      "content": [
+        "Primary blast injury: overpressure wave — hollow organ (tympanic membrane, lung, bowel) most vulnerable",
+        "Secondary blast injury: fragmentation wounds",
+        "Tertiary blast injury: displacement of body by blast wind",
+        "Quaternary blast injury: burns, crush, toxin inhalation",
+        "SECONDARY DEVICE AWARENESS: assume secondary device risk at any explosive incident; maintain safe perimeter until cleared by EOD",
+        "Combined conventional/CBRNE events (dirty bombs): treat conventional injuries first after decontamination"
+      ]
+    },
+    {
+      "title": "General EMS Response — All CBRNE Events",
+      "content": [
+        "1. Recognize — identify signs of CBRNE event; do NOT approach without PPE",
+        "2. Notify — alert dispatch, IC, HazMat, online medical control, hospital",
+        "3. Isolate — establish hot/warm/cold zones; restrict access",
+        "4. Protect — don appropriate PPE before entry",
+        "5. Decontaminate — gross decon by fire/HazMat before EMS treats patients in warm/cold zone",
+        "6. Treat — provide supportive care and agent-specific treatment per applicable protocols (10-2, 10-3, 10-5)",
+        "7. Transport — notify receiving facility of agent type; use appropriate PPE during transport"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Any EMS provider with onset of symptoms consistent with chemical exposure (miosis, salivation, bronchospasm, seizures) — exit hot zone immediately, initiate self-treatment protocol",
+    "Mass casualty numbers exceeding local EMS capacity — activate MCI/SALT protocol (10-6)",
+    "Unknown agent without HazMat support — do NOT enter; stage and await resources"
+  ],
+
+  "scope_notes": "This protocol applies to initial recognition and scene safety for all CBRNE events. Specific treatment algorithms are in Protocols 10-2 (Chemical Exposure), 10-3 (Nerve Agent/Organophosphate), 10-4 (CHEMPACK/MEDDRUN), 10-5 (Cyanide), and 10-6 (Mass Casualty Incidents)."
+}

@@ -1,0 +1,194 @@
+[
+  {
+    "id": "ten4_c01",
+    "image_url": null,
+    "alt_text": "",
+    "prompt": "Bruising on the torso of a 4-month-old who cannot yet sit up unassisted",
+    "decision": "concerning",
+    "region": "torso",
+    "explanation": "TEN-4: Torso bruising in a non-cruising infant (< 9 months, pre-ambulatory) is a red flag for non-accidental trauma.",
+    "follow_up": {
+      "prompt": "Which documentation phrase best fits this finding?",
+      "choices": ["Bruising noted on torso of a non-cruising 4-month-old; concerning per TEN-4 FACESp criteria and reported per policy", "Likely accidental bruising because the infant appears calm", "Abuse confirmed due to torso bruising", "Minor bruise; no need to document if vitals are normal"],
+      "correct": "Bruising noted on torso of a non-cruising 4-month-old; concerning per TEN-4 FACESp criteria and reported per policy",
+      "hint": "Document objective location, developmental status, and screening criterion without diagnosing intent.",
+      "feedback": "The best phrase is objective and criterion-based. It avoids both under-documenting and declaring abuse as a diagnosis.",
+      "mistake_tag": "documentation_language"
+    }
+  },
+  {
+    "id": "ten4_c02",
+    "image_url": null,
+    "alt_text": "",
+    "prompt": "Purple discoloration noted on the back of a 7-year-old's ear, no reported mechanism",
+    "decision": "concerning",
+    "region": "ear",
+    "explanation": "TEN-4: Ear bruising is rarely accidental at any age. The ear has no bony prominence that typically causes impact bruising.",
+    "follow_up": {
+      "prompt": "Which charting language is most appropriate?",
+      "choices": ["Purple discoloration behind the ear with no reported mechanism; location is concerning per TEN-4 FACESp screening", "Caregiver is lying because ear bruises are always abuse", "Unexplained bruise, probably accidental", "No documentation needed unless the child complains of pain"],
+      "correct": "Purple discoloration behind the ear with no reported mechanism; location is concerning per TEN-4 FACESp screening",
+      "hint": "Keep it objective and tie concern to the location criterion.",
+      "feedback": "Objective location plus screening concern is defensible documentation; avoid unsupported conclusions about intent.",
+      "mistake_tag": "documentation_language"
+    }
+  },
+  {
+    "id": "ten4_c03",
+    "image_url": null,
+    "alt_text": "",
+    "prompt": "Three distinct bruises forming an irregular pattern across the child's cheek",
+    "decision": "concerning",
+    "region": "cheek",
+    "explanation": "TEN-4: Patterned bruising or bruising on the cheek of a non-cruising infant is a red flag. Any cheek bruising without clear accidental mechanism warrants concern.",
+    "follow_up": {
+      "prompt": "Which report statement best communicates this finding?",
+      "choices": ["Three distinct irregular cheek bruises observed; pattern/location concerning and requires mandated reporting per policy", "Facial bruising proves non-accidental trauma", "Cheek bruises are common and should be omitted from handoff", "Bruises only matter if the caregiver admits assault"],
+      "correct": "Three distinct irregular cheek bruises observed; pattern/location concerning and requires mandated reporting per policy",
+      "hint": "Name what you see, why it triggers concern, and the required reporting action.",
+      "feedback": "This wording preserves objectivity while clearly communicating the red-flag pattern.",
+      "mistake_tag": "documentation_language"
+    }
+  },
+  {
+    "id": "ten4_c04",
+    "image_url": null,
+    "alt_text": "",
+    "prompt": "Torn frenulum in a 6-month-old — caregiver states the infant 'fell off the couch'",
+    "decision": "concerning",
+    "region": "frenulum",
+    "explanation": "TEN-4: Frenulum tears in non-ambulatory infants are highly associated with non-accidental trauma. A couch fall at this age rarely produces this injury.",
+    "follow_up": {
+      "prompt": "Which documentation choice avoids both minimization and overstatement?",
+      "choices": ["Torn frenulum in non-ambulatory 6-month-old; reported mechanism inconsistent with injury pattern; concern escalated per policy", "Confirmed assault by caregiver", "Mouth injury from couch fall, no further action", "Do not document mechanism because it may be inaccurate"],
+      "correct": "Torn frenulum in non-ambulatory 6-month-old; reported mechanism inconsistent with injury pattern; concern escalated per policy",
+      "hint": "Separate objective injury, reported mechanism, and your policy action.",
+      "feedback": "The strongest documentation notes inconsistency without declaring guilt or ignoring the report.",
+      "mistake_tag": "documentation_language"
+    }
+  },
+  {
+    "id": "ten4_c05",
+    "image_url": null,
+    "alt_text": "",
+    "prompt": "Bilateral periorbital bruising (both eyes) in a 3-year-old — caregiver denies any fall or impact",
+    "decision": "concerning",
+    "region": "eyelid",
+    "explanation": "TEN-4: Bilateral eyelid bruising without a clear trauma story is a red flag. Bilateral 'raccoon eyes' from accidental mechanisms are uncommon in this age group.",
+    "follow_up": {
+      "prompt": "Which phrase belongs in the handoff?",
+      "choices": ["Bilateral periorbital bruising with no reported impact; concerning injury pattern requiring further evaluation", "Normal toddler bruising around both eyes", "Abuse confirmed by raccoon eyes", "Document only if CT confirms skull fracture"],
+      "correct": "Bilateral periorbital bruising with no reported impact; concerning injury pattern requiring further evaluation",
+      "hint": "Use objective bilateral location and need for evaluation.",
+      "feedback": "This handoff language communicates risk while staying within EMS documentation boundaries.",
+      "mistake_tag": "documentation_language"
+    }
+  },
+  {
+    "id": "ten4_c06",
+    "image_url": null,
+    "alt_text": "",
+    "prompt": "Six separate bruises across the face and head of a 2-year-old",
+    "decision": "concerning",
+    "region": "face",
+    "explanation": "TEN-4: Four or more facial bruises of any kind in a young child is a red flag criterion, regardless of location."
+  },
+  {
+    "id": "ten4_c07",
+    "image_url": null,
+    "alt_text": "",
+    "prompt": "Bruising at the angle of the jaw in an 18-month-old — no reported fall history",
+    "decision": "concerning",
+    "region": "mandible",
+    "explanation": "TEN-4: Bruising at the angle of the mandible is rarely caused by accidental falls and is included as a red-flag region in the TEN-4 FACESp tool."
+  },
+  {
+    "id": "ten4_c08",
+    "image_url": null,
+    "alt_text": "",
+    "prompt": "Patterned bruising on the lower back — marks are linear and parallel, approximately 2 cm apart",
+    "decision": "concerning",
+    "region": "pattern",
+    "explanation": "TEN-4: Patterned bruising (consistent with a linear object such as a belt or cord) is a red flag for intentional injury regardless of body region."
+  },
+  {
+    "id": "ten4_c09",
+    "image_url": null,
+    "alt_text": "",
+    "prompt": "Bilateral subconjunctival hemorrhages in a 4-year-old — parents say child was 'coughing hard'",
+    "decision": "concerning",
+    "region": "sclera",
+    "explanation": "TEN-4: Bilateral subconjunctival hemorrhages are associated with compressive trauma (e.g., shaking). Unilateral from coughing is possible; bilateral warrants investigation."
+  },
+  {
+    "id": "ten4_c10",
+    "image_url": null,
+    "alt_text": "",
+    "prompt": "Bruising on the neck of a 2-year-old — caregiver cannot explain the injury",
+    "decision": "concerning",
+    "region": "neck",
+    "explanation": "TEN-4: Neck bruising is rarely accidental in young children and is a red-flag region in the TEN-4 FACESp criteria."
+  },
+  {
+    "id": "ten4_a01",
+    "image_url": null,
+    "alt_text": "",
+    "prompt": "Bruise on the shin of a 3-year-old who walks and runs daily",
+    "decision": "common_accidental",
+    "region": "shin",
+    "explanation": "Ambulatory children commonly bruise bony prominences like shins during normal play. This is a low-suspicion finding in a walking child.",
+    "follow_up": {
+      "prompt": "Which documentation phrase best fits this common accidental pattern?",
+      "choices": ["Single shin bruise on ambulatory child; location consistent with common play injury and reported mechanism", "Possible abuse because any pediatric bruise is concerning", "Omit the bruise because it is common", "Abuse ruled out completely"],
+      "correct": "Single shin bruise on ambulatory child; location consistent with common play injury and reported mechanism",
+      "hint": "Still document objective findings, even when they are low suspicion.",
+      "feedback": "Low-suspicion findings still deserve objective documentation; avoid both over-calling and omitting.",
+      "mistake_tag": "documentation_language"
+    }
+  },
+  {
+    "id": "ten4_a02",
+    "image_url": null,
+    "alt_text": "",
+    "prompt": "Small raised bump on the forehead of an 18-month-old after a witnessed fall from a chair",
+    "decision": "common_accidental",
+    "region": "forehead",
+    "explanation": "A forehead goose egg from a witnessed, plausible fall mechanism is a common accidental injury in toddlers. The forehead is a bony prominence prone to impact bruising."
+  },
+  {
+    "id": "ten4_a03",
+    "image_url": null,
+    "alt_text": "",
+    "prompt": "Bruise on the knee and elbow of a 9-year-old after falling from a bicycle",
+    "decision": "common_accidental",
+    "region": "extremity",
+    "explanation": "Knee and elbow injuries are common in ambulatory school-age children with reported fall mechanisms. These bony prominences are expected impact sites."
+  },
+  {
+    "id": "ten4_a04",
+    "image_url": null,
+    "alt_text": "",
+    "prompt": "Bruise over the cheekbone of an 11-year-old after a reported collision during a soccer game",
+    "decision": "common_accidental",
+    "region": "cheekbone",
+    "explanation": "A cheekbone (zygomatic) bruise from a sports collision in a school-age child with a plausible witnessed mechanism is generally considered low suspicion."
+  },
+  {
+    "id": "ten4_a05",
+    "image_url": null,
+    "alt_text": "",
+    "prompt": "Single bruise on the lower leg of a 5-year-old — caregiver and child both report running into a coffee table corner",
+    "decision": "common_accidental",
+    "region": "leg",
+    "explanation": "A single bruise on a bony prominence of the lower extremity with a consistent, confirmed story is a common accidental finding in ambulatory children."
+  },
+  {
+    "id": "ten4_a06",
+    "image_url": null,
+    "alt_text": "",
+    "prompt": "Abrasion and bruising on the palm of an 8-year-old after a fall from the playground ladder",
+    "decision": "common_accidental",
+    "region": "hand",
+    "explanation": "Palm abrasions and bruising are classic 'outstretched hand' injuries from falls. This is a common accidental mechanism with age-appropriate injury pattern."
+  }
+]

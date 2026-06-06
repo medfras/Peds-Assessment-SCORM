@@ -1,0 +1,1183 @@
+{
+  "_schema": "pfd_scenario_v1",
+  "id": "peds_trauma_04_burn",
+  "title": "Scald Burn (Hot Coffee) — 2-Year-Old Male",
+  "display_title": "Pediatric Burn",
+  "subtitle": "2-year-old male, partial-thickness scald burn to chest and arm",
+  "category": "pediatric_trauma",
+  "call_type": "nremt_trauma",
+  "category_display": "Pediatric Trauma Assessment",
+  "turnover_target": "als",
+  "version": "1.0",
+  "rubric_template": "ems_standard_v1",
+  "base_patient_care_rubric": "nremt_trauma_v1",
+  "difficulty": "medium",
+  "scenario_number": 4,
+  "prerequisites": [
+    "peds_trauma_01_soft_tissue"
+  ],
+  "protocol": "MI/02_Trauma_Environmental/02-3_burns",
+  "jurisdiction": "mi_base",
+  "clinical_context": {
+    "jurisdiction": "MI",
+    "concepts": [
+      "pediatric_patient",
+      "pediatric_trauma",
+      "trauma",
+      "burns",
+      "airway_management",
+      "hypothermia_prevention"
+    ],
+    "protocol_focus": [
+      "burns",
+      "airway_management",
+      "hypothermia_prevention"
+    ]
+  },
+  "agency_context": "",
+  "spinal_injury_possible": false,
+  "non_transport_agency": false,
+  "multiple_patients_possible": false,
+  "diagnostics_indicated": false,
+  "opqrst_radiation_relevant": false,
+  "readiness_criteria": {
+    "min_minutes": 3,
+    "checks": [
+      {
+        "id": "messages",
+        "label": "5 messages sent",
+        "type": "message_count",
+        "min": 5
+      },
+      {
+        "id": "vitals",
+        "label": "Vitals assessed",
+        "type": "vitals_logged"
+      },
+      {
+        "id": "exam",
+        "label": "Exam/history obtained",
+        "type": "exam_logged"
+      },
+      {
+        "id": "treatment",
+        "label": "Treatment applied",
+        "type": "treatment_logged"
+      }
+    ]
+  },
+  "scene_entry_scoring": {
+    "ppe": {
+      "required": [
+        "gloves"
+      ],
+      "recommended": [
+        "eye_protection"
+      ],
+      "missing_required_penalty": 3,
+      "missing_recommended_penalty": 1,
+      "max_score": 10
+    },
+    "pat": {
+      "expected_impression": null,
+      "incorrect_impression_deduction": 2
+    }
+  },
+  "chat_placeholder": "Talk to Noah, Karen (mom), or your partner Alex...",
+  "chat_address_hint": "Address by name: Noah · Karen/Mom · Alex (partner/vitals)",
+  "debrief_lexi_hints": [
+    {
+      "label": "Next step?",
+      "msg": "What should I do next in this scenario?"
+    },
+    {
+      "label": "Burn depth?",
+      "msg": "How do I assess burn depth — superficial, partial, and full thickness?"
+    },
+    {
+      "label": "BSA in toddlers?",
+      "msg": "How do I calculate percent body surface area burned in a 2-year-old?"
+    },
+    {
+      "label": "Wet vs dry?",
+      "msg": "Should I use a wet or dry dressing on a pediatric burn?"
+    },
+    {
+      "label": "Hypothermia risk?",
+      "msg": "Why is hypothermia such a concern in pediatric burn patients?"
+    }
+  ],
+  "objectives": [
+    "Perform the Pediatric Assessment Triangle and identify this as a time-sensitive burn patient",
+    "Stop the burning process immediately — remove wet, coffee-soaked clothing",
+    "Assess for inhalation injury (soot, singed nasal hairs, hoarse voice, stridor) — none present in this scenario",
+    "Estimate burn BSA using the modified Rule of Nines for a toddler",
+    "Apply a dry, sterile dressing — understand why wet dressings are contraindicated on large burns in children",
+    "Prevent hypothermia — cover patient promptly after burn assessment",
+    "Recognize this burn meets pediatric burn center criteria"
+  ],
+  "dispatch": {
+    "unit": "{unit}",
+    "text": "{unit}, respond to 500 Main Street — the coffee shop — for a 2-year-old male with a burn. Caller reports he pulled hot coffee on himself.",
+    "priority": "Priority 2",
+    "time": "09:15",
+    "cross_streets": "Main St and 5th Ave",
+    "response_time_minutes": 3
+  },
+  "scene": {
+    "description": "You arrive at a busy coffee shop. A staff member waves you in immediately. In a corner booth, a young mother is holding a screaming toddler, trying to lift a soaked shirt off him. The child is in obvious pain and fighting the shirt removal. The table has a large overturned cup — coffee is pooled on the bench and dripping to the floor. Steam is still visible from the spilled coffee.",
+    "image": null,
+    "video": null,
+    "hazards": [
+      "Wet floor from spilled coffee — slip hazard"
+    ],
+    "bystanders": [
+      {
+        "name": "Karen",
+        "relation": "mother",
+        "age": 30
+      }
+    ]
+  },
+  "patient": {
+    "pcr_demographics_deferred": true,
+    "name": "Noah",
+    "age": 2,
+    "dob_month_day": "June 2",
+    "sex": "male",
+    "weight_kg": 12,
+    "weight_display": "approx 26 lbs (12 kg — Broselow Red)",
+    "chief_complaint": "Partial-thickness scald burn to chest and right arm from spilled hot coffee",
+    "general_impression": "2-year-old male, screaming in pain, being held by his mother. His shirt is wet and stained with coffee. Where the shirt has been partially pulled away from his chest, you can see reddened, moist skin with early blister formation. His right arm also appears reddened. He is fighting the shirt removal. No soot on face. No singed nasal hairs visible.",
+    "gcs_assessment": {
+      "e": 4,
+      "v": 4,
+      "m": 6,
+      "total": 14,
+      "rationale": "Eyes open spontaneously, crying/screaming is distressed but present, and he localizes and moves purposefully in response to pain.",
+      "challenge_description": "Noah is being held by his mother with eyes open spontaneously. He is screaming and crying from pain but making age-appropriate sounds. He localizes pain and moves purposefully, including fighting shirt removal."
+    },
+    "avpu_assessment": {
+      "value": "alert",
+      "description": "Patient is alert, crying/screaming from pain, and moves purposefully.",
+      "rationale": "Use AVPU = alert because he is awake and spontaneously responsive despite distress."
+    },
+    "image": null,
+    "video": null
+  },
+  "history": {
+    "allergies": "None known.",
+    "medications": "None.",
+    "pmh": "Healthy 2-year-old. Up to date on immunizations.",
+    "last_oral_intake": "Milk and crackers approximately 45 minutes ago.",
+    "events_leading_to_call": "Mother was sitting in the booth with Noah on her lap. She had a large hot coffee. Noah reached across and pulled the cup toward himself — it tipped and poured down his chest and over his right arm. Mother immediately started trying to remove his shirt."
+  },
+  "initial_complaint": {
+    "speaker": "Karen",
+    "lay_summary": "He got burned and he's crying.",
+    "allowed_in_opener": true,
+    "do_not_include": [
+      "burn source",
+      "burn location",
+      "burn depth",
+      "timeline",
+      "clothing removal",
+      "medical history",
+      "diagnosis",
+      "clinical terms",
+      "treatment suggestions",
+      "full OPQRST/SAMPLE"
+    ]
+  },
+  "history_response_map": {
+    "patient_identity": {
+      "label": "Patient identity / demographics",
+      "speaker": "Karen",
+      "triggers": [
+        "what is his name",
+        "what's his name",
+        "patient name",
+        "how old is he",
+        "age",
+        "date of birth",
+        "dob",
+        "birthday"
+      ],
+      "answer": "His name is Noah. He's 2 years old. His birthday is June 2.",
+      "tags": [
+        "[[HISTORY: Patient Name=Noah]]",
+        "[[HISTORY: Patient Age=2-year-old male]]",
+        "[[HISTORY: Patient Date of Birth=June 2]]"
+      ],
+      "notes": "Patient-scoped demographics only.",
+      "do_not_include": [
+        "weight unless asked",
+        "burn details",
+        "medical history",
+        "medications",
+        "treatment suggestions"
+      ]
+    },
+    "patient_weight": {
+      "label": "Patient weight",
+      "speaker": "Karen",
+      "triggers": [
+        "how much does he weigh",
+        "what does he weigh",
+        "patient weight",
+        "weight",
+        "estimated weight"
+      ],
+      "answer": "He weighs about 26 pounds, around 12 kilograms.",
+      "tag": "[[HISTORY: Patient Weight=approx 26 lbs (12 kg — Broselow Red)]]",
+      "notes": "Patient-scoped weight only.",
+      "do_not_include": [
+        "diagnosis",
+        "treatment suggestions"
+      ]
+    },
+    "chief_concern": {
+      "label": "Broad opener / chief concern",
+      "speaker": "Karen",
+      "triggers": [
+        "what's going on",
+        "what happened",
+        "why did you call",
+        "how can we help",
+        "chief complaint"
+      ],
+      "answer": "He spilled hot coffee and burned himself.",
+      "tag": "[[HISTORY: Patient Chief Complaint=scald burn from hot coffee]]",
+      "notes": "Patient-scoped complaint only.",
+      "do_not_include": [
+        "burn depth",
+        "body surface area",
+        "treatment suggestions"
+      ]
+    }
+  },
+  "vitals": {
+    "baseline": {
+      "hr": {
+        "label": "Heart Rate",
+        "value": 148,
+        "unit": "bpm",
+        "display": "148 bpm — tachycardic, expected with pain and distress"
+      },
+      "rr": {
+        "label": "Respirations",
+        "value": 30,
+        "unit": "/min",
+        "display": "30/min — elevated, pain/crying"
+      },
+      "spo2": {
+        "label": "SpO2",
+        "value": 98,
+        "unit": "%"
+      },
+      "bp": {
+        "label": "Blood Pressure",
+        "value": "90/55",
+        "unit": "mmHg",
+        "display": "90/55 mmHg — appropriate lower limit for age"
+      },
+      "temp": {
+        "label": "Temperature",
+        "value": 98.2,
+        "unit": "°F"
+      },
+      "blood_glucose": {
+        "label": "Blood Glucose",
+        "value": 116,
+        "unit": "mg/dL",
+        "display": "116 mg/dL — mild stress response"
+      },
+      "gcs": {
+        "label": "GCS",
+        "value": 14,
+        "unit": "/15",
+        "display": "14 — E4V4M6 — eyes open, distressed crying/screaming, purposeful movement to pain"
+      },
+      "skin_color": {
+        "label": "Skin",
+        "numeric": false,
+        "value": "Reddened, moist skin over chest and right arm at burn sites; skin elsewhere pink and warm"
+      },
+      "cap_refill": {
+        "label": "Cap Refill",
+        "value": 2,
+        "unit": "sec"
+      },
+      "pupils": {
+        "label": "Pupils",
+        "numeric": false,
+        "value": "PERRL — 4 mm bilaterally"
+      },
+      "lung_sounds": {
+        "label": "Lung Sounds",
+        "numeric": false,
+        "value": "Clear bilaterally — no stridor, no wheeze, no crackles; no evidence of inhalation injury"
+      },
+      "work_of_breathing": {
+        "label": "Work of Breathing",
+        "numeric": false,
+        "value": "Non-labored — increased rate from crying/pain; no retractions; no airway sounds"
+      }
+    },
+    "deterioration": {
+      "note": "If wet clothing is not removed and burn is not dressed, the burning process continues and patient becomes increasingly hemodynamically unstable from pain and fluid loss. Hypothermia risk increases if patient is exposed without covering. No inhalation injury in this scenario.",
+      "rates": {
+        "hr": 0.5,
+        "rr": 0,
+        "spo2": 0
+      },
+      "caps": {
+        "hr": {
+          "max": 170,
+          "min": 120
+        },
+        "spo2": {
+          "min": 95,
+          "max": 100
+        }
+      },
+      "string_thresholds": {
+        "skin_color": [
+          {
+            "spo2_below": 92,
+            "value": "Pallor increasing — consistent with pain-mediated vasovagal response; cover patient"
+          }
+        ]
+      }
+    },
+    "interventions": {
+      "remove_clothing": {
+        "label": "Remove Wet Clothing",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "remove.*clothing",
+          "take off.*shirt",
+          "remove.*shirt",
+          "cut.*clothing",
+          "get.*shirt.*off",
+          "remove.*wet",
+          "remove.*coffee.*soaked"
+        ],
+        "effects": {
+          "hr": {
+            "immediate_change": -10,
+            "rate_modifier": 0.85
+          }
+        },
+        "notes": "Critical first step — stops the ongoing burning process. Coffee stays hot in fabric. If clothing is adhered to the burn, do NOT remove it — cut around it."
+      },
+      "dry_dressing": {
+        "label": "Apply Dry Sterile Dressing",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "dry.*dressing",
+          "sterile.*dressing",
+          "cover.*burn",
+          "dress.*burn",
+          "non.?adherent",
+          "burn dressing",
+          "apply.*dressing"
+        ],
+        "effects": {
+          "hr": {
+            "immediate_change": -8,
+            "rate_modifier": 0.9
+          }
+        },
+        "notes": "Dry sterile dressing protects the burn, reduces pain from air contact, and helps prevent heat loss. Do NOT use wet dressings on burns > 10% BSA in children — hypothermia risk. Do NOT apply ointments, creams, or butter."
+      },
+      "wet_dressing": {
+        "label": "Apply Wet/Moist Dressing",
+        "within_bls_scope": true,
+        "indication_gate": {
+          "status": "contraindicated",
+          "reason": "Wet dressings are contraindicated for burns > 10% BSA in pediatric patients — they accelerate heat loss and hypothermia. This patient's burn is approximately 14% BSA. Use dry, sterile dressings only.",
+          "allowed_when": [
+            "minor_burn_under_10pct_bsa",
+            "adult_patient"
+          ]
+        },
+        "detection_patterns": [
+          "wet.*dressing",
+          "moist.*dressing",
+          "cool.*water.*dressing",
+          "saline.*dressing"
+        ],
+        "effects": {
+          "hr": {
+            "immediate_change": 5,
+            "rate_modifier": 1.1
+          }
+        },
+        "notes": "CONTRAINDICATED for large burns in pediatric patients — accelerates heat loss and hypothermia."
+      },
+      "calculate_bsa": {
+        "label": "Estimate Burn BSA",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "bsa",
+          "body surface area",
+          "rule of nines",
+          "calculate.*burn",
+          "how much.*burned",
+          "percent.*burned",
+          "estimate.*burn"
+        ],
+        "effects": {},
+        "notes": "Modified Rule of Nines for a 2-year-old: Head = 18%, each arm = 9%, anterior trunk = 18%, posterior trunk = 18%, each leg = 14%. Noah's burn: anterior chest ~9% + right arm ~9% = approximately 14-18% BSA partial thickness. Meets pediatric burn center criteria."
+      },
+      "prevent_hypothermia": {
+        "label": "Cover Patient / Prevent Hypothermia",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "cover.*patient",
+          "keep.*warm",
+          "blanket",
+          "prevent.*hypothermia",
+          "warm.*ambulance",
+          "wrap.*up"
+        ],
+        "effects": {
+          "hr": {
+            "immediate_change": -5,
+            "rate_modifier": 0.9
+          }
+        },
+        "notes": "Toddlers lose heat rapidly, especially after skin barrier is disrupted by burns. Cover patient with blanket after dressing. Warm the ambulance compartment. Prevents hypothermia — a major risk factor in burn patients."
+      },
+      "airway_assessment": {
+        "label": "Inhalation Injury Screen",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "inhalation",
+          "airway.*burn",
+          "singed.*hair",
+          "soot",
+          "hoarse",
+          "stridor.*airway",
+          "check.*mouth",
+          "check.*airway.*burn"
+        ],
+        "effects": {},
+        "notes": "No inhalation injury present in this scenario — no soot, no singed nasal hairs, no hoarseness, no stridor, clear lungs. Document the negative screen. High-flow O2 still recommended for significant burns."
+      },
+      "o2_nrb": {
+        "label": "High-flow O2 via NRB mask (15 LPM)",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "\\bnrb\\b",
+          "non.?rebreather",
+          "high.?flow.*o2",
+          "15\\s*lpm"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 1,
+            "rate_modifier": 0.8
+          }
+        },
+        "notes": "High-flow O2 recommended for significant burns (> 10% BSA). Also covers for any potential subclinical CO exposure from steam/smoke in enclosed space.",
+        "requires_popup": true,
+        "popup_type": "oxygen",
+        "popup_default": {
+          "device": "nrb",
+          "flow": 15
+        }
+      }
+    },
+    "improvement": {
+      "note": "With clothing removed, dressings applied, and patient covered, Noah's pain begins to decrease and vitals stabilize. He will not stop crying entirely — this is a significant burn — but the screaming intensity reduces.",
+      "requires_intervention": "remove_clothing",
+      "string_thresholds": {
+        "skin_color": [
+          {
+            "spo2_above": 97,
+            "value": "Skin outside burn area pink and warm; burn sites covered by dressing"
+          }
+        ],
+        "work_of_breathing": [
+          {
+            "spo2_above": 97,
+            "value": "Work of breathing unchanged — patient still crying but less frantically"
+          }
+        ]
+      },
+      "presentation_milestones": [
+        {
+          "spo2_above": 97,
+          "text": "With the coffee-soaked shirt removed and dressings applied, Noah's screaming has diminished slightly to pained crying. He is still reaching for Karen. Karen says 'He seems like he's hurting a little less. Thank you.'"
+        }
+      ]
+    }
+  },
+  "personas": {
+    "noah": {
+      "name": "Noah",
+      "age": 2,
+      "role": "patient",
+      "aliases": [
+        "Noah",
+        "the toddler",
+        "the child",
+        "the boy",
+        "baby",
+        "he",
+        "him"
+      ],
+      "description": "2-year-old male in severe pain from a hot liquid burn. He is screaming continuously and clinging to his mother. He is inconsolable — a 2-year-old cannot understand what happened or why it hurts. He cannot answer questions. He will resist any contact from strangers.",
+      "speaking_style": "Non-verbal — screaming, crying. Clinging to Karen with both arms. Reaching toward burned area and then pulling hand back.",
+      "clinical_state_instructions": "Do not give verbal responses as Noah. Describe his behavior in third person. Before clothing is removed: 'Noah's screams intensify when Karen lifts his shirt — the wet fabric is still hot against the burn.' After clothing removal: 'Noah's screaming decreases slightly — still crying hard but less frantic.' When a stranger tries to apply dressing: 'Noah twists and fights toward Karen, still crying.' If Karen holds Noah during dressing: 'Noah is still crying but less agitated with Karen holding him firmly.'",
+      "persona_rules": [
+        "Non-verbal throughout — only crying and behavioral descriptions",
+        "Cannot be fully calmed — significant burns are severely painful",
+        "Resists all stranger contact; tolerates it better when Karen is holding him",
+        "Wet shirt = worsening screams; shirt removed = reduced screaming"
+      ]
+    },
+    "karen": {
+      "name": "Karen",
+      "age": 30,
+      "role": "family",
+      "relation": "mother",
+      "aliases": [
+        "Karen",
+        "Mom",
+        "mom",
+        "mother",
+        "the mother",
+        "ma'am"
+      ],
+      "description": "Noah's mother. She is distraught and feels extremely guilty — she was holding the coffee when it happened. She is alternating between crying and frantic action. She needs clear, calm direction from EMS. She will ask repeatedly if he is going to be okay and whether she did something wrong by trying to remove the shirt. She can hold Noah if EMS asks her to.",
+      "speaking_style": "Tearful, guilt-ridden, speaking rapidly: 'It's all my fault! I had the coffee right there — I should have known! Is he going to be okay? Will he have scars? I was trying to take his shirt off — was that right?'",
+      "what_she_knows": [
+        "Noah was on her lap in the booth; he reached across and pulled the large coffee cup toward himself",
+        "The entire large coffee spilled — it poured down his chest and over his right arm",
+        "She immediately started trying to remove his shirt",
+        "The coffee was freshly made — very hot",
+        "No prior burn injuries",
+        "No allergies, no medications, no medical history",
+        "Last ate milk and crackers about 45 minutes ago",
+        "No inhalation exposure — no smoke, no steam inhalation that she noticed"
+      ],
+      "clinical_state_instructions": "If student validates that trying to remove the shirt was the right instinct: Karen calms slightly. 'Okay — tell me what you need me to do.' If student asks about soot or smoke inhalation: 'No — it was just the coffee spilling, not smoke or anything.' If student asks about Noah's breathing or voice: 'He's just crying — his voice sounds normal, no weird sounds from his throat.' If student asks about allergies: 'None that we know of.' Do not ask whether to use wet or dry dressings, ointments, cooling, transport, or any care step unless the student asks what Karen already did before EMS arrived.",
+      "persona_rules": [
+        "Feels intense guilt — needs one brief, calm reassurance from EMS before she can focus",
+        "Can hold Noah during assessment and dressing if EMS asks her to",
+        "Do not prompt dressing, cooling, ointment, or transport decisions",
+        "Provide full accurate history when asked"
+      ]
+    },
+    "alex": {
+      "name": "Alex",
+      "age": 28,
+      "role": "ems_partner",
+      "aliases": [
+        "Alex",
+        "partner",
+        "my partner",
+        "crew"
+      ],
+      "description": "Your EMT partner on Squad 4. Experienced and methodical in burn management. Gets burn kit on your direction. Does not volunteer clinical judgments — waits for direction.",
+      "speaking_style": "Brief, focused. 'Burn kit ready.' 'Shirt's still stuck on the left side — cut it?' 'Want me to call ahead to the burn center?'",
+      "capabilities": [
+        "Report individual vitals when asked",
+        "Report full set of vitals when asked",
+        "Get burn dressing kit from the rig",
+        "Assist with clothing removal — cut around adherent areas",
+        "Apply dressings when directed",
+        "Get blanket to cover patient",
+        "Notify receiving facility / burn center"
+      ]
+    }
+  },
+  "correct_treatment": {
+    "critical_actions": [
+      {
+        "id": "scene_safety",
+        "description": "Scene safety and BSI/PPE — gloves, watch for wet floor",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "pat",
+        "description": "PAT — screaming 2yo with obvious burn; appearance alarming, WOB non-labored, skin reddened at burn",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "stop_burning",
+        "description": "Remove wet coffee-soaked clothing immediately to stop the burning process",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(remove.*cloth|cut.*off|strip.*cloth|stop.*burn|burn.*stop|clothing|wet.*cloth|remove.*wet)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "airway_screen",
+        "description": "Screen for inhalation injury — soot, singed nasal hairs, hoarseness, stridor (all absent here)",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(inhalat|soot|singed|nasal.*hair|hoarseness|smoke.*inhal|upper.*airway|airway.*screen|screen.*airway|assess.*airway.*burn)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "dry_dressing",
+        "description": "Cover burn with dry, sterile dressing — NOT wet dressings on burns > 10% BSA in a toddler",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(dry.*dress|sterile.*dress|dress.*burn|cover.*burn|gauze.*dry|burn.*dress|dressing|wrap.*burn)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "prevent_hypothermia",
+        "description": "Cover patient with blanket after dressing to prevent heat loss",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(blanket|hypothermia|prevent.*cold|keep.*warm|cover.*patient|heat.*loss|warm.*patient)"
+          ],
+          "min_matches": 1
+        }
+      }
+    ],
+    "recommended_actions": [
+      {
+        "id": "calculate_bsa",
+        "description": "Estimate burn BSA — approximately 14% (chest + arm), using modified Rule of Nines for toddler",
+        "required": false
+      },
+      {
+        "id": "o2",
+        "description": "High-flow O2 via NRB — recommended for > 10% BSA burns",
+        "required": false
+      },
+      {
+        "id": "burn_center",
+        "description": "Notify receiving facility — this burn meets pediatric burn center criteria",
+        "required": false
+      }
+    ],
+    "out_of_scope_bls": [
+      "burn_ointments",
+      "rupture_blisters",
+      "wet_dressings_large_burns",
+      "iv_fluid_resuscitation",
+      "iv_pain_medication"
+    ],
+    "out_of_scope_aemt": [],
+    "out_of_scope_paramedic": [],
+    "clinical_decision_points": {
+      "inhalation_injury": "NOT present in this scenario — coffee spill, no smoke or steam inhalation. Negative screen: no soot on face, no singed nasal hairs, no hoarseness, no stridor, lungs clear. Document the screen.",
+      "burn_center_criteria": "This burn meets pediatric burn center criteria: estimated 14% partial-thickness BSA in a 2-year-old. All significant pediatric burns (> 10% BSA) should be transported to a pediatric burn center when feasible.",
+      "als_trigger": "ALS/intercept expectations are determined by the active agency configuration. Communicate: 2-year-old, ~14% BSA partial-thickness scald burn, no inhalation injury, currently GCS 14 (pain/crying), vitals stable. ALS may bring IV analgesics for pain management when ALS is involved.",
+      "hypothermia_prevention": "Critical in toddlers — skin barrier disrupted by burn, and small body surface-to-volume ratio means rapid heat loss. Remove wet clothing (stops burning), dress, then cover immediately. Warm the ambulance compartment."
+    }
+  },
+  "scoring": {
+    "overall_considerations": [
+      "The first priority is stopping the burning process — removing the coffee-soaked clothing. Credit this as the most urgent initial action.",
+      "Inhalation injury screen is a required step for any burn — credit even when the screen is negative (documenting absence of inhalation signs matters).",
+      "Wet dressings are a major error for burns > 10% BSA in pediatric patients — penalize if student applies wet dressings after information that this is a large burn.",
+      "Hypothermia prevention is as important as the dressing — cover the patient after dressing.",
+      "Do NOT penalize for not naming 'Rule of Nines' — credit any reasonable BSA estimate with rationale.",
+      "Do not penalize for the SpO2 being 98% and not applying O2 — however credit high-flow O2 application as recommended practice for > 10% BSA burns."
+    ],
+    "dmist_considerations": [
+      "D: Noah, 2-year-old male, 26 lbs (12 kg — Broselow Red).",
+      "M: Partial-thickness scald burn — hot coffee spill, approximately 14% BSA (chest + right arm). No inhalation injury.",
+      "I: Wet clothing removed. Dry sterile burn dressings applied. Patient covered with blanket for hypothermia prevention. High-flow O2 via NRB if applied.",
+      "S: GCS 14 (pain/crying), SpO2 98%, HR 148, RR 30. Reddened, blistered skin at burn sites. No inhalation signs.",
+      "T: Transporting to ED/pediatric burn center. ALS notified — consider pain management."
+    ],
+    "dmist_components": {
+      "D": {
+        "description": "Patient demographics",
+        "required_elements": [
+          "name: Noah",
+          "age: 2",
+          "sex: male",
+          "weight: 12 kg or 26 lbs (Broselow Red)"
+        ],
+        "corroboration_source": "scenario_patient_fields"
+      },
+      "M": {
+        "description": "Mechanism and chief complaint",
+        "required_elements": [
+          "hot coffee spill",
+          "scald burn",
+          "burn location (chest and right arm)"
+        ],
+        "corroboration_source": "any"
+      },
+      "I": {
+        "description": "Injury details — burn distribution, depth, estimated BSA, and exposure context",
+        "required_elements": [
+          "scalding burn from spilled hot coffee",
+          "burn location: chest and right arm",
+          "partial-thickness (second-degree) burn appearance",
+          "estimated BSA percentage",
+          "exposure duration: brief (spill, not immersion)"
+        ],
+        "corroboration_source": "history_and_findings",
+        "note": "I is illness/injury, not interventions. Treatments (clothing removal, dressing type, O2) belong under T."
+      },
+      "S": {
+        "description": "Signs and current status",
+        "required_elements": [
+          "burn depth (partial vs full thickness)",
+          "BSA percentage",
+          "SpO2",
+          "airway status"
+        ],
+        "corroboration_source": "vitals_and_findings"
+      },
+      "T": {
+        "description": "Current condition at ALS handoff",
+        "required_elements": [
+          "current burn coverage status",
+          "hypothermia prevention measures"
+        ],
+        "corroboration_source": "any"
+      }
+    },
+    "narrative_considerations": [
+      "CHART format: dispatch, mechanism (hot coffee spill, anterior chest + right arm), assessment (PAT, burn depth — partial thickness with blistering, BSA estimate, inhalation screen — negative), treatment (clothing removed, dry dressing, covered, O2 if applied), transport.",
+      "Key documentation: inhalation injury screen result (even if negative, document the screen), burn depth, BSA estimate, that wet dressings were NOT used (with reason if documented), hypothermia prevention.",
+      "Objective: 'Reddened, moist skin with early blister formation, approximately 14% BSA estimated' vs 'bad burn on his chest and arm.'"
+    ],
+    "required_assessments": [
+      {
+        "id": "inhalation_injury_screen",
+        "description": "Screen for inhalation injury (soot, singed hair/eyebrows, hoarseness, stridor, facial burns)",
+        "keywords": [
+          "inhalation",
+          "inhaled",
+          "soot",
+          "singed",
+          "hoarse",
+          "hoarseness",
+          "stridor",
+          "airway burn",
+          "facial burn",
+          "face",
+          "eyebrow",
+          "smoke",
+          "respiratory",
+          "voice"
+        ],
+        "missing_deduction": 3,
+        "note": "Inhalation injury screen is a required step for any burn regardless of burn size. The scenario explicitly calls this out — documenting a negative screen still demonstrates clinical thoroughness."
+      },
+      {
+        "id": "bsa_estimation",
+        "description": "Estimate burn BSA using modified Rule of Nines or Rule of Palms for pediatric patient",
+        "keywords": [
+          "BSA",
+          "body surface area",
+          "rule of nines",
+          "rule of palms",
+          "percent",
+          "14",
+          "15",
+          "percent burned",
+          "coverage",
+          "how much",
+          "how big",
+          "size"
+        ],
+        "missing_deduction": 2,
+        "note": "BSA estimation determines burn severity classification and drives O2 delivery decision (>10% BSA warrants high-flow O2) and wet vs. dry dressing choice."
+      }
+    ],
+    "required_screens": [
+      {
+        "id": "non_accidental_trauma_screen",
+        "description": "Non-accidental trauma (NAT) or abuse considered and documented",
+        "keywords": [
+          "abuse",
+          "non-accidental",
+          "NAT",
+          "injury pattern",
+          "inconsistent",
+          "caregiver",
+          "report",
+          "suspicious",
+          "mandated reporter",
+          "CPS",
+          "history inconsistent",
+          "inflicted",
+          "neglect"
+        ],
+        "missing_deduction": 2,
+        "note": "Scald burns in toddlers are a high-risk presentation for NAT. Mandatory reporting obligation applies. Absent documentation of consideration is a clinical reasoning gap."
+      }
+    ],
+    "by_level": {
+      "MFR": {
+        "critical_focus": [
+          "Remove the wet clothing — stop the burning process",
+          "Cover the burn — dry dressing or clean sheet",
+          "Keep the patient warm",
+          "Call for ALS"
+        ],
+        "additional_expectations": [],
+        "grace_items": [
+          "BSA calculation not required at MFR level — recognition that this is a significant burn is sufficient",
+          "Inhalation injury terminology not required — credit check of airway and breathing"
+        ]
+      },
+      "EMT": {
+        "critical_focus": [
+          "PAT immediately on arrival",
+          "Remove wet clothing — first and most urgent action",
+          "Inhalation injury screen — soot, singed hair, hoarseness, stridor (all absent)",
+          "Dry sterile dressing — NOT wet dressings for burns > 10% BSA",
+          "Prevent hypothermia — cover patient after dressing",
+          "Estimate BSA using modified Rule of Nines for toddler",
+          "High-flow O2 via NRB for > 10% BSA burn"
+        ],
+        "additional_expectations": [
+          "Educate mother that wet dressings worsen heat loss in toddlers",
+          "Communicate burn center criteria and request notification"
+        ],
+        "grace_items": [
+          "PAT acronym not required — credit component assessment",
+          "ALS request is not required when the active agency configuration co-dispatches ALS",
+          "Exact BSA percentage not required — credit reasonable estimate with correct reasoning",
+          "O2 not required if SpO2 ≥ 95% — but credit if applied as recommended practice"
+        ]
+      },
+      "AEMT": {
+        "critical_focus": [
+          "All EMT expectations",
+          "IV access for fluid resuscitation in significant burns — discuss Parkland formula"
+        ],
+        "additional_expectations": [],
+        "grace_items": [
+          "Same EMT grace items"
+        ]
+      },
+      "Paramedic": {
+        "critical_focus": [
+          "All EMT expectations",
+          "IV access and fluid resuscitation — Parkland formula (4 mL × kg × % BSA, half in first 8 hours)",
+          "IV analgesics for pain management (fentanyl or morphine per ALS protocol)",
+          "Consider Foley catheter for burns > 20% BSA (not required in this case)"
+        ],
+        "additional_expectations": [
+          "Parkland formula calculation for 12 kg, 14% BSA"
+        ],
+        "grace_items": [
+          "Same base grace items"
+        ]
+      }
+    },
+    "corroboration_rules": {
+      "dmist": {
+        "I": {
+          "max_deduction_per_violation": 3,
+          "note": "Dressing type (dry vs wet) must match the intervention timeline — wet dressings on large BSA burns is a clinical error that must be flagged in scoring"
+        }
+      },
+      "narrative": {
+        "A": {
+          "max_deduction_per_violation": 2,
+          "note": "Burn depth and BSA assessment claims must match the run record findings"
+        },
+        "T": {
+          "max_deduction_per_violation": 2,
+          "note": "Treatment documentation claims (dressing type, hypothermia prevention) must match the intervention timeline"
+        }
+      }
+    }
+  },
+  "scoring_rubric": {
+    "clinical_performance": {
+      "max": 50,
+      "full_credit": "PAT, wet clothing removed (first priority), inhalation injury screen performed and documented, burn depth assessed, BSA estimated, dry sterile dressing applied, patient covered for hypothermia prevention, O2 applied — plus base rubric: scene safety, primary assessment, mechanism, hemorrhage control, secondary assessment, handoff",
+      "partial_credit": "Clothing removed and dressed but inhalation screen omitted, or hypothermia prevention not addressed",
+      "minimal_credit": "Wet dressings applied on large burn (major error) OR clothing not removed OR hypothermia prevention completely absent"
+    },
+    "narrative": {
+      "max": 20,
+      "full_credit": "CHART complete: dispatch, mechanism (coffee spill), burn assessment (depth — partial thickness, blistering; BSA estimate ~14%), inhalation screen (negative — no soot, no singed hair, no hoarseness, clear lungs), treatment (clothing removed, dry dressing, covered, O2), transport to burn center.",
+      "partial_credit": "Most CHART elements present but inhalation screen result not documented or BSA not estimated",
+      "minimal_credit": "Documents wet dressings applied, or burn assessment absent"
+    },
+    "scope_adherence": {
+      "max": 10,
+      "full_credit": "Stayed within effective provider scope and MCA rules: IV pain medication not administered — outside BLS scope for pediatric burn management. No out-of-scope attempts or orders.",
+      "partial_credit": "No dangerous out-of-scope intervention attempted, but scope reasoning, level-specific escalation, or MCA-specific scope recognition was incomplete.",
+      "minimal_credit": "Out-of-scope intervention attempted or ordered, or provider-level limits materially ignored."
+    },
+    "dmist": {
+      "max": 10,
+      "full_credit": "D: Noah, 2yo, 12 kg; M: scald burn ~14% BSA, chest + right arm; I: clothing removed, dry dressing, covered; S: GCS 14, HR 148, SpO2 98%, no inhalation injury; T: burn center transport, ALS notified.",
+      "partial_credit": "3–4 components; BSA or inhalation screen result missing",
+      "minimal_credit": "2 or fewer components or wrong treatment documented"
+    },
+    "professionalism": {
+      "max": 10,
+      "full_credit": "Reassured Karen briefly ('this wasn't your fault — you reacted correctly'), directed Karen to hold Noah during treatment, explained wet dressing contraindication in plain language, addressed Karen's question about scars",
+      "partial_credit": "Communication present but Karen's guilt not addressed or mother not utilized to hold Noah",
+      "minimal_credit": "Karen’s distress and guilt not acknowledged — no reassurance given and mother not utilized to comfort Noah during assessment or dressing"
+    },
+    "protocols_treatment": {
+      "max": 10,
+      "full_credit": "Protocol-aligned treatment completed: Wet dressings not applied to burn — wet dressings on burns >10% BSA in a toddler cause dangerous hypothermia. Contraindicated care avoided and in-scope treatment priorities addressed.",
+      "partial_credit": "Most treatment priorities addressed, but one important protocol-aligned intervention, escalation step, or contraindication check was incomplete or delayed.",
+      "minimal_credit": "Key protocol/treatment priority missed, contraindicated care performed, or treatment plan materially inconsistent with protocol."
+    }
+  },
+  "exemplar_dmist": "D — Noah, 2-year-old male, approximately 26 lbs (12 kg — Broselow Red).\nM — Partial-thickness scald burn. Hot coffee spill — patient pulled a large cup of fresh coffee off table; liquid poured onto anterior chest and right arm while in mother's lap. No smoke or steam inhalation.\nI — Wet, coffee-soaked clothing removed immediately on arrival to stop burning process. Inhalation injury screen performed: no soot on face, no singed nasal hairs, voice normal (crying), no stridor — negative. Burn depth: moist, reddened skin with early blister formation — partial thickness. Estimated BSA: approximately 14% (anterior chest ~9% + right arm ~5% using modified Rule of Nines for age). Dry, sterile burn dressings applied. Patient covered with blanket for hypothermia prevention. High-flow O2 via NRB at 15 LPM applied.\nS — GCS 14 (pain/crying), SpO2 98%, HR 148, RR 30. Skin reddened and moist at burn sites. Cap refill 2 sec. No inhalation signs. Patient consoled by mother during treatment.\nT — Transporting to ED for pediatric burn center evaluation. ALS Medic 4 notified — 2-year-old, ~14% BSA scald burn, consider IV access and pain management en route.",
+  "exemplar_narrative": "Squad 4 responded to 500 Main Street coffee shop for a 2-year-old male with a burn. Upon arrival, patient Noah, a 2-year-old male weighing approximately 26 lbs (12 kg), was found being held by his mother in a corner booth. A large overturned coffee cup was present on the table. Mother reports patient pulled cup of fresh hot coffee off table while seated on her lap — liquid poured over anterior chest and right arm. No smoke or steam inhalation. No LOC.\n\nPAT: Screaming, eyes open — alert. Work of breathing non-labored, no retractions. Reddened skin at burn sites, pink elsewhere. Wet, coffee-soaked clothing removed on arrival to terminate ongoing burning process. Inhalation injury screen: no soot on face, nasal hairs intact, voice normal (crying), no stridor, lung sounds clear bilaterally — screen negative.\n\nBurn assessment: reddened, moist skin with early blister formation at anterior chest and right arm — consistent with partial-thickness (2nd degree) burn. Estimated BSA approximately 14% using modified pediatric Rule of Nines (anterior chest ~9%, partial right arm ~5%). Meets pediatric burn center criteria (> 10% BSA partial thickness in a 2-year-old).\n\nDry, sterile burn dressings applied to chest and right arm — wet dressings withheld (hypothermia risk for > 10% BSA burns in toddlers). Patient covered with blanket to prevent heat loss. High-flow O2 via NRB at 15 LPM applied. Baseline vitals: SpO2 98%, HR 148, RR 30, BP 90/55, GCS 14 (pain). ALS Medic 4 notified of pediatric burn patient with request for pain management consideration. Patient care transferred to ED staff with full verbal report.",
+  "debrief": {
+    "condition_background": "Noah has sustained a partial-thickness (2nd degree) scald burn involving approximately 14% of his total body surface area — the anterior chest and right arm from hot coffee. Partial-thickness burns affect the epidermis and varying depths of the dermis — they are painful (nerve endings intact), appear moist and reddened with early blistering, and will require wound care and possible grafting depending on depth and healing. The prehospital priorities for burn patients are: (1) STOP the burning process — remove the hot liquid-soaked clothing immediately; (2) AIRWAY — screen for inhalation injury, which can be immediately life-threatening from supraglottic edema; (3) WOUND CARE — dry dressings, not wet (wet dressings cause hypothermia in large burns in children); and (4) HYPOTHERMIA PREVENTION — pediatric patients lose heat rapidly through disrupted skin. A wet dressing on a 14% BSA burn in a 12-kg toddler is not a minor error — it is a meaningful clinical mistake that increases hypothermia risk.",
+    "key_teaching_points": [
+      "Stop the burning process first — wet, heat-retaining fabric (coffee-soaked shirt) continues to transfer heat to the burn even after the liquid itself has been removed. Get it off immediately.",
+      "Inhalation injury screen at every burn: soot in airway, singed nasal hairs, hoarse voice, stridor, burned face — any of these requires immediate ALS priority and rapid transport. Airway edema can close rapidly.",
+      "Wet dressings are CONTRAINDICATED for burns > 10% BSA in pediatric patients — heat loss through evaporation from a wet dressing on a large burn in a small child causes hypothermia. Use dry sterile dressings only.",
+      "Hypothermia is a major risk factor in burns — disrupted skin barrier + pediatric body surface-to-volume ratio means rapid heat loss. Remove wet clothing, dress, cover immediately. Warm the ambulance.",
+      "Modified Rule of Nines for toddlers: head is proportionally larger (18% in infants vs 9% in adults); legs are proportionally smaller. The standard adult Rule of Nines overestimates leg BSA and underestimates head BSA in children.",
+      "Burn center criteria — know them: > 10% BSA partial thickness in a child, any full-thickness burn, burns to hands/face/genitalia/major joints, circumferential burns, inhalation injury, electrical/chemical burns.",
+      "Do NOT rupture blisters — they are a natural barrier against infection. The wound dehisces naturally."
+    ],
+    "common_mistakes": [
+      "Applying a wet or saline-soaked dressing — the most common well-intentioned error; contraindicated for large burns due to hypothermia risk",
+      "Failing to remove wet clothing — the burning process continues as long as hot liquid is in contact with the skin",
+      "Skipping the inhalation injury screen — in this scenario it's negative, but missing the screen in a fire or steam environment is a critical error",
+      "Not covering the patient after dressing — dressing without blanket leaves a toddler with disrupted skin exposed to ambient temperature",
+      "Not informing ALS of pediatric burn patient — IV analgesics and fluid resuscitation should be considered for > 10% BSA burns"
+    ]
+  },
+  "legacy_ai_categories": [
+    "documentation",
+    "professionalism"
+  ],
+  "checklist": [
+    {
+      "id": "peds_trauma_04_burn.pat_assessment",
+      "description": "PAT completed — appearance (screaming, distressed), work of breathing (non-labored), circulation to skin (reddened at burn site) assessed",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "scene_entry",
+        "scene_entry_path": "pat_assessment"
+      },
+      "tier2_patterns": [
+        "(?i)(pat|screaming|distress|appearance|work of breath|circulation|skin|burn|red)"
+      ],
+      "done_feedback": "PAT completed — screaming/distressed appearance, non-labored breathing, and intact circulation assessed before wound management.",
+      "missed_feedback": "PAT not completed — burn patients may have concurrent inhalation injury causing airway compromise; PAT identifies this before treatment begins.",
+      "clinical_rationale": "PAT ensures the burn patient's airway, breathing, and circulation are assessed systematically; inhalation injury can cause rapid airway edema and must be detected early.",
+      "common_error": "Focusing immediately on the burn wound before checking the airway — inhalation injury takes priority over wound management."
+    },
+    {
+      "id": "peds_trauma_04_burn.stop_burning",
+      "description": "Wet coffee-soaked clothing removed immediately to stop the burning process",
+      "subtype": "intervention",
+      "category": "clinical_performance",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "remove_clothing"
+      },
+      "tier2_patterns": [
+        "(?i)(remove.*cloth|take off.*cloth|cut.*off|stop.*burn|wet.*cloth|coffee|cooling)"
+      ],
+      "done_feedback": "Coffee-soaked clothing removed immediately — stops ongoing thermal injury; fastest intervention to limit burn depth and area.",
+      "missed_feedback": "Soaked clothing not removed — clothing saturated with a hot liquid continues to transfer heat to the skin; failing to remove it allows the burn to deepen.",
+      "clinical_rationale": "Removing saturated clothing is the single most important first step in scalding burns; hot liquids retained in fabric continue to burn until removed.",
+      "common_error": "Cutting around the wound and leaving saturated clothing in place — all saturated clothing must be removed, including over non-burned areas."
+    },
+    {
+      "id": "peds_trauma_04_burn.airway_screen",
+      "description": "Inhalation injury screened — soot, singed nasal hairs, hoarseness, and stridor assessed (all absent in this scenario)",
+      "subtype": "screen",
+      "category": "clinical_performance",
+      "point_value": 6,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "airway_assessment"
+      },
+      "tier2_patterns": [
+        "(?i)(soot|singed|nasal hair|hoarse|stridor|inhalat|airway|smoke|throat|voice)"
+      ],
+      "done_feedback": "Inhalation injury screened — soot, singed nasal hairs, hoarseness, and stridor assessed; no evidence of inhalation injury in this closed-space coffee spill.",
+      "missed_feedback": "Inhalation injury not screened — upper airway edema from thermal injury can progress rapidly; the window for intubation closes as edema worsens.",
+      "clinical_rationale": "Facial burns, singed nasal hairs, carbonaceous sputum, hoarseness, and stridor indicate inhalation injury with impending airway compromise; these patients need ALS and rapid transport.",
+      "common_error": "Focusing on the skin burn and not assessing the upper airway — inhalation injury is the primary killer in burn patients; skin burns are managed in the ED."
+    },
+    {
+      "id": "peds_trauma_04_burn.dry_dressing",
+      "description": "Burn covered with dry sterile dressing — wet dressings NOT applied (>10% BSA in a toddler risks hypothermia)",
+      "subtype": "intervention",
+      "category": "clinical_performance",
+      "point_value": 6,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "dry_dressing"
+      },
+      "tier2_patterns": [
+        "(?i)(dry.*dressing|sterile.*dressing|cover.*burn|dressing.*dry|dry.*sterile|gauze)"
+      ],
+      "done_feedback": "Dry sterile dressing applied — correct for burns > 10% BSA in a toddler; prevents contamination without causing hypothermia.",
+      "missed_feedback": "Wet or moist dressings applied to large burn area — wet dressings cause rapid evaporative heat loss and hypothermia in a toddler with > 10% BSA burn.",
+      "clinical_rationale": "Wet dressings are appropriate only for small burns (< 10% BSA); large burns require dry dressings to prevent hypothermia, which worsens coagulopathy and increases mortality.",
+      "common_error": "Using wet towels to 'cool the burn' on a large area — evaporative cooling of > 10% BSA in a child causes dangerous hypothermia; dry dressings are the protocol-mandated approach."
+    },
+    {
+      "id": "peds_trauma_04_burn.prevent_hypothermia",
+      "description": "Patient covered with blanket to prevent heat loss after dressing applied",
+      "subtype": "intervention",
+      "category": "clinical_performance",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "prevent_hypothermia"
+      },
+      "tier2_patterns": [
+        "(?i)(blanket|warm|hypothermia|heat loss|cover|keep warm|temperature)"
+      ],
+      "done_feedback": "Patient covered with blanket after dressing — prevents further evaporative heat loss in a child who has lost the thermal barrier of intact skin.",
+      "missed_feedback": "Hypothermia prevention not performed — burned children lose heat rapidly through damaged skin; hypothermia is a preventable complication that worsens outcome.",
+      "clinical_rationale": "Burned skin cannot regulate temperature; evaporative and conductive heat loss begins immediately; active warming or insulation is required for any child with a significant burn.",
+      "common_error": "Applying the blanket before the dressing — the wound must be covered first; the blanket goes over the dressing to provide insulation."
+    },
+    {
+      "id": "peds_trauma_04_burn.scope_no_wet_dressings",
+      "description": "Wet dressings not applied to burn — wet dressings on burns >10% BSA in a toddler cause dangerous hypothermia",
+      "subtype": "intervention",
+      "category": "protocols_treatment",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "absence_check",
+        "absence_intervention_key": "wet_dressing"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "Wet dressings correctly withheld — contraindicated for burns > 10% BSA in a toddler due to hypothermia risk.",
+      "missed_feedback": "Wet dressings applied — contraindicated for large burns in pediatric patients; causes rapid hypothermia and worsens outcome.",
+      "clinical_rationale": "Wet dressings cause systemic hypothermia, coagulopathy, and cardiovascular compromise when applied to large burn areas in children.",
+      "common_error": "Applying wet towels because 'cooling helps burns' — this is only true for small (< 10% BSA) burns; for large burns it is harmful."
+    },
+    {
+      "id": "peds_trauma_04_burn.scope_no_iv_pain_medication",
+      "description": "IV pain medication not administered — outside BLS scope for pediatric burn management",
+      "subtype": "intervention",
+      "category": "scope_adherence",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [
+        "MFR",
+        "EMT"
+      ],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "absence_check",
+        "absence_intervention_key": "iv_pain_medication"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "IV pain medication correctly withheld — outside BLS scope; burn management at BLS is wound care, hypothermia prevention, and transport.",
+      "missed_feedback": "IV pain medication attempted — outside BLS scope; IV opioid analgesia requires ALS-level certification.",
+      "clinical_rationale": "BLS burn management is stop burning, cover with dry dressing, prevent hypothermia, and transport; IV pain management is ALS."
+    }
+  ]
+}

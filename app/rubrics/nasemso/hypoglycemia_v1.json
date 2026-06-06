@@ -1,0 +1,545 @@
+{
+  "_schema": "ems_call_type_rubric_v1",
+  "id": "nasemso_hypoglycemia_v1",
+  "version": "2022-03-11",
+  "call_type": "hypoglycemia",
+  "domain": "medical",
+  "overlays_supported": ["state", "agency", "scenario"],
+
+  "protocol_refs": [
+    {
+      "id": "nasemso_v3_hypoglycemia",
+      "title": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Hypoglycemia",
+      "version": "2022-03-11",
+      "url": null
+    },
+    {
+      "id": "nasemso_v3_altered_mental_status",
+      "title": "NASEMSO v3.0 — Altered Mental Status",
+      "version": "2022-03-11",
+      "url": null
+    },
+    {
+      "id": "nasemso_v3_blood_glucose_testing",
+      "title": "NASEMSO v3.0 — Procedure: Blood Glucose Testing",
+      "version": "2022-03-11",
+      "url": null
+    },
+    {
+      "id": "nasemso_v3_safety_hypoglycemia",
+      "title": "NASEMSO v3.0 — Patient Safety: Oral Glucose Administration Precautions",
+      "version": "2022-03-11",
+      "url": null
+    }
+  ],
+
+  "source_role_map": {
+    "ems_measured_vital": {
+      "training": ["authored_vitals"],
+      "qaqi":     ["epcr_vital", "monitor_import"]
+    },
+    "ems_performed_exam": {
+      "training": ["authored_vitals"],
+      "qaqi":     ["epcr_exam", "monitor_import"],
+      "_note": "ai_roleplay_tag intentionally excluded: roleplay responses include caregiver/patient-stated exam findings. student_stated_exam will be added when actively stamped by the backend."
+    },
+    "challenge_calculated_gcs": {
+      "training": ["gcs_modal"],
+      "qaqi":     ["epcr_vital", "epcr_exam", "monitor_import"],
+      "_note": "Structured GCS calculator evidence. Plain AVPU/LOC remains separate; formal GCS credit requires the modal in training."
+    },
+    "challenge_measured_bgl": {
+      "training": ["glucometer_check"],
+      "qaqi":     ["epcr_vital", "monitor_import"],
+      "_note": "Structured EMS glucometer/fingerstick evidence. Caregiver CGM/home readings are supplemental history and must not satisfy this role."
+    },
+    "caregiver_reported": {
+      "training": ["caregiver_reported_history"],
+      "qaqi":     ["epcr_history", "caregiver_statement"],
+      "_note": "Use for items where caregiver-sourced information is specifically required (e.g., insulin dose administered by caregiver, last observed meal, pump settings)."
+    },
+    "patient_reported": {
+      "training": ["patient_reported_history"],
+      "qaqi":     ["epcr_history", "patient_statement"]
+    },
+    "history_obtained": {
+      "training": ["caregiver_reported_history", "patient_reported_history"],
+      "qaqi":     ["epcr_history", "dispatch_notes", "caregiver_statement"],
+      "_note": "Aggregate role for items where either caregiver or patient reported history is acceptable. For pediatric hypoglycemia, insulin dose and pump history should use caregiver_reported specifically."
+    },
+    "ems_administered_intervention": {
+      "training": ["intervention_record"],
+      "qaqi":     ["epcr_intervention", "car_medication_administration"],
+      "_note": "Intervention Tier 1 evidence comes from the intervention table (type:intervention). This role is QA/QI metadata; not used in eligible_source_roles for finding-type evidence."
+    },
+    "scene_entry_data": {
+      "training": ["system_scene_entry"],
+      "qaqi":     ["cad_scene_entry", "system_scene_entry"]
+    }
+  },
+
+  "checklist_items": [
+
+    {
+      "id": "hypoglycemia.scene_safety_ppe",
+      "description": "Ensures scene safety and dons appropriate PPE prior to patient contact",
+      "category": "clinical_performance",
+      "subtype": "scene_entry",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_hypoglycemia"],
+      "evidence_requirements": [
+        { "type": "scene_entry", "scene_entry_path": "ppe.required_complete" }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(bsi|ppe|gloves?|mask|eye.?protection|scene.safe|safe.scene)\\b"
+      ],
+      "done_feedback": "PPE and scene safety confirmed before patient contact.",
+      "missed_feedback": "Scene safety and PPE must be established before approaching any patient. Hypoglycemic patients may be combative or fall risk.",
+      "common_errors": [],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "hypoglycemia.general_impression",
+      "description": "Forms a general impression including appearance, work of breathing, and circulation to skin on scene entry",
+      "category": "clinical_performance",
+      "subtype": "scene_entry",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_hypoglycemia", "nasemso_v3_altered_mental_status"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)general.impression|appears?|looks?|skin.color|diaphor|pale|responsive|unresponsive|consciousness|appearance",
+          "eligible_source_roles": ["ems_performed_exam"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(general.impression|appears?|looks?|diaphoretic|pale|clammy|unresponsive|responsive|conscious|in.distress|alert)\\b"
+      ],
+      "done_feedback": "General impression documented on arrival — appearance and level of responsiveness establish the urgency of the call.",
+      "missed_feedback": "A general impression on scene entry sets the treatment urgency. For hypoglycemia: is the patient alert, confused, unresponsive? Diaphoresis and pallor on arrival suggest acute neuroglycogenic compromise.",
+      "common_errors": [],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "hypoglycemia.loc_assessed",
+      "description": "Assesses level of consciousness using AVPU or GCS; determines whether patient is alert, responds to voice, pain, or unresponsive",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_altered_mental_status", "nasemso_v3_hypoglycemia"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)\\b(loc|gcs|avpu|mental.status|responsiveness|conscious|alert|verbal|pain|unresponsive|oriented|confused|altered)\\b",
+          "eligible_source_roles": ["ems_performed_exam"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(alert|oriented|gcs|avpu|responsive|unresponsive|loc|mental.status|confused|altered|lethargic|obtunded|stupor|aroused)\\b"
+      ],
+      "done_feedback": "LOC assessed — establishes baseline and informs the treatment pathway. The threshold for oral glucose eligibility is the ability to swallow safely, not a specific LOC category alone.",
+      "missed_feedback": "LOC assessment guides treatment, but the critical threshold is the ability to swallow and protect the airway — not a specific AVPU category. A patient who is mildly confused but GCS 14–15, gag intact, not vomiting or seizing, and able to follow simple commands reliably may still be eligible for oral glucose — that determination is made explicitly at the swallow assessment step. Significantly depressed LOC (unresponsive, seizure activity, vomiting, or unable to follow commands reliably) requires IV dextrose or IM glucagon. Do not automatically equate 'confused' with 'no oral glucose' without the specific swallow assessment.",
+      "common_errors": ["Withholding oral glucose based on confusion alone without performing swallow assessment", "Treating with oral glucose before confirming LOC and swallow", "Not trending LOC changes over time"],
+      "unsafe_if_missed": true
+    },
+
+    {
+      "id": "hypoglycemia.gcs_calculated",
+      "description": "Calculates and documents Glasgow Coma Scale with eye, verbal, and motor components when altered mental status is present",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_altered_mental_status", "nasemso_v3_hypoglycemia"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "vital",
+          "key_pattern": "(?i)\\bgcs\\b|glasgow",
+          "eligible_source_roles": ["challenge_calculated_gcs"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(gcs|glasgow.coma.scale|E\\s*[1-4]\\s*V\\s*[1-5]\\s*M\\s*[1-6])\\b"
+      ],
+      "done_feedback": "Formal GCS calculated with components — this provides a reproducible neurologic baseline for treatment eligibility and ALS handoff.",
+      "missed_feedback": "For altered mental status, document a reproducible neurologic baseline. AVPU establishes responsiveness, but a component GCS gives ALS and the ED a trendable score.",
+      "common_errors": ["Stating only 'altered' or 'confused' without a reproducible score", "Documenting a total GCS without eye, verbal, and motor components"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "hypoglycemia.airway_breathing",
+      "description": "Assesses airway patency and breathing quality; determines whether patient can protect their airway",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_hypoglycemia"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)airway|breath|respirat|\\brr\\b|resp.rate|gurgling|snoring|clear|patent|obstructed|protecting",
+          "eligible_source_roles": ["ems_performed_exam"]
+        },
+        {
+          "type": "finding",
+          "finding_type": "vital",
+          "key_pattern": "(?i)respiratory.rate|resp.rate|\\brr\\b|respirations",
+          "eligible_source_roles": ["ems_measured_vital"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(airway|breath|respirations?|patent|obstructed|protecting.airway|snoring|gurgling|clear|respiratory.rate|\\brr\\b)\\b"
+      ],
+      "done_feedback": "Airway and breathing assessed — confirms airway protection status, which is the prerequisite for oral glucose eligibility.",
+      "missed_feedback": "Airway assessment is required before any oral medication. A hypoglycemic patient with a depressed gag reflex or gurgling respirations cannot safely receive oral glucose — aspiration risk is real.",
+      "common_errors": ["Skipping airway assessment when patient appears awake but confused"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "hypoglycemia.blood_glucose_check",
+      "description": "Measures blood glucose via fingerstick glucometer; does not rely solely on caregiver-reported CGM or home glucose reading",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_blood_glucose_testing", "nasemso_v3_hypoglycemia"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "vital",
+          "key_pattern": "(?i)blood.glucose|blood.sugar|bgl|glucometer|finger.?stick|glucose.level",
+          "eligible_source_roles": ["challenge_measured_bgl"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(blood.glucose|bgl|glucometer|finger.?stick|glucose.check|blood.sugar|glucose.level|sugar.level)\\b"
+      ],
+      "done_feedback": "Blood glucose measured via EMS glucometer — on-scene measurement is the authoritative value for treatment decisions.",
+      "missed_feedback": "A fingerstick blood glucose is required for every altered mental status call regardless of suspected diagnosis. Caregiver-reported CGM readings are supplementary, not authoritative — CGM sensors can lag by 10–20 minutes and are unreliable during rapid glucose changes.",
+      "common_errors": ["Accepting caregiver's CGM reading as the treatment-decision BGL", "Delaying glucometer check to gather history first"],
+      "unsafe_if_missed": true
+    },
+
+    {
+      "id": "hypoglycemia.skin_assessment",
+      "description": "Assesses skin color, temperature, and moisture; notes diaphoresis, pallor, and capillary refill",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_hypoglycemia"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)skin|diaphor|clammy|pale|pallor|cap.refill|capillary.refill|color|moisture|warm|cool|cold",
+          "eligible_source_roles": ["ems_performed_exam"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(diaphoretic|clammy|pale|pallor|cap.refill|capillary.refill|skin.color|moisture|warm|cool|cold|sweating|sweaty)\\b"
+      ],
+      "done_feedback": "Skin assessed — diaphoresis and pallor are classic sympathetic adrenergic signs of hypoglycemia, confirming physiologic stress response.",
+      "missed_feedback": "Skin signs in hypoglycemia reflect the adrenergic counter-regulatory response: diaphoresis, pallor, and cool/clammy skin are hallmarks. In pediatric patients, these signs may be more subtle than in adults.",
+      "common_errors": [],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "hypoglycemia.hpi_diabetic_history",
+      "description": "Obtains history of diabetes type (T1D/T2D), current medications including insulin type, and presence of insulin pump",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_hypoglycemia"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "history",
+          "key_pattern": "(?i)diabetes|diabetic|insulin|type.1|type.2|t1d|t2d|insulin.pump|pump|basal|bolus|cgm|dexcom|medtronic|metformin|glipizide|oral.agent",
+          "eligible_source_roles": ["history_obtained"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(diabetes|diabetic|insulin|type.1|type.2|insulin.pump|cgm|dexcom|basal|bolus|long.acting|short.acting|metformin|glipizide|known.diabetic)\\b"
+      ],
+      "done_feedback": "Diabetic history obtained — insulin type and pump status guide assessment of iatrogenic vs. physiologic hypoglycemia.",
+      "missed_feedback": "Knowing the insulin regimen explains the mechanism: long-acting insulin overdose has a prolonged effect requiring hospital admission even after glucose recovers; insulin pumps with runaway infusion will continue driving BGL down after treatment.",
+      "common_errors": ["Documenting only 'diabetic' without identifying insulin type or pump use"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "hypoglycemia.hpi_last_meal",
+      "description": "Obtains history of last oral intake — when the patient last ate and approximate quantity",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_hypoglycemia"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "history",
+          "key_pattern": "(?i)last.meal|last.ate|last.food|last.intake|eaten|breakfast|lunch|dinner|fasted|fasting|oral.intake|ate.today",
+          "eligible_source_roles": ["history_obtained"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(last.meal|last.ate|last.food|last.intake|when.did.he.eat|when.did.she.eat|eaten|fasted|fasting|breakfast|lunch|dinner)\\b"
+      ],
+      "done_feedback": "Last oral intake obtained — missed meals with insulin on board are the most common precipitant for hypoglycemic events.",
+      "missed_feedback": "Last oral intake places the event in context: did the patient take insulin and skip a meal, or has the BGL been trending down for hours? This shapes both the treatment decision and the ED narrative.",
+      "common_errors": [],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "hypoglycemia.hpi_insulin_dose",
+      "description": "Obtains history of most recent insulin dose: type, amount, and time administered",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_hypoglycemia"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "history",
+          "key_pattern": "(?i)last.dose|last.insulin|took.insulin|gave.insulin|how.much.insulin|insulin.dose|units|dose.time|when.did.he.take|when.did.she.take",
+          "eligible_source_roles": ["history_obtained"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(last.dose|last.insulin|took.insulin|insulin.dose|how.many.units|units.of.insulin|when.did.you.give|when.was.the.last.dose|dose.stacking|double.dose)\\b"
+      ],
+      "done_feedback": "Last insulin dose documented — amount, type, and time are critical for predicting duration of hypoglycemic risk and need for admission.",
+      "missed_feedback": "Insulin dose history predicts how long the BGL will remain suppressed. A patient who took 40 units of long-acting insulin an hour ago will rebound after oral glucose and require hospital admission — knowing this changes the disposition and ED handoff.",
+      "common_errors": ["Documenting 'took insulin' without amount or timing", "Not asking about dose stacking (second dose given because first was forgotten)"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "hypoglycemia.swallow_assessment",
+      "description": "Assesses oral glucose eligibility before administration: patient is conscious, talking or answering questions, following simple commands or otherwise able to swallow, and protecting airway",
+      "category": "clinical_performance",
+      "subtype": "screen",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_safety_hypoglycemia", "nasemso_v3_hypoglycemia"],
+      "timing_constraints": [
+        {
+          "type": "before_item",
+          "reference_item_id": "hypoglycemia.oral_glucose_administered",
+          "violation_consequence": "deduction_override"
+        }
+      ],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)swallow|gag|follow.command|answering.questions|talking|speaking|protect.airway|open.mouth|tongue|able.to.swallow|can.swallow|swallow.assessment|airway.protection|\\bloc\\b|avpu|level.of.consciousness|alert|oriented",
+          "eligible_source_roles": ["ems_performed_exam"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(swallow|gag.reflex|follow.commands?|answering.questions?|answers?.{0,20}questions?|talking|speaking|protect.airway|open.your.mouth|can.you.swallow|able.to.swallow|airway.protection|conscious.enough|alert.enough|AVPU|LOC|level.of.consciousness|GCS)\\b"
+      ],
+      "done_feedback": "Oral glucose eligibility confirmed before administration — LOC/AVPU/GCS, answering questions or following directions, and a patent airway support safe PO glucose.",
+      "missed_feedback": "Oral glucose eligibility must be confirmed before administration. The patient must be conscious, protecting the airway, and able to answer questions, follow simple commands, or otherwise demonstrate safe swallow. A patient with gurgling respirations, active seizure, vomiting, or inability to follow commands must NOT receive oral glucose.",
+      "common_errors": ["Administering oral glucose to a patient who is not awake enough to answer or follow commands", "Treating LOC assessment and airway assessment as optional before giving gel"],
+      "unsafe_if_missed": true
+    },
+
+    {
+      "id": "hypoglycemia.no_oral_glucose_impaired_swallow",
+      "description": "Does not administer oral glucose when patient cannot safely swallow — active seizure, vomiting, unresponsive, or unable to follow simple commands reliably",
+      "category": "scope_adherence",
+      "subtype": "intervention",
+      "point_value": 4,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_safety_hypoglycemia"],
+      "evidence_requirements": [
+        {
+          "type": "absence_check",
+          "absence_intervention_key": "oral_glucose_impaired_swallow"
+        }
+      ],
+      "tier2_patterns": [],
+      "contraindications": ["Patient is able to follow simple commands, demonstrates intact swallow, is not vomiting, and has no active seizure — oral glucose is appropriate in this context regardless of confusion level"],
+      "done_feedback": "Oral glucose withheld in patient who could not safely swallow — aspiration risk correctly avoided. The threshold is swallow safety, not LOC category.",
+      "missed_feedback": "Oral glucose requires intact swallow mechanics, not simply a designation of 'awake.' The unsafe threshold is: active seizure, vomiting, unresponsive, or unable to follow simple commands reliably. Mildly confused patients with intact swallow and no vomiting or seizure activity may still receive oral glucose — what matters is can they swallow without aspirating. When in doubt, do the swallow assessment and observe the patient follow a command before giving gel.",
+      "common_errors": ["Giving oral glucose to an actively seizing or vomiting patient", "Giving oral glucose to an unresponsive patient"],
+      "unsafe_if_missed": true
+    },
+
+    {
+      "id": "hypoglycemia.oral_glucose_administered",
+      "description": "Administers oral glucose gel when patient is conscious, alert, able to swallow, and BGL confirms hypoglycemia",
+      "category": "protocols_treatment",
+      "subtype": "intervention",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_hypoglycemia"],
+      "timing_constraints": [
+        {
+          "type": "after_item",
+          "reference_item_id": "hypoglycemia.swallow_assessment",
+          "violation_consequence": "deduction_override"
+        }
+      ],
+      "evidence_requirements": [
+        {
+          "type": "intervention",
+          "intervention_keys": ["oral_glucose", "glucose_gel", "dextrose_oral"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(oral.glucose|glucose.gel|dextrose.gel|instaglucose|glucouse|oral.dextrose|tube.of.glucose|give.glucose)\\b"
+      ],
+      "contraindications": ["Impaired LOC or inability to swallow — IV dextrose or IM glucagon required instead", "BGL not yet confirmed below treatment threshold"],
+      "done_feedback": "Oral glucose administered to a conscious, alert patient with confirmed low BGL — correct. Monitor for response and document reassessment BGL.",
+      "missed_feedback": "Oral glucose is the first-line treatment for hypoglycemia in a conscious patient who can swallow. Do not withhold it waiting for ALS — delays in glucose restoration cause neurological injury. Administer, then reassess.",
+      "common_errors": ["Withholding oral glucose until ALS arrives", "Giving oral glucose before confirming BGL or before swallow assessment"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "hypoglycemia.cgm_insulin_pump_documented",
+      "description": "Documents presence and current readings of CGM and/or insulin pump if present; does not use CGM reading as the authoritative treatment-decision BGL",
+      "category": "documentation",
+      "subtype": "documentation_narrative",
+      "point_value": 1,
+      "required": "optional",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_blood_glucose_testing"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "history",
+          "key_pattern": "(?i)cgm|dexcom|libre|medtronic|insulin.pump|pump|continuous.glucose|sensor.glucose|sensor.reading",
+          "eligible_source_roles": ["history_obtained"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(cgm|dexcom|libre|insulin.pump|medtronic|sensor.glucose|continuous.monitor|pump.settings|pump.rate|basal.rate)\\b"
+      ],
+      "done_feedback": "CGM and/or pump documented — receiving ED will want pump settings and sensor trend data to complete the endocrine workup.",
+      "missed_feedback": "If the patient has a CGM or insulin pump, document the device type, current reading, and trend direction. Note: the CGM reading is supplemental data — the EMS glucometer reading is the authoritative value for treatment decisions.",
+      "common_errors": ["Using CGM reading as the primary treatment-decision glucose rather than the EMS glucometer"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "hypoglycemia.als_request_if_indicated",
+      "description": "Requests ALS intercept when patient cannot receive oral glucose (impaired LOC/swallow), BGL does not respond to oral glucose, or long-acting insulin overdose is suspected",
+      "category": "protocols_treatment",
+      "subtype": "intervention",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT"],
+      "applicable_if": {"als_codispatched": false, "additional_help_needed": true},
+      "protocol_refs": ["nasemso_v3_hypoglycemia"],
+      "evidence_requirements": [
+        {
+          "type": "intervention",
+          "intervention_keys": ["als_intercept", "als_request", "request_als"]
+        },
+        {
+          "type": "session_event",
+          "event_type": "als_intercept_requested"
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(als|medic|paramedic|advanced.life.support|intercept|request.als|call.for.als|upgrade|need.als)\\b"
+      ],
+      "contraindications": ["Patient is conscious, alert, responding to oral glucose, and there is no concern for long-acting insulin overdose or pump malfunction — ALS not required"],
+      "done_feedback": "ALS requested — appropriate when oral glucose is contraindicated or patient is not responding to treatment.",
+      "missed_feedback": "ALS must be requested when: (1) patient cannot receive oral glucose due to impaired LOC; (2) BGL does not rise after oral glucose; or (3) long-acting insulin or pump malfunction is suspected. AEMT/Paramedic can administer IV dextrose or IM glucagon — these are the definitive interventions for severe hypoglycemia.",
+      "common_errors": ["Not requesting ALS for a patient who is unresponsive with hypoglycemia"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "hypoglycemia.reassess_bgl_loc",
+      "description": "Reassesses blood glucose and LOC after intervention and documents response to treatment",
+      "category": "clinical_performance",
+      "subtype": "reassessment",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_hypoglycemia"],
+      "requirement_logic": "all",
+      "evidence_requirements": [
+        {
+          "type": "post_intervention_finding",
+          "finding_type": "vital",
+          "key_pattern": "(?i)blood.glucose|blood.sugar|bgl|glucometer|finger.?stick|glucose.level",
+          "_note": "eligible_source_roles intentionally omitted: in training, BGL vitals arrive via either the authored bypass (authored_vitals) or the AI response path (ai_roleplay_tag) depending on how the student triggers the check. Source restriction breaks valid evidence paths. post_intervention_finding + finding_type=vital + key_pattern is sufficient qualification."
+        },
+        {
+          "type": "post_intervention_finding",
+          "key_pattern": "(?i)\\b(loc|gcs|avpu|mental.status|responsiveness|conscious|alert|oriented|improved|worsened|unchanged|treatment.response|patient.status)\\b",
+          "_note": "Accepts either a numeric/structured LOC reassessment or a post-intervention Treatment Response finding. Learners may reassess LOC by asking how the patient feels after glucose rather than explicitly requesting GCS/AVPU."
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(reassess|repeat.glucose|recheck.bgl|recheck.blood.sugar|blood.sugar.now|glucose.now|improved|worsened|unchanged|response.to|after.treatment|trending|more.alert|still.confused)\\b"
+      ],
+      "done_feedback": "Post-treatment BGL and LOC reassessed — trending data is the evidence that treatment is working or that escalation is needed.",
+      "missed_feedback": "Reassessment BGL after oral glucose is required. A BGL that does not rise 5–10 minutes after oral glucose indicates treatment failure — the patient needs ALS for IV dextrose. Document the new BGL, new LOC, and whether the patient is trending toward normal.",
+      "common_errors": ["Administering oral glucose and not rechecking BGL before transport", "Documenting 'patient improved' without a repeat BGL value"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "hypoglycemia.verbal_handoff",
+      "description": "Provides structured verbal handoff including BGL (initial and post-treatment), LOC trajectory, insulin history, and response to treatment",
+      "category": "documentation",
+      "subtype": "documentation_handoff",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_hypoglycemia"],
+      "evidence_requirements": [
+        {
+          "type": "session_event",
+          "event_type": "als_turnover_submitted"
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(handoff|turnover|report|medic|als|verbal.report|bgl.is|glucose.is|sugar.was|responded|not.responded|insulin|dmist|last.dose)\\b"
+      ],
+      "done_feedback": "Verbal handoff completed — receiving crew has initial BGL, treatment given, response to treatment, and insulin history.",
+      "missed_feedback": "Handoff for a hypoglycemia call must include: initial BGL, LOC on arrival, interventions, repeat BGL after treatment, LOC response, insulin type and last dose, and any concern for long-acting insulin or pump malfunction.",
+      "common_errors": ["Reporting only the presenting BGL without the repeat value or LOC trajectory"],
+      "unsafe_if_missed": false
+    }
+
+  ]
+}

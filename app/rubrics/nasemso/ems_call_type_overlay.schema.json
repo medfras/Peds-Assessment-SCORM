@@ -1,0 +1,162 @@
+{
+  "_comment": "Schema for EMS call-type overlay files. Overlays modify the NASEMSO base rubric layer for a specific jurisdiction (state, agency, or scenario). Every operation requires an explicit reason and protocol_ref — this is the governance lock that prevents silent divergence from the portable base rubric. Validate with tests/test_call_type_overlay_schema.py.",
+  "_schema_version": "1.0",
+
+  "design_principles": [
+    "Overlays are narrow: they do not replace the rubric, they operate on named items.",
+    "Every operation is traceable: reason and protocol_ref are required on every op.",
+    "suppress_item is the most dangerous operation: it can remove a safety check. It requires approved_by in addition to reason and protocol_ref.",
+    "modify_item only allows a controlled set of fields: point_value, required, applicable_levels. It cannot change description, evidence_requirements, or feedback — structural item changes belong in the base rubric or a new version.",
+    "add_to_item is additive and reversible: it appends tier2_patterns or evidence_requirements. It cannot remove existing patterns or requirements.",
+    "add_item introduces a jurisdiction-specific item not in the NASEMSO base. It must carry the full ChecklistItem structure and its own done_feedback and missed_feedback.",
+    "Overlay type governs precedence: scenario > agency > state > nasemso_base.",
+    "An overlay file may only operate on items belonging to its declared call_type."
+  ],
+
+  "top_level_required": ["_schema", "id", "version", "call_type", "overlay_type", "jurisdiction", "effective_date", "operations"],
+
+  "top_level_fields": {
+    "_schema":        { "type": "string", "const": "ems_call_type_overlay_v1" },
+    "id":             { "type": "string", "pattern": "^[a-z][a-z0-9_]*$", "note": "Stable ID. Never rename once deployed." },
+    "version":        { "type": "string", "note": "ISO date string YYYY-MM-DD or semver." },
+    "call_type":      { "type": "string", "note": "Must match the call_type of the base rubric this overlay targets." },
+    "overlay_type":   { "type": "string", "enum": ["state", "agency", "scenario"], "note": "Governs precedence. scenario > agency > state > nasemso_base." },
+    "jurisdiction":   { "type": "string", "note": "Human-readable jurisdiction label, e.g. 'Michigan', 'City of Detroit EMS', or a scenario ID." },
+    "effective_date": { "type": "string", "note": "ISO date YYYY-MM-DD when this overlay takes effect." },
+    "approved_by":    { "type": "string", "note": "Optional for add/modify/add_to ops; required for suppress_item. Name or role of approving authority." },
+    "notes":          { "type": "string", "note": "Free-text rationale or context for this overlay file as a whole." },
+    "operations":     { "type": "array", "minItems": 1, "items": { "$ref": "#/defs/OverlayOperation" } }
+  },
+
+  "defs": {
+
+    "GovernanceFields": {
+      "note": "Required on every operation. These fields are the governance lock: they make every divergence from the NASEMSO base explicitly traceable.",
+      "required": ["reason", "protocol_ref"],
+      "fields": {
+        "reason":       { "type": "string", "note": "Why this operation is needed. Reference the clinical, regulatory, or operational constraint." },
+        "protocol_ref": { "type": "string", "note": "Specific protocol, statute, SOP number, or guidance document that authorizes this change. Free-text; prefer a citable document ID." }
+      }
+    },
+
+    "OverlayOperation": {
+      "note": "One modification to a named item in the base rubric, or an addition of a new jurisdiction-specific item.",
+      "required": ["op", "reason", "protocol_ref"],
+      "discriminant": "op",
+      "variants": {
+
+        "suppress_item": {
+          "note": "Removes a NASEMSO base item from the composed checklist for this jurisdiction. The item will not be scored. Use only when the jurisdiction's protocol explicitly prohibits or does not require this action. Requires approved_by at the overlay file level.",
+          "required_additional": ["item_id"],
+          "fields": {
+            "op":      { "type": "string", "const": "suppress_item" },
+            "item_id": { "type": "string", "note": "ID of the base rubric item to suppress. Must match an item in the NASEMSO base rubric for this call_type." },
+            "reason":       { "$ref": "#/defs/GovernanceFields/fields/reason" },
+            "protocol_ref": { "$ref": "#/defs/GovernanceFields/fields/protocol_ref" }
+          },
+          "guardrails": [
+            "approved_by is required at the overlay file level when suppress_item is present.",
+            "Suppress of an unsafe_if_missed item requires an explicit acknowledgment in the reason field.",
+            "The suppressed item_id is recorded in the composed checklist as suppressed (not silently dropped) for audit trail."
+          ]
+        },
+
+        "modify_item": {
+          "note": "Changes scoring metadata on an existing NASEMSO base item. Only point_value, required status, and applicable_levels may be changed — these are the fields where jurisdictions legitimately differ. Description, evidence_requirements, and feedback are structural and belong in the base rubric.",
+          "required_additional": ["item_id", "changes"],
+          "fields": {
+            "op":      { "type": "string", "const": "modify_item" },
+            "item_id": { "type": "string", "note": "ID of the base rubric item to modify." },
+            "reason":       { "$ref": "#/defs/GovernanceFields/fields/reason" },
+            "protocol_ref": { "$ref": "#/defs/GovernanceFields/fields/protocol_ref" },
+            "changes": {
+              "type": "object",
+              "note": "Allowed fields only. Any field not listed here must be changed in the base rubric, not via overlay.",
+              "allowed_fields": {
+                "point_value":       { "type": "integer", "minimum": 0, "note": "Override point value for this jurisdiction." },
+                "required":          { "type": "string",  "enum": ["required", "optional", "bonus"], "note": "Override required status." },
+                "applicable_levels": { "type": "array",   "items": { "enum": ["EMR", "EMT", "AEMT", "Paramedic"] }, "minItems": 1, "note": "Override applicable provider levels. Use canonical level keys only." }
+              },
+              "forbidden_fields": ["id", "description", "category", "subtype", "evidence_requirements", "done_feedback", "missed_feedback", "unsafe_if_missed"],
+              "validation": "At least one allowed field must be present in changes."
+            }
+          }
+        },
+
+        "add_to_item": {
+          "note": "Appends additional evidence paths or transcript patterns to an existing NASEMSO base item. Always additive — cannot remove existing patterns or requirements. Use to extend coverage for jurisdiction-specific phrasing or protocol variations.",
+          "required_additional": ["item_id"],
+          "fields": {
+            "op":      { "type": "string", "const": "add_to_item" },
+            "item_id": { "type": "string", "note": "ID of the base rubric item to extend." },
+            "reason":       { "$ref": "#/defs/GovernanceFields/fields/reason" },
+            "protocol_ref": { "$ref": "#/defs/GovernanceFields/fields/protocol_ref" },
+            "append_tier2_patterns":       { "type": "array", "items": { "type": "string" }, "note": "Regex patterns appended to the item's existing tier2_patterns. Must be valid Python re patterns." },
+            "append_evidence_requirements": { "type": "array", "items": { "$ref": "#/defs/EvidenceRequirement" }, "note": "Additional evidence paths appended to existing evidence_requirements. Evaluated using existing requirement_logic." }
+          },
+          "validation": "At least one of append_tier2_patterns or append_evidence_requirements must be non-empty."
+        },
+
+        "add_item": {
+          "note": "Introduces a jurisdiction-specific checklist item not present in the NASEMSO base rubric. The item must carry a full ChecklistItem definition including done_feedback and missed_feedback. The item ID must not collide with any NASEMSO base item ID.",
+          "required_additional": ["item"],
+          "fields": {
+            "op":      { "type": "string", "const": "add_item" },
+            "reason":       { "$ref": "#/defs/GovernanceFields/fields/reason" },
+            "protocol_ref": { "$ref": "#/defs/GovernanceFields/fields/protocol_ref" },
+            "item": {
+              "$ref": "#/defs/AddedItem",
+              "note": "Full ChecklistItem definition. Provenance will be set to 'overlay' at composition time."
+            }
+          }
+        }
+
+      }
+    },
+
+    "AddedItem": {
+      "note": "A jurisdiction-specific item introduced by an overlay. Identical required fields to ChecklistItem in the base rubric schema, plus overlay_provenance for audit. ID must not match any NASEMSO base item.",
+      "required": ["id", "description", "category", "subtype", "point_value", "required", "applicable_levels", "evidence_requirements", "done_feedback", "missed_feedback"],
+      "fields": {
+        "id":                   { "type": "string", "pattern": "^[a-z][a-z0-9_.]*$", "note": "Must not collide with any NASEMSO base rubric item ID. Recommended format: {jurisdiction_slug}.{call_type}.{item_slug}." },
+        "description":          { "type": "string" },
+        "category":             { "type": "string", "enum": ["clinical_performance", "protocols_treatment", "scope_adherence", "documentation", "professionalism"] },
+        "subtype":              { "type": "string", "enum": ["scene_entry", "assessment", "screen", "intervention", "reassessment", "transport", "documentation_handoff", "documentation_narrative", "professionalism"] },
+        "point_value":          { "type": "integer", "minimum": 0 },
+        "required":             { "type": "string", "enum": ["required", "optional", "bonus"] },
+        "applicable_levels":    { "type": "array", "items": { "enum": ["EMR", "EMT", "AEMT", "Paramedic"] }, "minItems": 1 },
+        "evidence_requirements": { "type": "array", "minItems": 1, "items": { "$ref": "#/defs/EvidenceRequirement" } },
+        "tier2_patterns":       { "type": "array", "items": { "type": "string" } },
+        "done_feedback":        { "type": "string" },
+        "missed_feedback":      { "type": "string" },
+        "unsafe_if_missed":     { "type": "boolean" }
+      }
+    },
+
+    "EvidenceRequirement": {
+      "note": "Identical to EvidenceRequirement in ems_call_type_rubric.schema.json. Reproduced here for overlay authoring without requiring cross-file references.",
+      "required": ["type"],
+      "fields": {
+        "type":                     { "type": "string", "enum": ["finding", "post_intervention_finding", "intervention", "session_event", "scene_entry", "absence_check"] },
+        "finding_type":             { "type": "string",  "enum": ["vital", "exam", "history"] },
+        "key_pattern":              { "type": "string" },
+        "value_pattern":            { "type": "string" },
+        "eligible_source_roles":    { "type": "array",  "items": { "type": "string" }, "note": "Abstract roles — must be defined in the base rubric's source_role_map." },
+        "intervention_key":         { "type": "string" },
+        "intervention_keys":        { "type": "array",  "items": { "type": "string" } },
+        "event_type":               { "type": "string" },
+        "event_key_pattern":        { "type": "string" },
+        "scene_entry_path":         { "type": "string" },
+        "absence_intervention_key": { "type": "string" }
+      }
+    }
+
+  },
+
+  "composition_rules": {
+    "precedence_order": ["nasemso_base", "state", "agency", "scenario"],
+    "note": "Higher-precedence overlays win on conflicts. suppress beats all. modify_item from agency overrides modify_item from state for the same item_id. add_to_item operations from multiple overlays are merged (all appended patterns are included). add_item IDs must be unique across all overlays.",
+    "suppress_wins": "A suppress_item from any overlay at any tier removes the item from the composed checklist regardless of add_to_item or modify_item ops from lower-precedence overlays.",
+    "audit_trail": "All overlay ops are recorded in the composition audit trail even when suppressed or overridden, so reviewers can trace why the effective checklist differs from the NASEMSO base."
+  }
+}

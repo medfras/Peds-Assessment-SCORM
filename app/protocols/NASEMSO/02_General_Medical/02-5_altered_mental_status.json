@@ -1,0 +1,157 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). General Medical: Altered Mental Status. NASEMSO national provisional base.",
+  "id": "nasemso_base_general_medical_altered_mental_status",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Altered Mental Status",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — General Medical: Altered Mental Status",
+  "aliases": [
+    "Altered level of consciousness",
+    "Confusion"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — General Medical: Altered Mental Status",
+      "points": [
+        "Identify treatable causes",
+        "Perform appropriate assessment and diagnostics (e.g., oxygen saturation, glucose check, monitor)",
+        "Protect patient from complications of altered mental status (e.g., respiratory failure, shock, cardiopulmonary arrest)"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Impaired decision-making capacity",
+        "EXCLUSION CRITERIA:",
+        "Traumatic brain injury"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Check blood glucose immediately: treat if BGL <60 mg/dL with oral glucose (alert patient)",
+        "Airway management: head tilt-chin lift, jaw-thrust, OPA, suction",
+        "Oxygen via NRM if SpO2 <94% or altered mentation",
+        "Lateral position (recovery position) if unconscious with intact respirations",
+        "Naloxone intranasal unit-dose (premeasured) for suspected opioid overdose"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Blood glucose monitoring: treat hypoglycemia as first-line",
+        "Oral glucose 25 g if BGL <60 and patient can protect airway",
+        "Naloxone 0.4-2 mg IM for suspected opioid-induced AMS",
+        "12-lead ECG acquisition to rule out cardiac cause",
+        "IV access maintenance (non-medicated)",
+        "Supraglottic airway if unable to maintain airway"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV D50W 25 g or D10W 250 mL for documented hypoglycemia",
+        "IV/IO access initiation",
+        "Naloxone 0.4-2 mg IV/IO/IN for opioid-induced AMS",
+        "IV thiamine 100 mg (before dextrose) for suspected alcohol-related or malnourished patient",
+        "Waveform capnography",
+        "IV antiemetics if vomiting risk"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "AEIOUTIPS differential: Alcohol/Acidosis, Epilepsy/Electrolytes, Insulin, Overdose/Oxygen, Uremia, Trauma/Temperature/Toxins, Psychiatric, Stroke/Shock/Seizure",
+        "12-lead ECG interpretation for cardiac cause (dysrhythmia, STEMI)",
+        "RSI and intubation for GCS ≤8 with inability to protect airway",
+        "Flumazenil 0.2 mg IV for benzodiazepine OD (caution: may precipitate withdrawal seizures)",
+        "Sodium bicarbonate 1-2 mEq/kg IV for TCA-related AMS (QRS >100 ms)",
+        "Dextrose + thiamine for Wernicke encephalopathy",
+        "Stroke protocol if focal deficits, sudden onset, or FAST positive",
+        "Laboratory samples: glucose, CO oximetry, 12-lead ECG for hospital"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "With depressed mental status, initial focus is on airway protection, oxygenation, ventilation, and perfusion",
+        "The violent patient may need pharmacologic and/or physical management to insure proper assessment and treatment",
+        "Hypoglycemic and hypoxic patients can be irritable and violent [See Agitated or Violent Patient/Behavioral Emergency Guideline]"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "History from bystanders and caregivers",
+        "Age of the patient",
+        "Development age and baseline functional status",
+        "Consider the following differential using the mnemonic AEIOU-TIPS:",
+        "Environment where patient found",
+        "Recent complaints (e.g., headache, chest pain, difficulty breathing, vomiting, fever)",
+        "Medical alert tags and accessory medical devices",
+        "Evaluate for reduced PO intake and/or vomiting and/or diarrhea or dehydration as a cause of AMS in the pediatric and geriatric populations"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Glasgow Coma Score (GCS) or AVPU description",
+        "' Baseline developmental status and change from baseline",
+        "' Temperature was taken when able",
+        "' Patient and medic safety were considered",
+        "' Pupil and neck exam were done",
+        "' Evaluation of perfusion and skin exam were performed",
+        "' IV fluids given for poor perfusion"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Hypoglycemic and hypoxic patients can be irritable and violent [See Agitated or Violent Patient/Behavioral Emergency Guideline]"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": [],
+  "clinical_context": {
+    "concepts": [
+      "altered_mental_status",
+      "blood_glucose",
+      "hypoglycemia",
+      "seizure",
+      "toxins_overdose"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

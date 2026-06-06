@@ -1,0 +1,101 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Protocol 4-4 Pediatric Altered Mental Status and general BLS oral glucose guidance. Base Michigan template.",
+  "id": "mi_base_medication_ref_oral_glucose",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base)",
+  "level": "BLS",
+  "level_display": "EMT-Basic (BLS)",
+  "jurisdiction": "Michigan",
+  "condition": "Oral Glucose",
+  "version": "2025-03-31",
+  "protocol_reference": "Michigan Protocol 4-4: Pediatric Altered Mental Status — Oral Glucose Administration",
+  "name": "Oral Glucose Administration",
+  "type": "medication_monograph",
+  "pharmacological_category": "Carbohydrate — Glucose Supplement",
+  "routes": [
+    "Oral (PO/buccal)"
+  ],
+  "indications": [
+    "Blood glucose < 60 mg/dL",
+    "Patient is altered (GCS ≤ 14) AND able to swallow safely",
+    "Patient is ≥ 3 months old",
+    "Patient is not unresponsive or actively seizing"
+  ],
+  "contraindications": [
+    "Unable to swallow or absent gag reflex",
+    "Unresponsive (GCS ≤ 8) — aspiration risk; defer to ALS for IV dextrose",
+    "Actively seizing",
+    "Age < 3 months",
+    "Confirmed or suspected ingestion where oral route is contraindicated"
+  ],
+  "dosing": [
+    {
+      "population": "Adult",
+      "route": "Oral/buccal",
+      "dose": "One tube (15–25 g glucose gel) per manufacturer instructions",
+      "notes": "Repeat if no improvement in 15 minutes per Medical Control"
+    },
+    {
+      "population": "Pediatric (≥ 3 months)",
+      "route": "Oral/buccal",
+      "dose": "One tube (15–25 g glucose gel) per manufacturer instructions — NOT weight-based",
+      "notes": "Patient cooperation required; do NOT administer if unable to swallow safely"
+    }
+  ],
+  "administration": {
+    "setup": [
+      "Confirm patient is able to swallow — ask patient to open mouth, look for gag reflex",
+      "Position patient upright or sitting — do NOT administer while supine if avoidable",
+      "Open glucose gel tube; have suction immediately available",
+      "Place gel between inner cheek and lower gum (buccal) if patient cannot swallow actively — allow to dissolve slowly",
+      "Alternatively: have patient sip from tube directly if alert enough",
+      "Remain at bedside — monitor for vomiting, aspiration, and change in mental status",
+      "Reassess GCS and mental status every 5 minutes post-administration",
+      "Notify ALS of administration time, dose, and patient response"
+    ]
+  },
+  "side_effects": [
+    "Nausea and vomiting — aspiration risk if LOC decreases; have suction ready",
+    "Aspiration if patient loses airway protective reflexes — monitor closely",
+    "Transient hyperglycemia — expected; document and report to ALS"
+  ],
+  "six_rights_for_this_drug": [
+    {
+      "right": "Right Patient",
+      "verification": "Altered mental status AND confirmed or suspected hypoglycemia (BG < 60 mg/dL) — ≥ 3 months old AND able to swallow"
+    },
+    {
+      "right": "Right Medication",
+      "verification": "Oral glucose gel (e.g., Glutose 15, Insta-Glucose) — confirm label, check expiration date"
+    },
+    {
+      "right": "Right Dose",
+      "verification": "One tube per manufacturer instructions — not weight-based; do not exceed without Medical Control authorization"
+    },
+    {
+      "right": "Right Route",
+      "verification": "Oral (PO) — patient must be able to swallow; place gel between cheek and gum if needed and allow to dissolve"
+    },
+    {
+      "right": "Right Time",
+      "verification": "Administer as soon as hypoglycemia confirmed or strongly suspected and patient meets swallowing criteria"
+    },
+    {
+      "right": "Right Documentation",
+      "verification": "Document: blood glucose value (if known), GCS before and after, time administered, patient response, repeat assessments every 5 minutes"
+    }
+  ],
+  "used_in_protocols": [
+    "Pediatric Altered Mental Status (4-4)",
+    "Diabetic Emergency / Hypoglycemia"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "blood_glucose",
+      "hypoglycemia"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

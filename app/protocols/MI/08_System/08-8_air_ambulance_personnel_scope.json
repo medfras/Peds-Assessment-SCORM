@@ -1,0 +1,83 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-8 Air Ambulance Personnel Scope (Revised 12/27/2022, MDHHS Reviewed 2022). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_air_ambulance_personnel_scope",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (Air Medical — MCA Optional)",
+  "jurisdiction": "Michigan",
+  "condition": "Air Ambulance Personnel Scope",
+  "version": "2022-12-27",
+  "protocol_reference": "Michigan System Protocol Section 8-8: Air Ambulance Personnel Scope — MDHHS Approved 12/27/2022",
+
+  "purpose": "MCA OPTIONAL. Govern the scope of practice for air ambulance (helicopter and fixed-wing) medical personnel operating within a Michigan MCA's jurisdiction. Air medical personnel may operate under the sending MCA's protocols, the receiving MCA's protocols, or air medical service-specific protocols as defined by the MCA. MCAs must define which protocol set air medical personnel may operate under.",
+
+  "sections": [
+    {
+      "title": "Authorization and Protocol Use",
+      "reference": "Michigan Protocol 8-8: Air Ambulance Scope — Authorization",
+      "points": [
+        "MCA OPTIONAL — MCAs may define the scope and protocol set for air ambulance personnel operating in their jurisdiction",
+        "Air medical personnel may operate under: MCA protocols applicable to their licensure level, or air medical service-specific protocols approved by the air medical service's medical director",
+        "Air medical personnel must be licensed at the appropriate Michigan EMS provider level OR meet equivalent licensure requirements",
+        "MCAs must clearly define whether air medical personnel are authorized to perform skills beyond those in the base Michigan protocols when operating in their jurisdiction"
+      ]
+    },
+    {
+      "title": "Scope of Practice",
+      "reference": "Michigan Protocol 8-8: Air Ambulance Scope — Scope",
+      "points": [
+        "Air medical personnel scope is limited to their Michigan EMS licensure level (or equivalent)",
+        "Critical Care Paramedics (CCP) and Enhanced Paramedics (EP) may operate at their credentialed level under MCA authorization",
+        "Skills not in the base Michigan protocols (e.g., blood products, vasoactive drips, RSI) require MCA authorization and air medical service medical director approval",
+        "Air medical personnel assuming care from ground EMS must conduct formal transfer of care per Section 8-5"
+      ]
+    },
+    {
+      "title": "Transfer of Care — Air Medical",
+      "reference": "Michigan Protocol 8-8: Air Ambulance Scope — Transfer of Care",
+      "points": [
+        "Transfer from ground EMS to air medical: ground crew provides verbal report; air medical crew acknowledges receipt",
+        "Transfer from air medical to receiving hospital: air medical crew provides report to accepting provider",
+        "Both parties document the transfer in their respective records",
+        "Landing zone (LZ) safety and patient packaging are responsibilities of the requesting ground crew per Section 8-9: Helicopter Utilization"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Air Ambulance Personnel Protocol Authorization",
+      "description": "MCA must define which protocol set air ambulance personnel may operate under in their jurisdiction",
+      "options": [
+        "Air ambulance personnel operate under MCA protocols at their licensure level",
+        "Air ambulance personnel operate under air medical service-specific protocols approved by air medical medical director",
+        "Not authorized — no air ambulance operations in this MCA jurisdiction"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Enhanced/Critical Care Air Medical Scope",
+      "description": "MCA may authorize Enhanced Paramedic or Critical Care Paramedic air medical personnel to operate at their expanded scope",
+      "options": ["Authorized — EP/CCP scope permitted for credentialed air medical personnel", "Not authorized — base Paramedic scope only"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Air medical personnel request skills beyond MCA authorization — contact Medical Control; document deviation",
+    "Scope conflict between air medical and ground EMS protocols — air medical provider operates under their authorized protocol set; document any conflict"
+  ],
+
+  "scope_notes": [
+    "MCA OPTIONAL — MCA must define air ambulance scope and protocol set",
+    "Air medical personnel limited to Michigan EMS licensure level or equivalent",
+    "CCP/EP scope requires MCA authorization and air medical medical director approval",
+    "Skills beyond base Michigan protocols require MCA authorization",
+    "Transfer of care: formal verbal report required; both parties document",
+    "LZ safety: ground crew responsibility per Section 8-9"
+  ]
+}

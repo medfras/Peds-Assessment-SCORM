@@ -1,0 +1,99 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 2-4 General Crush Injury (Revised 11/17/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_all_crush_injury",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "All",
+  "level_display": "All Levels",
+  "jurisdiction": "Michigan",
+  "condition": "General Crush Injury",
+  "version": "2025-11-17",
+  "protocol_reference": "Michigan Trauma and Environmental Protocol Section 2-4: General Crush Injury — MDHHS Approved 11/17/25, Reviewed 2025",
+
+  "purpose": "Consider when patient has been entrapped at the scene for more than one hour, with one or more full extremities trapped by an object capable of causing a crush injury (machinery, dirt, rock, rubble). Crush Syndrome should be suspected with entrapment/compression > 1 hour, especially involving a large muscle mass/group. Treatment should begin BEFORE patient is removed when practical.",
+
+  "sections": [
+    {
+      "title": "Crush Injury Treatment",
+      "reference": "Michigan Protocol 2-4: General Crush Injury",
+      "points": [
+        "Follow General Trauma-Treatment Protocol; identify and treat life threats",
+        "Pediatric patients (< 14 years of age): follow pediatric dosing below; albuterol use for crush injury does not appear on MI MEDIC",
+        "Assess for signs of Compartment Syndrome or Crush Syndrome",
+        "Use tourniquet as indicated per Tourniquet Application-Procedure Protocol",
+        "Administer oxygen to patient if environment allows",
+        "Beginning immediately PRIOR TO release from entrapment and continued until AFTER extrication: administer albuterol by continuous nebulization (per MCA selection — may be EMT skill); Adults and Pediatrics: albuterol may be continued to maximum dose of 20 mg (eight 2.5 mg/3 mL nebules)",
+        "Establish large bore IV(s) and/or IO per Vascular Access and IV Fluid Therapy-Procedure Protocol and administer fluid bolus PRIOR TO removal of patient when practical (Specialist skill); Adults: 1 liter IV/IO wide open followed by 500–1,000 mL/hr; Pediatrics: 20 mL/kg IV/IO wide open followed by 10 mL/kg/hr",
+        "Treat patient pain per Pain Management-Procedure Protocol",
+        "Initiate cardiac monitoring and assess for hyperkalemia (wide QRS or peaked T waves) — monitor continuously for changes (Specialist skill)",
+        "If extrication is prolonged, hyperkalemia is suspected (peaked T waves, widened QRS, hypotension), or patient proceeds to cardiac arrest: administer calcium chloride (Specialist skill); Adults: 1 gm slow IVP over 5 minutes; Pediatrics: 20 mg/kg slow IVP over 5 minutes, max dose 1 gram over 5 minutes",
+        "Perform repeated 12-Lead ECG if conditions allow (per MCA selection — may be BLS or Specialist procedure) per 12 Lead ECG-Procedure Protocol"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Nebulized Albuterol",
+      "description": "MCA must indicate whether EMT may administer nebulized albuterol for crush injury",
+      "options": ["EMT"],
+      "selected": null
+    },
+    {
+      "item": "12-Lead ECG",
+      "description": "May be designated as a BLS skill or Specialist (AEMT/Paramedic) skill",
+      "options": ["BLS", "Specialist"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [
+    {
+      "name": "Albuterol (Continuous Nebulization — Crush)",
+      "dose": "Continuous nebulization — begin before release from entrapment; maximum 20 mg (eight 2.5 mg/3 mL nebules); same dose adult and pediatric",
+      "route": "Nebulized (SVN)",
+      "indication": "Crush injury — adjunctive treatment to shift potassium intracellularly and reduce hyperkalemia risk during extrication",
+      "contraindications": "Known hypersensitivity to albuterol",
+      "side_effects": "Tachycardia, tremor, hypokalemia",
+      "scope": "Per MCA selection — EMT option available",
+      "notes": "NOTE: Does not appear on MI MEDIC. Begin immediately prior to release and continue through extrication."
+    },
+    {
+      "name": "LR or NS IV/IO Fluid Bolus",
+      "dose": "Adults: 1 liter wide open then 500–1,000 mL/hr; Pediatrics: 20 mL/kg wide open then 10 mL/kg/hr",
+      "route": "IV or IO",
+      "indication": "Crush injury fluid resuscitation — start prior to release from entrapment when practical",
+      "contraindications": "None urgent in crush injury",
+      "side_effects": "Fluid overload",
+      "scope": "Specialist skill",
+      "notes": "Pre-emptive fluid loading before release helps prevent reperfusion injury."
+    },
+    {
+      "name": "Calcium Chloride",
+      "dose": "Adults: 1 gm slow IVP over 5 minutes; Pediatrics: 20 mg/kg slow IVP over 5 minutes (max 1 gram over 5 minutes)",
+      "route": "IV",
+      "indication": "Prolonged extrication; suspected hyperkalemia (peaked T waves, widened QRS, hypotension); cardiac arrest from crush",
+      "contraindications": "Hypercalcemia; digoxin toxicity (use with caution)",
+      "side_effects": "Bradycardia if administered rapidly; tissue necrosis if extravasation",
+      "scope": "Specialist skill",
+      "notes": "Administer slowly over 5 minutes. Monitor ECG during administration."
+    }
+  ],
+
+  "deterioration_flags": [
+    "Peaked T waves or widened QRS on monitor — suspect hyperkalemia; administer calcium chloride (Specialist skill) prior to release",
+    "Cardiac arrest during extrication — consider hyperkalemia as etiology; calcium chloride indicated",
+    "Hypotension after release — aggressive fluid resuscitation; contact Medical Control",
+    "Compartment syndrome signs (pain out of proportion, paresthesia, pallor, pulselessness, paralysis) — expedite transport"
+  ],
+
+  "scope_notes": [
+    "Scene safety, tourniquet application, oxygen: all levels",
+    "Albuterol nebulized: per MCA selection — EMT option available",
+    "IV/IO access and fluid resuscitation: Specialist skill",
+    "Cardiac monitoring, 12-lead ECG: Specialist skill; 12-lead may be BLS per MCA selection",
+    "Calcium chloride: Specialist skill",
+    "Pain management: refer to Pain Management-Procedure Protocol"
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 2-11 Hypothermia/Frostbite (Revised 03/17/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_all_hypothermia_frostbite",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "All",
+  "level_display": "All Levels",
+  "jurisdiction": "Michigan",
+  "condition": "Hypothermia/Frostbite",
+  "version": "2025-03-17",
+  "protocol_reference": "Michigan Trauma and Environmental Protocol Section 2-11: Hypothermia/Frostbite — MDHHS Approved 3/17/25, Reviewed 2025",
+  "sections": [
+    {
+      "title": "Hypothermia — General Management",
+      "reference": "Michigan Protocol 2-11: Hypothermia — General Management",
+      "points": [
+        "Follow General Pre-Hospital Care-Treatment Protocol",
+        "If the patient is in cardiac arrest, follow the Adult or Pediatric Cardiac Arrest protocol as applicable",
+        "Move the patient to a warm, dry place and handle gently",
+        "Remove wet clothing and wrap the patient in dry blankets",
+        "If the patient can be evacuated to a warm ambulance within 30 minutes, leave clothing in place, wrap in a vapor and wind barrier, and remove wet clothing once the patient is warm",
+        "If temperature is less than 30°C / 86°F: handle gently and transport immediately"
+      ]
+    },
+    {
+      "title": "Rewarming and Support",
+      "reference": "Michigan Protocol 2-11: Hypothermia — Rewarming and Support",
+      "points": [
+        "If temperature is greater than 30°C / 86°F, or if the patient is shivering and conscious, place heat packs in the axillae and on the torso",
+        "Administer oxygen; warm and humidify oxygen if a commercial device is available",
+        "Check blood glucose for altered mental status and treat per Altered Mental Status protocol; assess for other causes of altered mental status",
+        "If hypotensive, refer to the Shock protocol; warm IV fluids if a commercial warming device is available",
+        "If alert, provide warm non-caffeinated beverages by mouth slowly"
+      ]
+    },
+    {
+      "title": "Frostbite",
+      "reference": "Michigan Protocol 2-11: Frostbite",
+      "points": [
+        "Remove wet or constricting clothing and keep the affected area dry and protected from wind",
+        "Do not thaw frostbitten tissue if there is a possibility of refreezing or if the patient must walk to transportation",
+        "Cover the affected area with a light clean cloth",
+        "Do not rub the area and do not break blisters",
+        "Keep the patient warm and support and elevate the affected area",
+        "Refer to the Pain Management protocol as needed"
+      ]
+    }
+  ],
+  "mca_selections_required": [],
+  "key_drugs": [
+    {
+      "name": "Warmed IV Fluid (NS or LR)",
+      "dose": "Per Shock protocol when hypotensive; warm IV fluids if a commercial warming device is available",
+      "route": "IV or IO",
+      "indication": "Hypothermia with hypotension requiring fluid support",
+      "contraindications": "Fluid overload; use caution with cardiac history",
+      "side_effects": "Pulmonary edema if over-administered; temperature-related dysrhythmias if given too cold",
+      "scope": "Specialist skill",
+      "notes": "Use warmed fluids when a commercial warming device is available. Handle the patient gently when establishing access."
+    }
+  ],
+  "deterioration_flags": [
+    "Temperature less than 30°C / 86°F — gentle handling and immediate transport",
+    "Cardiac arrest in hypothermia — follow Adult or Pediatric Cardiac Arrest protocol",
+    "Altered mental status — check blood glucose and assess for causes other than hypothermia",
+    "Frostbite with risk of refreezing or patient must walk to transport — do NOT thaw in the field; protect tissue and transport"
+  ],
+  "scope_notes": [
+    "Environmental removal, passive rewarming, blankets, vapor/wind barrier wrapping, gentle handling: all levels",
+    "Warmed humidified oxygen: all levels when equipment available",
+    "Temperature assessment: all levels",
+    "IV/IO access and warmed fluid administration for hypotension: Specialist skill",
+    "Pain management for frostbite: refer to Pain Management-Procedure Protocol"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "frostbite",
+      "hypothermia",
+      "hypothermia_prevention",
+      "vital_signs"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-8 Naloxone Leave-Behind Kit (Revised 3/31/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_medication_naloxone_leave_behind_kit",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication (MCA Optional)",
+  "jurisdiction": "Michigan",
+  "condition": "Naloxone Leave-Behind Kit",
+  "version": "2025-03-31",
+  "protocol_reference": "Michigan Medication Protocol Section 9-8: Naloxone Leave-Behind Kit — MDHHS Approved 3/31/2025",
+  "purpose": "MCA OPTIONAL. Govern the distribution of naloxone leave-behind kits by EMS to patients, family members, or bystanders following an opioid-related emergency. Kits are provided to reduce the risk of death from future opioid overdose events. Kit contents are standardized per MDHHS requirements. EMS vehicles must carry 2 kits. Replacement must occur within 24 hours of distribution.",
+  "sections": [
+    {
+      "title": "Kit Contents",
+      "reference": "Michigan Protocol 9-8: Naloxone Leave-Behind Kit — Contents",
+      "points": [
+        "Required kit contents per MDHHS standard:",
+        "— Narcan (naloxone) 4 mg nasal spray — minimum 1 dose (2 doses preferred)",
+        "— MDHHS opioid safety card (education materials)",
+        "— Replacement form (for requesting kit replacement through MCA/agency)",
+        "— Local opioid resources form (community treatment and support resources)",
+        "— Optional: CPR face shield (MCA may include)",
+        "Kit must be stored intact and sealed; all contents must be present and not expired"
+      ]
+    },
+    {
+      "title": "Distribution Criteria and Process",
+      "reference": "Michigan Protocol 9-8: Naloxone Leave-Behind Kit — Distribution",
+      "points": [
+        "Distribute naloxone leave-behind kit to any patient, family member, or bystander following an opioid overdose or suspected opioid use emergency",
+        "MCA Optional — only distribute if MCA has authorized leave-behind kit program",
+        "Offer kit to: patient (if alert and able to receive), family member or close contact present on scene, bystander who called or responded",
+        "Brief recipient on kit contents and basic nasal naloxone administration",
+        "Instruct recipient: call 911 first; administer naloxone; provide rescue breathing if trained; monitor for response; second dose in opposite nostril after 3 minutes if no response",
+        "Document kit distribution in PCR including: recipient (patient/family/bystander), time, and kit lot number"
+      ]
+    },
+    {
+      "title": "Vehicle Stocking and Replacement",
+      "reference": "Michigan Protocol 9-8: Naloxone Leave-Behind Kit — Stocking",
+      "points": [
+        "EMS vehicles must carry 2 naloxone leave-behind kits when MCA has authorized the leave-behind program",
+        "Distributed kits must be replaced within 24 hours through agency supply or MCA-designated exchange",
+        "Kit expiration dates must be checked at each shift; expired kits must be replaced before deployment",
+        "Replacement documentation must be maintained per agency and MCA records requirements"
+      ]
+    }
+  ],
+  "mca_selections_required": [
+    {
+      "item": "Naloxone Leave-Behind Kit Program — MCA Authorization",
+      "description": "MCA must authorize EMS agencies to carry and distribute naloxone leave-behind kits",
+      "options": [
+        "Authorized — EMS agencies carry and distribute leave-behind kits per protocol",
+        "Not authorized — leave-behind kit program not active in this MCA"
+      ],
+      "selected": null
+    }
+  ],
+  "key_drugs": [
+    "naloxone (Narcan) 4mg nasal spray"
+  ],
+  "deterioration_flags": [],
+  "scope_notes": [
+    "MCA OPTIONAL",
+    "Kit contents: Narcan 4mg nasal spray, MDHHS safety card, replacement form, local resources form; optional CPR face shield",
+    "2 kits per vehicle when program authorized",
+    "Replace within 24 hours of distribution",
+    "Distribute to: patient, family member, or bystander after opioid emergency",
+    "Brief recipient on use; document in PCR: recipient, time, lot number"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "opioid_overdose",
+      "toxins_overdose"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

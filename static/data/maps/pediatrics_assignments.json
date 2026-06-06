@@ -1,0 +1,27 @@
+{
+  "scenario_assignments": {
+    "medical": {
+      "1": [
+        "peds_croup_01",
+        "peds_diabetic_emergency_01"
+      ],
+      "2": [
+        "peds_febrile_seizure_01",
+        "peds_asthma_01",
+        "peds_anaphylaxis_01"
+      ]
+    },
+    "trauma": {
+      "1": [
+        "peds_trauma_01_soft_tissue",
+        "peds_trauma_02_partial_choking"
+      ],
+      "2": [
+        "peds_trauma_03_extremity",
+        "peds_trauma_04_burn",
+        "peds_trauma_05_auto_ped",
+        "peds_trauma_06_handlebar"
+      ]
+    }
+  }
+}

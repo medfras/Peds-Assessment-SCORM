@@ -1,0 +1,116 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 10-17 SPRN Team Selection and Procedure (MDHHS Reviewed 2022-12-27). MCA Optional — SPRN program participation required.",
+  "id": "mi_base_special_ops_sprn_team_selection_procedure",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Special Operations",
+  "level_display": "Special Operations Protocol — MCA Optional (SPRN)",
+  "jurisdiction": "Michigan",
+  "condition": "SPRN — Team Selection and Procedure",
+  "version": "2022-12-27",
+  "protocol_reference": "Michigan Special Operations Protocol Section 10-17: SPRN Team Selection and Procedure — MDHHS Reviewed 2022",
+
+  "purpose": "Define criteria for SPRN team member selection, health requirements, team structure, pre/post-transport vital monitoring, and public information restrictions.",
+
+  "sections": [
+    {
+      "title": "Team Member Selection Criteria",
+      "content": [
+        "SPRN team members must meet the following criteria:",
+        "  — Trained in SPRN protocols and PPE use (PAPR donning/doffing competency)",
+        "  — Current OSHA respiratory fit testing (N-95 and/or full-face respirator)",
+        "  — Physically capable of performing transport duties in full SPRN PPE for expected transport duration",
+        "  — No active illness (fever, respiratory symptoms, GI symptoms) on day of transport",
+        "  — No immunocompromising conditions, pregnancy, or other conditions that increase HCID risk (voluntary disclosure; not mandatory exclusion in all cases — medical officer determination)",
+        "Volunteers only: SPRN team members should be volunteers, not required to participate in SPRN transport against their will",
+        "Team composition: minimum 2 care providers (in patient compartment); 1 clean driver; chase team up to 6-7 members; medical officer; safety officer"
+      ]
+    },
+    {
+      "title": "Recommended On-File Information",
+      "content": [
+        "SPRN programs should maintain on-file for each designated team member:",
+        "  — Current respiratory fit test documentation",
+        "  — SPRN training completion record",
+        "  — Baseline health assessment (blood work, vaccinations) — recommended pre-deployment",
+        "  — Emergency contact information",
+        "  — Advance directive or preference for medical care if exposed (recommended discussion)",
+        "This information is used for post-exposure tracking and medical management"
+      ]
+    },
+    {
+      "title": "Health Requirements — Day of Transport",
+      "content": [
+        "MEDICATIONS: team members on medications with dosing intervals ≤6 hours must take their medication within 6 hours before transport",
+        "  — Example: a medication dosed every 4 hours must be taken within 4 hours before transport start",
+        "  — Rationale: team members may be unable to access medications while in full PPE for extended transports",
+        "VITAL SIGNS: pre-transport vital signs required for all team members:",
+        "  — Temperature (must be afebrile — no fever <24hr)",
+        "  — Blood pressure, heart rate",
+        "  — Record and document; compare with post-transport vitals",
+        "HYDRATION: team members must be well-hydrated before transport — PPE use causes significant heat and dehydration risk",
+        "FOOD/GI: avoid large meals immediately before; GI illness disqualifies from transport"
+      ]
+    },
+    {
+      "title": "Team Structure",
+      "content": [
+        "CARE PROVIDER TEAM (2 providers): in patient compartment in full SPRN PPE; duration ≤2 hours without rotation",
+        "  — For transports >2 hours: team rotation at Patient Transfer Points (Protocol 10-13)",
+        "DRIVER (CLEAN): remains in cab; no patient contact; minimum surgical mask + gloves if cab partition open",
+        "CHASE TEAM (up to 6-7 members): follows in separate vehicle; carries backup supplies and PPE; available for team rotation at PTPs",
+        "MEDICAL OFFICER: licensed medical professional (physician, PA, NP, or EMS physician) who supervises medical decisions; provides online medical control interface; may be physically present or available by phone",
+        "SAFETY OFFICER: monitors PPE integrity; oversees donning/doffing sequences; enforces SPRN safety protocols; observes team for signs of heat stress or PPE breach"
+      ]
+    },
+    {
+      "title": "Pre-Transport and Post-Transport Vital Signs",
+      "content": [
+        "PRE-TRANSPORT (all team members):",
+        "  — Temperature, blood pressure, heart rate, respiratory rate",
+        "  — Document on SPRN transport record",
+        "  — Any fever or acute illness → remove from team",
+        "POST-TRANSPORT (all team members):",
+        "  — Temperature, blood pressure, heart rate, respiratory rate",
+        "  — Document and compare with pre-transport baseline",
+        "  — Significant elevation in temperature after transport: report to agency infection control and MDHHS",
+        "POST-TRIP MONITORING (all team members):",
+        "  — Self-monitor temperature and symptoms for 21 days after SPRN transport",
+        "  — Report ANY fever, fatigue, headache, muscle pain, or unexplained illness to agency and MDHHS within 24 hours of symptom onset",
+        "  — Do NOT self-report to ED — notify MDHHS first for guidance on appropriate evaluation location"
+      ]
+    },
+    {
+      "title": "Public Information Restrictions",
+      "content": [
+        "SPRN team members must NOT disclose the following without MDHHS authorization:",
+        "  — Patient identity or clinical details",
+        "  — Transport route or destination",
+        "  — Nature of pathogen or incident details",
+        "  — Any information that could create public panic or compromise investigation",
+        "All public information releases regarding SPRN transport are coordinated by MDHHS Public Affairs",
+        "Media inquiries: direct to agency supervisor and MDHHS — do NOT provide personal statements",
+        "Social media: NO posts about SPRN transport — before, during, or after"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "id": "sprn_program_participation",
+      "label": "SPRN Program Participation — MCA authorization for SPRN protocols 10-10 through 10-18",
+      "description": "MCA Optional: All SPRN protocols apply only to SPRN-designated agencies.",
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Team member develops fever or symptoms before transport departure — remove from team; replace with qualified backup; do NOT proceed with symptomatic team member",
+    "Team member develops fever or symptoms within 21 days post-transport — notify MDHHS before seeking evaluation; do NOT self-report to ED"
+  ],
+
+  "scope_notes": "MCA Optional — SPRN only. Team participation is voluntary. Pre- and post-transport vital signs are required for all team members. Post-trip symptom monitoring continues 21 days. All public information is managed by MDHHS — team members may not independently disclose transport details."
+}

@@ -1,0 +1,56 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 1-10 Foreign Body Airway Obstruction (Revised 05/08/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_all_fbao",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "All",
+  "level_display": "All Levels",
+  "jurisdiction": "Michigan",
+  "condition": "Foreign Body Airway Obstruction",
+  "aliases": [
+    "Choking",
+    "Airway Obstruction",
+    "FBAO"
+  ],
+  "version": "2023-05-08",
+  "protocol_reference": "Michigan General Treatment Protocol Section 1-10: Foreign Body Airway Obstruction — MDHHS Approved 5/8/23, Reviewed 2023",
+  "sections": [
+    {
+      "title": "Foreign Body Airway Obstruction (FBAO)",
+      "reference": "Michigan Protocol 1-10: Foreign Body Airway Obstruction",
+      "points": [
+        "IMPORTANT: Sudden cardiac arrest occurring while a person is eating is frequently dispatched as 'choking' — EMS personnel should consider these cases to be potential cardiac arrests",
+        "In conscious (responsive) adults and children > 1 year of age: deliver abdominal thrusts in rapid sequence until obstruction is relieved",
+        "Administer chest thrusts in conscious patients IN PLACE OF abdominal thrusts when: abdominal thrusts are ineffective (optional consideration); patient is obese and rescuer unable to encircle patient's abdomen; patient is in later stages of pregnancy (> 20 weeks); patient is under 1 year of age; wheelchair-bound patients",
+        "For conscious infants (under 1 year old) with evidence of severe FBAO: deliver repeated cycles of 5 back blows followed by 5 chest compressions until object is expelled or patient becomes unresponsive; NOTE: abdominal thrusts are NOT recommended for infants — may damage relatively large and unprotected liver",
+        "If any patient becomes unresponsive OR is found unresponsive and is unable to be ventilated using 2-person BVM technique with oropharyngeal airway: start CPR",
+        "For unconscious patients, while chest compressions are being provided: perform direct laryngoscopy; if foreign body is visible, remove using adult or pediatric Magill forceps (Specialist skill)",
+        "If unsuccessful in visualizing foreign body: continue chest compressions and repeat direct laryngoscopy while alternating with attempts to ventilate",
+        "Once FBAO is relieved, if spontaneous respiration does not return: refer to Airway Management-Procedure Protocol"
+      ]
+    }
+  ],
+  "mca_selections_required": [],
+  "deterioration_flags": [
+    "Patient loses consciousness — start CPR immediately; proceed to direct laryngoscopy with Magill forceps (Specialist skill)",
+    "Unable to ventilate after patient is unresponsive — continue CPR; reassess airway with each cycle; attempt direct laryngoscopy",
+    "Obstruction not relieved with abdominal thrusts — alternate with chest thrusts; consider patient position and rescuer technique"
+  ],
+  "scope_notes": [
+    "Abdominal thrusts, back blows, chest thrusts: all levels",
+    "BVM ventilation with OPA: all levels",
+    "CPR: all levels",
+    "Direct laryngoscopy and Magill forceps: Specialist (AEMT/Paramedic) skill",
+    "Airway management procedures: refer to Airway Management-Procedure Protocol for scope by level"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "airway_management",
+      "foreign_body_airway_obstruction",
+      "upper_airway_obstruction"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

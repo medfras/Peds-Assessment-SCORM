@@ -1,0 +1,152 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). General Medical: Seizures. NASEMSO national provisional base.",
+  "id": "nasemso_base_general_medical_seizures",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Seizures",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — General Medical: Seizures",
+  "aliases": [
+    "Convulsions",
+    "Eclampsia",
+    "Febrile seizure",
+    "Status epilepticus"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — General Medical: Seizures",
+      "points": [
+        "Prompt cessation of seizures in the prehospital setting",
+        "Minimizing adverse events in the treatment of seizures in the prehospital setting",
+        "Minimizing seizure recurrence during transport"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Seizure activity upon arrival of prehospital personnel or new/recurrent seizure activity lasting greater than 5 minutes",
+        "EXCLUSION CRITERIA:",
+        "None noted"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Ensure patient safety: clear area of hazards, protect head",
+        "Lateral decubitus position (recovery position) after convulsion stops",
+        "Oxygen via NRM; suction as needed to maintain airway",
+        "Do not restrain convulsing patient; do not insert anything in mouth",
+        "Time the seizure duration; document onset and characteristics",
+        "BVM if apnea or respiratory failure post-ictal"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Blood glucose check: treat hypoglycemia as first-line in any AMS/seizure",
+        "12-lead ECG acquisition post-ictally",
+        "Oral glucose if alert and hypoglycemic",
+        "IV access maintenance if existing access",
+        "Diazepam rectal (per state/local EMT protocol) for pediatric status epilepticus"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "Lorazepam 2-4 mg IV/IO (adult) or 0.1 mg/kg IV/IO (pediatric, max 4 mg) for active seizure",
+        "Midazolam 5-10 mg IM (adult) or 0.2 mg/kg IM/IN (pediatric) if IV unavailable",
+        "Diazepam 5-10 mg IV/IO (adult) as alternative benzodiazepine",
+        "IV D50W 25 g or D10W 250 mL for seizure from hypoglycemia",
+        "IO access if IV unsuccessful",
+        "Waveform capnography for airway monitoring"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "Midazolam 5-10 mg IM preferred for out-of-hospital status epilepticus (RAMPART trial evidence)",
+        "Lorazepam 4 mg IV/IO; repeat 4 mg in 5-10 min if seizure persists",
+        "Phenobarbital 10-20 mg/kg IV for refractory status epilepticus",
+        "Levetiracetam 60 mg/kg IV over 15 min for benzodiazepine-refractory status epilepticus",
+        "RSI and intubation for status epilepticus with airway compromise",
+        "Ketamine 1-2 mg/kg IV for NMDA-mediated refractory seizures",
+        "Pyridoxine (Vitamin B6) 70 mg/kg IV for isoniazid overdose seizures",
+        "12-lead ECG interpretation for dysrhythmia in postictal patient",
+        "Consider eclampsia in pregnant patient: magnesium sulfate 4-6 g IV over 20 min"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Trained personnel should be able to give medication without contacting medical direction, however, more than two doses of benzodiazepines are associated with high-risk of airway compromise a. Use caution, weigh risks/benefits of deferring treatment until hospital, and/or consider consultation with medical direction if patient has received two doses of benzodiazepines by bystanders and/or prehospital clinicians",
+        "Hypoglycemic patients who are treated in the field for seizure should be transported to hospital, regardless of whether they return to baseline mental status after treatment"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Many airway/breathing issues in seizing patients can be managed without intubation or placement of an advanced airway. Reserve these measures for patients that fail less invasive maneuvers as noted above",
+        "For children with convulsive status epilepticus requiring medication management in the prehospital setting, trained EMS personnel should be allowed to administer medication without medical direction",
+        "For new onset seizures or seizures that are refractory to treatment, consider other potential causes including, but not limited to, trauma, stroke, electrolyte abnormality, toxic ingestion, pregnancy with eclampsia, hyperthermia",
+        "A variety of safe and efficacious doses for benzodiazepines have been noted in the literature for seizures a. The doses for anticonvulsant treatment noted above are those that are common to the forms and routes of benzodiazepines noted in this guideline",
+        "Recent evidence supports the use of midazolam IM as an intervention that is at least as safe and effective as intravenous lorazepam for prehospital seizure cessation"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Actively seizing during transport and time of seizure onset/cessation",
+        "' Onset, focality, direction of eye deviation",
+        "' Concurrent symptoms of apnea, cyanosis, vomiting, bowel/bladder incontinence, or fever",
+        "' Medication amounts/routes given by bystanders or prehospital clinicians",
+        "' Neurologic status (GCS, nystagmus, pupil size, focal neurologic deficit, or signs of stroke)",
+        "' Blood glucose level"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Contact medical direction for clinical deterioration or interventions outside standard scope"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": [],
+  "clinical_context": {
+    "concepts": [
+      "altered_mental_status",
+      "seizure"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

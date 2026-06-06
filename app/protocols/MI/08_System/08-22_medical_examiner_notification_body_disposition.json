@@ -1,0 +1,78 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-22 Medical Examiner Notification and Body Disposition (Revised 12/27/2022, MDHHS Reviewed 2022). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_medical_examiner_notification_body_disposition",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Medical Examiner Notification and Body Disposition",
+  "version": "2022-12-27",
+  "protocol_reference": "Michigan System Protocol Section 8-22: Medical Examiner Notification and Body Disposition — MDHHS Approved 12/27/2022",
+
+  "purpose": "Govern EMS provider obligations for medical examiner (ME) notification and body disposition following a patient death in the prehospital setting. Certain deaths require ME notification. EMS providers must not move or disturb the body or scene until ME jurisdiction is determined. Law enforcement must be contacted for all unattended or suspicious deaths.",
+
+  "sections": [
+    {
+      "title": "Deaths Requiring Medical Examiner Notification",
+      "reference": "Michigan Protocol 8-22: ME Notification — Required Cases",
+      "points": [
+        "ALL of the following categories require ME notification (per Michigan law):",
+        "— Sudden, unexpected, or unexplained death",
+        "— Death from trauma or suspected trauma",
+        "— Death from suspected homicide, suicide, or suspicious circumstances",
+        "— Death where the cause is unknown",
+        "— Death in custody (law enforcement or correctional facility)",
+        "— Death within 24 hours of a surgical procedure",
+        "— Death where a physician was not in attendance within the previous 48 hours",
+        "— Death of a child (any age) where the cause is unclear or unexpected",
+        "— Occupational death or death resulting from workplace injury"
+      ]
+    },
+    {
+      "title": "Body and Scene Preservation",
+      "reference": "Michigan Protocol 8-22: ME Notification — Scene Preservation",
+      "points": [
+        "Do NOT move, disturb, or alter the body or surrounding scene until the ME assumes jurisdiction or releases the scene",
+        "Exception: movement necessary for resuscitation (document that movement occurred and original position if known)",
+        "Law enforcement must be notified for: suspicious death, traumatic death, homicide/suicide, death in custody, or any death requiring ME notification",
+        "Do NOT remove any items from the body or scene",
+        "Document original body position, any resuscitation performed, and any scene alterations made for medical care"
+      ]
+    },
+    {
+      "title": "Non-ME Deaths — Body Disposition",
+      "reference": "Michigan Protocol 8-22: ME Notification — Non-ME Deaths",
+      "points": [
+        "For deaths where the ME is not required (expected death under hospice care, valid DNR, terminal illness with physician in attendance): body may be released to a funeral home per family or facility direction",
+        "Contact the patient's attending physician or hospice provider for guidance on body release if uncertain",
+        "Document physician name and guidance provided in PCR"
+      ]
+    },
+    {
+      "title": "Documentation",
+      "reference": "Michigan Protocol 8-22: ME Notification — Documentation",
+      "points": [
+        "Document: time of death (or time determined dead on scene), ME notification and ME name, law enforcement notification and agency, any resuscitation performed and timeline",
+        "Document exact body position at discovery and any alterations made for care",
+        "Document any evidence observed on scene (do not collect or move evidence)"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "ME notification required: sudden/unexpected death, trauma, homicide/suicide, unknown cause, custody death, post-surgical <24h, no physician in 48h, child death, occupational death",
+    "Do NOT move body or disturb scene until ME releases",
+    "Law enforcement: notify for all suspicious, traumatic, or ME-required deaths",
+    "Non-ME expected deaths: release to funeral home per attending physician or hospice direction",
+    "Document: time of death, ME name, law enforcement agency, resuscitation timeline, body position, scene alterations"
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Respiratory: Tracheostomy Management. NASEMSO national provisional base.",
+  "id": "nasemso_base_respiratory_tracheostomy_management",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Tracheostomy Management",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Respiratory: Tracheostomy Management",
+  "aliases": [
+    "None"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Respiratory: Tracheostomy Management",
+      "points": [
+        "Meet airway management goals in a patient with a tracheostomy a. Assure patent airway, understand how to troubleshoot tracheostomy in a patient with respiratory distress",
+        "b. Assure adequate oxygenation and ventilation"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Any adult or pediatric patient with an existing tracheostomy greater than 7 days post placement and a mature stoma tract",
+        "EXCLUSION CRITERIA:",
+        "Adult or pediatric patient with tracheostomy less than 7 days post placement (i.e., no mature stoma tract)"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Scene safety and PPE; primary survey (ABCDE)",
+        "Oxygen via NRM targeting SpO2 94-98% if indicated",
+        "Position of comfort; hemorrhage control as needed",
+        "CPR/AED if patient becomes pulseless",
+        "Epinephrine auto-injector for anaphylaxis if applicable",
+        "Naloxone intranasal unit-dose for suspected opioid involvement"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Blood glucose monitoring; oral glucose if hypoglycemic and alert",
+        "12-lead ECG acquisition and transmission",
+        "CPAP for respiratory distress",
+        "Aspirin for suspected ischemic chest pain",
+        "Albuterol SVN for bronchospasm component",
+        "IV access maintenance (non-medicated)"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation",
+        "IV/IO fluid resuscitation as indicated",
+        "Waveform capnography",
+        "IV analgesics (fentanyl, morphine) per pain management protocol",
+        "IV antiemetics (ondansetron) per protocol",
+        "IV D50W/D10W for hypoglycemia"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "12-lead ECG interpretation",
+        "Endotracheal intubation for airway compromise",
+        "RSI per protocol",
+        "Advanced antidysrhythmic or hemodynamic support per specific protocol",
+        "All parenteral medications per protocol",
+        "Vasopressors for refractory hemodynamic compromise"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Especially in pediatric tracheostomy patients with significant respiratory distress, plugging or dislodgement of the tracheostomy is the problem until proven otherwise. Signs and symptoms of respiratory distress, cyanosis, ventilator alarms sounding, decreased level of consciousness, decreased SpO2 or cardiac arrest in patients with a tracheostomy, as well as bradycardia in pediatric tracheostomy patients should be presumed due to a tracheostomy obstruction",
+        "Laryngectomy patients and some patients with congenital or surgical airway abnormalities cannot be orally intubated. Patients with tracheostomy alone (e.g., for mechanical ventilation) and no airway abnormalities should be able to be orally intubated",
+        "For recent tracheostomy patients who present with bleeding from the tracheostomy in the early (up to 3 weeks) postoperative period, a tracheoinnominate arterial bleed is an uncommon and life-threatening complication (0.7% incidence and a 90% mortality rate) a. 50% of these patients present initially with a smaller sentinel bleed/hemoptysis which appears to have stopped",
+        "Prompt tracheostomy replacement is important. Delays allow for narrowing of the stoma and can make recannulation more difficult"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Tracheostomy tube components a. Outer cannula: the tracheostomy size is stamped on the collar",
+        "To determine the appropriate size suction catheter, double the size of the tracheostomy (number on collar of tracheostomy tube)",
+        "A bougie may aid in the placement of an endotracheal tube into a mature stoma",
+        "An inner cannula may be required to ventilate through the tracheostomy tube",
+        "Uncuffed and fenestrated cuffed tracheostomy tubes may not protect the patient from aspiration",
+        "If transporting a patient with a tracheostomy either in an emergency or routine transport, the patients home tracheostomy equipment (e.g., 'Go bag') should accompany them. The equipment that needs to be at the bedside to ensure safety includes appropriately sized French suction catheters, operating suction system, and spare tracheostomy tubes. Sterile saline, sterile gloves and water-soluble medical lubrication packets should also be available. Most tracheostomy patients will maintain a kit with these supplies to travel with",
+        "Inadvertent tracheostomy decannulation incidence is the second most frequent life-threatening pediatric tracheostomy complication, occurring at rates of 0.35'15%, with the vast majority occurring more than 7 days postoperatively",
+        "Tracheostomy obstruction can occur for several reasons, including mucus plugging, abnormal/excess granulation tissue, tracheomalacia causing collapse of the tracheal wall around the tube"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Especially in pediatric tracheostomy patients with significant respiratory distress, plugging or dislodgement of the tracheostomy is the problem until proven otherwise. Signs and symptoms of respiratory distress, cyanosis, ventilator alarms sounding, decreased level of consciousness, decreased SpO2 or cardiac arrest in patients with a tracheostomy, as well as bradycardia in pediatric tracheostomy patients should be presumed due to a tracheostomy obstruction",
+    "For recent tracheostomy patients who present with bleeding from the tracheostomy in the early (up to 3 weeks) postoperative period, a tracheoinnominate arterial bleed is an uncommon and life-threatening complication (0.7% incidence and a 90% mortality rate) a. 50% of these patients present initially with a smaller sentinel bleed/hemoptysis which appears to have stopped"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

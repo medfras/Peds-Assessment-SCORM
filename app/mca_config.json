@@ -1,0 +1,58 @@
+{
+  "_schema": "mca_config_v2",
+  "_comment": "MCA registry. Each MCA entry defines which optional scope expansions are active beyond the Michigan state base protocol. Two expansion tiers: bls_expansions (Specialist-default skills granted to EMT/MFR) and specialist_expansions (Paramedic-default skills granted to Specialist/AEMT). Both drive runtime scope adaptation in scenario_engine.adapt_scenario_to_context() and are injected into AI prompts via _build_mca_expansions_block().",
+
+  "mcas": [
+    {
+      "id": "mi_base",
+      "display": "Michigan Base",
+      "display_short": "MI Base",
+      "state": "MI",
+      "base_protocols": "MI",
+      "bls_expansions": [],
+      "specialist_expansions": [],
+      "notes": "Michigan state base protocols — no MCA-specific expansions configured. Use this for testing or agencies not yet assigned to a specific MCA."
+    },
+    {
+      "id": "mi_wmrmcc_kent",
+      "display": "WMRMCC (Kent County)",
+      "display_short": "WMRMCC",
+      "state": "MI",
+      "base_protocols": "MI",
+      "bls_expansions": [
+        "epi_drawup_im",
+        "cpap_bls",
+        "i_gel_bls",
+        "ondansetron_emt",
+        "glucometer_mfr"
+      ],
+      "specialist_expansions": [],
+      "notes": "West Michigan Regional Medical Control Coalition — Kent County. BLS expansions reflect WMRMCC board approvals through 2025. Specialist expansions pending protocol review — populate from the _expansion_registry keys below."
+    }
+  ],
+
+  "_expansion_registry": {
+    "_comment": "Reference definitions for all known expansion keys. Not loaded at runtime — documentation only. Keys are referenced in bls_expansions or specialist_expansions arrays on each MCA entry.",
+
+    "_bls_expansions": {
+      "_comment": "Skills that are Specialist-default in base Michigan protocol; MCA selection grants them to EMT or MFR scope.",
+      "epi_drawup_im": "BLS/MFR authorized to draw up and administer epinephrine 1 mg/mL IM for anaphylaxis (from vial, not auto-injector). Requires MCA-approved training.",
+      "cpap_bls": "BLS authorized to initiate and manage CPAP for respiratory distress.",
+      "i_gel_bls": "BLS authorized to place I-Gel (or equivalent) supraglottic airway device (adult).",
+      "ondansetron_emt": "EMT authorized to administer ondansetron 4 mg ODT for nausea/vomiting.",
+      "glucometer_mfr": "MFR scope includes blood glucose testing via glucometer (EMT scope by default in Michigan; MFR requires MCA selection).",
+      "twelve_lead_emt": "EMT authorized to acquire and transmit 12-lead ECG (Specialist default without this selection).",
+      "waveform_capnography_emt": "EMT authorized to use waveform capnography (numeric capnometry is EMT default; waveform requires MCA selection)."
+    },
+
+    "_specialist_expansions": {
+      "_comment": "Skills that are Paramedic-default in base Michigan protocol; MCA selection grants them to Specialist/AEMT scope.",
+      "manual_defib_specialist": "Specialist authorized to perform manual defibrillation for V-fib/pVT/unstable irregular wide complex (Paramedic default without this selection).",
+      "push_dose_epi_specialist": "Specialist authorized to administer push-dose epinephrine IV/IO for hemodynamic instability (Paramedic default without this selection).",
+      "txa_specialist": "Specialist authorized to administer tranexamic acid (TXA) for hemorrhagic shock (Paramedic default without this selection).",
+      "rsi_specialist": "Specialist authorized to perform RSI and advanced airway management including pharmacological assistance (Paramedic default without this selection).",
+      "ketorolac_specialist": "Specialist authorized to administer ketorolac IM/IV for pain management (requires MCA selection; Specialist and above once selected).",
+      "twelve_lead_specialist": "Specialist (and below per additional MCA selection) authorized to acquire and transmit 12-lead ECG when not already granted via twelve_lead_emt."
+    }
+  }
+}

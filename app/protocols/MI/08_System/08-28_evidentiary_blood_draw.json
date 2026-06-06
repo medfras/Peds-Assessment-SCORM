@@ -1,0 +1,84 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-28 Evidentiary Blood Draw (Revised 5/30/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_evidentiary_blood_draw",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (Paramedic — MCA Optional)",
+  "jurisdiction": "Michigan",
+  "condition": "Evidentiary Blood Draw",
+  "version": "2023-05-30",
+  "protocol_reference": "Michigan System Protocol Section 8-28: Evidentiary Blood Draw — MDHHS Approved 5/30/2023",
+
+  "purpose": "MCA OPTIONAL. Govern EMS provider performance of evidentiary blood draws for law enforcement purposes (e.g., suspected OWI — Operating While Intoxicated). Evidentiary blood draws are performed at law enforcement request. PARAMEDIC USE ONLY. MCAs must authorize this procedure, define approved collection kits, and establish chain of custody requirements. Patient welfare is the primary obligation — medical care is not delayed for evidentiary purposes.",
+
+  "sections": [
+    {
+      "title": "Authorization",
+      "reference": "Michigan Protocol 8-28: Evidentiary Blood Draw — Authorization",
+      "points": [
+        "MCA OPTIONAL — only authorized if MCA has approved evidentiary blood draw procedures",
+        "PARAMEDIC USE ONLY",
+        "Law enforcement must request the blood draw — EMS does NOT initiate evidentiary draws without law enforcement request",
+        "A lawful warrant or consent must exist per law enforcement — EMS providers do not determine legal authority; that responsibility belongs to law enforcement",
+        "Medical care of the patient takes ABSOLUTE PRIORITY over any evidentiary blood draw — the draw is not performed if it would delay or compromise medical care"
+      ]
+    },
+    {
+      "title": "Procedure",
+      "reference": "Michigan Protocol 8-28: Evidentiary Blood Draw — Procedure",
+      "points": [
+        "Use only MCA-approved evidentiary blood collection kits provided by law enforcement",
+        "Perform draw using appropriate aseptic technique with non-alcohol-based skin antiseptic (betadine/povidone-iodine preferred — alcohol-based antiseptic may affect sample integrity for blood alcohol level)",
+        "Collect sample per kit instructions; label with patient name, date, time, and provider name",
+        "Document: time of draw, collection kit lot number, law enforcement officer name and badge number, and chain of custody transfer",
+        "Immediately transfer the collected sample to the requesting law enforcement officer — document transfer in PCR and on chain of custody form",
+        "Do NOT alter, delay, or improperly collect the sample — evidentiary integrity must be maintained"
+      ]
+    },
+    {
+      "title": "Patient Rights",
+      "reference": "Michigan Protocol 8-28: Evidentiary Blood Draw — Patient Rights",
+      "points": [
+        "Patient refusal: if the patient refuses the evidentiary blood draw, do NOT forcibly perform it — notify law enforcement of the refusal",
+        "Law enforcement determines how to proceed with a refusal — that is a law enforcement decision, not an EMS decision",
+        "Unconscious patient: law enforcement warrant authority governs; EMS performs the draw if medically safe to do so",
+        "Medical care is NOT withheld because an evidentiary draw is refused"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Evidentiary Blood Draw Authorized",
+      "description": "MCA must authorize Paramedics to perform evidentiary blood draws for law enforcement",
+      "options": ["Authorized — Paramedic with MCA-approved training and approved collection kits", "Not authorized"],
+      "selected": null
+    },
+    {
+      "item": "Approved Collection Kit",
+      "description": "MCA must specify the approved evidentiary blood collection kit(s) for use in the jurisdiction",
+      "options": ["MCA-specified law enforcement-provided evidentiary kit only", "Any Michigan State Police-approved evidentiary kit"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Medical emergency present — do NOT perform evidentiary blood draw until patient is stabilized; medical care takes absolute priority",
+    "Patient refuses evidentiary blood draw — do NOT force; notify law enforcement; document refusal"
+  ],
+
+  "scope_notes": [
+    "MCA OPTIONAL — Paramedic use only",
+    "Law enforcement request AND lawful warrant/consent required",
+    "Medical care ALWAYS takes priority over evidentiary draw",
+    "Non-alcohol-based antiseptic (betadine/povidone-iodine) — do NOT use alcohol-based prep",
+    "Use law enforcement-provided approved collection kit only",
+    "Chain of custody: label sample; document time/kit/officer; immediately transfer to law enforcement",
+    "Patient refusal: notify law enforcement; do NOT force draw",
+    "Unconscious patient: law enforcement warrant authority governs"
+  ]
+}

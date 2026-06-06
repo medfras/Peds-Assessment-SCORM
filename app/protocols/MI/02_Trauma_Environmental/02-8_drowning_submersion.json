@@ -1,0 +1,88 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 2-8 Drowning/Submersion Injury (Revised 05/23/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_all_drowning_submersion",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "All",
+  "level_display": "All Levels",
+  "jurisdiction": "Michigan",
+  "condition": "Drowning/Submersion Injury",
+  "version": "2023-05-23",
+  "protocol_reference": "Michigan Trauma and Environmental Protocol Section 2-8: Drowning/Submersion Injury — MDHHS Approved 5/23/23, Reviewed 2023",
+
+  "sections": [
+    {
+      "title": "General Management",
+      "reference": "Michigan Protocol 2-8: Drowning/Submersion Injury — General Management",
+      "points": [
+        "Follow General Pre-Hospital Care-Treatment Protocol",
+        "ALL submersion patients should be transported for observation and evaluation regardless of apparent recovery at the scene",
+        "Remove the patient from the water as rapidly as possible while maintaining a supine position",
+        "Protect the cervical spine when the mechanism suggests spinal injury, such as diving, watercraft collision, or unknown mechanism",
+        "Patients in cardiac arrest from submersion: follow Adult or Pediatric General Cardiac Arrest-Treatment Protocol",
+        "If water temperature is uncertain, consider it cold water for resuscitation decision-making",
+        "Submersion time is counted from when the patient is presumed to have gone underwater"
+      ]
+    },
+    {
+      "title": "Airway and Ventilation",
+      "reference": "Michigan Protocol 2-8: Drowning/Submersion Injury — Airway and Ventilation",
+      "points": [
+        "Administer high-flow oxygen and proactively manage airway, oxygenation, and ventilation",
+        "Ventilate as needed with BVM and oxygen",
+        "If patient remains hypoxic despite high-flow oxygen: consider CPAP per MCA selection; CPAP may be selected as a BLS skill by the MCA",
+        "Advanced airway if indicated per Airway Management-Procedure Protocol",
+        "Evaluate for associated injuries, head injury, diving emergency, and hyperbaric chamber considerations; contact Medical Control early when indicated"
+      ]
+    },
+    {
+      "title": "Cold Water Submersion",
+      "reference": "Michigan Protocol 2-8: Drowning/Submersion Injury — Cold Water",
+      "points": [
+        "Cold water submersion is water temperature less than 70°F / 21°C",
+        "If presumed submersion time is less than 90 minutes, initiate resuscitative efforts",
+        "If presumed submersion time is greater than 90 minutes, refer to Dead on Scene/Termination of Resuscitation and contact Medical Control",
+        "Contact Medical Control for transport timing and destination considerations, including rewarming capability",
+        "Refer to Hypothermia/Frostbite-Treatment Protocol, prevent further heat loss, dry and wrap the patient in a vapor barrier, and handle gently"
+      ]
+    },
+    {
+      "title": "Warm Water Submersion",
+      "reference": "Michigan Protocol 2-8: Drowning/Submersion Injury — Warm Water",
+      "points": [
+        "Warm water submersion is water temperature greater than or equal to 70°F / 21°C",
+        "If presumed submersion time is less than 30 minutes, initiate resuscitative efforts",
+        "If presumed submersion time is greater than 30 minutes, refer to Dead on Scene/Termination of Resuscitation and contact Medical Control",
+        "Contact Medical Control for transport timing, destination, or termination of resuscitation guidance"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "CPAP for Submersion Hypoxia",
+      "description": "MCA must indicate whether CPAP is authorized for use in submersion patients with persistent hypoxia",
+      "options": ["BLS", "Specialist only"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Persistent hypoxia despite high-flow oxygen — consider CPAP (per MCA selection); advanced airway if available",
+    "Vomiting and airway compromise — suction immediately; reposition; consider advanced airway",
+    "Cardiac arrest — begin CPR immediately; follow appropriate arrest protocol; do not delay for water removal from airway",
+    "Cold water submersion less than 90 minutes — initiate resuscitative efforts and contact Medical Control for transport/destination guidance",
+    "Warm water submersion greater than 30 minutes or cold water submersion greater than 90 minutes — refer to Dead on Scene/Termination of Resuscitation and contact Medical Control"
+  ],
+
+  "scope_notes": [
+    "Scene safety, basic resuscitation, oxygen administration, BVM ventilation: all levels",
+    "CPAP: per MCA selection — may be BLS or Specialist",
+    "Advanced airway management: Specialist skill",
+    "IV/IO access and fluid administration: Specialist skill",
+    "Cardiac monitoring: Specialist skill"
+  ]
+}

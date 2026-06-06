@@ -1,0 +1,98 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 2-10 Heat Emergencies (Revised 03/17/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_all_heat_emergencies",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "All",
+  "level_display": "All Levels",
+  "jurisdiction": "Michigan",
+  "condition": "Heat Emergencies",
+  "version": "2025-03-17",
+  "protocol_reference": "Michigan Trauma and Environmental Protocol Section 2-10: Heat Emergencies — MDHHS Approved 3/17/25, Reviewed 2025",
+  "sections": [
+    {
+      "title": "Heat Cramps",
+      "reference": "Michigan Protocol 2-10: Heat Cramps",
+      "points": [
+        "Follow General Pre-Hospital Care-Treatment Protocol; for pediatric patients, use Michigan MEDIC Cards when applicable",
+        "Determine the extent and duration of heat exposure and remove the patient from the hot environment",
+        "Check blood glucose and treat hypoglycemia per the Altered Mental Status protocol when indicated",
+        "Heat cramps: remove from the hot environment and give oral liquids or sports rehydration solution if the patient is alert and able to swallow"
+      ]
+    },
+    {
+      "title": "Heat Exhaustion",
+      "reference": "Michigan Protocol 2-10: Heat Exhaustion",
+      "points": [
+        "Remove the patient from the hot environment and place them in a cool environment",
+        "Remove tight clothing; fan the patient, use air conditioning, and avoid chilling or inducing shivering",
+        "If the patient is not nauseated, not altered, and has no abdominal pain, provide cool oral fluids; avoid carbonated, alcoholic, or caffeinated drinks",
+        "If nausea or vomiting is present, refer to the Nausea and Vomiting protocol",
+        "If IV/IO access is indicated: Adults may receive NS or LR wide open up to 1 L; Pediatrics may receive NS or LR up to 20 mL/kg"
+      ]
+    },
+    {
+      "title": "Heat Stroke",
+      "reference": "Michigan Protocol 2-10: Heat Stroke",
+      "points": [
+        "Heat stroke is a true emergency; aggressive cooling may take priority over transport",
+        "Remove the patient from the hot environment, remove tight clothing, and begin immediate cooling",
+        "Transport semi-reclined with the head elevated when tolerated",
+        "Refer to the Nausea and Vomiting protocol when needed",
+        "If IV/IO access is indicated: Adults may receive NS or LR wide open up to 1 L; Pediatrics may receive NS or LR up to 20 mL/kg",
+        "Contact Medical Control for heat stroke management guidance"
+      ]
+    },
+    {
+      "title": "Exertional Heat Stroke",
+      "reference": "Michigan Protocol 2-10: Exertional Heat Stroke",
+      "points": [
+        "Cool quickly by ice or cold-water immersion when available",
+        "If immersion is not available, apply cold water over the entire skin surface with continuous fanning",
+        "Apply ice packs over as much of the body as possible; effective locations include palms, soles, and cheeks",
+        "COOL FIRST — TRANSPORT SECOND when possible; if scene plus transport time is expected to exceed 30 minutes, begin on-scene immersive cooling before evacuation",
+        "Continue cooling during transport — do not stop cooling en route",
+        "IV/IO fluid administration should not delay rapid whole-body cooling",
+        "If the patient is in water, ECG lead cables may be placed in the water for monitoring",
+        "Treat seizures per the Seizures protocol"
+      ]
+    }
+  ],
+  "mca_selections_required": [],
+  "key_drugs": [
+    {
+      "name": "Normal Saline IV/IO (Heat Emergencies)",
+      "dose": "Adults: wide open up to 1 L; Pediatrics: up to 20 mL/kg",
+      "route": "IV or IO",
+      "indication": "Heat exhaustion or heat stroke when IV/IO fluid support is indicated",
+      "contraindications": "Fluid overload; use caution in elderly or those with cardiac/renal history",
+      "side_effects": "Pulmonary edema if over-administered",
+      "scope": "Specialist skill",
+      "notes": "Cooling is the primary intervention in heat stroke. IV/IO fluids are supportive and should not delay rapid whole-body cooling."
+    }
+  ],
+  "deterioration_flags": [
+    "Altered mental status with elevated temperature — heat stroke; aggressive cooling immediately; COOL FIRST, transport second when possible",
+    "Seizure activity — airway management, cooling, IV access (Specialist skill), contact Medical Control",
+    "Hypotension in heat stroke — IV fluid bolus (Specialist skill); continue aggressive cooling",
+    "If scene plus transport time for exertional heat stroke is expected to exceed 30 minutes — begin on-scene immersive cooling before evacuation"
+  ],
+  "scope_notes": [
+    "Cooling measures, cold-water immersion, cold water over skin with fanning, and environmental removal: all levels",
+    "Oral hydration for alert patients: all levels",
+    "Temperature assessment: all levels",
+    "IV/IO access and fluid administration: Specialist skill",
+    "ECG monitoring: per scope and available equipment; lead cables may be placed in water during immersion cooling",
+    "Seizure management: refer to appropriate protocol by level"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "heat_exposure",
+      "heat_illness",
+      "vital_signs"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

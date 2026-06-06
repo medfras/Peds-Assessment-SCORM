@@ -1,0 +1,152 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Toxins and Environmental: Stimulant Poisoning/Overdose. NASEMSO national provisional base.",
+  "id": "nasemso_base_toxins_and_environmental_stimulant_poisoning_overdose",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Stimulant Poisoning/Overdose",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Stimulant Poisoning/Overdose",
+  "aliases": [
+    "Amphetamines",
+    "Bath Salts",
+    "Cocaine",
+    "Methamphetamine",
+    "Phencyclidine (PCP)",
+    "Stimulant"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Stimulant Poisoning/Overdose",
+      "points": [
+        "Identify intoxicating agent",
+        "Protect organs at risk for injury such as heart, brain, liver, kidney",
+        "Determine if there is an antidote",
+        "Treat the symptoms, which may include severe tachycardia and hypertension, agitation, hallucinations, chest pain, seizure, and arrhythmia"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Tachycardia/tachydysrhythmias",
+        "Hypertension",
+        "Diaphoresis",
+        "Delusions/paranoia",
+        "Seizures",
+        "Hyperthermia",
+        "Mydriasis (dilated pupils)",
+        "Stimulant/hallucinogenic (with stimulant properties) agents:",
+        "EXCLUSION CRITERIA:",
+        "None noted"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Scene safety and PPE; primary survey (ABCDE)",
+        "Oxygen via NRM targeting SpO2 94-98% if indicated",
+        "Position of comfort; hemorrhage control as needed",
+        "CPR/AED if patient becomes pulseless",
+        "Epinephrine auto-injector for anaphylaxis if applicable",
+        "Naloxone intranasal unit-dose for suspected opioid involvement"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Blood glucose monitoring; oral glucose if hypoglycemic and alert",
+        "12-lead ECG acquisition and transmission",
+        "CPAP for respiratory distress",
+        "Aspirin for suspected ischemic chest pain",
+        "Albuterol SVN for bronchospasm component",
+        "IV access maintenance (non-medicated)"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation",
+        "IV/IO fluid resuscitation as indicated",
+        "Waveform capnography",
+        "IV analgesics (fentanyl, morphine) per pain management protocol",
+        "IV antiemetics (ondansetron) per protocol",
+        "IV D50W/D10W for hypoglycemia"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "12-lead ECG interpretation",
+        "Endotracheal intubation for airway compromise",
+        "RSI per protocol",
+        "Advanced antidysrhythmic or hemodynamic support per specific protocol",
+        "All parenteral medications per protocol",
+        "Vasopressors for refractory hemodynamic compromise"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Apply the least amount of physical management devices that are necessary to protect the patient and the clinicians [See Agitated or Violent Patient/Behavioral Emergency Guideline ]",
+        "Assessment for potential weapons or additional drugs is very important since these items can pose a threat not just to the patient but also to the EMS crew"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Recognition and treatment of hyperthermia (including sedatives to decrease heat production from muscular activity) is essential as many deaths are attributable to hyperthermia",
+        "If law enforcement has placed the patient in handcuffs, this patient needs ongoing physical security for safe transport. Have law enforcement in back of ambulance for the handcuffed patient or make sure proper non-handcuff physical management devices are in place before law enforcement leaves and ambulance departs from scene",
+        "If patient has signs and symptoms of ACS, consider giving nitroglycerin sublingual (SL) q (quaque, every) 3'5 minutes if SBP greater than 100 mmHg and until pain resolves (if range not desired, use q 3 minutes) a. Vasospasm is often the problem in this case as opposed to a fixed coronary artery lesion",
+        "Maintaining IV access, cardiac monitor, and SPO2/EtCO2 monitors are key to being able to catch and intervene decompensations in a timely manner a. If agitated, consider restraining the patient to facilitate patient assessment and lessen likelihood of vascular access or monitor displacements",
+        "Cocaine has sodium channel blocking effects and can cause significant cardiac conduction abnormalities with a widened QRS. Treatment is with sodium bicarbonate similar to a tricyclic antidepressant. Check a 12-lead EKG to assess for these complications",
+        "History is as important as the physical examination.",
+        "If the patient is on psychiatric medication, but has failed to be compliant, this fact alone puts the patient at higher risk for the adverse outcome of delirium with agitated behavior",
+        "If the patient is found naked, this may elevate the suspicion for stimulant use or abuse. These substances increase the risk for sudden death secondary to delirium with agitated behavior. Neuroleptic malignant syndrome or serotonin syndrome can present with similar signs and symptoms"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Reason for psychologic and physical management procedures used and neurologic/circulatory exams with device use",
+        "' Reason for medications selected",
+        "' Documentation of QT interval when antiemetic medications, haloperidol, or droperidol is used and result conveyed to ED staff"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Apply the least amount of physical management devices that are necessary to protect the patient and the clinicians [See Agitated or Violent Patient/Behavioral Emergency Guideline ]"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

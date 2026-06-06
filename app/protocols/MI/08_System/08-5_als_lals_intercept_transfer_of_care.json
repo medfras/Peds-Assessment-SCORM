@@ -1,0 +1,89 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-5 ALS/LALS Intercept and Transfer of Care (Revised 6/5/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_als_lals_intercept_transfer_of_care",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (BLS/ALS/LALS — MCA Optional)",
+  "jurisdiction": "Michigan",
+  "condition": "ALS/LALS Intercept and Transfer of Care",
+  "version": "2023-06-05",
+  "protocol_reference": "Michigan System Protocol Section 8-5: ALS/LALS Intercept and Transfer of Care — MDHHS Approved 6/5/2023",
+
+  "purpose": "MCA OPTIONAL. Govern ALS or LALS (Limited Advanced Life Support — Specialist/AEMT) intercept with BLS units and formal transfer of care between EMS providers. MCAs must define intercept criteria and transfer of care processes. Proper transfer of care documentation protects patient safety and provider accountability.",
+
+  "sections": [
+    {
+      "title": "ALS/LALS Intercept Authorization",
+      "reference": "Michigan Protocol 8-5: Intercept — Authorization",
+      "points": [
+        "MCA OPTIONAL — only authorized if MCA has defined intercept criteria and process",
+        "ALS or LALS intercept may be requested by a BLS unit when ALS/LALS care is needed and the patient cannot wait for a primary ALS response",
+        "Intercept requests should be coordinated through dispatch or direct radio contact between crews",
+        "Intercept is appropriate when: patient condition requires ALS/LALS intervention AND transport time or scene time would benefit from intercept"
+      ]
+    },
+    {
+      "title": "Transfer of Care — Process",
+      "reference": "Michigan Protocol 8-5: Intercept — Transfer of Care",
+      "points": [
+        "Formal transfer of care: receiving provider must receive a verbal report including patient name, age, chief complaint, assessment findings, vital signs, interventions performed, and response to treatment",
+        "The provider assuming care accepts responsibility for the patient from the moment of formal handoff",
+        "Verbal report must be acknowledged by the receiving provider before the transferring provider is released",
+        "Transfer of care is NOT complete until the receiving provider confirms receipt of report",
+        "Scene transfer of care: BLS crew may continue transport with ALS crew, or ALS crew may assume care with patient transfer to ALS unit"
+      ]
+    },
+    {
+      "title": "Documentation",
+      "reference": "Michigan Protocol 8-5: Intercept — Documentation",
+      "points": [
+        "Both the transferring and receiving units must document the transfer of care in their respective PCRs",
+        "Transferring unit documents: time of transfer, receiving unit or provider, clinical status at time of transfer",
+        "Receiving unit documents: time care assumed, clinical status received, all interventions from point of assumption of care",
+        "Document intercept location and any scene time associated with intercept"
+      ]
+    },
+    {
+      "title": "Responsibilities After Transfer",
+      "reference": "Michigan Protocol 8-5: Intercept — Post-Transfer",
+      "points": [
+        "After formal transfer of care: receiving provider operates under their scope of practice and MCA protocols",
+        "Transferring crew is released from patient care responsibility after formal handoff",
+        "If ALS provider intercepts BLS during transport, coordinate handoff to minimize transport delay for time-sensitive patients"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "ALS/LALS Intercept Authorized",
+      "description": "MCA must authorize ALS/LALS intercept and define criteria and process",
+      "options": ["Authorized — MCA intercept criteria and process defined", "Not authorized"],
+      "selected": null
+    },
+    {
+      "item": "LALS (Specialist) Intercept Authorized",
+      "description": "MCA may separately authorize LALS (Specialist/AEMT level) intercept",
+      "options": ["Authorized — LALS intercept permitted", "Not authorized — ALS intercept only"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Patient deteriorates before ALS intercept arrives — initiate BLS protocols appropriate to condition; do NOT delay BLS care awaiting intercept",
+    "Intercept crew unable to reach intercept point — redirect to hospital if transport time to hospital < intercept wait time"
+  ],
+
+  "scope_notes": [
+    "MCA OPTIONAL — MCA must define intercept criteria and transfer of care process",
+    "Intercept: coordinate through dispatch or direct radio contact",
+    "Formal transfer of care: verbal report with name, age, complaint, assessment, vitals, interventions, response",
+    "Transfer is not complete until receiving provider confirms receipt",
+    "Both units document transfer in respective PCRs",
+    "LALS (Specialist) intercept requires separate MCA authorization"
+  ]
+}

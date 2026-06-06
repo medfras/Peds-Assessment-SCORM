@@ -1,0 +1,322 @@
+{
+  "title": "History Maker: Interview Builder",
+  "subtitle": "Build clinically useful OPQRST and SAMPLE questions from phrase chunks.",
+  "round_size": 5,
+  "cases": [
+    {
+      "id": "ib_croup_provocation_01",
+      "presentation": "A 3-year-old has a barking cough, mild stridor when upset, and symptoms that started overnight. Caregiver says the child sounds worse when crying.",
+      "target_component": "P - Provocation/Palliation",
+      "prompt": "Build the best question to clarify what changes the child's breathing.",
+      "chunks": [
+        {
+          "id": "does_breathing",
+          "text": "Does the breathing"
+        },
+        {
+          "id": "get_worse",
+          "text": "get worse"
+        },
+        {
+          "id": "when_cries",
+          "text": "when they cry or lie flat?"
+        },
+        {
+          "id": "what_color",
+          "text": "what color was the sputum?"
+        },
+        {
+          "id": "any_chest_pain",
+          "text": "any chest pain into the arm?"
+        },
+        {
+          "id": "last_ate",
+          "text": "what did they last eat?"
+        }
+      ],
+      "accepted_sequences": [
+        [
+          "does_breathing",
+          "get_worse",
+          "when_cries"
+        ]
+      ],
+      "mistake_tag": "wrong_mnemonic_focus",
+      "feedback": {
+        "correct": "Good phrasing. You targeted Provocation/Palliation by asking what makes the work of breathing worse.",
+        "incorrect": "You built a different history path. Which OPQRST component clarifies what worsens or improves the symptom? In this croup-like presentation, crying or lying flat changes airway noise; sputum color or last oral intake may matter later, but they do not answer Provocation/Palliation. The safer question is: Does the breathing get worse when they cry or lie flat?"
+      },
+      "hint": "Start from the target OPQRST/SAMPLE component, then pick chunks that ask about the patient cue that would change field decisions."
+    },
+    {
+      "id": "ib_anaphylaxis_medications_01",
+      "presentation": "A 9-year-old has diffuse hives, wheezing, and lip swelling after a snack at school. The teacher says the student has an emergency action plan.",
+      "target_component": "M - Medications",
+      "prompt": "Build the best question to identify immediately relevant medications.",
+      "chunks": [
+        {
+          "id": "do_they_have",
+          "text": "Do they have"
+        },
+        {
+          "id": "epi_auto",
+          "text": "an epinephrine auto-injector"
+        },
+        {
+          "id": "with_them",
+          "text": "with them right now?"
+        },
+        {
+          "id": "what_was_snack",
+          "text": "what exactly was in the snack?"
+        },
+        {
+          "id": "how_bad_itch",
+          "text": "how bad is the itching?"
+        },
+        {
+          "id": "last_saw_doc",
+          "text": "when did they last see their doctor?"
+        }
+      ],
+      "accepted_sequences": [
+        [
+          "do_they_have",
+          "epi_auto",
+          "with_them"
+        ]
+      ],
+      "mistake_tag": "wrong_clinical_context",
+      "feedback": {
+        "correct": "Good. You asked a medication question that can immediately change treatment access.",
+        "incorrect": "You reached for background detail before the action-changing medication question. Which SAMPLE component identifies medication that may be available on scene? In anaphylaxis, the auto-injector can change care now; snack details help identify the trigger but do not replace asking whether epinephrine is present. The best question is: Do they have an epinephrine auto-injector with them right now?"
+      },
+      "hint": "Start from the target OPQRST/SAMPLE component, then pick chunks that ask about the patient cue that would change field decisions."
+    },
+    {
+      "id": "ib_seizure_events_01",
+      "presentation": "A 6-year-old is postictal after a witnessed seizure at home. The caregiver says it lasted 'a while' and rescue medication may have been used.",
+      "target_component": "E - Events",
+      "prompt": "Build the best question to clarify the event sequence.",
+      "chunks": [
+        {
+          "id": "what_happened",
+          "text": "What happened"
+        },
+        {
+          "id": "right_before",
+          "text": "right before and during"
+        },
+        {
+          "id": "the_seizure",
+          "text": "the seizure?"
+        },
+        {
+          "id": "where_hurts",
+          "text": "where does it hurt now?"
+        },
+        {
+          "id": "allergic_to",
+          "text": "are they allergic to antibiotics?"
+        },
+        {
+          "id": "ate_today",
+          "text": "what did they eat today?"
+        }
+      ],
+      "accepted_sequences": [
+        [
+          "what_happened",
+          "right_before",
+          "the_seizure"
+        ]
+      ],
+      "mistake_tag": "wrong_mnemonic_focus",
+      "feedback": {
+        "correct": "Good. You targeted Events by reconstructing what happened before and during the seizure.",
+        "incorrect": "You chose a question that may be useful later, but it does not reconstruct the event. Which SAMPLE element tells you what led up to the problem and what occurred during it? For seizure calls, the sequence, duration, injury, and medication use live under Events. The better question is: What happened right before and during the seizure?"
+      },
+      "hint": "Start from the target OPQRST/SAMPLE component, then pick chunks that ask about the patient cue that would change field decisions."
+    },
+    {
+      "id": "ib_chest_pain_radiation_01",
+      "presentation": "A 15-year-old reports sudden chest tightness during basketball practice. They look anxious and say the pain is 'all over my chest.'",
+      "target_component": "R - Radiation/Region",
+      "prompt": "Build the best question to clarify where the symptom goes.",
+      "chunks": [
+        {
+          "id": "does_pain",
+          "text": "Does the pain"
+        },
+        {
+          "id": "move_anywhere",
+          "text": "move anywhere"
+        },
+        {
+          "id": "jaw_back_arm",
+          "text": "like the jaw, back, or arm?"
+        },
+        {
+          "id": "take_meds",
+          "text": "do you take any daily medications?"
+        },
+        {
+          "id": "what_number",
+          "text": "what number is the pain?"
+        },
+        {
+          "id": "cough_recently",
+          "text": "have you had a cough recently?"
+        }
+      ],
+      "accepted_sequences": [
+        [
+          "does_pain",
+          "move_anywhere",
+          "jaw_back_arm"
+        ]
+      ],
+      "mistake_tag": "wrong_mnemonic_focus",
+      "feedback": {
+        "correct": "Good. You clarified Radiation/Region without assuming a diagnosis.",
+        "incorrect": "You asked a plausible history question, but not the target OPQRST component. Which component clarifies location and spread? Severity asks how bad it is; medications ask background risk. Radiation/Region asks whether pain moves to the jaw, back, or arm."
+      },
+      "hint": "Start from the target OPQRST/SAMPLE component, then pick chunks that ask about the patient cue that would change field decisions."
+    },
+    {
+      "id": "ib_abdominal_pain_last_oral_01",
+      "presentation": "A 12-year-old has worsening right lower abdominal pain and nausea. Transport is likely; a parent asks whether the child can have water.",
+      "target_component": "L - Last Oral Intake",
+      "prompt": "Build the best question to clarify intake before transport.",
+      "chunks": [
+        {
+          "id": "when_last",
+          "text": "When did they last"
+        },
+        {
+          "id": "eat_or_drink",
+          "text": "eat or drink"
+        },
+        {
+          "id": "anything",
+          "text": "anything?"
+        },
+        {
+          "id": "pain_sharp",
+          "text": "is the pain sharp or dull?"
+        },
+        {
+          "id": "allergies_food",
+          "text": "are they allergic to food?"
+        },
+        {
+          "id": "started_running",
+          "text": "did it start while running?"
+        }
+      ],
+      "accepted_sequences": [
+        [
+          "when_last",
+          "eat_or_drink",
+          "anything"
+        ]
+      ],
+      "mistake_tag": "wrong_mnemonic_focus",
+      "feedback": {
+        "correct": "Good. You asked Last Oral Intake in a way that supports transport and possible hospital procedures.",
+        "incorrect": "You picked a reasonable symptom question, but the target is SAMPLE's Last Oral Intake. Which question tells the receiving team whether the patient has eaten or drunk recently? Quality and onset help the differential, but Last Oral Intake is: When did they last eat or drink anything?"
+      },
+      "hint": "Start from the target OPQRST/SAMPLE component, then pick chunks that ask about the patient cue that would change field decisions."
+    },
+    {
+      "id": "ib_ams_glucose_past_history_01",
+      "presentation": "A 10-year-old is confused and sweaty at soccer practice. A teammate says the child has 'some kind of sugar problem.'",
+      "target_component": "P - Past Medical History",
+      "prompt": "Build the best question to clarify the relevant medical history.",
+      "chunks": [
+        {
+          "id": "do_they_have",
+          "text": "Do they have"
+        },
+        {
+          "id": "diabetes_or",
+          "text": "diabetes or another"
+        },
+        {
+          "id": "medical_condition",
+          "text": "medical condition we should know about?"
+        },
+        {
+          "id": "pain_scale",
+          "text": "what is their pain score?"
+        },
+        {
+          "id": "where_did_fall",
+          "text": "where did they fall?"
+        },
+        {
+          "id": "drink_water",
+          "text": "did they drink water today?"
+        }
+      ],
+      "accepted_sequences": [
+        [
+          "do_they_have",
+          "diabetes_or",
+          "medical_condition"
+        ]
+      ],
+      "mistake_tag": "wrong_clinical_context",
+      "feedback": {
+        "correct": "Good. You clarified Past Medical History tied to the altered mental status differential.",
+        "incorrect": "The presentation points toward a history that changes your differential and immediate assessment. Which SAMPLE component identifies known conditions such as diabetes? Hydration and injury questions can follow, but the targeted history question is: Do they have diabetes or another medical condition we should know about?"
+      },
+      "hint": "Start from the target OPQRST/SAMPLE component, then pick chunks that ask about the patient cue that would change field decisions."
+    },
+    {
+      "id": "ib_caregiver_language_01",
+      "presentation": "A nonverbal 4-year-old is guarding their left arm after a fall. The caregiver is anxious and answering for the child.",
+      "target_component": "S - Signs & Symptoms",
+      "prompt": "Build a developmentally appropriate question for the caregiver.",
+      "chunks": [
+        {
+          "id": "what_are_you",
+          "text": "What are you"
+        },
+        {
+          "id": "noticing_that",
+          "text": "noticing that tells you"
+        },
+        {
+          "id": "arm_hurts",
+          "text": "the arm hurts?"
+        },
+        {
+          "id": "kid_rate",
+          "text": "can they rate pain 0 to 10?"
+        },
+        {
+          "id": "radiates_jaw",
+          "text": "does it radiate to the jaw?"
+        },
+        {
+          "id": "last_meal",
+          "text": "what was their last meal?"
+        }
+      ],
+      "accepted_sequences": [
+        [
+          "what_are_you",
+          "noticing_that",
+          "arm_hurts"
+        ]
+      ],
+      "mistake_tag": "developmentally_mismatched_language",
+      "feedback": {
+        "correct": "Good. You adapted Signs/Symptoms questioning to the caregiver and the child's developmental level.",
+        "incorrect": "The patient may not be able to answer an abstract pain scale. Which wording gathers Signs/Symptoms from the best source without forcing an age-inappropriate response? For this child, ask the caregiver what they are noticing that tells them the arm hurts."
+      },
+      "hint": "Start from the target OPQRST/SAMPLE component, then pick chunks that ask about the patient cue that would change field decisions."
+    }
+  ]
+}

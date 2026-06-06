@@ -1,0 +1,109 @@
+{
+  "fixture_id": "sparse_accurate_narrative",
+  "description": "Student submitted a minimal narrative covering only facts that actually occurred — every claim is accurate and backed by evidence, but the text is sparse. The CHART structure is incomplete (C and H present, A and R and T minimal/absent), so a structural ceiling applies. Critically, there must be no false corroboration flags — claims the student did make are all supported by the run record. Tests that sparse-but-accurate documentation does not generate false unsupported-claim penalties.",
+
+  "inputs": {
+    "scenario": {
+      "id": "fixture_peds_resp",
+      "category": "pediatric_medical",
+      "protocol_config": {"mca": "mi_wmrmcc_kent"},
+      "turnover_target": "als",
+      "vitals": {
+        "baseline": {},
+        "interventions": {
+          "o2_nrb":        {"label": "High-flow O2 via NRB mask (15 LPM)"},
+          "albuterol_svn": {"label": "Albuterol 2.5 mg via SVN (nebulizer)"},
+          "als_intercept": {"label": "ALS intercept acknowledged"}
+        }
+      },
+      "scoring": {}
+    },
+
+    "interventions": [
+      {"name": "o2_nrb",        "applied_at": "2026-01-01T12:02:00"},
+      {"name": "albuterol_svn", "applied_at": "2026-01-01T12:04:00"},
+      {"name": "als_intercept", "applied_at": "2026-01-01T12:05:00"}
+    ],
+
+    "checklist_states": {"item_states": []},
+
+    "submitted_docs": {
+      "dmist": "D: 8yo male, asthma. M: History of asthma. I: O2 NRB, albuterol SVN. S: SpO2 83%. T: ALS transport.",
+      "narrative": "C: 8-year-old with asthma attack. H: History of asthma."
+    },
+
+    "findings": [
+      {"key": "spo2", "value": "83%", "finding_type": "vital", "captured_at": "2026-01-01T12:01:00"}
+    ],
+
+    "student_messages": [
+      "BSI, scene is safe.",
+      "Airway is patent. When did this start? Any allergies?",
+      "Applying O2 via NRB mask.",
+      "Albuterol SVN per protocol.",
+      "ALS intercept called.",
+      "Reassess after treatment."
+    ],
+
+    "scene_entry_scoring_result": {"ppe": "gloves_mask"},
+    "scene_entry_dict":           {},
+    "greeting_detected": false,
+    "greeting_text": "",
+
+    "prepass_result": {
+      "available": true,
+      "dmist_unsupported": [],
+      "narrative_unsupported": []
+    },
+
+    "critical_actions": [
+      {
+        "id": "scene_safety",
+        "description": "Ensure scene safety and BSI/PPE",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "o2_administration",
+        "description": "Administer high-flow O2 via NRB mask",
+        "required": true,
+        "intervention_ids": ["o2_nrb"]
+      }
+    ],
+
+    "grace_items": [],
+    "session_events": [],
+    "agency": {"transports_patients": true},
+    "effective_level": "EMT",
+    "elapsed_min": 10.0
+  },
+
+  "target_expected": {
+    "assertions": [
+      {
+        "id": "corroboration_tier_2",
+        "type": "corroboration_tier",
+        "expected": 2
+      },
+      {
+        "id": "no_false_dmist_unsupported_claims",
+        "type": "dmist_unsupported_claims_min",
+        "min_count": 0
+      },
+      {
+        "id": "no_false_narrative_unsupported_claims",
+        "type": "narrative_unsupported_claims_min",
+        "min_count": 0
+      },
+      {
+        "id": "narrative_ceiling_exists",
+        "type": "narrative_ceiling_value",
+        "expected": 8
+      }
+    ]
+  },
+
+  "_note": "narrative_ceiling_value=8: narrative has C and H present (2 of 5 CHART elements). Missing A, R, T = 3 elements. 20 - 3*4 = 8. Confirmed against live code output.",
+
+  "known_failing_baselines": []
+}

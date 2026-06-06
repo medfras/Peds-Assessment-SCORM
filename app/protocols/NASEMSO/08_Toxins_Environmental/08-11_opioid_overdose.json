@@ -1,0 +1,159 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Toxins and Environmental: Opioid Poisoning/Overdose. NASEMSO national provisional base.",
+  "id": "nasemso_base_toxins_and_environmental_opioid_poisoning_overdose",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Opioid Poisoning/Overdose",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Opioid Poisoning/Overdose",
+  "aliases": [
+    "Carfentanil",
+    "Dilaudid'",
+    "Drug abuse",
+    "Fentanyl",
+    "Heroin",
+    "Hydrocodone",
+    "Hydromorphone Methadone",
+    "Morphine"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Opioid Poisoning/Overdose",
+      "points": [
+        "Rapid recognition and intervention of a clinically significant opioid poisoning or overdose",
+        "Prevention of respiratory and/or cardiac arrest"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Patients exhibiting decreased mental status, and respiratory depression of all age groups with known or suspected opioid use or abuse. Lack of miosis (pinpoint pupils) is not a reliable sign for ruling out opioid exposure, although its presence is consistent with such exposure",
+        "EXCLUSION CRITERIA:",
+        "Patients with altered mental status exclusively from other causes (e.g., head injury, or hypoglycemia)"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Remove patient from exposure; call for ALS backup",
+        "Oxygen: BVM with high-flow O2 for apneic patient; NRM for hypoxic breathing patient",
+        "Recovery position for breathing patient with decreased LOC",
+        "Naloxone intranasal unit-dose (premeasured auto-injector) 4 mg IN for suspected opioid-induced respiratory depression",
+        "CPR/AED if pulseless; apneic patients often respond to naloxone + BVM alone"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Naloxone 2-4 mg IN (repeat q 2-3 min) or 0.4-2 mg IM via auto-injector for respiratory depression",
+        "BVM ventilation to support oxygenation until naloxone takes effect",
+        "Supraglottic airway if unable to maintain airway manually",
+        "Blood glucose monitoring",
+        "12-lead ECG if prolonged QRS or suspected co-ingestion",
+        "CPAP not appropriate in opioid OD (patient may not protect airway); prioritize naloxone + BVM"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "Naloxone 0.4-2 mg IV/IO; titrate to adequate respirations — goal is to restore breathing, not to fully reverse (avoid acute withdrawal and re-sedation)",
+        "IV access initiation; IV normal saline for hypotension",
+        "Waveform capnography to monitor ventilatory adequacy",
+        "IV D50W 25 g if hypoglycemia contributing to AMS",
+        "Naloxone infusion consideration for long-acting opioids (fentanyl, methadone) — half of reversal dose/hour IV"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "Naloxone titrated: start 0.04 mg IV q 2 min to restore respirations — avoid abrupt full reversal in opioid-dependent patients (precipitates acute withdrawal, agitation)",
+        "Endotracheal intubation for persistent apnea not reversed by naloxone or when airway protection needed",
+        "Naloxone infusion: 2/3 of reversal dose per hour IV for long-acting opioids (methadone, sustained-release oxycodone) — monitor for re-narcotization",
+        "Consider co-ingestions: benzodiazepines (flumazenil), stimulants, alcohol — treat per toxicology protocols",
+        "Sodium bicarbonate 1-2 mEq/kg IV for QRS >120 ms (suggests sodium channel toxicity from co-ingestion)",
+        "12-lead ECG interpretation: QT prolongation risk with methadone, fentanyl analogs",
+        "RSI and intubation for co-ingestion with airway compromise not responsive to naloxone"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Clinical duration of naloxone a. The clinical opioid reversal effect of naloxone is limited and may end within an hour whereas opioids often have a duration of 4 hours or longer",
+        "Opioid withdrawal a. Patients with altered mental status secondary to an opioid overdose may become agitated or violent following naloxone administration due to opioid withdrawal therefore the goal is to use the lowest dose as possible to avoid precipitating withdrawal",
+        "EMS clinicians should be prepared to initiate airway management before, during, and after naloxone administration and to provide appropriate airway support until the patient has adequate respiratory effort"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "The essential feature of opioid overdose requiring EMS intervention is respiratory depression or apnea, managed by ventilation followed by naloxone",
+        "Some opioids have additional toxic effects (i.e., methadone can produce QT prolongation and tramadol can produce seizures)",
+        "Overuse and abuse of prescribed and illegal opioids has led to an increase in accidental and intentional opioid overdoses",
+        "Opioid combinations:",
+        "High-potency opioids:",
+        "The IN route has the benefit of no risk of needle stick to the clinician",
+        "Patients with opioid overdose from fentanyl or fentanyl analogs may rapidly exhibit chest wall rigidity and require positive end expiratory pressure (PEEP), in addition to multiple and/or larger doses of naloxone, to achieve adequate ventilation",
+        "The primary clinical indication for the use of opioid medications is analgesia"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Rapid and accurate identification of signs and symptoms of opioid poisoning",
+        "' Airway management",
+        "' Pulse oximetry (oxygen saturation) and, if available, capnometry or capnography",
+        "' Blood glucose assessment",
+        "' Naloxone dose and route of administration",
+        "' Clinical response to medication administration",
+        "' Number of doses of naloxone to achieve a clinical response"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Contact medical direction for clinical deterioration or interventions outside standard scope"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": [],
+  "clinical_context": {
+    "concepts": [
+      "altered_mental_status",
+      "opioid_overdose",
+      "toxins_overdose",
+      "ventilation_support"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

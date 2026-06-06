@@ -1,0 +1,331 @@
+{
+  "_schema": "ems_agency_v1",
+  "_comment": "Plainfield Fire Department (PFD) agency config. After first startup the database record is live - use PUT /api/agencies/{id}/config to push updates without restarting.",
+  "id": "pfd",
+  "display_name": "Plainfield Fire Department",
+  "display_name_short": "PFD",
+  "unit_designator": "Squad 1",
+  "unit_designators": [
+    "Squad 1",
+    "Squad 3",
+    "Engine 1",
+    "Engine 3"
+  ],
+  "mca": "mi_wmrmcc_kent",
+  "mca_display": "WMRMCC (Kent County)",
+  "available_mcas": [
+    "mi_wmrmcc_kent"
+  ],
+  "jurisdiction": "Michigan",
+  "service_type": {
+    "transport": false,
+    "als_on_unit": false,
+    "fire_suppression": true,
+    "notes": "Non-transport BLS fire department. ALS is co-dispatched on all calls via WMRMCC. Transport is provided by Life Ambulance or Rockford Ambulance units. PFD provides first response - stabilize and prepare for ALS/transport."
+  },
+  "als_dispatch": {
+    "co_dispatched": true,
+    "arrival_minutes": 12,
+    "unit_name": "Medic",
+    "notes": "ALS (Medic) is co-dispatched automatically to all Priority 1 calls per PFD dispatch protocol."
+  },
+  "provider_levels": {
+    "primary": "EMT",
+    "primary_display": "EMT-Basic (BLS)",
+    "notes": "PFD operates as BLS first-response; ALS provided by co-dispatched Medic unit."
+  },
+  "equipment": {
+    "items": [
+      {
+        "id": "bvm_adult_peds_infant",
+        "carried": false,
+        "source": "master"
+      },
+      {
+        "id": "opa_npa_assorted",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "suction_unit_portable",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "suction_unit_onboard",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "oxygen_cylinder_d",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "oxygen_cylinder_m",
+        "carried": false,
+        "source": "master"
+      },
+      {
+        "id": "nrb_mask",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "nasal_cannula",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "svn_nebulizer_kit",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "cpap_unit",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "igel_supraglottic_airway",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "pulse_oximeter",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "manual_bp_cuff_stethoscope",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "blood_glucose_meter",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "aed",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "cardiac_monitor_4lead",
+        "carried": false,
+        "source": "master"
+      },
+      {
+        "id": "twelve_lead_ecg_device",
+        "carried": false,
+        "source": "master"
+      },
+      {
+        "id": "capnography_device",
+        "carried": false,
+        "source": "master"
+      },
+      {
+        "id": "thermometer_oral",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "tourniquets",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "pressure_bandages",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "hemostatic_gauze",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "trauma_dressings",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "cervical_collars_assorted",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "long_backboard_straps",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "scoop_stretcher",
+        "carried": false,
+        "source": "master"
+      },
+      {
+        "id": "pelvic_binder",
+        "carried": false,
+        "source": "master"
+      },
+      {
+        "id": "traction_splint",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "burn_dressings",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "splint_kit",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "chest_seal",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "sterile_water",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "stretcher",
+        "carried": false,
+        "source": "master"
+      },
+      {
+        "id": "ob_kit_basic",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "broselow_tape",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "cold_packs",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "hypothermia_prevention_kit",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "auto_chest_compression",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "albuterol_svn_unit_dose",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "oral_glucose_gel",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "epi_autoinjector_adult",
+        "carried": false,
+        "source": "master"
+      },
+      {
+        "id": "epi_autoinjector_pediatric",
+        "carried": false,
+        "source": "master"
+      },
+      {
+        "id": "aspirin_324mg_chewable",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "naloxone_2mg",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "racepinephrine_svn",
+        "carried": false,
+        "source": "master"
+      },
+      {
+        "id": "nitroglycerin_sl",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "diphenhydramine_25mg_oral",
+        "carried": false,
+        "source": "master"
+      },
+      {
+        "id": "activated_charcoal",
+        "carried": false,
+        "source": "master"
+      },
+      {
+        "id": "epinephrine_1mg_ml",
+        "carried": true,
+        "source": "master"
+      },
+      {
+        "id": "ondansetron_4mg_odt",
+        "carried": true,
+        "source": "master"
+      }
+    ]
+  },
+  "training_and_certifications": {
+    "completed": [
+      "Draw-up epinephrine IM - WMRMCC MCA-approved training completed; BLS personnel certified to draw up and administer epinephrine 1 mg/mL IM for anaphylaxis per Protocol 1-6",
+      "Albuterol SVN administration - EMT scope at WMRMCC",
+      "Oral glucose administration - EMT scope",
+      "Naloxone IN administration - EMT scope per WMRMCC",
+      "I-Gel Supraglottic airway - per WMRMCC BLS airway protocol",
+      "Ondansetron 4 mg ODT",
+      "Glucometer use - can obtain blood glucose/sugar level"
+    ],
+    "not_completed": []
+  },
+  "sops": [
+    {
+      "id": "non_transport_operations",
+      "title": "Non-Transport Operations",
+      "text": "PFD units do not transport patients. On all medical calls, ALS is co-dispatched via WMRMCC. Squad 1 initiates care, stabilizes the patient, and performs DMIST handoff to the arriving ALS crew. Document all interventions, times, and patient response for ALS continuity of care."
+    },
+    {
+      "id": "epinephrine_draw_up_anaphylaxis",
+      "title": "Epinephrine Draw-Up - Anaphylaxis",
+      "text": "PFD units do NOT carry epinephrine auto-injectors. Draw-up epinephrine (1 mg/mL IM) is the only epinephrine option on this unit and is approved under WMRMCC Protocol 1-6 for BLS use after MCA-approved training. All personnel must complete the WMRMCC 9-1(S) two-step cross-check: verbalize to partner before drawing up AND before injecting. Weight-based dosing: 0.15 mg (0.15 mL) for 10-30 kg; 0.3 mg (0.3 mL) for > 30 kg / adults. Contact Medical Control for patients < 10 kg prior to administration if possible."
+    },
+    {
+      "id": "blood_glucose_testing",
+      "title": "Blood Glucose Testing",
+      "text": "Blood glucose check is an MFR and EMT/BLS skill at WMRMCC. EMT may administer oral glucose based on clinical presentation and protocol indications without a confirmed BG value if hypoglycemia is strongly suspected."
+    },
+    {
+      "id": "als_handoff_dmist",
+      "title": "ALS Handoff (DMIST)",
+      "text": "All patient contacts require a DMIST handoff to the arriving ALS crew: Demographics (name, age, weight), Mechanism/Complaint, Interventions performed (drug, dose, time, response), Signs (current vitals, trends), Transfer (relevant history, medications, allergies). Document all interventions on the ePCR."
+    },
+    {
+      "id": "pediatric_weight_estimation",
+      "title": "Pediatric Weight Estimation",
+      "text": "Use Broselow tape for all pediatric patients under 35 kg. Color band determines weight range for medication dosing. For oral glucose and draw-up epinephrine: dose is based on weight range, not exact weight. Always verbalize Broselow color and estimated weight to partner as part of medication cross-check."
+    }
+  ],
+  "ai_prompt_context": "This is a Plainfield Fire Department (PFD) unit - a non-transport EMT-Basic BLS fire department first response unit. ALS is always co-dispatched and provides transport. PFD does NOT carry epinephrine auto-injectors; draw-up epinephrine IM (1 mg/mL) is the only epinephrine option on this unit, and personnel are trained and certified to use it per WMRMCC Protocol 1-6. Blood glucose testing is MFR and EMT scope at WMRMCC. All medication administration requires the WMRMCC 9-1(S) two-step cross-check before administering."
+}

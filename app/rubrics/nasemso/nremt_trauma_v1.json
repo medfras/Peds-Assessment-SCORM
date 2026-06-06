@@ -1,0 +1,711 @@
+{
+  "_schema": "ems_call_type_rubric_v1",
+  "id": "nasemso_nremt_trauma_v1",
+  "version": "2026-05-16",
+  "call_type": "nremt_trauma",
+  "domain": "trauma",
+  "overlays_supported": ["state", "agency", "scenario"],
+
+  "protocol_refs": [
+    {
+      "id": "nremt_trauma_pam_2024",
+      "title": "NREMT Patient Assessment/Management — Trauma Skill Sheet (2024)",
+      "version": "2024",
+      "url": null
+    },
+    {
+      "id": "nasemso_v3_trauma",
+      "title": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Trauma (General Trauma Management, Extremity Trauma, Head Injury, Spinal Care)",
+      "version": "2022-03-11",
+      "url": null
+    }
+  ],
+
+  "source_role_map": {
+    "ems_measured_vital": {
+      "training": ["authored_vitals"],
+      "qaqi":     ["epcr_vital", "monitor_import"]
+    },
+    "ems_performed_exam": {
+      "training": ["authored_vitals"],
+      "qaqi":     ["epcr_exam", "monitor_import"],
+      "_note": "ai_roleplay_tag intentionally excluded: roleplay responses include caregiver/patient-stated findings that are not EMS-performed exams."
+    },
+    "challenge_performed_exam": {
+      "training": ["lung_sound_challenge"],
+      "qaqi":     ["epcr_exam", "monitor_import"],
+      "_note": "Structured challenge-gated exam evidence. Lung sound findings in training must come from the lung sound challenge, not AI prose or transcript fallback."
+    },
+    "challenge_calculated_gcs": {
+      "training": ["gcs_modal"],
+      "qaqi":     ["epcr_neuro", "epcr_gcs_component"],
+      "_note": "Structured GCS modal result in training. Required for GCS-specific neuro assessment items."
+    },
+    "caregiver_reported": {
+      "training": ["caregiver_reported_history"],
+      "qaqi":     ["epcr_history", "caregiver_statement"]
+    },
+    "patient_reported": {
+      "training": ["patient_reported_history"],
+      "qaqi":     ["epcr_history", "patient_statement"]
+    },
+    "history_obtained": {
+      "training": ["caregiver_reported_history", "patient_reported_history"],
+      "qaqi":     ["epcr_history", "dispatch_notes", "caregiver_statement"],
+      "_note": "Aggregate role — use caregiver_reported or patient_reported when the source distinction matters clinically."
+    },
+    "ems_administered_intervention": {
+      "training": ["intervention_record"],
+      "qaqi":     ["epcr_intervention", "car_medication_administration"],
+      "_note": "Intervention Tier 1 evidence comes from the intervention table directly. This role is QA/QI metadata for cross-reference."
+    },
+    "scene_entry_data": {
+      "training": ["system_scene_entry"],
+      "qaqi":     ["cad_scene_entry", "system_scene_entry"]
+    }
+  },
+
+  "checklist_items": [
+
+    {
+      "id": "nremt_trauma.ppe_precautions",
+      "description": "Takes or verbalizes appropriate BSI/PPE precautions before patient contact",
+      "category": "clinical_performance",
+      "subtype": "scene_entry",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nremt_trauma_pam_2024"],
+      "evidence_requirements": [
+        { "type": "scene_entry", "scene_entry_path": "ppe.required_complete" }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(bsi|ppe|gloves?|mask|eye.?protection|body.substance.isolation|standard.precautions?)\\b"
+      ],
+      "done_feedback": "BSI/PPE confirmed before patient contact — correct practice for all trauma calls.",
+      "missed_feedback": "BSI/PPE precautions must be verbalized before approaching any trauma patient. Blood and body fluid exposure is high in trauma — gloves and eye protection are non-negotiable.",
+      "common_errors": ["Approaching patient before verbalizing PPE"],
+      "unsafe_if_missed": true
+    },
+
+    {
+      "id": "nremt_trauma.scene_safety",
+      "description": "Determines scene safety before approaching patient",
+      "category": "clinical_performance",
+      "subtype": "scene_entry",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nremt_trauma_pam_2024"],
+      "evidence_requirements": [
+        { "type": "scene_entry", "scene_entry_path": "scene_safety.confirmed" }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(scene.safe|is.the.scene.safe|safe.to.approach|safety|hazards?|traffic.control|crowd.control|secure.the.scene)\\b"
+      ],
+      "done_feedback": "Scene safety assessed — correct before patient contact.",
+      "missed_feedback": "Scene safety must be determined before approaching any trauma patient. An unsecured scene puts both you and the patient at risk.",
+      "common_errors": ["Rushing to patient without completing scene size-up"],
+      "unsafe_if_missed": true
+    },
+
+    {
+      "id": "nremt_trauma.moi_determination",
+      "description": "Determines mechanism of injury (MOI) on scene approach; uses MOI to predict injury patterns",
+      "category": "clinical_performance",
+      "subtype": "scene_entry",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nremt_trauma_pam_2024", "nasemso_v3_trauma"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "history",
+          "key_pattern": "(?i)mechanism|moi|how.did|what.happened|fell|fall|struck|hit|crash|collision|penetrating|blunt|injury.pattern|rollover|ejected",
+          "eligible_source_roles": ["history_obtained", "scene_entry_data"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(mechanism.of.injury|moi|how.did|what.happened|fell|fall|struck|hit|crash|collision|blunt.trauma|penetrating.trauma|injury.pattern|high.speed|rollover|ejected|unrestrained|height.of.fall)\\b"
+      ],
+      "done_feedback": "MOI determined — guides index of suspicion for injury patterns and informs spinal precaution decision.",
+      "missed_feedback": "MOI drives the entire trauma assessment: blunt vs. penetrating, high- vs. low-energy, height of fall. Without it you cannot predict injury patterns, apply appropriate spinal precautions, or make an informed transport decision.",
+      "common_errors": ["Documenting 'patient fell' without characterizing mechanism (step vs. ladder, standing vs. moving)"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "nremt_trauma.patient_count_resources",
+      "description": "Determines total number of patients and requests additional resources if needed",
+      "category": "clinical_performance",
+      "subtype": "scene_entry",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nremt_trauma_pam_2024"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "history",
+          "key_pattern": "(?i)how.many.patients?|number.of.patients?|any.other.victims?|other.patients?|mass.casualty|mci|additional.units?",
+          "eligible_source_roles": ["scene_entry_data", "history_obtained"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(how.many.patients?|total.patients?|any.others?.injured|other.victims?|additional.units?|mutual.aid|mci|mass.casualty|request.backup|need.additional.help)\\b"
+      ],
+      "done_feedback": "Patient count determined and additional resources requested if indicated.",
+      "missed_feedback": "Always determine the total number of patients on scene approach. Multi-patient incidents require immediate resource requests — early is better than late.",
+      "common_errors": ["Assuming single patient without scanning the scene"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "nremt_trauma.spinal_precaution",
+      "description": "Considers and verbalizes need for spinal motion restriction based on MOI",
+      "category": "clinical_performance",
+      "subtype": "scene_entry",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nremt_trauma_pam_2024", "nasemso_v3_trauma"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)spinal|c.spine|cervical.spine|smr|spinal.motion|spine.precaution|stabilize.head|manual.stabilization",
+          "eligible_source_roles": ["ems_performed_exam"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(spinal.precaution|c.spine|cervical.spine|smr|spinal.motion.restriction|stabilize.head|hold.c.spine|manual.stabilization|spine.board|longboard|inline.stabilization)\\b"
+      ],
+      "done_feedback": "Spinal precaution considered — verbalized appropriately based on MOI.",
+      "missed_feedback": "Spinal motion restriction consideration must be verbalized for all significant trauma MOI. Document your reasoning whether or not you apply SMR.",
+      "common_errors": ["Applying SMR without documenting clinical indication", "Not verbalizing SMR consideration when MOI warrants it"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "nremt_trauma.general_impression_loc",
+      "description": "Verbalizes general impression of patient including apparent life threats; determines LOC/responsiveness (AVPU or GCS)",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nremt_trauma_pam_2024"],
+      "requirement_logic": "any",
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)general.impression|appears?|looks?|impression|obvious.injuries?|life.threat|critical",
+          "eligible_source_roles": ["ems_performed_exam"]
+        },
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)\\b(loc|avpu|gcs|responsiveness|alert|verbal|pain.response|unresponsive|mental.status|conscious|oriented)\\b",
+          "eligible_source_roles": ["ems_performed_exam", "challenge_calculated_gcs"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(general.impression|appears?|in.distress|alert|oriented|avpu|responsive|unresponsive|loc|mental.status|gcs|altered.mental.status|conscious|life.threat)\\b"
+      ],
+      "done_feedback": "General impression formed and LOC assessed — establishes baseline for trajectory monitoring throughout the call.",
+      "missed_feedback": "General impression orients your entire response: is the patient talking? Bleeding? Moving? LOC in trauma signals brain injury or shock — establish AVPU/GCS immediately on approach.",
+      "common_errors": ["Skipping general impression in favor of jumping straight to ABCs"],
+      "unsafe_if_missed": true
+    },
+
+    {
+      "id": "nremt_trauma.airway_management",
+      "description": "Opens and assesses airway patency using trauma technique (jaw thrust); inserts airway adjunct as indicated; suctions as needed",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nremt_trauma_pam_2024", "nasemso_v3_trauma"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)airway|oropharyngeal|nasopharyngeal|opa|npa|jaw.thrust|suction|patent|obstruc",
+          "eligible_source_roles": ["ems_performed_exam"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(airway|open.airway|patent.airway|jaw.thrust|chin.lift|suction|oropharyngeal|nasopharyngeal|opa|npa|airway.adjunct|airway.clear|airway.obstructed|gurgling|snoring|stridor|secretions)\\b"
+      ],
+      "done_feedback": "Airway assessed and managed appropriately — correct prioritization in trauma primary survey.",
+      "missed_feedback": "Airway is the first clinical priority in the trauma primary survey. Assess patency (open? protected?), suction blood or secretions, insert adjunct if patient cannot protect their airway. Use jaw thrust — not chin-lift — when spinal injury is possible.",
+      "common_errors": ["Using chin-lift instead of jaw thrust when spinal injury is possible", "Not suctioning blood or secretions before inserting adjunct"],
+      "unsafe_if_missed": true
+    },
+
+    {
+      "id": "nremt_trauma.breathing_assessment",
+      "description": "Assesses breathing rate and quality; identifies inadequate ventilation requiring intervention",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nremt_trauma_pam_2024"],
+      "requirement_logic": "any",
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "vital",
+          "key_pattern": "(?i)respiratory.rate|resp.rate|\\brr\\b|respirations",
+          "eligible_source_roles": ["ems_measured_vital"]
+        },
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)breathing|chest.rise|breath.sounds?|lung.sounds?|work.of.breathing|wob|tidal.volume|ventilation|symmetry",
+          "eligible_source_roles": ["ems_performed_exam"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(breathing|respiratory.rate|resp.rate|\\brr\\b|chest.rise|breath.sounds?|work.of.breathing|tidal.volume|ventilation|adequate.breathing|inadequate.breathing|labored|unlabored|tachypneic|bradypneic|symmetric)\\b"
+      ],
+      "done_feedback": "Breathing assessed — rate and quality documented for primary survey.",
+      "missed_feedback": "Breathing assessment in trauma goes beyond rate: assess depth (tidal volume), symmetry, and paradoxical movement. Inadequate breathing — slow rate, shallow depth, or asymmetric rise — requires assisted ventilation. Do not delay.",
+      "common_errors": ["Assessing rate without depth or symmetry", "Missing asymmetric chest rise indicating tension pneumothorax or hemothorax"],
+      "unsafe_if_missed": true
+    },
+
+    {
+      "id": "nremt_trauma.o2_chest_life_threats",
+      "description": "Initiates appropriate oxygen therapy; manages life-threatening chest injuries (open chest wound, flail segment)",
+      "category": "protocols_treatment",
+      "subtype": "intervention",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nremt_trauma_pam_2024", "nasemso_v3_trauma"],
+      "evidence_requirements": [
+        {
+          "type": "intervention",
+          "intervention_keys": ["o2_nrb", "o2_nc", "o2_bvm", "bvm_ventilation", "chest_seal", "needle_decompression", "assisted_ventilation"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(oxygen|o2|nrb|non.rebreather|nasal.cannula|bvm|bag.valve.mask|assist.ventilation|chest.seal|occlusive.dressing|flutter.valve|needle.decompression|tension.pneumothorax|open.pneumothorax|sucking.chest.wound)\\b"
+      ],
+      "done_feedback": "Oxygen initiated and chest life threats addressed — critical early interventions in trauma.",
+      "missed_feedback": "Oxygen therapy and chest life threat management belong in the primary survey. Seal open chest wounds with a vented dressing; assist ventilation for inadequate breathing; recognize tension PTX signs (absent breath sounds, tracheal deviation, JVD) and decompress.",
+      "common_errors": ["Delaying oxygen while completing full assessment", "Using non-vented occlusive dressing on open chest wound (risk of tension conversion)"],
+      "unsafe_if_missed": true
+    },
+
+    {
+      "id": "nremt_trauma.pulse_assessment",
+      "description": "Assesses pulse for rate and quality (radial preferred; carotid if radial absent)",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nremt_trauma_pam_2024"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "vital",
+          "key_pattern": "(?i)pulse|heart.rate|\\bhr\\b|radial|carotid|femoral",
+          "eligible_source_roles": ["ems_measured_vital"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(pulse|heart.rate|radial.pulse|carotid.pulse|bpm|tachycardic|bradycardic|weak.pulse|strong.pulse|bounding|thready|absent.radial)\\b"
+      ],
+      "done_feedback": "Pulse assessed — rate and quality documented for circulation evaluation.",
+      "missed_feedback": "Pulse rate and quality are the primary circulation indicators in trauma. Tachycardia + hypotension = hemorrhagic shock until proven otherwise. A weak or thready radial pulse indicates 30%+ blood volume loss.",
+      "common_errors": ["Checking rate only without documenting quality (strong/weak/thready)"],
+      "unsafe_if_missed": true
+    },
+
+    {
+      "id": "nremt_trauma.bleeding_control",
+      "description": "Assesses and controls major external hemorrhage using direct pressure, tourniquet, or wound packing as indicated",
+      "category": "protocols_treatment",
+      "subtype": "intervention",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nremt_trauma_pam_2024", "nasemso_v3_trauma"],
+      "evidence_requirements": [
+        {
+          "type": "intervention",
+          "intervention_keys": ["direct_pressure", "tourniquet", "wound_packing", "hemorrhage_control", "pressure_dressing", "hemostatic_dressing"]
+        },
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)bleed|hemorrhage|wound|laceration|amputation|tourniquet|direct.pressure|bleeding.controlled",
+          "eligible_source_roles": ["ems_performed_exam"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(bleed|hemorrhage|major.bleeding|external.bleeding|control.bleeding|direct.pressure|tourniquet|wound.packing|pressure.dressing|laceration|amputation|bleeding.controlled|hemostatic)\\b"
+      ],
+      "done_feedback": "Major hemorrhage assessed and controlled — correct prioritization of life-threatening bleeding in primary survey.",
+      "missed_feedback": "Major external hemorrhage is a primary survey life threat — not a secondary assessment finding. Apply direct pressure immediately; use tourniquet 2–3 inches proximal to arterial extremity bleeding; use wound packing with direct pressure for junctional wounds.",
+      "common_errors": ["Lifting pressure dressing to check the wound (releases clot)", "Delaying tourniquet for arterial extremity bleed"],
+      "unsafe_if_missed": true
+    },
+
+    {
+      "id": "nremt_trauma.skin_ctc",
+      "description": "Assesses skin color, temperature, and condition (CTC) for early signs of compensated shock",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nremt_trauma_pam_2024"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)skin|cap.refill|capillary.refill|cyanosis|cyanotic|diaphor|pallor|pale|flushed|mottled|ctc|color.temperature",
+          "eligible_source_roles": ["ems_performed_exam"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(skin|cap.refill|capillary.refill|cyanosis|cyanotic|diaphor|pallor|pale|flushed|mottled|warm|cool|dry|moist|diaphoretic|ctc|color.temperature)\\b"
+      ],
+      "done_feedback": "CTC assessed — skin signs provide early warning of compensated shock before vital signs decompensate.",
+      "missed_feedback": "CTC (color, temperature, condition) detects compensated shock: cool, pale, diaphoretic skin occurs before blood pressure drops. Identify it here — before it becomes decompensated and blood pressure is already lost.",
+      "common_errors": ["Checking capillary refill only without color or temperature"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "nremt_trauma.transport_decision",
+      "description": "Identifies priority patients and makes transport decision (load-and-go vs. treat on scene); targets scene time ≤ 10 minutes for critical trauma",
+      "category": "clinical_performance",
+      "subtype": "transport",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nremt_trauma_pam_2024", "nasemso_v3_trauma"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)transport|load.and.go|priority|critical.patient|trauma.center|expedited|urgent.transport|high.priority|immediate.transport",
+          "eligible_source_roles": ["ems_performed_exam"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(transport|load.and.go|priority.patient|critical|trauma.center|expedited.transport|high.priority|immediate.transport|priority.1|time.sensitive|10.minute|scene.time)\\b"
+      ],
+      "timing_constraints": [
+        {
+          "type": "within_minutes",
+          "value": 10,
+          "violation_consequence": "informational"
+        }
+      ],
+      "done_feedback": "Transport decision made — priority correctly determined after primary survey.",
+      "missed_feedback": "Transport decision must be made after primary survey — not after secondary assessment. For high-MOI or critical trauma: load and go. Scene time > 10 minutes in critical trauma correlates with increased mortality. The OR is definitive care; you are not.",
+      "common_errors": ["Delaying transport to complete secondary assessment on an unstable patient", "Not stating trauma center as destination for high-MOI mechanism"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "nremt_trauma.chief_complaint_opqrst",
+      "description": "Obtains chief complaint and pain history (OPQRST) from patient or bystanders",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nremt_trauma_pam_2024"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "history",
+          "key_pattern": "(?i)chief.complaint|pain|onset|provocation|quality|radiation|severity|time|opqrst|what.hurts|where.does.it.hurt",
+          "eligible_source_roles": ["history_obtained"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(chief.complaint|what.hurts|pain.scale|opqrst|onset|provocation|quality|radiation|severity|where.does.it|describe.the.pain|when.did.the.pain|pain.level)\\b"
+      ],
+      "done_feedback": "Chief complaint and pain history obtained — characterizes injury complaint for trending and handoff.",
+      "missed_feedback": "Even in trauma, ask about chief complaint and characterize pain using OPQRST. Pain location, onset, and severity guide secondary assessment priorities and reveal injury sites not obvious on inspection.",
+      "common_errors": ["Skipping pain assessment in altered or unconscious patient without documenting inability to obtain"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "nremt_trauma.sample_history",
+      "description": "Obtains SAMPLE history: signs/symptoms, allergies, medications, pertinent PMH, last oral intake, events preceding",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nremt_trauma_pam_2024"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "history",
+          "key_pattern": "(?i)sample|allergies?|medications?|medical.history|pmh|last.meal|last.oral|events.preceding|pertinent.history|anticoagulant",
+          "eligible_source_roles": ["history_obtained"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(sample|allergies?|medications?|meds?|medical.history|pmh|last.meal|last.ate|last.drank|events.before|any.medical.conditions?|blood.thinners?|anticoagulant)\\b"
+      ],
+      "done_feedback": "SAMPLE history obtained — allergies and anticoagulant use are particularly critical for trauma management and surgical planning.",
+      "missed_feedback": "SAMPLE history is surgical planning data: anticoagulants dramatically increase hemorrhage risk and affect OR decisions; allergies affect anesthesia choices; last meal timing matters for airway management and surgery timing.",
+      "common_errors": ["Skipping allergies when patient is unstable — still required for documentation and hospital prep"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "nremt_trauma.head_assessment",
+      "description": "Inspects and palpates head, scalp, and facial structures; assesses pupils bilaterally for size, equality, and reactivity",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nremt_trauma_pam_2024", "nasemso_v3_trauma"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)head|scalp|skull|facial|face|pupils?|eyes?|ears?|battle.sign|raccoon.eyes?|csf|nose|mouth|jaw|facial.bones?",
+          "eligible_source_roles": ["ems_performed_exam"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(head|scalp|skull|face|pupils?|perrla|pupils.equal|battle.sign|raccoon.eyes?|csf|bleeding.from.ears?|bleeding.from.nose|jaw|deformity|tenderness|step.deformity|crepitus|hematoma|contusion)\\b"
+      ],
+      "done_feedback": "Head, face, and pupils assessed — TBI signs (pupil inequality, mechanism, LOC change) and facial trauma identified.",
+      "missed_feedback": "Full head assessment: scalp (lacerations, deformities, hematoma), skull (step-off, crepitus), face (symmetry, PERRL, facial bone stability), ears (Battle's sign), nose (CSF rhinorrhea), mouth (airway/dental). Unequal pupils in trauma suggests herniation — immediately reassess and expedite transport.",
+      "common_errors": ["Checking pupils without noting size, equality, and reactivity separately", "Missing Battle's sign and raccoon eyes as basilar skull fracture indicators"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "nremt_trauma.neck_assessment",
+      "description": "Assesses neck for JVD, tracheal midline position, subcutaneous emphysema; applies cervical collar if indicated",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nremt_trauma_pam_2024", "nasemso_v3_trauma"],
+      "requirement_logic": "any",
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)neck|jvd|jugular|tracheal.deviat|trachea|subcutaneous.emphysema|sub.q|c.collar|cervical.collar|smr",
+          "eligible_source_roles": ["ems_performed_exam"]
+        },
+        {
+          "type": "intervention",
+          "intervention_keys": ["cervical_collar", "c_collar", "smr", "cervical_immobilization"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(neck|jvd|jugular.vein.distension|tracheal.deviation|trachea.midline|subcutaneous.emphysema|sub.q.emphysema|crepitus.neck|c.collar|cervical.collar|smr|apply.collar)\\b"
+      ],
+      "done_feedback": "Neck assessed and cervical collar applied if indicated — JVD, tracheal position, and subcutaneous emphysema findings documented.",
+      "missed_feedback": "Neck assessment in trauma: JVD suggests tension PTX or pericardial tamponade; tracheal deviation is a late tension PTX sign; subcutaneous emphysema indicates lung or airway injury. Assess neck before applying a collar so you don't obscure findings.",
+      "common_errors": ["Applying collar before assessing neck — covers JVD and tracheal position", "Forgetting to check tracheal midline"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "nremt_trauma.chest_assessment",
+      "description": "Inspects and palpates chest for deformity, paradoxical motion, crepitus; auscultates bilateral breath sounds",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nremt_trauma_pam_2024"],
+      "requirement_logic": "any",
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)chest|thorax|breath.sounds?|lung.sounds?|auscult|rib|flail|crepitus|chest.wall|paradoxical|pneumothorax|hemothorax|palpate.chest",
+          "eligible_source_roles": ["ems_performed_exam"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(chest|thorax|breath.sounds?|lung.sounds?|auscult|rib.tenderness|flail.chest|crepitus|paradoxical.motion|equal.bilaterally|diminished|absent.breath.sounds?|tension.pneumothorax|hemothorax|pneumothorax|contusion)\\b"
+      ],
+      "done_feedback": "Chest assessed with inspection, palpation, and auscultation — thoracic injuries requiring immediate intervention identified.",
+      "missed_feedback": "Full chest assessment: inspect (symmetry, open wounds, paradoxical motion), palpate (rib tenderness, crepitus, subcutaneous emphysema), auscultate (bilateral breath sounds). Missed pneumothorax or hemothorax can be rapidly fatal — this is a life-threat screen.",
+      "common_errors": ["Auscultating only anteriorly", "Missing flail segment under clothing", "Not comparing bilateral breath sounds"],
+      "unsafe_if_missed": true
+    },
+
+    {
+      "id": "nremt_trauma.abdomen_pelvis_assessment",
+      "description": "Inspects and palpates abdomen for tenderness, guarding, and rigidity; assesses pelvis for instability (once only)",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nremt_trauma_pam_2024"],
+      "requirement_logic": "any",
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)abdomen|abdominal|belly|palpate.abdomen|tender|guarding|rigidity|pelvis|pelvic|iliac.crest|genitalia|perineum",
+          "eligible_source_roles": ["ems_performed_exam"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(abdomen|abdominal.tenderness|palpate.abdomen|guarding|rigidity|distension|pelvis|pelvic.instability|iliac.crest|compress.pelvis|genitalia|perineum|seat.belt.sign|four.quadrants?)\\b"
+      ],
+      "done_feedback": "Abdomen and pelvis assessed — intra-abdominal hemorrhage and pelvic fracture screened.",
+      "missed_feedback": "Abdominal and pelvic assessment: palpate all four quadrants for tenderness and guarding; compress the pelvis once for instability. Pelvic fractures can cause 2–4 L of internal blood loss — early recognition is life-saving. Do not re-compress if instability is found.",
+      "common_errors": ["Compressing pelvis repeatedly after instability detected (worsens hemorrhage)", "Missing seat belt sign as indicator of underlying organ injury"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "nremt_trauma.extremity_assessment",
+      "description": "Assesses bilateral upper and lower extremities for deformity, PMS (pulse, motor function, sensation), and major injury",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 4,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nremt_trauma_pam_2024"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)extremit|extremities|upper.extremit|lower.extremit|bilateral|arm|leg|pulse|motor|sensation|pms|deformity|fracture|crepitus|swelling",
+          "eligible_source_roles": ["ems_performed_exam"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(extremities|upper.extremit|lower.extremit|bilateral|arms?|legs?|pms|pulse.motor.sensation|distal.pulses?|motor.function|sensation|grip.strength|deformity|fracture|angulation|crepitus|swelling|splint)\\b"
+      ],
+      "done_feedback": "Extremity PMS assessed bilaterally — vascular compromise and neurological deficits identified.",
+      "missed_feedback": "Assess all four extremities: inspect (deformity, angulation, swelling), palpate (tenderness, crepitus), check PMS (distal pulse, grip strength or plantar flex, light touch) bilaterally. Absent distal pulse = vascular emergency requiring expedited surgical care.",
+      "common_errors": ["Checking motor and sensation without distal pulses", "Not comparing bilateral PMS findings"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "nremt_trauma.posterior_assessment",
+      "description": "Assesses posterior thorax, lumbar spine, and buttocks using log-roll with inline spinal stabilization",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nremt_trauma_pam_2024"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)posterior|back|lumbar|spine|log.roll|log-roll|buttocks?|thoracic.spine|posterior.thorax",
+          "eligible_source_roles": ["ems_performed_exam"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(posterior|back|lumbar|spine.palpation|log.roll|log-roll|buttocks?|thoracic.spine|step.deformity.spine|spinal.tenderness|posterior.thorax|mid.back)\\b"
+      ],
+      "done_feedback": "Posterior thorax and lumbar assessed — completes the head-to-toe and avoids missed posterior injuries.",
+      "missed_feedback": "Posterior assessment requires log-rolling with maintained spinal precaution. Assess thorax (posterior breath sounds, wounds), spine (step-off, midline spinous process tenderness), and buttocks. Life-threatening posterior wounds and unstable spine fractures are frequently missed without this step.",
+      "common_errors": ["Skipping posterior assessment under time pressure", "Not palpating spinous processes for midline tenderness during log-roll"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "nremt_trauma.injury_treatment",
+      "description": "Identifies injuries found in secondary assessment and initiates appropriate treatment (splinting, wound management, immobilization)",
+      "category": "protocols_treatment",
+      "subtype": "intervention",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nremt_trauma_pam_2024"],
+      "evidence_requirements": [
+        {
+          "type": "intervention",
+          "intervention_keys": ["splinting", "wound_dressing", "traction_splint", "tourniquet", "spinal_immobilization", "wound_packing", "bandaging", "long_board"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(splint|immobilize|dress.the.wound|wound.care|bandage|traction.splint|femur.splint|long.board|vacuum.splint|immobilization|address.the.injury|treat.the.fracture|stabilize)\\b"
+      ],
+      "done_feedback": "Injuries identified during secondary assessment treated appropriately.",
+      "missed_feedback": "Injuries found in secondary assessment require treatment: splint long bone fractures (femur requires traction splint), dress open wounds, immobilize impaled objects in place. Treat as you find — do not defer all treatment to the emergency department.",
+      "common_errors": ["Identifying injury verbally but not documenting or treating it"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "nremt_trauma.reassessment",
+      "description": "Performs and documents reassessment of LOC, vital signs, and injury sites during transport; trends compared to baseline",
+      "category": "clinical_performance",
+      "subtype": "reassessment",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nremt_trauma_pam_2024"],
+      "evidence_requirements": [
+        {
+          "type": "post_intervention_finding",
+          "finding_type": "vital",
+          "key_pattern": "(?i)\\b(bp|blood.pressure|pulse|heart.rate|respiratory.rate|spo2|gcs|avpu|loc|reassess|repeat.vital)\\b",
+          "eligible_source_roles": ["ems_measured_vital"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(reassess|repeat.vital|recheck|trending|transport.vital|en.route.vital|updated|now.reads?|mental.status.unchanged|still.alert|deteriorating|improved|stable)\\b"
+      ],
+      "done_feedback": "Reassessment documented during transport — trend data is essential for receiving facility preparation.",
+      "missed_feedback": "Reassess every 5 minutes for critical patients, every 15 minutes for stable patients, during transport. Document LOC changes, vital sign trends, and response to interventions. Missed deterioration during transport is a preventable failure.",
+      "common_errors": ["Documenting only initial vitals without transport reassessment", "Not noting mental status trends en route"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "nremt_trauma.verbal_handoff",
+      "description": "Provides structured verbal handoff including MOI, injuries found, treatment given, vital sign trends, and patient response",
+      "category": "documentation",
+      "subtype": "documentation_handoff",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nremt_trauma_pam_2024"],
+      "evidence_requirements": [
+        {
+          "type": "session_event",
+          "event_type": "als_turnover_submitted"
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(handoff|turnover|report|medic|als|paramedic.crew|verbal.report|moi.was|patient.has|injuries.found|we.gave|patient.responded|dmist|trauma.center)\\b"
+      ],
+      "done_feedback": "Verbal handoff completed — receiving team briefed on MOI, injuries, interventions, and patient response.",
+      "missed_feedback": "A structured handoff is required. For trauma: state MOI, injuries found (head-to-toe), vitals on scene and trend, interventions given, patient response, and estimated blood loss if significant. The receiving team cannot prepare the trauma bay without this information.",
+      "common_errors": ["Giving chief complaint only without vital sign trend or treatment summary", "Not stating interventions given or patient response to treatment"],
+      "unsafe_if_missed": false
+    }
+
+  ]
+}

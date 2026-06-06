@@ -1,0 +1,457 @@
+{
+  "_schema": "ems_call_type_rubric_v1",
+  "id": "nasemso_pediatric_croup_v1",
+  "version": "2022-03-11",
+  "call_type": "pediatric_croup",
+  "domain": "pediatric",
+  "overlays_supported": ["state", "agency", "scenario"],
+
+  "protocol_refs": [
+    {
+      "id": "nasemso_peds_croup",
+      "title": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Pediatric Respiratory Distress (Croup)",
+      "version": "2022-03-11",
+      "url": null,
+      "source_id": "nasemso_base_pediatric_pediatric_respiratory_distress_croup"
+    },
+    {
+      "id": "nasemso_peds_resp_safety",
+      "title": "NASEMSO v3.0 — Patient Safety: Pediatric Airway — Do Not Agitate; Epiglottitis Exclusion",
+      "version": "2022-03-11",
+      "url": null
+    }
+  ],
+
+  "source_role_map": {
+    "ems_measured_vital": {
+      "training": ["authored_vitals"],
+      "qaqi":     ["epcr_vital", "monitor_import"]
+    },
+    "ems_performed_exam": {
+      "training": ["authored_vitals"],
+      "qaqi":     ["epcr_exam", "monitor_import"],
+      "_note": "ai_roleplay_tag intentionally excluded: roleplay responses include caregiver/patient-stated findings. student_stated_exam will be added when actively stamped by the backend."
+    },
+    "caregiver_reported": {
+      "training": ["caregiver_reported_history"],
+      "qaqi":     ["epcr_history", "caregiver_statement"]
+    },
+    "patient_reported": {
+      "training": ["patient_reported_history"],
+      "qaqi":     ["epcr_history", "patient_statement"]
+    },
+    "history_obtained": {
+      "training": ["caregiver_reported_history", "patient_reported_history"],
+      "qaqi":     ["epcr_history", "dispatch_notes", "caregiver_statement"],
+      "_note": "Aggregate role. For pediatric croup, the caregiver is the primary history source; use caregiver_reported on items where the source distinction matters (e.g., fever observed by caregiver vs. measured by EMS)."
+    },
+    "scene_entry_data": {
+      "training": ["system_scene_entry"],
+      "qaqi":     ["cad_scene_entry", "system_scene_entry"]
+    }
+  },
+
+  "checklist_items": [
+
+    {
+      "id": "croup.scene_safety_ppe",
+      "description": "Ensures scene safety and dons appropriate PPE prior to patient contact",
+      "category": "clinical_performance",
+      "subtype": "scene_entry",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_peds_croup"],
+      "evidence_requirements": [
+        { "type": "scene_entry", "scene_entry_path": "ppe.required_complete" }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(bsi|ppe|gloves?|mask|eye.?protection|scene.safe|safe.scene)\\b"
+      ],
+      "done_feedback": "PPE and scene safety confirmed before patient contact.",
+      "missed_feedback": "PPE must be established before approaching any patient, including pediatric calls.",
+      "common_errors": [],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "croup.pat_assessment",
+      "description": "Completes Pediatric Assessment Triangle — appearance (barky cough, stridor, altered or normal interactive behavior), work of breathing (retractions, nasal flaring, accessory muscle use), circulation to skin (color, moisture)",
+      "category": "clinical_performance",
+      "subtype": "scene_entry",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_peds_croup"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)pat|appearance|work.of.breathing|wob|circulation.to.skin|skin.color|retractions?|nasal.flaring|accessory.muscles?",
+          "eligible_source_roles": ["ems_performed_exam"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(pat|pediatric.assessment.triangle|appearance|work.of.breathing|wob|retractions?|nasal.flaring|accessory.muscles?|circulation.to.skin|barky|seal.like|stridor)\\b"
+      ],
+      "done_feedback": "PAT completed — appearance, WOB, and circulation to skin assessed. This is the correct first-pass severity screen for any pediatric respiratory call.",
+      "missed_feedback": "The Pediatric Assessment Triangle must be performed on scene entry for every pediatric patient. For croup: appearance (alert and interactive vs. anxious and agitated?), WOB (retractions, nasal flaring, accessory use?), skin (pale, mottled, cyanotic?).",
+      "common_errors": ["Documenting only one of the three PAT components", "Confusing 'general impression' with full PAT"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "croup.stridor_characterization",
+      "description": "Characterizes stridor: inspiratory, expiratory, or biphasic; and assesses severity (mild vs. moderate vs. severe)",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_peds_croup"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)stridor|inspiratory|biphasic|upper.airway|airway.noise|crow|seal",
+          "eligible_source_roles": ["ems_performed_exam"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(stridor|inspiratory.noise|biphasic|upper.airway.obstruction|crow.like|seal.like|barky|hoarse)\\b"
+      ],
+      "done_feedback": "Stridor characterized — phase (inspiratory only vs. biphasic) correlates directly with obstruction severity.",
+      "missed_feedback": "Stridor characterization is required for croup severity grading. Inspiratory-only stridor is mild-to-moderate upper airway obstruction. Biphasic stridor (inspiratory + expiratory) indicates severe obstruction and imminent respiratory failure — ALS must be requested immediately.",
+      "common_errors": ["Documenting 'noisy breathing' without specifying phase", "Confusing stridor (upper airway) with wheeze (lower airway)"],
+      "unsafe_if_missed": true
+    },
+
+    {
+      "id": "croup.spo2_measured",
+      "description": "Obtains SpO2 via pulse oximetry",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_peds_croup"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "vital",
+          "key_pattern": "(?i)spo2|sp\\s*o2|oxygen.saturation|o2.sat|pulse.ox",
+          "eligible_source_roles": ["ems_measured_vital"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(spo2|sp\\s*o2|oxygen.saturation|o2.sat|pulse.ox|oximetry)\\b"
+      ],
+      "done_feedback": "SpO2 measured — guides oxygen therapy decision and severity classification.",
+      "missed_feedback": "SpO2 must be measured in all pediatric respiratory calls. In croup, SpO2 < 94% indicates moderate-to-severe disease and mandates supplemental oxygen and ALS.",
+      "common_errors": ["Accepting caregiver-reported home pulse ox without on-scene measurement"],
+      "unsafe_if_missed": true
+    },
+
+    {
+      "id": "croup.rr_wob_assessed",
+      "description": "Assesses respiratory rate and work of breathing including retractions, nasal flaring, and accessory muscle use",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_peds_croup"],
+      "requirement_logic": "all",
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "vital",
+          "key_pattern": "(?i)respiratory.rate|resp.rate|\\brr\\b|respirations",
+          "eligible_source_roles": ["ems_measured_vital"]
+        },
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)work.of.breathing|wob|retractions?|nasal.flaring|accessory.muscles?|respiratory.effort|intercostal",
+          "eligible_source_roles": ["ems_performed_exam"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(respiratory.rate|resp.rate|\\brr\\b|respirations?|work.of.breathing|wob|retractions?|nasal.flaring|accessory.muscles?|tachypneic|labored|unlabored|intercostal)\\b"
+      ],
+      "done_feedback": "RR and WOB documented — both components are required to stage croup severity.",
+      "missed_feedback": "Rate alone understates severity in croup. Subcostal and intercostal retractions are more reliable severity markers than RR — a child compensating well may have a normal-to-elevated rate with severe retractions.",
+      "common_errors": ["Documenting rate without describing retraction location and depth"],
+      "unsafe_if_missed": true
+    },
+
+    {
+      "id": "croup.hpi_onset_duration",
+      "description": "Obtains history of present illness: onset, duration, and progression of symptoms",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_peds_croup"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "history",
+          "key_pattern": "(?i)onset|duration|started|began|when.did|how.long|worse|worsening|night",
+          "eligible_source_roles": ["history_obtained"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(when.did|how.long|onset|started|began|duration|\\bago\\b|worse.at.night|worse.overnight|woke.up)\\b"
+      ],
+      "done_feedback": "Onset and duration obtained — croup classically worsens at night and symptoms that began within hours are still evolving.",
+      "missed_feedback": "Croup onset pattern is clinically important: sudden onset of barky cough, often after a brief URI prodrome; symptoms characteristically worse at night. Rapid progression over hours is more concerning than stable overnight symptoms.",
+      "common_errors": [],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "croup.hpi_fever",
+      "description": "Obtains fever history and current temperature — screens for epiglottitis (high fever + toxic appearance + drooling) vs. croup (low-grade or absent fever)",
+      "category": "clinical_performance",
+      "subtype": "screen",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_peds_croup", "nasemso_peds_resp_safety"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "history",
+          "key_pattern": "(?i)fever|temperature|febrile|temp|hot|\\bT\\b",
+          "eligible_source_roles": ["history_obtained"]
+        },
+        {
+          "type": "finding",
+          "finding_type": "vital",
+          "key_pattern": "(?i)temperature|temp|febrile"
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(fever|temperature|febrile|afebrile|temp|degrees?|hot|drooling|toxic.appearance)\\b"
+      ],
+      "done_feedback": "Fever screened — essential for epiglottitis differentiation.",
+      "missed_feedback": "Fever history is the primary differentiator between croup and epiglottitis. Croup: low-grade or no fever, barky cough, gradual onset. Epiglottitis: high fever (> 39°C), toxic appearance, drooling, muffled voice, NO barky cough — do NOT examine the oropharynx.",
+      "common_errors": ["Failing to ask about fever when a child has stridor"],
+      "unsafe_if_missed": true
+    },
+
+    {
+      "id": "croup.hpi_prior_croup",
+      "description": "Obtains history of prior croup episodes and any prior hospitalization, intubation, or ICU admission for croup",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_peds_croup"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "history",
+          "key_pattern": "(?i)prior.croup|previous.croup|croup.before|intubated|hospitalized|icu|past.history|history.of.croup|prior.respiratory|prior.breathing|prior.respiratory.hospitalizations|no.prior.breathing|no.prior.respiratory|no.prior.hospital",
+          "eligible_source_roles": ["history_obtained"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(prior.croup|previous.episode|before|hospitalized|intubated|icu|history.of.croup|had.this.before|has.he.had|no.prior.breathing|no.prior.respiratory|prior.respiratory|prior.hospital)\\b"
+      ],
+      "done_feedback": "Prior croup history obtained — a child who needed intubation or ICU care for croup is at higher risk for severe recurrence.",
+      "missed_feedback": "Prior intubation or ICU admission for croup markedly elevates risk and should trigger early ALS intercept. Always ask specifically about prior hospitalizations for respiratory illness.",
+      "common_errors": [],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "croup.avoid_agitation",
+      "description": "Minimizes interventions that increase child anxiety; allows caregiver to hold child; avoids separating child from caregiver",
+      "category": "protocols_treatment",
+      "subtype": "intervention",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_peds_croup", "nasemso_peds_resp_safety"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)calm|comfort|allow|caregiver|parent|hold|sitting.with|reduce.agitation|minimize.stimulation",
+          "eligible_source_roles": ["ems_performed_exam"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(calm|allow.parent|allow.caregiver|keep.with.parent|minimize.stimulation|reduce.agitation|not.separate|hold.the.child|comfort.position|let.mom|let.dad)\\b"
+      ],
+      "done_feedback": "Agitation minimized — correct. Crying and agitation increase upper airway turbulence and worsen obstruction in croup.",
+      "missed_feedback": "In croup, agitation worsens stridor by increasing upper airway turbulence. Keep the child calm: allow the parent to hold them, avoid unnecessary procedures, use blow-by O2 rather than a tight mask if tolerated.",
+      "common_errors": ["Applying a tight-fitting NRB mask to a frightened toddler", "Separating child from caregiver for assessment"],
+      "unsafe_if_missed": true
+    },
+
+    {
+      "id": "croup.no_oropharyngeal_exam_if_epiglottitis_possible",
+      "description": "Does not perform oropharyngeal examination when epiglottitis cannot be excluded (high fever, toxic appearance, drooling, muffled voice, no barky cough)",
+      "category": "scope_adherence",
+      "subtype": "intervention",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_peds_resp_safety"],
+      "evidence_requirements": [
+        {
+          "type": "absence_check",
+          "absence_intervention_key": "oropharyngeal_exam_epiglottitis_risk"
+        }
+      ],
+      "tier2_patterns": [],
+      "contraindications": ["Croup with typical presentation (barky cough, low-grade fever, no drooling) — oropharyngeal exam is not absolutely contraindicated in this context; item scored only when epiglottitis features present"],
+      "done_feedback": "Oropharyngeal exam correctly avoided when epiglottitis could not be excluded — prevents triggering complete obstruction.",
+      "missed_feedback": "When a child presents with high fever, toxic appearance, drooling, and no barky cough, epiglottitis must be assumed until proven otherwise. Visualizing the oropharynx can trigger complete laryngeal obstruction. Keep the child calm, allow positioning of comfort, transport immediately, request ALS.",
+      "common_errors": ["Using a tongue blade 'just to look' in a drooling, high-fever child with stridor"],
+      "unsafe_if_missed": true
+    },
+
+    {
+      "id": "croup.o2_therapy_indicated",
+      "description": "Applies supplemental oxygen when SpO2 < 94% or signs of hypoxia; uses blow-by or caregiver-held mask to minimize agitation",
+      "category": "protocols_treatment",
+      "subtype": "intervention",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_peds_croup"],
+      "evidence_requirements": [
+        {
+          "type": "intervention",
+          "intervention_keys": ["o2_blowby", "o2_nrb", "o2_nc", "o2_bvm", "o2_cannula"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(oxygen|o2|blow.by|nasal.cannula|nrb|high.flow|supplemental.oxygen|mask|15.lpm|10.lpm|2.lpm)\\b"
+      ],
+      "contraindications": ["SpO2 >= 94% with no signs of hypoxia and calm child — forced O2 application increases agitation"],
+      "done_feedback": "Supplemental O2 applied appropriately, using blow-by technique to minimize agitation.",
+      "missed_feedback": "Oxygen is indicated when SpO2 < 94% or when clinical signs of hypoxia are present. In croup, use blow-by (parent holds mask near face) rather than a tight-fitting mask — the agitation caused by forcing a mask causes worse obstruction than the hypoxia itself.",
+      "common_errors": ["Forcing a tight NRB onto a crying toddler"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "croup.nebulized_epi_severe",
+      "description": "Administers nebulized racemic epinephrine or L-epinephrine for moderate-to-severe croup (Paramedic scope; EMT/AEMT per state MCA)",
+      "category": "protocols_treatment",
+      "subtype": "intervention",
+      "point_value": 3,
+      "required": "optional",
+      "applicable_levels": ["Paramedic"],
+      "protocol_refs": ["nasemso_peds_croup"],
+      "evidence_requirements": [
+        {
+          "type": "intervention",
+          "intervention_keys": ["racemic_epinephrine_neb", "l_epinephrine_neb", "epi_neb_croup"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(racemic.epinephrine|racepinephrine|l.epinephrine|nebulized.epi|neb.epi|epi.nebulizer|racemic.epi)\\b"
+      ],
+      "contraindications": ["Mild croup with no retractions and SpO2 >= 97% — epinephrine not indicated"],
+      "done_feedback": "Nebulized epinephrine administered for moderate-to-severe croup — reduces subglottic edema. Patient must be observed for rebound stridor at 15–20 minutes.",
+      "missed_feedback": "Nebulized epinephrine is the primary pharmacological intervention for moderate-to-severe croup at the Paramedic level. Indications: significant retractions, biphasic stridor, SpO2 < 94%, or poor response to positioning and O2.",
+      "common_errors": ["Not monitoring for rebound stridor after epinephrine", "Using epi for mild croup without retractions"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "croup.reassess_post_treatment",
+      "description": "Reassesses stridor, WOB, SpO2, and child's level of distress after each intervention and documents response",
+      "category": "clinical_performance",
+      "subtype": "reassessment",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_peds_croup"],
+      "evidence_requirements": [
+        {
+          "type": "post_intervention_finding",
+          "finding_type": "vital",
+          "key_pattern": "(?i)spo2|sp\\s*o2|respiratory.rate|\\brr\\b",
+          "eligible_source_roles": ["ems_measured_vital"]
+        },
+        {
+          "type": "post_intervention_finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)stridor|wob|retractions?|work.of.breathing|improved|worse|treatment.response|patient.status",
+          "_note": "Source intentionally unrestricted for post-intervention response: reassessment may be captured from authored WOB/stridor checks or from a learner-triggered status question tagged as Treatment Response."
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(reassess|repeat.vital|recheck|response.to|after.treatment|now.reads?|improved|worsened|unchanged|trending|stridor.improved|stridor.worsened)\\b"
+      ],
+      "done_feedback": "Post-intervention reassessment documented — stridor and WOB trend are the key response indicators for croup.",
+      "missed_feedback": "Every intervention requires a documented reassessment. For croup: did stridor improve? Did retractions decrease? Is the child calmer? SpO2 trending up? Worsening despite treatment = ALS immediately.",
+      "common_errors": ["Not reassessing specifically for rebound stridor after nebulized epinephrine"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "croup.als_request_if_severe",
+      "description": "Requests ALS intercept when biphasic stridor, SpO2 < 94%, poor response to treatment, or epiglottitis cannot be excluded",
+      "category": "protocols_treatment",
+      "subtype": "intervention",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT"],
+      "applicable_if": {"als_codispatched": false, "additional_help_needed": true},
+      "protocol_refs": ["nasemso_peds_croup"],
+      "evidence_requirements": [
+        {
+          "type": "intervention",
+          "intervention_keys": ["als_intercept", "als_request", "request_als"]
+        },
+        {
+          "type": "session_event",
+          "event_type": "als_intercept_requested"
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(als|medic|paramedic|advanced.life.support|intercept|request.als|call.for.als|upgrade)\\b"
+      ],
+      "contraindications": ["Mild croup with SpO2 >= 97%, no retractions, responding to calm environment — ALS not required"],
+      "done_feedback": "ALS requested for severe or worsening croup — correct.",
+      "missed_feedback": "ALS must be requested when croup presents with biphasic stridor, SpO2 < 94%, retractions not improving, or any feature suggesting epiglottitis. BLS cannot administer racemic epinephrine in most systems.",
+      "common_errors": ["Delaying ALS request hoping the patient will improve en route"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "croup.verbal_handoff",
+      "description": "Provides structured verbal handoff including child's age, stridor severity, SpO2, interventions, and response to treatment",
+      "category": "documentation",
+      "subtype": "documentation_handoff",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_peds_croup"],
+      "evidence_requirements": [
+        {
+          "type": "session_event",
+          "event_type": "als_turnover_submitted"
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(handoff|turnover|report|medic|als|verbal.report|spo2.is|stridor|croup|responded|not.responded|dmist)\\b"
+      ],
+      "done_feedback": "Verbal handoff completed — receiving crew has age, stridor severity, SpO2, and treatment response.",
+      "missed_feedback": "Handoff for a croup call must include: age and weight, stridor phase and severity, SpO2, interventions given, response to treatment, and any epiglottitis red flags identified.",
+      "common_errors": ["Reporting only chief complaint without severity markers or treatment response"],
+      "unsafe_if_missed": false
+    }
+
+  ]
+}

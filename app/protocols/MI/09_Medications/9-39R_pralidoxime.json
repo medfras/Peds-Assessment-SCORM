@@ -1,0 +1,64 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-39R Pralidoxime (MDHHS Reviewed 2025). Base Michigan template.",
+  "id": "mi_base_medication_ref_pralidoxime",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Pralidoxime (2-PAM)",
+  "version": "2025-03-31",
+  "protocol_reference": "Michigan Medication Protocol Section 9-39R: Pralidoxime — MDHHS Reviewed 2025",
+
+  "pharmacological_category": "Antidote — Acetylcholinesterase Reactivator (Organophosphate / Nerve Agent Antidote)",
+
+  "routes": ["IV", "IM (nerve agent auto-injector kit)"],
+
+  "indications": [
+    "Nerve agent exposure (organophosphate-based chemical weapon)",
+    "Organophosphate insecticide poisoning"
+  ],
+
+  "contraindications": [
+    "Known hypersensitivity to pralidoxime"
+  ],
+
+  "precautions": [
+    "Used in conjunction with atropine (9-15R) — pralidoxime reactivates acetylcholinesterase; atropine blocks muscarinic receptors",
+    "Administer as soon as possible after nerve agent/organophosphate exposure — efficacy decreases with time as acetylcholinesterase ages",
+    "600 mg per nerve agent auto-injector kit — use same chart (Chart A and Chart B) as atropine",
+    "When nerve agent kit is unavailable: pralidoxime 1-2 grams IV over 15-30 minutes may be used when available; contact online MC"
+  ],
+
+  "expected_effects": [
+    "Reactivation of acetylcholinesterase enzyme inhibited by organophosphate compounds",
+    "Reversal of nicotinic effects (muscle weakness, paralysis) — complements atropine's muscarinic reversal",
+    "Improvement in muscle strength and reduced nicotinic toxidrome"
+  ],
+
+  "side_effects": [
+    "Hypertension (rapid IV infusion)",
+    "Tachycardia",
+    "Nausea",
+    "Dizziness"
+  ],
+
+  "notes": [
+    "Michigan nerve agent kit: 600 mg pralidoxime per auto-injector; administer per Chart A and Chart B with atropine",
+    "Pralidoxime must accompany atropine when nerve agent kit is available",
+    "SLUDGE/SLUDGEM symptoms (Salivation, Lacrimation, Urination, Defecation, GI distress, Emesis, Miosis) indicate muscarinic toxicity — treat with atropine",
+    "Nicotinic effects (muscle weakness, fasciculations, flaccid paralysis) — pralidoxime primary target"
+  ],
+
+  "dosing": [
+    {
+      "population": "All — nerve agent exposure / organophosphate poisoning",
+      "route": "IM (nerve agent auto-injector) or IV",
+      "dose": "600 mg per nerve agent auto-injector kit per Chart A and Chart B (same as atropine protocol)",
+      "notes": "Administer with atropine concurrently; 600 mg per auto-injector; repeat per nerve agent protocol"
+    }
+  ],
+
+  "used_in_protocols": ["Toxicological Emergencies — Nerve Agent / Organophosphate Poisoning"]
+}

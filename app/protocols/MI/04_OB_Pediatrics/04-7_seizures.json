@@ -1,0 +1,197 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 4-7 Pediatric Seizures (Revised 03/31/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_pediatric_seizures",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Pediatric",
+  "level_display": "Pediatric (< 14 years)",
+  "jurisdiction": "Michigan",
+  "condition": "Pediatric Seizures",
+  "version": "2025-03-31",
+  "protocol_reference": "Michigan Obstetrics and Pediatrics Protocol Section 4-7: Pediatric Seizures — MDHHS Approved 3/31/25, Reviewed 2025",
+  "purpose": "Assessment and treatment of seizures in pediatric patients (< 14 years).",
+  "sections": [
+    {
+      "title": "Pediatric Seizure Treatment",
+      "reference": "Michigan Protocol 4-7: Pediatric Seizures",
+      "points": [
+        "Follow General Pre-hospital Care-Treatment Protocol",
+        "Contact Medical Control for focal seizures (seizures limited to one body part)",
+        "If actively seizing with generalized tonic-clonic activity: protect patient from injury, maintain airway, and provide supplemental oxygen",
+        "Administer midazolam according to MI-MEDIC cards",
+        "If MI-MEDIC is unavailable: administer midazolam 0.1 mg/kg IM, maximum single dose 10 mg",
+        "If IV is established prior to seizure activity: administer midazolam 0.05 mg/kg IV/IO, maximum single dose 5 mg",
+        "After midazolam administration, monitor SpO2, EKG, and waveform capnography per End Tidal Carbon Dioxide Monitoring-Procedure Protocol",
+        "Consider trauma; if evidence or suspicion of trauma, treat according to the applicable protocol in addition to treating seizures",
+        "Check blood glucose; start IV/IO if needed; administer dextrose according to MI-MEDIC when blood glucose is < 60 mg/dL",
+        "If unable to start IV, administer glucagon IM/IN if available per MCA selection",
+        "If seizure persists 10 minutes after the initial dose of midazolam and correction of low blood glucose, repeat midazolam one time per MCA selection",
+        "If seizures persist after the second dose, consider underlying causes and contact Medical Control for further instructions"
+      ]
+    },
+    {
+      "title": "Dextrose — Pediatric Weight-Based Dosing (Blood Glucose < 60 mg/dL)",
+      "reference": "Michigan Protocol 4-7: Pediatric Dextrose",
+      "points": [
+        "Use MI-MEDIC cards when available — dosing table is backup only when blood glucose is < 60 mg/dL",
+        "Grey (0–2 mo, 3–5 kg): 2.5g — D12.5% 20 mL OR D10% 25 mL",
+        "Pink (3–6 mo, 6–7 kg): 3.25g — D25% 13 mL OR D10% 33 mL",
+        "Red (7–10 mo, 8–9 kg): 4.25g — D25% 17 mL OR D10% 43 mL",
+        "Purple (11–18 mo, 10–11 kg): 5g — D25% 20 mL OR D10% 50 mL",
+        "Yellow (19–35 mo, 12–14 kg): 6.25g — D25% 25 mL OR D10% 63 mL",
+        "White (3–4 yr, 15–18 kg): 8g — D25% 32 mL OR D10% 80 mL",
+        "Blue (5–6 yr, 19–23 kg): 10g — D25% 40 mL OR D10% 100 mL",
+        "Orange (7–9 yr, 24–29 kg): 12.5g — D50% 25 mL OR D10% 125 mL",
+        "Green (10–14 yr, 30–36 kg): 15g — D50% 40 mL OR D10% 150 mL",
+        "NOTE: D10% 5 mL/kg (0.5 gm/kg) may be used for all ages up to 250 mL; push slowly over 1–2 minutes",
+        "To obtain D10%: discard 40 mL from D50 amp, draw up 40 mL NS; to obtain D12.5%: discard 37.5 mL from D50 amp, draw up 37.5 mL NS; to obtain D25%: discard 25 mL from D50 amp, draw up 25 mL NS"
+      ]
+    },
+    {
+      "title": "Glucagon Dosing (When IV/IO Cannot Be Established)",
+      "reference": "Michigan Protocol 4-7: Glucagon",
+      "points": [
+        "Glucagon IM (injectable formulation ONLY — per MCA selection): patients < 5 years: 0.5 mg IM; patients ≥ 5 years: 1 mg IM",
+        "Glucagon IN — Baqsimi (FDA-approved IN formulation ONLY — per MCA selection): patients < 5 years: DO NOT ADMINISTER; patients ≥ 5 years: 3 mg IN",
+        "Do NOT use injectable glucagon via the IN route",
+        "EMS clinicians may assist family/caregivers in administering FDA-approved IN glucagon if prescribed for the patient (regardless of age)"
+      ]
+    },
+    {
+      "title": "Not Actively Seizing",
+      "reference": "Michigan Protocol 4-7: Pediatric Seizures — Not Actively Seizing",
+      "points": [
+        "Monitor and treat known underlying causes when possible",
+        "Check blood glucose and treat as outlined above",
+        "If blood glucose < 60 mg/dL and patient is altered, able to swallow, and 3 months old or older, administer oral glucose",
+        "If blood glucose < 60 mg/dL and patient is not alert, administer dextrose according to MI-MEDIC or the dosing table",
+        "Check temperature and refer to Pediatric Fever-Treatment Protocol if applicable",
+        "Monitor oxygenation and mental status; administer oxygen to maintain 94% SpO2, including ventilatory support as needed per Airway Management-Procedure Protocol",
+        "For respiratory depression with high suspicion of opioid involvement, administer naloxone per Opioid Overdose Treatment and Prevention-Treatment Protocol",
+        "Consider trauma; if evidence or suspicion of trauma, treat according to applicable protocol",
+        "Keep the environment safe for the patient, padding around the patient if possible"
+      ]
+    }
+  ],
+  "mca_selections_required": [
+    {
+      "item": "Blood Glucose Testing — MFR",
+      "description": "MCA may designate blood glucose testing as an MFR skill",
+      "options": [
+        "MFR skill authorized",
+        "Not authorized for MFR"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Repeat Midazolam — Timing",
+      "description": "MCA must select whether a single repeat dose of midazolam, given if seizure persists 10 minutes after initial midazolam and correction of low glucose, may be administered pre-radio or post-radio",
+      "options": [
+        "Pre-radio repeat midazolam (without Medical Control contact)",
+        "Post-radio repeat midazolam (contact Medical Control prior to repeat dose)"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Glucagon IM (Injectable) — Scope",
+      "description": "MCA must select which provider levels may administer glucagon IM (injectable formulation only): < 5 years = 0.5 mg IM; ≥ 5 years = 1 mg IM",
+      "options": [
+        "Not included",
+        "EMT",
+        "Specialist",
+        "Paramedic"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Glucagon IN (Baqsimi — Intranasal) — Scope",
+      "description": "MCA must select which provider levels may administer glucagon 3 mg IN (FDA-approved IN formulation ONLY — DO NOT administer to patients < 5 years of age)",
+      "options": [
+        "Not included",
+        "EMT",
+        "Specialist",
+        "Paramedic"
+      ],
+      "selected": null
+    }
+  ],
+  "key_drugs": [
+    {
+      "name": "Midazolam IM (Pediatric Seizure — Before IV)",
+      "dose": "0.1 mg/kg IM — maximum 10 mg",
+      "route": "IM",
+      "indication": "Active generalized tonic-clonic seizure — administer IM when MI-MEDIC is unavailable",
+      "contraindications": "Known hypersensitivity; use caution with respiratory compromise",
+      "side_effects": "Respiratory depression, hypotension, sedation",
+      "scope": "Specialist skill",
+      "notes": "Use MI-MEDIC cards first. If seizure persists 10 minutes after initial dose and correction of low glucose, repeat once per MCA selection."
+    },
+    {
+      "name": "Midazolam IV/IO (Pediatric Seizure — With IV)",
+      "dose": "0.05 mg/kg IV/IO — maximum 5 mg",
+      "route": "IV or IO",
+      "indication": "Active generalized tonic-clonic seizure when IV is established prior to seizure activity and MI-MEDIC is unavailable",
+      "contraindications": "Known hypersensitivity; use caution with respiratory compromise",
+      "side_effects": "Respiratory depression, hypotension, sedation",
+      "scope": "Specialist skill",
+      "notes": "May repeat once per MCA selection if seizure persists 10 minutes after initial dose and correction of low glucose."
+    },
+    {
+      "name": "Dextrose IV (Pediatric — Weight-Based)",
+      "dose": "Per MI-MEDIC cards or weight/color table — D10% 5 mL/kg (0.5 gm/kg) for all ages up to 250 mL",
+      "route": "IV",
+      "indication": "Blood glucose < 60 mg/dL and patient not alert",
+      "contraindications": "Concentrated D50 avoided in small children — dilute to appropriate concentration per color zone table",
+      "side_effects": "Hyperglycemia, phlebitis, tissue necrosis with extravasation",
+      "scope": "Specialist skill",
+      "notes": "Push slowly over 1–2 minutes. Contact Medical Control for repeat doses. Use MI-MEDIC first; weight/color table is backup."
+    },
+    {
+      "name": "Glucagon IM (Pediatric)",
+      "dose": "< 5 years: 0.5 mg IM; ≥ 5 years: 1 mg IM (injectable formulation ONLY)",
+      "route": "IM",
+      "indication": "Hypoglycemia when IV/IO access cannot be established",
+      "contraindications": "Injectable formulation must NOT be given intranasally; pheochromocytoma",
+      "side_effects": "Nausea, vomiting",
+      "scope": "Per MCA selection",
+      "notes": "Do NOT use injectable glucagon via IN route. Use MI-MEDIC when available."
+    },
+    {
+      "name": "Glucagon IN — Baqsimi (Pediatric)",
+      "dose": "< 5 years: DO NOT ADMINISTER; ≥ 5 years: 3 mg IN",
+      "route": "Intranasal (FDA-approved IN formulation ONLY — e.g., Baqsimi)",
+      "indication": "Hypoglycemia ≥ 5 years when IV/IO access cannot be established",
+      "contraindications": "Age < 5 years — DO NOT ADMINISTER; only FDA-approved IN formulation may be used",
+      "side_effects": "Nausea, vomiting, nasal congestion",
+      "scope": "Per MCA selection",
+      "notes": "EMS clinicians may assist family/caregivers in administering FDA-approved IN glucagon if prescribed for the patient (regardless of age)."
+    }
+  ],
+  "deterioration_flags": [
+    "Active generalized tonic-clonic seizure — protect from injury, maintain airway, provide supplemental oxygen, administer midazolam per MI-MEDIC",
+    "Seizure persists 10 minutes after initial midazolam and correction of low blood glucose — repeat midazolam one time per MCA selection",
+    "Seizure persists after second midazolam dose — consider underlying causes and contact Medical Control",
+    "Blood glucose < 60 mg/dL — IV dextrose per weight/color table (Specialist skill); glucagon IM/IN if no IV (per MCA selection)",
+    "Focal seizure — contact Medical Control prior to treatment",
+    "Post-ictal respiratory depression — support airway; BVM if needed; consider naloxone if opioid exposure suspected"
+  ],
+  "scope_notes": [
+    "Seizure precautions, positioning, airway management, SpO2 monitoring: all levels",
+    "Blood glucose testing: all levels — may be MFR skill per MCA selection",
+    "Capnography, IV/IO access: Specialist skill",
+    "Midazolam IM/IV/IO: Specialist skill",
+    "Dextrose IV: Specialist skill",
+    "Glucagon IM/IN: per MCA selection — age-specific dosing; IN contraindicated < 5 years",
+    "Repeat midazolam: per MCA selection (pre-radio or post-radio)"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "febrile_seizure",
+      "pediatric_patient",
+      "seizure"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

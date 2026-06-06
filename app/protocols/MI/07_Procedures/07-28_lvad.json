@@ -1,0 +1,85 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-28 Left Ventricular Assist Device (LVAD) (Revised 1/27/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_lvad",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Left Ventricular Assist Device (LVAD) Management",
+  "version": "2023-01-27",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-28: LVAD — MDHHS Approved 1/27/2023",
+
+  "purpose": "Govern prehospital management of patients with Left Ventricular Assist Devices (LVADs). LVADs produce non-pulsatile flow — standard vital sign assessment methods may be unreliable. Critical safety rules: DO NOT use AED or mechanical CPR devices on LVAD patients. CPR compressions are LAST RESORT only.",
+
+  "sections": [
+    {
+      "title": "LVAD Overview and Vital Sign Assessment",
+      "reference": "Michigan Protocol 7-28: LVAD — Assessment",
+      "points": [
+        "LVAD creates continuous, non-pulsatile blood flow — patients may have NO palpable pulse and NO detectable blood pressure by standard methods even when the device is functioning",
+        "Assess perfusion by: skin color and temperature; capillary refill; mental status and level of consciousness",
+        "If the LVAD is functioning: patient will typically have normal skin color, intact mentation, and capillary refill < 2 seconds",
+        "Standard SpO2 and blood pressure cuff readings may be unreliable or unobtainable",
+        "LVAD driveline exits the upper abdomen — DO NOT cut, pull, remove, or damage the driveline or any connections under any circumstances",
+        "ALL LVAD connections are secured with locking devices — do not attempt to disconnect"
+      ]
+    },
+    {
+      "title": "Critical Safety Rules",
+      "reference": "Michigan Protocol 7-28: LVAD — Critical Safety Rules",
+      "points": [
+        "DO NOT USE AED on LVAD patients — electrical shock to an LVAD patient via AED is PROHIBITED",
+        "DO NOT USE mechanical CPR compression devices (LUCAS, AutoPulse, etc.) on LVAD patients",
+        "CPR CHEST COMPRESSIONS are LAST RESORT ONLY — consult Medical Control IMMEDIATELY before initiating compressions",
+        "LVAD patients may have a BASELINE ventricular fibrillation or ventricular tachycardia — V-fib or V-tach on the monitor does NOT necessarily mean the patient is in cardiac arrest if the LVAD is functioning and the patient has signs of perfusion",
+        "ALL LVAD patients are receiving ANTICOAGULATION therapy — handle carefully; bleeding risk is elevated"
+      ]
+    },
+    {
+      "title": "Allowed Electrical Interventions",
+      "reference": "Michigan Protocol 7-28: LVAD — Allowed Electrical Therapy",
+      "points": [
+        "Manual defibrillation is ALLOWED and may be used if the patient is in hemodynamically significant V-fib or V-tach without adequate perfusion",
+        "Synchronized cardioversion is ALLOWED",
+        "External transcutaneous pacing is ALLOWED",
+        "These interventions do NOT require disconnection of the LVAD"
+      ]
+    },
+    {
+      "title": "Transport",
+      "reference": "Michigan Protocol 7-28: LVAD — Transport",
+      "points": [
+        "Transport to an MCA-approved LVAD center",
+        "Patient should have a 'go bag' containing: charged spare batteries, backup controller, and power supply unit",
+        "Contact the LVAD center prior to or during transport if possible",
+        "Notify receiving hospital of LVAD presence and any device alarms on scene"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "LVAD alarming — note alarm type; contact LVAD center or Medical Control; transport immediately",
+    "Signs of poor perfusion despite LVAD running — contact Medical Control; CPR compressions LAST RESORT only",
+    "V-fib or V-tach on monitor with LVAD patient — assess perfusion signs FIRST (color, mentation, cap refill); if adequate perfusion = LVAD may be maintaining circulation; contact MC before intervention",
+    "LVAD driveline damaged or disconnected — do NOT attempt to reconnect; transport immediately; contact Medical Control and LVAD center"
+  ],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "LVAD creates non-pulsatile flow — may have no pulse and no BP by standard methods; assess perfusion by skin, mental status, cap refill",
+    "DO NOT use AED on LVAD patients",
+    "DO NOT use mechanical CPR devices on LVAD patients",
+    "CPR compressions: LAST RESORT ONLY; consult MC immediately",
+    "Manual defibrillation, cardioversion, and TCP are ALLOWED",
+    "V-fib/V-tach may be BASELINE in LVAD patients — assess perfusion before intervening",
+    "All LVAD patients are anticoagulated — elevated bleeding risk",
+    "Driveline: DO NOT cut, pull, or damage",
+    "Transport to MCA-approved LVAD center"
+  ]
+}

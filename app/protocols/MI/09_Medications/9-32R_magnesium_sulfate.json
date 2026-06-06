@@ -1,0 +1,82 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-32R Magnesium Sulfate (MDHHS Reviewed 2025). Base Michigan template.",
+  "id": "mi_base_medication_ref_magnesium_sulfate",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Magnesium Sulfate",
+  "version": "2025-03-31",
+  "protocol_reference": "Michigan Medication Protocol Section 9-32R: Magnesium Sulfate — MDHHS Reviewed 2025",
+
+  "pharmacological_category": "Electrolyte / Antidysrhythmic / Anticonvulsant",
+
+  "routes": ["IV", "IO"],
+
+  "indications": [
+    "Severe asthma — status asthmaticus not responding to bronchodilators",
+    "Eclamptic seizure or severe pre-eclampsia",
+    "Cardiac arrest — Torsades de Pointes (polymorphic VT)",
+    "Symptomatic Torsades de Pointes with pulse"
+  ],
+
+  "contraindications": [
+    "Known hypersensitivity to magnesium sulfate",
+    "Severe renal failure (may accumulate — relative contraindication in life-threatening emergencies)"
+  ],
+
+  "precautions": [
+    "MUST be diluted and infused over ~10 minutes — rapid IV push can cause cardiac arrest, respiratory arrest, or severe hypotension",
+    "Monitor: respiratory rate (respiratory depression is early toxicity sign), BP, deep tendon reflexes (loss precedes respiratory depression), mental status",
+    "Calcium gluconate or calcium chloride is the antidote for magnesium toxicity",
+    "Burning sensation at IV site is common and expected"
+  ],
+
+  "expected_effects": [
+    "Bronchodilation (asthma) — smooth muscle relaxation",
+    "Anticonvulsant effect (eclampsia) — reduces neuronal excitability",
+    "Cardiac membrane stabilization — termination of Torsades de Pointes"
+  ],
+
+  "side_effects": [
+    "Respiratory depression (serious — monitor closely)",
+    "Hypotension",
+    "Bradycardia",
+    "Asystole (rapid IV administration)",
+    "Flushing, diaphoresis",
+    "Burning sensation at injection site"
+  ],
+
+  "notes": [
+    "Dilute in 100-250 mL NS and infuse over ~10 minutes for all indications",
+    "Asthma (status asthmaticus): 2 grams over 10 minutes",
+    "Eclamptic seizure / severe pre-eclampsia: 4 grams over 10 minutes",
+    "Cardiac arrest (Torsades): 2 grams IV/IO rapid infusion (may give faster in arrest)",
+    "Monitor respiratory rate continuously — rate <10/min is sign of toxicity"
+  ],
+
+  "dosing": [
+    {
+      "population": "Adult (>14 yr) — severe asthma (status asthmaticus)",
+      "route": "IV infusion",
+      "dose": "2 grams diluted in 100-250 mL NS; infuse over ~10 minutes",
+      "notes": "For bronchospasm not responding to albuterol and ipratropium; monitor RR and BP"
+    },
+    {
+      "population": "Adult (>14 yr) — eclamptic seizure / severe pre-eclampsia",
+      "route": "IV infusion",
+      "dose": "4 grams diluted in 100-250 mL NS; infuse over ~10 minutes",
+      "notes": "Definitive hospital treatment follows — prehospital dose is loading dose"
+    },
+    {
+      "population": "Adult (>14 yr) — cardiac arrest (Torsades de Pointes)",
+      "route": "IV/IO",
+      "dose": "2 grams IV/IO",
+      "notes": "May administer more rapidly in cardiac arrest (pulseless); dilute when possible"
+    }
+  ],
+
+  "used_in_protocols": ["Respiratory Distress — Severe Asthma", "OB Emergencies — Eclampsia / Pre-Eclampsia", "Cardiac Arrest — Torsades de Pointes", "Tachycardia — Torsades de Pointes with Pulse"]
+}

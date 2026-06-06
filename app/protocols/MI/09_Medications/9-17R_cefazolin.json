@@ -1,0 +1,73 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-17R Cefazolin (Revised 8/11/2023, MDHHS Reviewed 2023). Base Michigan template.",
+  "id": "mi_base_medication_ref_cefazolin",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Cefazolin",
+  "version": "2023-08-11",
+  "protocol_reference": "Michigan Medication Protocol Section 9-17R: Cefazolin — MDHHS Approved 8/11/2023, Reviewed 2023",
+
+  "pharmacological_category": "Antibiotic — First-Generation Cephalosporin",
+
+  "routes": ["IV", "IO"],
+
+  "indications": [
+    "Open fractures",
+    "Traumatic amputations",
+    "Major soft tissue injuries with contamination risk"
+  ],
+
+  "contraindications": [
+    "Known hypersensitivity to cefazolin or other cephalosporins",
+    "Severe allergy to penicillin (cross-reactivity possible — use ceftriaxone only as alternative; consult online MC if uncertain)"
+  ],
+
+  "precautions": [
+    "Infusion (100 mL NS over 15-30 minutes) is CONTRAINDICATED for patients <7 years old — use slow IVP instead",
+    "Confirm allergy history before administration; penicillin cross-allergy risk is low but exists",
+    "Reconstitute per kit instructions before administering"
+  ],
+
+  "expected_effects": [
+    "Prophylactic antimicrobial coverage against gram-positive organisms (Staphylococcus, Streptococcus) in open injuries"
+  ],
+
+  "side_effects": [
+    "Allergic reaction (rash, urticaria, anaphylaxis — rare)",
+    "GI upset"
+  ],
+
+  "notes": [
+    "Dilution for slow IVP: reconstitute 2 grams in 20 mL NS = 100 mg/mL solution",
+    "Adult administration: 2 grams slow IVP over 3-5 minutes OR infusion in 100 mL NS over 15-30 minutes",
+    "Pediatric <7 years: slow IVP only — infusion contraindicated",
+    "Ceftriaxone (9-18R) is the alternative antibiotic for same indications"
+  ],
+
+  "dosing": [
+    {
+      "population": "Adult (>14 yr) — open fracture / amputation / major soft tissue",
+      "route": "IV slow IVP or infusion",
+      "dose": "2 grams slow IVP over 3-5 minutes OR 2 grams in 100 mL NS infusion over 15-30 minutes",
+      "notes": "Reconstitute: 2 g in 20 mL NS = 100 mg/mL; use slow IVP or infusion per available supplies"
+    },
+    {
+      "population": "Pediatric ≥7 yr",
+      "route": "IV slow IVP or infusion",
+      "dose": "30 mg/kg; maximum 2 grams; slow IVP over 3-5 min OR infusion in 100 mL NS over 15-30 min",
+      "notes": "Reconstitute same as adult; infusion permitted ≥7 years"
+    },
+    {
+      "population": "Pediatric <7 yr",
+      "route": "IV slow IVP ONLY",
+      "dose": "30 mg/kg; maximum 2 grams; slow IVP only",
+      "notes": "Infusion (100 mL NS) CONTRAINDICATED for patients <7 years — slow IVP only"
+    }
+  ],
+
+  "used_in_protocols": ["Trauma — Open Fracture / Amputation / Major Soft Tissue Injury"]
+}

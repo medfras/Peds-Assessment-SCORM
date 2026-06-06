@@ -1,0 +1,107 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 4-3 Newborn/Neonatal Assessment and Resuscitation (Revised 12/30/2022, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_obstetrics_newborn_resuscitation",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Obstetrics",
+  "level_display": "Newborn/Neonatal (< 30 days)",
+  "jurisdiction": "Michigan",
+  "condition": "Newborn & Neonatal Assessment and Resuscitation",
+  "version": "2022-12-30",
+  "protocol_reference": "Michigan Obstetrics and Pediatrics Protocol Section 4-3: Newborn/Neonatal Assessment and Resuscitation — MDHHS Approved 12/30/22, Reviewed 2023",
+
+  "purpose": "Infants less than 30 days old are considered neonates. This protocol is intended for assessment of newly born infants and/or the resuscitation of newly born infants less than 30 days old.",
+
+  "sections": [
+    {
+      "title": "History",
+      "reference": "Michigan Protocol 4-3: Newborn — History",
+      "points": [
+        "Date and time of birth",
+        "Onset of symptoms",
+        "Prenatal history: prenatal care, substance abuse, multiple gestation, maternal illness",
+        "Birth history: maternal fever, meconium, prolapsed or nuchal cord, bleeding",
+        "Estimated gestational age (may be based on last menstrual period)"
+      ]
+    },
+    {
+      "title": "Immediate Assessment — Respiratory (R of APGAR)",
+      "reference": "Michigan Protocol 4-3: Newborn — Respiratory Assessment",
+      "points": [
+        "Assess rate and effort (strong, weak, or absent; regular or irregular)",
+        "Absent: if the baby does not breathe spontaneously, stimulate by gently rubbing its back or slapping the soles of its feet",
+        "Respiratory distress (grunting, nasal flaring, retractions, gasping, apnea OR no return of spontaneous breathing after stimulation): position airway (sniffing position) and clear airway as needed; if thick meconium or secretions present — suction mouth then nose; initiate ventilation with appropriately sized equipment and 21% oxygen (room air)"
+      ]
+    },
+    {
+      "title": "Immediate Assessment — Heart Rate (P of APGAR)",
+      "reference": "Michigan Protocol 4-3: Newborn — Heart Rate",
+      "points": [
+        "Assess heart rate/pulse (fast, slow, or absent) — auscultation of chest is the preferred method",
+        "If heart rate > 100 bpm: monitor for central cyanosis, provide blow-by oxygen as needed; monitor for signs of respiratory distress — if apneic or significant distress, initiate BVM ventilation with room air at 40–60 breaths per minute",
+        "If heart rate < 100 bpm: initiate BVM ventilation with room air at 40–60 breaths per minute; primary indicator of improvement is increased heart rate; only use minimum necessary volume to achieve chest rise; if no improvement after 90 seconds, provide ventilations with supplemental oxygen (100%) until heart rate normalizes (100 or above)",
+        "If heart rate < 60 bpm: ensure effective ventilations with supplementary oxygen and adequate chest rise; if no improvements after 30 seconds, initiate chest compressions — two-thumb-encircling-hands technique is preferred; coordinate chest compressions with positive pressure ventilation (3:1 ratio — 90 compressions and 30 breaths per minute); per MCA selection, consider intubation per Airway Management-Procedure Protocol"
+      ]
+    },
+    {
+      "title": "Immediate Assessment — Color, Grimace, Tone (A, G, A of APGAR)",
+      "reference": "Michigan Protocol 4-3: Newborn — Color/Grimace/Tone",
+      "points": [
+        "COLOR/APPEARANCE (first A of APGAR): central cyanosis, peripheral cyanosis, pallor, or normal — administer blow-by oxygen for a few minutes until baby's core color is pink",
+        "GRIMACE (G of APGAR): reflex irritability to slap on sole of foot — score 0 (no response), 1 (crying/some motion), 2 (crying/vigorous)",
+        "MUSCLE TONE/ACTIVITY (second A of APGAR): poor or strong — score 0 (limp), 1 (some flexion), 2 (active/good motion)"
+      ]
+    },
+    {
+      "title": "APGAR Scoring",
+      "reference": "Michigan Protocol 4-3: APGAR",
+      "points": [
+        "APGAR score for witnessed deliveries should be noted at 1 minute and 5 minutes after delivery",
+        "A – Appearance (skin color): 0=bluish or pallor; 1=pink/ruddy body, blue extremities; 2=pink/ruddy entire body",
+        "P – Pulse (heart rate): 0=absent; 1=below 100; 2=over 100",
+        "G – Grimace (reflex irritability to foot slap): 0=no response; 1=crying/some motion; 2=crying/vigorous",
+        "A – Activity (muscle tone): 0=limp; 1=some flexion of extremities; 2=active/good motion",
+        "R – Respiration (respiratory effort): 0=absent; 1=slow and irregular; 2=normal/crying",
+        "Each parameter gets a score of 0 to 2"
+      ]
+    },
+    {
+      "title": "Prevent Heat Loss",
+      "reference": "Michigan Protocol 4-3: Newborn — Heat Loss Prevention",
+      "points": [
+        "Maintain warm environment",
+        "Keep infant dry and covered with dry blankets",
+        "Keep infant's head covered with infant cap",
+        "Swaddle infant to mother skin to skin if infant is stable until transport",
+        "For patient transport: refer to Safe Transportation of Children in Ambulances-Treatment Protocol"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Neonatal Intubation",
+      "description": "MCA must indicate whether intubation is authorized during neonatal resuscitation for HR < 60 unresponsive to compressions and effective BVM ventilation",
+      "options": ["Authorized per MCA-approved training", "Not authorized — BVM only"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Heart rate < 100 bpm — BVM ventilation room air at 40–60 breaths/min; if no improvement after 90 seconds, switch to 100% O2",
+    "Heart rate < 60 bpm — chest compressions at 3:1 ratio with ventilation (90 compressions/30 breaths per minute); consider intubation per MCA selection; contact Medical Control",
+    "No return of spontaneous breathing after stimulation — position airway, clear secretions, BVM ventilation with room air",
+    "Thick meconium — suction mouth then nose before first breath; do NOT delay resuscitation for suctioning"
+  ],
+
+  "scope_notes": [
+    "Stimulation, positioning, blow-by oxygen, BVM ventilation: all levels",
+    "Chest compressions (two-thumb-encircling-hands technique): all levels",
+    "Heat loss prevention: all levels",
+    "Intubation during neonatal resuscitation: per MCA selection — Specialist skill",
+    "APGAR scoring: all levels for witnessed deliveries"
+  ]
+}

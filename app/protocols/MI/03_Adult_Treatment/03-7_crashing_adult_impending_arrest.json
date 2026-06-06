@@ -1,0 +1,129 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 3-7 Crashing Adult/Impending Arrest (Revised 05/25/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured. For patients < 14 years refer to Pediatric Crashing Patient/Impending Arrest protocol.",
+  "id": "mi_base_adult_crashing_impending_arrest",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Adult",
+  "level_display": "Adult (≥ 14 years)",
+  "jurisdiction": "Michigan",
+  "condition": "Crashing Adult / Impending Arrest",
+  "version": "2023-05-25",
+  "protocol_reference": "Michigan Adult Treatment Protocol Section 3-7: Crashing Adult/Impending Arrest — MDHHS Approved 5/25/23, Reviewed 2023",
+
+  "purpose": "EMS frequently encounters critically ill patients deteriorating toward cardiac or respiratory arrest. The goal is rapid recognition and goal-directed treatments to stabilize the patient and prevent deterioration. Time thresholds are approximate to provide urgency and prioritization — provider safety and scene conditions may affect timing, which should be documented. For patients < 14 years refer to Pediatric Crashing Patient/Impending Arrest-Treatment Protocol.",
+
+  "sections": [
+    {
+      "title": "Criteria",
+      "reference": "Michigan Protocol 3-7: Crashing Adult — Criteria",
+      "points": [
+        "INCLUSION: (i) Patient in whom cardiac or respiratory arrest appears imminent; (ii) Patient with provider impression of critical illness including new onset altered mental status, airway compromise or severe respiratory distress/failure, and/or signs and symptoms of shock/poor perfusion",
+        "EXCLUSION: Life-threatening trauma that has not been corrected (exsanguination, pneumothorax, etc.) — address life threats per trauma protocols first"
+      ]
+    },
+    {
+      "title": "Critical Actions — Within First 5 Minutes",
+      "reference": "Michigan Protocol 3-7: Crashing Adult — First 5 Minutes",
+      "points": [
+        "AIRWAY: Insert nasopharyngeal or oropharyngeal airway as indicated/tolerated if not following commands (GCS motor < 6) or no response to verbal stimuli per Airway Management-Procedure Protocol",
+        "BREATHING — if respiratory failure or distress: sit patient up if tolerated and not contraindicated by suspected spine injury; provide high-flow oxygen per Oxygen Administration-Procedure Protocol; if respirations < 10/min: ventilate by BVM at 15 LPM — two-person two-handed technique is most effective and highly recommended when staffing allows; if respirations > 10 but inadequate: apply CPAP for respiratory distress/hypoxia per CPAP-Procedure Protocol (Specialist skill); respirations may be assisted with BVM in sitting position if patient tolerates; consider PPV by BVM if not following commands or SpO2 < 90%",
+        "MONITORING: NIBP (cycle every 3 minutes); SpO2; continuous/waveform ETCO2 (Specialist skill); EKG (Specialist skill)"
+      ]
+    },
+    {
+      "title": "Immediate Actions — Within First 10 Minutes",
+      "reference": "Michigan Protocol 3-7: Crashing Adult — First 10 Minutes",
+      "points": [
+        "CIRCULATION: electrical therapy (cardioversion or pacing) if dysrhythmia is primary cause of shock per Electrical Therapy-Procedure Protocol (Specialist skill)",
+        "Emergent IV/IO access per Vascular Access & IV Therapy-Procedure Protocol (Specialist skill)",
+        "Administer NS or LR up to 1 liter bolus infused under pressure — monitor for pulmonary edema; if pulmonary edema presents, stop fluids and contact Medical Control (Specialist skill)",
+        "Consider push-dose epinephrine per Shock-Treatment Protocol (Specialist skill): prepare epinephrine 10 mcg/mL by adding 1 mL of 1 mg/10 mL epinephrine in 9 mL NS; administer 10–20 mcg (1–2 mL of 10 mcg/mL solution) IV/IO; repeat every 3–5 minutes; titrate to SBP > 90 mmHg"
+      ]
+    },
+    {
+      "title": "Actions Within First 15 Minutes",
+      "reference": "Michigan Protocol 3-7: Crashing Adult — First 15 Minutes",
+      "points": [
+        "Re-assess response to treatments",
+        "Repeat fluid bolus up to 2-liter total if indicated (Specialist skill)",
+        "If bradycardia: consider atropine 1 mg IV/IO if indicated (Specialist skill)",
+        "Consider push-dose epinephrine per Shock-Treatment Protocol while administering second fluid bolus (Specialist skill)"
+      ]
+    },
+    {
+      "title": "Actions Within First 20 Minutes",
+      "reference": "Michigan Protocol 3-7: Crashing Adult — First 20 Minutes",
+      "points": [
+        "Re-assess response to treatments",
+        "Continue fluids as indicated (Specialist skill)",
+        "Continue vasopressors (push-dose epinephrine) as indicated (Specialist skill)",
+        "Contact Medical Control for additional fluids/vasopressors",
+        "Insert advanced airway if indicated per Airway Management-Procedure Protocol (Specialist skill)"
+      ]
+    },
+    {
+      "title": "Transport",
+      "reference": "Michigan Protocol 3-7: Crashing Adult — Transport",
+      "points": [
+        "Once critical and immediate actions have been completed: move patient to ambulance for transport; transport may be initiated earlier per provider discretion",
+        "Actions should be simultaneous — not in any specific order; as critical actions are performed, transport may be initiated; however, transport should NOT supersede initiation of life-saving intervention",
+        "NOTE: Concepts can also be used with Return of Spontaneous Circulation (ROSC)-Treatment Protocol to prioritize key interventions prior to transport of cardiac arrest patients with ROSC"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [
+    {
+      "name": "Push-Dose Epinephrine (Crashing Adult)",
+      "dose": "10–20 mcg (1–2 mL of 10 mcg/mL solution) IV/IO — repeat every 3–5 minutes; titrate to SBP > 90 mmHg",
+      "route": "IV or IO",
+      "indication": "Hemodynamic compromise/shock in critically ill patient approaching arrest",
+      "contraindications": "None absolute in life-threatening shock",
+      "side_effects": "Tachycardia, hypertension, myocardial ischemia",
+      "scope": "Specialist skill",
+      "notes": "PREPARATION: add 1 mL of 1 mg/10 mL epinephrine to 9 mL NS = 10 mcg/mL solution. Titrate to SBP > 90 mmHg. Refer to Shock-Treatment Protocol."
+    },
+    {
+      "name": "NS or LR IV/IO Fluid Bolus",
+      "dose": "Up to 1 liter infused under pressure — repeat to 2 L total as indicated",
+      "route": "IV or IO",
+      "indication": "Hemodynamic compromise — poor perfusion, shock",
+      "contraindications": "Signs of pulmonary edema — stop and contact Medical Control",
+      "side_effects": "Pulmonary edema",
+      "scope": "Specialist skill",
+      "notes": "Infuse under pressure for rapid delivery. Maximum 2 L total. Monitor continuously."
+    },
+    {
+      "name": "Atropine (Bradycardia in Crashing Adult)",
+      "dose": "1 mg IV/IO",
+      "route": "IV or IO",
+      "indication": "Bradycardia as contributing factor to hemodynamic compromise",
+      "contraindications": "Second-degree Mobitz II or third-degree AV block — consider pacing instead",
+      "side_effects": "Tachycardia, urinary retention, dry mouth",
+      "scope": "Specialist skill",
+      "notes": "For bradycardia contributing to shock. Refer to Bradycardia protocol as appropriate."
+    }
+  ],
+
+  "deterioration_flags": [
+    "SpO2 < 90% — BVM ventilation; CPAP if respirations > 10 but inadequate; advanced airway if not following commands",
+    "Respirations < 10/min — BVM at 15 LPM (two-person two-handed technique preferred)",
+    "SBP not responding to fluid bolus — push-dose epinephrine (Specialist skill); contact Medical Control for additional vasopressor guidance",
+    "Pulmonary edema developing during fluid resuscitation — stop fluids immediately; contact Medical Control",
+    "Cardiac arrest — transition to General Cardiac Arrest protocol"
+  ],
+
+  "scope_notes": [
+    "Airway adjuncts (NPA/OPA), BVM ventilation, positioning, oxygen: all levels",
+    "CPAP: Specialist skill in base Michigan protocol — EMT scope at MCAs with cpap_bls expansion",
+    "SpO2, NIBP monitoring: all levels",
+    "ETCO2, EKG monitoring: Specialist skill",
+    "IV/IO access: Specialist skill",
+    "IV fluid bolus: Specialist skill",
+    "Push-dose epinephrine, atropine, electrical therapy: Specialist skill",
+    "Advanced airway: Specialist skill"
+  ]
+}

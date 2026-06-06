@@ -1,0 +1,38 @@
+{
+  "_schema": "ems_agency_v1",
+  "_comment": "Seed agency template. Values here are loaded into the database on first startup via SEED_AGENCY_NAME / SEED_AGENCY_JOIN_CODE / SEED_AGENCY_FILE in .env. After first startup the database record is the live source — use PUT /api/agencies/{id}/config to push updates without restarting. Configure all sections below for your agency before deploying.",
+  "id": "seed_agency",
+  "display_name": "My EMS Agency",
+  "display_name_short": "EMS",
+  "unit_designator": "",
+  "unit_designators": [],
+  "mca": "",
+  "mca_display": "",
+  "jurisdiction": "",
+  "service_type": {
+    "transport": true,
+    "als_on_unit": false,
+    "fire_suppression": false,
+    "notes": ""
+  },
+  "als_dispatch": {
+    "co_dispatched": false,
+    "arrival_minutes": 12,
+    "unit_name": "ALS",
+    "notes": ""
+  },
+  "provider_levels": {
+    "primary": "EMT",
+    "primary_display": "EMT-Basic (BLS)",
+    "notes": ""
+  },
+  "equipment": {
+    "items": []
+  },
+  "training_and_certifications": {
+    "completed": [],
+    "not_completed": []
+  },
+  "sops": [],
+  "ai_prompt_context": ""
+}

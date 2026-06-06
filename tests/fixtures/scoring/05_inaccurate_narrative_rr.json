@@ -1,0 +1,120 @@
+{
+  "fixture_id": "inaccurate_narrative_rr",
+  "description": "Student submitted a polished narrative that fabricates RR 28 — a vital sign that was never recorded in the findings. Only SpO2 83% and HR 134 are in the evidence record. The prepass identifies the unsupported RR claim in the Assessment section. DMIST is clean. Tests that a fabricated vital in the narrative surfaces as a corroboration violation without penalizing the DMIST, and that the narrative ceiling reflects the unsupported claim.",
+
+  "inputs": {
+    "scenario": {
+      "id": "fixture_peds_resp",
+      "category": "pediatric_medical",
+      "protocol_config": {"mca": "mi_wmrmcc_kent"},
+      "turnover_target": "als",
+      "vitals": {
+        "baseline": {},
+        "interventions": {
+          "o2_nrb":        {"label": "High-flow O2 via NRB mask (15 LPM)"},
+          "albuterol_svn": {"label": "Albuterol 2.5 mg via SVN (nebulizer)"},
+          "positioning":   {"label": "Position of comfort — sitting upright"},
+          "als_intercept": {"label": "ALS intercept acknowledged"}
+        }
+      },
+      "scoring": {}
+    },
+
+    "interventions": [
+      {"name": "o2_nrb",        "applied_at": "2026-01-01T12:02:00"},
+      {"name": "albuterol_svn", "applied_at": "2026-01-01T12:04:00"},
+      {"name": "positioning",   "applied_at": "2026-01-01T12:03:00"},
+      {"name": "als_intercept", "applied_at": "2026-01-01T12:05:00"}
+    ],
+
+    "checklist_states": {"item_states": []},
+
+    "submitted_docs": {
+      "dmist": "D: 8yo male, dispatched for difficulty breathing. M: History of asthma, 2-hour wheezing onset. I: Asthma exacerbation, no prior episodes, no known ingestion or trauma. S: SpO2 83%, HR 134. T: Transporting to Pediatric ED via ALS intercept.",
+      "narrative": "C: Dispatched to 8-year-old male presenting with asthma exacerbation. H: 2-hour onset of wheezing, history of asthma. A: SpO2 83%, HR 134, RR 28. R: O2 via NRB, albuterol SVN, positioned upright. T: ALS intercept, transporting to Pediatric ED."
+    },
+
+    "findings": [
+      {"key": "spo2", "value": "83%", "finding_type": "vital", "captured_at": "2026-01-01T12:01:00"},
+      {"key": "hr",   "value": "134", "finding_type": "vital", "captured_at": "2026-01-01T12:01:00"}
+    ],
+
+    "student_messages": [
+      "BSI, scene is safe.",
+      "Applying O2 via NRB mask.",
+      "Albuterol SVN per protocol.",
+      "ALS intercept called."
+    ],
+
+    "scene_entry_scoring_result": {"ppe": "gloves_mask"},
+    "scene_entry_dict":           {},
+    "greeting_detected": false,
+    "greeting_text": "",
+
+    "prepass_result": {
+      "available": true,
+      "dmist_unsupported": [],
+      "narrative_unsupported": [
+        {
+          "component": "A",
+          "claim": "RR 28",
+          "reason": "RR was never recorded in findings — only SpO2 83% and HR 134 documented"
+        }
+      ]
+    },
+
+    "critical_actions": [
+      {
+        "id": "scene_safety",
+        "description": "Ensure scene safety and BSI/PPE",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "o2_administration",
+        "description": "Administer high-flow O2 via NRB mask",
+        "required": true,
+        "intervention_ids": ["o2_nrb"]
+      }
+    ],
+
+    "grace_items": [],
+    "session_events": [],
+    "agency": {"transports_patients": true},
+    "effective_level": "EMT",
+    "elapsed_min": 10.0
+  },
+
+  "target_expected": {
+    "assertions": [
+      {
+        "id": "corroboration_tier_2",
+        "type": "corroboration_tier",
+        "expected": 2
+      },
+      {
+        "id": "narrative_has_unsupported_claim",
+        "type": "narrative_unsupported_claims_min",
+        "min_count": 1
+      },
+      {
+        "id": "no_dmist_unsupported_claims",
+        "type": "dmist_unsupported_claims_min",
+        "min_count": 0
+      },
+      {
+        "id": "no_dmist_ceiling",
+        "type": "no_dmist_ceiling"
+      },
+      {
+        "id": "narrative_ceiling_from_unsupported_claim",
+        "type": "narrative_ceiling_value",
+        "expected": 18
+      }
+    ]
+  },
+
+  "_note": "narrative_ceiling=18 because 1 unsupported claim with max_deduction=2 (default). 20 - 2 = 18. All 5 CHART elements are present so no chart-based ceiling applies. Ceiling is prompt-guided (enforce=False) so LLM still adjudicates, but is bounded below.",
+
+  "known_failing_baselines": []
+}

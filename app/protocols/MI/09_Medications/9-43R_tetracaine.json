@@ -1,0 +1,65 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-43R Tetracaine Ophthalmic (MDHHS Reviewed 2025). Base Michigan template — MCA Optional.",
+  "id": "mi_base_medication_ref_tetracaine",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference — MCA Optional",
+  "jurisdiction": "Michigan",
+  "condition": "Tetracaine (Ophthalmic)",
+  "version": "2025-03-31",
+  "protocol_reference": "Michigan Medication Protocol Section 9-43R: Tetracaine Ophthalmic — MDHHS Reviewed 2025",
+
+  "pharmacological_category": "Topical Local Anesthetic — Ophthalmic",
+
+  "routes": ["Ophthalmic (eye drops)"],
+
+  "indications": [
+    "Chemical exposure to eye — to facilitate irrigation and reduce pain",
+    "Eye irrigation (foreign body, chemical splash)"
+  ],
+
+  "contraindications": [
+    "Age <1 year",
+    "Known hypersensitivity to tetracaine or ester-type local anesthetics",
+    "Known hypersensitivity to para-aminobenzoic acid (PABA) derivatives"
+  ],
+
+  "precautions": [
+    "MCA OPTIONAL — only authorized if MCA has approved tetracaine ophthalmic for EMS use",
+    "Instruct patient NOT to rub eyes after administration — patient will not feel pain and may inadvertently cause corneal injury",
+    "Topical anesthetic use does not replace need for thorough eye irrigation in chemical exposure",
+    "Anesthetic effect is temporary — patient will have return of pain once effect wears off (expect at hospital)"
+  ],
+
+  "expected_effects": [
+    "Rapid ophthalmic analgesia within 30-60 seconds",
+    "Allows patient to keep eye open for examination and irrigation",
+    "Duration approximately 10-20 minutes"
+  ],
+
+  "side_effects": [
+    "Transient stinging or burning on instillation (resolves within seconds)",
+    "Corneal toxicity with repeated administration (limit to protocol-specified doses)",
+    "Allergic reaction (rare)"
+  ],
+
+  "notes": [
+    "Standard dose: 1-2 drops per affected eye; may repeat every 5 minutes up to maximum 5 doses per eye",
+    "Primarily used to facilitate eye irrigation after chemical exposure",
+    "After administration: protect eye from accidental self-injury (patient cannot feel pain)",
+    "MCA Optional — only if MCA has authorized"
+  ],
+
+  "dosing": [
+    {
+      "population": "All (≥1 yr) — chemical exposure / eye irrigation",
+      "route": "Ophthalmic (eye drops)",
+      "dose": "1-2 drops per affected eye; may repeat every 5 minutes; maximum 5 doses per eye",
+      "notes": "MCA Optional; instruct patient not to rub eyes; use to facilitate irrigation"
+    }
+  ],
+
+  "used_in_protocols": ["Eye / Ophthalmic Emergencies — Chemical Exposure", "Eye Irrigation"]
+}

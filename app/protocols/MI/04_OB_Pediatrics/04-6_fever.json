@@ -1,0 +1,117 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 4-6 Pediatric Fever (Revised 08/11/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_pediatric_fever",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Pediatric",
+  "level_display": "Pediatric (< 14 years)",
+  "jurisdiction": "Michigan",
+  "condition": "Pediatric Fever",
+  "version": "2023-08-11",
+  "protocol_reference": "Michigan Obstetrics and Pediatrics Protocol Section 4-6: Pediatric Fever — MDHHS Approved 8/11/23, Reviewed 2023",
+  "purpose": "Assist EMS providers in reducing fever in pediatric patients prior to arrival to the emergency department. Fever is defined as temperature ≥ 100.4°F (38°C). Emergency management includes assessment for associated problems requiring emergency treatment.",
+  "sections": [
+    {
+      "title": "Pediatric Fever Treatment",
+      "reference": "Michigan Protocol 4-6: Pediatric Fever",
+      "points": [
+        "Follow General Pre-hospital Care-Treatment Protocol",
+        "Pediatric patients (< 14 years) utilize MI-MEDIC cards for appropriate medication dosage — when unavailable, utilize pediatric dosing listed within protocol",
+        "Fever is defined as temperature ≥ 100.4°F (38°C)",
+        "Obtain baseline temperature and document method used",
+        "Children < 60 days old: document rectal temperature before administering any antipyretic",
+        "Administer antipyretic according to MCA selection; MCA must select at least one: ibuprofen for children > 6 months of age or acetaminophen",
+        "Administer ibuprofen only if the child is over 6 months old, has not received ibuprofen or medication containing ibuprofen in the last 6 hours, and is alert",
+        "Administer acetaminophen only if the child has not received acetaminophen or medication containing acetaminophen in the last 4 hours and is alert",
+        "If the patient's weight is known, use that weight and MI-MEDIC for dosing; if weight is unavailable, use length-based tape and MI-MEDIC; if MI-MEDIC is unavailable, use the dosing table",
+        "If there is any question concerning alertness or ability to swallow, DO NOT ADMINISTER",
+        "Dosing questions should be directed to online Medical Control"
+      ]
+    },
+    {
+      "title": "Children's Elixir Dosing Table — Acetaminophen 160 mg/5 mL",
+      "reference": "Michigan Protocol 4-6: Acetaminophen Dosing Table",
+      "points": [
+        "Grey (0–2 mo, 3–5 kg): 1.25 mL (40 mg)",
+        "Pink (3–6 mo, 6–7 kg): 3 mL (96 mg)",
+        "Red (7–10 mo, 8–9 kg): 4 mL (128 mg)",
+        "Purple (11–18 mo, 10–11 kg): 5 mL (160 mg)",
+        "Yellow (19–35 mo, 12–14 kg): 6 mL (192 mg)",
+        "White (3–4 yr, 15–18 kg): 7 mL (224 mg)",
+        "Blue (5–6 yr, 19–23 kg): 9 mL (288 mg)",
+        "Orange (7–9 yr, 24–29 kg): 12 mL (384 mg)",
+        "Green (10–14 yr, 30–36 kg): 15 mL (480 mg)"
+      ]
+    },
+    {
+      "title": "Children's Elixir Dosing Table — Ibuprofen 100 mg/5 mL",
+      "reference": "Michigan Protocol 4-6: Ibuprofen Dosing Table",
+      "points": [
+        "Grey (0–2 mo, 3–5 kg): DO NOT GIVE",
+        "Pink (3–6 mo, 6–7 kg): DO NOT GIVE",
+        "Red (7–10 mo, 8–9 kg): 4 mL (80 mg)",
+        "Purple (11–18 mo, 10–11 kg): 5 mL (100 mg)",
+        "Yellow (19–35 mo, 12–14 kg): 6 mL (120 mg)",
+        "White (3–4 yr, 15–18 kg): 7.5 mL (150 mg)",
+        "Blue (5–6 yr, 19–23 kg): 9.5 mL (190 mg)",
+        "Orange (7–9 yr, 24–29 kg): 13 mL (260 mg)",
+        "Green (10–14 yr, 30–36 kg): 15 mL (300 mg)"
+      ]
+    }
+  ],
+  "mca_selections_required": [
+    {
+      "item": "Antipyretic Selection — Must Select at Least One",
+      "description": "MCA must select at least one antipyretic option for pediatric fever. Both may be selected. Ibuprofen is contraindicated in children ≤ 6 months.",
+      "options": [
+        "Ibuprofen (children > 6 months) — 10 mg/kg PO per Children's Elixir Dosing Table (100 mg/5 mL)",
+        "Acetaminophen — 15 mg/kg PO per Children's Elixir Dosing Table (160 mg/5 mL)"
+      ],
+      "selected": null
+    }
+  ],
+  "key_drugs": [
+    {
+      "name": "Acetaminophen PO (Pediatric Fever)",
+      "dose": "Per Children's Elixir Dosing Table (160 mg/5 mL): Grey 40 mg, Pink 96 mg, Red 128 mg, Purple 160 mg, Yellow 192 mg, White 224 mg, Blue 288 mg, Orange 384 mg, Green 480 mg",
+      "route": "PO (oral)",
+      "indication": "Fever ≥ 100.4°F (38°C) in pediatric patients",
+      "contraindications": "Children < 60 days — document rectal temperature before administration; do not give if dose received within last 4 hours; known hepatic failure",
+      "side_effects": "Hepatotoxicity with overdose",
+      "scope": "Per MCA selection",
+      "notes": "Use MI-MEDIC when available. Document rectal temperature for children < 60 days before administering."
+    },
+    {
+      "name": "Ibuprofen PO (Pediatric Fever)",
+      "dose": "Per Children's Elixir Dosing Table (100 mg/5 mL): Red 80 mg, Purple 100 mg, Yellow 120 mg, White 150 mg, Blue 190 mg, Orange 260 mg, Green 300 mg; do not give to Grey or Pink zones",
+      "route": "PO (oral)",
+      "indication": "Fever ≥ 100.4°F (38°C) in children > 6 months",
+      "contraindications": "Children ≤ 6 months — DO NOT ADMINISTER; do not give if dose received within last 4 hours; known renal failure; dehydration",
+      "side_effects": "GI upset, renal effects",
+      "scope": "Per MCA selection — children > 6 months only",
+      "notes": "Contraindicated in children ≤ 6 months of age. Do not use in pregnant patients."
+    }
+  ],
+  "deterioration_flags": [
+    "Child < 60 days with fever — obtain rectal temperature before antipyretic; transport promptly",
+    "Febrile seizure — refer to Pediatric Seizures-Treatment Protocol",
+    "Question concerning alertness or ability to swallow — do not administer oral antipyretic; contact Medical Control as needed"
+  ],
+  "scope_notes": [
+    "Temperature assessment, passive cooling, oral antipyretic administration: all levels",
+    "MCA must select at least one antipyretic (ibuprofen or acetaminophen or both)",
+    "Ibuprofen contraindicated in children ≤ 6 months — acetaminophen only for this age group",
+    "Children < 60 days: document rectal temperature before antipyretic",
+    "Use known weight with MI-MEDIC when available; otherwise use length-based tape and MI-MEDIC; use table only when MI-MEDIC unavailable"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "febrile_seizure",
+      "pediatric_patient",
+      "seizure"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

@@ -1,0 +1,241 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 3-3 Respiratory Distress (Revised 08/11/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured. For patients < 14 years refer to Pediatric Respiratory Distress protocol.",
+  "id": "mi_base_adult_respiratory_distress",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Adult",
+  "level_display": "Adult (≥ 14 years)",
+  "jurisdiction": "Michigan",
+  "condition": "Respiratory Distress",
+  "version": "2023-08-11",
+  "protocol_reference": "Michigan Adult Treatment Protocol Section 3-3: Respiratory Distress — MDHHS Approved 8/11/23, Reviewed 2023",
+  "purpose": "For patients < 14 years refer to Pediatric Respiratory Distress-Treatment Protocol.",
+  "sections": [
+    {
+      "title": "General Assessment",
+      "reference": "Michigan Protocol 3-3: Respiratory Distress — General",
+      "points": [
+        "Follow General Pre-hospital Care-Treatment Protocol",
+        "Allow patient a position of comfort",
+        "Determine the type of respiratory problem involved",
+        "Crackles of suspected cardiac etiology or fluid overload: refer to Pulmonary Edema/Cardiogenic Shock-Treatment Protocol"
+      ]
+    },
+    {
+      "title": "Clear Breath Sounds",
+      "reference": "Michigan Protocol 3-3: Clear Breath Sounds",
+      "points": [
+        "Consider: possible metabolic problems, MI, pulmonary embolus, hyperventilation",
+        "Obtain 12-lead ECG (per MCA selection, may be a BLS or Specialist procedure) per 12 Lead ECG-Procedure Protocol"
+      ]
+    },
+    {
+      "title": "Asymmetrical Breath Sounds",
+      "reference": "Michigan Protocol 3-3: Asymmetrical Breath Sounds",
+      "points": [
+        "If evidence of tension pneumothorax and patient is unstable: consider decompression — refer to Pleural Decompression-Procedure Protocol (Specialist skill)"
+      ]
+    },
+    {
+      "title": "Stridor / Upper Airway Obstruction",
+      "reference": "Michigan Protocol 3-3: Stridor/Upper Airway Obstruction",
+      "points": [
+        "Complete obstruction: follow Foreign Body Airway Obstruction-Treatment Protocol",
+        "Partial obstruction (epiglottitis, foreign body, anaphylaxis, etc.): follow Airway Management-Procedure Protocol; consider anaphylaxis — see Anaphylaxis/Allergic Reaction-Treatment Protocol; transport in position of comfort"
+      ]
+    },
+    {
+      "title": "Rhonchi (Suspected Pneumonia)",
+      "reference": "Michigan Protocol 3-3: Rhonchi/Pneumonia",
+      "points": [
+        "Sit patient upright",
+        "Consider CPAP per CPAP-Procedure Protocol (Specialist skill)",
+        "Consider NS or LR IV/IO fluid bolus up to 1 liter wide open if tachycardia — repeat as needed per Vascular Access and IV Fluid Therapy-Procedure Protocol (Specialist skill)"
+      ]
+    },
+    {
+      "title": "Crackles",
+      "reference": "Michigan Protocol 3-3: Crackles",
+      "points": [
+        "Crackles of suspected non-cardiac etiology/fluid: follow wheezing/diminished breath sound management below",
+        "Crackles of suspected cardiac etiology/CHF/cardiogenic shock: refer to Pulmonary Edema/Cardiogenic Shock-Treatment Protocol"
+      ]
+    },
+    {
+      "title": "Wheezing / Diminished Breath Sounds (Asthma, COPD)",
+      "reference": "Michigan Protocol 3-3: Wheezing/Asthma/COPD",
+      "points": [
+        "Assist the patient in using their own albuterol inhaler if available",
+        "Administer albuterol 2.5 mg/3 mL NS nebulized (per MCA selection, may be EMT skill) per Medication Administration-Medication Protocol",
+        "Consider CPAP per CPAP-Procedure Protocol (Specialist skill)",
+        "Administer epinephrine auto-injector (0.3 mg) IM in patients with impending respiratory failure unable to tolerate nebulizer therapy (per MCA selection, may be MFR skill)",
+        "NOTE: BLS not carrying epinephrine auto-injector MUST participate in draw-up epinephrine",
+        "Administer epinephrine 1 mg/mL, 0.3 mg (0.3 mL) IM in patients with impending respiratory failure unable to tolerate nebulizer therapy (per MCA selection, may be BLS or MFR skill)",
+        "Administer nebulized albuterol 2.5 mg/3 mL NS and ipratropium 500 mcg/2.5 mL NS if wheezing and/or airway constriction per Medication Administration-Medication Protocol (per MCA selection, may be Specialist skill)",
+        "Administer prednisone tablet 50 mg PO to adults and children > 6 years of age (if available per MCA selection)",
+        "If prednisone is not available, patient is < 6 years of age, or patient is unable to receive medication PO: administer methylprednisolone IV/IO/IM — Adults: 125 mg; Pediatrics: 2 mg/kg (max 125 mg) (Specialist skill)",
+        "Contact Medical Control and consider repeat epinephrine 1 mg/mL, 0.3 mg (0.3 mL) IM in asthma patients with impending respiratory failure if unable to tolerate nebulizer therapy",
+        "Consider magnesium sulfate 2 gm slow IV in refractory status asthmaticus — administer by adding 2 gm to 100–250 mL NS and infusing over approximately 10 minutes (Specialist skill)"
+      ]
+    }
+  ],
+  "mca_selections_required": [
+    {
+      "item": "Nebulized Albuterol — EMT",
+      "description": "MCA may authorize EMT to administer nebulized albuterol 2.5 mg/3 mL NS",
+      "options": [
+        "EMT authorized",
+        "Specialist only"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Epinephrine Auto-Injector IM — MFR",
+      "description": "MCA may authorize MFR to administer epinephrine auto-injector (0.3 mg) IM for impending respiratory failure. MCA responsible for maintaining roster of participating agencies submitted to MDHHS.",
+      "options": [
+        "MFR authorized",
+        "Not authorized for MFR"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Draw-Up Epinephrine — MFR/BLS",
+      "description": "MCA may authorize MFR and/or BLS to administer drawn-up epinephrine 1 mg/mL, 0.3 mg IM. Personnel must complete MCA-approved training prior to participating. MCA responsible for maintaining roster submitted to MDHHS.",
+      "options": [
+        "MFR authorized",
+        "BLS authorized",
+        "Both MFR and BLS authorized",
+        "Not authorized"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Nebulized Albuterol/Ipratropium — Specialist",
+      "description": "MCA may authorize Specialist to administer combined nebulized albuterol/ipratropium",
+      "options": [
+        "Specialist authorized"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Prednisone 50 mg PO",
+      "description": "MCA may include prednisone 50 mg tablet PO as an additional medication option (adults and children > 6 years)",
+      "options": [
+        "Included",
+        "Not included"
+      ],
+      "selected": null
+    },
+    {
+      "item": "12-Lead ECG",
+      "description": "MCA must select whether 12-lead ECG is a BLS or Specialist procedure",
+      "options": [
+        "BLS",
+        "Specialist"
+      ],
+      "selected": null
+    }
+  ],
+  "key_drugs": [
+    {
+      "name": "Albuterol Nebulized (2.5 mg/3 mL NS)",
+      "dose": "2.5 mg/3 mL NS via nebulizer; may repeat",
+      "route": "Inhaled (nebulizer)",
+      "indication": "Wheezing, bronchospasm — asthma, COPD",
+      "contraindications": "Known hypersensitivity",
+      "side_effects": "Tachycardia, tremor, hypokalemia with repeated dosing",
+      "scope": "Per MCA selection — EMT option available",
+      "notes": "Assist patient with own MDI first if available."
+    },
+    {
+      "name": "Albuterol/Ipratropium Nebulized (Combined)",
+      "dose": "Albuterol 2.5 mg/3 mL NS + Ipratropium 500 mcg/2.5 mL NS combined",
+      "route": "Inhaled (nebulizer)",
+      "indication": "Wheezing and/or airway constriction",
+      "contraindications": "Known hypersensitivity to either agent; use caution in glaucoma, BPH",
+      "side_effects": "Tachycardia, dry mouth, urinary retention",
+      "scope": "Specialist skill — per MCA selection",
+      "notes": "Combined dual bronchodilator therapy for moderate-severe bronchospasm."
+    },
+    {
+      "name": "Epinephrine Auto-Injector (0.3 mg) IM",
+      "dose": "0.3 mg IM (auto-injector)",
+      "route": "IM (auto-injector)",
+      "indication": "Impending respiratory failure with inability to tolerate nebulizer therapy",
+      "contraindications": "Use with caution in patients > 65 or with cardiac history — weigh risk vs. benefit in life-threatening bronchospasm",
+      "side_effects": "Tachycardia, hypertension, tremor, anxiety",
+      "scope": "Per MCA selection — MFR option available",
+      "notes": "BLS not carrying auto-injector MUST participate in draw-up epinephrine procedure."
+    },
+    {
+      "name": "Epinephrine 1 mg/mL, 0.3 mg (0.3 mL) IM (Draw-Up)",
+      "dose": "0.3 mg (0.3 mL of 1 mg/mL) IM",
+      "route": "IM",
+      "indication": "Impending respiratory failure unable to tolerate nebulizer therapy",
+      "contraindications": "Use with caution in elderly and cardiac patients — benefit outweighs risk in life-threatening bronchospasm",
+      "side_effects": "Tachycardia, hypertension, tremor, chest pain",
+      "scope": "Per MCA selection — BLS or MFR option available; requires MCA-approved training",
+      "notes": "Contact Medical Control and consider repeat dose in asthma patients with impending respiratory failure. Must complete MCA-approved draw-up training."
+    },
+    {
+      "name": "Prednisone 50 mg PO",
+      "dose": "50 mg PO — adults and children > 6 years",
+      "route": "Oral",
+      "indication": "Bronchospasm — systemic corticosteroid for anti-inflammatory effect",
+      "contraindications": "Patient unable to swallow; patient < 6 years; known hypersensitivity",
+      "side_effects": "Hyperglycemia, GI upset (minimal with single dose)",
+      "scope": "Per MCA selection — may be Specialist skill",
+      "notes": "If unavailable or patient cannot take PO: substitute methylprednisolone IV/IO/IM."
+    },
+    {
+      "name": "Methylprednisolone IV/IO/IM",
+      "dose": "Adults: 125 mg; Pediatrics: 2 mg/kg (max 125 mg)",
+      "route": "IV, IO, or IM",
+      "indication": "Bronchospasm when prednisone unavailable, patient < 6 years, or unable to take PO",
+      "contraindications": "Known hypersensitivity",
+      "side_effects": "Hyperglycemia, transient hypertension",
+      "scope": "Specialist skill",
+      "notes": "Parenteral corticosteroid alternative when oral prednisone is not feasible."
+    },
+    {
+      "name": "Magnesium Sulfate (Refractory Status Asthmaticus)",
+      "dose": "2 gm slow IV — add to 100–250 mL NS, infuse over approximately 10 minutes",
+      "route": "IV infusion",
+      "indication": "Refractory status asthmaticus not responding to bronchodilators",
+      "contraindications": "Renal failure (use with caution); hypotension",
+      "side_effects": "Flushing, hypotension, bradycardia if administered too rapidly",
+      "scope": "Specialist skill",
+      "notes": "Dilute before administration. Infuse slowly. Contact Medical Control before use in refractory asthma."
+    }
+  ],
+  "deterioration_flags": [
+    "Impending respiratory failure (unable to speak full sentences, tripod positioning, accessory muscle use, SpO2 < 90%) — epinephrine IM if unable to tolerate nebulizer; advanced airway preparation; contact Medical Control",
+    "Tension pneumothorax signs (absent breath sounds, tracheal deviation, JVD, hypotension) — needle decompression (Specialist skill) per Pleural Decompression protocol",
+    "Status asthmaticus unresponsive to nebulized therapy — magnesium sulfate (Specialist skill); contact Medical Control; expedite transport",
+    "Cardiac crackles suspected — switch to Pulmonary Edema/Cardiogenic Shock protocol"
+  ],
+  "scope_notes": [
+    "Position of comfort, own MDI assistance, oxygen: all levels",
+    "Albuterol nebulized: per MCA selection — EMT option available",
+    "Epinephrine auto-injector IM: per MCA selection — MFR option available",
+    "Draw-up epinephrine IM: per MCA selection — MFR/BLS option with MCA-approved training",
+    "CPAP: Specialist skill in base Michigan protocol — EMT scope at MCAs with cpap_bls expansion",
+    "Albuterol/ipratropium combined nebulized: Specialist skill — per MCA selection",
+    "Methylprednisolone IV/IM, magnesium sulfate: Specialist skill",
+    "Prednisone PO: per MCA selection",
+    "12-lead ECG: per MCA selection — BLS or Specialist"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "airway_management",
+      "bronchospasm",
+      "oxygen_therapy",
+      "pulmonary_edema",
+      "respiratory_distress",
+      "ventilation_support"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

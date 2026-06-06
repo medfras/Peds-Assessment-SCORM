@@ -1,0 +1,79 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-1 Downgrade of Response (Revised 12/27/2022, MDHHS Reviewed 2022). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_downgrade_of_response",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Downgrade of Response",
+  "version": "2022-12-27",
+  "protocol_reference": "Michigan System Protocol Section 8-1: Downgrade of Response — MDHHS Approved 12/27/2022",
+
+  "purpose": "Govern conditions under which an EMS response may be downgraded (reduced in priority or level) after initial dispatch. Downgrade decisions must balance scene safety, patient need, and resource availability. Medical control or dispatch authority may authorize downgrade based on additional information received after initial dispatch.",
+
+  "sections": [
+    {
+      "title": "Authority to Downgrade",
+      "reference": "Michigan Protocol 8-1: Downgrade — Authority",
+      "points": [
+        "A responding unit may reduce its response priority (lights and sirens to routine) based on additional information received after dispatch",
+        "Dispatch may authorize downgrade if additional caller information or scene information indicates a lower-acuity response is appropriate",
+        "The crew chief of the responding unit retains responsibility for ensuring downgrade is appropriate for the reported patient condition",
+        "Medical control may be contacted to authorize downgrade when clinical judgment supports it"
+      ]
+    },
+    {
+      "title": "Conditions That May Support Downgrade",
+      "reference": "Michigan Protocol 8-1: Downgrade — Conditions",
+      "points": [
+        "Caller or secondary caller information indicates patient is ambulatory, alert, and in no acute distress",
+        "Scene is confirmed as non-emergency (e.g., scheduled lift assist, routine transfer)",
+        "Law enforcement or first responders on scene confirm patient is stable with no acute need",
+        "Initial dispatch was precautionary and updated information indicates lower acuity",
+        "Medical priority dispatch protocol supports non-emergency response based on updated information"
+      ]
+    },
+    {
+      "title": "Conditions That Do NOT Support Downgrade",
+      "reference": "Michigan Protocol 8-1: Downgrade — Contraindications",
+      "points": [
+        "Unconscious or unresponsive patient",
+        "Chest pain, difficulty breathing, or stroke symptoms",
+        "Cardiac arrest or suspected arrest",
+        "Pediatric emergencies",
+        "Major trauma",
+        "Any condition where delay could result in patient harm",
+        "When unable to confirm patient status via secondary caller or first responder"
+      ]
+    },
+    {
+      "title": "Documentation",
+      "reference": "Michigan Protocol 8-1: Downgrade — Documentation",
+      "points": [
+        "Document the reason for downgrade in the PCR",
+        "Document who authorized the downgrade (dispatch, crew chief, or medical control)",
+        "Document time of downgrade decision",
+        "Document any updated patient information that supported the downgrade decision"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Updated scene information indicates higher acuity than initial downgrade assessment — upgrade response immediately",
+    "First responders on scene report patient deterioration after downgrade — upgrade immediately"
+  ],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "Downgrade authority: dispatch, crew chief, or medical control",
+    "Never downgrade for: unconscious patient, cardiac arrest, chest pain, SOB, stroke, pediatric emergency, major trauma",
+    "Document reason, authority, and time of downgrade",
+    "Crew chief retains responsibility for appropriateness of downgrade"
+  ]
+}

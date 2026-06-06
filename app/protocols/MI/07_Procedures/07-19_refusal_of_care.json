@@ -1,0 +1,106 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-19 Refusal of Care (Revised 3/24/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_refusal_of_care",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Refusal of Care",
+  "version": "2023-03-24",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-19: Refusal of Care — MDHHS Approved 3/24/2023",
+
+  "purpose": "Govern EMS response when a patient or guardian refuses care or transport. Capacity to refuse must be assessed. Minors cannot consent to or refuse EMS care. Religious belief exceptions apply. Thorough documentation is mandatory.",
+
+  "sections": [
+    {
+      "title": "Assessing Decision-Making Capacity",
+      "reference": "Michigan Protocol 7-19: Refusal — Capacity Criteria",
+      "points": [
+        "A patient has decision-making capacity (CAPABLE) if ALL of the following are present:",
+        "1. Patient is awake and alert",
+        "2. Patient is oriented to person, place, time, and situation",
+        "3. Patient understands the risks of refusing care (including potential for serious harm or death)",
+        "4. Patient is ≥ 18 years old OR is an emancipated minor",
+        "5. Patient is NOT under the influence of alcohol or drugs to a degree that impairs judgment",
+        "6. Patient is NOT a danger to self or others",
+        "EMANCIPATED MINOR criteria (any one qualifies): married; active duty military member; court-granted emancipation"
+      ]
+    },
+    {
+      "title": "Capable Patient Refusal",
+      "reference": "Michigan Protocol 7-19: Refusal — Capable Refusal",
+      "points": [
+        "Explain the nature of the condition and the potential consequences of refusing care, including the risk of serious injury or death",
+        "Document the explanation given and the patient's demonstrated understanding",
+        "Obtain the patient's signature on the EMS Refusal Form",
+        "If patient refuses to sign: obtain witness signature(s) on the form and document the circumstances",
+        "Strongly encourage the patient to call back if symptoms worsen or change",
+        "Inform the patient they may call 9-1-1 again at any time",
+        "Document all findings, the explanation provided, and the patient's decision in the PCR"
+      ]
+    },
+    {
+      "title": "Incapable Patient — Unable to Refuse",
+      "reference": "Michigan Protocol 7-19: Refusal — Incapable Patient",
+      "points": [
+        "A patient who lacks decision-making capacity CANNOT legally refuse care",
+        "Contact Medical Control and treat/transport for any serious illness or injury using implied consent",
+        "Document the basis for determining the patient lacks capacity",
+        "Law enforcement involvement may be needed for safety if patient is combative"
+      ]
+    },
+    {
+      "title": "Capable Patient After Treatment",
+      "reference": "Michigan Protocol 7-19: Refusal — Post-Treatment Refusal",
+      "points": [
+        "If a capable patient refuses transport AFTER receiving treatment:",
+        "Contact Medical Control if medications were administered",
+        "Strongly encourage hospital transport — explain risks of refusing post-treatment",
+        "Document the medications given, Medical Control contact, explanation of risks, and the patient's decision"
+      ]
+    },
+    {
+      "title": "Minors",
+      "reference": "Michigan Protocol 7-19: Refusal — Minors",
+      "points": [
+        "Minors (< 18 years; not emancipated) CANNOT consent to or refuse EMS care",
+        "Parent or legal guardian consent is required for non-emergency treatment of a minor",
+        "Do NOT delay life-threatening care to obtain consent for a minor",
+        "If a parent is refusing care for a minor: contact Medical Control; provide care and transport for life-threatening conditions; involve law enforcement if needed",
+        "Document all attempts to obtain consent and the clinical basis for providing care without consent"
+      ]
+    },
+    {
+      "title": "Religious Beliefs Exception",
+      "reference": "Michigan Protocol 7-19: Refusal — Religious Beliefs",
+      "points": [
+        "Capable adults may refuse treatment based on religious or personal beliefs even if the refusal may lead to serious harm or death",
+        "This exception applies even if the patient meets criteria that would otherwise suggest incapacity based solely on medical condition",
+        "Document the religious or personal belief-based refusal thoroughly",
+        "Contact Medical Control"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Incapable patient attempting to refuse — document basis for incapacity; treat and transport under implied consent; contact MC",
+    "Minor with life-threatening condition and parent refusing — provide care and transport; contact MC; involve law enforcement if needed",
+    "Post-medication refusal — contact MC before releasing patient; document all medications given and patient response"
+  ],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "Capable refusal criteria: awake + oriented + understands risks + ≥ 18 yr (or emancipated) + not impaired + not danger to self/others",
+    "Emancipated minor: married, active duty military, or court-granted",
+    "Incapable patient: treat/transport under implied consent; contact MC",
+    "Minor: cannot consent or refuse; parent/guardian required; do not delay life-threatening care",
+    "Religious belief: exception to capacity-based refusal even if refusal may cause serious harm",
+    "Documentation required in all refusal cases regardless of outcome"
+  ]
+}

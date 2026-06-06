@@ -1,0 +1,219 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 5-3 Adult Tachycardia (Revised 7/28/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_adult_tachycardia",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Adult",
+  "level_display": "Adult (≥ 14 years)",
+  "jurisdiction": "Michigan",
+  "condition": "Tachycardia",
+  "version": "2023-07-28",
+  "protocol_reference": "Michigan Adult Cardiac Protocol Section 5-3: Tachycardia — MDHHS Approved 7/28/23, Reviewed 2023",
+
+  "purpose": "PARAMEDIC USE ONLY. Aliases: SVT, VT/V-Tach, A-Fib with RVR. Protocol for persistent tachycardia (ventricular rate ≥ 150/min) where tachycardia is believed to be the PRIMARY cause of symptoms. NOT intended for tachycardia secondary to underlying conditions (dehydration, trauma, sepsis, toxins). For rates < 150 believed to be causing symptoms, contact Medical Control. Adenosine is ONLY used for regular monomorphic tachycardic rhythm.",
+
+  "sections": [
+    {
+      "title": "General Assessment",
+      "reference": "Michigan Protocol 5-3: Tachycardia — General",
+      "points": [
+        "PARAMEDIC USE ONLY",
+        "Follow General Pre-Hospital Care-Treatment Protocol",
+        "Identify and treat reversible causes",
+        "Determine if patient is stable or unstable",
+        "Unstable: hypotension, acutely altered mental status, signs of shock, significant ischemic chest discomfort, shortness of breath, or pulmonary edema likely due to the arrhythmia — unstable patients usually have ventricular rate > 150 BPM",
+        "NOTE: Unstable patients with compensatory sinus tachycardia may resemble tachycardic arrhythmias but should NOT be treated as such — treat the underlying cause",
+        "Adenosine is ONLY used for regular monomorphic tachycardic rhythm",
+        "Consult Medical Control for complex patients where cause of arrhythmia is not obvious"
+      ]
+    },
+    {
+      "title": "UNSTABLE — Cardioversion",
+      "reference": "Michigan Protocol 5-3: Unstable Tachycardia",
+      "points": [
+        "Prepare for immediate cardioversion — in conscious patients consider sedation prior to cardioversion per Patient Procedural Sedation-Procedure Protocol",
+        "Perform synchronized cardioversion according to manufacturer recommendations",
+        "If unable to deliver synchronized cardioversion in polymorphic VT (including Torsades): defibrillate (cardiovert WITHOUT synchronization) according to manufacturer recommendations or device maximum energy dose",
+        "If patient does not convert at maximum energy: contact Medical Control for additional orders"
+      ]
+    },
+    {
+      "title": "STABLE — Narrow Complex: Regular and Narrow (SVT, A-Flutter)",
+      "reference": "Michigan Protocol 5-3: Regular Narrow",
+      "points": [
+        "If at any point patient becomes unstable: proceed to UNSTABLE section and perform synchronized cardioversion",
+        "Start IV NS KVO — large bore antecubital IV preferred",
+        "Obtain 12-lead ECG",
+        "Contact Medical Control for guidance as needed",
+        "Perform Modified Valsalva Maneuver with Postural Modification: (1) place patient in semi-Fowler's position; (2) instruct patient to forcefully blow into a 10 mL syringe for 15 seconds; (3) rapidly lower patient's head to horizontal while SIMULTANEOUSLY elevating legs for 60 seconds — do NOT perform carotid massage; provide continuous cardiac monitoring and run ECG strip during procedure",
+        "For suspected SVT not converting with Valsalva: administer adenosine 6 mg rapid IV push through most proximal injection site, followed IMMEDIATELY by 20 mL NS flush",
+        "Adenosine may allow flutter waves to be visible indicating A-Flutter — treat as irregular and narrow rhythm below",
+        "If conversion does not occur after first adenosine: administer adenosine 12 mg IV using same rapid push technique followed by 20 mL NS flush",
+        "If SVT persists after adenosine: treat per MCA selection (see mca_selections_required)"
+      ]
+    },
+    {
+      "title": "STABLE — Narrow Complex: Irregular and Narrow (A-Fib/A-Flutter)",
+      "reference": "Michigan Protocol 5-3: Irregular Narrow",
+      "points": [
+        "For suspected A-Fib/A-Flutter per MCA selection: consider medication administration per MCA selection with Medical Control contact if indicated per MCA selection",
+        "Treatment indicated if heart rate is persistently above 125 BPM AND patient is symptomatic from arrhythmia",
+        "Consider dehydration, hypovolemia, etc., as causes of compensatory tachycardia before treating",
+        "For suspected A-Flutter: treat as irregular and narrow rhythm (same MCA medication box as A-Fib)"
+      ]
+    },
+    {
+      "title": "STABLE — Wide Complex: Regular Wide QRS (V-Tach, SVT/A-Flutter with Aberrancy)",
+      "reference": "Michigan Protocol 5-3: Regular Wide",
+      "points": [
+        "For suspected V-Tach: administer amiodarone or lidocaine per MCA selection",
+        "If V-Tach persists: contact Medical Control and per Medical Control direction administer amiodarone 150 mg IV over 10 minutes as needed to maximum 450 mg OR lidocaine 0.5–1.0 mg/kg IV push every 5–10 minutes to maximum 3 mg/kg",
+        "For suspected SVT with aberrancy: treat as regular and narrow rhythm as above",
+        "For suspected A-Flutter with aberrancy: treat as irregular and narrow rhythm as above",
+        "NOTE: Wide complex regular tachycardia may represent SVT with aberrancy — contact Medical Control and consider adenosine"
+      ]
+    },
+    {
+      "title": "STABLE — Wide Complex: Irregular Wide QRS (Torsades, A-Fib with Aberrancy)",
+      "reference": "Michigan Protocol 5-3: Irregular Wide",
+      "points": [
+        "For suspected torsades de pointes: administer magnesium sulfate 2 gm IV over 10 minutes (best accomplished by adding 2 gm to 100 or 250 mL NS)",
+        "For suspected atrial fibrillation with aberrancy: follow irregular and narrow complex treatment as above"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Persistent SVT (Regular Narrow) — Medication After Adenosine Failure",
+      "description": "MCA must select medication for SVT persisting after adenosine, AND whether Medical Control contact is required prior to administration",
+      "options": [
+        "Diltiazem 15–20 mg (0.25 mg/kg) IV slowly",
+        "Verapamil 5 mg IV",
+        "No medication — supportive therapy only"
+      ],
+      "selected": null,
+      "radio_contact": {
+        "options": ["Contact Medical Control prior to medication administration", "Medication administration without Medical Control contact"],
+        "selected": null
+      }
+    },
+    {
+      "item": "A-Fib/A-Flutter (Irregular Narrow) — Medication",
+      "description": "MCA must select medication for symptomatic A-Fib/A-Flutter with HR persistently > 125 BPM, AND whether Medical Control contact is required",
+      "options": [
+        "Diltiazem 15–20 mg (0.25 mg/kg) IV slowly",
+        "Verapamil 5 mg IV",
+        "Amiodarone 150 mg IV over 10 minutes",
+        "No medication — supportive therapy only"
+      ],
+      "selected": null,
+      "radio_contact": {
+        "options": ["Contact Medical Control prior to medication administration", "Medication administration without Medical Control contact"],
+        "selected": null
+      }
+    },
+    {
+      "item": "V-Tach (Regular Wide) — Antidysrhythmic",
+      "description": "MCA must select antidysrhythmic for suspected V-Tach",
+      "options": [
+        "Amiodarone 150 mg IV over 10 minutes",
+        "Lidocaine 1 mg/kg IV"
+      ],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [
+    {
+      "name": "Adenosine 6 mg IV (SVT — First Dose)",
+      "dose": "6 mg rapid IV push through most proximal injection site; followed IMMEDIATELY by 20 mL NS flush",
+      "route": "IV (most proximal injection site — rapid push)",
+      "indication": "Regular monomorphic tachycardia (SVT) not converting with Valsalva — ONLY for regular monomorphic rhythms",
+      "contraindications": "Irregular or polymorphic rhythms; Wolff-Parkinson-White with A-Fib",
+      "side_effects": "Transient asystole, flushing, chest pressure, dyspnea",
+      "scope": "Paramedic only",
+      "notes": "Must be given as rapid IV push at most proximal port. If A-Flutter identified by flutter waves becoming visible, treat as irregular narrow rhythm."
+    },
+    {
+      "name": "Adenosine 12 mg IV (SVT — Second Dose)",
+      "dose": "12 mg rapid IV push; followed IMMEDIATELY by 20 mL NS flush",
+      "route": "IV (most proximal injection site — rapid push)",
+      "indication": "SVT not converting after adenosine 6 mg",
+      "contraindications": "Same as 6 mg dose",
+      "side_effects": "Transient asystole, flushing, chest pressure, dyspnea",
+      "scope": "Paramedic only",
+      "notes": "Same rapid push technique as initial dose."
+    },
+    {
+      "name": "Diltiazem 15–20 mg IV (Rate Control)",
+      "dose": "15–20 mg (0.25 mg/kg) IV slowly",
+      "route": "IV (slow infusion)",
+      "indication": "Persistent SVT after adenosine OR A-Fib/A-Flutter with HR > 125 — per MCA selection",
+      "contraindications": "Hypotension (SBP < 90); WPW; V-Tach; severe LV dysfunction",
+      "side_effects": "Hypotension, bradycardia, AV block",
+      "scope": "Paramedic — per MCA selection",
+      "notes": "MCA must select diltiazem AND whether Medical Control contact required before administration."
+    },
+    {
+      "name": "Verapamil 5 mg IV (Rate Control)",
+      "dose": "5 mg IV",
+      "route": "IV",
+      "indication": "Persistent SVT or A-Fib/A-Flutter — per MCA selection",
+      "contraindications": "Hypotension; WPW; V-Tach; severe LV dysfunction; beta-blocker use within last 2 hours",
+      "side_effects": "Hypotension, bradycardia, AV block",
+      "scope": "Paramedic — per MCA selection",
+      "notes": "MCA must select verapamil AND whether Medical Control contact required."
+    },
+    {
+      "name": "Amiodarone 150 mg IV (Stable Tachycardia)",
+      "dose": "150 mg IV over 10 minutes — add to 100 or 250 mL NS; if V-Tach persists per Medical Control: repeat 150 mg IV over 10 min up to maximum 450 mg",
+      "route": "IV infusion over ~10 minutes",
+      "indication": "Stable V-Tach (per MCA selection) OR A-Fib/A-Flutter rate control (per MCA selection for A-Fib)",
+      "contraindications": "Severe sinus node dysfunction; 2nd or 3rd degree AV block without pacemaker",
+      "side_effects": "Hypotension, bradycardia",
+      "scope": "Paramedic — per MCA selection",
+      "notes": "Best accomplished by adding 150 mg to 100 or 250 mL NS infused over ~10 minutes."
+    },
+    {
+      "name": "Lidocaine 1 mg/kg IV (V-Tach)",
+      "dose": "1 mg/kg IV — if V-Tach persists per Medical Control: 0.5–1.0 mg/kg IV push every 5–10 minutes to maximum 3 mg/kg",
+      "route": "IV",
+      "indication": "Stable V-Tach — per MCA selection",
+      "contraindications": "High-degree AV block; hypersensitivity",
+      "side_effects": "CNS toxicity at high doses (seizures, altered mental status)",
+      "scope": "Paramedic — per MCA selection",
+      "notes": "Maximum total dose 3 mg/kg. Repeat doses only per Medical Control direction."
+    },
+    {
+      "name": "Magnesium Sulfate 2 gm IV (Torsades)",
+      "dose": "2 gm IV over 10 minutes — add to 100 or 250 mL NS",
+      "route": "IV infusion over ~10 minutes",
+      "indication": "Suspected torsades de pointes (irregular wide QRS)",
+      "contraindications": "Hypermagnesemia; renal failure (use with caution)",
+      "side_effects": "Flushing, hypotension, respiratory depression at high doses",
+      "scope": "Paramedic only",
+      "notes": "Best accomplished by adding 2 gm to 100 or 250 mL NS infused over ~10 minutes."
+    }
+  ],
+
+  "deterioration_flags": [
+    "Patient becomes unstable (hypotension, AMS, shock, ischemic chest pain) — immediate synchronized cardioversion; consider sedation",
+    "Polymorphic VT/Torsades — UNSYNCHRONIZED defibrillation (cannot sync on polymorphic); magnesium sulfate 2 gm for Torsades",
+    "SVT with adenosine reveals A-Flutter waves — treat as irregular narrow (A-Fib/A-Flutter path)",
+    "Wide complex regular tachycardia — may be SVT with aberrancy; contact Medical Control; consider adenosine",
+    "Patient does not convert at maximum energy — contact Medical Control for additional orders",
+    "Hypotension after rate control medication — monitor closely; if SBP < 90 treat per Shock protocol"
+  ],
+
+  "scope_notes": [
+    "This protocol is PARAMEDIC USE ONLY",
+    "Valsalva maneuver with postural modification: Paramedic",
+    "Adenosine 6 mg and 12 mg IV: Paramedic",
+    "Cardioversion/defibrillation: Paramedic",
+    "Diltiazem, verapamil, amiodarone, lidocaine: Paramedic — per MCA selection",
+    "Magnesium sulfate 2 gm IV (Torsades): Paramedic",
+    "MCA must select antidysrhythmic for each rhythm type AND whether Medical Control contact required for narrow complex medications"
+  ]
+}

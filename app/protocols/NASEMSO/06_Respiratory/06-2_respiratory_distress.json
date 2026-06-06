@@ -1,0 +1,164 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Respiratory: Respiratory Distress (includes Bronchospasm, Pulmonary Edema). NASEMSO national provisional base.",
+  "id": "nasemso_base_respiratory_respiratory_distress_includes_bronchospasm_pulmona",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Respiratory Distress (includes Bronchospasm, Pulmonary Edema)",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Respiratory: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)",
+  "aliases": [],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Respiratory: Respiratory Distress (includes Bronchospasm, Pulmonary Edema)",
+      "points": [
+        "Assure adequate oxygenation and ventilation",
+        "Recognize impending respiratory failure",
+        "Promptly identify and intervene for patients who require escalation of therapy",
+        "Deliver appropriate therapy by differentiating likely cause of respiratory distress",
+        "Alleviate respiratory distress"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Patients aged 2 and older with respiratory distress due to disease processes including: a. Asthma exacerbation",
+        "b. Chronic obstructive pulmonary disease (COPD) exacerbation",
+        "c. Wheezing/bronchospasm from suspected pulmonary infection (e.g., pneumonia, acute bronchitis)",
+        "d. Pulmonary edema of cardiac (i.e., heart failure) or non-cardiac etiology",
+        "EXCLUSION CRITERIA:",
+        "Respiratory distress related to acute trauma",
+        "Respiratory distress due to a presumed underlying cause that includes one of the following: a. Anaphylaxis"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Scene safety and PPE; primary survey (ABCDE)",
+        "Oxygen via NRM targeting SpO2 94-98% if indicated",
+        "Position of comfort; hemorrhage control as needed",
+        "CPR/AED if patient becomes pulseless",
+        "Epinephrine auto-injector for anaphylaxis if applicable",
+        "Naloxone intranasal unit-dose for suspected opioid involvement"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Blood glucose monitoring; oral glucose if hypoglycemic and alert",
+        "12-lead ECG acquisition and transmission",
+        "CPAP for respiratory distress",
+        "Aspirin for suspected ischemic chest pain",
+        "Albuterol SVN for bronchospasm component",
+        "IV access maintenance (non-medicated)"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation",
+        "IV/IO fluid resuscitation as indicated",
+        "Waveform capnography",
+        "IV analgesics (fentanyl, morphine) per pain management protocol",
+        "IV antiemetics (ondansetron) per protocol",
+        "IV D50W/D10W for hypoglycemia"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "12-lead ECG interpretation",
+        "Endotracheal intubation for airway compromise",
+        "RSI per protocol",
+        "Advanced antidysrhythmic or hemodynamic support per specific protocol",
+        "All parenteral medications per protocol",
+        "Vasopressors for refractory hemodynamic compromise"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Normal EtCO2 (35'45 mmHg) with tachypnea and respiratory distress is an indicator of impending respiratory failure",
+        "The use of nitrates should be avoided in any patient who has used a phosphodiesterase inhibitor within the past 48 hours. Examples are sildenafil, vardenafil and tadalafil, which are used for erectile dysfunction and pulmonary hypertension. Also avoid use in patients receiving intravenous epoprostenol or treporstenil which are used for pulmonary hypertension",
+        "Invasive airways do not improve bronchospasm. The airway should be managed in the least invasive way possible. Supraglottic devices and endotracheal intubation should be considered only if BVM ventilation fails",
+        "Positive pressure ventilation in the setting of bronchoconstriction, either via a supraglottic airway or intubation, increases the risk of air trapping which can lead to pneumothorax and cardiovascular collapse. These interventions should be reserved for situations of respiratory failure",
+        "The following medications should not be administered to manage bronchospasm as there is no evidence of patient benefit: i. Inhaled magnesium sulfate"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "The combination of ipratropium with albuterol may decrease the need for hospital admission in certain patients",
+        "Magnesium sulfate may cause hypotension that will usually respond to a fluid bolus",
+        "Patient with acute heart failure and hypotension have high mortality",
+        "When assessing for cause of respiratory distress, CHF tends to be associated with lower levels of EtCO2 compared to COPD. EtCO2 values that are extremely low and high are markers of poor outcomes and need for intubation or ICU admission",
+        "Nebulizer droplets can carry viral particles and other airborne pathogens, so additional PPE should be considered, including placement of a surgical mask over the nebulizer (if feasible) to limit droplet spread",
+        "Factors that have been shown to be associated with increased mortality from asthma include: a. Severe asthma as evidenced by at least one of the following: i. Prior near-fatal asthma (e.g., ICU admission or intubation/mechanical ventilation)",
+        "Single dose dexamethasone has been found equally effective as several days dosing of other steroids, so dexamethasone is preferred over other po steroids",
+        "Acute heart failure is a common cause of pulmonary edema ' other causes include:"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Document key aspects of the exam at baseline and after each intervention:",
+        "' Respiratory rate",
+        "' Oxygen saturation",
+        "' EtCO2/waveform shape",
+        "' Use of accessory muscles",
+        "' Breath sounds and quality",
+        "' Mental status",
+        "' Response to interventions"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Normal EtCO2 (35'45 mmHg) with tachypnea and respiratory distress is an indicator of impending respiratory failure",
+    "Positive pressure ventilation in the setting of bronchoconstriction, either via a supraglottic airway or intubation, increases the risk of air trapping which can lead to pneumothorax and cardiovascular collapse. These interventions should be reserved for situations of respiratory failure"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": [],
+  "clinical_context": {
+    "concepts": [
+      "airway_management",
+      "bronchospasm",
+      "oxygen_therapy",
+      "pulmonary_edema",
+      "respiratory_distress",
+      "ventilation_support"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

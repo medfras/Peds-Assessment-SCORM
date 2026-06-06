@@ -1,0 +1,94 @@
+{
+  "fixture_id": "partial_dmist_no_transport",
+  "description": "Student submitted a DMIST that covers D, M, I, and S but omits any transport or disposition content — no 'transporting', 'hospital', 'ETA', 'ED', or similar T-section keywords. The narrative is complete. Tests that the DMIST structural ceiling fires for the missing T component and produces ceiling=8 (10 - 1*2 = 8), while leaving the narrative ceiling clean.",
+
+  "inputs": {
+    "scenario": {
+      "id": "fixture_peds_resp",
+      "category": "pediatric_medical",
+      "protocol_config": {"mca": "mi_wmrmcc_kent"},
+      "turnover_target": "als",
+      "vitals": {
+        "baseline": {},
+        "interventions": {
+          "o2_nrb":        {"label": "High-flow O2 via NRB mask (15 LPM)"},
+          "albuterol_svn": {"label": "Albuterol 2.5 mg via SVN (nebulizer)"},
+          "positioning":   {"label": "Position of comfort — sitting upright"},
+          "als_intercept": {"label": "ALS intercept acknowledged"}
+        }
+      },
+      "scoring": {}
+    },
+
+    "interventions": [
+      {"name": "o2_nrb",        "applied_at": "2026-01-01T12:02:00"},
+      {"name": "albuterol_svn", "applied_at": "2026-01-01T12:04:00"},
+      {"name": "positioning",   "applied_at": "2026-01-01T12:03:00"},
+      {"name": "als_intercept", "applied_at": "2026-01-01T12:05:00"}
+    ],
+
+    "checklist_states": {"item_states": []},
+
+    "submitted_docs": {
+      "dmist": "D: 8yo male, difficulty breathing. M: History of asthma, no known allergies. I: Applied O2 via NRB 15 LPM, albuterol SVN, positioned upright. S: SpO2 83%, HR 134, improving after treatment.",
+      "narrative": "C: Dispatched to 8-year-old male presenting with asthma exacerbation. H: 2-hour onset of wheezing, history of asthma. A: SpO2 83%, HR 134. R: O2 NRB, albuterol SVN, positioned upright. T: ALS intercept called, transporting to Pediatric ED."
+    },
+
+    "findings": [
+      {"key": "spo2", "value": "83%", "finding_type": "vital", "captured_at": "2026-01-01T12:01:00"},
+      {"key": "hr",   "value": "134", "finding_type": "vital", "captured_at": "2026-01-01T12:01:00"}
+    ],
+
+    "student_messages": [
+      "BSI, scene is safe.",
+      "Applying O2 via NRB mask.",
+      "Albuterol SVN per protocol.",
+      "ALS intercept called."
+    ],
+
+    "scene_entry_scoring_result": {"ppe": "gloves_mask"},
+    "scene_entry_dict":           {},
+    "greeting_detected": false,
+    "greeting_text": "",
+    "prepass_result": null,
+
+    "critical_actions": [
+      {
+        "id": "scene_safety",
+        "description": "Ensure scene safety and BSI/PPE",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "o2_administration",
+        "description": "Administer high-flow O2 via NRB mask",
+        "required": true,
+        "intervention_ids": ["o2_nrb"]
+      }
+    ],
+
+    "grace_items": [],
+    "session_events": [],
+    "agency": {"transports_patients": true},
+    "effective_level": "EMT",
+    "elapsed_min": 10.0
+  },
+
+  "target_expected": {
+    "assertions": [
+      {
+        "id": "dmist_ceiling_from_missing_t",
+        "type": "dmist_ceiling_value",
+        "expected": 8
+      },
+      {
+        "id": "no_narrative_ceiling",
+        "type": "no_narrative_ceiling"
+      }
+    ]
+  },
+
+  "_note": "dmist_ceiling=8 because T section is absent (10 - 1*2 = 8). The DMIST has D, M, I, S all present but omits any transport/disposition/ETA language. The ceiling is prompt-guided (enforce=False). Narrative is fully structured so no CHART-based ceiling applies.",
+
+  "known_failing_baselines": []
+}

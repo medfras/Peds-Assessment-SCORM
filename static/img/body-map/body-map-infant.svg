@@ -1,0 +1,142 @@
+<svg id="body-map" viewBox="0 0 200 500" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- ═══════════════════════════════════════════
+       VISUAL LAYER — infant proportions (age < 2)
+       Very large head (~1/4 of total body height),
+       short chubby torso, very stubby limbs.
+       ═══════════════════════════════════════════ -->
+  <g id="bm-visual" fill="#374151">
+
+    <!-- Head (very large, almost 1/4 of total height) -->
+    <ellipse cx="100" cy="62" rx="42" ry="48"/>
+
+    <!-- Neck (barely present) -->
+    <rect x="92" y="110" width="16" height="10" rx="3"/>
+
+    <!-- Chest (wide and round) -->
+    <polygon points="62,120 138,120 132,196 68,196"/>
+
+    <!-- Abdomen (rounded belly) -->
+    <polygon points="68,196 132,196 130,248 70,248"/>
+
+    <!-- Pelvis -->
+    <polygon points="70,248 130,248 126,280 74,280"/>
+
+    <!-- Left upper arm (short and chunky) -->
+    <rect x="24" y="120" width="36" height="90" rx="10"/>
+
+    <!-- Right upper arm -->
+    <rect x="140" y="120" width="36" height="90" rx="10"/>
+
+    <!-- Left forearm -->
+    <rect x="18" y="208" width="30" height="80" rx="10"/>
+
+    <!-- Right forearm -->
+    <rect x="152" y="208" width="30" height="80" rx="10"/>
+
+    <!-- Left hand (chubby) -->
+    <ellipse cx="34" cy="302" rx="15" ry="18"/>
+
+    <!-- Right hand -->
+    <ellipse cx="166" cy="302" rx="15" ry="18"/>
+
+    <!-- Left upper leg (short) -->
+    <rect x="66" y="280" width="30" height="86" rx="8"/>
+
+    <!-- Right upper leg -->
+    <rect x="104" y="280" width="30" height="86" rx="8"/>
+
+    <!-- Left lower leg -->
+    <rect x="68" y="364" width="26" height="68" rx="6"/>
+
+    <!-- Right lower leg -->
+    <rect x="106" y="364" width="26" height="68" rx="6"/>
+
+    <!-- Left foot -->
+    <ellipse cx="75" cy="442" rx="16" ry="10"/>
+
+    <!-- Right foot -->
+    <ellipse cx="125" cy="442" rx="16" ry="10"/>
+
+    <!-- Region dividers on torso -->
+    <line x1="68" y1="196" x2="132" y2="196" stroke="#6b7280" stroke-width="1" fill="none"/>
+    <line x1="70" y1="248" x2="130" y2="248" stroke="#6b7280" stroke-width="1" fill="none"/>
+
+  </g>
+
+  <!-- ═══════════════════════════════════════════
+       HITBOX LAYER
+       ═══════════════════════════════════════════ -->
+  <g id="bm-hitboxes">
+
+    <g data-region="head" class="bm-region">
+      <ellipse cx="100" cy="62" rx="50" ry="56" fill="transparent" pointer-events="all"/>
+    </g>
+
+    <g data-region="neck" class="bm-region">
+      <rect x="82" y="106" width="36" height="22" rx="3" fill="transparent" pointer-events="all"/>
+    </g>
+
+    <g data-region="chest" class="bm-region">
+      <polygon points="58,118 142,118 134,197 66,197" fill="transparent" pointer-events="all"/>
+    </g>
+
+    <g data-region="abdomen" class="bm-region">
+      <polygon points="66,197 134,197 132,250 68,250" fill="transparent" pointer-events="all"/>
+    </g>
+
+    <g data-region="pelvis" class="bm-region">
+      <polygon points="68,250 132,250 128,282 72,282" fill="transparent" pointer-events="all"/>
+    </g>
+
+    <g data-region="arm-upper-right" class="bm-region">
+      <rect x="14" y="118" width="52" height="96" rx="10" fill="transparent" pointer-events="all"/>
+    </g>
+
+    <g data-region="arm-upper-left" class="bm-region">
+      <rect x="134" y="118" width="52" height="96" rx="10" fill="transparent" pointer-events="all"/>
+    </g>
+
+    <g data-region="arm-lower-right" class="bm-region">
+      <rect x="10" y="206" width="46" height="88" rx="10" fill="transparent" pointer-events="all"/>
+    </g>
+
+    <g data-region="arm-lower-left" class="bm-region">
+      <rect x="144" y="206" width="46" height="88" rx="10" fill="transparent" pointer-events="all"/>
+    </g>
+
+    <g data-region="hand-right" class="bm-region">
+      <ellipse cx="34" cy="302" rx="26" ry="28" fill="transparent" pointer-events="all"/>
+    </g>
+
+    <g data-region="hand-left" class="bm-region">
+      <ellipse cx="166" cy="302" rx="26" ry="28" fill="transparent" pointer-events="all"/>
+    </g>
+
+    <g data-region="leg-upper-right" class="bm-region">
+      <rect x="58" y="278" width="44" height="94" rx="8" fill="transparent" pointer-events="all"/>
+    </g>
+
+    <g data-region="leg-upper-left" class="bm-region">
+      <rect x="98" y="278" width="44" height="94" rx="8" fill="transparent" pointer-events="all"/>
+    </g>
+
+    <g data-region="leg-lower-right" class="bm-region">
+      <rect x="60" y="362" width="40" height="76" rx="6" fill="transparent" pointer-events="all"/>
+    </g>
+
+    <g data-region="leg-lower-left" class="bm-region">
+      <rect x="100" y="362" width="40" height="76" rx="6" fill="transparent" pointer-events="all"/>
+    </g>
+
+    <g data-region="foot-right" class="bm-region">
+      <ellipse cx="75" cy="442" rx="26" ry="18" fill="transparent" pointer-events="all"/>
+    </g>
+
+    <g data-region="foot-left" class="bm-region">
+      <ellipse cx="125" cy="442" rx="26" ry="18" fill="transparent" pointer-events="all"/>
+    </g>
+
+  </g>
+
+</svg>

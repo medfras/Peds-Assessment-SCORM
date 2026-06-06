@@ -1,0 +1,130 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 4-9 Pediatric Crashing Patient/Impending Arrest (Revised 05/25/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_pediatric_crashing_impending_arrest",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Pediatric",
+  "level_display": "Pediatric (< 14 years)",
+  "jurisdiction": "Michigan",
+  "condition": "Pediatric Crashing Patient / Impending Arrest",
+  "version": "2023-05-25",
+  "protocol_reference": "Michigan Obstetrics and Pediatrics Protocol Section 4-9: Pediatric Crashing Patient/Impending Arrest — MDHHS Approved 5/25/23, Reviewed 2023",
+  "purpose": "Rapidly recognize pediatric patients who are critically ill and deteriorating toward cardiac or respiratory arrest and initiate goal-directed treatments before loading and transport.",
+  "sections": [
+    {
+      "title": "Criteria",
+      "reference": "Michigan Protocol 4-9: Pediatric Crashing Patient — Criteria",
+      "points": [
+        "Patient is younger than 14 years of age",
+        "Inclusion: cardiac or respiratory arrest appears imminent",
+        "Inclusion: provider impression of critical illness, including new onset altered mental status, airway compromise, severe respiratory distress/failure, or shock/poor perfusion",
+        "Severe respiratory distress/failure includes cyanosis, severe retractions, head bobbing, grunting, and respiratory-rate extremes per MI-MEDIC",
+        "Shock/poor perfusion includes capillary refill greater than 3 seconds, tachycardia, or hypotension per age-adjusted normal on MI-MEDIC",
+        "Exclusion: life-threatening trauma that has not been corrected, such as exsanguination or pneumothorax"
+      ]
+    },
+    {
+      "title": "Critical Actions — Within First 5 Minutes",
+      "reference": "Michigan Protocol 4-9: First 5 Minutes",
+      "points": [
+        "Open airway manually; for a child younger than 2 years, place padding under the shoulders to align auditory meatus with sternal notch",
+        "Insert NPA or OPA as indicated/tolerated if not following commands, GCS motor < 6, GCS < 9, or no response to verbal stimuli per Airway Management-Procedure Protocol",
+        "If respiratory failure or distress, sit patient up if tolerated and not contraindicated by suspected spine injury; keep patient calm and allow position of comfort if possible",
+        "Provide high-flow oxygen per Oxygen Administration-Procedure Protocol",
+        "If respirations are less than 10/min or inadequate, ventilate by BVM at 15 LPM; use chest rise to guide ventilations",
+        "Two-person, two-handed BVM technique is most effective and strongly recommended when staffing allows",
+        "If respirations are greater than 10/min but inadequate, apply CPAP for respiratory distress/hypoxia if appropriate size CPAP is available",
+        "Respirations may be assisted with BVM in sitting position if patient tolerates",
+        "Consider PPV by BVM if not following commands or SpO2 is persistently less than 90%",
+        "Consider waveform capnography per End Tidal Carbon Dioxide Monitoring-Procedure Protocol",
+        "Reference MI-MEDIC cards for age-adjusted expected blood pressure and heart rate ranges",
+        "If bradycardic with HR < 60, optimize ventilation and oxygenation and refer to Pediatric Bradycardia-Treatment Protocol",
+        "Emergent IV/IO access: limit IV attempts to 2 total; for unresponsive or severely compromised pediatrics, IO can be the initial attempt",
+        "Monitor NIBP every 3 minutes, SpO2, continuous capnography when appropriate, and EKG"
+      ]
+    },
+    {
+      "title": "Immediate Actions — Within First 10 Minutes",
+      "reference": "Michigan Protocol 4-9: First 10 Minutes",
+      "points": [
+        "If evidence of poor perfusion, administer NS or LR 20 mL/kg bolus unless cardiogenic shock is suspected",
+        "If cardiogenic shock is suspected, such as JVD, hepatomegaly, abdominal distension, or crackles, administer 5–10 mL/kg NS bolus instead and contact Medical Control",
+        "If dysrhythmia is thought to be the primary cause of shock, contact Medical Control to discuss further interventions such as cardioversion or pacing"
+      ]
+    },
+    {
+      "title": "Actions — Within First 15 Minutes",
+      "reference": "Michigan Protocol 4-9: First 15 Minutes",
+      "points": [
+        "Reassess response to treatments, including capillary refill with vital signs",
+        "Recheck vitals and listen to lungs after fluid bolus",
+        "If decreasing oxygen saturations, crackles, or worsening respiratory distress occur, STOP fluid bolus and contact Medical Control immediately",
+        "Consider starting vasopressors per Shock-Treatment Protocol",
+        "Repeat NS or LR 20 mL/kg bolus if indicated, maximum total dose 40 mL/kg",
+        "If bradycardia with HR < 60, optimize ventilation and oxygenation and refer to Pediatric Bradycardia-Treatment Protocol",
+        "If no response to fluids, follow Shock-Treatment Protocol"
+      ]
+    },
+    {
+      "title": "Actions — Within First 20 Minutes",
+      "reference": "Michigan Protocol 4-9: First 20 Minutes",
+      "points": [
+        "Reassess response to treatments",
+        "Continue fluids as indicated by Shock-Treatment Protocol or contact Medical Control",
+        "Continue vasopressors as indicated by Shock-Treatment Protocol or contact Medical Control",
+        "Insert advanced airway if indicated and appropriate size is available per Airway Management-Procedure Protocol"
+      ]
+    },
+    {
+      "title": "Transport and Notes",
+      "reference": "Michigan Protocol 4-9: Transport and Notes",
+      "points": [
+        "Once critical and immediate actions have been completed, move the patient to the ambulance for transport",
+        "Transport may be initiated earlier per provider discretion",
+        "Time targets are approximate to prioritize urgency; provider safety and scene conditions may make times longer and reasons should be documented",
+        "Actions should be simultaneous and not in a strict order",
+        "Transport should not supersede initiation of life-saving intervention",
+        "These concepts may be used with Pediatric ROSC-Treatment Protocol to prioritize interventions before transport after ROSC"
+      ]
+    }
+  ],
+  "mca_selections_required": [],
+  "key_drugs": [
+    {
+      "name": "NS or LR IV/IO Fluid Bolus (Pediatric)",
+      "dose": "20 mL/kg IV/IO bolus; 5–10 mL/kg if suspected cardiogenic shock; maximum total 40 mL/kg",
+      "route": "IV or IO",
+      "indication": "Poor perfusion or shock in pediatric crashing patient",
+      "contraindications": "Suspected cardiogenic shock requires smaller 5–10 mL/kg bolus and Medical Control contact; stop bolus if pulmonary edema or worsening respiratory distress develops",
+      "side_effects": "Pulmonary edema, fluid overload, worsening respiratory distress",
+      "scope": "Specialist skill",
+      "notes": "Recheck vitals and listen to lungs after bolus. Stop fluids and contact Medical Control if oxygen saturation decreases, crackles develop, or respiratory distress worsens."
+    }
+  ],
+  "deterioration_flags": [
+    "SpO2 persistently less than 90% or not following commands — consider PPV by BVM with 15 LPM oxygen",
+    "Respirations less than 10/min or inadequate — ventilate by BVM at 15 LPM using chest rise",
+    "HR less than 60 — optimize ventilation/oxygenation and refer to Pediatric Bradycardia protocol",
+    "Decreasing oxygen saturation, crackles, or worsening respiratory distress during fluids — stop bolus and contact Medical Control immediately",
+    "No response to fluids — follow Shock protocol",
+    "Pulseless patient — initiate CPR and refer to Pediatric Cardiac Arrest protocol"
+  ],
+  "scope_notes": [
+    "Airway positioning, BVM ventilation, basic airway adjuncts, SpO2 monitoring, and high-flow oxygen: all levels",
+    "CPAP: per CPAP-Procedure Protocol if appropriate size is available",
+    "EKG/cardiac monitoring, ETCO2/capnography, IV/IO access, and fluid bolus: Specialist skill",
+    "Vasopressors and dysrhythmia interventions: as indicated by Shock, Pediatric Bradycardia, or Medical Control guidance",
+    "Advanced airway: per Airway Management-Procedure Protocol when indicated and appropriate size available"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "airway_management",
+      "pediatric_patient",
+      "shock",
+      "ventilation_support"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

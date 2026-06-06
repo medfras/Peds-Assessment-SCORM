@@ -1,0 +1,153 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Toxins and Environmental: Poisoning/Overdose Universal Care. NASEMSO national provisional base.",
+  "id": "nasemso_base_toxins_and_environmental_poisoning_overdose_universal_care",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Poisoning/Overdose Universal Care",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Poisoning/Overdose Universal Care",
+  "aliases": [
+    "Exposure",
+    "Overdose",
+    "Poison",
+    "Toxin"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Poisoning/Overdose Universal Care",
+      "points": [
+        "Remove patient from hazardous environment. Decontaminate to remove continued sources of absorption, ingestion, inhalation, or injection",
+        "Identify intoxicating agent by toxidrome or appropriate environmental testing",
+        "Assess risk for organ impairments (heart, brain, kidney)",
+        "Identify antidote or mitigating agent",
+        "Treat signs and symptoms in effort to stabilize patient 1. Inclusion (suspect exposure) Criteria Presentation may vary depending on the concentration and duration of exposure. Signs and symptoms vary, and may include, but are not limited to, the following: i. Nausea"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "EXCLUSION CRITERIA:",
+        "None noted"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Scene safety and PPE; primary survey (ABCDE)",
+        "Oxygen via NRM targeting SpO2 94-98% if indicated",
+        "Position of comfort; hemorrhage control as needed",
+        "CPR/AED if patient becomes pulseless",
+        "Epinephrine auto-injector for anaphylaxis if applicable",
+        "Naloxone intranasal unit-dose for suspected opioid involvement"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Blood glucose monitoring; oral glucose if hypoglycemic and alert",
+        "12-lead ECG acquisition and transmission",
+        "CPAP for respiratory distress",
+        "Aspirin for suspected ischemic chest pain",
+        "Albuterol SVN for bronchospasm component",
+        "IV access maintenance (non-medicated)"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation",
+        "IV/IO fluid resuscitation as indicated",
+        "Waveform capnography",
+        "IV analgesics (fentanyl, morphine) per pain management protocol",
+        "IV antiemetics (ondansetron) per protocol",
+        "IV D50W/D10W for hypoglycemia"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "12-lead ECG interpretation",
+        "Endotracheal intubation for airway compromise",
+        "RSI per protocol",
+        "Advanced antidysrhythmic or hemodynamic support per specific protocol",
+        "All parenteral medications per protocol",
+        "Vasopressors for refractory hemodynamic compromise"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Scene/environmental safety for patient and clinician a. Consider environmental carbon monoxide monitor use",
+        "Monitor patient airway, breathing, pulse oximetry, EtCO2 for adequate ventilation as they may change over time",
+        "Repeat vital signs often",
+        "Monitor level of consciousness",
+        "Monitor EKG with special attention to rate, rhythm, QRS and QT duration",
+        "Maintain or normalize patient temperature"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Each toxin or overdose has unique characteristics which must be considered in individual protocols",
+        "Activated charcoal (which does not bind to all medications or agents) is still a useful adjunct in the serious-agent, enterohepatic, or extended-release agent poisoning if the patient does not have the potential for rapid alteration of mental status or airway/aspiration risk. Precautions should be taken to avoid or reduce the risk of aspiration",
+        "Ipecac is not recommended for any poisoning or toxic ingestion ' the manufacturer has stopped production of this medication",
+        "Flumazenil is not indicated in a suspected benzodiazepine overdose as it can precipitate refractory/intractable seizures if the patient is a benzodiazepine dependent patient"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Repeat evaluation and documentation of signs and symptoms as patient clinical conditions may deteriorate rapidly",
+        "' Identification of possible etiology of poisoning",
+        "' Initiating measures on scene to prevent exposure of bystanders when appropriate/indicated",
+        "' Time of symptoms onset and time of initiation of exposure-specific treatments"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Contact medical direction for clinical deterioration or interventions outside standard scope"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": [],
+  "clinical_context": {
+    "concepts": [
+      "altered_mental_status",
+      "opioid_overdose",
+      "toxins_overdose"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

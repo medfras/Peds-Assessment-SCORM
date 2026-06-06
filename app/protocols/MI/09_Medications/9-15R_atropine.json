@@ -1,0 +1,84 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-15R Atropine (MDHHS Reviewed 2025). Base Michigan template.",
+  "id": "mi_base_medication_ref_atropine",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Atropine",
+  "version": "2025-03-31",
+  "protocol_reference": "Michigan Medication Protocol Section 9-15R: Atropine — MDHHS Reviewed 2025",
+
+  "pharmacological_category": "Anticholinergic / Vagolytic — Antidysrhythmic",
+
+  "routes": ["IV", "IO", "IM (nerve agent kit)"],
+
+  "indications": [
+    "Symptomatic bradycardia with hemodynamic compromise",
+    "Crashing bradycardia (severe hemodynamic instability from bradycardia)",
+    "Organophosphate poisoning or nerve agent exposure"
+  ],
+
+  "contraindications": [
+    "Known hypersensitivity to atropine",
+    "Tachycardia (do not give for bradycardia in high-degree AV block — transcutaneous pacing preferred)"
+  ],
+
+  "precautions": [
+    "Minimum pediatric dose: 0.1 mg (doses below 0.1 mg paradoxically worsen bradycardia)",
+    "Atropine is not effective for infranodal (Mobitz II / complete heart block) bradycardia — pacing is first-line",
+    "Nerve agent exposure: pralidoxime (9-39R) should accompany atropine when available",
+    "Use 2 mg IM/IV per nerve agent auto-injector kit per Chart A and Chart B protocol"
+  ],
+
+  "expected_effects": [
+    "Increased heart rate by blocking vagal tone",
+    "Improved AV conduction in vagally-mediated bradycardia",
+    "In nerve agent/organophosphate poisoning: reversal of muscarinic effects (bronchospasm, secretions, bradycardia)"
+  ],
+
+  "side_effects": [
+    "Tachycardia",
+    "Dry mouth, urinary retention, blurred vision",
+    "Confusion in elderly patients",
+    "Flushing, fever"
+  ],
+
+  "notes": [
+    "Bradycardia: 1 mg IV q3-5 minutes, max 3 mg total",
+    "Crashing adult bradycardia: 1 mg IV",
+    "Pediatric minimum dose: 0.1 mg to prevent paradoxical bradycardia",
+    "Nerve agent: 2 mg IM/IV per nerve agent auto-injector kit; Chart A and Chart B dosing apply; pralidoxime should accompany when available"
+  ],
+
+  "dosing": [
+    {
+      "population": "Adult (>14 yr) — symptomatic bradycardia",
+      "route": "IV/IO",
+      "dose": "1 mg IV q3-5 minutes; max 3 mg total",
+      "notes": "For vagally-mediated bradycardia; less effective for infranodal blocks — consider pacing"
+    },
+    {
+      "population": "Adult (>14 yr) — crashing bradycardia",
+      "route": "IV/IO",
+      "dose": "1 mg IV",
+      "notes": "Administer while preparing transcutaneous pacing"
+    },
+    {
+      "population": "Pediatric (≤14 yr) — symptomatic bradycardia",
+      "route": "IV/IO",
+      "dose": "0.02 mg/kg; minimum dose 0.1 mg; maximum single dose 0.5 mg; may repeat once",
+      "notes": "Do NOT give less than 0.1 mg — paradoxical bradycardia risk"
+    },
+    {
+      "population": "All — nerve agent / organophosphate poisoning",
+      "route": "IM/IV per nerve agent kit",
+      "dose": "2 mg per nerve agent auto-injector kit per Chart A and Chart B",
+      "notes": "Use nerve agent kit auto-injectors; administer pralidoxime concurrently when available; repeat per nerve agent protocol"
+    }
+  ],
+
+  "used_in_protocols": ["Bradycardia", "Toxicological Emergencies — Nerve Agent / Organophosphate"]
+}

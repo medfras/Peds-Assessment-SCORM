@@ -1,0 +1,196 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 1-6 Anaphylaxis/Allergic Reaction (Revised 08/11/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_all_anaphylaxis",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "All",
+  "level_display": "All Levels",
+  "jurisdiction": "Michigan",
+  "condition": "Anaphylaxis / Allergic Reaction",
+  "version": "2023-08-11",
+  "protocol_reference": "Michigan General Treatment Protocol Section 1-6: Anaphylaxis/Allergic Reaction — MDHHS Approved 8/11/23, Reviewed 2023",
+  "sections": [
+    {
+      "title": "A. Initial Assessment",
+      "reference": "Michigan Protocol 1-6: Anaphylaxis/Allergic Reaction — Section A",
+      "points": [
+        "Follow General Pre-Hospital Care-Treatment Protocol",
+        "Pediatric patients (< 14 years of age): utilize MI MEDIC cards for appropriate medication dosage; when unavailable, use pediatric dosing listed within protocol",
+        "Ensure ALS response",
+        "Determine if anaphylaxis/severe allergic reaction (wheezing AND/OR hypotension) or allergic reaction (itching, hives) — management differs",
+        "Determine substance or source of exposure; remove patient from source if known and able"
+      ]
+    },
+    {
+      "title": "B. Anaphylaxis / Severe Allergic Reaction",
+      "reference": "Michigan Protocol 1-6: Anaphylaxis/Allergic Reaction — Section B",
+      "points": [
+        "Assist patient in use of their own prescribed epinephrine auto-injector, if available",
+        "Administer epinephrine auto-injector IM (MCA approval required — see MCA Selections below)",
+        "PEDIATRIC DOSING — auto-injector IM: Contact Medical Control if child appears to weigh < 10 kg (approx. 20 lbs.) prior to epi administration if possible; administer pediatric auto-injector (0.15 mg) IM if child weighs 10–30 kg (approx. 20–60 lbs.); administer standard auto-injector (0.3 mg) IM for children > 30 kg or adults",
+        "May repeat epinephrine auto-injector IM ONE TIME after 3–5 minutes if patient remains hypotensive and auto-injector is available",
+        "DRAW-UP EPINEPHRINE IM (MCA approval required — must complete MCA-approved training): Contact Medical Control if child weighs < 10 kg; administer 0.15 mg (0.15 mL) IM of epinephrine 1 mg/mL if child weighs 10–30 kg; administer 0.3 mg (0.3 mL) IM of epinephrine 1 mg/mL for adults and children > 30 kg; may repeat once after 3–5 minutes if patient remains hypotensive; maximum of 2 total epinephrine doses (prescribed auto-injector + EMS auto-injector + draw-up combined)",
+        "NOTE: BLS not carrying epinephrine auto-injector MUST participate in draw-up epinephrine",
+        "If wheezing and/or airway constriction: administer albuterol 2.5 mg / 3 mL NS nebulized (per MCA selection — may be EMT skill) per Medication Administration-Medication Protocol",
+        "If wheezing continues: administer nebulized albuterol 2.5 mg / 3 mL NS AND ipratropium 500 mcg / 2.5 mL NS per Medication Administration-Medication Protocol (per MCA selection — may be Specialist skill)",
+        "For patients with hypotension: administer NS or LR IV/IO fluid bolus (Specialist skill) — refer to Vascular Access and IV Fluid Therapy-Procedure Protocol and Shock-Treatment Protocol; Adults: up to 1 liter wide open; Pediatrics: 20 mL/kg based on signs/symptoms of shock; slow to KVO when SBP > 90 mmHg",
+        "Hypotensive patients should receive additional IV/IO fluid boluses as indicated: Adults repeat to maximum 2 liters; Pediatrics repeat 20 mL/kg to maximum 40 mL/kg; monitor for pulmonary edema — if presents, stop fluids and contact Medical Control",
+        "If hypotension persists/unresponsive to fluid bolus OR severe respiratory distress unresponsive to nebulized treatment: administer push-dose epinephrine IV/IO (Specialist skill only); Adults: 20 mcg (2 mL of epi 10 mcg/mL) IV/IO, repeat q3–5 min, titrate SBP > 90 mmHg; Pediatrics: 1 mcg/kg (0.1 mL of epi 10 mcg/mL) IV/IO, max 10 mcg (1 mL), repeat q3–5 min"
+      ]
+    },
+    {
+      "title": "C. Allergic Reaction (Not Anaphylaxis) OR After Epinephrine Administration",
+      "reference": "Michigan Protocol 1-6: Anaphylaxis/Allergic Reaction — Section C",
+      "points": [
+        "Administer diphenhydramine (Specialist skill): Adults 50 mg IM or IV/IO; Pediatrics 1 mg/kg IM/IV/IO (maximum dose 50 mg)",
+        "If wheezing and albuterol not already administered: administer albuterol 2.5 mg / 3 mL NS nebulized (per MCA selection — may be EMT skill)",
+        "If wheezing continues: administer nebulized albuterol 2.5 mg / 3 mL NS AND ipratropium 500 mcg / 2.5 mL NS (per MCA selection — may be Specialist skill)",
+        "Administer prednisone tablet 50 mg PO to adults and children > 6 years of age (per MCA selection — additional medication option); if prednisone not available, patient is < 6 y/o, or patient unable to receive PO: administer methylprednisolone IV/IO/IM (Specialist skill): Adults 125 mg; Pediatrics 2 mg/kg (max 125 mg)"
+      ]
+    },
+    {
+      "title": "D. Refractory Patients",
+      "reference": "Michigan Protocol 1-6: Anaphylaxis/Allergic Reaction — Section D",
+      "points": [
+        "Patients unresponsive to treatment: contact Medical Control"
+      ]
+    }
+  ],
+  "mca_selections_required": [
+    {
+      "item": "Epinephrine Auto-Injector IM (EMS-Administered)",
+      "description": "MCA must designate which level may administer epinephrine auto-injector; MCA must maintain roster submitted to MDHHS",
+      "options": [
+        "MFR"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Draw-Up Epinephrine IM",
+      "description": "MCA must designate which levels may administer draw-up epinephrine; personnel must complete MCA-approved training; MCA must maintain roster submitted to MDHHS",
+      "options": [
+        "MFR",
+        "BLS"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Nebulized Albuterol",
+      "description": "MCA must indicate whether EMT may administer nebulized albuterol",
+      "options": [
+        "EMT"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Nebulized Albuterol/Ipratropium",
+      "description": "MCA must indicate whether Specialist (AEMT) may administer albuterol/ipratropium combination",
+      "options": [
+        "Specialist"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Prednisone 50 mg Tablet PO",
+      "description": "MCA may approve prednisone PO as an additional medication option for adults and children > 6 y/o",
+      "options": [
+        "Included",
+        "Not Included"
+      ],
+      "selected": null
+    }
+  ],
+  "key_drugs": [
+    {
+      "name": "Epinephrine Auto-Injector",
+      "dose": "0.15 mg (peds 10–30 kg) or 0.3 mg (> 30 kg / adult); contact Medical Control if < 10 kg",
+      "route": "IM — anterolateral thigh",
+      "indication": "Anaphylaxis / severe allergic reaction",
+      "contraindications": "No absolute contraindications in life-threatening anaphylaxis",
+      "side_effects": "Tachycardia, hypertension, anxiety, pallor, headache",
+      "scope": "MCA selection required — MFR option available; assisting with patient's own auto-injector is EMT scope",
+      "notes": "Hold device in place 10 seconds after activation. May repeat once after 3–5 minutes if patient remains hypotensive. Maximum 2 total epi doses (all sources combined)."
+    },
+    {
+      "name": "Epinephrine IM (Draw-Up)",
+      "dose": "0.15 mg (0.15 mL) of 1 mg/mL for 10–30 kg; 0.3 mg (0.3 mL) of 1 mg/mL for > 30 kg or adult",
+      "route": "IM — anterolateral thigh",
+      "indication": "Anaphylaxis / severe allergic reaction",
+      "contraindications": "No absolute contraindications in life-threatening anaphylaxis; contact Medical Control if < 10 kg",
+      "side_effects": "Tachycardia, hypertension, anxiety, pallor",
+      "scope": "MCA selection required — MFR and BLS options available; training required",
+      "notes": "May repeat once after 3–5 minutes if patient remains hypotensive. Maximum 2 total IM doses including any auto-injector doses."
+    },
+    {
+      "name": "Albuterol",
+      "dose": "2.5 mg / 3 mL NS nebulized — same dose for adult and pediatric",
+      "route": "Nebulized (SVN)",
+      "indication": "Wheezing and/or airway constriction in anaphylaxis or allergic reaction",
+      "contraindications": "Known hypersensitivity to albuterol",
+      "side_effects": "Tachycardia, tremor, anxiety",
+      "scope": "Per MCA selection — EMT option available",
+      "notes": "Administer per Medication Administration-Medication Protocol."
+    },
+    {
+      "name": "Ipratropium (combined with Albuterol)",
+      "dose": "500 mcg / 2.5 mL NS nebulized combined with albuterol 2.5 mg / 3 mL NS",
+      "route": "Nebulized",
+      "indication": "Persistent wheezing after initial albuterol",
+      "contraindications": "Known hypersensitivity",
+      "side_effects": "Dry mouth, urinary retention, tachycardia",
+      "scope": "Per MCA selection — Specialist option available",
+      "notes": "Use only when initial albuterol alone is insufficient."
+    },
+    {
+      "name": "Diphenhydramine",
+      "dose": "Adults: 50 mg IM or IV/IO; Pediatrics: 1 mg/kg IM/IV/IO (max 50 mg)",
+      "route": "IM or IV/IO",
+      "indication": "Allergic reaction symptoms; adjunct after epinephrine in anaphylaxis",
+      "contraindications": "None in this context",
+      "side_effects": "Sedation, tachycardia, dry mouth",
+      "scope": "Specialist (AEMT/Paramedic) skill",
+      "notes": "Administer after epinephrine in anaphylaxis, or as first-line in mild allergic reaction without anaphylaxis criteria."
+    },
+    {
+      "name": "Methylprednisolone",
+      "dose": "Adults: 125 mg IV/IO/IM; Pediatrics: 2 mg/kg IV/IO/IM (max 125 mg)",
+      "route": "IV, IO, or IM",
+      "indication": "Anaphylaxis/allergic reaction when prednisone not available or not appropriate",
+      "contraindications": "None urgent in this context",
+      "side_effects": "Hyperglycemia, GI upset",
+      "scope": "Specialist (AEMT/Paramedic) skill",
+      "notes": "Use when prednisone not available, patient < 6 y/o, or patient unable to receive PO medication."
+    }
+  ],
+  "deterioration_flags": [
+    "Hypotension not responding to epinephrine — ensure ALS; repeat epinephrine if second dose not yet given; initiate IV/IO fluids (Specialist); consider push-dose epi IV/IO (Specialist)",
+    "Respiratory distress not improving after albuterol — contact ALS; push-dose epi or albuterol/ipratropium (ALS/Paramedic skills)",
+    "Airway compromise (angioedema, stridor) — prepare for airway management; BVM ventilation if needed; contact ALS immediately",
+    "Deteriorating LOC — maintain airway; position supine with legs elevated if no respiratory compromise; ALS priority response",
+    "Return of anaphylaxis symptoms after initial response — consider repeat epinephrine if second dose not yet given"
+  ],
+  "scope_notes": [
+    "Assist with patient's own epi auto-injector: EMT scope (all levels)",
+    "Epinephrine auto-injector IM (EMS-administered): MCA selection required — MFR option",
+    "Draw-up epinephrine IM: MCA selection required — MFR and BLS options; training required",
+    "Albuterol nebulized: MCA selection required — EMT option",
+    "Albuterol/ipratropium nebulized: MCA selection required — Specialist option",
+    "Diphenhydramine: Specialist skill",
+    "IV/IO access and fluid bolus: Specialist skill",
+    "Push-dose epinephrine IV/IO: Specialist skill",
+    "Prednisone PO: MCA additional medication option (requires MCA selection)",
+    "Methylprednisolone IV/IO/IM: Specialist skill"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "airway_management",
+      "allergic_reaction",
+      "anaphylaxis",
+      "oxygen_therapy",
+      "shock"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

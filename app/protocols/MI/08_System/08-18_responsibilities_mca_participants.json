@@ -1,0 +1,87 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-18 Responsibilities of MCA Participants (Revised 5/30/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_responsibilities_mca_participants",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Responsibilities of MCA Participants",
+  "version": "2023-05-30",
+  "protocol_reference": "Michigan System Protocol Section 8-18: Responsibilities of MCA Participants — MDHHS Approved 5/30/2023",
+
+  "purpose": "Define the responsibilities of all Medical Control Authority (MCA) participants including the MCA, participating EMS agencies, medical directors, and providers. MCAs are the administrative and medical oversight structure for prehospital EMS in Michigan. All EMS agencies operating within an MCA jurisdiction must comply with MCA requirements.",
+
+  "sections": [
+    {
+      "title": "MCA Responsibilities",
+      "reference": "Michigan Protocol 8-18: MCA Responsibilities",
+      "points": [
+        "Develop, review, and update EMS protocols for providers operating within MCA jurisdiction",
+        "Designate an MCA Medical Director who is responsible for clinical oversight",
+        "Establish a Quality Improvement (QI) program per Section 8-27",
+        "Establish a PSRO (Professional Standards Review Organization) per Section 8-29",
+        "Submit MCA protocol updates to MDHHS for review and approval",
+        "Ensure participating EMS agencies comply with MCA and state EMS requirements",
+        "Provide mechanism for online medical control available to all providers in the jurisdiction 24/7",
+        "Review and act on PSRO findings and complaints per Section 8-24 and 8-25"
+      ]
+    },
+    {
+      "title": "MCA Medical Director Responsibilities",
+      "reference": "Michigan Protocol 8-18: Medical Director Responsibilities",
+      "points": [
+        "Serve as the responsible physician for all offline medical control in the MCA jurisdiction",
+        "Review, approve, and sign all MCA protocol selections and clinical policies",
+        "Oversee and participate in the QI/QA program",
+        "Be available for consultation by online medical control physicians",
+        "Investigate and respond to protocol deviations, complaints, and adverse events",
+        "Ensure continuing medical education opportunities are available for providers within the MCA"
+      ]
+    },
+    {
+      "title": "EMS Agency Responsibilities",
+      "reference": "Michigan Protocol 8-18: EMS Agency Responsibilities",
+      "points": [
+        "Employ and deploy only licensed EMS providers at appropriate licensure levels",
+        "Comply with all MCA protocols and selections",
+        "Submit ePCR data to Michigan EMSIS per Section 8-13",
+        "Participate in MCA QI and PSRO programs",
+        "Maintain equipment and medications to support authorized protocols",
+        "Provide initial and continuing education to providers",
+        "Notify MCA of: provider disciplinary actions, criminal charges/convictions per Section 8-26, protocol deviations, adverse events"
+      ]
+    },
+    {
+      "title": "EMS Provider Responsibilities",
+      "reference": "Michigan Protocol 8-18: Provider Responsibilities",
+      "points": [
+        "Maintain current Michigan EMS licensure and all required certifications",
+        "Practice only within the scope defined by Michigan law, MCA protocols, and the provider's licensure level",
+        "Complete required continuing education",
+        "Complete accurate and timely PCRs per Section 7-16 and 8-13",
+        "Report protocol deviations, adverse events, and safety concerns to MCA/medical director",
+        "Cooperate with MCA QI and PSRO processes",
+        "Report criminal charges and convictions per Section 8-26",
+        "Maintain fitness for duty — report to supervisor if impaired or unable to perform duties safely"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "MCA: protocols, medical director, QI program, PSRO, 24/7 online MC, MDHHS reporting",
+    "MCA Medical Director: offline MC authority, protocol approval, QI oversight, adverse event response",
+    "EMS Agency: licensed providers, protocol compliance, EMSIS submission, QI participation, MCA notification of adverse events",
+    "EMS Provider: maintain licensure, practice within scope, complete PCRs, report deviations, cooperate with QI/PSRO",
+    "Providers must report criminal charges and convictions per Section 8-26",
+    "Fitness for duty: report impairment to supervisor"
+  ]
+}

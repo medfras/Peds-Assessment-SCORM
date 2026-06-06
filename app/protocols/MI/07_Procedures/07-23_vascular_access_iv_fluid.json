@@ -1,0 +1,104 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-23 Vascular Access/IV Fluid (Revised 3/17/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_vascular_access_iv_fluid",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (Specialist and above)",
+  "jurisdiction": "Michigan",
+  "condition": "Vascular Access and IV Fluid Administration",
+  "version": "2025-03-17",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-23: Vascular Access/IV Fluid — MDHHS Approved 3/17/2025",
+
+  "purpose": "Specialist-level skill. Governs peripheral IV, IO, and external jugular (EJ) vascular access and IV fluid administration. Existing central lines, PICC lines, and AV fistulas must NOT be accessed without Medical Control authorization.",
+
+  "sections": [
+    {
+      "title": "Peripheral IV Access",
+      "reference": "Michigan Protocol 7-23: Vascular Access — Peripheral IV",
+      "points": [
+        "Specialist and Paramedic",
+        "Do NOT access existing ports, PICC lines, central venous catheters, or AV fistulas without Medical Control authorization",
+        "Maximum attempts: 2 attempts per provider; maximum 4 total attempts across all providers",
+        "After 2 failed IV attempts in a critical patient: consider IO access",
+        "Needle sizes: adult standard 18–20 gauge; adult shock/arrest 14–18 gauge; pediatric 20–24 gauge",
+        "Saline lock (INT) preferred for patients not requiring continuous fluid administration",
+        "Macro drip tubing preferred for fluid administration"
+      ]
+    },
+    {
+      "title": "Intraosseous (IO) Access",
+      "reference": "Michigan Protocol 7-23: Vascular Access — IO",
+      "points": [
+        "Specialist and Paramedic",
+        "CONSIDER IO EARLY — do not delay in critical patients",
+        "IO INDICATIONS: cardiac arrest; severe burn with hemodynamic compromise; shock; severe multi-system trauma with shock",
+        "PREFERRED SITE — ADULTS: proximal humerus (preferred in cardiac arrest — allows proximal delivery); proximal tibia",
+        "PREFERRED SITE — PEDIATRIC < 6 years: proximal tibia",
+        "After 2 failed IO attempts: contact Medical Control",
+        "LIDOCAINE 2% IO for CONSCIOUS patients to reduce infusion pain:",
+        "— Adult: 20 mg IO (1 mL of 2% lidocaine)",
+        "— Pediatric: 0.5 mg/kg IO; maximum 20 mg"
+      ]
+    },
+    {
+      "title": "External Jugular (EJ) IV Access",
+      "reference": "Michigan Protocol 7-23: Vascular Access — External Jugular",
+      "points": [
+        "Paramedic",
+        "Site: midway between the angle of the jaw and the middle of the clavicle along the external jugular vein",
+        "Position: Trendelenburg (head down) to distend vein; turn head AWAY from insertion side",
+        "Insert bevel up at approximately 45-degree angle; advance smoothly",
+        "Apply light pressure just above the clavicle to distend vein before puncture",
+        "Use standard peripheral IV catheter — secure well with tape and dressing"
+      ]
+    },
+    {
+      "title": "IV Fluid Administration",
+      "reference": "Michigan Protocol 7-23: Vascular Access — Fluids",
+      "points": [
+        "Authorized solutions: Normal Saline 0.9% (NS) or Lactated Ringer's (LR)",
+        "Normal Saline preferred for dilution and reconstitution of medications",
+        "FLUID BOLUS — ADULT: 1 liter wide open; may repeat ONCE; maximum 2 liters total",
+        "FLUID BOLUS — PEDIATRIC: 20 mL/kg wide open; may repeat to maximum 40 mL/kg total",
+        "MEDICATION COMPATIBILITY WITH LR: if giving a medication incompatible with LR (e.g., diazepam, phenytoin): pause LR infusion, flush line with 5–10 mL NS, administer medication, flush again with NS, then resume LR"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [
+    {
+      "name": "Lidocaine 2% IO (Conscious IO Analgesia)",
+      "dose": "Adult: 20 mg IO (1 mL of 2% lidocaine); pediatric: 0.5 mg/kg IO max 20 mg",
+      "route": "IO",
+      "indication": "Reduce pain of IO fluid infusion in conscious patients",
+      "contraindications": "Lidocaine allergy; do not use for cardiac dysrhythmia indications at this dose",
+      "side_effects": "Local analgesia at IO site; systemic effects unlikely at this dose",
+      "scope": "Specialist and Paramedic",
+      "notes": "Slow IO push. IO analgesia dose — different from antidysrhythmic dosing."
+    }
+  ],
+
+  "deterioration_flags": [
+    "4 failed IV attempts — contact Medical Control; proceed with IO access if not already established",
+    "2 failed IO attempts — contact Medical Control before further IO attempts",
+    "Fluid bolus > 2L (adult) or > 40 mL/kg (pediatric) needed — contact Medical Control",
+    "Access needed in cardiac arrest adult — proximal humerus IO is preferred site for cardiac arrest to ensure medication delivery to central circulation"
+  ],
+
+  "scope_notes": [
+    "Specialist and Paramedic for IV/IO/EJ access",
+    "Do NOT access PICC, central lines, or AV fistulas without MC authorization",
+    "Max IV attempts: 2 per provider; 4 total",
+    "IO: consider early; indications include cardiac arrest, severe burns, shock, multi-system trauma with shock",
+    "Adult preferred IO site in cardiac arrest: proximal humerus",
+    "Pediatric IO (< 6 yr): proximal tibia preferred",
+    "After 2 failed IO attempts: contact MC",
+    "Lidocaine IO: adult 20 mg; peds 0.5 mg/kg max 20 mg for conscious patients",
+    "Fluids: NS or LR; adult bolus 1L x2 max 2L; peds 20 mL/kg x2 max 40 mL/kg",
+    "EJ: Paramedic only; Trendelenburg; head turned away from insertion side"
+  ]
+}

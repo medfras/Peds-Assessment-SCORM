@@ -1,0 +1,97 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 6-2 Pediatric Symptomatic Bradycardia (Revised 12/30/2022, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_pediatric_bradycardia",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Pediatric",
+  "level_display": "Pediatric (< 14 years)",
+  "jurisdiction": "Michigan",
+  "condition": "Pediatric Symptomatic Bradycardia",
+  "version": "2022-12-30",
+  "protocol_reference": "Michigan Pediatric Cardiac Protocol Section 6-2: Pediatric Symptomatic Bradycardia — MDHHS Approved 12/30/22, Reviewed 2023",
+
+  "purpose": "PARAMEDIC USE ONLY. Aliases: Slow heart rate, heart block. Bradycardia should be considered to be due to HYPOXIA until proven otherwise. This protocol applies to pediatric patients with bradycardia, a pulse, and poor perfusion (cardiopulmonary compromise). When CPR is required, a precise diagnosis of the specific bradyarrhythmia is not important.",
+
+  "sections": [
+    {
+      "title": "Signs of Cardiopulmonary Compromise",
+      "reference": "Michigan Protocol 6-2: Pediatric Bradycardia — Compromise Criteria",
+      "points": [
+        "HYPOTENSION: neonates SBP < 60; infants 1 month–1 year SBP < 70; children 2–10 years SBP < 70 + (age x 2); children > 10 years SBP < 90",
+        "Acutely altered mental status",
+        "SIGNS OF SHOCK: absent and/or weak peripheral and femoral pulses; capillary refill > 3 seconds; skin cool/mottled",
+        "RESPIRATORY DIFFICULTY: increased work of breathing (retractions, nasal flaring, grunting, tracheal tugging); cyanosis; altered level of consciousness (unusual irritability, lethargy, failure to respond to parents); stridor; wheezing"
+      ]
+    },
+    {
+      "title": "General Treatment and Escalation",
+      "reference": "Michigan Protocol 6-2: Pediatric Bradycardia — Treatment",
+      "points": [
+        "PARAMEDIC USE ONLY",
+        "Pediatric patients (< 14 years) utilize MI-MEDIC cards for appropriate medication dosage — when unavailable, utilize pediatric dosing listed within protocol",
+        "Manage airway as necessary",
+        "Provide supplemental oxygen as needed to maintain SpO2 > 94%",
+        "Initiate monitoring",
+        "If pulse < 60: confirm and support adequate oxygenation and ventilation",
+        "If pulse remains < 60 and patient remains symptomatic: perform CPR",
+        "Establish vascular access",
+        "Apply cardiac monitor to identify rhythm",
+        "If pulse remains < 60 despite oxygenation and ventilation: administer epinephrine per MI-MEDIC cards; if MI-MEDIC not available: 1 mg/10 mL; 0.01 mg/kg (0.1 mL/kg) IV/IO up to 1 mg (10 mL); repeat every 3–5 minutes",
+        "If patient remains unstable and pulse < 60: administer atropine per MI-MEDIC cards; if MI-MEDIC not available: 0.02 mg/kg IV/IO (minimum dose 0.1 mg; maximum single dose 0.5 mg); may repeat ONCE in 5 minutes if effective; continue epinephrine administration as above",
+        "If patient remains unstable and pulse < 60 after epinephrine AND atropine: begin transcutaneous pacing at rate up to 100 bpm per Electrical Therapy-Procedure Protocol; sedation may be used to facilitate TCP per MCA selection — refer to Patient Procedural Sedation-Procedure Protocol",
+        "Continuously monitor for pulses — if pulse is not present: refer to Pediatric Cardiac Arrest-Treatment Protocol",
+        "Ensure adequate patient warming"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Sedation for Transcutaneous Pacing",
+      "description": "MCA must select whether sedation may be administered per Patient Procedural Sedation-Procedure Protocol to facilitate transcutaneous pacing in pediatric patients",
+      "options": ["Authorized per Patient Procedural Sedation-Procedure Protocol", "Not authorized — contact Medical Control"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [
+    {
+      "name": "Epinephrine IV/IO (Pediatric Bradycardia)",
+      "dose": "Per MI-MEDIC cards; backup: 1 mg/10 mL — 0.01 mg/kg (0.1 mL/kg) IV/IO; maximum dose 1 mg (10 mL); repeat every 3–5 minutes",
+      "route": "IV or IO",
+      "indication": "Pulse < 60 with cardiopulmonary compromise despite adequate oxygenation and ventilation",
+      "contraindications": "Use caution — consider hypoxia as the cause first; support oxygenation and ventilation before medications",
+      "side_effects": "Tachycardia, hypertension, arrhythmia",
+      "scope": "Paramedic only",
+      "notes": "Bradycardia is due to HYPOXIA until proven otherwise — ensure adequate oxygenation and ventilation before and during epinephrine administration. Use MI-MEDIC for weight-based dosing."
+    },
+    {
+      "name": "Atropine IV/IO (Pediatric Bradycardia)",
+      "dose": "Per MI-MEDIC cards; backup: 0.02 mg/kg IV/IO — minimum 0.1 mg; maximum single dose 0.5 mg; may repeat ONCE in 5 minutes if effective",
+      "route": "IV or IO",
+      "indication": "Persistent symptomatic bradycardia (pulse < 60) after epinephrine and ongoing CPR if needed",
+      "contraindications": "Minimum dose 0.1 mg — paradoxical bradycardia with sub-therapeutic doses; maximum 0.5 mg per dose",
+      "side_effects": "Tachycardia, dry mouth, urinary retention",
+      "scope": "Paramedic only",
+      "notes": "Use MI-MEDIC for dosing. Minimum 0.1 mg per dose to prevent paradoxical bradycardia. Continue epinephrine concurrently."
+    }
+  ],
+
+  "deterioration_flags": [
+    "Pulse < 60 with poor perfusion — HYPOXIA first; ensure oxygenation and ventilation; then epinephrine IV/IO",
+    "Pulse < 60 after epinephrine — add atropine IV/IO; continue epinephrine",
+    "Pulse < 60 after epinephrine AND atropine — transcutaneous pacing rate up to 100 bpm; sedation per MCA selection",
+    "Pulse absent — refer to Pediatric Cardiac Arrest-Treatment Protocol immediately",
+    "Signs of shock with bradycardia — shock may be CAUSING bradycardia via hypoxia; treat shock and airway simultaneously"
+  ],
+
+  "scope_notes": [
+    "This protocol is PARAMEDIC USE ONLY",
+    "Airway management, oxygen, monitoring: Paramedic — may delegate CPR to lower levels per cardiac arrest protocol if needed",
+    "Epinephrine IV/IO: Paramedic",
+    "Atropine IV/IO: Paramedic",
+    "Transcutaneous pacing: Paramedic",
+    "Sedation for TCP: per MCA selection per Patient Procedural Sedation-Procedure Protocol"
+  ]
+}

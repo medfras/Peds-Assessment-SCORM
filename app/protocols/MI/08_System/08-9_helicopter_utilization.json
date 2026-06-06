@@ -1,0 +1,89 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-9 Helicopter Utilization (Revised 1/5/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_helicopter_utilization",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Helicopter Utilization",
+  "version": "2023-01-05",
+  "protocol_reference": "Michigan System Protocol Section 8-9: Helicopter Utilization — MDHHS Approved 1/5/2023",
+
+  "purpose": "Govern criteria for activating air medical (helicopter) transport and establish safe landing zone (LZ) procedures. Early activation is encouraged for appropriate patients — air medical does not need to be confirmed to activate; cancel if patient does not meet criteria after assessment. Scene safety and LZ management are responsibilities of the requesting ground crew.",
+
+  "sections": [
+    {
+      "title": "Clinical Criteria for Helicopter Activation",
+      "reference": "Michigan Protocol 8-9: Helicopter — Clinical Criteria",
+      "points": [
+        "TRAUMA: GCS ≤ 13; penetrating injury to head/neck/torso; major burns (> 20% BSA or inhalation injury); traumatic arrest; amputation proximal to wrist/ankle; open or depressed skull fracture; suspected spinal cord injury; multiple long bone fractures; paralysis",
+        "CARDIAC: STEMI with prolonged transport to PCI-capable facility (MCA-defined threshold); refractory cardiac arrest",
+        "NEUROLOGICAL: suspected stroke with favorable LKW (Last Known Well) within thrombolytic or thrombectomy window when ground transport time would exceed benefit threshold",
+        "OB: high-risk delivery in remote location; eclampsia with hemodynamic compromise; preterm delivery < 32 weeks with prolonged ground transport",
+        "GENERAL: remote or difficult access scene; prolonged extrication; patient requiring ALS care unavailable on ground; mass casualty incident (for patient redistribution)"
+      ]
+    },
+    {
+      "title": "Early Activation",
+      "reference": "Michigan Protocol 8-9: Helicopter — Early Activation",
+      "points": [
+        "Activate air medical EARLY — air medical can be cancelled if patient does not meet criteria",
+        "Do NOT wait to fully assess patient before activating — activate based on mechanism and dispatch information when appropriate",
+        "Cancel air medical if: patient condition is stable and does not meet criteria after assessment; ground transport is faster to appropriate facility; air medical is not operationally safe (weather, night)",
+        "Early activation reduces scene time and improves patient outcomes when air medical is needed"
+      ]
+    },
+    {
+      "title": "Landing Zone (LZ) Preparation",
+      "reference": "Michigan Protocol 8-9: Helicopter — LZ Preparation",
+      "points": [
+        "MINIMUM LZ SIZE: 100 x 100 feet (day); 125 x 125 feet (night)",
+        "LZ surface: firm, level, clear of debris, wires, and poles",
+        "Mark the LZ: place markers at corners (visible to crew from above); avoid lights that blind the pilot",
+        "HAZARD IDENTIFICATION: identify and communicate to air medical crew — power lines, tall structures, towers, water towers, treetops, sloping terrain",
+        "Clear personnel and bystanders from LZ — establish a 100-foot safety perimeter",
+        "One ground crew member should face into the wind to indicate wind direction to inbound aircraft",
+        "DO NOT approach the aircraft until crew signals it is safe — NEVER approach from the tail rotor side",
+        "Extinguish all non-essential vehicle lights during approach and landing"
+      ]
+    },
+    {
+      "title": "Patient Packaging for Air Medical",
+      "reference": "Michigan Protocol 8-9: Helicopter — Patient Packaging",
+      "points": [
+        "Ground crew packages patient before air medical arrives when possible",
+        "Secure all IV lines, tubes, and equipment before loading",
+        "Complete all critical interventions on scene — do not delay interventions anticipating air medical",
+        "Brief air medical crew on patient status, interventions, and response to treatment upon arrival"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "MCA Air Medical Activation Threshold",
+      "description": "MCA may define specific ground transport time thresholds for air medical activation (e.g., STEMI or stroke time to appropriate facility)",
+      "options": ["MCA-defined transport time thresholds for air medical activation", "Clinical criteria only — no time threshold specified"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Weather or visibility deteriorating — air medical may decline or abort; continue ground transport to appropriate facility",
+    "LZ unsafe or unsuitable — identify alternate LZ; do NOT proceed with unsafe LZ"
+  ],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "Activate EARLY — cancel if patient does not meet criteria",
+    "Criteria: GCS ≤13 trauma, penetrating torso, burns >20%, traumatic arrest, proximal amputation, STEMI with prolonged transport, stroke in window, OB emergency",
+    "LZ: 100x100 ft day, 125x125 ft night; level, clear, firm",
+    "Mark corners; clear 100-ft perimeter",
+    "DO NOT approach from tail rotor",
+    "Ground crew responsible for LZ safety"
+  ]
+}

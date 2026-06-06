@@ -1,0 +1,142 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Toxins and Environmental: Altitude Illness. NASEMSO national provisional base.",
+  "id": "nasemso_base_toxins_and_environmental_altitude_illness",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Altitude Illness",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Altitude Illness",
+  "aliases": [
+    "Acute mountain sickness (AMS)",
+    "Altitude sickness",
+    "High altitude cerebral edema (HACE) High altitude pulmonary edema (HAPE)"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Altitude Illness",
+      "points": [
+        "Improve oxygenation through a combination of descent and supplemental O2",
+        "Safe but rapid transport from the high-altitude environment to a lower altitude environment"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Patients suffering from altitude illness, including a. Acute mountain sickness",
+        "b. High altitude pulmonary edema",
+        "c. High altitude cerebral edema",
+        "EXCLUSION CRITERIA:",
+        "When protocol is inapplicable."
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Scene safety and PPE; primary survey (ABCDE)",
+        "Oxygen via NRM targeting SpO2 94-98% if indicated",
+        "Position of comfort; hemorrhage control as needed",
+        "CPR/AED if patient becomes pulseless",
+        "Epinephrine auto-injector for anaphylaxis if applicable",
+        "Naloxone intranasal unit-dose for suspected opioid involvement"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Blood glucose monitoring; oral glucose if hypoglycemic and alert",
+        "12-lead ECG acquisition and transmission",
+        "CPAP for respiratory distress",
+        "Aspirin for suspected ischemic chest pain",
+        "Albuterol SVN for bronchospasm component",
+        "IV access maintenance (non-medicated)"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation",
+        "IV/IO fluid resuscitation as indicated",
+        "Waveform capnography",
+        "IV analgesics (fentanyl, morphine) per pain management protocol",
+        "IV antiemetics (ondansetron) per protocol",
+        "IV D50W/D10W for hypoglycemia"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "12-lead ECG interpretation",
+        "Endotracheal intubation for airway compromise",
+        "RSI per protocol",
+        "Advanced antidysrhythmic or hemodynamic support per specific protocol",
+        "All parenteral medications per protocol",
+        "Vasopressors for refractory hemodynamic compromise"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "The high-altitude environment is inherently dangerous. Rescuers must balance patient needs with patient safety and safety for the responders",
+        "Rapid descent by a minimum of 500'1000 feet is a priority, however rapidity of descent must be balanced by current environmental conditions and other safety considerations"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Patients suffering from altitude illness have exposed themselves to a dangerous environment. By entering the same environment, clinicians are exposing themselves to the same altitude exposure. Be vigilant in looking for symptoms of altitude illness amongst rescuers",
+        "Descent of 500'1000 feet is often enough to see improvements in patient conditions",
+        "Patients with HAPE are suffering from non-cardiogenic pulmonary edema and may benefit from positive pressure ventilation via either bag assisted ventilation, CPAP, or other means of positive pressure ventilation",
+        "Patients suffering from altitude illness are commonly dehydrated and require IV fluids ' once resuscitation is complete and the patient requires no further fluid boluses, maintain IV fluids at 125 mL/hr",
+        "HAPE is the most lethal of all altitude illnesses",
+        "Consider alternate causes of symptoms of AMS ' the symptoms of AMS may be caused by alternate etiologies such as carbon monoxide poisoning (in patients cooking within enclosed areas), dehydration, exhaustion, hypoglycemia, hyponatremia",
+        "Children with the following are at greater risk for altitude illness: a. Those with a concurrent upper or lower respiratory tract infection or otitis media.",
+        "Consider airway management needs in the patient with severe alteration in mental status"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Patient's itinerary, including starting altitude, highest altitude gained and rate of ascent",
+        "' Presence (or absence) of prophylaxis against altitude (including medications such as acetazolamide, sildenafil)",
+        "' Total altitude descended"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Contact medical direction for clinical deterioration or interventions outside standard scope"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

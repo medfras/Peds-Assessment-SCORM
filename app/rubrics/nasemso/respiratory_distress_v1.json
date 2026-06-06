@@ -1,0 +1,547 @@
+{
+  "_schema": "ems_call_type_rubric_v1",
+  "id": "nasemso_respiratory_distress_v1",
+  "version": "2022-03-11",
+  "call_type": "respiratory_distress",
+  "domain": "medical",
+  "overlays_supported": ["state", "agency", "scenario"],
+
+  "protocol_refs": [
+    {
+      "id": "nasemso_v3_resp_distress",
+      "title": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Respiratory Distress (includes Bronchospasm, Pulmonary Edema)",
+      "version": "2022-03-11",
+      "url": null
+    },
+    {
+      "id": "nasemso_v3_patient_safety",
+      "title": "NASEMSO v3.0 — Patient Safety Considerations: Respiratory",
+      "version": "2022-03-11",
+      "url": null
+    }
+  ],
+
+  "source_role_map": {
+    "ems_measured_vital": {
+      "training": ["authored_vitals"],
+      "qaqi":     ["epcr_vital", "monitor_import"]
+    },
+    "ems_performed_exam": {
+      "training": ["authored_vitals"],
+      "qaqi":     ["epcr_exam", "monitor_import"],
+      "_note": "ai_roleplay_tag intentionally excluded: roleplay responses include caregiver/patient-stated findings that are not EMS-performed exams. student_stated_exam will be added when actively stamped by the backend."
+    },
+    "challenge_performed_exam": {
+      "training": ["lung_sound_challenge"],
+      "qaqi":     ["epcr_exam", "monitor_import"],
+      "_note": "Structured challenge-gated exam evidence. In training, lung sound findings must come from the lung sound challenge result, not AI prose or free-text transcript fallback."
+    },
+    "caregiver_reported": {
+      "training": ["caregiver_reported_history"],
+      "qaqi":     ["epcr_history", "caregiver_statement"]
+    },
+    "patient_reported": {
+      "training": ["patient_reported_history"],
+      "qaqi":     ["epcr_history", "patient_statement"]
+    },
+    "history_obtained": {
+      "training": ["caregiver_reported_history", "patient_reported_history"],
+      "qaqi":     ["epcr_history", "dispatch_notes", "caregiver_statement"],
+      "_note": "Aggregate role — use caregiver_reported or patient_reported when the source distinction matters clinically (e.g., who administered the last dose of medication)."
+    },
+    "ems_administered_intervention": {
+      "training": ["intervention_record"],
+      "qaqi":     ["epcr_intervention", "car_medication_administration"],
+      "_note": "Intervention Tier 1 evidence comes from the intervention table directly (type:intervention requirements). This role is QA/QI metadata for cross-reference; not used in eligible_source_roles for finding-type evidence."
+    },
+    "scene_entry_data": {
+      "training": ["system_scene_entry"],
+      "qaqi":     ["cad_scene_entry", "system_scene_entry"]
+    }
+  },
+
+  "checklist_items": [
+
+    {
+      "id": "resp_distress.scene_safety_ppe",
+      "description": "Ensures scene safety and dons appropriate PPE prior to patient contact",
+      "category": "clinical_performance",
+      "subtype": "scene_entry",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_resp_distress"],
+      "evidence_requirements": [
+        { "type": "scene_entry", "scene_entry_path": "ppe.required_complete" }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(bsi|ppe|gloves?|mask|eye.?protection|scene.safe|safe.scene)\\b"
+      ],
+      "done_feedback": "PPE and scene safety confirmed before patient contact — correct.",
+      "missed_feedback": "Scene safety and PPE must be established before approaching any patient. Exposure risk is present in all respiratory calls.",
+      "common_errors": ["Skipping eye protection when patient is coughing or has secretions"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "resp_distress.general_impression",
+      "description": "Forms a general impression including appearance, work of breathing, and circulation to skin (PAT equivalent)",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_resp_distress"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)general.impression|work.of.breathing|wob|respiratory.effort|appearance|pat|skin.color|skin.moisture",
+          "eligible_source_roles": ["ems_performed_exam"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(general.impression|appears?|looks?|work.of.breathing|wob|respiratory.effort|in.distress|labored|unlabored|accessory.muscles?|retractions?)\\b"
+      ],
+      "done_feedback": "General impression documented — appearance, WOB, and skin assessed on arrival.",
+      "missed_feedback": "A general impression on scene entry orients the entire assessment. For respiratory calls: note appearance (alert vs. altered), WOB (labored, accessory use, retractions), and skin signs (cyanosis, diaphoresis).",
+      "common_errors": ["Documenting general impression without noting WOB specifically", "Confusing 'general impression' with chief complaint only"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "resp_distress.loc_responsiveness",
+      "description": "Determines level of consciousness and responsiveness",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_resp_distress"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)\\b(loc|gcs|avpu|mental.status|responsiveness|conscious|alert|verbal|pain|unresponsive)\\b",
+          "eligible_source_roles": ["ems_performed_exam"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(alert|oriented|gcs|avpu|responsive|unresponsive|loc|mental.status|confused|altered)\\b"
+      ],
+      "done_feedback": "LOC/responsiveness assessed — essential for determining airway protection and medication eligibility.",
+      "missed_feedback": "LOC must be assessed on every patient. In respiratory distress: deteriorating LOC is the primary indicator that airway intervention is needed.",
+      "common_errors": [],
+      "unsafe_if_missed": true
+    },
+
+    {
+      "id": "resp_distress.spo2_measured",
+      "description": "Obtains SpO2 via pulse oximetry",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_resp_distress"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "vital",
+          "key_pattern": "(?i)spo2|sp\\s*o2|oxygen.saturation|o2.sat|pulse.ox",
+          "eligible_source_roles": ["ems_measured_vital"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(spo2|sp\\s*o2|oxygen.saturation|o2.sat|pulse.ox|oximetry)\\b"
+      ],
+      "done_feedback": "SpO2 measured — guides oxygen therapy decisions and establishes baseline for trending.",
+      "missed_feedback": "SpO2 is the primary vital for respiratory calls. Without it, you cannot determine whether oxygen therapy is indicated (SpO2 < 94%) or titrate therapy effectively.",
+      "common_errors": ["Relying on skin color alone", "Checking SpO2 after oxygen is already on (misses true baseline)"],
+      "unsafe_if_missed": true
+    },
+
+    {
+      "id": "resp_distress.rr_wob_assessed",
+      "description": "Assesses respiratory rate and work of breathing including accessory muscle use and retractions",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_resp_distress"],
+      "requirement_logic": "all",
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "vital",
+          "key_pattern": "(?i)respiratory.rate|resp.rate|\\brr\\b|respirations",
+          "eligible_source_roles": ["ems_measured_vital"]
+        },
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)work.of.breathing|wob|accessory.muscles?|retractions?|respiratory.effort|nasal.flaring",
+          "eligible_source_roles": ["ems_performed_exam"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(respiratory.rate|resp.rate|\\brr\\b|respirations?|work.of.breathing|wob|accessory.muscles?|retractions?|tachypneic|bradypneic|labored|unlabored)\\b"
+      ],
+      "done_feedback": "RR and WOB documented — both components are required to characterize respiratory compromise accurately.",
+      "missed_feedback": "Respiratory rate alone is insufficient — a patient can be tachypneic with minimal WOB or bradypneic and in severe distress. Document both rate and effort.",
+      "common_errors": ["Documenting rate without WOB quality", "Estimating rate rather than counting for 30 seconds"],
+      "unsafe_if_missed": true
+    },
+
+    {
+      "id": "resp_distress.lung_sounds",
+      "description": "Auscultates bilateral lung sounds",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_resp_distress"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)lung.sounds?|breath.sounds?|auscult|wheez|crackles?|rhonchi|rales|stridor|clear|diminished",
+          "eligible_source_roles": ["challenge_performed_exam"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(lung.sounds?|breath.sounds?|auscult|wheez|crackles?|rhonchi|rales|stridor|clear|diminished|bilateral)\\b"
+      ],
+      "done_feedback": "Lung sounds auscultated — findings differentiate bronchospasm (wheeze), pulmonary edema (crackles), pneumothorax (absent), and obstruction (stridor).",
+      "missed_feedback": "Lung auscultation is required on all respiratory distress calls. Without it, you cannot differentiate bronchospasm from pulmonary edema, which changes treatment entirely.",
+      "common_errors": ["Auscultating over clothing", "Documenting only 'clear' without noting bilateral equality", "Not repeating after treatment"],
+      "unsafe_if_missed": true
+    },
+
+    {
+      "id": "resp_distress.skin_assessment",
+      "description": "Assesses skin color, temperature, and moisture for perfusion status",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_resp_distress"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)skin|cap.refill|capillary.refill|cyanosis|cyanotic|diaphor|pallor|pale|flushed|mottled",
+          "eligible_source_roles": ["ems_performed_exam"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(skin|cap.refill|capillary.refill|cyanosis|cyanotic|diaphor|pallor|pale|flushed|mottled|warm|cool|dry|moist|diaphoretic)\\b"
+      ],
+      "done_feedback": "Skin assessed — color, temperature, and moisture provide rapid indirect perfusion data.",
+      "missed_feedback": "Skin signs in respiratory distress indicate severity: cyanosis or pallor signals hypoxia; diaphoresis signals severe distress or cardiogenic origin.",
+      "common_errors": [],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "resp_distress.hpi_onset_duration",
+      "description": "Obtains history of present illness: onset and duration of respiratory distress",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_resp_distress"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "history",
+          "key_pattern": "(?i)onset|duration|started|began|when.did|how.long",
+          "eligible_source_roles": ["history_obtained"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(when.did|how.long|onset|started|began|duration|\\bago\\b)\\b"
+      ],
+      "done_feedback": "Onset and duration obtained — establishes acuity and helps narrow etiology.",
+      "missed_feedback": "Onset and duration shape your differential: sudden onset suggests pneumothorax or PE; gradual onset over days is more consistent with exacerbation of COPD or CHF.",
+      "common_errors": [],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "resp_distress.hpi_medications",
+      "description": "Obtains current medications, specifically inhalers and relevant cardiac or diuretic medications",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_resp_distress"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "history",
+          "key_pattern": "(?i)medications?|meds?|inhal|albuterol|nebulizer|diuretic|lasix|furosemide|nitrate|beta.blocker|steroid|prednisone|inhaled",
+          "eligible_source_roles": ["history_obtained"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(medications?|meds?|inhal|albuterol|nebulizer|diuretic|lasix|nitrate|beta.blocker|steroid|prednisone|prescription|puffer|rescue.inhaler)\\b"
+      ],
+      "done_feedback": "Medications obtained — inhaler use, diuretics, and nitrates directly affect treatment decisions.",
+      "missed_feedback": "Medication history is critical in respiratory distress: prior inhaler use indicates severity; diuretics suggest CHF history; nitrate use history affects Paramedic treatment options.",
+      "common_errors": ["Asking only about 'medications' without specifically probing for inhalers"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "resp_distress.hpi_prior_episodes",
+      "description": "Obtains history of prior respiratory episodes, diagnoses, and hospitalizations",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_resp_distress"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "history",
+          "key_pattern": "(?i)prior|history|pmh|asthma|copd|chf|heart.failure|previous|past.medical|diagnosed|hospitalized|intubated",
+          "eligible_source_roles": ["history_obtained"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(asthma|copd|emphysema|chf|heart.failure|prior.episodes?|history.of|pmh|hospitalized|intubated|prior.intubation|ever.been.hospitalized)\\b"
+      ],
+      "done_feedback": "Prior respiratory history obtained — baseline helps calibrate severity and predicts trajectory.",
+      "missed_feedback": "Past respiratory history anchors your differential: a known asthmatic with this WOB who needed ICU care before is a very different risk profile than a first episode.",
+      "common_errors": ["Accepting 'no medical history' without probing for respiratory diagnoses"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "resp_distress.o2_therapy_indicated",
+      "description": "Initiates supplemental oxygen therapy when SpO2 < 94% or clinical signs of hypoxia are present; targets SpO2 94–98%",
+      "category": "protocols_treatment",
+      "subtype": "intervention",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_resp_distress"],
+      "evidence_requirements": [
+        {
+          "type": "intervention",
+          "intervention_keys": ["o2_nrb", "o2_nc", "o2_bvm", "o2_cannula", "cpap"]
+        },
+        {
+          "type": "intervention",
+          "intervention_keys": ["albuterol_svn", "albuterol_nebulizer"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(oxygen|o2|nrb|non.rebreather|nasal.cannula|blow.by|high.flow|supplemental.oxygen|15.lpm|10.lpm|2.lpm|4.lpm|oxygen.driven|o2.driven|svn|nebulizer)\\b"
+      ],
+      "timing_constraints": null,
+      "contraindications": ["SpO2 >= 94% with no signs of hypoxia — avoid hyperoxia; O2 not required if normoxic"],
+      "done_feedback": "Oxygen support initiated appropriately — correct titration toward SpO2 94–98%. Oxygen-driven nebulized bronchodilator therapy may satisfy oxygen support during bronchospasm care when clinically improving.",
+      "missed_feedback": "Oxygen support is indicated when SpO2 < 94% or when clinical signs of hypoxia (cyanosis, altered LOC, severe WOB) are present. Avoid hyperoxia: target 94–98%, not 100%.",
+      "common_errors": ["Applying NRB at 15 LPM to a normoxic patient", "Not adjusting flow based on SpO2 trend"],
+      "unsafe_if_missed": true
+    },
+
+    {
+      "id": "resp_distress.position_of_comfort",
+      "description": "Positions patient upright or in position of comfort; avoids supine unless unconscious",
+      "category": "protocols_treatment",
+      "subtype": "intervention",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_resp_distress"],
+      "evidence_requirements": [
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)position|upright|sitting|semi.fowler|fowler|tripod|leaning.forward",
+          "eligible_source_roles": ["ems_performed_exam"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(position|upright|sitting.up|semi.fowler|tripod|position.of.comfort|sit.up|allow.to.sit)\\b"
+      ],
+      "done_feedback": "Patient positioned upright — reduces respiratory effort and improves diaphragmatic excursion.",
+      "missed_feedback": "Respiratory patients breathe easier upright. Supine positioning increases WOB and reduces tidal volume. Allow or assist the patient to sit upright unless LOC requires supine.",
+      "common_errors": ["Placing patient supine for IV access before airway is stable"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "resp_distress.albuterol_bronchospasm",
+      "description": "Administers albuterol via SVN or MDI for bronchospasm component when indicated (EMT+)",
+      "category": "protocols_treatment",
+      "subtype": "intervention",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": ["EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_resp_distress"],
+      "evidence_requirements": [
+        {
+          "type": "intervention",
+          "intervention_keys": ["albuterol_svn", "albuterol_mdi", "albuterol_nebulizer"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(albuterol|salbutamol|nebulizer|svn|mdi|inhaler|bronchodilator|breathing.treatment|neb.treatment)\\b"
+      ],
+      "contraindications": ["Absent wheeze or confirmed non-bronchospasm etiology (e.g., pulmonary edema without bronchospasm component)"],
+      "done_feedback": "Albuterol administered for bronchospasm — correct. Reassess lung sounds and WOB after treatment.",
+      "missed_feedback": "Wheezing in respiratory distress is bronchospasm until proven otherwise. Albuterol is EMT scope and should be given early — delay worsens bronchospasm and increases fatigue.",
+      "common_errors": ["Not reassessing lung sounds after treatment", "Skipping albuterol due to patient having 'already taken their inhaler' — EMS dose is still indicated"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "resp_distress.ecg_12lead",
+      "description": "Acquires 12-lead ECG in respiratory distress to screen for cardiac etiology when within provider scope",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": ["Paramedic"],
+      "protocol_refs": ["nasemso_v3_resp_distress"],
+      "evidence_requirements": [
+        {
+          "type": "intervention",
+          "intervention_keys": ["ecg_12lead", "12_lead_ecg", "ecg_acquisition"]
+        },
+        {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)12.lead|ecg|ekg|rhythm|sinus|afib|st.elevation|st.depression",
+          "eligible_source_roles": ["ems_performed_exam"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(12.lead|ecg|ekg|cardiac.monitor|rhythm|4.lead|monitor)\\b"
+      ],
+      "done_feedback": "12-lead ECG acquired — cardiac etiology screened.",
+      "missed_feedback": "A 12-lead ECG screens for ACS (STEMI presenting as dyspnea), LBBB, and arrhythmia contributing to respiratory compromise when it is within the provider's scope and available equipment.",
+      "common_errors": ["Skipping 12-lead because 'it looks like asthma'"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "resp_distress.capnography",
+      "description": "Applies waveform capnography to monitor EtCO2 and respiratory pattern (AEMT+)",
+      "category": "clinical_performance",
+      "subtype": "assessment",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": ["AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_resp_distress", "nasemso_v3_patient_safety"],
+      "evidence_requirements": [
+        {
+          "type": "intervention",
+          "intervention_keys": ["capnography", "etco2", "waveform_capnography"]
+        },
+        {
+          "type": "finding",
+          "finding_type": "vital",
+          "key_pattern": "(?i)etco2|et.co2|end.tidal|capnography|capnogram",
+          "eligible_source_roles": ["ems_measured_vital"]
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(capnography|etco2|et.co2|end.tidal|waveform|co2.monitor)\\b"
+      ],
+      "done_feedback": "Capnography applied — EtCO2 trend distinguishes improving bronchospasm from impending failure.",
+      "missed_feedback": "Waveform capnography is AEMT scope and required in respiratory distress. Normal EtCO2 (35–45) with tachypnea indicates impending respiratory failure — the patient is compensating and about to tire.",
+      "common_errors": ["Interpreting EtCO2 without the waveform shape (shark fin = bronchospasm)"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "resp_distress.reassess_post_treatment",
+      "description": "Reassesses SpO2, RR, and WOB after each intervention and documents response",
+      "category": "clinical_performance",
+      "subtype": "reassessment",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_resp_distress"],
+      "evidence_requirements": [
+        {
+          "type": "post_intervention_finding",
+          "finding_type": "vital",
+          "key_pattern": "(?i)spo2|sp\\s*o2|oxygen.saturation|respiratory.rate|\\brr\\b",
+          "eligible_source_roles": ["ems_measured_vital"]
+        },
+        {
+          "type": "post_intervention_finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)work.of.breathing|wob|lung.sounds?|breath.sounds?|wheez|crackles?|treatment.response|patient.status",
+          "_note": "Source intentionally unrestricted for post-intervention response: reassessment may be captured from authored WOB/lung-sound checks or from a learner-triggered status question tagged as Treatment Response."
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(reassess|repeat.vital|recheck|response.to|after.treatment|now.reads?|improved|worsened|unchanged|trending)\\b"
+      ],
+      "done_feedback": "Reassessment documented post-intervention — response to treatment is required data for the receiving facility.",
+      "missed_feedback": "Every intervention requires a documented reassessment. For respiratory distress: did SpO2 improve? Did lung sounds change? Is WOB trending better or worse? This is the treatment response data ALS and the ED need.",
+      "common_errors": ["Reassessing verbally but not documenting the finding"],
+      "unsafe_if_missed": false
+    },
+
+    {
+      "id": "resp_distress.no_inhaled_magnesium",
+      "description": "Inhaled magnesium sulfate not administered for bronchospasm (no evidence of benefit — NASEMSO safety rule)",
+      "category": "scope_adherence",
+      "subtype": "intervention",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": ["EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_patient_safety"],
+      "evidence_requirements": [
+        {
+          "type": "absence_check",
+          "absence_intervention_key": "inhaled_magnesium_bronchospasm"
+        }
+      ],
+      "tier2_patterns": [],
+      "done_feedback": "No inhaled magnesium administered — correct per NASEMSO patient safety guideline.",
+      "missed_feedback": "NASEMSO explicitly prohibits inhaled magnesium for bronchospasm management: there is no evidence of patient benefit. This is a patient safety violation.",
+      "common_errors": ["Confusing IV magnesium (Paramedic scope, evidence-based) with inhaled magnesium (no evidence)"],
+      "unsafe_if_missed": true
+    },
+
+    {
+      "id": "resp_distress.verbal_handoff",
+      "description": "Provides structured verbal handoff (DMIST) including SpO2, RR, WOB, lung sounds, interventions, and response",
+      "category": "documentation",
+      "subtype": "documentation_handoff",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": ["EMR", "EMT", "AEMT", "Paramedic"],
+      "protocol_refs": ["nasemso_v3_resp_distress"],
+      "evidence_requirements": [
+        {
+          "type": "session_event",
+          "event_type": "als_turnover_submitted"
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)\\b(handoff|turnover|report|medic|als|paramedic.crew|verbal.report|spo2.is|breathing.treatment|patient.responded|dmist)\\b"
+      ],
+      "done_feedback": "Verbal handoff completed — receiving crew has the data they need to continue care.",
+      "missed_feedback": "A structured handoff to ALS or the receiving facility is required. For respiratory distress: include SpO2 trend, lung sound findings, interventions given, and patient response.",
+      "common_errors": ["Giving chief complaint only without vital signs or treatment response"],
+      "unsafe_if_missed": false
+    }
+
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Resuscitation: Do Not Resuscitate Status/Advance Directives/Healthcare Power of Attorney (POA) Status. NASEMSO national provisional base.",
+  "id": "nasemso_base_resuscitation_do_not_resuscitate_status_advance_directives_healt",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Do Not Resuscitate Status/Advance Directives/Healthcare Power of Attorney (POA) Status",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Resuscitation: Do Not Resuscitate Status/Advance Directives/Healthcare Power of Attorney (POA) Status",
+  "aliases": [
+    "Comfort care",
+    "Do Not Resuscitate (DNR)"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Resuscitation: Do Not Resuscitate Status/Advance Directives/Healthcare Power of Attorney (POA) Status",
+      "points": [
+        "To acknowledge and maintain the variety of ways that patients can express their wishes about cardiopulmonary resuscitation or end-of-life decision making"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "EXCLUSION CRITERIA:",
+        "Patients must have one of the following documents or a valid alternative (such as identification bracelet indicating wishes) immediately available. Note that some specifics can vary widely from state to state: a. Physician Orders for Life Sustaining Treatment (POLST) or Medical Orders for Life Sustaining Treatment (MOLST) ' explicitly describes acceptable interventions for the patient in the form of medical orders, must be signed by a physician or other empowered medical clinician to be valid",
+        "One of the documents above is valid when it meets all the following criteria: a. Conforms to the state specifications for color and construction",
+        "If there is question about the validity of the form/instrument, the best course of action is to proceed with the resuscitation until additional information can be obtained to clarify the best course of action",
+        "If a patient has a valid version of one of the above documents, it will be referred to as a 'valid exclusion to resuscitation' for the purposes of this protocol"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Scene safety and PPE; primary survey (ABCDE)",
+        "Oxygen via NRM targeting SpO2 94-98% if indicated",
+        "Position of comfort; hemorrhage control as needed",
+        "CPR/AED if patient becomes pulseless",
+        "Epinephrine auto-injector for anaphylaxis if applicable",
+        "Naloxone intranasal unit-dose for suspected opioid involvement"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Blood glucose monitoring; oral glucose if hypoglycemic and alert",
+        "12-lead ECG acquisition and transmission",
+        "CPAP for respiratory distress",
+        "Aspirin for suspected ischemic chest pain",
+        "Albuterol SVN for bronchospasm component",
+        "IV access maintenance (non-medicated)"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation",
+        "IV/IO fluid resuscitation as indicated",
+        "Waveform capnography",
+        "IV analgesics (fentanyl, morphine) per pain management protocol",
+        "IV antiemetics (ondansetron) per protocol",
+        "IV D50W/D10W for hypoglycemia"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "12-lead ECG interpretation",
+        "Endotracheal intubation for airway compromise",
+        "RSI per protocol",
+        "Advanced antidysrhythmic or hemodynamic support per specific protocol",
+        "All parenteral medications per protocol",
+        "Vasopressors for refractory hemodynamic compromise"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "In cases where the patient's status is unclear and the appropriateness of withholding resuscitation efforts is questioned, EMS personnel should initiate CPR immediately and contact medical direction"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "If there is a personal physician present at the scene who has an ongoing relationship with the patient, that physician may decide if resuscitation is to be initiated",
+        "If there is a registered nurse from a home healthcare or hospice agency present at the scene who has an ongoing relationship with the patient and who is operating under orders from the patient's private physician, that nurse (authorized nurse) may decide if resuscitation is to be initiated",
+        "If the physician or nurse decides resuscitation is to be initiated, usual medical direction procedures will be followed",
+        "Special Consideration: For scene safety and/or family wishes, the EMS clinician may decide to implement CPR even if all the criteria for death are met"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Detailed description of the valid exclusion to resuscitation documentation used to guide resuscitation including a copy of the document if possible",
+        "' Names/contact information for significant bystanders"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "In cases where the patient's status is unclear and the appropriateness of withholding resuscitation efforts is questioned, EMS personnel should initiate CPR immediately and contact medical direction"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

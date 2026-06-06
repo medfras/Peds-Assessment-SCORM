@@ -1,0 +1,154 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Cardiovascular: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI). NASEMSO national provisional base.",
+  "id": "nasemso_base_cardiovascular_chest_pain_acute_coronary_syndrome_acs_st_segment_",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Cardiovascular: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)",
+  "aliases": [
+    "Heart attack",
+    "Myocardial infarction (MI)"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Cardiovascular: Chest Pain/Acute Coronary Syndrome (ACS)/ST-segment Elevation Myocardial Infarction (STEMI)",
+      "points": [
+        "Identify ST-elevation myocardial infarction (STEMI) quickly",
+        "Determine the time of symptom onset",
+        "Activate hospital-based STEMI system of care",
+        "Monitor vital signs and cardiac rhythm and be prepared to provide CPR and defibrillation if needed",
+        "Administer appropriate medications",
+        "Transport to appropriate facility"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Chest pain or discomfort in other areas of the body (e.g., arm, jaw, epigastrium) of suspected cardiac origin, shortness of breath, associated or unexplained sweating, nausea, vomiting, or dizziness. Atypical or unusual symptoms are more common in women, the elderly, and diabetic patients. May also present with CHF, syncope, and/or shock",
+        "Chest pain associated sympathomimetic use (e.g., cocaine, methamphetamine)",
+        "Some patients will present with likely non-cardiac chest pain and otherwise have a low likelihood of ACS (e.g., blunt trauma to the chest of a child). For these patients, defer the administration of aspirin (ASA) and nitrates per the Pain Management Guideline",
+        "EXCLUSION CRITERIA:",
+        "None noted"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Scene safety; position patient in position of comfort (upright or semi-recumbent)",
+        "Oxygen via NRM if SpO2 <94% or severe distress",
+        "Assist patient with own prescribed nitroglycerin if available",
+        "Epinephrine auto-injector for anaphylaxis if suspected cause",
+        "CPR and AED if patient becomes pulseless"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Aspirin 162-325 mg PO chewable non-enteric for suspected ischemic chest pain",
+        "Patient's own prescribed nitroglycerin 0.4 mg SL q 3-5 min if SBP >100 mmHg",
+        "12-lead ECG acquisition within 10 minutes of patient contact; transmit to receiving facility",
+        "CPAP for acute pulmonary edema/CHF presentation",
+        "Pulse oximetry continuous monitoring",
+        "IV maintenance (non-medicated) if existing access"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "Nitroglycerin 0.4 mg SL (agency stock) q 3-5 min if SBP >100; avoid with phosphodiesterase inhibitors in past 48 hours",
+        "IV access initiation; IV fluid bolus 250-500 mL NS for hypotension (avoid in pulmonary edema)",
+        "Waveform capnography",
+        "IO access if IV unsuccessful and patient critical"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "12-lead ECG interpretation: identify STEMI, LBBB, posterior MI, right ventricular involvement",
+        "Advance notification to PCI center for STEMI (target: first medical contact to balloon <90 min)",
+        "Morphine sulfate 2-4 mg IV for pain unresponsive to nitrates (use cautiously in NSTEMI)",
+        "Fentanyl 1-2 mcg/kg IV as alternative analgesic",
+        "Antidysrhythmic therapy for associated arrhythmia per protocol",
+        "RSI and intubation for airway compromise or cardiogenic shock",
+        "Vasopressors (dopamine, norepinephrine) for cardiogenic shock not responsive to fluids"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Observe for signs of clinical deterioration: dysrhythmias, chest pain, shortness of breath, decreased level of consciousness/syncope, or other signs of shock/hypotension",
+        "Perform serial 12-lead EKGs (especially if clinical changes are noted)",
+        "Consider placing defibrillator pads on high-risk patients.",
+        "Consider configuring monitor/defibrillator to allow automatic VT/VF alert",
+        "Consider configuring monitor/defibrillator to allow ST-segment trending if available"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Key Considerations",
+        "Acute coronary syndrome may present with atypical pain, vague or only generalized complaints.",
+        "Ischemic burden time is a risk for morbidity and mortality, EMS can help decrease first medical contact to intervention time/reflow by efficient scripting/training of safely minimizing scene time",
+        "Pertinent Assessment Findings",
+        "A complete medication list should be obtained from each patient. It is especially important for the treating physician and healthcare providers to be informed if the patient is taking beta-blockers, calcium channel blockers, clonidine, digoxin, blood thinners (anticoagulants), and medications for the treatment of erectile dysfunction or pulmonary hypertension"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' The time of symptom onset",
+        "' The time of patient contact by EMS to the time of 12-lead EKG acquisition",
+        "' The time aspirin (ASA) administered, or reason why not given",
+        "' The time of STEMI notification"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Observe for signs of clinical deterioration: dysrhythmias, chest pain, shortness of breath, decreased level of consciousness/syncope, or other signs of shock/hypotension",
+    "Chest pain or discomfort in other areas of the body (e.g., arm, jaw, epigastrium) of suspected cardiac origin, shortness of breath, associated or unexplained sweating, nausea, vomiting, or dizziness. Atypical or unusual symptoms are more common in women, the elderly, and diabetic patients. May also present with CHF, syncope, and/or shock"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": [],
+  "clinical_context": {
+    "concepts": [
+      "cardiac_monitoring",
+      "chest_pain_acs",
+      "stemi"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

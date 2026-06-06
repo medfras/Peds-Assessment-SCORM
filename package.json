@@ -1,0 +1,12 @@
+{
+  "name": "rescuetrails-frontend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "eslint static/js/app.js"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.4",
+    "eslint-plugin-no-unsanitized": "^4.1.5"
+  }
+}

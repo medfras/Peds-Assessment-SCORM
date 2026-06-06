@@ -1,0 +1,142 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Toxins and Environmental: Calcium Channel Blocker Poisoning/Overdose. NASEMSO national provisional base.",
+  "id": "nasemso_base_toxins_and_environmental_calcium_channel_blocker_poisoning_overdose",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Calcium Channel Blocker Poisoning/Overdose",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Calcium Channel Blocker Poisoning/Overdose",
+  "aliases": [
+    "Anti-hypertensive"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Calcium Channel Blocker Poisoning/Overdose",
+      "points": [
+        "Reduce GI absorption of oral agents with some form of binding agent (activated charcoal) especially for extended release",
+        "Early airway protection is required as patients may have rapid mental status deterioration",
+        "Assure adequate ventilation, oxygenation, and correction of hypoperfusion"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Patients who have may have taken/been administered calcium channel blockers a. Calcium channel blocker examples: i. Amlodipine (Norvasc')",
+        "ii. Diltiazem (Cardizem', Tiazac')",
+        "iii. Felodipine",
+        "iv. lsradipine",
+        "v. Nicardipine",
+        "vi. Nifedipine (Adalat CC', Afeditab CR', Procardia')",
+        "vii. Nisoldipine (Sular')",
+        "viii. Verapamil (Calan', Verelan')",
+        "EXCLUSION CRITERIA:",
+        "None noted"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Scene safety; activate ALS/HAZMAT as needed",
+        "Oxygen via NRM; BVM for respiratory failure",
+        "CPR/AED for pulseless arrest",
+        "Position supine; prevent further absorption (do not induce vomiting)"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "12-lead ECG: bradycardia, AV block, widened QRS, heart failure common",
+        "IV access maintenance (non-medicated)",
+        "Monitor closely — CCB overdose can be rapidly lethal; early ALS essential"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation; IV fluid bolus 250-500 mL for hypotension",
+        "Atropine 0.5-1 mg IV for bradycardia (often ineffective in CCB OD)",
+        "Calcium chloride 1 g IV/IO for bradycardia/hypotension (blocks excess CCB effect)",
+        "Glucagon 1-3 mg IV for refractory bradycardia/hypotension",
+        "Waveform capnography; blood glucose monitoring"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "Calcium chloride 1-2 g IV over 2-5 min; repeat q 10-20 min (monitor ionized calcium)",
+        "High-dose insulin euglycemia (HDIE): regular insulin 1 unit/kg IV bolus + 50% dextrose; infusion 0.5 unit/kg/hour + dextrose infusion",
+        "Glucagon 3-5 mg IV bolus, then 2-5 mg/hour infusion",
+        "Lipid emulsion therapy (intralipid 20%) 1.5 mL/kg IV for refractory toxicity (per medical direction)",
+        "Transcutaneous pacing for high-degree AV block",
+        "Vasopressors (norepinephrine, epinephrine) for refractory hypotension",
+        "12-lead ECG interpretation: identify AV blocks, QRS widening",
+        "RSI: succinylcholine may be used; rocuronium 1.2 mg/kg preferred"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Transcutaneous pacing may not always capture nor correct hypotension when capture is successful."
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "While most calcium channel blockers cause bradycardia, dihydropyridine class calcium channel blockers (e.g., nifedipine, amlodipine) can cause a reflex tachycardia (torsade de pointes) early in the ingestion. The patient can become bradycardic as the intoxication worsens",
+        "The avoidance of administering calcium chloride or calcium gluconate to a patient on cardiac glycosides (e.g., digoxin) as this may precipitate toxicity and associate fatal arrhythmias is felt to be a historical belief and not supported",
+        "Glucagon has a side effect of increased vomiting at these doses and ondansetron prophylaxis should be considered",
+        "A single pill can kill a toddler. It is very important that a careful assessment of medications the toddler could have access to is done by EMS and suspect medications brought into the ED",
+        "Calcium channel blockers can cause many types of rhythms that can range from sinus bradycardia to complete heart block",
+        "Hyperglycemia is the result of the blocking of L-type calcium channels in the pancreas. This can help differentiate these ingestions from beta-blockers. There may also be a relationship between the severity of the ingestion and the extent of the hyperglycemia",
+        "Atropine may have little or no effect (likely to be more helpful in mild overdoses) a. Hypotension and bradycardia may be mutually exclusive, and the blood pressure may not respond to correction of bradycardia",
+        "Close monitoring of EKG changes and dysrhythmias"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Repeat evaluation and documentation of signs and symptoms as patient clinical conditions may deteriorate rapidly",
+        "' Identification of possible etiology of poisoning",
+        "' Time of symptoms onset and time of initiation of exposure-specific treatments",
+        "' Therapy and response to therapy"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Contact medical direction for clinical deterioration or interventions outside standard scope"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

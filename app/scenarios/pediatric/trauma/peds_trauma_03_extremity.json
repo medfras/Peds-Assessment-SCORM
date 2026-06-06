@@ -1,0 +1,1338 @@
+{
+  "_schema": "pfd_scenario_v1",
+  "id": "peds_trauma_03_extremity",
+  "title": "Angulated Forearm Fracture — 6-Year-Old Female",
+  "display_title": "Pediatric Extremity Injury",
+  "subtitle": "6-year-old female, angulated forearm fracture with neurovascular concern",
+  "category": "pediatric_trauma",
+  "call_type": "nremt_trauma",
+  "category_display": "Pediatric Trauma Assessment",
+  "turnover_target": "als",
+  "version": "1.0",
+  "rubric_template": "ems_standard_v1",
+  "base_patient_care_rubric": "nremt_trauma_v1",
+  "difficulty": "medium",
+  "scenario_number": 3,
+  "prerequisites": [
+    "peds_trauma_01_soft_tissue"
+  ],
+  "protocol": "MI/02_Trauma_Environmental/02-2_general_trauma",
+  "jurisdiction": "mi_base",
+  "clinical_context": {
+    "jurisdiction": "MI",
+    "concepts": [
+      "pediatric_patient",
+      "pediatric_trauma",
+      "trauma",
+      "extremity_injury",
+      "fracture_splinting"
+    ],
+    "protocol_focus": [
+      "extremity_injury",
+      "fracture_splinting"
+    ]
+  },
+  "agency_context": "",
+  "spinal_injury_possible": false,
+  "non_transport_agency": false,
+  "multiple_patients_possible": false,
+  "diagnostics_indicated": false,
+  "opqrst_radiation_relevant": false,
+  "readiness_criteria": {
+    "min_minutes": 3,
+    "checks": [
+      {
+        "id": "messages",
+        "label": "5 messages sent",
+        "type": "message_count",
+        "min": 5
+      },
+      {
+        "id": "vitals",
+        "label": "Vitals assessed",
+        "type": "vitals_logged"
+      },
+      {
+        "id": "exam",
+        "label": "Exam/history obtained",
+        "type": "exam_logged"
+      },
+      {
+        "id": "treatment",
+        "label": "Treatment applied",
+        "type": "treatment_logged"
+      }
+    ]
+  },
+  "scene_entry_scoring": {
+    "ppe": {
+      "required": [
+        "gloves"
+      ],
+      "recommended": [
+        "eye_protection"
+      ],
+      "missing_required_penalty": 3,
+      "missing_recommended_penalty": 1,
+      "max_score": 10
+    },
+    "pat": {
+      "expected_impression": null,
+      "incorrect_impression_deduction": 2
+    }
+  },
+  "chat_placeholder": "Ask questions or give EMS instructions...",
+  "chat_address_hint": "Use roles like patient, parent/caregiver, bystander, or partner until names are known.",
+  "debrief_lexi_hints": [
+    {
+      "label": "Next step?",
+      "msg": "What should I do next in this scenario?"
+    },
+    {
+      "label": "CMS check?",
+      "msg": "What is a CMS check and why do I need to do it before and after splinting?"
+    },
+    {
+      "label": "Splinting tips?",
+      "msg": "How do I properly splint a forearm fracture in a pediatric patient?"
+    },
+    {
+      "label": "Angulated fxs?",
+      "msg": "When can I straighten an angulated fracture and when should I splint it in position?"
+    },
+    {
+      "label": "Pain management?",
+      "msg": "What can I do for pain management within BLS scope for a pediatric fracture?"
+    }
+  ],
+  "objectives": [
+    "Perform the Pediatric Assessment Triangle (PAT) as the first step of patient contact",
+    "Assess CMS (circulation, motor, sensation) distal to the injury BEFORE splinting — establish baseline",
+    "Recognize signs of decreased perfusion (cap refill 3 sec, pallor) as the protocol trigger for gentle fracture realignment before splinting",
+    "Perform ONE gentle realignment attempt per the Soft Tissue & Orthopedic Injuries Protocol for a severely angulated fracture with signs of decreased perfusion",
+    "Properly immobilize the forearm fracture — joint above and below; padded; secured without restricting circulation",
+    "Reassess CMS distal to the injury AFTER splinting — compare to pre-splint baseline; loosen immediately if worsening"
+  ],
+  "dispatch": {
+    "unit": "{unit}",
+    "text": "{unit}, respond to Washington Park for a 6-year-old female who fell from the monkey bars. Caller reports an obvious arm deformity.",
+    "priority": "Priority 2",
+    "time": "16:00",
+    "cross_streets": "Washington St and Park Ave",
+    "response_time_minutes": 6
+  },
+  "scene": {
+    "description": "You arrive at a community playground. A woman is crouched next to a bench, one arm around a crying girl. The girl is sitting upright on the bench, holding her left arm close to her body with her right hand. Even from a few feet away you can see that the mid-shaft of her left forearm does not look right — there is a visible outward angulation. No open wound is visible. Several other children have stopped playing and are watching.",
+    "image": null,
+    "video": null,
+    "hazards": [],
+    "bystanders": [
+      {
+        "name": "Laura",
+        "relation": "mother",
+        "age": 38
+      }
+    ]
+  },
+  "patient": {
+    "pcr_demographics_deferred": true,
+    "name": "Emily",
+    "age": 6,
+    "dob_month_day": "October 3",
+    "sex": "female",
+    "weight_kg": 22,
+    "weight_display": "approx 48 lbs (22 kg)",
+    "chief_complaint": "Left forearm pain and visible deformity after fall from monkey bars",
+    "general_impression": "6-year-old female, alert and oriented, sitting upright on bench. She is crying but can answer questions. She is actively guarding her left arm — pressing it against her body, refusing to let anyone touch it. There is a visible mid-shaft angulation of the left forearm. Skin is intact with no open wound. No obvious bleeding.",
+    "gcs_assessment": {
+      "e": 4,
+      "v": 5,
+      "m": 6,
+      "total": 15,
+      "rationale": "Eyes open spontaneously, she is oriented and answers appropriately, and she obeys commands/moves purposefully despite pain.",
+      "challenge_description": "Emily is awake on the bench with eyes open spontaneously. She is oriented, answers questions appropriately through tears, and obeys commands or moves purposefully despite guarding her painful arm."
+    },
+    "avpu_assessment": {
+      "value": "alert",
+      "description": "Patient is alert, oriented, answers appropriately, and obeys commands despite pain.",
+      "rationale": "Use AVPU = alert because she is awake and responding appropriately."
+    },
+    "image": "/static/images/forearm_injury_6yof.jpeg",
+    "video": null
+  },
+  "history": {
+    "allergies": "Penicillin.",
+    "medications": "None.",
+    "pmh": "Healthy 6-year-old. No prior fractures. Up to date on immunizations.",
+    "last_oral_intake": "Lunch approximately 3 hours ago.",
+    "events_leading_to_call": "Mother was watching Emily on the monkey bars. Emily lost her grip from the top bar, fell approximately 5–6 feet, and landed with her left arm outstretched attempting to break the fall. She cried immediately. No LOC. No head injury reported. Arm immediately began to swell and look deformed."
+  },
+  "initial_complaint": {
+    "speaker": "Laura",
+    "lay_summary": "She fell and hurt her arm.",
+    "allowed_in_opener": true,
+    "do_not_include": [
+      "fall height",
+      "landing position",
+      "deformity",
+      "loss of consciousness status",
+      "head injury status",
+      "medical history",
+      "allergies",
+      "diagnosis",
+      "clinical terms",
+      "treatment suggestions",
+      "full OPQRST/SAMPLE"
+    ]
+  },
+  "history_response_map": {
+    "patient_identity": {
+      "label": "Patient identity / demographics",
+      "speaker": "Laura",
+      "triggers": [
+        "what is her name",
+        "what's her name",
+        "patient name",
+        "how old is she",
+        "age",
+        "date of birth",
+        "dob",
+        "birthday"
+      ],
+      "answer": "Her name is Emily. She's 6 years old. Her birthday is October 3.",
+      "tags": [
+        "[[HISTORY: Patient Name=Emily]]",
+        "[[HISTORY: Patient Age=6-year-old female]]",
+        "[[HISTORY: Patient Date of Birth=October 3]]"
+      ],
+      "notes": "Patient-scoped demographics only.",
+      "do_not_include": [
+        "weight unless asked",
+        "mechanism details",
+        "medical history",
+        "medications",
+        "treatment suggestions"
+      ]
+    },
+    "patient_weight": {
+      "label": "Patient weight",
+      "speaker": "Laura",
+      "triggers": [
+        "how much does she weigh",
+        "what does she weigh",
+        "patient weight",
+        "weight",
+        "estimated weight"
+      ],
+      "answer": "She weighs about 48 pounds, around 22 kilograms.",
+      "tag": "[[HISTORY: Patient Weight=approx 48 lbs (22 kg)]]",
+      "notes": "Patient-scoped weight only.",
+      "do_not_include": [
+        "diagnosis",
+        "treatment suggestions"
+      ]
+    },
+    "chief_concern": {
+      "label": "Broad opener / chief concern",
+      "speaker": "Laura",
+      "triggers": [
+        "what's going on",
+        "what happened",
+        "why did you call",
+        "how can we help",
+        "chief complaint"
+      ],
+      "answer": "She fell and hurt her arm.",
+      "tag": "[[HISTORY: Patient Chief Complaint=left forearm pain and deformity after fall]]",
+      "notes": "Patient-scoped complaint only.",
+      "do_not_include": [
+        "fall height",
+        "surface",
+        "medical history",
+        "treatment suggestions"
+      ]
+    }
+  },
+  "vitals": {
+    "baseline": {
+      "hr": {
+        "label": "Heart Rate",
+        "value": 125,
+        "unit": "bpm",
+        "display": "125 bpm — tachycardic, expected with acute pain and distress"
+      },
+      "rr": {
+        "label": "Respirations",
+        "value": 22,
+        "unit": "/min"
+      },
+      "spo2": {
+        "label": "SpO2",
+        "value": 99,
+        "unit": "%"
+      },
+      "bp": {
+        "label": "Blood Pressure",
+        "value": "105/70",
+        "unit": "mmHg"
+      },
+      "temp": {
+        "label": "Temperature",
+        "value": 98.4,
+        "unit": "°F"
+      },
+      "blood_glucose": {
+        "label": "Blood Glucose",
+        "value": 110,
+        "unit": "mg/dL",
+        "display": "110 mg/dL — mild stress response"
+      },
+      "gcs": {
+        "label": "GCS",
+        "value": 15,
+        "unit": "/15",
+        "display": "15 — E4V5M6 — alert, crying, oriented, obeys commands"
+      },
+      "skin_color": {
+        "label": "Skin",
+        "numeric": false,
+        "value": "Pink and warm — left hand slightly pale compared to right"
+      },
+      "pain": {
+        "label": "Pain",
+        "numeric": false,
+        "value": "9/10 severe left forearm pain, worse with movement or palpation"
+      },
+      "cap_refill": {
+        "label": "Cap Refill (affected left hand)",
+        "value": 3,
+        "unit": "sec",
+        "display": "3 seconds (left hand) — borderline; right hand 2 sec"
+      },
+      "pupils": {
+        "label": "Pupils",
+        "numeric": false,
+        "value": "PERRL — 4 mm bilaterally"
+      },
+      "lung_sounds": {
+        "label": "Lung Sounds",
+        "numeric": false,
+        "value": "Clear and equal bilaterally"
+      },
+      "work_of_breathing": {
+        "label": "Work of Breathing",
+        "numeric": false,
+        "value": "Non-labored — crying but no respiratory distress"
+      }
+    },
+    "deterioration": {
+      "note": "This is a hemodynamically stable patient with an isolated extremity injury. Vitals do not significantly deteriorate. However, the CMS finding (cap refill 3 sec, paresthesia) represents a neurovascular concern that should be documented and communicated to ALS.",
+      "rates": {
+        "hr": 0,
+        "rr": 0,
+        "spo2": 0
+      },
+      "caps": {
+        "hr": {
+          "max": 140,
+          "min": 100
+        },
+        "spo2": {
+          "min": 97,
+          "max": 100
+        }
+      },
+      "string_thresholds": {}
+    },
+    "interventions": {
+      "assess_cms": {
+        "label": "CMS Assessment — Pre-Splint",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "cms",
+          "circulation.*motor.*sensory",
+          "(?:left|injured|affected|distal).*circulation",
+          "(?:left|injured|affected|distal).*(?:pulse|radial)",
+          "(?:left|injured|affected|distal).*cap.*refill",
+          "(?:left|injured|affected|distal).*(?:sensation|sensory)",
+          "(?:left|injured|affected|distal).*motor.*function",
+          "(?:left|injured|affected|distal).*wiggle.*fingers",
+          "(?:left|injured|affected|distal).*feel.*fingers",
+          "(?:left|injured|affected|distal).*squeeze.*hand",
+          "(?:left|injured|affected|distal).*grip",
+          "check.*distal",
+          "distal.*pulse",
+          "neurovascular"
+        ],
+        "effects": {},
+        "notes": "Critical assessment before splinting. Expected findings: cap refill 3 sec left hand (borderline), paresthesia ('fuzzy' feeling) in fingers — suggests possible vascular/nerve compromise from fracture angulation. Document baseline before any intervention."
+      },
+      "realign_fracture": {
+        "label": "Gentle Fracture Realignment",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "straighten",
+          "realign",
+          "align",
+          "gentle.*traction",
+          "gentle.*pull",
+          "correct.*angulation",
+          "reposition.*fracture",
+          "reduce.*angulation",
+          "gentle.*straighten",
+          "one.*attempt"
+        ],
+        "effects": {
+          "cap_refill_left": "improves from 3 sec to 2 sec after successful realignment",
+          "hr": {
+            "immediate_change": 8,
+            "rate_modifier": 0.9
+          }
+        },
+        "notes": "Correct action per Soft Tissue & Orthopedic Injuries Protocol (Section 2-5, Special Considerations): 'Straighten severely angulated fractures if distal extremity has signs of decreased perfusion.' Emily's cap refill is 3 sec (above the 2 sec normal) and her hand is pale — these are signs of decreased perfusion. ONE gentle in-line traction and realignment toward anatomic position is indicated BEFORE splinting. If CMS improves after realignment: splint in new position. If no improvement: splint in best obtainable position and expedite transport with ALS priority."
+      },
+      "splinting": {
+        "label": "Forearm Splint — Padded Board or SAM Splint",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "splint",
+          "immobilize",
+          "board splint",
+          "sam splint",
+          "padded.*splint",
+          "immobilization",
+          "brace"
+        ],
+        "effects": {
+          "hr": {
+            "immediate_change": -10,
+            "rate_modifier": 0.85
+          }
+        },
+        "notes": "After realignment attempt, immobilize in best obtainable position. Immobilize joint above (elbow) and below (wrist) the fracture. Apply padding between skin and splint. Secure with bandage — do not apply tightly. Check CMS again after splinting."
+      },
+      "ice_pack": {
+        "label": "Cold Pack Application",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "ice pack",
+          "cold pack",
+          "ice",
+          "cold.*compress"
+        ],
+        "effects": {},
+        "notes": "Reduces swelling and pain at the fracture site. Place between dressing and skin — do not apply ice directly. Wrap in a cloth or dressing."
+      },
+      "assess_cms_post": {
+        "label": "CMS Re-Assessment — Post-Splint",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "recheck.*cms",
+          "reassess.*cms",
+          "(?:left|injured|affected|distal).*(?:check|pulse|radial|cap.*refill|sensation|sensory|motor|movement|wiggle|grip).*after",
+          "(?:after|post).*splint.*(?:pulse|radial|cap.*refill|sensation|sensory|motor|movement|wiggle|grip)",
+          "check.*hand.*again",
+          "check.*again"
+        ],
+        "effects": {},
+        "notes": "Mandatory reassessment after splinting — confirms splint has not compromised circulation. Compare to pre-splint baseline. Any worsening requires immediate splint loosening."
+      }
+    }
+  },
+  "standard_exam_findings": {
+    "left_forearm_injury": {
+      "label": "Left Forearm",
+      "exam_key": "Left Forearm",
+      "aliases": [
+        "left arm",
+        "left forearm",
+        "injured arm",
+        "forearm assessment",
+        "inspect arm",
+        "palpate arm",
+        "inspect and palpate the left forearm for DCAP-BTLS",
+        "DCAP-BTLS left forearm",
+        "DCAP-BTLS left arm"
+      ],
+      "finding": "obvious angulated deformity of the left forearm with swelling and severe tenderness; skin intact with no open wound",
+      "notes": "Use for the injured-extremity exam. Do not convert this closed fracture into an open fracture."
+    },
+    "left_hand_cms": {
+      "label": "Left Hand CMS",
+      "exam_key": "Left Hand CMS",
+      "aliases": [
+        "CMS",
+        "distal pulse",
+        "radial pulse",
+        "left radial pulse",
+        "cap refill",
+        "left capillary refill",
+        "motor sensation",
+        "movement motor",
+        "left hand and forearm movement",
+        "left hand and forearm sensation",
+        "left forearm sensation",
+        "left hand sensation",
+        "neurovascular",
+        "left hand"
+      ],
+      "finding": "left radial pulse present but weaker than right; left hand slightly pale with cap refill about 3 seconds; fingers move but sensation feels fuzzy/tingly",
+      "notes": "Required pre-splint neurovascular baseline for this fracture scenario."
+    },
+    "right_forearm_normal": {
+      "label": "Right Forearm",
+      "exam_key": "Right Forearm",
+      "aliases": [
+        "right forearm",
+        "right hand",
+        "right radial pulse",
+        "right hand and forearm sensation",
+        "right hand and forearm movement",
+        "DCAP-BTLS right forearm"
+      ],
+      "finding": "no deformity, contusion, abrasion, puncture, burn, tenderness, laceration, swelling, sensory deficit, movement deficit, or distal perfusion deficit noted in the right upper extremity",
+      "notes": "Normal comparison side; this should not satisfy injured-left CMS scoring."
+    },
+    "dcap_btls_head_neck": {
+      "label": "DCAP-BTLS Head/Neck",
+      "exam_key": "DCAP-BTLS Head/Neck",
+      "aliases": [
+        "DCAP-BTLS head",
+        "head injury screen",
+        "neck assessment",
+        "c spine"
+      ],
+      "finding": "no head or neck deformity, contusion, abrasion, puncture, burn, tenderness, laceration, or swelling noted",
+      "notes": "Use when the learner screens for associated injury after the fall. The authored injury is isolated to the left forearm."
+    }
+  },
+  "personas": {
+    "emily": {
+      "name": "Emily",
+      "age": 6,
+      "role": "patient",
+      "aliases": [
+        "Emily",
+        "the child",
+        "the girl",
+        "the patient",
+        "sweetie",
+        "she",
+        "her"
+      ],
+      "tts": {
+        "enabled": true,
+        "voice_role": "patient",
+        "gender": "female",
+        "age_band": "child",
+        "speed": 1.12,
+        "demeanor": "frightened 6-year-old child in severe arm pain, tearful and urgent but natural",
+        "delivery": "natural child voice with clear distress: slightly faster, tense, tearful, and short; keep it human and understandable, not robotic or exaggerated",
+        "avoid": "do not sound robotic, cartoonish, theatrical, monotone, calm, cheerful, or like an adult"
+      },
+      "description": "6-year-old female, alert but frightened and clearly in severe pain. She has been crying hard and sounds sniffly, shaky, and urgent from pain. She is protective of her arm and will pull it away if anyone tries to touch it without warning. She can answer simple questions, but answers should sound tearful, strained, varied in tone, and broken up by pain. She is worried she's in trouble for falling. She understands simple explanations.",
+      "speaking_style": "Tearful child who has been crying from pain. Use faster short strained phrases, quick shaky breaths, pained interjections, and emphasized pain words: 'It HURTS, it hurts so much', 'Please don't TOUCH it', 'Am I gonna be okay?', 'My fingers feel fuzzy.' Avoid calm, slow, monotone, fluent, complete, adult-like sentences.",
+      "what_she_knows": [
+        "Her arm hurts very badly where the bump is",
+        "She can wiggle her fingers but it hurts to do it",
+        "Her fingers feel 'fuzzy' or 'tingly' — she describes it as 'like when your foot falls asleep'",
+        "She fell from the top of the monkey bars and tried to catch herself",
+        "She did not hit her head — she landed on her arm",
+        "She is allergic to penicillin — 'the pink medicine makes me throw up'"
+      ],
+      "clinical_state_instructions": "Emily communicates her pain clearly but in frightened, childlike, tearful terms, as if she has been crying for several minutes. Keep her answers short, sniffly, strained, faster than normal, and varied in tone, not calm narration and not slow. Avoid ellipses or long dramatic pauses because TTS reads them too calmly. If asked what happened: 'I fell and landed on my arm, it hurts really bad!' If asked where it hurts: 'Here, my left arm, please don't touch it!' If the student asks about her fingers or sensation: 'They're fuzzy, like when your foot falls asleep.' If student approaches to touch the arm without introducing themselves or explaining first: Emily pulls back and screams. If student explains calmly what they're going to do before touching: Emily watches nervously but cooperates. If student asks Emily to squeeze their fingers: 'Oww, it hurts! A little.' If student asks her to wiggle fingers: wiggles them slowly, grimacing.",
+      "persona_rules": [
+        "Always guard the arm — never passively allow contact without EMS explaining what they're doing first",
+        "Report 'fuzzy fingers' when asked about sensation in her hand",
+        "Cooperate with CMS check if approached gently and with explanation",
+        "Do not give medical history — redirect to mom"
+      ]
+    },
+    "laura": {
+      "name": "Laura",
+      "age": 38,
+      "role": "family",
+      "relation": "mother",
+      "aliases": [
+        "Laura",
+        "Mom",
+        "mom",
+        "mother",
+        "the mother",
+        "ma'am"
+      ],
+      "tts": {
+        "enabled": true,
+        "voice_role": "bystander",
+        "gender": "female",
+        "age_band": "adult",
+        "provider_voice": "coral",
+        "speed": 1.15,
+        "demeanor": "frightened mother trying to hold herself together for her child; protective, tense, cooperative, visibly scared by the deformity and Emily's pain, with breath-catching urgency",
+        "delivery": "worried parent: clear, mildly faster than normal, protective, tense, and cooperative; slow down for important details",
+        "avoid": "do not sound calm, flat, detached, clinical, playful, theatrical, physically ill, or like the patient"
+      },
+      "description": "Emily's mother. She is frightened and protective, trying to keep it together for Emily's sake but clearly scared by the deformity and Emily's pain. She talks quickly at first and sounds shaken. She has a healthcare background but is acting as Emily's mother, not as EMS or medical control. She knows Emily is allergic to penicillin. She is worried about whether the arm is badly hurt, whether Emily will need surgery, and whether someone can help with the pain.",
+      "speaking_style": "Fast, controlled but scared and breath-catching. Use urgent parent language: 'She fell and her arm looks wrong!', 'Her hand looks pale — is that bad?', 'Can someone please help with the pain?' Cooperates fully with EMS direction.",
+      "what_she_knows": [
+        "Emily fell from the top of the monkey bars — approximately 5–6 feet — and landed on her outstretched left arm",
+        "No LOC — Emily cried immediately",
+        "No head injury — she watched the whole fall",
+        "Emily is allergic to penicillin — causes vomiting",
+        "Emily has no other medical history, no other medications",
+        "She last ate lunch about 3 hours ago",
+        "Laura noticed the left hand looks a little pale compared to the right and the cap refill is slower",
+        "Laura is not sure if Emily should be moved to the car or wait for the ambulance"
+      ],
+      "clinical_state_instructions": "If student identifies CMS deficit: Laura nods. 'Yeah — I noticed the left hand looks a little paler. Is that from the injury?' If student asks about allergy: 'Penicillin — she gets really sick to her stomach.' If student mentions ALS for pain management: 'Yes — she's in a lot of pain. Can they give her something?' Do not prompt the student to straighten, realign, splint, medicate, call ALS, or choose any treatment step unless the student asks Laura directly for her concern or observation.",
+      "persona_rules": [
+        "Provide accurate and detailed history when asked",
+        "Offer parent observations only when asked; do not prompt EMS treatment decisions",
+        "Do not recommend straightening, splinting, pain management, ALS, or any protocol step",
+        "Use lay parent language rather than medical terminology unless the student uses a medical term first"
+      ]
+    },
+    "alex": {
+      "name": "Alex",
+      "age": 28,
+      "role": "ems_partner",
+      "aliases": [
+        "Alex",
+        "partner",
+        "my partner",
+        "crew"
+      ],
+      "tts": {
+        "enabled": true,
+        "voice_role": "alex",
+        "gender": "male",
+        "age_band": "adult",
+        "provider_voice": "echo",
+        "speed": 1.32,
+        "demeanor": "calm, competent, methodical EMT partner who is alert to pediatric extremity trauma",
+        "delivery": "brisk, concise field tone with clear EMS cadence; natural and direct without sounding sleepy or theatrical",
+        "avoid": "do not sound flat, like a narrator, instructor, parent, patient, or anxious bystander"
+      },
+      "description": "Your EMT partner on Squad 3. Methodical and calm. Will retrieve splinting supplies when directed. Does not volunteer assessment findings or interventions — waits for direction. Will prompt CMS documentation if student skips it.",
+      "speaking_style": "Brief, professional. 'SAM splint or board — your call.' 'Should I get the padding too?' 'CMS documented?'",
+      "capabilities": [
+        "Report individual vitals when asked",
+        "Report full set of vitals when asked",
+        "Retrieve board splint, SAM splint, padding, roller bandage from rig",
+        "Hold Emily's arm stable during splinting when directed",
+        "Apply cold pack when directed",
+        "Prepare stretcher for transport"
+      ]
+    }
+  },
+  "correct_treatment": {
+    "critical_actions": [
+      {
+        "id": "scene_safety",
+        "description": "Scene safety and BSI/PPE",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "pat",
+        "description": "PAT — appearance (alert, crying, in pain), WOB (non-labored), circulation (pink, warm)",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "assess_cms_pre",
+        "description": "Assess CMS distal to injury BEFORE any intervention — document cap refill 3 sec (left hand) and paresthesia ('fuzzy fingers')",
+        "required": true,
+        "protocol_indicated": true,
+        "intervention_ids": [
+          "assess_cms"
+        ],
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(cms|circulation.*sensation.*movement|pulse.*distal|cap.*refill|cap refill|motor|sensation|before.*splint|before.*realign|check.*before|distal.*pulse)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "realign",
+        "description": "Attempt ONE gentle fracture realignment — cap refill 3 sec + pallor = signs of decreased perfusion per Section 2-5 protocol",
+        "required": true,
+        "protocol_indicated": true,
+        "intervention_ids": [
+          "realign_fracture"
+        ],
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(realign|traction|gentle.*fracture|fracture.*align|align.*fracture|one.*attempt|straighten|reposition|gentle.*pull|gentle traction)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "splint",
+        "description": "Immobilize fracture — joint above and below; padded; secured without restricting circulation",
+        "required": true,
+        "protocol_indicated": true,
+        "intervention_ids": [
+          "splinting"
+        ],
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(splint|immobili|traction.*splint|air.*splint|cardboard|sam.*splint|padded|joint.*above|joint.*below)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "assess_cms_post",
+        "description": "Reassess CMS distal to injury AFTER splinting — compare to pre-splint baseline; loosen if worsening",
+        "required": true,
+        "protocol_indicated": true,
+        "intervention_ids": [
+          "assess_cms_post"
+        ],
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(cms.*after|reassess.*cms|after.*splint|post.*splint|circulation.*after|sensation.*after|check.*after.*splint|distal.*after|recheck)"
+          ],
+          "min_matches": 1
+        }
+      }
+    ],
+    "recommended_actions": [
+      {
+        "id": "ice",
+        "description": "Apply cold pack to reduce swelling and pain",
+        "required": false
+      },
+      {
+        "id": "als_pain",
+        "description": "Request ALS intercept for pediatric pain management consideration",
+        "required": false
+      },
+      {
+        "id": "als_cms_update",
+        "description": "Communicate CMS deficit to ALS — cap refill 3 sec and paresthesia pre-splint",
+        "required": false
+      },
+      {
+        "id": "position",
+        "description": "Position arm at chest level with pillow or sling for patient comfort during transport",
+        "required": false
+      }
+    ],
+    "out_of_scope_bls": [
+      "aggressive_fracture_manipulation",
+      "iv_pain_medication"
+    ],
+    "out_of_scope_aemt": [],
+    "out_of_scope_paramedic": [],
+    "clinical_decision_points": {
+      "cms_deficit_significance": "Cap refill 3 sec (above the 2 sec normal) and paresthesia ('fuzzy fingers') in the affected hand suggest possible vascular and/or nerve compromise from fracture angulation. Cap refill 3 sec + pallor = signs of decreased perfusion per protocol.",
+      "realignment_indication": "Soft Tissue & Orthopedic Injuries Protocol (Section 2-5, Special Considerations): 'Straighten severely angulated fractures if distal extremity has signs of decreased perfusion.' Emily's findings (cap refill 3 sec, pale left hand) meet this threshold. ONE gentle in-line realignment attempt is the correct protocol action — NOT simply splinting in position found.",
+      "splint_in_position": "Splinting in position found is appropriate when distal CMS is INTACT or when the only finding is a pure nerve finding without vascular compromise. It is not appropriate here given the decreased perfusion signs.",
+      "als_trigger": "ALS/intercept expectations are determined by the active agency configuration. Communicate: 6-year-old, left forearm angulated fracture, CMS findings (cap refill 3 sec, paresthesia), realignment performed — ALS may bring pediatric pain management when ALS is involved.",
+      "destination": "ED for radiograph, ortho consult, and likely closed reduction under sedation or ORIF."
+    }
+  },
+  "scoring": {
+    "overall_considerations": [
+      "The core skill sequence: CMS pre → gentle realignment (signs of decreased perfusion present) → splint → CMS post. All four steps are required.",
+      "The CMS finding (cap refill 3 sec, pallor, paresthesia) meets the protocol threshold for decreased perfusion — realignment before splinting is the correct action per Section 2-5.",
+      "Credit realignment if attempted — this is the correct protocol action. Penalize if student splints in position found without attempting realignment given the CMS findings.",
+      "Broselow tape is not required — weight provided by mother.",
+      "Cold pack is recommended but not critical — do not penalize for omission if CMS sequence and splinting are complete."
+    ],
+    "dmist_considerations": [
+      "D: Emily, 6-year-old female, 48 lbs (22 kg). Allergy: Penicillin.",
+      "M: Left forearm angulated fracture, fall from monkey bars ~5 ft onto outstretched arm. No LOC. No head injury.",
+      "I: CMS assessed pre-intervention — cap refill 3 sec left hand (right 2 sec), paresthesia ('fuzzy') in left hand fingers, left hand slightly pale. Signs of decreased perfusion present — one gentle realignment attempt performed per Section 2-5 protocol. Forearm then splinted — joint above and below, padded, bandaged. CMS reassessed post-splint — cap refill improved to 2 sec, paresthesia resolving.",
+      "S: GCS 15, SpO2 99%, HR 125. Post-realignment left hand: cap refill 2 sec, improving sensation. Right hand cap refill 2 sec (baseline normal).",
+      "T: Stable. Splint in place. Transporting to ED. ALS Medic 2 notified — CMS findings and realignment documented."
+    ],
+    "dmist_components": {
+      "D": {
+        "description": "Patient demographics",
+        "required_elements": [
+          "name: Emily",
+          "age: 6",
+          "sex: female",
+          "weight: 22 kg or 48 lbs"
+        ],
+        "corroboration_source": "scenario_patient_fields"
+      },
+      "M": {
+        "description": "Mechanism and chief complaint",
+        "required_elements": [
+          "fall from monkey bars",
+          "left forearm pain",
+          "visible deformity or angulation"
+        ],
+        "corroboration_source": "any"
+      },
+      "I": {
+        "description": "Injury details — left forearm fracture, deformity, and initial neurovascular findings",
+        "required_elements": [
+          "left forearm deformity from fall off monkey bars",
+          "apparent radial/ulnar fracture with visible angulation",
+          "point tenderness and swelling",
+          "ecchymosis at fracture site",
+          "initial CMS status: intact at presentation"
+        ],
+        "corroboration_source": "history_and_findings",
+        "note": "I is illness/injury, not interventions. Treatments (splinting, CMS re-check steps) belong under T."
+      },
+      "S": {
+        "description": "Signs and current status",
+        "required_elements": [
+          "CMS findings (circulation, motor, sensation)",
+          "SpO2",
+          "deformity description"
+        ],
+        "corroboration_source": "vitals_and_findings"
+      },
+      "T": {
+        "description": "Post-splinting status at ALS handoff",
+        "required_elements": [
+          "post-splinting CMS",
+          "current pain or neurovascular status"
+        ],
+        "corroboration_source": "any"
+      }
+    },
+    "narrative_considerations": [
+      "CHART format: dispatch (fall from monkey bars, arm deformity), mechanism (6-foot fall onto outstretched arm), assessment (angulated forearm, CMS findings), treatment (CMS check, splinting in position, CMS recheck, cold pack), transport to ED.",
+      "Key documentation: MOI, pre-splint CMS findings (cap refill, sensation, motor), splinting method, post-splint CMS comparison, allergy (Penicillin).",
+      "Objective language: 'Cap refill 3 seconds left hand, 2 seconds right; patient reports paresthesia in left hand fingers' is objective — 'hand looked a little pale' is not."
+    ],
+    "required_assessments": [
+      {
+        "id": "cms_pre_intervention",
+        "description": "CMS assessment BEFORE intervention (cap refill, sensation, motor function — pre-realignment baseline)",
+        "keywords": [
+          "CMS",
+          "cap refill",
+          "circulation",
+          "sensation",
+          "motor",
+          "capillary",
+          "fingers",
+          "feel",
+          "numb",
+          "tingle",
+          "paresthesia",
+          "pulse",
+          "distal",
+          "before",
+          "prior"
+        ],
+        "missing_deduction": 3,
+        "note": "Pre-intervention CMS is the first step of the core skill sequence and the clinical basis for the realignment decision. Without a pre-splint baseline, post-splint comparison is impossible."
+      },
+      {
+        "id": "cms_post_intervention",
+        "description": "CMS assessment AFTER splinting (comparison to pre-splint baseline to confirm no neurovascular compromise)",
+        "keywords": [
+          "CMS",
+          "cap refill",
+          "after",
+          "repeat",
+          "recheck",
+          "post",
+          "splint",
+          "again",
+          "compare",
+          "check again",
+          "sensation",
+          "motor",
+          "reassess"
+        ],
+        "missing_deduction": 2,
+        "note": "Post-splint CMS is the final step of the core skill sequence — confirms no neurovascular compromise introduced by the splint or realignment."
+      }
+    ],
+    "by_level": {
+      "MFR": {
+        "critical_focus": [
+          "Scene safety, recognize deformity",
+          "Check distal pulses and cap refill before any manipulation",
+          "Recognize decreased perfusion signs (cap refill > 2 sec, pallor) — note and communicate to incoming EMS",
+          "Request ALS"
+        ],
+        "additional_expectations": [],
+        "grace_items": [
+          "Formal CMS terminology not required — credit any check of circulation and sensation distal to fracture",
+          "Realignment is EMT-level skill — MFR should recognize and document the finding but may defer realignment to EMT crew"
+        ]
+      },
+      "EMT": {
+        "critical_focus": [
+          "Scene safety and BSI",
+          "PAT",
+          "CMS check before any intervention — document cap refill 3 sec and paresthesia",
+          "Recognize signs of decreased perfusion → ONE gentle realignment attempt per Section 2-5 protocol",
+          "Splint the forearm — board splint or SAM splint, joint above and below, padded",
+          "CMS check after splinting — compare to pre-splint baseline",
+          "Communicate CMS findings and realignment to ALS"
+        ],
+        "additional_expectations": [
+          "Note allergy (Penicillin) — relevant for ALS and hospital",
+          "Consider position of arm during transport for patient comfort"
+        ],
+        "grace_items": [
+          "PAT acronym not required — credit component assessment",
+          "ALS request is not required when the active agency configuration co-dispatches ALS",
+          "Exact splint type (SAM vs board) not required — credit appropriate immobilization",
+          "Credit if student splints in position found and notes CMS deficit — partial credit; full credit requires realignment attempt"
+        ]
+      },
+      "AEMT": {
+        "critical_focus": [
+          "All EMT expectations",
+          "Consider IV access for pain management if ALS delayed"
+        ],
+        "additional_expectations": [],
+        "grace_items": [
+          "Same EMT grace items"
+        ]
+      },
+      "Paramedic": {
+        "critical_focus": [
+          "All EMT expectations",
+          "Pain management (fentanyl or ketorolac) per ALS protocol for pediatric fracture",
+          "Re-evaluate CMS after pain management — ensure realignment improved perfusion"
+        ],
+        "additional_expectations": [
+          "Document pain score pre and post-treatment"
+        ],
+        "grace_items": [
+          "Same base grace items"
+        ]
+      }
+    },
+    "corroboration_rules": {
+      "dmist": {
+        "I": {
+          "max_deduction_per_violation": 3,
+          "note": "CMS findings and realignment documentation must match the run record — documenting realignment when it was not performed, or documenting intact CMS when compromise was present, misleads orthopedic and vascular surgical planning at the receiving facility"
+        }
+      },
+      "narrative": {
+        "A": {
+          "max_deduction_per_violation": 3,
+          "note": "Pre- and post-realignment CMS findings must match the run record — these drive orthopedic consultation decisions and cannot be fabricated or omitted"
+        }
+      }
+    }
+  },
+  "scoring_rubric": {
+    "clinical_performance": {
+      "max": 50,
+      "full_credit": "PAT, CMS assessed pre-intervention (cap refill AND sensation documented), signs of decreased perfusion recognized, ONE gentle realignment attempted per protocol, fracture splinted with joint above and below (padded), CMS reassessed post-splint and compared to baseline, ALS notified — plus base rubric: scene safety, primary assessment, mechanism, hemorrhage control, secondary assessment, handoff",
+      "partial_credit": "CMS checks performed and splinting correct, but realignment not attempted despite decreased perfusion signs — or realignment performed but post-splint CMS omitted",
+      "minimal_credit": "Splinting performed without pre-splint CMS check — neurovascular finding not identified or acted upon"
+    },
+    "narrative": {
+      "max": 20,
+      "full_credit": "CHART complete: dispatch, mechanism (fall height, outstretched arm), assessment (angulated deformity, CMS findings — cap refill 3 sec, paresthesia), splinting method, post-splint CMS comparison, allergy documented, transport to ED.",
+      "partial_credit": "Most CHART elements present but CMS findings not documented or post-splint reassessment absent",
+      "minimal_credit": "Narrative present but CMS not documented or splinting method absent"
+    },
+    "scope_adherence": {
+      "max": 10,
+      "full_credit": "Stayed within effective provider scope and MCA rules: IV pain medication not administered — outside BLS scope for pediatric extremity fracture. No out-of-scope attempts or orders.",
+      "partial_credit": "No dangerous out-of-scope intervention attempted, but scope reasoning, level-specific escalation, or MCA-specific scope recognition was incomplete.",
+      "minimal_credit": "Out-of-scope intervention attempted or ordered, or provider-level limits materially ignored."
+    },
+    "dmist": {
+      "max": 10,
+      "full_credit": "D: Emily, 6yo, 22 kg, Penicillin allergy; M: forearm angulated fracture, fall ~5–6 ft; I: CMS pre (cap refill 3 sec, paresthesia) → splint → CMS post; S: GCS 15, SpO2 99%, HR 125; T: ED transport.",
+      "partial_credit": "3–4 components; CMS finding or allergy missing",
+      "minimal_credit": "2 or fewer components or CMS not mentioned"
+    },
+    "professionalism": {
+      "max": 10,
+      "full_credit": "Introduced self, explained each step before touching Emily, used Emily's name, addressed mother's questions (shouldn't we straighten it?), kept Emily's consent in the process, age-appropriate explanations",
+      "partial_credit": "Communication present but Emily's anxiety about being touched not addressed, or mother's questions ignored",
+      "minimal_credit": "No preparation of Emily for physical contact or splinting procedure — tactile-sensitive child managed without acknowledgment of her distress or use of family support"
+    },
+    "protocols_treatment": {
+      "max": 10,
+      "full_credit": "Protocol-aligned treatment completed: Fracture immobilized with splint — required BLS intervention for extremity fracture. Contraindicated care avoided and in-scope treatment priorities addressed.",
+      "partial_credit": "Most treatment priorities addressed, but one important protocol-aligned intervention, escalation step, or contraindication check was incomplete or delayed.",
+      "minimal_credit": "Key protocol/treatment priority missed, contraindicated care performed, or treatment plan materially inconsistent with protocol."
+    }
+  },
+  "exemplar_dmist": "D — Emily, 6-year-old female, 48 lbs (22 kg). Allergy: Penicillin.\nM — Angulated left forearm fracture. Fall from top of monkey bars — approximately 5–6 feet — onto outstretched left arm. No LOC. No head injury reported by mother who witnessed fall.\nI — Pre-intervention CMS left hand: cap refill 3 seconds (right hand 2 sec baseline), paresthesia ('fuzzy fingers'), left hand slightly pale — signs of decreased perfusion present. One gentle realignment performed per Soft Tissue & Orthopedic Injuries Protocol. Left forearm then splinted — padded SAM splint, immobilizing wrist and elbow. Cold pack applied. Post-splint CMS: cap refill improved to 2 sec, paresthesia resolving.\nS — GCS 15, SpO2 99%, HR 125, BP 105/70. Post-realignment left hand: cap refill 2 sec, improving grip, paresthesia improving. Right hand: cap refill 2 sec, normal.\nT — Stable. Splint in place. Transporting to ED for radiograph and ortho evaluation. ALS Medic 2 notified — CMS findings and realignment documented.",
+  "exemplar_narrative": "Squad 3 responded to Washington Park for a 6-year-old female who fell from monkey bars. Upon arrival, patient Emily, a 6-year-old female weighing approximately 48 lbs, was found sitting on a park bench, alert and crying, guarding her left arm. Mother witnessed fall from top of monkey bars — approximately 5–6 feet — landing on outstretched left arm. No loss of consciousness. No head injury. Allergy: Penicillin (GI reaction). No medications. No PMH.\n\nPAT: Alert with appropriate cry for age. Work of breathing non-labored. Skin pink and warm. Baseline vitals: SpO2 99%, HR 125, RR 22, BP 105/70, GCS 15. Visible mid-shaft angulation of left forearm — no open wound, no active hemorrhage.\n\nPre-intervention CMS left hand: cap refill 3 seconds (right hand 2 sec baseline), patient reports paresthesia in left fingers ('feels fuzzy like my foot falling asleep'), left hand slightly pale compared to right. Signs of decreased perfusion identified. Per Soft Tissue & Orthopedic Injuries Protocol (Section 2-5), one gentle in-line realignment attempted prior to splinting. ALS Medic 2 notified. Left forearm then splinted with padded SAM splint — wrist and elbow immobilized, bandaged without restriction. Cold pack applied. Post-splint CMS: cap refill improved to 2 seconds, paresthesia improving, pallor resolved. Compared favorably to pre-intervention baseline.\n\nPatient calm with mother present throughout. Mother advised not to eat or drink en route (possible surgical repair). Transported to ED. Full verbal report given including allergy, pre/post-intervention CMS findings, and realignment performed.",
+  "debrief": {
+    "condition_background": "Emily has an angulated mid-shaft fracture of the left forearm, likely involving both the radius and ulna (both-bone forearm fracture — the most common result of a fall on an outstretched hand in children). The critical clinical finding here is the neurovascular status of the distal extremity: cap refill 3 seconds (above the normal 2 sec cutoff), left hand pallor compared to the right, and paresthesia ('fuzzy fingers'). These findings together constitute signs of decreased perfusion. The Michigan Soft Tissue & Orthopedic Injuries Protocol (Section 2-5) explicitly directs BLS providers to 'straighten severely angulated fractures if distal extremity has signs of decreased perfusion.' This is a protocol-specific action — one gentle in-line realignment attempt is indicated before splinting. After realignment and splinting, CMS must be reassessed to confirm improvement and ensure the splint itself did not worsen circulation.",
+    "key_teaching_points": [
+      "CMS check BEFORE any intervention is mandatory — cap refill, distal pulse, sensation, and motor function. This is the baseline everything else is measured against.",
+      "Signs of decreased perfusion (cap refill > 2 sec, pallor, absent/diminished pulse) in a severely angulated fracture = indication for ONE gentle realignment attempt per Section 2-5 protocol. 'Splint in position found' is NOT the correct action when perfusion is compromised.",
+      "ONE gentle attempt means gentle in-line traction to reduce angulation toward anatomic position — not a forceful or repeated reduction. If it does not improve on the first attempt, splint in best obtainable position and transport urgently.",
+      "Immobilize the joint ABOVE and BELOW the fracture. For a forearm fracture: immobilize the wrist AND the elbow.",
+      "CMS check AFTER splinting compares to the pre-intervention baseline. If circulation worsens after splinting — loosen the bandage immediately. A tighter splint is not a better splint.",
+      "Allergy documentation matters — Penicillin allergy is directly relevant if surgical fixation requires IV antibiotics.",
+      "ALS for pain management — a 6-year-old in severe pain from a displaced fracture is a legitimate reason to request ALS for pediatric IV analgesics (fentanyl, ketorolac)."
+    ],
+    "common_mistakes": [
+      "Splinting in position found without assessing CMS first — the pre-intervention baseline justifies every subsequent action",
+      "Splinting in position found WITHOUT attempting realignment despite cap refill 3 sec and pallor — ignores the Section 2-5 protocol directive",
+      "Performing only one CMS check — both pre-intervention and post-splint checks are required",
+      "Tightening the splint bandage too much — interferes with circulation and defeats the purpose of post-splint CMS",
+      "Forgetting to immobilize joint above AND below the fracture — wrist only is inadequate for a forearm fracture",
+      "Not communicating the CMS findings and realignment performed to ALS or the receiving ED"
+    ]
+  },
+  "legacy_ai_categories": [
+    "documentation",
+    "professionalism"
+  ],
+  "checklist": [
+    {
+      "id": "ems.trauma.head_scalp_ears",
+      "description": "Suppressed for isolated extremity pilot: head/scalp/ear trauma survey is not required when the witnessed mechanism is an isolated fall onto the arm with no head strike.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.head_eyes",
+      "description": "Suppressed for isolated extremity pilot: eye trauma survey is not required when there is no head strike, AMS, or facial injury.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.head_mouth_nose_face",
+      "description": "Suppressed for isolated extremity pilot: facial trauma survey is not required when the witnessed mechanism is isolated to the arm.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.neck_trachea",
+      "description": "Suppressed for isolated extremity pilot: tracheal-position trauma survey is not required by this arm injury mechanism.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.neck_jugular_veins",
+      "description": "Suppressed for isolated extremity pilot: jugular vein assessment is not required by this arm injury mechanism.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.neck_c_spine",
+      "description": "Suppressed for isolated extremity pilot: C-spine palpation is not required when the witnessed fall caused no head strike, neck pain, or altered mental status.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.chest_inspect",
+      "description": "Suppressed for isolated extremity pilot: chest trauma inspection is not required by the authored arm-only mechanism.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.chest_palpate",
+      "description": "Suppressed for isolated extremity pilot: chest palpation is not required by the authored arm-only mechanism.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.chest_auscultate",
+      "description": "Suppressed for isolated extremity pilot: chest auscultation is not required by the authored arm-only mechanism and normal respiratory presentation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.abdomen_inspect_palpate",
+      "description": "Suppressed for isolated extremity pilot: abdominal trauma assessment is not required by the authored arm-only mechanism.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.pelvis_assess",
+      "description": "Suppressed for isolated extremity pilot: pelvic trauma assessment is not required by the authored arm-only mechanism.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.genitalia_perineum_as_needed",
+      "description": "Suppressed for isolated extremity pilot: genitalia/perineum trauma assessment is not required by the authored arm-only mechanism.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.lower_left_pmsc",
+      "description": "Suppressed for isolated extremity pilot: lower-extremity PMSC assessment is not required by this isolated upper-extremity injury.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.lower_right_pmsc",
+      "description": "Suppressed for isolated extremity pilot: lower-extremity PMSC assessment is not required by this isolated upper-extremity injury.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.upper_right_pmsc",
+      "description": "Suppressed for isolated extremity pilot: right upper-extremity PMSC assessment is not required by this isolated left forearm injury.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.posterior_thorax",
+      "description": "Suppressed for isolated extremity pilot: posterior thorax trauma survey is not required by the authored arm-only mechanism.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.lumbar_buttocks",
+      "description": "Suppressed for isolated extremity pilot: lumbar/buttocks trauma survey is not required by the authored arm-only mechanism.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "peds_trauma_03_extremity.pat_assessment",
+      "description": "PAT completed — appearance (alert, crying, in pain), work of breathing (non-labored), circulation to skin (pink, warm) assessed",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "scene_entry",
+        "scene_entry_path": "pat_assessment"
+      },
+      "tier2_patterns": [
+        "(?i)(pat|appearance|alert|cry|pain|work of breath|circulat|pink|warm|skin)"
+      ],
+      "done_feedback": "PAT completed — alert child with isolated extremity injury, non-labored breathing, and adequate circulation confirmed.",
+      "missed_feedback": "PAT not completed — even for an apparent isolated extremity injury, PAT ensures no concurrent breathing or perfusion compromise was missed.",
+      "clinical_rationale": "PAT provides a rapid global assessment; a child who appears pale after extremity trauma may have concurrent hemorrhagic shock.",
+      "common_error": "Focusing exclusively on the injured extremity without completing a general patient assessment."
+    },
+    {
+      "id": "peds_trauma_03_extremity.cms_pre_assessment",
+      "description": "CMS (circulation, motor function, sensation) assessed distal to injury BEFORE any intervention — cap refill 3 sec and paresthesia documented as baseline",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 7,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "assess_cms"
+      },
+      "tier2_patterns": [
+        "(?i)\\bCMS\\b",
+        "(?i)(?=.*\\b(?:circulation|cap refill|pulse.*hand|radial pulse|distal pulse)\\b)(?=.*\\b(?:motor|move|movement|wiggle|grip)\\b)(?=.*\\b(?:sensation|sensory|numb|tingly|feel.*finger|feel|touch)\\b)"
+      ],
+      "done_feedback": "CMS assessed distal to injury before splinting — circulation, motor function, and sensation documented as baseline.",
+      "missed_feedback": "CMS not assessed before splinting — without a pre-splint baseline, any neurovascular change caused by the splint cannot be identified.",
+      "clinical_rationale": "Distal neurovascular assessment is required before and after extremity splinting; deterioration after splinting indicates compartment syndrome or vascular compromise.",
+      "common_error": "Assessing CMS only after splinting — this misses pre-existing neurovascular injury and provides no baseline for comparison."
+    },
+    {
+      "id": "peds_trauma_03_extremity.fracture_realignment",
+      "description": "ONE gentle fracture realignment attempted — indicated by cap refill 3 sec, pallor, and paresthesia (signs of decreased perfusion)",
+      "subtype": "intervention",
+      "category": "clinical_performance",
+      "point_value": 8,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "realign_fracture"
+      },
+      "tier2_patterns": [
+        "(?i)(realign|reduce|traction|straighten|gently|one.*attempt|one.*try|long.?axis)"
+      ],
+      "done_feedback": "ONE gentle realignment attempt performed — indicated by delayed cap refill, pallor, and paresthesia; correct indication and technique.",
+      "missed_feedback": "Realignment not performed despite decreased distal perfusion — delayed cap refill, pallor, and paresthesia are indications for one gentle realignment attempt before splinting.",
+      "clinical_rationale": "Angulated fractures with vascular compromise require one gentle realignment attempt to restore perfusion; if unsuccessful, splint in position and transport urgently.",
+      "common_error": "Attempting multiple realignment passes — only ONE attempt is indicated; if realignment does not restore perfusion, splint in position and transport urgently."
+    },
+    {
+      "id": "peds_trauma_03_extremity.splinting",
+      "description": "Fracture immobilized — joint above and below; padded; secured without restricting circulation",
+      "subtype": "intervention",
+      "category": "clinical_performance",
+      "point_value": 7,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "splinting"
+      },
+      "tier2_patterns": [
+        "(?i)(splint|immobiliz|padded|secure|stabilize|joint.*above|joint.*below|bandage)"
+      ],
+      "done_feedback": "Fracture immobilized — joint above and below included, padded, and secured without cutting off circulation.",
+      "missed_feedback": "Fracture not splinted — immobilization prevents further soft tissue and vascular injury during transport and reduces pain.",
+      "clinical_rationale": "Splinting stabilizes bone ends, reduces pain, prevents additional soft tissue injury, and decreases hemorrhage from motion-induced vessel damage.",
+      "common_error": "Splinting without including the joint above and below the fracture — immobilizing only the fracture site allows motion at adjacent joints that can displace it."
+    },
+    {
+      "id": "peds_trauma_03_extremity.cms_post_assessment",
+      "description": "CMS reassessed distal to injury AFTER splinting — compared to pre-splint baseline; splint loosened if circulation worsened",
+      "subtype": "reassessment",
+      "category": "clinical_performance",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "assess_cms_post"
+      },
+      "tier2_patterns": [
+        "(?i)(?:reassess|recheck|check).*\\bCMS\\b",
+        "(?i)(?=.*\\b(?:after|post|following)\\b)(?=.*\\bsplint)(?=.*\\b(?:circulation|cap refill|pulse|motor|move|movement|sensation|sensory|numb|tingly|distal)\\b)"
+      ],
+      "done_feedback": "CMS reassessed after splinting — compared to pre-splint baseline; confirms splint did not compromise neurovascular status.",
+      "missed_feedback": "CMS not reassessed after splinting — splints can constrict circulation if applied too tightly; post-splint comparison is required to detect iatrogenic vascular compromise.",
+      "clinical_rationale": "Post-splint CMS deterioration (loss of pulse, worsening cap refill, loss of sensation) indicates a splint that is too tight or compartment syndrome; both require immediate intervention.",
+      "common_error": "Not reassessing CMS after splinting because 'it went fine' — compartment syndrome from swelling or an overtight splint can develop rapidly."
+    },
+    {
+      "id": "peds_trauma_03_extremity.scope_no_iv_pain_medication",
+      "description": "IV pain medication not administered — outside BLS scope for pediatric extremity fracture",
+      "subtype": "intervention",
+      "category": "scope_adherence",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [
+        "MFR",
+        "EMT"
+      ],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "absence_check",
+        "absence_intervention_key": "iv_pain_medication"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "IV pain medication correctly withheld — outside BLS scope; splinting and positioning are the BLS pain management interventions.",
+      "missed_feedback": "IV pain medication attempted — outside BLS scope; opioid analgesics via IV require ALS-level certification.",
+      "clinical_rationale": "BLS pain management for extremity fracture is immobilization and splinting; IV/IM opioid analgesia is an ALS intervention."
+    },
+    {
+      "id": "peds_trauma_03_extremity.scope_immobilization_applied",
+      "description": "Fracture immobilized with splint — required BLS intervention for extremity fracture",
+      "subtype": "intervention",
+      "category": "protocols_treatment",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "splinting"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "Fracture immobilized per protocol — splinting with CMS check is the required BLS protocol intervention.",
+      "missed_feedback": "Fracture not immobilized — splinting is the protocol-mandated BLS intervention for suspected extremity fracture; transport without immobilization causes unnecessary pain and further injury.",
+      "clinical_rationale": "Protocol requires all suspected fractures to be splinted before transport; splinting reduces hemorrhage, pain, and secondary soft tissue injury."
+    }
+  ]
+}

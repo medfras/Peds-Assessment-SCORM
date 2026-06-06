@@ -1,0 +1,146 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 1-9 Opioid Overdose Treatment and Prevention (Revised 07/19/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_all_opioid_overdose",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "All",
+  "level_display": "All Levels",
+  "jurisdiction": "Michigan",
+  "condition": "Opioid Overdose Treatment and Prevention",
+  "aliases": [
+    "OD",
+    "Naloxone administration",
+    "Naloxone leave behind",
+    "Accidental overdose"
+  ],
+  "version": "2023-07-19",
+  "protocol_reference": "Michigan General Treatment Protocol Section 1-9: Opioid Overdose Treatment and Prevention — MDHHS Approved 7/19/23, Reviewed 2023",
+  "indications": "Decreased level of consciousness associated with respiratory depression from opioid overdose, signs of opioid use, scenes with indications of opioid use. For critically ill patients see Adult or Pediatric Crashing Patient/Impending Arrest-Treatment Protocol.",
+  "sections": [
+    {
+      "title": "Opioid Overdose with Respiratory Depression",
+      "reference": "Michigan Protocol 1-9: Opioid Overdose Treatment and Prevention",
+      "points": [
+        "Follow General Pre-Hospital Care-Treatment Protocol",
+        "Pediatric patients (< 14 years of age): utilize MI MEDIC cards for appropriate medication dosage; when unavailable, use pediatric dosing listed within protocol",
+        "If patient has respiratory depression: provide oxygenation and support ventilations — treatment goal is to restore effective respirations; patient need not be completely awakened",
+        "Administer naloxone when (may be MFR skill based on MCA selection): ventilations have been established AND patient has not regained consciousness; AND there is more than 1 rescuer on scene for personnel safety",
+        "Administer naloxone intranasal per MCA selection (may repeat once in 3–5 minutes if effective respirations not restored): see MCA Selections for specific formulation",
+        "Administer naloxone IM, IN, or slowly IV, titrating to restore effective respirations: Adults: 2 mg IM or IN via atomizer (IN max two doses total); Pediatrics: 0.1 mg/kg IM/IN/IV; Adults IV: up to 2 mg IV slowly, titrating to improvement in respiratory status, repeat q3–5 min as needed",
+        "Patients not responding to naloxone should have continued airway and ventilatory support",
+        "Transport according to MCA Transport Protocol"
+      ]
+    },
+    {
+      "title": "Opioid Withdrawal",
+      "reference": "Michigan Protocol 1-9: Opioid Overdose — Withdrawal Management",
+      "points": [
+        "For patients with signs/symptoms or reporting opioid withdrawal (tremors, chills, nausea/vomiting, hallucinations, muscle cramps, etc.)",
+        "Establish IV and administer NS or LR IV/IO per Vascular Access & IV Fluid Therapy-Procedure Protocol (Specialist skill)",
+        "For signs of dehydration: Adults: up to 1 liter wide open; Pediatrics: 20 mL/kg based on signs and symptoms",
+        "Hypotensive patients should receive additional IV/IO fluid boluses: Adults repeat to maximum 2 liters; Pediatrics repeat 20 mL/kg to maximum 40 mL/kg; monitor for pulmonary edema — if presents, stop fluids and contact Medical Control",
+        "For nausea/vomiting: refer to Nausea & Vomiting-Treatment Protocol",
+        "Transport according to MCA Transport Protocol"
+      ]
+    },
+    {
+      "title": "Refusal of Transport After Naloxone",
+      "reference": "Michigan Protocol 1-9: Opioid Overdose — Refusal After Naloxone",
+      "points": [
+        "For patients who received naloxone and refuse transportation to the ED: contact Medical Control",
+        "Patient may NOT refuse transport if: current/sustained altered mental status; intentionally overdosed (self-harm); any suicidal/homicidal ideations or thoughts of self-harm",
+        "After contacting Medical Control for consultation: complete patient refusal per Refusal of Care Adult and Minor Protocol; document name of facility and physician in PCR"
+      ]
+    },
+    {
+      "title": "Leave-Behind Naloxone",
+      "reference": "Michigan Protocol 1-9: Opioid Overdose — Leave-Behind Naloxone",
+      "points": [
+        "Indications: patients ≥ 15 years old who received naloxone with symptom improvement; patients ≥ 15 years old who report substance use disorder; scenes where there are signs of opioid use and an individual ≥ 15 years old available to receive the naloxone",
+        "For patients who are transported: naloxone kits may be provided to family/friends on scene (≥ 15 y/o) OR to the patient when arriving at the hospital if patient is awake",
+        "Provide naloxone kit to patient or family/friends on scene if accepted",
+        "Document in PCR administration of kit (in procedure section)",
+        "Other possible offerings: offer to properly dispose of any used needles per agency policy; refer to a community peer support team if available; provide literature on opioid use disorder or substance use disorder treatment programs",
+        "For patients who have not suffered an acute overdose AND are willing to accept treatment for opioid/substance use disorder: alternate destination per MCA approval (inpatient or outpatient treatment facilities); mobile crisis teams; other local treatment options"
+      ]
+    }
+  ],
+  "mca_selections_required": [
+    {
+      "item": "MFR Naloxone Administration",
+      "description": "MCA may approve MFR scope for naloxone administration; MCA must maintain roster submitted to MDHHS",
+      "options": [
+        "MFR"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Intranasal Naloxone Formulation",
+      "description": "MCA must select at least one intranasal naloxone formulation",
+      "options": [
+        "Narcan Nasal Spray 4 mg (Adults Only) — entire dose in one nostril; additional dose in opposite nostril",
+        "Naloxone Prefilled 2 mg/2 mL IN via Atomizer (half dose in each nostril) — Adult and child over 3 years: 2 mL; Up to 3 months: 0.5 mL; 3–18 months: 1 mL; 19–35 months: 1.5 mL"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Leave-Behind Naloxone",
+      "description": "MCA must designate which levels may participate in leave-behind naloxone program; providers must be part of an MCA-designated Leave Behind Naloxone agency; MCA will submit roster to MDHHS",
+      "options": [
+        "Not Included",
+        "MFR",
+        "EMT",
+        "AEMT",
+        "Paramedic"
+      ],
+      "selected": null
+    }
+  ],
+  "key_drugs": [
+    {
+      "name": "Naloxone Intranasal",
+      "dose": "Per MCA selection: Narcan 4 mg nasal spray (adults only — one nostril); OR Naloxone prefilled 2 mg/2 mL via atomizer (half dose each nostril; pediatric dosing by age)",
+      "route": "Intranasal",
+      "indication": "Respiratory depression from opioid overdose; after ventilations established; second rescuer present",
+      "contraindications": "None absolute; ensure airway management in place before administration",
+      "side_effects": "Acute opioid withdrawal (agitation, tachycardia, diaphoresis, vomiting)",
+      "scope": "Per MCA selection; MFR option available",
+      "notes": "May repeat once in 3–5 minutes if effective respirations not restored. Treatment goal is effective respirations — not complete awakening."
+    },
+    {
+      "name": "Naloxone IM/IV",
+      "dose": "Adults: 2 mg IM or IN via atomizer (IN max 2 doses total); Adult IV: up to 2 mg slowly, titrating to respiratory improvement, repeat q3–5 min; Pediatrics: 0.1 mg/kg IM/IN/IV",
+      "route": "IM, IN, or IV",
+      "indication": "Respiratory depression from opioid overdose",
+      "contraindications": "None absolute in opioid overdose",
+      "side_effects": "Acute opioid withdrawal, agitation, combativeness upon reversal",
+      "scope": "Non-IV naloxone per MCA selection; IV route requires IV-capable provider",
+      "notes": "Titrate to restore effective respirations — do not fully awaken patient unnecessarily."
+    }
+  ],
+  "deterioration_flags": [
+    "No response to naloxone after two doses — continue airway and ventilatory support; consider non-opioid cause of altered mental status",
+    "Patient becomes combative upon naloxone reversal — ensure scene safety; do not withhold airway support",
+    "Persistent respiratory depression — continue BVM ventilation; repeat naloxone per protocol",
+    "Hypotension with withdrawal symptoms — initiate IV/IO (Specialist) and fluid bolus"
+  ],
+  "scope_notes": [
+    "Naloxone intranasal: per MCA-selected formulation; MFR administration requires MCA selection and roster submission",
+    "Naloxone IM: per MCA/local scope and medication authorization; slow IV titration requires an IV-capable provider",
+    "Naloxone IV: IV-capable provider only; titrate slowly to respiratory improvement",
+    "Leave-behind naloxone: MCA selection required — not included unless designated",
+    "IV/IO access and fluids: Specialist skill"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "airway_management",
+      "altered_mental_status",
+      "opioid_overdose",
+      "toxins_overdose",
+      "ventilation_support"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

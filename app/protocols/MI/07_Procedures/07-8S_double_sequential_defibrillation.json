@@ -1,0 +1,81 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-8(S) Double Sequential Defibrillation (Revised 3/17/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_double_sequential_defibrillation",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (Paramedic only — MCA Optional)",
+  "jurisdiction": "Michigan",
+  "condition": "Double Sequential Defibrillation (DSD) — Refractory Ventricular Fibrillation",
+  "version": "2025-03-17",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-8(S): Double Sequential Defibrillation — MDHHS Approved 3/17/2025",
+
+  "purpose": "PARAMEDIC USE ONLY. MCA OPTIONAL — only available if MCA has authorized in Electrical Therapy protocol. Double sequential defibrillation (DSD) uses two defibrillators fired in rapid sequence for refractory ventricular fibrillation after standard defibrillation has failed at least 3 times. Requires 100% QA/QI review.",
+
+  "sections": [
+    {
+      "title": "Eligibility Criteria",
+      "reference": "Michigan Protocol 7-8(S): DSD — Eligibility",
+      "points": [
+        "PARAMEDIC USE ONLY",
+        "MCA must have authorized Double Sequential Defibrillation in MCA Electrical Therapy Protocol selection",
+        "At least 3 prior defibrillation attempts have been delivered without successful termination of V-fib",
+        "A second defibrillator must be available on scene",
+        "Standard cardiac arrest management must continue throughout (HQCPR, medications per Cardiac Arrest Protocol)"
+      ]
+    },
+    {
+      "title": "Device Setup and Pad Placement",
+      "reference": "Michigan Protocol 7-8(S): DSD — Setup",
+      "points": [
+        "Defibrillator 1 (Defib 1): anterior/posterior (A/P) position — anterior pad placed to the LEFT of the sternum; posterior pad below left scapula",
+        "Defibrillator 2 (Defib 2): anterior/lateral (A/L) position — anterior pad placed to the RIGHT of the sternum; lateral pad at left anterior axillary line at the level of the cardiac apex",
+        "Ensure pads from Defib 1 and Defib 2 do not overlap or touch",
+        "If an AED is being used as one of the two defibrillators: the AED fires FIRST in the sequence"
+      ]
+    },
+    {
+      "title": "Firing Sequence",
+      "reference": "Michigan Protocol 7-8(S): DSD — Firing Sequence",
+      "points": [
+        "A SINGLE PARAMEDIC fires both defibrillators in rapid sequence — the interval between the two shocks should be less than 1 second",
+        "The paramedic must confirm ALL personnel are clear before firing either device",
+        "If one device is an AED: AED fires first; manual defibrillator fires immediately after",
+        "Resume HQCPR immediately after both shocks are delivered",
+        "Repeat DSD at 2-minute intervals if V-fib persists and patient remains eligible",
+        "Continue standard cardiac arrest protocol medications and interventions between DSD cycles"
+      ]
+    },
+    {
+      "title": "Quality Assurance and Documentation",
+      "reference": "Michigan Protocol 7-8(S): DSD — QA/Documentation",
+      "points": [
+        "100% Quality Assurance/Quality Improvement (QA/QI) review is required for every DSD event",
+        "Document each DSD event as TWO separate defibrillations (same time) in the PCR",
+        "Narrative MUST include the phrase 'double sequential' or 'dual sequential' defibrillation",
+        "Document: number of prior standard defibrillations, reason DSD was initiated, device positions used, times of DSD delivery, patient response"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "V-fib persists after DSD — repeat DSD at 2-minute intervals; continue HQCPR and antidysrhythmics per Cardiac Arrest Protocol",
+    "Only one defibrillator available — no DSD; vector change (A/P to A/L or vice versa) for refractory V-fib; contact Medical Control"
+  ],
+
+  "scope_notes": [
+    "PARAMEDIC USE ONLY",
+    "MCA OPTIONAL — only authorized if MCA has selected DSD in Electrical Therapy Protocol",
+    "Requires ≥ 3 prior shocks AND second defibrillator on scene",
+    "Defib 1: A/P (anterior left of sternum); Defib 2: A/L (anterior right of sternum + lateral left axillary)",
+    "AED fires first if used as one of the two defibrillators",
+    "Both devices fired in rapid sequence (< 1 second) by a single paramedic",
+    "100% QA/QI review required for every DSD event",
+    "Document as 2 defibrillations same time; narrative must include 'double sequential' or 'dual sequential'"
+  ]
+}

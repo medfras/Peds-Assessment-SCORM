@@ -1,0 +1,94 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-26 Interfacility High Flow Nasal Oxygen (Revised 3/3/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_interfacility_hfno",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (Paramedic only — MCA Optional)",
+  "jurisdiction": "Michigan",
+  "condition": "Interfacility High-Flow Nasal Oxygen (HFNO)",
+  "version": "2025-03-03",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-26: Interfacility High-Flow Nasal Oxygen — MDHHS Approved 3/3/2025",
+
+  "purpose": "PARAMEDIC USE ONLY. MCA OPTIONAL. High-flow nasal oxygen (HFNO) is authorized for interfacility transfers only — it is NOT a standalone protocol; MCA must also select it on the Interfacility Patient Transfers Protocol. Used for hypoxic respiratory failure with a sending facility order. Pediatric use requires additional MCA staffing selection.",
+
+  "sections": [
+    {
+      "title": "Authorization Requirements",
+      "reference": "Michigan Protocol 7-26: HFNO — Authorization",
+      "points": [
+        "PARAMEDIC USE ONLY",
+        "MCA OPTIONAL — only authorized if MCA has selected HFNO in both this protocol AND the Interfacility Patient Transfers Protocol",
+        "PEDIATRIC MCA SELECTION required separately — options: facility staff must accompany / Enhanced Paramedic or Critical Care Paramedic only / Paramedic with MCA-approved HFNO training"
+      ]
+    },
+    {
+      "title": "Indications",
+      "reference": "Michigan Protocol 7-26: HFNO — Indications",
+      "points": [
+        "Sending facility order for HFNO is present",
+        "Patient has hypoxic respiratory failure, hypoxic respiratory distress, or respiratory distress",
+        "MCA-approved HFNO device and necessary supplies are available to facilitate transport"
+      ]
+    },
+    {
+      "title": "Administration",
+      "reference": "Michigan Protocol 7-26: HFNO — Administration",
+      "points": [
+        "SpO2 target: ≥ 94% or the patient's targeted baseline oxygen saturation as directed by the sending physician",
+        "Use facility HFNO settings as the starting point when available",
+        "FLOW RATE formula:",
+        "— Patients ≤ 12 kg: 2 L/kg/min",
+        "— Patients > 12 kg: (2 L/kg/min × 12 kg) + (0.5 L/kg/min × [weight in kg − 12 kg])",
+        "— Maximum flow rate: 60 L/min",
+        "Vital signs documented at minimum every 5 minutes",
+        "Consider escalation if patient is on > 2 L/kg/min or at maximum device settings"
+      ]
+    },
+    {
+      "title": "Deterioration and Discontinuation",
+      "reference": "Michigan Protocol 7-26: HFNO — Deterioration",
+      "points": [
+        "If patient deteriorates on HFNO: terminate HFNO and escalate to CPAP, BiPAP, BVM, or intubation per appropriate protocol",
+        "COVID-19 patients on HFNO: full PPE (N95 or higher respirator, face shield, gown, gloves) required",
+        "Congenital heart disease patients: may have a lower baseline SpO2 — consult with sending facility regarding target SpO2"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "HFNO Authorized for Interfacility Use",
+      "description": "MCA must also select HFNO authorization on the Interfacility Patient Transfers Protocol in addition to this selection",
+      "options": ["Authorized — Paramedic with appropriate HFNO training", "Not authorized"],
+      "selected": null
+    },
+    {
+      "item": "HFNO Pediatric Staffing Requirement",
+      "description": "MCA must select the staffing requirement for pediatric patients on HFNO during interfacility transport",
+      "options": ["Sending facility staff must accompany patient", "Enhanced Paramedic or Critical Care Paramedic only", "Paramedic with MCA-approved HFNO training"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "SpO2 below target on HFNO — reassess flow rate; escalate to CPAP/BiPAP/BVM/intubation if not responsive",
+    "Patient at maximum device settings — consider escalation of care; contact Medical Control",
+    "COVID-19 or suspected aerosol-generating condition — ensure full PPE before HFNO"
+  ],
+
+  "scope_notes": [
+    "PARAMEDIC USE ONLY — MCA OPTIONAL",
+    "Requires MCA selection in BOTH this protocol AND Interfacility Patient Transfers Protocol",
+    "Interfacility transfers only — not for 9-1-1 primary responses",
+    "Sending facility order required",
+    "SpO2 target ≥ 94% or patient baseline target directed by sending physician",
+    "Flow: 2 L/kg/min up to 12 kg; + 0.5 L/kg/min per kg above 12 kg; max 60 L/min",
+    "Vitals every 5 minutes minimum",
+    "Pediatric: additional MCA staffing selection required",
+    "COVID-19: full PPE required"
+  ]
+}

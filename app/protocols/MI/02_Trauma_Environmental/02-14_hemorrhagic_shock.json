@@ -1,0 +1,102 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 2-14 Hemorrhagic Shock (Revised 05/23/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_all_hemorrhagic_shock",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "All",
+  "level_display": "All Levels",
+  "jurisdiction": "Michigan",
+  "condition": "Hemorrhagic Shock",
+  "version": "2023-05-23",
+  "protocol_reference": "Michigan Trauma and Environmental Protocol Section 2-14: Hemorrhagic Shock — MDHHS Approved 5/23/23, Reviewed 2023",
+
+  "sections": [
+    {
+      "title": "Hemorrhagic Shock Management",
+      "reference": "Michigan Protocol 2-14: Hemorrhagic Shock",
+      "points": [
+        "Follow General Pre-Hospital Care-Treatment Protocol and General Trauma-Treatment Protocol",
+        "Use for signs and symptoms of shock attributed to hemorrhage, including trauma and severe postpartum hemorrhage",
+        "Control bleeding per Bleeding Control (BCON)-Treatment Protocol",
+        "Transport promptly; no intervention should delay transport",
+        "Obtain vascular access",
+        "For hypotension without moderate/severe head trauma: Adults receive NS or LR bolus up to 1 L; Pediatrics receive NS or LR 20 mL/kg",
+        "If moderate or severe head trauma is present, use the Head Injury Moderate and Severe TBI protocol fluid guidelines",
+        "Consider other traumatic causes of shock, including tension pneumothorax requiring Pleural Decompression and neurogenic shock requiring Shock protocol"
+      ]
+    },
+    {
+      "title": "Tranexamic Acid (TXA)",
+      "reference": "Michigan Protocol 2-14: Hemorrhagic Shock — TXA",
+      "points": [
+        "TXA is per MCA selection and is considered when bleeding is uncontrolled and non-compressible",
+        "Eligibility: age greater than 18 years, weight greater than 50 kg, and destination hospital capable of administering the second dose",
+        "Dose: 1 gram TXA in 100 mL NS infused over 10 minutes IV",
+        "Use a filter needle if drawing from an ampule and label the medication bag",
+        "Medical Control or receiving hospital must be verbally notified before arrival; report TXA administration to the ED and document it",
+        "Medical Control may order TXA for selected suspected compensated shock cases that do not meet standard criteria"
+      ]
+    },
+    {
+      "title": "Transport",
+      "reference": "Michigan Protocol 2-14: Hemorrhagic Shock — Transport",
+      "points": [
+        "No intervention should delay transport",
+        "Additional fluid boluses may be given up to adult maximum 2 L or pediatric maximum 40 mL/kg",
+        "Monitor for pulmonary edema; stop fluids and contact Medical Control if pulmonary edema develops",
+        "Transport to appropriate trauma center per MCA Transport Protocol",
+        "Pre-notify receiving facility: mechanism, estimated blood loss, current vitals, hemorrhage control interventions, IV access, fluids given, TXA administration if applicable"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Tranexamic Acid (TXA)",
+      "description": "MCA must select whether TXA is authorized for field use in hemorrhagic shock. If Yes: standard eligibility includes age > 18 years, weight > 50 kg, uncontrolled non-compressible bleeding, and destination capable of administering the second dose.",
+      "options": ["Yes — TXA authorized (Specialist skill)", "No — TXA not authorized"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [
+    {
+      "name": "NS or LR IV/IO (Hemorrhagic Shock)",
+      "dose": "Adults: NS or LR bolus up to 1 L; Pediatrics: 20 mL/kg; additional boluses up to adult max 2 L or pediatric max 40 mL/kg",
+      "route": "IV or IO",
+      "indication": "Hemorrhagic shock with hypotension",
+      "contraindications": "Use Head Injury Moderate and Severe TBI protocol fluid guidelines when moderate/severe head trauma is present",
+      "side_effects": "Dilutional coagulopathy, pulmonary edema with excessive volumes",
+      "scope": "Specialist skill",
+      "notes": "No intervention should delay transport. Monitor for pulmonary edema and stop fluids/contact Medical Control if it develops."
+    },
+    {
+      "name": "Tranexamic Acid (TXA)",
+      "dose": "1 gram in 100 mL NS infused over 10 minutes IV",
+      "route": "IV infusion",
+      "indication": "Uncontrolled non-compressible hemorrhage per MCA selection — standard eligibility age > 18 and weight > 50 kg",
+      "contraindications": "Age ≤ 18 or weight ≤ 50 kg unless specifically ordered by Medical Control; destination must be capable of second dose",
+      "side_effects": "Nausea, vomiting, hypotension if administered too rapidly; theoretical thrombotic risk",
+      "scope": "Specialist skill — per MCA selection",
+      "notes": "Medical Control or receiving hospital must be verbally notified before arrival. Label the medication bag, report to ED, and document administration."
+    }
+  ],
+
+  "deterioration_flags": [
+    "Uncontrolled bleeding — apply Bleeding Control protocol and transport promptly",
+    "Moderate/severe head trauma with hemorrhagic shock — use Head Injury TBI fluid targets rather than generic hemorrhagic shock targets",
+    "Need for additional fluid beyond adult 2 L or pediatric 40 mL/kg maximum — contact Medical Control",
+    "Pulmonary edema during fluid administration — stop fluids and contact Medical Control",
+    "Uncontrolled non-compressible hemorrhage meeting MCA criteria — consider TXA and notify Medical Control/receiving hospital before arrival"
+  ],
+
+  "scope_notes": [
+    "Hemorrhage control, tourniquet, and wound packing: all levels",
+    "IV/IO access (two large bore sites if possible): Specialist skill",
+    "Fluid resuscitation with NS or LR: Specialist skill",
+    "TXA administration: Specialist skill — per MCA selection (Yes/No)",
+    "Cardiac monitoring: Specialist skill",
+    "Medical Control or receiving hospital verbal notification for TXA: required before arrival"
+  ]
+}

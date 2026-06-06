@@ -1,0 +1,227 @@
+{
+  "title": "AMS: AEIOUTIPS Pair Match",
+  "subtitle": "Match each clinical finding to its primary AEIOUTIPS cause.",
+  "rounds": 3,
+  "pairs_per_round": 3,
+  "round_nudges": [
+    {
+      "prompt": "Based on those matches — what do you treat first if you're unsure of the cause?",
+      "text": "Treat the most immediately reversible cause first. Glucose check and dextrose for insulin, high-flow O₂ for hypoxia, naloxone + airway for overdose. When the cause is unclear, these three interventions are fast, low-risk, and diagnostically useful."
+    },
+    {
+      "prompt": "What changes your field approach most dramatically for these causes?",
+      "text": "Scene clues change everything: empty medication bottles (psychiatric, overdose), farm or chemical odors (toxins), mechanism of injury (trauma), skin color and temperature (temperature, shock). Build the differential from what you see, smell, and measure — not just what dispatch tells you."
+    }
+  ],
+  "pairs": [
+    {
+      "id": "pm_01",
+      "category_id": "alcohol_acidosis",
+      "category_letter": "A",
+      "category_label": "Alcohol / Acidosis",
+      "finding": "Alcohol odor, ataxia, horizontal nystagmus — found down call",
+      "explanation": "Alcohol odor, ataxia, and nystagmus indicate acute intoxication. In chronic alcoholics, thiamine deficiency is a concurrent risk — but do not delay dextrose for confirmed hypoglycemia to give thiamine first. Treat hypoglycemia immediately; thiamine is a secondary consideration if Wernicke's is suspected.",
+      "hint": "Match the finding to the system it threatens first: oxygenation, glucose, perfusion, toxin exposure, trauma, temperature, seizure, stroke, or renal/metabolic clearance."
+    },
+    {
+      "id": "pm_02",
+      "category_id": "epilepsy",
+      "category_letter": "E",
+      "category_label": "Epilepsy / Seizure",
+      "finding": "Known epileptic on anticonvulsants, reports recurrent blackout episodes since teens",
+      "explanation": "Breakthrough seizures in a known epileptic usually indicate subtherapeutic levels, sleep deprivation, or fever. Field treatment is supportive — protect airway, position laterally, transport. Benzodiazepines if active seizing.",
+      "hint": "Match the finding to the system it threatens first: oxygenation, glucose, perfusion, toxin exposure, trauma, temperature, seizure, stroke, or renal/metabolic clearance."
+    },
+    {
+      "id": "pm_03",
+      "category_id": "electrolytes",
+      "category_letter": "E",
+      "category_label": "Electrolytes",
+      "finding": "AMS with muscle cramps after 3 days of vomiting; patient takes high-dose diuretics",
+      "explanation": "Vomiting and diuretics both cause hypokalemia and hyponatremia. Severe electrolyte derangements impair neuromuscular function and cerebral activity. IV access and early transport are the field priorities.",
+      "hint": "Match the finding to the system it threatens first: oxygenation, glucose, perfusion, toxin exposure, trauma, temperature, seizure, stroke, or renal/metabolic clearance."
+    },
+    {
+      "id": "pm_04",
+      "category_id": "insulin",
+      "category_letter": "I",
+      "category_label": "Insulin / Blood Sugar",
+      "finding": "Sudden diaphoresis, tremor, confusion — finger-stick glucose 38 mg/dL",
+      "explanation": "Glucose 38 mg/dL confirms hypoglycemia. Administer dextrose IV or glucagon IM if no IV access. Expect rapid improvement. Failure to improve after glucose should prompt consideration of concurrent causes — especially stroke or overdose.",
+      "hint": "Match the finding to the system it threatens first: oxygenation, glucose, perfusion, toxin exposure, trauma, temperature, seizure, stroke, or renal/metabolic clearance."
+    },
+    {
+      "id": "pm_05",
+      "category_id": "infection",
+      "category_letter": "I",
+      "category_label": "Infection / Sepsis",
+      "finding": "Fever 40°C, nuchal rigidity, photophobia — 22-year-old college student",
+      "explanation": "Fever + neck stiffness + photophobia is bacterial meningitis until proven otherwise. Time-critical: IV access, rapid transport. Definitive treatment is in-hospital antibiotics. Do not delay transport for extensive field assessment.",
+      "hint": "Match the finding to the system it threatens first: oxygenation, glucose, perfusion, toxin exposure, trauma, temperature, seizure, stroke, or renal/metabolic clearance."
+    },
+    {
+      "id": "pm_06",
+      "category_id": "overdose",
+      "category_letter": "O",
+      "category_label": "Overdose / Opioids",
+      "finding": "Pinpoint pupils, RR 6 per minute — responds to 0.4 mg IV naloxone",
+      "explanation": "Miosis + respiratory depression + naloxone response confirms the opioid toxidrome. Naloxone duration (30–90 min) may be shorter than the opioid — reassess frequently and always transport. Re-sedation after naloxone is a common field complication.",
+      "hint": "Match the finding to the system it threatens first: oxygenation, glucose, perfusion, toxin exposure, trauma, temperature, seizure, stroke, or renal/metabolic clearance."
+    },
+    {
+      "id": "pm_07",
+      "category_id": "oxygen",
+      "category_letter": "O",
+      "category_label": "Oxygen / Hypoxia",
+      "finding": "Central cyanosis, SpO₂ 84% on room air — near-drowning victim",
+      "explanation": "Post-submersion hypoxia with SpO₂ below 90% requires immediate high-flow O₂ and airway management. Submersion victims can deteriorate hours later from aspiration injury and post-submersion pulmonary edema — transport all submersion victims even if they appear to recover on scene.",
+      "hint": "Match the finding to the system it threatens first: oxygenation, glucose, perfusion, toxin exposure, trauma, temperature, seizure, stroke, or renal/metabolic clearance."
+    },
+    {
+      "id": "pm_08",
+      "category_id": "uremia",
+      "category_letter": "U",
+      "category_label": "Uremia / Renal Failure",
+      "finding": "Ammonia-like breath, asterixis — dialysis patient who missed 3 sessions",
+      "explanation": "Asterixis (flapping tremor) and uremic fetor in a missed-dialysis patient is uremic encephalopathy. No field intervention reverses uremia. Priorities: airway management, IV access, emergent transport for dialysis.",
+      "hint": "Match the finding to the system it threatens first: oxygenation, glucose, perfusion, toxin exposure, trauma, temperature, seizure, stroke, or renal/metabolic clearance."
+    },
+    {
+      "id": "pm_09",
+      "category_id": "trauma",
+      "category_letter": "T",
+      "category_label": "Trauma",
+      "finding": "Found down with scalp laceration, GCS 10 — reported assault",
+      "explanation": "Scalp lacerations bleed extensively and can mask the extent of TBI. GCS 10 = moderate brain injury. Assume c-spine injury until imaging excludes it. Airway management and controlled transport are field priorities.",
+      "hint": "Match the finding to the system it threatens first: oxygenation, glucose, perfusion, toxin exposure, trauma, temperature, seizure, stroke, or renal/metabolic clearance."
+    },
+    {
+      "id": "pm_10",
+      "category_id": "temperature",
+      "category_letter": "T",
+      "category_label": "Temperature",
+      "finding": "Core temp 30°C, bradycardia, shivering stopped — 3 hours in the cold",
+      "explanation": "Loss of shivering at core temp below 30°C signals severe hypothermia. The cold myocardium is prone to VF — handle gently. Active external rewarming and warmed humidified O₂ when available. Cardiac monitoring mandatory.",
+      "hint": "Match the finding to the system it threatens first: oxygenation, glucose, perfusion, toxin exposure, trauma, temperature, seizure, stroke, or renal/metabolic clearance."
+    },
+    {
+      "id": "pm_11",
+      "category_id": "toxins",
+      "category_letter": "T",
+      "category_label": "Toxins / Poisoning",
+      "finding": "Miosis, bradycardia, bronchospasm, excessive secretions — farm chemical exposure",
+      "explanation": "SLUDGE: Salivation, Lacrimation, Urination, Defecation, GI distress, Emesis + bradycardia and bronchoconstriction = organophosphate poisoning. Antidote is atropine — titrate to drying secretions, not heart rate.",
+      "hint": "Match the finding to the system it threatens first: oxygenation, glucose, perfusion, toxin exposure, trauma, temperature, seizure, stroke, or renal/metabolic clearance."
+    },
+    {
+      "id": "pm_12",
+      "category_id": "psychiatric",
+      "category_letter": "P",
+      "category_label": "Psychiatric",
+      "finding": "Agitated, disorganized speech, hearing voices — glucose normal, SpO₂ 99%, no trauma",
+      "explanation": "Psychiatric AMS diagnosis requires excluding organic causes first. Normal glucose, O₂, vitals, and no trauma history support a psychiatric etiology — but always consider stimulant toxicity, which can look identical.",
+      "hint": "Match the finding to the system it threatens first: oxygenation, glucose, perfusion, toxin exposure, trauma, temperature, seizure, stroke, or renal/metabolic clearance."
+    },
+    {
+      "id": "pm_13",
+      "category_id": "stroke",
+      "category_letter": "S",
+      "category_label": "Stroke / Structural",
+      "finding": "Sudden right facial droop, arm drift, slurred speech — last normal 45 min ago",
+      "explanation": "FAST criteria: Face, Arm, Speech, Time. Last known normal 45 minutes ago is the key field data point. IV access, confirm time, transport to the nearest stroke center. Field stroke scales (Cincinnati, LAMS) help identify large-vessel occlusion candidates.",
+      "hint": "Match the finding to the system it threatens first: oxygenation, glucose, perfusion, toxin exposure, trauma, temperature, seizure, stroke, or renal/metabolic clearance."
+    },
+    {
+      "id": "pm_14",
+      "category_id": "shock",
+      "category_letter": "S",
+      "category_label": "Shock",
+      "finding": "BP 78/50, HR 132, pale, diaphoretic, confused — no trauma, fever, or ingestion",
+      "explanation": "Hemodynamic shock without an obvious cause: consider sepsis, internal hemorrhage (occult GI bleed, ruptured aortic aneurysm), or cardiogenic shock. IV access, position, O₂, and rapid transport. The cause determines definitive treatment, which is hospital-based.",
+      "hint": "Match the finding to the system it threatens first: oxygenation, glucose, perfusion, toxin exposure, trauma, temperature, seizure, stroke, or renal/metabolic clearance."
+    },
+    {
+      "id": "pm_15",
+      "category_id": "seizure_postictal",
+      "category_letter": "S",
+      "category_label": "Seizure / Postictal",
+      "finding": "Urinary incontinence, tongue bite marks, improving confusion over 5 minutes",
+      "explanation": "Urinary incontinence + tongue bite + gradual improvement over minutes is classic postictal state. Field priorities: recovery position, airway protection, O₂, IV access. Transport for first-time seizure, prolonged seizure (>5 min), or slow/incomplete recovery.",
+      "hint": "Match the finding to the system it threatens first: oxygenation, glucose, perfusion, toxin exposure, trauma, temperature, seizure, stroke, or renal/metabolic clearance."
+    }
+  ],
+  "action_cases": [
+    {
+      "id": "ams_action_01",
+      "presentation": "Adult found confused, pale, diaphoretic, and combative. Bystander reports insulin use. No trauma is visible.",
+      "choices": ["Check blood glucose immediately", "Begin stroke destination decision first", "Administer naloxone before assessment", "Request psychiatric evaluation only"],
+      "correct": "Check blood glucose immediately",
+      "hint": "Pick the fastest reversible cause that matches diaphoresis and insulin history.",
+      "feedback": "Hypoglycemia is rapidly reversible and time-sensitive. Confirm BGL early before anchoring on stroke, intoxication, or psychiatric causes.",
+      "mistake_tag": "missed_action_priority_glucose"
+    },
+    {
+      "id": "ams_action_02",
+      "presentation": "Patient is obtunded with pinpoint pupils and respirations of 6/min after being found near drug paraphernalia.",
+      "choices": ["Support ventilation and administer naloxone per protocol", "Wait for a full SAMPLE history", "Give oral glucose first", "Treat as psychiatric agitation"],
+      "correct": "Support ventilation and administer naloxone per protocol",
+      "hint": "Treat the life threat before debating the exact substance.",
+      "feedback": "Respiratory depression is the immediate killer in opioid overdose. Ventilate first and use naloxone per scope/protocol.",
+      "mistake_tag": "missed_action_priority_airway"
+    },
+    {
+      "id": "ams_action_03",
+      "presentation": "College student has fever, photophobia, neck stiffness, and worsening confusion.",
+      "choices": ["Use PPE, minimize delays, and transport rapidly for sepsis/meningitis care", "Wait on scene for fever to decrease", "Treat as simple intoxication", "Administer naloxone as the first priority"],
+      "correct": "Use PPE, minimize delays, and transport rapidly for sepsis/meningitis care",
+      "hint": "Think infection control and time-sensitive definitive care.",
+      "feedback": "Fever plus meningeal signs and AMS is high risk. EMS priorities are protection, supportive care, IV/access as appropriate, and rapid transport.",
+      "mistake_tag": "missed_action_priority_infection"
+    },
+    {
+      "id": "ams_action_04",
+      "presentation": "Near-drowning patient is confused with central cyanosis and SpO2 84% on room air.",
+      "choices": ["Correct hypoxia with high-flow oxygen and airway support", "Perform a stroke scale before oxygen", "Focus on psychiatric causes", "Delay treatment until lung sounds are charted"],
+      "correct": "Correct hypoxia with high-flow oxygen and airway support",
+      "hint": "The monitor and color already name the immediate threat.",
+      "feedback": "Hypoxia is a primary reversible AMS cause. Oxygenation and ventilation take priority.",
+      "mistake_tag": "missed_action_priority_oxygen"
+    },
+    {
+      "id": "ams_action_05",
+      "presentation": "Found-down patient has scalp bleeding, GCS 10, and an unknown mechanism.",
+      "choices": ["Protect C-spine, manage airway risk, control bleeding, and transport", "Assume intoxication until proven otherwise", "Have the patient ambulate to test balance", "Wait for family history before immobilization decisions"],
+      "correct": "Protect C-spine, manage airway risk, control bleeding, and transport",
+      "hint": "Mechanism is unknown and GCS is abnormal. What can worsen during transport?",
+      "feedback": "Traumatic AMS requires spinal/airway vigilance, hemorrhage control, and rapid transport while avoiding anchoring on intoxication.",
+      "mistake_tag": "missed_action_priority_trauma"
+    },
+    {
+      "id": "ams_action_06",
+      "presentation": "Dialysis patient missed three treatments and is confused with ammonia-like breath and flapping hand tremor.",
+      "choices": ["Support ABCs, monitor for instability, and transport for dialysis-capable care", "Attempt oral hydration on scene", "Give naloxone first", "Treat as anxiety if oxygen is normal"],
+      "correct": "Support ABCs, monitor for instability, and transport for dialysis-capable care",
+      "hint": "Ask whether EMS can definitively reverse the cause in the field.",
+      "feedback": "Uremic encephalopathy is not field-reversible. Support ABCs, monitor, and move toward definitive dialysis-capable care.",
+      "mistake_tag": "missed_action_priority_transport"
+    },
+    {
+      "id": "ams_action_07",
+      "presentation": "Cold-exposure patient is confused, bradycardic, and no longer shivering after hours outside.",
+      "choices": ["Handle gently, prevent further heat loss, monitor rhythm, and begin approved rewarming", "Ambulate the patient to generate heat", "Give ice water to assess swallowing", "Treat bradycardia with aggressive movement first"],
+      "correct": "Handle gently, prevent further heat loss, monitor rhythm, and begin approved rewarming",
+      "hint": "Think about the cold myocardium and what rough handling can trigger.",
+      "feedback": "Severe hypothermia creates dysrhythmia risk. Gentle handling, insulation/rewarming, oxygenation, monitoring, and transport are key.",
+      "mistake_tag": "missed_action_priority_temperature"
+    },
+    {
+      "id": "ams_action_08",
+      "presentation": "Patient has sudden facial droop, arm drift, slurred speech, and last-known-well 45 minutes ago.",
+      "choices": ["Confirm last-known-well, perform stroke screen, notify/transport to stroke-capable destination", "Give oral glucose without checking BGL", "Wait for symptoms to resolve", "Treat as psychiatric because speech is abnormal"],
+      "correct": "Confirm last-known-well, perform stroke screen, notify/transport to stroke-capable destination",
+      "hint": "The time window is the operational clue.",
+      "feedback": "Stroke care depends on time and destination. Confirm last-known-well, screen, notify, and transport appropriately while still checking reversible mimics.",
+      "mistake_tag": "missed_action_priority_stroke"
+    }
+  ]
+}

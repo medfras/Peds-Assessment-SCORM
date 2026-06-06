@@ -1,0 +1,148 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). General Medical: Hypoglycemia. NASEMSO national provisional base.",
+  "id": "nasemso_base_general_medical_hypoglycemia",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Hypoglycemia",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — General Medical: Hypoglycemia",
+  "aliases": [
+    "None noted"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — General Medical: Hypoglycemia",
+      "points": [
+        "Limit morbidity from hypoglycemia by: a. Describing appropriate use of glucose monitoring",
+        "b. Treating symptomatic hypoglycemia"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Patients with blood glucose less than 60 mg/dL with symptoms of hypoglycemia",
+        "Patients with altered level of consciousness [See Altered Mental Status Guideline]",
+        "Patients with stroke symptoms (e.g., hemiparesis, dysarthria) [See Suspected Stroke/Transient Ischemic Attack Guideline]",
+        "Patients with seizure [See Seizures Guideline]",
+        "Patients with history of diabetes and other medical symptoms",
+        "Patients with suspected alcohol ingestion",
+        "Patients with metabolic disorders (glycogen storage disease, fatty oxidation or organic acid disorders, maple syrup urine disease)",
+        "Patients who appear to be intoxicated",
+        "EXCLUSION CRITERIA:",
+        "Patient in cardiac arrest",
+        "Patient with normal mental status in absence of inclusion criteria listed above"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Oral glucose 15-25 g for alert patient who can swallow",
+        "Safety: protect unconscious patient from aspiration — never give oral glucose to unconscious patient",
+        "Oxygen via NRM if altered mental status or respiratory distress",
+        "Lateral recumbent position (recovery position) if unconscious"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Oral glucose (15-25 g) for any patient who can swallow and cooperate",
+        "Reassess blood glucose in 15 minutes — repeat dose if BGL <60 mg/dL and patient able to swallow",
+        "12-lead ECG acquisition if dysrhythmia suspected",
+        "IV maintenance (non-medicated)"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation",
+        "D10W 250 mL IV/IO (preferred — less tissue damage than D50W if extravasation)",
+        "D50W 25 g (50 mL) IV/IO for rapid correction in unconscious patient",
+        "Glucagon 1 mg IM/SQ for hypoglycemia if IV access unavailable",
+        "Reassess BGL 10-15 minutes after treatment; repeat if BGL still <70 mg/dL",
+        "Waveform capnography if airway concern"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "D50W 25-50 g IV/IO if patient unconscious and IV available (preferred over D10W for speed)",
+        "Glucagon 1-2 mg IV/IO for severe hypoglycemia when IV access unavailable",
+        "Thiamine 100 mg IV before dextrose in suspected alcohol-related or malnourished patients",
+        "Investigate and treat underlying cause: insulin overdose, oral hypoglycemics, adrenal insufficiency",
+        "12-lead ECG interpretation for hypoglycemia-induced dysrhythmia",
+        "For sulfonylurea-induced hypoglycemia: octreotide 50 mcg SQ/IV to prevent recurrence (per protocol)"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Dextrose 10% can be safely used in all ages of patient. Dextrose 10% works as effectively and quickly as other concentrations",
+        "Dextrose 50% can cause local tissue damage if it extravasates from vein and may cause hyperglycemia. Dextrose 50% carries risk for little clinical gain. EMS systems may consider carrying no more than 25% concentration of dextrose for treating hypoglycemia in adults",
+        "For children less than 8 years old, dextrose concentration of no more than 25% should be used",
+        "For neonates and infants less than 1 month of age, dextrose concentration of no more than 10'12.5% should be used",
+        "Sulfonylureas (e.g., glyburide, glipizide) have long half-lives ranging from 12'60 hrs. Patients with corrected hypoglycemia who are taking these agents are at particular risk for recurrent symptoms and frequently require hospital admission 1. Using 10% dextrose is as effective and safer than other stronger concentrations",
+        "Consider contribution of oral diabetic medications to hypoglycemia"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Concomitant trauma",
+        "Diaphoresis or hypothermia may be associated with hypoglycemia"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Document reassessment of vital signs and mental status after administration of glucose/dextrose/glucagon",
+        "' Document point of care glucose level (if in scope of practice) when indicated"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Contact medical direction for clinical deterioration or interventions outside standard scope"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": [],
+  "clinical_context": {
+    "concepts": [
+      "altered_mental_status",
+      "blood_glucose",
+      "hypoglycemia"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

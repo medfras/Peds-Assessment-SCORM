@@ -1,0 +1,131 @@
+{
+  "title": "Differential Dash: AMS",
+  "subtitle": "Match AMS findings to the most likely field etiology.",
+  "completion_threshold": "any_submitted_run",
+  "rounds": 4,
+  "pairs_per_round": 3,
+  "round_nudges": [
+    {
+      "prompt": "What is your first move when the AMS cause is unclear?",
+      "text": "Treat reversible threats while you sort the differential: oxygenation/ventilation, glucose, perfusion, toxidromes, trauma, temperature, seizure, stroke, and infection."
+    },
+    {
+      "prompt": "Which findings should break a psychiatric anchor?",
+      "text": "Abnormal vitals, hypoxia, hypoglycemia, trauma signs, fever, toxidrome clues, seizure evidence, or focal neuro deficits make psychiatric AMS a diagnosis of exclusion."
+    },
+    {
+      "prompt": "What makes this a field skill?",
+      "text": "You do not need the final diagnosis to act. Match the cue to the threat and choose the safest next assessment or treatment."
+    }
+  ],
+  "pairs": [
+    {
+      "id": "ams_dd_01",
+      "category_id": "hypoglycemia",
+      "category_letter": "hypoglycemia",
+      "category_label": "Hypoglycemia",
+      "finding": "Diaphoresis, tremor, confusion, insulin use, BGL 42",
+      "explanation": "Diaphoresis, tremor, diabetes history, and low BGL point to hypoglycemia: check glucose early and treat per protocol.",
+      "hint": "Look for the fast reversible cause tied to sweating, tremor, and diabetes history."
+    },
+    {
+      "id": "ams_dd_02",
+      "category_id": "opioid_overdose",
+      "category_letter": "opioid_overdose",
+      "category_label": "Opioid Overdose",
+      "finding": "RR 6, pinpoint pupils, decreased LOC, drug paraphernalia nearby",
+      "explanation": "Respiratory depression plus miosis and scene clues suggest opioid overdose. Ventilation support comes before or with naloxone.",
+      "hint": "Prioritize the finding that kills first: ventilation."
+    },
+    {
+      "id": "ams_dd_03",
+      "category_id": "hypoxia",
+      "category_letter": "hypoxia",
+      "category_label": "Hypoxia",
+      "finding": "Central cyanosis, SpO2 82%, agitation after near drowning",
+      "explanation": "Hypoxia is a primary reversible AMS cause. Correct oxygenation and ventilation while reassessing.",
+      "hint": "The color and pulse ox point to the immediate threat."
+    },
+    {
+      "id": "ams_dd_04",
+      "category_id": "sepsis_meningitis",
+      "category_letter": "sepsis_meningitis",
+      "category_label": "Sepsis / Meningitis",
+      "finding": "Fever, petechial rash, photophobia, neck stiffness, confusion",
+      "explanation": "Fever with petechiae, meningeal signs, and AMS is high-risk infection until proven otherwise. Use PPE, support ABCs, and transport rapidly.",
+      "hint": "Combine fever with the rash and neck/eye findings."
+    },
+    {
+      "id": "ams_dd_05",
+      "category_id": "stroke",
+      "category_letter": "stroke",
+      "category_label": "Stroke / Structural",
+      "finding": "Sudden facial droop, arm drift, slurred speech, last-known-well 45 minutes",
+      "explanation": "Focal neuro deficits with a clear last-known-well time should trigger stroke screening and destination decision.",
+      "hint": "Look for focal deficits and the clock."
+    },
+    {
+      "id": "ams_dd_06",
+      "category_id": "postictal",
+      "category_letter": "postictal",
+      "category_label": "Postictal / Seizure",
+      "finding": "Tongue bite, urinary incontinence, confusion improving over several minutes",
+      "explanation": "Tongue bite, incontinence, and gradually improving confusion support a postictal state. Protect airway and identify first-time or prolonged seizure risk.",
+      "hint": "Ask whether the confusion is resolving after a neurologic event."
+    },
+    {
+      "id": "ams_dd_07",
+      "category_id": "head_injury",
+      "category_letter": "head_injury",
+      "category_label": "Head Injury",
+      "finding": "Found down, scalp laceration, vomiting, unequal pupils, GCS 10",
+      "explanation": "External head trauma plus vomiting, unequal pupils, and low GCS indicate traumatic brain injury risk.",
+      "hint": "Do not let 'found down' become intoxication by default."
+    },
+    {
+      "id": "ams_dd_08",
+      "category_id": "organophosphate",
+      "category_letter": "organophosphate",
+      "category_label": "Organophosphate / Cholinergic",
+      "finding": "Miosis, bradycardia, bronchorrhea, wheezing, farm chemical exposure",
+      "explanation": "Miosis with secretions, bronchospasm, bradycardia, and farm chemical exposure suggests cholinergic toxicity.",
+      "hint": "Pinpoint pupils plus wet lungs and secretions is not the same pattern as opioid-only respiratory depression."
+    },
+    {
+      "id": "ams_dd_09",
+      "category_id": "hypothermia",
+      "category_letter": "hypothermia",
+      "category_label": "Hypothermia",
+      "finding": "Cold exposure, core temp 30C, bradycardia, shivering stopped, confusion",
+      "explanation": "Severe hypothermia causes AMS and dysrhythmia risk. Handle gently, prevent further heat loss, and transport.",
+      "hint": "Loss of shivering after cold exposure is a dangerous clue."
+    },
+    {
+      "id": "ams_dd_10",
+      "category_id": "shock",
+      "category_letter": "shock",
+      "category_label": "Shock / Hypoperfusion",
+      "finding": "Pale, diaphoretic, HR 150, weak pulses, BP 76/44, confused",
+      "explanation": "Hypoperfusion can directly cause AMS. Support oxygenation/perfusion and move rapidly toward definitive care.",
+      "hint": "Skin, pulse quality, BP, and mentation are all pointing the same direction."
+    },
+    {
+      "id": "ams_dd_11",
+      "category_id": "uremia",
+      "category_letter": "uremia",
+      "category_label": "Uremia",
+      "finding": "Missed dialysis, ammonia-like breath, asterixis, increasing confusion",
+      "explanation": "Missed dialysis with uremic fetor and asterixis suggests uremic encephalopathy, which requires dialysis-capable care.",
+      "hint": "Ask whether EMS can definitively reverse this cause in the field."
+    },
+    {
+      "id": "ams_dd_12",
+      "category_id": "psychiatric_exclusion",
+      "category_letter": "psychiatric_exclusion",
+      "category_label": "Psychiatric After Exclusion",
+      "finding": "Normal glucose, SpO2 99%, normal vitals, no trauma, hallucinations and disorganized speech",
+      "explanation": "Psychiatric AMS remains possible after organic threats are checked. Continue safety assessment and destination planning.",
+      "hint": "This label is safest only after the physiologic threats have been screened."
+    }
+  ]
+}

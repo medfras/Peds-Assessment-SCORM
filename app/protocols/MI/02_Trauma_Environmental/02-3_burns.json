@@ -1,0 +1,145 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 2-3 Burns (Revised 05/22/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_all_burns",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "All",
+  "level_display": "All Levels",
+  "jurisdiction": "Michigan",
+  "condition": "Burns",
+  "version": "2023-05-22",
+  "protocol_reference": "Michigan Trauma and Environmental Protocol Section 2-3: Burns — MDHHS Approved 5/22/23, Reviewed 2023. Sources: NASEMO (2016); American Burn Association (2022) Guidelines for Burn Patient Referral.",
+  "sections": [
+    {
+      "title": "Burn Severity Definitions",
+      "reference": "Michigan Protocol 2-3: Burns — Severity Definitions",
+      "points": [
+        "SUPERFICIAL — NOT counted in TBSA: dry, red, easily blanching, sometimes painful (e.g., sunburn)",
+        "SUPERFICIAL PARTIAL THICKNESS — counted in TBSA: moist, red, blanching, blisters, very painful",
+        "DEEP PARTIAL THICKNESS — counted in TBSA: drier, more pale, less blanching, less pain",
+        "FULL THICKNESS — counted in TBSA: dry, leathery texture, variable color (white, brown, black), loss of pin prick sensation",
+        "NOTE: When calculating TBSA do NOT include superficial burns (erythematous tissue)"
+      ]
+    },
+    {
+      "title": "General Treatment",
+      "reference": "Michigan Protocol 2-3: Burns — General Treatment",
+      "points": [
+        "Follow General Pre-Hospital Care-Treatment Protocol",
+        "Pediatric patients (< 14 years of age): utilize MI MEDIC cards for appropriate medication dosage; when unavailable use pediatric dosing listed within protocol",
+        "If evidence of possible airway burn: consider proactive airway management per Airway Management-Procedure Protocol",
+        "Administer 100% oxygen to all patients rescued from a confined space fire (building, automobile) regardless of pulse oximetry reading",
+        "Determine burn extent and severity (rule of nines, or palm = 1%)",
+        "Keep patient warm and avoid hypothermia",
+        "Assess and treat for associated injuries",
+        "If burns associated with unconsciousness, respiratory burns, or cyanide poisoning: refer to Cyanide Exposure-Special Operations Protocol"
+      ]
+    },
+    {
+      "title": "Thermal Burns",
+      "reference": "Michigan Protocol 2-3: Burns — Thermal Burns",
+      "points": [
+        "Stop the burning process — remove smoldering and non-adherent clothing",
+        "Consider potential for secondary contamination",
+        "Assess and treat associated trauma",
+        "Remove any constricting items",
+        "Cover burns with dry clean dressings to prevent hypothermia"
+      ]
+    },
+    {
+      "title": "Chemical Burns",
+      "reference": "Michigan Protocol 2-3: Burns — Chemical Burns",
+      "points": [
+        "Protect personnel from contamination — identify chemical agent when possible",
+        "Remove all clothing and constricting items",
+        "Decontaminate patient prior to transport, brushing off dry chemicals prior to irrigation — refer to Hazardous Contaminated Patient-Special Operations",
+        "Evaluate for systemic symptoms which might be caused by chemical contamination",
+        "Notify receiving hospital of possible chemical contamination",
+        "Cover burned area in clean, dry dressing for transport"
+      ]
+    },
+    {
+      "title": "Electrical Injury",
+      "reference": "Michigan Protocol 2-3: Burns — Electrical Injury",
+      "points": [
+        "Protect rescuers from live electric wires",
+        "When energy source is removed, remove patient from electrical source",
+        "Treat associated injuries; provide spinal precautions per Spinal Injury Assessment-Treatment Protocol when indicated",
+        "Assess and treat contact wound(s)",
+        "Monitor patient ECG for possible arrhythmias — treat per specific arrhythmia protocol (Specialist skill)"
+      ]
+    },
+    {
+      "title": "For All Types of Burns",
+      "reference": "Michigan Protocol 2-3: Burns — All Types",
+      "points": [
+        "Obtain vascular access if indicated for pain management or fluid therapy per Vascular Access and IV Fluid Therapy-Procedure Protocol (Specialist skill)",
+        "For patients with hypotension: administer LR (NS if LR not available) IV/IO fluid bolus (Specialist skill); Adults: up to 1 liter; Pediatrics: up to 20 mL/kg",
+        "If patient remains hypotensive: consider other underlying causes and contact Medical Control prior to further fluid resuscitation",
+        "For non-superficial burns WITHOUT hypotension and BSA > 10% deep partial thickness (second degree) OR any full thickness (third degree): administer fluids by age — < 1 year: contact Medical Control; 1–5 years: 125 mL/hour; 6–13 years: 250 mL/hour; ≥ 14 years: 500 mL/hour",
+        "Administer analgesic medication per Pain Management-Procedure Protocol"
+      ]
+    },
+    {
+      "title": "Transport Considerations",
+      "reference": "Michigan Protocol 2-3: Burns — Transport",
+      "points": [
+        "Follow local MCA Transport Protocol",
+        "If severe airway/breathing compromise that cannot be managed: transport to the closest facility",
+        "Burn patients that also meet field trauma triage criteria: transport to closest appropriate trauma facility per MCA Transport Protocol",
+        "Consider transport directly to burn center if: full thickness burns; partial thickness ≥ 10% TBSA; any deep partial or full thickness burns involving face, hands, genitalia, feet, perineum, or over any joints; all patients with suspected inhalation injury; circumferential burns; all chemical injuries; all high voltage (≥ 1,000V) electrical injuries; lightning injury",
+        "Consider air ambulance for long transport times, pain control requiring deep sedation, and airway concerns that might necessitate advanced airway management"
+      ]
+    }
+  ],
+  "mca_selections_required": [],
+  "key_drugs": [
+    {
+      "name": "LR or NS IV/IO Fluid Bolus (Hypotension)",
+      "dose": "Adults: up to 1 liter; Pediatrics: up to 20 mL/kg",
+      "route": "IV or IO",
+      "indication": "Burns with hypotension",
+      "contraindications": "Persistent hypotension despite initial bolus — contact Medical Control",
+      "side_effects": "Pulmonary edema if over-administered",
+      "scope": "Specialist skill",
+      "notes": "Prefer LR; use NS if LR not available. Contact Medical Control if hypotension persists."
+    },
+    {
+      "name": "LR or NS Maintenance Rate (Non-Hypotensive Burns)",
+      "dose": "BSA > 10% deep partial or any full thickness, no hypotension: < 1 year — contact Medical Control; 1–5 years: 125 mL/hr; 6–13 years: 250 mL/hr; ≥ 14 years: 500 mL/hr",
+      "route": "IV or IO",
+      "indication": "Significant burns without hypotension requiring maintenance fluid",
+      "contraindications": "Superficial burns only; patient is hypotensive (use bolus protocol instead)",
+      "side_effects": "Pulmonary edema",
+      "scope": "Specialist skill",
+      "notes": "Rate-based maintenance — not bolus. Contact Medical Control for < 1 year patients."
+    }
+  ],
+  "deterioration_flags": [
+    "Airway burn suspected (facial burns, singed eyebrows/nasal hairs, hoarse voice, carbonaceous sputum) — proactive airway management; transport immediately",
+    "Confined space fire exposure — 100% O2 regardless of SpO2; consider CO poisoning and cyanide exposure",
+    "Hypotension — initiate fluid bolus (Specialist skill); consider other traumatic causes; contact Medical Control if not responding",
+    "Electrical injury with ECG changes — continuous cardiac monitoring; treat dysrhythmia per appropriate protocol"
+  ],
+  "scope_notes": [
+    "Burn assessment, dressing, cooling/thermal management: all levels",
+    "100% oxygen administration: all levels",
+    "Vascular access: Specialist skill",
+    "IV fluid administration: Specialist skill",
+    "Cardiac monitoring for electrical injury: Specialist skill",
+    "Advanced airway management: refer to Airway Management-Procedure Protocol for scope"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "airway_management",
+      "burns",
+      "heat_exposure",
+      "hypothermia",
+      "hypothermia_prevention",
+      "trauma"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

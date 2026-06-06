@@ -1,0 +1,87 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-24 ETCO2 Monitoring (Revised 2/13/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_etco2_monitoring",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (All EMS Levels — scope varies by modality)",
+  "jurisdiction": "Michigan",
+  "condition": "ETCO2 / Capnography Monitoring",
+  "version": "2023-02-13",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-24: ETCO2 Monitoring — MDHHS Approved 2/13/2023",
+  "purpose": "Govern end-tidal CO2 (ETCO2) monitoring in prehospital EMS. Waveform capnography is mandatory for ETT confirmation and required for all transport ventilators and critically ill patients. Colorimetric capnometry is acceptable for MFR/BLS confirmation. ETCO2 = 0 with advanced airway mandates removal of the airway if not correctable.",
+  "sections": [
+    {
+      "title": "Mandatory ETCO2 Requirements",
+      "reference": "Michigan Protocol 7-24: ETCO2 — Mandatory Requirements",
+      "points": [
+        "WAVEFORM CAPNOGRAPHY is MANDATORY for endotracheal tube (ETT) confirmation of placement",
+        "CAPNOGRAPHY or CAPNOMETRY is REQUIRED for ALL supraglottic airway (SGA) devices to confirm placement",
+        "WAVEFORM CAPNOGRAPHY MUST be used with ALL transport ventilators",
+        "WAVEFORM CAPNOGRAPHY MUST be used for all critically ill patients AND all ROSC patients transported at ALS or LALS level",
+        "Colorimetric capnometry is acceptable for MFR and BLS level airway confirmation",
+        "Numeric capnometry is preferred over colorimetric when available"
+      ]
+    },
+    {
+      "title": "Provider Scope",
+      "reference": "Michigan Protocol 7-24: ETCO2 — Provider Scope",
+      "points": [
+        "MFR: colorimetric capnometry only",
+        "EMT: colorimetric capnometry; numeric capnometry; waveform capnography per MCA selection",
+        "Specialist: waveform capnography authorized (in addition to colorimetric and numeric)",
+        "Paramedic: waveform capnography authorized (all modalities)"
+      ]
+    },
+    {
+      "title": "ETCO2 = 0 or No Waveform",
+      "reference": "Michigan Protocol 7-24: ETCO2 — Zero Reading Protocol",
+      "points": [
+        "If ETCO2 reads 0 or waveform is absent:",
+        "STEP 1: Ensure adequate CPR quality (rate 100–120/min; adequate depth; full recoil)",
+        "STEP 2: Ensure adequate ventilation (check BVM seal, rate, volume)",
+        "STEP 3: Ensure adequate circulation (check pulse, address reversible causes in arrest)",
+        "STEP 4: Verify tubing and monitor connections — check for disconnections, kinks, moisture in line",
+        "STEP 5: If an advanced airway is in place AND ETCO2 remains 0 after the above steps → REMOVE the advanced airway immediately and manage airway manually (BVM + basic adjuncts)",
+        "Do NOT leave an advanced airway in place with a sustained ETCO2 of 0"
+      ]
+    }
+  ],
+  "mca_selections_required": [
+    {
+      "item": "Waveform Capnography at EMT Level",
+      "description": "MCA must select whether EMT-level providers are authorized to use waveform capnography (numeric capnometry is authorized for EMTs by default without this selection)",
+      "options": [
+        "Authorized for EMT",
+        "Not authorized at EMT level — Specialist and above only"
+      ],
+      "selected": null
+    }
+  ],
+  "key_drugs": [],
+  "deterioration_flags": [
+    "ETCO2 = 0 with advanced airway — ensure adequate CPR/ventilation/circulation; check tubing; if still 0 with ETT/SGA → REMOVE airway immediately and ventilate manually",
+    "Sustained low ETCO2 (< 10 mmHg) during CPR — reassess CPR quality; consider reversible causes",
+    "ETCO2 suddenly drops to near 0 from higher value during CPR — may indicate cardiac arrest from a reversible cause; reassess rhythm and check for ROSC"
+  ],
+  "scope_notes": [
+    "ETT placement: WAVEFORM CAPNOGRAPHY mandatory (not colorimetric alone)",
+    "SGA placement: capnography or capnometry required",
+    "Transport ventilators: waveform capnography mandatory",
+    "Critically ill patients and ROSC at ALS/LALS: waveform capnography required",
+    "MFR: colorimetric only",
+    "EMT: colorimetric + numeric; waveform per MCA selection",
+    "Specialist and Paramedic: waveform capnography authorized",
+    "ETCO2 = 0 with advanced airway in place after troubleshooting → REMOVE airway"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "airway_management",
+      "cardiac_arrest",
+      "ventilation_support"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

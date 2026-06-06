@@ -1,0 +1,1534 @@
+{
+  "_schema": "pfd_scenario_v1",
+  "id": "peds_asthma_01",
+  "title": "Pediatric Asthma — 4-Year-Old Male",
+  "display_title": "Pediatric Respiratory Distress — 4-Year-Old Male",
+  "subtitle": "4-Year-Old Male, Difficulty Breathing",
+  "category": "pediatric_medical",
+  "category_display": "Pediatric Medical Assessment",
+  "turnover_target": "als",
+  "version": "1.1",
+  "rubric_template": "ems_standard_v1",
+  "call_type": "respiratory_distress",
+  "base_patient_care_rubric": "nremt_e202_medical_v1",
+  "difficulty": "intermediate",
+  "protocol": "MI/04_OB_Pediatrics/04-5_respiratory_distress",
+  "jurisdiction": "mi_base",
+  "multiple_patients_possible": false,
+  "spinal_injury_possible": false,
+  "diagnostics_indicated": false,
+  "opqrst_radiation_relevant": false,
+  "clinical_context": {
+    "jurisdiction": "MI",
+    "concepts": [
+      "pediatric_patient",
+      "pediatric_respiratory_distress",
+      "respiratory_distress",
+      "bronchospasm",
+      "oxygen_therapy",
+      "airway_management"
+    ],
+    "protocol_focus": [
+      "bronchospasm",
+      "oxygen_therapy",
+      "airway_management"
+    ]
+  },
+  "readiness_criteria": {
+    "min_minutes": 3,
+    "checks": [
+      {
+        "id": "messages",
+        "label": "5 messages sent",
+        "type": "message_count",
+        "min": 5
+      },
+      {
+        "id": "vitals",
+        "label": "Vitals assessed",
+        "type": "vitals_logged"
+      },
+      {
+        "id": "exam",
+        "label": "Exam/history obtained",
+        "type": "exam_logged"
+      },
+      {
+        "id": "treatment",
+        "label": "Treatment applied",
+        "type": "treatment_logged"
+      }
+    ]
+  },
+  "scene_entry_scoring": {
+    "ppe": {
+      "required": [
+        "gloves"
+      ],
+      "recommended": [
+        "eye_protection"
+      ],
+      "missing_required_penalty": 3,
+      "missing_recommended_penalty": 1,
+      "max_score": 10
+    },
+    "pat": {
+      "expected_impression": "sick",
+      "incorrect_impression_deduction": 2
+    }
+  },
+  "lung_sound_challenge": {
+    "enabled": true,
+    "audio_file": "/static/audio/lung sounds/AsthmaWheezing.mp3",
+    "prompt": "Listen carefully — what lung sounds do you hear?",
+    "correct_choice_id": "expiratory_wheeze",
+    "accepted_answers": [
+      "wheeze",
+      "wheezing",
+      "expiratory wheeze",
+      "bilateral wheeze",
+      "expiratory wheezing"
+    ],
+    "finding": "Expiratory wheeze bilateral, decreased air movement at bases",
+    "feedback_correct": "Correct — bilateral expiratory wheeze with decreased air movement at the bases. Classic reactive airway disease.",
+    "feedback_incorrect": "Not quite. Listen again — this is an expiratory wheeze, heard at the end of each breath. It's the sound of air moving through narrowed, bronchospastic airways.",
+    "post_treatment": {
+      "requires_intervention_id": "albuterol_svn",
+      "audio_file": "/static/audio/lung sounds/clear.mp3",
+      "prompt": "The albuterol has had time to work — re-auscultate. What do you hear now?",
+      "accepted_answers": [
+        "clear",
+        "clear bilateral",
+        "clear bilaterally",
+        "improved",
+        "no wheeze",
+        "wheeze resolved",
+        "absent wheeze",
+        "wheeze absent",
+        "good air movement",
+        "clear lung sounds"
+      ],
+      "correct_choice_id": "clear",
+      "finding": "Lung sounds clear bilaterally, good air movement throughout",
+      "feedback_correct": "Correct — the albuterol worked. Lung sounds are now clear bilaterally with good air movement. Document the improvement and your reassessment time.",
+      "feedback_incorrect": "Listen again — the bronchospasm has resolved with the albuterol. The airways are open now."
+    }
+  },
+  "chat_placeholder": "Speak to Liam, Mom (Sarah), Dad (Mike), or your partner Alex. E.g. 'Mom, what happened?' or 'Alex, what's his pulse?'",
+  "chat_address_hint": "Address by name: Liam · Mom/Sarah · Dad/Mike · Alex (partner/vitals)",
+  "debrief_lexi_hints": [
+    {
+      "label": "Next step?",
+      "msg": "What should I do next?"
+    },
+    {
+      "label": "Signs of distress?",
+      "msg": "What are the signs of pediatric respiratory distress?"
+    },
+    {
+      "label": "BLS scope?",
+      "msg": "What is within my BLS scope for this patient?"
+    },
+    {
+      "label": "Missing info?",
+      "msg": "What information am I missing?"
+    },
+    {
+      "label": "About asthma?",
+      "msg": "Tell me about pediatric asthma."
+    }
+  ],
+  "objectives": [
+    "Identify signs and severity of pediatric respiratory distress using PAT",
+    "Apply appropriate oxygen therapy for a pediatric patient",
+    "Obtain a complete OPQRST and SAMPLE history",
+    "Administer albuterol via SVN per protocol",
+    "Complete a thorough assessment before ALS arrival",
+    "Perform an effective DMIST turnover to ALS crew"
+  ],
+  "dispatch": {
+    "unit": "{unit}",
+    "text": "{unit}, respond to 2847 Maple Street for a 4-year-old male with difficulty breathing.",
+    "priority": "Priority 1",
+    "time": "14:32",
+    "cross_streets": "Maple Street and Oak Avenue",
+    "response_time_minutes": 4
+  },
+  "scene": {
+    "description": "You arrive at a well-kept single-family home in a residential neighborhood. Scene is safe. As you approach the front door, a woman opens it immediately — she has clearly been watching for you. She leads you quickly to the living room where you see a small boy sitting on the couch.",
+    "image": null,
+    "video": null,
+    "hazards": [],
+    "bystanders": [
+      {
+        "name": "Sarah",
+        "relation": "mother",
+        "age": 32
+      },
+      {
+        "name": "Mike",
+        "relation": "father",
+        "age": 35
+      }
+    ]
+  },
+  "patient": {
+    "name": "Liam",
+    "age": 4,
+    "dob_month_day": "March 22",
+    "sex": "male",
+    "weight_kg": 18,
+    "weight_display": "40 lbs (approximately 18 kg)",
+    "pcr_demographics_deferred": true,
+    "chief_complaint": "Difficulty breathing, audible wheezing",
+    "general_impression": "Small boy sitting upright on the couch in a tripod position — leaning forward, hands on knees. He is conscious and alert but appears anxious and frightened. You can hear an expiratory wheeze from across the room. Mild intercostal retractions are visible. He is able to speak but only in short 2-3 word phrases.",
+    "gcs_assessment": {
+      "e": 4,
+      "v": 5,
+      "m": 6,
+      "total": 15,
+      "rationale": "Eyes open spontaneously, he is oriented and answers appropriately in short phrases, and he obeys commands.",
+      "challenge_description": "Liam is sitting upright in a tripod position with eyes open spontaneously. He is oriented and answers appropriately, though only in short phrases because of breathing difficulty. He obeys commands."
+    },
+    "avpu_assessment": {
+      "value": "alert",
+      "description": "Patient is alert, oriented, answers appropriately in short phrases, and obeys commands.",
+      "rationale": "Use AVPU = alert because he is awake and interacting appropriately despite respiratory distress."
+    },
+    "image": "/static/images/asthma_4yom.jpeg",
+    "video": null,
+    "pat": {
+      "impression": "4-year-old boy in tripod position on the couch — audible wheeze across the room, intercostal retractions visible. Alert and frightened, looking at you and his mother.",
+      "appearance": "Alert and anxious — making eye contact, reaching toward mother, responding to voice. Not limp or unresponsive. Tone is normal. Clearly frightened but interactive.",
+      "work_of_breathing": "Increased — audible expiratory wheeze without leaning in, intercostal retractions visible, nasal flaring, tripod positioning. Speaking only in 2–3 word phrases.",
+      "circulation": "Pale skin, mild diaphoresis. No cyanosis or mottling. Lips appear pink.",
+      "expected": "sick",
+      "teaching": "Work of breathing is the dominant abnormal component — audible wheeze at rest, retractions, and tripod positioning together indicate moderate respiratory distress. Appearance is preserved (alert, interactive) which is somewhat reassuring, but WOB drives a SICK impression. Circulation pallor adds to the picture. Early albuterol and positioning are time-sensitive — don't wait for full assessment before addressing the airway."
+    }
+  },
+  "history": {
+    "pmh": [
+      "Asthma (diagnosed age 2, 2 prior ER visits — last 6 months ago)"
+    ],
+    "medications": [
+      "Albuterol MDI — prescribed, currently at grandmother's house"
+    ],
+    "allergies": "NKDA",
+    "last_oral_intake": "Lunch approximately 2 hours ago",
+    "events_leading_to_call": "Liam was playing outside in the backyard for approximately 45 minutes. About 30 minutes ago, his mother noticed he was breathing fast and heard wheezing. He came inside and it did not improve. Parents attempted to find his albuterol inhaler — it is not in the house. Mother called 911.",
+    "hpi": "30-minute onset of progressive wheezing and increased work of breathing after outdoor play. No fever per parents. No vomiting. No ingestion of foreign body reported. No known allergic trigger — pollen count is high today. No improvement with rest or position changes prior to EMS arrival."
+  },
+  "initial_complaint": {
+    "speaker": "Sarah",
+    "lay_summary": "He's having trouble breathing.",
+    "allowed_in_opener": true,
+    "do_not_include": [
+      "wheezing",
+      "onset time",
+      "outdoor trigger",
+      "asthma history",
+      "inhaler location",
+      "fever negatives",
+      "allergic trigger negatives",
+      "diagnosis",
+      "clinical terms",
+      "treatment suggestions",
+      "full OPQRST/SAMPLE"
+    ]
+  },
+  "history_response_map": {
+    "patient_identity": {
+      "label": "Patient identity / demographics",
+      "speaker": "Sarah",
+      "triggers": [
+        "what is his name",
+        "what's his name",
+        "who is he",
+        "patient name",
+        "what is his age",
+        "how old is he",
+        "age",
+        "date of birth",
+        "dob",
+        "birth date",
+        "birthday"
+      ],
+      "answer": "His name is Liam. He's 4 years old. His birthday is March 22.",
+      "tags": [
+        "[[HISTORY: Patient Name=Liam]]",
+        "[[HISTORY: Patient Age=4-year-old male]]",
+        "[[HISTORY: Patient Date of Birth=March 22]]"
+      ],
+      "notes": "Patient-scoped demographics only. Do not emit name, DOB, or age tags for Sarah, Mike, or other bystanders.",
+      "do_not_include": [
+        "weight unless asked",
+        "medical history",
+        "medications",
+        "treatment suggestions"
+      ]
+    },
+    "patient_weight": {
+      "label": "Patient weight",
+      "speaker": "Sarah",
+      "triggers": [
+        "how much does he weigh",
+        "what does he weigh",
+        "patient weight",
+        "weight",
+        "estimated weight"
+      ],
+      "answer": "He weighs about 40 pounds, around 18 kilograms.",
+      "tag": "[[HISTORY: Patient Weight=40 lbs (approximately 18 kg)]]",
+      "notes": "Patient-scoped weight only.",
+      "do_not_include": [
+        "diagnosis",
+        "treatment suggestions"
+      ]
+    },
+    "chief_concern": {
+      "label": "Broad opener / chief concern",
+      "speaker": "Sarah",
+      "triggers": [
+        "what's going on",
+        "what happened",
+        "why did you call",
+        "how can we help",
+        "chief complaint",
+        "what is his chief complaint",
+        "what's his chief complaint"
+      ],
+      "answer": "He's having trouble breathing.",
+      "tag": "[[HISTORY: Patient Chief Complaint=difficulty breathing]]",
+      "notes": "Patient-scoped complaint only.",
+      "do_not_include": [
+        "onset time",
+        "outdoor trigger",
+        "asthma history",
+        "inhaler location",
+        "medications",
+        "allergies",
+        "treatment suggestions"
+      ]
+    },
+    "sample_full": {
+      "label": "Full SAMPLE history",
+      "speaker": "Sarah",
+      "triggers": [
+        "signs and symptoms allergies medications past medical history last oral intake events",
+        "signs and symptoms allergies medication past medical history last oral intake events",
+        "sample",
+        "allergies medications past medical history last oral intake events",
+        "allergies medication past medical history last oral intake events"
+      ],
+      "answer": "He's short of breath and breathing fast, with a whistling sound when he breathes out. His chest feels tight, and he's using his neck muscles to help breathe. He has no known drug allergies. He doesn't take any regular medicines; his albuterol inhaler is at his grandmother's house right now. He has asthma, diagnosed when he was 2 years old, and he's had two ER visits for asthma attacks, the last one about six months ago. He ate mac and cheese about two hours ago. He was playing outside in the backyard for about 45 minutes, then about 30 minutes ago he started breathing fast and wheezing.",
+      "tags": [
+        "[[HISTORY: Signs and Symptoms=shortness of breath, expiratory wheeze, chest tightness, accessory muscle use]]",
+        "[[HISTORY: Allergies=NKDA]]",
+        "[[HISTORY: Medications=Albuterol MDI prescribed, currently at grandmother's house; no daily controller medication]]",
+        "[[HISTORY: PMH=Asthma diagnosed age 2, two prior ER visits for asthma, last about 6 months ago]]",
+        "[[HISTORY: Last Oral Intake=mac and cheese about 2 hours ago]]",
+        "[[HISTORY: Events=playing outside in backyard for about 45 minutes, then rapid breathing and wheezing began about 30 minutes ago]]"
+      ],
+      "do_not_include": [
+        "treatment suggestions",
+        "oxygen recommendations",
+        "albuterol dosing instructions",
+        "lung sounds beyond the caregiver-described whistling"
+      ],
+      "notes": "Priority entry — use this response whenever the learner asks about multiple SAMPLE components together, especially when signs/symptoms, last oral intake, or events are included alongside allergies/medications/history. Prefer this entry over narrower allergy/medication/history entries when the question spans more than just A/M/PMH."
+    },
+    "prior_respiratory_history": {
+      "label": "Prior respiratory history",
+      "speaker": "Sarah",
+      "triggers": [
+        "has this ever happened before",
+        "prior respiratory episodes",
+        "previous asthma episodes",
+        "any prior hospitalizations",
+        "medical history",
+        "past medical history",
+        "pmh",
+        "history of asthma"
+      ],
+      "answer": "Yes. He has asthma, diagnosed when he was 2 years old. He's been to the ER twice for asthma attacks, and the last visit was about six months ago.",
+      "tags": [
+        "[[HISTORY: PMH=Asthma diagnosed age 2, two prior ER visits for asthma, last about 6 months ago]]"
+      ],
+      "do_not_include": [
+        "treatment suggestions",
+        "medication dosing"
+      ]
+    },
+    "last_oral_intake_events": {
+      "label": "Last oral intake and events",
+      "speaker": "Sarah",
+      "triggers": [
+        "last oral intake events",
+        "last time he had anything to eat or drink and what was he doing",
+        "what was he doing before it started",
+        "events leading up",
+        "what was he doing when it started"
+      ],
+      "answer": "He ate mac and cheese about two hours ago. Before this started, he was playing outside in the backyard for about 45 minutes, and then about 30 minutes ago I noticed he was breathing fast and wheezing.",
+      "tags": [
+        "[[HISTORY: Last Oral Intake=mac and cheese about 2 hours ago]]",
+        "[[HISTORY: Events=playing outside in backyard for about 45 minutes, then rapid breathing and wheezing began about 30 minutes ago]]"
+      ],
+      "do_not_include": [
+        "treatment suggestions"
+      ]
+    }
+  },
+  "vitals": {
+    "baseline": {
+      "hr": {
+        "value": 128,
+        "unit": "bpm",
+        "label": "Heart Rate"
+      },
+      "rr": {
+        "value": 32,
+        "unit": "breaths/min",
+        "label": "Resp Rate"
+      },
+      "spo2": {
+        "value": 94,
+        "unit": "%",
+        "label": "SpO2"
+      },
+      "bp": {
+        "value": "98/60",
+        "unit": "mmHg",
+        "label": "Blood Pressure",
+        "numeric": false
+      },
+      "temp": {
+        "value": 100.0,
+        "unit": "°F",
+        "label": "Temperature"
+      },
+      "blood_glucose": {
+        "value": 108,
+        "unit": "mg/dL",
+        "label": "Blood Glucose",
+        "display": "108 mg/dL — mildly elevated stress response"
+      },
+      "gcs": {
+        "value": 15,
+        "unit": "",
+        "label": "GCS",
+        "detail": "E4V5M6 — alert, anxious, answers appropriately in short phrases"
+      },
+      "skin_color": {
+        "value": "Pale, slightly diaphoretic",
+        "numeric": false,
+        "label": "Skin"
+      },
+      "cap_refill": {
+        "value": 2.5,
+        "unit": "sec",
+        "label": "Cap Refill"
+      },
+      "pupils": {
+        "value": "PERRL 4mm",
+        "numeric": false,
+        "label": "Pupils"
+      },
+      "lung_sounds": {
+        "value": "Expiratory wheeze bilateral, decreased air movement at bases",
+        "numeric": false,
+        "label": "Lung Sounds"
+      },
+      "work_of_breathing": {
+        "value": "Moderate — intercostal retractions, nasal flaring, tripod position",
+        "numeric": false,
+        "label": "Work of Breathing"
+      }
+    },
+    "deterioration": {
+      "note": "Untreated, this patient will progressively worsen. Rates are per minute of elapsed time.",
+      "rates": {
+        "hr": 1.5,
+        "rr": 0.5,
+        "spo2": -0.3,
+        "gcs": 0,
+        "cap_refill": 0.05
+      },
+      "caps": {
+        "hr": {
+          "max": 180,
+          "min": 80
+        },
+        "rr": {
+          "max": 52,
+          "min": 18
+        },
+        "spo2": {
+          "min": 80,
+          "max": 100
+        },
+        "gcs": {
+          "min": 8,
+          "trigger_spo2_below": 88
+        },
+        "cap_refill": {
+          "max": 4.0,
+          "min": 1.0
+        }
+      },
+      "string_thresholds": {
+        "skin_color": [
+          {
+            "spo2_below": 90,
+            "value": "Pale, diaphoretic, cyanotic tinge to lips"
+          },
+          {
+            "spo2_below": 85,
+            "value": "Cyanotic — lips and fingernails"
+          }
+        ],
+        "lung_sounds": [
+          {
+            "rr_above": 44,
+            "value": "Markedly decreased air movement, faint wheeze — near-silent chest"
+          }
+        ],
+        "work_of_breathing": [
+          {
+            "rr_above": 40,
+            "value": "Severe — supraclavicular and intercostal retractions, head bobbing, abdominal breathing"
+          }
+        ]
+      }
+    },
+    "interventions": {
+      "o2_nrb": {
+        "label": "High-flow O2 via NRB mask (15 LPM)",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "\\bnrb\\b",
+          "non.?rebreather",
+          "high.?flow.*o2",
+          "15\\s*lpm",
+          "non rebreather"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 3,
+            "rate_modifier": 0.4
+          },
+          "rr": {
+            "immediate_change": -3,
+            "rate_modifier": 0.7
+          },
+          "hr": {
+            "immediate_change": -5,
+            "rate_modifier": 0.8
+          }
+        },
+        "notes": "High-flow oxygen delivery option; protocol scoring is owned by the active NASEMSO respiratory distress rubric.",
+        "requires_popup": true,
+        "popup_type": "oxygen",
+        "popup_default": {
+          "device": "nrb",
+          "flow": 15
+        }
+      },
+      "o2_nc": {
+        "label": "Supplemental O2 via nasal cannula",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "\\bnasal\\s+cannula\\b",
+          "\\bnc\\b.*o2",
+          "2\\s*lpm",
+          "4\\s*lpm",
+          "nasal cannula"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 1,
+            "rate_modifier": 0.8
+          }
+        },
+        "notes": "Low-flow oxygen delivery option; protocol scoring is owned by the active NASEMSO respiratory distress rubric.",
+        "requires_popup": true,
+        "popup_type": "oxygen",
+        "popup_default": {
+          "device": "nc",
+          "flow": 4
+        }
+      },
+      "positioning": {
+        "label": "Position of comfort — sitting upright",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "position of comfort",
+          "sit.*up",
+          "let.*sit",
+          "upright",
+          "allow.*position",
+          "sitting up"
+        ],
+        "effects": {
+          "rr": {
+            "immediate_change": -2,
+            "rate_modifier": 0.9
+          },
+          "spo2": {
+            "immediate_change": 1,
+            "rate_modifier": 0.95
+          }
+        },
+        "notes": "Patient is already self-positioning. Allow and support this. Do not lay flat."
+      },
+      "albuterol_svn": {
+        "label": "Albuterol 2.5 mg via SVN (nebulizer)",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "\\bsvn\\b",
+          "\\bnebulizer\\b",
+          "\\bneb\\b",
+          "albuterol.*neb",
+          "set up.*albuterol",
+          "albuterol.*treatment",
+          "breathing treatment",
+          "nebulized albuterol"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 5,
+            "rate_modifier": 0.15
+          },
+          "rr": {
+            "immediate_change": -8,
+            "rate_modifier": 0.25
+          },
+          "hr": {
+            "immediate_change": 10,
+            "rate_modifier": 1.15
+          }
+        },
+        "notes": "Albuterol 2.5 mg unit-dose nebulized at 6 LPM. Monitor for tachycardia — expected side effect. Drive-through nebulizer can be set up en route if patient improves enough for stretcher.",
+        "requires_popup": true,
+        "popup_type": "medication",
+        "popup_config": {
+          "drug": "Albuterol Sulfate",
+          "concentration": "2.5 mg / 3 mL NS",
+          "dose": "2.5 mg / 3 mL NS",
+          "route": "SVN nebulized — O₂ at 6 LPM driving gas",
+          "scope": "EMT — per MCA protocol",
+          "procedure_ref": "MI/09_Medications/9-1_medication_administration",
+          "drug_ref": "MI/09_Medications/9-12R_albuterol",
+          "cross_check_notice": "5-rights cross-check: verbally state drug name, concentration, and dose to your partner before administering.",
+          "cross_checks": [
+            {
+              "label": "Right Patient — indication confirmed: bronchospasm/wheezing per protocol",
+              "right": "patient"
+            },
+            {
+              "label": "Right Medication — label reads “Albuterol Sulfate 2.5 mg / 3 mL NS”; label verified against verbalization",
+              "right": "medication"
+            },
+            {
+              "label": "Right Dose — 2.5 mg / 3 mL NS (pediatric dose is NOT weight/age based — same as adult)",
+              "right": "dose"
+            },
+            {
+              "label": "Right Route — SVN nebulized; O₂ at 6 LPM driving gas; appropriate mask selected for age",
+              "right": "route"
+            },
+            {
+              "label": "Right Time — baseline vitals and lung sounds obtained; no known hypersensitivity; patient tolerates mask",
+              "right": "time"
+            },
+            {
+              "label": "Medication cross-check verbalized — stated drug name, concentration, and dose to partner (per protocol)",
+              "right": "crosscheck"
+            }
+          ],
+          "procedure_steps": [
+            "Obtain vital signs and auscultate lung sounds (prerequisite)",
+            "Place 3 mL unit-dose vial contents in lower nebulizer chamber; assemble unit",
+            "Attach nebulizer to T piece; connect pediatric mask or mouthpiece",
+            "Connect O₂ tubing to nebulizer and O₂ source; set flow to 6 LPM",
+            "Instruct patient to breathe normally with deep breath every 4–5 breaths",
+            "Continue until all medication delivered; tap reservoir gently if needed",
+            "Reassess: obtain full set of vitals and lung sounds post-treatment"
+          ]
+        }
+      },
+      "albuterol_mdi_patient_assisted": {
+        "label": "Patient-assisted albuterol MDI (patient's own prescription)",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "\\bmdi\\b",
+          "patient.*inhaler",
+          "his.*inhaler",
+          "own.*inhaler"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 4,
+            "rate_modifier": 0.2
+          },
+          "rr": {
+            "immediate_change": -6,
+            "rate_modifier": 0.3
+          },
+          "hr": {
+            "immediate_change": 8,
+            "rate_modifier": 1.1
+          }
+        },
+        "notes": "Within BLS scope WITH patient own prescription on scene. In this scenario the MDI is at grandma house — use albuterol_svn from the drug kit instead.",
+        "unavailable_in_scenario": true,
+        "unavailable_reason": "Liam's albuterol MDI is at his grandmother's house. Use the nebulizer from your drug kit."
+      },
+      "bvm": {
+        "label": "BVM ventilation",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "\\bbvm\\b",
+          "bag.*valve.*mask",
+          "assist.*ventilation",
+          "bag.*him",
+          "bag him",
+          "bag the"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 4,
+            "rate_modifier": 0.2
+          },
+          "rr": {
+            "immediate_change": -10,
+            "rate_modifier": 0.1
+          }
+        },
+        "notes": "Bag-valve-mask ventilation for apnea or respiratory failure.",
+        "indication_gate": {
+          "status": "not_indicated_now",
+          "reason": "BVM ventilation is not indicated while the patient is conscious, protecting the airway, and breathing adequately.",
+          "allowed_when": [
+            "apnea",
+            "inadequate_ventilations",
+            "severe_hypoxia",
+            "decreased_loc"
+          ]
+        },
+        "requires_popup": true,
+        "popup_type": "oxygen",
+        "popup_default": {
+          "device": "bvm",
+          "flow": 15
+        }
+      },
+      "cpap": {
+        "label": "CPAP (Continuous Positive Airway Pressure)",
+        "within_bls_scope": true,
+        "required_expansion": "cpap_bls",
+        "detection_patterns": [
+          "\\bcpap\\b",
+          "continuous positive",
+          "positive pressure.*mask",
+          "peep mask"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 4,
+            "rate_modifier": 0.3
+          },
+          "rr": {
+            "immediate_change": -6,
+            "rate_modifier": 0.4
+          },
+          "hr": {
+            "immediate_change": -4,
+            "rate_modifier": 0.7
+          }
+        },
+        "notes": "CPAP at 5 cmH2O provides positive end-expiratory pressure, reduces work of breathing, and improves oxygenation. Use with caution in pediatric patients — requires patient cooperation (age 4 may not tolerate). Can be used alongside albuterol SVN. Monitor for vomiting and barotrauma.",
+        "requires_popup": true,
+        "popup_type": "oxygen",
+        "popup_default": {
+          "device": "cpap",
+          "flow": null
+        }
+      },
+      "als_intercept": {
+        "label": "ALS intercept acknowledged",
+        "within_bls_scope": true,
+        "detection_patterns": [],
+        "effects": {},
+        "notes": "ALS intercept/co-dispatch status is determined by the active agency configuration."
+      }
+    },
+    "improvement": {
+      "note": "String vital improvements and presentation changes when numeric vitals improve with treatment. Rules are evaluated in order — first matching rule wins. All conditions in a rule must be met.",
+      "requires_intervention": "albuterol_svn",
+      "string_thresholds": {
+        "lung_sounds": [
+          {
+            "spo2_above": 98,
+            "rr_below": 24,
+            "value": "Markedly improved — bilateral air movement good, expiratory wheeze greatly diminished, bases clearing"
+          },
+          {
+            "spo2_above": 96,
+            "rr_below": 30,
+            "value": "Improving — air movement increased bilaterally, wheeze decreased in intensity"
+          },
+          {
+            "spo2_above": 95,
+            "value": "Slight improvement — wheeze still present but air movement better than on arrival"
+          }
+        ],
+        "work_of_breathing": [
+          {
+            "rr_below": 24,
+            "spo2_above": 98,
+            "value": "Mild — retractions nearly resolved, no longer using accessory muscles, breathing more comfortably"
+          },
+          {
+            "rr_below": 28,
+            "spo2_above": 96,
+            "value": "Moderate — retractions decreased, tripod position relaxing, less accessory muscle use than on arrival"
+          },
+          {
+            "rr_below": 31,
+            "value": "Moderate — slightly reduced retractions, still working but less than initial presentation"
+          }
+        ],
+        "skin_color": [
+          {
+            "spo2_above": 98,
+            "value": "Pink and warm, diaphoresis resolved"
+          },
+          {
+            "spo2_above": 96,
+            "value": "Improved — less pale, diaphoresis decreasing"
+          }
+        ]
+      },
+      "presentation_milestones": [
+        {
+          "spo2_above": 98,
+          "rr_below": 24,
+          "text": "Liam is noticeably more comfortable. He has relaxed from his strict tripod position and is sitting back slightly. His breathing is visibly easier — retractions have nearly resolved. He is speaking in 4-5 word phrases instead of 2-3 words. His color is pink and his mom is visibly relieved. He says 'I feel better' when asked."
+        },
+        {
+          "spo2_above": 96,
+          "rr_below": 30,
+          "text": "Liam looks somewhat better — his retractions are less pronounced and he appears less anxious. He is still in a forward-leaning position but less rigidly. His mother says 'He seems like he's breathing a little easier, right?' His work of breathing is decreasing."
+        },
+        {
+          "spo2_above": 95,
+          "text": "Liam shows early signs of improvement — he is slightly less anxious and his breathing appears marginally less labored. Treatment is having an effect but he still requires close monitoring."
+        }
+      ]
+    }
+  },
+  "standard_exam_findings": {
+    "chest_respiratory_exam": {
+      "label": "Chest / Respiratory Exam",
+      "exam_key": "Chest",
+      "aliases": [
+        "chest assessment",
+        "inspect chest",
+        "palpate chest",
+        "respiratory exam",
+        "breathing exam"
+      ],
+      "finding": "tripod positioning with intercostal retractions and nasal flaring; no chest wall trauma, deformity, tenderness, or crepitus",
+      "notes": "Use when the learner performs a general chest exam rather than lung auscultation. Lung sounds remain the authored wheeze finding."
+    },
+    "skin_assessment": {
+      "label": "Skin",
+      "exam_key": "Skin",
+      "aliases": [
+        "skin assessment",
+        "skin color",
+        "skin temperature",
+        "skin moisture",
+        "assess skin"
+      ],
+      "finding": "pale and slightly diaphoretic; no urticaria, rash, or cyanosis",
+      "notes": "Supports asthma versus anaphylaxis differentiation without inventing allergic skin findings."
+    }
+  },
+  "personas": {
+    "patient": {
+      "name": "Liam",
+      "age": 4,
+      "role": "patient",
+      "aliases": [
+        "Liam",
+        "the child",
+        "the boy",
+        "the patient",
+        "buddy",
+        "little guy"
+      ],
+      "tts": {
+        "enabled": true,
+        "voice_role": "patient",
+        "gender": "male",
+        "age_band": "child",
+        "provider_voice": "alloy",
+        "speed": 1.0,
+        "demeanor": "4-year-old American boy who is scared, tired, and visibly working hard to breathe",
+        "delivery": "very short breathless child phrases with audible strain and small pauses; fear and air hunger should be obvious but still understandable",
+        "avoid": "do not sound calm, flat, like an adult man, narrator, clinician, parent, performer, energetic child, or like you have a British or English accent"
+      },
+      "description": "4-year-old boy who is scared and working hard to breathe. He is alert but anxious. He can answer simple yes/no questions or give very short answers. He gets tired if asked too much. He wants his mom nearby.",
+      "speaking_style": "Short 2-3 word phrases. Sometimes just nods or shakes head. May say 'it hurts' or 'can't breathe good' or 'want mommy'. Simple, childlike vocabulary. Does not understand medical questions.",
+      "what_he_knows": [
+        "He was playing outside",
+        "His chest hurts and it's hard to breathe",
+        "He's scared",
+        "He wants his mom"
+      ],
+      "what_he_doesnt_know": "Anything medical. He cannot report his own medical history beyond 'I have asthma' (he may have heard this word)."
+    },
+    "mother_sarah": {
+      "name": "Sarah",
+      "age": 32,
+      "role": "family",
+      "relation": "mother",
+      "aliases": [
+        "Sarah",
+        "mom",
+        "mother",
+        "ma'am"
+      ],
+      "tts": {
+        "enabled": true,
+        "voice_role": "bystander",
+        "gender": "female",
+        "age_band": "adult",
+        "provider_voice": "coral",
+        "speed": 1.26,
+        "demeanor": "anxious mother scared by her child's breathing; protective, near tears, and trying to help",
+        "delivery": "speak faster than normal with worried urgency and a noticeable tremble; calm somewhat as EMS takes effective action",
+        "avoid": "do not sound calm, flat, level, detached, clinical, physically ill, playful, theatrical, or like the patient"
+      },
+      "description": "Liam's mother. Anxious and tearful but cooperative. She knows Liam's full medical history and can provide detailed answers when asked directly. She will ask questions back like 'Is he going to be okay?' or 'Should I come in the ambulance?'",
+      "speaking_style": "Anxious, speaks quickly, may repeat herself. Cooperative and wants to help. Will calm down somewhat as she sees you working.",
+      "what_she_knows": [
+        "Full asthma history — diagnosed age 2, 2 prior ER visits (last 6 months ago for similar episode)",
+        "His albuterol MDI is at grandma's house — she forgot to bring it back after last weekend's visit",
+        "He was playing outside in the backyard for about 45 minutes before symptoms started (Onset)",
+        "No known allergen trigger — pollen is high today (Provocation)",
+        "She heard audible wheezing and he said his chest felt tight (Quality)",
+        "Chest tightness and difficulty breathing (Region — no radiation)",
+        "He said it's about an 8 out of 10 bad (Severity — she estimated)",
+        "Started about 30 minutes ago and has been getting worse (Time)",
+        "Last ate about 2 hours ago — mac and cheese",
+        "No fever when she checked this morning",
+        "No other medications — no daily controller medication (they were supposed to follow up with his pediatrician)",
+        "He has no known drug allergies (NKDA)",
+        "Pediatrician is Dr. Martinez at Children's Medical Group",
+        "He weighs about 40 pounds — last checked at his 4-year checkup 2 months ago",
+        "No other medical history"
+      ]
+    },
+    "father_mike": {
+      "name": "Mike",
+      "age": 35,
+      "role": "family",
+      "relation": "father",
+      "aliases": [
+        "Mike",
+        "dad",
+        "father",
+        "sir"
+      ],
+      "tts": {
+        "enabled": true,
+        "voice_role": "bystander",
+        "gender": "male",
+        "age_band": "adult",
+        "provider_voice": "echo",
+        "speed": 1.22,
+        "demeanor": "worried father trying to stay composed and useful during his child's asthma attack",
+        "delivery": "direct, tense, slightly faster than normal; practical questions with restrained but clear urgency",
+        "avoid": "do not sound calm and flat, detached, clinical, playful, theatrical, physically ill, or like an EMS provider"
+      },
+      "description": "Liam's father. More composed than Sarah but clearly worried. He checked the car for the inhaler — it's not there either. Direct, worried, and looking to EMS for reassurance.",
+      "speaking_style": "Direct, relatively calm but tense. Asks practical questions: 'Is this serious?', 'Do you need anything from us?'. Less detailed on medical history than Sarah.",
+      "what_he_knows": [
+        "Liam has asthma",
+        "The inhaler is definitely not in the house or car — he checked both",
+        "He was watching Liam play outside — no falls, no choking, no bee stings",
+        "Liam's been fine all week — this came on fast",
+        "No allergies he knows of, takes albuterol when needed"
+      ]
+    },
+    "partner": {
+      "name": "Alex",
+      "role": "ems_partner",
+      "aliases": [
+        "Alex",
+        "partner",
+        "crew"
+      ],
+      "tts": {
+        "enabled": true,
+        "voice_role": "alex",
+        "gender": "male",
+        "age_band": "adult",
+        "provider_voice": "echo",
+        "speed": 1.32,
+        "demeanor": "calm, competent, professional EMT partner who is alert to pediatric respiratory distress",
+        "delivery": "brisk, concise field tone with clear EMS cadence; natural, direct, and reassuring without sounding sleepy or theatrical",
+        "avoid": "do not sound flat, like a narrator, instructor, parent, patient, or anxious bystander"
+      },
+      "description": "Your EMT partner on Squad 1. Alex is competent and professional. When asked for a specific vital, Alex reports only that vital. When asked for all vitals or a full set, Alex reports everything. Alex can assist with interventions and equipment. If the student gives a generic oxygen command without specifying a method, prepare oxygen setup and let the oxygen confirmation popup capture the selected delivery method. Never describe two delivery methods in the same response.",
+      "speaking_style": "Professional, calm, brief. Reports vitals clearly in EMS format. Asks 'What do you need?' or 'Ready when you are' if not directed.",
+      "capabilities": [
+        "Report individual vitals when asked",
+        "Report full vital set when asked",
+        "Set up and administer albuterol SVN",
+        "Assist with O2 setup",
+        "Position patient",
+        "Drive the rig",
+        "Assist with BVM if needed",
+        "Notify ALS of patient status"
+      ],
+      "persona_rules": [
+        "When student gives any generic oxygen command, prepare oxygen setup and let the confirmation popup capture the selected delivery method",
+        "Never describe two mutually exclusive oxygen delivery methods in the same response"
+      ]
+    }
+  },
+  "correct_treatment": {
+    "critical_actions": [
+      {
+        "id": "scene_safety",
+        "description": "Ensure scene safety and BSI/PPE",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "pat_assessment",
+        "description": "Pediatric Assessment Triangle (appearance, work of breathing, circulation to skin)",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "position_of_comfort",
+        "description": "Position patient upright / position of comfort to improve work of breathing",
+        "required": true,
+        "protocol_indicated": true,
+        "intervention_ids": [
+          "positioning"
+        ],
+        "evidence": {
+          "finding_types": [
+            "exam"
+          ],
+          "finding_key_patterns": [
+            "(?i)(WOB|Work of Breathing|Initial Observation|Primary Survey|Mental Status|LOC|Level of Consciousness).*(upright|tripod|leaning forward|position of comfort|sitting)",
+            "(?i)(upright|tripod|leaning forward|position of comfort|sitting).*(WOB|Work of Breathing|Initial Observation|Primary Survey)"
+          ],
+          "transcript_patterns": [
+            "(?i)(position.*comfort|upright|sit.*up|tripod|leaning forward|position)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "opqrst_sample",
+        "description": "Obtain OPQRST and SAMPLE history from patient and parents",
+        "required": true,
+        "evidence": {
+          "finding_types": [
+            "history",
+            "exam"
+          ],
+          "finding_key_patterns": [
+            "(?i)onset|provocation|quality|severity|time|events|allerg|medication|pmh|last oral|history"
+          ],
+          "transcript_patterns": [
+            "(?i)when did|started|worse|better|describe|how bad|allerg|medication|medical history|last ate|last drink|what happened"
+          ],
+          "min_matches": 2
+        }
+      },
+      {
+        "id": "albuterol_svn",
+        "description": "Administer albuterol 2.5 mg via SVN per protocol",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(albuterol|svn|nebulizer|nebs|breathing treatment|bronchodilator)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "reassess_vitals",
+        "description": "Reassess vitals after interventions and document changes",
+        "required": true,
+        "evidence": {
+          "finding_types": [
+            "vital",
+            "exam"
+          ],
+          "finding_key_patterns": [
+            "(?i)spo2|resp|heart|wob|lung|breath|wheeze"
+          ],
+          "transcript_patterns": [
+            "(?i)reassess|again|after|repeat|check.*again|work of breathing|spo2"
+          ],
+          "min_matches": 1
+        }
+      }
+    ],
+    "recommended_actions": [
+      {
+        "id": "hospital_notification",
+        "description": "Notify receiving hospital of incoming pediatric respiratory patient",
+        "required": false
+      },
+      {
+        "id": "monitor_response",
+        "description": "Monitor and document patient response to albuterol treatment",
+        "required": false
+      },
+      {
+        "id": "prepare_dmist",
+        "description": "Prepare organized DMIST for ALS crew at arrival",
+        "required": false
+      }
+    ],
+    "out_of_scope_bls": [
+      "iv_io_access",
+      "epinephrine_not_indicated_asthma",
+      "endotracheal_intubation",
+      "sedation_paralytic",
+      "magnesium_sulfate"
+    ],
+    "clinical_decision_points": {
+      "als_trigger": "ALS/intercept expectations are determined by the active agency configuration; prepare a clear handoff when ALS is involved.",
+      "bvm_trigger": "Respiratory failure, apnea, GCS deterioration to <10, SpO2 <88% unresponsive to O2 and albuterol",
+      "destination": "Nearest appropriate emergency department with pediatric capability"
+    }
+  },
+  "scoring": {
+    "overall_considerations": [
+      "Primary focus: recognition of reactive airway disease (asthma exacerbation) and initiation of appropriate BLS treatment — albuterol SVN and oxygen support as defined by the active NASEMSO respiratory distress rubric.",
+      "Patient weight is known (40 lbs/~18 kg per parents) — Broselow tape estimation is NOT required.",
+      "Tripod position recognition is a key clinical assessment finding — credit if student notes the posture or its significance.",
+      "Oxygenation and ventilation should be addressed before extended history — do NOT penalize brief delay in SAMPLE/OPQRST if the student appropriately initiated protocol-aligned respiratory support first.",
+      "Albuterol SVN 2.5 mg via nebulizer is the critical BLS intervention — this is the single most important action for this scenario.",
+      "Tachycardia after albuterol administration is expected and normal — do NOT penalize if student documents or mentions it as a side effect.",
+      "SpO2 of 94% in a 4-year-old is below normal (pediatric normal >95%) — credit for recognizing this as a hypoxia indicator."
+    ],
+    "dmist_considerations": [
+      "D: Name, age/sex, and pediatric weight.",
+      "M: Chief complaint / nature of illness — difficulty breathing or asthma exacerbation.",
+      "I: Illness details — known asthma, no rescue inhaler available, outdoor/exertional trigger, wheezing/chest tightness.",
+      "S: RR, SpO2, current wheeze quality (improved vs. persistent), position (tripod vs. comfort), GCS.",
+      "T: Treatment or transport — albuterol/O2 if given and the response to treatment.",
+      "Conciseness is a strength — reward focused, targeted information for each component. Do NOT penalize brevity when critical details are present.",
+      "Noting ALS arrival is NOT required — only document handoff if one occurred."
+    ],
+    "dmist_components": {
+      "D": {
+        "description": "Patient demographics",
+        "required_elements": [
+          "name: Liam",
+          "age: 4",
+          "sex: male",
+          "weight: 18 kg or 40 lbs"
+        ],
+        "corroboration_source": "scenario_patient_fields"
+      },
+      "M": {
+        "description": "History and chief complaint",
+        "required_elements": [
+          "difficulty breathing",
+          "wheezing",
+          "history of asthma or precipitating factors"
+        ],
+        "corroboration_source": "any"
+      },
+      "I": {
+        "description": "Illness details",
+        "required_elements": [
+          "known asthma history",
+          "rescue inhaler unavailable",
+          "wheezing or chest tightness"
+        ],
+        "corroboration_source": "history_and_findings",
+        "note": "I is illness/injury, not interventions. Treatments belong under T."
+      },
+      "S": {
+        "description": "Signs and current status; SpO2, WOB, and wheeze character are the primary signs for an asthma handoff",
+        "required_elements": [
+          "SpO2 value (primary)",
+          "work of breathing (primary)",
+          "wheeze quality or character (primary)",
+          "respiratory rate (supplementary)"
+        ],
+        "scoring_note": "Primary S elements for asthma: SpO2 (may be passively observed), work of breathing (retractions, position, effort), and wheeze character (audible or auscultated). RR is supplementary — its absence alone does not reduce S. HR, BP, and temperature are not primary asthma signs and should not be required for full S credit.",
+        "corroboration_source": "vitals_and_findings"
+      },
+      "T": {
+        "description": "Treatment or transport",
+        "required_elements": [
+          "albuterol administered",
+          "response to albuterol"
+        ],
+        "corroboration_source": "any"
+      }
+    },
+    "narrative_considerations": [
+      "Do NOT require medications, allergies, complete vitals tables, or full PMH — these belong in other PCR fields.",
+      "Narrative should capture: why EMS was called (difficulty breathing, asthma), what was found (tripod position, audible wheeze, SpO2 94%), what was done (albuterol SVN and any oxygen support actually applied), patient response, and disposition.",
+      "Evaluate objectivity: flag vague or subjective phrases (e.g., 'appeared to be in distress') and suggest objective replacements (e.g., 'seated in tripod position, audible wheeze at doorway, SpO2 94%').",
+      "Evaluate accuracy: treatment details, timing, and patient response should be consistent with simulation events."
+    ],
+    "required_assessments": [
+      {
+        "id": "lung_sound_auscultation",
+        "description": "Auscultate lung sounds (wheeze confirmation — lower airway disease)",
+        "keywords": [
+          "lung sounds",
+          "breath sounds",
+          "wheeze",
+          "wheezing",
+          "auscultate",
+          "listen",
+          "stethoscope",
+          "lower airway",
+          "bilateral"
+        ],
+        "missing_deduction": 3,
+        "note": "Wheeze on auscultation confirms lower airway disease and directs albuterol administration. A student who reaches for albuterol without auscultating has not confirmed the indication.",
+        "phase": "primary_survey"
+      },
+      {
+        "id": "work_of_breathing_assessment",
+        "description": "Assess work of breathing (retractions, nasal flaring, tripod positioning, accessory muscle use)",
+        "keywords": [
+          "retraction",
+          "retractions",
+          "nasal flar",
+          "work of breath",
+          "WOB",
+          "accessory",
+          "tripod",
+          "subcostal",
+          "intercostal",
+          "posture",
+          "leaning forward"
+        ],
+        "missing_deduction": 2,
+        "note": "WOB severity drives O2 delivery priority and albuterol urgency. Tripod position is a specific clinical finding in this scenario and a key recognition cue.",
+        "phase": "primary_survey"
+      }
+    ],
+    "required_screens": [
+      {
+        "id": "foreign_body_aspiration_screen",
+        "description": "Foreign body aspiration considered and assessed",
+        "keywords": [
+          "foreign body",
+          "aspiration",
+          "aspirated",
+          "choked",
+          "swallowed",
+          "sudden onset",
+          "unilateral",
+          "inhaled",
+          "coin",
+          "toy",
+          "food"
+        ],
+        "missing_deduction": 2,
+        "note": "4yo with sudden wheeze — foreign body aspiration is a high-stakes differential that must be considered and addressed"
+      }
+    ],
+    "by_level": {
+      "MFR": {
+        "critical_focus": [
+          "Scene safety and BSI/PPE prior to patient contact.",
+          "PAT: assess appearance (alert/anxious, tripod), work of breathing (audible wheeze, retractions), circulation (skin color, diaphoresis).",
+          "Provide oxygen support per the active NASEMSO respiratory distress rubric and local protocol.",
+          "Position of comfort — do NOT lay patient supine.",
+          "Attempt history from patient and parent (what happened, duration, medications).",
+          "Monitor vitals and document changes.",
+          "Recognize ALS/intercept needs and prepare handoff according to agency configuration."
+        ],
+        "additional_expectations": [],
+        "grace_items": [
+          "Albuterol SVN administration is NOT within MFR scope — do not penalize for not administering it.",
+          "DMIST structure may be less formal at MFR level — evaluate component content, not format."
+        ]
+      },
+      "EMT": {
+        "critical_focus": [
+          "Scene safety and BSI/PPE.",
+          "PAT and recognition of moderate respiratory distress.",
+          "Provide oxygen support per the active NASEMSO respiratory distress rubric and local protocol before extended history.",
+          "Position of comfort.",
+          "Administer albuterol 2.5 mg via small-volume nebulizer per protocol.",
+          "Obtain OPQRST and SAMPLE history from parent and patient.",
+          "Reassess SpO2, RR, and wheeze quality after albuterol treatment and document response.",
+          "Organize DMIST handoff for incoming ALS crew.",
+          "Notify receiving hospital of incoming pediatric respiratory patient."
+        ],
+        "additional_expectations": [
+          "Recognize that tachycardia post-albuterol is expected — do not withhold treatment due to baseline tachycardia.",
+          "Prepare patient for ALS arrival and DMIST handoff."
+        ],
+        "grace_items": [
+          "Broselow tape NOT required — weight already known (40 lbs per parents).",
+          "ALS request is not required when the active agency configuration co-dispatches ALS.",
+          "PAT acronym not required — credit assessment of its three elements.",
+          "Noting ALS arrival NOT required."
+        ]
+      },
+      "AEMT": {
+        "critical_focus": [
+          "All EMT expectations above.",
+          "Albuterol SVN 2.5 mg — same as EMT scope for AEMT.",
+          "Consider IV access if patient is severely deteriorating and unable to take SVN treatment.",
+          "Recognize and document signs of impending respiratory failure (silent chest, decreasing SpO2 unresponsive to treatment, altered mental status)."
+        ],
+        "additional_expectations": [
+          "AEMT scope does not add significantly to BLS asthma treatment for this presentation — EMT treatment is the primary pathway."
+        ],
+        "grace_items": [
+          "Same grace items as EMT level.",
+          "CPAP not indicated for this presentation (bronchospasm, not pulmonary edema)."
+        ]
+      },
+      "Paramedic": {
+        "critical_focus": [
+          "All EMT/AEMT expectations above.",
+          "Consider repeat albuterol SVN if first dose does not produce adequate response.",
+          "Recognize and document criteria for BVM ventilation assist (respiratory failure, apnea, GCS < 10, SpO2 < 88% unresponsive to treatment).",
+          "Consider IV access for severe presentation or anticipation of deterioration.",
+          "Ipratropium may be added to albuterol for moderate-severe exacerbations per ALS protocol."
+        ],
+        "additional_expectations": [
+          "Paramedic should recognize near-silent chest as ominous late sign — prepare for RSI/airway management if deterioration continues.",
+          "Document clinical decision-making around repeat dosing and escalation."
+        ],
+        "grace_items": [
+          "Same grace items as EMT level.",
+          "Magnesium sulfate, ketamine, and sedation agents are not expected for this presentation severity."
+        ]
+      }
+    }
+  },
+  "scoring_rubric": {
+    "clinical_performance": {
+      "max": 50,
+      "full_credit": "PAT completed, breath sounds auscultated, albuterol 2.5 mg SVN administered, foreign body screened out; plus base rubric: scene safety, primary assessment, history, focused assessment, reassessment, handoff",
+      "partial_credit": "O2 and assessment completed but albuterol delayed or omitted; or post-treatment reassessment not documented",
+      "minimal_credit": "Scene safety and basic assessment only — albuterol (the critical BLS intervention) not administered"
+    },
+    "narrative": {
+      "max": 20,
+      "full_credit": "CHART complete: why called (difficulty breathing), what found (tripod, audible wheeze, SpO2 94%), what done (oxygen support and/or albuterol SVN with dose/time), patient response (SpO2 improved, wheeze reduced), disposition to ALS. Objective language throughout.",
+      "partial_credit": "Most CHART elements present but missing treatment response, disposition, or contains uncorrected subjective language",
+      "minimal_credit": "Narrative present but missing multiple CHART elements or albuterol response not documented"
+    },
+    "scope_adherence": {
+      "max": 10,
+      "full_credit": "Stayed within effective provider scope and MCA rules: IV/IO access not attempted — outside BLS scope for pediatric asthma management. No out-of-scope attempts or orders.",
+      "partial_credit": "No dangerous out-of-scope intervention attempted, but scope reasoning, level-specific escalation, or MCA-specific scope recognition was incomplete.",
+      "minimal_credit": "Out-of-scope intervention attempted or ordered, or provider-level limits materially ignored."
+    },
+    "dmist": {
+      "max": 10,
+      "full_credit": "D: 4-year-old male, 40 lbs; M: asthma exacerbation / difficulty breathing; I: known asthma, no rescue inhaler available, outdoor/exertional trigger, wheezing/chest tightness; S: RR, SpO2 trend, WOB, wheeze quality; T: albuterol/O2 if given and response to treatment",
+      "partial_credit": "3–4 of 5 DMIST components present; albuterol dose/time/response included but other components thin",
+      "minimal_credit": "2 or fewer components present, or critical treatment information (drug, dose, time, response) absent"
+    },
+    "professionalism": {
+      "max": 10,
+      "full_credit": "Introduced self/agency, explained procedures to parent and child, addressed child by name, communicated treatment plan and expected effects (tachycardia from albuterol), used age-appropriate language",
+      "partial_credit": "Communication present but mechanical or impersonal; child not addressed directly or procedures not explained",
+      "minimal_credit": "Minimal communication — Liam not addressed by name, procedures not explained to him or to Sarah; no family reassurance given"
+    },
+    "protocols_treatment": {
+      "max": 10,
+      "full_credit": "Protocol-aligned treatment completed per the active NASEMSO respiratory distress rubric. Contraindicated care avoided and in-scope treatment priorities addressed.",
+      "partial_credit": "Most treatment priorities addressed, but one important protocol-aligned intervention, escalation step, or contraindication check was incomplete or delayed.",
+      "minimal_credit": "Key protocol/treatment priority missed, contraindicated care performed, or treatment plan materially inconsistent with protocol."
+    }
+  },
+  "exemplar_dmist": "D — Liam, 4-year-old male, 40 lbs (18 kg) per parents.\nM — Difficulty breathing / asthma exacerbation.\nI — Known asthma since age 2; rescue inhaler unavailable at grandmother's house; wheezing and chest tightness began after outdoor play approximately 30 minutes ago on a high-pollen day.\nS — SpO2 improved from 94% to 99%. RR improved from 32 to 22. HR 138 — expected tachycardia from albuterol, communicated to parents. Wheeze markedly reduced bilaterally. GCS 15, position of comfort, speaking in full sentences.\nT — Albuterol 2.5 mg via small-volume nebulizer at 6 LPM administered approximately 8 minutes ago with improved SpO2, RR, WOB, and wheeze. Ready for transport/turnover.",
+  "exemplar_narrative": "Squad 1 was dispatched to 2847 Maple Street for a 4-year-old male with difficulty breathing. Upon arrival, patient Liam, a 4-year-old male weighing approximately 40 lbs, was found seated in a tripod position on the living room couch. Audible expiratory wheeze was noted from the doorway. Mother reported onset approximately 30 minutes prior following outdoor play on a high-pollen day. Known asthma diagnosed at age 2 with two prior ED visits, last 6 months ago. Prescribed albuterol MDI was at grandmother's house and not available. NKDA. No fever per parents.\n\nPrimary assessment: SpO2 94%, RR 32 breaths/min with intercostal retractions and nasal flaring, HR 128 bpm, GCS 15. Lung sounds: bilateral expiratory wheeze with decreased air movement at bases. Patient maintained in position of comfort (self-selected tripod). Albuterol 2.5 mg via small-volume nebulizer set up and administered at 6 LPM per protocol — 5-rights cross-check verbalized to partner. Oxygen support was provided per active protocol. Patient tolerated treatment. Parents advised of expected tachycardia as an albuterol side effect.\n\nPost-treatment reassessment: SpO2 improved to 99%, RR decreased to 22 breaths/min, HR 138 bpm, lung sounds cleared bilaterally with improved air movement. Patient speaking in full sentences and more comfortable. Patient care transferred to Medic 1 ALS crew upon arrival with full DMIST report provided.",
+  "debrief": {
+    "condition_background": "Liam is a 4-year-old with a known history of asthma who developed acute bronchospasm after outdoor play on a high-pollen day. His albuterol MDI was unavailable, making EMS intervention with a nebulized albuterol treatment the critical treatment. The presentation is moderate respiratory distress — tachypnea (RR 32), SpO2 94%, audible expiratory wheeze, intercostal retractions, and tripod positioning. Untreated, this patient can deteriorate to severe respiratory distress and ultimately respiratory failure. Oxygen support should follow the active NASEMSO respiratory distress rubric and local protocol. Albuterol causes expected tachycardia — this is a known side effect, not a contraindication. A 'silent chest' (loss of wheeze in a wheezing patient) is an ominous late sign indicating critically decreased air movement.",
+    "key_teaching_points": [
+      "Tripod position (leaning forward, hands on knees) is a classic sign of significant respiratory distress — the patient is using accessory muscles",
+      "The Pediatric Assessment Triangle (PAT): Appearance, Work of Breathing, Circulation to skin — complete in the first 15 seconds",
+      "Albuterol 2.5 mg via SVN (small volume nebulizer) is the definitive BLS treatment for reactive airway disease — administer per protocol",
+      "OPQRST: Onset, Provocation/Palliation, Quality, Region/Radiation, Severity, Time — use this for the chief complaint",
+      "SAMPLE: Signs/Symptoms, Allergies, Medications, Pertinent medical history, Last oral intake, Events leading to call",
+      "Oxygen support decisions should follow the active respiratory distress rubric and SpO2/work-of-breathing trend",
+      "Albuterol causes expected tachycardia — monitor but don't panic if HR increases after treatment",
+      "A near-silent chest (loss of wheeze) in a wheezing patient is a late ominous sign — it means critically reduced air movement",
+      "Pediatric patients can decompensate RAPIDLY — a child 'tired' of breathing is a child about to crash"
+    ],
+    "common_mistakes": [
+      "Laying the patient flat — always allow position of comfort for respiratory distress",
+      "Delaying needed respiratory support while obtaining extended history",
+      "Failing to reassess SpO2, work of breathing, and lung sounds after treatment",
+      "Not administering albuterol SVN — this is the definitive BLS treatment — administer per protocol",
+      "Not reassessing and documenting vitals after interventions",
+      "Incomplete OPQRST or SAMPLE — missing severity, time course, or medication history"
+    ]
+  },
+  "scenario_number": 4,
+  "prerequisites": [
+    "peds_croup_01",
+    "peds_diabetic_emergency_01"
+  ],
+  "legacy_ai_categories": [
+    "documentation",
+    "professionalism"
+  ],
+  "checklist": [
+    {
+      "id": "peds_asthma_01.pat_assessment",
+      "description": "PAT completed — appearance (anxious, mild distress), work of breathing (retractions, audible wheeze), and circulation to skin assessed",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "scene_entry",
+        "scene_entry_path": "pat_assessment"
+      },
+      "tier2_patterns": [
+        "(?i)(pat|appearance|work of breath|retract|wheeze|circulat|skin|breathing|assess)"
+      ],
+      "done_feedback": "PAT completed — anxious appearance, retractions and audible wheeze (WOB), and circulation to skin assessed before hands-on contact.",
+      "missed_feedback": "PAT not completed — in respiratory distress the visual PAT drives oxygen delivery strategy and treatment priority before vitals are obtained.",
+      "clinical_rationale": "PAT classifies respiratory distress as upper or lower airway and assigns sick/not-sick severity before any intervention; this drives the entire treatment algorithm.",
+      "common_error": "Performing vitals before completing the PAT — in moderate-severe respiratory distress, the visual PAT should direct immediate interventions before any cuff or sensor is placed."
+    },
+    {
+      "id": "peds_asthma_01.albuterol_svn",
+      "description": "Albuterol 2.5 mg via SVN (small volume nebulizer) administered per protocol for pediatric bronchospasm",
+      "subtype": "intervention",
+      "category": "clinical_performance",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "albuterol_svn"
+      },
+      "tier2_patterns": [
+        "(?i)(albuterol|SVN|nebulizer|nebs?|2\\.5\\s*mg|bronchodilat)"
+      ],
+      "done_feedback": "Albuterol 2.5 mg via SVN administered — correct first-line bronchodilator; expect SpO₂ improvement and reduced WOB within 5–10 minutes.",
+      "missed_feedback": "Albuterol SVN not administered — bronchospasm is the primary reversible cause of wheeze in a known asthmatic; withholding it leaves airway obstruction untreated during transport.",
+      "clinical_rationale": "Beta-2 agonist bronchodilation is the protocol-mandated first-line treatment for asthma exacerbation; albuterol relaxes bronchial smooth muscle within 5 minutes.",
+      "common_error": "Waiting for SpO₂ to drop below 90% before administering albuterol — treat bronchospasm on clinical signs (wheeze, retractions, tachypnea) and history, not oximetry threshold alone."
+    },
+    {
+      "id": "peds_asthma_01.foreign_body_screen",
+      "description": "Foreign body aspiration screened out — history consistent with asthma exacerbation (known asthmatic, gradual onset, no sudden choke event)",
+      "subtype": "screen",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 2,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": null,
+      "tier2_patterns": [
+        "(?i)(foreign body|choke|choking|swallow|eat|food|sudden|always had|asthma\\s+history|asthmatic|inhaler|prior)",
+        "(?i)(airway.*patent|patent.*airway|airway.*clear|airway.*unobstructed|no.*airway.*obstruct)"
+      ],
+      "done_feedback": "Foreign body aspiration screened out — known asthmatic with gradual onset after outdoor play; no sudden choke event or history of eating small objects.",
+      "missed_feedback": "Foreign body aspiration not screened out — any wheeze in a young child requires differential evaluation; unrecognized foreign body leads to delayed referral and progressive obstruction.",
+      "clinical_rationale": "In children under 5, wheeze can result from a foreign body rather than reactive airway disease; history of sudden onset, meal or play with small objects, and asymmetric breath sounds drive the differential.",
+      "common_error": "Assuming all wheeze in a child with known asthma is an exacerbation — a foreign body can coexist with asthma; sudden unilateral wheeze or asymmetric breath sounds increase suspicion."
+    },
+    {
+      "id": "peds_asthma_01.scope_no_iv_io",
+      "description": "IV/IO access not attempted — outside BLS scope for pediatric asthma management",
+      "subtype": "intervention",
+      "category": "scope_adherence",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [
+        "MFR",
+        "EMT"
+      ],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "absence_check",
+        "absence_intervention_key": "iv_io_access"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "IV/IO correctly avoided — albuterol SVN is the BLS-scope treatment for asthma; IV access is an ALS skill not required for this presentation.",
+      "missed_feedback": "IV/IO attempted — outside BLS scope; nebulized albuterol is the correct BLS intervention for bronchospasm.",
+      "clinical_rationale": "BLS management of asthma exacerbation is supplemental O2 and nebulized albuterol; IV access, magnesium, and epinephrine administration belong to ALS scope."
+    }
+  ],
+  "impression_challenge": {
+    "enabled": true,
+    "trigger_milestone": "primary_survey_complete",
+    "prompt": "Based on your initial assessment, what is your primary clinical impression?",
+    "options": [
+      "Reactive airway disease / asthma exacerbation",
+      "Anaphylaxis with bronchospasm",
+      "Croup / upper airway infection",
+      "Foreign body aspiration"
+    ],
+    "correct": "Reactive airway disease / asthma exacerbation",
+    "acceptable": [
+      "Anaphylaxis with bronchospasm"
+    ]
+  }
+}

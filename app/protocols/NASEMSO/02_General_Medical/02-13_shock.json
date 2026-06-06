@@ -1,0 +1,141 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). General Medical: Shock. NASEMSO national provisional base.",
+  "id": "nasemso_base_general_medical_shock",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Shock",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — General Medical: Shock",
+  "aliases": [
+    "None noted"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — General Medical: Shock",
+      "points": [
+        "Initiate early fluid resuscitation and vasopressors to maintain/restore adequate perfusion to vital organs",
+        "Differentiate between possible underlying causes of shock to promptly initiate additional therapy"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Signs of poor perfusion (due to a medical cause) such as one or more of the following: a. Altered mental status",
+        "Potential etiologies of shock: a. Hypovolemic (hemorrhagic or non-hemorrhagic)",
+        "EXCLUSION CRITERIA:",
+        "Shock due to suspected trauma [See Trauma Section]"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Supine position with legs elevated (Trendelenburg) unless respiratory compromise",
+        "Hemorrhage control: direct pressure, tourniquet, wound packing",
+        "Oxygen via NRM targeting SpO2 94-98%",
+        "Prevent heat loss: cover patient to maintain normothermia",
+        "CPR/AED for cardiac arrest from refractory shock"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "IV access maintenance (non-medicated) if existing access",
+        "12-lead ECG acquisition for cardiogenic shock",
+        "CPAP for cardiogenic shock with pulmonary edema component",
+        "Epinephrine IM auto-injector for anaphylactic shock",
+        "Albuterol SVN for anaphylactic shock with bronchospasm"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access: 2 large-bore IVs when possible",
+        "IV fluid resuscitation: NS or LR 250-500 mL boluses for distributive/hypovolemic shock (adult); 20 mL/kg pediatric",
+        "Epinephrine IV/IO 0.1-0.5 mg for anaphylactic shock",
+        "IV/IO naloxone 0.4-2 mg for opioid-induced distributive shock",
+        "Blood glucose monitoring and correction",
+        "Waveform capnography for hemodynamic monitoring"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "Vasopressors for refractory distributive shock (septic/neurogenic): norepinephrine 0.1-0.5 mcg/kg/min IV preferred",
+        "Dopamine 5-20 mcg/kg/min IV for cardiogenic shock with bradycardia",
+        "Epinephrine infusion 0.1-0.5 mcg/kg/min IV for anaphylactic or refractory shock",
+        "Corticosteroids (methylprednisolone 125 mg IV) for anaphylactic or adrenal shock",
+        "Needle decompression bilaterally for obstructive shock from tension pneumothorax",
+        "Pericardiocentesis authorization (per medical direction) for cardiac tamponade",
+        "Fluid resuscitation strategy: permissive hypotension (MAP ≥50) for hemorrhagic shock until surgical control",
+        "Tranexamic acid (TXA) 1 g IV over 10 min within 3 hours of injury for hemorrhagic shock",
+        "RSI and intubation for airway compromise in shock",
+        "12-lead ECG interpretation for cardiogenic cause (STEMI, arrhythmia)"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Recognition of cardiogenic shock - If the patient condition deteriorates after fluid administration, rales or hepatomegaly develop, then consider cardiogenic shock and withholding further fluid administration"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Early, aggressive IV fluid administration is essential in the treatment of suspected septic shock",
+        "Patients predisposed to shock: a. Immunocompromised (patients undergoing chemotherapy or with a primary or acquired immunodeficiency)",
+        "In most adults, tachycardia is the first sign of compensated shock, and may persist for hours. Tachycardia can be a late sign of shock in children and a tachycardic child may be close to cardiovascular collapse",
+        "Hypotension indicates uncompensated shock, which may progress to cardiopulmonary failure within minutes. Hypotension is a late and ominous sign in pediatric uncompensated shock",
+        "Hydrocortisone succinate, if available, is preferred over methylprednisolone and dexamethasone for the patient with adrenal insufficiency because of its dual glucocorticoid and mineralocorticoid effects a. Patients with no reported history of adrenal axis dysfunction may have adrenal suppression due to their acute illness, and hydrocortisone should be considered for any patient showing signs of treatment-resistant shock",
+        "Decreased perfusion manifested by altered mental status, or abnormalities in capillary refill or pulses, decreased urine output (1 mL/kg/hr): a. Cardiogenic, hypovolemic, obstructive shock: capillary refill greater than 2 seconds, diminished peripheral pulses, mottled cool extremities"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Medications administered",
+        "' Full vital signs (pulse, blood pressure, respiratory rate, neurologic status assessment) with reassessment q 15 minutes or more frequently as appropriate",
+        "' Lactate level (if available)",
+        "' Neurologic status assessment [See Appendix VII. Neurologic Status Assessment]",
+        "' Amount of fluids given"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Recognition of cardiogenic shock - If the patient condition deteriorates after fluid administration, rales or hepatomegaly develop, then consider cardiogenic shock and withholding further fluid administration",
+    "Potential etiologies of shock: a. Hypovolemic (hemorrhagic or non-hemorrhagic)"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

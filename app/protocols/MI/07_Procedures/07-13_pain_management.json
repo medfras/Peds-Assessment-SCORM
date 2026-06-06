@@ -1,0 +1,174 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-13 Pain Management (Revised 11/17/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_pain_management",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (All EMS Levels — scope varies by medication)",
+  "jurisdiction": "Michigan",
+  "condition": "Pain Management",
+  "version": "2025-11-17",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-13: Pain Management — MDHHS Approved 11/17/2025",
+
+  "purpose": "Provide standardized prehospital pain assessment and pharmacological management across provider levels. Basic non-pharmacological interventions are always first. Opioids require SpO2 and capnography monitoring. MCAs must select at least one non-opioid and at least one opioid medication.",
+
+  "sections": [
+    {
+      "title": "Pain Assessment",
+      "reference": "Michigan Protocol 7-13: Pain — Assessment",
+      "points": [
+        "Use the Wong Pain Scale (0–10):",
+        "— 0: No pain",
+        "— 1–3: Minor pain",
+        "— 4–6: Moderate pain",
+        "— 7–10: Severe pain",
+        "Reassess pain score after each intervention",
+        "Contact Medical Control for patients with established pain management care plans"
+      ]
+    },
+    {
+      "title": "Basic (Non-Pharmacological) Interventions",
+      "reference": "Michigan Protocol 7-13: Pain — Basic Interventions",
+      "points": [
+        "Positioning of comfort",
+        "Splinting of injured extremity",
+        "Application of ice or cold pack",
+        "Emotional support and reassurance",
+        "These interventions should be initiated before or concurrent with pharmacological treatment"
+      ]
+    },
+    {
+      "title": "Non-Opioid Analgesics — Adult (MCA Must Select ≥ 1)",
+      "reference": "Michigan Protocol 7-13: Pain — Non-Opioid (Adult)",
+      "points": [
+        "ACETAMINOPHEN 650 mg PO — adults; EMT and above",
+        "IBUPROFEN 400 mg PO — adults; NOT for pregnant patients; EMT and above",
+        "KETOROLAC 15 mg IM/IV — adults; NOT for pregnant patients; Specialist and above",
+        "KIDNEY STONE PAIN: ketorolac is first-line analgesic if available"
+      ]
+    },
+    {
+      "title": "Non-Opioid Analgesics — Pediatric",
+      "reference": "Michigan Protocol 7-13: Pain — Non-Opioid (Pediatric)",
+      "points": [
+        "ACETAMINOPHEN (Children's Elixir 160 mg/5 mL): 15 mg/kg PO — per Children's Elixir Dosing Table",
+        "IBUPROFEN (Children's Elixir 100 mg/5 mL): 10 mg/kg PO — per Children's Elixir Dosing Table; NOT for infants ≤ 6 months",
+        "KETOROLAC for children > 5 years: 0.5 mg/kg IM/IV; maximum 15 mg"
+      ]
+    },
+    {
+      "title": "Ketamine — Dissociative Analgesic (MCA Selection Required)",
+      "reference": "Michigan Protocol 7-13: Pain — Ketamine",
+      "points": [
+        "MCA must select one of three authorization options: Not permitted / Medical Control required prior to administration / Administer per protocol",
+        "ADULT IV/IO: 0.2 mg/kg diluted in 100 mL NS; infuse over 5–10 minutes; maximum 25 mg; repeat ONCE ≥ 10 minutes after initial dose",
+        "ADULT IN: 0.5 mg/kg; maximum 50 mg; repeat ONCE ≥ 10 minutes after initial dose",
+        "PEDIATRIC < 6 years: IN route ONLY; 0.5 mg/kg; per ketamine pediatric dosing table",
+        "PEDIATRIC dosing per MI-MEDIC or ketamine pediatric dosing table (Purple through Green zones; > 36 kg = Black/adult)",
+        "Monitoring: if severe pain AND ketamine OR opioid administered — continuous SpO2 AND capnography REQUIRED throughout",
+        "IV/IO administration must be slow (over 5–10 minutes) — rapid IV administration causes respiratory depression",
+        "IM administration: single dose only; no repeat",
+        "Contact Medical Control BEFORE administering opioids if ketamine has already been given"
+      ]
+    },
+    {
+      "title": "Opioid Analgesics (MCA Must Select ≥ 1)",
+      "reference": "Michigan Protocol 7-13: Pain — Opioids",
+      "points": [
+        "Adult SBP must be > 100 mmHg before opioid administration",
+        "Pediatric SBP must be > 80 + (2 × age) mmHg before opioid administration",
+        "Continuous SpO2 AND capnography monitoring REQUIRED with any opioid administration",
+        "MORPHINE 0.1 mg/kg IV/IO/IM (maximum 5 mg per dose):",
+        "— IV/IO: may repeat up to 3 times; maximum cumulative dose 20 mg; minimum 10 minutes between doses",
+        "— IM: single dose only; no repeat",
+        "— NOT for patients < 18 months of age",
+        "FENTANYL 1 mcg/kg weight-rounded per adult weight table (adult ≤ 25 kg = 25 mcg; 26–50 kg = 50 mcg; 51–75 kg = 75 mcg; ≥ 76 kg = 100 mcg):",
+        "— IV/IO/IN: may repeat ONCE; maximum cumulative dose 200 mcg",
+        "— IM: single dose only; no repeat",
+        "— Pediatric: per MI-MEDIC or 1 mcg/kg"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Non-Opioid Analgesic (≥ 1 required)",
+      "description": "MCA must authorize at least one non-opioid analgesic for prehospital pain management",
+      "options": ["Acetaminophen 650 mg PO (adult)", "Ibuprofen 400 mg PO (adult, NOT pregnant)", "Ketorolac 15 mg IM/IV (adult, NOT pregnant — Specialist+)"],
+      "selected": null
+    },
+    {
+      "item": "Ketamine Authorization",
+      "description": "MCA must select the level of authorization for sub-dissociative ketamine in pain management",
+      "options": ["Not permitted", "Medical Control required prior to administration", "Administer per protocol"],
+      "selected": null
+    },
+    {
+      "item": "Opioid Analgesic (≥ 1 required)",
+      "description": "MCA must authorize at least one opioid for prehospital pain management",
+      "options": ["Morphine 0.1 mg/kg IV/IO/IM (max 5 mg; IV/IO repeat x3 max 20 mg; NOT < 18 months)", "Fentanyl weight-rounded per table (IV/IO/IN repeat once max 200 mcg; IM no repeat)"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [
+    {
+      "name": "Ketorolac (Adult Pain)",
+      "dose": "15 mg IM or IV; pediatric > 5 years: 0.5 mg/kg IM/IV max 15 mg",
+      "route": "IM or IV",
+      "indication": "Moderate to severe pain; first-line for kidney stone pain",
+      "contraindications": "Pregnant patients; active GI bleed; renal insufficiency (caution)",
+      "side_effects": "GI irritation, renal effects with long-term use",
+      "scope": "Specialist and Paramedic",
+      "notes": "NSAIDs: ketorolac is first-line for kidney stone pain if available. Not for pregnant patients."
+    },
+    {
+      "name": "Ketamine IV/IO (Sub-dissociative Analgesia)",
+      "dose": "0.2 mg/kg IV/IO diluted in 100 mL NS over 5–10 min; max 25 mg; repeat once ≥ 10 min; IN: 0.5 mg/kg max 50 mg",
+      "route": "IV/IO (slow infusion) or IN",
+      "indication": "Moderate to severe pain per MCA selection",
+      "contraindications": "Per MCA selection; IM = single dose no repeat; peds < 6 yr = IN route only; contact MC before opioids after ketamine",
+      "side_effects": "Emergence phenomena, nausea, laryngospasm (with rapid IV)",
+      "scope": "Per MCA selection (Paramedic typically)",
+      "notes": "Slow IV push mandatory to avoid respiratory depression. Continuous SpO2 and capnography required. Contact MC before giving opioids after ketamine."
+    },
+    {
+      "name": "Morphine (Pain)",
+      "dose": "0.1 mg/kg IV/IO/IM; max 5 mg per dose; IV/IO repeat x3 max 20 mg cumulative; IM no repeat",
+      "route": "IV, IO, or IM",
+      "indication": "Moderate to severe pain — adult SBP > 100; peds SBP > 80+(2×age)",
+      "contraindications": "SBP < 100 (adult); not for patients < 18 months; IM = no repeat",
+      "side_effects": "Respiratory depression, hypotension, nausea",
+      "scope": "Per MCA selection",
+      "notes": "NOT for patients < 18 months. Continuous SpO2 and capnography required. IV/IO may repeat up to 3 times minimum 10 min apart, max 20 mg."
+    },
+    {
+      "name": "Fentanyl (Pain)",
+      "dose": "1 mcg/kg weight-rounded: ≤ 25 kg = 25 mcg; 26–50 kg = 50 mcg; 51–75 kg = 75 mcg; ≥ 76 kg = 100 mcg; IV/IO/IN repeat once max 200 mcg; IM no repeat",
+      "route": "IV, IO, IN, or IM",
+      "indication": "Moderate to severe pain — adult SBP > 100; peds SBP > 80+(2×age)",
+      "contraindications": "SBP below threshold; IM = single dose no repeat",
+      "side_effects": "Respiratory depression, chest wall rigidity (rapid IV), hypotension",
+      "scope": "Per MCA selection",
+      "notes": "Pediatric: per MI-MEDIC or 1 mcg/kg. Continuous SpO2 and capnography required. IV/IO/IN may repeat once max 200 mcg."
+    }
+  ],
+
+  "deterioration_flags": [
+    "SBP < 100 (adult) — do not administer opioids; treat hypotension per appropriate protocol",
+    "SpO2 decreasing after opioid — assist ventilation; consider naloxone per Opioid Overdose Protocol",
+    "Respiratory depression after ketamine rapid IV push — slow infusion is required; assist ventilation as needed",
+    "Ketamine given — contact Medical Control BEFORE giving opioids"
+  ],
+
+  "scope_notes": [
+    "Acetaminophen PO, Ibuprofen PO: EMT and above (per MCA selection)",
+    "Ketorolac IM/IV: Specialist and above (per MCA selection)",
+    "Ketamine: per MCA selection level",
+    "Morphine IV/IO/IM: per MCA selection; not for < 18 months",
+    "Fentanyl IV/IO/IN/IM: per MCA selection",
+    "Opioids: continuous SpO2 and capnography required; SBP thresholds must be met",
+    "Ketamine + opioid: contact MC before giving opioid; continuous SpO2 and capnography required"
+  ]
+}

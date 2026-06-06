@@ -1,0 +1,130 @@
+{
+  "title": "Differential Dash: Respiratory",
+  "subtitle": "Match respiratory findings to the most likely field etiology.",
+  "rounds": 4,
+  "pairs_per_round": 3,
+  "round_nudges": [
+    {
+      "prompt": "What is the first respiratory fork?",
+      "text": "Decide whether the problem is upper airway, lower airway, alveolar/fluid, ventilation failure, infection, allergic exposure, trauma, or toxin. That fork changes your treatment."
+    },
+    {
+      "prompt": "Which sound changes care the most?",
+      "text": "Stridor is upper airway and usually means keep the child calm and prepare airway support. Wheezes are lower airway narrowing and point toward bronchodilator or allergic treatment depending on context."
+    },
+    {
+      "prompt": "What tells you the patient is tiring?",
+      "text": "Decreasing air movement, falling mental status, bradycardia, cyanosis, or quieter wheezes with worse work of breathing can mean impending respiratory failure."
+    }
+  ],
+  "pairs": [
+    {
+      "id": "resp_dd_01",
+      "category_id": "asthma_bronchospasm",
+      "category_letter": "asthma",
+      "category_label": "Asthma / Bronchospasm",
+      "finding": "Known asthma with bilateral musical expiratory air movement, prolonged exhalation, and accessory muscle use",
+      "explanation": "Bilateral wheezes with prolonged expiration and asthma history point toward lower-airway bronchospasm and bronchodilator-focused care.",
+      "hint": "Ask whether the sound is lower-airway musical narrowing."
+    },
+    {
+      "id": "resp_dd_02",
+      "category_id": "croup",
+      "category_letter": "croup",
+      "category_label": "Croup",
+      "finding": "Seal-like barking cough after URI, noisy inspiration when upset, worse supine, low-grade fever",
+      "explanation": "Barking cough with inspiratory stridor in a toddler is classic croup. Avoid agitation and follow protocol for upper-airway obstruction support.",
+      "hint": "Upper-airway sound plus barking cough should steer you away from asthma."
+    },
+    {
+      "id": "resp_dd_03",
+      "category_id": "epiglottitis",
+      "category_letter": "epiglottitis",
+      "category_label": "Epiglottitis / Supraglottic Infection",
+      "finding": "Toxic appearance, drooling, tripod position, muffled voice, minimal cough",
+      "explanation": "Drooling, tripod positioning, muffled voice, and toxic appearance suggest supraglottic infection. Do not agitate the airway.",
+      "hint": "Think about a child protecting an upper airway they do not want touched."
+    },
+    {
+      "id": "resp_dd_04",
+      "category_id": "foreign_body",
+      "category_letter": "foreign_body",
+      "category_label": "Foreign Body Obstruction",
+      "finding": "Sudden choking while eating, one-sided musical air entry, coughing fit, no fever",
+      "explanation": "Sudden onset during eating with unilateral findings suggests aspirated foreign body rather than infection or asthma.",
+      "hint": "The onset story matters more than the sound label alone."
+    },
+    {
+      "id": "resp_dd_05",
+      "category_id": "pneumonia",
+      "category_letter": "pneumonia",
+      "category_label": "Pneumonia / Consolidation",
+      "finding": "Fever, productive cough, focal crackles, reduced air entry on one side",
+      "explanation": "Fever plus focal crackles and reduced air entry points toward pneumonia/consolidation. Support oxygenation and transport.",
+      "hint": "Combine fever with focal lung findings."
+    },
+    {
+      "id": "resp_dd_06",
+      "category_id": "pulmonary_edema",
+      "category_letter": "pulmonary_edema",
+      "category_label": "Pulmonary Edema",
+      "finding": "Diffuse crackles, hypoxia, orthopnea, edema, frothy sputum",
+      "explanation": "Diffuse crackles with orthopnea, edema, and frothy sputum indicate pulmonary edema physiology rather than isolated bronchospasm.",
+      "hint": "Think fluid in alveoli, not narrowed bronchi."
+    },
+    {
+      "id": "resp_dd_07",
+      "category_id": "anaphylaxis",
+      "category_letter": "anaphylaxis",
+      "category_label": "Anaphylaxis",
+      "finding": "Allergen exposure with lower-airway tightness, hives, vomiting, and hypotension",
+      "explanation": "Respiratory symptoms with skin/GI findings and hypotension after exposure indicate anaphylaxis, not simple asthma.",
+      "hint": "Look beyond the wheeze: skin, GI, BP, and exposure change the protocol."
+    },
+    {
+      "id": "resp_dd_08",
+      "category_id": "bronchiolitis",
+      "category_letter": "bronchiolitis",
+      "category_label": "Bronchiolitis",
+      "finding": "Infant with URI symptoms, coarse lower-airway sounds, poor feeding, and nasal flaring",
+      "explanation": "Infant URI symptoms with wheeze/crackles and feeding difficulty suggest bronchiolitis. Focus on oxygenation, suction, hydration risk, and transport.",
+      "hint": "Age and feeding matter here as much as the lung sound."
+    },
+    {
+      "id": "resp_dd_09",
+      "category_id": "tension_pneumothorax",
+      "category_letter": "tension_pneumo",
+      "category_label": "Tension Pneumothorax",
+      "finding": "Trauma, unilateral absent breath sounds, worsening hypoxia, hypotension",
+      "explanation": "Unilateral absent breath sounds with shock after trauma is tension pneumothorax until proven otherwise. Follow scope/protocol for decompression and rapid transport.",
+      "hint": "Pair one-sided air movement loss with perfusion collapse."
+    },
+    {
+      "id": "resp_dd_10",
+      "category_id": "toxic_inhalation",
+      "category_letter": "toxic_inhalation",
+      "category_label": "Toxic Inhalation / Smoke",
+      "finding": "Smoke exposure, soot around mouth, hoarse voice, singed nasal hair, dyspnea",
+      "explanation": "Smoke exposure plus airway burns/hoarseness suggests inhalation injury with evolving airway risk.",
+      "hint": "Exposure plus airway appearance should make you think beyond bronchospasm."
+    },
+    {
+      "id": "resp_dd_11",
+      "category_id": "respiratory_failure",
+      "category_letter": "resp_failure",
+      "category_label": "Impending Respiratory Failure",
+      "finding": "Previously loud wheezes now quiet, poor air movement, fatigue, falling LOC",
+      "explanation": "Quieter breath sounds with worse fatigue and falling LOC can mean the patient is tiring and moving less air.",
+      "hint": "Do not mistake quieter sounds for improvement if the patient looks worse."
+    },
+    {
+      "id": "resp_dd_12",
+      "category_id": "upper_airway_swelling",
+      "category_letter": "upper_airway_swelling",
+      "category_label": "Upper-Airway Swelling",
+      "finding": "Facial swelling, hoarse voice, noisy inspiration, and recent bee sting",
+      "explanation": "Facial swelling, hoarseness, and stridor after sting indicate upper-airway swelling from allergic reaction/anaphylaxis risk.",
+      "hint": "Stridor plus swelling points above the glottis, not lower airway."
+    }
+  ]
+}

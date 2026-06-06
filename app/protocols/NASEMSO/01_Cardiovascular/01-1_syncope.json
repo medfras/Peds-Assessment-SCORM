@@ -1,0 +1,155 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Cardiovascular: Adult and Pediatric Syncope and Near Syncope. NASEMSO national provisional base.",
+  "id": "nasemso_base_cardiovascular_adult_and_pediatric_syncope_and_near_syncope",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Adult and Pediatric Syncope and Near Syncope",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Cardiovascular: Adult and Pediatric Syncope and Near Syncope",
+  "aliases": [
+    "Loss of consciousness"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Cardiovascular: Adult and Pediatric Syncope and Near Syncope",
+      "points": [
+        "Stabilize and resuscitate when necessary",
+        "Initiate monitoring and diagnostic procedures",
+        "Transfer for further evaluation 1. Syncope is heralded by both the loss of consciousness and the loss of postural tone and resolves spontaneously without medical interventions. Syncope typically is abrupt in onset and resolves equally quickly. EMS clinicians may find the patient awake and alert on initial evaluation"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Abrupt loss of consciousness with loss of postural tone",
+        "Prodromal symptoms of syncope",
+        "EXCLUSION CRITERIA:",
+        "Patients with alternate and obvious cause of loss of consciousness (e.g., trauma ' See Head Injury Guideline)",
+        "Patients with ongoing mental status changes or coma should be treated per the Altered Mental Status Guideline",
+        "Patients with persistent new neurologic deficit [See Suspected Stroke/Transient Ischemic Attack Guideline]"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Scene safety and PPE; primary survey (ABCDE)",
+        "Oxygen via NRM targeting SpO2 94-98% if indicated",
+        "Position of comfort; hemorrhage control as needed",
+        "CPR/AED if patient becomes pulseless",
+        "Epinephrine auto-injector for anaphylaxis if applicable",
+        "Naloxone intranasal unit-dose for suspected opioid involvement"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Blood glucose monitoring; oral glucose if hypoglycemic and alert",
+        "12-lead ECG acquisition and transmission",
+        "CPAP for respiratory distress",
+        "Aspirin for suspected ischemic chest pain",
+        "Albuterol SVN for bronchospasm component",
+        "IV access maintenance (non-medicated)"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation",
+        "IV/IO fluid resuscitation as indicated",
+        "Waveform capnography",
+        "IV analgesics (fentanyl, morphine) per pain management protocol",
+        "IV antiemetics (ondansetron) per protocol",
+        "IV D50W/D10W for hypoglycemia"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "12-lead ECG interpretation",
+        "Endotracheal intubation for airway compromise",
+        "RSI per protocol",
+        "Advanced antidysrhythmic or hemodynamic support per specific protocol",
+        "All parenteral medications per protocol",
+        "Vasopressors for refractory hemodynamic compromise"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Patients suffering from syncope due to arrhythmia may experience recurrent arrhythmias and should therefore be placed on a cardiac monitor",
+        "Geriatric patients suffering falls from standing may sustain significant injury and should be diligently screened for trauma. [General Trauma Management Guideline]"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "By being most proximate to the scene and to the patient's presentation, EMS clinicians are commonly in a unique position to identify the cause of syncope. Consideration of potential causes, ongoing monitoring of vitals and cardiac rhythm and detailed exam and history are essential pieces of information to pass on to hospital clinicians",
+        "For patients where a lower risk etiology is suspected, e.g., vasovagal syncope, decisions regarding delayed or non-transport should be made in consultation with medical direction",
+        "High-risk causes of syncope include, but are not limited to, the following: a. Cardiovascular i. Myocardial infarction",
+        "Consider high-risk 12-lead EKG features including, but not limited to:. a. Evidence of QT prolongation (generally over 500 msec)",
+        "12-lead EKG findings",
+        "Evidence of alternate etiology, including seizure",
+        "Evidence of cardiac dysfunction (e.g., evidence of congestive heart failure (CHF), arrhythmia).",
+        "Evidence of hemorrhage"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Presenting cardiac rhythm",
+        "' Cardiac rhythm present when patient is symptomatic",
+        "' Any cardiac rhythm changes",
+        "' Blood pressure",
+        "' Blood glucose level (BGL)",
+        "' Symptoms immediately preceding event",
+        "' Patient status on EMS arrival: recovered or still symptomatic"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Contact medical direction for clinical deterioration or interventions outside standard scope"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": [],
+  "clinical_context": {
+    "concepts": [
+      "blood_glucose",
+      "cardiac_monitoring",
+      "syncope"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

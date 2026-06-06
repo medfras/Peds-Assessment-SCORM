@@ -1,0 +1,123 @@
+[
+  {
+    "id": "moi_01",
+    "mode": "text",
+    "prompt": "Bicycle handlebar impact to upper abdomen; child initially ambulatory, now worsening abdominal pain",
+    "decision": "high_risk_moi",
+    "bucket": "blunt_abdominal",
+    "explanation": "Handlebar compression can cause pancreatic, duodenal, or hollow-organ injury despite initially normal appearance.",
+    "mistake_tag": "missed_abdominal_moi",
+    "hint": "Map the energy to the body region compressed.",
+    "socratic_feedback": "You under-called the mechanism. Ask what hidden injury follows focused abdominal compression. Handlebar impact should raise abdominal injury suspicion."
+  },
+  {
+    "id": "moi_02",
+    "mode": "text",
+    "prompt": "Diving into shallow water; neck pain and tingling in both hands",
+    "decision": "high_risk_moi",
+    "bucket": "axial_load",
+    "explanation": "Axial loading plus neurologic symptoms is a spinal injury concern requiring motion restriction and neuro reassessment.",
+    "mistake_tag": "missed_spine_moi",
+    "hint": "Think axial load and neurologic symptoms."
+  },
+  {
+    "id": "moi_03",
+    "mode": "text",
+    "prompt": "Lap-belt only MVC; abdominal bruising across lower abdomen",
+    "decision": "high_risk_moi",
+    "bucket": "lap_belt",
+    "explanation": "Seatbelt sign in a child predicts abdominal and spinal injury risk even with stable initial vitals.",
+    "mistake_tag": "missed_abdominal_moi",
+    "hint": "The restraint pattern points to compressed structures."
+  },
+  {
+    "id": "moi_04",
+    "mode": "text",
+    "prompt": "Fall from second-story window; lands on feet, heel pain and back pain",
+    "decision": "high_risk_moi",
+    "bucket": "vertical_deceleration",
+    "explanation": "Vertical deceleration transmits force through heels, legs, pelvis, and spine. Back pain increases spinal concern.",
+    "mistake_tag": "missed_spine_moi",
+    "hint": "Follow the force from the feet upward."
+  },
+  {
+    "id": "moi_05",
+    "mode": "text",
+    "prompt": "Unrestrained child ejected from rollover crash; awake but anxious",
+    "decision": "high_risk_moi",
+    "bucket": "high_energy",
+    "explanation": "Ejection and rollover are high-energy mechanisms with hidden injury risk. Stable appearance does not make it low priority.",
+    "mistake_tag": "missed_transport_priority",
+    "hint": "High-energy mechanism can outrun the first set of vitals."
+  },
+  {
+    "id": "moi_06",
+    "mode": "text",
+    "prompt": "Penetrating wound near groin with expanding thigh swelling",
+    "decision": "high_risk_moi",
+    "bucket": "penetrating_vascular",
+    "explanation": "Penetrating proximal extremity trauma can involve major vessels and concealed hemorrhage.",
+    "mistake_tag": "missed_hemorrhage_moi",
+    "hint": "Location near major vessels changes urgency."
+  },
+  {
+    "id": "moi_07",
+    "mode": "text",
+    "prompt": "ATV handlebar strikes chest; increasing shortness of breath and unilateral chest pain",
+    "decision": "high_risk_moi",
+    "bucket": "blunt_chest",
+    "explanation": "Focused chest impact with dyspnea can indicate pneumothorax, pulmonary contusion, or rib injury.",
+    "mistake_tag": "missed_thoracic_moi",
+    "hint": "Pair chest energy transfer with breathing changes."
+  },
+  {
+    "id": "moi_08",
+    "mode": "text",
+    "prompt": "Crush injury under heavy furniture for 20 minutes; leg pain and swelling",
+    "decision": "high_risk_moi",
+    "bucket": "crush",
+    "explanation": "Prolonged compression raises crush syndrome, reperfusion, and compartment concerns.",
+    "mistake_tag": "missed_crush_moi",
+    "hint": "Duration under load matters."
+  },
+  {
+    "id": "moi_09",
+    "mode": "text",
+    "prompt": "Pedestrian struck at 30 mph; child thrown onto hood then pavement",
+    "decision": "high_risk_moi",
+    "bucket": "auto_ped",
+    "explanation": "Auto-pedestrian impact combines direct strike, hood impact, and ground impact. Hidden multisystem injury risk is high.",
+    "mistake_tag": "missed_transport_priority",
+    "hint": "Count the impacts, not just the current complaint."
+  },
+  {
+    "id": "moi_10",
+    "mode": "text",
+    "prompt": "Baseball bat to left upper abdomen; shoulder pain and pale skin",
+    "decision": "high_risk_moi",
+    "bucket": "splenic_pattern",
+    "explanation": "Left upper abdominal trauma with referred shoulder pain can indicate splenic injury and internal bleeding risk.",
+    "mistake_tag": "missed_hemorrhage_moi",
+    "hint": "Referred shoulder pain after LUQ trauma is not random."
+  },
+  {
+    "id": "moi_11",
+    "mode": "text",
+    "prompt": "Flash burn in enclosed garage; singed nasal hair and hoarse voice",
+    "decision": "high_risk_moi",
+    "bucket": "inhalation",
+    "explanation": "Enclosed-space burn with hoarseness and soot/singed hair raises inhalation injury and airway deterioration risk.",
+    "mistake_tag": "missed_airway_moi",
+    "hint": "Exposure environment plus voice change points to airway."
+  },
+  {
+    "id": "moi_12",
+    "mode": "text",
+    "prompt": "Toddler pulled by arm, refuses to use elbow, no swelling or deformity",
+    "decision": "focused_assessment",
+    "bucket": "low_energy_extremity",
+    "explanation": "Classic traction mechanism suggests nursemaid's elbow pattern; assess distal function and avoid overcalling multisystem trauma.",
+    "mistake_tag": "overtriage_moi",
+    "hint": "Not every mechanism implies hidden multisystem injury; match energy and findings."
+  }
+]

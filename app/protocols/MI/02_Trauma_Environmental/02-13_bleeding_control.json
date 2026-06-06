@@ -1,0 +1,93 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 2-13 Bleeding Control (BCON) (Revised 03/03/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_all_bleeding_control",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "All",
+  "level_display": "All Levels",
+  "jurisdiction": "Michigan",
+  "condition": "Bleeding Control (BCON)",
+  "version": "2025-03-03",
+  "protocol_reference": "Michigan Trauma and Environmental Protocol Section 2-13: Bleeding Control (BCON) — MDHHS Approved 3/3/25, Reviewed 2025",
+  "sections": [
+    {
+      "title": "Bleeding Control — General",
+      "reference": "Michigan Protocol 2-13: BCON — General",
+      "points": [
+        "Indicated for significant traumatic or non-traumatic external hemorrhage",
+        "Follow General Pre-Hospital Care-Treatment Protocol and Soft Tissue/Orthopedic Injuries-Treatment Protocol",
+        "Apply direct pressure to the wound with clean gauze or dressing material",
+        "If bleeding is controlled, do not remove the dressing; reinforce as needed and reassess frequently"
+      ]
+    },
+    {
+      "title": "Extremity Hemorrhage",
+      "reference": "Michigan Protocol 2-13: BCON — Extremity",
+      "points": [
+        "If extremity bleeding is not controlled with direct pressure, apply a tourniquet",
+        "If the first tourniquet is unsuccessful, apply a second tourniquet adjacent to the first",
+        "Treat tourniquet-related pain per Pain Management protocol when appropriate",
+        "Document the location and time of tourniquet application and reassess bleeding control"
+      ]
+    },
+    {
+      "title": "Junctional and Non-Compressible Hemorrhage",
+      "reference": "Michigan Protocol 2-13: BCON — Junctional",
+      "points": [
+        "Junctional hemorrhage includes neck, axilla, shoulder, and groin wounds where a standard extremity tourniquet cannot be applied",
+        "Pack the wound with an MCA-approved hemostatic dressing if available; otherwise use clean gauze",
+        "Use as much dressing or gauze as needed and follow manufacturer directions for hemostatic products",
+        "Apply firm pressure until bleeding stops, approximately 3–5 minutes, then leave the dressing in place and wrap to maintain pressure",
+        "Use caution when packing neck wounds: avoid airway compromise and do not encircle the neck",
+        "Packing penetrating wounds of the head, chest, or abdomen is contraindicated"
+      ]
+    },
+    {
+      "title": "Wound Dressing and Monitoring",
+      "reference": "Michigan Protocol 2-13: BCON — Dressing and Monitoring",
+      "points": [
+        "After hemorrhage control is achieved: apply clean dry dressings; do NOT remove bandages or gauze — reinforce with additional dressings",
+        "Continuously reassess bleeding control during transport",
+        "If a hemostatic dressing is used, contact Medical Control to advise application, document the time, and send the packaging to the hospital",
+        "Monitor for signs of hemorrhagic shock — refer to Hemorrhagic Shock-Treatment Protocol if signs present",
+        "Transport per Trauma Triage and MCA Transport protocols"
+      ]
+    }
+  ],
+  "mca_selections_required": [
+    {
+      "item": "Hemostatic Dressings",
+      "description": "MCA must approve specific hemostatic dressing agents for use in wound packing (e.g., Combat Gauze, Celox, ChitoGauze, or other commercial hemostatic agents)",
+      "options": [
+        "Combat Gauze (QuikClot)",
+        "Celox Gauze",
+        "ChitoGauze",
+        "Other MCA-approved hemostatic dressing"
+      ],
+      "selected": null
+    }
+  ],
+  "key_drugs": [],
+  "deterioration_flags": [
+    "Active uncontrolled extremity hemorrhage after direct pressure — apply tourniquet; if unsuccessful, apply a second adjacent tourniquet",
+    "Junctional hemorrhage not controlled with direct pressure — pack with MCA-approved hemostatic dressing if available or clean gauze; firm pressure for approximately 3–5 minutes",
+    "Signs of hemorrhagic shock (hypotension, tachycardia, altered mental status, pallor) — refer to Hemorrhagic Shock-Treatment Protocol; expedite transport",
+    "Hemostatic dressing used — contact Medical Control, document time, and send packaging with patient"
+  ],
+  "scope_notes": [
+    "Direct pressure, tourniquet application, pressure dressings, and wound packing: all levels",
+    "Wound packing with hemostatic dressing (junctional hemorrhage): all levels — per MCA-approved hemostatic agent",
+    "Hemostatic dressing products: per MCA-approved product and training",
+    "Hemorrhagic shock management: refer to Hemorrhagic Shock-Treatment Protocol for scope by level"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "bleeding_control",
+      "shock",
+      "trauma"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

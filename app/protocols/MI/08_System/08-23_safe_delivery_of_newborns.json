@@ -1,0 +1,79 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-23 Safe Delivery of Newborns (Revised 12/27/2022, MDHHS Reviewed 2022). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_safe_delivery_of_newborns",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Safe Delivery of Newborns",
+  "version": "2022-12-27",
+  "protocol_reference": "Michigan System Protocol Section 8-23: Safe Delivery of Newborns — MDHHS Approved 12/27/2022",
+
+  "purpose": "Govern EMS provider obligations under the Michigan Safe Delivery of Newborns Law (MCL 712.1 et seq.). The Safe Delivery Law allows a parent to surrender an unharmed newborn (72 hours old or younger) to an EMS provider without criminal prosecution. EMS providers must accept the newborn, provide care, and follow mandatory reporting procedures.",
+
+  "sections": [
+    {
+      "title": "Safe Delivery Law — Overview",
+      "reference": "Michigan Protocol 8-23: Safe Delivery — Overview",
+      "points": [
+        "Michigan Safe Delivery of Newborns Law (MCL 712.1): a parent may surrender a newborn who is 72 hours old or younger to an EMS provider without criminal prosecution",
+        "EMS providers MUST accept a surrendered newborn — refusing is not permitted",
+        "The surrendering person is NOT required to provide identifying information",
+        "EMS providers may offer the surrendering person a Safe Delivery ID bracelet (if available) to allow future contact if they change their mind"
+      ]
+    },
+    {
+      "title": "Provider Obligations",
+      "reference": "Michigan Protocol 8-23: Safe Delivery — Provider Obligations",
+      "points": [
+        "Accept the surrendered newborn without conditions",
+        "Assess the newborn: airway, breathing, circulation, temperature, signs of injury or abuse",
+        "Provide appropriate neonatal care per Neonatal Protocol",
+        "Transport the newborn to the nearest emergency department",
+        "Ask the surrendering person if they wish to receive a Safe Delivery ID bracelet (optional; no obligation to accept)",
+        "DO NOT attempt to delay the surrendering person or detain them — they are protected under Michigan law",
+        "DO NOT require the surrendering person to provide identification"
+      ]
+    },
+    {
+      "title": "Reporting Requirements",
+      "reference": "Michigan Protocol 8-23: Safe Delivery — Reporting",
+      "points": [
+        "Notify law enforcement that a newborn has been surrendered under the Safe Delivery Law",
+        "Law enforcement will notify the Michigan Department of Health and Human Services (MDHHS)",
+        "Document in PCR: time of surrender, location, newborn age (estimated if not stated), newborn condition, any Safe Delivery ID bracelet provided",
+        "Do NOT document any identifying information about the surrendering person if they chose not to provide it"
+      ]
+    },
+    {
+      "title": "Signs of Abuse or Non-Surrendered Newborn",
+      "reference": "Michigan Protocol 8-23: Safe Delivery — Suspected Abuse",
+      "points": [
+        "Assess all surrendered newborns for signs of trauma, abuse, or neglect",
+        "If signs of intentional harm are present: provide care; transport; notify law enforcement and report per Child Abuse and Neglect Protocol (Section 7-2)",
+        "Safe Delivery protections apply to unharmed newborns — a newborn showing signs of abuse does not negate reporting obligations"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Surrendered newborn in respiratory distress or cardiac compromise — initiate neonatal resuscitation per Neonatal Protocol; transport immediately",
+    "Surrendered newborn shows signs of trauma or abuse — provide care; notify law enforcement for suspected abuse in addition to Safe Delivery notification"
+  ],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "Michigan Safe Delivery Law (MCL 712.1): accept newborn ≤72 hours old without conditions",
+    "Cannot detain or require ID from surrendering person",
+    "Offer Safe Delivery ID bracelet (optional for surrendering person)",
+    "Assess newborn; transport to nearest ED; notify law enforcement",
+    "Signs of abuse: standard child abuse reporting obligations still apply",
+    "Document: time of surrender, location, estimated age, newborn condition, bracelet offered"
+  ]
+}

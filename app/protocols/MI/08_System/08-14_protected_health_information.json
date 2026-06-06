@@ -1,0 +1,77 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-14 Protected Health Information (Revised 12/27/2022, MDHHS Reviewed 2022). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_protected_health_information",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Protected Health Information",
+  "version": "2022-12-27",
+  "protocol_reference": "Michigan System Protocol Section 8-14: Protected Health Information — MDHHS Approved 12/27/2022",
+
+  "purpose": "Govern the handling of protected health information (PHI) by Michigan EMS providers. EMS agencies are covered entities or business associates under HIPAA. Improper disclosure of PHI may result in civil and criminal penalties. Patient privacy must be protected at all times.",
+
+  "sections": [
+    {
+      "title": "What Constitutes PHI",
+      "reference": "Michigan Protocol 8-14: PHI — Definition",
+      "points": [
+        "PHI includes any individually identifiable health information in any form (written, electronic, verbal) that relates to a patient's past, present, or future health condition, treatment, or payment",
+        "Examples of PHI identifiers: name, address, date of birth, SSN, phone number, diagnosis, medications, PCR number, vehicle description, geographic data more specific than state",
+        "All ePCR and paper PCR records are PHI",
+        "Verbal communications about patients (radio, phone, face-to-face) are PHI and must be handled discreetly"
+      ]
+    },
+    {
+      "title": "Permissible Disclosures",
+      "reference": "Michigan Protocol 8-14: PHI — Permissible Disclosures",
+      "points": [
+        "Treatment: PHI may be shared with other providers involved in the patient's treatment (receiving hospital, consulting physicians, transferring provider) without explicit patient authorization",
+        "Quality Improvement: MCA and PSRO access to PCRs for QI and QA is permissible",
+        "Legal: PHI may be disclosed pursuant to a lawful court order, subpoena, or law enforcement request per HIPAA requirements",
+        "Public Health: PHI may be disclosed to public health authorities for communicable disease reporting and surveillance as required by law",
+        "The minimum necessary standard applies — share only the PHI required for the specific permitted purpose"
+      ]
+    },
+    {
+      "title": "Prohibited Disclosures",
+      "reference": "Michigan Protocol 8-14: PHI — Prohibited",
+      "points": [
+        "Social media: posting patient identifiable information on any social media platform is STRICTLY PROHIBITED — including patient photos, descriptions, or identifying information even without names",
+        "Media: sharing patient PHI with media or news outlets without patient authorization is PROHIBITED",
+        "Unauthorized personnel: sharing PHI with persons not involved in treatment is prohibited",
+        "Curiosity access: accessing PCRs of patients not in your care is prohibited",
+        "Public radio communications: minimize PHI on public radio frequencies; use HIPAA-compliant communication methods when possible"
+      ]
+    },
+    {
+      "title": "Breach Reporting",
+      "reference": "Michigan Protocol 8-14: PHI — Breach Reporting",
+      "points": [
+        "Any potential PHI breach must be reported to the agency privacy officer or supervisor immediately",
+        "Breach notification to affected patients and DHHS may be required under HIPAA Breach Notification Rule",
+        "Agency must have a breach response plan including risk assessment, notification procedures, and corrective actions",
+        "Providers who knowingly and improperly disclose PHI are subject to disciplinary action, MCA sanction, and potential criminal prosecution"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "All PCR data (paper and electronic) is PHI",
+    "Permissible disclosures: treatment providers, QI/QA, legal order, public health",
+    "Minimum necessary standard applies to all disclosures",
+    "PROHIBITED: social media posting, media sharing, unauthorized personnel access",
+    "Radio: minimize PHI on public frequencies",
+    "Breach: report to privacy officer immediately",
+    "Social media PHI violations: subject to disciplinary action and criminal prosecution"
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-24R Fentanyl (Revised 12/10/2025, MDHHS Reviewed 2026). Base Michigan template.",
+  "id": "mi_base_medication_ref_fentanyl",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Fentanyl",
+  "version": "2025-12-10",
+  "protocol_reference": "Michigan Medication Protocol Section 9-24R: Fentanyl — MDHHS Approved 1/5/2026, Reviewed 2026",
+  "pharmacological_category": "Opioid Analgesic — Mu-Receptor Agonist",
+  "routes": [
+    "IV",
+    "IO",
+    "IM",
+    "IN (intranasal)"
+  ],
+  "indications": [
+    "Pain management",
+    "Patient sedation"
+  ],
+  "contraindications": [
+    "Altered mental status",
+    "Hypotension",
+    "Respiratory depression"
+  ],
+  "precautions": [
+    "Monitor respiratory rate, SpO2, and mental status continuously during and after administration",
+    "Have naloxone (9-36R) immediately available",
+    "Minimum 10 minutes between repeat doses",
+    "IM route: single dose only — no repeat",
+    "Elderly patients and those with reduced body mass: consider lower end of dosing range",
+    "IN route: use mucosal atomizer device (MAD); split dose — half per nostril"
+  ],
+  "expected_effects": [
+    "Significant analgesia within 2-3 minutes IV, 5-10 minutes IM/IN",
+    "Duration of effect: 30-60 minutes"
+  ],
+  "side_effects": [
+    "Respiratory depression (dose-dependent)",
+    "Apnea",
+    "Hypotension",
+    "Nausea, vomiting",
+    "Chest wall rigidity (with rapid high-dose IV — rare at EMS doses)"
+  ],
+  "notes": [
+    "Weight-rounded dosing table (adult >14 yr):",
+    "— ≤25 kg → 25 mcg",
+    "— 26-50 kg → 50 mcg",
+    "— 51-75 kg → 75 mcg",
+    "— ≥76 kg → 100 mcg",
+    "IV/IO/IN: may repeat ONCE after minimum 10 minutes; maximum total 200 mcg",
+    "IM: single dose only; no repeat",
+    "Procedural sedation adult: 50-100 mcg (1 mcg/kg) IV/IO titrated slowly; IN if available; may repeat every 4 minutes to a maximum of 3 mcg/kg",
+    "Procedural sedation pediatric: per MI-MEDIC; if unavailable, 1 mcg/kg IV/IO titrated slowly, IN if available; may repeat every 5 minutes to a maximum of 3 mcg/kg",
+    "Pediatric pain management: per MI-MEDIC; if unavailable, 1 mcg/kg IV/IO/IM/IN"
+  ],
+  "dosing": [
+    {
+      "population": "Adult (>14 yr) — pain management (weight-rounded)",
+      "route": "IV/IO/IN",
+      "dose": "≤25 kg→25 mcg; 26-50 kg→50 mcg; 51-75 kg→75 mcg; ≥76 kg→100 mcg; may repeat ONCE after ≥10 min; max total 200 mcg",
+      "notes": "IN: use MAD; split half per nostril; IV/IO should be titrated slowly"
+    },
+    {
+      "population": "Adult (>14 yr) — pain management",
+      "route": "IM",
+      "dose": "Same weight-rounded dose; single dose only — NO repeat",
+      "notes": "IM: no repeat dose permitted"
+    },
+    {
+      "population": "Adult (>14 yr) — procedural sedation",
+      "route": "IV/IO",
+      "dose": "50-100 mcg (1 mcg/kg) IV/IO titrated slowly; IN if available; may repeat every 4 minutes to maximum 3 mcg/kg",
+      "notes": "Used for patient procedural sedation per protocol"
+    },
+    {
+      "population": "Pediatric (≤14 yr) — pain management",
+      "route": "IV/IO/IM/IN",
+      "dose": "1 mcg/kg; maximum per MI-MEDIC",
+      "notes": "Reference MI-MEDIC for weight-based maximum dose; IN: use MAD; split half per nostril"
+    },
+    {
+      "population": "Pediatric (≤14 yr) — procedural sedation",
+      "route": "IV/IO or IN if available",
+      "dose": "Per MI-MEDIC; if unavailable, 1 mcg/kg IV/IO titrated slowly; may repeat every 5 minutes to maximum 3 mcg/kg",
+      "notes": "Use for patient procedural sedation per protocol"
+    }
+  ],
+  "used_in_protocols": [
+    "Chest Pain/Acute Coronary Syndrome",
+    "Pain Management",
+    "Patient Procedural Sedation"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "burns",
+      "fracture_splinting",
+      "trauma"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

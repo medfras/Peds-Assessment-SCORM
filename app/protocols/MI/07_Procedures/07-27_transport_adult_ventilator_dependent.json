@@ -1,0 +1,79 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-27 Transport of Adult Ventilator-Dependent Patients (Revised 6/27/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_transport_adult_ventilator_dependent",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (BLS/ALS — conditions apply)",
+  "jurisdiction": "Michigan",
+  "condition": "Transport of Adult Ventilator-Dependent Patients",
+  "version": "2023-06-27",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-27: Transport of Adult Ventilator-Dependent Patients — MDHHS Approved 6/27/2023",
+
+  "purpose": "Govern transport of adult patients dependent on mechanical ventilation. BLS units may transport on the patient's own ventilator under specific conditions. ALS units may use a transport ventilator. Waveform capnography is mandatory for transport ventilators. PEEP > 5 cmH2O requires MICU or air medical transport or hospital staff accompaniment.",
+
+  "sections": [
+    {
+      "title": "BLS Transport of Ventilator-Dependent Patients",
+      "reference": "Michigan Protocol 7-27: Vent Transport — BLS",
+      "points": [
+        "BLS units may transport a ventilator-dependent patient on the patient's OWN (home or facility) ventilator if ALL of the following conditions are met:",
+        "1. A trained caregiver who is familiar with the patient's ventilator accompanies the patient throughout transport",
+        "2. Capnography (waveform) OR numeric capnometry (if waveform not available) is in use",
+        "3. The transport is a SCHEDULED transport or a low-acuity 9-1-1 BLS call",
+        "BVM must be immediately accessible throughout transport",
+        "BLS should NOT manage ventilator adjustments independently — defer to the trained caregiver"
+      ]
+    },
+    {
+      "title": "ALS Transport Ventilator Use",
+      "reference": "Michigan Protocol 7-27: Vent Transport — ALS",
+      "points": [
+        "ALS units: all paramedics on the unit must be trained on the transport ventilator being used",
+        "VERIFY endotracheal tube or SGA placement with WAVEFORM CAPNOGRAPHY before placing patient on transport ventilator",
+        "Recheck lung sounds AND waveform capnography after every patient movement (e.g., loading into ambulance, transferring to hospital cot)",
+        "ACCEPTABLE ventilator modes: Assist Control (AC) and Synchronized Intermittent Mandatory Ventilation (SIMV)",
+        "Keep BVM immediately accessible at all times"
+      ]
+    },
+    {
+      "title": "PEEP Considerations",
+      "reference": "Michigan Protocol 7-27: Vent Transport — PEEP",
+      "points": [
+        "PEEP > 5 cmH2O: patient requires MICU (Mobile Intensive Care Unit) or air medical transport OR a hospital staff member must accompany the patient",
+        "If none of these resources are available: contact Medical Control for guidance"
+      ]
+    },
+    {
+      "title": "Additional Considerations",
+      "reference": "Michigan Protocol 7-27: Vent Transport — Additional",
+      "points": [
+        "Newly intubated patients: obtain venous blood gas (VBG) when available to guide ventilator settings before transport",
+        "Waveform capnography is mandatory for ALL patients on a transport ventilator",
+        "Target ETCO2: 35–45 mmHg (unless protocol or medical condition indicates otherwise)"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "ETCO2 drops to 0 on transport ventilator — follow ETCO2 zero protocol: check tubing/connections; verify placement; remove advanced airway if zero persists",
+    "PEEP > 5 cmH2O — MICU or air medical or hospital staff accompaniment required",
+    "Patient deteriorating on transport ventilator — switch to manual BVM; reassess airway placement; contact Medical Control"
+  ],
+
+  "scope_notes": [
+    "BLS may transport on patient's OWN ventilator IF: trained caregiver accompanies + capnography in use + scheduled or low-acuity BLS call",
+    "ALS: all paramedics must be trained on transport ventilator used",
+    "Verify ETT/SGA placement with waveform capnography before placing on transport vent",
+    "Recheck lung sounds and capnography after every patient movement",
+    "Acceptable modes: AC and SIMV",
+    "PEEP > 5 cmH2O: MICU or air medical or hospital staff required",
+    "Waveform capnography mandatory for all transport ventilator use",
+    "BVM immediately accessible at all times"
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Cardiovascular: Suspected Stroke/Transient Ischemic Attack. NASEMSO national provisional base.",
+  "id": "nasemso_base_cardiovascular_suspected_stroke_transient_ischemic_attack",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Suspected Stroke/Transient Ischemic Attack",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Cardiovascular: Suspected Stroke/Transient Ischemic Attack",
+  "aliases": [
+    "Cerebrovascular accident (CVA)",
+    "Transient ischemic attack (TIA)"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Cardiovascular: Suspected Stroke/Transient Ischemic Attack",
+      "points": [
+        "Detect neurological deficits",
+        "Determine eligibility for transport to a stroke center",
+        "Identify patients who have potentially sustained a stroke involving a large vessel occlusion (LVO)"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Patient has signs and symptoms consistent with stroke or transient ischemic attack (TIA)",
+        "EXCLUSION CRITERIA:",
+        "If glucose less than 60 mg/dL (deciliter), treat per the Hypoglycemia Guideline",
+        "If trauma and Glasgow Coma Score (GCS) less than or equal to 13, treat per the Head Injury Guideline and General Trauma Management Guideline"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Cincinnati or FAST stroke screen: Face droop, Arm drift, Speech abnormality, Time",
+        "Supine position with head of bed elevated 15-30 degrees (avoid flat)",
+        "Oxygen if SpO2 <94%; avoid supplemental O2 if SpO2 >94%",
+        "CPR/AED if patient becomes pulseless",
+        "Protect paralyzed extremities; do not restrain"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "CPSS or LAMS stroke scale assessment; document last known well time",
+        "12-lead ECG acquisition (rule out cardiac cause of symptoms)",
+        "Blood glucose check — treat hypoglycemia if present",
+        "IV access maintenance (non-medicated)",
+        "Oral glucose only if hypoglycemia confirmed and patient can swallow safely"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "Blood glucose check; IV D50W 25 g or D10W for documented hypoglycemia",
+        "IV access initiation; IV fluid at KVO rate (do not over-hydrate)",
+        "Waveform capnography for airway monitoring",
+        "IO access if IV unsuccessful and airway compromise"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "12-lead ECG interpretation to rule out dysrhythmia as stroke mimic",
+        "Advance notification to stroke center: last known well time, stroke scale score, estimated arrival",
+        "Blood glucose — if <60 mg/dL: D50W 25 g IV",
+        "Airway management: intubate only if airway compromise (avoid unnecessary intubation)",
+        "Avoid dextrose-containing IV fluids (except for documented hypoglycemia)",
+        "Control seizures: benzodiazepine per seizure protocol",
+        "BP management: do not aggressively lower BP in acute ischemic stroke unless >220/120 or tPA candidate >185/110",
+        "Los Angeles Motor Scale (LAMS) ≥4 suggests large vessel occlusion: direct to comprehensive stroke center when available"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Prevent aspiration ' elevate head of stretcher 15'30 degrees if systolic BP greater than 100 mmHg a. Maintain head and neck in neutral alignment, without flexing the neck",
+        "Protect paralyzed limbs from injury",
+        "Avoid multiple IV attempts"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Transport and destination decisions should be based on local resources and stroke system of care a. Destination hospitals may include: i. Stroke Ready",
+        "Time of onset of stroke or last known well is critical data for patient treatment a. Positive stroke scale with time of onset or last known well less than 4. hours may be eligible for thrombolytic agents",
+        "Do not treat hypertension",
+        "Place on cardiac monitor",
+        "Pediatrics: a. Treatment principles remain the same"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "'Last known well' must be specific o If the patient was last known well prior to bedtime the night before, this is the time to be documented (not time the patient woke up with symptoms present)",
+        "Blood glucose results",
+        "Specific validated stroke scale used and findings",
+        "Time of notification to receiving hospital"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Contact medical direction for clinical deterioration or interventions outside standard scope"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

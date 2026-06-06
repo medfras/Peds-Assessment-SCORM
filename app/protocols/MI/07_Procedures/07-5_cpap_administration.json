@@ -1,0 +1,92 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-5 CPAP Administration (Revised 11/17/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_cpap_administration",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (Specialist base; EMT scope at MCAs with cpap_bls expansion)",
+  "jurisdiction": "Michigan",
+  "condition": "CPAP Administration",
+  "version": "2025-11-17",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-5: CPAP Administration — MDHHS Approved 11/17/2025",
+  "purpose": "Continuous positive airway pressure (CPAP) for patients who have not responded to initial treatment, meet one or more protocol indications, and have no contraindications. Specialist-level skill in base Michigan protocol; EMT-authorized at MCAs with the cpap_bls expansion. The CPAP machine must be capable of adjusting pressure in cmH2O minimally up to 10 cmH2O.",
+  "sections": [
+    {
+      "title": "Indications",
+      "reference": "Michigan Protocol 7-5: CPAP — Indications",
+      "points": [
+        "Severe respiratory distress that has not responded to initial treatment",
+        "Congestive heart failure / pulmonary edema",
+        "Pulmonary edema / near-drowning",
+        "Hypoxia: SpO2 < 92% after application of supplemental oxygen",
+        "Acute exacerbation of asthma/COPD",
+        "Patient must be awake and able to follow instructions to maintain mask seal"
+      ]
+    },
+    {
+      "title": "Contraindications",
+      "reference": "Michigan Protocol 7-5: CPAP — Contraindications",
+      "points": [
+        "Cardiac or respiratory arrest",
+        "Uncorrected hypotension: adult > 10 years SBP < 90 mmHg; pediatric < 10 years SBP < 70 + (2 × age) mmHg",
+        "Small adult CPAP mask does not properly fit the patient and/or pediatric size CPAP mask is not available",
+        "Inability to maintain patent airway, including poor secretion clearance and/or unresponsiveness",
+        "Major trauma, known or suspected pneumothorax, penetrating or blunt chest trauma, or blast injury",
+        "Active vomiting or gastrointestinal bleeding with ongoing emesis",
+        "Significant facial trauma or burns affecting mask placement"
+      ]
+    },
+    {
+      "title": "Administration",
+      "reference": "Michigan Protocol 7-5: CPAP — Administration",
+      "points": [
+        "Specialist and Paramedic (base Michigan); EMT authorized at MCAs with cpap_bls expansion",
+        "Equipment: CPAP device must be adjustable minimally up to at least 10 cmH2O",
+        "Starting pressure: 5 cmH2O",
+        "Titrate pressure as necessary and as tolerated based on patient response, SpO2, and work of breathing",
+        "Monitor vital signs every 10 minutes; every 5 minutes on short transport",
+        "The CPAP mask may be briefly removed to allow administration of oral or sublingual medications",
+        "Contact Medical Control and consider sedation to reduce anxiety per Patient Procedural Sedation-Procedure Protocol",
+        "Do NOT remove CPAP upon arrival at hospital until hospital respiratory therapy is ready to continue treatment",
+        "CPAP may be used on patients with a valid DNR who are NOT in cardiac arrest"
+      ]
+    },
+    {
+      "title": "Discontinuation Criteria",
+      "reference": "Michigan Protocol 7-5: CPAP — Discontinuation",
+      "points": [
+        "Patient condition deteriorates despite CPAP — reassess and consider advanced airway",
+        "Patient cannot tolerate CPAP device",
+        "Vomiting risk becomes present or patient begins vomiting",
+        "Signs of pneumothorax develop",
+        "Cardiac or respiratory arrest occurs — remove mask, begin CPR and airway management per appropriate protocol"
+      ]
+    }
+  ],
+  "mca_selections_required": [],
+  "key_drugs": [],
+  "deterioration_flags": [
+    "SpO2 < 92% worsening despite CPAP — reassess mask seal, pressure setting; consider advanced airway",
+    "SBP drops below 90 (adult) during CPAP — discontinue CPAP; treat hypotension per appropriate protocol",
+    "Patient becomes unconscious or unable to maintain airway — remove CPAP; manage airway per Airway Management procedure",
+    "Signs of tension pneumothorax develop — remove CPAP immediately; needle decompression per Pleural Decompression procedure (Paramedic)"
+  ],
+  "scope_notes": [
+    "CPAP administration: Specialist and Paramedic (base Michigan); EMT scope at MCAs with cpap_bls expansion",
+    "CPAP machine must adjust cmH2O minimally up to at least 10 cmH2O",
+    "Starting pressure: 5 cmH2O; titrate as necessary and tolerated",
+    "Do not remove CPAP on hospital arrival until hospital respiratory therapy ready to continue",
+    "CPAP may be used on DNR patients who are NOT in arrest"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "oxygen_therapy",
+      "pulmonary_edema",
+      "respiratory_distress",
+      "ventilation_support"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

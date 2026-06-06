@@ -1,0 +1,86 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-27 Quality Improvement Program (Revised 6/30/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_quality_improvement_program",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Quality Improvement Program",
+  "version": "2023-06-30",
+  "protocol_reference": "Michigan System Protocol Section 8-27: Quality Improvement Program — MDHHS Approved 6/30/2023",
+
+  "purpose": "Define the required components of an MCA Quality Improvement (QI) program. All MCAs must have a functioning QI program. QI programs are designed to improve patient care, identify system deficiencies, ensure protocol compliance, and support provider education. QI data is used to inform protocol revisions and system-level improvements.",
+
+  "sections": [
+    {
+      "title": "Required QI Program Components",
+      "reference": "Michigan Protocol 8-27: QI Program — Required Components",
+      "points": [
+        "All MCAs must have an active QI program with the following required components:",
+        "— Written QI plan with goals, metrics, and review cycle",
+        "— MCA Medical Director involvement and oversight",
+        "— PCR/ePCR review process for all or a statistically valid sample of calls",
+        "— Mandatory review categories: cardiac arrest outcomes (ROSC, TOR), 12-lead ECG acquisition and STEMI notification, airway management (advanced airway, pediatric airway), stroke scale documentation",
+        "— Mechanism for provider feedback based on QI findings",
+        "— Tracking of protocol deviations and adverse events"
+      ]
+    },
+    {
+      "title": "Mandatory 100% QA/QI Review",
+      "reference": "Michigan Protocol 8-27: QI Program — Mandatory 100% Review",
+      "points": [
+        "100% review required for all of the following — as specified in applicable protocols:",
+        "— All pediatric advanced airway placements (Section 7-11: Airway Management)",
+        "— All cricothyroidotomy procedures (Section 7-11: Airway Management)",
+        "— All double sequential defibrillation uses (Section 7-9: Double Sequential Defibrillation)",
+        "— Protocol deviations (Section 8-20)",
+        "— All cases where dead on scene criteria are applied (Section 7-6)"
+      ]
+    },
+    {
+      "title": "QI Feedback and Provider Education",
+      "reference": "Michigan Protocol 8-27: QI Program — Feedback",
+      "points": [
+        "QI programs must have a mechanism to provide individual provider feedback on performance",
+        "Aggregate QI data (de-identified) must be shared with EMS agencies and providers within the MCA",
+        "QI findings that identify systemic issues must be addressed with targeted education and protocol revisions as appropriate",
+        "Providers are expected to participate in QI feedback processes and incorporate QI-identified improvements into practice"
+      ]
+    },
+    {
+      "title": "Reporting to MDHHS",
+      "reference": "Michigan Protocol 8-27: QI Program — MDHHS Reporting",
+      "points": [
+        "MCAs must submit QI program reports to MDHHS per MDHHS requirements",
+        "MDHHS may use aggregate QI data for statewide EMS system performance evaluation and protocol development"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "MCAs must have active QI program with written plan, Medical Director oversight, PCR review, feedback mechanism",
+    "Mandatory QI categories: cardiac arrest outcomes, 12-lead/STEMI, airway management, stroke documentation",
+    "100% review required: pediatric advanced airways, cricothyroidotomies, double sequential defibrillation, protocol deviations, DOA applications",
+    "Provider feedback: individual and aggregate de-identified data sharing",
+    "MCAs report to MDHHS per MDHHS requirements"
+  ],
+
+  "clinical_context": {
+    "concepts": [
+      "documentation_handoff",
+      "medical_control",
+      "quality_improvement_review"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

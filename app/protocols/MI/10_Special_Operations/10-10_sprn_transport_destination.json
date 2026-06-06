@@ -1,0 +1,75 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 10-10 SPRN Transport Destination (MDHHS Reviewed 2022-12-27). MCA Optional — SPRN program participation required. Base Michigan template.",
+  "id": "mi_base_special_ops_sprn_transport_destination",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Special Operations",
+  "level_display": "Special Operations Protocol — MCA Optional (SPRN)",
+  "jurisdiction": "Michigan",
+  "condition": "SPRN — Transport Destination",
+  "version": "2022-12-27",
+  "protocol_reference": "Michigan Special Operations Protocol Section 10-10: SPRN Transport Destination — MDHHS Reviewed 2022",
+
+  "purpose": "Establish destination hospital guidance for EMS transport of Special Pathogen (SPRN) patients, including authority for cross-MCA boundary transport and deviation from standard closest-hospital rules.",
+
+  "sections": [
+    {
+      "title": "SPRN Overview",
+      "content": [
+        "SPRN: Special Pathogen Response Network — Michigan's coordinated system for managing patients with highly infectious diseases of public health concern",
+        "SPRN is ACTIVATED for: High Consequence Infectious Diseases (HCIDs) including Ebola (Ebola Virus Disease/EVD), Marburg, Lassa, and other diseases designated by MDHHS or CDC",
+        "MCA OPTIONAL: All SPRN protocols (10-10 through 10-18) apply ONLY in MCAs and EMS agencies that have been selected for and activated in the SPRN program",
+        "Non-SPRN agencies: do NOT transport SPRN patients — contact online MC for instructions; stage and await SPRN team if needed"
+      ]
+    },
+    {
+      "title": "Destination Hospital — SPRN Transport",
+      "content": [
+        "SPRN transport destination = CLOSEST APPROPRIATE hospital with SPRN capability — NOT necessarily the closest hospital",
+        "Appropriate SPRN hospital: facility with confirmed SPRN/HCID isolation capacity and trained clinical team",
+        "SPRN destination selection: made by MDHHS and SPRN program coordinator in consultation with online medical control",
+        "EMS transport team does NOT independently select hospital for SPRN patients — receive destination from MDHHS/SPRN coordinator",
+        "If patient is critical and SPRN hospital is not immediately accessible: transport to closest ED; notify ED and SPRN coordinator en route"
+      ]
+    },
+    {
+      "title": "Cross-MCA Boundary Transport",
+      "content": [
+        "SPRN transport may occur ACROSS MCA boundaries — this is explicitly authorized under SPRN protocols",
+        "Cross-MCA SPRN transport: responding agency operates under their home MCA protocols (consistent with Protocol 10-7)",
+        "Destination hospital may be in a different MCA, region, or county — follow SPRN coordinator direction regardless of typical service area boundaries",
+        "Notify both home MCA and destination MCA of cross-boundary SPRN transport",
+        "Inter-facility SPRN transport (hospital to hospital) is also authorized under SPRN — inter-facility team may cross MCA lines to move patient to higher SPRN capability facility"
+      ]
+    },
+    {
+      "title": "Notification Requirements",
+      "content": [
+        "Prior to transport: notify receiving hospital of patient type, SPRN activation, ETA, and patient status",
+        "Receiving hospital must confirm readiness (SPRN isolation room, receiving team in PPE) before EMS arrives",
+        "Notify home MCA medical director of SPRN transport",
+        "Notify MDHHS SPRN coordinator — they will coordinate hospital readiness",
+        "Do NOT transport without confirmed hospital receiving team in place"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "id": "sprn_program_participation",
+      "label": "SPRN Program Participation — MCA authorization for SPRN protocols 10-10 through 10-18",
+      "description": "MCA Optional: All SPRN protocols (10-10 through 10-18) are only active for EMS agencies designated and activated within Michigan's Special Pathogen Response Network (SPRN). Non-SPRN agencies do not use these protocols.",
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "SPRN patient deteriorates during transport — life support decisions per Protocol 10-14; contact SPRN coordinator and online MC immediately",
+    "Receiving hospital unable to accept SPRN patient — contact MDHHS coordinator for alternate destination; do NOT divert independently"
+  ],
+
+  "scope_notes": "MCA Optional — SPRN protocols 10-10 through 10-18 apply only to SPRN-designated agencies. Transport destination is determined by MDHHS/SPRN coordinator, not standard closest-hospital rules. Cross-MCA SPRN transport is explicitly authorized."
+}

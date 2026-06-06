@@ -1,0 +1,82 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 2-7 Traumatic Arrest (Revised 05/30/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_all_traumatic_arrest",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "All",
+  "level_display": "All Levels",
+  "jurisdiction": "Michigan",
+  "condition": "Traumatic Arrest",
+  "version": "2023-05-30",
+  "protocol_reference": "Michigan Trauma and Environmental Protocol Section 2-7: Traumatic Arrest — MDHHS Approved 5/30/23, Reviewed 2023",
+
+  "purpose": "The patient in cardiac arrest from a traumatic cause requires rapid assessment and treatment. Standard ACLS is NOT the optimal approach. Successful resuscitation requires rapid identification and correction of specific entities and rapid transport to an appropriate facility.",
+
+  "sections": [
+    {
+      "title": "Indications and Contraindications",
+      "reference": "Michigan Protocol 2-7: Traumatic Arrest",
+      "points": [
+        "INDICATION: Patients in cardiac arrest from a traumatic source (blunt or penetrating)",
+        "CONTRAINDICATION: Patient meets DOA criteria — refer to Dead on Scene/Termination of Resuscitation-Procedure Protocol",
+        "CONTRAINDICATION: Suspected traumatic cardiac arrest of more than 10 minutes prior to any interventions — refer to Dead on Scene/Termination of Resuscitation-Procedure Protocol",
+        "CONTRAINDICATION: If trauma appears to be minor/minimal and a medical condition appears to be the cause of cardiac arrest — refer to the appropriate cardiac arrest protocol"
+      ]
+    },
+    {
+      "title": "Procedures",
+      "reference": "Michigan Protocol 2-7: Traumatic Arrest — Procedures",
+      "points": [
+        "CPR: high quality CPR must be maintained — refer to Adult or Pediatric General Cardiac Arrest-Treatment Protocol; it is permissible to interrupt CPR briefly for life-saving interventions like needle decompression/hemorrhage control",
+        "MEDICATIONS: Prioritize findings and reversing life-threatening injuries — standard ACLS medications may not be useful",
+        "AIRWAY: Rapid establishment of an advanced airway with 100% oxygen administration — refer to Airway Management-Procedure Protocol (Specialist skill)",
+        "CHEST DECOMPRESSION: Refer to Pleural Decompression-Procedure Protocol (Specialist skill) — consider bilateral needle decompression in the presence of chest trauma regardless of findings",
+        "HEMORRHAGE CONTROL: Bleeding control is essential — refer to Bleeding Control (BCON)-Treatment Protocol and Tourniquet Application-Procedure Protocol; penetrating trauma — areas not amenable to tourniquet should have pressure dressing and/or wound packing; blunt trauma — place pelvic binder (commercial or sheet) on all patients with blunt or blast trauma suffering traumatic arrest (sheet should be wrapped around the greater trochanters)",
+        "Consider TXA as available per Hemorrhagic Shock-Treatment Protocol (Specialist skill per MCA selection)",
+        "VOLUME ADMINISTRATION: Rapid vascular access should be obtained — if large bore IV cannot be rapidly obtained, IO access (preferably proximal humerus) should be obtained; NS or LR rapidly infused (Specialist skill); Adults: up to 1 liter; Pediatrics: up to 20 mL/kg",
+        "These interventions are NOT a substitute for rapid transport to an appropriate facility — if interventions fail to correct the issues, contact Medical Control for consultation regarding termination of efforts"
+      ]
+    },
+    {
+      "title": "Termination of Efforts",
+      "reference": "Michigan Protocol 2-7: Traumatic Arrest — Termination",
+      "points": [
+        "Termination SHOULD BE CONSIDERED if: blunt traumatic arrest in asystole; no signs of life for > 10 minutes of intervention; transport time > 15 minutes; injuries incompatible with life"
+      ]
+    },
+    {
+      "title": "Continuation of Care",
+      "reference": "Michigan Protocol 2-7: Traumatic Arrest — Continuation",
+      "points": [
+        "Continuation SHOULD BE CONSIDERED with: penetrating trauma with signs of life (reactive pupils), PEA with HR > 40; ROSC; hypothermia; pregnant females with gestational age estimated at > 20 weeks; patients under 18 years of age — transport to closest appropriate trauma facility per MCA Transport Protocol"
+      ]
+    },
+    {
+      "title": "Post-Arrest Care",
+      "reference": "Michigan Protocol 2-7: Traumatic Arrest — Post-Arrest",
+      "points": [
+        "If pulses are obtained: refer to Adult or Pediatric Return of Spontaneous Circulation-Treatment Protocol",
+        "Consider TXA per Hemorrhagic Shock-Treatment Protocol (Specialist skill per MCA selection)"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "deterioration_flags": [
+    "Blunt arrest in asystole — consider termination if no response after 10 minutes of intervention",
+    "Tension pneumothorax suspected — bilateral needle decompression (Specialist skill); do not delay for cardiac findings",
+    "Uncontrolled hemorrhage — tourniquet/wound packing before fluid administration",
+    "ROSC obtained — refer to ROSC protocol; consider TXA"
+  ],
+
+  "scope_notes": [
+    "CPR, bleeding control, tourniquet, pelvic binder: all levels",
+    "IV/IO access and fluid resuscitation: Specialist skill",
+    "Needle decompression: Specialist skill",
+    "Advanced airway: Specialist skill",
+    "TXA: Specialist skill — per MCA selection",
+    "Termination of efforts: contact Medical Control"
+  ]
+}

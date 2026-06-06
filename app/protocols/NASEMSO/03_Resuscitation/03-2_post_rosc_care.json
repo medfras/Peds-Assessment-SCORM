@@ -1,0 +1,142 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Resuscitation: Adult Post-ROSC (Return of Spontaneous Circulation) Care. NASEMSO national provisional base.",
+  "id": "nasemso_base_resuscitation_adult_post_rosc_return_of_spontaneous_circulation_",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Adult Post-ROSC (Return of Spontaneous Circulation) Care",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Resuscitation: Adult Post-ROSC (Return of Spontaneous Circulation) Care",
+  "aliases": [
+    "None noted"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Resuscitation: Adult Post-ROSC (Return of Spontaneous Circulation) Care",
+      "points": [
+        "The immediate ROSC period is critical in stabilizing patients and preparing for transport. The goal is therefore to maximize survival and optimize neurologic and cardiovascular function following a return of spontaneous circulation by the following steps:",
+        "Secure airway",
+        "Obtain vascular access",
+        "Maximize blood pressure",
+        "Identify ST-elevation myocardial infarction (STEMI) or reversible causes of arrest",
+        "Recognize pending re-arrest",
+        "Consider appropriate destination choice"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Patient returned to spontaneous circulation following cardiac arrest resuscitation",
+        "EXCLUSION CRITERIA:",
+        "None noted"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Scene safety and PPE; primary survey (ABCDE)",
+        "Oxygen via NRM targeting SpO2 94-98% if indicated",
+        "Position of comfort; hemorrhage control as needed",
+        "CPR/AED if patient becomes pulseless",
+        "Epinephrine auto-injector for anaphylaxis if applicable",
+        "Naloxone intranasal unit-dose for suspected opioid involvement"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Blood glucose monitoring; oral glucose if hypoglycemic and alert",
+        "12-lead ECG acquisition and transmission",
+        "CPAP for respiratory distress",
+        "Aspirin for suspected ischemic chest pain",
+        "Albuterol SVN for bronchospasm component",
+        "IV access maintenance (non-medicated)"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation",
+        "IV/IO fluid resuscitation as indicated",
+        "Waveform capnography",
+        "IV analgesics (fentanyl, morphine) per pain management protocol",
+        "IV antiemetics (ondansetron) per protocol",
+        "IV D50W/D10W for hypoglycemia"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "12-lead ECG interpretation",
+        "Endotracheal intubation for airway compromise",
+        "RSI per protocol",
+        "Advanced antidysrhythmic or hemodynamic support per specific protocol",
+        "All parenteral medications per protocol",
+        "Vasopressors for refractory hemodynamic compromise"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Avoid hyperthermia (temperature greater than 37.5' C or 99.5' F) by avoiding excessive environmental heat exposure, warm blankets, etc.",
+        "a. Beyond interventions to prevent hyperthermia or fever, prehospital initiation of therapeutic hypothermia (targeted temperature management) is not routinely recommended"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Hyperventilation is a significant cause of hypotension and recurrence of cardiac arrest in the post resuscitation phase and must be avoided. Similarly, hypoventilation (suggested by an EtCO2 greater than 40'45) contributes to worsening acidosis and may precipitate re-arrest",
+        "Most patients are comatose immediately after resuscitation and will require airway management and ventilatory assistance",
+        "Many patients experience 'stunning' of the cardiac muscle after ROSC. Hypotension is common, and volume resuscitation or vasopressor support is often required. Refer to the [Shock Guideline] for further recommendations",
+        "Common non-cardiac causes of post-resuscitation hypotension include hyperventilation, hypovolemia, and traumatic pneumothorax from chest compressions",
+        "The condition of post-resuscitation patients fluctuates rapidly and continuously requiring close monitoring. A significant percentage of post-ROSC patients will re-arrest",
+        "Current research has demonstrated that care of patients with ROSC at specialized centers is associated with both decreased mortality and improved neurologic outcomes",
+        "Maintain mechanical CPR device in place in preparation for re-arrest",
+        "A moderate number of adult post-ROSC patients may have transient ST-elevation on EKG Consider performing serial EKGs. Post-ROSC patients should preferentially be transported to centers capable of managing STEMI, whenever possible"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Immediate post-arrest rhythms, vital signs (pulse, blood pressure, respiratory rate, neurologic status assessment) and oxygen saturation",
+        "' Post-ROSC 12-lead EKG"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Patient returned to spontaneous circulation following cardiac arrest resuscitation"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

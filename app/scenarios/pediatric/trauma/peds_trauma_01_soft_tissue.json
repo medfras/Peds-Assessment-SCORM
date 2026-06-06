@@ -1,0 +1,1348 @@
+{
+  "_schema": "pfd_scenario_v1",
+  "id": "peds_trauma_01_soft_tissue",
+  "title": "Scalp Laceration from Fall — 4-Year-Old Male",
+  "display_title": "Pediatric Head Injury",
+  "subtitle": "4-year-old male, scalp laceration with significant bleeding",
+  "category": "pediatric_trauma",
+  "call_type": "nremt_trauma",
+  "category_display": "Pediatric Trauma Assessment",
+  "turnover_target": "als",
+  "version": "1.0",
+  "rubric_template": "ems_standard_v1",
+  "base_patient_care_rubric": "nremt_trauma_v1",
+  "difficulty": "easy",
+  "scenario_number": 1,
+  "prerequisites": [],
+  "protocol": "MI/02_Trauma_Environmental/02-2_general_trauma",
+  "jurisdiction": "mi_base",
+  "clinical_context": {
+    "jurisdiction": "MI",
+    "concepts": [
+      "pediatric_patient",
+      "pediatric_trauma",
+      "trauma",
+      "soft_tissue_injury",
+      "head_injury",
+      "bleeding_control"
+    ],
+    "protocol_focus": [
+      "bleeding_control",
+      "head_injury",
+      "soft_tissue_injury"
+    ]
+  },
+  "agency_context": "",
+  "spinal_injury_possible": true,
+  "non_transport_agency": false,
+  "multiple_patients_possible": false,
+  "diagnostics_indicated": false,
+  "opqrst_radiation_relevant": false,
+  "readiness_criteria": {
+    "min_minutes": 3,
+    "checks": [
+      {
+        "id": "messages",
+        "label": "5 messages sent",
+        "type": "message_count",
+        "min": 5
+      },
+      {
+        "id": "vitals",
+        "label": "Vitals assessed",
+        "type": "vitals_logged"
+      },
+      {
+        "id": "exam",
+        "label": "Exam/history obtained",
+        "type": "exam_logged"
+      },
+      {
+        "id": "treatment",
+        "label": "Treatment applied",
+        "type": "treatment_logged"
+      }
+    ]
+  },
+  "scene_entry_scoring": {
+    "ppe": {
+      "required": [
+        "gloves"
+      ],
+      "recommended": [
+        "eye_protection"
+      ],
+      "missing_required_penalty": 3,
+      "missing_recommended_penalty": 1,
+      "max_score": 10
+    },
+    "pat": {
+      "expected_impression": "not_sick",
+      "incorrect_impression_deduction": 2
+    }
+  },
+  "chat_placeholder": "Talk to Leo, David (dad), or your partner Alex...",
+  "chat_address_hint": "Address by name: Leo · David/Dad · Alex (partner/vitals)",
+  "debrief_lexi_hints": [
+    {
+      "label": "Next step?",
+      "msg": "What should I do next in this scenario?"
+    },
+    {
+      "label": "Scalp bleeding?",
+      "msg": "Why do scalp lacerations bleed so much and how do I control it?"
+    },
+    {
+      "label": "TBI red flags?",
+      "msg": "What are the red flags for traumatic brain injury in a pediatric patient?"
+    },
+    {
+      "label": "PAT in trauma?",
+      "msg": "How do I apply the Pediatric Assessment Triangle to a trauma patient?"
+    },
+    {
+      "label": "BLS scope?",
+      "msg": "What is within my BLS scope for this patient?"
+    }
+  ],
+  "objectives": [
+    "Perform the Pediatric Assessment Triangle (PAT) as the first patient contact impression",
+    "Recognize that scalp lacerations bleed extensively due to rich scalp vasculature — hemorrhage does not equal severity",
+    "Control hemorrhage with direct pressure; apply a pressure dressing",
+    "Perform a targeted neurological assessment (GCS/AVPU, pupils) to rule out traumatic brain injury",
+    "Differentiate reassuring findings (LOC intact, no vomiting, no focal deficits) from TBI red flags",
+    "Use the parent as a therapeutic tool to calm the child and obtain history"
+  ],
+  "dispatch": {
+    "unit": "{unit}",
+    "text": "{unit}, respond to 123 Apple Street for a 4-year-old male who fell and hit his head. Caller reports significant bleeding.",
+    "priority": "Priority 2",
+    "time": "15:10",
+    "cross_streets": "Apple St and Berry Ave",
+    "response_time_minutes": 5
+  },
+  "scene": {
+    "description": "You arrive at a single-family home. A man opens the door before you knock, looking pale. 'In here!' He leads you quickly to the living room where a 4-year-old boy is sitting on his father's lap, crying loudly. The father is pressing a bath towel to the boy's forehead. The towel has a significant amount of blood on it. There is a small, square coffee table nearby with a sharp corner — and a small smear of blood on it.",
+    "image": null,
+    "video": null,
+    "hazards": [],
+    "bystanders": [
+      {
+        "name": "David",
+        "relation": "father",
+        "age": 35
+      }
+    ]
+  },
+  "patient": {
+    "name": "Leo",
+    "age": 4,
+    "dob_month_day": "April 9",
+    "sex": "male",
+    "weight_kg": 16,
+    "weight_display": "approx 35 lbs (16 kg)",
+    "pcr_demographics_deferred": true,
+    "chief_complaint": "Scalp laceration with active bleeding after fall",
+    "general_impression": "4-year-old male, alert and crying loudly in his father's lap — vigorous cry indicates adequate airway and perfusion. He is making eye contact between sobs and reaching for his father. No obvious signs of severe respiratory distress. Father is pressing a blood-soaked towel to the boy's forehead. He is moving all four extremities. Despite the alarming amount of blood, the child does not appear acutely ill.",
+    "gcs_assessment": {
+      "e": 4,
+      "v": 5,
+      "m": 6,
+      "total": 15,
+      "rationale": "Eyes open spontaneously, crying and answers are appropriate for age and injury, and he moves purposefully/reaches for his father.",
+      "challenge_description": "Leo is alert and crying in his father's lap with eyes open spontaneously. His crying and answers are appropriate for his age and injury. He reaches purposefully for his father and moves all extremities."
+    },
+    "avpu_assessment": {
+      "value": "alert",
+      "description": "Patient is alert, crying appropriately for age and injury, answers appropriately, and moves purposefully.",
+      "rationale": "Use AVPU = alert because he is awake, interactive, and responding appropriately."
+    },
+    "image": "/static/images/peds/trauma/head_injury_4yom.jpg",
+    "video": null,
+    "pat": {
+      "impression": "Crying loudly, reaching for father, blood-soaked towel pressed to forehead.",
+      "appearance": "Alert and crying vigorously — strong, lusty cry. Good muscle tone. Making eye contact and reaching toward father between sobs. Consolable with father's voice. Moving all four extremities.",
+      "work_of_breathing": "No audible abnormal respiratory sounds. No visible retractions, nasal flaring, or head-bobbing. Respiratory effort appears normal and non-labored.",
+      "circulation": "Skin appears pink and warm beneath blood. No pallor, cyanosis, or mottling visible. Active scalp hemorrhage — father holding blood-soaked towel to forehead.",
+      "expected": "not_sick",
+      "teaching": "All three PAT components are currently NORMAL — this child is compensating well. PAT impression = 'Not Sick' (stable). However, active hemorrhage requires immediate hemorrhage control regardless of current stability. Don't let the alarming blood volume cause panic — assess systematically."
+    }
+  },
+  "history": {
+    "allergies": "None known.",
+    "medications": "None.",
+    "pmh": "Healthy 4-year-old. Up to date on immunizations.",
+    "last_oral_intake": "Snack about an hour ago.",
+    "events_leading_to_call": "Father states Leo was running in the living room, tripped, and hit his head on the corner of the coffee table approximately 10 minutes ago. There was no loss of consciousness — Leo cried immediately. Bleeding started right away and has been heavy. Father pressed the towel and called 911."
+  },
+  "initial_complaint": {
+    "speaker": "David",
+    "lay_summary": "He fell and cut his head.",
+    "allowed_in_opener": true,
+    "do_not_include": [
+      "mechanism details",
+      "onset time",
+      "loss of consciousness status",
+      "bleeding severity",
+      "medical history",
+      "allergies",
+      "medications",
+      "diagnosis",
+      "clinical terms",
+      "treatment suggestions",
+      "full OPQRST/SAMPLE"
+    ]
+  },
+  "history_response_map": {
+    "patient_identity": {
+      "label": "Patient name",
+      "speaker": "David",
+      "triggers": [
+        "what is his name",
+        "what's his name",
+        "who is he",
+        "patient name"
+      ],
+      "answer": "His name is Leo.",
+      "tag": "[[HISTORY: Patient Name=Leo]]",
+      "notes": "Patient-scoped name only. Do not provide age, DOB, or weight unless asked.",
+      "do_not_include": [
+        "age unless asked",
+        "date of birth unless asked",
+        "weight unless asked",
+        "mechanism details",
+        "loss of consciousness status",
+        "medical history",
+        "medications",
+        "treatment suggestions"
+      ]
+    },
+    "patient_age": {
+      "label": "Patient age",
+      "speaker": "David",
+      "triggers": [
+        "what is his age",
+        "how old is he",
+        "age"
+      ],
+      "answer": "He's 4 years old.",
+      "tag": "[[HISTORY: Patient Age=4-year-old male]]",
+      "notes": "Patient-scoped age only. Do not provide DOB or weight unless asked.",
+      "do_not_include": [
+        "date of birth unless asked",
+        "weight unless asked",
+        "mechanism details",
+        "loss of consciousness status",
+        "medical history",
+        "medications",
+        "treatment suggestions"
+      ]
+    },
+    "patient_dob": {
+      "label": "Patient date of birth",
+      "speaker": "David",
+      "triggers": [
+        "date of birth",
+        "dob",
+        "birth date",
+        "birthday"
+      ],
+      "answer": "His birthday is April 9.",
+      "tag": "[[HISTORY: Patient Date of Birth=April 9]]",
+      "notes": "Patient-scoped DOB only. Do not provide age or weight unless asked.",
+      "do_not_include": [
+        "age unless asked",
+        "weight unless asked",
+        "mechanism details",
+        "loss of consciousness status",
+        "medical history",
+        "medications",
+        "treatment suggestions"
+      ]
+    },
+    "patient_weight": {
+      "label": "Patient weight",
+      "speaker": "David",
+      "triggers": [
+        "how much does he weigh",
+        "what does he weigh",
+        "patient weight",
+        "weight",
+        "estimated weight"
+      ],
+      "answer": "He weighs about 35 pounds, around 16 kilograms.",
+      "tag": "[[HISTORY: Patient Weight=approx 35 lbs (16 kg)]]",
+      "notes": "Patient-scoped weight only.",
+      "do_not_include": [
+        "diagnosis",
+        "treatment suggestions"
+      ]
+    },
+    "chief_concern": {
+      "label": "Broad opener / chief concern",
+      "speaker": "David",
+      "triggers": [
+        "what's going on",
+        "what happened",
+        "why did you call",
+        "how can we help",
+        "chief complaint",
+        "what is his chief complaint",
+        "what's his chief complaint"
+      ],
+      "answer": "He fell and cut his head.",
+      "tag": "[[HISTORY: Patient Chief Complaint=head cut after fall]]",
+      "notes": "Patient-scoped complaint only. Keep the opener broad; mechanism details require a focused follow-up question.",
+      "do_not_include": [
+        "fall details",
+        "onset time",
+        "loss of consciousness status",
+        "medical history",
+        "medications",
+        "treatment suggestions"
+      ]
+    },
+    "mechanism_details": {
+      "label": "Mechanism details",
+      "speaker": "David",
+      "triggers": [
+        "how did he fall",
+        "how did he trip",
+        "what did he hit",
+        "what did he land on",
+        "what surface",
+        "what was he doing",
+        "how did he trip and what did he hit",
+        "tell me exactly what happened"
+      ],
+      "answer": "He was running in the living room, tripped on the rug, and hit his head on the corner of the coffee table.",
+      "tags": [
+        "[[HISTORY: Events=running in the living room, tripped on the rug, struck the corner of the coffee table]]"
+      ],
+      "notes": "Focused mechanism details for pediatric head injury risk stratification.",
+      "do_not_include": [
+        "loss of consciousness status unless asked",
+        "vomiting status unless asked",
+        "medical history",
+        "medications",
+        "treatment suggestions"
+      ]
+    },
+    "loc_status": {
+      "label": "Loss of consciousness",
+      "speaker": "David",
+      "triggers": [
+        "did he lose consciousness",
+        "did he lose concioucness",
+        "did he lose conciousness",
+        "did he pass out",
+        "was he unconscious",
+        "was there any loc",
+        "any loss of consciousness"
+      ],
+      "answer": "No, he never lost consciousness. He started crying right away when he hit his head.",
+      "tags": [
+        "[[HISTORY: LOC=no loss of consciousness; cried immediately]]"
+      ],
+      "notes": "Focused LOC history. Keep separate from vomiting unless vomiting is asked.",
+      "do_not_include": [
+        "vomiting status unless asked",
+        "medical history",
+        "medications",
+        "treatment suggestions"
+      ]
+    },
+    "vomiting_status": {
+      "label": "Vomiting",
+      "speaker": "David",
+      "triggers": [
+        "did he vomit",
+        "any vomiting",
+        "has he thrown up",
+        "did he throw up",
+        "nausea or vomiting"
+      ],
+      "answer": "No vomiting. He cried right away and has not thrown up.",
+      "tags": [
+        "[[HISTORY: Vomiting=no vomiting after head strike]]"
+      ],
+      "notes": "Focused vomiting history for pediatric head injury risk stratification.",
+      "do_not_include": [
+        "medical history",
+        "medications",
+        "treatment suggestions"
+      ]
+    },
+    "neck_pain_status": {
+      "label": "Neck pain",
+      "speaker": "David",
+      "triggers": [
+        "does his neck hurt",
+        "neck pain",
+        "any neck pain",
+        "does he have neck pain",
+        "c spine pain",
+        "c-spine pain",
+        "cervical pain"
+      ],
+      "answer": "No, he has not complained of neck pain. He has only said his head hurts where the cut is.",
+      "tags": [
+        "[[HISTORY: Neck Pain=no neck pain reported; pain isolated to scalp laceration]]"
+      ],
+      "notes": "Focused spine history for the head-impact mechanism."
+    }
+  },
+  "vitals": {
+    "baseline": {
+      "hr": {
+        "label": "Heart Rate",
+        "value": 130,
+        "unit": "bpm",
+        "display": "130 bpm — tachycardic, expected with pain and distress"
+      },
+      "rr": {
+        "label": "Respirations",
+        "value": 24,
+        "unit": "/min",
+        "display": "24/min — slightly elevated, crying"
+      },
+      "spo2": {
+        "label": "SpO2",
+        "value": 99,
+        "unit": "%",
+        "display": "99% on room air"
+      },
+      "bp": {
+        "label": "Blood Pressure",
+        "value": "100/65",
+        "unit": "mmHg",
+        "display": "100/65 mmHg — appropriate for age"
+      },
+      "temp": {
+        "label": "Temperature",
+        "value": 98.6,
+        "unit": "°F"
+      },
+      "blood_glucose": {
+        "label": "Blood Glucose",
+        "value": 105,
+        "unit": "mg/dL",
+        "display": "105 mg/dL"
+      },
+      "pain": {
+        "label": "Pain",
+        "value": "8/10 sharp, throbbing head pain"
+      },
+      "gcs": {
+        "label": "GCS",
+        "value": 15,
+        "unit": "/15",
+        "display": "15 — E4V5M6; alert, crying, appropriate"
+      },
+      "skin_color": {
+        "label": "Skin",
+        "numeric": false,
+        "value": "Pink, warm, dry except forehead where blood is present"
+      },
+      "cap_refill": {
+        "label": "Cap Refill",
+        "value": 2,
+        "unit": "sec"
+      },
+      "pupils": {
+        "label": "Pupils",
+        "numeric": false,
+        "value": "PERRL, 4 mm bilaterally — equal and reactive"
+      },
+      "lung_sounds": {
+        "label": "Lung Sounds",
+        "numeric": false,
+        "value": "Clear and equal bilaterally — no adventitious sounds"
+      },
+      "work_of_breathing": {
+        "label": "Work of Breathing",
+        "numeric": false,
+        "value": "Non-labored — crying vigorously; no retractions, no nasal flaring"
+      }
+    },
+    "deterioration": {
+      "note": "This is a stable patient with isolated scalp hemorrhage and no signs of TBI. Vitals do not deteriorate unless the student allows significant ongoing hemorrhage without intervention. GCS remains 15 throughout.",
+      "rates": {
+        "hr": 0,
+        "rr": 0,
+        "spo2": 0
+      },
+      "caps": {
+        "hr": {
+          "max": 150,
+          "min": 110
+        },
+        "spo2": {
+          "min": 97,
+          "max": 100
+        }
+      },
+      "string_thresholds": {}
+    },
+    "interventions": {
+      "direct_pressure": {
+        "label": "Direct Pressure & Pressure Dressing",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "direct pressure",
+          "apply pressure",
+          "hold pressure",
+          "press.*wound",
+          "dressing",
+          "pressure dressing",
+          "wrap his head",
+          "gauze",
+          "bandage"
+        ],
+        "effects": {},
+        "notes": "Controls bleeding from scalp laceration. Hold firm continuous pressure for at least 5–10 minutes. Once controlled, apply a pressure dressing. Reassure patient and father during application.",
+        "requires_popup": false
+      },
+      "neuro_assessment": {
+        "label": "Neurological Assessment (GCS/AVPU + Pupils)",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "neuro check",
+          "assess.*neuro",
+          "check.*pupils",
+          "pupils",
+          "gcs",
+          "avpu",
+          "mental status",
+          "loc",
+          "level of consciousness",
+          "follow.*command",
+          "squeeze.*hand",
+          "how many fingers"
+        ],
+        "effects": {},
+        "notes": "Assess GCS or AVPU; check pupils for equality and reactivity. Ask about LOC, vomiting, and headache. Rules out TBI red flags.",
+        "requires_popup": false
+      }
+    }
+  },
+  "standard_exam_findings": {
+    "dcap_btls_head": {
+      "label": "DCAP-BTLS Head",
+      "exam_key": "DCAP-BTLS Head",
+      "aliases": [
+        "DCAP-BTLS head",
+        "head DCAP",
+        "head and scalp exam",
+        "inspect and palpate head",
+        "scalp assessment"
+      ],
+      "finding": "approximately 2 cm linear scalp laceration to the right forehead/scalp near the hairline with active bleeding/oozing initially; after sustained direct pressure or a pressure dressing, bleeding is controlled with no active bleeding through the dressing; surrounding swelling and tenderness; no deformity, abrasion, puncture, or burn",
+      "notes": "Use for the Exam menu DCAP-BTLS head action in this scalp-laceration scenario. Keep abrasion and laceration separate."
+    },
+    "c_spine_assessment": {
+      "label": "C-Spine",
+      "exam_key": "C-Spine",
+      "aliases": [
+        "c spine",
+        "c-spine",
+        "cervical spine",
+        "neck tenderness",
+        "palpate cervical spine",
+        "midline tenderness",
+        "neck assessment"
+      ],
+      "finding": "no midline cervical spine tenderness, deformity, or step-off; neck pain not reported; patient remains alert with GCS 15, so spinal motion restriction is not automatically indicated but C-spine should be considered and reassessed if symptoms change",
+      "notes": "Use for focused spine assessment after the fall/head impact. Do not invent high-risk spinal findings for this low-energy mechanism."
+    }
+  },
+  "personas": {
+    "leo": {
+      "name": "Leo",
+      "age": 4,
+      "role": "patient",
+      "aliases": [
+        "Leo",
+        "the child",
+        "the boy",
+        "the patient",
+        "buddy",
+        "little guy",
+        "son"
+      ],
+      "tts": {
+        "enabled": true,
+        "voice_role": "patient",
+        "gender": "male",
+        "age_band": "child",
+        "provider_voice": "alloy",
+        "speed": 1.04,
+        "demeanor": "very upset 4-year-old American boy with a bleeding head wound; scared by the blood, crying, in pain, and clinging to his dad while still able to answer simple questions",
+        "delivery": "higher-pitched child voice with shaky, tearful urgency; short broken phrases between sniffles and sobs; pain and fear should be obvious, especially at the start of each reply",
+        "avoid": "do not sound calm, flat, composed, like an adult man, narrator, clinician, parent, performer, energetic child, or like you have a British or English accent"
+      },
+      "description": "4-year-old male, scared and crying loudly from the injury and the sight of blood. He clings to his father and pulls away from strangers trying to touch his head. He can be partially calmed by his father's voice. After a minute with calm, reassuring EMS, he will quiet down enough to answer simple yes/no questions. He does not understand what a hospital is — he is more worried about whether it will hurt more.",
+      "speaking_style": "Loud crying initially. Between sobs: 'It hurts!', 'Daddy!', 'No!' When calmer: short answers with head nods. 'My head hurts.' 'No, I didn't fall asleep.' Does not know medical terms.",
+      "what_he_knows": [
+        "His head hurts where the blood is",
+        "He did not fall asleep after hitting his head (no LOC)",
+        "He has not thrown up",
+        "He is scared of strangers touching his head"
+      ],
+      "clinical_state_instructions": "Leo communicates through crying, pulling away, and short answers. If a stranger tries to remove the towel abruptly from his forehead: 'NOOO! Daddy!' and pulls back. If the student introduces themselves calmly and asks dad to keep the pressure: Leo watches warily but calms slightly. If asked simple questions gently while dad maintains pressure: Leo answers with nods or short phrases. Do not give long verbal responses — always keep replies brief and childlike.",
+      "persona_rules": [
+        "Never calm down completely — he's scared and hurt; just less upset over time with gentle approach",
+        "If the student tries to directly lift or remove the dressing suddenly: Leo screams and pulls away",
+        "Simple yes/no questions about his head, whether he slept, whether he threw up — answer these",
+        "Do not give any medical history — redirect to dad"
+      ]
+    },
+    "david": {
+      "name": "David",
+      "age": 35,
+      "role": "family",
+      "relation": "father",
+      "aliases": [
+        "David",
+        "Dad",
+        "dad",
+        "father",
+        "sir",
+        "the father"
+      ],
+      "tts": {
+        "enabled": true,
+        "voice_role": "bystander",
+        "gender": "male",
+        "age_band": "adult",
+        "provider_voice": "echo",
+        "speed": 1.28,
+        "demeanor": "frightened father trying to stay composed while his child is bleeding; protective, shaky, guilty, and visibly worried",
+        "delivery": "speak faster than normal with tight, urgent concern; answers are direct but emotionally strained, with occasional breath-catching worry and relief only after reassurance",
+        "avoid": "do not sound calm, flat, clinical, detached, playful, theatrical, or like an EMS provider"
+      },
+      "description": "Leo's father. He is pale and clearly shaken — scalp lacerations look far worse than they are and he is genuinely frightened. He has been maintaining pressure on the wound since it happened. He is cooperative and will do exactly what EMS asks. He wants to know if his son is okay and whether he needs stitches. He feels guilty that Leo was running in the house.",
+      "speaking_style": "Anxious, speaking quickly: 'Is he okay? There's so much blood — is that normal? Does he need surgery?' Immediately cooperative when given clear directions. Visibly relieved when given a calm explanation.",
+      "what_he_knows": [
+        "Leo was running in the living room and tripped on the rug — he hit the corner of the coffee table",
+        "There was no loss of consciousness — Leo cried immediately on impact",
+        "This happened about 10 minutes ago",
+        "Leo has not vomited",
+        "Leo said his head hurt right away and has been crying since",
+        "No allergies, no medications, no medical history",
+        "Last ate a snack (crackers) about an hour ago",
+        "David has been pressing the towel without releasing since it happened"
+      ],
+      "clinical_state_instructions": "If student explains scalp lacerations bleed a lot because of rich blood supply: David visibly relaxes. 'Oh — so the blood doesn't mean it's really bad?' If asked to keep holding the pressure while EMS takes over: 'Yes, of course.' If asked about vomiting or LOC: answers from what_he_knows. If student asks Leo directly about his head and Leo answers: David confirms. Will ask at least once 'Does he need stitches?' — answer: likely yes, ED for evaluation.",
+      "persona_rules": [
+        "Provide accurate history when asked — does not volunteer unless asked",
+        "Cooperate with all instructions immediately",
+        "Ask about stitches at some point",
+        "Become visibly calmer when student explains that scalp bleeds heavily but this is expected"
+      ]
+    },
+    "alex": {
+      "name": "Alex",
+      "age": 28,
+      "role": "ems_partner",
+      "aliases": [
+        "Alex",
+        "partner",
+        "my partner",
+        "crew"
+      ],
+      "tts": {
+        "enabled": true,
+        "voice_role": "alex",
+        "gender": "male",
+        "age_band": "adult",
+        "provider_voice": "echo",
+        "speed": 1.32,
+        "demeanor": "calm, competent, practical EMT partner who is alert to a pediatric bleeding call",
+        "delivery": "brisk, engaged field tone with clear EMS cadence; concise and reassuring without sounding sleepy or theatrical",
+        "avoid": "do not sound flat, like a narrator, instructor, parent, patient, or anxious bystander"
+      },
+      "description": "Your EMT partner on Squad 1. Calm, practical, experienced with pediatric patients. Will assist when directed. Will prompt scene safety and PPE if student skips it. Will not volunteer interventions unprompted — waits for direction.",
+      "speaking_style": "Brief, calm, professional. 'Copy.' 'Ready when you are.' 'Vitals on your call.'",
+      "capabilities": [
+        "Report individual vitals when asked",
+        "Report full set of vitals when asked",
+        "Hold or assist with direct pressure on the wound",
+        "Get bandages, dressings, gauze, pressure dressings from the rig",
+        "Help position Leo for assessment",
+        "Prepare stretcher for transport"
+      ]
+    }
+  },
+  "correct_treatment": {
+    "critical_actions": [
+      {
+        "id": "scene_safety",
+        "description": "Scene safety and BSI/PPE prior to patient contact",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "pat",
+        "description": "Pediatric Assessment Triangle — Appearance (alert, vigorous cry), Work of Breathing (non-labored), Circulation to Skin (pink, warm)",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "direct_pressure",
+        "description": "Apply or maintain direct pressure to control scalp hemorrhage; apply pressure dressing",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(direct.*pressure|pressure.*wound|pressure.*bleed|control.*bleed|wound.*pressure|bleed.*control|pressure.*dressing|hemorrhage.*control)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "neuro_assessment",
+        "description": "Perform neurological assessment — GCS/AVPU, pupils, ask about LOC and vomiting",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "finding_types": [
+            "exam",
+            "vital"
+          ],
+          "finding_key_patterns": [
+            "\\bpupils?\\b",
+            "\\bgcs\\b",
+            "\\bloc\\b",
+            "mental",
+            "avpu",
+            "vomit"
+          ],
+          "transcript_patterns": [
+            "\\bpupils?\\b",
+            "\\bgcs\\b",
+            "\\bloc\\b",
+            "loss of consciousness",
+            "vomit"
+          ],
+          "min_matches": 2
+        }
+      }
+    ],
+    "recommended_actions": [
+      {
+        "id": "calm_patient",
+        "description": "Use father to help calm Leo — therapeutic use of parent",
+        "required": false
+      },
+      {
+        "id": "opqrst_sample",
+        "description": "Obtain targeted SAMPLE history from father",
+        "required": false
+      },
+      {
+        "id": "reassess_vitals",
+        "description": "Reassess vitals and neuro status after bleeding controlled",
+        "required": false
+      }
+    ],
+    "out_of_scope_bls": [
+      "suturing",
+      "iv_pain_medication"
+    ],
+    "out_of_scope_aemt": [],
+    "out_of_scope_paramedic": [],
+    "clinical_decision_points": {
+      "tbi_red_flags": "Red flags requiring ALS intercept and trauma center: LOC (absent here), repeated vomiting (absent), worsening headache, seizure, unequal pupils, GCS < 15. Leo has none of these — this is a reassuring picture.",
+      "als_trigger": "ALS/intercept expectations are determined by the active agency configuration. No urgent ALS need for an isolated scalp laceration in a GCS-15 child without TBI signs.",
+      "destination": "ED for wound evaluation, likely suture repair. Stable for transport on stretcher."
+    }
+  },
+  "scoring": {
+    "overall_considerations": [
+      "Primary focus: hemorrhage control and TBI rule-out — these are the two clinical questions for any pediatric head injury.",
+      "Scalp lacerations bleed profusely due to rich vascular supply — this is expected; do NOT penalize a student for being alarmed, only for failing to control bleeding.",
+      "Vigorous crying in a 4-year-old is a reassuring PAT finding — credit if student recognizes it as adequate appearance.",
+      "Neuro assessment does not require GCS by number — credit AVPU, or descriptive assessment of LOC, vomiting, and pupil check.",
+      "Credit any direct pressure or pressure dressing attempt — even if the father was already holding pressure, directing father to maintain it is a valid intervention."
+    ],
+    "dmist_considerations": [
+      "D: Leo, 4-year-old male, 35 lbs (16 kg).",
+      "M: Fall, struck corner of coffee table",
+      "I: Scalp laceration; no LOC; no vomiting.",
+      "S: Alert/Oriented x4, GCS 15, PERRL, SpO2 99%, HR 130, BP 100/65 — no TBI red flags.",
+      "T: Direct pressure applied; pressure dressing in place. O2 not required for SpO2 99%."
+    ],
+    "dmist_components": {
+      "D": {
+        "description": "Patient demographics",
+        "required_elements": [
+          "name: Leo",
+          "age: 4",
+          "sex: male",
+          "weight: 16 kg or 35 lbs"
+        ],
+        "corroboration_source": "scenario_patient_fields"
+      },
+      "M": {
+        "description": "Mechanism and chief complaint",
+        "required_elements": [
+          "fall mechanism",
+          "scalp laceration",
+          "bleeding"
+        ],
+        "corroboration_source": "any"
+      },
+      "I": {
+        "description": "Injury details — scalp laceration, wound characteristics, and mechanism",
+        "required_elements": [
+          "scalp laceration with active bleeding at arrival",
+          "fall mechanism (running, tripped on rug, struck coffee table corner)",
+          "wound location and bleeding severity",
+          "no loss of consciousness",
+          "no other traumatic injury found"
+        ],
+        "corroboration_source": "history_and_findings",
+        "note": "I is illness/injury, not interventions. Treatments (bleeding control method, neuro assessment steps) belong under T."
+      },
+      "S": {
+        "description": "Signs and current status",
+        "required_elements": [
+          "GCS or AVPU",
+          "bleeding status",
+          "SpO2"
+        ],
+        "corroboration_source": "vitals_and_findings"
+      },
+      "T": {
+        "description": "Current condition at ALS handoff",
+        "required_elements": [
+          "current bleeding control status",
+          "neuro status"
+        ],
+        "corroboration_source": "any"
+      }
+    },
+    "narrative_considerations": [
+      "CHART format: Chief complaint → History (mechanism, LOC status, vomiting) → Assessment (neuro, vitals) → Rx (direct pressure, dressing) → Transport/Transfer.",
+      "Key documentation: MOI (running, hit table corner), LOC status (none), vomiting (none), neuro findings (GCS 15, PERRL), hemorrhage control method and response.",
+      "Do NOT expect complete medication/allergy tables in the narrative body — other PCR fields.",
+      "Evaluate objectivity: 'significant scalp laceration with active bleeding controlled with direct pressure' is objective; 'bad cut on his head' is not."
+    ],
+    "required_assessments": [
+      {
+        "id": "neuro_assessment",
+        "description": "Perform targeted neurological assessment (GCS/AVPU, pupils, LOC, vomiting history) for TBI rule-out",
+        "keywords": [
+          "GCS",
+          "AVPU",
+          "pupils",
+          "neurological",
+          "neuro",
+          "LOC",
+          "loss of consciousness",
+          "vomit",
+          "vomiting",
+          "alert",
+          "oriented",
+          "confused",
+          "PERRL",
+          "equal",
+          "reactive"
+        ],
+        "missing_deduction": 3,
+        "note": "TBI rule-out is the second primary clinical question in this scenario. Neuro assessment (GCS, pupils, LOC, vomiting) is the evidence base for the ruling-out decision."
+      }
+    ],
+    "by_level": {
+      "MFR": {
+        "critical_focus": [
+          "Scene safety and BSI",
+          "Recognize bleeding and maintain hemorrhage control",
+          "Assess LOC — is patient alert and crying?",
+          "Call for higher level of care if indicated and not already dispatched by agency configuration"
+        ],
+        "additional_expectations": [],
+        "grace_items": [
+          "Formal GCS documentation not required at MFR level — AVPU or descriptive assessment sufficient",
+          "PAT by name not required — credit assessment of all three components"
+        ]
+      },
+      "EMT": {
+        "critical_focus": [
+          "Scene safety and BSI",
+          "Direct pressure and pressure dressing for scalp hemorrhage",
+          "Targeted neuro assessment: GCS/AVPU, pupils, LOC, vomiting — TBI rule-out",
+          "SAMPLE history from father: mechanism, LOC, vomiting, PMH"
+        ],
+        "additional_expectations": [
+          "Use father therapeutically to calm Leo during assessment",
+          "Reassess neuro status and vital signs after bleeding is controlled"
+        ],
+        "grace_items": [
+          "ALS request is not required when the active agency configuration co-dispatches ALS",
+          "Broselow estimation and color not required — weight known from father (35 lbs)",
+          "Do not penalize for alarm at blood volume — scalp bleeding is dramatic; credit clinical reasoning"
+        ]
+      },
+      "AEMT": {
+        "critical_focus": [
+          "All EMT expectations above",
+          "Consider monitoring for signs of increasing ICP (deteriorating GCS, unequal pupils, vomiting) — none present here"
+        ],
+        "additional_expectations": [],
+        "grace_items": [
+          "Same EMT grace items apply"
+        ]
+      },
+      "Paramedic": {
+        "critical_focus": [
+          "All EMT expectations plus advanced neuro assessment",
+          "Recognize absence of TBI red flags as reassuring — does NOT require ALS-level intervention here"
+        ],
+        "additional_expectations": [
+          "Consider IV access if patient's condition were to deteriorate (not required in this stable presentation)"
+        ],
+        "grace_items": [
+          "Same base grace items apply"
+        ]
+      }
+    }
+  },
+  "scoring_rubric": {
+    "clinical_performance": {
+      "max": 50,
+      "full_credit": "PAT performed, direct pressure/dressing applied, targeted neuro assessment (GCS/AVPU/A&O + pupils + LOC + vomiting), mechanism of injury screened, SAMPLE from father, reassessment and transport decision — plus base rubric: scene safety, primary assessment, mechanism, hemorrhage control, secondary assessment, handoff",
+      "partial_credit": "Hemorrhage controlled and neuro assessed but history incomplete, or neuro not formally documented",
+      "minimal_credit": "Bleeding controlled but no neuro assessment — TBI not ruled out"
+    },
+    "narrative": {
+      "max": 20,
+      "full_credit": "CHART complete: dispatch (head injury), mechanism (fell, struck table corner), LOC status (none), assessment (GCS 15 and or AVPU/A&O, PERRL, SpO2 99%), hemorrhage control (direct pressure, dressing applied), neuro findings (no red flags), transport to ED for wound care (if transport agency). Objective throughout.",
+      "partial_credit": "Most CHART elements present but LOC or neuro findings absent or vague",
+      "minimal_credit": "Narrative present but fails to document LOC status or hemorrhage control"
+    },
+    "scope_adherence": {
+      "max": 10,
+      "full_credit": "Stayed within effective provider scope and MCA rules: IV pain medication not administered — outside BLS scope for pediatric soft tissue injury. No out-of-scope attempts or orders.",
+      "partial_credit": "No dangerous out-of-scope intervention attempted, but scope reasoning, level-specific escalation, or MCA-specific scope recognition was incomplete.",
+      "minimal_credit": "Out-of-scope intervention attempted or ordered, or provider-level limits materially ignored."
+    },
+    "dmist": {
+      "max": 10,
+      "full_credit": "D: Leo, 4yo male, 35 lbs; M: from fall and struck table, no LOC, no vomiting; I: head laceration; S: GCS 15/AVPU/A&Ox4, PERRL, SpO2 99%, HR 130; T: direct pressure and dressing applied.",
+      "partial_credit": "3–4 of 5 components present; LOC status or neuro findings missing",
+      "minimal_credit": "2 or fewer components, or no neuro findings documented"
+    },
+    "professionalism": {
+      "max": 10,
+      "full_credit": "Introduced self, used Leo's name, explained procedure to father and child in age-appropriate language, normalized scalp bleeding to reassure father, kept Leo calm through calm voice and father involvement",
+      "partial_credit": "Communication present but child not addressed by name or father not reassured",
+      "minimal_credit": "No introduction, Kyle not addressed directly, and father Richard not reassured or involved throughout"
+    },
+    "protocols_treatment": {
+      "max": 10,
+      "full_credit": "Protocol-aligned treatment completed: Direct pressure and hemorrhage control applied for scalp laceration — required BLS intervention. Contraindicated care avoided and in-scope treatment priorities addressed.",
+      "partial_credit": "Most treatment priorities addressed, but one important protocol-aligned intervention, escalation step, or contraindication check was incomplete or delayed.",
+      "minimal_credit": "Key protocol/treatment priority missed, contraindicated care performed, or treatment plan materially inconsistent with protocol."
+    }
+  },
+  "exemplar_dmist": "D — Leo, 4-year-old male, approximately 35 lbs (16 kg) per father.\nM — tripped and struck right forehead on coffee table corner approximately 10 minutes ago. No loss of consciousness — cried immediately on impact.\nI - laceration to head with bleeding.\nS — GCS 15/A&Ox4 (alert, crying, oriented to dad). Pupils equal and reactive, 4 mm bilaterally. SpO2 99%, HR 130, BP 100/65.\nT — Direct pressure and dressing applied Bleeding controlled with pressure dressing in place.",
+  "exemplar_narrative": "Dispatched for a 4-year-old male with a head laceration after a fall. Upon arrival, patient Leo, a 4-year-old male weighing approximately 35 lbs, was found alert and crying on his father's lap in the living room. Father was maintaining direct pressure with a bath towel to the patient's right forehead. Blood-soaked towel present — amount consistent with scalp laceration.\n\nFather reports Leo was running in the living room, tripped, and struck the corner of the coffee table approximately 10 minutes prior to EMS arrival. No loss of consciousness — patient cried immediately on impact. No vomiting. No significant PMH.\n\nAlert with vigorous cry. Work of breathing non-labored. Skin pink, warm, and dry. GCS 15 (E4V5M6) and/or Alert/Oriented. Pupils equal and reactive at 4 mm bilaterally. No focal neurological deficits. Patent airway.\n\nDirect pressure maintained and pressure dressing applied over wound site — bleeding controlled at time of assessment. Patient calmed with father's assistance throughout treatment. Patient care transferred with full verbal report.",
+  "debrief": {
+    "condition_background": "Scalp lacerations are among the most dramatic-appearing pediatric injuries, yet they are rarely life-threatening in isolation. The scalp has one of the richest blood supplies in the body — the occipital, temporal, frontal, and parietal arteries create a dense anastomotic network that bleeds aggressively when interrupted. A modest laceration can produce a towel saturated with blood within minutes. The key clinical insight is that the volume of bleeding does NOT reliably indicate the severity of the underlying head injury. The provider's job is twofold: (1) control the hemorrhage with direct pressure, and (2) perform a targeted neurological assessment to rule out traumatic brain injury (TBI). Leo has none of the red flags for significant TBI — he never lost consciousness, cried immediately on impact, is GCS 15, has equal reactive pupils, and has not vomited. This is a reassuring picture. The primary concern in any pediatric head trauma is TBI — not the visible wound.",
+    "key_teaching_points": [
+      "Scalp lacerations bleed profusely — this is anatomy, not injury severity. Rich scalp vasculature means even small lacerations produce alarming hemorrhage. Direct pressure is effective.",
+      "Pediatric Assessment Triangle first — before touching the wound: Appearance (vigorous crying = reassuring), Work of Breathing (non-labored), Circulation to Skin (pink, warm). A crying child has a patent airway.",
+      "TBI red flags to assess for at every head injury: LOC, repeated vomiting (> 1 episode), worsening headache, seizure, unequal or non-reactive pupils, GCS < 15. Leo has none of these.",
+      "Direct pressure works — hold firm, continuous pressure for 5–10 minutes without releasing to check. The releasing-to-check cycle is the most common mistake in wound hemorrhage management.",
+      "Use the parent as a clinical tool — a 4-year-old frightened of strangers will cooperate far better with dad holding the pressure than with EMS forcing assessment. Keep the parent involved.",
+      "GCS in a child: eye opening, verbal (crying is not the same as confused — a crying 4-year-old who knows their dad and location is not verbally compromised), motor. Leo's GCS 15 is reassuring.",
+      "All head injuries with LOC, focal deficits, vomiting, or GCS < 15 require transport to a pediatric trauma center — Leo does not meet these criteria but the student should know them."
+    ],
+    "common_mistakes": [
+      "Removing the pressure dressing to inspect the wound repeatedly — disrupts clot formation and worsens bleeding",
+      "Failing to perform a neurological assessment — controlling the bleed is step one, but the real question is TBI",
+      "Assuming large blood volume equals severe injury — scalp vasculature is dense; calm the family with this explanation",
+      "Not documenting LOC status — whether or not the patient lost consciousness is the single most important piece of head trauma history",
+      "Separating Leo from his father to do the assessment — using the parent to maintain pressure while EMS assesses is good medicine AND good patient care"
+    ]
+  },
+  "legacy_ai_categories": [
+    "documentation",
+    "professionalism"
+  ],
+  "checklist": [
+    {
+      "id": "ems.trauma.neck_trachea",
+      "description": "Suppressed for isolated low-energy scalp laceration — detailed neck trachea assessment is not required by this MOI.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.neck_jugular_veins",
+      "description": "Suppressed for isolated low-energy scalp laceration — jugular vein assessment is not required by this MOI.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.chest_inspect",
+      "description": "Suppressed for isolated low-energy scalp laceration — detailed chest inspection is not required by this MOI.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.chest_palpate",
+      "description": "Suppressed for isolated low-energy scalp laceration — chest palpation is not required by this MOI.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.chest_auscultate",
+      "description": "Suppressed for isolated low-energy scalp laceration — detailed chest auscultation is not required beyond primary breathing assessment.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.abdomen_inspect_palpate",
+      "description": "Suppressed for isolated low-energy scalp laceration — abdominal assessment is not required by this MOI.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.pelvis_assess",
+      "description": "Suppressed for isolated low-energy scalp laceration — pelvic assessment is not required by this MOI.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.genitalia_perineum_as_needed",
+      "description": "Suppressed for isolated low-energy scalp laceration — genitalia/perineum assessment is not indicated by this MOI.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.lower_left_pmsc",
+      "description": "Suppressed for isolated low-energy scalp laceration — left lower-extremity PMSC is not required by this MOI.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.lower_right_pmsc",
+      "description": "Suppressed for isolated low-energy scalp laceration — right lower-extremity PMSC is not required by this MOI.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.upper_left_pmsc",
+      "description": "Suppressed for isolated low-energy scalp laceration — left upper-extremity PMSC is not required by this MOI.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.upper_right_pmsc",
+      "description": "Suppressed for isolated low-energy scalp laceration — right upper-extremity PMSC is not required by this MOI.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.posterior_thorax",
+      "description": "Suppressed for isolated low-energy scalp laceration — posterior thorax exam is not required by this MOI.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.lumbar_buttocks",
+      "description": "Suppressed for isolated low-energy scalp laceration — lumbar/buttocks exam is not required by this MOI.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.priority_transport",
+      "description": "Identifies patient priority and disposition needs based on GCS and head-injury red flags",
+      "subtype": "transport",
+      "category": "clinical_performance",
+      "point_value": 1,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 2,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": null,
+      "tier2_patterns": [
+        "(?i)(not sick|stable|GCS\\s*15|no\\s+LOC|no\\s+loss\\s+of\\s+consciousness|no\\s+vomit|head\\s+injury\\s+red\\s+flags|ED|emergency department|hospital|handoff|ALS)"
+      ],
+      "applicable_if": {
+        "non_transport_agency": false
+      },
+      "critical_failure": false,
+      "critical_failure_label": null,
+      "done_feedback": "Patient priority/disposition identified — normal GCS and no TBI red flags support continued focused assessment, bleeding control, and routine ED evaluation rather than immediate load-and-go.",
+      "missed_feedback": "Patient priority/disposition not stated — after confirming GCS 15, no LOC, no vomiting, and no focal deficit, document that this is not an immediate load-and-go trauma patient while still preparing appropriate ED evaluation/handoff.",
+      "clinical_rationale": "Isolated scalp laceration with normal neuro exam needs hemorrhage control and ED evaluation, but it is not a critical transport-priority failure when the agency is non-transport and ALS/transport handoff is the disposition path.",
+      "common_error": "Treating dramatic scalp bleeding as proof of severe traumatic brain injury; priority should be based on neuro status, mechanism, and red flags."
+    },
+    {
+      "id": "peds_trauma_01_soft_tissue.pat_assessment",
+      "description": "PAT completed — appearance (alert, vigorous cry), work of breathing (non-labored), circulation to skin (pink, warm) assessed",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "scene_entry",
+        "scene_entry_path": "pat_assessment"
+      },
+      "tier2_patterns": [
+        "(?i)(pat|appearance|alert|cry|work of breath|circulat|pink|warm|skin)"
+      ],
+      "done_feedback": "PAT completed — alert with vigorous cry, non-labored breathing, and adequate circulation correctly assessed before hands-on contact.",
+      "missed_feedback": "PAT not completed — even for an apparently isolated extremity injury, PAT ensures no concurrent breathing or circulatory compromise was missed.",
+      "clinical_rationale": "PAT provides a rapid global assessment; a child who appears pale or has labored breathing after head trauma may have concurrent occult injury.",
+      "common_error": "Jumping directly to the scalp wound without completing the PAT — visible dramatic injuries can distract from a concurrent occult threat."
+    },
+    {
+      "id": "peds_trauma_01_soft_tissue.direct_pressure",
+      "description": "Direct pressure applied or maintained to control scalp hemorrhage; pressure dressing applied",
+      "subtype": "intervention",
+      "category": "clinical_performance",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "direct_pressure"
+      },
+      "tier2_patterns": [
+        "(?i)(direct pressure|pressure dressing|dressing|hemorrhage|bleeding|compress|wound)"
+      ],
+      "done_feedback": "Direct pressure applied to scalp laceration — correct hemorrhage control for highly vascular scalp injuries.",
+      "missed_feedback": "Direct pressure not applied — scalp lacerations bleed profusely due to the vascularity of the galea; hemorrhage control must precede secondary assessment.",
+      "clinical_rationale": "The scalp has a rich vascular supply; even small lacerations can produce significant blood loss in a child; direct pressure is the BLS standard for external hemorrhage control.",
+      "common_error": "Estimating blood loss as 'minor' because the wound looks small — scalp lacerations often bleed far more than their size suggests; apply direct pressure regardless."
+    },
+    {
+      "id": "peds_trauma_01_soft_tissue.neuro_assessment",
+      "description": "Neurological assessment performed — GCS/AVPU or mental status plus LOC history documented",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 7,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "requirement_logic": "all",
+      "tier1_matches": [
+        {
+          "source": "finding",
+          "finding_type": "exam",
+          "finding_key_pattern": "(?i)(GCS|AVPU|LOC|level of consciousness|mental status|pupils?)",
+          "finding_value_pattern": "(?i)(alert|oriented|respond|GCS|\\b1[3-5]\\b|E\\d\\s*V\\d\\s*M\\d|equal|reactive|PERRL)"
+        },
+        {
+          "source": "finding",
+          "finding_type": "history",
+          "finding_key_pattern": "(?i)^(LOC|Loss of Consciousness|Events)$",
+          "finding_value_pattern": "(?i)(no\\s+(?:loss of consciousness|LOC)|never\\s+lost|did\\s+not\\s+lose|didn't\\s+lose|cried\\s+immediately|started\\s+crying\\s+right\\s+away)"
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)(?=.*\\b(?:GCS|AVPU|neurolog|mental status|alert|respond)\\b)(?=.*\\bpupils?\\b)",
+        "(?i)(?=.*\\b(?:LOC|loss of consciousness|lose consciousness|unconscious)\\b)(?=.*\\bvomit\\w*)"
+      ],
+      "done_feedback": "Neurological baseline documented — GCS/AVPU or mental status plus LOC history supports TBI risk screening.",
+      "missed_feedback": "Neurological baseline not documented — pediatric head trauma needs at least GCS/AVPU or mental status plus LOC history; pupils and vomiting history strengthen the screen.",
+      "clinical_rationale": "Any head trauma requires a documented neurological baseline; GCS/AVPU and LOC history determine whether additional TBI red flags need urgent escalation.",
+      "common_error": "Controlling the scalp bleed but failing to document a neuro baseline and LOC history."
+    },
+    {
+      "id": "peds_trauma_01_soft_tissue.mechanism_screen",
+      "description": "Mechanism of injury assessed — height of fall, surface type, and any LOC duration asked to stratify concussion risk",
+      "subtype": "screen",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "requirement_logic": "all",
+      "tier1_matches": [
+        {
+          "source": "finding",
+          "finding_type": "history",
+          "finding_key_pattern": "(?i)^Events$",
+          "finding_value_pattern": "(?i)(running|tripp?ed|rug|coffee table|table corner|hit|struck|fall|fell)"
+        },
+        {
+          "source": "finding",
+          "finding_type": "history",
+          "finding_key_pattern": "(?i)^(LOC|Loss of Consciousness|Events)$",
+          "finding_value_pattern": "(?i)(no\\s+(?:loss of consciousness|LOC)|never\\s+lost|did\\s+not\\s+lose|didn't\\s+lose|cried\\s+immediately|started\\s+crying\\s+right\\s+away)"
+        }
+      ],
+      "tier2_patterns": [
+        "(?i)(how\\s+(?:far|high).*fall|fall.*from|height|how high|what.*(?:land|surface)|surface|concrete|grass|hardwood|tile|rug|carpet)",
+        "(?i)(?=.*\\b(?:fall|fell|tripp?ed|hit|struck)\\b)(?=.*\\b(?:rug|carpet|coffee table|table corner|surface|ground|floor)\\b)(?=.*\\b(?:LOC|loss of consciousness|passed out|cried immediately|no loss)\\b)"
+      ],
+      "done_feedback": "Mechanism assessed — fall height, surface, and LOC duration obtained; consistent with isolated scalp laceration, not high-energy TBI.",
+      "missed_feedback": "Mechanism not assessed — fall height and surface type determine injury severity; fall > 3 feet or LOC changes the field impression and transport decision.",
+      "clinical_rationale": "In pediatric head trauma, fall height greater than standing height, hard surface, and any LOC are PECARN criteria predictors of significant intracranial injury.",
+      "common_error": "Treating all head lacerations the same regardless of mechanism — a fall from standing height is different from a fall down stairs or from a table."
+    },
+    {
+      "id": "peds_trauma_01_soft_tissue.transport_decision",
+      "description": "Transport initiated to appropriate pediatric ED — scalp laceration with head trauma mechanism warrants hospital evaluation",
+      "subtype": "transport",
+      "category": "clinical_performance",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 2,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": null,
+      "tier2_patterns": [
+        "(?i)(transport|hospital|take.*in|load|go|emergency department|evaluate|pediatric)"
+      ],
+      "applicable_if": {
+        "non_transport_agency": false
+      },
+      "done_feedback": "Transport to pediatric ED initiated — scalp laceration with head trauma mechanism requires ED evaluation even when neuro exam is intact.",
+      "missed_feedback": "Transport decision not made or delayed — even with a normal neuro exam, head trauma with a wound requires ED evaluation; intracranial hemorrhage can present with an initial lucid interval.",
+      "clinical_rationale": "Epidural hematoma classically presents with a lucid interval — a period of apparent normalcy after initial LOC before rapid deterioration; field assessment cannot rule out intracranial injury.",
+      "common_error": "Allowing transport refusal without pediatric ED evaluation — parents may underestimate severity; explain that imaging is required to exclude internal injury."
+    },
+    {
+      "id": "peds_trauma_01_soft_tissue.scope_no_iv_pain_medication",
+      "description": "IV pain medication not administered — outside BLS scope for pediatric soft tissue injury",
+      "subtype": "intervention",
+      "category": "scope_adherence",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [
+        "MFR",
+        "EMT"
+      ],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "absence_check",
+        "absence_intervention_key": "iv_pain_medication"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "IV pain medication correctly withheld — outside BLS scope; transport with wound care is the appropriate BLS response.",
+      "missed_feedback": "IV pain medication attempted — outside BLS scope for pediatric soft tissue injury; IV opioid analgesia requires ALS-level certification.",
+      "clinical_rationale": "BLS scope for soft tissue injury is hemorrhage control, wound coverage, neuro assessment, and transport; pain management via IV route is ALS."
+    },
+    {
+      "id": "peds_trauma_01_soft_tissue.scope_hemorrhage_control",
+      "description": "Direct pressure and hemorrhage control applied for scalp laceration — required BLS intervention",
+      "subtype": "intervention",
+      "category": "protocols_treatment",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "direct_pressure"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "Direct pressure and hemorrhage control applied — correct BLS intervention for scalp laceration with active bleeding.",
+      "missed_feedback": "Hemorrhage control not applied — direct pressure on scalp lacerations is a required BLS intervention; failure to control hemorrhage before transport is a management gap.",
+      "clinical_rationale": "External hemorrhage control precedes transport in all BLS trauma scenarios; scalp wounds are managed with direct pressure and dressing before movement."
+    }
+  ]
+}

@@ -1,0 +1,1077 @@
+{
+  "_schema": "pfd_scenario_v1",
+  "id": "peds_trauma_06_handlebar",
+  "title": "Abdominal Trauma (Handlebar Injury) — 9-Year-Old Male",
+  "display_title": "Pediatric Abdominal Trauma",
+  "subtitle": "9-year-old male, handlebar sign — compensated shock with internal injury",
+  "category": "pediatric_trauma",
+  "call_type": "nremt_trauma",
+  "category_display": "Pediatric Trauma Assessment",
+  "turnover_target": "als",
+  "version": "1.0",
+  "rubric_template": "ems_standard_v1",
+  "base_patient_care_rubric": "nremt_trauma_v1",
+  "difficulty": "medium",
+  "scenario_number": 6,
+  "prerequisites": [
+    "peds_trauma_01_soft_tissue"
+  ],
+  "protocol": "MI/02_Trauma_Environmental/02-2_general_trauma",
+  "jurisdiction": "mi_base",
+  "clinical_context": {
+    "jurisdiction": "MI",
+    "concepts": [
+      "pediatric_patient",
+      "pediatric_trauma",
+      "trauma",
+      "abdominal_trauma",
+      "shock",
+      "oxygen_therapy",
+      "transport_decision"
+    ],
+    "protocol_focus": [
+      "abdominal_trauma",
+      "shock",
+      "oxygen_therapy"
+    ]
+  },
+  "agency_context": "",
+  "spinal_injury_possible": false,
+  "non_transport_agency": false,
+  "multiple_patients_possible": false,
+  "diagnostics_indicated": false,
+  "opqrst_radiation_relevant": false,
+  "readiness_criteria": {
+    "min_minutes": 3,
+    "checks": [
+      {
+        "id": "messages",
+        "label": "5 messages sent",
+        "type": "message_count",
+        "min": 5
+      },
+      {
+        "id": "vitals",
+        "label": "Vitals assessed",
+        "type": "vitals_logged"
+      },
+      {
+        "id": "exam",
+        "label": "Exam/history obtained",
+        "type": "exam_logged"
+      },
+      {
+        "id": "treatment",
+        "label": "Treatment applied",
+        "type": "treatment_logged"
+      }
+    ]
+  },
+  "scene_entry_scoring": {
+    "ppe": {
+      "required": [
+        "gloves"
+      ],
+      "recommended": [
+        "eye_protection"
+      ],
+      "missing_required_penalty": 3,
+      "missing_recommended_penalty": 1,
+      "max_score": 10
+    },
+    "pat": {
+      "expected_impression": null,
+      "incorrect_impression_deduction": 2
+    }
+  },
+  "chat_placeholder": "Talk to Jake, or your partner Alex...",
+  "chat_address_hint": "Address by name: Jake · Alex (partner/vitals)",
+  "debrief_lexi_hints": [
+    {
+      "label": "Next step?",
+      "msg": "What should I do next in this scenario?"
+    },
+    {
+      "label": "Handlebar sign?",
+      "msg": "What is the handlebar sign and why is it significant?"
+    },
+    {
+      "label": "Compensated shock?",
+      "msg": "What are the signs of compensated shock and how is it different from decompensated shock?"
+    },
+    {
+      "label": "Abdominal exam?",
+      "msg": "How do I assess the abdomen in a pediatric trauma patient?"
+    },
+    {
+      "label": "Transport decision?",
+      "msg": "Is this a load-and-go or stay-and-play situation?"
+    }
+  ],
+  "objectives": [
+    "Recognize the 'handlebar sign' — a circular contusion from handlebar impact — as a high-index-of-suspicion finding for intra-abdominal injury",
+    "Identify compensated shock: tachycardia and pale/cool/diaphoretic skin with maintained blood pressure",
+    "Understand that children maintain BP through compensated shock — normal BP does NOT rule out significant hemorrhage",
+    "Perform a gentle abdominal assessment — palpate gently; avoid aggressive compression that could worsen injury or contaminate the abdominal cavity",
+    "Apply high-flow O2 and initiate rapid transport with ALS intercept",
+    "Make a correct 'priority transport' decision based on mechanism and shock signs"
+  ],
+  "dispatch": {
+    "unit": "{unit}",
+    "text": "{unit}, respond to the corner of 3rd and Elm for a 9-year-old male who fell off his bike. Caller reports abdominal pain.",
+    "priority": "Priority 2",
+    "time": "15:45",
+    "cross_streets": "3rd St and Elm Ave",
+    "response_time_minutes": 5
+  },
+  "scene": {
+    "description": "You arrive to find a 9-year-old boy sitting on the curb next to his bike. He is pale and quiet — unusual for a child his age. He has one hand on his stomach. Several other kids from the neighborhood are standing nearby, looking unsure of what to do. There are no adults present. The bike has a bent left handlebar.",
+    "image": null,
+    "video": null,
+    "hazards": [],
+    "bystanders": []
+  },
+  "patient": {
+    "pcr_demographics_deferred": true,
+    "name": "Jake",
+    "age": 9,
+    "dob_month_day": "February 25",
+    "sex": "male",
+    "weight_kg": 30,
+    "weight_display": "approx 66 lbs (30 kg)",
+    "chief_complaint": "Abdominal pain and tenderness after falling on bicycle handlebars",
+    "general_impression": "9-year-old male, alert but pale and quiet — appropriate for age, but there is something wrong with his demeanor. He is guarding his abdomen with his hand. When you get closer, you can see a circular bruise forming on his upper abdomen, approximately 4 cm in diameter, directly below his sternum. He will make eye contact and answer questions but speaks quietly and does not move much. He looks like he is trying to hold himself still.",
+    "gcs_assessment": {
+      "e": 4,
+      "v": 5,
+      "m": 6,
+      "total": 15,
+      "rationale": "Eyes open spontaneously, he is oriented and answers appropriately, and he obeys commands/moves purposefully.",
+      "challenge_description": "Jake is alert but pale and quiet with eyes open spontaneously. He is oriented, answers questions appropriately, and obeys commands or moves purposefully while guarding his abdomen."
+    },
+    "avpu_assessment": {
+      "value": "alert",
+      "description": "Patient is alert, oriented, answers appropriately, and obeys commands.",
+      "rationale": "Use AVPU = alert because he is awake and responding appropriately."
+    },
+    "image": null,
+    "video": null
+  },
+  "history": {
+    "allergies": "None known.",
+    "medications": "None.",
+    "pmh": "Healthy 9-year-old.",
+    "last_oral_intake": "Lunch approximately 4 hours ago.",
+    "events_leading_to_call": "Jake was riding his bike down the street at speed and hit a crack in the asphalt — the bike stopped suddenly. Jake was launched forward and the end of the left handlebar jammed into his upper abdomen. He says it 'knocked the wind out of him' at first. He got up, walked to the curb, and called his mom — but couldn't reach her. Another kid called 911. He says the wind-knocked-out feeling resolved but now there is a steady, sharp, constant pain at the impact site."
+  },
+  "initial_complaint": {
+    "speaker": "Jake",
+    "lay_summary": "I crashed my bike and my stomach hurts.",
+    "allowed_in_opener": true,
+    "do_not_include": [
+      "handlebar impact",
+      "pain quality",
+      "pain duration",
+      "wind knocked out",
+      "mechanism details",
+      "medical history",
+      "diagnosis",
+      "clinical terms",
+      "treatment suggestions",
+      "full OPQRST/SAMPLE"
+    ]
+  },
+  "history_response_map": {
+    "patient_identity": {
+      "label": "Patient identity / demographics",
+      "speaker": "Jake",
+      "triggers": ["what is your name", "what's your name", "patient name", "how old are you", "age", "date of birth", "dob", "birthday"],
+      "answer": "My name is Jake. I'm 9 years old. My birthday is February 25.",
+      "tags": ["[[HISTORY: Patient Name=Jake]]", "[[HISTORY: Patient Age=9-year-old male]]", "[[HISTORY: Patient Date of Birth=February 25]]"],
+      "notes": "Patient-scoped demographics only.",
+      "do_not_include": ["weight unless asked", "mechanism details", "medical history", "medications", "treatment suggestions"]
+    },
+    "patient_weight": {
+      "label": "Patient weight",
+      "speaker": "Jake",
+      "triggers": ["how much do you weigh", "what do you weigh", "patient weight", "weight", "estimated weight"],
+      "answer": "I weigh about 66 pounds, around 30 kilograms.",
+      "tag": "[[HISTORY: Patient Weight=approx 66 lbs (30 kg)]]",
+      "notes": "Patient-scoped weight only.",
+      "do_not_include": ["diagnosis", "treatment suggestions"]
+    },
+    "chief_concern": {
+      "label": "Broad opener / chief concern",
+      "speaker": "Jake",
+      "triggers": ["what's going on", "what happened", "why did you call", "how can we help", "chief complaint"],
+      "answer": "I fell on my bike and my belly hurts.",
+      "tag": "[[HISTORY: Patient Chief Complaint=abdominal pain after bicycle handlebar injury]]",
+      "notes": "Patient-scoped complaint only.",
+      "do_not_include": ["shock signs", "handlebar sign details", "treatment suggestions"]
+    }
+  },
+  "vitals": {
+    "baseline": {
+      "hr": {
+        "label": "Heart Rate",
+        "value": 130,
+        "unit": "bpm",
+        "display": "130 bpm — tachycardic; compensated shock"
+      },
+      "rr": {
+        "label": "Respirations",
+        "value": 24,
+        "unit": "/min"
+      },
+      "spo2": {
+        "label": "SpO2",
+        "value": 97,
+        "unit": "%"
+      },
+      "bp": {
+        "label": "Blood Pressure",
+        "value": "92/62",
+        "unit": "mmHg",
+        "display": "92/62 mmHg — low-normal for age; maintained by compensatory vasoconstriction"
+      },
+      "temp": {
+        "label": "Temperature",
+        "value": 98.6,
+        "unit": "°F"
+      },
+      "blood_glucose": {
+        "label": "Blood Glucose",
+        "value": 118,
+        "unit": "mg/dL",
+        "display": "118 mg/dL — mild stress response"
+      },
+      "gcs": {
+        "label": "GCS",
+        "value": 15,
+        "unit": "/15",
+        "display": "15 — E4V5M6 — alert, oriented, appropriately quiet, obeys commands"
+      },
+      "skin_color": {
+        "label": "Skin",
+        "numeric": false,
+        "value": "Pale, cool, mildly diaphoretic — consistent with compensated shock"
+      },
+      "cap_refill": {
+        "label": "Cap Refill",
+        "value": 3,
+        "unit": "sec",
+        "display": "3 seconds — borderline to delayed; compensated shock"
+      },
+      "pupils": {
+        "label": "Pupils",
+        "numeric": false,
+        "value": "PERRL — 4 mm bilaterally"
+      },
+      "lung_sounds": {
+        "label": "Lung Sounds",
+        "numeric": false,
+        "value": "Clear bilaterally — adequate air movement; no respiratory compromise"
+      },
+      "work_of_breathing": {
+        "label": "Work of Breathing",
+        "numeric": false,
+        "value": "Non-labored — respirations slightly guarded due to abdominal pain; no retractions"
+      }
+    },
+    "deterioration": {
+      "note": "Jake is in compensated shock from intra-abdominal hemorrhage. Without rapid transport to surgical care, he will decompensate. Progressive tachycardia and falling BP indicate transition to decompensated shock. Deterioration is inevitable without ALS and surgical intervention.",
+      "rates": {
+        "hr": 2,
+        "rr": 0.5,
+        "spo2": -0.1,
+        "cap_refill": 0.1
+      },
+      "caps": {
+        "hr": {
+          "max": 180,
+          "min": 100
+        },
+        "rr": {
+          "max": 40,
+          "min": 18
+        },
+        "spo2": {
+          "min": 88,
+          "max": 100
+        },
+        "cap_refill": {
+          "max": 6.0,
+          "min": 2.0
+        }
+      },
+      "string_thresholds": {
+        "skin_color": [
+          {
+            "spo2_below": 93,
+            "value": "Pallor worsening — skin gray, cool, diaphoresis increasing; decompensation approaching"
+          }
+        ],
+        "work_of_breathing": [
+          {
+            "rr_above": 35,
+            "value": "Respirations becoming shallow and more rapid — tachypnea from metabolic acidosis of shock"
+          }
+        ]
+      }
+    },
+    "interventions": {
+      "o2_nrb": {
+        "label": "High-flow O2 via NRB mask (15 LPM)",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "\\bnrb\\b",
+          "non.?rebreather",
+          "high.?flow.*o2",
+          "15\\s*lpm",
+          "oxygen",
+          "give.*o2"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 1,
+            "rate_modifier": 0.7
+          },
+          "hr": {
+            "immediate_change": -5,
+            "rate_modifier": 0.9
+          }
+        },
+        "notes": "High-flow O2 for any patient in shock — maximizes oxygen delivery to perfusing tissues. Compensated shock with good SpO2 doesn't mean O2 is unnecessary — the hemoglobin needs to be maximally saturated when circulating volume is reduced.",
+        "requires_popup": true,
+        "popup_type": "oxygen",
+        "popup_default": {
+          "device": "nrb",
+          "flow": 15
+        }
+      },
+      "abdominal_assessment": {
+        "label": "Abdominal Assessment — Gentle Palpation",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "palpate.*abdomen",
+          "check.*abdomen",
+          "assess.*abdomen",
+          "belly.*exam",
+          "abdominal.*exam",
+          "feel.*belly",
+          "touch.*abdomen",
+          "press.*abdomen"
+        ],
+        "effects": {},
+        "notes": "Gentle palpation of all four quadrants. Expected: tenderness at upper abdomen / epigastric region at the handlebar impact site. Guarding (voluntary muscle contraction). The circular bruise (handlebar sign) in the epigastric region is the key physical finding. Do NOT apply aggressive repeated compression — this is a diagnostic exam, not a treatment."
+      },
+      "position_of_comfort": {
+        "label": "Position of Comfort — Semi-Recumbent",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "position of comfort",
+          "lie.*down",
+          "comfortable",
+          "semi.?recumbent",
+          "knees.*bent",
+          "help.*lie.*down"
+        ],
+        "effects": {
+          "hr": {
+            "immediate_change": -5,
+            "rate_modifier": 0.95
+          }
+        },
+        "notes": "Allow Jake to assume position of comfort — semi-recumbent with knees slightly bent reduces abdominal wall tension and is the most comfortable position for peritoneal irritation. Do not force him supine flat if he resists."
+      },
+      "rapid_transport": {
+        "label": "Priority Transport with ALS Intercept",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "rapid transport",
+          "load and go",
+          "priority transport",
+          "transport now",
+          "get him in the truck",
+          "move him"
+        ],
+        "effects": {
+          "hr": {
+            "immediate_change": -5,
+            "rate_modifier": 0.9
+          }
+        },
+        "notes": "Correct decision for suspected intra-abdominal injury with compensated shock. ALS intercept may be indicated for IV access and fluid resuscitation depending on agency configuration. Destination: trauma center. The OR is the definitive care."
+      },
+      "aggressive_palpation": {
+        "label": "Aggressive Abdominal Compression/Repeated Palpation",
+        "within_bls_scope": true,
+        "indication_gate": {
+          "status": "contraindicated",
+          "reason": "Aggressive or repeated abdominal palpation is contraindicated with suspected internal injury — it worsens pain, can cause vagal responses, and risks further injury. One gentle four-quadrant exam is appropriate.",
+          "allowed_when": []
+        },
+        "detection_patterns": [
+          "press.*hard",
+          "push.*abdomen",
+          "compress.*belly",
+          "repeatedly.*palpate"
+        ],
+        "effects": {},
+        "notes": "One gentle systematic four-quadrant palpation is the appropriate exam."
+      }
+    },
+    "improvement": {
+      "note": "With O2 and position of comfort, Jake's discomfort decreases marginally. The shock process continues — improvement requires surgical care. The goal is transport, not stabilization.",
+      "requires_intervention": "o2_nrb",
+      "string_thresholds": {
+        "skin_color": [
+          {
+            "spo2_above": 98,
+            "value": "Pallor unchanged — pale and cool skin persists; shock process ongoing"
+          }
+        ]
+      },
+      "presentation_milestones": [
+        {
+          "spo2_above": 97,
+          "text": "Jake says the oxygen mask is uncomfortable but he lets you keep it on. He asks quietly, 'Do I have to go to the hospital?' He's trying to hold his abdomen still when breathing."
+        }
+      ]
+    }
+  },
+  "personas": {
+    "jake": {
+      "name": "Jake",
+      "age": 9,
+      "role": "patient",
+      "aliases": [
+        "Jake",
+        "the child",
+        "the boy",
+        "the patient",
+        "buddy",
+        "he",
+        "him"
+      ],
+      "description": "9-year-old male, alert and oriented. He is not panicking — he is holding still because movement hurts. He is the kind of kid who tries to minimize his symptoms (doesn't want to look scared in front of the other kids, doesn't want to worry his mom). He will downplay the pain: 'It's fine — it just hurts a little.' But his vital signs tell a different story. He knows where it hurts and what happened.",
+      "speaking_style": "Quiet, controlled: 'I'm okay. It just hurts right here.' Points to epigastric area. 'It felt like it knocked all the wind out of me.' 'I feel kinda dizzy.' Downplays when asked severity: 'Like, a 6, maybe? It's not that bad.'",
+      "what_he_knows": [
+        "His stomach hurts right where the handlebar hit him — upper center of his belly",
+        "It knocked the wind out of him at first but that resolved",
+        "Now it's a steady, constant pain — not a cramp",
+        "He feels dizzy and a little nauseous",
+        "He tried to get up and walk a little but felt like he might faint — so he sat back down",
+        "He has not vomited",
+        "He has no allergies, no medical history",
+        "He ate lunch about 4 hours ago",
+        "He couldn't reach his mom on the phone"
+      ],
+      "clinical_state_instructions": "Jake is stoic and minimizes. If asked about pain on a scale: 'I dunno, maybe a 6? It's not that bad.' (It is that bad — his vitals confirm compensated shock.) If student asks about the dizziness: 'Yeah — I tried to stand up and walk and I almost fell. I had to sit back down.' If student asks about vomiting: 'No. I feel kind of sick but I haven't thrown up.' If student presses on the bruise area: Jake inhales sharply and grabs their hand: 'OW. That's the spot.' If asked if he called his mom: 'I tried but she didn't pick up. Danny called 911.'",
+      "persona_rules": [
+        "Minimize pain and symptoms — this is his personality",
+        "Report dizziness and near-fainting if asked directly",
+        "Protect the abdomen physically — grab the student's hand if they press too hard",
+        "Never volunteer the severity of his condition — only confirms when directly asked"
+      ]
+    },
+    "alex": {
+      "name": "Alex",
+      "age": 28,
+      "role": "ems_partner",
+      "aliases": [
+        "Alex",
+        "partner",
+        "my partner",
+        "crew"
+      ],
+      "description": "Your EMT partner on Squad 6. Experienced and observant. Will notice the bruise and Jake's demeanor if student doesn't. 'He's a lot paler than a kid who just scraped his knee. That bruise pattern — you seeing this?' Does not volunteer clinical decisions — prompts the student to make them.",
+      "speaking_style": "Calm, low-key urgency. 'BP is 92/60 — that's low for a 9-year-old. You thinking what I'm thinking?' 'Should I call ahead to the trauma center?' 'He almost passed out when he stood up — that's orthostasis.'",
+      "capabilities": [
+        "Report individual vitals when asked",
+        "Report full set of vitals when asked",
+        "Set up NRB O2 when directed",
+        "Get stretcher and position patient for transport",
+        "Notify ALS of patient status and request intercept",
+        "Radio ahead to trauma center",
+        "Drive the rig"
+      ]
+    }
+  },
+  "correct_treatment": {
+    "critical_actions": [
+      {
+        "id": "scene_safety",
+        "description": "Scene safety and BSI/PPE",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "pat",
+        "description": "PAT — pale, quiet 9-year-old who is not acting like a kid who just scraped his knee; the silence and pallor are the alarm",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "handlebar_sign",
+        "description": "Identify the handlebar sign — circular contusion at epigastric region — as high-index-of-suspicion for intra-abdominal injury",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(handlebar|circular.*contusion|abdominal.*contusion|epigastric.*bruise|pattern.*injury|contusion.*abdomen|intra.?abdominal|internal.*bleed)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "shock_recognition",
+        "description": "Recognize compensated shock: HR 130, pale/cool/diaphoretic skin, cap refill 3 sec, near-syncope with standing — BP maintained",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(shock|compensated|pale.*cool|tachycardic.*pale|hypoperfusion|cap refill.*[23]|diaphoretic|near.?syncope|internal.*bleed)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "o2_nrb",
+        "description": "Apply high-flow O2 via NRB — maximizes O2 delivery in shock state",
+        "required": true,
+        "protocol_indicated": true,
+        "intervention_ids": [
+          "o2_nrb"
+        ],
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(o2|oxygen|nrb|non.?rebreather|high.?flow)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "priority_transport",
+        "description": "Priority transport to trauma center with ALS intercept considered when available — internal hemorrhage is surgical; there is no BLS fix for this",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(transport|trauma.*center|priority|lights.*siren|rapid.*transport|surgical|priority.*transport)"
+          ],
+          "min_matches": 1
+        }
+      }
+    ],
+    "recommended_actions": [
+      {
+        "id": "gentle_abdominal_exam",
+        "description": "Perform one gentle four-quadrant abdominal palpation — document tenderness and guarding at epigastric region",
+        "required": false
+      },
+      {
+        "id": "position_comfort",
+        "description": "Allow semi-recumbent position with knees bent to reduce peritoneal tension",
+        "required": false
+      },
+      {
+        "id": "als_update",
+        "description": "Notify ALS of suspected intra-abdominal injury with compensated shock",
+        "required": false
+      },
+      {
+        "id": "opqrst",
+        "description": "Obtain OPQRST for abdominal pain — onset, quality, radiation, dizziness, nausea, vomiting",
+        "required": false
+      }
+    ],
+    "out_of_scope_bls": [
+      "iv_fluid_resuscitation",
+      "abdominal_compression",
+      "iv_pain_medication"
+    ],
+    "out_of_scope_aemt": [],
+    "out_of_scope_paramedic": [],
+    "clinical_decision_points": {
+      "handlebar_sign": "The handlebar sign — a circular contusion matching the diameter and shape of the handlebar end — in the epigastric region is a classic marker for intra-abdominal injury. The solid organs at risk: liver (right), spleen (left), and pancreas (center — directly behind epigastric region). This mechanism causes liver and spleen lacerations, duodenal hematomas, and pancreatic injuries.",
+      "compensated_vs_decompensated": "Jake is in compensated shock — his blood pressure is maintained (92/62) by intense vasoconstriction, but his tachycardia (130), pallor, cool skin, cap refill 3 sec, and near-syncope with standing (orthostatic hypotension) all indicate he has already lost significant volume. Normal BP does NOT rule out serious hemorrhage in a child.",
+      "do_not_aggressive_palpate": "One gentle four-quadrant abdominal assessment is appropriate. Do NOT repeatedly compress the abdomen or press hard at the injury site — this is diagnostic, not therapeutic.",
+      "als_trigger": "ALS/intercept expectations are determined by the active agency configuration. Communicate: 9-year-old, handlebar injury, compensated shock signs (HR 130, pale/cool/diaphoretic, near-syncope), suspected intra-abdominal injury — IV access and fluid resuscitation may be needed en route.",
+      "destination": "Trauma center with pediatric surgical capability. Liver, spleen, and pancreatic injuries require operative intervention. Do not transport to a community ED without surgical capability."
+    }
+  },
+  "scoring": {
+    "overall_considerations": [
+      "The central insight in this scenario is recognizing compensated shock in a child who is calm and has a nearly-normal blood pressure. The vital signs are subtle — a student who only looks at BP will miss the picture.",
+      "The handlebar sign is the key physical exam finding — a circular bruise in the epigastric region from handlebar impact is highly predictive of intra-abdominal injury.",
+      "Normal BP does NOT rule out shock in a child — this is the core physiological teaching point of the scenario.",
+      "ALS intercept is indicated for IV access and fluid resuscitation — credit requesting ALS intercept when it is not already dispatched by the active agency configuration.",
+      "Do NOT penalize for not naming 'compensated shock' — credit recognition of the pattern (tachycardia + pale/cool/diaphoretic + near-syncope with maintained BP).",
+      "Do NOT penalize for not aggressively palpating the abdomen — gentle exam is correct; aggressive exam is the wrong approach.",
+      "Priority transport decision is required — credit explicit recognition that this is a surgical emergency."
+    ],
+    "dmist_considerations": [
+      "D: Jake, 9-year-old male, 66 lbs (30 kg).",
+      "M: Handlebar injury — bicycle stopped suddenly, handlebar jabbed epigastric region. Near-syncope with standing. Pain constant since impact.",
+      "I: High-flow O2 via NRB. Position of comfort (semi-recumbent). Priority transport decision — ALS intercept requested for IV access.",
+      "S: HR 130, BP 92/62, SpO2 97%, cap refill 3 sec, pale/cool/diaphoretic. Handlebar sign — circular contusion epigastric. Abdomen: tender at impact site, guarding. GCS 15.",
+      "T: Priority transport to trauma center. ALS intercept status per active agency configuration."
+    ],
+    "dmist_components": {
+      "D": {
+        "description": "Patient demographics",
+        "required_elements": [
+          "name: Jake",
+          "age: 9",
+          "sex: male",
+          "weight: 30 kg or 66 lbs"
+        ],
+        "corroboration_source": "scenario_patient_fields"
+      },
+      "M": {
+        "description": "Mechanism and chief complaint",
+        "required_elements": [
+          "fell on bicycle handlebars",
+          "abdominal pain",
+          "handlebar sign or abdominal tenderness"
+        ],
+        "corroboration_source": "any"
+      },
+      "I": {
+        "description": "Injury details — handlebar abdominal impact, tenderness, guarding, and internal injury risk",
+        "required_elements": [
+          "handlebar impact to abdomen (point-of-contact mechanism)",
+          "focal abdominal tenderness at impact site",
+          "voluntary guarding on exam",
+          "no obvious external wound or evisceration",
+          "mechanism consistent with solid-organ injury risk"
+        ],
+        "corroboration_source": "history_and_findings",
+        "note": "I is illness/injury, not interventions. Treatments (O2, positioning, transport decision) belong under T. Aggressive palpation is contraindicated — document avoidance under T."
+      },
+      "S": {
+        "description": "Signs and current status",
+        "required_elements": [
+          "abdominal tenderness or guarding",
+          "heart rate",
+          "SpO2",
+          "signs of compensated shock"
+        ],
+        "corroboration_source": "vitals_and_findings"
+      },
+      "T": {
+        "description": "Transport urgency and current hemodynamic status",
+        "required_elements": [
+          "rapid transport decision",
+          "current hemodynamic trend"
+        ],
+        "corroboration_source": "any"
+      }
+    },
+    "narrative_considerations": [
+      "CHART format: dispatch (bicycle fall, abdominal pain), mechanism (handlebar impact epigastric), assessment (handlebar sign described, compensated shock signs documented, abdominal tenderness), treatment (O2, position, priority transport), ALS intercept.",
+      "Key documentation: handlebar sign (describe the bruise), shock signs (list all: HR, BP, pallor, cap refill, near-syncope), abdominal tenderness location, priority transport decision.",
+      "Objective: 'Circular contusion approximately 4 cm diameter at epigastric region consistent with handlebar impact' is objective. 'Bruise on belly' is not."
+    ],
+    "required_assessments": [
+      {
+        "id": "handlebar_sign_assessment",
+        "description": "Identify and document the handlebar sign (circular contusion at epigastric region — key predictor of intra-abdominal injury)",
+        "keywords": [
+          "handlebar",
+          "bruise",
+          "contusion",
+          "epigastric",
+          "abdomen",
+          "belly",
+          "stomach",
+          "circular",
+          "mark",
+          "impact",
+          "abdominal",
+          "tender"
+        ],
+        "missing_deduction": 3,
+        "note": "The handlebar sign is the primary physical exam finding that drives the priority transport decision. Missing it represents a failure to perform a focused physical exam for the mechanism."
+      },
+      {
+        "id": "compensated_shock_assessment",
+        "description": "Assess all perfusion signs for compensated shock recognition (HR, cap refill, skin color/temp/moisture, near-syncope history)",
+        "keywords": [
+          "cap refill",
+          "capillary refill",
+          "perfusion",
+          "pale",
+          "cool",
+          "diaphoretic",
+          "skin",
+          "heart rate",
+          "HR",
+          "tachycardia",
+          "syncope",
+          "dizzy",
+          "compensated",
+          "shock"
+        ],
+        "missing_deduction": 3,
+        "note": "BP is maintained in pediatric compensated shock — a student who only checks BP will miss the shock picture. The full perfusion assessment (HR + cap refill + skin signs) is required to recognize compensated shock."
+      }
+    ],
+    "required_screens": [
+      {
+        "id": "solid_organ_injury_screen",
+        "description": "Solid organ injury or intra-abdominal hemorrhage considered",
+        "keywords": [
+          "internal bleeding",
+          "liver",
+          "spleen",
+          "splenic",
+          "solid organ",
+          "intra-abdominal",
+          "hollow organ",
+          "bowel",
+          "perforation",
+          "rebound",
+          "peritoneal",
+          "guarding",
+          "rigidity",
+          "internal injury"
+        ],
+        "missing_deduction": 3,
+        "note": "Handlebar mechanism with epigastric tenderness carries high risk for splenic/hepatic injury. Failure to recognize and communicate internal injury risk is the primary learning gap for this scenario."
+      }
+    ],
+    "by_level": {
+      "MFR": {
+        "critical_focus": [
+          "Scene safety",
+          "Recognize the pale, quiet kid who should be acting more like a kid — something is wrong",
+          "Identify abdominal pain and mechanism",
+          "Call for ALS immediately"
+        ],
+        "additional_expectations": [],
+        "grace_items": [
+          "Handlebar sign terminology not required — credit recognition that the bruise pattern matches the mechanism",
+          "Formal shock classification not required — credit recognition of something is seriously wrong"
+        ]
+      },
+      "EMT": {
+        "critical_focus": [
+          "PAT — the quiet, pale demeanor is the initial alarm",
+          "Identify the handlebar sign — circular bruise, epigastric, matches mechanism",
+          "Recognize compensated shock — HR 130, pale/cool/diaphoretic/cap refill 3 sec WITH maintained BP",
+          "Understand that normal BP does NOT rule out shock in a child",
+          "High-flow O2 for compensated shock",
+          "Priority transport to trauma center — ALS intercept for IV access"
+        ],
+        "additional_expectations": [
+          "Gentle four-quadrant abdominal assessment — one time, gentle",
+          "Get OPQRST for abdominal pain",
+          "Document near-syncope history (stood up, almost fainted)"
+        ],
+        "grace_items": [
+          "PAT acronym not required — credit component assessment",
+          "ALS request is not required when the active agency configuration co-dispatches ALS",
+          "Specific organs at risk (liver, spleen, pancreas) not required — credit general recognition of intra-abdominal injury risk"
+        ]
+      },
+      "AEMT": {
+        "critical_focus": [
+          "All EMT expectations",
+          "IV access en route — fluid resuscitation for compensated shock",
+          "Avoid overresuscitation — permissive hypotension for hemorrhagic trauma"
+        ],
+        "additional_expectations": [],
+        "grace_items": [
+          "Same EMT grace items"
+        ]
+      },
+      "Paramedic": {
+        "critical_focus": [
+          "All EMT/AEMT expectations",
+          "Recognize signs of transition from compensated to decompensated shock",
+          "IV fluid bolus 20 mL/kg NS — reassess response; repeat if needed",
+          "Consider analgesics if ALS protocol allows (ketorolac or fentanyl)"
+        ],
+        "additional_expectations": [
+          "Serial vital signs every 5 minutes — track trend"
+        ],
+        "grace_items": [
+          "Same base grace items"
+        ]
+      }
+    }
+  },
+  "scoring_rubric": {
+    "clinical_performance": {
+      "max": 50,
+      "full_credit": "PAT with recognition of subtle distress, handlebar sign identified, compensated shock recognized (all signs including near-syncope with maintained BP), high-flow O2, gentle abdominal exam, priority transport to trauma center with ALS intercept — plus base rubric: scene safety, primary assessment, mechanism, secondary assessment, handoff",
+      "partial_credit": "Shock recognized and transport initiated but handlebar sign not documented, or O2 not applied, or abdominal exam omitted",
+      "minimal_credit": "Mechanism documented but shock not recognized — treated as a minor injury without priority transport"
+    },
+    "narrative": {
+      "max": 20,
+      "full_credit": "CHART complete: dispatch (bike fall, abdominal pain), mechanism (handlebar to epigastric area), handlebar sign described (circular bruise, 4 cm, epigastric), compensated shock documented (HR 130, BP 92/62, pale/cool/diaphoretic, cap refill 3 sec, near-syncope on standing), treatment (O2, position, priority transport), ALS intercept requested.",
+      "partial_credit": "Most CHART elements present but handlebar sign not described or shock signs incomplete",
+      "minimal_credit": "Narrative present but treats this as minor — no shock documentation or priority transport rationale"
+    },
+    "scope_adherence": {
+      "max": 10,
+      "full_credit": "Stayed within effective provider scope and MCA rules: IV fluid resuscitation not attempted — outside BLS scope; definitive treatment is surgical hemorrhage control. No out-of-scope attempts or orders.",
+      "partial_credit": "No dangerous out-of-scope intervention attempted, but scope reasoning, level-specific escalation, or MCA-specific scope recognition was incomplete.",
+      "minimal_credit": "Out-of-scope intervention attempted or ordered, or provider-level limits materially ignored."
+    },
+    "dmist": {
+      "max": 10,
+      "full_credit": "D: Jake, 9yo, 30 kg; M: handlebar injury, epigastric; I: O2 NRB, position; S: HR 130, BP 92/62, pale/cool/diaphoretic, cap refill 3 sec, handlebar sign, tender epigastric; T: priority to trauma center, ALS intercept.",
+      "partial_credit": "3–4 components; handlebar sign or shock vitals missing",
+      "minimal_credit": "2 or fewer components or no shock documentation"
+    },
+    "professionalism": {
+      "max": 10,
+      "full_credit": "Did not dismiss Jake because he 'looked okay'; addressed him by name; explained what was happening in age-appropriate terms; told him he was being helped and what to expect; reassured him about contacting his mom",
+      "partial_credit": "Clinical tasks completed but Jake's questions about his mom or about going to the hospital not addressed",
+      "minimal_credit": "Dismissive of Jake's apparent minimizing — treated him as 'probably fine' based on his calm demeanor"
+    },
+    "protocols_treatment": {
+      "max": 10,
+      "full_credit": "Protocol-aligned treatment completed: Aggressive abdominal palpation not performed — contraindicated with suspected intra-abdominal hemorrhage; palpation can worsen internal bleeding. Contraindicated care avoided and in-scope treatment priorities addressed.",
+      "partial_credit": "Most treatment priorities addressed, but one important protocol-aligned intervention, escalation step, or contraindication check was incomplete or delayed.",
+      "minimal_credit": "Key protocol/treatment priority missed, contraindicated care performed, or treatment plan materially inconsistent with protocol."
+    }
+  },
+  "exemplar_dmist": "D — Jake, 9-year-old male, approximately 66 lbs (30 kg). No known allergies or medical history.\nM — Bicycle handlebar injury — bike stopped suddenly, handlebar jabbed epigastric region. Impact approximately 20–30 minutes prior. Constant abdominal pain since. Near-syncope when attempting to stand and walk after injury.\nI — High-flow O2 via NRB at 15 LPM applied. Patient positioned semi-recumbent, knees bent for comfort. Priority transport decision made — ALS Medic 6 intercept requested en route for IV access and fluid resuscitation.\nS — HR 130, BP 92/62 mmHg (maintained but low-normal for age), SpO2 97%, RR 24, GCS 15. Skin pale, cool, mildly diaphoretic. Cap refill 3 seconds. Circular contusion approximately 4 cm diameter at epigastric region — handlebar sign. Abdomen: voluntary guarding, tender to palpation at epigastric region. No vomiting. Near-syncope documented with standing attempt.\nT — Priority transport to Regional Trauma Center. Suspected intra-abdominal injury with compensated hemorrhagic shock. ALS intercept en route for IV access and fluid resuscitation.",
+  "exemplar_narrative": "Squad 6 responded to the corner of 3rd and Elm for a 9-year-old male who fell from a bicycle. Upon arrival, patient Jake, a 9-year-old male weighing approximately 66 lbs (30 kg), was found seated on the curb next to his bicycle. He was pale, quiet, and guarding his abdomen — inconsistent with the appearance expected for a minor bicycle fall.\n\nHistory obtained from patient: bike stopped suddenly after hitting a crack in the asphalt; patient was thrown forward and the end of the handlebar impacted his upper abdomen. Initial 'wind knocked out' sensation resolved, replaced by constant sharp abdominal pain at impact site. Patient attempted to stand and walk — near-syncope occurred, requiring him to sit back down. No vomiting. No LOC. No head injury. NKDA. No PMH.\n\nPAT: Alert, pale, quiet — appropriate for age but demeanor inconsistent with minor injury. Work of breathing non-labored, guarded. Skin pale and cool. Primary assessment: SpO2 97%, HR 130 bpm, BP 92/62 mmHg, RR 24, GCS 15, cap refill 3 seconds. Skin pale, cool, mildly diaphoretic. Circular contusion approximately 4 cm diameter at epigastric region consistent with handlebar end impact — handlebar sign. Abdomen: voluntary guarding, tender to gentle palpation at epigastric region and right upper quadrant. No periumbilical ecchymosis. No rigidity on initial assessment.\n\nAssessment: compensated hemorrhagic shock — tachycardia (HR 130), borderline-low BP for age (92/62), pale/cool/diaphoretic skin, cap refill 3 sec, and orthostatic near-syncope — with maintained blood pressure by compensatory vasoconstriction. High-flow O2 via NRB at 15 LPM applied. Patient positioned semi-recumbent. Priority transport decision: suspected intra-abdominal injury with compensated shock — surgical care required. ALS Medic 6 requested for intercept en route, IV access and fluid resuscitation. Regional Trauma Center notified with ETA. Patient care transferred to trauma team on arrival.",
+  "debrief": {
+    "condition_background": "Jake has a handlebar injury to the epigastric region — one of the most underrecognized high-risk pediatric trauma mechanisms. The handlebar end delivers a concentrated point-loading force to the upper abdomen, capable of lacerating the liver, spleen, and/or pancreas, or causing a duodenal hematoma, even at relatively low speeds. The handlebar sign — a circular contusion at the impact site matching the diameter of the handlebar end — is a clinical marker for significant intra-abdominal injury. Jake's vital signs tell the physiological story: he is in compensated hemorrhagic shock. His blood pressure is 'normal' because his cardiovascular system is working hard — HR 130, intense vasoconstriction producing pale/cool/diaphoretic skin, cap refill 3 sec. When he stood and nearly fainted, he was demonstrating orthostatic hypotension — his compensatory reserve is nearly exhausted. A child who 'looks okay' and has a maintained blood pressure can decompensate suddenly. The operating room is the only definitive treatment for solid organ injury.",
+    "key_teaching_points": [
+      "The handlebar sign — a circular bruise at the epigastric region matching the handlebar end diameter — is a high-index-of-suspicion finding for intra-abdominal injury. Solid organs at risk: liver (right), spleen (left), pancreas (center/deep).",
+      "Compensated shock has a normal blood pressure. The signs of compensated shock: tachycardia, pale/cool/diaphoretic skin, delayed cap refill — WITH maintained BP. Children compensate aggressively. A child maintaining 92/60 may have lost 25% of their blood volume.",
+      "Normal blood pressure does NOT rule out serious hemorrhage in a pediatric patient. This is one of the most important concepts in pediatric trauma.",
+      "Near-syncope with standing (orthostatic hypotension) is a clinical sign of significant intravascular volume depletion — take it seriously when a child tells you they almost fainted when they stood up.",
+      "Quiet, pale, still = high risk. A 9-year-old boy who is not talking, not complaining loudly, and holding perfectly still is using all his energy to compensate. He is sick.",
+      "Priority transport — this is not a stay-and-play scenario. The BLS treatment is oxygen, position of comfort, and getting to the OR. There is no BLS intervention for an actively bleeding spleen.",
+      "One gentle abdominal assessment — not repeated aggressive compression. Document tenderness and guarding. Move on and transport."
+    ],
+    "common_mistakes": [
+      "Missing compensated shock because BP is 'normal' — 92/62 is maintained by compensatory vasoconstriction; the child is profoundly shocked",
+      "Being reassured by a calm, minimizing 9-year-old — Jake downplays his symptoms; his vital signs are the truth",
+      "Aggressive or repeated abdominal palpation — one gentle exam is appropriate; pressing repeatedly worsens pain and risk",
+      "Not documenting the near-syncope history — orthostatic symptoms are a critical clue to volume depletion",
+      "Transporting to the nearest community ED — intra-abdominal solid organ injury requires surgical capability"
+    ]
+  },
+  "legacy_ai_categories": [
+    "documentation",
+    "professionalism"
+  ],
+  "checklist": [
+    {
+      "id": "peds_trauma_06_handlebar.pat_assessment",
+      "description": "PAT completed — appearance (quiet, pale, not acting normally), work of breathing (non-labored), circulation to skin (pale, cool, diaphoretic) assessed",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "scene_entry",
+        "scene_entry_path": "pat_assessment"
+      },
+      "tier2_patterns": [
+        "(?i)(pat|quiet|pale|appear|work of breath|circulation|cool|diaphoretic|skin|not acting)"
+      ],
+      "done_feedback": "PAT completed — quiet, pale, not acting normally (SICK) correctly identified before hands-on assessment.",
+      "missed_feedback": "PAT not completed — a quiet, pale child after handlebar trauma is concerning for internal hemorrhage; PAT identifies SICK status before hands-on assessment.",
+      "clinical_rationale": "The handlebar sign with quiet, pale appearance indicates internal abdominal hemorrhage; PAT identifies the shock state that drives immediate priority transport.",
+      "common_error": "Reassuring parents that the child is 'alert' without performing PAT — quietly ill children are often underestimated."
+    },
+    {
+      "id": "peds_trauma_06_handlebar.handlebar_sign",
+      "description": "Handlebar sign identified — circular epigastric contusion noted as high-index-of-suspicion for intra-abdominal injury",
+      "subtype": "screen",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "abdominal_assessment"
+      },
+      "tier2_patterns": [
+        "(?i)(handlebar|contusion|epigastric|abdomen|abdominal|belly|bruise|mark|circular|internal|injury)"
+      ],
+      "done_feedback": "Handlebar sign identified — epigastric contusion noted as high-index-of-suspicion marker for hollow viscus or solid organ injury.",
+      "missed_feedback": "Handlebar sign not identified or documented — a circular epigastric contusion from handlebar impact is a high-yield injury marker; failure to note it delays recognition of internal hemorrhage.",
+      "clinical_rationale": "Handlebar injuries cause a classic pattern of solid organ (spleen, liver, pancreas) and hollow viscus (duodenum, jejunum) injury; the contusion localizes the impact.",
+      "common_error": "Treating the superficial abdominal contusion as the primary injury — the contusion is a marker; the real injury is internal, below the abdominal wall."
+    },
+    {
+      "id": "peds_trauma_06_handlebar.shock_recognition",
+      "description": "Compensated shock recognized — HR 130, pale/cool/diaphoretic skin, cap refill 3 sec, near-syncope with standing; BP maintained",
+      "subtype": "screen",
+      "category": "clinical_performance",
+      "point_value": 8,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 2,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": null,
+      "tier2_patterns": [
+        "(?i)(shock|compensated|HR.*130|pale|cool|diaphoretic|cap refill|near.?syncope|dizzy.*stood|BP.*maint|perfusion)"
+      ],
+      "done_feedback": "Compensated shock recognized — HR 130, pale/cool/diaphoretic skin, cap refill 3 seconds correctly identified and documented.",
+      "missed_feedback": "Compensated shock not recognized — tachycardia with poor perfusion signs indicates hemorrhagic shock even when blood pressure is maintained.",
+      "clinical_rationale": "Children maintain blood pressure longer than adults through peripheral vasoconstriction and tachycardia; normal BP does not exclude significant hemorrhage.",
+      "common_error": "Reassuring oneself with a normal blood pressure — 'BP normal, patient okay' is a dangerous assumption; tachycardia with poor perfusion signs indicates shock."
+    },
+    {
+      "id": "peds_trauma_06_handlebar.high_flow_o2",
+      "description": "High-flow O2 via NRB applied — maximizes oxygen delivery in shock state",
+      "subtype": "intervention",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "o2_nrb"
+      },
+      "tier2_patterns": [
+        "(?i)(high.?flow|NRB|oxygen|O2|15.*LPM|non.?rebreather|supplemental)"
+      ],
+      "done_feedback": "High-flow O2 via NRB applied — maximizes oxygen delivery to tissues in a shock state.",
+      "missed_feedback": "High-flow O2 not applied — in hemorrhagic shock, oxygen delivery is limited by reduced cardiac output; maximizing FiO2 with NRB mitigates this.",
+      "clinical_rationale": "Hemorrhagic shock reduces oxygen delivery through reduced cardiac output; NRB at 15 LPM maximizes hemoglobin saturation and DO2 per unit of cardiac output.",
+      "common_error": "Using a nasal cannula for a shock patient — NC at 4 LPM delivers ≈ 36% FiO2; NRB at 15 LPM delivers ≈ 90% FiO2; the difference matters in shock."
+    },
+    {
+      "id": "peds_trauma_06_handlebar.priority_transport",
+      "description": "Priority transport to trauma center initiated with ALS intercept considered when available — internal hemorrhage is surgical; no BLS fix",
+      "subtype": "transport",
+      "category": "clinical_performance",
+      "point_value": 7,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "rapid_transport"
+      },
+      "tier2_patterns": [
+        "(?i)(transport|trauma center|go|hospital|rapid|priority|ALS|intercept|lights|surgical|OR)"
+      ],
+      "applicable_if": {
+        "non_transport_agency": false
+      },
+      "done_feedback": "Priority transport to trauma center initiated with ALS intercept — internal abdominal hemorrhage requires surgical intervention.",
+      "missed_feedback": "Priority transport not initiated — internal abdominal hemorrhage from handlebar injury is a surgical emergency; definitive care is the OR, not field stabilization.",
+      "clinical_rationale": "Abdominal solid organ and hollow viscus injuries require surgical intervention; BLS management is oxygenation, shock recognition, and rapid transport.",
+      "common_error": "Spending time on detailed secondary assessment before transport — for compensated shock with internal hemorrhage, minimize scene time; secondary assessment occurs en route."
+    },
+    {
+      "id": "peds_trauma_06_handlebar.scope_no_aggressive_palpation",
+      "description": "Aggressive abdominal palpation not performed — contraindicated with suspected intra-abdominal hemorrhage; palpation can worsen internal bleeding",
+      "subtype": "intervention",
+      "category": "protocols_treatment",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "absence_check",
+        "absence_intervention_key": "aggressive_palpation"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "Aggressive abdominal palpation correctly avoided — deep palpation is contraindicated with suspected internal injury.",
+      "missed_feedback": "Aggressive abdominal palpation performed — contraindicated with suspected internal hemorrhage; deep palpation can dislodge a tamponade and worsen hemorrhage.",
+      "clinical_rationale": "Deep abdominal palpation can disrupt a formed hematoma in solid organ injury, converting a contained hemorrhage into free intraperitoneal bleeding.",
+      "common_error": "Palpating the abdomen deeply to 'assess for rigidity' — light palpation to confirm tenderness is appropriate; deep percussion and rigid palpation are contraindicated."
+    },
+    {
+      "id": "peds_trauma_06_handlebar.scope_no_iv_fluids",
+      "description": "IV fluid resuscitation not attempted — outside BLS scope; definitive treatment is surgical hemorrhage control",
+      "subtype": "intervention",
+      "category": "scope_adherence",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [
+        "MFR",
+        "EMT"
+      ],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "absence_check",
+        "absence_intervention_key": "iv_fluid_resuscitation"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "IV fluid resuscitation correctly avoided — outside BLS scope; definitive treatment is surgical hemorrhage control.",
+      "missed_feedback": "IV fluids attempted — outside BLS scope; permissive hypotension reduces clotting factor dilution; prioritize transport over IV attempts.",
+      "clinical_rationale": "Evidence-based trauma resuscitation in hemorrhagic shock favors permissive hypotension and early surgical control over aggressive IV fluid loading."
+    }
+  ]
+}

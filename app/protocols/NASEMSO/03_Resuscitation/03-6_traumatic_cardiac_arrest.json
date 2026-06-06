@@ -1,0 +1,125 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Resuscitation: Resuscitation in Traumatic Cardiac Arrest. NASEMSO national provisional base.",
+  "id": "nasemso_base_resuscitation_resuscitation_in_traumatic_cardiac_arrest",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Resuscitation in Traumatic Cardiac Arrest",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Resuscitation: Resuscitation in Traumatic Cardiac Arrest",
+  "aliases": [
+    "Traumatic Cardiac Arrest (TCA)"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Resuscitation: Resuscitation in Traumatic Cardiac Arrest",
+      "points": [
+        "Return of spontaneous circulation",
+        "Treatment and resolution of the underlying pathophysiology leading to the traumatic cardiac arrest",
+        "When appropriate, transport to the closest and most capable hospital within the defined trauma system"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Patients suffering blunt or penetrating trauma with cardiac arrest after arrival of EMS clinicians or while under the care of EMS clinicians (witnessed arrest or recent arrest with continued signs of life)",
+        "EXCLUSION CRITERIA:",
+        "When the mechanism of injury does not correlate with the clinical condition, suggesting a nontraumatic cause of cardiac arrest, standard resuscitative measures should be followed. In such cases, refer to the Resuscitation Section",
+        "In victims of blunt or penetrating trauma with pulses or other signs of life on EMS clinician"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "High-quality CPR: 100-120 compressions/min, 2-inch depth, allow full recoil",
+        "AED — apply as soon as available; minimize pause in compressions",
+        "BVM ventilation: 30:2 until advanced airway placed, then 1 breath/6 sec",
+        "Control external hemorrhage if traumatic mechanism",
+        "Epinephrine auto-injector if anaphylactic cause"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Supraglottic airway (LMA/King) for airway management",
+        "CPAP/BVM with PEEP if prearrest respiratory failure",
+        "Mechanical CPR device (LUCAS, AutoPulse) when available",
+        "12-lead ECG acquisition to identify reversible causes (hyperkalemia, STEMI)",
+        "IV access maintenance (existing access only)",
+        "Oral glucose if hypoglycemic cause suspected"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IO access initiation for medication and fluid delivery",
+        "Peripheral IV access initiation",
+        "Epinephrine 1 mg IV/IO q 3-5 min (standard arrest dose)",
+        "IV/IO fluid resuscitation if hypovolemic cause suspected",
+        "IV D50W or dextrose for hypoglycemic cause",
+        "IV naloxone for opioid-induced cardiac arrest",
+        "Waveform capnography for CPR quality feedback (EtCO2 >20 mmHg suggests effective CPR; >40 mmHg suggests ROSC)"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "Endotracheal intubation: continuous waveform capnography after placement",
+        "Amiodarone 300 mg IV/IO (VF/pVT shock-refractory); 150 mg additional dose",
+        "Lidocaine 1-1.5 mg/kg IV/IO as alternative to amiodarone",
+        "Sodium bicarbonate 1 mEq/kg IV/IO for prolonged arrest, hyperkalemia, TCA overdose",
+        "Calcium chloride 1 g IV/IO for hyperkalemia or CCB overdose",
+        "ROSC: post-ROSC care protocol — targeted temperature management, avoid hypoxia/hypotension",
+        "Transcutaneous pacing for PEA with bradycardia mechanism",
+        "Point-of-care ultrasound (POCUS) to identify reversible causes (pneumothorax, tamponade)"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Survival from traumatic cardiac arrest requires careful coordination between rapid prehospital assessment, EMS clinician treatment of reversible causes of traumatic cardiac arrest and transport that is rapid, but also allows maintenance of necessary therapies in a manner that is effective for patients as well as safe for EMS clinicians",
+        "Evidence for the benefit of CPR in traumatic cardiac arrest is limited. Treatment priorities should initially focus on control of massive hemorrhage (including management of pelvis fractures), airway management, and consideration of bilateral needle thoracostomy. If CPR is performed at all, it should be performed en route to the hospital but only if it can be performed in a safe and effective manner by EMS clinicians",
+        "Unless there is an immediate and correctable cause, patients suffering traumatic cardiac arrest have the best chance for survival when arrival time to a hospital is within minutes",
+        "If transport is initiated, consider the ACS-COT's Once the above treatments and interventions have been performed, patients should be transported to the closest appropriate hospital within the defined trauma system",
+        "In an effort to reduce on-scene time, consider IV/IO access and initiation of resuscitation during transport",
+        "Optimal choices for resuscitation are (in descending order as available) as follows: whole blood, balanced blood products (red blood cells (RBC), plasma), packed red blood cells alone, liquid, or freeze-dried plasma alone, no fluid resuscitation. Excessive crystalloid and colloid have little to no value and may in fact be harmful in hemorrhagic shock",
+        "Consider the duration of resuscitation and transport, contact online medical direction if available to discuss. If termination of resuscitation is advised, refer to the Termination of Resuscitation Efforts Guideline",
+        "Evidence of injuries incompatible with life"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Patients suffering blunt or penetrating trauma with cardiac arrest after arrival of EMS clinicians or while under the care of EMS clinicians (witnessed arrest or recent arrest with continued signs of life)"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

@@ -1,0 +1,158 @@
+{
+  "_schema": "ems_call_type_overlay_v1",
+  "id": "peds_trauma_08_nat_nremt_trauma_scenario_v1",
+  "version": "2026-05-16",
+  "call_type": "nremt_trauma",
+  "overlay_type": "scenario",
+  "jurisdiction": "Training Scenario",
+  "effective_date": "2026-05-16",
+  "scenario_id": "peds_trauma_08_nat",
+  "approved_by": "scoring_integration_review_2026-05-16",
+  "notes": "Suppresses the NASEMSO/NREMT trauma call-type checklist when this scenario uses the universal NREMT trauma base rubric plus NAT-specific scenario items. The NAT scenario scores recognition, documentation quality, and behavioral observation — not acute traumatic intervention. Keeping both rubrics active double-scores primary survey items and introduces false protocol misses (e.g., bleeding control, O2 administration) for a hemodynamically stable patient.",
+  "operations": [
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.ppe_precautions",
+      "reason": "Universal NREMT trauma base rubric owns PPE/BSI for this training scenario.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; base patient-care rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.scene_safety",
+      "reason": "Universal NREMT trauma base rubric owns scene safety for this training scenario.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; base patient-care rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.moi_determination",
+      "reason": "Base trauma rubric and scenario-specific NAT history items already score mechanism assessment; caregiver-stated mechanism is the clinical discriminator here.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; scenario NAT rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.patient_count_resources",
+      "reason": "Patient-count applicability handled by universal base rubric using multiple_patients_possible=false.",
+      "protocol_ref": "Scenario applicability flag: multiple_patients_possible=false"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.spinal_precaution",
+      "reason": "No spinal injury is authored for this NAT scenario; spinal_injury_possible=false. Scoring spinal precaution would create a false miss.",
+      "protocol_ref": "Scenario applicability flag: spinal_injury_possible=false"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.general_impression_loc",
+      "reason": "Universal NREMT trauma base rubric owns general impression and LOC; scenario PAT/neuro items add NAT-specific behavioral and neurological nuance.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; scenario PAT/neuro rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.airway_management",
+      "reason": "Universal NREMT trauma base rubric owns airway assessment; patient has no airway compromise in this scenario.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; base patient-care rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.breathing_assessment",
+      "reason": "Universal NREMT trauma base rubric owns breathing assessment; SpO2 99% on room air, no respiratory compromise authored.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; base patient-care rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.o2_chest_life_threats",
+      "reason": "No hypoxia or chest injury is authored for this NAT scenario; SpO2 99% room air. Requiring O2 administration creates a false miss.",
+      "protocol_ref": "Scenario: SpO2 99% room air; no respiratory compromise; diagnostics_indicated=false"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.pulse_assessment",
+      "reason": "Universal NREMT trauma base rubric owns circulation/vital-sign assessment for this training scenario.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; base patient-care rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.bleeding_control",
+      "reason": "No active external hemorrhage is authored for this NAT presentation; requiring hemorrhage control creates a false miss.",
+      "protocol_ref": "Scenario presentation: soft-tissue bruising only, no active hemorrhage"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.skin_ctc",
+      "reason": "Universal NREMT trauma base rubric owns circulation/skin assessment; scenario body survey items score skin findings in NAT-specific context.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; base patient-care rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.transport_decision",
+      "reason": "Scenario-specific transport_and_reporting checklist item owns the transport decision and mandatory reporting obligation for this NAT presentation.",
+      "protocol_ref": "Scenario NAT transport and reporting rubric; non_transport_agency=false"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.chief_complaint_opqrst",
+      "reason": "Universal trauma base and scenario-specific mechanism/history items own chief complaint and history; OPQRST radiation not relevant for this presentation.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; scenario NAT rubric; opqrst_radiation_relevant=false"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.sample_history",
+      "reason": "Universal trauma base rubric owns SAMPLE history for this training scenario.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; base patient-care rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.head_assessment",
+      "reason": "Scenario-specific DCAP-BTLS body survey item owns head/face assessment including frenular laceration without duplicate call-type rows.",
+      "protocol_ref": "Scenario NAT DCAP-BTLS body survey rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.neck_assessment",
+      "reason": "Universal trauma base rubric and scenario-specific body survey item already score neck assessment.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; scenario body survey rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.chest_assessment",
+      "reason": "Universal trauma base rubric owns chest assessment; no chest injury is authored for this scenario.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; base patient-care rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.abdomen_pelvis_assessment",
+      "reason": "Universal trauma base rubric owns abdomen/pelvis assessment; scenario-specific body survey owns torso contusion findings.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; scenario body survey rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.extremity_assessment",
+      "reason": "Universal trauma base rubric owns extremity assessment; scenario-specific body survey owns upper-arm bruise pattern findings.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; scenario body survey rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.posterior_assessment",
+      "reason": "Universal trauma base rubric owns posterior assessment; scenario body survey includes notation to defer posterior exam to ED.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; scenario body survey rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.injury_treatment",
+      "reason": "No traumatic intervention is indicated for this stable NAT patient; scenario scoring owns documentation and transport decisions.",
+      "protocol_ref": "Scenario: hemodynamically stable patient, no acute injury requiring treatment"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.reassessment",
+      "reason": "Universal trauma base rubric and scenario-specific transport item own reassessment without duplicate call-type rows.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; scenario transport/reporting rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.verbal_handoff",
+      "reason": "DMIST/narrative scoring owns handoff quality; this training scenario does not need a separate call-type handoff row.",
+      "protocol_ref": "Scenario DMIST scoring contract"
+    }
+  ]
+}

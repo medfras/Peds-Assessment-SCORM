@@ -1,0 +1,139 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). General Medical: Abuse and Maltreatment. NASEMSO national provisional base.",
+  "id": "nasemso_base_general_medical_abuse_and_maltreatment",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Abuse and Maltreatment",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — General Medical: Abuse and Maltreatment",
+  "aliases": [
+    "Maltreatment of vulnerable populations Non-accidental trauma"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — General Medical: Abuse and Maltreatment",
+      "points": [
+        "Recognize any act or series of acts of commission or omission by a caregiver or person in a position of power over the patient that results in harm, potential for harm, or threat of harm to a patient",
+        "Take appropriate steps to protect the safety of the responders as well as bystanders",
+        "Remove the patient from immediate danger",
+        "Assess any patient injuries that may be the result of acute or chronic events",
+        "Attempt to preserve evidence whenever possible; however, the overriding concern should be providing appropriate emergency care to the patient",
+        "Complete all mandatory reporting requirements per state guidelines"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "EXCLUSION CRITERIA:",
+        "Potential clues to abuse/maltreatment from caregivers or general environment: a. Caregiver apathy about patient's current situation",
+        "Potential clues to abuse or maltreatment that can be obtained from the patient: a. Multiple bruises in various stages of healing",
+        "Have a high index of suspicion for abuse in children presenting with a Brief Resolved Unexplained Event (BRUE) [See Brief Resolved Unexplained Event (BRUE) & Acute Events in Infants Guideline]"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Scene safety and PPE; primary survey (ABCDE)",
+        "Oxygen via NRM targeting SpO2 94-98% if indicated",
+        "Position of comfort; hemorrhage control as needed",
+        "CPR/AED if patient becomes pulseless",
+        "Epinephrine auto-injector for anaphylaxis if applicable",
+        "Naloxone intranasal unit-dose for suspected opioid involvement"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Blood glucose monitoring; oral glucose if hypoglycemic and alert",
+        "12-lead ECG acquisition and transmission",
+        "CPAP for respiratory distress",
+        "Aspirin for suspected ischemic chest pain",
+        "Albuterol SVN for bronchospasm component",
+        "IV access maintenance (non-medicated)"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation",
+        "IV/IO fluid resuscitation as indicated",
+        "Waveform capnography",
+        "IV analgesics (fentanyl, morphine) per pain management protocol",
+        "IV antiemetics (ondansetron) per protocol",
+        "IV D50W/D10W for hypoglycemia"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "12-lead ECG interpretation",
+        "Endotracheal intubation for airway compromise",
+        "RSI per protocol",
+        "Advanced antidysrhythmic or hemodynamic support per specific protocol",
+        "All parenteral medications per protocol",
+        "Vasopressors for refractory hemodynamic compromise"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "If no medical emergency exists, the next priority is safe patient disposition/removal from the potentially abusive situation",
+        "Do not confront suspected perpetrators of abuse/maltreatment. This can create an unsafe situation for EMS and for the patient",
+        "In situations of parental or religious objections to life-saving medical care when EMS suspects abuse, law enforcement should be notified for assistance"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "All states have specific mandatory reporting laws that dictate which specific crimes such as suspected abuse or maltreatment must be reported and to whom they must be reported. It is important to be familiar with the specific laws in your state including specifically who must make disclosures, what the thresholds are for disclosures, and to whom the disclosures must be made",
+        "Clues to abuse or maltreatment can vary depending on the age group of the patient and on the nature of the abuse. Remember that not all abuse or maltreatment involves physical harm. EMS clinicians are often unique in being the only members of the medical team to observe the home environment or injury scene. It is important to realize that the job of EMS is to document their concerns, assess the patient for potentially serious injuries, make sure that their concerns are disclosed to the appropriate legal authorities, and work towards getting the patient into a safe situation. EMS personnel should not take it upon themselves to investigate, interview, or intervene above and beyond those concepts and should leave further intervention to the appropriate law enforcement personnel",
+        "Abuse and maltreatment can happen to patients of all ages",
+        "Patients may be unwilling or unable to disclose abuse or maltreatment, so the responsibility falls on EMS personnel to assess the situation, document appropriately, and take appropriate action to secure a safe place for the patient",
+        "Document findings by describing what you see and not ascribing possible causes (e.g., '0.5-inch round burn to back' as opposed to 'burn consistent with cigarette burn')"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Meticulous documentation of any statements by the patient and any physical findings on the patient or the surroundings are critical in abuse or maltreatment cases"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "If no medical emergency exists, the next priority is safe patient disposition/removal from the potentially abusive situation"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

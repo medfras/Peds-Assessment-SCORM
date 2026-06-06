@@ -1,0 +1,141 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Toxins and Environmental: Cyanide Exposure. NASEMSO national provisional base.",
+  "id": "nasemso_base_toxins_and_environmental_cyanide_exposure",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Cyanide Exposure",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Cyanide Exposure",
+  "aliases": [
+    "Blood agent",
+    "Cyanide",
+    "Hydrogen cyanide"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Cyanide Exposure",
+      "points": [
+        "Remove patient from toxic environment",
+        "Assure adequate ventilation, oxygenation, and correction of hypoperfusion"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Depending on its form, cyanide can enter the body through inhalation, ingestion, or absorption through the skin. Cyanide should be suspected in occupational or other smoke exposures (e.g., firefighting), industrial accidents, natural catastrophes, suicide and murder attempts, chemical warfare, and terrorism (whenever there are multiple casualties of an unclear etiology). Non-specific and early signs of cyanide exposure (inhalation, ingestion, or absorption) include the following signs and symptoms: anxiety, vertigo, weakness, headache, tachypnea, nausea, dyspnea, vomiting, and tachycardia",
+        "High concentrations of cyanide will produce: a. Markedly altered level of consciousness, including rapid collapse",
+        "The rapidity of onset is related to the severity of exposure (inhalation or ingestion) and may be dramatic with immediate effects that include early hypertension with subsequent hypotension, sudden cardiovascular collapse or seizure/coma, and rapid death",
+        "EXCLUSION CRITERIA:",
+        "None noted"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Scene safety and PPE; primary survey (ABCDE)",
+        "Oxygen via NRM targeting SpO2 94-98% if indicated",
+        "Position of comfort; hemorrhage control as needed",
+        "CPR/AED if patient becomes pulseless",
+        "Epinephrine auto-injector for anaphylaxis if applicable",
+        "Naloxone intranasal unit-dose for suspected opioid involvement"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Blood glucose monitoring; oral glucose if hypoglycemic and alert",
+        "12-lead ECG acquisition and transmission",
+        "CPAP for respiratory distress",
+        "Aspirin for suspected ischemic chest pain",
+        "Albuterol SVN for bronchospasm component",
+        "IV access maintenance (non-medicated)"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation",
+        "IV/IO fluid resuscitation as indicated",
+        "Waveform capnography",
+        "IV analgesics (fentanyl, morphine) per pain management protocol",
+        "IV antiemetics (ondansetron) per protocol",
+        "IV D50W/D10W for hypoglycemia"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "12-lead ECG interpretation",
+        "Endotracheal intubation for airway compromise",
+        "RSI per protocol",
+        "Advanced antidysrhythmic or hemodynamic support per specific protocol",
+        "All parenteral medications per protocol",
+        "Vasopressors for refractory hemodynamic compromise"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "In the event of multiple casualties, be sure to wear appropriate PPE during rescue evacuation from the toxic environment",
+        "If the patient ingests cyanide, it will react with the acids in the stomach generating hydrogen cyanide gas. Be sure to maximize air circulation in closed spaces (ambulance) as the patient's gastric contents may contain hydrogen cyanide gases when released with vomiting or belching",
+        "Do not use nitrites in conjunction with suspected carbon monoxide poisoning as it worsens the hemoglobin oxygen carrying capacity even more than carbon monoxide (CO)",
+        "Hydroxocobalamin is only agent safe for treatment of cyanide poisoning in pregnant patients"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Pulse oximetry accurately reflects serum levels of oxygen but does not accurately reflect tissue oxygen levels therefore should not be relied upon in possible cyanide and/or carbon monoxide toxicity",
+        "After hydroxocobalamin has been administered, pulse oximetry levels are no longer accurate and skin, tears, and urine will all turn red. This flushing should not be interpreted as an allergic reaction",
+        "If the patient ingests cyanide, it will react with the acids in the stomach generating hydrogen cyanide gas. Be sure to maximize air circulation in closed spaces (ambulance) as the patient's gastric contents may contain hydrogen cyanide gases when released with vomiting or belching",
+        "Amyl nitrite and sodium nitrite are no longer being used and no longer available in commercial kits"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Repeat evaluation and documentation of signs and symptoms as the patient's clinical condition may deteriorate rapidly",
+        "' Identification of possible etiology of poisoning",
+        "' Time of symptom onset and time of initiation of exposure-specific treatments",
+        "' Therapy and response to therapy"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "The rapidity of onset is related to the severity of exposure (inhalation or ingestion) and may be dramatic with immediate effects that include early hypertension with subsequent hypotension, sudden cardiovascular collapse or seizure/coma, and rapid death"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

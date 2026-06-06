@@ -1,0 +1,153 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Resuscitation: Cardiac Arrest (VF/VT/Asystole/PEA). NASEMSO national provisional base.",
+  "id": "nasemso_base_resuscitation_cardiac_arrest_vf_vt_asystole_pea",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Cardiac Arrest (VF/VT/Asystole/PEA)",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Resuscitation: Cardiac Arrest (VF/VT/Asystole/PEA)",
+  "aliases": [
+    "Arrest",
+    "Full arrest",
+    "Heart attack"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Resuscitation: Cardiac Arrest (VF/VT/Asystole/PEA)",
+      "points": [
+        "Return of spontaneous circulation (ROSC)",
+        "Preservation of neurologic function",
+        "High-quality chest compressions/CPR with minimal interruption from recognition of cardiac arrest until confirmation of ROSC or field termination of care"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Patients with cardiac arrest",
+        "EXCLUSION CRITERIA:",
+        "Patients suffering cardiac arrest due to severe hypothermia [See Hypothermia/Cold Exposure Guideline]",
+        "Patients with identifiable Do Not Resuscitate (or equivalent such as POLST) order [See Do Not Resuscitate Status/Advance Directive/Healthcare Power of Attorney (POA) Status Guideline]",
+        "Patients in arrest due to traumatic etiology [See General Trauma Management Guideline]"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "High-quality CPR: 100-120 compressions/min, 2-inch depth, allow full recoil",
+        "AED — apply as soon as available; minimize pause in compressions",
+        "BVM ventilation: 30:2 until advanced airway placed, then 1 breath/6 sec",
+        "Control external hemorrhage if traumatic mechanism",
+        "Epinephrine auto-injector if anaphylactic cause"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Supraglottic airway (LMA/King) for airway management",
+        "CPAP/BVM with PEEP if prearrest respiratory failure",
+        "Mechanical CPR device (LUCAS, AutoPulse) when available",
+        "12-lead ECG acquisition to identify reversible causes (hyperkalemia, STEMI)",
+        "IV access maintenance (existing access only)",
+        "Oral glucose if hypoglycemic cause suspected"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IO access initiation for medication and fluid delivery",
+        "Peripheral IV access initiation",
+        "Epinephrine 1 mg IV/IO q 3-5 min (standard arrest dose)",
+        "IV/IO fluid resuscitation if hypovolemic cause suspected",
+        "IV D50W or dextrose for hypoglycemic cause",
+        "IV naloxone for opioid-induced cardiac arrest",
+        "Waveform capnography for CPR quality feedback (EtCO2 >20 mmHg suggests effective CPR; >40 mmHg suggests ROSC)"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "Endotracheal intubation: continuous waveform capnography after placement",
+        "Amiodarone 300 mg IV/IO (VF/pVT shock-refractory); 150 mg additional dose",
+        "Lidocaine 1-1.5 mg/kg IV/IO as alternative to amiodarone",
+        "Sodium bicarbonate 1 mEq/kg IV/IO for prolonged arrest, hyperkalemia, TCA overdose",
+        "Calcium chloride 1 g IV/IO for hyperkalemia or CCB overdose",
+        "ROSC: post-ROSC care protocol — targeted temperature management, avoid hypoxia/hypotension",
+        "Transcutaneous pacing for PEA with bradycardia mechanism",
+        "Point-of-care ultrasound (POCUS) to identify reversible causes (pneumothorax, tamponade)"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Performing manual chest compressions in a moving vehicle may pose a clinician safety concern",
+        "In addition, manual chest compressions during patient movement are less effective in regard to hands on time, depth, recoil and rate",
+        "Ideally, patients should be resuscitated as close to the scene as operationally possible",
+        "Risks and benefits should be considered before patient movement in cardiac arrest situations"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Effective chest compressions and defibrillation are the most important therapies to the patient in cardiac arrest. Effective chest compressions are defined as: a. A rate of greater than 100 and less than 120 compressions/minute",
+        "Avoid excessive ventilation and consider delayed airway management ' If no advanced airway, consider: a. Passive ventilation using an NRB with 3'4 cycles of uninterrupted chest compressions (for arrests of suspected cardiac etiology). Consider BVM ventilation or advanced airway after 3'4 cycles",
+        "Quantitative end-tidal capnography (EtCO2) should be used to monitor effectiveness of chest compressions a. If EtCO2 less than 10 mmHg during the initial phases of resuscitation, attempt to improve chest compression quality",
+        "Chest compressions are usually the most rapidly applied therapy for the patient in cardiac arrest and should be initiated as soon as the patient is noted to be pulseless. If the patient is being monitored with pads in place at the time of arrest, immediate defibrillation should take precedence over all other therapies. However, if there is any delay in defibrillation (e.g., in order to place pads), chest compressions should be initiated while the defibrillator is being applied. There is no guidance on how long these initial compressions should be applied; however, it is reasonable to either complete between 30 seconds and 2 minutes of chest",
+        "There is insufficient evidence to recommend the routine use of extracorporeal CPR (ECPR) for patients with cardiac arrest. In settings where it can be rapidly implemented, ECPR may be considered for select cardiac arrest patients for whom the suspected etiology of the cardiac arrest is potentially reversible during a limited period of mechanical cardiorespiratory support",
+        "Chest compressions should be reinitiated immediately after defibrillation as pulses, if present, are often difficult to detect and rhythm and pulse checks interrupt compressions",
+        "Continue chest compressions between completion of AED analysis and AED charging",
+        "The effectiveness of chest compressions decreases when moving patients a. Patients should therefore be resuscitated as close to the point at which they are first encountered and should only be moved if the conditions on scene are unsafe or do not operationally allow for resuscitation"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Should be tailored to any locally utilized data registry but may include as a minimum the following elements: o Resuscitation attempted and all interventions performed",
+        "o Arrest witnessed",
+        "o Location of arrest",
+        "o First monitored rhythm",
+        "o CPR before EMS arrival",
+        "o Presumed etiology . Presumed cardiac",
+        "Respiratory",
+        "Other non-cardiac"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Risks and benefits should be considered before patient movement in cardiac arrest situations",
+    "Patients with cardiac arrest"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

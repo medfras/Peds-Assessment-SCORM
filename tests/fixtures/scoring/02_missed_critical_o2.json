@@ -1,0 +1,120 @@
+{
+  "fixture_id": "missed_critical_o2",
+  "description": "Student never applied O2. The o2_administration critical action has evidence metadata and protocol_indicated=true (matching real peds_asthma_01.json after B4). Student's transcript mentions albuterol but never O2, so evidence check fails → LIKELY_MISSED. Confirms that a missed required intervention reaches LIKELY_MISSED via the protocol_indicated+evidence fallback path, not P4 EVALUATE.",
+
+  "inputs": {
+    "scenario": {
+      "id": "fixture_peds_resp",
+      "category": "pediatric_medical",
+      "protocol_config": {"mca": "mi_wmrmcc_kent"},
+      "turnover_target": "als",
+      "vitals": {
+        "baseline": {},
+        "interventions": {
+          "o2_nrb":        {"label": "High-flow O2 via NRB mask (15 LPM)"},
+          "albuterol_svn": {"label": "Albuterol 2.5 mg via SVN (nebulizer)"},
+          "positioning":   {"label": "Position of comfort — sitting upright"},
+          "als_intercept": {"label": "ALS intercept acknowledged"}
+        }
+      },
+      "scoring": {}
+    },
+
+    "interventions": [
+      {"name": "albuterol_svn", "applied_at": "2026-01-01T12:04:00"},
+      {"name": "positioning",   "applied_at": "2026-01-01T12:03:00"},
+      {"name": "als_intercept", "applied_at": "2026-01-01T12:05:00"}
+    ],
+
+    "checklist_states": {"item_states": []},
+
+    "submitted_docs": {
+      "dmist": "D: 8-year-old male, difficulty breathing. M: History of asthma. I: Albuterol SVN, positioning. S: SpO2 83%, HR 134, RR 32. T: Transporting via ALS intercept.",
+      "narrative": "C: Asthma exacerbation. H: History of asthma. A: SpO2 83%, wheeze. R: Albuterol given. T: ALS transport."
+    },
+
+    "findings": [
+      {"key": "spo2",  "value": "83%", "finding_type": "vital",   "captured_at": "2026-01-01T12:01:00"},
+      {"key": "onset", "value": "2 hours ago", "finding_type": "history", "captured_at": "2026-01-01T12:02:00"}
+    ],
+
+    "student_messages": [
+      "BSI, scene is safe.",
+      "General impression: child in respiratory distress. When did this start? Any allergies?",
+      "Administering albuterol via SVN per protocol.",
+      "Let's call for ALS intercept.",
+      "Reassess after albuterol."
+    ],
+
+    "scene_entry_scoring_result": {"ppe": "gloves_mask", "pat_assessment": "sick"},
+    "scene_entry_dict":           {"pat_assessment": "sick"},
+    "greeting_detected": false,
+    "greeting_text": "",
+    "prepass_result": null,
+
+    "critical_actions": [
+      {
+        "id": "scene_safety",
+        "description": "Ensure scene safety and BSI/PPE",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "pat_assessment",
+        "description": "Pediatric Assessment Triangle (appearance, work of breathing, circulation to skin)",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "o2_administration",
+        "description": "Administer high-flow O2 via NRB mask",
+        "required": true,
+        "protocol_indicated": true,
+        "intervention_ids": ["o2_nrb", "o2_nc"],
+        "evidence": {
+          "transcript_patterns": ["(?i)(o2|oxygen|nrb|non.?rebreather|high.?flow)"],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "albuterol_svn",
+        "description": "Administer albuterol 2.5 mg via SVN per protocol",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": ["(?i)(albuterol|svn|nebulizer|nebs|breathing treatment|bronchodilator)"],
+          "min_matches": 1
+        }
+      }
+    ],
+
+    "grace_items": [],
+    "session_events": [],
+    "agency": {"transports_patients": true},
+    "effective_level": "EMT",
+    "elapsed_min": 10.0
+  },
+
+  "target_expected": {
+    "assertions": [
+      {
+        "id": "o2_tag_is_likely_missed",
+        "type": "critical_action_tag",
+        "description_contains": "O2 via NRB",
+        "expected_tag": "LIKELY_MISSED"
+      },
+      {
+        "id": "no_evaluate_tags",
+        "type": "no_evaluate_tags"
+      },
+      {
+        "id": "scene_safety_pre_credited",
+        "type": "critical_action_tag",
+        "description_contains": "scene safety",
+        "expected_tag": "PRE_CREDITED"
+      }
+    ]
+  },
+
+  "known_failing_baselines": []
+}

@@ -1,0 +1,66 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-26R Hydroxocobalamin (MDHHS Reviewed 2025). Base Michigan template.",
+  "id": "mi_base_medication_ref_hydroxocobalamin",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Hydroxocobalamin",
+  "version": "2025-03-31",
+  "protocol_reference": "Michigan Medication Protocol Section 9-26R: Hydroxocobalamin — MDHHS Reviewed 2025",
+
+  "pharmacological_category": "Antidote — Cyanide Poisoning / Vitamin B12 Analog",
+
+  "routes": ["IV", "IO"],
+
+  "indications": [
+    "Suspected cyanide poisoning",
+    "Smoke inhalation with altered mental status or severe respiratory distress (structural fire victims — cyanide suspected)"
+  ],
+
+  "contraindications": [
+    "Known hypersensitivity to hydroxocobalamin or cyanocobalamin",
+    "No absolute contraindications in life-threatening cyanide poisoning"
+  ],
+
+  "precautions": [
+    "Incompatible with dopamine and fentanyl — do NOT mix or give through same IV line as these medications; flush line before/after",
+    "Will cause skin, urine, and mucous membrane discoloration (red-brown / burgundy) — warn patient and document; not a complication",
+    "Reconstitution required: follow Cyanokit instructions using 0.9% NaCl only",
+    "Reconstitution technique: invert and rock gently for specified time — do NOT shake vigorously"
+  ],
+
+  "expected_effects": [
+    "Binds cyanide ions to form cyanocobalamin (non-toxic) — directly detoxifies cyanide",
+    "Improvement in hemodynamic status, mental status, and respiratory function in cyanide poisoning"
+  ],
+
+  "side_effects": [
+    "Skin/urine/mucous membrane reddish-brown discoloration (expected — harmless and transient)",
+    "Transient hypertension",
+    "Allergic reaction (rare)"
+  ],
+
+  "notes": [
+    "Available as Cyanokit — 5 gram vial or 2.5 gram vial",
+    "Reconstitution: add 0.9% NaCl (200 mL for 5 g kit; 100 mL for 2.5 g kit)",
+    "Mix: invert and rock — 5 g: 60 seconds; 2.5 g: 30 seconds",
+    "Solution is dark red — this is normal",
+    "Infuse over 15 minutes",
+    "Incompatible with dopamine and fentanyl — flush IV line before and after",
+    "Discoloration of urine/skin is expected and harmless; may interfere with co-oximetry readings"
+  ],
+
+  "dosing": [
+    {
+      "population": "Adult (>14 yr) — cyanide poisoning / smoke inhalation with AMS or severe respiratory distress",
+      "route": "IV/IO infusion",
+      "dose": "5 grams (full Cyanokit) OR 2.5 grams infusion over 15 minutes",
+      "notes": "Reconstitute with 0.9% NaCl only; invert/rock per kit instructions; infuse over 15 min; incompatible with dopamine and fentanyl"
+    }
+  ],
+
+  "used_in_protocols": ["Toxicological Emergencies — Cyanide Poisoning", "Smoke Inhalation"]
+}

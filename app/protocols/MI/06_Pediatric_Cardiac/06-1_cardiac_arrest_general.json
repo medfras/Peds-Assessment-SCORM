@@ -1,0 +1,213 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 6-1 Pediatric Cardiac Arrest — General (Revised 06/06/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_pediatric_cardiac_arrest_general",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Pediatric",
+  "level_display": "Pediatric (< 14 years)",
+  "jurisdiction": "Michigan",
+  "condition": "Pediatric Cardiac Arrest — General",
+  "version": "2023-06-06",
+  "protocol_reference": "Michigan Pediatric Cardiac Protocol Section 6-1: Pediatric Cardiac Arrest — General — MDHHS Approved 6/6/23, Reviewed 2023",
+
+  "purpose": "This protocol should be followed for all pediatric cardiac arrests. NOTE: Primary cardiac arrest in the pediatric patient is RARE — most arrests are secondary to respiratory failure. Maintain basic airway management techniques unless unable or ineffective. Advanced airway insertion attempts should be performed ONLY if BLS airway management is ineffective. Keep CPR interruptions to a minimum. All medications given during cardiac arrest are given IV or IO.",
+
+  "sections": [
+    {
+      "title": "Confirm Arrest and Initiate CPR",
+      "reference": "Michigan Protocol 6-1: Pediatric Arrest — Confirm and Initiate",
+      "points": [
+        "Request additional assistance as needed; initiate ALS response if available",
+        "Confirm arrest: assess for signs of normal breathing — agonal breathing is associated with cardiac arrest; check carotid or brachial pulse as age appropriate for no more than 10 seconds",
+        "Initiate or continue CPR; apply and use AED/manual defibrillator per Electrical Therapy-Procedure Protocol as soon as possible — use AED pediatric pads and settings per AED manufacturer instructions",
+        "If AED applied by BLS personnel: skip to appropriate place incorporating previous care; ALS should switch to manual defibrillator after initial AED defibrillation or place AED in manual mode",
+        "If arrest of known traumatic origin: refer to Traumatic Arrest-Treatment Protocol",
+        "If hypothermic: refer to Hypothermia/Frostbite-Treatment Protocol for warming techniques",
+        "Patients with DNR order or valid MI POST: follow DNR-Procedure Protocol or MI-POST-Procedure Protocol accordingly"
+      ]
+    },
+    {
+      "title": "High Quality CPR and Defibrillation",
+      "reference": "Michigan Protocol 6-1: Pediatric CPR Quality",
+      "points": [
+        "CPR and electrical therapy consistent with current AHA guidelines",
+        "Anterior/posterior pad placement PREFERRED — use if possible and if defibrillation not delayed",
+        "Compression depth: at least 1.5 inches for infants; at least 2 inches for children (at least one third the anteroposterior diameter of the chest)",
+        "Compression rate: 100–120 per minute",
+        "Allow full chest recoil with each compression",
+        "Compression-to-ventilation ratio per current AHA pediatric guidance until advanced airway placed",
+        "Change rescuer performing compressions at least every 2 minutes to avoid fatigue",
+        "Interruptions in compressions must be less than 10 seconds",
+        "Chest Compression Fraction (CCF) should be as high as possible — ideally greater than 80%",
+        "Verify CPR quality frequently and any time rescuer changes",
+        "Avoid excessive ventilation (volume and rate)",
+        "After advanced airway placement: provide CONTINUOUS CPR without pauses for ventilation; ventilate at 20 breaths per minute (1 breath every 3 seconds) — NOTE: different from adult protocol (10/min)",
+        "Prior to advanced airway: utilize ventilation periods to visualize ECG rhythm without compression artifact"
+      ]
+    },
+    {
+      "title": "Airway Management",
+      "reference": "Michigan Protocol 6-1: Pediatric Airway",
+      "points": [
+        "Establish patent airway maintaining C-spine precautions if indicated — begin with BLS airway adjuncts and BVM with high flow oxygen",
+        "Ventilations with BVM (2-rescuer technique) and airway adjuncts are AT LEAST AS EFFECTIVE as endotracheal intubation in children — BVM is preferred",
+        "2-person BVM ventilation with oral airway should be standard technique; if only 2 rescuers, compressor squeezes bag while second rescuer maintains face-to-mask seal with both hands",
+        "If UNABLE to ventilate or unable to maintain patent airway: establish advanced airway per Airway Management-Procedure Protocol",
+        "Supraglottic airways are the FIRST CHOICE advanced airway for pediatrics when age-appropriate sizes are available",
+        "ALL advanced airways (including supraglottic) require ETCO2 monitoring"
+      ]
+    },
+    {
+      "title": "Vascular Access, ETCO2, and Defibrillation",
+      "reference": "Michigan Protocol 6-1: Pediatric Access/Monitoring/Defibrillation",
+      "points": [
+        "Start IV/IO NS or LR KVO — IO may be the FIRST CHOICE for vascular access; see Vascular Access & IV Fluid Therapy-Procedure Protocol",
+        "Continuously monitor ETCO2: ETCO2 = 0 indicates failed airway; ETCO2 < 10 mmHg — attempt to improve CPR quality (if quality good, may indicate futility state); monitor for trends",
+        "Check rhythm every 2 minutes — defibrillate according to MI-MEDIC card; if MI-MEDIC not available: initial defibrillation at 2 J/kg (or closest available energy setting); subsequent defibrillations must be at least 4 J/kg but may escalate to 10 J/kg or adult dosage",
+        "Reassess ABC's per rhythm or patient condition change — pulse checks no more than 10 seconds; if no pulse after 10 seconds, assume pulselessness and continue CPR beginning with compressions",
+        "If ROSC not achieved after three 2-minute CPR cycles AND ALS not available or delayed: contact Medical Control to discuss initiation of BLS transport while continuing high-quality CPR"
+      ]
+    },
+    {
+      "title": "Medications",
+      "reference": "Michigan Protocol 6-1: Pediatric Medications",
+      "points": [
+        "Administer epinephrine according to MI-MEDIC cards — initial dose should ideally be administered within 5 minutes of ALS/LALS contact of confirmed pediatric cardiac arrest",
+        "If MI-MEDIC not available — epinephrine: 1 mg/10 mL; 0.01 mg/kg (0.1 mL/kg) IV/IO; maximum dose 1 mg (10 mL); repeat every 3–5 minutes",
+        "If shockable rhythm persists: administer antidysrhythmic per MCA selection according to MI-MEDIC cards",
+        "If MI-MEDIC not available — antidysrhythmic per MCA selection: amiodarone 5 mg/kg (max single dose 300 mg) IV/IO (may repeat twice; total maximum 450 mg IV/IO) OR lidocaine 1 mg/kg IV/IO (may repeat 0.5 mg/kg twice at 5–10 minute intervals; maximum 3 doses total)"
+      ]
+    },
+    {
+      "title": "Reversible Causes — Targeted Treatment",
+      "reference": "Michigan Protocol 6-1: Pediatric Reversible Causes",
+      "points": [
+        "Identify and communicate to Medical Control potentially reversible causes (H's and T's): Hyper/hypokalemia (known renal failure)/other metabolic disorders; Hypothermia; Hypovolemia (including vomiting/diarrhea); Hypoxia; Hydrogen ion excess (acidosis); Toxins/overdose (beta-blocker or CCB); Tamponade; Tension pneumothorax; Thrombosis (pulmonary or coronary)",
+        "NOTE: Routine use of sodium bicarbonate and calcium chloride in cardiac arrest is NOT indicated",
+        "HYPOVOLEMIA: administer 20 mL/kg NS or LR IV/IO bolus",
+        "HYPOGLYCEMIA: check blood glucose (may be MFR skill); if blood glucose < 60 mg/dL administer dextrose per MI-MEDIC cards; if MI-MEDIC unavailable, administer dextrose 0.5 g/kg per Pediatric Altered Mental Status protocol",
+        "TENSION PNEUMOTHORAX: see Pleural Decompression-Procedure Protocol",
+        "HYPERKALEMIA (renal failure): contact Medical Control; administer calcium chloride 10% per MI-MEDIC cards; if MI-MEDIC unavailable: 20 mg/kg (0.2 mL/kg) max single dose 1 gm; FLUSH line with 20 mL NS between calcium chloride and sodium bicarbonate; administer sodium bicarbonate per MI-MEDIC; if unavailable: 1 mEq/kg IV/IO"
+      ]
+    },
+    {
+      "title": "ROSC and Termination",
+      "reference": "Michigan Protocol 6-1: Pediatric ROSC/Termination",
+      "points": [
+        "If ROSC achieved: refer to Pediatric Return of Spontaneous Circulation-Treatment Protocol",
+        "If ROSC not achieved, continue resuscitation while contacting Medical Control",
+        "BLS/LALS: if ROSC not achieved and ALS unavailable or delayed, contact Medical Control after 20 minutes of high-quality CPR for further direction AND before initiating transport; continue high-quality CPR unless directed otherwise per Dead on Scene & Termination of Resuscitation Protocol",
+        "ALS: if ROSC not present after 30 minutes of ALS time, contact Medical Control for further direction AND before initiating transport",
+        "Continue high-quality CPR unless directed otherwise per Dead on Scene & Termination of Resuscitation Protocol"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Antidysrhythmic — Shockable Rhythm",
+      "description": "MCA must select antidysrhythmic for persistent shockable rhythm (VF/pVT). Use MI-MEDIC for dosing when available.",
+      "options": [
+        "Amiodarone 5 mg/kg IV/IO (max single dose 300 mg; may repeat twice; total max 450 mg)",
+        "Lidocaine 1 mg/kg IV/IO (may repeat 0.5 mg/kg twice at 5–10 minute intervals; maximum 3 doses total)"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Mechanical Chest Compression Device — MCA Optional Protocol",
+      "description": "MCA may authorize FDA-approved mechanical CPR device for specific settings. Must operate at manufacturer pre-set rate. See Mechanical Chest Compression Device-Procedure Protocol for age/weight requirements.",
+      "options": ["Authorized per MCA Optional Protocol", "Not authorized"],
+      "selected": null
+    },
+    {
+      "item": "Impedance Threshold Device — MCA Optional Protocol",
+      "description": "MCA may authorize ITD during CPR for children > 10 kg. Discontinue immediately upon ROSC.",
+      "options": ["Authorized for children > 10 kg per MCA Optional Protocol", "Not authorized"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [
+    {
+      "name": "Epinephrine IV/IO (Pediatric Cardiac Arrest)",
+      "dose": "Per MI-MEDIC cards — backup: 0.01 mg/kg (0.1 mL/kg of 1 mg/10 mL solution) IV/IO; maximum dose 1 mg (10 mL); repeat every 3–5 minutes",
+      "route": "IV or IO",
+      "indication": "Pediatric cardiac arrest — all rhythms; ideally within 5 minutes of ALS/LALS contact",
+      "contraindications": "None in cardiac arrest",
+      "side_effects": "Tachycardia, hypertension upon ROSC",
+      "scope": "Specialist skill",
+      "notes": "Use MI-MEDIC for weight-based dosing. Maximum single dose 1 mg (10 mL)."
+    },
+    {
+      "name": "Amiodarone IV/IO (Pediatric — Shockable Rhythm)",
+      "dose": "5 mg/kg IV/IO (max single dose 300 mg) — may repeat twice; total maximum 450 mg IV/IO; per MI-MEDIC when available",
+      "route": "IV or IO",
+      "indication": "Persistent shockable rhythm (VF/pVT) — per MCA selection",
+      "contraindications": "Per MCA selection only",
+      "side_effects": "Hypotension, bradycardia",
+      "scope": "Specialist skill — per MCA selection",
+      "notes": "Use MI-MEDIC for dosing. MCA must select amiodarone OR lidocaine."
+    },
+    {
+      "name": "Lidocaine IV/IO (Pediatric — Shockable Rhythm)",
+      "dose": "1 mg/kg IV/IO — may repeat 0.5 mg/kg twice at 5–10 minute intervals; maximum 3 doses total; per MI-MEDIC when available",
+      "route": "IV or IO",
+      "indication": "Persistent shockable rhythm (VF/pVT) — per MCA selection",
+      "contraindications": "Per MCA selection only",
+      "side_effects": "CNS toxicity at high doses",
+      "scope": "Specialist skill — per MCA selection",
+      "notes": "Use MI-MEDIC for dosing. MCA must select amiodarone OR lidocaine."
+    },
+    {
+      "name": "Dextrose IV/IO (Pediatric Hypoglycemia Arrest)",
+      "dose": "Per MI-MEDIC cards; backup: 0.5 g/kg per Pediatric Altered Mental Status protocol weight table",
+      "route": "IV or IO",
+      "indication": "Blood glucose < 60 mg/dL as reversible cause of arrest",
+      "contraindications": "Concentrated D50 avoided in small children — dilute per weight table",
+      "side_effects": "Hyperglycemia, extravasation injury",
+      "scope": "Specialist skill",
+      "notes": "Use MI-MEDIC for dosing. See Pediatric AMS protocol for backup weight/color zone table."
+    },
+    {
+      "name": "Calcium Chloride 10% IV/IO (Pediatric Hyperkalemia)",
+      "dose": "Per MI-MEDIC cards; backup: 20 mg/kg (0.2 mL/kg); maximum single dose 1 gm — NOT routine",
+      "route": "IV or IO",
+      "indication": "Suspected or confirmed hyperkalemia (renal failure) as reversible cause — NOT routine; contact Medical Control",
+      "contraindications": "Routine use NOT indicated; must flush line with 20 mL NS before sodium bicarbonate",
+      "side_effects": "Tissue necrosis with extravasation; bradycardia if given too rapidly",
+      "scope": "Specialist skill",
+      "notes": "ALWAYS flush with 20 mL NS between calcium chloride and sodium bicarbonate. Use MI-MEDIC. Contact Medical Control."
+    },
+    {
+      "name": "Sodium Bicarbonate IV/IO (Pediatric)",
+      "dose": "Per MI-MEDIC cards; backup: 1 mEq/kg IV/IO — NOT routine",
+      "route": "IV or IO",
+      "indication": "Hyperkalemia (after calcium chloride + NS flush) — NOT routine",
+      "contraindications": "Routine use NOT indicated; give after calcium chloride with 20 mL NS flush between agents",
+      "side_effects": "Hypernatremia, metabolic alkalosis",
+      "scope": "Specialist skill",
+      "notes": "Use MI-MEDIC for dosing. Flush line with 20 mL NS between calcium chloride and bicarbonate."
+    }
+  ],
+
+  "deterioration_flags": [
+    "ETCO2 = 0 after advanced airway — failed airway; reassess placement immediately",
+    "ETCO2 < 10 mmHg — improve CPR quality; if quality already optimal may indicate futility state",
+    "No ROSC after 3 two-minute CPR cycles with ALS delayed — contact Medical Control re: BLS transport; continue high-quality CPR",
+    "Suspected hyperkalemia — calcium chloride per MI-MEDIC; flush; sodium bicarbonate; contact Medical Control",
+    "Suspected hypoglycemia — dextrose per MI-MEDIC or weight/color table",
+    "Persistent VF/pVT — defibrillate; antidysrhythmic per MCA selection after 3 shocks"
+  ],
+
+  "scope_notes": [
+    "CPR, AED application, BVM ventilation, basic airway adjuncts: all levels",
+    "IO access: Specialist skill — may be first choice for pediatric arrest",
+    "IV access, epinephrine, amiodarone, lidocaine, dextrose: Specialist skill",
+    "Supraglottic airway (age-appropriate size): EMT base scope; I-Gel: EMT scope at MCAs with i_gel_bls expansion; ETI: Specialist skill — only when no gag + requires sustained PPV + all BLS and SGA options have failed",
+    "ETCO2 monitoring required for all advanced airways (including supraglottic)",
+    "Calcium chloride, sodium bicarbonate: Specialist skill — not routine; hyperkalemia only",
+    "Mechanical CPR device: per MCA Optional Protocol; ITD > 10 kg: per MCA Optional Protocol",
+    "BLS/LALS: contact MC after 20 min; ALS: contact after 30 min ALS time"
+  ]
+}

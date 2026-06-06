@@ -1,0 +1,74 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-21 Blood Glucose Testing (Revised 2/24/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_blood_glucose_testing",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (All EMS Levels — MFR requires MCA selection)",
+  "jurisdiction": "Michigan",
+  "condition": "Blood Glucose Testing",
+  "version": "2023-02-24",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-21: Blood Glucose Testing — MDHHS Approved 2/24/2023",
+  "purpose": "Prehospital blood glucose testing for patients with altered mental status or per protocol indication. MFR-level use requires MCA authorization. No contraindications. Results documented in ePCR.",
+  "sections": [
+    {
+      "title": "Indications",
+      "reference": "Michigan Protocol 7-21: Blood Glucose — Indications",
+      "points": [
+        "Altered mental status (AMS) of any cause",
+        "Per specific treatment protocol indication (e.g., Diabetic Emergencies, AMS, Stroke, Seizures, ROSC)"
+      ]
+    },
+    {
+      "title": "Technique",
+      "reference": "Michigan Protocol 7-21: Blood Glucose — Technique",
+      "points": [
+        "Obtain and test blood glucose per glucometer manufacturer's instructions",
+        "Use appropriate lancet technique — fingertip or alternate site per device",
+        "Ensure adequate blood sample for accurate reading",
+        "Document result in ePCR with time of testing"
+      ]
+    },
+    {
+      "title": "Provider Scope",
+      "reference": "Michigan Protocol 7-21: Blood Glucose — Scope",
+      "points": [
+        "EMT, Specialist, Paramedic: authorized to obtain blood glucose without MCA selection",
+        "MFR: requires MCA authorization (MCA selection) to perform blood glucose testing"
+      ]
+    }
+  ],
+  "mca_selections_required": [
+    {
+      "item": "Blood Glucose Testing — MFR Authorization",
+      "description": "MCA must select whether MFR-level providers are authorized to perform blood glucose testing",
+      "options": [
+        "Authorized for MFR",
+        "Not authorized at MFR level — EMT and above only"
+      ],
+      "selected": null
+    }
+  ],
+  "key_drugs": [],
+  "deterioration_flags": [
+    "Blood glucose < 60 mg/dL — treat per Diabetic Emergencies Protocol (oral glucose if swallow reflex intact / dextrose IV/IO or glucagon IM/IN per scope)",
+    "Blood glucose > 300 mg/dL — assess for DKA/HHNS; IV fluid and transport; consult Medical Control"
+  ],
+  "scope_notes": [
+    "EMT, Specialist, Paramedic: authorized without MCA selection",
+    "MFR: requires MCA selection authorization",
+    "No contraindications",
+    "Document result and time in ePCR",
+    "Indications: AMS or per specific protocol requirement"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "altered_mental_status",
+      "blood_glucose",
+      "hypoglycemia"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

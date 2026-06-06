@@ -1,0 +1,104 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 3-6 Hyperactive Delirium Syndrome with Severe Agitation (Revised 05/26/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured. Patients > 14 years of age.",
+  "id": "mi_base_adult_hyperactive_delirium",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Adult",
+  "level_display": "Adult (> 14 years)",
+  "jurisdiction": "Michigan",
+  "condition": "Hyperactive Delirium Syndrome with Severe Agitation",
+  "version": "2023-05-26",
+  "protocol_reference": "Michigan Adult Treatment Protocol Section 3-6: Hyperactive Delirium Syndrome with Severe Agitation — MDHHS Approved 5/26/23, Reviewed 2023",
+
+  "purpose": "Indications: patient > 14 years of age who is an imminent physical threat to personnel and/or themselves and level of agitation is such that transport may place all parties at risk. Hyperactive delirium syndrome with severe agitation is a life-threatening constellation of symptoms including severe agitation and vital sign abnormalities (tachycardia, hyperthermia).",
+
+  "sections": [
+    {
+      "title": "Hyperactive Delirium — Treatment",
+      "reference": "Michigan Protocol 3-6: Hyperactive Delirium — Treatment",
+      "points": [
+        "Ensure ALS response",
+        "Follow General Pre-hospital Care-Treatment Protocol",
+        "Ensure appropriate personnel available to provide patient and provider safety — refer to Patient Restraint-Procedure Protocol",
+        "Obtain history when possible; perform visual patient assessment looking for cause of behavior (visible trauma, stroke symptoms, etc.) — if alternate cause of behavior is likely, transition to Altered Mental Status-Treatment Protocol or other applicable protocol",
+        "For patients who are uncontrollably agitated despite de-escalation techniques: prepare for airway management and administer per MCA selection — EITHER ketamine 4 mg/kg IM (maximum single dose 500 mg; 3–5 minute onset) OR midazolam 10 mg IM/IN (Specialist skill)",
+        "Once adequate sedation is obtained: continuously monitor SpO2; monitor capnometry per End Tidal Carbon Dioxide Monitoring-Procedure Protocol; obtain temperature",
+        "If hyperthermic (temp > 38°C or 100.4°F): provide cooling via ice packs to neck, axilla, groin and/or fluids to skin while promoting evaporation (air movement)",
+        "Establish IV per Vascular Access and IV Therapy-Procedure Protocol — provide fluid bolus of up to 1 L of NS or LR; reassess patient — repeat boluses to maximum 2 L NS or LR as long as vital sign abnormalities persist (Specialist skill)",
+        "Monitor for pulmonary edema — if pulmonary edema presents, stop fluids and contact Medical Control for direction",
+        "Monitor EKG (Specialist skill)",
+        "Consider 12-lead if any evidence of hyperkalemia (peaked T waves, prolonged PR, widened QRS) — 12-lead per MCA selection (may be BLS or Specialist) per 12 Lead ECG-Procedure Protocol",
+        "Continuously monitor patient for potential need of airway management and treatment of hemodynamic compromise",
+        "Contact Medical Control if additional sedation is required"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Chemical Sedation Agent",
+      "description": "MCA must select sedation agent for hyperactive delirium with severe agitation — select ONE or both; must select at least one",
+      "options": [
+        "Ketamine 4 mg/kg IM (max single dose 500 mg)",
+        "Midazolam 10 mg IM/IN"
+      ],
+      "selected": null
+    },
+    {
+      "item": "12-Lead ECG",
+      "description": "MCA must select whether 12-lead ECG is a BLS or Specialist procedure",
+      "options": ["BLS", "Specialist"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [
+    {
+      "name": "Ketamine IM (Hyperactive Delirium)",
+      "dose": "4 mg/kg IM — maximum single dose 500 mg (3–5 minute onset)",
+      "route": "IM",
+      "indication": "Hyperactive delirium syndrome with severe agitation unresponsive to de-escalation",
+      "contraindications": "Known hypersensitivity to ketamine; use with caution in severe hypertension or known thyroid disease",
+      "side_effects": "Laryngospasm (rare), emergence reactions, hypersalivation, transient hypertension and tachycardia, temporary respiratory depression",
+      "scope": "Specialist skill — per MCA selection",
+      "notes": "3–5 minute onset IM. Prepare airway management before administering. Monitor SpO2 and ETCO2 continuously after administration."
+    },
+    {
+      "name": "Midazolam 10 mg IM/IN (Hyperactive Delirium)",
+      "dose": "10 mg IM or IN",
+      "route": "IM or Intranasal",
+      "indication": "Hyperactive delirium syndrome with severe agitation unresponsive to de-escalation",
+      "contraindications": "Known hypersensitivity; significant respiratory depression",
+      "side_effects": "Respiratory depression, hypotension, over-sedation",
+      "scope": "Specialist skill — per MCA selection",
+      "notes": "Monitor airway closely. Prepare for airway management. Contact Medical Control if additional sedation required."
+    },
+    {
+      "name": "NS or LR IV Fluid Bolus",
+      "dose": "Up to 1 liter — repeat to maximum 2 L as long as vital sign abnormalities persist",
+      "route": "IV",
+      "indication": "Hyperactive delirium with hemodynamic compromise after sedation",
+      "contraindications": "Signs of pulmonary edema — stop fluids; contact Medical Control",
+      "side_effects": "Pulmonary edema",
+      "scope": "Specialist skill",
+      "notes": "Monitor for pulmonary edema during and after administration."
+    }
+  ],
+
+  "deterioration_flags": [
+    "Respiratory compromise after sedation — airway management priority; BVM if SpO2 < 90%; prepare for advanced airway",
+    "Hyperthermia (> 38°C / 100.4°F) — aggressive cooling (ice packs to neck, axilla, groin; evaporative cooling); this is a life-threatening feature of hyperactive delirium",
+    "ECG changes suggesting hyperkalemia (peaked T waves, prolonged PR, widened QRS) — 12-lead ECG; consider calcium chloride (Specialist skill); contact Medical Control",
+    "Hemodynamic instability post-sedation — IV fluid bolus (Specialist skill); contact Medical Control for vasopressor guidance"
+  ],
+
+  "scope_notes": [
+    "De-escalation, physical restraint (with appropriate personnel): all levels",
+    "ALS response required",
+    "Ketamine IM or midazolam IM/IN (per MCA selection): Specialist skill",
+    "SpO2 and ETCO2 monitoring after sedation: Specialist skill",
+    "IV access and fluid bolus: Specialist skill",
+    "Cardiac monitoring and 12-lead ECG: Specialist skill; 12-lead may be BLS per MCA selection"
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-15 Documentation/Patient Care Records (Revised 1/5/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_documentation_patient_care_records",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Documentation and Patient Care Records (PCR)",
+  "version": "2023-01-05",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-15: Documentation/Patient Care Records — MDHHS Approved 1/5/2023",
+
+  "purpose": "A Patient Care Report (PCR) is required for every EMS response. PCRs must be completed within 24 hours. PHI must be handled per Protected Health Information protocol. Time-sensitive presentations (stroke, MI, trauma) have specific additional documentation requirements.",
+
+  "sections": [
+    {
+      "title": "PCR Completion Requirements",
+      "reference": "Michigan Protocol 7-15: Documentation — PCR Requirements",
+      "points": [
+        "A PCR is required on EVERY EMS response, including responses where the patient refuses care or transport",
+        "MCA selection determines the trigger: PCR is required when the unit 'is dispatched' OR 'arrives on scene' — per MCA configuration",
+        "PCR must be completed within 24 hours of the call",
+        "If addendum or correction is needed after initial submission: add addendum notation with date and time of correction; do not alter original documentation",
+        "PHI confidentiality: handle per Protected Health Information protocol"
+      ]
+    },
+    {
+      "title": "Minimum Required PCR Elements",
+      "reference": "Michigan Protocol 7-15: Documentation — Minimum Elements",
+      "points": [
+        "Patient demographics: name, date of birth, address, gender",
+        "Chief complaint",
+        "History and pertinent medical history",
+        "Current medications and allergies",
+        "Vital signs: at least ONE set for non-transported patients; at least TWO sets for transported patients",
+        "Physical assessment findings",
+        "All interventions performed with times",
+        "All medications administered with dose, route, and time",
+        "Response to interventions",
+        "Patient disposition (transported, refused, DOA, transferred to other unit)"
+      ]
+    },
+    {
+      "title": "Time-Sensitive Presentations — Additional Documentation",
+      "reference": "Michigan Protocol 7-15: Documentation — Time-Sensitive",
+      "points": [
+        "STROKE: document symptom onset time (last known well); Cincinnati/Los Angeles stroke scale results; destination facility",
+        "MYOCARDIAL INFARCTION / CHEST PAIN: document symptom onset time; attach 12-lead ECG to PCR; document STEMI findings if present",
+        "TRAUMA: document mechanism of injury; attach 12-lead ECG if obtained; document Glasgow Coma Scale; document vital signs with times"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "PCR Completion Trigger",
+      "description": "MCA must select when a PCR is required to be initiated/completed",
+      "options": ["When unit is dispatched", "When unit arrives on scene"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Addendum needed after initial PCR submission — add addendum with current date/time; never alter original documentation"
+  ],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "PCR required on every EMS response regardless of patient contact or transport",
+    "Complete within 24 hours; addendum if correction needed — never alter original",
+    "Transported patients: minimum 2 sets of vital signs",
+    "Time-sensitive presentations: symptom onset time, 12-lead attachment, stroke scale, MOI as applicable",
+    "PHI handling: per Protected Health Information protocol"
+  ]
+}

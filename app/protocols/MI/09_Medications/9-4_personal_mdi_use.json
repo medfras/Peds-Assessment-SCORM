@@ -1,0 +1,78 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-4 Personal MDI Use (Revised 2/14/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_medication_personal_mdi_use",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication (MCA Optional)",
+  "jurisdiction": "Michigan",
+  "condition": "Personal MDI Use",
+  "version": "2023-02-14",
+  "protocol_reference": "Michigan Medication Protocol Section 9-4: Personal MDI Use — MDHHS Approved 2/14/2023",
+
+  "purpose": "MCA OPTIONAL. Govern the use of a patient's personal metered-dose inhaler (MDI) as a substitute for nebulized albuterol treatment. Personal MDI use is authorized when the inhaler meets all criteria and the patient can effectively use it. 4 puffs from a patient's personal albuterol MDI is considered equivalent to one standard nebulized albuterol treatment.",
+
+  "sections": [
+    {
+      "title": "Authorization and Eligibility",
+      "reference": "Michigan Protocol 9-4: Personal MDI Use — Authorization",
+      "points": [
+        "MCA OPTIONAL — only authorized if MCA has approved personal MDI use as an albuterol administration alternative",
+        "Personal MDI may be used as an alternative to or in addition to nebulized albuterol treatment",
+        "4 puffs of patient's personal albuterol MDI = 1 nebulized albuterol treatment equivalent",
+        "Patient must be able to physically coordinate MDI use and breathe in the medication — consider spacer use"
+      ]
+    },
+    {
+      "title": "Required Criteria for Personal MDI Use",
+      "reference": "Michigan Protocol 9-4: Personal MDI Use — Criteria",
+      "points": [
+        "Inhaler is prescribed to the patient — must be the patient's own prescribed MDI",
+        "Medication in the inhaler is albuterol (verify label)",
+        "Inhaler is not expired",
+        "Inhaler is not empty — check canister and patient confirmation",
+        "Spacer is preferred when available to improve medication delivery",
+        "Patient must be able to coordinate inhalation with actuation — if not, use nebulized albuterol instead"
+      ]
+    },
+    {
+      "title": "Administration Technique",
+      "reference": "Michigan Protocol 9-4: Personal MDI Use — Technique",
+      "points": [
+        "Shake MDI vigorously before use",
+        "Attach spacer if available",
+        "Instruct patient to exhale fully, then place mouthpiece in mouth (or spacer in mouth)",
+        "Actuate MDI at start of slow, deep inhalation",
+        "Patient holds breath for 10 seconds, then exhales slowly",
+        "Wait 30-60 seconds between puffs",
+        "Document number of puffs administered, medication name on inhaler, and patient response"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Personal MDI Use — MCA Authorization",
+      "description": "MCA must authorize use of patient's personal albuterol MDI as an administration alternative",
+      "options": ["Authorized — personal albuterol MDI may be used per protocol criteria", "Not authorized — personal MDI use not permitted"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": ["albuterol MDI"],
+
+  "deterioration_flags": [
+    "Patient unable to coordinate MDI use — switch to nebulized albuterol immediately",
+    "No improvement or worsening after MDI treatment — reassess; consider additional treatments; notify online MC"
+  ],
+
+  "scope_notes": [
+    "MCA OPTIONAL",
+    "4 puffs personal albuterol MDI = 1 nebulized albuterol treatment equivalent",
+    "Requirements: prescribed to patient, albuterol confirmed, not expired, not empty",
+    "Spacer preferred when available",
+    "Patient must be able to coordinate inhalation",
+    "Document: puffs given, medication name on inhaler, patient response"
+  ]
+}

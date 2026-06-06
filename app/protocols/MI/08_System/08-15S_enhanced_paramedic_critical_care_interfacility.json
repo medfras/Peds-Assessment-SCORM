@@ -1,0 +1,106 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-15(S) Enhanced Paramedic / Critical Care Paramedic Interfacility (Revised 4/28/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_enhanced_paramedic_critical_care_interfacility",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (Enhanced Paramedic / Critical Care Paramedic — MCA Optional)",
+  "jurisdiction": "Michigan",
+  "condition": "Enhanced Paramedic / Critical Care Paramedic Interfacility Transport",
+  "version": "2023-04-28",
+  "protocol_reference": "Michigan System Protocol Section 8-15(S): Enhanced Paramedic/Critical Care Paramedic Interfacility — MDHHS Approved 4/28/2023",
+
+  "purpose": "MCA OPTIONAL. Govern the expanded scope of Enhanced Paramedic (EP) and Critical Care Paramedic (CCP) providers during interfacility transport. EPs and CCPs may carry and administer medications and perform procedures beyond the base Paramedic scope when authorized by MCA. MCAs must define the specific expanded scope items authorized for EP/CCP interfacility transport in their jurisdiction.",
+
+  "sections": [
+    {
+      "title": "Authorization",
+      "reference": "Michigan Protocol 8-15(S): EP/CCP — Authorization",
+      "points": [
+        "MCA OPTIONAL — only authorized if MCA has approved EP/CCP expanded scope for interfacility transport",
+        "Providers must hold current Enhanced Paramedic (EP) or Critical Care Paramedic (CCP) licensure/credentialing",
+        "MCAs must define which specific expanded scope items are authorized — EP/CCP providers may only perform MCA-authorized items",
+        "MCA authorization does NOT extend to skills not specifically listed in MCA protocols"
+      ]
+    },
+    {
+      "title": "Potential Expanded Scope Items (MCA Selects)",
+      "reference": "Michigan Protocol 8-15(S): EP/CCP — Expanded Scope",
+      "points": [
+        "Blood product administration (PRBCs, FFP, platelets): requires MCA authorization and specific EP/CCP training",
+        "Vasoactive medication initiation (vasopressors, inotropes): requires MCA authorization",
+        "Arterial line monitoring and management: requires MCA authorization",
+        "Advanced sedation and pain management medications beyond base Paramedic scope: requires MCA authorization",
+        "Invasive hemodynamic monitoring: requires MCA authorization",
+        "Advanced airway management beyond base scope: requires MCA authorization",
+        "Specific MCA-defined critical care medications: requires MCA authorization and documented training"
+      ]
+    },
+    {
+      "title": "Standards of Practice",
+      "reference": "Michigan Protocol 8-15(S): EP/CCP — Standards",
+      "points": [
+        "EP/CCP providers must practice within their credentialed scope and MCA authorization",
+        "EP/CCP providers must have completed documented training for each authorized expanded scope item",
+        "MCAs must maintain records of EP/CCP credentialing and authorized scope items",
+        "EP/CCP expanded scope is only authorized during interfacility transport — NOT for 9-1-1 primary responses unless specifically authorized by MCA",
+        "When operating beyond base Paramedic scope, EP/CCP providers must document expanded scope interventions and rationale in PCR"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "EP/CCP Interfacility Scope Authorized",
+      "description": "MCA must authorize Enhanced Paramedic or Critical Care Paramedic expanded scope for interfacility transport",
+      "options": ["Authorized — EP/CCP expanded scope for interfacility transport", "Not authorized"],
+      "selected": null
+    },
+    {
+      "item": "Blood Product Administration",
+      "description": "MCA may authorize EP/CCP to administer blood products during interfacility transport",
+      "options": ["Authorized — EP/CCP may administer blood products with documented training", "Not authorized"],
+      "selected": null
+    },
+    {
+      "item": "Vasoactive Medication Initiation",
+      "description": "MCA may authorize EP/CCP to initiate vasoactive medications during interfacility transport",
+      "options": ["Authorized — EP/CCP may initiate vasoactive medications per MCA formulary", "Not authorized"],
+      "selected": null
+    },
+    {
+      "item": "Arterial Line Monitoring",
+      "description": "MCA may authorize EP/CCP to manage arterial lines during interfacility transport",
+      "options": ["Authorized — EP/CCP may manage and monitor arterial lines", "Not authorized"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "EP/CCP requested to perform skill outside MCA authorization — decline; perform within authorized scope; contact Medical Control",
+    "Blood product reaction (fever, chills, back pain, urticaria, hypotension) — stop transfusion immediately; maintain IV access; contact Medical Control; manage per reaction type"
+  ],
+
+  "scope_notes": [
+    "MCA OPTIONAL — EP or CCP licensure/credentialing required",
+    "MCA must define specific authorized expanded scope items",
+    "Expanded scope: blood products, vasoactives, arterial lines, advanced sedation, hemodynamic monitoring",
+    "MCA authorization required for each expanded scope item",
+    "Documented training required for each authorized expanded scope item",
+    "Primarily for interfacility transport — 9-1-1 use requires separate MCA authorization",
+    "Document all expanded scope interventions in PCR"
+  ],
+
+  "clinical_context": {
+    "concepts": [
+      "documentation_handoff",
+      "interfacility_transfer",
+      "medical_control"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

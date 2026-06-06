@@ -1,0 +1,72 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-6 Pharmacy/MCA Medication and IV Supply Requirements (Revised 4/28/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_medication_pharmacy_mca_medication_iv_supply_requirements",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication (All EMS Levels — Pharmacy/MCA Operations)",
+  "jurisdiction": "Michigan",
+  "condition": "Pharmacy/MCA Medication and IV Supply Requirements",
+  "version": "2023-04-28",
+  "protocol_reference": "Michigan Medication Protocol Section 9-6: Pharmacy/MCA Medication and IV Supply Requirements — MDHHS Approved 4/28/2023",
+
+  "purpose": "Define pharmacy and MCA responsibilities for EMS medication and IV supply management, including medication box preparation, labeling requirements, exchange program operation, 24/7 access requirements, and discrepancy resolution. Pharmacy involvement in EMS medication supply must meet Michigan pharmacy law requirements.",
+
+  "sections": [
+    {
+      "title": "Pharmacy Roles and Responsibilities",
+      "reference": "Michigan Protocol 9-6: Pharmacy/MCA Requirements — Pharmacy Roles",
+      "points": [
+        "Participating pharmacies must operate under a written agreement with the MCA for EMS medication supply",
+        "Pharmacies are responsible for: verifying drug identity and concentration, checking expiration dates, and sealing boxes per MCA protocol",
+        "Pharmacy staff sealing medication boxes must document: pharmacist/technician name, date sealed, and seal serial number",
+        "Pharmacies must maintain records of all EMS medication exchanges per Michigan pharmacy law requirements"
+      ]
+    },
+    {
+      "title": "Medication Box Labeling Requirements",
+      "reference": "Michigan Protocol 9-6: Pharmacy/MCA Requirements — Labeling",
+      "points": [
+        "Each sealed medication box must be labeled with: contents list (drug names, concentrations, quantities), expiration date of earliest-expiring item, seal serial number, and date sealed",
+        "Label must be visible without opening the box",
+        "Controlled substance boxes must be labeled per DEA and Michigan controlled substance requirements",
+        "Boxes must be labeled to identify the MCA or agency they are prepared for when required by MCA policy"
+      ]
+    },
+    {
+      "title": "24/7 Exchange Access",
+      "reference": "Michigan Protocol 9-6: Pharmacy/MCA Requirements — 24/7 Access",
+      "points": [
+        "MCAs must ensure 24-hour, 7-day-per-week access to medication exchange for EMS agencies within the MCA",
+        "Exchange access may be provided at MCA-designated hospital emergency departments, freestanding pharmacies with 24/7 capacity, or MCA-operated exchange locations",
+        "EMS agencies must have a designated primary and backup exchange location",
+        "Exchange location availability must be communicated to all EMS agencies and updated when changes occur"
+      ]
+    },
+    {
+      "title": "Discrepancy Resolution",
+      "reference": "Michigan Protocol 9-6: Pharmacy/MCA Requirements — Discrepancy Resolution",
+      "points": [
+        "Discrepancies identified at exchange: pharmacy must document, hold the discrepant box, and notify the MCA",
+        "MCA must investigate discrepancies and coordinate with the DEA and MDHHS when controlled substances are involved",
+        "Pharmacy records of exchanges are subject to MCA audit and MDHHS inspection",
+        "Pharmacies must report controlled substance discrepancies per DEA requirements independently of MCA reporting"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [],
+
+  "scope_notes": [
+    "All EMS provider levels — pharmacy/MCA operational protocol",
+    "Pharmacy: written MCA agreement required; must verify, date-check, and seal boxes",
+    "Box label: contents, earliest expiration, seal serial number, date sealed",
+    "24/7 exchange access: required; primary and backup locations designated",
+    "Discrepancy: document, hold box, notify MCA; controlled substance discrepancies to DEA independently"
+  ]
+}

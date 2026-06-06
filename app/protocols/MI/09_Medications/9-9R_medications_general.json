@@ -1,0 +1,56 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-9R Medications — General (Revised 3/31/2025, MDHHS Reviewed 2025). Base Michigan template.",
+  "id": "mi_base_medication_ref_medications_general",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference — General Framework",
+  "jurisdiction": "Michigan",
+  "condition": "Medications — General",
+  "version": "2025-03-31",
+  "protocol_reference": "Michigan Medication Protocol Section 9-9R: Medications General — MDHHS Approved 3/31/2025",
+
+  "purpose": "Establish the general framework for all Michigan MDHHS medication reference protocols. Defines adult vs. pediatric age thresholds, universal contraindications, dosing principles, and order of operations for medication selection and administration.",
+
+  "pharmacological_category": "General Reference Framework",
+
+  "routes": ["Varies by medication — see individual medication reference protocols"],
+
+  "indications": [
+    "See individual medication reference protocols (9-10R through 9-45R) for specific indications"
+  ],
+
+  "contraindications": [
+    "Universal contraindication applicable to all medications: known hypersensitivity or allergy to the specific medication — always ask about allergies before administration",
+    "Individual medication contraindications listed in respective 9-R protocol entries"
+  ],
+
+  "precautions": [
+    "Adult defined as: >14 years old",
+    "Pediatric defined as: ≤14 years old",
+    "Weight-based dosing: use actual or estimated weight; MI-MEDIC (Michigan EMS for Children weight-based dosing system) is the standard reference for pediatric weight-based dosing",
+    "When a weight-based dose exceeds the adult dose, use the adult dose as the maximum",
+    "Medication protocols apply only in conjunction with MCA-approved treatment protocols — do not administer medications outside the scope of applicable treatment protocols"
+  ],
+
+  "expected_effects": [
+    "See individual medication reference protocols"
+  ],
+
+  "side_effects": [
+    "See individual medication reference protocols"
+  ],
+
+  "notes": [
+    "Michigan MDHHS defines adult as >14 years; pediatric as ≤14 years — this differs from other common definitions",
+    "MI-MEDIC is the standard Michigan weight-based pediatric dosing reference",
+    "All medications applicable only within MCA-approved treatment protocol scope",
+    "Hypersensitivity to the drug is a universal contraindication and is NOT repeated in every individual medication entry — always assume it applies",
+    "Order of operation: confirm indication → confirm no contraindication → confirm correct dose for patient weight/age → confirm correct route → administer → document → reassess"
+  ],
+
+  "dosing": [],
+
+  "used_in_protocols": ["All medication reference protocols 9-10R through 9-45R"]
+}

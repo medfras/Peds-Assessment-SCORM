@@ -1,0 +1,117 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Universal Care: Patient Refusals. NASEMSO national provisional base.",
+  "id": "nasemso_base_universal_care_patient_refusals",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Patient Refusals",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Universal Care: Patient Refusals",
+  "aliases": [
+    "Against medical advice Refusal of treatment Refusal of transport"
+  ],
+  "sections": [
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Scene safety and PPE; primary survey (ABCDE)",
+        "Oxygen via NRM targeting SpO2 94-98% if indicated",
+        "Position of comfort; hemorrhage control as needed",
+        "CPR/AED if patient becomes pulseless",
+        "Epinephrine auto-injector for anaphylaxis if applicable",
+        "Naloxone intranasal unit-dose for suspected opioid involvement"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Blood glucose monitoring; oral glucose if hypoglycemic and alert",
+        "12-lead ECG acquisition and transmission",
+        "CPAP for respiratory distress",
+        "Aspirin for suspected ischemic chest pain",
+        "Albuterol SVN for bronchospasm component",
+        "IV access maintenance (non-medicated)"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation",
+        "IV/IO fluid resuscitation as indicated",
+        "Waveform capnography",
+        "IV analgesics (fentanyl, morphine) per pain management protocol",
+        "IV antiemetics (ondansetron) per protocol",
+        "IV D50W/D10W for hypoglycemia"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "12-lead ECG interpretation",
+        "Endotracheal intubation for airway compromise",
+        "RSI per protocol",
+        "Advanced antidysrhythmic or hemodynamic support per specific protocol",
+        "All parenteral medications per protocol",
+        "Vasopressors for refractory hemodynamic compromise"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "An adult or emancipated minor who has demonstrated possessing sufficient mental capacity for making decisions has the right to determine the course of his/her medical care, including the refusal of care",
+        "Individuals must be advised of the risks and consequences resulting from refusal of medical care to enable an informed decision regarding consent or refusal of treatment",
+        "An individual determined to lack decision-making capacity by EMS clinicians should not be allowed to refuse care against medical advice or to be released at the scene. Mental illness, drugs, alcohol intoxication, or physical/mental impairment may significantly impair an individual's decision-making capacity. Individuals who have attempted suicide, verbalized suicidal intent, or had other factors that lead EMS clinicians to suspect suicidal intent, should not be regarded as having demonstrated sufficient decision-making capacity",
+        "The determination of decision-making capacity may be challenged by communication barriers or cultural differences",
+        "EMS clinicians should not put themselves in danger by attempting to treat and/or transport an individual who refuses care. Law enforcement personnel should be requested if needed",
+        "Always act in the best interest of the patient. EMS clinicians, with the support of direct medical oversight, must strike a balance between abandoning the patient and forcing care",
+        "Special Considerations ' Minors It is preferable for minors to have a parent or legal guardian who can provide consent for treatment on behalf of the child a. All states allow healthcare clinicians to provide emergency treatment when a parent is not available to provide consent. This is known as the emergency exception rule or the doctrine of implied consent. For minors, this doctrine means that the EMS clinician can presume consent and proceed with appropriate treatment and transport if the following six conditions are met: i. The child is suffering from an emergent condition that places their life or health in danger"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Document patient capacity with: o All barriers to patient care in the NEMSIS element 'eHistory.01'Barriers to Patient Care' (a Required National Element of NEMSIS)",
+        "o Exam fields for 'eExam.19'Mental Status' and 'eExam.20'Neurological Assessment'",
+        "o Vitals for level of responsiveness and Glasgow Coma Scale",
+        "o Alcohol and drug use indicators",
+        "o Blood glucose level (as appropriate to situation and patient history)",
+        "' Patient Age",
+        "' Minors who are not emancipated and adults with a legal guardian: guardian name, contact, and relationship",
+        "' Any efforts made to contact guardians if contact could not be made"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Contact medical direction for clinical deterioration or interventions outside standard scope"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

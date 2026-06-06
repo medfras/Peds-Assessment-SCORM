@@ -1,0 +1,76 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-17 Medical Control Privileges (Revised 4/28/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_medical_control_privileges",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Medical Control Privileges",
+  "version": "2023-04-28",
+  "protocol_reference": "Michigan System Protocol Section 8-17: Medical Control Privileges — MDHHS Approved 4/28/2023",
+
+  "purpose": "Define the authority of online and offline medical control within the Michigan EMS system. Medical control is the physician oversight required to ensure quality prehospital care. Online medical control (direct physician contact) provides real-time direction; offline medical control (protocols, training, QI) establishes standing orders. Medical control cannot order EMS providers to perform skills outside their licensed scope or that would harm the patient.",
+
+  "sections": [
+    {
+      "title": "Online Medical Control Authority",
+      "reference": "Michigan Protocol 8-17: Medical Control — Online Authority",
+      "points": [
+        "Online Medical Control (MC) is a physician or physician-designated provider who provides real-time voice direction to EMS providers in the field",
+        "Online MC may order ADDITIONAL treatments or medications within the provider's scope that are not covered by standing protocols",
+        "Online MC may authorize protocol deviations when clinically necessary",
+        "Online MC CANNOT order providers to perform skills outside their licensed scope of practice",
+        "Online MC CANNOT order providers to perform actions that would harm the patient or violate patient rights",
+        "Online MC may order withholding or discontinuation of resuscitation per appropriate protocols"
+      ]
+    },
+    {
+      "title": "Offline Medical Control Authority",
+      "reference": "Michigan Protocol 8-17: Medical Control — Offline Authority",
+      "points": [
+        "Offline medical control includes: written protocols, standing orders, training programs, and quality improvement oversight",
+        "The MCA Medical Director is the responsible offline medical control authority for their jurisdiction",
+        "The MCA Medical Director approves all protocols, MCA selections, and clinical standards for EMS providers in their jurisdiction",
+        "Offline MC establishes the standing order framework — providers may act within standing orders without contacting online MC"
+      ]
+    },
+    {
+      "title": "Provider Rights and Obligations",
+      "reference": "Michigan Protocol 8-17: Medical Control — Provider Rights",
+      "points": [
+        "EMS providers MUST follow online MC orders unless the order: requires skills outside licensed scope, would clearly harm the patient, or is illegal",
+        "If a provider believes an online MC order is unsafe or inappropriate: state concern clearly to online MC and request clarification; document disagreement in PCR",
+        "Providers are NOT obligated to follow clearly unsafe orders — document the order, the refusal, and the reason",
+        "EMS providers retain responsibility for their own actions even when following online MC orders within their scope"
+      ]
+    },
+    {
+      "title": "Medical Control Contact Obligations",
+      "reference": "Michigan Protocol 8-17: Medical Control — Contact Obligations",
+      "points": [
+        "Contact online MC as required by specific protocols",
+        "Contact online MC when a clinical situation is not addressed by existing protocols",
+        "Contact online MC when deviating from a protocol or when a patient's condition is outside expected protocol parameters",
+        "Document all online MC contacts in PCR including time of contact, name of MC physician, and orders received"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "Online MC: real-time physician direction; may authorize additional treatments and protocol deviations",
+    "Online MC cannot order: skills outside scope, actions that harm patient, illegal actions",
+    "Offline MC: MCA Medical Director; establishes protocols, standing orders, QI",
+    "Providers MUST follow online MC orders except: outside scope, clearly harmful, illegal",
+    "Document all MC contacts: time, physician name, orders received",
+    "Providers retain responsibility for their own actions even under online MC direction"
+  ]
+}

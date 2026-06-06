@@ -1,0 +1,79 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-25R Glucagon (Revised 3/3/2025, MDHHS Reviewed 2025). Base Michigan template.",
+  "id": "mi_base_medication_ref_glucagon",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Glucagon",
+  "version": "2025-03-03",
+  "protocol_reference": "Michigan Medication Protocol Section 9-25R: Glucagon — MDHHS Approved 3/3/2025, Reviewed 2025",
+  "pharmacological_category": "Hormone — Glucose-Elevating Agent",
+  "routes": [
+    "IM",
+    "IN (intranasal)"
+  ],
+  "indications": [
+    "Hypoglycemia when IV access unavailable and dextrose indicated"
+  ],
+  "contraindications": [
+    "Pheochromocytoma (adrenal gland tumor) — glucagon can cause severe hypertension",
+    "Known hypersensitivity to glucagon"
+  ],
+  "precautions": [
+    "Use when IV/IO access is unavailable and dextrose would otherwise be indicated",
+    "Effect is delayed compared to IV dextrose — allow 10-15 minutes for response",
+    "Glucagon requires glycogen stores to work — may be ineffective in patients with depleted glycogen (prolonged fasting, alcoholism, adrenal insufficiency)",
+    "CRITICAL: Use ONLY intranasal glucagon formulation (Baqsimi or equivalent) for IN route — standard injectable formulation is NOT for intranasal use",
+    "CRITICAL: Use ONLY injectable formulation for IM route — intranasal formulation is NOT for injection",
+    "Pediatric <5 years: IM route only; DO NOT give IN to patients <5 years"
+  ],
+  "expected_effects": [
+    "Increase in blood glucose via hepatic glycogenolysis",
+    "Improvement in mental status (onset 10-20 minutes IM, 10-15 minutes IN)"
+  ],
+  "side_effects": [
+    "Nausea and vomiting (common — position patient to prevent aspiration)",
+    "Headache",
+    "Transient hypertension or tachycardia"
+  ],
+  "notes": [
+    "Adult and pediatric ≥5 years: 1 mg IM OR 3 mg IN (using intranasal glucagon device)",
+    "Pediatric <5 years: 0.5 mg IM ONLY — DO NOT give IN",
+    "Position patient in recovery position to prevent aspiration of vomiting",
+    "Once IV access established: administer dextrose per 9-19R; glucagon is the bridge to IV access"
+  ],
+  "dosing": [
+    {
+      "population": "Adult (>14 yr) and pediatric ≥5 yr",
+      "route": "IM",
+      "dose": "1 mg IM",
+      "notes": "Injectable formulation only for IM route"
+    },
+    {
+      "population": "Adult (>14 yr) and pediatric ≥5 yr",
+      "route": "IN (intranasal)",
+      "dose": "3 mg IN",
+      "notes": "Use ONLY intranasal-specific glucagon formulation (e.g., Baqsimi); do NOT use injectable formulation intranasally"
+    },
+    {
+      "population": "Pediatric <5 yr",
+      "route": "IM ONLY",
+      "dose": "0.5 mg IM",
+      "notes": "DO NOT give intranasal to patients <5 years; IM with injectable formulation only"
+    }
+  ],
+  "used_in_protocols": [
+    "Hypoglycemia / Diabetic Emergencies — when IV unavailable"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "blood_glucose",
+      "hypoglycemia"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

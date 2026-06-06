@@ -1,0 +1,72 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-33R Methylprednisolone (MDHHS Reviewed 2025). Base Michigan template.",
+  "id": "mi_base_medication_ref_methylprednisolone",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Methylprednisolone",
+  "version": "2025-03-31",
+  "protocol_reference": "Michigan Medication Protocol Section 9-33R: Methylprednisolone — MDHHS Reviewed 2025",
+
+  "pharmacological_category": "Corticosteroid — Anti-inflammatory / Immunosuppressant",
+
+  "routes": ["IV", "IO", "IM"],
+
+  "indications": [
+    "Anaphylaxis (adjunct to epinephrine)",
+    "Adrenal crisis",
+    "Respiratory distress — severe asthma or COPD exacerbation",
+    "Pediatric respiratory distress"
+  ],
+
+  "contraindications": [
+    "Known hypersensitivity to methylprednisolone",
+    "Active systemic fungal infection (relative — discuss with online MC in emergencies)"
+  ],
+
+  "precautions": [
+    "Corticosteroids are ADJUNCT treatments — they do not have immediate bronchodilatory effects; onset is delayed (hours to days)",
+    "When oral prednisone is available and patient can swallow, consider oral prednisone (9-40R) as preferred for respiratory distress",
+    "Hyperglycemia may worsen in diabetic patients",
+    "Single prehospital doses are generally safe — multi-dose concerns are long-term"
+  ],
+
+  "expected_effects": [
+    "Delayed anti-inflammatory effect (hours to days for respiratory conditions)",
+    "Reduction in anaphylaxis recurrence and late-phase reactions (biphasic anaphylaxis)",
+    "Adrenal crisis: cortisol replacement — stabilization of hemodynamic status"
+  ],
+
+  "side_effects": [
+    "Hyperglycemia",
+    "Hypertension",
+    "GI upset (with IV administration)",
+    "Mood changes (single dose — minimal)"
+  ],
+
+  "notes": [
+    "Adult and pediatric dose is the same threshold: 125 mg IV/IO/IM for adults; 2 mg/kg max 125 mg for pediatric",
+    "Prednisone PO (9-40R) is preferred when available for respiratory distress in patients who can take oral medication",
+    "Anaphylaxis: ADJUNCT — epinephrine is primary; do not delay epi to give steroids"
+  ],
+
+  "dosing": [
+    {
+      "population": "Adult (>14 yr)",
+      "route": "IV/IO/IM",
+      "dose": "125 mg IV/IO/IM",
+      "notes": "For anaphylaxis, adrenal crisis, or respiratory distress; PO prednisone preferred when patient can swallow"
+    },
+    {
+      "population": "Pediatric (≤14 yr)",
+      "route": "IV/IO/IM",
+      "dose": "2 mg/kg IV/IO/IM; maximum 125 mg",
+      "notes": "Same indications as adult; PO prednisone preferred when able to take oral"
+    }
+  ],
+
+  "used_in_protocols": ["Anaphylaxis", "Adrenal Crisis", "Respiratory Distress (Asthma/COPD)"]
+}

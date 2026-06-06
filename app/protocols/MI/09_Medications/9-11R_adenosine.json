@@ -1,0 +1,73 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-11R Adenosine (MDHHS Reviewed 2025). Base Michigan template.",
+  "id": "mi_base_medication_ref_adenosine",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Adenosine",
+  "version": "2025-03-31",
+  "protocol_reference": "Michigan Medication Protocol Section 9-11R: Adenosine — MDHHS Reviewed 2025",
+
+  "pharmacological_category": "Antidysrhythmic — Supraventricular Tachycardia",
+
+  "routes": ["IV (rapid push)"],
+
+  "indications": [
+    "Supraventricular tachycardia (SVT) — narrow complex, regular rhythm"
+  ],
+
+  "contraindications": [
+    "Sinus node dysfunction (sick sinus syndrome) without pacemaker",
+    "High-degree AV block (2nd degree Mobitz II or 3rd degree) without pacemaker",
+    "Asthma or reactive airway disease (relative contraindication — use with caution; may cause severe bronchospasm)",
+    "Known hypersensitivity to adenosine"
+  ],
+
+  "precautions": [
+    "Must be administered as rapid IV push followed immediately by NS flush — half-life is extremely short (~6 seconds)",
+    "Use most proximal IV site available (antecubital or above preferred); peripheral distal IV will often not work",
+    "Monitor ECG continuously during and after administration — expect brief asystole or high-degree AV block before conversion",
+    "Warn patient before administration: will feel brief intense chest pain/pressure, flushing, sense of doom — this is normal and transient",
+    "Caffeine antagonizes adenosine — higher doses may be needed in patients who regularly consume caffeine",
+    "Dipyridamole potentiates adenosine — reduce dose if patient is on dipyridamole"
+  ],
+
+  "expected_effects": [
+    "Brief AV node block interrupting re-entry circuit causing SVT",
+    "Expected: transient asystole or bradycardia followed by return of sinus rhythm",
+    "Full effect within seconds of administration"
+  ],
+
+  "side_effects": [
+    "Transient chest tightness, flushing, dyspnea, headache",
+    "Brief asystole or bradycardia (expected — transient)",
+    "Bronchospasm (especially in asthma patients)",
+    "Ventricular ectopy during AV block period"
+  ],
+
+  "notes": [
+    "Technique critical: rapid IV push + immediate NS flush in one motion using two-syringe technique at proximal site",
+    "Brief asystole is the mechanism of action — expected and transient; warn patient",
+    "Dipyridamole (Persantine) significantly potentiates adenosine — inform MC if patient takes it"
+  ],
+
+  "dosing": [
+    {
+      "population": "Adult (>14 yr)",
+      "route": "IV rapid push",
+      "dose": "6 mg first dose; 12 mg second dose if no conversion after 1-2 minutes",
+      "notes": "Rapid IV push; immediately follow with 10-20 mL NS flush; use proximal IV site"
+    },
+    {
+      "population": "Pediatric (≤14 yr)",
+      "route": "IV rapid push",
+      "dose": "0.1 mg/kg (max 6 mg) first dose; 0.2 mg/kg (max 12 mg) second dose if no conversion",
+      "notes": "Rapid IV push; immediately follow with NS flush; proximal site required"
+    }
+  ],
+
+  "used_in_protocols": ["SVT / Narrow Complex Tachycardia"]
+}

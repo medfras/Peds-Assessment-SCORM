@@ -1,0 +1,66 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-20R Diazepam (MDHHS Reviewed 2025). Base Michigan template.",
+  "id": "mi_base_medication_ref_diazepam",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Diazepam",
+  "version": "2025-03-31",
+  "protocol_reference": "Michigan Medication Protocol Section 9-20R: Diazepam — MDHHS Reviewed 2025",
+
+  "pharmacological_category": "Benzodiazepine — Anxiolytic / Sedative",
+
+  "routes": ["IV", "IO"],
+
+  "indications": [
+    "Procedural sedation — ADULT ONLY"
+  ],
+
+  "contraindications": [
+    "Pediatric use for procedural sedation — NOT indicated (use midazolam instead)",
+    "Respiratory depression or apnea",
+    "Known hypersensitivity to diazepam or benzodiazepines"
+  ],
+
+  "precautions": [
+    "ADULT ONLY for procedural sedation in Michigan EMS protocol — NOT for pediatric procedural sedation",
+    "Titrate slowly — respiratory depression and apnea risk",
+    "Have airway management equipment (BVM, advanced airway supplies) immediately available",
+    "Monitor respiratory rate, SpO2, and mental status continuously during and after administration",
+    "Flumazenil (benzodiazepine reversal) is not a Michigan EMS protocol medication — manage respiratory depression with airway support"
+  ],
+
+  "expected_effects": [
+    "Anxiolysis and sedation",
+    "Muscle relaxation",
+    "Amnesia for procedure"
+  ],
+
+  "side_effects": [
+    "Respiratory depression",
+    "Apnea (especially if combined with opioids)",
+    "Hypotension",
+    "Paradoxical agitation (rare)"
+  ],
+
+  "notes": [
+    "Diazepam is for procedural sedation in ADULTS ONLY in Michigan EMS protocol",
+    "For pediatric procedural sedation: use midazolam (9-34R)",
+    "Dose: 5-10 mg (0.1 mg/kg) titrated slowly IV; may repeat q5 minutes; maximum 0.3 mg/kg total",
+    "If opioid also administered for pain: reduce benzodiazepine dose and monitor respiratory status very closely"
+  ],
+
+  "dosing": [
+    {
+      "population": "Adult (>14 yr) — procedural sedation ONLY",
+      "route": "IV/IO",
+      "dose": "5-10 mg (0.1 mg/kg) titrated slowly; repeat q5 minutes to effect; maximum 0.3 mg/kg total",
+      "notes": "Titrate to effect; have airway management ready; NOT for pediatric procedural sedation"
+    }
+  ],
+
+  "used_in_protocols": ["Procedural Sedation (Adult)"]
+}

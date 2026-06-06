@@ -1,0 +1,129 @@
+{
+  "title": "Rule of Nines",
+  "subtitle": "Estimate burn size, then connect the estimate to transport and treatment implications.",
+  "regions": [
+    {"id": "head_neck", "label": "Head/Neck", "percent": 9, "group": "Head"},
+    {"id": "anterior_torso", "label": "Anterior Torso", "percent": 18, "group": "Torso"},
+    {"id": "posterior_torso", "label": "Posterior Torso", "percent": 18, "group": "Torso"},
+    {"id": "right_arm", "label": "Right Arm", "percent": 9, "group": "Upper Extremities"},
+    {"id": "left_arm", "label": "Left Arm", "percent": 9, "group": "Upper Extremities"},
+    {"id": "right_leg", "label": "Right Leg", "percent": 18, "group": "Lower Extremities"},
+    {"id": "left_leg", "label": "Left Leg", "percent": 18, "group": "Lower Extremities"},
+    {"id": "perineum", "label": "Perineum", "percent": 1, "group": "Special Areas"}
+  ],
+  "pediatric_notes": [
+    "Infants and young children have proportionally larger heads and smaller legs than adults.",
+    "Use Rule of Nines as a field estimate; pediatric burn charts or local burn-center tools refine the estimate.",
+    "Burns to face, hands, feet, genitalia, major joints, circumferential areas, or with airway concern can drive transport even when BSA is smaller."
+  ],
+  "vignettes": [
+    {
+      "id": "rule9_01",
+      "prompt": "A 10-year-old spilled hot soup across the front of the chest and abdomen. No arm, back, face, or leg involvement is noted.",
+      "answer_regions": ["anterior_torso"],
+      "hint": "Focus on one full anterior surface of the trunk.",
+      "explanation": "The anterior torso is estimated at 18% TBSA by adult Rule of Nines.",
+      "mistake_tag": "missed_burn_bsa",
+      "follow_up": {
+        "prompt": "What implication matters most from this estimate?",
+        "correct": "Large partial-thickness burn: treat pain, prevent heat loss, and consider burn-center consultation/transport.",
+        "distractors": [
+          "Minor isolated burn: cool briefly and release after refusal paperwork.",
+          "Airway burn is confirmed by BSA alone.",
+          "No transport concern unless hypotension is already present."
+        ],
+        "explanation": "BSA helps determine burn severity and transport/consultation needs; it does not by itself confirm airway injury."
+      }
+    },
+    {
+      "id": "rule9_02",
+      "prompt": "A 7-year-old has partial-thickness burns to the entire left arm after a sleeve caught fire. No torso involvement.",
+      "answer_regions": ["left_arm"],
+      "hint": "One complete upper extremity is a single Rule of Nines region.",
+      "explanation": "One complete arm is estimated at 9% TBSA.",
+      "mistake_tag": "missed_extremity_burn",
+      "follow_up": {
+        "prompt": "Which follow-up finding would most increase concern?",
+        "correct": "Circumferential burn with swelling or worsening distal pulse/sensation.",
+        "distractors": [
+          "A small intact blister away from a joint.",
+          "Pain that improves after appropriate analgesia.",
+          "Normal capillary refill in all fingers."
+        ],
+        "explanation": "Circumferential extremity burns can threaten perfusion as swelling progresses."
+      }
+    },
+    {
+      "id": "rule9_03",
+      "prompt": "A child pulled boiling water onto both legs. Burns are circumferential from thighs through feet bilaterally.",
+      "answer_regions": ["right_leg", "left_leg"],
+      "hint": "Count each complete lower extremity separately.",
+      "explanation": "Both complete legs total 36% TBSA by adult Rule of Nines.",
+      "mistake_tag": "missed_large_burn",
+      "follow_up": {
+        "prompt": "What is the safest field implication?",
+        "correct": "High-risk burn: prevent heat loss, monitor perfusion, manage pain, and prioritize burn-capable transport/consultation.",
+        "distractors": [
+          "Delay transport until blisters are drained.",
+          "Apply ice packs broadly to stop ongoing tissue damage.",
+          "Treat as minor because no torso is burned."
+        ],
+        "explanation": "Large burns can cause fluid loss, hypothermia, severe pain, and perfusion compromise; avoid ice and avoid delaying transport."
+      }
+    },
+    {
+      "id": "rule9_04",
+      "prompt": "A house-fire patient has burns to the head/neck and anterior torso with soot around the mouth.",
+      "answer_regions": ["head_neck", "anterior_torso"],
+      "hint": "Add the head/neck region to the front of the trunk.",
+      "explanation": "Head/neck 9% plus anterior torso 18% equals 27% TBSA.",
+      "mistake_tag": "missed_airway_burn",
+      "follow_up": {
+        "prompt": "Which implication takes priority beyond the percentage?",
+        "correct": "Airway/inhalation concern: high-flow oxygen, early airway vigilance, rapid transport/ALS as appropriate.",
+        "distractors": [
+          "BSA is below 30%, so airway assessment can wait.",
+          "Soot confirms cyanide poisoning as the only concern.",
+          "Cover burns first; oxygen can wait until vitals worsen."
+        ],
+        "explanation": "Face/neck burns and soot are airway red flags independent of the exact BSA estimate."
+      }
+    },
+    {
+      "id": "rule9_05",
+      "prompt": "A toddler has burns limited to the perineum after sitting in hot bath water.",
+      "answer_regions": ["perineum"],
+      "hint": "The special-area region is small by percentage but important by location.",
+      "explanation": "The perineum is estimated at 1% TBSA.",
+      "mistake_tag": "missed_special_area",
+      "follow_up": {
+        "prompt": "Why is this still high significance?",
+        "correct": "Special-area burn and concerning mechanism/history: document carefully, manage pain, and consider abuse/neglect concerns per protocol.",
+        "distractors": [
+          "Only 1% TBSA means no assessment beyond cooling is needed.",
+          "Perineal burns are never suspicious in toddlers.",
+          "BSA estimate replaces the need to assess mechanism."
+        ],
+        "explanation": "Small BSA burns can still require escalation because of location, age, and mechanism/history."
+      }
+    },
+    {
+      "id": "rule9_06",
+      "prompt": "A teenager has partial-thickness burns across the entire back after falling against a campfire grate.",
+      "answer_regions": ["posterior_torso"],
+      "hint": "Think posterior trunk, not both front and back.",
+      "explanation": "The posterior torso is estimated at 18% TBSA.",
+      "mistake_tag": "missed_posterior_burn",
+      "follow_up": {
+        "prompt": "Which care priority best matches this presentation?",
+        "correct": "Cover with dry sterile dressings, prevent heat loss, treat pain, and reassess for associated trauma.",
+        "distractors": [
+          "Pack the burn with wet towels during transport.",
+          "Ignore pain until after arrival because burns are external.",
+          "Assume no trauma because the injury is thermal."
+        ],
+        "explanation": "Burn care includes dry coverage, heat-loss prevention, analgesia, and mechanism-based trauma reassessment."
+      }
+    }
+  ]
+}

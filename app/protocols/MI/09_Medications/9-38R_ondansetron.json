@@ -1,0 +1,82 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-38R Ondansetron (Revised 12/10/2025, MDHHS Reviewed 2026). Base Michigan template — ODT is MCA Optional.",
+  "id": "mi_base_medication_ref_ondansetron",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference — ODT Route MCA Optional",
+  "jurisdiction": "Michigan",
+  "condition": "Ondansetron",
+  "version": "2025-12-10",
+  "protocol_reference": "Michigan Medication Protocol Section 9-38R: Ondansetron — MDHHS Approved 1/5/2026, Reviewed 2026",
+  "pharmacological_category": "Antiemetic — 5-HT3 Receptor Antagonist",
+  "routes": [
+    "IV",
+    "IM",
+    "ODT (orally disintegrating tablet — MCA Optional)"
+  ],
+  "indications": [
+    "Nausea and vomiting"
+  ],
+  "contraindications": [
+    "Patients with Phenylketonuria (PKU)"
+  ],
+  "precautions": [
+    "ODT route: patient must not be actively vomiting; tablet dissolves under tongue — ensure patient can cooperate",
+    "ODT administration is MCA OPTIONAL — only if MCA has authorized ODT route for EMS",
+    "Pediatric ODT: only for patients >30 kg"
+  ],
+  "expected_effects": [
+    "Relief of nausea within 15-30 minutes",
+    "Prevention of vomiting episodes"
+  ],
+  "side_effects": [
+    "Headache",
+    "Dry mouth",
+    "Drowsiness"
+  ],
+  "notes": [
+    "Adult ODT (if not actively vomiting and >30 kg): 4 mg ODT one time; repeat dose, if needed, must be IV/IM only",
+    "Adult IV/IM (if actively vomiting or ODT unavailable): 4 mg; second dose 15 min later; total max 8 mg",
+    "Pediatric IV/IM: 0.1 mg/kg; maximum 4 mg; total max 8 mg",
+    "Pediatric ODT: 4 mg if >30 kg and not actively vomiting; total max 8 mg",
+    "ODT = MCA Optional — only authorized if MCA has approved ODT route"
+  ],
+  "dosing": [
+    {
+      "population": "Adult (>14 yr) — nausea/vomiting (ODT, not actively vomiting)",
+      "route": "ODT (MCA Optional)",
+      "dose": "4 mg ODT one time",
+      "notes": "ODT only if MCA has authorized route; patient must not be actively vomiting; only >30 kg. Any second dose must be IV/IM only and total dose including ODT must not exceed 8 mg"
+    },
+    {
+      "population": "Adult (>14 yr) — nausea/vomiting (actively vomiting or ODT unavailable)",
+      "route": "IV or IM",
+      "dose": "4 mg IV/IM; may repeat 4 mg after 15 minutes; total maximum 8 mg",
+      "notes": ""
+    },
+    {
+      "population": "Pediatric (≤14 yr) — nausea/vomiting",
+      "route": "IV or IM",
+      "dose": "0.1 mg/kg IV/IM; maximum 4 mg per dose; total maximum 8 mg",
+      "notes": ""
+    },
+    {
+      "population": "Pediatric >30 kg — nausea/vomiting (ODT, not actively vomiting)",
+      "route": "ODT (MCA Optional)",
+      "dose": "4 mg ODT one time",
+      "notes": "ODT only if MCA has authorized route; only for patients >30 kg; not actively vomiting. Any second dose must be IV/IM only and total dose including ODT must not exceed 8 mg"
+    }
+  ],
+  "used_in_protocols": [
+    "Nausea and Vomiting"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "documentation_handoff"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

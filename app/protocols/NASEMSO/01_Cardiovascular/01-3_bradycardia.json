@@ -1,0 +1,139 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Cardiovascular: Bradycardia. NASEMSO national provisional base.",
+  "id": "nasemso_base_cardiovascular_bradycardia",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Bradycardia",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Cardiovascular: Bradycardia",
+  "aliases": [
+    "Heart block",
+    "Junctional rhythm"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Cardiovascular: Bradycardia",
+      "points": [
+        "Maintain adequate perfusion.",
+        "Treat underlying cause:. a. Hypoxia"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Heart rate less than 60 beats per minute (BPM) with either symptoms (altered mental status (AMS), chest pain (CP), congestive heart failure (CHF), seizure, syncope, shock, pallor, diaphoresis) or evidence of hemodynamic instability",
+        "The major EKG rhythms classified as bradycardia include:",
+        "See additional inclusion criteria for pediatric patients",
+        "EXCLUSION CRITERIA:",
+        "None noted"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Oxygen via NRM targeting SpO2 94-98%",
+        "Supine position with legs elevated if hypotensive",
+        "CPR if patient becomes pulseless; AED if shockable rhythm develops",
+        "Identify and treat hypoxia (primary cause of pediatric bradycardia)"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "12-lead ECG acquisition and transmission",
+        "Supraglottic airway if airway compromise",
+        "CPAP if pulmonary edema component",
+        "IV maintenance (non-medicated)"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation",
+        "IV/IO fluid bolus 250-500 mL NS for hypotension",
+        "Waveform capnography",
+        "Atropine 1 mg IV/IO for symptomatic bradycardia (max 3 mg total) — AEMT level per state/local protocol"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "Atropine 1 mg IV/IO q 3-5 min (max 3 mg) for symptomatic sinus bradycardia or AV block",
+        "Transcutaneous pacing for high-degree AV block or bradycardia unresponsive to atropine; sedate/analgize before pacing",
+        "Epinephrine infusion 0.02-0.2 mcg/kg/min IV or push-dose epinephrine (10-20 mcg boluses) for refractory hypotension",
+        "Norepinephrine infusion 0.02-0.4 mcg/kg/min IV for refractory hypotension",
+        "Dopamine infusion 2-20 mcg/kg/min as alternative vasopressor",
+        "Pediatric: epinephrine 0.01 mg/kg IV/IO for bradycardia with poor perfusion",
+        "12-lead ECG interpretation for rhythm identification and management",
+        "Consider overdose (beta-blocker, CCB, digoxin) as cause; treat per toxicology protocol"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "If pacing is performed, consider sedation or pain control"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Observe for signs of decreased end-organ perfusion: chest pain (CP), shortness of breath (SOB), decreased level of consciousness, syncope, or other signs of shock/hypotension.",
+        "Patients who have undergone cardiac transplant will not respond to atropine.",
+        "Consider potential culprit medications including beta-blockers, calcium channel blockers, sodium channel blockers/anti-depressants, digoxin, and clonidine",
+        "The differential diagnosis includes the following: myocardial infarction (MI), hypoxia, pacemaker failure, hypothermia, sinus bradycardia, athletes, head injury with increased intracranial pressure (ICP), stroke, spinal cord lesion, sick sinus syndrome, AV blocks, overdose, cholinergic nerve agents",
+        "Consider hyperkalemia in the patient with wide complex bradycardia",
+        "Bradycardia should be managed via the least invasive manner possible, escalating care as needed",
+        "Be aware of acute coronary syndrome as a cause of bradycardia in adult patients",
+        "When dosing medications for pediatric patients, dose should be weight-based for non-obese patients and based on ideal body weight for obese patients"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Cardiac rhythm/rate",
+        "' Time, dose, and response of medications given",
+        "' Pacing: Time started or stopped, rate, joules, capture, and response rate",
+        "' Patient weight.",
+        "' Pediatric length-based tape color (for pediatrics who fit on tape)",
+        "' History of event supporting treatment of underlying causes"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Heart rate less than 60 beats per minute (BPM) with either symptoms (altered mental status (AMS), chest pain (CP), congestive heart failure (CHF), seizure, syncope, shock, pallor, diaphoresis) or evidence of hemodynamic instability"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

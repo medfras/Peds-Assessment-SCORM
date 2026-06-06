@@ -1,0 +1,97 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-25 MI-POST (Revised 2/24/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_mi_post",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "MI-POST — Michigan Physician Orders for Scope of Treatment",
+  "version": "2023-02-24",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-25: MI-POST — MDHHS Approved 2/24/2023; MCL 333.20967; Public Act 154 of 2017",
+
+  "purpose": "The MI-POST (Michigan Physician Orders for Scope of Treatment) is a physician order form that documents a patient's preferences for resuscitation and treatment scope. MI-POST has LEGAL FORCE as a physician order. EMS must follow a valid MI-POST form. The original form is printed on pink paper, but paper or digital copies are also valid.",
+
+  "sections": [
+    {
+      "title": "MI-POST Form Validity",
+      "reference": "Michigan Protocol 7-25: MI-POST — Validity",
+      "points": [
+        "Form must be dated within the last year OR have a reaffirmation date within the last year",
+        "Must be signed by a licensed health professional (physician, PA, or NP)",
+        "Must be signed by the patient, patient advocate, guardian, or parent of a minor",
+        "Original form is printed on PINK paper — however, paper copies and digital/electronic copies are VALID",
+        "A verbal order from the ordering health professional is valid for 72 hours pending receipt of written form",
+        "Patient may revoke MI-POST at any time — see revocation section"
+      ]
+    },
+    {
+      "title": "Section A — Pulseless or Not Breathing",
+      "reference": "Michigan Protocol 7-25: MI-POST — Section A",
+      "points": [
+        "ATTEMPT RESUSCITATION: treat per Cardiac Arrest Protocol — initiate CPR and full resuscitative measures",
+        "DO NOT ATTEMPT resuscitation: treat per Dead on Scene / Termination of Resuscitation Protocol — do not initiate CPR"
+      ]
+    },
+    {
+      "title": "Section B — Patient Has Pulse and is Breathing",
+      "reference": "Michigan Protocol 7-25: MI-POST — Section B",
+      "points": [
+        "COMFORT-FOCUSED treatment (Comfort Measures Only):",
+        "— Palliative and comfort care only",
+        "— If breathing stops and patient is unconscious: do NOT assist ventilation",
+        "— Oxygen for comfort and pain management per protocol",
+        "",
+        "SELECTIVE treatment:",
+        "— Treat per appropriate protocol",
+        "— Establish IV access",
+        "— Cardiac monitoring",
+        "— Non-invasive airway support (BVM, CPAP)",
+        "— NO invasive airways — supraglottic airways and endotracheal intubation are PROHIBITED",
+        "",
+        "FULL TREATMENT:",
+        "— All interventions including intubation and advanced airway management",
+        "— Treat per appropriate protocol without limitation",
+        "",
+        "BLANK Section B: treat as FULL TREATMENT — implied full treatment when Section B is not completed"
+      ]
+    },
+    {
+      "title": "Revocation",
+      "reference": "Michigan Protocol 7-25: MI-POST — Revocation",
+      "points": [
+        "The patient, patient advocate, guardian, or parent of a minor may revoke MI-POST at any time",
+        "Revocation may be verbal, written, or by any action demonstrating intent to revoke",
+        "Upon revocation: immediately begin resuscitation or full treatment per appropriate protocol",
+        "Contact Medical Control after initiating care",
+        "Document the revocation, who revoked, and circumstances in PCR"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "MI-POST not found or not valid — treat patient per appropriate protocol; contact Medical Control if uncertain",
+    "MI-POST revoked — initiate full resuscitation/treatment per appropriate protocol; contact MC",
+    "MI-POST blank in Section B — treat as FULL TREATMENT implied",
+    "Comfort-Focused with breathing stop and unconsciousness — do NOT assist ventilation per MI-POST; provide oxygen and comfort care"
+  ],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "MI-POST is a legal physician order — must be followed when valid",
+    "Valid: dated within last year (or reaffirmation within last year); signed by health professional AND patient/advocate/guardian/parent",
+    "Pink original AND paper/digital copies are valid",
+    "Verbal order valid 72 hours pending written form",
+    "Section A Attempt Resuscitation → Cardiac Arrest Protocol",
+    "Section A DNR → Dead on Scene/TOR Protocol",
+    "Section B Comfort-Focused → palliative only; no assisted ventilation if breathing stops and unconscious",
+    "Section B Selective → protocol treatment + IV + cardiac monitor + non-invasive airway; NO invasive airways including SGA",
+    "Section B Full or Blank → full treatment including intubation",
+    "Revocation: initiate full care; contact MC"
+  ]
+}

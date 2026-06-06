@@ -1,0 +1,1174 @@
+{
+  "_schema": "pfd_scenario_v1",
+  "id": "peds_trauma_07_head_injury",
+  "title": "Closed Head Injury — 8-Year-Old Male",
+  "display_title": "Pediatric Closed Head Injury",
+  "subtitle": "8-year-old male, fall from monkey bars with altered mental status and focal neurological finding",
+  "category": "pediatric_trauma",
+  "category_display": "Pediatric Trauma Assessment",
+  "turnover_target": "als",
+  "version": "1.0",
+  "rubric_template": "ems_standard_v1",
+  "call_type": "head_injury",
+  "base_patient_care_rubric": "nremt_trauma_v1",
+  "difficulty": "intermediate",
+  "scenario_number": 7,
+  "prerequisites": [],
+  "protocol": "MI/02_Trauma_Environmental/02-3_head_spine_trauma",
+  "jurisdiction": "mi_base",
+  "clinical_context": {
+    "jurisdiction": "MI",
+    "concepts": [
+      "pediatric_patient",
+      "pediatric_trauma",
+      "trauma",
+      "head_injury",
+      "traumatic_brain_injury",
+      "spinal_motion_restriction",
+      "gcs_assessment",
+      "neurological_assessment"
+    ],
+    "protocol_focus": [
+      "head_injury",
+      "spinal_motion_restriction",
+      "neurological_assessment",
+      "gcs"
+    ]
+  },
+  "agency_context": "",
+  "spinal_injury_possible": true,
+  "non_transport_agency": false,
+  "multiple_patients_possible": false,
+  "diagnostics_indicated": false,
+  "opqrst_radiation_relevant": false,
+  "readiness_criteria": {
+    "min_minutes": 3,
+    "checks": [
+      {
+        "id": "messages",
+        "label": "5 messages sent",
+        "type": "message_count",
+        "min": 5
+      },
+      {
+        "id": "vitals",
+        "label": "Vitals assessed",
+        "type": "vitals_logged"
+      },
+      {
+        "id": "exam",
+        "label": "Exam/history obtained",
+        "type": "exam_logged"
+      },
+      {
+        "id": "treatment",
+        "label": "Treatment applied",
+        "type": "treatment_logged"
+      }
+    ]
+  },
+  "scene_entry_scoring": {
+    "ppe": {
+      "required": [
+        "gloves"
+      ],
+      "recommended": [
+        "eye_protection"
+      ],
+      "missing_required_penalty": 3,
+      "missing_recommended_penalty": 1,
+      "max_score": 10
+    },
+    "pat": {
+      "expected_impression": "sick",
+      "incorrect_impression_deduction": 2
+    }
+  },
+  "chat_placeholder": "Ask questions or give EMS instructions...",
+  "chat_address_hint": "Use roles like patient, parent/caregiver, bystander, or partner until names are known.",
+  "debrief_lexi_hints": [
+    {
+      "label": "Next step?",
+      "msg": "What should I do next in this scenario?"
+    },
+    {
+      "label": "GCS in kids?",
+      "msg": "How do I calculate GCS in an 8-year-old and what does a GCS of 14 mean?"
+    },
+    {
+      "label": "Smr decision?",
+      "msg": "How do I decide if spinal motion restriction is indicated in a pediatric head injury?"
+    },
+    {
+      "label": "Pupil finding?",
+      "msg": "What does a sluggish pupil mean and how urgent is it?"
+    },
+    {
+      "label": "Transport priority?",
+      "msg": "When should I expedite transport for a pediatric head injury?"
+    }
+  ],
+  "objectives": [
+    "Perform the Pediatric Assessment Triangle (PAT) as the first patient contact impression",
+    "Calculate pediatric GCS and recognize GCS 14 as a red flag for significant head injury",
+    "Identify a subtle focal neurological finding — sluggish right pupil — and understand its clinical significance",
+    "Apply spinal motion restriction based on mechanism and neurological change, not midline tenderness alone",
+    "Recognize that a single vomiting episode combined with altered appearance is a high-risk pattern",
+    "Prioritize rapid transport and early ALS rendezvous for a child with signs of elevated intracranial pressure"
+  ],
+  "dispatch": {
+    "unit": "{unit}",
+    "text": "{unit}, respond to Riverside Park for an 8-year-old male who fell from the monkey bars. Bystander reports he hit his head and seems confused.",
+    "priority": "Priority 1",
+    "time": "14:22",
+    "cross_streets": "Riverside Dr and Park Ave",
+    "response_time_minutes": 4
+  },
+  "scene": {
+    "description": "You arrive at Riverside Park. A group of adults and children are gathered near the playground structure. A woman is kneeling beside an 8-year-old boy who is sitting on the ground against the base of the monkey bars. The boy's eyes are partially open and he is looking around slowly. He is not crying. His mother is holding his hand and speaking to him quietly. A bystander reports he fell from about 8 feet up and landed on the ground. He vomited once shortly after the fall. There is no visible scalp laceration or significant external hemorrhage.",
+    "image": null,
+    "video": null,
+    "hazards": [],
+    "bystanders": [
+      {
+        "name": "Susan",
+        "relation": "mother",
+        "age": 36
+      },
+      {
+        "name": "Bystander",
+        "relation": "witness",
+        "age": 42
+      }
+    ]
+  },
+  "patient": {
+    "pcr_demographics_deferred": true,
+    "name": "Marcus",
+    "age": 8,
+    "dob_month_day": "May 13",
+    "sex": "male",
+    "weight_kg": 28,
+    "weight_display": "approx 62 lbs (28 kg)",
+    "chief_complaint": "Fall from approximately 8 feet onto ground, brief confusion, one episode of vomiting",
+    "general_impression": "8-year-old male sitting upright against the monkey bars. Eyes open but looking around slowly with a slightly glassy expression. Not crying. Responds to his name but is slow to answer questions — says 'my head hurts' in a subdued voice. Mom is beside him holding his hand. He is not moving his extremities spontaneously. No visible scalp laceration or external bleeding. His skin appears pale.",
+    "gcs_assessment": {
+      "e": 4,
+      "v": 4,
+      "m": 6,
+      "total": 14,
+      "rationale": "Eyes open spontaneously (E4). Verbal: confused and slow to respond, not oriented — says 'my head hurts' and 'what happened' when asked his name (V4). Motor: obeys commands when prompted but is slow and deliberate (M6).",
+      "challenge_description": "Marcus is sitting up with his eyes open but has a glassy, slow look. He responds when you call his name but is confused — he cannot tell you where he is or what happened. He says his head hurts and asks what happened. When you ask him to squeeze your hand, he does so after a pause."
+    },
+    "avpu_assessment": {
+      "value": "alert",
+      "description": "Patient is alert — eyes open spontaneously and responds to voice — but is confused and disoriented.",
+      "rationale": "AVPU = Alert, but GCS 14 captures the important clinical distinction of confusion that AVPU does not."
+    },
+    "image": "/static/images/tbi_8yom.jpeg",
+    "video": null,
+    "pat": {
+      "impression": "Slow, glassy-eyed 8-year-old. Not crying. Pale skin. Sitting still against the monkey bars.",
+      "appearance": "Dull, glassy expression — not age-appropriately alert. Not crying. Not making spontaneous purposeful movements. Slow to respond when called by name. Muscle tone appears normal but activity is reduced. This child looks sick.",
+      "work_of_breathing": "No audible abnormal respiratory sounds. No visible retractions or nasal flaring. Respiratory effort appears adequate but slightly slow and deep.",
+      "circulation": "Skin pale and slightly diaphoretic around the forehead. No cyanosis or mottling. No visible external hemorrhage.",
+      "expected": "sick",
+      "teaching": "All three PAT components point toward concern: Appearance is ABNORMAL — dull, confused, not crying. Circulation is borderline — pallor and diaphoresis. Work of Breathing is normal but slightly deep. PAT impression = 'Sick.' A head-injured 8-year-old who is not crying, is confused, and has pallor should immediately raise your index of suspicion for significant intracranial injury."
+    }
+  },
+  "history": {
+    "allergies": "None known.",
+    "medications": "None.",
+    "pmh": "Healthy 8-year-old. No seizure history.",
+    "last_oral_intake": "Lunch about 2 hours ago.",
+    "events_leading_to_call": "Mother reports Marcus was climbing the monkey bars and lost his grip from about 8 feet up. He fell and landed on the ground — she believes he hit his head first. He did not lose consciousness — he cried briefly after the fall and said his head hurt. Approximately 2 minutes later, he vomited once. Since then he has been sitting quietly and seems confused. Bystander confirms no loss of consciousness but says Marcus 'seemed out of it' right after the fall."
+  },
+  "initial_complaint": {
+    "speaker": "Susan",
+    "lay_summary": "He fell off the monkey bars and hit his head. He got sick right after — he threw up. He seems confused.",
+    "allowed_in_opener": true,
+    "do_not_include": [
+      "fall height specifics",
+      "loss of consciousness status",
+      "pupil findings",
+      "GCS assessment",
+      "medical history",
+      "allergies",
+      "medications",
+      "diagnosis",
+      "clinical terms",
+      "treatment suggestions",
+      "full OPQRST/SAMPLE"
+    ]
+  },
+  "history_response_map": {
+    "patient_identity": {
+      "label": "Patient identity / demographics",
+      "speaker": "Susan",
+      "triggers": [
+        "what is his name",
+        "what's his name",
+        "patient name",
+        "how old is he",
+        "age",
+        "date of birth",
+        "dob",
+        "birthday"
+      ],
+      "answer": "His name is Marcus. He's 8 years old. His birthday is May 13.",
+      "tags": [
+        "[[HISTORY: Patient Name=Marcus]]",
+        "[[HISTORY: Patient Age=8-year-old male]]",
+        "[[HISTORY: Patient Date of Birth=May 13]]"
+      ],
+      "notes": "Patient-scoped demographics only.",
+      "do_not_include": [
+        "weight unless asked",
+        "mechanism details",
+        "neurologic findings",
+        "medical history",
+        "treatment suggestions"
+      ]
+    },
+    "patient_weight": {
+      "label": "Patient weight",
+      "speaker": "Susan",
+      "triggers": [
+        "how much does he weigh",
+        "what does he weigh",
+        "patient weight",
+        "weight",
+        "estimated weight"
+      ],
+      "answer": "He weighs about 62 pounds, around 28 kilograms.",
+      "tag": "[[HISTORY: Patient Weight=approx 62 lbs (28 kg)]]",
+      "notes": "Patient-scoped weight only.",
+      "do_not_include": [
+        "diagnosis",
+        "treatment suggestions"
+      ]
+    },
+    "chief_concern": {
+      "label": "Broad opener / chief concern",
+      "speaker": "Susan",
+      "triggers": [
+        "what's going on",
+        "what happened",
+        "why did you call",
+        "how can we help",
+        "chief complaint"
+      ],
+      "answer": "He fell and hit his head. He threw up once right after, and now he seems confused.",
+      "tags": [
+        "[[HISTORY: Patient Chief Complaint=head injury after fall with confusion]]",
+        "[[HISTORY: Events=fell from monkey bars, struck head, vomited once shortly after fall]]",
+        "[[HISTORY: Vomiting=vomited once shortly after fall]]"
+      ],
+      "notes": "Patient-scoped complaint only.",
+      "do_not_include": [
+        "fall height",
+        "pupil findings",
+        "GCS",
+        "treatment suggestions"
+      ]
+    },
+    "mechanism": {
+      "label": "Mechanism of injury",
+      "speaker": "Susan",
+      "triggers": [
+        "how far did he fall",
+        "how high",
+        "fall height",
+        "what did he fall from",
+        "what did he hit",
+        "what did he hit his head on",
+        "surface",
+        "ground"
+      ],
+      "answer": "He fell from the monkey bars — about 8 feet up — and hit the packed dirt ground. I think his head hit when he landed.",
+      "tag": "[[HISTORY: Events=fall from monkey bars approximately 8 feet onto packed dirt with head impact]]",
+      "notes": "Mechanism and surface only.",
+      "do_not_include": [
+        "pupil findings",
+        "GCS",
+        "treatment suggestions"
+      ]
+    },
+    "loc_history": {
+      "label": "LOC history",
+      "speaker": "Susan",
+      "triggers": [
+        "did he lose consciousness",
+        "any loc",
+        "loss of consciousness",
+        "pass out",
+        "black out",
+        "was he awake"
+      ],
+      "answer": "No, he didn't pass out. He cried right after the fall and stayed awake, but then he got quiet and confused.",
+      "tags": [
+        "[[HISTORY: LOC=no loss of consciousness; cried immediately; became quiet and confused afterward]]",
+        "[[HISTORY: Events=no loss of consciousness; cried immediately; became quiet and confused afterward]]"
+      ],
+      "notes": "LOC history for head-injury risk screening.",
+      "do_not_include": [
+        "pupil findings",
+        "GCS",
+        "treatment suggestions"
+      ]
+    },
+    "vomiting_history": {
+      "label": "Vomiting / nausea history",
+      "speaker": "Susan",
+      "triggers": [
+        "vomit",
+        "throw up",
+        "threw up",
+        "nausea",
+        "nauseous",
+        "sick to his stomach",
+        "any other signs",
+        "any other symptoms"
+      ],
+      "answer": "Yes — he vomited once about two minutes after he fell. Since then he says his head hurts and he feels dizzy and sick to his stomach.",
+      "tags": [
+        "[[HISTORY: Vomiting=vomited once about 2 minutes after fall]]",
+        "[[HISTORY: Events=vomited once about 2 minutes after fall; headache, dizziness, and nausea afterward]]"
+      ],
+      "notes": "Vomiting is a key head-injury risk finding and should be available when symptoms are asked.",
+      "do_not_include": [
+        "pupil findings",
+        "GCS",
+        "treatment suggestions"
+      ]
+    },
+    "patient_memory": {
+      "label": "Patient memory / recall",
+      "speaker": "Marcus",
+      "triggers": [
+        "do you remember what happened",
+        "can you remember what happened",
+        "can you tell me what happened",
+        "do you remember the fall",
+        "what happened Marcus",
+        "Marcus what happened",
+        "Marcus do you remember"
+      ],
+      "answer": "I fell off the monkey bars. I don't remember much after that. My head hurts.",
+      "tags": [
+        "[[HISTORY: Patient Recall=remembers falling from monkey bars but not much afterward]]"
+      ],
+      "notes": "Patient-directed recall question. Marcus answers slowly and confused; Susan should not answer this entry.",
+      "do_not_include": [
+        "fall height",
+        "vomiting history",
+        "pupil findings",
+        "GCS",
+        "treatment suggestions"
+      ]
+    },
+    "patient_symptoms": {
+      "label": "Patient symptoms",
+      "speaker": "Marcus",
+      "triggers": [
+        "do you feel dizzy",
+        "are you dizzy",
+        "do you feel lightheaded",
+        "are you lightheaded",
+        "do you feel nauseous",
+        "are you nauseous",
+        "sick to your stomach",
+        "does your head hurt",
+        "where does it hurt",
+        "do you hurt anywhere"
+      ],
+      "answer": "My head hurts, mostly the back. I feel dizzy and kind of sick to my stomach. My arms and legs feel okay.",
+      "tags": [
+        "[[HISTORY: Signs and Symptoms=headache, dizziness, nausea; arms and legs feel okay]]"
+      ],
+      "notes": "Patient-directed symptoms entry. Marcus can report current symptoms but does not provide the full caregiver timeline.",
+      "do_not_include": [
+        "fall height",
+        "vomiting history unless asked directly",
+        "pupil findings",
+        "GCS",
+        "treatment suggestions"
+      ]
+    }
+  },
+  "vitals": {
+    "baseline": {
+      "hr": {
+        "label": "Heart Rate",
+        "value": 108,
+        "unit": "bpm",
+        "display": "108 bpm — mildly elevated, consistent with pain and mild vagal response"
+      },
+      "rr": {
+        "label": "Respirations",
+        "value": 16,
+        "unit": "/min",
+        "display": "16/min — normal rate but slightly deep"
+      },
+      "spo2": {
+        "label": "SpO2",
+        "value": 98,
+        "unit": "%",
+        "display": "98% on room air"
+      },
+      "bp": {
+        "label": "Blood Pressure",
+        "value": "106/70",
+        "unit": "mmHg",
+        "display": "106/70 mmHg — appropriate for age, upper limit of normal"
+      },
+      "temp": {
+        "label": "Temperature",
+        "value": 98.4,
+        "unit": "°F"
+      },
+      "blood_glucose": {
+        "label": "Blood Glucose",
+        "value": 98,
+        "unit": "mg/dL",
+        "display": "98 mg/dL — normal"
+      },
+      "gcs": {
+        "label": "GCS",
+        "value": 14,
+        "unit": "/15",
+        "display": "14 — E4V4M6; confused, slow responses"
+      },
+      "skin_color": {
+        "label": "Skin",
+        "numeric": false,
+        "value": "Pale, slightly diaphoretic — warm to touch"
+      },
+      "cap_refill": {
+        "label": "Cap Refill",
+        "value": 2,
+        "unit": "sec"
+      },
+      "pupils": {
+        "label": "Pupils",
+        "numeric": false,
+        "value": "R: 4 mm, sluggish reaction — L: 3 mm, brisk reaction. Pupils unequal."
+      },
+      "lung_sounds": {
+        "label": "Lung Sounds",
+        "numeric": false,
+        "value": "Clear and equal bilaterally"
+      },
+      "work_of_breathing": {
+        "label": "Work of Breathing",
+        "numeric": false,
+        "value": "Non-labored — slightly deep and slow"
+      }
+    },
+    "deterioration": {
+      "note": "If SMR is not applied and transport is not initiated within approximately 4 minutes of scene arrival, Marcus's GCS begins to decline and the pupil asymmetry worsens. This represents progressive elevated intracranial pressure. If SMR is applied and transport is initiated promptly, the deterioration rate is significantly slowed.",
+      "rates": {
+        "hr": -0.5,
+        "rr": -0.3,
+        "spo2": -0.2,
+        "gcs": -0.3
+      },
+      "caps": {
+        "hr": {
+          "max": 115,
+          "min": 52
+        },
+        "rr": {
+          "max": 18,
+          "min": 8
+        },
+        "spo2": {
+          "min": 90,
+          "max": 99
+        },
+        "gcs": {
+          "min": 8,
+          "trigger_spo2_below": 92
+        }
+      },
+      "string_thresholds": {
+        "neurological_status": [
+          {
+            "gcs_below": 13,
+            "value": "Marcus is becoming increasingly difficult to rouse. He no longer answers questions and is now only groaning when you speak to him. His right pupil is now 5 mm and sluggish — left remains 3 mm."
+          },
+          {
+            "gcs_below": 11,
+            "value": "Marcus's eyes are now only opening to painful stimulation. His right pupil is 6 mm and non-reactive. His breathing has become irregular and slow. This is a critical presentation."
+          }
+        ]
+      }
+    },
+    "interventions": {
+      "smr": {
+        "label": "Spinal Motion Restriction",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "smr",
+          "spinal",
+          "c-spine",
+          "cervical",
+          "backboard",
+          "collar",
+          "immobilize",
+          "hold.*head",
+          "manual.*stabilization",
+          "in-line.*stab"
+        ],
+        "effects": {
+          "deterioration_rate_modifier": 0.3
+        },
+        "notes": "Applying SMR significantly slows the deterioration rate. The mechanism (fall > 3 feet) plus neurological change makes SMR clearly indicated under Michigan protocol, even without midline tenderness.",
+        "requires_popup": false
+      },
+      "neuro_assessment": {
+        "label": "Neurological Assessment (GCS/AVPU + Pupils)",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "neuro check",
+          "assess.*neuro",
+          "check.*pupils",
+          "pupils",
+          "gcs",
+          "avpu",
+          "mental status",
+          "loc",
+          "level of consciousness",
+          "follow.*command",
+          "squeeze.*hand",
+          "how many fingers",
+          "oriented",
+          "glasgow"
+        ],
+        "effects": {},
+        "notes": "Formal GCS with eye, verbal, motor subscores is the standard. Pupil check is mandatory. Ask about LOC and vomiting history. GCS 14 with unequal pupils in a head trauma mechanism is a red flag for elevated ICP.",
+        "requires_popup": false
+      },
+      "dcap_btls_head_neck": {
+        "label": "DCAP-BTLS Assessment — Head",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "dcap",
+          "btls",
+          "deformity",
+          "contusion",
+          "assess.*head",
+          "feel.*head",
+          "palpate.*head",
+          "tenderness",
+          "step-off"
+        ],
+        "effects": {},
+        "notes": "Perform DCAP-BTLS of the head as part of the trauma assessment. No open scalp wound here, but look for swelling, tenderness, or step-offs. Neck and cervical-spine assessment are scored separately from the head exam.",
+        "requires_popup": false
+      },
+      "o2_nc": {
+        "label": "Supplemental O2 via nasal cannula",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "nasal cannula",
+          "nc",
+          "low flow",
+          "oxygen.*nc"
+        ],
+        "effects": {
+          "spo2": 1
+        },
+        "notes": "NC is oxygen support, but this head-injury scenario meets suspected TBI criteria (GCS < 15). Protocol documentation expects high-flow O2 via NRB to limit secondary brain injury and preoxygenate against deterioration.",
+        "requires_popup": false
+      },
+      "o2_nrb": {
+        "label": "High-flow O2 via NRB mask (15 LPM)",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "nrb",
+          "non-rebreather",
+          "15 lpm",
+          "high flow",
+          "100.*oxygen"
+        ],
+        "effects": {
+          "spo2": 1
+        },
+        "notes": "High-flow O2 via NRB is indicated for suspected TBI/head injury with GCS < 15 to limit secondary brain injury and preoxygenate against deterioration.",
+        "requires_popup": false
+      }
+    }
+  },
+  "standard_exam_findings": {
+    "dcap_btls_head": {
+      "label": "DCAP-BTLS Head",
+      "exam_key": "DCAP-BTLS Head",
+      "aliases": [
+        "DCAP-BTLS head",
+        "head DCAP",
+        "head assessment",
+        "inspect and palpate head",
+        "scalp assessment"
+      ],
+      "finding": "posterior scalp tenderness and mild swelling without open laceration, external bleeding, deformity, or palpable step-off",
+      "notes": "This closed head injury has subtle external findings. Do not invent a scalp laceration."
+    },
+    "neurological_assessment": {
+      "label": "Neurological Assessment",
+      "exam_key": "Neuro",
+      "aliases": [
+        "neuro exam",
+        "neurological assessment",
+        "mental status",
+        "pupils",
+        "pupil check",
+        "GCS"
+      ],
+      "finding": "GCS 14 (E4 V4 M6) with confused, slow responses; right pupil 4 mm sluggish and left pupil 3 mm brisk",
+      "notes": "Use for standard neuro exam prompts. These are the high-risk focal findings for this scenario."
+    },
+    "c_spine_assessment": {
+      "label": "C-Spine",
+      "exam_key": "C-Spine",
+      "aliases": [
+        "c spine",
+        "c-spine",
+        "neck tenderness",
+        "palpate cervical spine",
+        "midline tenderness"
+      ],
+      "finding": "midline tenderness is not reliably assessed because the patient is confused; maintain spinal motion restriction due to high-risk mechanism and GCS below 15",
+      "notes": "Use for neck/c-spine exam prompts so the model does not falsely clear the cervical spine."
+    }
+  },
+  "personas": {
+    "marcus": {
+      "name": "Marcus",
+      "age": 8,
+      "role": "patient",
+      "aliases": [
+        "Marcus",
+        "the child",
+        "the boy",
+        "the patient",
+        "buddy",
+        "son",
+        "little guy"
+      ],
+      "tts": {
+        "enabled": true,
+        "voice_role": "patient",
+        "gender": "male",
+        "age_band": "child",
+        "provider_voice": "alloy",
+        "speed": 0.96,
+        "demeanor": "8-year-old American boy who is dazed, quiet, confused, scared, nauseated, and in significant head pain",
+        "delivery": "slow, short child responses with foggy confusion, low energy, and pain in the voice; not dramatic, but not flat or composed",
+        "avoid": "do not sound calm, flat, like an adult man, narrator, clinician, parent, performer, energetic child, or like you have a British or English accent"
+      },
+      "description": "8-year-old male with GCS 14. He is confused — does not know where he is or what happened, though he knows his name. He is slow to respond and speaks quietly. His headache is severe. He is not particularly frightened — more dazed and quiet. He will follow simple one-step commands after a pause.",
+      "speaking_style": "Slow, quiet, single-phrase answers. 'My head hurts.' 'What happened?' 'I don't know.' When asked to squeeze: squeezes hand after a pause. When asked where he is: looks around and says 'I don't know' or says the wrong location. Does not complain about nausea unless asked.",
+      "what_he_knows": [
+        "His head hurts severely",
+        "He does not know how he got on the ground",
+        "He feels slightly dizzy or nauseous if asked",
+        "He did not lose consciousness — he remembers falling but everything is foggy",
+        "He does not know where he is"
+      ],
+      "clinical_state_instructions": "Marcus is confused but not combative. He responds to his name with slow eye opening and a quiet voice. He will follow simple commands — 'squeeze my hand,' 'wiggle your toes' — but with a noticeable delay. He will answer yes/no questions with a head nod. He does not volunteer information. If asked where he is, he looks confused and either says nothing or gives the wrong answer. If asked about nausea or pain, he confirms both quietly. Do not have Marcus provide medical history — redirect to mom.",
+      "persona_rules": [
+        "Respond slowly — always add 'Marcus takes a moment to respond' before his answers",
+        "Do not provide medical history — redirect to mom",
+        "If asked to squeeze or follow commands: comply after a pause",
+        "Confusion level stays consistent throughout unless GCS deteriorates per deterioration rules"
+      ]
+    },
+    "susan": {
+      "name": "Susan",
+      "age": 36,
+      "role": "family",
+      "relation": "mother",
+      "aliases": [
+        "Susan",
+        "Mom",
+        "mom",
+        "mother",
+        "ma'am",
+        "the mother"
+      ],
+      "tts": {
+        "enabled": true,
+        "voice_role": "bystander",
+        "gender": "female",
+        "age_band": "adult",
+        "provider_voice": "coral",
+        "speed": 1.28,
+        "demeanor": "frightened mother trying to stay composed; urgent, protective, and scared by the fall, confusion, and vomiting",
+        "delivery": "speak faster than normal with tense concern and a noticeable tremble; become a little steadier when reassured but stay worried",
+        "avoid": "do not sound calm, flat, level, detached, clinical, physically ill, playful, theatrical, or like the patient"
+      },
+      "description": "Marcus's mother. She is clearly frightened but is trying to stay calm for Marcus. She saw the fall happen. She cooperates with EMS instructions but will ask questions. She is concerned about whether Marcus has a brain injury and whether he needs surgery.",
+      "speaking_style": "Anxious but controlled. Speaking quickly at first, then slowing down when reassured. 'Is he okay? He threw up — that's bad right? He seems out of it.' Immediately follows EMS directions.",
+      "what_he_knows": [
+        "Marcus was at the top of the monkey bars — approximately 8 feet up — and lost his grip",
+        "He fell and landed on his side and head on the packed dirt surface",
+        "He did not lose consciousness — he cried after the fall and said his head hurt",
+        "He vomited once about 2 minutes after the fall",
+        "Since then he has been quiet and confused — he asked her 'what happened?' twice",
+        "No seizure activity was observed",
+        "No medications, no allergies, no significant medical history — last saw pediatrician 6 months ago, all normal",
+        "Last ate lunch about 2 hours ago",
+        "She called 911 immediately after the vomiting episode"
+      ],
+      "clinical_state_instructions": "If student asks about LOC: 'He didn't pass out — he cried right away.' If asked about vomiting: 'Once, right after.' If asked about seizures: 'No, nothing like that.' If asked about medical history: 'He's completely healthy.' If asked to step back or help: does so immediately. Will ask at least once 'Is he going to be okay? Does he have a brain injury?' — appropriate response: honest, calm reassurance that he needs hospital evaluation right away.",
+      "persona_rules": [
+        "Provide accurate history when directly asked — does not volunteer unless asked",
+        "Cooperate with all directions immediately",
+        "Ask about brain injury at some point during the encounter",
+        "Become slightly calmer when EMS demonstrates clear, competent assessment"
+      ]
+    },
+    "alex": {
+      "name": "Alex",
+      "age": 28,
+      "role": "ems_partner",
+      "aliases": [
+        "Alex",
+        "partner",
+        "my partner",
+        "crew"
+      ],
+      "tts": {
+        "enabled": true,
+        "voice_role": "alex",
+        "gender": "male",
+        "age_band": "adult",
+        "provider_voice": "echo",
+        "speed": 1.32,
+        "demeanor": "calm, competent, practical EMT partner who is alert to pediatric head trauma",
+        "delivery": "brisk, concise field tone with clear EMS cadence; natural and direct without sounding sleepy or theatrical",
+        "avoid": "do not sound flat, like a narrator, instructor, parent, patient, or anxious bystander"
+      },
+      "description": "Your EMT partner on Squad 1. Calm, practical, experienced. Will assist when directed. Will not volunteer interventions unprompted.",
+      "speaking_style": "Brief, calm, professional. 'Copy.' 'Ready when you are.' 'Vitals on your call.' 'SMR gear is in the rig.'",
+      "capabilities": [
+        "Report individual vitals when asked",
+        "Report full set of vitals when asked",
+        "Apply manual in-line stabilization when directed",
+        "Retrieve SMR equipment (collar, backboard or scoop) from rig",
+        "Apply oxygen when directed",
+        "Prepare stretcher for transport",
+        "Assist with secondary assessment"
+      ]
+    }
+  },
+  "correct_treatment": {
+    "critical_actions": [
+      {
+        "id": "scene_safety",
+        "description": "Scene safety and BSI/PPE prior to patient contact",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "pat",
+        "description": "Pediatric Assessment Triangle — Appearance (dull, confused, not crying), Work of Breathing (adequate but deep), Circulation to Skin (pale, diaphoretic)",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "neuro_assessment",
+        "description": "Perform neurological assessment — formal GCS calculation with E/V/M subscores plus LOC and vomiting history",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "finding_types": [
+            "exam",
+            "vital"
+          ],
+          "finding_key_patterns": [
+            "\\bgcs\\b",
+            "\\bloc\\b",
+            "mental",
+            "avpu",
+            "orient",
+            "confused",
+            "vomit"
+          ],
+          "transcript_patterns": [
+            "\\bgcs\\b",
+            "\\bloc\\b",
+            "loss of consciousness",
+            "vomit",
+            "orient",
+            "confused",
+            "glasgow"
+          ],
+          "min_matches": 2
+        }
+      },
+      {
+        "id": "pupil_assessment",
+        "description": "Assess pupils bilaterally for size, equality, and reactivity — unequal/sluggish pupil is the focal neuro red flag",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "finding_types": [
+            "exam"
+          ],
+          "finding_key_patterns": [
+            "\\bpupils?\\b",
+            "perrla",
+            "pupil.*reactive",
+            "reactive.*pupil",
+            "pupil.*sluggish",
+            "sluggish.*pupil",
+            "pupil.*unequal",
+            "unequal.*pupil",
+            "pupil.*asymm",
+            "asymm.*pupil"
+          ],
+          "transcript_patterns": [
+            "\\bpupils?\\b",
+            "perrla",
+            "pupil.*reactive",
+            "reactive.*pupil",
+            "pupil.*sluggish",
+            "sluggish.*pupil",
+            "pupil.*unequal",
+            "unequal.*pupil",
+            "pupil.*asymm",
+            "asymm.*pupil"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "dcap_btls_head_neck",
+        "description": "DCAP-BTLS assessment of head — palpate for deformity, step-off, tenderness, and swelling",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(dcap|btls|palpat.*head|check.*head|feel.*head|assess.*head|head.*tenderness|head.*step.?off|head.*deformity)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "smr",
+        "description": "Apply spinal motion restriction — mechanism (fall > 3 ft) plus altered mental status (confusion) makes SMR clearly indicated",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(smr|spinal|c-spine|cervical.*collar|backboard|in-line|manual.*stab|immobilize|cervical spine precautions)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "head_injury.high_flow_o2",
+        "description": "Apply continuous high-flow O2 via NRB for suspected TBI/head injury with altered mental status",
+        "required": true,
+        "protocol_indicated": true,
+        "intervention_ids": [
+          "o2_nrb"
+        ]
+      }
+    ],
+    "recommended_actions": [
+      {
+        "id": "rapid_transport",
+        "description": "Initiate transport promptly — do not delay on scene; request ALS rendezvous if not already arranged",
+        "required": false
+      },
+      {
+        "id": "reassess_neuro",
+        "description": "Reassess GCS and pupils during transport — trend is critical",
+        "required": false
+      }
+    ],
+    "out_of_scope_bls": [
+      "iv_io_access",
+      "endotracheal_intubation",
+      "mannitol"
+    ],
+    "out_of_scope_aemt": [],
+    "out_of_scope_paramedic": [],
+    "clinical_decision_points": {
+      "smr_rationale": "Michigan protocol: SMR is indicated when mechanism involves a fall > 3 feet OR altered mental status (GCS < 15). Marcus meets both criteria independently. Absence of midline tenderness does not rule out spinal injury in a confused patient.",
+      "als_trigger": "ALS/intercept expectations are determined by the active agency configuration. The focal neurological finding (unequal pupils) and GCS 14 in a high-mechanism fall are ALS-level concerns.",
+      "destination": "Pediatric trauma center capable of CT head and neurosurgical consultation. This is a priority transport."
+    }
+  },
+  "scoring": {
+    "overall_considerations": [
+      "This scenario tests the provider's ability to recognize a high-acuity pediatric head injury without dramatic external findings. There is no scalp laceration — the danger is internal.",
+      "GCS 14 in a child is not 'almost normal' — any GCS below 15 in a pediatric head injury warrants urgent evaluation. The confused verbal score (V4) combined with unequal pupils is a red flag pattern for elevated ICP.",
+      "SMR decision: do not penalize for applying SMR aggressively. In Michigan, fall > 3 ft plus neurological change is sufficient. Do not penalize for not eliciting midline tenderness in a confused patient.",
+      "Pupil asymmetry (sluggish right > reactive left) is subtle at baseline. Credit recognition of unequal pupils even if the student does not use the term 'blown pupil' — that comes later.",
+      "Transport priority: this patient should be loaded and moving within 10 minutes of scene arrival. Do not penalize for brief on-scene time.",
+      "O2: suspected TBI/head injury with GCS < 15 requires continuous high-flow oxygen via NRB per the head-injury protocol, even if initial SpO2 is 98%. NC is oxygen support but does not satisfy this protocol item.",
+      "Blood glucose: NOT indicated as a required assessment here. GCS 14 is explained by the mechanism. Do not require glucose check unless the student wants to rule out hypoglycemia as a confounding factor — credit it as good practice, not a miss."
+    ],
+    "dmist_considerations": [
+      "D: Marcus, 8-year-old male, 62 lbs (28 kg).",
+      "M: Fall from monkey bars approximately 8 feet — struck head. Single vomiting episode 2 minutes post-fall. No LOC.",
+      "I: GCS 14 (E4V4M6) — confused. Right pupil 4 mm sluggish; left 3 mm brisk — unequal.",
+      "S: SpO2 98%, HR 108, BP 106/70, RR 16. Skin pale, diaphoretic.",
+      "T: SMR applied (manual in-line stabilization, then collar and backboard). Supplemental O2 applied."
+    ],
+    "dmist_components": {
+      "D": {
+        "description": "Patient demographics",
+        "required_elements": [
+          "name: Marcus",
+          "age: 8",
+          "sex: male",
+          "weight: 28 kg or 62 lbs"
+        ],
+        "corroboration_source": "scenario_patient_fields"
+      },
+      "M": {
+        "description": "Mechanism and chief complaint",
+        "required_elements": [
+          "fall from monkey bars",
+          "fall height approximately 8 feet",
+          "single vomiting episode",
+          "no loss of consciousness"
+        ],
+        "corroboration_source": "scenario_history_events"
+      },
+      "I": {
+        "description": "Injuries found",
+        "required_elements": [
+          "GCS 14",
+          "confused/disoriented",
+          "unequal pupils"
+        ],
+        "corroboration_source": "scenario_vitals_and_exam"
+      },
+      "S": {
+        "description": "Signs and symptoms; GCS and neurological exam are the primary signs for a pediatric head injury handoff",
+        "required_elements": [
+          "GCS or score breakdown (primary)",
+          "pupil exam finding (primary)",
+          "SpO2 (passively observed — acceptable)",
+          "HR (supplementary — if assessed)",
+          "BP (supplementary — if assessed)"
+        ],
+        "scoring_note": "Primary S elements for pediatric head injury: GCS or neurological status description AND pupil exam findings. SpO2 may be passively observed and accepted. HR and BP are supplementary — their absence alone does not reduce S when GCS and pupil exam are present.",
+        "corroboration_source": "scenario_vitals_and_exam"
+      },
+      "T": {
+        "description": "Treatment",
+        "required_elements": [
+          "SMR reported in handoff",
+          "O2 reported in handoff"
+        ],
+        "corroboration_source": "session_interventions"
+      }
+    },
+    "required_findings": [
+      {
+        "finding_key": "neuro_assessment",
+        "display_label": "Neurological Assessment",
+        "must_include": [
+          "gcs",
+          "pupils",
+          "loc",
+          "vomit"
+        ],
+        "missing_deduction": 5,
+        "note": "GCS (including subscores), pupils, LOC history, and vomiting are all required for complete neuro assessment in a head trauma call."
+      },
+      {
+        "finding_key": "smr",
+        "display_label": "Spinal Motion Restriction",
+        "must_include": [
+          "smr",
+          "cervical",
+          "spinal"
+        ],
+        "missing_deduction": 5,
+        "note": "SMR application with appropriate rationale (mechanism plus neuro change) is a required element of this call."
+      },
+      {
+        "finding_key": "o2_nrb",
+        "display_label": "High-Flow O2 via NRB",
+        "must_include": [
+          "high-flow oxygen",
+          "NRB",
+          "15 LPM"
+        ],
+        "missing_deduction": 2,
+        "note": "NASEMSO head-injury documentation calls for high-flow oxygen with non-rebreather mask for TBI/head injury patients."
+      }
+    ],
+    "by_level": {
+      "MFR": {
+        "critical_focus": [
+          "Scene safety and BSI",
+          "Recognize altered mental status as the primary concern",
+          "Manual in-line spinal stabilization",
+          "Call for higher level of care"
+        ],
+        "additional_expectations": [],
+        "grace_items": [
+          "Formal GCS calculation not required — AVPU and descriptive AMS acceptable",
+          "Formal pupil asymmetry documentation not required — any recognition of neurological abnormality is credited"
+        ]
+      },
+      "EMT": {
+        "critical_focus": [
+          "Scene safety and BSI",
+          "PAT — recognize 'sick' from the doorway",
+          "Neuro assessment: GCS subscores, pupil check, LOC history, vomiting count",
+          "SMR: collar and backboard based on mechanism plus neuro change",
+          "SAMPLE from mother: mechanism, LOC, vomiting, PMH",
+          "Expedite transport — do not delay on scene"
+        ],
+        "additional_expectations": [
+          "Recognize unequal pupils as a focal neurological finding requiring urgent transport",
+          "Reassess GCS and pupils during transport — trend detection is critical"
+        ],
+        "grace_items": [
+          "Blood glucose check is not penalized if done — ruled out hypoglycemia is good practice",
+          "ALS request is not required when the active agency configuration co-dispatches ALS"
+        ]
+      },
+      "AEMT": {
+        "critical_focus": [
+          "All EMT expectations above",
+          "Establish IV access if GCS is declining or signs of decompensation appear — not required at baseline GCS 14",
+          "Monitor for Cushing's triad: rising BP, bradycardia, and irregular respirations — indicate impending herniation",
+          "Anticipate advanced airway need if GCS drops to 8 or below"
+        ],
+        "additional_expectations": [
+          "IV/IO consideration documented — explain decision to defer (stable presentation) or initiate (deteriorating)",
+          "Reassess GCS and pupils every 3–5 minutes en route — communicate trends to receiving facility"
+        ],
+        "grace_items": [
+          "IV not required at baseline GCS 14 with SpO2 98% — documenting the decision to defer is sufficient",
+          "Same EMT grace items apply for glucose check"
+        ]
+      },
+      "Paramedic": {
+        "critical_focus": [
+          "All EMT and AEMT expectations above",
+          "IV/IO access established — available for fluid management and medication delivery if needed",
+          "Airway management plan documented: BVM or RSI readiness if GCS drops below 8",
+          "Avoid hypoxia (SpO2 < 95%) and hypercarbia — both worsen intracranial pressure",
+          "Consider 30-degree head elevation after SMR is secured to optimize cerebral perfusion pressure"
+        ],
+        "additional_expectations": [
+          "Advanced airway placement indicated if GCS < 8 with loss of airway protective reflexes",
+          "Hemodynamic monitoring: maintain MAP ≥ 70 mmHg; hypotension in TBI dramatically worsens outcomes",
+          "Recognize that mannitol and hypertonic saline are hospital-level interventions — not field medications in this protocol",
+          "Pain and sedation: avoid agents that cause hypotension; benzodiazepines used judiciously only"
+        ],
+        "grace_items": [
+          "RSI not required for GCS 14 with intact airway — document assessment and plan",
+          "Same base grace items apply"
+        ]
+      }
+    }
+  },
+  "scoring_rubric": {
+    "clinical_performance": {
+      "max": 50,
+      "full_credit": "PAT performed (sick impression correct), GCS calculated with subscores, pupils checked (asymmetry noted), LOC and vomiting history obtained, DCAP-BTLS head/neck performed, SMR applied with rationale, O2 applied, transport initiated promptly, ALS rendezvous requested",
+      "partial_credit": "Neuro assessment performed and SMR applied but GCS subscores not documented, or pupil asymmetry not noted, or transport delayed",
+      "minimal_credit": "SMR applied but no formal neuro assessment — or neuro performed but SMR not applied"
+    },
+    "narrative": {
+      "max": 20,
+      "full_credit": "CHART complete: mechanism (fall 8 ft from monkey bars, no LOC, one vomiting episode), neurological findings (GCS 14 E4V4M6, confused, unequal pupils), vitals (SpO2 98%, HR 108, BP 106/70), treatment (SMR applied, O2 applied), transport priority and destination. Objective throughout.",
+      "partial_credit": "Most CHART elements present but pupil finding, GCS subscores, or vomiting count absent",
+      "minimal_credit": "Narrative present but fails to document neurological findings or SMR application"
+    },
+    "scope_adherence": {
+      "max": 10,
+      "full_credit": "Stayed within BLS scope — no IV access, no airway adjuncts beyond supplemental O2, no medications. SMR applied per protocol indications.",
+      "partial_credit": "No dangerous out-of-scope intervention, but scope or protocol reasoning incomplete",
+      "minimal_credit": "Out-of-scope intervention attempted or SMR rationale materially inconsistent with protocol"
+    },
+    "dmist": {
+      "max": 10,
+      "full_credit": "D: Marcus, 8yo male, 62 lbs; M: fall 8 ft monkey bars, 1 vomiting episode, no LOC; I: GCS 14, confused, unequal pupils; S: SpO2 98%, HR 108, BP 106/70; T: SMR, O2 applied.",
+      "partial_credit": "3–4 of 5 components present; pupil asymmetry or GCS not documented",
+      "minimal_credit": "2 or fewer components, or neurological findings absent"
+    },
+    "professionalism": {
+      "max": 10,
+      "full_credit": "Introduced self, used Marcus's name and spoke to him at his level, kept mother informed of actions, explained SMR rationale clearly without alarming language, reassured mother with honest information about hospital evaluation",
+      "partial_credit": "Communication adequate but child not addressed directly or mother not kept informed",
+      "minimal_credit": "No introduction, patient not engaged, and mother not informed of actions or findings"
+    },
+    "protocols_treatment": {
+      "max": 10,
+      "full_credit": "SMR applied per protocol (mechanism plus GCS < 15 equals clear indication under Michigan protocol). Continuous high-flow O2 via NRB applied for suspected TBI. Transport initiated without excessive scene delay. Contraindicated interventions avoided.",
+      "partial_credit": "Most treatment priorities addressed but one protocol-aligned step incomplete or delayed",
+      "minimal_credit": "SMR not applied despite clear indication, or dangerous contraindicated intervention attempted"
+    }
+  },
+  "exemplar_dmist": "D — Marcus, 8-year-old male, approximately 62 lbs (28 kg) per mother.\nM — fell from monkey bars approximately 8 feet up at Riverside Park; no witnessed loss of consciousness — cried immediately; one episode of vomiting approximately 2 minutes post-fall.\nI — GCS 14 (E4V4M6); confused, disoriented to place. Pupils: right 4 mm sluggish, left 3 mm brisk — asymmetric. No scalp laceration. DCAP-BTLS negative for external deformity.\nS — SpO2 98% room air, HR 108, BP 106/70, RR 16. Skin pale, diaphoretic.\nT — SMR applied (manual in-line stabilization, rigid cervical collar, long backboard). High-flow O2 via NRB at 15 LPM. ALS intercept/handoff status per active agency configuration.",
+  "exemplar_narrative": "Dispatched for an 8-year-old male who fell from playground equipment. Upon arrival, patient Marcus, an 8-year-old male weighing approximately 62 lbs (28 kg), was found sitting on the ground at the base of the monkey bars in Riverside Park. Patient was conscious but confused.\n\nMother Susan reports Marcus fell from approximately 8 feet and struck his head on impact. No witnessed loss of consciousness — patient cried immediately after the fall. Approximately 2 minutes post-fall, patient vomited once. Since the fall, patient has been confused and disoriented. No seizure activity observed. No significant PMH. No medications. No allergies. Last oral intake approximately 2 hours prior (lunch).\n\nPAT: Appearance — dull, glassy expression, not crying (ABNORMAL). Work of Breathing — non-labored, adequate (NORMAL). Circulation — pale, diaphoretic skin (BORDERLINE). PAT impression: SICK.\n\nGCS 14 (E4V4M6). Patient confused — unable to state location. Responds to name with delayed answers. Obeys simple commands with delay. Pupils: right pupil 4 mm with sluggish reaction; left pupil 3 mm with brisk reaction — unequal. No focal motor asymmetry on command testing. No scalp laceration. DCAP-BTLS: no external deformity, no visible step-off, midline assessment deferred (patient confused — cannot reliably report midline tenderness).\n\nVitals: SpO2 98% room air, HR 108 bpm, BP 106/70 mmHg, RR 16/min. Skin pale and diaphoretic.\n\nSMR applied per Michigan protocol (mechanism fall > 3 ft plus GCS < 15): manual in-line stabilization maintained, rigid cervical collar applied, patient transferred to long backboard. High-flow O2 via NRB at 15 LPM applied per suspected TBI protocol. ALS intercept or handoff completed according to the active agency configuration. Patient loaded for priority transport to Sparrow Hospital ED. Mother accompanied.",
+  "debrief": {
+    "condition_background": "Traumatic brain injury (TBI) in the pediatric population is the leading cause of injury-related death and disability in children over 1 year of age. Falls are the most common mechanism. The pediatric brain is more vulnerable than the adult brain for several reasons: the skull is thinner and more flexible, the subarachnoid space is relatively larger, and bridging veins are more susceptible to shear injury. This means an 8-foot fall onto a hard surface can cause significant intracranial injury without dramatic external findings. Marcus's presentation is classic for an evolving epidural or subdural hematoma: a brief lucid interval after the fall, followed by progressive confusion and a focal neurological finding (unequal pupils). The right pupil sluggishness at baseline represents early oculomotor nerve (CN III) compression from ipsilateral tentorial herniation — a pre-herniation sign that, if untreated, rapidly progresses to fixed, dilated pupils and brainstem compromise. The absence of a scalp laceration and the intact initial cry can create dangerous false reassurance. GCS 14 in a child is not 'almost normal' — it is a red flag that demands urgent action.",
+    "key_teaching_points": [
+      "GCS 14 is abnormal in a head-injured child — do not minimize it. The 'confused' verbal score (V4) combined with a high-mechanism fall and one vomiting episode is a pattern, not an isolated finding.",
+      "Pediatric Assessment Triangle: a head-injured 8-year-old who is not crying, is pale, and is not spontaneously active has an ABNORMAL PAT even if his airway is patent. Do not miss the 'sick' impression.",
+      "Unequal pupils after head trauma are a pre-herniation sign. A sluggish right pupil larger than the left represents ipsilateral CN III compression from transtentorial herniation. This is a surgical emergency — your job is to move fast and get ALS involved.",
+      "SMR decision framework for pediatrics: Michigan protocol requires SMR when EITHER the mechanism suggests significant force (falls > 3 ft) OR the patient has altered mental status. Marcus meets both. You do not need midline tenderness to justify SMR in a confused child.",
+      "Vomiting after head trauma in a child: one episode is concerning, two or more episodes is a red flag for elevated ICP. Do not normalize vomiting as 'just from the pain.'",
+      "Scene time matters: the goal is to minimize on-scene time for a head-injured child with focal neurological findings. SMR and O2 can be applied en route if needed. Load and move."
+    ],
+    "common_mistakes": [
+      "Underestimating GCS 14 — treating it as 'almost normal' and not escalating urgency",
+      "Missing the pupil asymmetry — not performing a focused pupil check as part of every head injury neuro assessment",
+      "Delaying SMR because midline tenderness is not confirmed — a confused patient cannot reliably report tenderness; apply SMR based on mechanism and neuro change",
+      "Spending too long on scene doing a thorough secondary assessment when the primary concern (elevated ICP) requires rapid transport",
+      "Reassuring the mother that he is 'fine' — honest, calm reassurance is appropriate; false reassurance is not",
+      "Failing to document the GCS subscores — 'GCS 14' in the narrative is insufficient; E4V4M6 tells the receiving team exactly what is going on"
+    ]
+  },
+  "legacy_ai_categories": [
+    "documentation",
+    "professionalism"
+  ],
+  "checklist": [
+    {
+      "id": "peds_trauma_07_head_injury.pat_assessment",
+      "description": "PAT completed — appearance (dull, glassy, not crying = sick), work of breathing (non-labored), circulation to skin (pale, diaphoretic) assessed",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "scene_entry",
+        "scene_entry_path": "pat_assessment"
+      },
+      "tier2_patterns": [
+        "(?i)(pat|appearance|alert|cry|work of breath|circulat|pink|pale|skin|glassy|confused)"
+      ],
+      "done_feedback": "PAT completed — dull, glassy appearance (SICK) correctly identified; breathing and circulation assessed before hands-on contact.",
+      "missed_feedback": "PAT not completed — an altered-appearing child after head trauma must be triaged by PAT; the appearance domain flags the severity of the CNS injury.",
+      "clinical_rationale": "PAT identifies the SICK/not-sick classification; after head trauma with altered appearance, the priority is rapid neurological assessment and spinal precautions.",
+      "common_error": "Applying a cervical collar before completing the PAT — sequence matters; PAT first, then hands-on assessment in priority order."
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 3-2 Stroke or Suspected Stroke (Revised 12/02/2022, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_adult_stroke",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Adult",
+  "level_display": "Adult (≥ 14 years)",
+  "jurisdiction": "Michigan",
+  "condition": "Stroke or Suspected Stroke",
+  "version": "2022-12-02",
+  "protocol_reference": "Michigan Adult Treatment Protocol Section 3-2: Stroke or Suspected Stroke — MDHHS Approved 12/2/22, Reviewed 2023",
+
+  "sections": [
+    {
+      "title": "Stroke or Suspected Stroke",
+      "reference": "Michigan Protocol 3-2: Stroke or Suspected Stroke",
+      "points": [
+        "Follow General Pre-hospital Care-Treatment Protocol",
+        "Measure blood glucose (may be MFR skill — see Blood Glucose Testing-Procedure Protocol); if blood glucose is less than 60 mg/dL, treat per Altered Mental Status-Treatment Protocol",
+        "If seizure: follow Seizure-Treatment Protocol",
+        "Utilize the Cincinnati Pre-hospital Stroke Scale (CPSS) or other MCA-approved stroke scale (including large vessel occlusion detection); see MCA stroke supplement if applicable — assessment must include at minimum: (A) Facial droop — have patient show teeth or smile; (B) Arm drift — have patient close eyes and hold both arms out for 10 seconds; (C) Speech abnormality — have patient say 'the sky is blue in Michigan'; (D) Time of last known well — determine and document; (E) Any deficit in a validated stroke scale is considered positive for stroke",
+        "Follow MCA Transport Protocol for facility selection and early alerting requirements",
+        "Minimize scene time",
+        "Contact destination hospital as soon as possible and begin transport",
+        "If available, encourage a family member to either accompany the patient or go to the receiving facility as soon as possible",
+        "Initiate vascular access — DO NOT delay scene time for IV; preferentially with 18 gauge (20 gauge minimally) (Specialist skill)",
+        "Monitor ECG — DO NOT delay scene time for ECG monitoring (Specialist skill)",
+        "See MCA stroke supplement if applicable"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Blood Glucose Testing — MFR",
+      "description": "MCA may designate blood glucose testing as an MFR skill",
+      "options": ["MFR skill authorized", "Not authorized for MFR"],
+      "selected": null
+    },
+    {
+      "item": "Stroke Scale",
+      "description": "MCA must select approved stroke scale(s) — must include at minimum Cincinnati Pre-hospital Stroke Scale (CPSS); MCAs using large vessel occlusion (LVO) detection scales must document in MCA stroke supplement",
+      "options": ["CPSS only", "CPSS + LVO detection scale (see MCA stroke supplement)"],
+      "selected": null
+    },
+    {
+      "item": "Stroke Receiving Facility",
+      "description": "MCA must define stroke receiving facility hierarchy and early alerting requirements in MCA Transport Protocol and stroke supplement",
+      "options": ["Defined in MCA Transport Protocol"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Blood glucose < 60 mg/dL — treat per Altered Mental Status protocol before assigning stroke diagnosis",
+    "Seizure activity — treat per Seizure-Treatment Protocol; seizure may indicate hemorrhagic stroke or post-ictal state",
+    "Declining GCS — airway management; expedite transport; contact Medical Control"
+  ],
+
+  "scope_notes": [
+    "Stroke scale assessment, time of last known well documentation: all levels",
+    "Blood glucose testing: all levels — may be MFR skill per MCA selection",
+    "IV access (preferred 18 gauge): Specialist skill — DO NOT delay scene time",
+    "ECG monitoring: Specialist skill — DO NOT delay scene time",
+    "Transport destination: per MCA Transport Protocol and stroke supplement"
+  ]
+}

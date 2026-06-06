@@ -1,0 +1,140 @@
+[
+  {
+    "id": "shock_med_comp_01",
+    "mode": "text",
+    "prompt": "8-year-old with vomiting: HR 138, BP 104/68, cool pale skin, cap refill 4 seconds, anxious but answering",
+    "decision": "compensated_shock",
+    "bucket": "perfusion",
+    "explanation": "Normal systolic pressure does not rule out shock. Tachycardia, cool skin, delayed cap refill, and anxiety suggest compensation is still maintaining BP.",
+    "mistake_tag": "missed_compensated_shock",
+    "hint": "Start with perfusion and mental status, not systolic BP alone.",
+    "socratic_feedback": "You treated the blood pressure as the main cue. Which findings show perfusion stress before BP fails? Cool skin, delayed cap refill, tachycardia, and anxiety point to compensated shock."
+  },
+  {
+    "id": "shock_med_decomp_01",
+    "mode": "text",
+    "prompt": "6-year-old with fever: HR 172, BP 72/40, weak radial pulses, mottled skin, lethargic",
+    "decision": "decompensated_shock",
+    "bucket": "sepsis",
+    "explanation": "Hypotension with weak pulses, mottling, and lethargy indicates decompensated shock. Compensation is failing.",
+    "mistake_tag": "missed_decompensated_shock",
+    "hint": "Look for the point where perfusion failure is no longer hidden.",
+    "socratic_feedback": "You under-called a failing perfusion pattern. Which cues show compensation has failed? Hypotension, weak pulses, mottling, and lethargy make this decompensated shock."
+  },
+  {
+    "id": "shock_med_comp_02",
+    "mode": "text",
+    "prompt": "3-year-old after diarrhea: HR 154, BP 92/56, dry mucosa, delayed cap refill, strong central pulse, irritable",
+    "decision": "compensated_shock",
+    "bucket": "dehydration",
+    "explanation": "The child has signs of dehydration and poor peripheral perfusion, but central pulse and blood pressure remain present: compensated shock.",
+    "mistake_tag": "missed_compensated_shock",
+    "hint": "Ask whether the body is still maintaining pressure despite poor peripheral perfusion."
+  },
+  {
+    "id": "shock_med_decomp_02",
+    "mode": "text",
+    "prompt": "10-year-old with anaphylaxis: HR 160, BP 78/42, diffuse hives, wheezing, confused, weak pulses",
+    "decision": "decompensated_shock",
+    "bucket": "anaphylaxis",
+    "explanation": "Hypotension, confusion, weak pulses, and airway involvement indicate decompensated anaphylactic shock.",
+    "mistake_tag": "missed_decompensated_shock",
+    "hint": "Anaphylaxis plus hypotension and altered mentation is beyond compensation.",
+    "follow_up": {
+      "prompt": "What first action is most directly linked to this pattern?",
+      "choices": ["Administer epinephrine per protocol", "Wait for rash to worsen", "Give oral fluids only", "Delay transport for complete history"],
+      "correct": "Administer epinephrine per protocol",
+      "hint": "Choose the intervention that reverses anaphylaxis physiology.",
+      "feedback": "Anaphylactic shock requires prompt epinephrine per protocol, airway/oxygenation support, and rapid transport.",
+      "mistake_tag": "shock_action_priority"
+    }
+  },
+  {
+    "id": "shock_med_comp_03",
+    "mode": "text",
+    "prompt": "5-year-old with pneumonia: HR 148, RR 38, BP 96/60, warm flushed skin, bounding pulses, delayed response to caregiver",
+    "decision": "compensated_shock",
+    "bucket": "distributive",
+    "explanation": "Early distributive shock can present with warm skin and bounding pulses. Tachycardia and altered interaction mean this is not reassuring.",
+    "mistake_tag": "missed_compensated_shock",
+    "hint": "Not all shock starts cold and clammy; distributive shock can look warm early."
+  },
+  {
+    "id": "shock_med_decomp_03",
+    "mode": "text",
+    "prompt": "Infant with bronchiolitis: HR 88 after prolonged distress, BP unobtainable, poor tone, gray color, weak cry",
+    "decision": "decompensated_shock",
+    "bucket": "respiratory_failure",
+    "explanation": "Bradycardia relative to distress, poor tone, gray color, and unobtainable BP indicate late deterioration and decompensated shock.",
+    "mistake_tag": "missed_decompensated_shock",
+    "hint": "A falling heart rate in a tired infant is not improvement."
+  },
+  {
+    "id": "shock_med_comp_04",
+    "mode": "text",
+    "prompt": "12-year-old with DKA symptoms: HR 132, BP 110/70, deep rapid respirations, dry skin, delayed cap refill, alert but weak",
+    "decision": "compensated_shock",
+    "bucket": "metabolic",
+    "explanation": "DKA/dehydration can produce compensated shock: tachycardia and poor perfusion with preserved pressure and alert mentation.",
+    "mistake_tag": "missed_compensated_shock",
+    "hint": "Preserved mentation and BP do not erase poor perfusion signs."
+  },
+  {
+    "id": "shock_med_decomp_04",
+    "mode": "text",
+    "prompt": "4-year-old with GI bleed: HR 170, BP 68/38, pale diaphoretic skin, absent radial pulse, moaning to pain",
+    "decision": "decompensated_shock",
+    "bucket": "hypovolemia",
+    "explanation": "Hypotension, absent peripheral pulse, diaphoresis, and depressed mental status indicate decompensated hypovolemic shock.",
+    "mistake_tag": "missed_decompensated_shock",
+    "hint": "Combine blood pressure, pulse quality, skin, and mentation."
+  },
+  {
+    "id": "shock_med_comp_05",
+    "mode": "text",
+    "prompt": "7-year-old after allergic exposure: HR 142, BP 100/64, hives, nausea, normal speech, cap refill 3 seconds",
+    "decision": "compensated_shock",
+    "bucket": "anaphylaxis",
+    "explanation": "Perfusion is stressed but blood pressure and mentation are still preserved. This is compensated shock risk in anaphylaxis.",
+    "mistake_tag": "missed_compensated_shock",
+    "hint": "Anaphylaxis can be high risk before hypotension appears.",
+    "follow_up": {
+      "prompt": "Which reassessment is most important after initial treatment?",
+      "choices": ["Breathing, perfusion, and blood pressure trend", "Only rash size", "Only oral intake", "Only temperature"],
+      "correct": "Breathing, perfusion, and blood pressure trend",
+      "hint": "Track the systems that tell you whether shock is progressing.",
+      "feedback": "Anaphylaxis can deteriorate quickly. Reassess respiratory status, perfusion, and BP after treatment.",
+      "mistake_tag": "shock_reassessment"
+    }
+  },
+  {
+    "id": "shock_med_decomp_05",
+    "mode": "text",
+    "prompt": "9-year-old septic appearance: HR 184, BP 74/44, delayed central cap refill, confused, shallow respirations",
+    "decision": "decompensated_shock",
+    "bucket": "sepsis",
+    "explanation": "Low BP, central perfusion delay, confusion, and shallow respirations indicate decompensated septic shock.",
+    "mistake_tag": "missed_decompensated_shock",
+    "hint": "Central refill delay and confusion are late, high-risk signs."
+  },
+  {
+    "id": "shock_med_comp_06",
+    "mode": "text",
+    "prompt": "2-year-old with fever: HR 166, BP 88/58, strong femoral pulse, cool extremities, clingy and irritable",
+    "decision": "compensated_shock",
+    "bucket": "sepsis",
+    "explanation": "Tachycardia, cool extremities, and irritability suggest compensated shock even with a strong central pulse.",
+    "mistake_tag": "missed_compensated_shock",
+    "hint": "Central pulse can remain strong while peripheral perfusion worsens."
+  },
+  {
+    "id": "shock_med_decomp_06",
+    "mode": "text",
+    "prompt": "11-year-old post-seizure: HR 150, BP 70/36, cyanotic lips, weak carotid pulse, unresponsive to voice",
+    "decision": "decompensated_shock",
+    "bucket": "postictal_hypoxia",
+    "explanation": "Hypotension, cyanosis, weak central pulse, and poor responsiveness indicate decompensated shock and respiratory/perfusion failure.",
+    "mistake_tag": "missed_decompensated_shock",
+    "hint": "A postictal state should not explain away weak central perfusion and hypotension."
+  }
+]

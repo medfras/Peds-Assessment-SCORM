@@ -1,0 +1,97 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 5-6 Adult Return of Spontaneous Circulation (Revised 05/30/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_adult_rosc",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Adult",
+  "level_display": "Adult (≥ 14 years)",
+  "jurisdiction": "Michigan",
+  "condition": "Return of Spontaneous Circulation (ROSC)",
+  "version": "2023-05-30",
+  "protocol_reference": "Michigan Adult Cardiac Protocol Section 5-6: Return of Spontaneous Circulation — MDHHS Approved 5/30/23, Reviewed 2023",
+
+  "purpose": "This protocol should be followed for all cardiac arrests with ROSC. If arrest is of known traumatic origin, refer to Traumatic Arrest-Treatment Protocol and MCA Transport Protocol. After ROSC, patients should be stabilized on scene for 5–10 minutes prior to transport. Refer to Crashing Adult/Impending Arrest-Treatment Protocol.",
+
+  "sections": [
+    {
+      "title": "Post-ROSC Care",
+      "reference": "Michigan Protocol 5-6: ROSC",
+      "points": [
+        "Stabilize patient on scene 5–10 minutes before moving — initiate ALS response if available",
+        "If ventilation assistance required: ventilate at 10–12 breaths per minute — do NOT hyperventilate",
+        "Monitor waveform ETCO2 — if ventilation assistance required, target ETCO2 35–45 mmHg per End Tidal Carbon Dioxide Monitoring-Procedure Protocol",
+        "Monitor vital signs and reassess patient — if patient becomes pulseless, begin CPR and refer to Adult Cardiac Arrest General-Treatment Protocol",
+        "Check blood glucose (may be MFR skill — see Blood Glucose Testing-Procedure Protocol)",
+        "Start IV/IO NS or LR KVO if not already in place",
+        "Treat hypotension (SBP < 90 mmHg) with IV/IO fluid bolus up to 1 liter",
+        "Perform 12-lead ECG (per MCA selection: BLS or Specialist — see 12 Lead ECG-Procedure Protocol)",
+        "Consider transport to facility capable of Percutaneous Coronary Intervention (PCI) per MCA protocol if 12-lead ECG indicates STEMI",
+        "If hypotension persists after initial IV/IO fluid bolus: prepare push-dose epinephrine while administering second 1-liter fluid bolus (maximum total fluid 2 liters)",
+        "Administer push-dose epinephrine for persistent hypotension: prepare 10 mcg/mL by adding 1 mL of epinephrine 1 mg/10 mL in 9 mL NS; administer 10–20 mcg (1–2 mL) IV/IO; repeat every 3–5 minutes; titrate SBP > 90 mmHg",
+        "Anticipate airway intolerance and prepare for patient sedation — if patient becomes agitated with advanced airway in place, refer to Patient Procedural Sedation-Procedure Protocol",
+        "If mechanical ventilator available or spontaneous respirations in non-intubated patient: titrate inspired oxygen to maintain SpO2 ≥ 92% but < 98%; titrate ETCO2 between 35–45 mmHg",
+        "Consider removal of airway device ONLY if patient is wide awake, following commands, and unable to tolerate the device"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Blood Glucose Testing — MFR",
+      "description": "MCA may designate blood glucose testing as an MFR skill",
+      "options": ["MFR skill authorized", "Not authorized for MFR"],
+      "selected": null
+    },
+    {
+      "item": "12-Lead ECG — Scope",
+      "description": "MCA must select provider level authorized to obtain 12-lead ECG post-ROSC",
+      "options": ["BLS authorized", "Specialist authorized", "Both BLS and Specialist authorized"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [
+    {
+      "name": "Push-Dose Epinephrine IV/IO (Post-ROSC Hypotension)",
+      "dose": "10–20 mcg (1–2 mL of 10 mcg/mL solution) IV/IO — repeat every 3–5 minutes; titrate SBP > 90 mmHg",
+      "route": "IV or IO",
+      "indication": "Hypotension (SBP < 90 mmHg) persisting after initial IV/IO fluid bolus",
+      "contraindications": "Use caution in suspected cardiogenic shock",
+      "side_effects": "Tachycardia, hypertension, arrhythmia, re-arrest",
+      "scope": "Specialist skill",
+      "notes": "Preparation: add 1 mL of epinephrine 1 mg/10 mL (1:10,000) to 9 mL NS to make 10 mcg/mL concentration. If hypotension persists after the initial bolus, prepare push-dose epinephrine while administering the second 1 L bolus; maximum total fluid is 2 L."
+    },
+    {
+      "name": "NS or LR IV/IO Fluid Bolus (Post-ROSC Hypotension)",
+      "dose": "Up to 1 liter IV/IO — repeat once for total maximum 2 liters if hypotension persists",
+      "route": "IV or IO",
+      "indication": "Hypotension (SBP < 90 mmHg) post-ROSC",
+      "contraindications": "Signs of pulmonary edema — monitor after each bolus",
+      "side_effects": "Pulmonary edema, fluid overload",
+      "scope": "Specialist skill",
+      "notes": "Assess between boluses. Maximum total 2 liters. If hypotension persists after the initial bolus, prepare push-dose epinephrine while administering the second 1 L bolus."
+    }
+  ],
+
+  "deterioration_flags": [
+    "Patient becomes pulseless — begin CPR immediately; return to Adult Cardiac Arrest General protocol",
+    "SBP < 90 mmHg — IV/IO fluid bolus up to 1L; if persists after first bolus, initiate push-dose epinephrine while giving second bolus (max 2L total)",
+    "STEMI on post-ROSC 12-lead — notify hospital; consider PCI-capable facility transport per MCA protocol",
+    "Agitation with advanced airway — Patient Procedural Sedation-Procedure Protocol",
+    "SpO2 > 98% — titrate oxygen down; hyperoxia may be harmful post-ROSC",
+    "ETCO2 < 35 mmHg — reduce ventilation rate; avoid hyperventilation",
+    "ETCO2 > 45 mmHg — increase ventilation rate slightly; reassess airway"
+  ],
+
+  "scope_notes": [
+    "Monitoring vitals, SpO2, ETCO2, ventilation rate management: all levels",
+    "Blood glucose testing: all levels — may be MFR skill per MCA selection",
+    "IV/IO access: Specialist skill",
+    "IV/IO fluid bolus: Specialist skill",
+    "Push-dose epinephrine: Specialist skill",
+    "12-lead ECG: per MCA selection — BLS or Specialist",
+    "Advanced airway sedation: Specialist skill per Patient Procedural Sedation-Procedure Protocol",
+    "SpO2 target post-ROSC: ≥ 92% but < 98%; ETCO2 target: 35–45 mmHg"
+  ]
+}

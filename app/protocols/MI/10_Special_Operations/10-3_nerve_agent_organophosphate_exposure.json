@@ -1,0 +1,146 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 10-3 Nerve Agent / Organophosphate Exposure (MDHHS Reviewed 2023-03-24). Base Michigan template.",
+  "id": "mi_base_special_ops_nerve_agent_organophosphate",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Special Operations",
+  "level_display": "Special Operations Protocol",
+  "jurisdiction": "Michigan",
+  "condition": "Nerve Agent / Organophosphate Exposure",
+  "version": "2023-03-24",
+  "protocol_reference": "Michigan Special Operations Protocol Section 10-3: Nerve Agent / Organophosphate Exposure — MDHHS Reviewed 2023",
+
+  "purpose": "Provide EMS treatment guidelines for patients exposed to nerve agents (GA, GB, GD, VX) or organophosphate pesticides, including use of nerve agent antidote kits (Duodote / Mark I) from CHEMPACK/MEDDRUN caches.",
+
+  "sections": [
+    {
+      "title": "Scene Safety",
+      "content": [
+        "Do NOT enter contaminated area without appropriate PPE — refer to Protocol 10-1",
+        "Nerve agents are highly toxic — minimal exposure can be lethal",
+        "Decontamination (remove clothing, copious water irrigation) before EMS treatment",
+        "Activate CHEMPACK/MEDDRUN if nerve agent antidote kits needed — refer to Protocol 10-4",
+        "Notify online medical control and receiving hospital immediately"
+      ]
+    },
+    {
+      "title": "SLUDGEM — Cholinergic Toxidrome Recognition",
+      "content": [
+        "S — Salivation (excessive drooling)",
+        "L — Lacrimation (excessive tearing)",
+        "U — Urination (incontinence)",
+        "D — Defecation (incontinence)",
+        "G — GI distress (nausea, vomiting, cramping)",
+        "E — Emesis (vomiting)",
+        "M — Muscle twitching or spasm",
+        "Additional signs: bronchospasm, bronchorrhea, bradycardia, constricted pupils, seizures, loss of consciousness, apnea",
+        "Constricted pupils with SLUDGEM findings indicate nerve agent / organophosphate toxicity, but constricted pupils may be absent with localized dermal exposure"
+      ]
+    },
+    {
+      "title": "Nerve Agent Antidote Kit Definitions",
+      "content": [
+        "DUODOTE Auto-Injector Kit (standard Michigan CHEMPACK kit):",
+        "  — Each kit contains: 2.1 mg Atropine + 600 mg Pralidoxime (2-PAM) in auto-injector",
+        "  — Administered as a single auto-injector injection (anterolateral thigh or deltoid through clothing)",
+        "MARK I Auto-Injector Kit (older format, may be available):",
+        "  — Each kit contains: 2 mg Atropine (separate injector) + 600 mg Pralidoxime (separate injector)",
+        "  — Two separate auto-injectors administered sequentially",
+        "NOTE: For dosing purposes in this protocol, 1 NA kit = 1 Duodote OR 1 Mark I set"
+      ]
+    },
+    {
+      "title": "Symptom Severity Classification",
+      "content": [
+        "THRESHOLD / SELF-RESCUE: dim vision, tearing, runny nose, nausea/vomiting, abdominal cramps, or shortness of breath with positive evidence of nerve agent or organophosphate on site — Medical Control order required",
+        "MILD: threshold symptoms plus constricted pupils, muscle twitching, increased tearing/drooling/runny nose, diaphoresis, nausea/vomiting, abdominal cramps, or diarrhea — Medical Control order required",
+        "MODERATE: SLUDGEM with constricted pupils, urinary incontinence, respiratory distress with wheezing, or severe vomiting — 2 NA kits for adults >8 years",
+        "SEVERE: Loss of consciousness, seizures, apnea, severe bronchospasm/bronchorrhea, cardiovascular collapse — 3 NA kits (max initial dose per chart)"
+      ]
+    },
+    {
+      "title": "Chart A — Adult Dosing (>8 years or >25 kg)",
+      "content": [
+        "NOTE: Adult kit threshold for nerve agent is >8 years (NOT the standard Michigan >14yr pediatric cut-off)",
+        "THRESHOLD / SELF-RESCUE symptoms with positive evidence of nerve agent or organophosphate on site:",
+        "  — 1 NA kit for self-rescue only with Medical Control order",
+        "MILD symptoms and signs:",
+        "  — 1 Duodote kit (2.1mg atropine + 600mg pralidoxime) IM",
+        "  — Medical Control order required",
+        "MODERATE symptoms (SLUDGEM, conscious, muscle weakness):",
+        "  — 2 Duodote kits IM immediately",
+        "  — Required condition: constricted pupils",
+        "SEVERE symptoms (LOC, seizure, apnea, cardiovascular collapse):",
+        "  — 3 Duodote kits IM immediately",
+        "  — Required condition: constricted pupils",
+        "  — If 3 NA kits are used, administer first dose of available benzodiazepine",
+        "  — Additional atropine for continued secretions requires Medical Control orders",
+        "ATROPINE ENDPOINT: dry secretions, adequate ventilation — NOT heart rate or pupil size",
+        "SEIZURE: Midazolam per Protocol 7-28 (seizure protocol); benzodiazepines are first-line for nerve agent seizures"
+      ]
+    },
+    {
+      "title": "Chart B — Pediatric Dosing (<8 years or <25 kg)",
+      "content": [
+        "NOTE: Pediatric kit threshold for nerve agent is <8 years (NOT the standard Michigan ≤14yr cut-off)",
+        "Pediatric patients <8yr: use auto-injector in outer mid-thigh (anterolateral); administer through clothing if necessary",
+        "NON-SEVERE signs/symptoms (mild or moderate symptoms as above):",
+        "  — 1 NA kit when required conditions are met",
+        "  — Required conditions: threshold symptoms plus positive evidence of nerve agent or organophosphate on site; Medical Control order required",
+        "SEVERE signs/symptoms (constricted pupils, unconsciousness, seizures, severe difficulty breathing):",
+        "  — 1 NA kit",
+        "  — Required condition: severe breathing difficulty or weakness",
+        "If NA kit is not available: give atropine auto-injector 2 mg IM for every 1 NA kit required OR atropine 2 mg IV/IM for every 1 NA kit required; give pralidoxime 600 mg IV/IM for every 1 NA kit required when available",
+        "For continued secretions after initial NA kit dosing, contact Medical Control for additional atropine: pediatric 0.05 mg/kg IV/IM",
+        "SEIZURE: Midazolam per pediatric dosing in Protocol 7-28"
+      ]
+    },
+    {
+      "title": "Treatment Algorithm",
+      "content": [
+        "1. Ensure scene safety and PPE — do NOT self-contaminate",
+        "2. Remove patient from exposure; initiate decontamination (remove clothing, water irrigation)",
+        "3. Assess for SLUDGEM and classify severity",
+        "4. Administer NA kits per Chart A (>8yr) or Chart B (<8yr) based on symptom severity and required conditions",
+        "5. Establish airway — suction secretions aggressively; bag-valve-mask ventilation for apnea",
+        "6. Oxygen — high-flow via NRB; BVM with 100% O2 for apnea/severe distress",
+        "7. Treat seizures with midazolam — benzodiazepines are FIRST-LINE for nerve agent seizures",
+        "8. IV/IO access if possible — do NOT delay NA kit administration for IV",
+        "9. For continued secretions after initial NA kit dosing, contact Medical Control for additional atropine orders",
+        "10. Contact online medical control — required before self-rescue dosing and mild adult/pediatric non-severe dosing; advise of agent, kits given, patient response",
+        "11. Notify CHEMPACK/MEDDRUN coordinator if kits used — Protocol 10-4",
+        "12. Transport urgently to nearest appropriate facility; continue atropine as needed"
+      ]
+    },
+    {
+      "title": "Special Considerations",
+      "content": [
+        "Pralidoxime (2-PAM) in NA kits: most effective when given EARLY (within 6 hours of exposure) — aging of nerve agent-enzyme bond decreases pralidoxime effectiveness over time",
+        "Atropine alone is effective for secretion/bronchospasm management even after pralidoxime window has passed",
+        "Cardiac monitoring: bradycardia common — treat with atropine as part of NA kit administration",
+        "Organophosphate pesticide exposure uses the same NA kit / atropine / pralidoxime framework as nerve agents",
+        "Additional atropine after initial NA kit dosing requires Medical Control order; adult continued secretions dose is atropine 2 mg IV/IM, pediatric dose is 0.05 mg/kg IV/IM"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [
+        "Duodote / Mark I NA Kits — 1 NA kit means 1 Duodote OR 1 Mark I set; Chart A (>8yr) and Chart B (<8yr)",
+        "Atropine if NA kit unavailable — 2 mg IM auto-injector or 2 mg IV/IM for every 1 NA kit required",
+        "Pralidoxime if NA kit unavailable — 600 mg IV/IM for every 1 NA kit required when available",
+        "Midazolam or diazepam — seizure treatment per protocol; severe symptoms should receive benzodiazepine even if not obviously seizing",
+    "Oxygen — high-flow for all patients"
+  ],
+
+  "deterioration_flags": [
+    "Apnea — immediate BVM ventilation; suction secretions; administer NA kits rapidly",
+    "Seizures — midazolam first-line; may require repeated doses; contact online MC",
+    "Cardiovascular collapse — continue atropine titration; contact online MC for additional antidote guidance",
+    "EMS provider develops symptoms — exit immediately; self-administer 1 NA kit if available; notify IC and medical control"
+  ],
+
+    "scope_notes": "Nerve agent antidote kits (Duodote/Mark I) are obtained from CHEMPACK/MEDDRUN pre-positioned caches — refer to Protocol 10-4 for activation. The adult/pediatric split for NA kit dosing is 8 years (NOT the standard Michigan 14yr threshold). Medical Control contact is required before self-rescue criteria and mild/non-severe dosing. Additional atropine for continued secretions requires Medical Control order."
+}

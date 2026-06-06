@@ -1,0 +1,93 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-12 Oxygen Administration (Revised 1/5/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_oxygen_administration",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Oxygen Administration",
+  "version": "2023-01-05",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-12: Oxygen Administration — MDHHS Approved 1/5/2023",
+  "purpose": "Govern prehospital supplemental oxygen delivery device selection and flow rates. Oxygen is indicated for real or suspected hypoxia, respiratory or cardiac arrest, respiratory distress, selected medical complaints when pulse oximetry is unavailable or SpO2 is less than 94%, significant trauma, shock, complicated childbirth, routine home oxygen use, and suspected carbon monoxide or cyanide poisoning regardless of pulse oximetry. There are no absolute contraindications. COPD patients should receive oxygen when clinically indicated; monitor for respiratory depression but do not withhold.",
+  "sections": [
+    {
+      "title": "Indications",
+      "reference": "Michigan Protocol 7-12: Oxygen — Indications",
+      "points": [
+        "Real or suspected hypoxia",
+        "Respiratory or cardiac arrest",
+        "Respiratory distress",
+        "Chest pain, stroke, seizures, or altered mental status when pulse oximetry is unavailable or oxygen saturation is less than 94%",
+        "General trauma beyond isolated trauma — significant trauma should receive oxygen regardless of pulse oximeter reading",
+        "Shock",
+        "Suspected carbon monoxide and/or cyanide poisoning, including smoke inhalation, regardless of pulse oximetry value",
+        "Complicated childbirth",
+        "Patients who normally use supplemental oxygen as part of routine care",
+        "Any condition in which pulse oximetry, when available, is less than 94%"
+      ]
+    },
+    {
+      "title": "Contraindications and Targets",
+      "reference": "Michigan Protocol 7-12: Oxygen — Contraindications",
+      "points": [
+        "There are no absolute contraindications to oxygen administration",
+        "When pulse oximetry is available, guide supplemental oxygen to maintain oxygen saturations greater than 94%",
+        "COPD patients may develop respiratory depression with high oxygen concentrations; oxygen should still be administered when clinically indicated, with monitoring and assisted ventilations when indicated"
+      ]
+    },
+    {
+      "title": "Delivery Devices and Flow Rates",
+      "reference": "Michigan Protocol 7-12: Oxygen — Devices",
+      "points": [
+        "NASAL CANNULA (NC): 2–6 LPM — appropriate for most patients with mild to moderate hypoxia and minimal or no respiratory distress; most patients tolerate nasal cannulas",
+        "NON-REBREATHER MASK (NRB): 8–15 LPM — adjust flow to keep the reservoir bag inflated; use for spontaneously breathing patients with moderate to severe respiratory distress and suspected carbon monoxide and/or cyanide poisoning, including smoke inhalation",
+        "CPAP: per CPAP Administration-Procedure Protocol (7-5); nasal cannula may supplement oxygenation during CPAP if the seal remains adequate",
+        "BVM with supplemental oxygen: 15 LPM; use two rescuers when available, with one maintaining a two-hand mask seal and the second ventilating every six seconds",
+        "Passive oxygenation via nasal cannula may augment BVM ventilations before advanced airway placement"
+      ]
+    },
+    {
+      "title": "Special Considerations",
+      "reference": "Michigan Protocol 7-12: Oxygen — Special Considerations",
+      "points": [
+        "NO ABSOLUTE CONTRAINDICATIONS to oxygen in the prehospital setting",
+        "COPD patients: administer oxygen when clinically indicated — monitor for respiratory depression; do NOT withhold oxygen from a hypoxic COPD patient out of fear of hypoxic drive suppression",
+        "PASSIVE OXYGEN: NC may be used to provide passive supplemental oxygen augmenting BVM ventilation before advanced airway placement"
+      ]
+    },
+    {
+      "title": "Pediatric Considerations",
+      "reference": "Michigan Protocol 7-12: Oxygen — Pediatric",
+      "points": [
+        "BLOW-BY oxygen is ineffective for delivering adequate FiO2 in children — avoid if possible",
+        "Use pediatric nasal cannula when the child will tolerate it",
+        "If blow-by technique is used because it is the only tolerated option, keep the mask as close to the face as possible and use high flow, for example approximately 15 LPM",
+        "For patients with tracheostomies or stomas: use pediatric-sized masks over the stoma opening"
+      ]
+    }
+  ],
+  "mca_selections_required": [],
+  "key_drugs": [],
+  "deterioration_flags": [
+    "SpO2 remains less than 94% or work of breathing worsens despite supplemental oxygen — reassess airway, delivery device, and need for BVM, CPAP, or airway management per applicable protocols",
+    "Carbon monoxide or cyanide poisoning — apply NRB regardless of SpO2 reading",
+    "COPD with respiratory depression on high-flow O2 — reassess flow rate; consider assisted ventilation if respiratory failure develops; do not withhold O2 if patient is hypoxic"
+  ],
+  "scope_notes": [
+    "All EMS provider levels",
+    "NC: 2–6 LPM — mild/moderate hypoxia",
+    "NRB: 8–15 LPM — moderate/severe distress; CO or cyanide poisoning regardless of SpO2",
+    "BVM: 15 LPM with two rescuers preferred",
+    "No absolute contraindications — COPD: administer when clinically indicated; monitor for respiratory depression",
+    "Pediatric blow-by is ineffective and should be avoided when possible — use pediatric NC when tolerated; if blow-by is the only tolerated option, hold the mask close and use high flow such as ~15 LPM"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "oxygen_therapy"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

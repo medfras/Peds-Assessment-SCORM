@@ -1,0 +1,62 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-28R Ipratropium Bromide (Revised 8/11/2023, MDHHS Reviewed 2023). Base Michigan template.",
+  "id": "mi_base_medication_ref_ipratropium_bromide",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Ipratropium Bromide",
+  "version": "2023-08-11",
+  "protocol_reference": "Michigan Medication Protocol Section 9-28R: Ipratropium Bromide — MDHHS Approved 8/11/2023, Reviewed 2023",
+
+  "pharmacological_category": "Anticholinergic Bronchodilator",
+
+  "routes": ["Nebulized"],
+
+  "indications": [
+    "Continued wheezing after albuterol treatment",
+    "Anaphylaxis with persistent bronchospasm",
+    "Respiratory distress with bronchospasm not fully responsive to albuterol"
+  ],
+
+  "contraindications": [
+    "Known hypersensitivity to atropine or atropine derivatives (ipratropium is structurally related to atropine)"
+  ],
+
+  "precautions": [
+    "Used as second-line bronchodilator after albuterol — not first-line",
+    "May combine with albuterol in same nebulizer as 'DuoNeb' combination treatment",
+    "Systemic anticholinergic effects are minimal with nebulized route at standard doses"
+  ],
+
+  "expected_effects": [
+    "Bronchodilation via muscarinic receptor blockade (anticholinergic)",
+    "Additive bronchodilation when combined with albuterol",
+    "Onset 15-30 minutes; duration 4-6 hours"
+  ],
+
+  "side_effects": [
+    "Dry mouth",
+    "Mild tachycardia",
+    "Blurred vision if medication contacts eyes (avoid eye exposure)"
+  ],
+
+  "notes": [
+    "Standard dose: 500 mcg (0.5 mg) in 2.5 mL NS nebulized",
+    "May combine with albuterol 2.5 mg/3 mL in same nebulizer cup as 'DuoNeb' combination",
+    "Administer after albuterol for continued wheezing — not as first-line treatment"
+  ],
+
+  "dosing": [
+    {
+      "population": "Adult (>14 yr) and Pediatric (≤14 yr)",
+      "route": "Nebulized",
+      "dose": "500 mcg (0.5 mg) in 2.5 mL NS",
+      "notes": "Administer after albuterol for continued wheezing; may combine with albuterol 2.5 mg/3 mL as DuoNeb"
+    }
+  ],
+
+  "used_in_protocols": ["Respiratory Distress (Asthma/COPD)", "Anaphylaxis — persistent bronchospasm"]
+}

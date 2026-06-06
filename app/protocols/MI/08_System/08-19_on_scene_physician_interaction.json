@@ -1,0 +1,71 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-19 On-Scene Physician Interaction (Revised 3/24/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_on_scene_physician_interaction",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "On-Scene Physician Interaction",
+  "version": "2023-03-24",
+  "protocol_reference": "Michigan System Protocol Section 8-19: On-Scene Physician Interaction — MDHHS Approved 3/24/2023",
+
+  "purpose": "Govern EMS provider interaction with physicians encountered on scene. An on-scene physician may offer clinical assistance; however, EMS providers are operating under the authority of their medical director and MCA protocols. An on-scene physician does not automatically assume medical control authority. Formal verification and process are required for an on-scene physician to assume medical control.",
+
+  "sections": [
+    {
+      "title": "On-Scene Physician — Initial Response",
+      "reference": "Michigan Protocol 8-19: On-Scene Physician — Initial Response",
+      "points": [
+        "A physician identifying themselves on scene should be politely acknowledged and their assistance offered an appropriate role",
+        "Request physician identification: name, medical license, specialty",
+        "An on-scene physician may assist with patient care as a team member under EMS direction",
+        "An on-scene physician does NOT automatically assume command of the EMS response or medical control authority"
+      ]
+    },
+    {
+      "title": "On-Scene Physician Assuming Medical Control",
+      "reference": "Michigan Protocol 8-19: On-Scene Physician — Assuming MC",
+      "points": [
+        "An on-scene physician may assume medical control ONLY if ALL of the following are met:",
+        "1. The physician identifies themselves by name and medical license",
+        "2. The physician is willing to assume full medical and legal responsibility for the patient on scene and during transport",
+        "3. The physician accompanies the patient throughout transport if assuming medical control",
+        "4. Online medical control is contacted and authorizes the on-scene physician to assume medical control",
+        "If any of these conditions are NOT met: continue under standard protocols; contact online MC for guidance",
+        "Document: physician name, license number, contact with online MC, and authorization in PCR"
+      ]
+    },
+    {
+      "title": "Conflicting Orders",
+      "reference": "Michigan Protocol 8-19: On-Scene Physician — Conflicting Orders",
+      "points": [
+        "If an on-scene physician's requested action conflicts with EMS protocol: contact online MC for guidance",
+        "EMS providers are NOT obligated to perform skills outside their scope simply because an on-scene physician requests it",
+        "If an on-scene physician requests a potentially harmful action: decline; contact online MC immediately",
+        "Document all physician-requested actions that conflict with protocol, the MC response, and the ultimate treatment decision"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "On-scene physician requests action outside EMS scope — decline; contact online MC; document",
+    "On-scene physician assumes MC without online MC authorization — contact online MC immediately; continue standard protocols until authorization received"
+  ],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "On-scene physician does NOT automatically assume medical control",
+    "Verify: name, license, specialty",
+    "Physician may assist as team member without assuming MC",
+    "Assuming MC requires: identification, willingness to accept legal responsibility, accompaniment during transport, AND online MC authorization",
+    "Conflicting orders: contact online MC",
+    "Never perform skills outside scope at physician request",
+    "Document physician name, license, MC contact, authorization"
+  ]
+}

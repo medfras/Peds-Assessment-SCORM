@@ -1,0 +1,99 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-18 Pleural Decompression (Revised 2/13/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_pleural_decompression",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (Paramedic only)",
+  "jurisdiction": "Michigan",
+  "condition": "Pleural Decompression — Needle Thoracostomy",
+  "version": "2023-02-13",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-18: Pleural Decompression — MDHHS Approved 2/13/2023",
+
+  "purpose": "PARAMEDIC USE ONLY. Needle thoracostomy is indicated for SUSPECTED TENSION PNEUMOTHORAX (not simple pneumothorax) with hemodynamic compromise AND severe respiratory distress. Clinical diagnosis is required — do not delay for confirmatory imaging.",
+
+  "sections": [
+    {
+      "title": "Indications",
+      "reference": "Michigan Protocol 7-18: Pleural Decompression — Indications",
+      "points": [
+        "PARAMEDIC USE ONLY",
+        "SUSPECTED TENSION PNEUMOTHORAX (NOT simple pneumothorax) with ALL of the following:",
+        "— Severe respiratory distress",
+        "— Hemodynamic compromise (hypotension and/or shock)",
+        "— Unilateral absent or significantly diminished breath sounds",
+        "ALSO CONSIDER in PEA arrest: after other reversible causes have been addressed and PEA persists — consider needle decompression bilaterally",
+        "Traumatic cardiac arrest: refer to Traumatic Arrest Protocol for guidance on needle decompression in arrest"
+      ]
+    },
+    {
+      "title": "Clinical Presentation — Tension PTX",
+      "reference": "Michigan Protocol 7-18: Pleural Decompression — Presentation",
+      "points": [
+        "Severe respiratory distress PLUS hypotension",
+        "OR: difficult-to-ventilate hypotensive apneic patient with a confirmed correctly-positioned advanced airway (ETT or SGA)",
+        "Unilateral absent or diminished breath sounds",
+        "May have tracheal deviation (late finding — not required for diagnosis)",
+        "Distended neck veins (may be absent in hypovolemia)",
+        "Clinical diagnosis — do not wait for imaging confirmation in the prehospital setting"
+      ]
+    },
+    {
+      "title": "Equipment",
+      "reference": "Michigan Protocol 7-18: Pleural Decompression — Equipment",
+      "points": [
+        "ADULT: needle minimum 14 gauge, minimum 3.5 inches in length, with NO flow-restricting valve (open system or one-way valve only)",
+        "PEDIATRIC: 18 gauge or 20 gauge needle; no flow-restricting valve",
+        "COMMERCIAL DEVICE: per MCA selection — separate MCA selection required for adult and pediatric commercial devices"
+      ]
+    },
+    {
+      "title": "Insertion Sites",
+      "reference": "Michigan Protocol 7-18: Pleural Decompression — Sites",
+      "points": [
+        "PREFERRED ADULT SITE: anterior axillary line, 4th intercostal space — insert just ABOVE the 5th rib (to avoid neurovascular bundle below the rib)",
+        "ALTERNATIVE ADULT SITE: midaxillary line, 4th intercostal space — insert just ABOVE the 5th rib",
+        "PREFERRED PEDIATRIC SITE: midclavicular line, 2nd intercostal space — insert just ABOVE the 3rd rib",
+        "CRITICAL: Always insert ABOVE the rib (neurovascular bundle runs along the inferior margin of each rib)",
+        "Insert perpendicular to chest wall; listen for rush of air upon entry",
+        "Secure needle/catheter in place; do not remove"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Commercial Pleural Decompression Device — Adult",
+      "description": "MCA must select whether an MCA-approved commercial needle thoracostomy device may be used in adult patients in addition to standard needle/catheter technique",
+      "options": ["Authorized — commercial device per MCA-approved brand/model", "Not authorized — standard needle/catheter only"],
+      "selected": null
+    },
+    {
+      "item": "Commercial Pleural Decompression Device — Pediatric",
+      "description": "MCA must select whether an MCA-approved commercial needle thoracostomy device may be used in pediatric patients",
+      "options": ["Authorized — commercial device per MCA-approved brand/model", "Not authorized — standard needle/catheter only"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "No improvement after needle decompression — reassess breath sounds; consider bilateral decompression; check needle position and patency",
+    "Needle occlusion or kinking — repeat decompression at same or alternate site",
+    "Worsening hypotension after decompression — reassess; consider other reversible causes (hemorrhage, tamponade, tension on opposite side)"
+  ],
+
+  "scope_notes": [
+    "PARAMEDIC USE ONLY",
+    "Indication: suspected TENSION pneumothorax (not simple PTX) with hemodynamic compromise + severe respiratory distress + unilateral absent/diminished breath sounds",
+    "Also consider in PEA after other reversible causes addressed",
+    "Adult needle: minimum 14 ga, minimum 3.5 inches, no flow-restricting valve",
+    "Pediatric needle: 18 ga or 20 ga, no flow-restricting valve",
+    "Preferred adult site: anterior axillary line, 4th ICS above 5th rib",
+    "Preferred pediatric site: midclavicular line, 2nd ICS above 3rd rib",
+    "ALWAYS insert above the rib — neurovascular bundle is below the rib",
+    "Commercial device per MCA selection (separate for adult and pediatric)"
+  ]
+}

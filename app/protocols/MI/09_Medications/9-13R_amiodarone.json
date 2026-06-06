@@ -1,0 +1,87 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-13R Amiodarone (Revised 12/10/2025, MDHHS Reviewed 2026). Base Michigan template.",
+  "id": "mi_base_medication_ref_amiodarone",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Amiodarone",
+  "version": "2025-12-10",
+  "protocol_reference": "Michigan Medication Protocol Section 9-13R: Amiodarone — MDHHS Approved 1/5/2026, Reviewed 2026",
+
+  "pharmacological_category": "Antidysrhythmic — Class III",
+
+  "routes": ["IV", "IO"],
+
+  "indications": [
+    "Cardiac arrest — ventricular fibrillation (V-Fib) or pulseless ventricular tachycardia (pVT) refractory to defibrillation",
+    "Unstable tachycardia — irregular narrow complex tachycardia",
+    "Unstable tachycardia — regular wide complex tachycardia",
+    "Suspected ventricular tachycardia with pulse"
+  ],
+
+  "contraindications": [
+    "Cardiogenic shock (severe hemodynamic instability)",
+    "Severe sinus node dysfunction without pacemaker",
+    "Bradycardia with syncope without pacemaker",
+    "Known hypersensitivity to amiodarone or iodine"
+  ],
+
+  "precautions": [
+    "Hypotension is a common side effect — monitor BP closely",
+    "Can prolong QT interval — risk of Torsades de Pointes in pre-existing QT prolongation",
+    "Dilute for slow infusion in stable tachycardia indications (150 mg over 10 minutes)",
+    "Bolus for cardiac arrest indications — do not slow push in pulseless arrest"
+  ],
+
+  "expected_effects": [
+    "Reduction in dysrhythmia recurrence in V-Fib/pVT",
+    "Slowing of ventricular rate in tachyarrhythmias",
+    "Conversion or rate control in ventricular tachycardia"
+  ],
+
+  "side_effects": [
+    "Hypotension (most common in prehospital use)",
+    "Bradycardia",
+    "QT prolongation",
+    "Phlebitis at IV site (peripheral administration)"
+  ],
+
+  "notes": [
+    "Cardiac arrest: give 300 mg IV/IO bolus; may repeat 150 mg once",
+    "Stable tachycardia: 150 mg slow IV over 10 minutes — do NOT bolus in perfusing rhythm",
+    "Pediatric arrest: 5 mg/kg IV/IO; max first dose 300 mg; may repeat twice; max total 450 mg",
+    "Suspected V-Tach with pulse: 150 mg over 10 minutes; max total 450 mg"
+  ],
+
+  "dosing": [
+    {
+      "population": "Adult (>14 yr) — cardiac arrest (V-Fib/pVT)",
+      "route": "IV/IO bolus",
+      "dose": "300 mg IV/IO; may repeat 150 mg once",
+      "notes": "Give after 3rd shock in refractory V-Fib/pVT"
+    },
+    {
+      "population": "Adult (>14 yr) — unstable tachycardia (narrow irregular or wide regular with pulse)",
+      "route": "IV slow infusion",
+      "dose": "150 mg over 10 minutes",
+      "notes": "Do NOT bolus in perfusing rhythm; dilute in D5W when available"
+    },
+    {
+      "population": "Adult (>14 yr) — suspected V-Tach with pulse",
+      "route": "IV slow infusion",
+      "dose": "150 mg over 10 minutes; may repeat; max total 450 mg",
+      "notes": "Monitor BP during infusion; stop if hypotension develops"
+    },
+    {
+      "population": "Pediatric (≤14 yr) — cardiac arrest",
+      "route": "IV/IO bolus",
+      "dose": "5 mg/kg; max single dose 300 mg; may repeat twice; max total 450 mg",
+      "notes": "Only in refractory V-Fib/pVT"
+    }
+  ],
+
+  "used_in_protocols": ["Cardiac Arrest (V-Fib/pVT)", "Tachycardia — Narrow Complex Irregular", "Tachycardia — Wide Complex"]
+}

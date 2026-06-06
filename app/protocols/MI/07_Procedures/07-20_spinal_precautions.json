@@ -1,0 +1,88 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-20 Spinal Precautions (Revised 5/26/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_spinal_precautions",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Spinal Precautions",
+  "version": "2023-05-26",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-20: Spinal Precautions — MDHHS Approved 5/26/2023",
+  "purpose": "Govern prehospital spinal precautions. Positive spinal assessment → precautions. Penetrating trauma requires precautions only if focal neurological deficit is present. Airway takes priority over spinal stability. Rigid immobilization is avoided in combative patients.",
+  "sections": [
+    {
+      "title": "Indications for Spinal Precautions",
+      "reference": "Michigan Protocol 7-20: Spinal — Indications",
+      "points": [
+        "Perform spinal assessment on all patients with a mechanism of injury that could cause spinal injury",
+        "POSITIVE SPINAL ASSESSMENT: apply spinal precautions when assessment is positive",
+        "PENETRATING TRAUMA: spinal precautions are indicated ONLY if a focal neurological deficit is present (do not apply cervical collar or immobilize in penetrating trauma without neuro deficit)",
+        "PATIENTS ≥ 65 YEARS with a head strike mechanism: apply c-collar even if the spinal assessment is NEGATIVE"
+      ]
+    },
+    {
+      "title": "Spinal Precaution Techniques",
+      "reference": "Michigan Protocol 7-20: Spinal — Techniques",
+      "points": [
+        "Apply cervical collar in neutral alignment",
+        "Do NOT tape the patient's head directly to the cot/board — support the head with padding and straps while maintaining neutral alignment",
+        "Maintain manual inline spinal stabilization during patient movement and transfers",
+        "Ambulatory patient with positive spinal assessment: apply c-collar and place directly on stretcher/cot — avoid unnecessary transfers to long backboard",
+        "Major trauma requiring extrication: long backboard may be used DURING extrication for mechanical advantage; reassess need after extrication"
+      ]
+    },
+    {
+      "title": "Rapid Extrication",
+      "reference": "Michigan Protocol 7-20: Spinal — Rapid Extrication",
+      "points": [
+        "Rapid extrication (expedited movement without full packaging) is indicated when the patient has:",
+        "— Airway or breathing compromise requiring immediate intervention",
+        "— Hemodynamic shock",
+        "— Unconsciousness or rapidly deteriorating mental status",
+        "Maintain as much spinal stabilization as practical during rapid extrication",
+        "Document reason for rapid extrication in PCR"
+      ]
+    },
+    {
+      "title": "Special Circumstances",
+      "reference": "Michigan Protocol 7-20: Spinal — Special Circumstances",
+      "points": [
+        "PREGNANT PATIENTS: apply spinal precautions with uterine displacement to the left (tilt board or manually displace uterus) to prevent aortocaval compression",
+        "COMBATIVE PATIENT: rigid immobilization (long backboard, c-collar) should be avoided if patient movement against restraints could cause more injury — use clinical judgment; contact Medical Control",
+        "AIRWAY: airway management ALWAYS takes priority over spinal stability — manage the airway first",
+        "PEDIATRIC CAR SEATS:",
+        "— Rear-facing car seat: leave child in seat if stable and seat can be secured in the vehicle",
+        "— Car seat with high back (convertible/booster with back): immobilize child in seat, then remove seat from vehicle; immobilize to long board",
+        "— Booster seat without back: treat as standard spinal precaution; remove from seat"
+      ]
+    }
+  ],
+  "mca_selections_required": [],
+  "key_drugs": [],
+  "deterioration_flags": [
+    "Airway compromise with spinal precautions — manage airway FIRST; spinal stability is secondary to airway",
+    "Combative patient in spinal immobilization — avoid rigid immobilization if movement against restraints worsens risk; contact MC",
+    "Penetrating trauma — spinal precautions ONLY if focal neurological deficit present; do not apply c-collar without neuro deficit in penetrating mechanism"
+  ],
+  "scope_notes": [
+    "All EMS provider levels",
+    "Positive spinal assessment → spinal precautions",
+    "Penetrating trauma: precautions only if focal neuro deficit",
+    "Age ≥ 65 with head strike: c-collar even if negative assessment",
+    "Do NOT tape head directly to cot",
+    "Rapid extrication: airway/breathing compromise, shock, unconsciousness",
+    "Pregnant: uterine displacement to left during immobilization",
+    "Airway ALWAYS takes priority over spinal stability"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "pediatric_trauma",
+      "spinal_motion_restriction",
+      "trauma"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

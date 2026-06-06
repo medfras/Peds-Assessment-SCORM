@@ -1,0 +1,134 @@
+[
+  {
+    "text": "📡 PAT Pearl: The Pediatric Assessment Triangle — Appearance, Work of Breathing, Circulation to skin — is assessed in seconds before you ever touch the patient.",
+    "category": "pediatrics"
+  },
+  {
+    "text": "📡 Vitals Pearl: Normal adult respiratory rate is 12–20/min. Below 12 or above 24 is a red flag. Don't skip counting — estimate and you'll miss it.",
+    "category": "assessment"
+  },
+  {
+    "text": "📡 Airway Pearl: The most common airway obstruction in an unconscious patient is the tongue. A simple head-tilt chin-lift or jaw thrust fixes it before you reach for any device.",
+    "category": "airway"
+  },
+  {
+    "text": "📡 Shock Pearl: Tachycardia is often the first sign of shock. Hypotension is a late and ominous finding — by the time BP drops, compensatory mechanisms are already failing.",
+    "category": "shock"
+  },
+  {
+    "text": "📡 Stroke Pearl: Cincinnati Prehospital Stroke Scale — facial droop, arm drift, abnormal speech. One positive finding = 72% chance of stroke. Two or three = 85%.",
+    "category": "neuro"
+  },
+  {
+    "text": "📡 SAMPLE Pearl: Signs/Symptoms, Allergies, Medications, Pertinent history, Last oral intake, Events leading up. A complete SAMPLE history is the backbone of your patient handoff.",
+    "category": "assessment"
+  },
+  {
+    "text": "📡 Peds Pearl: Infants breathe primarily through their nose. Even mild nasal congestion can cause significant respiratory distress in a neonate.",
+    "category": "pediatrics"
+  },
+  {
+    "text": "📡 Cardiac Pearl: The four classic signs of right-sided heart failure — JVD, peripheral edema, ascites, hepatomegaly. Left-sided failure presents with pulmonary edema and dyspnea.",
+    "category": "cardiac"
+  },
+  {
+    "text": "📡 Trauma Pearl: DCAP-BTLS — Deformities, Contusions, Abrasions, Punctures, Burns, Tenderness, Lacerations, Swelling. Run this on every body region during your rapid trauma assessment.",
+    "category": "trauma"
+  },
+  {
+    "text": "📡 Burns Pearl: Rule of Nines — head 9%, each arm 9%, chest 9%, abdomen 9%, each thigh 9%, each lower leg 9%, genitalia 1%. In kids, the head is proportionally larger.",
+    "category": "trauma"
+  },
+  {
+    "text": "📡 OB Pearl: Eclampsia is seizures in a pregnant patient with preeclampsia. Magnesium sulfate is the treatment of choice. Transport immediately — this is a true emergency.",
+    "category": "ob"
+  },
+  {
+    "text": "📡 Diabetic Pearl: Hypoglycemia and hyperglycemia can look identical in the field. When in doubt, check the blood glucose. A hypoglycemic patient can deteriorate rapidly.",
+    "category": "medical"
+  },
+  {
+    "text": "📡 Airway Pearl: Capnography (EtCO2) normal range is 35–45 mmHg. Low EtCO2 suggests hyperventilation or poor perfusion. High EtCO2 suggests hypoventilation or rising ICP.",
+    "category": "airway"
+  },
+  {
+    "text": "📡 Peds Pearl: Bradycardia in a pediatric patient is treated as a perfusion problem first. Check for hypoxia before reaching for atropine — the most common cause is hypoxia.",
+    "category": "pediatrics"
+  },
+  {
+    "text": "📡 Trauma Pearl: Tension pneumothorax — absent breath sounds, tracheal deviation (late), JVD, hypotension, tachycardia. Needle decompression goes in the 2nd intercostal space, midclavicular line.",
+    "category": "trauma"
+  },
+  {
+    "text": "📡 Tox Pearl: Opioid toxidrome — miosis, respiratory depression, decreased LOC. Naloxone 0.4–2 mg IV/IM/IN. Titrate to adequate respirations, not full reversal — avoid acute withdrawal.",
+    "category": "toxicology"
+  },
+  {
+    "text": "📡 GCS Pearl: Glasgow Coma Scale — Eye (1–4), Verbal (1–5), Motor (1–6). Max is 15, min is 3. A GCS of 8 or less is the classic threshold for airway compromise.",
+    "category": "neuro"
+  },
+  {
+    "text": "📡 Cardiac Pearl: In a STEMI, time is muscle. Every 30-minute delay in reperfusion adds roughly 7.5% mortality. Your 12-lead and early notification are the most important interventions you can make.",
+    "category": "cardiac"
+  },
+  {
+    "text": "📡 Environment Pearl: Heat stroke — hot, dry skin, altered mental status, temp > 104°F. Aggressive cooling is the treatment. Heat exhaustion patients are still sweating and usually alert.",
+    "category": "environmental"
+  },
+  {
+    "text": "📡 OPQRST Pearl: Onset, Provocation, Quality, Radiation, Severity, Time. For chest pain specifically, radiation to the jaw or left arm and diaphoresis dramatically increase the likelihood of ACS.",
+    "category": "assessment"
+  },
+  {
+    "text": "📡 Respiratory Pearl: Asthma — bronchospasm + inflammation. A silent chest in a known asthmatic is critical; no airflow means no wheeze. That patient is moving toward respiratory failure.",
+    "category": "respiratory"
+  },
+  {
+    "text": "📡 Shock Pearl: Neurogenic shock — hypotension without compensatory tachycardia. Think spinal cord injury. Warm, dry skin below the injury level differentiates it from hemorrhagic shock.",
+    "category": "shock"
+  },
+  {
+    "text": "📡 CO Pearl: Carbon monoxide binds hemoglobin with 250× the affinity of oxygen. Pulse ox will read falsely normal. Headache + flu-like symptoms + multiple patients from the same location = CO until proven otherwise.",
+    "category": "toxicology"
+  },
+  {
+    "text": "📡 Peds Vitals: Normal pediatric heart rate decreases with age — neonate 120–160, infant 80–140, toddler 80–130, school age 70–110, adolescent 60–100. Tachycardia means something.",
+    "category": "pediatrics"
+  },
+  {
+    "text": "📡 Tourniquet Pearl: Apply 2–3 inches above the wound, tighten until bleeding stops, note the time. A properly applied tourniquet is safe for 2+ hours. Hesitation kills — apply it.",
+    "category": "trauma"
+  },
+  {
+    "text": "📡 Epi Pearl: Epinephrine for anaphylaxis is 0.3 mg IM in adults (0.15 mg in kids < 30 kg), given in the anterolateral thigh. It's the first-line treatment — antihistamines are adjuncts only.",
+    "category": "medical"
+  },
+  {
+    "text": "📡 Neuro Pearl: AVPU — Alert, Verbal, Pain, Unresponsive. A patient responding only to pain is roughly equivalent to a GCS of 8. Both warrant airway reassessment.",
+    "category": "neuro"
+  },
+  {
+    "text": "📡 Cardiac Pearl: PEA (Pulseless Electrical Activity) — treat the H's and T's: Hypovolemia, Hypoxia, Hydrogen ion, Hypo/Hyperkalemia, Hypothermia / Tension pneumo, Tamponade, Toxins, Thrombosis.",
+    "category": "cardiac"
+  },
+  {
+    "text": "📡 Respiratory Pearl: CPAP is most effective for cardiogenic pulmonary edema and COPD exacerbations. It reduces preload, improves oxygenation, and may prevent intubation.",
+    "category": "respiratory"
+  },
+  {
+    "text": "📡 Spinal Pearl: Current evidence supports selective spinal immobilization. NEXUS criteria — midline tenderness, altered LOC, intoxication, distracting injury, neurologic deficit. All negative = low risk.",
+    "category": "trauma"
+  },
+  {
+    "text": "📡 Seizure Pearl: Most generalized seizures self-terminate in under 5 minutes. A seizure lasting over 5 minutes or two seizures without regaining consciousness is status epilepticus — a true emergency.",
+    "category": "neuro"
+  },
+  {
+    "text": "📡 OB Pearl: Normal fetal heart rate is 110–160 bpm. During transport, position the mother in the left lateral recumbent position to relieve vena cava compression by the gravid uterus.",
+    "category": "ob"
+  },
+  {
+    "text": "📡 Assessment Pearl: Scene safety, then MOI/NOI, then number of patients, then additional resources — in that order, before you approach. The best medic is the one who goes home.",
+    "category": "assessment"
+  }
+]

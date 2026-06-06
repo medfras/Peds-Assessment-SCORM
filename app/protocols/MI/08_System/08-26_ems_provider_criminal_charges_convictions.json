@@ -1,0 +1,74 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-26 EMS Provider Criminal Charges and Convictions (Revised 5/30/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_ems_provider_criminal_charges_convictions",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "EMS Provider Criminal Charges and Convictions",
+  "version": "2023-05-30",
+  "protocol_reference": "Michigan System Protocol Section 8-26: EMS Provider Criminal Charges and Convictions — MDHHS Approved 5/30/2023",
+
+  "purpose": "Govern reporting obligations and MCA response when an EMS provider is criminally charged or convicted. Certain criminal charges and convictions may disqualify a provider from EMS practice under Michigan law. Providers and EMS agencies have mandatory reporting obligations to the MCA and MDHHS.",
+
+  "sections": [
+    {
+      "title": "Provider Reporting Obligations",
+      "reference": "Michigan Protocol 8-26: Criminal Charges — Provider Obligations",
+      "points": [
+        "EMS providers MUST report to their employing agency and MCA within 3 business days if they are:",
+        "— Arrested or charged with a felony",
+        "— Convicted of a felony or misdemeanor involving moral turpitude",
+        "— Convicted of any crime involving fraud, patient abuse, sexual misconduct, or drug-related offenses",
+        "— Subject to a criminal diversion program or consent agreement related to a criminal charge",
+        "Failure to report is an independent ground for disciplinary action"
+      ]
+    },
+    {
+      "title": "EMS Agency Reporting Obligations",
+      "reference": "Michigan Protocol 8-26: Criminal Charges — Agency Obligations",
+      "points": [
+        "EMS agencies must report to the MCA within 5 business days of learning of a provider's criminal charge or conviction covered by this protocol",
+        "EMS agencies must report to MDHHS per MDHHS notification requirements",
+        "EMS agencies must take appropriate action regarding the provider's continued deployment pending investigation and MCA review"
+      ]
+    },
+    {
+      "title": "MCA Response",
+      "reference": "Michigan Protocol 8-26: Criminal Charges — MCA Response",
+      "points": [
+        "MCA must review the nature of the criminal charge or conviction to determine if patient safety requires immediate action",
+        "MCA may suspend the provider's medical control privileges pending investigation",
+        "MCA must refer to MDHHS for license review when criminal charge or conviction may affect Michigan EMS licensure under Public Health Code",
+        "Certain convictions (patient abuse, sexual misconduct, violent felonies) are disqualifying for EMS licensure under Michigan law — MCA must notify MDHHS"
+      ]
+    },
+    {
+      "title": "Disqualifying Convictions",
+      "reference": "Michigan Protocol 8-26: Criminal Charges — Disqualifying Convictions",
+      "points": [
+        "Michigan Public Health Code specifies convictions that may be disqualifying for EMS licensure — refer to current MDHHS guidance",
+        "Generally disqualifying: felony convictions involving patient abuse/neglect, sexual misconduct, violent crimes, drug trafficking, fraud in healthcare",
+        "MDHHS makes the final determination on license disqualification following their review process"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "Provider reporting: within 3 business days for felony charge, felony/moral turpitude conviction, fraud/abuse/sexual misconduct/drug-related conviction",
+    "Failure to report: independent ground for disciplinary action",
+    "Agency reporting: within 5 business days to MCA; also notify MDHHS",
+    "MCA may suspend MC privileges pending review",
+    "MDHHS makes final license determination",
+    "Disqualifying convictions: patient abuse, sexual misconduct, violent felonies, drug trafficking, healthcare fraud"
+  ]
+}

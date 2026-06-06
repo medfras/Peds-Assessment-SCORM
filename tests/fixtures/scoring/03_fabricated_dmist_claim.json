@@ -1,0 +1,114 @@
+{
+  "fixture_id": "fabricated_dmist_claim",
+  "description": "Student submitted a DMIST claiming albuterol was administered, but only O2 was applied — albuterol is absent from the intervention records. The corroboration prepass is provided (prepass_result) identifying the fabricated claim. The evidence packet should surface the unsupported claim and reduce the DMIST ceiling. This tests the existing prepass wiring — the unsupported claim should flow through to corroboration.dmist_unsupported_claims and trigger a prompt-guided DMIST ceiling reduction.",
+
+  "inputs": {
+    "scenario": {
+      "id": "fixture_peds_resp",
+      "category": "pediatric_medical",
+      "protocol_config": {"mca": "mi_wmrmcc_kent"},
+      "turnover_target": "als",
+      "vitals": {
+        "baseline": {},
+        "interventions": {
+          "o2_nrb":        {"label": "High-flow O2 via NRB mask (15 LPM)"},
+          "albuterol_svn": {"label": "Albuterol 2.5 mg via SVN (nebulizer)"},
+          "positioning":   {"label": "Position of comfort — sitting upright"},
+          "als_intercept": {"label": "ALS intercept acknowledged"}
+        }
+      },
+      "scoring": {}
+    },
+
+    "interventions": [
+      {"name": "o2_nrb",        "applied_at": "2026-01-01T12:02:00"},
+      {"name": "positioning",   "applied_at": "2026-01-01T12:03:00"},
+      {"name": "als_intercept", "applied_at": "2026-01-01T12:05:00"}
+    ],
+
+    "checklist_states": {"item_states": []},
+
+    "submitted_docs": {
+      "dmist": "D: 8-year-old male, difficulty breathing. M: History of asthma, albuterol PRN. No allergies. I: Applied O2 via NRB 15 LPM. Administered albuterol 2.5 mg via SVN. Patient positioned upright. S: SpO2 83% on arrival, HR 134, RR 32. T: Transporting to Pediatric ED via ALS intercept.",
+      "narrative": "C: Asthma exacerbation in 8yo male. H: 2-hour onset of wheezing, history of asthma. A: SpO2 83%, wheeze. R: O2 and albuterol given. T: ALS transport."
+    },
+
+    "findings": [
+      {"key": "spo2", "value": "83%", "finding_type": "vital", "captured_at": "2026-01-01T12:01:00"},
+      {"key": "hr",   "value": "134", "finding_type": "vital", "captured_at": "2026-01-01T12:01:00"}
+    ],
+
+    "student_messages": [
+      "BSI, scene is safe.",
+      "General impression: respiratory distress. When did this start? Any allergies?",
+      "Applying O2 via NRB mask.",
+      "Let's call for ALS intercept.",
+      "Reassess after O2."
+    ],
+
+    "scene_entry_scoring_result": {"ppe": "gloves_mask"},
+    "scene_entry_dict":           {},
+    "greeting_detected": false,
+    "greeting_text": "",
+
+    "prepass_result": {
+      "available": true,
+      "dmist_unsupported": [
+        {
+          "component": "I",
+          "claim": "Administered albuterol 2.5 mg via SVN",
+          "reason": "No albuterol in intervention timeline — only o2_nrb and positioning recorded"
+        }
+      ],
+      "narrative_unsupported": []
+    },
+
+    "critical_actions": [
+      {
+        "id": "scene_safety",
+        "description": "Ensure scene safety and BSI/PPE",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "o2_administration",
+        "description": "Administer high-flow O2 via NRB mask",
+        "required": true,
+        "intervention_ids": ["o2_nrb", "o2_nc"]
+      },
+      {
+        "id": "albuterol_svn",
+        "description": "Administer albuterol 2.5 mg via SVN per protocol",
+        "required": true
+      }
+    ],
+
+    "grace_items": [],
+    "session_events": [],
+    "agency": {"transports_patients": true},
+    "effective_level": "EMT",
+    "elapsed_min": 10.0
+  },
+
+  "target_expected": {
+    "assertions": [
+      {
+        "id": "corroboration_tier_2",
+        "type": "corroboration_tier",
+        "expected": 2
+      },
+      {
+        "id": "dmist_has_unsupported_claim",
+        "type": "dmist_unsupported_claims_min",
+        "min_count": 1
+      },
+      {
+        "id": "dmist_ceiling_reduced",
+        "type": "dmist_ceiling_value",
+        "expected": 8
+      }
+    ]
+  },
+
+  "known_failing_baselines": []
+}

@@ -1,0 +1,124 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 10-2 Chemical Exposure (MDHHS Reviewed 2023-05-09). Base Michigan template.",
+  "id": "mi_base_special_ops_chemical_exposure",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Special Operations",
+  "level_display": "Special Operations Protocol",
+  "jurisdiction": "Michigan",
+  "condition": "Chemical Exposure — Non-Nerve Agent",
+  "version": "2023-05-09",
+  "protocol_reference": "Michigan Special Operations Protocol Section 10-2: Chemical Exposure — MDHHS Reviewed 2023",
+
+  "purpose": "Provide EMS treatment guidelines for patients exposed to non-nerve agent chemical agents including choking agents, vesicants/blister agents, and lacrimators/riot control agents after decontamination.",
+
+  "sections": [
+    {
+      "title": "General Principles — All Chemical Exposures",
+      "content": [
+        "DO NOT enter contaminated area without appropriate PPE — refer to Protocol 10-1 for PPE levels",
+        "Decontamination is required before EMS treatment — gross decon performed by fire/HazMat in warm zone",
+        "Remove and bag all clothing — removes approximately 80% of surface contamination",
+        "Copious water irrigation for all skin/eye exposures — minimum 15 minutes continuous irrigation",
+        "Notify online medical control and receiving hospital of agent type and number of patients",
+        "Supportive care is the cornerstone of treatment for most non-nerve agent chemical exposures"
+      ]
+    },
+    {
+      "title": "Choking / Pulmonary Agents (Chlorine, Phosgene, Diphosgene)",
+      "content": [
+        "Agents: Chlorine (yellow-green gas, bleach odor), Phosgene (colorless gas, freshly cut grass odor), Diphosgene",
+        "Mechanism: mucosal irritation → pulmonary edema (delayed 2-24hr with phosgene)",
+        "Signs/Symptoms: coughing, choking, dyspnea, chest tightness, eye/nasal irritation; may progress to severe pulmonary edema",
+        "WARNING: Phosgene — delayed pulmonary edema; patient may appear well initially then deteriorate rapidly",
+        "TREATMENT:",
+        "  — Remove patient from exposure; decontaminate (water irrigation)",
+        "  — High-flow oxygen via NRB mask or BVM as needed",
+        "  — If bronchospasm present: nebulized albuterol (see MCA selection below)",
+        "  — CPAP for severe respiratory distress with adequate respiratory rate",
+        "  — Eye irrigation with water or NS minimum 15 minutes for eye exposure",
+        "  — Tetracaine ophthalmic drops to facilitate irrigation if MCA authorized (Protocol 9-43R)",
+        "  — Do NOT induce vomiting; treat symptomatically",
+        "  — Monitor continuously for delayed pulmonary edema; transport all patients for evaluation",
+        "  — All phosgene-exposed patients must be observed minimum 24hr — warn receiving hospital"
+      ]
+    },
+    {
+      "title": "Vesicants / Blister Agents (Mustard, Lewisite, Phosgene Oxime)",
+      "content": [
+        "Agents: Sulfur mustard (HD — garlic/mustard odor), Lewisite (L — geraniums odor), Phosgene oxime (CX — sharp penetrating odor)",
+        "Mechanism: alkylation of DNA/cellular structures → delayed blistering; Lewisite = immediate vesication",
+        "Signs/Symptoms:",
+        "  — Mustard: delayed 2-24hr onset; blistering, eye irritation, laryngeal edema, bone marrow suppression",
+        "  — Lewisite: immediate pain, blistering, eye/airway irritation",
+        "  — Phosgene Oxime: immediate pain/urticaria; coagulative tissue necrosis",
+        "TREATMENT:",
+        "  — IMMEDIATE decontamination is critical — remove clothing, copious water irrigation",
+        "  — High-flow oxygen; support airway — laryngeal edema may require advanced airway",
+        "  — Treat burns symptomatically — do NOT puncture blisters in prehospital setting",
+        "  — Eye irrigation minimum 15 minutes; tetracaine if MCA authorized",
+        "  — Ventilate as needed; CPAP for pulmonary edema",
+        "  — Do NOT apply ointments or dressings that trap contamination",
+        "  — Transport all exposed patients — delayed effects are common"
+      ]
+    },
+    {
+      "title": "Lacrimators / Riot Control Agents (CS, CN, OC/Pepper Spray)",
+      "content": [
+        "Agents: CS (o-chlorobenzylidene malononitrile), CN (chloroacetophenone), OC (oleoresin capsicum/pepper spray), Mace",
+        "Mechanism: sensory nerve irritation — mucosal/skin irritation; NOT typically life-threatening in open air",
+        "Signs/Symptoms: intense tearing/eye pain, rhinorrhea, coughing, skin burning, blepharospasm; resolves minutes to hours after decontamination",
+        "TREATMENT:",
+        "  — Move patient to fresh air; remove from exposure",
+        "  — Remove and bag contaminated clothing",
+        "  — Copious water irrigation for skin and eyes",
+        "  — Eye irrigation minimum 15 minutes for significant eye exposure; tetracaine if MCA authorized to facilitate irrigation",
+        "  — Most patients resolve with decontamination and fresh air alone",
+        "  — Oxygen for significant respiratory symptoms",
+        "  — Bronchospasm: nebulized albuterol (see MCA selection below)",
+        "  — Severe persistent symptoms or enclosed-space exposure: transport for evaluation",
+        "  — Warn receiving hospital of chemical used (OC, CS, CN)"
+      ]
+    },
+    {
+      "title": "Nerve Agent / Organophosphate Exposure",
+      "content": [
+        "REFER TO PROTOCOL 10-3 — Nerve Agent / Organophosphate Exposure",
+        "Indicators: SLUDGEM (salivation, lacrimation, urination, defecation, GI distress, emesis, miosis), bronchospasm, seizures",
+        "Do NOT attempt to treat nerve agent exposure under this protocol — use Protocol 10-3"
+      ]
+    },
+    {
+      "title": "Cyanide / Blood Agent Exposure",
+      "content": [
+        "REFER TO PROTOCOL 10-5 — Cyanide Exposure",
+        "Indicators: rapid loss of consciousness, seizures, normal or pink skin color despite hypoxia, normal SpO2 with severe distress",
+        "Do NOT attempt to treat cyanide exposure under this protocol — use Protocol 10-5"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "id": "nebulized_albuterol_emt_chemical",
+      "label": "Nebulized Albuterol — EMT authorization for bronchospasm in chemical exposure",
+      "description": "MCA selection authorizes EMT-level providers to administer nebulized albuterol for bronchospasm resulting from chemical agent exposure (choking agents, lacrimators). Without MCA selection, nebulized albuterol at EMT level is not authorized.",
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [
+    "Albuterol (nebulized) — bronchospasm from choking agents or lacrimators (MCA selection required for EMT)",
+    "Oxygen — all chemical exposures with respiratory symptoms",
+    "Tetracaine ophthalmic — facilitate eye irrigation (MCA Optional per Protocol 9-43R)"
+  ],
+
+  "deterioration_flags": [
+    "Laryngeal edema or progressive stridor — prepare for advanced airway management",
+    "Delayed pulmonary edema (especially phosgene) — may develop 2-24hr post-exposure; all phosgene patients require hospital observation",
+    "Loss of consciousness, seizures, or severe hemodynamic compromise — consider concurrent nerve agent or cyanide exposure; refer to Protocol 10-3 or 10-5"
+  ],
+
+  "scope_notes": "This protocol covers chemical exposures excluding nerve agents (Protocol 10-3) and cyanide (Protocol 10-5). Decontamination must occur before EMS treatment — do NOT transport contaminated patients. Coordinate with HazMat and online medical control for all chemical exposure events."
+}

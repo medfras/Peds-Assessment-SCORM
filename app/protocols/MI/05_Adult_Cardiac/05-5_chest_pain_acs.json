@@ -1,0 +1,127 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 5-5 Adult Chest Pain/Acute Coronary Syndrome (Revised 11/17/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_adult_chest_pain_acs",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Adult",
+  "level_display": "Adult (≥ 14 years)",
+  "jurisdiction": "Michigan",
+  "condition": "Chest Pain / Acute Coronary Syndrome (ACS)",
+  "version": "2025-11-17",
+  "protocol_reference": "Michigan Adult Cardiac Protocol Section 5-5: Chest Pain/Acute Coronary Syndrome — MDHHS Approved 11/17/25, Reviewed 2025",
+  "purpose": "Goal is to reduce cardiac workload and maximize myocardial oxygen delivery by reducing anxiety, appropriately oxygenating, and relieving pain. For non-cardiac causes of chest pain, refer to appropriate protocol which may include Pain Management-Procedure Protocol.",
+  "sections": [
+    {
+      "title": "Chest Pain / ACS Treatment",
+      "reference": "Michigan Protocol 5-5: Chest Pain/ACS",
+      "points": [
+        "Follow General Pre-Hospital Care Protocol",
+        "Obtain 12-lead ECG as early as possible WITHOUT delaying medication administration (per MCA selection: BLS or Specialist — follow 12 Lead ECG-Procedure Protocol)",
+        "Administer oxygen 4 L/min by nasal cannula if SpO2 < 94%",
+        "Assist patient in use of their own aspirin up to a dose of 325 mg per formulation (chew, swallow, etc.)",
+        "Administer aspirin up to 325 mg PO — chew and swallow — if no aspirin or suspected insufficient dose since onset of chest pain (per MCA selection may be MFR and/or EMT skill)",
+        "Inquire of ALL patients regardless of identified gender if they have taken an erectile dysfunction medication or medications used to treat pulmonary hypertension in the last 48 hours",
+        "If ED/pulmonary hypertension medication taken in last 48 hours: DO NOT ADMINISTER/ASSIST WITH NITROGLYCERIN — contact Medical Control",
+        "Consider fentanyl EARLY when nitroglycerin is contraindicated due to ED medication",
+        "If no ED medication, SBP > 120 mmHg, and patient has own prescribed nitroglycerin available (check expiration): assist patient in use of their own nitroglycerin up to maximum 3 doses",
+        "Prior to IV establishment, if no ED medication and SBP > 120 mmHg: administer nitroglycerin 0.4 mg SL up to maximum 3 doses (per MCA selection may be EMT skill)",
+        "Start IV NS or LR KVO per Vascular Access and IV Fluid Therapy-Procedure Protocol",
+        "If SBP < 100 mmHg: administer 250 mL fluid bolus; may repeat up to 3 times for total of 1 liter — between boluses assess patient response and monitor for pulmonary edema; if pulmonary edema noted, stop fluids and contact Medical Control",
+        "With IV established, no ED medication, SBP > 100 mmHg: administer nitroglycerin 0.4 mg SL; may repeat every 3–5 minutes while chest pain persists and SBP > 100 mmHg",
+        "Obtain 12-lead ECG (per MCA selection: BLS or Specialist); if positive for acute STEMI: follow local MCA transport protocol and alert hospital as soon as possible",
+        "For suspected cardiac chest pain refractory to nitroglycerin, OR nitroglycerin is contraindicated due to ED medication: administer fentanyl 1 mcg/kg IV/IO/IM/IN — rounded doses: ≤ 25 kg = 25 mcg; 26–50 kg = 50 mcg; 51–75 kg = 75 mcg; ≥ 76 kg = 100 mcg; IV/IO/IN may repeat ONE TIME (total dose must not exceed 200 mcg); if IM administration — may NOT repeat"
+      ]
+    }
+  ],
+  "mca_selections_required": [
+    {
+      "item": "12-Lead ECG — Scope",
+      "description": "MCA must select provider level authorized to obtain 12-lead ECG",
+      "options": [
+        "BLS authorized",
+        "Specialist authorized",
+        "Both BLS and Specialist authorized"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Aspirin Administration — Scope",
+      "description": "MCA must select which provider levels may administer aspirin 325 mg PO for chest pain",
+      "options": [
+        "MFR authorized",
+        "EMT authorized",
+        "Both MFR and EMT authorized",
+        "Specialist only"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Nitroglycerin Administration — EMT",
+      "description": "MCA may authorize EMT to administer nitroglycerin 0.4 mg SL (prior to IV, up to 3 doses, SBP > 120) for chest pain/ACS",
+      "options": [
+        "EMT authorized",
+        "Specialist only"
+      ],
+      "selected": null
+    }
+  ],
+  "key_drugs": [
+    {
+      "name": "Aspirin 325 mg PO (ACS)",
+      "dose": "Up to 325 mg PO — chew and swallow",
+      "route": "PO (oral — chewed)",
+      "indication": "Suspected ACS/cardiac chest pain — if no aspirin or suspected insufficient dose since onset",
+      "contraindications": "Known hypersensitivity to aspirin; active GI bleeding",
+      "side_effects": "GI upset",
+      "scope": "Per MCA selection — MFR and/or EMT options available",
+      "notes": "Assist patient with their own aspirin first. Administer EMS aspirin if no aspirin or insufficient dose received since symptom onset."
+    },
+    {
+      "name": "Nitroglycerin 0.4 mg SL (ACS)",
+      "dose": "0.4 mg SL — repeat every 3–5 minutes; pre-IV max 3 doses (SBP > 120); with IV continue while SBP > 100 and chest pain persists",
+      "route": "Sublingual",
+      "indication": "Cardiac chest pain — SBP > 120 (pre-IV) or SBP > 100 (with IV); no ED/PH medications in last 48 hours",
+      "contraindications": "ED medications (sildenafil, tadalafil, vardenafil, avanafil) or pulmonary hypertension medications in last 48 hours — DO NOT ADMINISTER; SBP < 120 (pre-IV); SBP < 100 (with IV); RV infarction (right-sided STEMI)",
+      "side_effects": "Hypotension, headache, flushing",
+      "scope": "Per MCA selection — EMT option available (pre-IV); Specialist for IV-access dosing",
+      "notes": "ALWAYS inquire about ED/pulmonary hypertension medications regardless of patient's identified gender. Assist with patient's own nitro first if prescribed and available."
+    },
+    {
+      "name": "Fentanyl IV/IO/IM/IN (Refractory Cardiac Pain)",
+      "dose": "1 mcg/kg IV/IO/IM/IN — weight-based rounded doses: ≤ 25 kg = 25 mcg; 26–50 kg = 50 mcg; 51–75 kg = 75 mcg; ≥ 76 kg = 100 mcg; IV/IO/IN: may repeat ONCE (max total 200 mcg); IM: may NOT repeat",
+      "route": "IV, IO, IM, or IN",
+      "indication": "Cardiac chest pain refractory to nitroglycerin, OR nitroglycerin contraindicated due to ED medication",
+      "contraindications": "Hemodynamic instability (SBP < 100) — use with caution; hypersensitivity",
+      "side_effects": "Respiratory depression, hypotension, nausea",
+      "scope": "Specialist skill",
+      "notes": "Consider fentanyl EARLY when nitroglycerin is contraindicated. Maximum total IV/IO/IN dose 200 mcg. IM route — single dose only, no repeat."
+    }
+  ],
+  "deterioration_flags": [
+    "STEMI on 12-lead ECG — immediate hospital notification; follow MCA STEMI transport protocol",
+    "ED/pulmonary hypertension medication in last 48 hours — DO NOT give nitroglycerin; contact Medical Control; consider fentanyl for pain",
+    "SBP < 100 mmHg — IV fluid boluses 250 mL x up to 4 (max 1L); stop if pulmonary edema develops; contact Medical Control",
+    "Chest pain unresponsive to nitroglycerin — fentanyl 1 mcg/kg (rounded per weight table); maximum 200 mcg total IV/IO/IN",
+    "Pulmonary edema develops — stop fluid; refer to Pulmonary Edema/Cardiogenic Shock protocol"
+  ],
+  "scope_notes": [
+    "SpO2 monitoring, oxygen via NC, assisting patient with own aspirin and own nitroglycerin: all levels",
+    "12-lead ECG: per MCA selection — BLS or Specialist",
+    "Aspirin 325 mg PO: per MCA selection — MFR and/or EMT options available",
+    "Nitroglycerin 0.4 mg SL (pre-IV): per MCA selection — EMT option available",
+    "IV access, nitroglycerin (with IV): Specialist skill",
+    "Fentanyl: Specialist skill"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "cardiac_monitoring",
+      "chest_pain_acs",
+      "medical_control",
+      "stemi",
+      "transport_decision"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

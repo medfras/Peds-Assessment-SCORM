@@ -1,0 +1,370 @@
+[
+  {
+    "id": "pat_sick_001",
+    "mode": "image",
+    "prompt": "Inconsolable crying with poor eye contact",
+    "decision": "sick",
+    "bucket": "appearance",
+    "ticls": "TICLS: Consolability + Interactiveness",
+    "image_url": "/static/img/minigames/pat/pat_appearance_001.jpg",
+    "alt_text": "Child crying and not engaging caregiver",
+    "explanation": "Inconsolable, non-interactive appearance suggests a sick child.",
+    "follow_up": {
+      "prompt": "What is the best immediate field implication of this PAT finding?",
+      "choices": ["Treat as high-risk appearance and move quickly to hands-on assessment", "Reassure because crying means airway is intact", "Delay assessment until the child calms down", "Focus only on transport paperwork"],
+      "correct": "Treat as high-risk appearance and move quickly to hands-on assessment",
+      "hint": "Ask what abnormal Appearance should do to your urgency.",
+      "feedback": "Abnormal interactiveness/consolability is a sick-child cue. It should accelerate assessment and escalation.",
+      "mistake_tag": "pat_implication"
+    }
+  },
+  {
+    "id": "pat_sick_002",
+    "mode": "image",
+    "prompt": "Limp infant with weak tone",
+    "decision": "sick",
+    "bucket": "appearance",
+    "ticls": "TICLS: Tone",
+    "image_url": "/static/img/minigames/pat/pat_appearance_002.jpg",
+    "alt_text": "Infant appears limp in caregiver arms",
+    "explanation": "Abnormal tone is a high-risk Appearance finding.",
+    "follow_up": {
+      "prompt": "What should weak tone change about your first actions?",
+      "choices": ["Escalate urgency and assess airway, breathing, perfusion, and glucose early", "Assume the infant is sleeping normally", "Avoid stimulation until arrival", "Document only if the caregiver is worried"],
+      "correct": "Escalate urgency and assess airway, breathing, perfusion, and glucose early",
+      "hint": "Weak tone is an Appearance cue, but think about what systems can cause it.",
+      "feedback": "A limp infant is high risk. Move rapidly into ABCs and reversible causes rather than treating it as normal sleep.",
+      "mistake_tag": "pat_implication"
+    }
+  },
+  {
+    "id": "pat_sick_003",
+    "mode": "text",
+    "prompt": "Minimal spontaneous movement",
+    "decision": "sick",
+    "bucket": "appearance",
+    "ticls": "TICLS: Interactiveness",
+    "explanation": "Low activity and poor interaction are concerning."
+  },
+  {
+    "id": "pat_sick_004",
+    "mode": "text",
+    "prompt": "Weak high-pitched cry",
+    "decision": "sick",
+    "bucket": "appearance",
+    "ticls": "TICLS: Speech/Cry",
+    "explanation": "Abnormal cry quality indicates potentially serious illness."
+  },
+  {
+    "id": "pat_sick_005",
+    "mode": "text",
+    "prompt": "Gaze fixed and not tracking",
+    "decision": "sick",
+    "bucket": "appearance",
+    "ticls": "TICLS: Look/Gaze",
+    "explanation": "Abnormal gaze is a concerning Appearance finding."
+  },
+  {
+    "id": "pat_sick_006",
+    "mode": "text",
+    "prompt": "Nasal flaring with retractions",
+    "decision": "sick",
+    "bucket": "breathing",
+    "ticls": "PAT: Breathing",
+    "explanation": "Visible increased work of breathing suggests a sick child.",
+    "follow_up": {
+      "prompt": "What should you do next from the doorway impression?",
+      "choices": ["Prioritize oxygenation/ventilation assessment and prepare respiratory support", "Wait for a full set of vitals before acting", "Treat as not sick if skin color is normal", "Begin discharge education"],
+      "correct": "Prioritize oxygenation/ventilation assessment and prepare respiratory support",
+      "hint": "Work of breathing is one side of the PAT triangle.",
+      "feedback": "Nasal flaring and retractions are increased work of breathing. Prepare to support oxygenation and ventilation early.",
+      "mistake_tag": "pat_implication"
+    }
+  },
+  {
+    "id": "pat_sick_007",
+    "mode": "text",
+    "prompt": "Inspiratory stridor audible from doorway",
+    "decision": "sick",
+    "bucket": "breathing",
+    "ticls": "PAT: Breathing",
+    "explanation": "Abnormal airway sounds indicate respiratory compromise.",
+    "follow_up": {
+      "prompt": "What is the most useful first implication of stridor from the doorway?",
+      "choices": ["Suspect upper-airway obstruction and avoid unnecessary agitation", "Treat first as lower-airway wheezing", "Ask the child to lie flat for comfort", "Ignore it until auscultation confirms it"],
+      "correct": "Suspect upper-airway obstruction and avoid unnecessary agitation",
+      "hint": "Decide whether the sound is upper or lower airway.",
+      "feedback": "Audible stridor is an upper-airway warning sign. Keep the child calm and prepare appropriate airway/oxygenation support.",
+      "mistake_tag": "pat_implication"
+    }
+  },
+  {
+    "id": "pat_sick_008",
+    "mode": "text",
+    "prompt": "Grunting respirations",
+    "decision": "sick",
+    "bucket": "breathing",
+    "ticls": "PAT: Breathing",
+    "explanation": "Grunting is a critical pediatric respiratory sign."
+  },
+  {
+    "id": "pat_sick_009",
+    "mode": "text",
+    "prompt": "Head bobbing with each breath",
+    "decision": "sick",
+    "bucket": "breathing",
+    "ticls": "PAT: Breathing",
+    "explanation": "Head bobbing signals severe work of breathing."
+  },
+  {
+    "id": "pat_sick_010",
+    "mode": "text",
+    "prompt": "Tripod position to breathe",
+    "decision": "sick",
+    "bucket": "breathing",
+    "ticls": "PAT: Breathing",
+    "explanation": "Tripod positioning indicates significant respiratory distress."
+  },
+  {
+    "id": "pat_sick_011",
+    "mode": "text",
+    "prompt": "Visible subcostal retractions",
+    "decision": "sick",
+    "bucket": "breathing",
+    "ticls": "PAT: Breathing",
+    "explanation": "Retractions are a visible sign of increased work of breathing."
+  },
+  {
+    "id": "pat_sick_012",
+    "mode": "text",
+    "prompt": "Audible wheezing without a stethoscope",
+    "decision": "sick",
+    "bucket": "breathing",
+    "ticls": "PAT: Breathing",
+    "explanation": "Wheezing loud enough to hear from the doorway indicates significant obstruction."
+  },
+  {
+    "id": "pat_sick_013",
+    "mode": "text",
+    "prompt": "Mottled skin appearance",
+    "decision": "sick",
+    "bucket": "circulation",
+    "ticls": "PAT: Circulation",
+    "explanation": "Mottling suggests poor perfusion.",
+    "follow_up": {
+      "prompt": "What should mottling do to your initial plan?",
+      "choices": ["Treat circulation/perfusion as abnormal even before hypotension appears", "Wait for hypotension to confirm shock", "Ignore skin findings if the child is awake", "Focus only on respiratory causes"],
+      "correct": "Treat circulation/perfusion as abnormal even before hypotension appears",
+      "hint": "Think about compensated shock in children.",
+      "feedback": "Mottling is a circulation cue. Pediatric shock may be present before blood pressure falls.",
+      "mistake_tag": "pat_implication"
+    }
+  },
+  {
+    "id": "pat_sick_014",
+    "mode": "text",
+    "prompt": "Central cyanosis around lips and tongue",
+    "decision": "sick",
+    "bucket": "circulation",
+    "ticls": "PAT: Circulation",
+    "explanation": "Central cyanosis is an emergency sign visible from the doorway.",
+    "follow_up": {
+      "prompt": "What is the highest-priority implication of central cyanosis?",
+      "choices": ["Immediate oxygenation/ventilation assessment and support", "Routine history before intervention", "No action unless the pulse oximeter is low", "Treat only as a skin-temperature issue"],
+      "correct": "Immediate oxygenation/ventilation assessment and support",
+      "hint": "Central color changes are different from cool hands or feet.",
+      "feedback": "Central cyanosis is a critical oxygenation/perfusion cue and should trigger immediate ABC-focused care.",
+      "mistake_tag": "pat_implication"
+    }
+  },
+  {
+    "id": "pat_sick_015",
+    "mode": "text",
+    "prompt": "Visible active external bleeding",
+    "decision": "sick",
+    "bucket": "circulation",
+    "ticls": "PAT: Circulation",
+    "explanation": "Major visible hemorrhage indicates a sick patient."
+  },
+  {
+    "id": "pat_sick_016",
+    "mode": "text",
+    "prompt": "Ashen gray skin tone",
+    "decision": "sick",
+    "bucket": "circulation",
+    "ticls": "PAT: Circulation",
+    "explanation": "Gray or ashen appearance indicates poor perfusion."
+  },
+  {
+    "id": "pat_sick_017",
+    "mode": "text",
+    "prompt": "Pale, waxy skin color",
+    "decision": "sick",
+    "bucket": "circulation",
+    "ticls": "PAT: Circulation",
+    "explanation": "Pallor visible at the doorway suggests poor circulation to skin."
+  },
+  {
+    "id": "pat_sick_018",
+    "mode": "text",
+    "prompt": "Silent chest with obvious respiratory effort",
+    "decision": "sick",
+    "bucket": "breathing",
+    "ticls": "PAT: Breathing",
+    "explanation": "Poor air movement with effort is a high-acuity respiratory sign."
+  },
+  {
+    "id": "pat_sick_019",
+    "mode": "text",
+    "prompt": "Child won't look at you and stares blankly",
+    "decision": "sick",
+    "bucket": "appearance",
+    "ticls": "TICLS: Look/Gaze",
+    "explanation": "Abnormal or absent gaze is a concerning Appearance finding."
+  },
+  {
+    "id": "pat_sick_020",
+    "mode": "text",
+    "prompt": "Infant not moving limbs spontaneously",
+    "decision": "sick",
+    "bucket": "appearance",
+    "ticls": "TICLS: Tone",
+    "explanation": "Absent spontaneous movement in an infant is abnormal tone."
+  },
+  {
+    "id": "pat_sick_021",
+    "mode": "text",
+    "prompt": "Visible periorbital or facial bruising",
+    "decision": "sick",
+    "bucket": "circulation",
+    "ticls": "PAT: Circulation",
+    "explanation": "Visible bruising patterns may indicate significant trauma or pathology."
+  },
+  {
+    "id": "pat_sick_022",
+    "mode": "text",
+    "prompt": "Supraclavicular retractions visible",
+    "decision": "sick",
+    "bucket": "breathing",
+    "ticls": "PAT: Breathing",
+    "explanation": "Supraclavicular retractions indicate significant upper airway obstruction."
+  },
+  {
+    "id": "pat_sick_023",
+    "mode": "text",
+    "prompt": "Child positioned sitting straight up and refusing to lie down",
+    "decision": "sick",
+    "bucket": "breathing",
+    "ticls": "PAT: Breathing",
+    "explanation": "Positional preference to maintain airway is a respiratory distress sign."
+  },
+
+  {
+    "id": "pat_not_001",
+    "mode": "text",
+    "prompt": "Smiling child makes eye contact and follows caregiver",
+    "decision": "not_sick",
+    "bucket": "appearance",
+    "ticls": "TICLS: Interactiveness (normal)",
+    "explanation": "Normal interactiveness is reassuring."
+  },
+  {
+    "id": "pat_not_002",
+    "mode": "text",
+    "prompt": "Strong cry, quickly consolable by parent",
+    "decision": "not_sick",
+    "bucket": "appearance",
+    "ticls": "TICLS: Consolability + Speech/Cry (normal)",
+    "explanation": "Consolable with strong cry is reassuring."
+  },
+  {
+    "id": "pat_not_003",
+    "mode": "text",
+    "prompt": "Normal muscle tone and spontaneous movement",
+    "decision": "not_sick",
+    "bucket": "appearance",
+    "ticls": "TICLS: Tone (normal)",
+    "explanation": "Normal tone and activity support not sick."
+  },
+  {
+    "id": "pat_not_004",
+    "mode": "text",
+    "prompt": "Calm, unlabored breathing with no retractions",
+    "decision": "not_sick",
+    "bucket": "breathing",
+    "ticls": "PAT: Breathing (normal)",
+    "explanation": "No increased work of breathing is reassuring."
+  },
+  {
+    "id": "pat_not_005",
+    "mode": "text",
+    "prompt": "Pink skin with no cyanosis or mottling",
+    "decision": "not_sick",
+    "bucket": "circulation",
+    "ticls": "PAT: Circulation (normal)",
+    "explanation": "Normal skin color and perfusion support not sick."
+  },
+  {
+    "id": "pat_not_006",
+    "mode": "text",
+    "prompt": "Playful toddler talks and reaches for parent",
+    "decision": "not_sick",
+    "bucket": "appearance",
+    "ticls": "TICLS: Interactiveness (normal)",
+    "explanation": "Normal behavior and engagement are reassuring."
+  },
+  {
+    "id": "pat_not_007",
+    "mode": "text",
+    "prompt": "Child sitting upright and looking around room curiously",
+    "decision": "not_sick",
+    "bucket": "appearance",
+    "ticls": "TICLS: Interactiveness (normal)",
+    "explanation": "Curious, engaged behavior is a normal Appearance finding."
+  },
+  {
+    "id": "pat_not_008",
+    "mode": "text",
+    "prompt": "Infant reaching for a toy",
+    "decision": "not_sick",
+    "bucket": "appearance",
+    "ticls": "TICLS: Interactiveness + Tone (normal)",
+    "explanation": "Goal-directed movement and interaction indicate normal Appearance."
+  },
+  {
+    "id": "pat_not_009",
+    "mode": "text",
+    "prompt": "Chest rise and fall regular and symmetric",
+    "decision": "not_sick",
+    "bucket": "breathing",
+    "ticls": "PAT: Breathing (normal)",
+    "explanation": "Regular, symmetric chest movement without effort is normal."
+  },
+  {
+    "id": "pat_not_010",
+    "mode": "text",
+    "prompt": "No accessory muscle use visible",
+    "decision": "not_sick",
+    "bucket": "breathing",
+    "ticls": "PAT: Breathing (normal)",
+    "explanation": "Absence of accessory muscle use suggests no respiratory distress."
+  },
+  {
+    "id": "pat_not_011",
+    "mode": "text",
+    "prompt": "Warm-appearing skin, pink mucous membranes",
+    "decision": "not_sick",
+    "bucket": "circulation",
+    "ticls": "PAT: Circulation (normal)",
+    "explanation": "Visible skin warmth and normal mucous membrane color support good perfusion."
+  },
+  {
+    "id": "pat_not_012",
+    "mode": "text",
+    "prompt": "Child walking around the room independently",
+    "decision": "not_sick",
+    "bucket": "appearance",
+    "ticls": "TICLS: Tone + Interactiveness (normal)",
+    "explanation": "Ambulating with normal tone and interaction is reassuring."
+  }
+]

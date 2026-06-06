@@ -1,0 +1,234 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 5-1 Adult Cardiac Arrest — General (Revised 06/27/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_adult_cardiac_arrest_general",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Adult",
+  "level_display": "Adult (≥ 14 years)",
+  "jurisdiction": "Michigan",
+  "condition": "Cardiac Arrest — General",
+  "version": "2023-06-27",
+  "protocol_reference": "Michigan Adult Cardiac Protocol Section 5-1: Cardiac Arrest — General — MDHHS Approved 6/27/23, Reviewed 2023",
+
+  "purpose": "This protocol should be followed for adult cardiac arrests. Medical cardiac arrest patients undergoing attempted resuscitation should NOT be transported unless ROSC is achieved, transport is ordered by Medical Control, or otherwise specified in protocol. If traumatic origin, refer to Traumatic Arrest-Treatment Protocol. If hypothermic, refer to Hypothermia/Frostbite-Treatment Protocol for warming techniques.",
+
+  "sections": [
+    {
+      "title": "Confirm Arrest and Initiate CPR",
+      "reference": "Michigan Protocol 5-1: Cardiac Arrest — Confirm and Initiate",
+      "points": [
+        "Request additional assistance as needed; initiate ALS response if available",
+        "Confirm arrest: assess breathing (may have gasping/agonal breathing); check carotid or femoral pulse for no more than 10 seconds — if uncertain, initiate CPR; patients with LVAD refer to LVAD-Procedure Protocol",
+        "Initiate or continue CPR; apply and use AED/defibrillator as soon as available per Electrical Therapy-Procedure Protocol",
+        "For refractory V-fib after 3 shocks, consider double sequential defibrillation per Double Sequential Defibrillation-Procedure Protocol (MCA Optional Protocol)",
+        "Patients displaying DNR order, bracelet, or necklace — follow DNR-Procedure Protocol; valid MI POST — follow MI-POST-Procedure Protocol",
+        "Move patient only if scene is unsafe, physical location prevents treatment, or under direct Medical Control order",
+        "If arrest unknown whether traumatic or medical, and patient does not meet dead on scene criteria, start CPR and continue with this protocol",
+        "CPR initial sequence is CAB (Compressions, Airway, Breathing) — EXCEPT drowning or obvious respiratory cause which uses ABC (Airway, Breathing, Compressions)"
+      ]
+    },
+    {
+      "title": "High Quality CPR and Defibrillation",
+      "reference": "Michigan Protocol 5-1: High Quality CPR",
+      "points": [
+        "CPR and electrical therapy consistent with current AHA guidelines",
+        "Anterior/posterior pad placement is PREFERRED and should be used if possible and if defibrillation is not delayed",
+        "Defibrillate following manufacturer energy level recommendations — if unknown, use maximum available",
+        "Chest compression rate: 100–120 per minute",
+        "Chest compression depth for adults: 2 inches (5 cm)",
+        "Compressions and ventilations in a ratio of 30:2 (until advanced airway placed)",
+        "Allow complete chest recoil after each compression",
+        "Keep pauses in CPR to less than 10 seconds — check rhythm when rotating rescuer and avoid pauses during airway management",
+        "Chest Compression Fraction (CCF) should be as high as possible — ideally greater than 80%",
+        "Change rescuers doing compressions at least every 2 minutes to avoid fatigue",
+        "Minimize compression pauses during defibrillation — perform compressions while defibrillator is charging if device allows; restart compressions IMMEDIATELY after defibrillation",
+        "Use ETCO2 monitoring throughout resuscitation: ETCO2 = 0 indicates failed airway; ETCO2 < 10 mmHg — attempt to improve CPR quality (if quality good, may indicate futility); monitor for trends and patient status",
+        "For pregnant patients: manually displace uterus to patient's left during CPR — may be difficult to ventilate due to increased intra-abdominal pressure, monitor ETCO2 and SpO2"
+      ]
+    },
+    {
+      "title": "Airway Management",
+      "reference": "Michigan Protocol 5-1: Airway",
+      "points": [
+        "Establish patent airway with appropriate adjuncts and high flow oxygen — maintain C-spine precaution if indicated; see Airway Management-Procedure Protocol",
+        "2-person BVM ventilation with oral airway preferred; if only 2 rescuers, compressor squeezes bag while second rescuer maintains face-to-mask seal with both hands",
+        "Consider advanced airway (supraglottic or endotracheal) placement without interrupting compressions to allow continuous compressions",
+        "Supraglottic airways are an acceptable primary advanced airway device (considered at least as good as ETI) with exceptions noted in Airway Management-Procedure Protocol",
+        "Confirm advanced airway placement through ETCO2 and physical examination — document EtCO2 and auscultation confirmation",
+        "After advanced airway placement: ventilations delivered asynchronously at 10 breaths per minute (1 breath every 6 seconds)",
+        "Prior to advanced airway, utilize ventilation periods to visualize ECG rhythm without compression artifact",
+        "After advanced airway placement and if personnel available, consider positioning 2 providers (one each side) to alternate compressions (100 per person) without pauses"
+      ]
+    },
+    {
+      "title": "Mechanical CPR Adjuncts (MCA Optional Protocols)",
+      "reference": "Michigan Protocol 5-1: Mechanical Adjuncts",
+      "points": [
+        "Manual chest compressions remain the standard of care — mechanical compression devices may only be used as alternative when high-quality manual compressions are challenging or dangerous (e.g., inadequate rescuers, hypothermic arrest, CPR in moving ambulance): see Mechanical Chest Compression Device-Procedure Protocol (MCA Optional Protocol)",
+        "Impedance threshold device (ITD) may be used during CPR if available — discontinue IMMEDIATELY upon ROSC: see Impedance Threshold Device-Procedure Protocol (MCA Optional Protocol)",
+        "FDA-approved Active Compression-Decompression CPR device may be used per manufacturer instructions — should be used in conjunction with ITD: see Active Compression-Decompression-Procedure Protocol"
+      ]
+    },
+    {
+      "title": "Vascular Access and Medications",
+      "reference": "Michigan Protocol 5-1: Medications",
+      "points": [
+        "Start IV/IO NS or LR KVO — if IV attempted and unsuccessful after 2 attempts, start IO per Vascular Access & IV Fluid Therapy-Procedure Protocol",
+        "Give 1 liter NS or LR bolus; monitor for pulmonary edema; may repeat to maximum 2 liters",
+        "Administer epinephrine 1 mg/10 mL (1 mg IV/IO) every 3–5 minutes",
+        "Administer antidysrhythmic per rhythm check — for VF, pulseless VT, or multiple AED defibrillations: administer per MCA selection (amiodarone 300 mg IV/IO OR lidocaine 1 mg/kg IV/IO)",
+        "For suspected torsades de pointes: administer magnesium sulfate 2 g IV/IO",
+        "If AED applied by BLS personnel: skip to appropriate place in protocol incorporating previous care; ALS should switch to manual defibrillator after initial AED defibrillation or place AED in manual mode"
+      ]
+    },
+    {
+      "title": "Reversible Causes — Targeted Treatment",
+      "reference": "Michigan Protocol 5-1: Reversible Causes",
+      "points": [
+        "Identify and communicate to Medical Control potentially reversible causes (H's and T's): Hyper/hypokalemia (known renal failure)/other metabolic disorders; Hypothermia; Hypovolemia (including vomiting/diarrhea); Hypoxia; Hydrogen ion excess (acidosis); Toxins/overdose (beta-blocker or CCB); Tamponade; Tension pneumothorax; Thrombosis (pulmonary or coronary)",
+        "NOTE: Sodium bicarbonate and calcium chloride are NOT to be routinely given in cardiac arrest — ONLY if clear reason to suspect conditions below",
+        "If known or highly suspected TCA overdose: administer sodium bicarbonate 1 mEq/kg IV/IO",
+        "If known or highly suspected hyperkalemia (dialysis patient, EKG changes): administer calcium chloride 10% 1 gm/10 mL IV/IO; FLUSH line with 20 mL NS between calcium chloride and sodium bicarbonate; then administer sodium bicarbonate 1 mEq/kg IV/IO",
+        "Assess for tension pneumothorax or misplaced ETT: if tension pneumothorax suspected, perform needle decompression per Pleural Decompression-Procedure Protocol",
+        "If known or highly suspected opioid overdose: patent airway and adequate ventilation takes precedence over pharmacological interventions; consider naloxone 2 mg IV/IO or 2–4 mg IN per Opioid Overdose Treatment and Prevention-Treatment Protocol"
+      ]
+    },
+    {
+      "title": "ROSC and Termination",
+      "reference": "Michigan Protocol 5-1: ROSC and Termination",
+      "points": [
+        "If sustained ROSC achieved: refer to Return of Spontaneous Circulation-Treatment Protocol; transport to interventional cardiac catheterization facility where available per MCA Transport Protocol",
+        "Reassess for ROSC (check pulses) if ETCO2 abruptly increases by more than 10 mmHg",
+        "If ROSC not achieved, continue resuscitation while contacting Medical Control",
+        "BLS/LALS: if ROSC not achieved and ALS unavailable or delayed, contact Medical Control after 20 minutes of high-quality CPR for further direction AND before initiating transport; continue high-quality CPR unless directed otherwise per Dead on Scene & Termination of Resuscitation Protocol",
+        "ALS: if ROSC not present after 30 minutes of ALS time, contact Medical Control for further direction AND before initiating transport",
+        "Continue high-quality CPR unless directed otherwise by Medical Control per Dead on Scene & Termination of Resuscitation Protocol"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Antidysrhythmic — VF/Pulseless VT",
+      "description": "MCA must select antidysrhythmic agent for VF, pulseless VT, or multiple AED defibrillations. May select one or both.",
+      "options": [
+        "Amiodarone 300 mg IV/IO (may repeat once 150 mg IV/IO)",
+        "Lidocaine 1 mg/kg IV/IO (may repeat 0.5 mg/kg every 5–10 minutes; maximum total dose 3 mg/kg)"
+      ],
+      "selected": null
+    },
+    {
+      "item": "Double Sequential Defibrillation — MCA Optional Protocol",
+      "description": "MCA may authorize double sequential defibrillation for refractory V-fib after 3 shocks",
+      "options": ["Authorized per MCA Optional Protocol", "Not authorized"],
+      "selected": null
+    },
+    {
+      "item": "Mechanical Chest Compression Device — MCA Optional Protocol",
+      "description": "MCA may authorize mechanical chest compression devices in specific settings where high-quality manual compressions are challenging",
+      "options": ["Authorized per MCA Optional Protocol", "Not authorized"],
+      "selected": null
+    },
+    {
+      "item": "Impedance Threshold Device — MCA Optional Protocol",
+      "description": "MCA may authorize use of impedance threshold device during CPR",
+      "options": ["Authorized per MCA Optional Protocol", "Not authorized"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [
+    {
+      "name": "Epinephrine 1 mg IV/IO (Cardiac Arrest)",
+      "dose": "1 mg IV/IO every 3–5 minutes",
+      "route": "IV or IO",
+      "indication": "Cardiac arrest — all rhythms",
+      "contraindications": "None in cardiac arrest",
+      "side_effects": "Tachycardia, hypertension upon ROSC",
+      "scope": "Specialist skill",
+      "notes": "Use 1 mg/10 mL (1:10,000) formulation for cardiac arrest."
+    },
+    {
+      "name": "Amiodarone IV/IO (VF/Pulseless VT)",
+      "dose": "300 mg IV/IO — may repeat once 150 mg IV/IO",
+      "route": "IV or IO",
+      "indication": "VF, pulseless VT, or multiple AED defibrillations — per MCA selection",
+      "contraindications": "Per MCA selection only",
+      "side_effects": "Hypotension, bradycardia",
+      "scope": "Specialist skill — per MCA selection",
+      "notes": "MCA must select amiodarone OR lidocaine (or both)."
+    },
+    {
+      "name": "Lidocaine IV/IO (VF/Pulseless VT)",
+      "dose": "1 mg/kg IV/IO — may repeat 0.5 mg/kg every 5–10 minutes; maximum total dose 3 mg/kg",
+      "route": "IV or IO",
+      "indication": "VF, pulseless VT, or multiple AED defibrillations — per MCA selection",
+      "contraindications": "Per MCA selection only",
+      "side_effects": "CNS toxicity at high doses",
+      "scope": "Specialist skill — per MCA selection",
+      "notes": "MCA must select amiodarone OR lidocaine (or both)."
+    },
+    {
+      "name": "Magnesium Sulfate 2 g IV/IO (Torsades)",
+      "dose": "2 g IV/IO",
+      "route": "IV or IO",
+      "indication": "Suspected torsades de pointes",
+      "contraindications": "Hypermagnesemia",
+      "side_effects": "Respiratory depression, hypotension",
+      "scope": "Specialist skill",
+      "notes": "Best accomplished by adding 2 gm to 100 or 250 mL NS."
+    },
+    {
+      "name": "Naloxone IV/IO/IN (Suspected Opioid Arrest)",
+      "dose": "2 mg IV/IO or 2–4 mg IN",
+      "route": "IV, IO, or IN",
+      "indication": "Known or highly suspected opioid overdose as cause of arrest",
+      "contraindications": "Airway and ventilation take precedence over naloxone",
+      "side_effects": "Abrupt opioid reversal, agitation",
+      "scope": "All levels (IN/IM); Specialist skill for IV/IO",
+      "notes": "Patent airway and adequate ventilation MUST take precedence. Refer to Opioid Overdose Treatment and Prevention-Treatment Protocol."
+    },
+    {
+      "name": "Sodium Bicarbonate 1 mEq/kg IV/IO",
+      "dose": "1 mEq/kg IV/IO",
+      "route": "IV or IO",
+      "indication": "Known or highly suspected TCA overdose OR hyperkalemia — NOT routine",
+      "contraindications": "Routine use in cardiac arrest is NOT indicated",
+      "side_effects": "Hypernatremia, metabolic alkalosis",
+      "scope": "Specialist skill",
+      "notes": "FLUSH line with 20 mL NS if given after calcium chloride. Not routine — only for TCA or hyperkalemia."
+    },
+    {
+      "name": "Calcium Chloride 10% 1 gm IV/IO",
+      "dose": "1 gm/10 mL IV/IO",
+      "route": "IV or IO",
+      "indication": "Known or highly suspected hyperkalemia (dialysis patient, EKG changes) — NOT routine",
+      "contraindications": "Routine use is NOT indicated; flush line with 20 mL NS before sodium bicarbonate",
+      "side_effects": "Tissue necrosis with extravasation; cardiac arrest if given too rapidly",
+      "scope": "Specialist skill",
+      "notes": "ALWAYS flush line with 20 mL NS between calcium chloride and sodium bicarbonate administration. Not routine."
+    }
+  ],
+
+  "deterioration_flags": [
+    "No ETCO2 waveform after advanced airway — reassess airway placement immediately; ETCO2 = 0 indicates failed airway",
+    "ETCO2 < 10 mmHg — attempt to improve CPR quality; if quality already optimal may indicate futility state",
+    "ETCO2 abrupt increase > 10 mmHg — assess for ROSC; check pulses",
+    "Refractory VF after 3 shocks — consider double sequential defibrillation (per MCA Optional Protocol)",
+    "Suspected torsades — magnesium sulfate 2 g IV/IO",
+    "Suspected TCA overdose — sodium bicarbonate 1 mEq/kg; do NOT give routinely",
+    "Suspected hyperkalemia — calcium chloride 1 gm then flush then sodium bicarbonate; do NOT give routinely"
+  ],
+
+  "scope_notes": [
+    "CPR, AED application, BVM ventilation, rhythm assessment: all levels",
+    "IO access: Specialist skill (after 2 failed IV attempts)",
+    "IV access, epinephrine, amiodarone, lidocaine, magnesium sulfate: Specialist skill",
+    "Supraglottic airway — King, LMA, Air-Q (adult): EMT base scope; I-Gel: EMT scope at MCAs with i_gel_bls expansion; ETI: Specialist skill",
+    "Sodium bicarbonate, calcium chloride: Specialist skill — only for specific reversible causes",
+    "Naloxone IN/IM: all levels; IV/IO: Specialist skill",
+    "Double sequential defibrillation: per MCA Optional Protocol",
+    "BLS/LALS: contact Medical Control after 20 min without ROSC; ALS: contact after 30 min ALS time"
+  ]
+}

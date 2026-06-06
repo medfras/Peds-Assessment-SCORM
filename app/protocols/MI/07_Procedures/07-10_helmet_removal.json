@@ -1,0 +1,80 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-10 Helmet Removal (Revised 1/27/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_helmet_removal",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Helmet Removal",
+  "version": "2023-01-27",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-10: Helmet Removal — MDHHS Approved 1/27/2023",
+
+  "purpose": "Govern prehospital helmet removal decisions based on helmet type and presence of concurrent shoulder pads. Maintain constant spinal precautions throughout the process. Airway control always takes priority.",
+
+  "sections": [
+    {
+      "title": "High-Impact Helmets (Always Remove)",
+      "reference": "Michigan Protocol 7-10: Helmet Removal — High Impact",
+      "points": [
+        "HIGH-IMPACT helmets (motorcycle, automobile racing, off-road motorsports): ALWAYS REMOVE the helmet",
+        "These helmets prevent adequate airway assessment and management if left in place",
+        "Two-rescuer technique: one rescuer stabilizes the head/neck while second removes the helmet",
+        "Maintain manual inline cervical spinal stabilization throughout removal",
+        "Apply cervical collar and continue spinal precautions per Spinal Precautions-Procedure Protocol after removal"
+      ]
+    },
+    {
+      "title": "Low-Impact Helmets WITH Concurrent Shoulder Pads",
+      "reference": "Michigan Protocol 7-10: Helmet Removal — Low Impact With Shoulder Pads",
+      "points": [
+        "Examples: football, ice hockey, lacrosse (helmets worn WITH shoulder pads)",
+        "Prearrangement option — if the patient is AWAKE and protecting their own airway: leave helmet in place AND remove the face shield/faceguard to access the airway",
+        "If patient is unconscious or unable to protect airway: leave helmet in place AND remove the face shield/faceguard IMMEDIATELY",
+        "If the face shield/faceguard CANNOT be removed: remove both the helmet AND shoulder pads simultaneously",
+        "If the airway cannot be controlled with the helmet in place: remove the helmet AND shoulder pads simultaneously",
+        "When removing both simultaneously: one rescuer stabilizes the head, second rescuer removes shoulder pads, third removes helmet — coordinated action to maintain neutral spinal alignment"
+      ]
+    },
+    {
+      "title": "Low-Impact Helmets WITHOUT Shoulder Pads",
+      "reference": "Michigan Protocol 7-10: Helmet Removal — Low Impact Without Shoulder Pads",
+      "points": [
+        "Examples: bicycle helmets, baseball/softball batting helmets, skateboard helmets",
+        "ALWAYS REMOVE the helmet",
+        "Standard two-rescuer helmet removal technique with manual inline spinal stabilization",
+        "Apply cervical collar after removal and continue spinal precautions"
+      ]
+    },
+    {
+      "title": "General Principles",
+      "reference": "Michigan Protocol 7-10: Helmet Removal — General",
+      "points": [
+        "Maintain constant spinal precautions throughout the entire process",
+        "Airway management takes priority over helmet removal decision-making",
+        "Never remove a helmet without maintaining neutral spinal alignment",
+        "After helmet removal: apply cervical collar; continue spinal precautions per Spinal Precautions-Procedure Protocol",
+        "Document reason for helmet removal or retention in PCR"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Airway compromise with helmet in place — remove helmet regardless of type; airway takes priority",
+    "Face shield cannot be removed (low-impact with shoulder pads) — remove helmet and shoulder pads simultaneously",
+    "Patient unconscious with low-impact helmet and shoulder pads — remove face shield immediately; leave helmet unless airway cannot be controlled"
+  ],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "High-impact (motorcycle, racing): ALWAYS remove",
+    "Low-impact WITH shoulder pads: leave helmet + remove face shield if airway can be controlled (prearrangement); remove both if face shield cannot be removed or airway cannot be controlled",
+    "Low-impact WITHOUT shoulder pads (bicycle, baseball): ALWAYS remove",
+    "Airway control always supersedes helmet decision — if airway cannot be managed with helmet in place, remove it"
+  ]
+}

@@ -1,0 +1,1888 @@
+{
+  "_schema": "pfd_scenario_v1",
+  "id": "peds_croup_01",
+  "title": "Pediatric Croup — 10-Month-Old Female",
+  "display_title": "Pediatric Difficulty Breathing — Infant",
+  "subtitle": "10-month-old female, difficulty breathing at 02:04",
+  "category": "pediatric_medical",
+  "category_display": "Pediatric Medical Assessment",
+  "turnover_target": "als",
+  "version": "1.0.0",
+  "rubric_template": "ems_standard_v1",
+  "call_type": "pediatric_croup",
+  "base_patient_care_rubric": "nremt_e202_medical_v1",
+  "difficulty": "beginner",
+  "scenario_number": 1,
+  "prerequisites": [],
+  "protocol": "MI/04_OB_Pediatrics/04-5_respiratory_distress",
+  "jurisdiction": "mi_base",
+  "clinical_context": {
+    "jurisdiction": "MI",
+    "concepts": [
+      "pediatric_patient",
+      "pediatric_respiratory_distress",
+      "respiratory_distress",
+      "croup",
+      "upper_airway_obstruction",
+      "oxygen_therapy",
+      "airway_management"
+    ],
+    "protocol_focus": [
+      "croup",
+      "upper_airway_obstruction",
+      "oxygen_therapy",
+      "airway_management"
+    ]
+  },
+  "agency_context": "",
+  "readiness_criteria": {
+    "min_minutes": 3,
+    "checks": [
+      {
+        "id": "messages",
+        "label": "5 messages sent",
+        "type": "message_count",
+        "min": 5
+      },
+      {
+        "id": "vitals",
+        "label": "Vitals assessed",
+        "type": "vitals_logged"
+      },
+      {
+        "id": "exam",
+        "label": "Exam/history obtained",
+        "type": "exam_logged"
+      },
+      {
+        "id": "treatment",
+        "label": "Treatment applied",
+        "type": "treatment_logged"
+      }
+    ]
+  },
+  "scene_entry_scoring": {
+    "ppe": {
+      "required": [
+        "gloves"
+      ],
+      "recommended": [
+        "eye_protection"
+      ],
+      "missing_required_penalty": 3,
+      "missing_recommended_penalty": 1,
+      "max_score": 10
+    },
+    "pat": {
+      "expected_impression": "sick",
+      "incorrect_impression_deduction": 2
+    }
+  },
+  "lung_sound_challenge": {
+    "enabled": true,
+    "audio_file": "/static/audio/lung sounds/Croup-Laryngotracheitis-Stridor-Barking-Cough-theSimTech.mp3",
+    "prompt": "Auscultate Lily — what do you hear?",
+    "correct_choice_id": "inspiratory_stridor",
+    "accepted_answers": [
+      "stridor",
+      "inspiratory stridor",
+      "stridorous",
+      "barking",
+      "croup",
+      "stridor on inspiration",
+      "upper airway stridor",
+      "subglottic stridor",
+      "croup sounds"
+    ],
+    "finding": "Inspiratory stridor — high-pitched, musical, heard at neck and upper chest; clear lung fields bilaterally with good air movement",
+    "feedback_correct": "Correct — inspiratory stridor from subglottic edema. Critical distinction: the lung fields are CLEAR — this is NOT bronchospasm. The airway obstruction is above the carina.",
+    "feedback_incorrect": "Listen again — this is inspiratory stridor from subglottic edema, not wheeze. The stridor is generated in the upper airway at the level of the larynx. The lung fields themselves are clear."
+  },
+  "chat_placeholder": "Talk to Lily, Sarah (mom), Mike (dad), or your partner Alex...",
+  "chat_address_hint": "Address Lily directly, or say 'Sarah', 'Mike', or 'Alex'",
+  "debrief_lexi_hints": [
+    {
+      "label": "Next step?",
+      "msg": "What should I do next in this scenario?"
+    },
+    {
+      "label": "Croup vs asthma?",
+      "msg": "How do I tell the difference between croup and asthma in a pediatric patient?"
+    },
+    {
+      "label": "O2 approach?",
+      "msg": "What is the best way to give oxygen to an agitated infant with croup?"
+    },
+    {
+      "label": "Racepinephrine scope?",
+      "msg": "Can I give racepinephrine as a BLS provider for this patient?"
+    },
+    {
+      "label": "Why not albuterol?",
+      "msg": "Why isn't albuterol indicated for croup?"
+    }
+  ],
+  "lexi_guardrails": [
+    "If asked whether this learner can give racepinephrine, racemic epinephrine, or nebulized epinephrine for this croup patient, answer from the active scenario only: racepinephrine is not available to this BLS/PFD crew in this scenario; continue calm positioning, tolerated oxygen, reassessment, and ALS handoff.",
+    "Do not state or imply that Kent County, EMT-Basic/BLS status, or having an SVN/nebulizer kit authorizes racepinephrine. The MCA option for croup selects the Paramedic/ALS nebulized agent; it is not a BLS/EMT scope expansion.",
+    "Equipment availability alone does not authorize a medication."
+  ],
+  "objectives": [
+    "Recognize croup by clinical triad: barking cough, inspiratory stridor, low-grade fever following URI — in an infant 6 months to 3 years",
+    "Distinguish croup (stridor — upper airway) from asthma/bronchospasm (wheeze — lower airway) — albuterol is NOT indicated for croup",
+    "Prioritize keeping the patient calm — agitation worsens subglottic edema and stridor; avoid forceful assessment",
+    "Administer supplemental oxygen by pediatric nasal cannula when tolerated; if blow-by is the only tolerated option, hold an NRB mask close to the face at high flow (~15 LPM)",
+    "Position upright — allow parent to hold infant in position of comfort; do not place supine",
+    "Recognize that racepinephrine is in the ALS/Paramedic section of the pediatric respiratory distress protocol; the PFD BLS role is calm positioning, tolerated oxygen, reassessment, and handoff to the already-dispatched ALS crew",
+    "Recognize epiglottitis as a dangerous mimic requiring immediate ALS and airway precautions — drooling, high fever, toxic appearance, tripod positioning differentiate it from croup",
+    "Reassess stridor severity, work of breathing, and SpO2 every 3–5 minutes"
+  ],
+  "dispatch": {
+    "unit": "{unit}",
+    "text": "{unit}, respond to 3118 Riverside Drive NE for a 10-month-old female with difficulty breathing, might be choking.",
+    "priority": "Priority 1",
+    "time": "02:04",
+    "cross_streets": "Riverside Drive NE and Plainfield Ave",
+    "response_time_minutes": 4
+  },
+  "scene": {
+    "description": "You arrive at a single-story home on Riverside Drive. Lights are on in the front bedroom. A young father opens the door immediately — he's in a T-shirt and pajama pants, visibly shaken. 'She just woke up like this — I've never heard anything like it.' He leads you quickly down the hallway to the bedroom. A young mother is standing next to a wooden crib holding a 10-month-old girl against her chest. The baby is crying in short bursts — and between cries, you can clearly hear a high-pitched, crowing noise on each inhale. She has a hoarse, seal-like barking quality to her cough. The room is warm. The child's nostrils are flaring. The mother is trying to keep her calm but the infant is reaching out and arching her back — she does NOT want to be put down or touched by strangers.",
+    "image": null,
+    "video": null,
+    "hazards": []
+  },
+  "patient": {
+    "name": "Lily",
+    "age": 0,
+    "age_months": 10,
+    "dob_relative": "10 months before today's date",
+    "age_display": "10-month-old female",
+    "sex": "female",
+    "weight_kg": 9,
+    "weight_display": "approximately 20 lbs (9 kg — Broselow Red)",
+    "pcr_demographics_deferred": true,
+    "chief_complaint": "Barking cough and inspiratory stridor — woke from sleep, 10-month-old with upper respiratory infection",
+    "general_impression": "10-month-old girl being held against her mother's chest. She is alert and crying — good muscle tone, she is reaching and arching. She does not look limp or mottled. Her nostrils are flaring with each breath. You can hear a high-pitched crowing inspiratory stridor WITHOUT leaning in close. She is coughing intermittently — each cough sounds like a seal bark. Her lips appear pink. She is NOT drooling. She does NOT have a high fever. She is clearly frightened of you and pulls away toward her mother when you approach.",
+    "gcs_assessment": {
+      "e": 4,
+      "v": 5,
+      "m": 6,
+      "total": 15,
+      "rationale": "Eyes open spontaneously, crying is appropriate for age and situation, and she moves purposefully/reaches for her mother.",
+      "challenge_description": "Lily is alert in her mother's arms with eyes open spontaneously. She cries appropriately for her age and situation, reaches toward her mother, pulls away from strangers, and moves purposefully."
+    },
+    "avpu_assessment": {
+      "value": "alert",
+      "description": "Patient is alert, crying appropriately for age and situation, and reaches purposefully for her mother.",
+      "rationale": "Use AVPU = alert because she is awake, interactive, and moving purposefully."
+    },
+    "image": "static/images/croup_10mof.jpeg",
+    "video": null,
+    "pat": {
+      "impression": "10-month-old girl held against mother's chest — high-pitched crowing stridor audible before you reach her, seal-bark cough, nasal flaring. Alert and crying, reaching toward mother.",
+      "appearance": "Relatively preserved — alert, crying vigorously, good muscle tone, reaching and arching toward mother, making eye contact. Clearly frightened of strangers. Not limp, not mottled, not silent.",
+      "work_of_breathing": "Significantly increased — inspiratory stridor audible from across the room, subcostal retractions visible, nasal flaring with each breath, seal-bark cough. This is the dominant abnormal component.",
+      "circulation": "Adequate — lips pink, no cyanosis or mottling. Flushed from crying and fever. No peripheral pallor.",
+      "expected": "sick",
+      "teaching": "WOB is the dominant abnormal component — audible inspiratory stridor at rest, retractions, and nasal flaring together indicate significant upper airway obstruction. The relatively preserved appearance (crying, interactive, good tone) is actually a reassuring sign — a silent, limp infant with croup would be immediately life-threatening. However, audible stridor at rest still drives a SICK impression. Critical rule: do NOT agitate this infant. Limit stimulation, keep mom involved, avoid oral exam or supine positioning. Humidified oxygen if tolerated."
+    }
+  },
+  "history": {
+    "allergies": "No known allergies.",
+    "medications": "None currently. No prior nebulizer treatments or inhalers.",
+    "pmh": "Born full-term, no NICU stay. No prior respiratory hospitalizations. No history of asthma, reactive airway disease, or prior croup episodes. Up to date on immunizations including Hib and COVID series. No cardiac history.",
+    "last_oral_intake": "Last fed at approximately 21:30 — breast milk. Normal intake today. No new foods.",
+    "events_leading_to_call": "Lily has had a runny nose and mild congestion for approximately 3 days — consistent with a common cold. No high fever during the day. Parents put her to bed at 20:30 with no concerns. At approximately 01:50 she woke up crying. Mother went in and immediately noticed the barking quality to her cough and a noise when she breathed in. Father called 911 at 01:58. This is the first episode of this type. Parents deny any choking event, exposure to small objects, or change in feeding. No sick contacts with significant illness. No recent travel."
+  },
+  "initial_complaint": {
+    "speaker": "Sarah",
+    "lay_summary": "She has a bad cough and she's having trouble breathing.",
+    "allowed_in_opener": true,
+    "do_not_include": [
+      "barking",
+      "high-pitched",
+      "noisy breathing",
+      "choking concern",
+      "onset time",
+      "duration",
+      "fever",
+      "cold symptoms",
+      "prior episodes",
+      "diagnosis",
+      "clinical terms",
+      "treatment suggestions",
+      "negative findings",
+      "full OPQRST/SAMPLE"
+    ]
+  },
+  "history_response_map": {
+    "chief_concern": {
+      "label": "Broad opener / chief concern",
+      "speaker": "Sarah",
+      "triggers": [
+        "what's going on tonight",
+        "what happened",
+        "why did you call",
+        "how can we help you",
+        "chief complaint",
+        "what's her chief complaint",
+        "what is her chief complaint"
+      ],
+      "answer": "She has a bad cough and she's having trouble breathing.",
+      "tag": "[[HISTORY: Patient Chief Complaint=bad cough and trouble breathing]]",
+      "notes": "Patient-scoped complaint only. Family fear or care goals are not the patient's chief complaint.",
+      "do_not_include": [
+        "onset time",
+        "duration",
+        "fever",
+        "cold symptoms",
+        "prior episodes",
+        "medications",
+        "feeding",
+        "allergies",
+        "family or bystander complaints",
+        "treatment suggestions"
+      ]
+    },
+    "patient_identity": {
+      "label": "Patient identity / demographics",
+      "triggers": [
+        "what is her name",
+        "what's her name",
+        "patient name",
+        "who is she",
+        "date of birth",
+        "dob",
+        "birth date",
+        "birthday",
+        "how old is she"
+      ],
+      "answer": "Her name is Lily. She's 10 months old. She was born about 10 months ago.",
+      "tags": [
+        "[[HISTORY: Patient Name=Lily]]",
+        "[[HISTORY: Patient Age=10-month-old female]]",
+        "[[HISTORY: Patient Date of Birth=10 months before today's date]]"
+      ],
+      "notes": "Patient-scoped demographics only. Do not emit name, DOB, or age tags for Sarah, Mike, or other family/bystanders.",
+      "do_not_include": [
+        "weight unless asked",
+        "family or bystander demographics",
+        "diagnosis",
+        "treatment suggestions"
+      ]
+    },
+    "patient_weight": {
+      "label": "Patient weight",
+      "triggers": [
+        "how much does she weigh",
+        "what does she weigh",
+        "patient weight",
+        "weight",
+        "broselow",
+        "broslow"
+      ],
+      "answer": "She's about 20 pounds, around 9 kilograms.",
+      "tag": "[[HISTORY: Patient Weight=approximately 20 lbs (9 kg — Broselow Red)]]",
+      "notes": "Patient-scoped weight only. Do not use this tag for parent, family, caregiver, or bystander weight.",
+      "do_not_include": [
+        "family or bystander demographics",
+        "diagnosis",
+        "treatment suggestions"
+      ]
+    },
+    "help_goal": {
+      "label": "Help request / family goal",
+      "triggers": [
+        "what can we do for you",
+        "what do you need",
+        "how can we help"
+      ],
+      "answer": "Please help her breathe. I'm scared something is really wrong.",
+      "tags": [],
+      "do_not_include": [
+        "oxygen",
+        "blow-by",
+        "positioning",
+        "calm environment",
+        "cool air",
+        "steam",
+        "humidifier",
+        "medications",
+        "transport plan"
+      ]
+    },
+    "quality": {
+      "label": "OPQRST Quality",
+      "triggers": [
+        "can you describe it",
+        "what does it sound like",
+        "you said it's a loud barking cough with a high pitch",
+        "okay you said it's loud barking cough with high pitch",
+        "the breathing noise is harsh",
+        "does it sound barky"
+      ],
+      "answer": "Yes. It sounds harsh and barky, and the noisy part is when she breathes in.",
+      "tag": "[[EXAM: Quality=harsh bark-like cough with high-pitched noisy breathing on inhale]]",
+      "do_not_include": [
+        "onset time",
+        "fever",
+        "cold symptoms",
+        "prior episodes",
+        "feeding status",
+        "treatment suggestions",
+        "diagnosis"
+      ]
+    },
+    "onset": {
+      "label": "OPQRST Onset",
+      "triggers": [
+        "when did it start",
+        "when did you first notice",
+        "what time did this start"
+      ],
+      "answer": "I first noticed it around 1:50 this morning when she woke up crying.",
+      "tag": "[[EXAM: Onset=noticed around 01:50 when Lily woke up crying]]",
+      "do_not_include": [
+        "prior episode history",
+        "cold symptom duration",
+        "treatment suggestions"
+      ]
+    },
+    "time_prior_episode": {
+      "label": "OPQRST Time / prior episodes",
+      "triggers": [
+        "how long has it been going on",
+        "how long has she been breathing like this",
+        "has this ever happened before",
+        "is this the first time",
+        "does this come and go",
+        "has she sounded like this before"
+      ],
+      "answer": "It's been there since about 1:50 this morning, and this is the first time she's ever sounded like this.",
+      "tag": "[[EXAM: Time=continuous since about 01:50; first episode of this type; no prior similar noisy breathing]]",
+      "do_not_include": [
+        "diagnosis",
+        "treatment suggestions"
+      ]
+    },
+    "provocation": {
+      "label": "OPQRST Provocation",
+      "triggers": [
+        "anything make it better or worse",
+        "does anything help",
+        "what makes it worse",
+        "does crying affect it"
+      ],
+      "answer": "It seems louder when she's crying or upset.",
+      "tag": "[[EXAM: Provocation=noisy breathing seems louder when crying or upset]]",
+      "do_not_include": [
+        "positioning advice",
+        "calming environment recommendation",
+        "oxygen",
+        "medications"
+      ]
+    },
+    "severity": {
+      "label": "OPQRST Severity",
+      "triggers": [
+        "how bad is it",
+        "is it getting worse",
+        "how severe",
+        "is she worse now"
+      ],
+      "answer": "It sounds scary to me, but she's still awake and crying.",
+      "tag": "[[EXAM: Severity=parent reports scary noisy breathing; infant remains awake and crying]]",
+      "do_not_include": [
+        "vital signs",
+        "diagnosis",
+        "treatment suggestions"
+      ]
+    },
+    "associated_uri_fever": {
+      "label": "Associated symptoms / fever",
+      "triggers": [
+        "has she been sick",
+        "any fever",
+        "runny nose",
+        "cold symptoms",
+        "any other symptoms"
+      ],
+      "answer": "She's had a runny nose and congestion for about three days, and her temperature was 100.4.",
+      "tags": [
+        "[[HISTORY: Events=runny nose and congestion for about 3 days before the noisy breathing]]",
+        "[[EXAM: Temperature=100.4 F per parent]]"
+      ],
+      "do_not_include": [
+        "diagnosis",
+        "treatment suggestions",
+        "negative choking history unless asked",
+        "retractions",
+        "belly retractions",
+        "nasal flaring",
+        "nostril flaring",
+        "tracheal tug",
+        "work of breathing",
+        "skin color",
+        "lips pink",
+        "level of consciousness",
+        "lung sounds",
+        "lungs sound clear",
+        "physical assessment findings unless specifically asked"
+      ]
+    },
+    "choking_foreign_body": {
+      "label": "Choking / foreign body screen",
+      "triggers": [
+        "did she choke",
+        "could she have swallowed something",
+        "any small objects",
+        "was she eating when it started",
+        "foreign body"
+      ],
+      "answer": "No, I didn't see her choke on anything, and she wasn't eating when it started.",
+      "tag": "[[HISTORY: Events=no witnessed choking episode; not eating when symptoms started]]",
+      "do_not_include": [
+        "diagnosis",
+        "treatment suggestions"
+      ]
+    },
+    "medications": {
+      "label": "SAMPLE Medications",
+      "triggers": [
+        "any medications",
+        "does she take anything",
+        "did you give her anything",
+        "any inhalers",
+        "any nebulizers"
+      ],
+      "answer": "No medications. We haven't given her anything tonight.",
+      "tag": "[[HISTORY: Medications=no daily medications; nothing given tonight]]",
+      "do_not_include": [
+        "diagnosis",
+        "treatment suggestions"
+      ]
+    },
+    "allergies": {
+      "label": "SAMPLE Allergies",
+      "triggers": [
+        "any allergies",
+        "allergic to anything",
+        "drug allergies"
+      ],
+      "answer": "No known allergies.",
+      "tag": "[[HISTORY: Allergies=no known allergies]]",
+      "do_not_include": [
+        "medications",
+        "pmh"
+      ]
+    },
+    "last_oral_intake": {
+      "label": "SAMPLE Last oral intake",
+      "triggers": [
+        "when did she last eat",
+        "last oral intake",
+        "any food or drink",
+        "anything to eat or drink",
+        "last time she had anything to eat or drink",
+        "feeding normally"
+      ],
+      "answer": "She last had breast milk around 9:30 tonight, and she fed normally today.",
+      "tag": "[[HISTORY: Last Oral Intake=breast milk around 21:30; normal intake today]]",
+      "do_not_include": [
+        "choking history unless asked",
+        "diagnosis",
+        "treatment suggestions"
+      ]
+    },
+    "pmh_birth_immunizations": {
+      "label": "SAMPLE PMH / birth history",
+      "triggers": [
+        "any medical history",
+        "was she born full term",
+        "any hospitalizations",
+        "immunizations",
+        "shots up to date",
+        "any breathing problems before"
+      ],
+      "answer": "She was born full term, no NICU stay, no prior breathing problems or hospitalizations, and her immunizations are up to date.",
+      "tag": "[[HISTORY: PMH=born full-term; no NICU stay; no prior respiratory hospitalizations; immunizations up to date]]",
+      "do_not_include": [
+        "diagnosis",
+        "treatment suggestions"
+      ]
+    },
+    "sample_full": {
+      "label": "SAMPLE — full combined history",
+      "priority": true,
+      "notes": "Priority entry — use this whenever the learner asks for multiple SAMPLE components together, or explicitly asks for SAMPLE, full history, or a combined history. Prefer this over individual-component entries when the question spans more than one SAMPLE element.",
+      "triggers": [
+        "sample",
+        "full sample",
+        "complete sample",
+        "signs and symptoms allergies medications past medical history last oral intake events",
+        "signs and symptoms allergies medications medical history last oral intake events"
+      ],
+      "answer": "She's had the barky cough and noisy breathing since she woke up around 1:50 this morning. She has no known allergies, takes no medications, and we haven't given her anything tonight. She was born full term, had no NICU stay, has no prior breathing problems, and her immunizations are up to date. She last had breast milk around 9:30 tonight and fed normally today. She's had a runny nose and congestion for about three days, and her temperature at home was 100.4.",
+      "tags": [
+        "[[HISTORY: Signs and Symptoms=barky cough and inspiratory stridor since approximately 1:50 AM]]",
+        "[[HISTORY: Allergies=NKDA]]",
+        "[[HISTORY: Medications=none]]",
+        "[[HISTORY: PMH=born full-term; no NICU stay; no prior respiratory hospitalizations; immunizations up to date]]",
+        "[[HISTORY: Last Oral Intake=breast milk at approximately 21:30; normal feeds today]]",
+        "[[HISTORY: Events=URI symptoms (runny nose, congestion) for 3 days; temperature 100.4 F at home; woke at approximately 01:50 with barky cough and stridor]]",
+        "[[EXAM: Temperature=100.4 F per parent]]"
+      ],
+      "do_not_include": [
+        "diagnosis",
+        "treatment suggestions",
+        "vital signs not yet measured on scene"
+      ]
+    }
+  },
+  "vitals": {
+    "baseline": {
+      "hr": {
+        "label": "Heart Rate",
+        "value": 148,
+        "unit": "bpm",
+        "display": "148 bpm — tachycardic (expected with fever and distress)"
+      },
+      "rr": {
+        "label": "Respirations",
+        "value": 44,
+        "unit": "/min",
+        "display": "44/min — tachypneic, labored, subcostal retractions present"
+      },
+      "spo2": {
+        "label": "SpO2",
+        "value": 93,
+        "unit": "%",
+        "display": "93% on room air"
+      },
+      "bp": {
+        "label": "Blood Pressure",
+        "value": "90/60",
+        "unit": "mmHg",
+        "display": "90/60 mmHg (appropriate for age)"
+      },
+      "temp": {
+        "label": "Temperature",
+        "value": 100.4,
+        "unit": "°F",
+        "display": "100.4°F — low-grade fever"
+      },
+      "blood_glucose": {
+        "label": "Blood Glucose",
+        "value": 96,
+        "unit": "mg/dL",
+        "display": "96 mg/dL"
+      },
+      "gcs": {
+        "label": "GCS / AVPU",
+        "value": 15,
+        "unit": "/15",
+        "display": "15 — E4V5M6 — alert; age-appropriate crying, interactive, good tone, reaches for mother"
+      },
+      "skin_color": {
+        "label": "Skin",
+        "value": "Flushed face, pink lips and mucous membranes; mild perioral pallor; no cyanosis; mildly diaphoretic from crying and effort",
+        "unit": ""
+      },
+      "cap_refill": {
+        "label": "Cap Refill",
+        "value": 2.5,
+        "unit": "sec",
+        "display": "2.5 seconds — borderline (crying/distress effect)"
+      },
+      "pupils": {
+        "label": "Pupils",
+        "value": "Equal, round, reactive — 4 mm bilaterally",
+        "unit": ""
+      },
+      "lung_sounds": {
+        "label": "Lung Sounds / Airway",
+        "value": "Inspiratory stridor — high-pitched, crowing, heard clearly at neck and upper chest; lung fields clear bilaterally with adequate air movement; no wheeze, no crackles",
+        "unit": ""
+      },
+      "work_of_breathing": {
+        "label": "Work of Breathing",
+        "value": "Moderate — subcostal retractions, nasal flaring, tracheal tug; inspiratory stridor audible at rest; speaking/crying in short bursts",
+        "unit": ""
+      }
+    },
+    "deterioration": {
+      "note": "Untreated or with excessive agitation, croup worsens — subglottic edema increases with crying/agitation. Rates are per minute of elapsed time without intervention.",
+      "rates": {
+        "hr": 1.0,
+        "rr": 0.5,
+        "spo2": -0.4,
+        "gcs": 0,
+        "cap_refill": 0.05
+      },
+      "caps": {
+        "hr": {
+          "max": 200,
+          "min": 120
+        },
+        "rr": {
+          "max": 70,
+          "min": 30
+        },
+        "spo2": {
+          "min": 78,
+          "max": 100
+        },
+        "gcs": {
+          "min": 3,
+          "max": 15
+        },
+        "cap_refill": {
+          "max": 5.0,
+          "min": 1.0
+        }
+      },
+      "string_thresholds": {
+        "skin_color": [
+          {
+            "spo2_below": 88,
+            "value": "Perioral pallor worsening — lips dusky; subcutaneous cyanosis appearing around mouth"
+          },
+          {
+            "spo2_below": 82,
+            "value": "Cyanotic — lips and nail beds blue; skin mottled; impending respiratory failure"
+          }
+        ],
+        "lung_sounds": [
+          {
+            "spo2_below": 88,
+            "value": "Stridor becoming biphasic (inspiratory AND expiratory) — severe subglottic obstruction; near-silent chest — severely reduced air movement"
+          },
+          {
+            "spo2_below": 84,
+            "value": "Stridor may diminish as effort diminishes — DANGER SIGN, not improvement; minimal air movement; child becoming limp"
+          }
+        ],
+        "work_of_breathing": [
+          {
+            "spo2_below": 88,
+            "value": "Severe — maximal retractions suprasternal and subcostal, paradoxical chest movement, unable to cry effectively; exhausted appearance"
+          },
+          {
+            "spo2_below": 82,
+            "value": "Agonal — child going limp, jaw thrust needed to maintain airway; BVM ventilation required"
+          }
+        ]
+      }
+    },
+    "interventions": {
+      "positioning": {
+        "label": "Position of comfort — sitting upright",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "sit.*up",
+          "upright",
+          "position.*comfort",
+          "let.*mom.*hold",
+          "let.*mother.*hold",
+          "keep.*holding",
+          "continue.*hold",
+          "hold.*upright",
+          "keep.*upright",
+          "don.?t.*lay.*down",
+          "stay.*upright",
+          "parent.*hold",
+          "let.*her.*hold",
+          "position of comfort",
+          "keep.*sitting",
+          "sitting.*up",
+          "hold.*her.*up"
+        ],
+        "effects": {
+          "rr": {
+            "immediate_change": -4,
+            "rate_modifier": 0.7
+          },
+          "spo2": {
+            "immediate_change": 2,
+            "rate_modifier": 0.6
+          },
+          "hr": {
+            "immediate_change": -8,
+            "rate_modifier": 0.85
+          }
+        },
+        "notes": "Upright positioning reduces subglottic edema and decreases work of breathing. Allowing the parent to hold the child minimizes agitation — a crying, fighting infant has worse stridor. This is a critical BLS intervention.",
+        "requires_popup": false
+      },
+      "o2_blowby": {
+        "label": "Blow-by O2 (NRB mask held near face, high flow)",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "blow.?by",
+          "blow by",
+          "hold.*mask.*near",
+          "near.*face",
+          "flow.*by",
+          "mask.*near.*face",
+          "oxygen.*near",
+          "wave.*oxygen",
+          "oxygen.*face",
+          "o2.*near"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 4,
+            "rate_modifier": 0.4
+          },
+          "rr": {
+            "immediate_change": -2,
+            "rate_modifier": 0.85
+          }
+        },
+        "notes": "Michigan oxygen procedure guidance says pediatric blow-by is an ineffective means of delivering supplemental oxygen and should be avoided when possible. Use pediatric nasal cannula when tolerated. If blow-by is the only tolerated option, hold an NRB mask as close to the infant's face as possible at high flow (~15 LPM), preferably with parent assistance; do not secure the mask tightly to a frightened infant.",
+        "requires_popup": true,
+        "popup_type": "oxygen",
+        "popup_default": {
+          "device": "blowby",
+          "flow": 15
+        }
+      },
+      "o2_nc": {
+        "label": "Supplemental O2 via nasal cannula",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "\\bnasal\\s+cannula\\b",
+          "\\bnc\\b",
+          "nasal cannula",
+          "low.?flow",
+          "nasal.*o2",
+          "cannula",
+          "supplemental.*o2",
+          "give.*oxygen",
+          "apply.*oxygen",
+          "administer.*oxygen",
+          "administer.*o2",
+          "admin.*o2",
+          "start.*o2",
+          "start.*oxygen",
+          "get.*o2",
+          "put.*on.*o2",
+          "oxygen.*on"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 3,
+            "rate_modifier": 0.5
+          },
+          "rr": {
+            "immediate_change": -1,
+            "rate_modifier": 0.9
+          }
+        },
+        "notes": "Pediatric nasal cannula is preferred when tolerated and should be worn in the nares at the appropriate NC flow range. Do not describe NC/tubing held near the face as blow-by in this MI protocol scenario; blow-by means a mask held close to the face at high flow.",
+        "requires_popup": true,
+        "popup_type": "oxygen",
+        "popup_default": {
+          "device": "nc",
+          "flow": 2
+        }
+      },
+      "o2_nrb": {
+        "label": "High-flow O2 via NRB mask (15 LPM)",
+        "blow_by_equivalent": true,
+        "blow_by_label": "Blow-by O2 (NRB held near face — blow-by technique)",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "\\bnrb\\b",
+          "non.?rebreather",
+          "high.?flow",
+          "15\\s*lpm",
+          "non rebreather"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 1,
+            "rate_modifier": 0.9
+          },
+          "hr": {
+            "immediate_change": 20,
+            "rate_modifier": 1.2
+          },
+          "rr": {
+            "immediate_change": 6,
+            "rate_modifier": 1.2
+          }
+        },
+        "notes": "High-flow O2 delivery option; blow-by technique required for agitated infants.",
+        "indication_gate": {
+          "status": "not_indicated_now",
+          "reason": "A secured NRB mask is not recommended for agitated infants with croup — it worsens agitation and stridor. Use blow-by technique (held near face, not secured). Secured NRB is only appropriate if SpO2 drops below 88% with decreased LOC.",
+          "allowed_when": [
+            "spo2_below_88",
+            "decreased_loc",
+            "obtunded"
+          ]
+        },
+        "requires_popup": true,
+        "popup_type": "oxygen",
+        "popup_default": {
+          "device": "nrb",
+          "flow": 15
+        }
+      },
+      "calm_environment": {
+        "label": "Minimize stimulation — calm environment",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "calm.*down",
+          "keep.*calm",
+          "stay.*calm",
+          "try.*keep.*calm",
+          "try.*calm",
+          "as.*calm.*as",
+          "calm.*as.*possible",
+          "continue.*calm",
+          "quiet.*environment",
+          "minimize.*stimul",
+          "reduce.*stimul",
+          "calm.*environment",
+          "don.?t.*agitat",
+          "keep.*quiet",
+          "speak.*softly",
+          "dim.*lights",
+          "lights.*down",
+          "let.*calm",
+          "soothing",
+          "low.*stimul",
+          "less.*stimul"
+        ],
+        "effects": {
+          "hr": {
+            "immediate_change": -10,
+            "rate_modifier": 0.8
+          },
+          "rr": {
+            "immediate_change": -3,
+            "rate_modifier": 0.8
+          }
+        },
+        "notes": "Crying and agitation significantly worsen stridor in croup — subglottic edema is dynamic and responds to airflow turbulence. A calm infant has less stridor. Speak softly, move slowly, keep lights lower, avoid separating the child from the parent.",
+        "requires_popup": false
+      },
+      "racepinephrine_svn": {
+        "label": "Racepinephrine 2.25% via SVN (nebulized)",
+        "within_bls_scope": false,
+        "within_aemt_scope": false,
+        "unavailable_in_scenario": true,
+        "unavailable_reason": "Racepinephrine is in the ALS/Paramedic section of the MI pediatric respiratory distress protocol and is not a BLS medication. Request/continue ALS intercept — Medic 2 carries and administers racepinephrine.",
+        "detection_patterns": [
+          "racepinephrine",
+          "racemic.*epi",
+          "racepi",
+          "racemic epinephrine",
+          "neb.*epi.*croup",
+          "croup.*treatment.*neb"
+        ],
+        "effects": {},
+        "notes": "Protocol-indicated ALS/Paramedic treatment for stridor at rest (croup). On this PFD BLS unit it must come from ALS — do not administer at EMT scope.",
+        "requires_popup": false
+      },
+      "albuterol_svn": {
+        "label": "Albuterol 2.5 mg via SVN (nebulizer)",
+        "within_bls_scope": true,
+        "unavailable_in_scenario": false,
+        "detection_patterns": [
+          "\\bsvn\\b",
+          "\\bnebulizer\\b",
+          "\\bneb\\b",
+          "albuterol",
+          "breathing treatment",
+          "nebulized albuterol",
+          "albuterol.*neb",
+          "set up.*albuterol"
+        ],
+        "effects": {},
+        "notes": "Lower airway bronchodilator — not the right mechanism for croup.",
+        "indication_gate": {
+          "status": "not_indicated_now",
+          "reason": "Albuterol is not indicated — stridor is upper airway obstruction, not lower airway bronchospasm. Albuterol will not open the subglottis.",
+          "allowed_when": [
+            "confirmed_bronchospasm",
+            "lower_airway_wheeze"
+          ]
+        },
+        "requires_popup": false
+      },
+      "epi_draw_up": {
+        "label": "Epinephrine 1:1,000 IM (draw-up)",
+        "within_bls_scope": true,
+        "unavailable_in_scenario": false,
+        "detection_patterns": [
+          "draw.*up.*epi",
+          "epi.*draw",
+          "epinephrine.*draw",
+          "epinephrine.*vial",
+          "epi.*vial",
+          "1.?1.?000.*epi",
+          "epi.*1.?1.?000",
+          "draw.*epinephrine"
+        ],
+        "effects": {},
+        "notes": "IM epinephrine 1:1,000 — indicated for anaphylaxis, not croup.",
+        "indication_gate": {
+          "status": "not_indicated_now",
+          "reason": "Epinephrine 1:1,000 IM is for anaphylaxis, not croup. It will not reduce subglottic edema. If racepinephrine is needed, that is an ALS/Paramedic medication — it is not carried on this BLS unit.",
+          "allowed_when": [
+            "anaphylaxis",
+            "severe_allergic_reaction"
+          ]
+        },
+        "requires_popup": false
+      },
+      "als_intercept": {
+        "label": "ALS intercept acknowledged",
+        "within_bls_scope": true,
+        "detection_patterns": [],
+        "effects": {},
+        "notes": "ALS/intercept expectations are determined by the active agency configuration. If ALS is involved, provide a concise handoff: 10-month-old, stridor at rest, SpO2 93%, weight 9 kg, and response to BLS care. Do not require the student to direct ALS medication preparation.",
+        "requires_popup": false
+      },
+      "bvm": {
+        "label": "BVM ventilation",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "\\bbvm\\b",
+          "bag.*valve",
+          "bag.*mask",
+          "ventilat",
+          "assist.*breath"
+        ],
+        "effects": {},
+        "notes": "Bag-valve-mask ventilation for apnea or respiratory failure.",
+        "indication_gate": {
+          "status": "not_indicated_now",
+          "reason": "BVM is not indicated — the patient is maintaining her airway with effort. Reserve for SpO2 < 88% with decreased LOC or apnea.",
+          "allowed_when": [
+            "apnea",
+            "spo2_below_88",
+            "decreased_loc",
+            "inadequate_ventilations"
+          ]
+        },
+        "requires_popup": false
+      }
+    },
+    "improvement": {
+      "note": "With calm environment, upright positioning, and supplemental O2, stridor partially improves as the child calms and SpO2 rises. Full resolution requires racepinephrine — only available from ALS. Improvement is partial and slow with BLS interventions alone.",
+      "requires_intervention": "positioning",
+      "string_thresholds": {
+        "skin_color": [
+          {
+            "spo2_above": 96,
+            "value": "Pink, warm — color improved from initial assessment; no perioral pallor; mild residual flushing"
+          },
+          {
+            "spo2_above": 94,
+            "value": "Better color — perioral pallor resolved, lips pink; still flushed from earlier distress"
+          }
+        ],
+        "lung_sounds": [
+          {
+            "spo2_above": 96,
+            "value": "Stridor less prominent at rest — still present but quieter when Lily is calm and held upright; lung fields clear throughout"
+          },
+          {
+            "spo2_above": 94,
+            "value": "Stridor slightly decreased in intensity with positioning and calm environment — still clearly present on inspiration"
+          }
+        ],
+        "work_of_breathing": [
+          {
+            "spo2_above": 96,
+            "value": "Mildly improved — retractions less severe when calm; still working harder than normal but less distressed"
+          },
+          {
+            "spo2_above": 94,
+            "value": "Modest improvement — nasal flaring decreased; subcostal retractions persist but less pronounced"
+          }
+        ]
+      },
+      "presentation_milestones": [
+        {
+          "gcs_above": 14,
+          "text": "Lily has settled somewhat in Sarah's arms. The barking cough continues intermittently but she is not screaming. The stridor is still present but slightly less prominent when she's calm. She's watching you with wide, wary eyes, clutching Sarah's shirt. Sarah says quietly, 'She seems a little better. Is she going to be okay?'"
+        }
+      ]
+    }
+  },
+  "standard_exam_findings": {
+    "airway_upper_airway": {
+      "label": "Upper Airway",
+      "exam_key": "Upper Airway",
+      "aliases": [
+        "airway exam",
+        "upper airway",
+        "mouth and throat",
+        "oral exam",
+        "inspect throat"
+      ],
+      "finding": "inspiratory stridor audible at rest with barky cough; no drooling; do not force an oral/throat exam or separate the child from caregiver",
+      "notes": "Croup airway assessment is observational and low-stimulation. Avoid invented oral findings and reinforce not agitating the infant."
+    },
+    "dcap_btls_head_neck": {
+      "label": "DCAP-BTLS Head/Neck",
+      "exam_key": "DCAP-BTLS Head/Neck",
+      "aliases": [
+        "DCAP-BTLS head",
+        "DCAP-BTLS neck",
+        "head and neck trauma screen",
+        "inspect neck"
+      ],
+      "finding": "no traumatic deformity, contusion, abrasion, puncture, burn, tenderness, laceration, or swelling noted; upper-airway stridor remains the abnormal finding",
+      "notes": "Use for trauma-oriented head/neck exams in this medical airway scenario."
+    }
+  },
+  "personas": {
+    "lily": {
+      "name": "Lily",
+      "age": 0,
+      "role": "patient",
+      "aliases": [
+        "Lily",
+        "the baby",
+        "the infant",
+        "the child",
+        "the girl",
+        "baby",
+        "she",
+        "her"
+      ],
+      "tts": {
+        "enabled": false,
+        "voice_role": "patient",
+        "gender": "female",
+        "age_band": "infant",
+        "demeanor": "frightened, clingy, intermittently crying",
+        "delivery": "non-verbal infant; display observable behavior only",
+        "avoid": "do not synthesize spoken words for Lily"
+      },
+      "description": "10-month-old female with croup. She is alert, crying intermittently, and terrified of strangers. She clings to her mother. She cannot speak — she communicates through crying, reaching, and facial expressions. Between crying episodes, inspiratory stridor is clearly audible. Any attempt by a stranger to hold her, touch her face, or apply equipment to her face will cause immediate escalation of crying and worsening stridor. She will reach for and grab her mother's shirt. If kept calm in her mother's arms with non-threatening O2 delivery, she gradually settles.",
+      "speaking_style": "Non-verbal. Communicates through: crying (distressed), whimpering (tired/calming), reaching (toward mother), arching back (protest), or quiet watchfulness (improving). Never speaks words. Never answers questions verbally.",
+      "clinical_state_instructions": "Do not give verbal responses as Lily. Describe her behavior and physical state in third person from the perspective of what the student can observe. Example: 'Lily lets out another bark-like cough and pulls closer to Sarah, whimpering.' If student attempts to apply NRB: 'Lily immediately starts screaming and arching her back, fighting the mask — the stridor becomes significantly louder with the increased agitation.' If O2 is given via blow-by: 'Lily tolerates the oxygen being held nearby — she watches it warily but does not fight it.' If positioned upright in parent's arms: 'Lily calms slightly, still whimpering but no longer screaming.'",
+      "persona_rules": [
+        "Always describe Lily's state through observable behavior, never verbal responses",
+        "Worsening = screaming, arching, fighting equipment, stridor louder",
+        "Improving = quieter, less arching, settled in parent's arms, stridor less prominent",
+        "Any forced assessment (NRB, forced auscultation, separating from parent) triggers worsening"
+      ]
+    },
+    "sarah": {
+      "name": "Sarah",
+      "age": 28,
+      "role": "family",
+      "relation": "mother",
+      "sex": "female",
+      "aliases": [
+        "Sarah",
+        "mom",
+        "mother",
+        "the mother",
+        "the mom",
+        "ma'am"
+      ],
+      "tts": {
+        "enabled": true,
+        "voice_role": "bystander",
+        "gender": "female",
+        "age_band": "adult",
+        "provider_voice": "coral",
+        "speed": 1.26,
+        "demeanor": "exhausted first-time mother who is frightened, protective, near tears, and trying not to upset the infant",
+        "delivery": "soft but urgent parent voice with a noticeable tremble; speak quickly when scared, then soften slightly when EMS keeps Lily calm",
+        "avoid": "do not sound calm, flat, level, detached, physically ill, short of breath, sedated, playful, clinical, or like the patient"
+      },
+      "description": "Lily's mother — 28, first-time parent, exhausted and frightened. She has been up with Lily tonight and is on the verge of tears. She is holding Lily firmly and rocking her. She is cooperative with EMS but needs simple, calm explanations. She does not know the term croup and thinks Lily may be choking. She has not given Lily any medications tonight. She will do whatever EMS tells her that doesn't require separating Lily from her arms. If asked to hold the oxygen near Lily's face, she will do it. She becomes visibly relieved when given a clear explanation of what is happening.",
+      "speaking_style": "Scared, whispering to not agitate Lily, but asking rapid questions when she speaks. 'Is she choking? What's wrong with her?' Grateful and calmer when given clear answers.",
+      "clinical_state_instructions": "Answer only the specific question asked. Do not give the full SAMPLE/OPQRST history from a broad opener. If asked a broad opener, use the initial complaint only: 'She has a bad cough and she's having trouble breathing.' Do not include onset time, duration, fever, cold symptoms, prior episodes, medications, feeding, allergies, choking history, barking quality, or high-pitched/noisy breathing unless directly asked. If asked 'what can we do for you?' or 'what do you need?', say only: 'Please help her breathe. I'm scared something is really wrong.' Do not give any care instructions or home remedies. Give details only when specifically asked: cold for 3 days; started around 01:50; no prior similar episode; no medications tonight; no choking event; no new foods; low-grade 100.4°F; immunizations up to date; born full-term and healthy. If asked to describe the breathing/cough, describe only the sound in parent language: 'It's harsh and barky, and the noisy part is when she breathes in.' If asked broadly about other signs or symptoms, say only: 'She's had a runny nose and congestion for a few days, and her temperature was 100.4.' Do not add retractions, nasal flaring, tracheal tug, lung findings, skin color, feeding status, fever, or prior history to that answer unless that exact item is specifically asked. Do not use the words croup or stridor unless the student says them first. Do not suggest oxygen, blow-by, nebulizers, medications, positioning, calming environment, cool air, steam, humidifiers, transport, or any treatment plan. If student asks you to hold O2 near Lily: 'Like this? Okay.' If student explains it's croup and not life-threatening if treated: Sarah visibly relaxes, wipes her eye. 'Oh thank God. I thought she was choking.' If student tries to take Lily from Sarah's arms: 'She doesn't do well with strangers — she'll just scream more. Is that okay if I keep holding her?'",
+      "persona_rules": [
+        "Provide accurate history only when specifically asked for that element",
+        "Do not answer multiple OPQRST/SAMPLE elements from one broad opener",
+        "When asked what EMS can do, ask for help and reassurance only; never recommend a care plan",
+        "Cooperate with anything that doesn't separate Lily from her arms",
+        "Become calmer when given a clear explanation of what croup is",
+        "Do not use clinical terms like croup or stridor unless the student uses them first",
+        "Do not suggest treatments, oxygen method, medications, positioning, or scene-management steps",
+        "Do NOT comment on, name, or question clinical procedures — you are a scared parent, not a clinician. React only to Lily's visible distress or calm, not to equipment or techniques being used."
+      ]
+    },
+    "mike": {
+      "name": "Mike",
+      "age": 30,
+      "role": "family",
+      "relation": "father",
+      "sex": "male",
+      "aliases": [
+        "Mike",
+        "dad",
+        "father",
+        "the father",
+        "the dad",
+        "sir"
+      ],
+      "tts": {
+        "enabled": true,
+        "voice_role": "bystander",
+        "gender": "male",
+        "age_band": "adult",
+        "provider_voice": "onyx",
+        "speed": 1.22,
+        "demeanor": "worried father trying to stay controlled for Sarah while clearly scared about Lily's breathing",
+        "delivery": "steady but tense parent voice with quiet urgency; direct questions, slightly faster than normal, not detached",
+        "avoid": "do not sound calm, flat, physically ill, short of breath, clinical, detached, or like an EMS provider"
+      },
+      "description": "Lily's father — 30, also a first-time parent. He let Sarah take Lily when she cried and called 911 himself. He is standing in the doorway, arms crossed — worried but trying to stay calm for Sarah. He searched online while waiting for EMS but is not clinically knowledgeable. He is not in the way but is alert and will ask worried parent questions if engaged.",
+      "speaking_style": "Calmer than Sarah but clearly scared. Speaks to you directly while Sarah focuses on Lily. 'Is she choking?' 'Is she going to be okay?' 'Do we need to go to the hospital?'",
+      "clinical_state_instructions": "Confirm history consistent with Sarah's, but answer only the specific question asked. Do not volunteer internet guesses, diagnoses, medication names, or treatment ideas. If asked if Lily had a choking episode: 'No — she just woke up like this out of nowhere.' If asked what he found online: 'I saw a bunch of scary breathing stuff and stopped looking. I don't really know what it means.' If asked about sick contacts: 'Her cousin had a cold last week when we saw him.'",
+      "persona_rules": [
+        "Support Sarah's history",
+        "Do not name medications, steroids, croup, stridor, or online diagnoses unless the student asks directly about something you looked up",
+        "Do not interfere with patient care",
+        "Do NOT comment on, name, or question clinical procedures — you are a scared parent, not a clinician. React only to Lily's visible distress or calm. Your questions are about what's wrong with Lily, not about what the crew is doing."
+      ]
+    },
+    "alex": {
+      "name": "Alex",
+      "age": 28,
+      "role": "partner",
+      "sex": "male",
+      "aliases": [
+        "Alex",
+        "partner",
+        "my partner"
+      ],
+      "tts": {
+        "enabled": true,
+        "voice_role": "alex",
+        "gender": "male",
+        "age_band": "adult",
+        "provider_voice": "echo",
+        "speed": 1.32,
+        "demeanor": "calm, competent, practical EMT partner who is alert to pediatric respiratory distress",
+        "delivery": "brisk, concise EMT partner in the room; natural field tone, reassuring, not sleepy or theatrical",
+        "avoid": "do not sound flat, like a narrator, instructor, parent, or patient"
+      },
+      "description": "Your EMT partner. Calm and practical. Will assist when directed. If student says to keep Lily calm and upright, acknowledge and carry it out: 'Copy. I'll keep her upright with Sarah and keep things quiet.' If student reaches for albuterol: 'You sure about that? She's got stridor — is that wheezing or stridor?' If student asks for racepinephrine: 'Racepinephrine is ALS/Paramedic care in the pediatric respiratory distress protocol — that's why we need Medic 2. ETA is 10 minutes.' If student tries to force a secured NRB on Lily: 'She's fighting it pretty hard — want NC if she tolerates it, or blow-by with the mask held close instead?' If student skips requesting ALS update: 'Want me to update Medic 2 with a patient report?' DEFAULT OXYGEN RULE: If student gives any generic oxygen command ('admin o2', 'give oxygen', 'start O2', 'oxygen', 'o2') without specifying a method, apply pediatric nasal cannula if tolerated. If the student explicitly requests blow-by, use an NRB mask held close to the face at high flow, not NC/tubing. Never describe two delivery methods in the same response.",
+      "speaking_style": "Brief, calm, clinical. 'Copy.' 'Pediatric NC ready.' 'Medic 2 is 7 out.' 'She doesn't have wheeze — that's stridor.'",
+      "persona_rules": [
+        "Gently redirect albuterol attempt with a question, not a flat correction",
+        "Remind student racepinephrine is ALS/Paramedic care, not a BLS medication, if asked",
+        "Treat keep-calm/upright/position-of-comfort commands as actionable and carry them out without asking for clarification",
+        "When student gives any generic oxygen command, default to pediatric nasal cannula if tolerated",
+        "Use blow-by only when requested or when NC is not tolerated; blow-by uses an NRB mask held close to the face at high flow, not nasal cannula tubing",
+        "Prompt ALS update if student forgets"
+      ]
+    }
+  },
+  "correct_treatment": {
+    "critical_actions": [
+      {
+        "id": "scene_safety",
+        "display": "Scene safety and BSI/PPE prior to patient contact",
+        "description": "Scene safety and BSI/PPE prior to patient contact",
+        "required_at": [],
+        "scene_entry_credited": true,
+        "intervention_ids": [],
+        "required": true
+      },
+      {
+        "id": "pat_assessment",
+        "display": "Pediatric Assessment Triangle (PAT)",
+        "description": "Pediatric Assessment Triangle — Appearance (alert, crying, appropriate tone), Work of Breathing (moderate retractions, audible inspiratory stridor), Circulation to Skin (pink/flushed, no cyanosis)",
+        "required_at": [],
+        "scene_entry_credited": true,
+        "intervention_ids": [],
+        "required": true
+      },
+      {
+        "id": "croup_recognition",
+        "display": "Recognize croup — upper airway (stridor) vs. lower airway (wheeze)",
+        "description": "Recognize croup: barking cough + inspiratory stridor + low-grade fever in 10-month-old following URI. Distinguish from epiglottitis (high fever, toxic, drooling, tripod) and foreign body (sudden onset without illness). Do NOT require the student to say the word 'croup' — credit if their treatment plan and DMIST/narrative reflect upper airway management consistent with croup (least-agitating oxygen strategy, upright positioning, calm environment, ALS for racepinephrine).",
+        "required_at": [
+          "EMT",
+          "AEMT",
+          "Paramedic"
+        ],
+        "cognitive": true,
+        "intervention_ids": [],
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(croup|barking|stridor|inspiratory.*noise|seal.*bark|upper.*airway|blow.?by|racepinephrine)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "positioning_calm",
+        "display": "Allow parent to hold infant upright",
+        "description": "Allow parent to hold infant upright — do not separate from mother; minimize stimulation; speak quietly and move slowly to reduce agitation",
+        "required_at": [],
+        "intervention_ids": [
+          "positioning",
+          "calm_environment"
+        ],
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(parent.*hold|mom.*hold|upright|comfort|let.*parent|calm.*environment|minimize.*stimulat|do not separate)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "o2_appropriate",
+        "display": "Supplemental O2 (blow-by, NC, or NRB)",
+        "description": "Administer supplemental O2 — preferred method is pediatric nasal cannula when tolerated. If blow-by is the only tolerated option, hold an NRB mask close to the face at high flow (~15 LPM) rather than securing it. SpO2 93% warrants supplemental O2. Credit O2 delivery in any form; note method if NRB was forced/secured to the face rather than held as blow-by.",
+        "required_at": [],
+        "intervention_ids": [
+          "o2_blowby",
+          "o2_nc",
+          "o2_nrb"
+        ],
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(blow.?by|oxygen|o2|supplemental|nasal.*cannula|nrb)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "als_intercept",
+        "display": "Confirm ALS intercept / handoff readiness",
+        "description": "Confirm ALS handoff readiness according to the active agency configuration. If communicating with ALS, report patient weight (9 kg), SpO2, stridor at rest, and current response to BLS care. Do not require the student to direct ALS medication preparation or administration.",
+        "required_at": [],
+        "intervention_ids": [
+          "als_intercept"
+        ],
+        "required": false
+      }
+    ],
+    "recommended_actions": [
+      {
+        "id": "calm_environment",
+        "description": "Actively minimize agitation — dim lights, speak softly, avoid unnecessary procedures, keep Sarah holding Lily throughout",
+        "required": false
+      },
+      {
+        "id": "reassess_post_treatment",
+        "description": "Reassess stridor severity, work of breathing, SpO2, and mental status every 3–5 minutes",
+        "required": false
+      },
+      {
+        "id": "epiglottitis_screen",
+        "description": "Screen for epiglottitis red flags: high fever (> 102.5°F), toxic appearance, drooling, tripod positioning, refusal to swallow — none present here; clinical picture consistent with croup. Credit if: temperature obtained (fever screen) + swallowing asked (refusal screen); appearance/drooling/tripod are covered by PAT.",
+        "required": false
+      }
+    ],
+    "out_of_scope_bls": [
+      "racepinephrine_als",
+      "albuterol_contraindicated_croup",
+      "dexamethasone",
+      "iv_io_access",
+      "heliox",
+      "epinephrine_nebulized_als",
+      "advanced_airway_als",
+      "12_lead_ecg"
+    ],
+    "clinical_decision_points": {
+      "als_trigger": "ALS/intercept expectations are determined by the active agency configuration. If ALS is involved, update with weight (9 kg — Broselow Red), SpO2 (93%), stridor at rest, and response to BLS care. Do not require the BLS student to direct racepinephrine preparation or administration.",
+      "epiglottitis_watch": "Epiglottitis is a dangerous mimic — high fever (> 102.5°F), toxic/ill appearance, drooling, tripod positioning, refusal to swallow, muffled voice. Lily has none of these. If these develop: DO NOT examine the oropharynx — agitation can cause complete obstruction. Position upright, O2 blow-by, immediate ALS with airway capability, quiet transport.",
+      "nrb_decision": "A secured NRB mask is counterproductive in agitated infants with croup — it causes crying which worsens subglottic edema. Pediatric nasal cannula is preferred when tolerated. If blow-by is the only tolerated option, use NRB mask hardware held close to the face at high flow (~15 LPM), not NC/tubing. If patient becomes obtunded (GCS dropping, SpO2 < 88%), secured NRB becomes appropriate as the child is no longer agitated.",
+      "albuterol_trap": "Albuterol treats bronchospasm (lower airway, wheeze). Croup is subglottic edema (upper airway, stridor). There is NO wheeze — lung fields are clear. Albuterol will not help and may worsen agitation if the nebulizer mask is applied.",
+      "rebound_stridor": "Racepinephrine (when given by ALS) has a rebound effect — stridor can return 2–4 hours post-administration. All croup patients treated with racepinephrine require a minimum 2–4 hour ED observation period.",
+      "destination": "Nearest appropriate emergency department — all croup patients with stridor at rest require ED evaluation, racepinephrine if not already given, and dexamethasone administration"
+    }
+  },
+  "scoring": {
+    "overall_considerations": [
+      "Primary focus: recognition of croup vs. lower airway disease (stridor vs. wheeze distinction is the core clinical decision)",
+      "Key vitals: SpO2 and work of breathing are more important than heart rate or blood pressure in this scenario, temperature is relevant for epiglottitis screen, lung sounds are critical for distinguishing stridor from wheeze",
+      "O2 delivery method matters — pediatric nasal cannula is preferred when tolerated; blow-by should be avoided when possible and, if needed, uses an NRB mask held close to the face at high flow (~15 LPM); a secured NRB worsens agitation and stridor",
+      "Calm environment and positioning are therapeutic interventions — credit as active treatment, not just background",
+      "Racepinephrine is protocol-approved (Paramedic skill) — not carried on this unit",
+      "Epiglottitis screen: active ruling out of dangerous mimics is expected clinical reasoning",
+      "Do NOT penalize for incomplete SAMPLE history if no history was available or parents could not provide it — credit the attempt",
+      "Do NOT penalize for Broselow tape — patient weight provided by parents is acceptable; Broselow is for weight estimation, not needed when weight is known (preferred to actual weight when available)",
+      "Do NOT require that the student note ALS arrival specifically — this is handled by dispatch and is not a student responsibility to verbalize"
+    ],
+    "dmist_considerations": [
+      "DMIST should be concise and targeted — this is a rapid verbal handoff, not a written report",
+      "D (Demographics): name, age, sex/gender, weight — 'Lily, 10 month old female, 9 kg' is complete",
+      "M (Mechanism/Chief Complaint): 'difficulty breathing' is sufficient",
+      "I (Injuries/Illness): brief relevant history of what happened or is happening and relevant exam findings — 'started suddenly at night, barking cough, lung sounds clear lowers with stridor' is sufficient",
+      "S (Signs): pertinent vitals, signs/symptoms (don't need all vitals or details, just the clinically relevant ones) — 'stridor, SpO2 93%, retractions' is sufficient",
+      "T (Treatment): any treatments given and patient response — 'positioning and O2 improved SpO2 to 96%' is sufficient",
+      "Do NOT penalize for brevity — a concise, accurate DMIST is better than a verbose one; only flag absence of information that would clinically matter to the receiving ALS crew"
+    ],
+    "narrative_considerations": [
+      "Should document the reason for dispatch (difficulty breathing/stridor) and the initial presentation (alert infant, barking cough, inspiratory stridor)",
+      "Do NOT expect medications, allergies, or complete vital sign tables in the narrative — those are other PCR fields",
+      "Evaluate objectivity: flag subjective language and suggest objective alternatives (includes direct quotes from parents, direct observations of patient behavior and exam findings, specific descriptions of vitals rather than vague terms like 'stable' or 'normal')",
+      "Evaluate accuracy of any information provided in the narrative: age, presentation details, scene description, events, quotes, patient presentation, exam findings, vitals, and treatment descriptions should match the scenario",
+      "Key narrative elements for this scenario: dispatch reason (difficulty breathing), presentation (barking cough, stridor), pertinent vitals or exam findings (SpO2 if obtained), what was done (pediatric nasal cannula if tolerated, or blow-by via NRB mask held near the face at high flow if NC was not tolerated), and patient response to treatment (improved SpO2/WOB if obtained). Do not require a formal ALS-transfer phrase when ALS is already co-dispatched; credit current status and treatment response under the transfer/treatment component."
+    ],
+    "dmist_components": {
+      "D": {
+        "description": "Patient demographics",
+        "required_elements": [
+          "name: Lily",
+          "age: 10-month or infant",
+          "weight: 9 kg or 20 lbs"
+        ],
+        "corroboration_source": "scenario_patient_fields"
+      },
+      "M": {
+        "description": "Mechanism and chief complaint",
+        "required_elements": [
+          "stridor",
+          "barking cough",
+          "difficulty breathing"
+        ],
+        "corroboration_source": "any"
+      },
+      "I": {
+        "description": "Illness details",
+        "required_elements": [
+          "onset or duration",
+          "fever or URI symptoms",
+          "prior respiratory history"
+        ],
+        "corroboration_source": "history_and_findings",
+        "note": "I is illness/injury, not interventions. Treatments belong under T. Do not require the student to say the word croup when the report clearly describes barky cough/stridor."
+      },
+      "S": {
+        "description": "Signs — current patient status; WOB, stridor, and SpO2 are the primary signs for a croup handoff",
+        "required_elements": [
+          "work of breathing (primary)",
+          "stridor severity (primary)",
+          "SpO2 value (passively observed — acceptable)"
+        ],
+        "scoring_note": "Primary S elements for croup: work of breathing severity (retractions, stridor effort) and stridor character (inspiratory vs biphasic). SpO2 is supplementary if monitored. HR, RR, and BP are not the primary signs for a croup handoff — WOB and stridor severity are.",
+        "corroboration_source": "vitals_and_findings"
+      },
+      "T": {
+        "description": "Transfer/disposition — treatment administered and patient response",
+        "required_elements": [
+          "oxygen delivery method and route",
+          "SpO2 response or current condition trajectory"
+        ],
+        "scoring_note": "Primary T elements for croup: O2 delivery method (blow-by NRB, NC, or none) and patient response — SpO2 trend or reduction in agitation/work of breathing. Both treatment administered AND response to treatment should be present for full T credit.",
+        "corroboration_source": "any"
+      }
+    },
+    "corroboration_rules": {
+      "dmist": {
+        "I": {
+          "max_deduction_per_violation": 3,
+          "note": "Oxygen-method, positioning, and calming claims must match the actual run because they materially affect ALS handoff accuracy."
+        },
+        "S": {
+          "max_deduction_per_violation": 3,
+          "note": "Unsupported reassessment, treatment-response, or severity-trend claims materially reduce DMIST reliability in this scenario."
+        },
+        "T": {
+          "max_deduction_per_violation": 3,
+          "note": "Unsupported disposition, improvement, or ALS-readiness claims should be penalized heavily."
+        }
+      },
+      "narrative": {
+        "A": {
+          "max_deduction_per_violation": 3,
+          "note": "Assessment and reassessment claims must be corroborated by actual run evidence."
+        },
+        "R": {
+          "max_deduction_per_violation": 4,
+          "note": "Treatment-method, calming, positioning, and patient-response claims are core factual elements for croup and must match the run."
+        },
+        "T": {
+          "max_deduction_per_violation": 3,
+          "note": "Transfer and handoff-readiness claims need run evidence support."
+        }
+      }
+    },
+    "required_assessments": [
+      {
+        "id": "lung_sound_auscultation",
+        "description": "Auscultate lung sounds (stridor vs. wheeze distinction)",
+        "keywords": [
+          "lung sounds",
+          "breath sounds",
+          "auscultate",
+          "auscultation",
+          "stethoscope"
+        ],
+        "missing_deduction": 3,
+        "note": "Distinguishing inspiratory stridor (upper airway — croup) from expiratory wheeze (lower airway — asthma/bronchiolitis) is the central clinical decision point. Reaching for albuterol without auscultation is the most common dangerous error in this scenario.",
+        "phase": "primary_survey"
+      },
+      {
+        "id": "work_of_breathing_assessment",
+        "description": "Assess work of breathing (retractions, nasal flaring, head bobbing, accessory muscle use)",
+        "keywords": [
+          "retraction",
+          "retractions",
+          "nasal flar",
+          "work of breath",
+          "WOB",
+          "accessory",
+          "head bob",
+          "subcostal",
+          "intercostal",
+          "substernal"
+        ],
+        "missing_deduction": 2,
+        "note": "WOB severity directly drives O2 delivery priority and ALS urgency — required assessment for any pediatric respiratory call.",
+        "phase": "primary_survey"
+      }
+    ],
+    "required_screens": [
+      {
+        "id": "epiglottitis_screen",
+        "description": "Epiglottitis differential screen (rule out high fever, drooling, tripod positioning, toxic appearance — dangerous mimic of croup). Credit may be explicit, or supported by temperature assessment plus PAT/appearance assessment.",
+        "keywords": [
+          "epiglottitis",
+          "drool",
+          "drooling",
+          "fever",
+          "temperature",
+          "temp",
+          "tripod",
+          "toxic appear",
+          "toxic-appear",
+          "tripod position",
+          "forward lean",
+          "sniffing position",
+          "appearance",
+          "PAT"
+        ],
+        "missing_deduction": 3,
+        "note": "Active epiglottitis ruling-out is listed as an explicit EMT additional_expectation for this scenario. Drooling, tripod positioning, toxic appearance, and high fever are key differentiating signs. If the backend rubric detail marks the epiglottitis/foreign-body differentiation item DONE, do not list this as missed in narrative feedback."
+      }
+    ],
+    "by_level": {
+      "MFR": {
+        "critical_focus": [
+          "Recognize respiratory distress in a pediatric patient and call for ALS/higher level of care",
+          "Key vitals include SpO2 and work of breathing — recognize that SpO2 of 93% warrants supplemental O2",
+          "Appropriate O2 delivery and positioning",
+          "Scene safety and not agitating the patient"
+        ],
+        "additional_expectations": [],
+        "grace_items": [
+          "Not expected to distinguish croup from other upper airway conditions at MFR level — recognition of respiratory distress is sufficient",
+          "DMIST may be abbreviated — demographics, chief complaint, and what was done is adequate"
+        ]
+      },
+      "EMT": {
+        "critical_focus": [
+          "Recognize croup by clinical triad: barking cough + inspiratory stridor + low-grade fever following URI (not required in the scenario, DMIST turnover or narrative - noted in primary clinical impression is sufficient)",
+          "Distinguish stridor (upper airway) from wheeze (lower airway) — obtain lung sounds - do NOT reach for albuterol",
+          "Deliver O2 by pediatric nasal cannula if tolerated; if blow-by is the only tolerated option, use an NRB mask held close to the face at ~15 LPM; avoid securing an NRB on an agitated infant",
+          "Upright positioning with parent holding — do not separate infant from mother",
+          "Update ALS with patient weight"
+        ],
+        "additional_expectations": [
+          "Active epiglottitis screen — rule out high fever, toxic appearance, drooling, tripod positioning",
+          "Serial reassessment of stridor severity, WOB, and SpO2"
+        ],
+        "grace_items": [
+          "PAT by name not required — credit if appearance, WOB, and perfusion assessed in any order or wording (may be documented in narrative or DMIST even if not verbalized)",
+          "Broselow tape not required — known patient weight provided by parents is preferred over estimation when available",
+          "When the active agency configuration co-dispatches ALS, do not penalize for not explicitly requesting ALS; noting ALS arrival is not required",
+          "History attempt with no yield — do not penalize if student asked for history and parents had limited information"
+        ]
+      },
+      "AEMT": {
+        "critical_focus": [
+          "All EMT expectations plus IV access consideration if patient deteriorates",
+          "Recognize racepinephrine as ALS/Paramedic treatment under the MI pediatric respiratory distress protocol, not an AEMT or BLS medication in this scenario"
+        ],
+        "additional_expectations": [
+          "Consider IV access if SpO2 trending down despite BLS interventions",
+          "Anticipate need for IV dexamethasone if ALS delayed"
+        ],
+        "grace_items": [
+          "Same EMT-level grace items apply"
+        ]
+      },
+      "Paramedic": {
+        "critical_focus": [
+          "Paramedic-level pharmacologic management: administer racepinephrine 2.25% SVN when indicated",
+          "Systematic epiglottitis differentiation with airway management backup plan",
+          "Dexamethasone consideration (IM/IV) as adjunct to racepinephrine"
+        ],
+        "additional_expectations": [
+          "Racepinephrine dosing: 0.5 mL of 2.25% solution in 3 mL NS via SVN",
+          "Dexamethasone 0.6 mg/kg IM (max 10 mg) as adjunct — reduces rebound stridor",
+          "Airway management plan if patient decompensates — pediatric BVM sizing, RSI considerations if trained"
+        ],
+        "grace_items": [
+          "Same base grace items apply; higher expectations for pharmacologic management"
+        ]
+      }
+    }
+  },
+  "scoring_rubric": {
+    "clinical_performance": {
+      "max": 50,
+      "full_credit": "Base medical assessment completed: scene safety/PPE, primary assessment, focused respiratory assessment, caregiver history, reassessment, and turnover readiness; plus PAT completed, croup recognized (stridor vs. wheeze distinction), and epiglottitis screen performed",
+      "partial_credit": "Core assessment completed but key croup-specific reasoning is incomplete — e.g. croup recognized without active epiglottitis screen, or limited history/reassessment",
+      "minimal_credit": "Only fragments of the base assessment performed; major gaps in primary/focused assessment, history, or croup-specific clinical reasoning"
+    },
+    "narrative": {
+      "max": 20,
+      "full_credit": "CHART: dispatch (difficulty breathing), presentation (10-month female, barking cough, inspiratory stridor, SpO2 93%), treatment (least-agitating tolerated O2 such as pediatric nasal cannula if tolerated or blow-by using an NRB mask held close to the face at ~15 LPM, calm environment, positioning with parent), response (SpO2 improved, WOB decreased when supported by reassessment), transfer to ALS with weight communicated. Objective throughout.",
+      "partial_credit": "Most CHART elements present but treatment response or ALS weight not documented",
+      "minimal_credit": "Narrative present but fails to document stridor correctly or documents wrong treatment approach (e.g., albuterol)"
+    },
+    "protocols_treatment": {
+      "max": 24,
+      "full_credit": "Protocol-aligned treatment plan: pediatric nasal cannula if tolerated or NRB-mask blow-by only when needed, upright/calm positioning with parent, and avoidance of contraindicated or out-of-scope treatment such as albuterol, IV/IO access, or racepinephrine at BLS scope for isolated croup. ALS handoff quality may add bonus credit, but the student is not expected to direct ALS medication preparation.",
+      "partial_credit": "Some protocol-aligned treatment steps performed but important treatment choices or escalation steps were missed or suboptimal. Do not call nasal cannula suboptimal when it was tolerated and the backend protocol score is full credit.",
+      "minimal_credit": "Treatment approach was materially off-protocol — e.g. contraindicated therapy attempted, poor oxygen strategy for an agitated infant, or escalation/handoff readiness omitted"
+    },
+    "dmist": {
+      "max": 10,
+      "full_credit": "D: Lily, 10-month female, 9 kg (critical for racepinephrine dosing); M: suspected croup, barking cough, stridor onset, recent URI; I: tolerated O2 method (pediatric NC if worn/tolerated, or blow-by via NRB mask held close to face at ~15 LPM), calm/positioning; S: SpO2, stridor severity, WOB, temp; T: current status and response",
+      "partial_credit": "3–4 of 5 DMIST components present; weight (critical for ALS pharmacologic dosing) or O2 delivery method absent",
+      "minimal_credit": "2 or fewer components or weight omitted from DMIST"
+    },
+    "professionalism": {
+      "max": 10,
+      "full_credit": "Explained situation to parents in calm language, kept infant calm using parent's presence, used blow-by approach specifically to minimize agitation, addressed infant by name, kept family involved",
+      "partial_credit": "Communication with parents present but child not included or agitation-worsening actions taken without explanation",
+      "minimal_credit": "Minimal family communication or actions taken that would worsen infant agitation without explanation"
+    }
+  },
+  "exemplar_dmist": "D — Lily, 10-month-old female, 9 kg per parents.\nM — Suspected croup — sudden onset barking cough and inspiratory stridor at 0200, following URI this week. Low-grade temp 100.2°F. No drooling, no toxic appearance — epiglottitis screened and less likely.\nI — Pediatric nasal cannula used because tolerated; if not tolerated, blow-by would be NRB mask held close to face at 15 LPM, not NC/tubing. Calm, low-stimulation environment maintained throughout.\nS — SpO2 improved from 93% to 97%. RR decreased from 42 to 38. Inspiratory stridor mild at rest, moderate with agitation. Lower lung sounds clear bilaterally — no wheeze. HR 155. GCS alert, irritable.\nT — Patient calm and improving with O2 and positioning. No BLS pharmacologic treatment — racepinephrine is ALS/Paramedic care on this PFD BLS unit. Ready for ALS arrival. Weight 9 kg communicated for dosing.",
+  "exemplar_narrative": "Squad 1 responded to 418 Birchwood Drive for a 10-month-old female with difficulty breathing. Upon arrival at 0213, patient Lily, a 10-month-old female weighing approximately 9 kg, was found in her mother's arms in the living room. Barking cough was audible from the entrance. Mother reported sudden onset barking cough and noisy breathing at approximately 0200. Lily had been experiencing a runny nose and congestion for three days. Temp 100.2°F. No drooling, no toxic appearance, no tripod positioning — epiglottitis presentation considered less likely. No prior respiratory illnesses or hospitalizations.\n\nPrimary assessment: SpO2 93%, RR 42 breaths/min with retractions, HR 162 bpm, inspiratory stridor audible at rest. Lung sounds clear in lower lobes bilaterally — no wheeze, confirming upper airway etiology. PAT: alert and irritable, increased work of breathing, skin flushed and warm. Pediatric nasal cannula applied because tolerated; if not tolerated, blow-by would be performed with an NRB mask held close to the face at 15 LPM rather than NC/tubing. Calm, low-stimulation environment maintained. Infant kept with mother throughout for both patient comfort and clinical benefit.\n\nReassessment: SpO2 improved to 97%, RR decreased to 38 breaths/min, stridor mild at rest. Patient calmer in mother's arms. Patient care transferred to Medic 2 ALS crew at 0224 with full DMIST report. Weight of 9 kg communicated to ALS for racepinephrine dosing calculation.",
+  "debrief": {
+    "condition_background": "Lily is a 10-month-old female presenting with moderate croup (laryngotracheobronchitis) — viral subglottic edema causing the classic triad of barking cough, inspiratory stridor, and low-grade fever following an upper respiratory infection. Croup is the most common cause of stridor in children aged 6 months to 6 years, with peak incidence at 1–2 years. The subglottic edema narrows the airway just below the vocal cords — on inspiration, negative intrathoracic pressure draws the soft subglottic mucosa inward, producing the characteristic high-pitched crowing stridor. Crying and agitation dramatically worsen the edema by increasing airflow turbulence. The BLS challenge in croup is recognizing that the primary intervention is NOT pharmacological for a PFD crew — racepinephrine is in the ALS/Paramedic section of the MI pediatric respiratory distress protocol. The BLS role is: recognize the condition, keep the patient calm, provide supplemental O2 with pediatric nasal cannula when tolerated or NRB-mask blow-by only when needed, and give ALS a clean handoff. The most common errors are reaching for albuterol (treats bronchospasm — not applicable here), forcing an NRB mask on an agitated infant (worsens the obstruction), or failing to recognize that the stridor — not wheeze — defines both the condition and the treatment approach.",
+    "key_teaching_points": [
+      "Croup triad: barking cough + inspiratory stridor + low-grade fever + recent URI in a child 6 months–6 years. Peak incidence 1–2 years. Typically worse at night (increased vagal tone, cool dry air).",
+      "Stridor vs. wheeze — the most important clinical distinction in pediatric respiratory: stridor is upper airway (inspiratory, heard at neck), wheeze is lower airway (expiratory, heard at lung bases). They have completely different etiologies and treatments. Albuterol treats wheeze — it does NOT treat stridor.",
+      "Calm first, O2 second — agitation worsens croup significantly. A crying infant has more turbulent airflow through the narrowed subglottis, which worsens edema. Every intervention that reduces crying (positioning, parent holding, speak softly) directly improves the airway.",
+      "O2 delivery in agitated infants under MI oxygen procedure guidance: pediatric nasal cannula is well tolerated by most children and should be used when tolerated. Pediatric blow-by is ineffective and should be avoided when possible; if it is the only tolerated option, keep the NRB mask as close to the face as possible and use high flow (~15 LPM). Do not document NC/tubing held near the face as blow-by for this protocol.",
+      "Racepinephrine 2.25% SVN is an ALS/Paramedic treatment option for stridor at rest (croup). On this PFD BLS unit it must come from ALS; EMT expectations are airway support, calm/tolerated oxygen delivery, reassessment, and a clean handoff when ALS arrives.",
+      "Epiglottitis mimics croup but is immediately life-threatening: high fever (> 102.5°F), toxic/ill appearance, drooling, tripod positioning, refusal to swallow, muffled 'hot potato' voice. Lily has none of these. If epiglottitis is suspected: do NOT examine oropharynx — do NOT agitate — O2 blow-by — immediate ALS with airway kit — quiet rapid transport.",
+      "All croup patients treated with racepinephrine require 2–4 hours of ED observation for rebound stridor. Dexamethasone (oral or IM) will be given in the ED — this is NOT a prehospital BLS intervention but parents will often ask about it."
+    ],
+    "common_mistakes": [
+      "Reaching for albuterol — this is the most common error. Students trained on asthma/respiratory distress scenarios default to bronchodilator therapy. There is no wheeze here. Albuterol does not treat subglottic edema.",
+      "Forcing NRB mask on the agitated infant — a well-intentioned intervention that worsens the problem. Securing a mask to a screaming 10-month-old increases agitation, increases crying, increases airflow turbulence, and worsens the stridor.",
+      "Separating Lily from Sarah — attempting to place Lily on the cot or take her from her mother's arms will immediately escalate distress. Keep the parent involved as a therapeutic tool.",
+      "Missing the epiglottitis screen — not pausing to check for differentiating features (high fever, drooling, toxic appearance) in a patient with stridor. The stakes of missing epiglottitis are high enough that it must be actively ruled out.",
+      "Failing to update ALS with the weight — weight is critical for ALS medication dosing and equipment preparation. When ALS is involved, the student should provide a patient report that includes the weight"
+    ]
+  },
+  "legacy_ai_categories": [
+    "documentation",
+    "professionalism"
+  ],
+  "checklist": [
+    {
+      "id": "peds_croup_01.pat_assessment",
+      "description": "PAT completed — appearance (alert, crying), work of breathing (moderate retractions, inspiratory stridor), circulation to skin (pink) assessed",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "scene_entry",
+        "scene_entry_path": "pat_assessment"
+      },
+      "tier2_patterns": [
+        "(?i)(pat|appearance|retract|stridor|work of breath|circulat|skin|pink|crying|assess)"
+      ],
+      "done_feedback": "PAT completed — appearance (alert, crying), moderate retractions, inspiratory stridor, and circulation to skin assessed; SICK correctly identified before hands-on contact.",
+      "missed_feedback": "PAT not completed — the Pediatric Assessment Triangle must precede hands-on contact; physical contact and cuff placement can agitate a croup patient and worsen stridor.",
+      "clinical_rationale": "PAT allows rapid sick/not-sick classification using three visual domains; in upper airway emergencies agitation worsens obstruction, so assessment must be non-threatening.",
+      "common_error": "Jumping straight to vital signs before completing the PAT — stridor worsens with agitation; assessment must be visual first."
+    },
+    {
+      "id": "peds_croup_01.lung_sound_auscultation",
+      "description": "Respiratory focused assessment completed — auscultates lung sounds or breath sounds to distinguish inspiratory stridor from wheeze",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "finding",
+        "finding_type": "exam",
+        "finding_key_pattern": "(?i)(lung|breath sounds|auscult)"
+      },
+      "tier2_patterns": [
+        "(?i)(lung sounds|breath sounds|auscultat|stethoscope|listen(?:ing)? to (?:the )?(?:lungs|chest))"
+      ],
+      "done_feedback": "Lung sounds auscultated — inspiratory stridor and clear lower lung fields confirmed, distinguishing upper airway from lower airway disease.",
+      "missed_feedback": "Lung sounds not auscultated — auscultation is required to confirm stridor is upper-airway in origin and to rule out concurrent bronchospasm or pneumonia.",
+      "clinical_rationale": "Stridor with clear lower lung fields localizes obstruction to the upper airway; wheeze on auscultation would indicate lower airway disease requiring a different treatment.",
+      "common_error": "Treating audible stridor without auscultating — stridor and wheeze can sound similar across the room; treatment diverges significantly between upper and lower airway disease."
+    },
+    {
+      "id": "peds_croup_01.croup_recognition",
+      "description": "Croup recognized — treatment plan reflects upper-airway obstruction management (least-agitating oxygen strategy, upright positioning, calm environment, and ALS escalation when indicated) rather than a lower-airway bronchospasm approach",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [
+        "EMT",
+        "AEMT",
+        "Paramedic"
+      ],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 2,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "session_event",
+        "event_type": "challenge_completed",
+        "event_key_pattern": "(?i)^impression:",
+        "event_data_result": "correct"
+      },
+      "tier2_patterns": [
+        "(?i)(croup|barking|stridor|upper airway|inspiratory|URI|cold|blow.?by|racepinephrine|racemic|epiglottitis|foreign body)"
+      ],
+      "done_feedback": "Croup correctly recognized — treatment plan reflected upper airway obstruction management with least-agitating oxygen strategy and ALS readiness.",
+      "missed_feedback": "Croup not recognized or treatment contradicted upper airway obstruction management — barky cough, seal-like cry, and inspiratory stridor after a viral prodrome are the hallmark triad.",
+      "clinical_rationale": "Correct field impression drives appropriate treatment: croup requires calm environment, blow-by O2, upright positioning with caregiver, and ALS readiness for nebulized racepinephrine.",
+      "common_error": "Treating croup like asthma and administering albuterol — albuterol targets bronchospasm (lower airway) and provides no benefit for the subglottic edema of croup."
+    },
+    {
+      "id": "peds_croup_01.positioning_calm",
+      "description": "Patient positioned upright in a position of comfort, preferably caregiver-held when tolerated",
+      "subtype": "intervention",
+      "category": "protocols_treatment",
+      "point_value": 6,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "positioning"
+      },
+      "tier2_patterns": [
+        "(?i)(position.{0,24}comfort|upright|sit(?:ting)? up|hold(?:ing)? (?:her|the child|patient)|parent.{0,20}hold|mom.{0,20}hold|mother.{0,20}hold|caregiver.{0,20}hold)"
+      ],
+      "done_feedback": "Patient positioned upright in a position of comfort — reduces work of breathing and helps maintain the upper airway.",
+      "missed_feedback": "Upright positioning not documented — croup patients should remain upright in a position of comfort, ideally caregiver-held when tolerated.",
+      "clinical_rationale": "Upright positioning reduces airway obstruction and work of breathing in pediatric upper-airway distress. Active anxiety reduction is scored separately because agitation can worsen croup.",
+      "common_error": "Placing the child supine or flat on the stretcher — this can worsen upper-airway obstruction and distress."
+    },
+    {
+      "id": "peds_croup_01.o2_blowby",
+      "description": "Supplemental O2 delivered using a tolerated method appropriate for croup support (pediatric nasal cannula when tolerated; blow-by via NRB mask held close to the face at high flow only when NC is not tolerated) — avoid forcing a secured NRB mask onto an agitated infant",
+      "subtype": "intervention",
+      "category": "protocols_treatment",
+      "point_value": 6,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_keys": [
+          "o2_blowby",
+          "o2_nc"
+        ]
+      },
+      "tier2_patterns": [
+        "(?i)(administer|give|start|apply).{0,24}(?:o2|oxygen)",
+        "(?i)(?:blow.?by|nasal cannula|\\bNC\\b|supplemental oxygen)"
+      ],
+      "done_feedback": "Oxygen delivered via tolerated method (blow-by or pediatric NC) without agitating the child — appropriate strategy for croup support.",
+      "missed_feedback": "Supplemental oxygen not delivered or an intolerable delivery method used — O2 reduces hypoxia while awaiting ALS; forced mask placement causes agitation and worsens obstruction.",
+      "clinical_rationale": "Even well-tolerated blow-by oxygen raises FiO2 above room air; the goal is to support oxygenation without triggering agitation that narrows an already-compromised airway.",
+      "common_error": "Placing a tight NRB mask on a croup patient — forced mask placement causes panic, crying, and worsening stridor; blow-by or parent-held NC is preferred."
+    },
+    {
+      "id": "peds_croup_01.als_intercept",
+      "description": "ALS handoff readiness confirmed according to the active agency configuration. If communicating with ALS, patient weight (9 kg), SpO2, stridor at rest, and current response to BLS care are appropriate handoff details. Do not require the student to direct ALS medication preparation or administration.",
+      "subtype": "transport",
+      "category": "protocols_treatment",
+      "point_value": 6,
+      "required": "bonus",
+      "deprecated": true,
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "als_intercept"
+      },
+      "tier2_patterns": [
+        "(?i)(\\bALS\\b|\\bmedic\\b|\\bintercept\\b|handoff|turnover|\\bweight\\b|9.*\\bkg\\b|\\bstridor\\b|medic\\s+2)"
+      ]
+    },
+    {
+      "id": "peds_croup_01.epiglottitis_screen",
+      "description": "Epiglottitis and foreign body aspiration differentiated from croup — high fever, drooling, tripod posturing, and sudden onset (vs. barky cough + URI) screened. Credit paths: (1) temperature vital obtained — getting a temp in pediatric stridor IS the fever check; (2) explicit screening language; (3) swallowing question in transcript. Appearance/drooling/tripod are covered by PAT and need not be re-asked.",
+      "subtype": "screen",
+      "category": "clinical_performance",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "finding",
+        "finding_type": "vital",
+        "finding_key_pattern": "(?i)temp(erature)?"
+      },
+      "tier2_patterns": [
+        "(?i)(epiglottitis|drool|tripod|high fever|fever|toxic|sudden onset|foreign body|swallow|refusal|sick before|URI|cold|running nose|temperature)"
+      ],
+      "done_feedback": "Epiglottitis and foreign body aspiration screened out — history and presentation consistent with croup: viral prodrome, barky cough, no high fever or drooling.",
+      "missed_feedback": "Epiglottitis not screened out — failure to differentiate croup from epiglottitis is high-stakes; epiglottitis presents with high fever, drooling, tripod posture, muffled voice, and a toxic-appearing child.",
+      "clinical_rationale": "Epiglottitis is rare but rapidly fatal if mismanaged; direct laryngoscopy or blind airway manipulation can trigger complete obstruction and arrest.",
+      "common_error": "Assuming any barky cough is croup — epiglottitis patients appear toxic and refuse to swallow secretions; croup patients are distressed but not toxic-appearing."
+    },
+    {
+      "id": "peds_croup_01.scope_no_albuterol",
+      "description": "Albuterol not administered — contraindicated for croup (upper airway obstruction, not bronchospasm)",
+      "subtype": "intervention",
+      "category": "protocols_treatment",
+      "point_value": 6,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "absence_check",
+        "absence_intervention_key": "albuterol_svn"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "Albuterol correctly withheld — croup is a subglottic upper airway obstruction; albuterol targets lower airway bronchospasm and provides no benefit.",
+      "missed_feedback": "Albuterol administered — contraindicated for croup; albuterol is a bronchodilator with no effect on the subglottic edema that causes croup stridor.",
+      "clinical_rationale": "Albuterol is indicated for bronchospasm (asthma, reactive airways); croup is caused by viral subglottic edema, not bronchospasm. Giving albuterol delays appropriate care.",
+      "common_error": "Confusing audible respiratory distress with lower airway disease and defaulting to albuterol — the pivot is upper (croup → racepinephrine via ALS) vs. lower airway (asthma → albuterol)."
+    },
+    {
+      "id": "peds_croup_01.scope_no_iv_io",
+      "description": "IV/IO access not attempted — outside BLS scope for croup management",
+      "subtype": "intervention",
+      "category": "protocols_treatment",
+      "point_value": 6,
+      "required": "required",
+      "applicable_levels": [
+        "MFR",
+        "EMT"
+      ],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "absence_check",
+        "absence_intervention_key": "iv_io_access"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "IV/IO correctly avoided — BLS croup management is blow-by O2, calm environment, and ALS support; IV access is outside BLS scope.",
+      "missed_feedback": "IV/IO attempted — this is an ALS procedure outside BLS scope; attempting it in a croup patient also agitates the child and can precipitate an acute airway crisis.",
+      "clinical_rationale": "BLS scope for croup is airway positioning, supplemental O2, and ALS intercept; racepinephrine and definitive airway management are ALS-level interventions."
+    }
+  ],
+  "impression_challenge": {
+    "enabled": true,
+    "trigger_milestone": "primary_survey_complete",
+    "prompt": "Based on your initial assessment, what is your primary clinical impression?",
+    "options": [
+      "Croup (laryngotracheobronchitis)",
+      "Reactive airway disease / asthma exacerbation",
+      "Anaphylaxis with bronchospasm",
+      "Foreign body aspiration"
+    ],
+    "correct": "Croup (laryngotracheobronchitis)",
+    "acceptable": [
+      "Foreign body aspiration"
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "title": "CPR BLS Sequence",
+  "subtitle": "Drag the steps into the correct AHA BLS order before seeing the reveal.",
+  "cases": [
+    {
+      "id": "cpr_seq_01",
+      "prompt": "Adult found unresponsive and not breathing normally. You are the single rescuer on scene. No AED is immediately available — one is being retrieved by a bystander.",
+      "hint": "Recognize → activate → compress. The AED arrives while you are working — integrate it without stopping compressions until analysis requires it.",
+      "steps": [
+        {"id": "recognize_activate", "label": "Confirm unresponsive and absent or abnormal breathing — shout for help and call 9-1-1"},
+        {"id": "pulse_check", "label": "Check carotid pulse no more than 10 seconds"},
+        {"id": "start_cpr_solo", "label": "Begin 30:2 CPR at 100–120 compressions per minute"},
+        {"id": "aed_arrives_apply", "label": "Bystander arrives with AED — apply pads without interrupting compressions"},
+        {"id": "analyze_pause", "label": "Pause compressions for AED rhythm analysis when device prompts"},
+        {"id": "shock_resume", "label": "Shock if advised, then immediately resume CPR; resume CPR without shock if no shock is indicated"}
+      ],
+      "correct_order": ["recognize_activate", "pulse_check", "start_cpr_solo", "aed_arrives_apply", "analyze_pause", "shock_resume"],
+      "explanation": "Single-rescuer adult BLS prioritizes recognition, activation, and immediate CPR. When no AED is at hand, compressions start first — do not wait. Pad application happens in parallel once the device arrives, but motion stops only for the brief analysis window. Immediate resumption after shock or no-shock decision is non-negotiable.",
+      "mistake_tag": "bls_sequence_error"
+    },
+    {
+      "id": "cpr_seq_02",
+      "prompt": "Two-month-old infant found unresponsive and apneic. Two rescuers are present. An AED with pediatric pads is available.",
+      "hint": "Infant pulse check is brachial, not carotid. Two-rescuer infant technique uses two thumbs encircling the chest. The C:V ratio changes with two rescuers.",
+      "steps": [
+        {"id": "recognize_infant", "label": "Confirm unresponsive and absent or abnormal breathing — activate EMS"},
+        {"id": "brachial_pulse", "label": "Check brachial pulse no more than 10 seconds"},
+        {"id": "two_thumb_cpr", "label": "Rescuer 1 begins two-thumb-encircling chest compressions at 15:2, depth at least 1.5 in (4 cm)"},
+        {"id": "apply_aed_peds", "label": "Rescuer 2 applies AED with pediatric pads while compressions continue"},
+        {"id": "ventilate_15_2", "label": "Deliver 2 ventilations after every 15 compressions"},
+        {"id": "analyze_shock_infant", "label": "Pause compressions for AED analysis — shock if advised, then immediately resume 15:2 CPR"}
+      ],
+      "correct_order": ["recognize_infant", "brachial_pulse", "two_thumb_cpr", "apply_aed_peds", "ventilate_15_2", "analyze_shock_infant"],
+      "explanation": "Infant cardiac arrest most commonly has a respiratory origin, making effective ventilation critical. The brachial artery is the correct pulse check site in infants. Two-thumb-encircling technique generates superior compression depth and coronary perfusion pressure compared to two-finger technique. Two-rescuer infant CPR uses 15:2 — not 30:2 — before advanced airway placement. Minimum compression depth is 1.5 in (4 cm), or at least one-third the AP chest diameter.",
+      "mistake_tag": "bls_sequence_error"
+    },
+    {
+      "id": "cpr_seq_03",
+      "prompt": "EMS crew arrives to find a bystander performing single-rescuer CPR on an adult. Compressions are in progress. Your team has a monitor/AED.",
+      "hint": "Do not stop compressions to take over — integrate seamlessly. Assign roles before the next analysis cycle. The first shock decision comes after a complete two-minute cycle.",
+      "steps": [
+        {"id": "take_over_seamless", "label": "Seamlessly assume compressions without interrupting the current cycle — confirm scene safety and patient status"},
+        {"id": "assign_roles", "label": "Team leader assigns roles: compressor, airway/ventilation, AED/monitor operator"},
+        {"id": "apply_monitor_pads", "label": "Apply monitor/defibrillator pads while compressions continue — do not pause"},
+        {"id": "two_min_cycle", "label": "Complete two-minute CPR cycle at 100–120 compressions per minute with 30:2 ratio"},
+        {"id": "analysis_ems", "label": "Pause compressions for AED rhythm analysis — minimize hands-off time"},
+        {"id": "shock_or_continue", "label": "Shock if advised and immediately resume CPR; if no shock, immediately resume CPR and reassess rhythm after next two-minute cycle"}
+      ],
+      "correct_order": ["take_over_seamless", "assign_roles", "apply_monitor_pads", "two_min_cycle", "analysis_ems", "shock_or_continue"],
+      "explanation": "EMS team arrival is a high-risk interruption point. Seamless takeover without pausing compressions is the standard. Role assignment happens concurrently with ongoing CPR, not as a reason to pause it. Pad application during compressions keeps the first analysis on schedule. The AHA targets a chest compression fraction greater than 80% — each unnecessary pause erodes that metric. Analysis pauses should not exceed 10 seconds.",
+      "mistake_tag": "bls_sequence_error"
+    }
+  ]
+}

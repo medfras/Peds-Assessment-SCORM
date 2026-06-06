@@ -1,0 +1,147 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Toxins and Environmental: Dive (SCUBA) Injury/Accidents. NASEMSO national provisional base.",
+  "id": "nasemso_base_toxins_and_environmental_dive_scuba_injury_accidents",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Dive (SCUBA) Injury/Accidents",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Dive (SCUBA) Injury/Accidents",
+  "aliases": [
+    "Barotrauma",
+    "Bends",
+    "Squeeze"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Dive (SCUBA) Injury/Accidents",
+      "points": [
+        "Rapid assessment and management of life-threatening injuries",
+        "Rescue from the water-based environment",
+        "Transport patients suffering from self-contained underwater breathing apparatus (SCUBA) diving injury/illness for hospital evaluation and consideration of repressurization/hyperbaric oxygen therapy (HBOT)"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Patients with history of recent (within 48 hours) SCUBA diving activity who are exhibiting potential signs and/or symptoms of dive related illness/injury, regardless of dive table compliance. NOTE: SCUBA-related complications may occur anywhere, particularly when divers travel by air within 24-hours of diving",
+        "EXCLUSION CRITERIA:",
+        "Patients without history of recent (within 48 hours) SCUBA diving exposure"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Scene safety and PPE; primary survey (ABCDE)",
+        "Oxygen via NRM targeting SpO2 94-98% if indicated",
+        "Position of comfort; hemorrhage control as needed",
+        "CPR/AED if patient becomes pulseless",
+        "Epinephrine auto-injector for anaphylaxis if applicable",
+        "Naloxone intranasal unit-dose for suspected opioid involvement"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Blood glucose monitoring; oral glucose if hypoglycemic and alert",
+        "12-lead ECG acquisition and transmission",
+        "CPAP for respiratory distress",
+        "Aspirin for suspected ischemic chest pain",
+        "Albuterol SVN for bronchospasm component",
+        "IV access maintenance (non-medicated)"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation",
+        "IV/IO fluid resuscitation as indicated",
+        "Waveform capnography",
+        "IV analgesics (fentanyl, morphine) per pain management protocol",
+        "IV antiemetics (ondansetron) per protocol",
+        "IV D50W/D10W for hypoglycemia"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "12-lead ECG interpretation",
+        "Endotracheal intubation for airway compromise",
+        "RSI per protocol",
+        "Advanced antidysrhythmic or hemodynamic support per specific protocol",
+        "All parenteral medications per protocol",
+        "Vasopressors for refractory hemodynamic compromise"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "If the patient is still in the water, seek safest and most rapid means of removal safe (within your scope of training) while minimizing risk of further injury",
+        "Seek assistance early for special rescue/extrication and transportation needs",
+        "Check for multiple patients (e.g., group dive table calculation error(s) or contaminated dive gases)"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Rescue efforts should be coordinated between all responding agencies to ensure that the patient is rapidly accessed and safely removed from the water if diver unable to do so themselves",
+        "If air medical transport is necessary, the patient should be transported with the cabin pressurized to lowest possible altitude. If an unpressurized aircraft is used (i.e., most helicopter emergency medical services (HEMS)), patient should be flown at the lowest safe altitude possible",
+        "Decompression illness may have a variety of presentations depending on system affected (e.g., skin, joint(s), pulmonary, neurologic)",
+        "SCUBA accidents/incidents can result in a variety of issues, including barotrauma, air embolism and decompression illness",
+        "Decompression illness may have a variety of presentations depending on system affected (e.g., skin, joint(s), pulmonary, neurologic), and can occur even when a diver does not exceed dive table limits",
+        "Do not attempt to disassemble, turn off, or modify any of the dive equipment. The dive computer may provide a clue about the patient's exposure to depth",
+        "Vital signs findings",
+        "Neurologic status assessment findings"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Water temperature, if available",
+        "' Dive history o Number of dives in recent history (days)",
+        "o \"Bottom time\" in dives",
+        "o Dive profiles",
+        "o Maximum depth",
+        "o Rate of ascent",
+        "o Safety stops utilized if any",
+        "o Dive gas (i.e., air vs. mixed gases such as Nitrox, Heliox or Trimix)"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Contact medical direction for clinical deterioration or interventions outside standard scope"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

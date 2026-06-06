@@ -1,0 +1,150 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Pediatric: Brief Resolved Unexplained Event (BRUE) & Acute Events in Infants. NASEMSO national provisional base.",
+  "id": "nasemso_base_pediatric_brief_resolved_unexplained_event_brue_acute_events",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Brief Resolved Unexplained Event (BRUE) & Acute Events in Infants",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Pediatric: Brief Resolved Unexplained Event (BRUE) & Acute Events in Infants",
+  "aliases": [
+    "Apparent Life-Threatening Event (ALTE)"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Pediatric: Brief Resolved Unexplained Event (BRUE) & Acute Events in Infants",
+      "points": [
+        "Recognize patient characteristics and symptoms consistent with a BRUE",
+        "Promptly identify and intervene for patients who require escalation of care",
+        "Choose proper destination for patient transport"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Suspected BRUE: An event in an infant less than 1 year old reported by a bystander as sudden, brief (less than 1 minute), unexplained, and completely resolved upon EMS arrival that includes one or more of the following: a. Breathing change (absent, decreased, or irregular)",
+        "b. Color change (central cyanosis or pallor)",
+        "c. Marked change in muscle tone (hyper- or hypotonia)",
+        "d. Altered level of responsiveness (increased, irritability, or decreased)",
+        "EXCLUSION CRITERIA:",
+        "Any signs or symptoms suggestive of underlying or acute illness or injury present upon EMS evaluation, such as: a. Abnormal vital signs for age (including fever)",
+        "Identifiable cause for the event, such as: a. Gastric reflux (spitting up)",
+        "History or exam concerning for child abuse or neglect",
+        "Color change that involved only redness (e.g., in the face) or isolated hands/feet cyanosis"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Scene safety and PPE; primary survey (ABCDE)",
+        "Oxygen via NRM targeting SpO2 94-98% if indicated",
+        "Position of comfort; hemorrhage control as needed",
+        "CPR/AED if patient becomes pulseless",
+        "Epinephrine auto-injector for anaphylaxis if applicable",
+        "Naloxone intranasal unit-dose for suspected opioid involvement"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Blood glucose monitoring; oral glucose if hypoglycemic and alert",
+        "12-lead ECG acquisition and transmission",
+        "CPAP for respiratory distress",
+        "Aspirin for suspected ischemic chest pain",
+        "Albuterol SVN for bronchospasm component",
+        "IV access maintenance (non-medicated)"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation",
+        "IV/IO fluid resuscitation as indicated",
+        "Waveform capnography",
+        "IV analgesics (fentanyl, morphine) per pain management protocol",
+        "IV antiemetics (ondansetron) per protocol",
+        "IV D50W/D10W for hypoglycemia"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "12-lead ECG interpretation",
+        "Endotracheal intubation for airway compromise",
+        "RSI per protocol",
+        "Advanced antidysrhythmic or hemodynamic support per specific protocol",
+        "All parenteral medications per protocol",
+        "Vasopressors for refractory hemodynamic compromise"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Regardless of the patient's well appearance, all infants with a history of signs or symptoms suggestive of BRUE should be transported for further evaluation a. By definition, infants who are not completely well-appearing at EMS evaluation do not meet the definition of possible BRUE and should be treated and transported according to local guidelines",
+        "Destination considerations a. All patients should be transported to facilities with at least baseline pediatric readiness, i.e., appropriate equipment, resources, and trained staff capable of providing initial emergency care and stabilization to pediatric patients prior to hospital admission or interfacility transfer, if feasible"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "BRUE is a group of symptoms, not a disease process",
+        "If the infant is not completely well upon EMS arrival, this excludes possible BRUE event: a. Treat and transport according to local guidelines",
+        "Avoid using 'BRUE', 'ALTE', 'SIDS' (sudden infant death syndrome), or 'near-miss SIDS' terminology with parent/guardian",
+        "EMS clinicians play a unique and important role in obtaining an accurate history soon after the event and in observing, documenting, and reporting environmental, scene and social indicators that may point to an alternate diagnosis",
+        "High-risk patients with a possible BRUE have worse outcomes and may require emergency department (ED) or inpatient testing, intervention, and/or follow-up",
+        "The determination of a BRUE is made only after hospital evaluation, not in the field: a. A few of these infants will die even after hospital evaluation and treatment",
+        "All patients should be transported to an ED",
+        "Contact medical direction if parent/guardian is refusing medical care and/or transport, especially if any high-risk criteria are present"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Document key aspect of history o The event: . Breathing (apnea or respiratory distress)",
+        "Color change (central and/or peripheral)",
+        "Change in muscle tone",
+        "Level of responsiveness",
+        "Event duration",
+        "o Pre-event circumstances and history . Event associated with feeding or other activity",
+        "History of prematurity",
+        "Prior BRUE events (ever or in past 24 hours)"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Destination considerations a. All patients should be transported to facilities with at least baseline pediatric readiness, i.e., appropriate equipment, resources, and trained staff capable of providing initial emergency care and stabilization to pediatric patients prior to hospital admission or interfacility transfer, if feasible"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

@@ -1,0 +1,75 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-5 EMS Medication and IV Supply Requirements (Revised 4/28/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_medication_ems_medication_iv_supply_requirements",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "EMS Medication and IV Supply Requirements",
+  "version": "2023-04-28",
+  "protocol_reference": "Michigan Medication Protocol Section 9-5: EMS Medication and IV Supply Requirements — MDHHS Approved 4/28/2023",
+
+  "purpose": "Govern EMS agency medication and IV supply stocking, sealing, controlled substance management, and discrepancy reporting. Medication boxes must be sealed and tamper-evident. Controlled substance requirements must comply with DEA regulations and Michigan law. Discrepancies must be reported promptly.",
+
+  "sections": [
+    {
+      "title": "Medication Box Sealing Requirements",
+      "reference": "Michigan Protocol 9-5: EMS Medication Requirements — Sealing",
+      "points": [
+        "All EMS medication/drug boxes must be sealed with tamper-evident seals when not in active use",
+        "Seal must include: seal serial number, date sealed, and name/signature of person sealing",
+        "Seal integrity must be verified at each shift change; broken or missing seal without documented explanation requires immediate supervisor notification and documentation",
+        "Medication box seal exchange must occur per MCA-approved pharmacy exchange protocol (see Section 9-6)"
+      ]
+    },
+    {
+      "title": "Pharmacy Exchange Process",
+      "reference": "Michigan Protocol 9-5: EMS Medication Requirements — Pharmacy Exchange",
+      "points": [
+        "Depleted or used medication boxes must be exchanged with fresh sealed boxes via the MCA-approved pharmacy exchange program",
+        "Exchange must occur at an MCA-authorized exchange location (hospital, pharmacy, or MCA-designated site)",
+        "Used box must be sealed and labeled with the date, call number or PCR number, and signature of exchanging provider",
+        "Documentation of the exchange must be retained per MCA records requirements"
+      ]
+    },
+    {
+      "title": "Controlled Substance Management",
+      "reference": "Michigan Protocol 9-5: EMS Medication Requirements — Controlled Substances",
+      "points": [
+        "Controlled substances must be stored in a locked, secure compartment separate from non-controlled medications when required by DEA regulations",
+        "Controlled substance administration must be documented with: drug name, dose administered, remaining quantity, time, and two-provider verification when required by MCA policy",
+        "Controlled substance waste: must be witnessed and documented per DEA and MCA requirements",
+        "All controlled substance discrepancies (shortages, overages, unaccounted doses) must be reported immediately to the agency supervisor and MCA per Section 9-5 reporting requirements"
+      ]
+    },
+    {
+      "title": "Discrepancy Reporting",
+      "reference": "Michigan Protocol 9-5: EMS Medication Requirements — Discrepancy Reporting",
+      "points": [
+        "Any medication discrepancy (missing medication, incorrect quantity, tampered seal without documentation, or unaccounted controlled substance) must be reported to the agency supervisor immediately upon discovery",
+        "Agency must report controlled substance discrepancies to the MCA and, if required, to the DEA and MDHHS within required timeframes",
+        "Providers must not remove, use, or tamper with medications outside of authorized patient care circumstances",
+        "Discrepancy investigation findings must be documented and retained per MCA records requirements"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Controlled substance discrepancy identified — report to supervisor immediately; do not delay reporting"
+  ],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "Medication boxes: tamper-evident seal required; verify at shift change",
+    "Broken seal without documentation: notify supervisor immediately",
+    "Pharmacy exchange: at MCA-authorized location; document exchange",
+    "Controlled substances: locked storage; two-provider verification when required; waste witnessed and documented",
+    "Discrepancies: notify supervisor immediately; DEA/MDHHS notification per applicable requirements"
+  ]
+}

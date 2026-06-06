@@ -1,0 +1,85 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-24 PSRO Complaint Investigation and Resolution (Revised 06/06/2025, MDHHS Approved 07/25/2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_psro_complaint_investigation_resolution",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "PSRO Complaint Investigation and Resolution",
+  "version": "2025-06-06",
+  "protocol_reference": "Michigan System Protocol Section 8-24: PSRO Complaint Investigation and Resolution — MDHHS Approved 7/25/2025",
+  "purpose": "Provide a consistent framework for receiving, investigating, and resolving allegations regarding EMS clinicians or Life Support Agencies under MCA purview. The process is intended to foster just culture, produce safer patient outcomes, identify root causes, and outline expected behaviors.",
+  "sections": [
+    {
+      "title": "Allegation Intake",
+      "reference": "Michigan Protocol 8-24: PSRO Complaint — Allegation Intake",
+      "points": [
+        "Allegations may be received directly by the MCA, by life support agencies, hospitals, or the Department",
+        "Those receiving allegations involving protocol, statute, or administrative rule violations must inform the MCA in writing",
+        "The MCA assesses whether further review is required",
+        "The complainant should be asked whether they want to remain anonymous; anonymity must be honored to the extent possible",
+        "Actionable allegations must involve an EMS clinician, Life Support Agency, or EMS system performance within MCA jurisdiction and include a potential violation of law, rule, or protocol",
+        "The allegation must be in writing or transcribed if received by telephone",
+        "Hearsay or second-hand allegations are not accepted or investigated",
+        "QI initiatives and normal QI deviations are handled through the MCA Quality Improvement process rather than as allegations"
+      ]
+    },
+    {
+      "title": "Investigation and Due Process",
+      "reference": "Michigan Protocol 8-24: PSRO Complaint — Investigation",
+      "points": [
+        "Allegations meeting criteria are assigned to the Professional Standards Review Organization (PSRO) committee or MCA designee",
+        "Reviews are based on Department-approved MCA protocols, administrative rules, or statutes active on the date of the EMS call",
+        "The PSRO or designee may request PCRs, incident reports, video/audio recordings, statements, or other materials; EMS clinicians or LSAs have five business days to provide requested documentation unless extended",
+        "Fact-finding interviews may be conducted with EMS clinicians or other involved individuals",
+        "Formal notice is required when a Quality Review Inquiry is opened; the subject must be informed of allegations, applicable protocols, and instructions for access",
+        "Subjects must have an opportunity to respond, present supporting evidence, and review relevant investigation materials",
+        "PSRO complaint investigation committees must be able to remain impartial",
+        "Attorneys and legal representation are not permitted in PSRO committees; agency representation may be allowed if PSRO standards are maintained"
+      ]
+    },
+    {
+      "title": "Disposition and Quality Improvement Actions",
+      "reference": "Michigan Protocol 8-24: PSRO Complaint — Resolution",
+      "points": [
+        "Initial disposition may include no action, a Letter of Remediation, referral for formal PSRO review, emergency temporary suspension, or an Order of Disciplinary Action",
+        "No action may be appropriate for unsubstantiated allegations, supported LSA quality improvement plans, or system shaping factors outside the clinician or LSA's control",
+        "Human error or at-risk behavior may result in a Letter of Remediation with timeline, SMART goals, and a plan to assess outcomes",
+        "Justifiable risk should be referred for system improvement review and root-cause discussion",
+        "Reckless behavior or substantial and unjustifiable risk may result in emergency suspension or referral to PSRO for formal outcome determination",
+        "ODAs must be reported to the Department within one business day and forwarded to known MCAs where the clinician or LSA has privileges",
+        "PSRO determinations must be provided within protocol timelines, including three business days for ODAs and fourteen business days for other quality improvement actions unless otherwise specified"
+      ]
+    },
+    {
+      "title": "Emergency Action and Definitions",
+      "reference": "Michigan Protocol 8-24: PSRO Complaint — Emergency Action",
+      "points": [
+        "The Medical Director may temporarily suspend privileges immediately when there is a definable threat to public health, safety, or welfare",
+        "Formal notification of immediate suspension and allegations must be provided by the end of the business day, and the Department must be notified within one business day",
+        "The PSRO committee must convene a special meeting within three business days of the emergency suspension decision",
+        "The clinician or LSA may request one postponement of up to thirty calendar days if requested in writing within one business day before the scheduled meeting",
+        "If privileges are suspended, the clinician or LSA must not provide prehospital care in the MCA until the PSRO committee makes its decision",
+        "The protocol defines allegation, human error, at-risk behavior, justifiable choice/deviation, reckless behavior, near miss, Letter of Remediation, Order of Disciplinary Action, quality improvement action, root cause analysis, SMART goals, and system shaping factors"
+      ]
+    }
+  ],
+  "mca_selections_required": [],
+  "key_drugs": [],
+  "deterioration_flags": [],
+  "scope_notes": [
+    "All EMS provider levels",
+    "PSRO means Professional Standards Review Organization",
+    "Allegations must be written or transcribed and involve possible law, rule, or protocol violation within MCA jurisdiction",
+    "Anonymous complainant requests must be honored to the extent possible",
+    "Hearsay or second-hand allegations are not accepted or investigated",
+    "Agency/operational investigations delegated by MCA must report results back within 30 calendar days",
+    "Requested documentation or statements must generally be provided within five business days",
+    "Quality Review Inquiry subjects have notice and opportunity-to-be-heard rights",
+    "Attorneys and legal representation are not permitted in PSRO committees",
+    "ODA appeal path is governed by Section 8-25",
+    "Emergency temporary suspension requires Department notification within one business day and special PSRO meeting within three business days"
+  ]
+}

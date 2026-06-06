@@ -1,0 +1,89 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 4-8 Safe Transportation of Children in Ambulances (Revised 01/27/2023, MDHHS Reviewed 2023). Base Michigan template — no MCA drug selections required.",
+  "id": "mi_base_pediatric_safe_transport",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Pediatric",
+  "level_display": "Pediatric (< 14 years)",
+  "jurisdiction": "Michigan",
+  "condition": "Safe Transportation of Children in Ambulances",
+  "version": "2023-01-27",
+  "protocol_reference": "Michigan Obstetrics and Pediatrics Protocol Section 4-8: Safe Transportation of Children in Ambulances — MDHHS Approved 1/27/23, Reviewed 2023",
+
+  "purpose": "Guidelines for safe transportation of children in ambulances. This protocol applies to pediatric patients of a height or weight requiring a child restraint system and identifies ambulance child restraints as the expected transport method unless unavailable, unachievable, or detrimental.",
+
+  "sections": [
+    {
+      "title": "Definitions",
+      "reference": "Michigan Protocol 4-8: Safe Transport — Definitions",
+      "points": [
+        "Child Restraint System (CRS): a device designed for child safety in transportation, including vehicle car seats, forward/rear-facing seats, and booster seats",
+        "Ambulance Child Restraint (ACR): a subset of CRS designed for use in ambulances and on ambulance stretchers; ACR is not a brand name",
+        "An ACR does not include car seats designed for personal vehicles",
+        "Devices meeting the ACR definition and approved by the MCA may be utilized"
+      ]
+    },
+    {
+      "title": "Criteria and Standard Procedure",
+      "reference": "Michigan Protocol 4-8: Criteria and Procedure",
+      "points": [
+        "Any pediatric patient requiring a CRS and transported in an ambulance must be in an ACR",
+        "When not transported in an ACR, this must be documented and reported to the MCA",
+        "Transport the patient on the ambulance stretcher secured with an ACR",
+        "Consider the child's height and weight when determining the appropriate ACR and follow manufacturer recommendations",
+        "When ACR use is unavailable, unachievable, or detrimental, use situational guideline alternatives in order and document/report to the MCA"
+      ]
+    },
+    {
+      "title": "Situation 1 — Uninjured/Not Ill Child Accompanying a Patient",
+      "reference": "Michigan Protocol 4-8: Situation 1",
+      "points": [
+        "Arrange transport in a vehicle other than an emergency ground ambulance in a size-appropriate, properly installed, undamaged CRS",
+        "If needed, request an ACR-equipped transporting vehicle",
+        "If necessary, transport in the ambulance front passenger seat in a size-appropriate, properly installed, undamaged CRS with airbags off and seat moved fully back",
+        "Other alternatives include a forward-facing EMS provider seat/captain's chair or rear-facing EMS provider seat with size-appropriate, properly installed, undamaged CRS"
+      ]
+    },
+    {
+      "title": "Situation 2 and 3 — Ill/Injured Child",
+      "reference": "Michigan Protocol 4-8: Ill/Injured Child Transport",
+      "points": [
+        "If the child does not require continuous intensive monitoring or interventions, request an ACR-equipped vehicle if condition allows, or use a size-appropriate undamaged CRS secured appropriately on the ambulance stretcher",
+        "If needed, alternatives include forward-facing or rear-facing EMS provider seat with size-appropriate, properly installed, undamaged CRS",
+        "If CRS/ACR alternatives are unavailable, secure the child to the ambulance stretcher using three horizontal restraints across chest, pelvis, and lower extremities and one vertical restraint across each shoulder",
+        "For a child requiring continuous intensive monitoring or intervention, request an ACR-equipped vehicle if condition allows, otherwise secure to the stretcher with the same restraint method while allowing appropriate medical care"
+      ]
+    },
+    {
+      "title": "Situation 4 and 5 — Spinal Motion Restriction and Multiple Patients",
+      "reference": "Michigan Protocol 4-8: SMR and Multiple Patient Transport",
+      "points": [
+        "For patients requiring spinal motion restriction or lying flat, request an ACR-equipped transporting vehicle and follow Spinal Precautions-Procedure Protocol",
+        "If already secured to a spine board and removal would be detrimental, add padding as needed and secure the board to the stretcher",
+        "For multiple patient transport, transport each child as a single patient using situations 1 through 4 and use additional units as needed",
+        "For mother and newborn, both are patients; prevent newborn hypothermia immediately and continuously",
+        "If mother has no complications, transport newborn in an ACR on the ambulance stretcher and mother in the rear-facing EMS provider seat",
+        "If mother has delivery complications and needs the stretcher, transport newborn in an approved size-appropriate car seat in the rear-facing EMS provider seat with a belt path that prevents lateral and forward movement under continuous monitoring"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "ACR unavailable, unachievable, or detrimental — use the ordered alternatives, document the reason, and report to the MCA",
+    "Child requires continuous intensive monitoring/intervention — secure to stretcher with horizontal and shoulder restraints while maintaining access for care",
+    "Mother-newborn transport — treat both as patients and prevent newborn hypothermia continuously"
+  ],
+
+  "scope_notes": [
+    "ACR/CRS selection and documentation: all levels",
+    "Newborn monitoring and hypothermia prevention during mother-baby transport: all levels",
+    "Spinal motion restriction with pediatric device: all levels — per Spinal Motion Restriction-Procedure Protocol",
+    "No medications involved in this protocol",
+    "Documentation of restraint method used required in patient care report"
+  ]
+}

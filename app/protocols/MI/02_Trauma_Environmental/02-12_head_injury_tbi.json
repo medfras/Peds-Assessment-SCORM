@@ -1,0 +1,96 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 2-12 Head Injury Moderate and Severe TBI (Revised 03/31/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_all_head_injury_tbi",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "All",
+  "level_display": "All Levels",
+  "jurisdiction": "Michigan",
+  "condition": "Head Injury — Moderate & Severe TBI",
+  "version": "2025-03-31",
+  "protocol_reference": "Michigan Trauma and Environmental Protocol Section 2-12: Head Injury Moderate and Severe TBI — MDHHS Revised 3/31/25, Reviewed 2025",
+  "purpose": "Reduce morbidity and mortality in moderate and severe TBI by preventing secondary injury from hypoxia, hyperventilation, hypotension, and uncontrolled hemorrhage.",
+  "sections": [
+    {
+      "title": "General TBI Management",
+      "reference": "Michigan Protocol 2-12: TBI — General Management",
+      "points": [
+        "Use this protocol for physical trauma with mechanism for brain injury plus loss of consciousness, altered mental status or GCS < 15, seizure before or after trauma, multisystem trauma requiring positive-pressure ventilation, or decreased level of consciousness/responsiveness in infants",
+        "Follow General Trauma-Treatment Protocol and assess hemorrhage using the Bleeding Control protocol",
+        "Place the patient on continuous oxygen saturation monitoring and reassess blood pressure every 3–5 minutes",
+        "Check blood glucose and treat hypoglycemia when indicated",
+        "Consider TXA per Hemorrhagic Shock protocol and contact Medical Control for suspected hemorrhage that does not otherwise meet TXA criteria"
+      ]
+    },
+    {
+      "title": "Airway and Ventilation Management",
+      "reference": "Michigan Protocol 2-12: TBI — Airway and Ventilation",
+      "points": [
+        "All moderate and severe head injury patients receive continuous high-flow oxygen immediately by non-rebreather mask regardless of saturation; maintain SpO2 at or above 90%",
+        "Avoid positive-pressure ventilation whenever possible",
+        "If hypoxia persists despite high-flow oxygen, reposition the airway and reevaluate",
+        "If airway repositioning does not restore SpO2 to at least 90%, or ventilatory effort is inadequate, use two-person BVM with oxygen and basic airway adjuncts",
+        "Use advanced airway only when BVM is ineffective or another condition warrants it, such as prolonged transport",
+        "If ventilating, maintain normal ventilation and avoid hypo- or hyperventilation; use PCBs/VRTs when available",
+        "Ventilation targets: Adults older than 14 years: 10/min; children older than 2 and younger than 14 years: 20/min; infants younger than 2 years: 25/min",
+        "Use continuous quantitative ETCO2 when positive-pressure ventilation is used; ideal ETCO2 range is 35–45 mmHg, target 40 mmHg"
+      ]
+    },
+    {
+      "title": "Blood Pressure Management",
+      "reference": "Michigan Protocol 2-12: TBI — Blood Pressure",
+      "points": [
+        "Obtain vascular access in all moderate/severe TBI patients; use IO for hypotension or shock if IV access cannot be quickly established",
+        "Do not wait for hypotension: decreasing systolic blood pressure or compensated shock signs require proactive fluid administration",
+        "Minimum systolic BP targets: Adults over 14 years: greater than 110 mmHg; pediatrics 11–14 years: greater than 110 mmHg; pediatrics older than 1 and younger than 10 years: greater than 70 + (age x 2) mmHg; 1–12 months: greater than 70 mmHg; younger than 1 month: greater than 60 mmHg",
+        "Use NS or LR: Adults receive up to 1 L wide open; pediatrics receive 20 mL/kg",
+        "Stop fluids once the BP target is achieved; subsequent boluses may be required if BP drops again"
+      ]
+    },
+    {
+      "title": "Transport Considerations",
+      "reference": "Michigan Protocol 2-12: TBI — Transport",
+      "points": [
+        "Transport per MCA Transport Protocol to an appropriate trauma destination",
+        "Do NOT delay transport for interventions that can be performed en route",
+        "Pre-notify receiving facility: mechanism, GCS/mental status, oxygenation, ventilation status, ETCO2 if ventilated, blood pressure trends, hemorrhage control, and fluids given"
+      ]
+    }
+  ],
+  "mca_selections_required": [],
+  "key_drugs": [
+    {
+      "name": "Normal Saline or LR IV/IO (TBI Hypotension)",
+      "dose": "Adults: up to 1 L wide open; Pediatrics: 20 mL/kg; stop once age-based BP target is achieved",
+      "route": "IV or IO",
+      "indication": "Moderate/severe TBI with hypotension, decreasing systolic BP, or compensated shock signs",
+      "contraindications": "Avoid hypotonic solutions; stop bolus once target systolic BP is achieved",
+      "side_effects": "Cerebral edema with excessive fluid; pulmonary edema",
+      "scope": "Specialist skill",
+      "notes": "Use the 2025 Michigan TBI systolic BP targets, which are higher than older general trauma hypotension thresholds."
+    }
+  ],
+  "deterioration_flags": [
+    "SpO2 below 90% despite high-flow oxygen — reposition airway; if unresolved, begin two-person BVM with oxygen and airway adjuncts",
+    "Positive-pressure ventilation being used without ETCO2 monitoring — add continuous quantitative ETCO2 when available",
+    "ETCO2 outside 35–45 mmHg during ventilation — adjust ventilation to avoid hypo- or hyperventilation",
+    "Systolic BP below age target or trending down — obtain vascular access and administer NS or LR bolus",
+    "Uncontrolled hemorrhage or suspected compensated shock — apply Bleeding Control protocol and consider Hemorrhagic Shock/TXA pathway"
+  ],
+  "scope_notes": [
+    "GCS assessment, high-flow oxygen by non-rebreather, airway repositioning, and basic airway adjuncts: all levels",
+    "Blood glucose assessment: all levels (per MCA selection for MFR)",
+    "Two-person BVM ventilation and ventilation rate targets: per scope and agency practice",
+    "ETCO2 monitoring, advanced airway, IV/IO access, and fluid bolus: per scope and available equipment"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "head_injury",
+      "spinal_motion_restriction",
+      "trauma"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

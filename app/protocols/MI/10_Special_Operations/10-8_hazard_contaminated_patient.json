@@ -1,0 +1,115 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 10-8 Hazardous/Contaminated Patient (MDHHS Reviewed 2022-12-27). Base Michigan template.",
+  "id": "mi_base_special_ops_hazard_contaminated_patient",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Special Operations",
+  "level_display": "Special Operations Protocol",
+  "jurisdiction": "Michigan",
+  "condition": "Hazardous / Contaminated Patient",
+  "version": "2022-12-27",
+  "protocol_reference": "Michigan Special Operations Protocol Section 10-8: Hazardous / Contaminated Patient — MDHHS Reviewed 2022",
+
+  "purpose": "Establish EMS procedures for identifying, managing, and safely treating patients who are potentially contaminated with hazardous materials, including scene safety, decontamination coordination, and transport decisions.",
+
+  "sections": [
+    {
+      "title": "Contamination Identification",
+      "content": [
+        "A patient is considered POTENTIALLY CONTAMINATED when:",
+        "  — Found at or near a known or suspected hazmat scene",
+        "  — Presents with symptoms consistent with chemical, radiological, or biological exposure",
+        "  — Has unexplained burns, skin changes, or odors suggestive of chemical exposure",
+        "  — Responds from an area where hazmat release has been identified or is suspected",
+        "  — Emergency dispatch or law enforcement advises of potential contamination",
+        "ASSUME CONTAMINATION if uncertain — do NOT approach without appropriate PPE"
+      ]
+    },
+    {
+      "title": "Initial EMS Actions — Contaminated Patient",
+      "content": [
+        "1. Do NOT approach contaminated patient without appropriate PPE",
+        "2. Notify dispatch, fire/HazMat, and online medical control immediately",
+        "3. Establish safe upwind/uphill staging position",
+        "4. Identify hazard type if possible — CHEMTREC (1-800-424-9300), ERG (Emergency Response Guidebook), placard information",
+        "5. Establish hot/warm/cold zone perimeter with fire/HazMat",
+        "6. Do NOT transport contaminated patient — decontamination must occur FIRST",
+        "7. Contact online medical control for destination hospital guidance"
+      ]
+    },
+    {
+      "title": "Decontamination — EMS Role",
+      "content": [
+        "DECONTAMINATION IS THE RESPONSIBILITY OF FIRE/HAZMAT — EMS does NOT perform technical decontamination",
+        "EMS role in decontamination:",
+        "  — Advise on medical priorities for decon order (most critical patients first)",
+        "  — Provide medical monitoring during decon if PPE-equipped",
+        "  — Receive patients at decon exit (warm/cold zone boundary) for medical treatment",
+        "  — Gross decontamination (clothing removal + water irrigation) is the minimum before EMS treatment",
+        "Clothing removal removes approximately 80% of surface contamination — all clothing removed, placed in labeled biohazard bags",
+        "Do NOT initiate medical treatment (IV, intubation, medication) on undecontaminated patient unless immediately life-threatening AND provider has appropriate PPE"
+      ]
+    },
+    {
+      "title": "Invasive Procedures — Contaminated Patients",
+      "content": [
+        "AVOID invasive procedures on undecontaminated patients:",
+        "  — IV/IO access, intubation, needle decompression, wound packing — deferred until decontamination complete",
+        "  — Exception: immediately life-threatening condition (cardiac arrest, tension pneumothorax, uncontrolled hemorrhage) where decontamination cannot occur first",
+        "  — Exception: provider has appropriate Level B or C PPE for the identified agent",
+        "If performing invasive procedure on undecontaminated patient: use maximum available PPE; limit personnel exposure; document exception and rationale",
+        "Sharps handling: extreme care with contaminated patients — sharps injury creates secondary contamination risk"
+      ]
+    },
+    {
+      "title": "Transport — Contaminated Patient",
+      "content": [
+        "DO NOT TRANSPORT UNDECONTAMINATED PATIENTS in ambulance",
+        "Transport only after gross decontamination (clothing removal + water rinse) at minimum",
+        "Contact online medical control for destination hospital BEFORE transport:",
+        "  — Not all hospitals can receive contaminated or partially decontaminated patients",
+        "  — Hospital must be notified of agent type, decontamination status, and ETA",
+        "  — Some agents (radiological, CBRNE) require hospital-level decontamination facilities",
+        "Ambulance contamination: if contaminated patient transported, ambulance is out of service until decontaminated per Protocol 10-15 or agency HazMat decon procedures",
+        "Notify dispatch of ambulance contamination status"
+      ]
+    },
+    {
+      "title": "Specific Hazmat Types — Additional Guidance",
+      "content": [
+        "CHEMICAL (nerve agent, vesicant, choking, cyanide): refer to Protocols 10-2, 10-3, 10-5 — decontaminate before treatment",
+        "RADIOLOGICAL: limit time/distance/shielding; dosimeter monitoring; decontaminate with water; hospital must have radiological decon capability; transport not delayed for stable patients after gross decon",
+        "BIOLOGICAL: standard precautions + suspected pathogen PPE; potential for delayed symptom onset; notify public health; refer to Protocol 10-9 if pandemic suspected",
+        "INDUSTRIAL/UNKNOWN CHEMICAL: identify material before approach; ERG/CHEMTREC guidance; treat symptoms after decon",
+        "CLANDESTINE LAB: law enforcement scene — extreme PPE required; multiple hazards (chemical, explosive); do NOT enter until cleared by law enforcement and HazMat"
+      ]
+    },
+    {
+      "title": "EMS Provider Exposure",
+      "content": [
+        "If EMS provider has potential exposure: exit scene immediately; notify IC and online MC",
+        "Remove and bag potentially contaminated clothing",
+        "Water irrigation for skin/eye exposure",
+        "Seek medical evaluation",
+        "Nerve agent self-exposure: administer 1 NA kit (Duodote) if symptomatic — notify IC",
+        "Document exposure incident; file agency exposure report",
+        "Post-exposure medical monitoring per agency and MCA protocols"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [
+    "Agent-specific antidotes per Protocols 10-3 (nerve agent) and 10-5 (cyanide) — after decontamination or with PPE"
+  ],
+
+  "deterioration_flags": [
+    "Life-threatening injury in undecontaminated patient — consider immediate intervention with PPE; document exception",
+    "EMS provider develops symptoms after potential exposure — exit scene; notify IC; initiate decontamination",
+    "Unknown agent with multiple casualties — do NOT approach; stage; await HazMat identification"
+  ],
+
+  "scope_notes": "EMS must NOT transport undecontaminated patients — contaminating the ambulance removes it from service and creates secondary exposure risk. Decontamination is fire/HazMat responsibility. Online medical control must be contacted for destination guidance — not all receiving hospitals can accept contaminated patients. Invasive procedures are deferred until decontamination is complete except in immediately life-threatening scenarios with appropriate PPE."
+}

@@ -1,0 +1,74 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-37R Nitroglycerin (MDHHS Reviewed 2025). Base Michigan template.",
+  "id": "mi_base_medication_ref_nitroglycerin",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Nitroglycerin",
+  "version": "2025-03-31",
+  "protocol_reference": "Michigan Medication Protocol Section 9-37R: Nitroglycerin — MDHHS Reviewed 2025",
+  "pharmacological_category": "Nitrate — Vasodilator",
+  "routes": [
+    "SL (sublingual)"
+  ],
+  "indications": [
+    "Acute Coronary Syndrome (ACS) — chest pain/ischemic symptoms",
+    "Hypertensive emergency with acute pulmonary edema (per applicable protocol)"
+  ],
+  "contraindications": [
+    "Use of erectile dysfunction (ED) medications within ≤48 hours (sildenafil/Viagra, tadalafil/Cialis, vardenafil/Levitra) — severe hypotension risk",
+    "Use of pulmonary hypertension medications within ≤48 hours (riociguat, sildenafil)",
+    "Without IV access: SBP <120 mmHg",
+    "With IV access established: SBP <100 mmHg",
+    "Inferior STEMI with suspected RV involvement: extreme caution — may cause severe hypotension (contact online MC)",
+    "Known hypersensitivity to nitrates"
+  ],
+  "precautions": [
+    "Check BP before each dose — DO NOT give if pressure below thresholds",
+    "Always ask about ED/PH medications before administration",
+    "May cause significant headache (vasodilation effect — expected)",
+    "Monitor BP continuously after administration",
+    "Without IV access: maximum 3 doses total; with IV access: may repeat q3-5 minutes"
+  ],
+  "expected_effects": [
+    "Coronary vasodilation and preload reduction → decreased myocardial oxygen demand",
+    "Relief of ischemic chest pain",
+    "Decreased venous return and preload (beneficial in pulmonary edema)"
+  ],
+  "side_effects": [
+    "Hypotension (dose-dependent)",
+    "Headache (very common)",
+    "Reflex tachycardia",
+    "Syncope"
+  ],
+  "notes": [
+    "Standard dose: 0.4 mg sublingual tablet or spray",
+    "Without IV access: max 3 doses total; check BP before each dose; SBP must be ≥120",
+    "With IV access established: may repeat q3-5 minutes; SBP must be ≥100",
+    "Always ask: 'Have you taken Viagra, Cialis, Levitra or similar medication in the last 48 hours?' before giving",
+    "Inferior STEMI: check right-sided leads or contact online MC before giving — RV infarct involvement"
+  ],
+  "dosing": [
+    {
+      "population": "Adult (>14 yr) — ACS / chest pain",
+      "route": "SL (sublingual)",
+      "dose": "0.4 mg SL (one tablet or one spray)",
+      "notes": "Without IV: max 3 doses; SBP ≥120 before each dose. With IV: repeat q3-5 min; SBP ≥100. Ask about ED/PH medications before giving"
+    }
+  ],
+  "used_in_protocols": [
+    "Acute Coronary Syndrome (ACS) / Chest Pain",
+    "Pulmonary Edema / CHF"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "chest_pain_acs",
+      "stemi"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

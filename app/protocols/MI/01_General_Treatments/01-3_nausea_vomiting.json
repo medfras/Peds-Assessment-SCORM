@@ -1,0 +1,94 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 1-3 Nausea & Vomiting (Revised 10/24/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_all_nausea_vomiting",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "All",
+  "level_display": "All Levels",
+  "jurisdiction": "Michigan",
+  "condition": "Nausea & Vomiting",
+  "version": "2025-10-24",
+  "protocol_reference": "Michigan General Treatment Protocol Section 1-3: Nausea & Vomiting — MDHHS Approved 10/24/25, Reviewed 2025",
+
+  "sections": [
+    {
+      "title": "Nausea & Vomiting",
+      "reference": "Michigan Protocol 1-3: Nausea & Vomiting",
+      "points": [
+        "Follow General Pre-Hospital Care-Treatment Protocol",
+        "Consider underlying causes of nausea and vomiting (e.g., stroke, trauma, cardiac) and evaluate according to appropriate protocol",
+        "Pediatric patients (< 14 years of age): utilize MI MEDIC for appropriate fluid bolus; ondansetron does not appear on MI MEDIC — use dosing listed in this protocol",
+        "Isopropyl alcohol: consider allowing patient to inhale vapor from isopropyl alcohol wipe 3 times every 15 minutes as tolerated",
+        "For patients > 30 kg (adult and pediatric) that are NOT actively vomiting: administer ondansetron (Zofran) 4 mg ODT one time (availability and licensure level per MCA selection); CONTRAINDICATION: Phenylketonuria (PKU)",
+        "For signs of dehydration: administer NS or LR IV/IO fluid bolus (Specialist skill — refer to Vascular Access and IV Fluid Therapy-Procedure Protocol); Adults: up to 1 liter; Pediatrics: up to 20 mL/kg",
+        "Hypotensive patients should receive additional IV/IO fluid boluses as indicated: Adults repeat to maximum 2 liters; Pediatrics repeat 20 mL/kg to maximum 40 mL/kg",
+        "Administer ondansetron IV/IM if ODT not already administered OR if patient vomited post ODT administration (per MCA selection — may be Specialist skill); Adults: 4 mg IV/IM; Pediatrics: 0.1 mg/kg IV/IM, maximum dose 4 mg",
+        "May repeat ondansetron ONCE (may be Specialist skill if selected above) after 15 minutes if nausea/vomiting persist — second dose must be IV/IM; Adults: 4 mg IV/IM; Pediatrics: 0.1 mg/kg IV/IM, maximum 4 mg; total maximum ondansetron dose (all routes) for adults or pediatrics: 8 mg",
+        "Consider diphenhydramine when previous medications have been ineffective or are contraindicated; Adults: 12.5–25 mg IV/IM, maximum dose 25 mg; Pediatrics (> 2 years of age AND > 12 kg): 1.0 mg/kg IV, maximum dose 25 mg — NOTE: diphenhydramine for nausea/vomiting does not appear on MI MEDIC"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "ODT Ondansetron",
+      "description": "MCA must indicate whether ODT ondansetron is included and which licensure level may administer",
+      "options": ["Not included", "EMT", "Specialist"],
+      "selected": null
+    },
+    {
+      "item": "Ondansetron IV/IM",
+      "description": "MCA must indicate which licensure level may administer IV/IM ondansetron",
+      "options": ["Specialist"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [
+    {
+      "name": "Ondansetron (Zofran) ODT",
+      "dose": "4 mg ODT — adults and pediatrics > 30 kg not actively vomiting; one time dose",
+      "route": "ODT (orally disintegrating tablet)",
+      "indication": "Nausea and vomiting — patient not actively vomiting and weight > 30 kg",
+      "contraindications": "Phenylketonuria (PKU); actively vomiting patients; weight ≤ 30 kg",
+      "side_effects": "Headache, constipation, QT prolongation (rare at standard doses)",
+      "scope": "Per MCA selection — EMT or Specialist",
+      "notes": "Ondansetron does not appear on MI MEDIC. If patient vomits after ODT, may administer IV/IM dose."
+    },
+    {
+      "name": "Ondansetron IV/IM",
+      "dose": "Adults: 4 mg IV/IM; Pediatrics: 0.1 mg/kg IV/IM, maximum 4 mg; total max all routes: 8 mg",
+      "route": "IV or IM",
+      "indication": "Nausea and vomiting when ODT not administered or patient vomited post ODT",
+      "contraindications": "Phenylketonuria (PKU); already received 8 mg ondansetron total",
+      "side_effects": "Headache, constipation, QT prolongation",
+      "scope": "Per MCA selection — Specialist",
+      "notes": "May repeat once after 15 minutes if nausea/vomiting persist."
+    },
+    {
+      "name": "Diphenhydramine",
+      "dose": "Adults: 12.5–25 mg IV/IM, max 25 mg; Pediatrics (> 2 y/o AND > 12 kg): 1.0 mg/kg IV, max 25 mg",
+      "route": "IV or IM",
+      "indication": "Nausea and vomiting when ondansetron ineffective or contraindicated",
+      "contraindications": "Children < 2 years of age; weight ≤ 12 kg in pediatrics",
+      "side_effects": "Sedation, anticholinergic effects, tachycardia",
+      "scope": "Specialist (AEMT/Paramedic) skill",
+      "notes": "Does not appear on MI MEDIC."
+    }
+  ],
+
+  "deterioration_flags": [
+    "Signs of dehydration (dry mucous membranes, tachycardia, poor skin turgor) — initiate IV/IO (Specialist skill) and fluid bolus",
+    "Hypotension despite fluids — consider underlying cause; refer to Shock-Treatment Protocol",
+    "Consider stroke, MI, or toxic ingestion as underlying etiology — evaluate and refer to appropriate protocol"
+  ],
+
+  "scope_notes": [
+    "ODT Ondansetron: scope per MCA selection — EMT or Specialist",
+    "IV/IM Ondansetron: scope per MCA selection — Specialist",
+    "IV/IO access and fluid bolus: Specialist skill",
+    "Diphenhydramine: Specialist skill",
+    "Isopropyl alcohol inhalation: all levels"
+  ]
+}

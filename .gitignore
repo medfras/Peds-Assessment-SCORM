@@ -1,0 +1,34 @@
+# SQLite / local DB artifacts
+/data/
+
+# Mac system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Local environment files (if you use them later)
+.env
+*.log
+
+# VS Code specific
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Node / frontend dependencies
+node_modules/
+
+# Virtual Environments
+venv/
+env/
+.venv/
+
+# Other IDEs
+.idea/
+notes.md
+
+tests/TEST_CASES/
+app/PEDS_ASSESSMENT/

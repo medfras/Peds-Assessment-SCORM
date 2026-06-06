@@ -1,0 +1,146 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Cardiovascular: Tachycardia with a Pulse. NASEMSO national provisional base.",
+  "id": "nasemso_base_cardiovascular_tachycardia_with_a_pulse",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Tachycardia with a Pulse",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Cardiovascular: Tachycardia with a Pulse",
+  "aliases": [
+    "Atrial fibrillation (A-FIB)",
+    "Atrial flutter",
+    "Supraventricular tachycardia (SVT) Multifocal atrial tachycardia (MAT)",
+    "Torsades",
+    "Ventricular tachycardia (VT)"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Cardiovascular: Tachycardia with a Pulse",
+      "points": [
+        "Maintain adequate oxygenation, ventilation, and perfusion",
+        "Control ventricular rate",
+        "Restore regular sinus rhythm in unstable patient",
+        "Search for underlying cause: a. Medications (caffeine, diet pills, thyroid, decongestants)"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Heart rate greater than 100 BPM in adults or relative tachycardia in pediatric patients",
+        "EXCLUSION CRITERIA:",
+        "Sinus tachycardia"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Oxygen via NRM targeting SpO2 94-98%",
+        "CPR and AED if patient becomes pulseless (cardioversion not available at EMR)",
+        "Position of comfort; supine if hypotensive"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "12-lead ECG acquisition and transmission",
+        "Vagal maneuvers for narrow complex SVT (Valsalva, modified Valsalva)",
+        "IV maintenance (non-medicated)",
+        "CPAP for tachycardia with pulmonary edema"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation",
+        "IV fluid bolus for tachycardia from hypovolemia",
+        "Waveform capnography",
+        "Adenosine 6 mg rapid IV push for narrow complex regular SVT (per state/local protocol at AEMT level)"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "Adenosine 6 mg rapid IV push for narrow complex regular SVT; 12 mg if no response after 1-2 min (use proximal site, rapid flush)",
+        "Synchronized cardioversion for unstable tachycardia (VT with pulse, SVT with hemodynamic compromise)",
+        "Amiodarone 150 mg IV over 10 min for stable wide complex tachycardia",
+        "Amiodarone 300 mg IV/IO for pulseless VT/VF",
+        "Procainamide 20-50 mg/min IV (max 17 mg/kg) for stable wide complex tachycardia",
+        "12-lead ECG interpretation: differentiate SVT, AFib, WPW, VT",
+        "A-fib/flutter with rapid ventricular response: rate control (diltiazem, metoprolol) per protocol",
+        "RSI and intubation for airway compromise in unstable tachyarrhythmia"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Only use one antidysrhythmic at a time",
+        "Patients who receive beta-blockers (e.g., metoprolol) with calcium channel blockers (e.g., diltiazem) are at increased risk for hypotension and bradycardia",
+        "If using cardioversion, consider sedation and pain control",
+        "With irregular wide complex tachycardia (A-FIB with aberrancy such as Wolff-Parkinson-White and Lown-Ganong Levine), avoid use of AV nodal blocking agents (e.g., adenosine, calcium channel blockers, beta-blockers)",
+        "Patients with Wolff'Parkinson'White should be given procainamide prior to amiodarone"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Causes: a. Hypovolemia",
+        "A-FIB rarely requires cardioversion in the field. As it is difficult to ascertain the onset of this rhythm, the risk of stroke needs to be considered prior to cardioversion",
+        "A wide-complex irregular rhythm should be considered pre-excited A-FIB; extreme care must be taken in these patients a. Characteristic EKG findings include a short PR interval and, in some cases, a delta wave",
+        "Amiodarone or procainamide can be used as a rate-controlling agent for patients who are intolerant of or unresponsive to other agents, such as patients with CHF who may not otherwise tolerate diltiazem or metoprolol a. Caution should be exercised in those who are not receiving anticoagulation, as amiodarone can promote cardioversion",
+        "Administer metoprolol to patients with SBP greater than 120 mmHg a. Worsening CHF, chronic obstructive pulmonary disease (COPD), asthma, as well as hypotension and bradycardia can occur with use of metoprolol",
+        "Biphasic waveforms have been proven to convert A-FIB at lower energies and higher rates of success than monophasic waveforms a. Strategies include dose escalation (70, 120, 150, 170 joules (J) for biphasic or 100, 200, 300, 360 J for monophasic) versus beginning with single high energy/highest success rate for single shock delivered",
+        "Studies in infants and children have demonstrated the effectiveness of adenosine for the treatment of hemodynamically stable or unstable SVT",
+        "Adenosine should be considered the preferred medication for stable SVT a. Verapamil may be considered as alternative therapy in older children but should not be routinely used in infants"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Initial rhythm and all rhythm changes",
+        "' Time, dose, and response to medications given",
+        "' Cardioversion times, synchronization, attempts, joules, and response",
+        "' Obtain monitor strips after each intervention",
+        "' Patient weight",
+        "' Pediatric length-based tape color (for pediatrics who fit on tape)",
+        "' History of event supporting treatment of underlying causes"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Contact medical direction for clinical deterioration or interventions outside standard scope"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

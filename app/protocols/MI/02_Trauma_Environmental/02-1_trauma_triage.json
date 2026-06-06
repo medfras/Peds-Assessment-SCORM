@@ -1,0 +1,73 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 2-1 Adult/Pediatric Trauma Triage (Revised 12/16/2022, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_all_trauma_triage",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "All",
+  "level_display": "All Levels",
+  "jurisdiction": "Michigan",
+  "condition": "Adult/Pediatric Trauma Triage",
+  "version": "2022-12-16",
+  "protocol_reference": "Michigan Trauma and Environmental Protocol Section 2-1: Adult/Pediatric Trauma Triage — MDHHS Approved 12/16/22, Reviewed 2023",
+  "purpose": "Facilitate delivery of the patient to the most appropriate level of care in the most expeditious manner. Exception: trauma patients requiring airway intervention that cannot be accomplished by pre-hospital personnel are transported to the closest appropriate hospital for airway management, resuscitation, and immediate transfer for definitive care.",
+  "sections": [
+    {
+      "title": "RED CRITERIA — High Risk for Serious Injury",
+      "reference": "Michigan Protocol 2-1: Trauma Triage — Section I.A",
+      "points": [
+        "INJURY PATTERNS: Penetrating injuries to head, neck, torso, and proximal extremities; skull deformity or suspected skull fracture; suspected spinal injury with new motor or sensory loss; chest wall instability, deformity, or suspected flail chest; suspected pelvic fracture; suspected fracture of two or more proximal long bones; crushed, degloved, mangled, or pulseless extremity; amputation proximal to wrist or ankle; active bleeding requiring a tourniquet or wound packing with continuous pressure",
+        "MENTAL STATUS & VITAL SIGNS — ALL PATIENTS: Unable to follow commands (motor GCS < 6); RR < 10 or > 29 breaths/min; respiratory distress or need for respiratory support; room-air pulse oximetry < 90%",
+        "MENTAL STATUS & VITAL SIGNS — AGE 0–9 YEARS: SBP < 70 mmHg + (2 × age in years)",
+        "MENTAL STATUS & VITAL SIGNS — AGE 10–64 YEARS: SBP < 90 mmHg OR HR > SBP",
+        "MENTAL STATUS & VITAL SIGNS — AGE ≥ 65 YEARS: SBP < 110 mmHg OR HR > SBP"
+      ]
+    },
+    {
+      "title": "RED CRITERIA — Transport Destinations",
+      "reference": "Michigan Protocol 2-1: Trauma Triage — Section I.B",
+      "points": [
+        "ADULT (≥ 15 years of age) — order of destination preference: (1) Level 1 or Level 2 Trauma Center within 45 minutes — if not possible by ground within 45 min, consider air medical; (2) Level 3 Trauma Center within 45 minutes; (3) Level 4 Trauma Center within 45 minutes",
+        "PEDIATRICS (≤ 14 years of age) — order of destination preference: (1) Pediatric Level 1 or Level 2 Trauma Center within 45 minutes; (2) Level 1 or Level 2 Trauma Center within 45 minutes — if neither peds nor adult Level 1/2 possible by ground, consider air medical; (3) Level 3 Trauma Center within 45 minutes; (4) Level 4 Trauma Center within 45 minutes"
+      ]
+    },
+    {
+      "title": "YELLOW CRITERIA — Moderate Risk for Serious Injury",
+      "reference": "Michigan Protocol 2-1: Trauma Triage — Section II",
+      "points": [
+        "MECHANISM OF INJURY — High-Risk Auto Crash: partial or complete ejection; significant intrusion (including roof) — > 12 inches occupant site OR > 18 inches any site OR need for extrication for entrapped patient; death in passenger compartment; child (age 0–9 years) unrestrained or in unsecured child safety seat; vehicle telemetry data consistent with severe injury",
+        "MECHANISM OF INJURY — Other: rider separated from transport vehicle with significant impact (motorcycle, ATV, horse, etc.); pedestrian/bicycle rider thrown, run over, or with significant impact; fall from height > 10 feet",
+        "EMS JUDGEMENT — Consider risk factors: low-level falls in young children (age ≤ 5 years) or older adults (age ≥ 65 years) with significant head impact; anticoagulant use; suspicion of child abuse; special, high-resource healthcare needs; pregnancy > 20 weeks; burns in conjunction with trauma; children should be triaged preferentially to pediatric capable centers",
+        "Patients meeting YELLOW CRITERIA WHO DO NOT MEET RED CRITERIA should be preferentially transported to a trauma center, as available within the geographic constraints of the regional trauma system (need not be the highest-level trauma center per local MCA and trauma policies)"
+      ]
+    },
+    {
+      "title": "Notes",
+      "reference": "Michigan Protocol 2-1: Trauma Triage — Notes",
+      "points": [
+        "Medical Control may be contacted to determine the appropriate destination when indicated",
+        "High risk pelvic fracture does NOT include isolated hip fractures without significant mechanism"
+      ]
+    }
+  ],
+  "mca_selections_required": [],
+  "deterioration_flags": [
+    "Any RED CRITERIA met — transport immediately to highest appropriate trauma center within 45 minutes",
+    "YELLOW CRITERIA without RED — transport preferentially to trauma center per regional system availability",
+    "Pediatric patients — triage preferentially to pediatric capable centers when possible",
+    "Airway compromise not manageable pre-hospital — transport to closest appropriate facility for airway management and transfer"
+  ],
+  "scope_notes": [
+    "Trauma triage assessment: all levels",
+    "Transport destination decisions: all levels — contact Medical Control when destination is unclear"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "multisystem_trauma",
+      "transport_decision",
+      "trauma"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

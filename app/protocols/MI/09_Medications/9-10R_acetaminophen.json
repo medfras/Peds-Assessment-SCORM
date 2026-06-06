@@ -1,0 +1,66 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-10R Acetaminophen (Revised 12/10/2025, MDHHS Reviewed 2026). Base Michigan template.",
+  "id": "mi_base_medication_ref_acetaminophen",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Acetaminophen",
+  "version": "2025-12-10",
+  "protocol_reference": "Michigan Medication Protocol Section 9-10R: Acetaminophen — MDHHS Approved 1/5/2026, Reviewed 2026",
+
+  "pharmacological_category": "Analgesic / Antipyretic",
+
+  "routes": ["PO (oral)"],
+
+  "indications": [
+    "Fever",
+    "Mild to moderate pain"
+  ],
+
+  "contraindications": [
+    "Severe acute liver disease or hepatic failure",
+    "Known hypersensitivity to acetaminophen"
+  ],
+
+  "precautions": [
+    "Caution in patients with chronic liver disease or history of alcohol abuse",
+    "Ask about recent acetaminophen use — avoid exceeding daily maximum",
+    "Children <60 days: rectal temperature must be documented before administration"
+  ],
+
+  "expected_effects": [
+    "Reduction in fever (antipyretic effect within 30-60 minutes)",
+    "Mild to moderate pain relief"
+  ],
+
+  "side_effects": [
+    "Hepatotoxicity with overdose or in patients with liver impairment",
+    "Rare: hypersensitivity reaction"
+  ],
+
+  "notes": [
+    "Children <60 days: rectal temperature must be documented",
+    "Adult dose is for >14 years old; pediatric for ≤14 years old per Michigan definition",
+    "Liquid pediatric formulation: 160 mg/5 mL standard concentration — use dosing table by weight and age"
+  ],
+
+  "dosing": [
+    {
+      "population": "Adult (>14 yr)",
+      "route": "PO",
+      "dose": "650 mg",
+      "notes": "Standard adult oral dose"
+    },
+    {
+      "population": "Pediatric (≤14 yr)",
+      "route": "PO",
+      "dose": "Per MI-MEDIC or weight/age-based dosing table",
+      "notes": "Standard liquid formulation: 160 mg/5 mL; dose by weight and age; children <60 days: document rectal temperature before administration"
+    }
+  ],
+
+  "used_in_protocols": ["Pain management", "Fever in pediatric patients"]
+}

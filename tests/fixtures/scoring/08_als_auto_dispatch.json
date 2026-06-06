@@ -1,0 +1,94 @@
+{
+  "fixture_id": "als_auto_dispatch",
+  "description": "ALS was auto-dispatched by the agency (als_dispatch.auto_dispatched=true). The als_intercept critical action should receive ALS_GRACE — no penalty for 'not calling ALS' when it was already dispatched. Tests that the ALS grace path fires correctly from the agency configuration, not just from grace_items.",
+
+  "inputs": {
+    "scenario": {
+      "id": "fixture_peds_resp",
+      "category": "pediatric_medical",
+      "protocol_config": {"mca": "mi_wmrmcc_kent"},
+      "turnover_target": "als",
+      "vitals": {
+        "baseline": {},
+        "interventions": {
+          "o2_nrb":        {"label": "High-flow O2 via NRB mask (15 LPM)"},
+          "albuterol_svn": {"label": "Albuterol 2.5 mg via SVN (nebulizer)"},
+          "als_intercept": {"label": "ALS intercept acknowledged"}
+        }
+      },
+      "scoring": {}
+    },
+
+    "interventions": [
+      {"name": "o2_nrb",        "applied_at": "2026-01-01T12:02:00"},
+      {"name": "albuterol_svn", "applied_at": "2026-01-01T12:04:00"},
+      {"name": "als_intercept", "applied_at": "2026-01-01T12:05:00"}
+    ],
+
+    "checklist_states": {"item_states": []},
+
+    "submitted_docs": {
+      "dmist": "D: 8yo male, difficulty breathing. M: Asthma history. I: O2 NRB, albuterol SVN. S: SpO2 83%, HR 134. T: Transporting to Pediatric ED via ALS.",
+      "narrative": "C: Dispatched to 8-year-old presenting with asthma. H: History of asthma. A: SpO2 83%, HR 134. R: O2 NRB, albuterol SVN. T: ALS transport to Pediatric ED."
+    },
+
+    "findings": [
+      {"key": "spo2", "value": "83%", "finding_type": "vital", "captured_at": "2026-01-01T12:01:00"},
+      {"key": "hr",   "value": "134", "finding_type": "vital", "captured_at": "2026-01-01T12:01:00"}
+    ],
+
+    "student_messages": [
+      "BSI, scene is safe.",
+      "Applying O2 via NRB mask.",
+      "Albuterol SVN per protocol."
+    ],
+
+    "scene_entry_scoring_result": {"ppe": "gloves_mask"},
+    "scene_entry_dict":           {},
+    "greeting_detected": false,
+    "greeting_text": "",
+    "prepass_result": null,
+
+    "critical_actions": [
+      {
+        "id": "scene_safety",
+        "description": "Ensure scene safety and BSI/PPE",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "als_intercept",
+        "description": "Request ALS intercept for pediatric respiratory emergency",
+        "required": true
+      }
+    ],
+
+    "grace_items": [],
+    "session_events": [],
+    "agency": {
+      "transports_patients": true,
+      "als_dispatch": {"auto_dispatched": true}
+    },
+    "effective_level": "EMT",
+    "elapsed_min": 10.0
+  },
+
+  "target_expected": {
+    "assertions": [
+      {
+        "id": "als_intercept_grace",
+        "type": "critical_action_tag",
+        "description_contains": "als intercept",
+        "expected_tag": "ALS_GRACE"
+      },
+      {
+        "id": "scene_safety_pre_credited",
+        "type": "critical_action_tag",
+        "description_contains": "scene safety",
+        "expected_tag": "PRE_CREDITED"
+      }
+    ]
+  },
+
+  "known_failing_baselines": []
+}

@@ -1,0 +1,162 @@
+[
+  {
+    "id": "df_01",
+    "text": "A 2-month-old infant briefly lifts their head when placed prone on a firm surface.",
+    "answer": "expected",
+    "feedback": "Brief prone head lifting is a normal gross motor milestone for 2 months. Full head control in prone typically emerges by 4 months; any lifting at 2 months is developmentally on track. No action beyond routine surveillance is needed.",
+    "mistake_tag": "developmental_mismatch_missed",
+    "hint": "Separate normal variation from delay: is this expected for the stated age, just worth watching, or a true red flag?"
+  },
+  {
+    "id": "df_02",
+    "text": "A 4-month-old infant does not roll from tummy to back and has not attempted to do so.",
+    "answer": "further_assessment",
+    "feedback": "Rolling tummy-to-back typically emerges between 3 and 5 months; absence at 4 months sits in the normal range but at the earlier edge of the window. If rolling is absent by 6 months it becomes a clear red flag, so documenting and re-evaluating at the next well-child visit is appropriate.",
+    "mistake_tag": "developmental_mismatch_missed",
+    "hint": "Compare the finding to the expected milestone window, then decide if it is outside the window or near the edge."
+  },
+  {
+    "id": "df_03",
+    "text": "A 6-month-old infant does not turn their head toward a caregiver's voice when called.",
+    "answer": "concerning",
+    "feedback": "Localizing to sound is expected by 4 months; consistent failure to orient to voice by 6 months is a red flag for hearing loss or social communication disorder. This warrants audiologic evaluation and formal developmental screening (M-CHAT or ASQ) before the next routine visit.",
+    "mistake_tag": "developmental_mismatch_missed",
+    "hint": "Compare the finding to the expected milestone window, then decide if it is outside the window or near the edge."
+  },
+  {
+    "id": "df_04",
+    "text": "A 9-month-old infant waves bye-bye, babbles with varied consonants, and crawls on hands and knees.",
+    "answer": "expected",
+    "feedback": "Waving, varied babble, and crawling are all on-track milestones for 9 months per AAP developmental surveillance guidelines. Social gestures like waving emerge around 9–10 months, and varied consonant babble (\"bababa,\" \"mamama\") is expected by this age. Routine surveillance only.",
+    "mistake_tag": "developmental_mismatch_missed",
+    "hint": "Separate normal variation from delay: is this expected for the stated age, just worth watching, or a true red flag?"
+  },
+  {
+    "id": "df_05",
+    "text": "A 12-month-old has no single words and does not point to request objects.",
+    "answer": "concerning",
+    "feedback": "At least one word and proto-declarative pointing are expected by 12 months; absence of both is a DSM-5 and AAP red flag for autism spectrum disorder and language delay. Immediate referral for speech-language evaluation and M-CHAT-R/F screening is indicated without waiting for the next well-child visit.",
+    "mistake_tag": "developmental_mismatch_missed",
+    "hint": "Compare the finding to the expected milestone window, then decide if it is outside the window or near the edge."
+  },
+  {
+    "id": "df_06",
+    "text": "A 15-month-old toddles with a wide-based gait and falls frequently on uneven surfaces.",
+    "answer": "expected",
+    "feedback": "Independent walking typically begins between 9 and 15 months; a wide-based gait with frequent falls on uneven terrain is normal in the early walking phase through approximately 18 months. No intervention is warranted unless falls are associated with tone abnormality, asymmetry, or regression.",
+    "mistake_tag": "developmental_mismatch_missed",
+    "hint": "Separate normal variation from delay: is this expected for the stated age, just worth watching, or a true red flag?"
+  },
+  {
+    "id": "df_07",
+    "text": "An 18-month-old who previously used five to six words consistently stops talking and no longer responds to their name.",
+    "answer": "concerning",
+    "feedback": "Loss of previously acquired language is a regression and is always a red flag regardless of age; it is one of the strongest early indicators of autism spectrum disorder per DSM-5 criteria. Urgent referral for developmental pediatrics and audiology is warranted; do not adopt a \"wait and see\" approach.",
+    "mistake_tag": "developmental_regression_missed",
+    "hint": "Regression matters more than the exact age window. Ask whether a previously acquired skill was lost."
+  },
+  {
+    "id": "df_08",
+    "text": "A 2-year-old uses two-word phrases such as \"more milk\" and \"daddy go\" consistently.",
+    "answer": "expected",
+    "feedback": "Two-word spontaneous combinations are the core expressive language milestone for 24 months per AAP guidelines. This is directly on target; the expected range is 18–24 months for first word combinations. Routine surveillance only.",
+    "mistake_tag": "developmental_mismatch_missed",
+    "hint": "Separate normal variation from delay: is this expected for the stated age, just worth watching, or a true red flag?"
+  },
+  {
+    "id": "df_09",
+    "text": "A 2-year-old child's speech is understood by unfamiliar adults only about 25% of the time.",
+    "answer": "further_assessment",
+    "feedback": "Speech intelligibility to unfamiliar listeners is expected to be approximately 50% at 2 years and 75% at 3 years; 25% at 24 months is below the expected range but overlaps with normal variation in articulatory development. Speech-language evaluation is warranted, though isolated intelligibility concerns without vocabulary or grammar delays carry a better prognosis.",
+    "mistake_tag": "developmental_mismatch_missed",
+    "hint": "Separate normal variation from delay: is this expected for the stated age, just worth watching, or a true red flag?"
+  },
+  {
+    "id": "df_10",
+    "text": "A 2.5-year-old engages in cooperative make-believe play with a sibling, including role assignment.",
+    "answer": "further_assessment",
+    "feedback": "Cooperative pretend play with role assignment is typically a 3- to 4-year milestone; its emergence at 30 months is advanced but not pathological. Documenting this as an early strength is appropriate, and no referral is needed, but confirming other domains are developing proportionally prevents overlooking areas where expectations may be inadvertently lowered.",
+    "mistake_tag": "developmental_mismatch_missed",
+    "hint": "Separate normal variation from delay: is this expected for the stated age, just worth watching, or a true red flag?"
+  },
+  {
+    "id": "df_11",
+    "text": "A 3-year-old cannot balance on one foot for any duration and falls immediately when attempting to hop.",
+    "answer": "concerning",
+    "feedback": "Standing on one foot for at least 1 second is expected by 3 years, and hopping on one foot emerges by 4 years; inability to even briefly balance on one foot at 36 months is a gross motor red flag. Referral for pediatric physical therapy evaluation and consideration of neuromotor assessment is appropriate.",
+    "mistake_tag": "developmental_mismatch_missed",
+    "hint": "Compare the finding to the expected milestone window, then decide if it is outside the window or near the edge."
+  },
+  {
+    "id": "df_12",
+    "text": "A 3-year-old child who was previously toilet trained begins having daily accidents and wets the bed nightly after the birth of a sibling.",
+    "answer": "concerning",
+    "feedback": "Loss of established toileting skills constitutes developmental regression and is always flagged as concerning regardless of apparent psychosocial trigger. While situational regression after a major stressor (new sibling) is a recognized pattern, it requires pediatric follow-up to confirm resolution within 4–6 weeks and rule out urinary tract infection or emotional dysregulation disorder.",
+    "mistake_tag": "developmental_regression_missed",
+    "hint": "Regression matters more than the exact age window. Ask whether a previously acquired skill was lost."
+  },
+  {
+    "id": "df_13",
+    "text": "A 4-year-old draws a person with a head, two legs, and two arm-like lines, but no trunk.",
+    "answer": "further_assessment",
+    "feedback": "Drawing a person with a head, arms, and legs but no trunk is at the lower boundary of the 4-year figure-drawing expectation; a 6-part person (head, trunk, two arms, two legs) is the benchmark for 4 years. This finding alone warrants monitoring at the next well-child visit rather than immediate referral, particularly if other fine motor and cognitive domains are on track.",
+    "mistake_tag": "developmental_mismatch_missed",
+    "hint": "Separate normal variation from delay: is this expected for the stated age, just worth watching, or a true red flag?"
+  },
+  {
+    "id": "df_14",
+    "text": "A 4-year-old uses sentences of four to five words, asks \"why\" questions, and tells simple stories about their day.",
+    "answer": "expected",
+    "feedback": "Four- to five-word sentences, \"why\" questions, and simple narrative recounting are all expected expressive language milestones for 4-year-olds per AAP guidelines. This child's language profile is on track across sentence length, question form, and discourse function. Routine surveillance only.",
+    "mistake_tag": "developmental_mismatch_missed",
+    "hint": "Separate normal variation from delay: is this expected for the stated age, just worth watching, or a true red flag?"
+  },
+  {
+    "id": "df_15",
+    "text": "A 5-year-old has no friends at preschool, does not initiate play with peers, and prefers solitary activity exclusively.",
+    "answer": "concerning",
+    "feedback": "By age 5, children are expected to engage in cooperative play, initiate peer interaction, and have at least one peer friendship; exclusive solitary preference and absence of peer-directed social bids is a social-emotional red flag. This warrants formal evaluation for autism spectrum disorder, social anxiety, and internalizing disorders through developmental pediatrics or a school-based assessment team.",
+    "mistake_tag": "developmental_mismatch_missed",
+    "hint": "Compare the finding to the expected milestone window, then decide if it is outside the window or near the edge."
+  },
+  {
+    "id": "df_16",
+    "text": "A 5-year-old can write their first name legibly, copies a triangle, and cuts along a curved line with scissors.",
+    "answer": "expected",
+    "feedback": "Writing one's first name, copying a triangle, and cutting along curves are all on-target fine motor milestones for 5 years per AAP developmental surveillance criteria. These skills represent expected graphomotor and tool-use development for a kindergarten-age child. Routine surveillance only.",
+    "mistake_tag": "developmental_mismatch_missed",
+    "hint": "Separate normal variation from delay: is this expected for the stated age, just worth watching, or a true red flag?"
+  },
+  {
+    "id": "df_17",
+    "text": "A 5-year-old child who was previously reading simple words loses the ability to recognize any letters and shows no interest in books.",
+    "answer": "concerning",
+    "feedback": "Loss of previously acquired literacy skills is a developmental regression and is always a clinical red flag. Regression of pre-academic skills warrants neurological evaluation to rule out acquired etiology (e.g., FIRES, Landau-Kleffner syndrome) alongside developmental and educational assessment.",
+    "mistake_tag": "developmental_regression_missed",
+    "hint": "Regression matters more than the exact age window. Ask whether a previously acquired skill was lost."
+  },
+  {
+    "id": "df_18",
+    "text": "A 6-year-old reverses the letters \"b\" and \"d\" frequently when writing.",
+    "answer": "further_assessment",
+    "feedback": "Letter reversals, particularly b/d and p/q, are common and typically normal through age 7 as directionality becomes consolidated. At age 6, this is within the expected range but warrants monitoring at the next visit; persistent reversals beyond second grade merit formal reading and visual-processing assessment for dyslexia.",
+    "mistake_tag": "developmental_mismatch_missed",
+    "hint": "Separate normal variation from delay: is this expected for the stated age, just worth watching, or a true red flag?"
+  },
+  {
+    "id": "df_19",
+    "text": "A 6-year-old demonstrates fluent conversation, follows multi-step directions, and accurately retells a story with beginning, middle, and end.",
+    "answer": "expected",
+    "feedback": "Fluent conversation, multi-step direction following, and narrative retelling with story structure are all on-track receptive and expressive language milestones for 6 years. These skills reflect normal language development in the early school-age period. Routine surveillance only.",
+    "mistake_tag": "developmental_mismatch_missed",
+    "hint": "Separate normal variation from delay: is this expected for the stated age, just worth watching, or a true red flag?"
+  },
+  {
+    "id": "df_20",
+    "text": "A 7-year-old cannot skip, has significant difficulty catching a ball, and avoids all playground equipment.",
+    "answer": "concerning",
+    "feedback": "Skipping and catching a bounced ball are expected gross motor milestones by 5–6 years; consistent failure and active avoidance of age-typical motor activities at age 7 is a red flag for developmental coordination disorder (DCD), per DSM-5 criteria. Referral to pediatric occupational or physical therapy for standardized motor assessment (e.g., MABC-2 or BOT-2) is indicated.",
+    "mistake_tag": "developmental_mismatch_missed",
+    "hint": "Compare the finding to the expected milestone window, then decide if it is outside the window or near the edge."
+  }
+]

@@ -1,0 +1,163 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Respiratory: Airway Management. NASEMSO national provisional base.",
+  "id": "nasemso_base_respiratory_airway_management",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Airway Management",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Respiratory: Airway Management",
+  "aliases": [],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Respiratory: Airway Management",
+      "points": [
+        "Maintain a patent airway",
+        "Provide effective oxygenation and adequate ventilation using the least invasive possible method to achieve those goals paired with pulse oximetry and end-tidal capnography (EtCO2) data",
+        "Anticipate, recognize, and alleviate respiratory distress",
+        "Provide necessary interventions quickly and safely to patients with the need for respiratory support",
+        "Anticipate, identify, and plan for a potentially difficult airway",
+        "Optimize the patient for any advanced airway attempts"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Patients with signs of severe respiratory distress/respiratory failure",
+        "Patients with evidence of hypoxemia or hypoventilation with medical or traumatic etiology",
+        "Patients with tracheostomies (See Tracheostomy Management Guideline)",
+        "Patients with acute foreign body airway obstruction",
+        "EXCLUSION CRITERIA:",
+        "Chronically ventilated patients",
+        "Newborn patients"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Head tilt-chin lift (use jaw-thrust if C-spine injury suspected)",
+        "Oral airway (OPA) for unconscious patient without gag reflex",
+        "Suction upper airway",
+        "BVM ventilation (15 L/min O2) with oral airway: 1 breath/5-6 sec; pediatric: 1 breath/3 sec",
+        "Oxygen via NRM targeting SpO2 94-98%"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Nasopharyngeal airway (NPA) for conscious or semiconscious patient",
+        "Supraglottic airway (LMA, i-Gel, King LT) for airway management in unconscious patient",
+        "CPAP 5-10 cmH2O for respiratory distress with spontaneous breathing",
+        "Upper airway suction; positioning",
+        "Pulse oximetry continuous monitoring"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "Waveform capnography for all invasive airway devices and ventilated patients",
+        "IO access for medication delivery if needed",
+        "IV access for sedation before intubation (per state/local protocol)",
+        "Tracheobronchial suctioning of intubated patient",
+        "Bag-valve mask with PEEP valve for ventilation",
+        "Glucometer and glucose correction as indicated"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "Endotracheal intubation: video laryngoscopy preferred; confirm with waveform capnography",
+        "RSI: succinylcholine 1.5 mg/kg IV/IO + ketamine 1-2 mg/kg IV/IO or etomidate 0.3 mg/kg",
+        "Rocuronium 1.2 mg/kg IV/IO as alternative neuromuscular blockade",
+        "Surgical cricothyrotomy or needle cricothyrotomy for cannot-intubate-cannot-oxygenate",
+        "Mechanical ventilator settings: VT 6-8 mL/kg IBW, RR 10-12/min, PEEP 5 cmH2O, FiO2 titrate to SpO2 94-98%",
+        "Waveform capnography: target EtCO2 35-45 mmHg (25-35 mmHg for herniation)",
+        "NG/OG tube for gastric decompression after intubation",
+        "Sedation/analgesia post-intubation: fentanyl, midazolam, ketamine"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Suctioning to limit aspiration is a priority, since it is associated with development of hospital acquired pneumonia and related increases in ICU stay and mortality.",
+        "Avoid excessive pressures or tidal volumes during BVM ventilation. The goal is to avoid barotrauma as well as overventilation and related reduction of venous return/preload/cardiac output.",
+        "Routine use of sedation is not recommended for treatment of anxiety in patients on NIV. Anxiety should be presumed due to hypoxia or inadequate minute ventilation and treated primarily with ventilatory support.",
+        "Endotracheal intubation should only be used if less invasive methods do not meet patient care goals.",
+        "Once a successful SGA placement or intubation has been performed, obstruction or displacement of the tube can have further negative effects on patient outcome. Tubes should be secured with either a commercial tube holder or tape.",
+        "Meticulous attention should be paid to avoiding hypoxia and hypotension during intubation attempts to limit patient morbidity and mortality."
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Oxygen is a drug with an appropriate dose range and undesirable effects from both too much and too little supplementation. Effective oxygenation meets the oxygen saturation (SpO2) target set for that specific patient in the context of their acute and chronic medical condition(s). Permissive hypoxia (SPO2 ' 90%) may be appropriate in patients with COPD or other complex respiratory pathology",
+        "Adequate ventilation provides sufficient minute ventilation to meet the patient's acute respiratory and metabolic needs and is generally titrated to an EtCO2 goal",
+        "Paramedics are less likely to attempt endotracheal intubation in children than adults with cardiac arrest and are more likely to be unsuccessful when intubating children. Complications such as malposition of the ET tube or aspiration can be nearly three times as common in children as compared to adults",
+        "Continuous waveform capnography is an important adjunct in the monitoring of patients with respiratory distress, respiratory failure, and those treated with positive pressure ventilation. It should be used as the standard to confirm placement of all advanced airways. It can also be helpful in the respiratory distress patient without an invasive airway to assess for causes of respiratory distress, adequacy of ventilation, progression toward respiratory failure, monitoring of BVM ventilation, as well as numerous other applications that provide insight into acute metabolic and infectious disease processes. Continuous waveform capnography: a. Should be used for patients with invasive airways for i. initial verification of correct airway placement",
+        "to appropriately but not excessively hyperventilate patients with signs of herniation only to maintain EtCO2 30'35 (no lower than 30)",
+        "to gradually decrease EtCO2 in chronically and acutely severely hypercarbic patients including post-arrest",
+        "For apnea, provide one breath every 6 seconds adjusting based on pulse oximetry and digital capnometry or capnography (with the goal of 35'45 mmHg)",
+        "Bag-valve-mask (BVM) ventilation (for cardiac arrest patients see Cardiac Arrest Guideline):"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Initial vital signs and physical exam",
+        "' Interventions attempted including the method of airway intervention, the size of equipment used, and the number of attempts to achieve a successful result",
+        "' Indications for advanced airway management",
+        "' Subsequent vital signs and physical exam to assess for change after the interventions",
+        "' Occurrence of peri-intubation hypoxia (less than 90% SPO2), bradycardia (per age), hypotension (SBP less than 90mmHg or lowest age-appropriate SBP) or cardiac arrest. The peri-intubation period encompasses the time from sedative administration to up to 10 minutes post any invasive airway attempt",
+        "' Post-intubation with advanced airway, EtCO2 value and capnograph should be documented immediately after airway placement, with each patient movement (e.g., into and out of ambulance), and at the time of patient transfer in the ED",
+        "' Recordings of video laryngoscopy may be useful for quality improvement purposes"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Patients with signs of severe respiratory distress/respiratory failure"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": [],
+  "clinical_context": {
+    "concepts": [
+      "airway_management",
+      "foreign_body_airway_obstruction",
+      "oxygen_therapy",
+      "respiratory_distress",
+      "ventilation_support"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

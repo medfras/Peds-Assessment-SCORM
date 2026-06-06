@@ -1,0 +1,102 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-36R Naloxone (MDHHS Reviewed 2025). Base Michigan template.",
+  "id": "mi_base_medication_ref_naloxone",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Naloxone",
+  "version": "2025-03-31",
+  "protocol_reference": "Michigan Medication Protocol Section 9-36R: Naloxone — MDHHS Reviewed 2025",
+  "pharmacological_category": "Opioid Antagonist — Mu-Receptor Antagonist (Reversal Agent)",
+  "routes": [
+    "IN (intranasal)",
+    "IM",
+    "IV",
+    "IO"
+  ],
+  "indications": [
+    "Opioid overdose — respiratory depression or altered mental status from known or suspected opioid intoxication",
+    "Cardiac arrest — known or suspected opioid-related arrest"
+  ],
+  "contraindications": [
+    "Known hypersensitivity to naloxone"
+  ],
+  "precautions": [
+    "Naloxone has a shorter half-life than most opioids — patient may re-narcotize after naloxone wears off; transport and monitor closely",
+    "Rapid reversal may precipitate acute withdrawal in opioid-dependent patients: agitation, tachycardia, hypertension, vomiting — titrate to ventilatory effect, not full consciousness",
+    "Do NOT withhold naloxone based on concern for withdrawal — respiratory depression is the treatment priority",
+    "Repeat dosing may be required for synthetic opioids (fentanyl analogs, carfentanil) that are more potent — may need higher or more frequent doses"
+  ],
+  "expected_effects": [
+    "Reversal of opioid-induced respiratory depression within 2-5 minutes",
+    "Improved respiratory rate and tidal volume",
+    "Increased level of consciousness (do not aim for full alertness — titrate to ventilation)"
+  ],
+  "side_effects": [
+    "Acute opioid withdrawal (agitation, diaphoresis, nausea, vomiting, tachycardia, hypertension)",
+    "Pulmonary edema (rare — post-reversal)",
+    "Seizure (rare — in patients on chronic opioids with abrupt reversal)"
+  ],
+  "notes": [
+    "Preferred adult IN route: Narcan 4 mg nasal spray — one full spray in one nostril; repeat other nostril if no response in 3-5 minutes",
+    "Alternative adult IN via atomizer: naloxone 2 mg/2 mL via MAD — half per nostril",
+    "Adult IM/slow IV: naloxone 2 mg",
+    "Cardiac arrest (known opioid): 2 mg IV/IO or 2-4 mg IN during resuscitation",
+    "Pediatric IN table (age-based): ≥36 months: 2 mg; 19-35 months: 1.5 mg; 3-18 months: 1 mg; 0-2 months: 0.5 mg",
+    "Pediatric IM/IV: 0.1 mg/kg"
+  ],
+  "dosing": [
+    {
+      "population": "Adult (>14 yr) — opioid overdose IN (Narcan nasal spray)",
+      "route": "IN",
+      "dose": "Narcan 4 mg nasal spray — one nostril; repeat other nostril if no response in 3-5 minutes",
+      "notes": "Preferred adult IN method; each Narcan device = 4 mg"
+    },
+    {
+      "population": "Adult (>14 yr) — opioid overdose IN (atomizer)",
+      "route": "IN",
+      "dose": "Naloxone 2 mg/2 mL via MAD — 1 mL each nostril (1 mg per nostril)",
+      "notes": "Alternative IN method using naloxone injectable via MAD"
+    },
+    {
+      "population": "Adult (>14 yr) — opioid overdose IM or slow IV",
+      "route": "IM or slow IV",
+      "dose": "Naloxone 2 mg IM or slow IV",
+      "notes": "Slow IV to reduce acute withdrawal risk; titrate to respiratory effect"
+    },
+    {
+      "population": "Adult (>14 yr) — cardiac arrest (known/suspected opioid)",
+      "route": "IV/IO or IN",
+      "dose": "2 mg IV/IO OR 2-4 mg IN",
+      "notes": "During CPR for suspected opioid-related arrest"
+    },
+    {
+      "population": "Pediatric — opioid overdose IN (age-based)",
+      "route": "IN",
+      "dose": "≥36 months: 2 mg; 19-35 months: 1.5 mg; 3-18 months: 1 mg; 0-2 months: 0.5 mg",
+      "notes": "Via MAD; split dose half per nostril when possible"
+    },
+    {
+      "population": "Pediatric — opioid overdose IM or IV",
+      "route": "IM or IV",
+      "dose": "0.1 mg/kg IM or IV",
+      "notes": "Weight-based; titrate to respiratory effect"
+    }
+  ],
+  "used_in_protocols": [
+    "Toxicological Emergencies — Opioid Overdose",
+    "Cardiac Arrest — Opioid-Related",
+    "Altered Mental Status"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "opioid_overdose",
+      "toxins_overdose"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

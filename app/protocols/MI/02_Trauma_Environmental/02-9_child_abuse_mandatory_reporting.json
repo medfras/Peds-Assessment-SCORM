@@ -1,0 +1,97 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Scenario-facing Michigan trauma/environmental placement for suspected pediatric non-accidental trauma. Source material: Michigan MDHHS Procedure 7-2 Child Abuse and Neglect (Revised 5/23/2023, MDHHS Reviewed 2023) and MCL 722.623. Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_all_child_abuse_mandatory_reporting",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "All",
+  "level_display": "All Levels",
+  "jurisdiction": "Michigan",
+  "condition": "Child Abuse and Neglect — Mandatory Reporting",
+  "version": "2023-05-23",
+  "protocol_reference": "Michigan Procedure Protocol Section 7-2: Child Abuse and Neglect — MDHHS Approved 5/23/2023; MCL 722.623",
+  "purpose": "Guide EMS recognition, objective documentation, patient-centered care, and mandatory reporting for suspected child abuse or neglect. EMS personnel are mandatory reporters and must report reasonable suspicion directly to DHHS.",
+  "sections": [
+    {
+      "title": "Legal Obligations",
+      "reference": "Michigan Protocol 7-2: Child Abuse — Legal Obligations (MCL 722.623)",
+      "points": [
+        "All EMS personnel are mandatory reporters of suspected child abuse or neglect under MCL 722.623",
+        "Reasonable suspicion is the reporting threshold; EMS providers do not need certainty or proof",
+        "Reporting requirement applies even if the patient is not transported",
+        "Call 855-444-3911 immediately to report suspected abuse or neglect",
+        "Written DHS-3200 form must be completed within 72 hours of the initial verbal report",
+        "Reporting to a supervisor, receiving facility, or EMS organization alone does not fulfill the individual provider's mandatory reporting obligation",
+        "Do not confront or accuse suspected abusers at the scene"
+      ]
+    },
+    {
+      "title": "Indicators of Possible Child Abuse or Neglect",
+      "reference": "Michigan Protocol 7-2: Child Abuse — Indicators",
+      "points": [
+        "Injury inconsistent with stated mechanism of injury or developmental stage of the child",
+        "Bruising in non-ambulatory children or bruising in concerning distributions such as torso, ears, neck, frenulum, angle of jaw, cheeks, eyelids, or subconjunctivae",
+        "Pattern injuries suggesting use of objects such as a belt, cord, hand, or bite",
+        "Multiple injuries in various stages of healing",
+        "Fractures, burns, or soft-tissue injuries inconsistent with the stated mechanism",
+        "Delayed presentation for medical care",
+        "Caregiver providing inconsistent, changing, evasive, or developmentally implausible histories",
+        "Indicators of neglect: malnourishment, unsafe living environment, lack of appropriate clothing or supervision, medical neglect, or abandonment concerns"
+      ]
+    },
+    {
+      "title": "Scene, Patient Care, and Documentation",
+      "reference": "Michigan Protocol 7-2: Child Abuse — Scene and Documentation",
+      "points": [
+        "Primary duty is emergency medical care — treat and stabilize per the appropriate clinical protocol",
+        "Maintain scene safety and request law enforcement if safety, custody, or interference concerns are present",
+        "Do not confront, accuse, investigate, or interrogate suspected abusers at the scene",
+        "When possible and safe, assess the child in a calm, age-appropriate manner and document the child's demeanor, affect, and behavior",
+        "Document verbatim statements or excited utterances by the child or caregiver using quotation marks",
+        "Document caregiver(s) present and their stated relationship to the child",
+        "Document injuries objectively with location, size, color, shape, pattern, tenderness, swelling, and functional impact when observed",
+        "Document the physical environment when relevant to suspicion of neglect",
+        "Do not delay transport to investigate or complete documentation"
+      ]
+    },
+    {
+      "title": "Transport and Reporting Coordination",
+      "reference": "Michigan Protocol 7-2: Child Abuse — Transport and Reporting",
+      "points": [
+        "Transport to an appropriate emergency department when medical evaluation is indicated or the child may be unsafe remaining on scene",
+        "Communicate objective findings, statements, inconsistent history, patient behavior, and mandatory-reporting plan in handoff",
+        "If the patient is not transported, the mandatory report is still required",
+        "Coordinate with law enforcement for immediate safety concerns while preserving EMS's independent medical-care and reporting duties"
+      ]
+    }
+  ],
+  "mca_selections_required": [],
+  "key_drugs": [],
+  "deterioration_flags": [
+    "Life-threatening injuries — stabilize and transport per the appropriate treatment protocol; mandatory report remains required",
+    "Child in immediate danger at scene — coordinate with law enforcement for scene safety while maintaining patient care",
+    "Caregiver interfering with care or transport — request law enforcement and prioritize patient safety",
+    "Changing or implausible caregiver history combined with concerning injury pattern — treat as reasonable suspicion and complete mandatory report"
+  ],
+  "scope_notes": [
+    "All EMS provider levels are mandatory reporters under MCL 722.623",
+    "Mandatory report hotline: 855-444-3911 — call immediately upon suspicion",
+    "Written DHS-3200 form required within 72 hours of verbal report",
+    "Reporting to a supervisor, receiving facility, or EMS organization alone does not fulfill the individual legal obligation",
+    "Report is required even when patient is not transported",
+    "Do not confront suspected abusers — that is a law enforcement/investigative function"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "behavioral_assessment",
+      "mandatory_reporting",
+      "non_accidental_trauma",
+      "objective_documentation",
+      "pediatric_trauma",
+      "scene_safety",
+      "ten_4_bruising_pattern"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

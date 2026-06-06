@@ -1,0 +1,147 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Universal Care: Functional Needs. NASEMSO national provisional base.",
+  "id": "nasemso_base_universal_care_functional_needs",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Functional Needs",
+  "version": "2022-03-24",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Universal Care: Functional Needs",
+  "aliases": [
+    "Developmental delay",
+    "Disabled",
+    "Handicapped",
+    "Impaired",
+    "Mental Illness",
+    "Intellectual Disability",
+    "Special needs"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Universal Care: Functional Needs",
+      "points": [
+        "To meet and maintain the additional support required for patients with functional needs during the delivery of prehospital care"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Patients who are identified by the World Health Organization's International Classification of Functioning, Disability, and Health that have experienced a decrement in health resulting in some degree of disability. According to the U.S. Department of Health and Human Services, this includes, but is not limited to, individuals with physical, sensory, mental health, and cognitive and/or intellectual disabilities affecting their ability to function independently without assistance",
+        "EXCLUSION CRITERIA:",
+        "None noted"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Scene safety and PPE; primary survey (ABCDE)",
+        "Oxygen via NRM targeting SpO2 94-98% if indicated",
+        "Position of comfort; hemorrhage control as needed",
+        "CPR/AED if patient becomes pulseless",
+        "Epinephrine auto-injector for anaphylaxis if applicable",
+        "Naloxone intranasal unit-dose for suspected opioid involvement"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Blood glucose monitoring; oral glucose if hypoglycemic and alert",
+        "12-lead ECG acquisition and transmission",
+        "CPAP for respiratory distress",
+        "Aspirin for suspected ischemic chest pain",
+        "Albuterol SVN for bronchospasm component",
+        "IV access maintenance (non-medicated)"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation",
+        "IV/IO fluid resuscitation as indicated",
+        "Waveform capnography",
+        "IV analgesics (fentanyl, morphine) per pain management protocol",
+        "IV antiemetics (ondansetron) per protocol",
+        "IV D50W/D10W for hypoglycemia"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "12-lead ECG interpretation",
+        "Endotracheal intubation for airway compromise",
+        "RSI per protocol",
+        "Advanced antidysrhythmic or hemodynamic support per specific protocol",
+        "All parenteral medications per protocol",
+        "Vasopressors for refractory hemodynamic compromise"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "For patients with communication barriers (language or sensory), it may be desirable to obtain secondary confirmation of pertinent data (e.g., allergies) from the patient's family, interpreters, or written or electronic medical records. The family members can be an excellent source of information and the presence of a family member can have a calming influence on some of these patients"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Communication Barriers a. Language Barriers: i. Expressive and/or receptive aphasia",
+        "Medical translation cards",
+        "Telephone-accessible services with live language interpreters",
+        "Methods through which the patient augments his/her communication skills (e.g., eye blinking, nodding) should be noted, utilized as able, and communicated to the receiving facility",
+        "Electronic applications for translation",
+        "Sign language",
+        "Lip reading",
+        "Hearing aids"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Document all barriers in the NEMSIS element 'eHistory.01 ' Barriers to Patient Care' (NEMSIS Required National Element)",
+        "' Document specific physical barriers in the appropriate exam elements (e.g., 'blind' under Eye Assessment; or paralysis, weakness, or speech problems under Neurological Assessment)",
+        "' Document any of the following, as appropriate in the narrative: o Language barriers: . The patient's primary language of fluency",
+        "The identification of the person assisting with the communication",
+        "The methods through which the patient augments his/her communication skills",
+        "o Sensory barriers: . The methods through which the patient augments his/her communication skills",
+        "Written communication between the patient and the EMS professional is part of the medical record, even if it is on a scrap sheet of paper, and it should be retained with the same collation, storage, and confidentiality policies and procedures that are applicable to the written or electronic patient care report",
+        "o Assistance adjuncts (devices that facilitate the activities of life for the patient)"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Contact medical direction for clinical deterioration or interventions outside standard scope"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

@@ -1,0 +1,158 @@
+{
+  "_schema": "ems_call_type_overlay_v1",
+  "id": "peds_trauma_04_burn_nremt_trauma_scenario_v1",
+  "version": "2026-05-16",
+  "call_type": "nremt_trauma",
+  "overlay_type": "scenario",
+  "jurisdiction": "Training Scenario",
+  "effective_date": "2026-05-16",
+  "scenario_id": "peds_trauma_04_burn",
+  "approved_by": "scoring_integration_review_2026-05-16",
+  "notes": "Suppresses NASEMSO/NREMT trauma call-type checklist for scald burn scenario. Base rubric + scenario-specific burn-care items own all scoring; secondary survey call-type items would double-score and create false hemorrhage-control and chest-threat misses.",
+  "operations": [
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.ppe_precautions",
+      "reason": "Universal NREMT trauma base rubric owns PPE/BSI for this training scenario.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; base patient-care rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.scene_safety",
+      "reason": "Universal NREMT trauma base rubric owns scene safety for this training scenario.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; base patient-care rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.moi_determination",
+      "reason": "Base trauma rubric and scenario-specific mechanism/history items already score MOI assessment without duplicate call-type rows.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; scenario rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.patient_count_resources",
+      "reason": "Patient-count applicability handled by universal base rubric using multiple_patients_possible=false.",
+      "protocol_ref": "Scenario applicability flag: multiple_patients_possible=false"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.spinal_precaution",
+      "reason": "No spinal injury authored for this scenario; spinal_injury_possible=false. Scoring spinal precaution would create a false miss.",
+      "protocol_ref": "Scenario applicability flag: spinal_injury_possible=false"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.general_impression_loc",
+      "reason": "Universal NREMT trauma base rubric owns general impression and LOC; scenario PAT items add the condition-specific clinical nuance.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; scenario PAT rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.airway_management",
+      "reason": "Universal NREMT trauma base rubric owns airway assessment for this training scenario.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; base patient-care rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.breathing_assessment",
+      "reason": "Universal NREMT trauma base rubric owns breathing assessment for this training scenario.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; base patient-care rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.o2_chest_life_threats",
+      "reason": "Oxygen and chest life-threat scoring is owned by the base rubric and any scenario-specific O2 item; duplicate call-type row not needed.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; base patient-care rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.pulse_assessment",
+      "reason": "Universal NREMT trauma base rubric owns circulation/vital-sign assessment for this training scenario.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; base patient-care rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.bleeding_control",
+      "reason": "Bleeding control is owned by the base rubric or scenario-specific hemorrhage-control items; duplicate call-type row creates double-scoring.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; scenario bleeding-control rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.skin_ctc",
+      "reason": "Universal NREMT trauma base rubric owns circulation/skin assessment for this training scenario.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; base patient-care rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.transport_decision",
+      "reason": "Scenario-specific transport item owns priority transport decision and is gated by non_transport_agency.",
+      "protocol_ref": "Scenario transport rubric; non_transport_agency=false"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.chief_complaint_opqrst",
+      "reason": "Universal trauma base and scenario-specific history items own chief complaint and OPQRST collection without duplicate call-type rows.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; scenario history rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.sample_history",
+      "reason": "Universal trauma base rubric owns SAMPLE history for this training scenario.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; base patient-care rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.head_assessment",
+      "reason": "Universal trauma base rubric and scenario-specific DCAP-BTLS items own head assessment without duplicate call-type rows.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; scenario DCAP-BTLS rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.neck_assessment",
+      "reason": "Universal trauma base rubric and scenario DCAP-BTLS/SMR items already score neck/cervical-spine assessment.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; scenario rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.chest_assessment",
+      "reason": "Universal trauma base rubric owns chest assessment for this training scenario.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; base patient-care rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.abdomen_pelvis_assessment",
+      "reason": "Universal trauma base rubric owns abdomen/pelvis assessment; duplicate call-type row double-scores the same secondary survey work.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; base patient-care rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.extremity_assessment",
+      "reason": "Universal trauma base rubric owns extremity/PMS assessment; duplicate call-type row double-scores the same secondary survey work.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; base patient-care rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.posterior_assessment",
+      "reason": "Universal trauma base rubric owns posterior assessment; duplicate call-type row double-scores the same secondary survey work.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; base patient-care rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.injury_treatment",
+      "reason": "Scenario-specific treatment items own injury care; duplicate call-type row creates double-scoring.",
+      "protocol_ref": "Scenario treatment rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.reassessment",
+      "reason": "Universal trauma base rubric and scenario-specific reassessment items own reassessment without duplicate call-type rows.",
+      "protocol_ref": "NREMT Patient Assessment/Management - Trauma skill sheet; scenario reassessment rubric"
+    },
+    {
+      "op": "suppress_item",
+      "item_id": "nremt_trauma.verbal_handoff",
+      "reason": "DMIST/narrative scoring owns handoff quality; this training scenario does not need a separate call-type handoff row.",
+      "protocol_ref": "Scenario DMIST scoring contract"
+    }
+  ]
+}

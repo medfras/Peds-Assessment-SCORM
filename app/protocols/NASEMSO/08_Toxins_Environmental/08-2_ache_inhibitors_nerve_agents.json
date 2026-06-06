@@ -1,0 +1,141 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Toxins and Environmental: Acetylcholinesterase Inhibitors (Carbamates, Nerve Agents, Organophosphates) Exposure. NASEMSO national provisional base.",
+  "id": "nasemso_base_toxins_and_environmental_acetylcholinesterase_inhibitors_carbamates_nerve_a",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Acetylcholinesterase Inhibitors (Carbamates, Nerve Agents, Organophosphates) Exposure",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Acetylcholinesterase Inhibitors (Carbamates, Nerve Agents, Organophosphates) Exposure",
+  "aliases": [
+    "Acetylcholinesterase inhibitor Carbamate",
+    "Insecticide",
+    "Nerve agent",
+    "Organophosphate Pesticide",
+    "Weapons of mass destruction (WMD)"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Acetylcholinesterase Inhibitors (Carbamates, Nerve Agents, Organophosphates) Exposure",
+      "points": [
+        "Rapid recognition of the signs and symptoms of confirmed or suspected acetylcholinesterase inhibitor (AChEI) agents such as carbamates, nerve agents, or organophosphates exposure followed by expeditious and repeated administration of atropine, the primary antidote",
+        "Carbamates and organophosphates are commonly active agents in commercial insecticides",
+        "Accidental carbamate exposure rarely requires treatment 1. DUMBELS is a mnemonic used to describe the signs and symptoms of acetylcholinesterase inhibitor agent poisoning. All patient age groups are included where the signs and symptoms exhibited are consistent with the toxidrome of DUMBELS a. Diarrhea"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "EXCLUSION CRITERIA:",
+        "None noted"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Decontamination first: remove patient from exposure, remove contaminated clothing (2 layers removes 80% contamination)",
+        "Self-protection: don chemical-resistant gloves, gown, eye protection before patient contact",
+        "Auto-injector antidotes (atropine + pralidoxime per nerve agent kit): administer per protocol for nerve agent exposure with SLUDGE/DUMBELS signs",
+        "BVM ventilation for respiratory failure; suction excessive secretions",
+        "CPR/AED if pulseless"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Mark-1 auto-injector kit (atropine 2 mg + pralidoxime 600 mg IM) for symptomatic nerve agent exposure",
+        "Repeat atropine every 5-10 minutes until secretions dry (no upper limit in true nerve agent poisoning)",
+        "Albuterol SVN for bronchospasm component",
+        "Suction copious secretions; supraglottic airway if needed",
+        "12-lead ECG: bradycardia common; monitor for QT prolongation"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "Atropine 2-4 mg IV/IO every 5-10 min until secretions controlled (mydriasis is NOT the endpoint)",
+        "Pralidoxime (2-PAM) 1-2 g IV over 15-30 min — must be given within 24 hours of exposure for efficacy",
+        "IV/IO access; aggressive fluid resuscitation for shock component",
+        "Benzodiazepine (midazolam 2-5 mg IV) for seizure from cholinergic crisis",
+        "Waveform capnography for monitoring"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "Atropine: no maximum dose — titrate to drying of secretions; doses of 20+ mg may be required in severe poisoning",
+        "Pralidoxime (2-PAM) 1-2 g IV over 15-30 min; maintain infusion 500 mg/hour",
+        "Diazepam 5-10 mg IV or midazolam 5 mg IV for seizures; aggressive treatment prevents permanent brain damage",
+        "RSI and intubation: succinylcholine is CONTRAINDICATED (prolonged paralysis due to AChE inhibition) — use rocuronium 1.2 mg/kg",
+        "Glycopyrrolate as atropine alternative for peripheral secretions if central effects not needed",
+        "Dopamine or norepinephrine for refractory hypotension",
+        "12-lead ECG: treat bradycardia per bradycardia protocol (atropine first line)"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Continuous and ongoing patient reassessment is critical",
+        "Clinical response to treatment is demonstrated by the drying of secretion and the easing of respiratory effort",
+        "Initiation of and ongoing treatment should not be based upon heart rate or",
+        "Precautions for pralidoxime chloride administration: a. Although Duodote' and ATNAA' contains atropine, the primary antidote for an acetylcholinesterase inhibitor agent poisoning, the inclusion of pralidoxime chloride in the auto-injector can present challenges if additional doses of atropine are warranted by the patient condition and other formulations of atropine are unavailable: i. Pediatrics: an overdose of pralidoxime chloride may cause profound neuromuscular weakness and subsequent respiratory depression",
+        "Considerations during the use of auto-injectors a. If an auto-injector is administered, a dose calculation prior to administration is not necessary"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Clinical effects of acetylcholinesterase inhibitor agents a. The clinical effects are caused by the inhibition of the enzyme acetylcholinesterase which allows excess acetylcholine to accumulate in the nervous system",
+        "Organophosphates Insecticides a. Can be legally purchased by the general public",
+        "Nerve agents a. Traditionally classified as weapons of mass destruction (WMD)"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Time to recognize initial signs and symptoms",
+        "' Number of repeated doses of atropine required for the secretions diminish and respirations to improve",
+        "' Patient reassessments",
+        "' Patient responses to therapeutic interventions",
+        "' Measures taken to decontaminate the patient",
+        "' Measures taken to protect clean environments from contamination"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Continuous and ongoing patient reassessment is critical"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

@@ -1,0 +1,78 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-4 OB High Risk Delivery Transport (Revised 12/27/2022, MDHHS Reviewed 2022). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_ob_high_risk_delivery_transport",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (All EMS Levels — MCA Optional Facility Designation)",
+  "jurisdiction": "Michigan",
+  "condition": "OB High-Risk Delivery Transport",
+  "version": "2022-12-27",
+  "protocol_reference": "Michigan System Protocol Section 8-4: OB High-Risk Delivery Transport — MDHHS Approved 12/27/2022",
+
+  "purpose": "MCA OPTIONAL. Govern transport destination for high-risk OB patients and patients in active labor. MCAs may designate preferred OB-capable receiving facilities. Delivery may occur en route — apply OB delivery protocols as needed. This protocol works in conjunction with clinical OB protocols.",
+
+  "sections": [
+    {
+      "title": "High-Risk OB Transport Destination",
+      "reference": "Michigan Protocol 8-4: OB Transport — Destination",
+      "points": [
+        "MCA OPTIONAL — MCA may designate preferred OB-capable receiving facilities for high-risk deliveries",
+        "High-risk OB conditions that may warrant transport to a higher-level OB facility:",
+        "— Preterm labor < 34 weeks gestation",
+        "— Eclampsia or severe preeclampsia",
+        "— Placenta previa or abruption",
+        "— Prolapsed cord",
+        "— Multiple gestation",
+        "— Known fetal anomaly requiring specialized NICU",
+        "Transport to closest OB-capable facility is appropriate when delivery is imminent or patient is hemodynamically unstable",
+        "Contact Medical Control when uncertainty exists about destination for high-risk OB patients"
+      ]
+    },
+    {
+      "title": "Imminent Delivery Considerations",
+      "reference": "Michigan Protocol 8-4: OB Transport — Imminent Delivery",
+      "points": [
+        "If delivery is imminent (crowning visible, uncontrollable urge to push, perineal bulging): do NOT transport — prepare for field delivery",
+        "Manage per OB/Normal Delivery Protocol",
+        "After delivery: transport mother and newborn together to OB-capable facility",
+        "Neonatal resuscitation: manage per Neonatal Protocol; contact NICU center if needed"
+      ]
+    },
+    {
+      "title": "Air Medical Considerations",
+      "reference": "Michigan Protocol 8-4: OB Transport — Air Medical",
+      "points": [
+        "Consider air medical transport for: remote location with prolonged transport to OB-capable facility, hemodynamically unstable high-risk OB patient, preterm labor < 32 weeks where ground transport > 30 minutes to appropriate facility",
+        "Refer to Section 8-9: Helicopter Utilization Protocol for air medical activation criteria",
+        "Air medical is NOT appropriate for imminent delivery — manage field delivery first"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "OB High-Risk Facility Designation",
+      "description": "MCA may designate specific OB-capable receiving facilities for high-risk deliveries in their jurisdiction",
+      "options": ["MCA-designated OB facilities listed in MCA protocols", "Transport to nearest OB-capable facility; contact Medical Control for high-risk cases"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Imminent delivery during transport — stop vehicle if safe; prepare for field delivery; do NOT continue transport with crowning",
+    "Eclampsia or hemodynamic compromise — contact Medical Control; consider air medical; transport to highest-level OB facility available"
+  ],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "MCA OPTIONAL — MCA may designate preferred OB-capable receiving facilities",
+    "High-risk OB: preterm < 34 weeks, eclampsia, abruption, prolapsed cord, multiple gestation, fetal anomaly",
+    "Imminent delivery: manage field delivery — do NOT transport with crowning",
+    "Air medical: consider for remote location, unstable patient, preterm < 32 weeks with prolonged transport",
+    "Transport mother and newborn together after delivery"
+  ]
+}

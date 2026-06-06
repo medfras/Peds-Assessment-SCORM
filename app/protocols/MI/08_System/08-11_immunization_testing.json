@@ -1,0 +1,66 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 8-11 Immunization and Testing (Revised 12/27/2022, MDHHS Reviewed 2022). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_system_immunization_testing",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "System",
+  "level_display": "System (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Immunization and Testing",
+  "version": "2022-12-27",
+  "protocol_reference": "Michigan System Protocol Section 8-11: Immunization and Testing — MDHHS Approved 12/27/2022",
+
+  "purpose": "Govern EMS provider immunization requirements and baseline testing as a component of a comprehensive infection control program. Current immunizations reduce risk of occupational communicable disease exposure. MCAs and EMS employers are responsible for implementing immunization and testing programs.",
+
+  "sections": [
+    {
+      "title": "Recommended Immunizations for EMS Providers",
+      "reference": "Michigan Protocol 8-11: Immunizations — Recommended",
+      "points": [
+        "Hepatitis B: complete series (3-dose); verify immunity via post-vaccination serology (anti-HBs ≥ 10 mIU/mL)",
+        "Influenza: annual vaccination recommended",
+        "Tetanus/Diphtheria/Pertussis (Tdap): one-time Tdap booster; Td every 10 years thereafter",
+        "MMR (Measles, Mumps, Rubella): two-dose series or documented immunity",
+        "Varicella: two-dose series or documented immunity or prior disease",
+        "COVID-19: current CDC-recommended series per CDC guidance",
+        "Meningococcal: at discretion of MCA/employer based on risk assessment"
+      ]
+    },
+    {
+      "title": "Tuberculosis (TB) Testing",
+      "reference": "Michigan Protocol 8-11: Immunizations — TB Testing",
+      "points": [
+        "Baseline TB testing at hire: two-step tuberculin skin test (TST) OR IGRA (Interferon-Gamma Release Assay)",
+        "Annual TB testing recommended for EMS providers per CDC and OSHA guidelines",
+        "Positive baseline or annual TB test: follow-up with occupational health or treating physician per MCA protocol",
+        "Active TB disease: provider removed from patient contact until cleared by treating physician"
+      ]
+    },
+    {
+      "title": "MCA/Employer Responsibilities",
+      "reference": "Michigan Protocol 8-11: Immunizations — MCA Responsibilities",
+      "points": [
+        "MCAs and EMS employers must maintain records of provider immunization status and testing",
+        "MCAs must have a process for addressing providers who decline recommended immunizations",
+        "MCAs must provide access to recommended immunizations and post-exposure testing as part of occupational health program",
+        "Declinations: providers who decline recommended immunizations must be educated on the risks and sign a declination form per OSHA Bloodborne Pathogen Standard"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [],
+
+  "scope_notes": [
+    "All EMS provider levels",
+    "Recommended immunizations: Hepatitis B (verify immunity), Influenza (annual), Tdap, MMR, Varicella, COVID-19",
+    "TB testing: baseline two-step TST or IGRA at hire; annual testing recommended",
+    "Positive TB test: follow-up with occupational health",
+    "MCA/employer maintains immunization records",
+    "Declinations: education + signed declination form per OSHA requirements"
+  ]
+}

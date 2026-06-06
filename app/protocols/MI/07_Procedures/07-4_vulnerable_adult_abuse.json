@@ -1,0 +1,86 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-4 Vulnerable Adult Abuse (Revised 1/5/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_vulnerable_adult_abuse",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Vulnerable Adult Abuse — Mandatory Reporting",
+  "version": "2023-01-05",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-4: Vulnerable Adult Abuse — MDHHS Approved 1/5/2023; MCL 400.11a",
+
+  "purpose": "EMS providers are mandatory reporters of suspected vulnerable adult abuse, neglect, or exploitation under MCL 400.11a. A vulnerable adult is a person ≥ 18 years old who, because of age, developmental disability, mental illness, or physical limitation, is unable to protect themselves. Reporting to a supervisor does NOT fulfill the individual's mandatory reporting obligation.",
+
+  "sections": [
+    {
+      "title": "Definition of Vulnerable Adult",
+      "reference": "Michigan Protocol 7-4: Vulnerable Adult — Definition (MCL 400.11a)",
+      "points": [
+        "Person ≥ 18 years old who is unable to protect themselves from abuse, neglect, or exploitation due to:",
+        "— Age (typically elderly)",
+        "— Developmental disability",
+        "— Mental illness",
+        "— Physical limitation or impairment",
+        "Abuse: intentional physical, mental, or emotional injury or assault",
+        "Neglect: failure to provide adequate food, clothing, shelter, or medical care",
+        "Exploitation: misuse of funds, property, or personal dignity — includes undue influence, financial coercion, theft, or misappropriation of assets"
+      ]
+    },
+    {
+      "title": "Indicators of Possible Vulnerable Adult Abuse",
+      "reference": "Michigan Protocol 7-4: Vulnerable Adult — Indicators",
+      "points": [
+        "PHYSICAL indicators: injury inconsistent with stated mechanism or functional status; staged burns; possible over-sedation or over-medication; malnourishment or dehydration without a medical cause; unexplained bruising, wounds, or fractures",
+        "ENVIRONMENTAL indicators: confined to a single room or small space without adequate food, water, or medical care; hoarding that creates hazardous conditions; presence of squalor; lack of heat, electricity, or running water; caregiver controls access",
+        "PSYCHOSOCIAL indicators: patient disappears from regular contact with family or friends; inappropriate fear of caregiver or family member; caregiver speaks for patient, prevents private conversation, appears indifferent or hostile",
+        "EXPLOITATION indicators: finances surrendered to another person; unexplained or sudden asset transfers; recent changes to will or power of attorney; caregiver receives financial benefit from patient"
+      ]
+    },
+    {
+      "title": "Reporting Obligations",
+      "reference": "Michigan Protocol 7-4: Vulnerable Adult — Reporting (MCL 400.11a)",
+      "points": [
+        "ALL EMS personnel are mandatory reporters under MCL 400.11a",
+        "Call 855-444-3911 IMMEDIATELY to report suspected abuse, neglect, or exploitation",
+        "Do NOT rely on others (supervisor, colleague, nurse) to make the report — each individual must report directly",
+        "Reporting to the EMS organization head does NOT fulfill the mandatory reporting requirement",
+        "Report is required even if the patient refuses transport",
+        "Do NOT accuse or confront the suspected abuser at the scene",
+        "Document objective findings, verbatim statements, and environmental observations in the PCR"
+      ]
+    },
+    {
+      "title": "Scene and Documentation Guidance",
+      "reference": "Michigan Protocol 7-4: Vulnerable Adult — Scene and Documentation",
+      "points": [
+        "Primary duty is emergency medical care — treat and stabilize per appropriate protocol",
+        "Document verbatim any spontaneous statements made by the patient",
+        "Document the patient's demeanor, affect, and level of fear",
+        "Document all injuries with precise descriptions (location, size, color, pattern, estimated age)",
+        "Document environmental conditions relevant to neglect",
+        "Document caregivers present and their relationship to the patient",
+        "Mandatory report is required even when the patient is not transported"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Life-threatening injuries — stabilize and transport per appropriate treatment protocol; mandatory report still required",
+    "Patient in immediate danger — involve law enforcement for scene safety while maintaining patient care",
+    "Caregiver interfering with care — involve law enforcement; prioritize patient care and safety"
+  ],
+
+  "scope_notes": [
+    "ALL EMS provider levels are mandatory reporters under MCL 400.11a",
+    "Mandatory report hotline: 855-444-3911 — call immediately upon suspicion",
+    "Reporting to supervisor alone does NOT fulfill legal obligation",
+    "Report is required even when patient is not transported",
+    "Do not confront suspected abusers — that is a law enforcement function"
+  ]
+}

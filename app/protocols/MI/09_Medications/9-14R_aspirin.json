@@ -1,0 +1,64 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-14R Aspirin (MDHHS Reviewed 2025). Base Michigan template.",
+  "id": "mi_base_medication_ref_aspirin",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Aspirin",
+  "version": "2025-03-31",
+  "protocol_reference": "Michigan Medication Protocol Section 9-14R: Aspirin — MDHHS Reviewed 2025",
+  "pharmacological_category": "Antiplatelet / Analgesic / Antipyretic — NSAID",
+  "routes": [
+    "PO (oral — chew and swallow)"
+  ],
+  "indications": [
+    "Acute Coronary Syndrome (ACS) — suspected STEMI or NSTEMI"
+  ],
+  "contraindications": [
+    "Known hypersensitivity to aspirin or NSAIDs",
+    "Active GI bleeding or bleeding disorder (relative contraindication — assess with online MC)",
+    "Aspirin-exacerbated respiratory disease (aspirin-sensitive asthma)"
+  ],
+  "precautions": [
+    "Ask whether patient has already taken aspirin since pain onset — supplement only if insufficient dose taken (total target 324-325 mg)",
+    "Chew and swallow — do not swallow whole; chewing improves absorption speed",
+    "ACS indication only in Michigan EMS protocol — do not administer for non-ACS chest pain"
+  ],
+  "expected_effects": [
+    "Antiplatelet effect — inhibits thromboxane A2 to reduce further platelet aggregation at coronary thrombus",
+    "Onset of antiplatelet effect within minutes when chewed"
+  ],
+  "side_effects": [
+    "GI irritation, nausea",
+    "Increased bleeding risk",
+    "Bronchospasm in aspirin-sensitive patients"
+  ],
+  "notes": [
+    "Target dose: up to 324-325 mg chewed and swallowed",
+    "If patient already took aspirin since pain onset: assess dose taken; supplement to reach ~325 mg total",
+    "ACS indication ONLY — do not use for fever, pain, or other indications in EMS protocol",
+    "No pediatric dosing in Michigan EMS protocol for this indication — ACS is adult-predominant presentation"
+  ],
+  "dosing": [
+    {
+      "population": "Adult (>14 yr) — ACS",
+      "route": "PO (chew and swallow)",
+      "dose": "Up to 325 mg chewed and swallowed",
+      "notes": "Supplement if patient already took aspirin since pain onset; total target ~324-325 mg; chew do not swallow whole"
+    }
+  ],
+  "used_in_protocols": [
+    "Acute Coronary Syndrome (ACS) / Chest Pain"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "chest_pain_acs",
+      "stemi"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

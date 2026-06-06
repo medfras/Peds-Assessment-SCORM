@@ -1,0 +1,109 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-6 Dead on Scene / Termination of Resuscitation (Revised 3/17/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_dead_on_scene_termination_of_resuscitation",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (All EMS Levels)",
+  "jurisdiction": "Michigan",
+  "condition": "Dead on Scene / Termination of Resuscitation",
+  "version": "2025-03-17",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-6: Dead on Scene / Termination of Resuscitation — MDHHS Approved 3/17/2025",
+
+  "purpose": "Establish criteria for declaring a patient dead on scene (DOA) and for terminating resuscitation after adequate resuscitative efforts. Resuscitation is performed on scene for at least 30 minutes before termination is considered.",
+
+  "sections": [
+    {
+      "title": "Dead on Arrival (DOA) — Criteria",
+      "reference": "Michigan Protocol 7-6: DOA Criteria",
+      "points": [
+        "Any ONE of the following criteria qualifies as DOA (resuscitation should NOT be initiated):",
+        "1. Obvious signs of biological death: decomposition, rigor mortis, or dependent lividity",
+        "2. Decapitation",
+        "3. Traumatic cardiac arrest while entrapped (and patient cannot be extricated)",
+        "4. Incineration (burned beyond viable resuscitation) or frozen with core temperature incompatible with life",
+        "5. Cold water submersion > 90 minutes",
+        "6. Warm water submersion > 30 minutes",
+        "7. Gross dismemberment or mortal wounds incompatible with life",
+        "8. Unwitnessed traumatic cardiac arrest without organized electrical activity (asystole or pulseless rhythm < 40/min) — EXCEPTION: electrocution or hypothermia",
+        "9. Valid DNR bracelet or form (refer to DNR-Procedure Protocol)",
+        "10. MI-POST form with Section A selecting DO NOT attempt resuscitation",
+        "11. MCI setting: patient pulseless and apneic (triage per MCI protocol)"
+      ]
+    },
+    {
+      "title": "Exceptions — Resuscitate Despite DOA Criteria",
+      "reference": "Michigan Protocol 7-6: DOA Exceptions",
+      "points": [
+        "EMS professional judgment determines that resuscitation is appropriate despite DOA criteria",
+        "Witnessed cardiac arrest of a pregnant patient — initiate resuscitation AND transport immediately; contact Medical Control"
+      ]
+    },
+    {
+      "title": "Resuscitation on Scene",
+      "reference": "Michigan Protocol 7-6: On-Scene Resuscitation Requirement",
+      "points": [
+        "Resuscitation should be performed ON SCENE for at least 30 minutes before termination of resuscitation is considered",
+        "Continue resuscitation per Cardiac Arrest protocol throughout resuscitative efforts",
+        "Do NOT transport unless: ROSC achieved, Medical Control orders transport, or BLS/ALS termination criteria not met"
+      ]
+    },
+    {
+      "title": "ALS / LALS Termination of Resuscitation (TOR) Criteria",
+      "reference": "Michigan Protocol 7-6: ALS/LALS Termination Criteria",
+      "points": [
+        "After 30 minutes of ALS on-scene resuscitation time:",
+        "— Asystole present in all 3 leads OR PEA rate < 40/min: consider termination of resuscitation",
+        "— PEA rate ≥ 40/min or persistent/recurrent ventricular fibrillation: contact Medical Control for termination order or further orders",
+        "Contact Medical Control to notify of termination",
+        "Document time of death, hospital name contacted, physician name, law enforcement notification status, and Gift of Life status inquiry"
+      ]
+    },
+    {
+      "title": "BLS Termination of Resuscitation (TOR) Criteria",
+      "reference": "Michigan Protocol 7-6: BLS Termination Criteria",
+      "points": [
+        "ALL THREE criteria must be met for BLS TOR:",
+        "1. Unwitnessed cardiac arrest (by bystanders or EMS)",
+        "2. No ROSC after 20 minutes of high-quality CPR",
+        "3. No AED shock was delivered",
+        "If criteria met: contact Medical Control for termination order",
+        "Document time of death, hospital name contacted, physician name, law enforcement notification, and Gift of Life status"
+      ]
+    },
+    {
+      "title": "Documentation Requirements",
+      "reference": "Michigan Protocol 7-6: Documentation",
+      "points": [
+        "Document time of death",
+        "Document name of hospital and physician contacted for Medical Control authorization",
+        "Document law enforcement notification",
+        "Document Gift of Life (organ donation) status inquiry or notification",
+        "Document circumstances of arrest: witnessed vs. unwitnessed, downtime estimate, bystander CPR, AED use",
+        "Document all resuscitative interventions and times"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Asystole in all 3 leads after 30 min ALS resuscitation — consider ALS TOR; contact Medical Control",
+    "PEA < 40/min after 30 min ALS — consider ALS TOR; contact Medical Control",
+    "PEA ≥ 40/min or recurrent V-fib — contact Medical Control for further orders before TOR",
+    "BLS with 20 min HQCPR, no ROSC, no AED shock, unwitnessed — contact Medical Control for BLS TOR",
+    "Pregnant patient — resuscitate and transport immediately even if DOA criteria present (except obvious biological death)"
+  ],
+
+  "scope_notes": [
+    "All EMS provider levels may declare DOA when criteria are met",
+    "Termination of resuscitation requires Medical Control authorization",
+    "ALS TOR: after 30 min ALS resuscitation time — asystole all 3 leads or PEA < 40/min",
+    "BLS TOR: unwitnessed + no ROSC after 20 min HQCPR + no AED shock",
+    "Pregnant patient witnessed arrest: always resuscitate and transport — exception to DOA",
+    "Law enforcement must be notified of all field deaths"
+  ]
+}

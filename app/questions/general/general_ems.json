@@ -1,0 +1,3368 @@
+{
+  "_comment": "General EMS knowledge questions organized by provider level. Each level contains questions appropriate for that credential. Selection logic should include all levels at or below the user's level.",
+  "MFR": [
+    {
+      "question": "What is the normal adult respiratory rate range?",
+      "options": [
+        "12\u201320 breaths/min",
+        "6\u201310 breaths/min",
+        "22\u201330 breaths/min",
+        "30\u201340 breaths/min"
+      ],
+      "correct": 0,
+      "explanation": "Normal adult RR is 12\u201320 breaths/min. Below 12 (bradypnea) or above 20 (tachypnea) warrants further assessment.",
+      "tags": [
+        "assessment",
+        "vitals",
+        "respiratory"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "What is the normal adult heart rate range?",
+      "options": [
+        "40\u201360 bpm",
+        "80\u2013140 bpm",
+        "100\u2013120 bpm",
+        "60\u2013100 bpm"
+      ],
+      "correct": 3,
+      "explanation": "Normal adult HR is 60\u2013100 bpm. Below 60 is bradycardia; above 100 is tachycardia.",
+      "tags": [
+        "assessment",
+        "vitals",
+        "cardiac"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "What does the 'A' in SAMPLE history stand for?",
+      "options": [
+        "Assessment findings",
+        "Airway status",
+        "Associated symptoms",
+        "Allergies"
+      ],
+      "correct": 3,
+      "explanation": "SAMPLE: Signs/Symptoms, Allergies, Medications, Pertinent past history, Last oral intake, Events leading up to the call.",
+      "tags": [
+        "assessment",
+        "history",
+        "mnemonics"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per current AHA BLS guidelines, what is the recommended adult chest compression rate during CPR?",
+      "options": [
+        "60\u201380 compressions/min",
+        "100\u2013120 compressions/min",
+        "80\u2013100 compressions/min",
+        "120\u2013140 compressions/min"
+      ],
+      "correct": 1,
+      "explanation": "Current AHA BLS guidelines call for 100\u2013120 compressions per minute in adult CPR to optimize perfusion. Source: American Heart Association (AHA), Adult BLS guidelines.",
+      "tags": [
+        "cardiac",
+        "CPR",
+        "resuscitation"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per current AHA BLS guidelines, what compression depth is recommended for adult CPR?",
+      "options": [
+        "At least 2 inches (5 cm)",
+        "1\u20131.5 inches",
+        "3\u20134 inches",
+        "Depth does not matter, only rate"
+      ],
+      "correct": 0,
+      "explanation": "AHA BLS recommends compressing at least 2 inches (5 cm), while avoiding excessive depth (greater than 2.4 inches/6 cm). Source: American Heart Association (AHA), Adult BLS guidelines.",
+      "tags": [
+        "cardiac",
+        "CPR",
+        "resuscitation"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Normal capillary refill time in an adult is:",
+      "options": [
+        "Less than 1 second",
+        "Less than 4 seconds",
+        "Less than 2 seconds",
+        "Up to 6 seconds"
+      ],
+      "correct": 2,
+      "explanation": "Capillary refill under 2 seconds is normal in adults. Greater than 2 seconds suggests impaired perfusion.",
+      "tags": [
+        "assessment",
+        "perfusion",
+        "vitals"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "What is the correct way to size an oropharyngeal airway (OPA)?",
+      "options": [
+        "Measure from the nose to the chin",
+        "Measure from the center of the mouth to the earlobe",
+        "Measure from the earlobe to the corner of the mouth",
+        "Estimate based on patient weight"
+      ],
+      "correct": 2,
+      "explanation": "An OPA is sized from the earlobe to the corner of the mouth. Correct sizing prevents airway obstruction or stimulating the gag reflex.",
+      "tags": [
+        "airway",
+        "equipment",
+        "procedures"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "BSI (Body Substance Isolation) and Scene Safety are the first steps of the scene size-up. After ensuring BSI and scene safety, what is the next priority?",
+      "options": [
+        "Determine the Mechanism of Injury (MOI) or Nature of Illness (NOI)",
+        "Begin the primary assessment",
+        "Establish IV access",
+        "Obtain a detailed patient history"
+      ],
+      "correct": 0,
+      "explanation": "Per NREMT standards, the scene size-up steps are: BSI, Scene Safety, Determine MOI/NOI, Determine number of patients, and Request additional resources.",
+      "tags": [
+        "scene-safety",
+        "BSI",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per current AHA first aid guidelines, which position is generally recommended for a patient with suspected shock (no trauma pattern requiring restriction)?",
+      "options": [
+        "Prone (face down)",
+        "Supine (flat); consider passive leg raise if tolerated and no contraindication",
+        "Fowler's (sitting up at 90\u00b0)",
+        "Left lateral recumbent"
+      ],
+      "correct": 1,
+      "explanation": "AHA first aid guidance supports placing shock patients supine. Passive leg raise may be considered in select patients if it does not worsen condition or conflict with trauma concerns. Source: American Heart Association (AHA), First Aid guidelines.",
+      "tags": [
+        "shock",
+        "positioning",
+        "treatment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "What does the 'E' stand for in the AVPU scale?",
+      "options": [
+        "Emergent",
+        "Eyes open only to pain",
+        "Extremity movement",
+        "There is no 'E' in AVPU"
+      ],
+      "correct": 3,
+      "explanation": "AVPU stands for Alert, Verbal, Pain, Unresponsive. There is no 'E' \u2014 that is the Glasgow Coma Scale eye component.",
+      "tags": [
+        "assessment",
+        "neuro",
+        "mnemonics"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per AHA BLS guidance, how is AED shock energy selected?",
+      "options": [
+        "100 J fixed",
+        "The AED determines the appropriate energy level automatically",
+        "200 J fixed",
+        "The EMT manually selects between 50\u2013200 J"
+      ],
+      "correct": 1,
+      "explanation": "AEDs analyze rhythm and use manufacturer-programmed energy settings; rescuers follow prompts and do not manually choose joules on standard AEDs. Source: American Heart Association (AHA), Adult BLS/AED guidance.",
+      "tags": [
+        "cardiac",
+        "AED",
+        "equipment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "The Pediatric Assessment Triangle (PAT) evaluates three components. Which of the following is NOT one of them?",
+      "options": [
+        "Appearance",
+        "Work of Breathing",
+        "Circulation to Skin",
+        "Blood Pressure"
+      ],
+      "correct": 3,
+      "explanation": "The PAT consists of Appearance (TICLS), Work of Breathing, and Circulation to Skin. Blood pressure is not part of the initial PAT.",
+      "tags": [
+        "pediatrics",
+        "assessment",
+        "PAT"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "What does TICLS stand for in pediatric assessment?",
+      "options": [
+        "Temperature, Injury, Color, Level, Sounds",
+        "Tone, Illness, Color, Level, Sounds",
+        "Trauma, Illness, Capillary refill, Level of consciousness, Skin",
+        "Tone, Interactiveness, Consolability, Look/Gaze, Speech/Cry"
+      ],
+      "correct": 3,
+      "explanation": "TICLS (Tickles) is the mnemonic for evaluating the Appearance component of the PAT: Tone, Interactiveness, Consolability, Look/Gaze, Speech/Cry.",
+      "tags": [
+        "pediatrics",
+        "assessment",
+        "mnemonics"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "When applying direct pressure to a bleeding wound, how long should you maintain continuous pressure before checking if bleeding has stopped?",
+      "options": [
+        "At least 5 minutes",
+        "30 seconds",
+        "Exactly 2 minutes",
+        "10\u201315 seconds"
+      ],
+      "correct": 0,
+      "explanation": "Maintain firm, continuous direct pressure for at least 5 minutes. Frequently removing pressure disrupts clot formation.",
+      "tags": [
+        "trauma",
+        "bleeding",
+        "treatment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "A tourniquet should be applied how far proximal to a wound on an extremity?",
+      "options": [
+        "2\u20133 inches above the wound",
+        "1\u20132 inches above the wound",
+        "Directly over the wound",
+        "At the joint closest to the wound"
+      ],
+      "correct": 0,
+      "explanation": "Apply a tourniquet 2\u20133 inches (5\u20137 cm) proximal to the wound, avoiding placement over a joint.",
+      "tags": [
+        "trauma",
+        "bleeding",
+        "tourniquet"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT patient assessment principles, which maneuver is preferred to open the airway when no trauma is suspected?",
+      "options": [
+        "Jaw-thrust maneuver",
+        "Head-tilt/chin-lift maneuver",
+        "Blind finger sweep",
+        "Manual suction only"
+      ],
+      "correct": 1,
+      "explanation": "For a non-trauma patient, head-tilt/chin-lift is the standard basic airway-opening maneuver. Source: NREMT-aligned patient assessment and airway management principles.",
+      "tags": [
+        "airway",
+        "assessment",
+        "procedures"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT trauma assessment principles, which airway maneuver is preferred when cervical spine injury is suspected?",
+      "options": [
+        "Head-tilt/chin-lift",
+        "Hyperextension of the neck",
+        "Jaw-thrust maneuver",
+        "None; avoid airway maneuvers"
+      ],
+      "correct": 2,
+      "explanation": "When spinal injury is suspected, jaw-thrust is preferred to reduce neck movement while attempting airway opening. Source: NREMT-aligned trauma airway management principles.",
+      "tags": [
+        "airway",
+        "trauma",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per current AHA BLS guidelines, which pulse site is recommended for checking an unresponsive infant?",
+      "options": [
+        "Radial pulse",
+        "Brachial pulse",
+        "Femoral pulse only",
+        "Carotid pulse"
+      ],
+      "correct": 1,
+      "explanation": "For infants, AHA BLS recommends checking a brachial pulse (or femoral). Source: American Heart Association (AHA), Pediatric/Infant BLS guidance.",
+      "tags": [
+        "pediatrics",
+        "BLS",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per current AHA BLS guidelines, what is the recommended chest compression depth for a child?",
+      "options": [
+        "About 1 inch (2.5 cm)",
+        "At least one third the chest depth (~2 inches / 5 cm)",
+        "At least 3 inches (7.5 cm)",
+        "Depth is not specified for children"
+      ],
+      "correct": 1,
+      "explanation": "AHA recommends compressing at least one third of the anterior-posterior chest diameter in children, about 2 inches (5 cm). Source: American Heart Association (AHA), Pediatric BLS guidelines.",
+      "tags": [
+        "pediatrics",
+        "CPR",
+        "resuscitation"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Which finding most strongly suggests hypoperfusion (early shock) in an adult?",
+      "options": [
+        "Warm dry skin and bradycardia",
+        "Hypertension with bounding pulses",
+        "Cool clammy skin with tachycardia",
+        "Slow regular respirations with flushed skin"
+      ],
+      "correct": 2,
+      "explanation": "Cool, pale, clammy skin with tachycardia is a classic early sign pattern of shock/hypoperfusion. Source: NREMT-aligned shock recognition principles.",
+      "tags": [
+        "shock",
+        "assessment",
+        "perfusion"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT scene size-up principles, which element should be identified early to prevent resource delays?",
+      "options": [
+        "Number of patients and need for additional resources",
+        "Insurance status",
+        "Patient social history",
+        "Detailed medication reconciliation"
+      ],
+      "correct": 0,
+      "explanation": "Early scene size-up includes determining patient count and whether additional resources are needed. Source: NREMT-aligned scene size-up framework.",
+      "tags": [
+        "scene-safety",
+        "operations",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "In AVPU assessment, a patient who only moans and withdraws when you apply a trapezius pinch is categorized as:",
+      "options": [
+        "Pain",
+        "Verbal",
+        "Alert",
+        "Unresponsive"
+      ],
+      "correct": 0,
+      "explanation": "Response only to painful stimulus is categorized as P on AVPU. Source: NREMT-aligned neurologic assessment principles.",
+      "tags": [
+        "assessment",
+        "neuro",
+        "AVPU"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "What does the R in OPQRST stand for?",
+      "options": [
+        "Respiratory rate",
+        "Risk factors",
+        "Resuscitation",
+        "Region/Radiation"
+      ],
+      "correct": 3,
+      "explanation": "R in OPQRST refers to Region/Radiation of symptoms. Source: NREMT-aligned patient history mnemonics.",
+      "tags": [
+        "assessment",
+        "history",
+        "mnemonics"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "For severe external bleeding from an extremity, which intervention should be prioritized first when direct pressure is inadequate?",
+      "options": [
+        "Immediate pressure point compression only",
+        "Tourniquet application",
+        "Cold packs",
+        "Delayed reassessment in 15 minutes"
+      ],
+      "correct": 1,
+      "explanation": "If severe extremity bleeding is not controlled with direct pressure, tourniquet use is appropriate and often lifesaving. Source: NREMT trauma priorities and modern hemorrhage-control practice.",
+      "tags": [
+        "trauma",
+        "bleeding",
+        "tourniquet"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "What is a common normal resting adult SpO2 range on room air?",
+      "options": [
+        "75\u201382%",
+        "95\u2013100%",
+        "83\u201389%",
+        "100% only"
+      ],
+      "correct": 1,
+      "explanation": "Most healthy adults have resting oxygen saturation around 95\u2013100% on room air, though clinical context always matters. Source: General EMS assessment standards used in NREMT preparation.",
+      "tags": [
+        "assessment",
+        "vitals",
+        "respiratory"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT-level anatomy and physiology, which structure is primarily responsible for gas exchange in the lungs?",
+      "options": [
+        "Bronchi",
+        "Pleura",
+        "Alveoli",
+        "Trachea"
+      ],
+      "correct": 2,
+      "explanation": "Alveoli are the microscopic air sacs where oxygen and carbon dioxide diffuse between air and pulmonary capillary blood. Source: NREMT-level EMT anatomy and physiology fundamentals.",
+      "tags": [
+        "anatomy",
+        "physiology",
+        "respiratory"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT A&P fundamentals, what is the primary function of red blood cells?",
+      "options": [
+        "Fight infection",
+        "Form clots",
+        "Carry oxygen",
+        "Produce antibodies"
+      ],
+      "correct": 2,
+      "explanation": "Red blood cells contain hemoglobin and primarily transport oxygen to tissues (and some carbon dioxide away from tissues). Source: NREMT-level EMT anatomy and physiology fundamentals.",
+      "tags": [
+        "anatomy",
+        "physiology",
+        "hematology"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT-level cardiovascular physiology, which vessel type carries blood away from the heart?",
+      "options": [
+        "Veins",
+        "Capillaries",
+        "Venules",
+        "Arteries"
+      ],
+      "correct": 3,
+      "explanation": "Arteries carry blood away from the heart, while veins carry blood back to the heart. Source: NREMT-level EMT anatomy and physiology fundamentals.",
+      "tags": [
+        "anatomy",
+        "physiology",
+        "cardiovascular"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT-level anatomy and physiology, in which direction does oxygen normally diffuse at the alveolar-capillary membrane?",
+      "options": [
+        "From pulmonary capillary blood into the alveoli",
+        "From bronchi into pleura",
+        "From tissues directly into alveoli",
+        "From alveoli into pulmonary capillary blood"
+      ],
+      "correct": 3,
+      "explanation": "In normal respiration, oxygen moves from alveolar air into pulmonary capillary blood down its concentration gradient. Source: NREMT-level EMT anatomy and physiology fundamentals.",
+      "tags": [
+        "anatomy",
+        "physiology",
+        "respiratory"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT-level A&P, which chamber of the heart pumps oxygenated blood into the systemic circulation?",
+      "options": [
+        "Right atrium",
+        "Left ventricle",
+        "Left atrium",
+        "Right ventricle"
+      ],
+      "correct": 1,
+      "explanation": "The left ventricle ejects oxygenated blood into the aorta for systemic perfusion. Source: NREMT-level EMT anatomy and physiology fundamentals.",
+      "tags": [
+        "anatomy",
+        "physiology",
+        "cardiovascular"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT-level neuro anatomy, which division of the nervous system controls involuntary functions like heart rate and digestion?",
+      "options": [
+        "Somatic nervous system",
+        "Peripheral sensory cortex",
+        "Central motor cortex",
+        "Autonomic nervous system"
+      ],
+      "correct": 3,
+      "explanation": "The autonomic nervous system regulates involuntary body functions such as heart rate, blood vessel tone, and digestion. Source: NREMT-level EMT anatomy and physiology fundamentals.",
+      "tags": [
+        "anatomy",
+        "physiology",
+        "neurology"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT EMS operations principles, what is the MOST appropriate first action when you arrive at a scene with downed power lines touching a vehicle?",
+      "options": [
+        "Approach quickly and begin patient extrication",
+        "Use a metal tool to move the line",
+        "Ensure scene safety, stay clear, and request utility/fire resources",
+        "Enter the vehicle to begin assessment"
+      ],
+      "correct": 2,
+      "explanation": "Electrical hazards require strict scene safety. Keep distance, isolate the area, and wait for trained utility/fire personnel. Source: NREMT EMS Operations and scene safety principles.",
+      "tags": [
+        "operations",
+        "scene-safety",
+        "hazmat"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT preparatory standards, what information should be included in a concise radio patch to the receiving facility?",
+      "options": [
+        "Only patient age and chief complaint",
+        "Patient insurance and home address",
+        "Unit ID, patient age/sex, chief complaint, key vitals, treatments, and ETA",
+        "Full legal narrative and billing details"
+      ],
+      "correct": 2,
+      "explanation": "Effective prearrival communication includes key identifying/clinical data and ETA so the hospital can prepare appropriate resources. Source: NREMT EMS Operations and communication standards.",
+      "tags": [
+        "operations",
+        "communication",
+        "documentation"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT operations principles, when should additional resources be requested at a potentially complex scene?",
+      "options": [
+        "As early as possible once the need is recognized",
+        "Only if a supervisor asks",
+        "After transport has already started",
+        "Only after all on-scene assessments are complete"
+      ],
+      "correct": 0,
+      "explanation": "Early resource requests reduce delays and improve scene management and patient care. Source: NREMT EMS Operations and scene management principles.",
+      "tags": [
+        "operations",
+        "scene-management",
+        "triage"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT preparatory/operations principles, what is the best approach when lifting a patient to reduce provider injury risk?",
+      "options": [
+        "Lift with your back while twisting",
+        "Lift quickly before fatigue sets in",
+        "Lift with legs, keep load close, and coordinate a team lift",
+        "Use one provider whenever possible to avoid delay"
+      ],
+      "correct": 2,
+      "explanation": "Safe lifting emphasizes body mechanics, team coordination, and minimizing twisting to prevent musculoskeletal injury. Source: NREMT EMS Operations and workforce safety principles.",
+      "tags": [
+        "operations",
+        "safety",
+        "lifting-moving"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT EMS operations standards, if a patient with decision-making capacity refuses care, what is most appropriate?",
+      "options": [
+        "Document assessment, risks explained, refusal discussion, and patient decision",
+        "Transport anyway if you disagree",
+        "Have law enforcement sign the refusal for the patient",
+        "Leave immediately without documentation"
+      ],
+      "correct": 0,
+      "explanation": "When a capacitated patient refuses, providers should document capacity, informed refusal discussion, and the final decision per policy. Source: NREMT preparatory/legal and EMS Operations principles.",
+      "tags": [
+        "operations",
+        "legal",
+        "documentation"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT preparatory principles, what should be completed before the unit is placed in service?",
+      "options": [
+        "Personal errands",
+        "Vehicle and equipment readiness checks",
+        "Only radio check",
+        "Hospital walkthrough"
+      ],
+      "correct": 1,
+      "explanation": "Unit readiness includes ambulance, airway, oxygen, suction, and core equipment checks. Source: NREMT preparatory and EMS operations principles.",
+      "tags": [
+        "operations",
+        "preparatory",
+        "safety"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT scene safety principles, if the scene is unsafe, EMS should:",
+      "options": [
+        "Enter quickly to reach patient",
+        "Stage until scene is secured",
+        "Send one provider in",
+        "Turn off PPE to avoid escalation"
+      ],
+      "correct": 1,
+      "explanation": "Provider safety is the first priority; stage and request appropriate resources. Source: NREMT EMS operations and scene safety principles.",
+      "tags": [
+        "operations",
+        "scene-safety",
+        "legal"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT operations, what is triage?",
+      "options": [
+        "Treating one patient at a time regardless of severity",
+        "Prioritizing patients by severity and resources",
+        "Transporting pediatric patients first always",
+        "Assigning hospital rooms"
+      ],
+      "correct": 1,
+      "explanation": "Triage prioritizes care when resources are limited. Source: NREMT EMS operations principles.",
+      "tags": [
+        "operations",
+        "triage",
+        "mci"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT-level A&P, oxygen exchange with blood primarily occurs in the:",
+      "options": [
+        "Trachea",
+        "Alveoli",
+        "Bronchi",
+        "Pleura"
+      ],
+      "correct": 1,
+      "explanation": "Alveoli are the primary gas-exchange structures. Source: NREMT-level anatomy and physiology fundamentals.",
+      "tags": [
+        "anatomy",
+        "physiology",
+        "respiratory"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT-level cardiovascular A&P, which structure pumps oxygenated blood into systemic circulation?",
+      "options": [
+        "Right ventricle",
+        "Left ventricle",
+        "Right atrium",
+        "Left atrium"
+      ],
+      "correct": 1,
+      "explanation": "The left ventricle ejects oxygenated blood into the aorta. Source: NREMT-level anatomy and physiology fundamentals.",
+      "tags": [
+        "anatomy",
+        "physiology",
+        "cardiovascular"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT communications standards, radio reports should be:",
+      "options": [
+        "Concise and organized",
+        "Lengthy and narrative-heavy",
+        "Limited to demographics only",
+        "Given only at ED arrival"
+      ],
+      "correct": 0,
+      "explanation": "Clear concise reports improve coordination and reduce errors. Source: NREMT EMS communication principles.",
+      "tags": [
+        "operations",
+        "communication",
+        "documentation"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT legal/ethical standards, patient information should be shared:",
+      "options": [
+        "With anyone at scene",
+        "Only with authorized care team and required reporting channels",
+        "On social media if de-identified",
+        "With family regardless of consent"
+      ],
+      "correct": 1,
+      "explanation": "Confidentiality requires limiting disclosure to authorized individuals. Source: NREMT preparatory/legal principles.",
+      "tags": [
+        "operations",
+        "legal",
+        "ethics"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT-level respiratory physiology, inhalation occurs when the diaphragm:",
+      "options": [
+        "Contracts and descends",
+        "Relaxes and ascends",
+        "Stops moving",
+        "Contracts upward"
+      ],
+      "correct": 0,
+      "explanation": "Diaphragm contraction increases thoracic volume and draws air in. Source: NREMT-level anatomy and physiology fundamentals.",
+      "tags": [
+        "anatomy",
+        "physiology",
+        "respiratory"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT operations, if ICS is established at a large incident, EMS should:",
+      "options": [
+        "Operate independently",
+        "Integrate into incident command structure",
+        "Leave until requested again",
+        "Contact hospital before commander"
+      ],
+      "correct": 1,
+      "explanation": "ICS coordination improves multi-agency safety and effectiveness. Source: NREMT EMS operations and ICS principles.",
+      "tags": [
+        "operations",
+        "ics",
+        "scene-management"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT airway assessment, snoring sounds usually indicate:",
+      "options": [
+        "Lower airway edema",
+        "Partial upper airway obstruction",
+        "Normal breathing",
+        "Pneumothorax"
+      ],
+      "correct": 1,
+      "explanation": "Snoring often reflects soft tissue obstruction in upper airway. Source: NREMT airway assessment principles.",
+      "tags": [
+        "airway",
+        "assessment",
+        "respiratory"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT infection-control principles, gloves should be changed:",
+      "options": [
+        "Only once each shift",
+        "Between patient contacts and when contaminated",
+        "Only after transport",
+        "Only when visibly torn"
+      ],
+      "correct": 1,
+      "explanation": "Standard precautions require glove changes between patients/contamination events. Source: NREMT preparatory infection-control principles.",
+      "tags": [
+        "operations",
+        "bsi",
+        "infection-control"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT-level perfusion physiology, perfusion is best defined as:",
+      "options": [
+        "Air movement through bronchi",
+        "Blood flow through capillary beds to tissues",
+        "ECG electrical conduction",
+        "Glucose metabolism only"
+      ],
+      "correct": 1,
+      "explanation": "Perfusion is tissue blood flow enabling oxygen/nutrient delivery. Source: NREMT-level anatomy and physiology fundamentals.",
+      "tags": [
+        "anatomy",
+        "physiology",
+        "perfusion"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT documentation standards, PCR entries should be:",
+      "options": [
+        "Objective, accurate, and complete",
+        "Opinion-based with assumptions",
+        "Completed days later",
+        "Adjusted to match witness opinions"
+      ],
+      "correct": 0,
+      "explanation": "PCRs must be factual and complete for care continuity and legal reliability. Source: NREMT preparatory/documentation principles.",
+      "tags": [
+        "operations",
+        "documentation",
+        "legal"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT operations, additional resources should be requested:",
+      "options": [
+        "As soon as need is identified",
+        "After transport starts",
+        "Only by hospital request",
+        "Only when all assessments complete"
+      ],
+      "correct": 0,
+      "explanation": "Early resource requests reduce critical delays. Source: NREMT EMS operations principles.",
+      "tags": [
+        "operations",
+        "scene-management",
+        "triage"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    }
+  ],
+  "EMT": [
+    {
+      "question": "What is the standard adult dose for a nebulized albuterol treatment?",
+      "options": [
+        "1.25 mg in 3 mL NS",
+        "2.5 mg in 3 mL NS",
+        "5 mg in 5 mL NS",
+        "0.5 mg in 2 mL NS"
+      ],
+      "correct": 1,
+      "explanation": "Albuterol 2.5 mg in 3 mL NS is the standard nebulized dose for adults and pediatrics. It is delivered via SVN with O\u2082 at 6 LPM as the driving gas.",
+      "tags": [
+        "pharmacology",
+        "respiratory",
+        "albuterol"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "What is the adult dose for an epinephrine auto-injector?",
+      "options": [
+        "0.3 mg IM",
+        "0.15 mg IM",
+        "0.1 mg IM",
+        "0.5 mg IM"
+      ],
+      "correct": 0,
+      "explanation": "The standard adult epinephrine auto-injector (EpiPen) delivers 0.3 mg IM. The pediatric auto-injector (EpiPen Jr.) delivers 0.15 mg.",
+      "tags": [
+        "pharmacology",
+        "anaphylaxis",
+        "epinephrine"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Oral glucose should NOT be administered to a patient who is:",
+      "options": [
+        "Hypoglycemic with a blood glucose of 55 mg/dL",
+        "Conscious and able to swallow",
+        "Experiencing diabetic emergency",
+        "Unresponsive or unable to protect their airway"
+      ],
+      "correct": 3,
+      "explanation": "Oral glucose is contraindicated in patients who cannot protect their airway \u2014 risk of aspiration. It requires a patient who is conscious and able to swallow.",
+      "tags": [
+        "pharmacology",
+        "diabetes",
+        "oral-glucose"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "At what SpO\u2082 level should a healthy adult generally receive supplemental oxygen?",
+      "options": [
+        "Below 99%",
+        "Below 96%",
+        "Below 88%",
+        "Below 94%"
+      ],
+      "correct": 3,
+      "explanation": "SpO\u2082 below 94% in a healthy adult indicates hypoxia warranting supplemental oxygen. Always titrate O\u2082 to the patient's condition.",
+      "tags": [
+        "assessment",
+        "oxygen",
+        "respiratory"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per AHA ACS guidance, nitroglycerin should be withheld if the patient has taken which medication class within the past 24\u201348 hours?",
+      "options": [
+        "Aspirin",
+        "Phosphodiesterase inhibitors (e.g., sildenafil/Viagra)",
+        "Beta-blockers",
+        "ACE inhibitors"
+      ],
+      "correct": 1,
+      "explanation": "Phosphodiesterase-5 inhibitors (e.g., sildenafil, tadalafil, vardenafil) with nitrates can cause profound hypotension; this is a key contraindication. Source: American Heart Association (AHA), ACS guidance.",
+      "tags": [
+        "pharmacology",
+        "cardiac",
+        "nitroglycerin"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "A non-rebreather mask (NRB) at 10\u201315 LPM delivers approximately what fraction of inspired oxygen (FiO\u2082)?",
+      "options": [
+        "21\u201324%",
+        "90\u2013100%",
+        "60\u201380%",
+        "35\u201350%"
+      ],
+      "correct": 1,
+      "explanation": "A properly fitted NRB at 10\u201315 LPM delivers up to 90\u2013100% O\u2082 due to the reservoir bag and one-way valves preventing room air dilution.",
+      "tags": [
+        "airway",
+        "oxygen",
+        "equipment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Which of the following is a sign of a tension pneumothorax?",
+      "options": [
+        "Tracheal deviation toward the injured side",
+        "Equal and bilateral breath sounds",
+        "Tracheal deviation away from the injured side with absent breath sounds",
+        "Decreased neck vein distension"
+      ],
+      "correct": 2,
+      "explanation": "Tension pneumothorax causes tracheal deviation AWAY from the affected side (mediastinal shift), absent breath sounds on the affected side, and JVD from impaired venous return.",
+      "tags": [
+        "trauma",
+        "respiratory",
+        "chest-trauma"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per AHA ACS guidance, what aspirin dose is recommended for suspected ACS (if no contraindication)?",
+      "options": [
+        "81 mg chewed",
+        "160\u2013324 mg chewed",
+        "325 mg swallowed whole",
+        "500 mg chewed"
+      ],
+      "correct": 1,
+      "explanation": "Chewed aspirin in the 160\u2013325 mg range is recommended in suspected ACS (if no allergy/contraindication) for rapid antiplatelet effect. Source: American Heart Association (AHA), ACS guidance.",
+      "tags": [
+        "pharmacology",
+        "cardiac",
+        "aspirin"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "The Glasgow Coma Scale scores which three components?",
+      "options": [
+        "Airway, Breathing, Circulation",
+        "Alertness, Verbalization, Pain response",
+        "Eyes, Verbal, Motor",
+        "Orientation, Memory, Cognition"
+      ],
+      "correct": 2,
+      "explanation": "GCS scores: Eye opening (1\u20134), Verbal response (1\u20135), Motor response (1\u20136). Maximum score is 15; minimum is 3.",
+      "tags": [
+        "assessment",
+        "neuro",
+        "GCS"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "A patient with a GCS of 8 or less requires what immediate consideration?",
+      "options": [
+        "Oral glucose administration",
+        "Aspirin administration",
+        "Nitroglycerin for chest pain",
+        "Airway protection and management"
+      ],
+      "correct": 3,
+      "explanation": "GCS \u22648 is the threshold for severe brain injury and indicates the patient likely cannot protect their airway. Airway management is the priority.",
+      "tags": [
+        "assessment",
+        "neuro",
+        "airway"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "A simple face mask delivers what approximate FiO\u2082 at 6\u201310 LPM?",
+      "options": [
+        "21\u201328%",
+        "35\u201350%",
+        "70\u201380%",
+        "90\u2013100%"
+      ],
+      "correct": 1,
+      "explanation": "A simple face mask at 6\u201310 LPM delivers approximately 35\u201350% FiO\u2082. Minimum flow is 6 LPM to flush exhaled CO\u2082 from the mask.",
+      "tags": [
+        "airway",
+        "oxygen",
+        "equipment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per current AHA BLS guidelines, what is the target ventilation rate for an adult with a pulse but inadequate breathing when using a BVM?",
+      "options": [
+        "1 breath every 2\u20133 seconds (20\u201330/min)",
+        "1 breath every 2 seconds (30/min)",
+        "1 breath every 10 seconds (6/min)",
+        "1 breath every 6 seconds (10/min)"
+      ],
+      "correct": 3,
+      "explanation": "For adults with a pulse but inadequate breathing, provide 1 breath every 6 seconds (10/min). Avoid hyperventilation because it can worsen hemodynamics. Source: American Heart Association (AHA), Adult BLS guidelines.",
+      "tags": [
+        "airway",
+        "BVM",
+        "ventilation"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "What is the correct method for confirming correct ET tube placement in the field?",
+      "options": [
+        "Tube depth measurement alone",
+        "Patient waking up after intubation",
+        "Patient's skin color improvement",
+        "Chest rise, bilateral breath sounds, and waveform capnography"
+      ],
+      "correct": 3,
+      "explanation": "Confirmation requires chest rise, bilateral breath sounds, epigastric silence, and waveform capnography (most reliable). No single method is sufficient alone.",
+      "tags": [
+        "airway",
+        "intubation",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "The 'P' in OPQRST stands for what?",
+      "options": [
+        "Provocation/Palliation",
+        "Pain level",
+        "Prior medical history",
+        "Position of patient"
+      ],
+      "correct": 0,
+      "explanation": "OPQRST: Onset, Provocation/Palliation, Quality, Region/Radiation, Severity, Time/Trends. Provocation asks what makes it better or worse.",
+      "tags": [
+        "assessment",
+        "history",
+        "mnemonics"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Which of the following represents an absolute contraindication to the use of an epinephrine auto-injector in life-threatening anaphylaxis?",
+      "options": [
+        "The patient takes beta-blockers",
+        "The patient is elderly with a known cardiac history",
+        "The patient has a heart rate of 140 bpm",
+        "There are no absolute contraindications in life-threatening anaphylaxis"
+      ],
+      "correct": 3,
+      "explanation": "There are NO absolute contraindications to epinephrine in life-threatening anaphylaxis. The life-saving benefits always outweigh the risks, regardless of age, cardiac history, or current medications.",
+      "tags": [
+        "pharmacology",
+        "anaphylaxis",
+        "epinephrine"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "What does a 'silent chest' in a wheezing patient indicate?",
+      "options": [
+        "The patient is improving \u2014 wheeze resolved",
+        "Critically reduced air movement \u2014 near complete obstruction",
+        "The patient has developed pneumonia",
+        "Normal finding after albuterol treatment"
+      ],
+      "correct": 1,
+      "explanation": "A silent chest in a patient who was wheezing indicates critically reduced airflow \u2014 so little air is moving that wheeze cannot be generated. This is an ominous sign of impending respiratory failure.",
+      "tags": [
+        "respiratory",
+        "asthma",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT oxygen-delivery fundamentals, what flow range is typically used for an adult nasal cannula?",
+      "options": [
+        "1\u20136 LPM",
+        "0.5\u20132 LPM",
+        "8\u201312 LPM",
+        "15\u201325 LPM"
+      ],
+      "correct": 0,
+      "explanation": "Nasal cannula is typically run at 1\u20136 LPM in adults, providing low-to-moderate supplemental oxygen. Source: NREMT-aligned oxygen-delivery fundamentals.",
+      "tags": [
+        "airway",
+        "oxygen",
+        "equipment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per current AHA first aid/anaphylaxis guidance, what is the first-line medication for life-threatening anaphylaxis?",
+      "options": [
+        "Diphenhydramine PO",
+        "Albuterol nebulizer",
+        "Epinephrine IM",
+        "Methylprednisolone IV"
+      ],
+      "correct": 2,
+      "explanation": "Intramuscular epinephrine is first-line treatment for anaphylaxis and should not be delayed in severe reactions. Source: American Heart Association (AHA), First Aid guidance for anaphylaxis.",
+      "tags": [
+        "pharmacology",
+        "anaphylaxis",
+        "epinephrine"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "A patient with pinpoint pupils, depressed mental status, and slow respirations is most consistent with:",
+      "options": [
+        "Sympathomimetic overdose",
+        "Anticholinergic toxidrome",
+        "Opioid toxidrome",
+        "Salicylate toxicity"
+      ],
+      "correct": 2,
+      "explanation": "The classic opioid toxidrome includes CNS depression, respiratory depression, and miosis (pinpoint pupils). Source: NREMT-aligned toxicology assessment principles.",
+      "tags": [
+        "toxicology",
+        "assessment",
+        "respiratory"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT stroke assessment priorities, why is last known well time critical?",
+      "options": [
+        "It determines ambulance fuel use",
+        "It predicts blood glucose",
+        "It guides eligibility for time-sensitive stroke therapies",
+        "It rules out hemorrhagic stroke by itself"
+      ],
+      "correct": 2,
+      "explanation": "Determining last known well is essential because stroke interventions are highly time-dependent. Source: NREMT-aligned stroke assessment priorities.",
+      "tags": [
+        "stroke",
+        "assessment",
+        "neurology"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Which finding is a common contraindication to CPAP in the prehospital setting?",
+      "options": [
+        "Mild respiratory distress with normal mentation",
+        "Ability to follow commands",
+        "History of asthma",
+        "Inability to protect airway or severe altered mental status"
+      ],
+      "correct": 3,
+      "explanation": "Patients who cannot protect their airway or cooperate are generally poor CPAP candidates. Source: NREMT-aligned respiratory management and common EMS protocol principles.",
+      "tags": [
+        "respiratory",
+        "CPAP",
+        "airway"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "For suspected opioid overdose with respiratory depression, naloxone is primarily intended to:",
+      "options": [
+        "Restore adequate spontaneous respirations",
+        "Reverse pain completely",
+        "Treat hypotension",
+        "Stop seizures"
+      ],
+      "correct": 0,
+      "explanation": "The primary prehospital goal is restoration of adequate ventilation, not full arousal. Source: NREMT-aligned overdose management principles.",
+      "tags": [
+        "pharmacology",
+        "toxicology",
+        "naloxone"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "A pediatric epinephrine auto-injector (EpiPen Jr) delivers what dose?",
+      "options": [
+        "0.15 mg IM",
+        "0.1 mg IM",
+        "0.05 mg IM",
+        "0.3 mg IM"
+      ],
+      "correct": 0,
+      "explanation": "EpiPen Jr is 0.15 mg IM; standard adult auto-injector dose is 0.3 mg IM. Source: NREMT medication fundamentals and common EMS formulary standards.",
+      "tags": [
+        "pharmacology",
+        "pediatrics",
+        "epinephrine"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Which blood glucose value is most consistent with hypoglycemia in adults?",
+      "options": [
+        "140\u2013180 mg/dL",
+        "80\u2013120 mg/dL",
+        "<70 mg/dL",
+        ">250 mg/dL"
+      ],
+      "correct": 2,
+      "explanation": "Hypoglycemia is commonly defined as blood glucose below 70 mg/dL, especially with compatible symptoms. Source: NREMT-aligned diabetic emergency assessment principles.",
+      "tags": [
+        "medical",
+        "diabetes",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per current AHA BLS guidance, what is the chest compression-to-ventilation ratio for a single rescuer performing adult CPR without an advanced airway?",
+      "options": [
+        "15:2",
+        "30:2",
+        "5:1",
+        "Continuous compressions with 1 breath every 3 seconds"
+      ],
+      "correct": 1,
+      "explanation": "Adult single-rescuer CPR uses a 30:2 compression-to-ventilation ratio before advanced airway placement. Source: American Heart Association (AHA), Adult BLS guidelines.",
+      "tags": [
+        "CPR",
+        "resuscitation",
+        "BLS"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per AHA BLS guidance, what should you do immediately after delivering an AED shock?",
+      "options": [
+        "Check pulse for 30 seconds",
+        "Give two rescue breaths first",
+        "Resume chest compressions immediately",
+        "Reanalyze rhythm immediately"
+      ],
+      "correct": 2,
+      "explanation": "After a shock, immediate resumption of high-quality CPR is recommended to minimize interruptions in compressions. Source: American Heart Association (AHA), Adult BLS/AED guidance.",
+      "tags": [
+        "AED",
+        "CPR",
+        "resuscitation"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT-level respiratory anatomy, what is the main muscle used for normal breathing?",
+      "options": [
+        "Diaphragm",
+        "Pectoralis major",
+        "Abdominal rectus",
+        "Trapezius"
+      ],
+      "correct": 0,
+      "explanation": "The diaphragm is the primary muscle of respiration during normal breathing; when it contracts, thoracic volume increases and air moves into the lungs. Source: NREMT-level EMT anatomy and physiology fundamentals.",
+      "tags": [
+        "anatomy",
+        "physiology",
+        "respiratory"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT-level neuro A&P, which part of the brain is responsible for basic life functions such as breathing and heart rate?",
+      "options": [
+        "Brainstem",
+        "Cerebellum",
+        "Cerebrum",
+        "Parietal lobe"
+      ],
+      "correct": 0,
+      "explanation": "The brainstem controls vital autonomic functions including respiratory drive, heart rate, and blood pressure regulation. Source: NREMT-level EMT anatomy and physiology fundamentals.",
+      "tags": [
+        "anatomy",
+        "physiology",
+        "neurology"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT airway assessment, gurgling respirations suggest:",
+      "options": [
+        "Upper airway fluid/secretions requiring suction",
+        "Normal airway sounds",
+        "Bronchospasm only",
+        "Pleural friction rub"
+      ],
+      "correct": 0,
+      "explanation": "Gurgling usually indicates fluid in upper airway and need for suction. Source: NREMT airway management principles.",
+      "tags": [
+        "airway",
+        "assessment",
+        "procedures"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT respiratory assessment, accessory muscle use indicates:",
+      "options": [
+        "No distress",
+        "Increased work of breathing",
+        "Resolved distress",
+        "Metabolic emergency only"
+      ],
+      "correct": 1,
+      "explanation": "Accessory muscles indicate respiratory strain/distress. Source: NREMT respiratory assessment principles.",
+      "tags": [
+        "respiratory",
+        "assessment",
+        "airway"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per AHA BLS guidance, an unresponsive adult with no normal breathing and no pulse requires:",
+      "options": [
+        "Immediate high-quality CPR",
+        "Oral glucose",
+        "Recovery position only",
+        "Delayed treatment until ALS"
+      ],
+      "correct": 0,
+      "explanation": "Cardiac arrest care begins with immediate CPR and AED use. Source: American Heart Association (AHA), Adult BLS guidelines.",
+      "tags": [
+        "CPR",
+        "BLS",
+        "resuscitation"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT shock assessment, which finding is most concerning?",
+      "options": [
+        "Hypotension with altered mentation",
+        "Normal BP and warm skin",
+        "Mild anxiety only",
+        "Normal mentation with isolated tachycardia"
+      ],
+      "correct": 0,
+      "explanation": "Hypotension plus mental-status change suggests decompensated shock. Source: NREMT shock assessment principles.",
+      "tags": [
+        "shock",
+        "assessment",
+        "perfusion"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT stroke care, unilateral facial droop should raise concern for:",
+      "options": [
+        "Acute neurologic deficit/stroke",
+        "Simple dehydration",
+        "Isolated anxiety",
+        "Orthopedic injury"
+      ],
+      "correct": 0,
+      "explanation": "Facial asymmetry is a core stroke-screen finding. Source: NREMT stroke assessment principles.",
+      "tags": [
+        "stroke",
+        "assessment",
+        "neurology"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT diabetic care, symptomatic hypoglycemia with intact swallowing is commonly treated with:",
+      "options": [
+        "Oral glucose per protocol",
+        "Insulin",
+        "No treatment until ED",
+        "Nitroglycerin"
+      ],
+      "correct": 0,
+      "explanation": "Conscious hypoglycemic patients who can swallow often receive oral glucose. Source: NREMT medical emergency management principles.",
+      "tags": [
+        "diabetes",
+        "pharmacology",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per AHA BLS/AED principles, minimizing compression interruptions helps:",
+      "options": [
+        "Maintain coronary/cerebral perfusion pressure",
+        "Increase airway resistance",
+        "Eliminate need for ventilations",
+        "Reduce need for AED"
+      ],
+      "correct": 0,
+      "explanation": "Continuous high-quality compressions improve perfusion. Source: American Heart Association (AHA), Adult BLS guidelines.",
+      "tags": [
+        "CPR",
+        "resuscitation",
+        "BLS"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT obstetric emergencies, crowning means:",
+      "options": [
+        "Birth is imminent",
+        "Placenta delivered",
+        "False labor",
+        "No urgent preparation needed"
+      ],
+      "correct": 0,
+      "explanation": "Crowning indicates imminent delivery. Source: NREMT obstetric emergency principles.",
+      "tags": [
+        "obstetrics",
+        "assessment",
+        "operations"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT pediatric shock principles, early pediatric compensation often includes:",
+      "options": [
+        "Tachycardia before hypotension",
+        "Immediate hypotension",
+        "Bradycardia only",
+        "No vital sign changes"
+      ],
+      "correct": 0,
+      "explanation": "Children may maintain BP until late shock; tachycardia appears earlier. Source: NREMT pediatric assessment principles.",
+      "tags": [
+        "pediatrics",
+        "shock",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT toxicology priorities, initial management emphasizes:",
+      "options": [
+        "ABC support",
+        "Induced vomiting",
+        "Routine gastric lavage",
+        "Withholding oxygen"
+      ],
+      "correct": 0,
+      "explanation": "Early toxicology care prioritizes airway, breathing, and circulation support. Source: NREMT medical/toxicology principles.",
+      "tags": [
+        "toxicology",
+        "assessment",
+        "airway"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT trauma assessment, flail chest is characterized by:",
+      "options": [
+        "Paradoxical chest wall movement",
+        "Single rib tenderness only",
+        "Open femur fracture",
+        "Absent peripheral pulses only"
+      ],
+      "correct": 0,
+      "explanation": "Flail chest involves paradoxical motion from multiple rib fractures. Source: NREMT trauma assessment principles.",
+      "tags": [
+        "trauma",
+        "respiratory",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per AHA ACS guidance, aspirin for suspected ACS (when indicated) is usually:",
+      "options": [
+        "Chewed for faster absorption",
+        "Swallowed whole",
+        "Given IM",
+        "Avoided universally"
+      ],
+      "correct": 0,
+      "explanation": "Chewed aspirin speeds absorption and antiplatelet effect. Source: American Heart Association (AHA), ACS guidance.",
+      "tags": [
+        "cardiac",
+        "pharmacology",
+        "aspirin"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT respiratory triage, a patient speaking 1-2 word sentences is likely:",
+      "options": [
+        "In significant respiratory distress",
+        "Stable for delayed transport",
+        "Only mildly anxious",
+        "Fully compensated"
+      ],
+      "correct": 0,
+      "explanation": "Very limited speech is a high-risk respiratory distress sign. Source: NREMT respiratory assessment principles.",
+      "tags": [
+        "respiratory",
+        "assessment",
+        "triage"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT legal guidance, emergency care for a minor without guardian in urgent conditions often proceeds under:",
+      "options": [
+        "Implied consent",
+        "No consent possible",
+        "Financial consent",
+        "Law enforcement consent only"
+      ],
+      "correct": 0,
+      "explanation": "Implied consent may apply to urgent care when delay could harm the patient. Source: NREMT preparatory/legal principles.",
+      "tags": [
+        "operations",
+        "legal",
+        "ethics"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT airway adjunct principles, NPA is commonly avoided with:",
+      "options": [
+        "Suspected basilar skull fracture",
+        "Need for airway support with clenched jaw",
+        "Intact gag reflex concern with OPA",
+        "Snoring respirations"
+      ],
+      "correct": 0,
+      "explanation": "Suspected basilar skull fracture is a classic NPA contraindication/caution. Source: NREMT airway management principles.",
+      "tags": [
+        "airway",
+        "trauma",
+        "procedures"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT seizure care, after convulsions stop the first priority is:",
+      "options": [
+        "Reassess airway and breathing",
+        "Detailed social history",
+        "Oral challenge",
+        "Immediate ambulation"
+      ],
+      "correct": 0,
+      "explanation": "Postictal care prioritizes ventilation/oxygenation and reassessment. Source: NREMT neurologic emergency principles.",
+      "tags": [
+        "neurology",
+        "airway",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT respiratory physiology, wheezing is most often due to:",
+      "options": [
+        "Lower airway narrowing",
+        "Upper airway tongue obstruction",
+        "Pleural space blood",
+        "Normal ventilation pattern"
+      ],
+      "correct": 0,
+      "explanation": "Wheezing usually reflects narrowed lower airways/bronchospasm. Source: NREMT respiratory assessment and A&P principles.",
+      "tags": [
+        "respiratory",
+        "anatomy",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT trauma operations, spinal motion restriction decisions should use:",
+      "options": [
+        "Protocol criteria and patient findings",
+        "Mechanism alone",
+        "Patient preference alone",
+        "Time of day"
+      ],
+      "correct": 0,
+      "explanation": "SMR should follow validated criteria and exam findings. Source: NREMT trauma and operations principles.",
+      "tags": [
+        "trauma",
+        "operations",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per AHA adult BLS guidance, pulse checks during CPR should be limited to:",
+      "options": [
+        "No more than 10 seconds",
+        "At least 30 seconds",
+        "One full minute",
+        "Only after ROSC"
+      ],
+      "correct": 0,
+      "explanation": "Short pulse checks minimize compression interruptions. Source: American Heart Association (AHA), Adult BLS guidelines.",
+      "tags": [
+        "CPR",
+        "BLS",
+        "resuscitation"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT operations, EMT scope of practice is defined by:",
+      "options": [
+        "Certification level, state/local protocol, and medical direction",
+        "Family requests",
+        "Online videos",
+        "Hospital-only standards"
+      ],
+      "correct": 0,
+      "explanation": "Scope is governed by credentialing, regulation, protocols, and oversight. Source: NREMT preparatory/operations principles.",
+      "tags": [
+        "operations",
+        "legal",
+        "protocols"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT perfusion assessment, which skin finding suggests poor perfusion?",
+      "options": [
+        "Pale cool clammy skin",
+        "Warm dry pink skin",
+        "Isolated localized rash",
+        "Normal skin tone"
+      ],
+      "correct": 0,
+      "explanation": "Pale/cool/clammy skin can indicate sympathetic response and hypoperfusion. Source: NREMT assessment principles.",
+      "tags": [
+        "assessment",
+        "shock",
+        "perfusion"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT communication standards, handoff to receiving staff should include:",
+      "options": [
+        "Pertinent assessment findings, treatments, and response",
+        "Only patient name",
+        "Only billing details",
+        "Only chief complaint"
+      ],
+      "correct": 0,
+      "explanation": "Effective handoff includes key findings/interventions and patient response trends. Source: NREMT EMS communication standards.",
+      "tags": [
+        "operations",
+        "communication",
+        "documentation"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT medical assessment principles, sudden unilateral weakness and slurred speech should be treated as:",
+      "options": [
+        "Likely anxiety only",
+        "Possible acute stroke requiring rapid transport",
+        "Normal fatigue",
+        "Minor dehydration"
+      ],
+      "correct": 1,
+      "explanation": "Focal neurologic deficits are high-risk findings for possible stroke and require rapid assessment/transport to appropriate stroke resources. Source: NREMT stroke assessment principles.",
+      "tags": [
+        "medical",
+        "stroke",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT medical emergencies, a diabetic patient with altered mental status should have what checked early?",
+      "options": [
+        "Serum troponin",
+        "Blood glucose",
+        "D-dimer",
+        "Urine ketones only"
+      ],
+      "correct": 1,
+      "explanation": "Point-of-care glucose is a high-yield early test in altered mental status and can reveal rapidly correctable hypoglycemia. Source: NREMT medical assessment principles.",
+      "tags": [
+        "medical",
+        "diabetes",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT respiratory medical care, which finding is most concerning in an asthma patient?",
+      "options": [
+        "Mild expiratory wheeze speaking full sentences",
+        "Silent chest with increasing fatigue",
+        "Improved air movement after treatment",
+        "Occasional dry cough"
+      ],
+      "correct": 1,
+      "explanation": "A silent chest in a severe asthma patient can indicate critically reduced airflow and impending respiratory failure. Source: NREMT respiratory emergency principles.",
+      "tags": [
+        "medical",
+        "respiratory",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per AHA ACS guidance, persistent crushing chest pain with diaphoresis should raise concern for:",
+      "options": [
+        "Isolated musculoskeletal pain",
+        "Acute coronary syndrome",
+        "Simple reflux only",
+        "Migraine"
+      ],
+      "correct": 1,
+      "explanation": "Classic ACS symptoms include pressure-like chest discomfort with autonomic signs such as diaphoresis and nausea. Source: American Heart Association (AHA), ACS guidance.",
+      "tags": [
+        "medical",
+        "cardiac",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT toxicology principles, the priority in suspected overdose is:",
+      "options": [
+        "Detailed scene interview before care",
+        "Support airway, breathing, and circulation",
+        "Immediate antidote regardless of findings",
+        "Delay treatment until poison center callback"
+      ],
+      "correct": 1,
+      "explanation": "Initial overdose management is supportive with ABC priorities, then targeted interventions based on presentation/protocol. Source: NREMT toxicology and medical emergency principles.",
+      "tags": [
+        "medical",
+        "toxicology",
+        "airway"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT trauma priorities, life-threatening external hemorrhage should be managed:",
+      "options": [
+        "After full head-to-toe exam",
+        "Immediately during primary assessment",
+        "Only after IV access",
+        "Only after blood pressure is obtained"
+      ],
+      "correct": 1,
+      "explanation": "Catastrophic bleeding control is an immediate priority and may precede other elements of assessment. Source: NREMT trauma assessment and management principles.",
+      "tags": [
+        "trauma",
+        "bleeding",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT trauma airway principles, a gurgling trauma patient should first receive:",
+      "options": [
+        "Immediate oral fluids",
+        "Airway suction and positioning maneuvers",
+        "Nitroglycerin",
+        "CPAP"
+      ],
+      "correct": 1,
+      "explanation": "Gurgling suggests fluid in the upper airway; suction and airway maneuvers are immediate priorities. Source: NREMT trauma airway management principles.",
+      "tags": [
+        "trauma",
+        "airway",
+        "procedures"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT trauma assessment, unequal chest rise after blunt trauma should raise concern for:",
+      "options": [
+        "Simple ankle sprain",
+        "Serious thoracic injury",
+        "Normal anxiety response",
+        "Hypoglycemia"
+      ],
+      "correct": 1,
+      "explanation": "Unequal chest rise can indicate significant chest trauma and requires immediate respiratory evaluation/intervention. Source: NREMT trauma and respiratory assessment principles.",
+      "tags": [
+        "trauma",
+        "respiratory",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT musculoskeletal trauma care, a pulseless, deformed extremity after injury is:",
+      "options": [
+        "Low priority finding",
+        "High priority due to possible vascular compromise",
+        "Managed with ice only",
+        "Reassessed next day"
+      ],
+      "correct": 1,
+      "explanation": "Absent distal pulse with deformity suggests neurovascular compromise and requires urgent management/transport. Source: NREMT trauma principles.",
+      "tags": [
+        "trauma",
+        "musculoskeletal",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT head injury assessment, repeated vomiting and worsening mental status after trauma suggest:",
+      "options": [
+        "Benign post-event stress",
+        "Potential significant intracranial injury",
+        "Simple dehydration",
+        "Isolated vertigo"
+      ],
+      "correct": 1,
+      "explanation": "Progressive neurologic symptoms after head trauma are concerning for serious brain injury and need rapid definitive care. Source: NREMT trauma neurologic assessment principles.",
+      "tags": [
+        "trauma",
+        "neuro",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT pediatric assessment, which finding suggests respiratory distress in a child?",
+      "options": [
+        "Playful behavior with normal speech",
+        "Nasal flaring and intercostal retractions",
+        "Warm dry skin only",
+        "Normal feeding pattern"
+      ],
+      "correct": 1,
+      "explanation": "Retractions and nasal flaring are key signs of increased pediatric work of breathing. Source: NREMT pediatric respiratory assessment principles.",
+      "tags": [
+        "pediatrics",
+        "respiratory",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT pediatric shock principles, delayed capillary refill in an ill child may indicate:",
+      "options": [
+        "Improved perfusion",
+        "Possible hypoperfusion",
+        "Normal hydration in all children",
+        "Hyperglycemia"
+      ],
+      "correct": 1,
+      "explanation": "Prolonged capillary refill can be a sign of compromised pediatric perfusion when interpreted with the clinical picture. Source: NREMT pediatric assessment principles.",
+      "tags": [
+        "pediatrics",
+        "shock",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT pediatric airway management, what is a common cause of respiratory compromise in infants?",
+      "options": [
+        "Obligate nasal breathing with upper airway obstruction risk",
+        "Chronic coronary artery disease",
+        "Advanced COPD",
+        "Peripheral vascular disease"
+      ],
+      "correct": 0,
+      "explanation": "Infants are preferential nasal breathers and can deteriorate quickly with upper airway obstruction. Source: NREMT pediatric airway anatomy/physiology principles.",
+      "tags": [
+        "pediatrics",
+        "airway",
+        "anatomy"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT pediatric seizure care, after a seizure stops your immediate priority is:",
+      "options": [
+        "Oral intake challenge",
+        "Airway and breathing reassessment",
+        "Long transport delay",
+        "Detailed school history first"
+      ],
+      "correct": 1,
+      "explanation": "Postictal pediatric care prioritizes airway patency, ventilation, and oxygenation. Source: NREMT pediatric neurologic emergency principles.",
+      "tags": [
+        "pediatrics",
+        "neuro",
+        "airway"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per AHA pediatric BLS guidance, high-quality CPR for children emphasizes:",
+      "options": [
+        "Very slow compressions to avoid fatigue",
+        "Appropriate depth and rate with minimal interruptions",
+        "Only rescue breaths without compressions",
+        "Compression pauses every 10 seconds"
+      ],
+      "correct": 1,
+      "explanation": "Pediatric BLS emphasizes effective depth/rate and minimizing compression interruptions to maintain perfusion. Source: American Heart Association (AHA), Pediatric BLS guidance.",
+      "tags": [
+        "pediatrics",
+        "CPR",
+        "BLS"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    }
+  ],
+  "AEMT": [
+    {
+      "question": "What is the standard fluid bolus for a hypotensive adult in hypovolemic shock?",
+      "options": [
+        "100 mL NS wide open",
+        "250 mL NS, reassess after",
+        "5 mL/kg NS over 1 hour",
+        "1 liter NS or LR wide open"
+      ],
+      "correct": 3,
+      "explanation": "Initial fluid resuscitation for hypovolemic shock in adults is typically 1 liter NS or LR administered wide open, with reassessment after each bolus.",
+      "tags": [
+        "pharmacology",
+        "shock",
+        "IV-fluids"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "What is the pediatric fluid bolus for a patient in hypovolemic shock?",
+      "options": [
+        "500 mL NS wide open",
+        "1 liter NS wide open",
+        "10 mL/kg NS or LR",
+        "20 mL/kg NS or LR"
+      ],
+      "correct": 3,
+      "explanation": "Pediatric fluid resuscitation for shock uses 20 mL/kg NS or LR. This is repeated and reassessed, monitoring for signs of pulmonary edema.",
+      "tags": [
+        "pharmacology",
+        "shock",
+        "pediatrics",
+        "IV-fluids"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Glucagon is administered to a diabetic patient who is unresponsive and cannot receive IV/IO dextrose. What is the standard adult IM dose?",
+      "options": [
+        "0.5 mg IM",
+        "1 mg IM",
+        "2 mg IM",
+        "5 mg IM"
+      ],
+      "correct": 1,
+      "explanation": "Glucagon 1 mg IM (or IN) is the standard adult dose for severe hypoglycemia when IV/IO access is unavailable. It stimulates hepatic glycogenolysis.",
+      "tags": [
+        "pharmacology",
+        "diabetes",
+        "glucagon"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "What is the concentration of epinephrine used in cardiac arrest (IV/IO push)?",
+      "options": [
+        "1:1,000 (1 mg/mL)",
+        "0.5 mg/mL",
+        "1:100,000 (0.01 mg/mL)",
+        "1:10,000 (0.1 mg/mL)"
+      ],
+      "correct": 3,
+      "explanation": "Cardiac arrest epinephrine is 1:10,000 (0.1 mg/mL), given as 1 mg (10 mL) IV/IO every 3\u20135 minutes. The 1:1,000 concentration is for IM anaphylaxis use.",
+      "tags": [
+        "pharmacology",
+        "cardiac",
+        "epinephrine",
+        "resuscitation"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Which intraosseous (IO) site is typically preferred for adults?",
+      "options": [
+        "Distal tibia only",
+        "Femur midshaft",
+        "Proximal humerus or proximal tibia",
+        "Sternum only"
+      ],
+      "correct": 2,
+      "explanation": "The proximal humerus and proximal tibia are common adult IO sites. The humerus provides higher flow rates. The distal tibia is preferred in children.",
+      "tags": [
+        "procedures",
+        "IO-access",
+        "vascular-access"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "In a patient with suspected diabetic ketoacidosis (DKA), what would you expect the blood glucose to be?",
+      "options": [
+        "Less than 60 mg/dL",
+        "Greater than 250 mg/dL",
+        "60\u2013120 mg/dL (normal)",
+        "Exactly 180 mg/dL"
+      ],
+      "correct": 1,
+      "explanation": "DKA is characterized by hyperglycemia (typically >250 mg/dL), ketosis, and metabolic acidosis. It most commonly affects Type 1 diabetics.",
+      "tags": [
+        "medical",
+        "diabetes",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "What is the primary purpose of waveform capnography (EtCO\u2082 monitoring) during cardiac arrest?",
+      "options": [
+        "Assess CPR quality and predict ROSC",
+        "Confirm IV placement",
+        "Monitor heart rhythm",
+        "Measure blood glucose"
+      ],
+      "correct": 0,
+      "explanation": "Waveform capnography monitors EtCO\u2082 during CPR \u2014 values <10 mmHg indicate poor CPR quality. A sudden rise in EtCO\u2082 (>35 mmHg) is an early indicator of ROSC.",
+      "tags": [
+        "resuscitation",
+        "capnography",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per AHA ACLS guidance, what is the adult epinephrine dose in cardiac arrest?",
+      "options": [
+        "1 mg IV/IO every 3\u20135 minutes",
+        "0.1 mg IV/IO every 10 minutes",
+        "2 mg IV/IO every 3\u20135 minutes",
+        "0.3 mg IM once"
+      ],
+      "correct": 0,
+      "explanation": "Adult cardiac arrest dosing is epinephrine 1 mg IV/IO every 3\u20135 minutes. Source: American Heart Association (AHA), ACLS cardiac arrest algorithm.",
+      "tags": [
+        "pharmacology",
+        "cardiac",
+        "resuscitation"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "What is a normal EtCO2 range in a perfusing adult patient?",
+      "options": [
+        "35\u201345 mmHg",
+        "20\u201330 mmHg",
+        "10\u201320 mmHg",
+        "50\u201360 mmHg"
+      ],
+      "correct": 0,
+      "explanation": "A normal perfusing adult EtCO2 range is typically about 35\u201345 mmHg, interpreted with overall clinical context. Source: NREMT-aligned capnography fundamentals.",
+      "tags": [
+        "capnography",
+        "assessment",
+        "respiratory"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "In symptomatic bradycardia, which clinical finding indicates poor perfusion and potential instability?",
+      "options": [
+        "Mild anxiety only",
+        "Warm skin and normal mentation",
+        "Hypotension with altered mental status",
+        "Asymptomatic sinus bradycardia in an athlete"
+      ],
+      "correct": 2,
+      "explanation": "Hypotension and altered mental status are key signs of unstable bradycardia requiring urgent intervention. Source: American Heart Association (AHA), ACLS bradycardia algorithm.",
+      "tags": [
+        "cardiac",
+        "assessment",
+        "dysrhythmia"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT shock management priorities, what is the best initial fluid strategy for hypotensive adults when protocol allows?",
+      "options": [
+        "No fluids until hospital",
+        "Only hypertonic saline",
+        "Small reassessed boluses of isotonic crystalloid",
+        "D5W rapid infusion"
+      ],
+      "correct": 2,
+      "explanation": "A common EMS approach is isotonic crystalloid boluses with frequent reassessment for response and complications. Source: NREMT-aligned shock management principles.",
+      "tags": [
+        "shock",
+        "IV-fluids",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "In cardiac arrest, an abrupt sustained rise in EtCO2 most strongly suggests:",
+      "options": [
+        "Return of spontaneous circulation (ROSC)",
+        "Tube dislodgement",
+        "Worsening CPR quality",
+        "Severe bronchospasm"
+      ],
+      "correct": 0,
+      "explanation": "A sudden persistent EtCO2 increase during arrest often indicates ROSC and should prompt pulse/rhythm reassessment. Source: American Heart Association (AHA), ACLS capnography guidance.",
+      "tags": [
+        "resuscitation",
+        "capnography",
+        "ROSC"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Which statement about IO medication administration is correct?",
+      "options": [
+        "Only fluids can be given IO",
+        "Most IV medications can be given IO at IV-equivalent doses",
+        "IO cannot be used in adults",
+        "IO is only for pediatrics"
+      ],
+      "correct": 1,
+      "explanation": "In emergencies, IO access can be used for fluids and most medications at IV-equivalent dosing. Source: NREMT-aligned vascular access principles.",
+      "tags": [
+        "IO-access",
+        "vascular-access",
+        "pharmacology"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "A patient with suspected DKA is most likely to have which breathing pattern?",
+      "options": [
+        "Cheyne-Stokes respirations",
+        "Kussmaul respirations (deep, rapid)",
+        "Apneustic breathing",
+        "Biot respirations"
+      ],
+      "correct": 1,
+      "explanation": "DKA often presents with Kussmaul respirations as a respiratory compensation for metabolic acidosis. Source: NREMT-aligned diabetic emergency assessment.",
+      "tags": [
+        "medical",
+        "diabetes",
+        "respiratory"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "For an unstable tachycardia patient with a pulse, AHA ACLS recommends prioritizing:",
+      "options": [
+        "Adenosine first in all rhythms",
+        "Atropine",
+        "Synchronized cardioversion",
+        "Immediate chest compressions"
+      ],
+      "correct": 2,
+      "explanation": "Unstable tachycardia with a pulse is treated with synchronized cardioversion per ACLS guidance. Source: American Heart Association (AHA), ACLS tachycardia algorithm.",
+      "tags": [
+        "cardiac",
+        "dysrhythmia",
+        "ACLS"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "In sepsis with hypotension, early prehospital management commonly includes:",
+      "options": [
+        "Immediate insulin infusion",
+        "Delaying transport until fever resolves",
+        "Routine sodium bicarbonate bolus",
+        "Isotonic crystalloid resuscitation and rapid transport"
+      ],
+      "correct": 3,
+      "explanation": "Early fluid resuscitation and rapid definitive care are central priorities in suspected septic shock. Source: NREMT-aligned shock/sepsis management principles.",
+      "tags": [
+        "medical",
+        "sepsis",
+        "shock"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per AHA ACLS guidance, after an advanced airway is in place during cardiac arrest, ventilation should be delivered at approximately:",
+      "options": [
+        "6 breaths/min",
+        "20 breaths/min",
+        "10 breaths/min (1 breath every 6 seconds)",
+        "30 breaths/min"
+      ],
+      "correct": 2,
+      "explanation": "With an advanced airway in cardiac arrest, provide continuous compressions with asynchronous ventilations at about 10/min. Source: American Heart Association (AHA), ACLS/BLS resuscitation guidance.",
+      "tags": [
+        "airway",
+        "resuscitation",
+        "ventilation"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per AHA ACLS guidance, shockable adult cardiac arrest management centers on:",
+      "options": [
+        "Defibrillation with high-quality CPR cycles",
+        "Atropine first",
+        "Oral medications",
+        "Delayed CPR until airway established"
+      ],
+      "correct": 0,
+      "explanation": "Shockable arrest treatment prioritizes defibrillation and CPR cycles. Source: American Heart Association (AHA), ACLS cardiac arrest algorithm.",
+      "tags": [
+        "ACLS",
+        "resuscitation",
+        "cardiac"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT vascular access principles, IO access is indicated when:",
+      "options": [
+        "Urgent access needed and IV is delayed/unsuccessful",
+        "Stable routine hydration only",
+        "Minor wound care",
+        "No medications needed"
+      ],
+      "correct": 0,
+      "explanation": "IO is used when immediate vascular access is required and IV access is not promptly available. Source: NREMT vascular access principles.",
+      "tags": [
+        "io-access",
+        "procedures",
+        "operations"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per AHA ACLS bradycardia guidance, persistent unstable bradycardia after atropine may require:",
+      "options": [
+        "Transcutaneous pacing and/or vasoactive infusion",
+        "Defibrillation",
+        "Oral glucose",
+        "No further interventions"
+      ],
+      "correct": 0,
+      "explanation": "Algorithm escalation includes pacing/vasoactive support for unstable patients. Source: American Heart Association (AHA), ACLS bradycardia algorithm.",
+      "tags": [
+        "ACLS",
+        "cardiac",
+        "dysrhythmia"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT capnography trends, falling EtCO2 in a ventilated patient may indicate:",
+      "options": [
+        "Hyperventilation or worsening perfusion",
+        "Guaranteed ROSC",
+        "Normal trend in all patients",
+        "Pulse oximeter malfunction only"
+      ],
+      "correct": 0,
+      "explanation": "EtCO2 decline can reflect excessive ventilation or reduced perfusion depending on context. Source: NREMT capnography assessment principles.",
+      "tags": [
+        "capnography",
+        "assessment",
+        "ventilation"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT shock care, severe dehydration with hypoperfusion is commonly managed prehospital with:",
+      "options": [
+        "Fluid resuscitation and rapid transport per protocol",
+        "Immediate insulin",
+        "Routine bicarbonate for all",
+        "No intervention before ED"
+      ],
+      "correct": 0,
+      "explanation": "Isotonic fluids and rapid definitive care are common prehospital priorities. Source: NREMT shock and medical management principles.",
+      "tags": [
+        "shock",
+        "iv-fluids",
+        "medical"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per AHA ACLS tachycardia guidance, unstable wide-complex tachycardia with pulse is treated with:",
+      "options": [
+        "Synchronized cardioversion",
+        "Adenosine PO",
+        "Atropine",
+        "Observation only"
+      ],
+      "correct": 0,
+      "explanation": "Hemodynamically unstable tachycardia with pulse requires synchronized cardioversion. Source: American Heart Association (AHA), ACLS tachycardia algorithm.",
+      "tags": [
+        "ACLS",
+        "cardiac",
+        "dysrhythmia"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT patient safety principles, after sedative administration a key priority is:",
+      "options": [
+        "Frequent ventilation/oxygenation reassessment",
+        "Remove monitoring devices",
+        "Give oral intake immediately",
+        "Delay reassessment"
+      ],
+      "correct": 0,
+      "explanation": "Sedatives may depress respirations; close airway/ventilation monitoring is essential. Source: NREMT airway monitoring and safety principles.",
+      "tags": [
+        "airway",
+        "pharmacology",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per AHA post-ROSC guidance, blood pressure management should:",
+      "options": [
+        "Support perfusion with close monitoring",
+        "Be ignored if pulse present",
+        "Wait until ED only",
+        "Permit profound hypotension"
+      ],
+      "correct": 0,
+      "explanation": "Post-ROSC care includes hemodynamic optimization for organ perfusion. Source: American Heart Association (AHA), post-cardiac arrest care guidance.",
+      "tags": [
+        "post-ROSC",
+        "assessment",
+        "resuscitation"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    }
+  ],
+  "Paramedic": [
+    {
+      "question": "Per current AHA ACLS tachycardia guidance, what is the first-dose adenosine treatment for stable regular narrow-complex SVT in an adult?",
+      "options": [
+        "3 mg rapid IV push",
+        "6 mg slow IV drip over 2 minutes",
+        "12 mg slow IV push",
+        "6 mg rapid IV push followed by 20 mL NS flush"
+      ],
+      "correct": 3,
+      "explanation": "Adenosine 6 mg rapid IV push followed by immediate saline flush is first-line for stable regular narrow-complex SVT; rapid delivery is critical due to very short half-life. Source: American Heart Association (AHA), ACLS tachycardia algorithm.",
+      "tags": [
+        "pharmacology",
+        "cardiac",
+        "adenosine",
+        "dysrhythmia"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per current AHA ACLS cardiac arrest guidance, in shock-refractory VF/pulseless VT, what is the first antiarrhythmic medication dose?",
+      "options": [
+        "Lidocaine 1.5 mg/kg IV",
+        "Procainamide 20 mg/min",
+        "Amiodarone 300 mg IV push",
+        "Magnesium sulfate 2g IV"
+      ],
+      "correct": 2,
+      "explanation": "Amiodarone 300 mg IV/IO bolus is recommended for shock-refractory VF/pulseless VT, with a possible second dose of 150 mg. Source: American Heart Association (AHA), ACLS cardiac arrest algorithm.",
+      "tags": [
+        "pharmacology",
+        "cardiac",
+        "amiodarone",
+        "resuscitation"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per current AHA ACLS bradycardia guidance, what is the standard atropine dose for symptomatic bradycardia in adults?",
+      "options": [
+        "1 mg IV, repeat q3\u20135 min to max 3 mg",
+        "0.1 mg IV",
+        "1 mg IV bolus, single dose",
+        "2 mg IV over 10 minutes"
+      ],
+      "correct": 0,
+      "explanation": "AHA ACLS recommends atropine 1 mg IV, repeat every 3\u20135 minutes to a maximum total dose of 3 mg for symptomatic adult bradycardia. Source: American Heart Association (AHA), ACLS bradycardia algorithm.",
+      "tags": [
+        "pharmacology",
+        "cardiac",
+        "atropine",
+        "dysrhythmia"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "What is the IM dose of midazolam for an actively seizing adult when IV access is not available?",
+      "options": [
+        "1 mg IM",
+        "2.5 mg IM",
+        "5\u201310 mg IM (weight-based, typically 0.1 mg/kg, max 10 mg)",
+        "15 mg IM"
+      ],
+      "correct": 2,
+      "explanation": "Midazolam 0.1 mg/kg IM (max 10 mg) is the standard dose for seizures when IV is unavailable. IM midazolam has been shown to be as effective as IV lorazepam for prehospital seizure termination.",
+      "tags": [
+        "pharmacology",
+        "neuro",
+        "midazolam",
+        "seizure"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per AHA ACS/STEMI guidance, concerning ST elevation in contiguous leads should prompt evaluation for what condition?",
+      "options": [
+        "Possible STEMI requiring cath lab activation",
+        "Right bundle branch block",
+        "Normal variant",
+        "Benign early repolarization only"
+      ],
+      "correct": 0,
+      "explanation": "Concerning ST elevation in contiguous leads suggests possible STEMI requiring rapid reperfusion evaluation. Prehospital 12-lead acquisition and early cath lab activation reduce treatment delay. (Note: V2\u2013V3 leads use sex/age-specific thresholds.) Source: American Heart Association (AHA), ACS/STEMI guidance.",
+      "tags": [
+        "cardiac",
+        "12-lead",
+        "STEMI",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "During RSI, succinylcholine is contraindicated in which of the following patients?",
+      "options": [
+        "Patients with suspected cervical spine injury",
+        "Patients with a known cardiac history",
+        "Patients over 65 years old",
+        "Patients with hyperkalemia, major burns >24h, or crush injury"
+      ],
+      "correct": 3,
+      "explanation": "Succinylcholine causes potassium release. In patients with hyperkalemia, major burns (after 24 hours), crush injury, or denervation injuries, this can cause fatal dysrhythmias.",
+      "tags": [
+        "pharmacology",
+        "airway",
+        "RSI",
+        "succinylcholine"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per current AHA post-cardiac arrest care guidance, what EtCO\u2082 range is targeted during post-ROSC ventilation?",
+      "options": [
+        "20\u201325 mmHg",
+        ">60 mmHg",
+        "50\u201360 mmHg",
+        "35\u201345 mmHg"
+      ],
+      "correct": 3,
+      "explanation": "Post-ROSC ventilation should target normocapnia, typically EtCO\u2082 35\u201345 mmHg, to avoid harms from both hypo- and hypercapnia. Source: American Heart Association (AHA), post-cardiac arrest care guidance.",
+      "tags": [
+        "resuscitation",
+        "post-ROSC",
+        "capnography",
+        "neuro"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "What is push-dose epinephrine, and what is the typical concentration used?",
+      "options": [
+        "1 mg epinephrine 1:1,000 IV push every 5 minutes",
+        "Small-dose IV epinephrine (10\u201320 mcg) from a diluted 1:100,000 solution (10 mcg/mL), used for hemodynamic instability",
+        "0.3 mg epinephrine IM for anaphylaxis",
+        "Continuous epinephrine drip at 2 mcg/min"
+      ],
+      "correct": 1,
+      "explanation": "Push-dose epinephrine uses a diluted concentration (10 mcg/mL \u2014 1:100,000). For hemodynamic instability, 10\u201320 mcg IV is given every 2\u20135 minutes. It provides rapid, titratable hemodynamic support.",
+      "tags": [
+        "pharmacology",
+        "cardiac",
+        "epinephrine",
+        "shock"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per AHA ACLS guidance, what is the preferred immediate intervention for unstable tachycardia with a pulse?",
+      "options": [
+        "Adenosine trial first",
+        "Synchronized cardioversion",
+        "Immediate defibrillation",
+        "Atropine 1 mg IV"
+      ],
+      "correct": 1,
+      "explanation": "Unstable tachycardia with a pulse is treated with synchronized cardioversion. Source: American Heart Association (AHA), ACLS tachycardia algorithm.",
+      "tags": [
+        "ACLS",
+        "cardiac",
+        "dysrhythmia"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per AHA ACLS guidance, what is the appropriate shock type for pulseless ventricular tachycardia?",
+      "options": [
+        "Synchronized cardioversion",
+        "Unsynchronized defibrillation",
+        "Transcutaneous pacing",
+        "Chemical cardioversion only"
+      ],
+      "correct": 1,
+      "explanation": "Pulseless VT is a shockable arrest rhythm requiring unsynchronized defibrillation and high-quality CPR. Source: American Heart Association (AHA), ACLS cardiac arrest algorithm.",
+      "tags": [
+        "ACLS",
+        "cardiac",
+        "resuscitation"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per AHA ACLS guidance, magnesium sulfate is specifically indicated for which rhythm problem?",
+      "options": [
+        "Torsades de pointes (polymorphic VT with prolonged QT)",
+        "Stable sinus tachycardia",
+        "Asystole",
+        "First-degree AV block"
+      ],
+      "correct": 0,
+      "explanation": "Magnesium sulfate is recommended for torsades de pointes and may be used in refractory VF/pVT associated with prolonged QT. Source: American Heart Association (AHA), ACLS guidance.",
+      "tags": [
+        "pharmacology",
+        "cardiac",
+        "dysrhythmia"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "During adult cardiac arrest, when should epinephrine be given for non-shockable rhythms (PEA/asystole) per AHA ACLS?",
+      "options": [
+        "As soon as feasible",
+        "Only after 10 minutes of CPR",
+        "Only after ROSC",
+        "Never in non-shockable rhythms"
+      ],
+      "correct": 0,
+      "explanation": "For non-shockable rhythms, epinephrine should be administered as soon as feasible, then every 3\u20135 minutes. Source: American Heart Association (AHA), ACLS cardiac arrest algorithm.",
+      "tags": [
+        "ACLS",
+        "resuscitation",
+        "epinephrine"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per AHA post-cardiac arrest care guidance, what SpO2 target is generally recommended after ROSC?",
+      "options": [
+        "88\u201390%",
+        "92\u201398%",
+        "100% continuously",
+        "85\u201388%"
+      ],
+      "correct": 1,
+      "explanation": "After ROSC, oxygenation is typically titrated to avoid both hypoxemia and hyperoxemia, with a common target range of 92\u201398%. Source: American Heart Association (AHA), post-cardiac arrest care guidance.",
+      "tags": [
+        "post-ROSC",
+        "oxygen",
+        "resuscitation"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per AHA post-ROSC ventilation guidance, which strategy helps limit secondary neurologic injury?",
+      "options": [
+        "Hyperventilate to EtCO2 20 mmHg",
+        "Target EtCO2 above 55 mmHg",
+        "Maintain normocapnia and avoid excessive ventilation",
+        "Ventilate only if SpO2 falls below 80%"
+      ],
+      "correct": 2,
+      "explanation": "Avoiding both hypocapnia and hypercapnia is important after ROSC; normocapnia is the target. Source: American Heart Association (AHA), post-cardiac arrest care guidance.",
+      "tags": [
+        "post-ROSC",
+        "ventilation",
+        "capnography"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "In a stable, regular, monomorphic wide-complex tachycardia, AHA ACLS notes adenosine may be considered when the rhythm is:",
+      "options": [
+        "Irregular and polymorphic",
+        "Regular and monomorphic",
+        "Pulseless",
+        "Associated with severe hypotension"
+      ],
+      "correct": 1,
+      "explanation": "Adenosine may be considered for regular, monomorphic wide-complex tachycardia in selected stable patients. Source: American Heart Association (AHA), ACLS tachycardia algorithm.",
+      "tags": [
+        "ACLS",
+        "cardiac",
+        "adenosine"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Which contiguous lead group corresponds to an inferior STEMI pattern?",
+      "options": [
+        "I, aVL, V5, V6",
+        "V1, V2, V3, V4",
+        "aVR only",
+        "II, III, aVF"
+      ],
+      "correct": 3,
+      "explanation": "Inferior wall STEMI findings classically involve leads II, III, and aVF. Source: NREMT-aligned 12-lead ECG pattern fundamentals and AHA ACS interpretation principles.",
+      "tags": [
+        "cardiac",
+        "12-lead",
+        "STEMI"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "During RSI and post-intubation care, what is the most reliable continuous method to confirm and monitor tube placement?",
+      "options": [
+        "Auscultation alone",
+        "Pulse oximetry trend only",
+        "Chest rise only",
+        "Continuous waveform capnography"
+      ],
+      "correct": 3,
+      "explanation": "Continuous waveform capnography is the most reliable ongoing method for confirming tracheal tube placement and detecting displacement. Source: American Heart Association (AHA), advanced airway/capnography guidance.",
+      "tags": [
+        "airway",
+        "intubation",
+        "capnography"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "In ACLS, routine sodium bicarbonate use in undifferentiated adult cardiac arrest is:",
+      "options": [
+        "Recommended in all arrests",
+        "Required before first epinephrine dose",
+        "Not routinely recommended; reserved for specific indications",
+        "Standard for all shockable rhythms"
+      ],
+      "correct": 2,
+      "explanation": "Routine bicarbonate is not recommended in undifferentiated arrest; consider only for specific indications (e.g., known hyperkalemia or certain toxicologic causes). Source: American Heart Association (AHA), ACLS special circumstances guidance.",
+      "tags": [
+        "ACLS",
+        "pharmacology",
+        "resuscitation"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per AHA ACLS guidance, first adenosine dose for stable regular narrow-complex SVT after vagal maneuvers is:",
+      "options": [
+        "6 mg rapid IV push with flush",
+        "1 mg slow IV",
+        "12 mg oral",
+        "300 mg IV bolus"
+      ],
+      "correct": 0,
+      "explanation": "Initial adenosine dosing is 6 mg rapid IV push with immediate flush. Source: American Heart Association (AHA), ACLS tachycardia algorithm.",
+      "tags": [
+        "ACLS",
+        "cardiac",
+        "adenosine"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per AHA ACLS cardiac arrest guidance, adult epinephrine dosing is:",
+      "options": [
+        "1 mg IV/IO every 3-5 minutes",
+        "0.3 mg IM once",
+        "10 mg IV once",
+        "1 mg oral every 10 minutes"
+      ],
+      "correct": 0,
+      "explanation": "Adult arrest dosing is epinephrine 1 mg IV/IO every 3-5 minutes. Source: American Heart Association (AHA), ACLS cardiac arrest algorithm.",
+      "tags": [
+        "ACLS",
+        "epinephrine",
+        "resuscitation"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per AHA ACLS airway guidance, continuous monitoring of tube placement is best done with:",
+      "options": [
+        "Continuous waveform capnography",
+        "Skin color only",
+        "Pulse checks only",
+        "Single auscultation then no reassessment"
+      ],
+      "correct": 0,
+      "explanation": "Waveform capnography is the preferred continuous method to verify/monitor tube placement. Source: American Heart Association (AHA), ACLS advanced airway guidance.",
+      "tags": [
+        "airway",
+        "intubation",
+        "capnography"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT 12-lead principles, reciprocal ST depression during STEMI concern generally:",
+      "options": [
+        "Supports acute ischemic injury pattern",
+        "Rules out MI",
+        "Indicates artifact only",
+        "Proves hyperkalemia"
+      ],
+      "correct": 0,
+      "explanation": "Reciprocal changes can support acute ischemic interpretation in context. Source: NREMT 12-lead interpretation principles.",
+      "tags": [
+        "cardiac",
+        "12-lead",
+        "assessment"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per AHA post-cardiac arrest guidance, ventilation after ROSC should target:",
+      "options": [
+        "Normocapnia",
+        "Profound hypocapnia",
+        "Severe hypercapnia",
+        "No EtCO2 monitoring"
+      ],
+      "correct": 0,
+      "explanation": "Post-ROSC strategy targets normocapnia and avoids hypo/hypercapnia. Source: American Heart Association (AHA), post-cardiac arrest care guidance.",
+      "tags": [
+        "post-ROSC",
+        "ventilation",
+        "capnography"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per NREMT critical care operations, vasoactive infusion titration requires:",
+      "options": [
+        "Continuous hemodynamic reassessment per protocol",
+        "No BP monitoring",
+        "Stopping ECG monitoring",
+        "Verbal estimates only"
+      ],
+      "correct": 0,
+      "explanation": "Titrated vasoactive therapy requires continuous monitoring and protocol-driven adjustments. Source: NREMT paramedic operations/hemodynamic principles.",
+      "tags": [
+        "operations",
+        "shock",
+        "pharmacology"
+      ],
+      "source_tags": [
+        "NREMT",
+        "General EMS"
+      ]
+    },
+    {
+      "question": "Per AHA ACLS special circumstances, routine calcium in undifferentiated arrest is:",
+      "options": [
+        "Not routinely recommended unless specific indication exists",
+        "Recommended in all arrests",
+        "Mandatory before first shock",
+        "Only after ROSC"
+      ],
+      "correct": 0,
+      "explanation": "Calcium is typically reserved for specific indications, not routine undifferentiated arrest. Source: American Heart Association (AHA), ACLS special circumstances guidance.",
+      "tags": [
+        "ACLS",
+        "pharmacology",
+        "resuscitation"
+      ],
+      "source_tags": [
+        "NREMT",
+        "AHA",
+        "General EMS"
+      ]
+    }
+  ]
+}

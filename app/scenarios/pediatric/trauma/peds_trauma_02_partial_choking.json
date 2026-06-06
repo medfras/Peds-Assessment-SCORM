@@ -1,0 +1,1267 @@
+{
+  "_schema": "pfd_scenario_v1",
+  "id": "peds_trauma_02_partial_choking",
+  "title": "Partial Airway Obstruction (Grape) — 18-Month-Old Female",
+  "display_title": "Pediatric Choking",
+  "subtitle": "18-month-old female, forceful cough after choking on a grape",
+  "category": "pediatric_trauma",
+  "call_type": "nremt_trauma",
+  "category_display": "Pediatric Trauma Assessment",
+  "turnover_target": "als",
+  "version": "1.0",
+  "rubric_template": "ems_standard_v1",
+  "base_patient_care_rubric": "nremt_trauma_v1",
+  "difficulty": "easy",
+  "scenario_number": 2,
+  "prerequisites": [
+    "peds_trauma_01_soft_tissue"
+  ],
+  "protocol": "MI/01_General_Treatments/01-10_fbao",
+  "jurisdiction": "mi_base",
+  "clinical_context": {
+    "jurisdiction": "MI",
+    "concepts": [
+      "pediatric_patient",
+      "foreign_body_airway_obstruction",
+      "upper_airway_obstruction",
+      "airway_management",
+      "oxygen_therapy"
+    ],
+    "protocol_focus": [
+      "foreign_body_airway_obstruction",
+      "airway_management",
+      "oxygen_therapy"
+    ]
+  },
+  "agency_context": "",
+  "spinal_injury_possible": false,
+  "non_transport_agency": false,
+  "multiple_patients_possible": false,
+  "diagnostics_indicated": false,
+  "opqrst_radiation_relevant": false,
+  "readiness_criteria": {
+    "min_minutes": 3,
+    "checks": [
+      {
+        "id": "messages",
+        "label": "5 messages sent",
+        "type": "message_count",
+        "min": 5
+      },
+      {
+        "id": "vitals",
+        "label": "Vitals assessed",
+        "type": "vitals_logged"
+      },
+      {
+        "id": "exam",
+        "label": "Exam/history obtained",
+        "type": "exam_logged"
+      },
+      {
+        "id": "treatment",
+        "label": "Treatment applied",
+        "type": "treatment_logged"
+      }
+    ]
+  },
+  "scene_entry_scoring": {
+    "ppe": {
+      "required": [
+        "gloves"
+      ],
+      "recommended": [
+        "eye_protection"
+      ],
+      "missing_required_penalty": 3,
+      "missing_recommended_penalty": 1,
+      "max_score": 10
+    },
+    "pat": {
+      "expected_impression": "sick",
+      "incorrect_impression_deduction": 2
+    }
+  },
+  "lung_sound_challenge": {
+    "enabled": true,
+    "audio_file": "/static/audio/lung sounds/Croup-Laryngotracheitis-Stridor-Barking-Cough-theSimTech.mp3",
+    "prompt": "Auscultate Mia — what do you hear?",
+    "accepted_answers": [
+      "stridor",
+      "inspiratory stridor",
+      "stridorous",
+      "stridor on inspiration",
+      "upper airway stridor",
+      "high pitched",
+      "high-pitched",
+      "airway noise",
+      "noisy breathing"
+    ],
+    "correct_choice_id": "inspiratory_stridor",
+    "finding": "Inspiratory stridor — high-pitched sound on inhalation; lower lung fields clear bilaterally with air movement present",
+    "feedback_correct": "Correct — inspiratory stridor from a partial airway obstruction. The lung fields below are clear, which tells you the obstruction is in the upper airway. This is NOT a lower airway problem — albuterol and nebulizer treatments are not indicated. The stridor and forceful cough together tell you this is a PARTIAL obstruction with good air exchange. Your job right now is to encourage the cough and NOT intervene with back blows.",
+    "feedback_incorrect": "Listen again — this is inspiratory stridor from a partial upper airway obstruction, not wheezing. Stridor is generated in the upper airway (throat/trachea) as air is forced through the narrowed passage. The lower lung fields are clear. This matters: back blows and chest thrusts are for COMPLETE obstruction or poor air exchange — Mia is still moving air forcefully."
+  },
+  "chat_placeholder": "Talk to Mia, Jessica (mom), or your partner Alex...",
+  "chat_address_hint": "Address by name: Mia · Jessica/Mom · Alex (partner/vitals)",
+  "debrief_lexi_hints": [
+    {
+      "label": "Next step?",
+      "msg": "What should I do next in this scenario?"
+    },
+    {
+      "label": "Partial vs complete?",
+      "msg": "How do I tell the difference between a partial and complete airway obstruction?"
+    },
+    {
+      "label": "Back blows now?",
+      "msg": "Should I perform back blows and chest thrusts on Mia right now?"
+    },
+    {
+      "label": "O2 approach?",
+      "msg": "What is the best way to give oxygen to an agitated toddler?"
+    },
+    {
+      "label": "When to intervene?",
+      "msg": "When would I perform back blows and chest thrusts on a pediatric patient?"
+    }
+  ],
+  "objectives": [
+    "Apply the Pediatric Assessment Triangle (PAT) to immediately classify obstruction severity",
+    "Distinguish partial airway obstruction with good air exchange from poor air exchange and complete obstruction",
+    "Recognize that forceful coughing is the most effective clearance mechanism and must be protected — NOT interrupted with back blows",
+    "Correctly withhold back blows and chest thrusts when the patient has a forceful, effective cough",
+    "Provide supplemental O2 via blow-by to minimize agitation in a toddler",
+    "Transport immediately — partial obstructions can rapidly become complete"
+  ],
+  "dispatch": {
+    "unit": "{unit}",
+    "text": "{unit}, respond to Riverside Park for an 18-month-old female choking. Caller reports she is conscious and coughing.",
+    "priority": "Priority 1",
+    "time": "12:30",
+    "cross_streets": "Parkside Dr and Central Ave",
+    "response_time_minutes": 4
+  },
+  "scene": {
+    "description": "You arrive at a busy community park. A small crowd has gathered around a park bench. A young woman is there with a toddler on her lap, clearly frantic. The child is coughing hard, repeatedly — each cough sounds forceful. Between coughs the child makes a high-pitched noise when she breathes in. There are half-eaten grapes and a child's snack container on the bench.",
+    "image": null,
+    "video": null,
+    "hazards": [],
+    "bystanders": [
+      {
+        "name": "Jessica",
+        "relation": "mother",
+        "age": 26
+      }
+    ]
+  },
+  "patient": {
+    "pcr_demographics_deferred": true,
+    "name": "Mia",
+    "age": 1.5,
+    "dob_month_day": "November 16",
+    "sex": "female",
+    "weight_kg": 11,
+    "weight_display": "approx 24 lbs (11 kg — Broselow Pink/Red)",
+    "chief_complaint": "Partial airway obstruction — choking on grape",
+    "general_impression": "18-month-old female on her mother's lap. She is alert with a flushed face and is coughing forcefully — each cough is strong and loud. There is audible inspiratory stridor between coughs. She is crying between coughs — meaning she is moving air. She is NOT silent. She appears frightened and is clinging to her mother.",
+    "gcs_assessment": {
+      "e": 4,
+      "v": 4,
+      "m": 6,
+      "total": 14,
+      "rationale": "Eyes open spontaneously, crying is distressed but present, and she moves purposefully/clings to her mother.",
+      "challenge_description": "Mia is awake on her mother's lap with eyes open spontaneously. She is coughing forcefully and has distressed crying between coughs. She clings to her mother and moves purposefully."
+    },
+    "avpu_assessment": {
+      "value": "alert",
+      "description": "Patient is alert, distressed, crying, and clinging purposefully to her mother.",
+      "rationale": "Use AVPU = alert because she is awake and spontaneously responsive despite airway distress."
+    },
+    "image": "/static/images/peds/trauma/choking_18mof.jpg",
+    "video": null,
+    "pat": {
+      "impression": "Alert, flushed, coughing forcefully with audible stridor between coughs — clinging to mother.",
+      "appearance": "Alert and frightened — eyes open, crying between coughs, clinging to mother. Good muscle tone. Flushed face. Forceful cough present; crying between coughs confirms air movement.",
+      "work_of_breathing": "Audible inspiratory STRIDOR between coughs. Forceful, productive cough — good air exchange currently. No visible retractions at rest. Abnormal airway sound present.",
+      "circulation": "Skin appears flushed and pink. No cyanosis or mottling. Peripheral perfusion appears intact.",
+      "expected": "sick",
+      "teaching": "Work of Breathing component is ABNORMAL (audible stridor = partial airway obstruction). One abnormal PAT component = SICK. Appearance and circulation are near-normal, but the airway sound cannot be ignored. Good air exchange (forceful cough) means encourage coughing — do NOT perform thrusts yet. Monitor closely for deterioration."
+    }
+  },
+  "history": {
+    "allergies": "None known.",
+    "medications": "None.",
+    "pmh": "Healthy toddler. Up to date on immunizations.",
+    "last_oral_intake": "Was eating halved grapes at the park just before this happened.",
+    "events_leading_to_call": "Mother reports Mia was eating from a container of halved grapes when she suddenly started coughing and gagging on a piece. She has been coughing continuously since — approximately 3 minutes. No LOC. Mother appropriately did not perform back blows because Mia was coughing effectively."
+  },
+  "initial_complaint": {
+    "speaker": "Jessica",
+    "lay_summary": "She started coughing and I'm scared she's choking.",
+    "allowed_in_opener": true,
+    "do_not_include": [
+      "food item",
+      "duration",
+      "loss of consciousness status",
+      "prior interventions",
+      "medical history",
+      "diagnosis",
+      "clinical terms",
+      "treatment suggestions",
+      "full OPQRST/SAMPLE"
+    ]
+  },
+  "history_response_map": {
+    "patient_identity": {
+      "label": "Patient identity / demographics",
+      "speaker": "Jessica",
+      "triggers": [
+        "what is her name",
+        "what's her name",
+        "patient name",
+        "how old is she",
+        "age",
+        "date of birth",
+        "dob",
+        "birthday"
+      ],
+      "answer": "Her name is Mia. She's about 18 months old. Her birthday is November 16.",
+      "tags": [
+        "[[HISTORY: Patient Name=Mia]]",
+        "[[HISTORY: Patient Age=18-month-old female]]",
+        "[[HISTORY: Patient Date of Birth=November 16]]"
+      ],
+      "notes": "Patient-scoped demographics only.",
+      "do_not_include": [
+        "weight unless asked",
+        "choking details",
+        "medical history",
+        "medications",
+        "treatment suggestions"
+      ]
+    },
+    "patient_weight": {
+      "label": "Patient weight",
+      "speaker": "Jessica",
+      "triggers": [
+        "how much does she weigh",
+        "what does she weigh",
+        "patient weight",
+        "weight",
+        "estimated weight"
+      ],
+      "answer": "She weighs about 24 pounds, around 11 kilograms.",
+      "tag": "[[HISTORY: Patient Weight=approx 24 lbs (11 kg — Broselow Pink/Red)]]",
+      "notes": "Patient-scoped weight only.",
+      "do_not_include": [
+        "diagnosis",
+        "treatment suggestions"
+      ]
+    },
+    "chief_concern": {
+      "label": "Broad opener / chief concern",
+      "speaker": "Jessica",
+      "triggers": [
+        "what's going on",
+        "what happened",
+        "why did you call",
+        "how can we help",
+        "chief complaint"
+      ],
+      "answer": "She's choking but still coughing.",
+      "tag": "[[HISTORY: Patient Chief Complaint=partial airway obstruction from choking]]",
+      "notes": "Patient-scoped complaint only.",
+      "do_not_include": [
+        "object details",
+        "timing",
+        "treatment suggestions"
+      ]
+    }
+  },
+  "vitals": {
+    "baseline": {
+      "hr": {
+        "label": "Heart Rate",
+        "value": 140,
+        "unit": "bpm",
+        "display": "140 bpm — tachycardic, expected with distress and partial obstruction"
+      },
+      "rr": {
+        "label": "Respirations",
+        "value": 35,
+        "unit": "/min",
+        "display": "35/min — tachypneic, coughing and working to clear obstruction"
+      },
+      "spo2": {
+        "label": "SpO2",
+        "value": 94,
+        "unit": "%",
+        "display": "94% — mildly decreased; partial obstruction limiting effective gas exchange"
+      },
+      "bp": {
+        "label": "Blood Pressure",
+        "value": "95/60",
+        "unit": "mmHg"
+      },
+      "temp": {
+        "label": "Temperature",
+        "value": 98.7,
+        "unit": "°F"
+      },
+      "blood_glucose": {
+        "label": "Blood Glucose",
+        "value": 100,
+        "unit": "mg/dL",
+        "display": "100 mg/dL"
+      },
+      "gcs": {
+        "label": "GCS",
+        "value": 14,
+        "unit": "/15",
+        "display": "14 — E4V4M6 — eyes open, distressed crying, purposeful movement/clinging to mother"
+      },
+      "skin_color": {
+        "label": "Skin",
+        "numeric": false,
+        "value": "Flushed, pink lips — no cyanosis on arrival"
+      },
+      "cap_refill": {
+        "label": "Cap Refill",
+        "value": 2,
+        "unit": "sec"
+      },
+      "pupils": {
+        "label": "Pupils",
+        "numeric": false,
+        "value": "PERRL — reactive, 4 mm bilaterally"
+      },
+      "lung_sounds": {
+        "label": "Lung Sounds",
+        "numeric": false,
+        "value": "Inspiratory stridor — high-pitched, audible without stethoscope; lower lung fields clear bilaterally with air movement present between coughs"
+      },
+      "work_of_breathing": {
+        "label": "Work of Breathing",
+        "numeric": false,
+        "value": "Significant — forceful coughing effort, audible inspiratory stridor; no intercostal retractions between cough efforts"
+      }
+    },
+    "deterioration": {
+      "note": "If the student withholds intervention (correct) the patient continues with forceful cough and gradual SpO2 decline. If student incorrectly performs back blows, the deterioration rate dramatically accelerates — the object can shift from partial to complete obstruction.",
+      "rates": {
+        "spo2": -0.5,
+        "hr": 0.5,
+        "rr": 0
+      },
+      "caps": {
+        "spo2": {
+          "min": 80,
+          "max": 100
+        },
+        "hr": {
+          "max": 180,
+          "min": 100
+        }
+      },
+      "string_thresholds": {
+        "skin_color": [
+          {
+            "spo2_below": 88,
+            "value": "Perioral cyanosis developing — lips and around mouth taking on a bluish tinge"
+          },
+          {
+            "spo2_below": 82,
+            "value": "Cyanotic — lips and nail beds blue; patient becoming limp"
+          }
+        ],
+        "lung_sounds": [
+          {
+            "spo2_below": 88,
+            "value": "Cough becoming weaker — less forceful; stridor still present but patient fatiguing"
+          },
+          {
+            "spo2_below": 82,
+            "value": "Cough gone — silent chest; complete obstruction. Patient unresponsive. Begin CPR and look for object."
+          }
+        ],
+        "work_of_breathing": [
+          {
+            "spo2_below": 85,
+            "value": "Patient exhausting — cough efforts weak, barely moving air; stridor present"
+          },
+          {
+            "spo2_below": 82,
+            "value": "Agonal — limp, jaw slack, not coughing; complete obstruction requiring CPR and back blows"
+          }
+        ]
+      }
+    },
+    "interventions": {
+      "encourage_coughing": {
+        "label": "Encourage Coughing",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "encourage.*cough",
+          "keep.*coughing",
+          "cough it out",
+          "let her cough",
+          "do not.*intervene",
+          "don.?t.*intervene",
+          "let.*cough",
+          "good.*cough"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 1,
+            "rate_modifier": 0.7
+          }
+        },
+        "notes": "Correct management for partial obstruction with good air exchange. Encouraging the cough slows deterioration — the cough is more effective than any EMS maneuver."
+      },
+      "o2_blowby": {
+        "label": "Blow-by O2 (NRB mask held near face, high flow)",
+        "within_bls_scope": true,
+        "detection_patterns": [
+          "blow.?by",
+          "blow by",
+          "hold.*mask.*near",
+          "oxygen.*near.*face",
+          "wave.*o2",
+          "o2.*near",
+          "supplemental.*o2",
+          "give.*oxygen"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": 2,
+            "rate_modifier": 0.5
+          }
+        },
+        "notes": "Blow-by O2 — mask or tubing held near (not on) the face, often by the parent. Preferred for agitated toddlers — avoids distress of mask application.",
+        "requires_popup": true,
+        "popup_type": "oxygen",
+        "popup_default": {
+          "device": "blowby",
+          "flow": 10
+        }
+      },
+      "back_blows": {
+        "label": "Back Blows / Chest Thrusts",
+        "within_bls_scope": true,
+        "indication_gate": {
+          "status": "contraindicated",
+          "reason": "Back blows are contraindicated while the patient has a forceful, effective cough — they can convert a partial obstruction into a complete one. Perform only if she stops coughing, becomes silent, or loses consciousness.",
+          "allowed_when": [
+            "ineffective_cough",
+            "complete_obstruction",
+            "unresponsive",
+            "silent_choking"
+          ]
+        },
+        "detection_patterns": [
+          "back blow",
+          "back slap",
+          "back.*blow",
+          "chest.*thrust",
+          "heimlich",
+          "abdominal.*thrust"
+        ],
+        "effects": {
+          "spo2": {
+            "immediate_change": -8,
+            "rate_modifier": 2.0
+          },
+          "hr": {
+            "immediate_change": 20,
+            "rate_modifier": 1.5
+          }
+        },
+        "notes": "CONTRAINDICATED with effective cough — can worsen obstruction. Reserve for poor/no air exchange or unresponsive patient."
+      }
+    },
+    "improvement": {
+      "note": "With blow-by O2 and encouraged coughing, SpO2 stabilizes. Patient continues to cough — this is the desired endpoint while awaiting transport.",
+      "requires_intervention": "o2_blowby",
+      "string_thresholds": {
+        "skin_color": [
+          {
+            "spo2_above": 96,
+            "value": "Color improved — lips pink, no cyanosis"
+          }
+        ],
+        "work_of_breathing": [
+          {
+            "spo2_above": 95,
+            "value": "Coughing continues but child appears less distressed; clinging to mother"
+          }
+        ]
+      },
+      "presentation_milestones": [
+        {
+          "spo2_above": 96,
+          "text": "Mia continues to cough but looks slightly less distressed. She is staying close to her mother. Her color has improved. The cough is still audible and forceful."
+        }
+      ]
+    }
+  },
+  "personas": {
+    "mia": {
+      "name": "Mia",
+      "age": 1.5,
+      "role": "patient",
+      "aliases": [
+        "Mia",
+        "the baby",
+        "the toddler",
+        "the child",
+        "the girl",
+        "baby",
+        "she",
+        "her"
+      ],
+      "tts": {
+        "enabled": false,
+        "voice_role": "patient",
+        "gender": "female",
+        "age_band": "toddler",
+        "demeanor": "terrified toddler with forceful coughing and intermittent crying",
+        "delivery": "non-verbal toddler; display coughing, crying, gagging, and observable behavior only",
+        "avoid": "do not synthesize spoken words for Mia"
+      },
+      "description": "18-month-old female who is actively choking on a piece of grape lodged in her airway. She is terrified and clings to her mother. She cannot speak. She communicates through coughing, crying between coughs, and facial expressions. She will resist any EMS contact that does not involve her mother.",
+      "speaking_style": "Non-verbal. Coughing forcefully. Crying between coughs. High-pitched inspiratory noise between coughing fits. Clinging to Jessica.",
+      "clinical_state_instructions": "Do not give verbal responses as Mia. Describe her physical state and behavior in third person. If O2 blow-by is provided with Jessica holding it: 'Mia eyes the oxygen tubing but doesn't fight it as long as it stays near her face and not pressed against her.' If student attempts to place a mask directly on Mia's face: 'Mia immediately turns her head away and fights the mask — the coughing intensifies briefly.' If back blows are performed: 'Mia lets out a brief sharp cry and the coughing becomes even more frantic — the stridor sounds louder and higher pitched.' If encouraged to cough: 'Mia coughs again, hard. She gags once but does not produce the object. She continues coughing.'",
+      "persona_rules": [
+        "Never speak words — only coughing, crying, and behavioral descriptions",
+        "Forceful cough is present throughout unless SpO2 drops below 85",
+        "Back blows = immediate worsening (more frantic, louder stridor)",
+        "Blow-by with mom holding it = tolerated; mask directly applied = rejected"
+      ]
+    },
+    "jessica": {
+      "name": "Jessica",
+      "age": 26,
+      "role": "family",
+      "relation": "mother",
+      "aliases": [
+        "Jessica",
+        "mom",
+        "mother",
+        "the mother",
+        "the mom",
+        "ma'am"
+      ],
+      "tts": {
+        "enabled": true,
+        "voice_role": "bystander",
+        "gender": "female",
+        "age_band": "adult",
+        "provider_voice": "coral",
+        "speed": 1.3,
+        "demeanor": "panicked first-time mother holding her choking toddler; tearful, frantic, protective, and desperate for help",
+        "delivery": "rapid, shaky parent voice with breath-catching urgency; answers directly when EMS gives clear calm questions, but fear remains obvious",
+        "avoid": "do not sound calm, flat, clinical, detached, playful, theatrical, physically ill, or like the patient"
+      },
+      "description": "First-time mother, 26, panicked. She was watching Mia eat when it happened. She did not try to clear the airway before EMS arrived and called 911. She needs reassurance. She will do exactly what EMS tells her but will not suggest care steps herself.",
+      "speaking_style": "Frantic and tearful, speaking quickly: 'She's choking — please help her! I didn't know what to do.' Immediately cooperative when given clear calm directions. Visibly relieved when reassured.",
+      "what_she_knows": [
+        "Mia was eating halved grapes — she is 18 months old",
+        "Mia suddenly started coughing and gagging on a piece",
+        "She has been coughing continuously for about 3 minutes",
+        "Mia has not lost consciousness",
+        "Jessica did NOT perform back blows because Mia was coughing — she wants to know if that was right",
+        "No prior choking episodes",
+        "No allergies, no medications, healthy otherwise",
+        "Last fed: grapes and crackers at the park, 10 minutes ago"
+      ],
+      "clinical_state_instructions": "If reassured: 'Okay — please help her.' If asked to hold equipment near Mia's face: 'Like this? Okay.' If asked why she halved the grapes: 'I always cut them in half — is that not enough?' If student tries to take Mia from her arms: 'She'll just scream more — can I keep holding her?' Do not suggest back blows, oxygen, positioning, transport, or any care step.",
+      "persona_rules": [
+        "Provide accurate history when asked",
+        "Ask for help and reassurance only; do not ask whether a specific treatment should be done",
+        "Hold equipment only if instructed by EMS",
+        "Cooperate with directions that keep her holding Mia"
+      ]
+    },
+    "alex": {
+      "name": "Alex",
+      "age": 28,
+      "role": "ems_partner",
+      "aliases": [
+        "Alex",
+        "partner",
+        "my partner",
+        "crew"
+      ],
+      "tts": {
+        "enabled": true,
+        "voice_role": "alex",
+        "gender": "male",
+        "age_band": "adult",
+        "provider_voice": "echo",
+        "speed": 1.32,
+        "demeanor": "calm, competent EMT partner who is alert to a pediatric airway emergency",
+        "delivery": "brisk, concise field tone with clear EMS cadence; reassuring and engaged without sounding sleepy or theatrical",
+        "avoid": "do not sound flat, like a narrator, instructor, parent, patient, or anxious bystander"
+      },
+      "description": "Your EMT partner. Calm and experienced with pediatric airway. Will prompt you if you reach for equipment that would be premature. Will assist with O2 setup. Does not volunteer interventions — waits for direction.",
+      "speaking_style": "Brief, calm. 'She's still got a good cough — moving air.' 'Ready with blow-by when you call for it.' 'Want me to set up for transport?'",
+      "capabilities": [
+        "Report individual vitals when asked",
+        "Set up blow-by O2 and hand tubing to Jessica",
+        "Prepare stretcher for transport",
+        "Notify ALS of pediatric airway call",
+        "Get pediatric BVM on standby"
+      ]
+    }
+  },
+  "correct_treatment": {
+    "critical_actions": [
+      {
+        "id": "scene_safety",
+        "description": "Scene safety and BSI/PPE",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "pat",
+        "description": "PAT — recognize partial obstruction with good air exchange: alert, forceful cough, moving air (crying between coughs)",
+        "required": true,
+        "scene_entry_credited": true
+      },
+      {
+        "id": "recognize_partial_obstruction",
+        "description": "Correctly classify as partial obstruction with effective cough — not a complete obstruction",
+        "required": true,
+        "evidence": {
+          "finding_types": [
+            "exam"
+          ],
+          "finding_key_patterns": [
+            "(?i)cough|air exchange|air movement|partial|obstruction"
+          ],
+          "transcript_patterns": [
+            "(?i)partial|effective cough|good cough|moving air|air exchange|not complete"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "do_not_intervene",
+        "description": "Correctly withhold back blows and chest thrusts — contraindicated with effective cough",
+        "required": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)withhold|do not|don'?t|avoid|no back blows|no chest thrust|let.*cough|keep.*cough"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "oxygen",
+        "description": "Provide supplemental O2 via blow-by — minimize agitation",
+        "required": true,
+        "protocol_indicated": true,
+        "intervention_ids": [
+          "o2_blowby"
+        ],
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)(blow.?by|oxygen|o2|supplemental.*oxygen|blow.*face)"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "transport",
+        "description": "Initiate rapid transport in position of comfort — partial obstructions can worsen suddenly",
+        "required": true,
+        "evidence": {
+          "transcript_patterns": [
+            "(?i)transport|go|load|hospital|move|position of comfort|rapid"
+          ],
+          "min_matches": 1
+        }
+      }
+    ],
+    "recommended_actions": [
+      {
+        "id": "als_update",
+        "description": "Update ALS with pediatric airway obstruction — request intercept",
+        "required": false
+      },
+      {
+        "id": "maternal_role",
+        "description": "Direct Jessica to hold O2 near Mia's face — therapeutic use of parent",
+        "required": false
+      },
+      {
+        "id": "serial_reassess",
+        "description": "Monitor SpO2, cough effectiveness, and LOC continuously during transport",
+        "required": false
+      }
+    ],
+    "out_of_scope_bls": [
+      "direct_laryngoscopy",
+      "advanced_airway_als"
+    ],
+    "out_of_scope_aemt": [],
+    "out_of_scope_paramedic": [],
+    "clinical_decision_points": {
+      "when_to_intervene": "Back blows and chest thrusts indicated only if: cough becomes weak/silent, patient cannot cry or make sound, SpO2 drops rapidly and patient is in distress, or patient loses consciousness. None of these are present on arrival.",
+      "unconscious_patient": "If Mia becomes unconscious: begin CPR immediately; look for visible object in mouth before each rescue breath — remove only if visible; do NOT perform blind finger sweeps; ALS priority for laryngoscopy.",
+      "als_trigger": "ALS/intercept expectations are determined by the active agency configuration. ALS can use direct laryngoscopy and Magill forceps if object remains lodged after transport — inform ALS of patient age, weight, and object (grape piece) when ALS is involved.",
+      "destination": "ED for airway evaluation even if object is coughed out — confirm full clearance and rule out residual aspiration."
+    }
+  },
+  "scoring": {
+    "overall_considerations": [
+      "The single most critical clinical decision in this scenario is correctly withholding back blows when the patient has a forceful, effective cough. This is the primary learning objective.",
+      "Performing back blows on a patient with a forceful cough is the major error — this can convert a partial obstruction into a complete one.",
+      "Correctly not intervening physically is as important as any active treatment — credit this explicit decision.",
+      "Do NOT penalize for not performing back blows — that is the CORRECT choice here.",
+      "Credit any blow-by O2 or encouragement to cough as the correct positive interventions."
+    ],
+    "dmist_considerations": [
+      "D: Mia, 18-month-old female, 11 kg (Broselow Pink/Red).",
+      "M: Partial airway obstruction — grape piece; forceful cough present; SpO2 94% on arrival.",
+      "I: Blow-by O2 applied by mother; back blows correctly withheld (effective cough present). Cough encouraged.",
+      "S: SpO2, HR, cough effectiveness, LOC — trending during transport.",
+      "T: Transporting to ED with continued monitoring. ALS notified."
+    ],
+    "dmist_components": {
+      "D": {
+        "description": "Patient demographics",
+        "required_elements": [
+          "name: Mia",
+          "age: 18 months or 1.5 years",
+          "sex: female",
+          "weight: 11 kg or 24 lbs (Broselow Pink/Red)"
+        ],
+        "corroboration_source": "scenario_patient_fields"
+      },
+      "M": {
+        "description": "Mechanism and chief complaint",
+        "required_elements": [
+          "choking on grape",
+          "partial airway obstruction",
+          "effective cough present"
+        ],
+        "corroboration_source": "any"
+      },
+      "I": {
+        "description": "Injury details — partial airway obstruction, obstruction characteristics, and choking context",
+        "required_elements": [
+          "witnessed choking episode on grape",
+          "effective cough present at EMS arrival (air movement intact)",
+          "partial obstruction only — no complete airway obstruction",
+          "no cyanosis or loss of consciousness",
+          "no respiratory distress at arrival"
+        ],
+        "corroboration_source": "history_and_findings",
+        "note": "I is illness/injury, not interventions. Treatments (cough encouragement, O2 if applied) belong under T. Back blows/abdominal thrusts inappropriate for effective cough — document under T as 'not indicated.'"
+      },
+      "S": {
+        "description": "Signs and current status",
+        "required_elements": [
+          "airway status",
+          "cough effectiveness",
+          "SpO2"
+        ],
+        "corroboration_source": "vitals_and_findings"
+      },
+      "T": {
+        "description": "Airway resolution status at ALS handoff",
+        "required_elements": [
+          "airway obstruction resolved or ongoing"
+        ],
+        "corroboration_source": "any"
+      }
+    },
+    "narrative_considerations": [
+      "CHART format: dispatch (pediatric choking), presentation (18-month with grape partial obstruction, forceful cough, SpO2 94%), assessment (PAT, auscultation), treatment (blow-by O2, cough encouraged, back blows withheld with rationale), transport.",
+      "Key documentation: severity classification (partial vs complete), cough effectiveness (forceful = good exchange), SpO2 trend, decision NOT to perform back blows and the clinical reasoning.",
+      "Objective language: 'Forceful, audible cough with inspiratory stridor between coughs — patient moving air' is objective."
+    ],
+    "required_assessments": [
+      {
+        "id": "cough_effectiveness_assessment",
+        "description": "Assess cough effectiveness and air exchange quality (partial vs. complete obstruction determination)",
+        "keywords": [
+          "cough",
+          "coughing",
+          "air exchange",
+          "moving air",
+          "partial",
+          "complete",
+          "forceful",
+          "effective",
+          "good exchange",
+          "can breathe",
+          "stridor",
+          "cry",
+          "phonating"
+        ],
+        "missing_deduction": 3,
+        "note": "The entire clinical decision (withhold vs. perform back blows) hinges on evaluating cough effectiveness. A forceful cough indicates good air exchange — back blows are contraindicated. This assessment is the scenario's primary learning objective."
+      }
+    ],
+    "by_level": {
+      "MFR": {
+        "critical_focus": [
+          "Recognize the child is moving air (crying, forceful cough) — this is a partial obstruction with good air exchange",
+          "Do not perform back blows on a child with an effective cough",
+          "Provide supplemental O2 in a way that doesn't agitate the child",
+          "Call for ALS"
+        ],
+        "additional_expectations": [],
+        "grace_items": [
+          "PAT acronym not required",
+          "Blow-by technique detail not required — credit any attempt at non-distressing O2 delivery"
+        ]
+      },
+      "EMT": {
+        "critical_focus": [
+          "PAT: classify partial obstruction with good air exchange (forceful cough = patent airway with good exchange)",
+          "Explicitly withhold back blows — and know WHY (effective cough is more powerful than any EMS maneuver; back blows can worsen)",
+          "Blow-by O2 — preferred over NRB for agitated toddler",
+          "Use mother to hold O2 near face — parent as therapeutic tool",
+          "Rapid transport with continuous SpO2 monitoring"
+        ],
+        "additional_expectations": [
+          "Document the clinical reasoning for withholding back blows",
+          "Educate Jessica that she made the right call not performing back blows"
+        ],
+        "grace_items": [
+          "PAT acronym not required — credit component assessment",
+          "ALS request is not required when the active agency configuration co-dispatches ALS",
+          "Broselow tape not required if weight provided"
+        ]
+      },
+      "AEMT": {
+        "critical_focus": [
+          "All EMT expectations above"
+        ],
+        "additional_expectations": [
+          "Anticipate the need for ALS laryngoscopy if cough becomes ineffective during transport"
+        ],
+        "grace_items": [
+          "Same EMT grace items"
+        ]
+      },
+      "Paramedic": {
+        "critical_focus": [
+          "All EMT expectations plus readiness to perform direct laryngoscopy and Magill forceps if cough fails",
+          "Know transition criteria: forceful cough → poor exchange → laryngoscopy attempt before blind back blows"
+        ],
+        "additional_expectations": [
+          "Document transition criteria and airway plan"
+        ],
+        "grace_items": [
+          "Same base grace items"
+        ]
+      }
+    }
+  },
+  "scoring_rubric": {
+    "clinical_performance": {
+      "max": 50,
+      "full_credit": "PAT with correct severity classification (partial + good air exchange), back blows correctly withheld with reasoning, blow-by O2 applied with mom's assistance, cough encouraged, rapid transport initiated, SpO2 monitored — plus base rubric: scene safety, primary assessment, mechanism, secondary assessment, handoff",
+      "partial_credit": "O2 provided and transport initiated but back blows attempted — or back blows withheld but reasoning not documented",
+      "minimal_credit": "Back blows performed with effective cough present — major clinical error"
+    },
+    "narrative": {
+      "max": 20,
+      "full_credit": "CHART complete: dispatch (choking), presentation (18mo, grape, forceful cough, SpO2 94%), auscultation finding (stridor + clear lowers), treatment (blow-by O2; back blows withheld — rationale documented: effective cough), transport. Objective throughout.",
+      "partial_credit": "Most CHART elements present but decision to withhold back blows not documented",
+      "minimal_credit": "Documents back blows as performed — documents wrong treatment"
+    },
+    "dmist": {
+      "max": 10,
+      "full_credit": "D: Mia, 18mo, 11 kg; M: grape partial obstruction, forceful cough, SpO2 94%; I: blow-by O2 via mom, cough encouraged, back blows withheld; S: SpO2 trend, cough quality; T: transport to ED, ALS notified.",
+      "partial_credit": "3–4 components; intervention rationale or SpO2 missing",
+      "minimal_credit": "2 or fewer components or documents incorrect treatment"
+    },
+    "professionalism": {
+      "max": 10,
+      "full_credit": "Validated mother's decision not to perform back blows, directed Jessica to hold O2 near Mia's face, spoke calmly to both, kept Mia with mom, explained what is happening in plain language",
+      "partial_credit": "Communication present but Jessica not validated or Mia's bond with mom not utilized",
+      "minimal_credit": "No communication with Jessica (mother) — mother’s presence not used to calm Mia or explain the assessment approach; clinical tasks performed without family engagement"
+    },
+    "protocols_treatment": {
+      "max": 20,
+      "full_credit": "Protocol-aligned treatment completed: Back blows and chest thrusts withheld — contraindicated when effective cough is present; intervening risks converting partial to complete obstruction; O2 via blow-by delivered to minimize patient agitation. Contraindicated care avoided and in-scope treatment priorities addressed.",
+      "partial_credit": "Most treatment priorities addressed, but one important protocol-aligned intervention, escalation step, or contraindication check was incomplete or delayed.",
+      "minimal_credit": "Key protocol/treatment priority missed, contraindicated care performed, or treatment plan materially inconsistent with protocol."
+    }
+  },
+  "exemplar_dmist": "D — Mia, 18-month-old female, approximately 24 lbs (11 kg — Broselow Pink/Red).\nM — Partial airway obstruction — piece of grape. Was eating halved grapes at park, sudden onset choking approximately 3 minutes prior to EMS arrival. Forceful, effective cough present on arrival. SpO2 94% on room air. No LOC.\nI — Back blows correctly withheld — patient has forceful cough with good air exchange; manual maneuvers contraindicated with effective cough. Blow-by O2 at 10 LPM via mother holding tubing near face. Cough encouraged continuously.\nS — SpO2 improving from 94% to 96% with O2. HR 140. Cough remains forceful. No cyanosis. Alert, crying between coughs.\nT — Rapid transport to ED with continued monitoring. ALS Medic 1 notified — pediatric partial airway obstruction, 11 kg. Cough still present at time of transport.",
+  "exemplar_narrative": "Squad 2 responded to Riverside Park for an 18-month-old female choking. Upon arrival, patient Mia, an 18-month-old female weighing approximately 24 lbs (11 kg), was found on her mother's lap at a park bench. Audible inspiratory stridor heard from a distance. Mother reports Mia was eating halved grapes when sudden onset coughing and gagging began approximately 3 minutes prior to arrival. No loss of consciousness. Mother appropriately withheld back blows because child was coughing forcefully.\n\nPAT: Alert, flushed face with no cyanosis — appropriate appearance. Forceful, audible cough present — patient moving air. Stridor audible on inspiration. Auscultation: inspiratory stridor; lower lung fields clear bilaterally with air movement present. Classification: partial airway obstruction with good air exchange — forceful cough indicates effective self-clearance mechanism.\n\nBack blows and chest thrusts withheld per protocol — forceful cough present indicates adequate air exchange; physical maneuvers contraindicated and risk converting partial to complete obstruction. Blow-by O2 at 10 LPM applied via mother holding tubing near patient's face. Mother instructed to hold Mia and continue encouraging coughing. SpO2 improved from 94% to 96%. Cough remained forceful throughout. Mother validated for correctly withholding back blows prior to EMS arrival.\n\nALS Medic 1 notified: pediatric airway obstruction, 18-month-old, 11 kg, partial obstruction with effective cough, SpO2 96%, O2 in place. Rapid transport initiated. Patient care transferred to ED staff with full verbal report.",
+  "debrief": {
+    "condition_background": "Mia has a piece of grape lodged in her upper airway — a partial obstruction with good air exchange. The grape has reduced but not completely blocked the airway. She can still move air past the obstruction, evidenced by her forceful cough and the fact that she is crying between coughs. This is the most critical clinical distinction in pediatric choking: a patient with a forceful, effective cough has GOOD air exchange and must NOT receive back blows or chest thrusts. The forceful cough generates intrathoracic pressures of 300 mmHg — far greater than any BLS maneuver can produce. Back blows in this setting risk shifting the grape from a stable partial position to a complete obstruction. The BLS role is: protect the cough, provide O2 without agitating, and transport immediately. Back blows are reserved for the patient who can no longer cough effectively, becomes silent, or loses consciousness.",
+    "key_teaching_points": [
+      "Partial vs. complete obstruction — the most important classification in pediatric choking. Partial with good air exchange: forceful cough, can cry or speak, making sound. Partial with poor air exchange or complete: silent, weak cough, cannot cry, becoming cyanotic.",
+      "A forceful cough is the most powerful airway clearance mechanism available — it generates intrathoracic pressures exceeding any BLS maneuver. DO NOT interrupt it with back blows.",
+      "Back blows and chest thrusts are indicated ONLY when: cough becomes weak or ineffective, patient can no longer cry or vocalize, patient becomes unresponsive. Not before.",
+      "Blow-by O2 for agitated toddlers — mask directly applied worsens agitation. Hold tubing 1–2 inches from face, ideally held by the parent. Less FiO2 delivery than NRB but dramatically better tolerated.",
+      "Use the parent therapeutically — an 18-month-old will cooperate far better with mom than with strangers. Keep mom holding Mia, and direct mom to hold the O2. This is medicine.",
+      "Transport immediately — partial obstructions can shift to complete obstructions suddenly, especially if the child fatigues or cries harder. The ED can confirm clearance and rule out aspiration.",
+      "If patient becomes unconscious: lower to the ground, begin CPR, look for visible object before each breath — remove only if clearly visible. No blind finger sweeps in any age group."
+    ],
+    "common_mistakes": [
+      "Performing back blows with an effective cough present — this is the most common and most dangerous error in this scenario",
+      "Applying an NRB mask directly to the face of an agitated toddler — worsens distress, causes more crying, may worsen cough",
+      "Failing to transport rapidly — reassured by the forceful cough but not recognizing that a grape can shift position at any time",
+      "Not directing the mother to hold O2 — missing the therapeutic role of the parent",
+      "Separating Mia from Jessica for assessment — increases agitation and makes assessment harder"
+    ]
+  },
+  "legacy_ai_categories": [
+    "documentation",
+    "professionalism"
+  ],
+  "checklist": [
+    {
+      "id": "ems.trauma.head_scalp_ears",
+      "description": "Suppressed for partial choking pilot: head/scalp/ear trauma survey is not required by this airway foreign-body presentation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.head_eyes",
+      "description": "Suppressed for partial choking pilot: eye trauma survey is not required by this airway foreign-body presentation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.head_mouth_nose_face",
+      "description": "Suppressed for partial choking pilot: the relevant assessment is airway patency, cough quality, and visible foreign body status rather than a full facial trauma survey.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.neck_trachea",
+      "description": "Suppressed for partial choking pilot: tracheal-position trauma survey is not required by this isolated airway obstruction presentation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.neck_jugular_veins",
+      "description": "Suppressed for partial choking pilot: jugular vein assessment is not required by this isolated airway obstruction presentation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.neck_c_spine",
+      "description": "Suppressed for partial choking pilot: C-spine palpation is not required because there is no fall, impact, or spinal mechanism.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.chest_inspect",
+      "description": "Suppressed for partial choking pilot: chest trauma inspection is not required; respiratory status is assessed through airway/breathing, cough quality, SpO2, and lung sounds.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.chest_palpate",
+      "description": "Suppressed for partial choking pilot: chest palpation is not required by this airway foreign-body presentation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.chest_auscultate",
+      "description": "Suppressed for partial choking pilot: scenario-specific lung/airway sound assessment covers the clinically relevant chest/airway auscultation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.abdomen_inspect_palpate",
+      "description": "Suppressed for partial choking pilot: abdominal trauma assessment is not required by this airway foreign-body presentation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.pelvis_assess",
+      "description": "Suppressed for partial choking pilot: pelvic trauma assessment is not required by this airway foreign-body presentation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.genitalia_perineum_as_needed",
+      "description": "Suppressed for partial choking pilot: genitalia/perineum trauma assessment is not required by this airway foreign-body presentation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.lower_left_pmsc",
+      "description": "Suppressed for partial choking pilot: lower-extremity PMSC assessment is not required by this airway foreign-body presentation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.lower_right_pmsc",
+      "description": "Suppressed for partial choking pilot: lower-extremity PMSC assessment is not required by this airway foreign-body presentation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.upper_left_pmsc",
+      "description": "Suppressed for partial choking pilot: upper-extremity PMSC assessment is not required by this airway foreign-body presentation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.upper_right_pmsc",
+      "description": "Suppressed for partial choking pilot: upper-extremity PMSC assessment is not required by this airway foreign-body presentation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.posterior_thorax",
+      "description": "Suppressed for partial choking pilot: posterior thorax trauma survey is not required by this airway foreign-body presentation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.lumbar_buttocks",
+      "description": "Suppressed for partial choking pilot: lumbar/buttocks trauma survey is not required by this airway foreign-body presentation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "peds_trauma_02_partial_choking.pat_assessment",
+      "description": "PAT completed — partial obstruction with effective cough recognized: alert, forceful cough, moving air, crying between coughs",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "scene_entry",
+        "scene_entry_path": "pat_assessment"
+      },
+      "tier2_patterns": [
+        "(?i)(pat|cough|alert|crying|moving air|partial|choking|air movement|appear)"
+      ],
+      "done_feedback": "PAT completed — partial obstruction with effective cough correctly recognized: alert, forceful cough, no cyanosis.",
+      "missed_feedback": "PAT not completed — the initial visual assessment determines whether this is a partial obstruction with effective cough (watch) or complete obstruction (intervene immediately).",
+      "clinical_rationale": "PAT classifies urgency: effective cough = partial obstruction, allow to cough; absent cough with cyanosis = complete obstruction requiring back blows and thrusts.",
+      "common_error": "Immediately performing back blows on a child who is coughing effectively — interventions on a child with an effective cough can dislodge the object into a more obstructive position."
+    },
+    {
+      "id": "peds_trauma_02_partial_choking.partial_obstruction_classification",
+      "description": "Partial obstruction with effective cough correctly classified — distinguished from complete obstruction; no back blows or chest thrusts planned",
+      "subtype": "screen",
+      "category": "clinical_performance",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 2,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": null,
+      "tier2_patterns": [
+        "(?i)(partial|effective cough|good air|moving air|let.*cough|encourage.*cough|don.?t.*intervene|not.*complete|coughing.*force|can.*cry|can.*speak)"
+      ],
+      "done_feedback": "Partial obstruction with effective cough correctly classified — air movement confirmed, cough strong, no cyanosis.",
+      "missed_feedback": "Obstruction type not classified — the treatment algorithm pivots entirely on whether the cough is effective; treating a partial obstruction like a complete obstruction causes harm.",
+      "clinical_rationale": "Effective cough = air moving through the glottis; the cough generates enough pressure to expel the foreign body without intervention.",
+      "common_error": "Treating 'choking' as a single entity without classifying severity — partial with effective cough and complete obstruction require opposite management decisions."
+    },
+    {
+      "id": "peds_trauma_02_partial_choking.encourage_coughing",
+      "description": "Patient encouraged to continue coughing — or passive monitoring maintained without unnecessary intervention",
+      "subtype": "intervention",
+      "category": "clinical_performance",
+      "point_value": 7,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "encourage_coughing"
+      },
+      "tier2_patterns": [
+        "(?i)(encourage|keep.*cough|continue.*cough|cough.*harder|cough.*it.*out|let.*cough|monitor|watch)"
+      ],
+      "done_feedback": "Patient encouraged to continue coughing — or passive monitoring maintained without interrupting the clearing mechanism.",
+      "missed_feedback": "Coughing not encouraged or was interrupted — an effective cough is the most powerful expulsion mechanism available; EMS should support it, not interfere.",
+      "clinical_rationale": "Peak expiratory flow during a cough exceeds 300 L/min; this is far more effective than any back blow at expelling a foreign body from the airway.",
+      "common_error": "Performing back blows 'just in case' on a child who is coughing effectively — back blows can convert a partial obstruction to a complete obstruction."
+    },
+    {
+      "id": "peds_trauma_02_partial_choking.airway_monitoring",
+      "description": "Airway and respiratory status monitored continuously for signs of worsening to complete obstruction",
+      "subtype": "reassessment",
+      "category": "clinical_performance",
+      "point_value": 5,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 2,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": null,
+      "tier2_patterns": [
+        "(?i)(monitor|watch|airway|cough|breathing|complete|wors|silent cough|stop.*cough|can.?t cough|can.?t breathe)"
+      ],
+      "done_feedback": "Airway and respiratory status monitored continuously — readiness to intervene if obstruction progresses maintained throughout.",
+      "missed_feedback": "Continuous airway monitoring not maintained — a partial obstruction with effective cough can worsen to complete obstruction at any point; the patient must be watched continuously.",
+      "clinical_rationale": "Partial obstructions are dynamic; a foreign body can migrate to cause complete occlusion; EMS must be ready to escalate to back blows and thrusts immediately.",
+      "common_error": "Turning attention to documentation while the child is coughing — hands-on monitoring of cough quality and SpO₂ must be continuous."
+    },
+    {
+      "id": "peds_trauma_02_partial_choking.rapid_transport",
+      "description": "Rapid transport initiated in position of comfort — partial obstructions can progress suddenly",
+      "subtype": "transport",
+      "category": "clinical_performance",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 2,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": null,
+      "tier2_patterns": [
+        "(?i)(transport|go|hospital|emergency|load|move|comfort|position)"
+      ],
+      "applicable_if": {
+        "non_transport_agency": false
+      },
+      "done_feedback": "Rapid transport initiated — partial foreign body obstructions require bronchoscopic removal; field management is temporizing.",
+      "missed_feedback": "Transport not initiated promptly — even spontaneous expulsion does not eliminate the need for ED evaluation; bronchoscopy is required to confirm clearance.",
+      "clinical_rationale": "BLS management of partial choking is supportive; definitive treatment is rigid bronchoscopy; transport is time-critical.",
+      "common_error": "Declaring the patient cleared because coughing improved — improvement does not confirm expulsion; ED bronchoscopy is still required."
+    },
+    {
+      "id": "peds_trauma_02_partial_choking.scope_no_back_blows",
+      "description": "Back blows and chest thrusts withheld — contraindicated when effective cough is present; intervening risks converting partial to complete obstruction",
+      "subtype": "intervention",
+      "category": "protocols_treatment",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "absence_check",
+        "absence_intervention_key": "back_blows"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "Back blows correctly withheld — contraindicated when cough is effective; interventions reserved for complete or severe obstruction.",
+      "missed_feedback": "Back blows performed on a patient with an effective cough — contraindicated; can dislodge the object into a more obstructive position.",
+      "clinical_rationale": "Back blows are reserved for complete or severe obstruction where the patient cannot cough effectively; they are contraindicated when air is moving.",
+      "common_error": "Applying back blows reflexively to any child with a foreign body — the decision must be based on cough quality and air movement, not the presence of a foreign body alone."
+    },
+    {
+      "id": "peds_trauma_02_partial_choking.scope_o2_blowby",
+      "description": "O2 via blow-by delivered to minimize patient agitation",
+      "subtype": "intervention",
+      "category": "protocols_treatment",
+      "point_value": 10,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "tier1_match": {
+        "source": "intervention",
+        "intervention_key": "o2_blowby"
+      },
+      "tier2_patterns": [],
+      "done_feedback": "Blow-by O2 delivered — minimizes patient agitation while providing supplemental oxygen during transport.",
+      "missed_feedback": "Blow-by O2 not delivered — supplemental O2 via blow-by reduces hypoxic risk during transport for a patient with partial airway obstruction.",
+      "clinical_rationale": "Blow-by oxygen raises FiO2 without requiring a mask that might agitate the child and worsen the obstruction.",
+      "common_error": "Using a tight-fitting NRB mask for O2 — mask placement causes agitation; blow-by is the preferred delivery method for airway obstruction."
+    }
+  ]
+}

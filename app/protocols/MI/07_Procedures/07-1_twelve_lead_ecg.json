@@ -1,0 +1,105 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 7-1 12-Lead ECG (Revised 3/31/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_procedure_twelve_lead_ecg",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Procedure",
+  "level_display": "Procedure (Paramedic/Specialist/EMT per MCA selection)",
+  "jurisdiction": "Michigan",
+  "condition": "12-Lead ECG Acquisition and Transmission",
+  "version": "2025-03-31",
+  "protocol_reference": "Michigan Procedures Protocol Section 7-1: 12-Lead ECG — MDHHS Approved 3/31/2025",
+  "purpose": "Establish standardized acquisition, interpretation, and transmission of 12-lead ECG for patients with potential cardiac conditions. MCA determines which provider levels may obtain and transmit 12-lead ECGs.",
+  "sections": [
+    {
+      "title": "Indications for 12-Lead ECG",
+      "reference": "Michigan Protocol 7-1: 12-Lead ECG — Indications",
+      "points": [
+        "Chest pain or pressure",
+        "Abdominal pain",
+        "Syncope",
+        "Shortness of breath",
+        "Pain or discomfort often associated with cardiac ischemia, such as jaw, neck, shoulder, left arm, or other presentations, unless the cause can be identified as traumatic or musculoskeletal",
+        "If there is doubt about pain/discomfort origin or the presentation seems atypical for the mechanism, perform a 12-lead",
+        "Nausea, vomiting, diaphoresis, dizziness, or patient expression of feelings of doom when the illness etiology suggests acute coronary syndrome or is indeterminate",
+        "Clinical judgment of the paramedic even in the absence of the listed signs/symptoms"
+      ]
+    },
+    {
+      "title": "12-Lead ECG Acquisition",
+      "reference": "Michigan Protocol 7-1: 12-Lead ECG — Acquisition",
+      "points": [
+        "Obtain 12-lead ECG per MCA selection — scope varies by MCA (Paramedic, Specialist, or EMT)",
+        "Place leads in standard anatomical positions",
+        "Minimize patient movement and artifact during acquisition",
+        "Repeat ECG every 5–10 minutes or with any change in patient condition",
+        "If ST elevation ≥ 1 mm in two or more contiguous leads: relay to receiving hospital immediately (STEMI relay)",
+        "If chest pain with left bundle branch block is present: relay to receiving hospital immediately",
+        "If ST elevation noted in II, III, aVF: obtain right-sided leads — place V4 on right side of chest at same position (V4r) to evaluate for right ventricular MI",
+        "If ST depression noted in V1–V4 with ACS symptoms: obtain posterior leads with at least two posterior leads; V4 becomes V7, V5 becomes V8, and V6 becomes V9",
+        "If hospital requests interpretation assistance: relay ECG"
+      ]
+    },
+    {
+      "title": "STEMI Relay Report Elements",
+      "reference": "Michigan Protocol 7-1: 12-Lead ECG — STEMI Relay",
+      "points": [
+        "Report 'STEMI Suspected' or equivalent machine indication of acute MI",
+        "Location of MI, such as 'ST elevation, consider _____ injury'",
+        "Time of onset of chest pain if present",
+        "Current level of pain",
+        "Cardiac history, including previous MI, CHF, CABG, angioplasty, or stent",
+        "Possible false-positive indicators, including tachyarrhythmia, left bundle branch block, pacemaker, wide QRS, or artifact after a previous negative ECG",
+        "Relay ECG to receiving facility if transmission equipment is available per MCA selection"
+      ]
+    }
+  ],
+  "mca_selections_required": [
+    {
+      "item": "12-Lead ECG Acquisition Scope",
+      "description": "MCA must select which provider levels are authorized to obtain a 12-lead ECG",
+      "options": [
+        "Paramedic only",
+        "Specialist and above",
+        "EMT and above"
+      ],
+      "selected": null
+    },
+    {
+      "item": "12-Lead ECG Transmission Scope",
+      "description": "MCA must select which provider levels are authorized to transmit a 12-lead ECG to the receiving facility",
+      "options": [
+        "Paramedic only",
+        "Specialist and above",
+        "EMT and above"
+      ],
+      "selected": null
+    }
+  ],
+  "key_drugs": [],
+  "deterioration_flags": [
+    "ST elevation ≥ 1 mm in 2 or more contiguous leads — STEMI relay immediately; activate MCA STEMI transport protocol",
+    "Chest pain with left bundle branch block — relay to receiving hospital as soon as possible",
+    "ST depression V1–V4 with ACS symptoms — obtain posterior leads to rule out posterior MI",
+    "ST elevation II, III, aVF — obtain right-sided V4r to rule out right ventricular MI",
+    "Hemodynamic instability with ECG changes — do not delay transport for repeated ECGs"
+  ],
+  "scope_notes": [
+    "12-Lead ECG acquisition: per MCA selection (Paramedic only / Specialist and above / EMT and above)",
+    "12-Lead ECG transmission: per MCA selection (Paramedic only / Specialist and above / EMT and above)",
+    "Standard monitoring: all EMS levels",
+    "Interpretation and relay: provider performing acquisition; contact Medical Control as needed",
+    "STEMI transport destination: per MCA STEMI transport protocol"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "cardiac_monitoring",
+      "chest_pain_acs",
+      "stemi",
+      "syncope"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

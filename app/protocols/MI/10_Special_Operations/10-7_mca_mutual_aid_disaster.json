@@ -1,0 +1,90 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 10-7 MCA Mutual Aid — Disaster (MDHHS Reviewed 2022-12-27). Base Michigan template.",
+  "id": "mi_base_special_ops_mca_mutual_aid_disaster",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Special Operations",
+  "level_display": "Special Operations Protocol",
+  "jurisdiction": "Michigan",
+  "condition": "MCA Mutual Aid — Disaster",
+  "version": "2022-12-27",
+  "protocol_reference": "Michigan Special Operations Protocol Section 10-7: MCA Mutual Aid — Disaster — MDHHS Reviewed 2022",
+
+  "purpose": "Establish the protocol authority framework governing EMS providers who respond across MCA (Medical Control Authority) boundaries during declared disasters or mutual aid activations.",
+
+  "sections": [
+    {
+      "title": "Scope — When This Protocol Applies",
+      "content": [
+        "This protocol applies when EMS providers and agencies respond OUTSIDE their home MCA's geographic area during:",
+        "  — State or county declared disaster or emergency",
+        "  — Formal mutual aid activation (MABAS, EMAC, or local mutual aid agreement)",
+        "  — Mass casualty incidents requiring cross-MCA resource deployment",
+        "  — State-directed EMS redeployment under BEPESOC authorization",
+        "This protocol does NOT apply to routine transport that crosses MCA lines (e.g., transporting to a hospital in a neighboring MCA)"
+      ]
+    },
+    {
+      "title": "Protocol Authority — Cross-MCA Response",
+      "content": [
+        "When a Michigan EMS provider responds into a neighboring MCA under declared disaster or mutual aid activation:",
+        "  — The responding EMS agency operates under the PROTOCOLS OF THEIR ORIGINATING (HOME) MCA",
+        "  — The receiving (host) MCA protocols do NOT supersede the responding agency's home protocols",
+        "  — Scope of practice is defined by the responding provider's license level and their originating MCA",
+        "Example: A Kalamazoo MCA ALS provider responding into Detroit MCA under declared disaster operates under Kalamazoo MCA ALS protocols — not Detroit MCA protocols",
+        "Rationale: responders are trained under their own MCA system; imposing an unfamiliar protocol mid-disaster creates patient safety risk"
+      ]
+    },
+    {
+      "title": "Online Medical Control During Cross-MCA Response",
+      "content": [
+        "Online medical control contact: responders should attempt contact with their HOME MCA online medical control first",
+        "If home MCA MC is unavailable: contact the HOST MCA online medical control and identify as a mutual aid responder from [home MCA]",
+        "Host MCA medical control must be advised that responding agency is operating under originating MCA protocols",
+        "For high-risk interventions outside protocol: obtain online MC authorization from home or host MC as available",
+        "Document all online MC contacts and authorizations in patient care report"
+      ]
+    },
+    {
+      "title": "Scope of Practice During Cross-MCA Response",
+      "content": [
+        "Provider scope of practice is based on Michigan EMS license level and originating MCA authorizations",
+        "MCA Optional interventions: a provider may perform MCA Optional procedures authorized by their HOME MCA even if the HOST MCA has not selected that option",
+        "Providers may NOT perform interventions not authorized by their home MCA even if the host MCA has selected them",
+        "A higher-level provider cannot be compelled to perform procedures outside their home MCA scope",
+        "Providers must carry evidence of their home MCA protocol authorizations if performing MCA Optional procedures during cross-MCA response"
+      ]
+    },
+    {
+      "title": "Documentation Requirements",
+      "content": [
+        "All patient care during cross-MCA disaster response must be documented on standard Michigan PCR",
+        "Identify responding agency, home MCA, and incident name on PCR",
+        "Submit PCR per normal home agency procedures",
+        "Incident Commander maintains agency tracking log for all mutual aid responders on scene",
+        "Notify home MCA medical director of cross-MCA activation within 72 hours"
+      ]
+    },
+    {
+      "title": "Liability and Immunity",
+      "content": [
+        "Michigan EMS providers responding under declared disaster or formal mutual aid operate under Michigan EMS Act provisions",
+        "Providers acting in good faith under their authorized scope and protocols are afforded standard EMS liability protections",
+        "MCL 333.20965 provides additional immunity for good-faith resource coordination decisions during declared emergencies",
+        "Document incident declaration number or mutual aid activation reference in PCR when available"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Unable to reach home MCA online medical control — contact host MCA MC and document; proceed under home MCA standing protocols",
+    "Cross-MCA protocol conflict requiring high-risk intervention — err on side of intervention if life-threatening; document and contact MC at first opportunity"
+  ],
+
+  "scope_notes": "During declared disasters and mutual aid activations, responding EMS agencies operate under their originating (home) MCA protocols — NOT the host MCA protocols. This ensures provider familiarity and consistency. Online medical control preference is home MCA; host MCA MC is acceptable alternative when home MC is unreachable."
+}

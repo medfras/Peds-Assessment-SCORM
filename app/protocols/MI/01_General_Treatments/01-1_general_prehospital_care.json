@@ -1,0 +1,74 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 1-1 General Pre-Hospital Care (Revised 05/08/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_all_general_prehospital_care",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "All",
+  "level_display": "All Levels",
+  "jurisdiction": "Michigan",
+  "condition": "General Pre-Hospital Care",
+  "version": "2023-05-08",
+  "protocol_reference": "Michigan General Treatment Protocol Section 1-1: General Pre-Hospital Care — MDHHS Approved 5/8/23, Reviewed 2023",
+  "sections": [
+    {
+      "title": "General Pre-Hospital Care",
+      "reference": "Michigan Protocol 1-1: General Pre-Hospital Care — Applies to EVERY patient contact",
+      "points": [
+        "Patient care should be initiated at the patient's side prior to patient movement or transport for most medical conditions — EVERY PATIENT CONTACT BEGINS WITH THIS PROTOCOL",
+        "Pediatric patients (< 14 years of age or up to 36 kg) are treated under pediatric protocols when applicable; refer to MI MEDIC cards for medication dosing and equipment sizes",
+        "Assess scene safety and use appropriate personal protective equipment",
+        "For trauma, refer to General Trauma-Treatment Protocol",
+        "A patient exhibiting any signs of a life-threatening illness or injury shall not be required to move on their own — includes patients with illnesses of unknown etiology",
+        "If applicable, refer to Adult or Pediatric Crashing Patient/Impending Arrest-Treatment Protocol",
+        "Complete primary survey",
+        "When indicated, implement airway intervention per the Airway Management-Procedure Protocol",
+        "When indicated, administer oxygen and assist ventilations per the Oxygen Administration-Procedure Protocol",
+        "Assess and treat other life-threatening conditions per appropriate protocol",
+        "Obtain vital signs including pulse oximetry if available or required, approximately every 15 minutes or more frequently as necessary (minimum 2 sets required for all patient transports; 2 sets suggested for refusals and treat-and-release patients)",
+        "Perform a secondary survey consistent with patient condition",
+        "Follow specific protocol for patient condition",
+        "Document patient care according to the Documentation and Patient Care Records Protocol",
+        "Establish vascular access per Vascular Access & IV Fluid Therapy-Procedure Protocol when fluid or medication administration may be necessary",
+        "Apply cardiac monitor and treat rhythm according to appropriate protocol",
+        "If applicable, obtain 12-lead ECG (per MCA selection — may be a BLS or Specialist procedure) per 12 Lead ECG-Procedure Protocol; provide copy of rhythm strip or 12-lead ECG to receiving facility with patient identifiers on strip",
+        "Use capnography/capnometry as directed per End Tidal Carbon Dioxide Monitoring-Procedure Protocol",
+        "NOTE: When possible, provide a list of the patient's medications or bring the medications to the hospital"
+      ]
+    }
+  ],
+  "mca_selections_required": [
+    {
+      "item": "12-Lead ECG",
+      "description": "May be designated as a BLS skill or Specialist (AEMT/Paramedic) skill",
+      "options": [
+        "BLS",
+        "Specialist"
+      ],
+      "selected": null
+    }
+  ],
+  "deterioration_flags": [
+    "Any signs of life-threatening illness or injury — do not require patient to self-mobilize; initiate care at patient's side",
+    "Refer to Crashing Patient/Impending Arrest protocol if patient is deteriorating rapidly"
+  ],
+  "scope_notes": [
+    "12-Lead ECG: scope per MCA selection — BLS or Specialist",
+    "Vascular access: Specialist (AEMT/Paramedic) skill unless MCA-approved for lower level",
+    "Cardiac monitor: Specialist skill unless MCA-approved",
+    "Capnography: Specialist skill unless MCA-approved"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "medical_control",
+      "patient_assessment",
+      "ppe_precautions",
+      "primary_survey",
+      "scene_safety",
+      "transport_decision",
+      "vital_signs"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

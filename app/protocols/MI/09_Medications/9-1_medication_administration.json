@@ -1,0 +1,94 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-1 Medication Administration (Revised 3/3/2025, MDHHS Reviewed 2025). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_medication_administration",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication (All EMS Levels — See Scope)",
+  "jurisdiction": "Michigan",
+  "condition": "Medication Administration",
+  "version": "2025-03-03",
+  "protocol_reference": "Michigan Medication Protocol Section 9-1: Medication Administration — MDHHS Approved 3/3/2025",
+
+  "purpose": "Govern medication administration by EMS providers. All medication administration must follow the Six Rights. Provider must verify patient identity, correct medication, correct dose, correct route, correct time, and document. Intranasal (IN) administration for MFR is MCA Optional. Nebulized medication administration for EMT is MCA Optional.",
+
+  "sections": [
+    {
+      "title": "Six Rights of Medication Administration",
+      "reference": "Michigan Protocol 9-1: Medication Administration — Six Rights",
+      "points": [
+        "1. Right Patient — verify patient identity before administering",
+        "2. Right Medication — confirm correct drug; check label three times (when selecting, preparing, and before administration)",
+        "3. Right Dose — confirm correct dose per protocol or online medical control order",
+        "4. Right Route — confirm correct administration route per protocol",
+        "5. Right Time — confirm timing is appropriate; check for previous doses administered",
+        "6. Right Documentation — document all medications administered including drug, dose, route, time, indication, and patient response"
+      ]
+    },
+    {
+      "title": "General Medication Administration Requirements",
+      "reference": "Michigan Protocol 9-1: Medication Administration — General Requirements",
+      "points": [
+        "Check medication for: correct drug name, correct concentration, expiration date, clarity/absence of particulate matter, and intact packaging/vial",
+        "Verbally confirm medication name, dose, and route with partner or team member prior to administration when feasible",
+        "Document all medications administered in the PCR including: drug name, dose, route, time, indication, and patient response (desired effect, adverse effects)",
+        "Report all adverse medication reactions to online medical control and document in PCR",
+        "Paramedic scope includes all routes; Specialist scope per MCA approval; EMT scope: oral, auto-injector, nebulized (if MCA authorized), and assisting patient with prescribed medications; MFR scope: oral, auto-injector, and IN (if MCA authorized)"
+      ]
+    },
+    {
+      "title": "Intranasal (IN) Medication Administration",
+      "reference": "Michigan Protocol 9-1: Medication Administration — Intranasal",
+      "points": [
+        "Intranasal (IN) route: use mucosal atomizer device (MAD) only",
+        "Administer half the dose in each nostril to distribute across mucosal surface",
+        "Confirm absence of nasal obstruction, significant epistaxis, or facial trauma that would prevent absorption",
+        "MFR use of IN route: MCA OPTIONAL — only authorized if MCA has approved IN medication administration for MFR",
+        "EMT and above: IN route permitted per applicable medication protocols without additional MCA selection (unless specific drug requires MCA authorization)"
+      ]
+    },
+    {
+      "title": "Nebulized Medication Administration",
+      "reference": "Michigan Protocol 9-1: Medication Administration — Nebulized",
+      "points": [
+        "Nebulized medications: place in nebulizer cup, attach mouthpiece or mask appropriate for patient age and cooperation",
+        "Oxygen flow rate: 6-8 LPM to produce adequate aerosol; may use air compressor if oxygen-driven nebulizer not available",
+        "Effective treatment period: approximately 8-10 minutes for standard nebulized dose",
+        "EMT administration of nebulized medications: MCA OPTIONAL — only authorized if MCA has approved nebulized medication administration for EMT",
+        "Specialist and Paramedic: nebulized route permitted per applicable medication protocols"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [
+    {
+      "item": "Intranasal (IN) Medication Administration — MFR Authorization",
+      "description": "MCA must authorize MFR providers to administer medications via intranasal route",
+      "options": ["Authorized — MFR may administer intranasal medications per applicable protocols", "Not authorized — MFR intranasal administration not permitted"],
+      "selected": null
+    },
+    {
+      "item": "Nebulized Medication Administration — EMT Authorization",
+      "description": "MCA must authorize EMT providers to administer nebulized medications",
+      "options": ["Authorized — EMT may administer nebulized medications per applicable protocols", "Not authorized — EMT nebulized administration not permitted"],
+      "selected": null
+    }
+  ],
+
+  "key_drugs": [],
+
+  "deterioration_flags": [
+    "Adverse medication reaction — notify online medical control immediately; document in PCR",
+    "Wrong medication or dose administered — notify online medical control immediately; monitor patient closely; document"
+  ],
+
+  "scope_notes": [
+    "All EMS provider levels (scope varies by provider level)",
+    "Six Rights must be verified before every medication administration",
+    "MFR IN route: MCA Optional",
+    "EMT nebulized route: MCA Optional",
+    "All medications documented: drug name, dose, route, time, indication, patient response",
+    "Adverse reactions: notify online MC; document in PCR"
+  ]
+}

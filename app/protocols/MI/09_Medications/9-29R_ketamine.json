@@ -1,0 +1,91 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-29R Ketamine (Revised 12/10/2025, MDHHS Reviewed 2026). Base Michigan template — MCA Optional.",
+  "id": "mi_base_medication_ref_ketamine",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference — MCA Optional",
+  "jurisdiction": "Michigan",
+  "condition": "Ketamine",
+  "version": "2025-12-10",
+  "protocol_reference": "Michigan Medication Protocol Section 9-29R: Ketamine — MDHHS Approved 1/5/2026, Reviewed 2026",
+
+  "pharmacological_category": "Antidepressant; General Anesthetic",
+
+  "routes": ["IV", "IO", "IM", "IN (intranasal)"],
+
+  "indications": [
+    "Pain management",
+    "Sedation"
+  ],
+
+  "contraindications": [
+    "Known hypersensitivity to ketamine",
+    "Age restriction for IV/IO: not for patients <6 months",
+    "IN route only for patients 6 months to 6 years (no IV/IO route for this age group per protocol)"
+  ],
+
+  "precautions": [
+    "MCA OPTIONAL — only authorized if MCA has approved ketamine for EMS use",
+    "Ketamine IV should be diluted to prevent ketamine dissociation",
+    "Mix the patient-specific dose into 100 mL NS and administer slow infusion over 5-10 minutes",
+    "IM ketamine has a 3-5 minute onset",
+    "IN route: administer undiluted using MAD device"
+  ],
+
+  "expected_effects": [
+    "Sedation",
+    "Decreased agitation",
+    "Decreased pain"
+  ],
+
+  "side_effects": [
+    "Nausea/vomiting",
+    "Nystagmus",
+    "Dysphoria"
+  ],
+
+  "notes": [
+    "Pain management IV/IO: 0.2 mg/kg diluted in 100 mL NS; infuse over 5-10 minutes; maximum 25 mg",
+    "Pain management IN: 0.5 mg/kg undiluted via MAD; maximum 50 mg; may repeat once after 10 minutes",
+    "Hyperactive delirium syndrome with severe agitation: 4 mg/kg IM; maximum single dose 500 mg",
+    "Pediatric pain >6 yr: IV/IO and IN routes per protocol",
+    "Pediatric pain 6 months to 6 yr: IN route only (0.5 mg/kg); IV/IO not indicated per protocol for this age group"
+  ],
+
+  "dosing": [
+    {
+      "population": "Adult (>14 yr) — pain management",
+      "route": "IV/IO",
+      "dose": "0.2 mg/kg diluted in 100 mL NS; infuse over 5-10 minutes; maximum 25 mg",
+      "notes": "Do NOT give as IV bolus; dilute and infuse slowly"
+    },
+    {
+      "population": "Adult (>14 yr) — pain management",
+      "route": "IN",
+      "dose": "0.5 mg/kg undiluted via MAD; maximum 50 mg; may repeat once after 10 minutes",
+      "notes": "Use MAD; split dose half per nostril"
+    },
+    {
+      "population": "Adult (>14 yr) — hyperactive delirium",
+      "route": "IM",
+      "dose": "4 mg/kg IM; maximum 500 mg",
+      "notes": "For hyperactive delirium syndrome with severe agitation when patient poses imminent physical threat to self and/or personnel"
+    },
+    {
+      "population": "Pediatric >6 yr — pain management",
+      "route": "IV/IO or IN",
+      "dose": "0.2 mg/kg IV/IO (max 25 mg) diluted in 100 mL NS; OR 0.5 mg/kg IN (max 50 mg)",
+      "notes": "Both routes permitted >6 years"
+    },
+    {
+      "population": "Pediatric 6 months to 6 yr — pain management",
+      "route": "IN ONLY",
+      "dose": "0.5 mg/kg IN undiluted via MAD; maximum 50 mg",
+      "notes": "IN route only for this age group; IV/IO not indicated per Michigan protocol for <6 years pain management"
+    }
+  ],
+
+  "used_in_protocols": ["Hyperactive Delirium Syndrome with Severe Agitation", "Pain Management"]
+}

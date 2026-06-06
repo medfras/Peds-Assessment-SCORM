@@ -1,0 +1,142 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). Toxins and Environmental: Drowning. NASEMSO national provisional base.",
+  "id": "nasemso_base_toxins_and_environmental_drowning",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Drowning",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Drowning",
+  "aliases": [
+    "Fatal drowning",
+    "Immersion",
+    "Near-drowning",
+    "Non-fatal drowning",
+    "Submersion"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — Toxins and Environmental: Drowning",
+      "points": [
+        "Rapid assessment and management of life-threatening injuries",
+        "Rescue from the water-based environment",
+        "Transport patients suffering from drowning for hospital evaluation unless field arrest resuscitation termination guidelines apply."
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Patients suffering from drowning or drowning events independent of presence or absence of symptoms",
+        "EXCLUSION CRITERIA:",
+        "When protocol is inapplicable."
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Rescue: rescuer safety first — use throw device or reach pole before entering water",
+        "CPR immediately on removal from water (do not delay for water removal from lungs — Heimlich not recommended for drowning)",
+        "AED as soon as available; dry patient before applying pads",
+        "BVM ventilation with high-flow O2",
+        "C-spine immobilization only if traumatic mechanism (diving, surfing, motor vehicle) — do not delay CPR"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Aggressive airway management: suctioning, NPA/supraglottic airway",
+        "CPAP 5-10 cmH2O for pulmonary edema from submersion",
+        "12-lead ECG: dysrhythmias common",
+        "Blood glucose monitoring",
+        "Active rewarming for hypothermia component"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access: IV NS bolus for hypotension",
+        "Waveform capnography",
+        "Blood glucose monitoring and correction",
+        "Benzodiazepine for seizures",
+        "IO access if IV unsuccessful"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "Endotracheal intubation and mechanical ventilation for persistent respiratory failure after CPAP",
+        "PEEP titration for pulmonary edema (5-10 cmH2O starting point)",
+        "Treat hypothermia per hypothermia protocol — common co-condition",
+        "Treat dysrhythmias per specific protocol",
+        "Vasopressors for refractory hemodynamic compromise",
+        "RSI: succinylcholine or rocuronium"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Avoidance of hyperoxygenation of the drowning victim",
+        "Rescuer safety considerations"
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "The World Health Organization definition of drowning is \" the process of experiencing respiratory impairment from submersion/immersion in liquid\"",
+        "Drowning is further defined in the following categories: a. Non-fatal drowning: patients rescued from drowning",
+        "Submersion refers to situations in which the patient's airway is underwater. Immersion refers to situations in which the patient's body is in water, but the patient's airway remains out of the water",
+        "Pediatric Considerations: a. Drowning is a common cause of death in children",
+        "Rescue efforts should be coordinated between all responding agencies to ensure patient is rapidly accessed and removed from the water",
+        "Initiation of in-water ventilations may increase survival. In-water chest compressions are futile",
+        "The European Resuscitation Council recommends five initial breaths be provided to the drowning victim a. The initial ventilations may be more difficult to achieve as water in the airways may impede alveolar expansion",
+        "Active efforts to expel water from the airway (by abdominal thrusts or other means) should be avoided as they delay resuscitative efforts and increase the potential for vomiting and aspiration"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Mechanism of injury or history suggesting cervical spine injury",
+        "' Submersion time",
+        "' Water temperature",
+        "' Activities leading to drowning",
+        "' Consider a standardized data collection metrics such as the Utstein drowning data reporting elements"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Contact medical direction for clinical deterioration or interventions outside standard scope"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

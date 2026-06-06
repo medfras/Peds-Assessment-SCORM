@@ -1,0 +1,144 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: NASEMSO National Model EMS Clinical Guidelines v3.0 (March 2022). General Medical: Nausea-Vomiting. NASEMSO national provisional base.",
+  "id": "nasemso_base_general_medical_nausea_vomiting",
+  "mca": "nasemso_base",
+  "mca_display": "NASEMSO National Model Guidelines (Provisional)",
+  "level": "All",
+  "level_display": "All Levels — Interventions Scoped Per Provider Level",
+  "jurisdiction": "national",
+  "condition": "Nausea-Vomiting",
+  "version": "2022-03-11",
+  "protocol_reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — General Medical: Nausea-Vomiting",
+  "aliases": [
+    "Emesis",
+    "Gastroenteritis"
+  ],
+  "sections": [
+    {
+      "title": "Patient Care Goals",
+      "reference": "NASEMSO National Model EMS Clinical Guidelines v3.0 — General Medical: Nausea-Vomiting",
+      "points": [
+        "Identify hypoglycemia or hyperglycemia",
+        "Prevent dehydration"
+      ]
+    },
+    {
+      "title": "Patient Presentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Currently nauseated and/or vomiting",
+        "EXCLUSION CRITERIA:",
+        "None noted"
+      ]
+    },
+    {
+      "title": "EMR Interventions",
+      "reference": "NASEMSO v3.0 — EMR level (Emergency Medical Responder)",
+      "points": [
+        "Scene safety and PPE; primary survey (ABCDE)",
+        "Oxygen via NRM targeting SpO2 94-98% if indicated",
+        "Position of comfort; hemorrhage control as needed",
+        "CPR/AED if patient becomes pulseless",
+        "Epinephrine auto-injector for anaphylaxis if applicable",
+        "Naloxone intranasal unit-dose for suspected opioid involvement"
+      ]
+    },
+    {
+      "title": "EMT Interventions",
+      "reference": "NASEMSO v3.0 — EMT level (Emergency Medical Technician)",
+      "points": [
+        "Blood glucose monitoring; oral glucose if hypoglycemic and alert",
+        "12-lead ECG acquisition and transmission",
+        "CPAP for respiratory distress",
+        "Aspirin for suspected ischemic chest pain",
+        "Albuterol SVN for bronchospasm component",
+        "IV access maintenance (non-medicated)"
+      ]
+    },
+    {
+      "title": "AEMT Interventions",
+      "reference": "NASEMSO v3.0 — AEMT level (Advanced EMT)",
+      "points": [
+        "IV/IO access initiation",
+        "IV/IO fluid resuscitation as indicated",
+        "Waveform capnography",
+        "IV analgesics (fentanyl, morphine) per pain management protocol",
+        "IV antiemetics (ondansetron) per protocol",
+        "IV D50W/D10W for hypoglycemia"
+      ]
+    },
+    {
+      "title": "Paramedic Interventions",
+      "reference": "NASEMSO v3.0 — Paramedic level",
+      "points": [
+        "12-lead ECG interpretation",
+        "Endotracheal intubation for airway compromise",
+        "RSI per protocol",
+        "Advanced antidysrhythmic or hemodynamic support per specific protocol",
+        "All parenteral medications per protocol",
+        "Vasopressors for refractory hemodynamic compromise"
+      ]
+    },
+    {
+      "title": "Patient Safety Considerations",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Ondansetron should not be administered to patients who have a prolonged QT interval as it can cause torsades.",
+        "For very young pediatric patients, ondansetron can be sedating",
+        "Dystonic and extrapyramidal symptoms are possible side effects of antiemetics ' If encountered, consider diphenhydramine: a. Adult: 25'50 mg IV/IM/PO",
+        "Medications that prolong the QT interval may alter treatment options."
+      ]
+    },
+    {
+      "title": "Educational Pearls",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "Ondansetron is preferred in children for the treatment of nausea and vomiting",
+        "Metoclopramide has fewer adverse effects than prochlorperazine in children",
+        "Prochlorperazine and metoclopramide (phenothiazines) have an increased risk of dystonic reactions a. Some phenothiazines also have an increased risk of respiratory depression when used with other medications that cause respiratory depression, and some phenothiazines can cause neuroleptic malignant syndrome",
+        "IV form of ondansetron may be given PO in same dose",
+        "Nausea and vomiting are symptoms of illness ' in addition to treating the patient's nausea and vomiting a thorough history and physical are key to identifying what may be a disease in need of emergent treatment (e.g., bowel obstruction, myocardial infarction, pregnancy)",
+        "While ondansetron has not been adequately studied in pregnancy to determine safety, women should be counseled regarding the available data. In the first trimester of pregnancy, the administration of metoclopramide 5'10 mg IV with diphenhydramine 25 mg IV is recommended over the administration of ondansetron",
+        "Vital signs (pulse, blood pressure, respiratory rate, neurologic status assessment)",
+        "Risk factors for heart disease/EKG if applicable"
+      ]
+    },
+    {
+      "title": "Key Documentation",
+      "reference": "NASEMSO v3.0",
+      "points": [
+        "' Patient age",
+        "' Patient weight and/or length-based weight measure for pediatric patients",
+        "' Medications given, including time, clinician level, dose, dose units, route, response, and complications",
+        "' Vital signs before and after medication administration",
+        "' History and physical regarding etiology of nausea/vomiting",
+        "' EKG performed and interpretation documented if cardiac risk factors are present"
+      ]
+    }
+  ],
+  "allowed_levels": {
+    "EMR": [
+      "Scene safety, primary survey, CPR, AED, BVM, bleeding control, oral airway, O2 therapy, epinephrine auto-injector for anaphylaxis, naloxone unit-dose auto-injector"
+    ],
+    "EMT": [
+      "EMR scope PLUS: NPA, supraglottic airway, CPAP, pulse oximetry, 12-lead ECG acquisition, oral glucose, aspirin, patient own nitroglycerin, albuterol SVN, IM epinephrine, blood glucose monitoring, cervical collar, traction splint"
+    ],
+    "AEMT": [
+      "EMT scope PLUS: waveform capnography, IO access, IV access initiation, IV/IO fluids, IV medications (dextrose, naloxone, epinephrine, glucagon, analgesics, antiemetics), subcutaneous/intranasal medications, nitroglycerin from stock"
+    ],
+    "Paramedic": [
+      "AEMT scope PLUS: ET intubation, RSI, cricothyrotomy, needle decompression, manual defibrillation, cardioversion, transcutaneous pacing, 12-lead ECG interpretation, all antidysrhythmics, vasopressors, all medication routes and classes"
+    ]
+  },
+  "deterioration_flags": [
+    "Contact medical direction for clinical deterioration or interventions outside standard scope"
+  ],
+  "scope_notes": [
+    "EMR scope is the minimum national standard — state/MCA may expand",
+    "All interventions subject to local medical director credentialing",
+    "Pediatric patients: use weight-based dosing and age-appropriate equipment",
+    "Contact medical direction when required by local protocol or for interventions outside standard scope"
+  ],
+  "mca_selections_required": []
+}

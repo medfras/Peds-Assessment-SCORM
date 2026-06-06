@@ -1,0 +1,85 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-7 Epinephrine Auto-Injector Procedure (Revised 2/15/2023, MDHHS Reviewed 2023). Base Michigan template — MCA-specific selections not configured.",
+  "id": "mi_base_medication_epinephrine_auto_injector_procedure",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication (All EMS Levels — MFR MCA Optional)",
+  "jurisdiction": "Michigan",
+  "condition": "Epinephrine Auto-Injector Procedure",
+  "version": "2023-02-15",
+  "protocol_reference": "Michigan Medication Protocol Section 9-7: Epinephrine Auto-Injector Procedure — MDHHS Approved 2/15/2023",
+  "purpose": "Govern administration of epinephrine via auto-injector (EpiPen or equivalent) for anaphylaxis or severe allergic reaction. Standard adult dose is 0.3 mg (>30 kg). Pediatric dose 0.15 mg for 10-30 kg. Patients <10 kg require online medical control before administration. MFR administration of epinephrine auto-injector is MCA Optional.",
+  "sections": [
+    {
+      "title": "Indications and Doses",
+      "reference": "Michigan Protocol 9-7: Epinephrine Auto-Injector — Indications and Doses",
+      "points": [
+        "Indication: anaphylaxis or severe allergic reaction with signs of respiratory distress, urticaria with systemic involvement, or hemodynamic instability",
+        "Adult dose (>30 kg): epinephrine 0.3 mg auto-injector (standard EpiPen)",
+        "Pediatric dose (10-30 kg): epinephrine 0.15 mg auto-injector (EpiPen Jr)",
+        "Patients <10 kg: contact online medical control before administration; contact MC for dosing guidance",
+        "May use patient's own prescribed auto-injector or agency-supplied auto-injector per MCA policy"
+      ]
+    },
+    {
+      "title": "Administration Procedure",
+      "reference": "Michigan Protocol 9-7: Epinephrine Auto-Injector — Procedure",
+      "points": [
+        "Preferred injection site: anterolateral thigh (mid-outer thigh) — may be administered through clothing",
+        "Remove safety cap from auto-injector",
+        "Place tip firmly against outer thigh at 90-degree angle",
+        "Push firmly until click is heard or felt — hold in place for 10 seconds",
+        "Remove and massage injection site briefly",
+        "Note time of administration; document in PCR",
+        "Dispose of used auto-injector in sharps container"
+      ]
+    },
+    {
+      "title": "MFR Authorization",
+      "reference": "Michigan Protocol 9-7: Epinephrine Auto-Injector — MFR Authorization",
+      "points": [
+        "MFR administration of epinephrine auto-injector: MCA OPTIONAL",
+        "Only authorized if MCA has approved epinephrine auto-injector use for MFR level providers",
+        "EMT and above: epinephrine auto-injector permitted per applicable anaphylaxis protocols without additional MCA selection"
+      ]
+    }
+  ],
+  "mca_selections_required": [
+    {
+      "item": "Epinephrine Auto-Injector — MFR Authorization",
+      "description": "MCA must authorize MFR providers to administer epinephrine auto-injector for anaphylaxis",
+      "options": [
+        "Authorized — MFR may administer epinephrine auto-injector per protocol criteria",
+        "Not authorized — MFR epinephrine auto-injector administration not permitted"
+      ],
+      "selected": null
+    }
+  ],
+  "key_drugs": [
+    "epinephrine 0.3mg auto-injector",
+    "epinephrine 0.15mg auto-injector"
+  ],
+  "deterioration_flags": [
+    "Patient <10 kg — contact online medical control before epinephrine auto-injector administration",
+    "No improvement after auto-injector — may repeat per anaphylaxis protocol; contact online MC"
+  ],
+  "scope_notes": [
+    "All EMS levels (MFR: MCA Optional)",
+    "Adult >30 kg: 0.3 mg auto-injector",
+    "Pediatric 10-30 kg: 0.15 mg auto-injector",
+    "<10 kg: contact online MC for dose guidance before administering",
+    "Site: anterolateral thigh; through clothing acceptable; hold 10 seconds",
+    "Document: time, dose, route, patient response"
+  ],
+  "clinical_context": {
+    "concepts": [
+      "allergic_reaction",
+      "anaphylaxis",
+      "pediatric_respiratory_distress"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "_schema": "pfd_protocol_v1",
+  "_comment": "Source: Michigan MDHHS Section 10-4 CHEMPACK/MEDDRUN (MDHHS Reviewed 2022-12-27). Base Michigan template.",
+  "id": "mi_base_special_ops_chempack_meddrun",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Special Operations",
+  "level_display": "Special Operations Protocol",
+  "jurisdiction": "Michigan",
+  "condition": "CHEMPACK / MEDDRUN Activation",
+  "version": "2022-12-27",
+  "protocol_reference": "Michigan Special Operations Protocol Section 10-4: CHEMPACK / MEDDRUN — MDHHS Reviewed 2022",
+
+    "purpose": "Establish procedures for activation and use of Michigan's pre-positioned nerve agent / organophosphate antidote and pharmaceutical caches (CHEMPACK and MEDDRUN) and define EMS, Communications Agency, storage site, transportation agency, and BEPESOC responsibilities.",
+
+  "sections": [
+    {
+      "title": "Program Overview",
+      "content": [
+        "CHEMPACK: CDC Strategic National Stockpile program — pre-positioned nerve agent antidote kits (Duodote / Mark I) at designated locations throughout Michigan",
+                "MEDDRUN: Michigan Emergency Drug Delivery and Resource Utilization Network — standardized caches of medications and supplies strategically located throughout Michigan",
+                "Purpose: rapidly deliver medications and medical supplies when local supplies are not adequate or become exhausted; MEDDRUN goal is MedPack deployment within 15 minutes of request",
+                "CHEMPACK/MEDDRUN may support nerve agent, biological, chemical, radiological, dirty bomb, or mass casualty incidents",
+                "BEPESOC: Bureau of Emergency Preparedness, EMS, and Systems of Care — provides follow-up, authentication, confirmation/recall coordination, MSP notification, MI-HAN alert coordination, and formulary distribution coordination"
+      ]
+    },
+    {
+      "title": "Contact Numbers",
+      "content": [
+        "PRIMARY CHEMPACK/MEDDRUN Contact: 877-633-7786 (24/7)",
+        "BACKUP Contact: 616-391-5330 (24/7)",
+                "Only authorized agencies and officials can request MEDDRUN; EMS identifies need and reports through Central Dispatch or hospital/MCA"
+      ]
+    },
+    {
+      "title": "Activation Criteria",
+      "content": [
+                "Recognition of need may come from EMS, hospital, public health, EOC, or emergency management",
+                "Biological, chemical, radiological, dirty bomb, or mass casualty incident where CHEMPACK/MEDDRUN supplies may be needed",
+                "Need for nerve agent antidote support or dirty bomb supplies",
+                "Existing local supplies are depleting or exhausted with multiple lives remaining at risk",
+                "MEDDRUN may also be pre-deployed for special events designated by state and regional leadership"
+      ]
+    },
+    {
+      "title": "EMS Responsibilities",
+      "content": [
+                "1. EMS identifies need for medication support",
+                "2. EMS contacts Central Dispatch or a hospital/MCA",
+                "3. Central Dispatch or hospital/MCA contacts the MEDDRUN and/or CHEMPACK Communications Agency",
+                "4. Provide Essential Elements of Information (EEI) report through the requesting pathway",
+                "5. Confer with Incident Commander and keep IC informed of activation/deployment status",
+                "6. Incident Command receives arriving cache and completes the Transfer of Custody form",
+                "7. IC ensures accurate antidote accounting with the senior medical/EMT at the scene",
+                "8. If additional antidotes are required, IC informs Central Dispatch/911",
+                "9. If fewer antidotes are needed than anticipated, transport vehicle remains nearby to return unused antidotes to CSS POC"
+      ]
+    },
+    {
+      "title": "Essential Elements of Information (EEI) Report",
+      "content": [
+                "When requesting deployment, provide:",
+                "  1. Name, position/title, and contact information for the individual requesting deployment",
+                "  2. Name, position/title, employer, and contact information for the physician/officer in charge of medical management at the scene if different",
+                "  3. Incident location: jurisdiction name, closest intersection, or site name",
+                "  4. Estimated number of casualties",
+                "  5. Symptoms of casualties, including pinpoint pupils, twitching, dimness of vision, seizures, slurred speech, chest tightness, difficulty breathing, or unconsciousness",
+                "  6. Whether local supplies of antidotes/pharmaceuticals are exhausted, multiple lives remain at risk, and CHEMPACK supplies are needed to save lives"
+      ]
+    },
+    {
+      "title": "BEPESOC Responsibilities",
+      "content": [
+                "Contact the requesting agency to authenticate the request",
+                "Contact Communications Agency to provide confirmation or initiate recall; advise whether Alert Orders should be initiated",
+                "Contact Michigan State Police East Lansing Operations Center",
+                "Coordinate potential inter-hospital formulary distribution",
+                "Coordinate a MI-HAN Alert",
+                "Review preliminary After Action Reports with intent of improving future responses",
+                "Coordinate restocking with the Regional Emergency Preparedness Coordinator depending on availability of federal funds"
+      ]
+    },
+    {
+      "title": "Restocking and Accountability",
+      "content": [
+                "Within 72 hours of deployment, Agencies, BEPESOC, and Communications prepare a preliminary After Action Report using BEPESOC format",
+                "Restocking and return to service should occur as quickly as possible",
+                "The agency may be returned to limited service with a partially depleted MedPack/CHEMPACK",
+                "Regional Emergency Preparedness Coordinator, in collaboration with BEPESOC, is responsible for ordering supplies to restock used MedPack/CHEMPACK resources depending on federal fund availability",
+                "BEPESOC and Communications must be notified when the MedPack/CHEMPACK is returned to full service"
+      ]
+    },
+    {
+      "title": "Deployment Algorithm",
+      "content": [
+                "STEP 1: Need for nerve agent antidote support, dirty bomb supplies, or other MEDDRUN/CHEMPACK support is identified",
+                "STEP 2: Confer with Incident Commander",
+                "STEP 3: Provide report to Central Dispatch or hospital/MCA",
+                "STEP 4: Central Dispatch or requesting agency contacts MEDDRUN/CHEMPACK Communications Agency",
+                "STEP 5: Communications Agency issues deployment orders to selected MEDDRUN Dispatch and/or CHEMPACK POC/APOC",
+                "STEP 6: BEPESOC POC authenticates request and provides confirmation or recall through Communications Agency",
+                "STEP 7: Selected storage site moves desired cache to loading area and the designated transportation agency delivers supplies",
+                "STEP 8: Incident Command receives cache, completes Transfer of Custody, and maintains accurate accounting"
+      ]
+    }
+  ],
+
+  "mca_selections_required": [],
+
+  "key_drugs": [
+    "Duodote Auto-Injectors — atropine 2.1mg + pralidoxime 600mg (primary CHEMPACK kit)",
+    "Mark I Auto-Injectors — atropine 2mg + pralidoxime 600mg (older format)",
+    "Diazepam auto-injectors — seizure treatment (CHEMPACK cache supplement)",
+    "IV Atropine / IV Pralidoxime — for sustained antidote infusion (cache supplement)"
+  ],
+
+  "deterioration_flags": [
+    "Local antidote supply exhausted — activate CHEMPACK/MEDDRUN IMMEDIATELY; do NOT delay",
+    "Coordinator unreachable on primary number — use backup: 616-391-5330",
+    "Incident escalation (additional casualties) — update EEI report; request additional cache deployment"
+  ],
+
+    "scope_notes": "CHEMPACK/MEDDRUN activation is routed through Central Dispatch, hospital/MCA, or other authorized agency pathways to the Communications Agency; EMS personnel who identify need should report through those pathways rather than bypassing them. IC receives the cache and maintains transfer-of-custody/accounting. MEDDRUN may also be pre-deployed for designated special events."
+}

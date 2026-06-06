@@ -1,0 +1,123 @@
+{
+  "_schema": "pfd_medication_reference_v1",
+  "_comment": "Source: Michigan MDHHS Section 9-12R Albuterol (Revised 12/10/2025, MDHHS Reviewed 2026). Base Michigan template.",
+  "id": "mi_base_medication_ref_albuterol",
+  "mca": "mi_base",
+  "mca_display": "Michigan (Base — MCA Selections Required)",
+  "level": "Medication",
+  "level_display": "Medication Reference",
+  "jurisdiction": "Michigan",
+  "condition": "Albuterol",
+  "version": "2025-12-10",
+  "protocol_reference": "Michigan Medication Protocol Section 9-12R: Albuterol — MDHHS Approved 1/5/2026, Reviewed 2026",
+  "pharmacological_category": "Bronchodilator — Beta-2 Agonist",
+  "routes": [
+    "Nebulized"
+  ],
+  "indications": [
+    "Bronchospasm (wheezing)",
+    "Known or suspected hyperkalemia resulting from a crush injury"
+  ],
+  "contraindications": [
+    "Known hypersensitivity to albuterol"
+  ],
+  "precautions": [
+    "Tachycardia is expected — monitor HR; caution in patients with underlying cardiac dysrhythmia",
+    "May worsen tremor in patients with Parkinson's disease or essential tremor",
+    "Dosing is not strictly weight or age-based — reference MI-MEDIC for pediatric patients"
+  ],
+  "expected_effects": [
+    "Bronchodilation within 5-10 minutes of nebulized treatment",
+    "Improved air movement, decreased wheezing",
+    "Increased heart rate (expected beta-2 stimulation)"
+  ],
+  "side_effects": [
+    "Tachycardia",
+    "Tremor",
+    "Hypokalemia with repeated/continuous dosing",
+    "Headache, palpitations"
+  ],
+  "notes": [
+    "Standard dose: 2.5 mg in 3 mL NS nebulized over ~8-10 minutes",
+    "Crush injury protocol: 2.5 mg/3 mL NS continuous nebulization to a maximum dose of 20 mg",
+    "A single responding unit is not expected to carry 20 mg (8 nebules); the 20 mg maximum applies when additional resources such as a HazMat drug box or second drug box are available",
+    "Pediatric dosing: not strictly weight-based; reference MI-MEDIC for pediatric guidance",
+    "May combine with ipratropium bromide (9-28R) as combined 'DuoNeb' nebulization for continued bronchospasm"
+  ],
+  "dosing": [
+    {
+      "population": "Adult (>14 yr)",
+      "route": "Nebulized",
+      "dose": "2.5 mg in 3 mL NS",
+      "notes": "Standard nebulized treatment over ~8-10 minutes; may repeat per treatment protocol"
+    },
+    {
+      "population": "Pediatric (≤14 yr)",
+      "route": "Nebulized",
+      "dose": "Per MI-MEDIC — not strictly weight/age-based",
+      "notes": "Reference MI-MEDIC for pediatric dosing guidance; nebulized over ~8-10 minutes"
+    },
+    {
+      "population": "Crush injury — any age",
+      "route": "Nebulized continuous",
+      "dose": "2.5 mg/3 mL NS continuous nebulization to maximum 20 mg",
+      "notes": "For suspected hyperkalemia in crush injury; maximum dose depends on available resources"
+    }
+  ],
+  "used_in_protocols": [
+    "Anaphylaxis/Allergic Reaction",
+    "General Crush Injury",
+    "Respiratory Distress",
+    "Pediatric Respiratory Distress",
+    "Pulmonary Edema/Cardiogenic Shock"
+  ],
+  "name": "Albuterol Sulfate",
+  "type": "medication_monograph",
+  "administration": {
+    "route_specific": "nebulized",
+    "setup": [
+      "Place 3 mL unit-dose vial contents (2.5 mg albuterol in 3 mL NS) in lower half of nebulizer chamber",
+      "Assemble nebulizer unit and attach to T piece with mouthpiece or pediatric/NRB mask",
+      "Connect oxygen tubing from nebulizer to oxygen source",
+      "Set oxygen flow at 6 LPM as driving gas",
+      "Instruct patient to breathe normally, with deep inspiration every 4–5 breaths",
+      "Continue until all medication delivered; tap reservoir gently to re-disperse if needed"
+    ],
+    "pediatric_note": "For small children, use blow-by or pediatric mask if unable to use mouthpiece",
+    "post_administration": "Obtain complete reassessment: vital signs and lung sounds after treatment completion"
+  },
+  "six_rights_for_this_drug": [
+    {
+      "right": "Right Patient",
+      "verification": "Patient has wheezing/bronchospasm; or confirmed hyperkalemia from crush injury"
+    },
+    {
+      "right": "Right Medication",
+      "verification": "Albuterol Sulfate — label reads 'Albuterol Sulfate 2.5 mg / 3 mL' — verify label matches verbalization"
+    },
+    {
+      "right": "Right Dose",
+      "verification": "2.5 mg / 3 mL NS — NOT weight/age based for pediatric respiratory distress; same dose as adult"
+    },
+    {
+      "right": "Right Route",
+      "verification": "SVN nebulized — O₂ at 6 LPM as driving gas; appropriate mask or mouthpiece selected"
+    },
+    {
+      "right": "Right Time",
+      "verification": "Baseline vitals and lung sounds obtained; no known hypersensitivity; patient can tolerate mask"
+    },
+    {
+      "right": "Right Documentation",
+      "verification": "Document: drug name, dose (2.5 mg), route (SVN), time, justification (protocol), cross-check, and patient response post-treatment"
+    }
+  ],
+  "clinical_context": {
+    "concepts": [
+      "bronchospasm",
+      "respiratory_distress"
+    ],
+    "tag_source": "initial_static_mapping",
+    "sme_review_status": "pending"
+  }
+}

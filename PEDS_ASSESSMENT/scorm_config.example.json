@@ -1,0 +1,5 @@
+{
+  "backend_base": "https://your-hosted-backend.com",
+  "module_id": "pfd_station1",
+  "integration_key": "pfd_station1_v1"
+}
