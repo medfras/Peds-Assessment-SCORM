@@ -5952,25 +5952,25 @@ function _getScormAccessToken() {
 
 const _SCORM_NODE_GROUPS = {
   map0: [
-    { nodeId: "drill_pat", appId: "pat", label: "Doorway Dash", type: "minigame", role: "Required" },
-    { nodeId: "drill_dev", appId: "dev_sort", label: "Development Sort", type: "minigame", role: "Required" },
-    { nodeId: "drill_gcs", appId: "peds_gcs_calculator", label: "Pediatric GCS", type: "minigame", role: "Optional" },
+    { nodeId: "drill_pat", appId: "pat", label: "Doorway Dash", type: "minigame", role: "Required", x: 28, y: 50 },
+    { nodeId: "drill_dev", appId: "dev_sort", label: "Development Sort", type: "minigame", role: "Required", x: 56, y: 38 },
+    { nodeId: "drill_gcs", appId: "peds_gcs_calculator", label: "Pediatric GCS", type: "minigame", role: "Optional", x: 70, y: 66 },
   ],
   pm1: [
-    { nodeId: "scen_croup", appId: "peds_croup_01", label: "Croup", type: "scenario" },
-    { nodeId: "scen_asthma", appId: "peds_asthma_01", label: "Asthma", type: "scenario" },
-    { nodeId: "scen_diabetes", appId: "peds_diabetic_emergency_01", label: "Diabetes", type: "scenario" },
-    { nodeId: "scen_seizure", appId: "peds_febrile_seizure_01", label: "Febrile Seizure", type: "scenario" },
+    { nodeId: "scen_croup", appId: "peds_croup_01", label: "Croup", type: "scenario", x: 26, y: 44 },
+    { nodeId: "scen_asthma", appId: "peds_asthma_01", label: "Asthma", type: "scenario", x: 58, y: 36 },
+    { nodeId: "scen_diabetes", appId: "peds_diabetic_emergency_01", label: "Diabetes", type: "scenario", x: 42, y: 68 },
+    { nodeId: "scen_seizure", appId: "peds_febrile_seizure_01", label: "Febrile Seizure", type: "scenario", x: 74, y: 62 },
   ],
   pt1: [
-    { nodeId: "scen_laceration", appId: "peds_trauma_01_soft_tissue", label: "Scalp Laceration", type: "scenario" },
-    { nodeId: "scen_head", appId: "peds_trauma_07_head_injury", label: "Head Injury", type: "scenario" },
-    { nodeId: "scen_bleeding", appId: "peds_trauma_03_extremity", label: "Extremity Injury", type: "scenario" },
-    { nodeId: "scen_airway", appId: "peds_trauma_02_partial_choking", label: "Partial Airway", type: "scenario" },
-    { nodeId: "scen_anaph", appId: "peds_anaphylaxis_01", label: "Anaphylaxis", type: "scenario" },
+    { nodeId: "scen_laceration", appId: "peds_trauma_01_soft_tissue", label: "Scalp Laceration", type: "scenario", x: 22, y: 42 },
+    { nodeId: "scen_head", appId: "peds_trauma_07_head_injury", label: "Head Injury", type: "scenario", x: 46, y: 31 },
+    { nodeId: "scen_bleeding", appId: "peds_trauma_03_extremity", label: "Extremity Injury", type: "scenario", x: 62, y: 58 },
+    { nodeId: "scen_airway", appId: "peds_trauma_02_partial_choking", label: "Partial Airway", type: "scenario", x: 32, y: 70 },
+    { nodeId: "scen_anaph", appId: "peds_anaphylaxis_01", label: "Anaphylaxis", type: "scenario", x: 76, y: 38 },
   ],
   map3: [
-    { nodeId: "scen_cpr", appId: "peds_cardiac_arrest_01_bls", label: "Pediatric CPR", type: "scenario" },
+    { nodeId: "scen_cpr", appId: "peds_cardiac_arrest_01_bls", label: "Pediatric CPR", type: "scenario", x: 52, y: 58 },
   ],
   optional: [
     { nodeId: "game_vitals", appId: "vitals_trend_spotter", label: "Vitals Trend", type: "minigame", role: "Optional" },
@@ -6044,6 +6044,10 @@ function _createScormNodeButton(node, summary, locked) {
   btn.disabled = !!locked;
   btn.dataset.scormNode = node.nodeId;
   btn.dataset.appId = node.appId;
+  if (Number.isFinite(node.x) && Number.isFinite(node.y)) {
+    btn.style.setProperty("--node-x", `${node.x}%`);
+    btn.style.setProperty("--node-y", `${node.y}%`);
+  }
 
   const title = document.createElement("div");
   title.className = "scorm-node-title";

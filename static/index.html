@@ -4,6 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RescueTrails with Lexi</title>
+  <script>
+    (function () {
+      var win = window;
+      for (var i = 0; win && i < 8; i += 1) {
+        try {
+          if (win.API) {
+            document.documentElement.classList.add("scorm-preboot");
+            return;
+          }
+          if (!win.parent || win.parent === win) return;
+          win = win.parent;
+        } catch (_) {
+          return;
+        }
+      }
+    })();
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet" />
@@ -5746,10 +5763,10 @@
   </div>
 </div>
 
-<script src="/static/js/scorm_config.js?v=20260606-scorm-config-v2"></script>
-<script src="/static/js/scorm.js?v=20260606-scorm-runtime-v2"></script>
-<script src="/static/js/scorm_adapter.js?v=20260606-scorm-adapter-v2"></script>
-<script src="/static/js/app.js?v=20260606-scorm-bootstrap-v2"></script>
+<script src="/static/js/scorm_config.js?v=20260606-scorm-config-v3"></script>
+<script src="/static/js/scorm.js?v=20260606-scorm-runtime-v3"></script>
+<script src="/static/js/scorm_adapter.js?v=20260606-scorm-adapter-v3"></script>
+<script src="/static/js/app.js?v=20260606-scorm-map-v3"></script>
 
 </body>
 </html>

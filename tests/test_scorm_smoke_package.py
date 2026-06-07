@@ -82,6 +82,7 @@ def test_smoke_index_uses_local_scorm_assets_not_remote_launch():
 
 def test_full_index_contains_scorm_station_shell_and_runtime_scripts():
     html = (ROOT / "static" / "index.html").read_text()
+    assert "scorm-preboot" in html
     assert 'id="screen-scorm-station1"' in html
     assert 'id="scorm-map0-nodes"' in html
     assert 'id="scorm-pm1-nodes"' in html
@@ -94,6 +95,19 @@ def test_full_index_contains_scorm_station_shell_and_runtime_scripts():
     assert html.index('src="/static/js/scorm_config.js') < html.index('src="/static/js/scorm.js')
     assert html.index('src="/static/js/scorm.js') < html.index('src="/static/js/scorm_adapter.js')
     assert html.index('src="/static/js/scorm_adapter.js') < html.index('src="/static/js/app.js')
+
+
+def test_scorm_station_shell_uses_map_assets_and_positioned_nodes():
+    app_js = APP_JS.read_text()
+    css = (ROOT / "static" / "css" / "style.css").read_text()
+    assert "MAP0-park.jpeg" in css
+    assert "PM1-school_dropoff.jpeg" in css
+    assert "PT1-skate_park.jpeg" in css
+    assert "cpr_mannequin.jpeg" in css
+    assert "--node-x" in css
+    assert "--node-y" in css
+    assert 'x: 28, y: 50' in app_js
+    assert 'x: 52, y: 58' in app_js
 
 
 def test_smoke_build_script_generates_js_config_and_root_zip():

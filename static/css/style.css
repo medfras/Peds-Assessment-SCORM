@@ -120,9 +120,13 @@ body {
 
 .scorm-shell {
   min-height: 100vh;
-  background: #eef2f7;
+  background: linear-gradient(180deg, #eaf1f7 0%, #dce7ef 100%);
   color: #111827;
   padding: 18px;
+}
+
+.scorm-preboot #screen-login {
+  display: none;
 }
 
 .scorm-topbar {
@@ -243,7 +247,7 @@ body {
 .scorm-map-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  gap: 14px;
 }
 
 .scorm-map-panel,
@@ -252,6 +256,35 @@ body {
   border: 1px solid rgba(31, 41, 55, 0.13);
   border-radius: 8px;
   padding: 14px;
+}
+
+.scorm-map-panel {
+  position: relative;
+  min-height: 360px;
+  overflow: hidden;
+  background-color: #1e293b;
+  background-image:
+    linear-gradient(180deg, rgba(15, 23, 42, 0.08), rgba(15, 23, 42, 0.34)),
+    var(--scorm-map-image);
+  background-position: center;
+  background-size: cover;
+  box-shadow: inset 0 -80px 120px rgba(15, 23, 42, 0.28);
+}
+
+.scorm-map-panel[data-scorm-map="map0"] {
+  --scorm-map-image: url('/static/img/maps/peds/MAP0-park.jpeg?v=20260510');
+}
+
+.scorm-map-panel[data-scorm-map="pm1"] {
+  --scorm-map-image: url('/static/img/maps/peds/PM1-school_dropoff.jpeg?v=20260521-pm1-school-dropoff-v6');
+}
+
+.scorm-map-panel[data-scorm-map="pt1"] {
+  --scorm-map-image: url('/static/img/maps/peds/PT1-skate_park.jpeg?v=20260521-pt1-skate-v5');
+}
+
+.scorm-map-panel[data-scorm-map="map3"] {
+  --scorm-map-image: url('/static/images/cpr_mannequin.jpeg');
 }
 
 .scorm-optional-panel {
@@ -264,6 +297,20 @@ body {
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 10px;
+}
+
+.scorm-map-panel .scorm-map-heading {
+  position: relative;
+  z-index: 2;
+  margin: -14px -14px 0;
+  padding: 13px 14px;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0));
+}
+
+.scorm-map-panel .scorm-map-heading span,
+.scorm-map-panel .scorm-map-heading h2 {
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(15, 23, 42, 0.75);
 }
 
 .scorm-map-heading h2 {
@@ -282,6 +329,16 @@ body {
   font-weight: 700;
 }
 
+.scorm-map-panel .scorm-lock-note {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  top: 58px;
+  z-index: 3;
+  background: rgba(255, 251, 235, 0.95);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.16);
+}
+
 .scorm-map-panel.is-locked .scorm-lock-note {
   display: block;
 }
@@ -290,6 +347,13 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: 8px;
+}
+
+.scorm-map-panel .scorm-node-list {
+  position: absolute;
+  inset: 0;
+  display: block;
+  z-index: 2;
 }
 
 .scorm-node-list--optional {
@@ -309,6 +373,19 @@ body {
   padding: 10px 11px;
 }
 
+.scorm-map-panel .scorm-node-btn {
+  position: absolute;
+  left: var(--node-x, 50%);
+  top: var(--node-y, 50%);
+  width: clamp(145px, 18vw, 220px);
+  min-height: 56px;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.93);
+  border-color: rgba(15, 23, 42, 0.18);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.28);
+  backdrop-filter: blur(6px);
+}
+
 .scorm-node-btn:hover:not(:disabled) {
   border-color: rgba(29, 78, 216, 0.45);
   background: #eff6ff;
@@ -316,7 +393,12 @@ body {
 
 .scorm-node-btn:disabled {
   cursor: not-allowed;
-  opacity: 0.62;
+  opacity: 0.74;
+}
+
+.scorm-map-panel .scorm-node-btn:disabled {
+  background: rgba(248, 250, 252, 0.78);
+  filter: grayscale(0.3);
 }
 
 .scorm-node-title {
@@ -341,6 +423,10 @@ body {
   background: #f0fdf4;
 }
 
+.scorm-map-panel .scorm-node-btn.is-complete {
+  background: rgba(240, 253, 244, 0.94);
+}
+
 @media (max-width: 900px) {
   .scorm-topbar {
     align-items: flex-start;
@@ -349,6 +435,12 @@ body {
   .scorm-progress-grid,
   .scorm-map-grid {
     grid-template-columns: 1fr;
+  }
+  .scorm-map-panel {
+    min-height: 420px;
+  }
+  .scorm-map-panel .scorm-node-btn {
+    width: clamp(132px, 40vw, 210px);
   }
 }
 
