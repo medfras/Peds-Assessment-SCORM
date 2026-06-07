@@ -175,6 +175,20 @@ def test_scorm_launch_enters_orientation_until_complete_then_home():
     assert 'showScreen("scorm-station1")' not in block
 
 
+def test_scorm_home_sidebars_hide_account_controls_and_use_trails_copy():
+    html = (ROOT / "static" / "index.html").read_text()
+    app_js = APP_JS.read_text()
+
+    assert 'id="btn-account-settings" class="hidden hv2-nav-item"' in html
+    assert 'id="btn-menu-logout" class="hidden hv2-nav-item hv2-nav-item--danger"' in html
+    assert 'id="category-account-settings" class="hidden hv2-nav-item"' in html
+    assert 'id="category-menu-logout" class="hidden hv2-nav-item hv2-nav-item--danger"' in html
+    assert "Trails, unlock progress, and available maps." in app_js
+    assert "Trails To / From Current" in app_js
+    assert "No connected trails from this map." in app_js
+    assert "Paths To / From Current" not in app_js
+
+
 def test_scorm_runtime_uses_compact_sim_and_localizes_backend_static_assets():
     app_js = APP_JS.read_text()
     css = (ROOT / "static" / "css" / "style.css").read_text()

@@ -1157,12 +1157,12 @@ async def test_drill_progress_caps_per_run_and_by_remaining_daily_xp():
     # base drill XP at score 100 is 300, but per-run cap is 75 and remaining daily cap is 30.
     assert out["xp_gross"] == 75
     assert out["xp_earned"] == 30
-    assert out["treats_earned"] == 0
+    assert out["treats_earned"] == 1
     assert out["new_badges"] == []
     assert out["challenge_badges"] == []
 
     assert user.xp == 1030
-    assert user.treats == 7
+    assert user.treats == 8
     assert user.drill_xp_today == 150
     assert user.drill_runs_today == 3
     assert user.drill_paid_ids == []
@@ -1200,11 +1200,23 @@ async def test_drill_progress_uses_best_prior_drill_delta_for_same_scenario():
 
     assert out["xp_gross"] == 60
     assert out["xp_earned"] == 0
+    assert out["treats_earned"] == 0
     assert user.xp == 500
+    assert user.treats == 3
     assert user.drill_xp_today == 10
     assert user.drill_runs_today == 2  # run is counted for practice volume
     assert user.drill_paid_ids == []
     assert db.commit_calls == 1
+
+
+def test_scenario_treats_are_limited_to_perfect_scenarios():
+    source = inspect.getsource(post_session_progress)
+
+    assert "treats_earned = 1 if (score or 0) >= 100 and xp_earned > 0 else 0" in source
+    assert "is_perfect_scenario = not critical_failure and (session.assessment_score or 0) >= _assessment_max" in source
+    assert "treats_earned = 1 if is_perfect_scenario else 0" in source
+    assert "treats_earned = (xp_gross // 1000) + len(new_badges) + levels_gained" not in source
+    assert "award_duplicate_treats = is_perfect_scenario" in source
 
 
 def _group_session(updated_at: datetime) -> LexiGroupSession:

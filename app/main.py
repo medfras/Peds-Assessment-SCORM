@@ -7870,6 +7870,7 @@ async def _process_toy_grants(
     is_personal_best: bool,
     anti_farm: bool,
     db: "AsyncSession",
+    award_duplicate_treats: bool = True,
 ) -> list[dict]:
     """Evaluate toy drop eligibility for a completed full-scenario session and
     execute all grants atomically within the caller's open transaction.
@@ -7975,15 +7976,16 @@ async def _process_toy_grants(
     is_duplicate = owned.scalar_one_or_none() is not None
     treats_awarded = 0
 
-    if is_duplicate:
+    if is_duplicate and award_duplicate_treats:
         treats_awarded = toy.duplicate_treat_value
         user.treats = (user.treats or 0) + treats_awarded
     else:
-        db.add(UserToy(
-            user_id      = user.id,
-            toy_id       = toy.id,
-            grant_source = grant_source,
-        ))
+        if not is_duplicate:
+            db.add(UserToy(
+                user_id      = user.id,
+                toy_id       = toy.id,
+                grant_source = grant_source,
+            ))
 
     # ── 7. Write immutable audit log ─────────────────────────────────────────
     db.add(ToyGrantLog(
@@ -8168,7 +8170,7 @@ async def post_session_progress(
     is_random_call = session.session_type == "random_call"
 
     if is_drill:
-        # Drill path: separate XP ledger/caps, no badges/treats/challenges.
+        # Drill path: separate XP ledger/caps, perfect-run treats, no badges/challenges.
         # Mirrors full-scenario best-attempt behavior, but only against prior drills.
         xp_gross = _xp_for_score(score) // 2
         xp_gross = min(xp_gross, DRILL_PER_RUN_MAX_XP, DRILL_DAILY_CAP_XP)
@@ -8201,7 +8203,8 @@ async def post_session_progress(
         user.drill_xp_today = xp_today + xp_earned
         user.drill_runs_today = runs_today + 1
 
-        treats_earned = 0
+        treats_earned = 1 if (score or 0) >= 100 and xp_earned > 0 else 0
+        user.treats = (user.treats if user.treats is not None else 3) + treats_earned
         assessment_xp = None
         narrative_xp  = None
         toy_grants    = []
@@ -8333,7 +8336,8 @@ async def post_session_progress(
         # ── Level and treats ──────────────────────────────────────────────────
         user.xp = xp_before + xp_earned
         levels_gained = max(0, _level_index(user.xp) - _level_index(xp_before))
-        treats_earned = (xp_gross // 1000) + len(new_badges) + levels_gained
+        is_perfect_scenario = not critical_failure and (session.assessment_score or 0) >= _assessment_max
+        treats_earned = 1 if is_perfect_scenario else 0
         user.treats = (user.treats if user.treats is not None else 3) + treats_earned
         challenge_badges = await _check_and_award_challenges(user, session.agency_id, db)
 
@@ -8366,6 +8370,7 @@ async def post_session_progress(
             is_personal_best  = is_personal_best,
             anti_farm         = anti_farm,
             db                = db,
+            award_duplicate_treats = is_perfect_scenario,
         )
 
         # Any duplicate treat payouts were already added to user.treats inside

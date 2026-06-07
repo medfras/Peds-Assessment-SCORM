@@ -11475,7 +11475,7 @@ function _renderPedsMapSidebar(currentMapId, unlockState, passedIds, pedsMapComp
   const list = el("category-map-nav-list");
   const subtitle = el("category-map-nav-subtitle");
   if (!list) return;
-  if (subtitle) subtitle.textContent = "Paths, unlock progress, and available maps.";
+  if (subtitle) subtitle.textContent = "Trails, unlock progress, and available maps.";
 
   const current = _PEDS_MAP_BY_ID.get(currentMapId) || PEDS_MAP_DATA[0];
   const pathIds = [
@@ -11492,7 +11492,7 @@ function _renderPedsMapSidebar(currentMapId, unlockState, passedIds, pedsMapComp
 
   const pathRows = uniquePathIds.length
     ? uniquePathIds.map(mapId => _pedsSidebarMapButton(mapId, currentMapId, passedIds, pedsMapCompleted, unlockState, "path")).join("")
-    : `<div class="map-nav-empty">No connected paths from this map.</div>`;
+    : `<div class="map-nav-empty">No connected trails from this map.</div>`;
   const unlockedRows = unlockedPedsMaps.length
     ? unlockedPedsMaps.map(m => _pedsSidebarMapButton(m.id, currentMapId, passedIds, pedsMapCompleted, unlockState, "map")).join("")
     : `<div class="map-nav-empty">No unlocked pediatric maps yet.</div>`;
@@ -11500,7 +11500,7 @@ function _renderPedsMapSidebar(currentMapId, unlockState, passedIds, pedsMapComp
   list.innerHTML = `
     <section class="category-map-nav-section">
       <div class="category-map-nav-section-head">
-        <span>Paths To / From Current</span>
+        <span>Trails To / From Current</span>
         <small>${escapeHTML(current.label || currentMapId)}</small>
       </div>
       <div class="category-map-nav-section-body">${pathRows}</div>
@@ -11586,7 +11586,7 @@ function _renderStation1Sidebar({ introSeen, completed, cprComplete, challengesS
   list.innerHTML = `
     <section class="category-map-nav-section">
       <div class="category-map-nav-section-head">
-        <span>Paths To / From Current</span>
+        <span>Trails To / From Current</span>
         <small>Orientation progress</small>
       </div>
       <div class="category-map-nav-section-body">
