@@ -2900,6 +2900,22 @@ body {
   align-items: center;
   gap: 0.2rem;
 }
+.orientation-next-step-btn {
+  align-self: stretch;
+  border: 1px solid rgba(245, 158, 11, 0.42);
+  background: rgba(120, 53, 15, 0.28);
+  color: #fde68a;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.35rem 0.65rem;
+  border-radius: 0.5rem;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.orientation-next-step-btn:hover {
+  background: rgba(146, 64, 14, 0.42);
+  border-color: rgba(251, 191, 36, 0.68);
+  color: #fff7ed;
+}
 
 /* ── Lexi hint buttons ───────────────────────────────────────────── */
 

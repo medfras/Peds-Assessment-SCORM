@@ -24209,14 +24209,45 @@ function _orientationInjectMessage(markdown) {
   chatLog.scrollTop = chatLog.scrollHeight;
 }
 
+function _orientationGuideMessageForCriterion(result) {
+  const id = result?.id || "";
+  const label = result?.label || "the next orientation step";
+  const messages = {
+    time: "Stay on scene until the **1 minute on scene** timer is checked off. Use the extra moment to review your notes or ask Jake one more assessment question.",
+    messages: "Start by introducing yourself to Jake in the main chat. Try: **Hi Jake, I'm [your name] with [agency]. I'll be doing your assessment today.**",
+    vitals: "Next, assess and record Jake's vitals. Open **Vitals** and document the baseline set before moving on.",
+    exam: "Next, practice an exam finding. Use **LOC**, **Breathing**, **Pulse**, or the **Exam** tools to document what you assess.",
+    treatment: "Next, practice one treatment or procedure. Use a treatment/action control or type a clear action in chat so it appears in your treatment record.",
+    med_control: "Next, call **Medical Control** and send a brief practice report. This is just to learn the workflow.",
+    lexi: "Next, use the **Lexi** panel. Ask a question or tap a Lexi prompt so you know where instructor help lives.",
+  };
+  return messages[id] || `Next, complete **${label}**. Check the readiness row at the top for what is still open.`;
+}
+
+function _orientationShowNextMissingStep() {
+  if (!state.scenarioData?.is_orientation) return false;
+  const results = buildReadinessCriteria().map(c => ({ ...c, met: c.check() }));
+  const nextMissing = results.find(r => !r.met);
+  if (nextMissing) {
+    _orientationInjectMessage(_orientationGuideMessageForCriterion(nextMissing));
+  } else {
+    _orientationInjectMessage("You're ready. Tap **Get Drill Feedback** to complete the Station Skills Drill, then continue the Station 1 orientation.");
+  }
+  return true;
+}
+
 function checkReadiness() {
   const btn = el("btn-open-treatment");
   const btnDrill = el("btn-drill-feedback");
+  const btnNextStep = el("btn-orientation-next-step");
   const bar = el("readiness-bar");
   if (!bar) return;
 
   const results = buildReadinessCriteria().map(c => ({ ...c, met: c.check() }));
   const allMet = results.every(r => r.met);
+  if (btnNextStep) {
+    btnNextStep.classList.toggle("hidden", !state.scenarioData?.is_orientation);
+  }
 
   bar.innerHTML = results.map(r =>
     `<span title="${r.label}" class="text-xs ${r.met ? "text-green-400" : "text-gray-600"}">
@@ -24300,6 +24331,11 @@ el("btn-chat-start-cpr")?.addEventListener("click", () => {
   } else {
     sendMessage("I am starting CPR.", { isAction: true, chipId: "btn-chat-start-cpr" });
   }
+  if (el("screen-sim")?.classList.contains("sim-mobile-active")) _setSimMobileTab("chat");
+});
+
+el("btn-orientation-next-step")?.addEventListener("click", () => {
+  _orientationShowNextMissingStep();
   if (el("screen-sim")?.classList.contains("sim-mobile-active")) _setSimMobileTab("chat");
 });
 

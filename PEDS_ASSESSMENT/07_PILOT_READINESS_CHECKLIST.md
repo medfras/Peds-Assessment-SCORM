@@ -580,6 +580,26 @@ This is the sequenced implementation checklist for the SCORM branch. Items in Se
 - [ ] CE challenge complete: `cmi.core.lesson_status = "passed"` written; score visible in Moodle gradebook
 - [ ] Confirmed: no main-app UI elements (login, Lexi, XP bar, toy chest) visible in the package
 
+### Phase 9 — Production backport findings from SCORM pilot
+These items came from MoodleCloud package testing and should be folded back into the production program where the same issue exists.
+
+- [ ] Orientation guide recovery: add a learner-facing "What's next?" / next-missing-step control that reads the existing readiness criteria and re-displays the next unmet instruction without changing completion logic.
+- [ ] Orientation guidance order: keep guidance cues advisory only; readiness/completion must continue to require introduction, vitals, exam, treatment, Medical Control, Lexi use, and minimum scene time even if the learner completes steps out of order.
+- [ ] First-launch gate: first startup should enter Station 1 orientation; after legitimate orientation completion, route to the production Home screen and preserve normal Home/map navigation.
+- [ ] Resume marker: store and restore a trusted orientation-complete UI marker alongside backend orientation state so incomplete orientation does not accidentally resume to Home.
+- [ ] Preboot/launch polish: keep the launch/preboot surface active until auth and route selection finish so learners do not see a login flash or stale SCORM shell flash.
+- [ ] Desktop layout detection: ensure full-width Moodle New Window playback and ordinary desktop browsers use the desktop scenario layout; reserve mobile layout for genuinely compact viewports.
+- [ ] Scenario viewport fit: keep quick action buttons, chat input, Lexi controls, and turnover actions visible at common laptop and Moodle New Window dimensions.
+- [ ] Microphone support: document Chrome as the supported pilot browser for speech-to-text; keep a fallback note for Brave/iframe permission limitations.
+- [ ] Moodle iframe fallback: retain the embedded-player microphone fallback plan (`allow="microphone *"` injection) as a contingency, but prefer New Window for full-size simulator playback when pilot settings allow it.
+- [ ] Asset integrity gate: package/build checks should fail or warn loudly when referenced images/audio are missing, including orientation images, Home background art, and LSM audio cards.
+- [ ] Asset pruning policy: keep the 47 MB SCORM package trim list, but codify "do not remove referenced assets" checks before further compression.
+- [ ] Station 1 wrap-up gate: final orientation wrap-up must remain locked until intro, orientation drill, CPR drill, and challenge list are all genuinely complete for the current user/attempt.
+- [ ] Attempt-scoped local UI flags: any local "seen" or map helper flags used in SCORM should be scoped by learner/attempt to avoid one Moodle attempt unlocking another.
+- [ ] TTS voice QA: verify scenario persona TTS voice mappings in the deployed browser path, especially male partner/patient voices such as Jake.
+- [ ] SCORM-only UI trim: hide or re-route SaaS-only surfaces only where needed for SCORM; production Home and map surfaces should remain the canonical UI after orientation.
+- [ ] Optional-game data gap: restore or remap `static/audio/lung sounds/LS/F_FC_LLA.wav` before validating the lung-sounds optional game path.
+
 ---
 
 ### Sequencing summary

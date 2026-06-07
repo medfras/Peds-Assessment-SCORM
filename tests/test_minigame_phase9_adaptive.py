@@ -98,7 +98,7 @@ def test_drill_launch_routes_are_distinct_for_gcs_cpr_and_ams():
         assert route["intro_button"] in html
         assert route["engine_start"] in js
 
-    assert '<script src="/static/js/app.js?v=20260522-orientation-cue-order-v1"></script>' in html
+    assert '<script src="/static/js/app.js?v=20260606-scorm-map-v3"></script>' in html
 
 
 def test_orientation_treatment_repeats_med_control_prompt_until_logged():
@@ -121,6 +121,18 @@ def test_orientation_guidance_cues_do_not_advance_out_of_order():
     assert 'return _orientationCueFired("after_first_vitals") ? "after_first_vitals" : "after_first_message";' in js
     assert "function _orientationRepeatCueToken(triggerKey)" in js
     assert 'if (trigger.startsWith("repeat:")) _orientationRepeatCue(trigger.slice("repeat:".length));' in js
+
+
+def test_orientation_next_step_button_uses_readiness_gates():
+    html = _read("static/index.html")
+    js = _read("static/js/app.js")
+
+    assert 'id="btn-orientation-next-step"' in html
+    assert "function _orientationShowNextMissingStep()" in js
+    assert "buildReadinessCriteria().map(c => ({ ...c, met: c.check() }))" in js
+    assert "const nextMissing = results.find(r => !r.met);" in js
+    assert "_orientationInjectMessage(_orientationGuideMessageForCriterion(nextMissing));" in js
+    assert 'btnNextStep.classList.toggle("hidden", !state.scenarioData?.is_orientation);' in js
 
 
 def test_drill_nodes_use_learning_glyph_and_drill_copy():
