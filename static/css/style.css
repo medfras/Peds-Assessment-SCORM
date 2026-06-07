@@ -1844,6 +1844,146 @@ body {
   }
 }
 
+.scorm-runtime #screen-sim.sim-mobile-active {
+  --sim-mobile-tabs-h: 3.05rem;
+  --sim-mobile-input-h: 7.2rem;
+  --sim-mobile-lexi-input-h: 9.4rem;
+}
+
+.scorm-runtime #screen-sim.sim-mobile-active .sim-topbar {
+  flex-wrap: wrap;
+  row-gap: 0.35rem;
+}
+
+.scorm-runtime #screen-sim.sim-mobile-active .sim-topbar > .ml-auto {
+  margin-left: 0 !important;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.45rem;
+}
+
+.scorm-runtime #screen-sim.sim-mobile-active #readiness-bar {
+  white-space: normal;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 0.2rem;
+  max-width: 100%;
+}
+
+.scorm-runtime #screen-sim.sim-mobile-active #sim-mobile-tabs {
+  display: flex;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 38;
+  padding-bottom: max(0.3rem, env(safe-area-inset-bottom));
+  border-top: 1px solid rgba(148, 163, 184, 0.22);
+  box-shadow: 0 -10px 26px rgba(2, 6, 23, 0.42);
+}
+
+.scorm-runtime #screen-sim.sim-mobile-active .sim-workspace {
+  overflow: hidden;
+}
+
+.scorm-runtime #screen-sim.sim-mobile-active .sim-panel-left,
+.scorm-runtime #screen-sim.sim-mobile-active .sim-panel-center,
+.scorm-runtime #screen-sim.sim-mobile-active .sim-panel-right {
+  width: 100%;
+  min-width: 0;
+  border-left: none;
+  border-right: none;
+}
+
+.scorm-runtime #screen-sim.sim-mobile-active .sim-panel-left.hidden,
+.scorm-runtime #screen-sim.sim-mobile-active .sim-panel-center.hidden,
+.scorm-runtime #screen-sim.sim-mobile-active .sim-panel-right.hidden {
+  display: none;
+}
+
+.scorm-runtime #screen-sim.sim-mobile-active .sim-panel-left:not(.hidden),
+.scorm-runtime #screen-sim.sim-mobile-active .sim-panel-center:not(.hidden),
+.scorm-runtime #screen-sim.sim-mobile-active .sim-panel-right:not(.hidden) {
+  display: flex;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.scorm-runtime #screen-sim.sim-mobile-active .sim-panel-center #chat-messages {
+  padding-bottom: calc(var(--sim-mobile-tabs-h) + var(--sim-mobile-input-h) + 2.4rem + env(safe-area-inset-bottom));
+  scroll-padding-bottom: calc(var(--sim-mobile-tabs-h) + var(--sim-mobile-input-h) + 2.8rem + env(safe-area-inset-bottom));
+}
+
+.scorm-runtime #screen-sim.sim-mobile-active .sim-panel-center .sim-chat-input-wrap {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: calc(var(--sim-mobile-tabs-h) + env(safe-area-inset-bottom));
+  z-index: 37;
+  background: rgba(13, 18, 28, 0.99);
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
+  box-shadow: 0 -8px 18px rgba(2, 6, 23, 0.35);
+}
+
+.scorm-runtime #screen-sim.sim-mobile-active .sim-panel-center .sim-chat-compose-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 5.75rem;
+  align-items: stretch;
+  gap: 0.6rem;
+}
+
+.scorm-runtime #screen-sim.sim-mobile-active .sim-panel-center .sim-chat-compose-textarea {
+  min-width: 0;
+  min-height: 5rem;
+  padding: 0.85rem 0.9rem;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.scorm-runtime #screen-sim.sim-mobile-active .sim-panel-center .sim-chat-compose-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.scorm-runtime #screen-sim.sim-mobile-active .sim-panel-center .sim-chat-send-btn {
+  width: 100%;
+  min-height: 3.45rem;
+  padding: 0.75rem 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.scorm-runtime #screen-sim.sim-mobile-active .sim-panel-right #lexi-messages {
+  padding-bottom: calc(var(--sim-mobile-tabs-h) + var(--sim-mobile-lexi-input-h) + 2.1rem + env(safe-area-inset-bottom));
+  scroll-padding-bottom: calc(var(--sim-mobile-tabs-h) + var(--sim-mobile-lexi-input-h) + 2.6rem + env(safe-area-inset-bottom));
+}
+
+.scorm-runtime #screen-sim.sim-mobile-active .sim-panel-right .sim-lexi-controls {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: calc(var(--sim-mobile-tabs-h) + env(safe-area-inset-bottom));
+  z-index: 37;
+  background: rgba(10, 14, 22, 0.98);
+  border-top: 1px solid rgba(148, 163, 184, 0.22);
+  box-shadow: 0 -8px 18px rgba(2, 6, 23, 0.35);
+}
+
+.scorm-runtime #btn-voice-input,
+.scorm-runtime #btn-voice-dmist,
+.scorm-runtime #btn-voice-narrative,
+.scorm-runtime #btn-mc-stt {
+  display: none !important;
+}
+
 @media (max-width: 640px) {
   .menu-title {
     font-size: 1.45rem;

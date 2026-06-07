@@ -4040,6 +4040,7 @@ function _pickVoice(gender, age) {
 const _CHAR_PROFILES = {
   // EMS partner
   alex:    { gender: "male",   age: null    },
+  jake:    { gender: "male",   age: null    },
   // Common pediatric patient names
   lily:    { gender: "female", age: "child" },
   emma:    { gender: "female", age: "child" },
@@ -5594,6 +5595,7 @@ function _hideScreenTransitionModals() {
 }
 
 function _isSimMobileTarget() {
+  if (state.scormEnabled || document.documentElement.classList.contains("scorm-runtime")) return true;
   const compact = window.matchMedia
     ? window.matchMedia("(max-width: 1024px)").matches
     : (window.innerWidth <= 1024);
@@ -5940,6 +5942,13 @@ function _hideScormLaunchStatus() {
 
 function _releaseScormPreboot() {
   document.documentElement.classList.remove("scorm-preboot");
+}
+
+function _scormAssetUrl(url) {
+  const value = String(url || "");
+  if (!state.scormEnabled || !value) return value;
+  const staticPrefix = `/${"static"}/`;
+  return value.startsWith(staticPrefix) ? value.slice(staticPrefix.length) : value;
 }
 
 function _showScormLaunchError(err) {
@@ -6736,6 +6745,7 @@ async function _activateScormAndEnter() {
   if (!window.SCORM_CONFIG) {
     throw new Error("SCORM config did not load. Rebuild the package and confirm js/scorm_config.js is present in the uploaded ZIP.");
   }
+  document.documentElement.classList.add("scorm-runtime");
   _showScormLaunchStatus("Connecting to Moodle and loading your Station 1 progress...");
   const resumeState = await adapter.init();
   const token = adapter.getAccessToken?.();
@@ -19472,7 +19482,7 @@ function startSim(opts = {}) {
 
   // Scene tab — patient photo
   if (s.patient.image) {
-    el("pt-photo").src = s.patient.image;
+    el("pt-photo").src = _scormAssetUrl(s.patient.image);
     el("pt-photo").classList.remove("hidden");
     el("pt-photo-placeholder").classList.add("hidden");
   }
@@ -19480,7 +19490,7 @@ function startSim(opts = {}) {
   // Keep the notes panel compact: the small patient/scene thumbnail above opens
   // the full image in the lightbox. Do not render the full-size image inline.
   hide("scene-image-container");
-  if (el("scene-image")) el("scene-image").src = s.scene.image || s.patient.image || "";
+  if (el("scene-image")) el("scene-image").src = _scormAssetUrl(s.scene.image || s.patient.image || "");
   setText("scene-bystanders", "");
 
   // Reset state
@@ -19565,7 +19575,7 @@ function startSim(opts = {}) {
   const arrImg = el("arrival-image");
   const arrivalImage = s.scene.image || s.patient.image;
   if (arrivalImage) {
-    arrImg.src = arrivalImage;
+    arrImg.src = _scormAssetUrl(arrivalImage);
     arrImgContainer.classList.remove("hidden");
   } else {
     arrImgContainer.classList.add("hidden");
@@ -19698,7 +19708,7 @@ function _showPatModal() {
   const patImgContainer = el("pat-image-container");
   const patImg = el("pat-image");
   if (s?.patient?.image) {
-    patImg.src = s.patient.image;
+    patImg.src = _scormAssetUrl(s.patient.image);
     patImgContainer.classList.remove("hidden");
   } else {
     patImgContainer.classList.add("hidden");
@@ -25640,7 +25650,7 @@ function _activeScenarioLungSoundChallengeConfig() {
       ? authored.accepted_answers
       : fallback.accepted_answers,
   };
-  merged.audio_file = authored.audio_file || _inferLungSoundAudioFile(merged) || fallback.audio_file || "";
+  merged.audio_file = _scormAssetUrl(authored.audio_file || _inferLungSoundAudioFile(merged) || fallback.audio_file || "");
   return merged;
 }
 
@@ -25659,9 +25669,10 @@ function _lungSoundConfigForCurrentState() {
   );
   if (postTreatmentActive && _lungSoundSetCount > 1) {
     const mergedPostTreatment = { ...lsc, ...pt, enabled: true };
-    mergedPostTreatment.audio_file = pt.audio_file || _inferLungSoundAudioFile(mergedPostTreatment) || lsc.audio_file || "";
+    mergedPostTreatment.audio_file = _scormAssetUrl(pt.audio_file || _inferLungSoundAudioFile(mergedPostTreatment) || lsc.audio_file || "");
     return mergedPostTreatment;
   }
+  lsc.audio_file = _scormAssetUrl(lsc.audio_file || "");
   return lsc;
 }
 

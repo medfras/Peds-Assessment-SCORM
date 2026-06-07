@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -163,6 +164,23 @@ def test_scorm_launch_enters_production_station_or_pediatric_maps():
     assert 'showCategoryScreen("station_1")' in block
     assert 'showCategoryScreen("pediatrics")' in block
     assert 'showScreen("scorm-station1")' not in block
+
+
+def test_scorm_runtime_uses_compact_sim_and_localizes_backend_static_assets():
+    app_js = APP_JS.read_text()
+    css = (ROOT / "static" / "css" / "style.css").read_text()
+    orientation = json.loads((ROOT / "app" / "scenarios" / "orientation_01.json").read_text())
+    assert "function _scormAssetUrl(url)" in app_js
+    assert 'const staticPrefix = `/${"static"}/`;' in app_js
+    assert "_scormAssetUrl(s.scene.image || s.patient.image || \"\")" in app_js
+    assert "_scormAssetUrl(arrivalImage)" in app_js
+    assert "state.scormEnabled || document.documentElement.classList.contains(\"scorm-runtime\")" in app_js
+    assert ".scorm-runtime #screen-sim.sim-mobile-active" in css
+    assert ".scorm-runtime #btn-voice-input" in css
+    jake_tts = orientation["personas"]["jake"]["tts"]
+    assert orientation["personas"]["jake"]["sex"] == "male"
+    assert jake_tts["gender"] == "male"
+    assert jake_tts["voice_role"] == "patient"
 
 
 def test_scorm_launch_errors_do_not_show_login_screen():
