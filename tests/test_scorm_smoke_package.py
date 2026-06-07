@@ -194,6 +194,21 @@ def test_scorm_home_sidebars_hide_account_controls_and_use_trails_copy():
     assert "Paths To / From Current" not in app_js
 
 
+def test_scorm_history_back_respects_incomplete_orientation_gate():
+    app_js = APP_JS.read_text()
+    start = app_js.find('el("btn-history-back").addEventListener("click"')
+    assert start != -1
+    block = app_js[start:start + 650]
+
+    gate = 'if (state.scormEnabled && !state.orientationCompletedAt)'
+    assert gate in block
+    assert "_enterScormOrientationMap();" in block
+    assert "function _openHistoryScreen(returnTarget = \"menu\")" in app_js
+    assert 'el("btn-menu-history").addEventListener("click", () => _openHistoryScreen("menu"));' in app_js
+    assert 'el("category-menu-history")?.addEventListener("click", () => _openHistoryScreen("category"));' in app_js
+    assert block.index(gate) < block.index('showScreen("menu");')
+
+
 def test_leaderboard_modal_uses_solid_light_shell():
     html = (ROOT / "static" / "index.html").read_text()
     css = (ROOT / "static" / "css" / "style.css").read_text()

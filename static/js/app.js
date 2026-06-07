@@ -4635,6 +4635,7 @@ let _leaderboardModalCache = { agencyId: null, data: null, fetchedAt: 0 };
 let _historyDebriefActiveEntry = null;
 let _lastResultsActiveEntry = null;
 let _orientationCompleteEntry = null;
+let _historyReturnTarget = "menu";
 let _debriefCoach = {
   source: "current", // current | history
   entry: null,
@@ -11158,10 +11159,13 @@ function _renderRightHistory() {
   }).join("");
 }
 
-el("btn-right-more-calls")?.addEventListener("click", () => {
+function _openHistoryScreen(returnTarget = "menu") {
+  _historyReturnTarget = returnTarget || "menu";
   buildHistoryPage();
   showScreen("history");
-});
+}
+
+el("btn-right-more-calls")?.addEventListener("click", () => _openHistoryScreen("menu"));
 
 function _renderRightCurrentMap() {
   _renderRightDistrictList();
@@ -16840,10 +16844,7 @@ function _practiceWireBody() {
     btn.addEventListener("click", _openTrainingCenter);
   });
   el("progress-body")?.querySelectorAll("[data-practice-open-history]").forEach(btn => {
-    btn.addEventListener("click", () => {
-      buildHistoryPage();
-      showScreen("history");
-    });
+    btn.addEventListener("click", () => _openHistoryScreen("progress"));
   });
   el("progress-body")?.querySelectorAll("[data-practice-coach-open]").forEach(btn => {
     btn.addEventListener("click", () => {
@@ -17685,10 +17686,7 @@ async function handleJoinAgency() {
   }
 }
 
-el("btn-menu-history").addEventListener("click", () => {
-  buildHistoryPage();
-  showScreen("history");
-});
+el("btn-menu-history").addEventListener("click", () => _openHistoryScreen("menu"));
 
 // Delegated listener for history-list — set up once, works across all innerHTML replacements
 (function _initHistoryDelegation() {
@@ -17789,10 +17787,7 @@ el("category-nav-training")?.addEventListener("click", () => {
 });
 el("category-nav-lexi-challenge")?.addEventListener("click", _openLexiChallenge);
 el("category-menu-notebook")?.addEventListener("click", () => _openNotebookScreen("category", "notes"));
-el("category-menu-history")?.addEventListener("click", () => {
-  buildHistoryPage();
-  showScreen("history");
-});
+el("category-menu-history")?.addEventListener("click", () => _openHistoryScreen("category"));
 el("category-account-settings")?.addEventListener("click", openEditProfileModal);
 el("category-admin-dashboard")?.addEventListener("click", openDashboard);
 el("category-menu-logout")?.addEventListener("click", () => el("btn-menu-logout")?.click());
@@ -17835,6 +17830,18 @@ el("btn-open-badges")?.addEventListener("click", () => {
 el("btn-badges-close")?.addEventListener("click", () => hide("modal-badges"));
 
 el("btn-history-back").addEventListener("click", () => {
+  if (state.scormEnabled && !state.orientationCompletedAt) {
+    _enterScormOrientationMap();
+    return;
+  }
+  if (_historyReturnTarget === "category") {
+    showCategoryScreen(_categoryView?.districtId || "pediatrics");
+    return;
+  }
+  if (_historyReturnTarget === "progress") {
+    showScreen("progress");
+    return;
+  }
   buildMenu();
   showScreen("menu");
 });
