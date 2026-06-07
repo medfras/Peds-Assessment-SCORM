@@ -28,7 +28,7 @@ The branch gate is intentionally narrow. Do not branch until these items are tru
 - [x] Stable node IDs final in `04_SCENARIO_AUTHORING.md` and `02_MAP_TOPOLOGY.md`
 - [x] Scoring contract matrix complete for every required node
 - [x] SCORM attempt topology implemented: `unlocks.scenarios` (pilot gate) + `unlocks.map3` (2 PM1 + 2 PT1 gate CPR), while learner UI reuses the production Station 1 and pediatric map surfaces
-- [x] CE challenge gate implemented: orientation + required drills + 2 PM1 + 2 PT1 + CPR + 2 optional games + ≥3600 s + ≥1100 XP
+- [x] SCORM pass challenge gate implemented: 2 PM1 + 2 PT1 passing/on-track scenarios + ≥3600 s training time from orientation/scenarios/drills
 - [x] `_SUSPEND_DATA_VERSION = 3` with 16-node shape and CE block
 - [x] `scorm.js finish()` corrected: gates on `peds_ce_challenge.complete`, writes `"incomplete"` not `"failed"` for in-progress learners
 - [x] Scoring engine hardened:
@@ -138,25 +138,20 @@ Backend attempt summary response (condensed — all 16 node scores present):
 |------|-----------|
 | PM1 + PT1 unlock | `drill_pat` AND `drill_dev` both `completed=true` → `unlocks.scenarios = true` |
 | Map 3 (CPR) unlock | PM1 ≥ 2 completed AND PT1 ≥ 2 completed → `unlocks.map3 = true` |
-| LMS `"passed"` | All CE challenge criteria met → `peds_ce_challenge.complete = true` |
+| LMS `"passed"` | All SCORM pass challenge criteria met → `peds_ce_challenge.complete = true` |
 
 **CE challenge criteria (all must be met):**
 
 | Criterion | Requirement |
 |-----------|-------------|
-| Orientation | Completed |
-| Required drills | `drill_pat` + `drill_dev` completed |
-| PM1 scenarios | Any 2 of 4 completed |
-| PT1 scenarios | Any 2 of 5 completed |
-| CPR scenario | `scen_cpr` completed |
-| Optional games | Any 2 of 3 completed |
-| Total CE time | ≥ 3600 s (60 min) |
-| Minimum XP | ≥ 1100 XP |
+| PM1 scenarios | Any 2 of 4 completed with passing/on-track scores or higher |
+| PT1 scenarios | Any 2 of 5 completed with passing/on-track scores or higher |
+| Total training time | ≥ 3600 s (60 min), counted from orientation, scenarios, and drills |
 
-**Grade formula (backend-computed):** `(drill_grade × 0.20) + (scenario_avg × 0.80)`
+**Grade formula (backend-computed):** `scenario_avg`
 
-- `drill_grade` = best 2 of 3 completed drill scores
-- `scenario_avg` = average of all completed scenario scores (PM1 + PT1 + CPR); null until 2 PM1 + 2 PT1 + CPR are all complete
+- `scenario_avg` = average of all completed PM1 + PT1 scenario scores; null until 2 PM1 + 2 PT1 are complete
+- CPR, drills, optional games, orientation, and XP remain progress/reward telemetry but are not Moodle pass requirements.
 
 **LMS reporting:**
 - `cmi.core.lesson_status` = `"passed"` when `peds_ce_challenge.complete === true`, otherwise `"incomplete"`
@@ -461,7 +456,7 @@ Collect these during the 2–5 learner run. Use to calibrate CE caps and NLP pat
 - Full frontend module decomposition, unless needed to safely package the SCORM build
 - CDN/media optimization
 - Full APM/OpenTelemetry
-- Extra optional-game polishing beyond the selected pilot path. At least 2 optional game result adapters are still required before CE completion testing because the CE gate requires any 2 of 3 optional games.
+- Extra optional-game polishing beyond the selected pilot path. Optional game result adapters are useful telemetry but no longer block Moodle completion.
 - CE certification steps 1–6 (see `docs/CE_CERTIFICATION_DESIGN.md`) — the LMS is the system of record for the pilot
 
 ---
@@ -625,7 +620,7 @@ These items came from MoodleCloud package testing and should be folded back into
 - [ ] **`drill_dev` pilot suitability:** Existing `dev_sort` is the mapped required drill. Confirm the content, answer key, scoring scale, and completion event are appropriate for Station 1 before package-path validation.
 - [x] **`peds_febrile_seizure_01` validation:** Main-app/manual validation baseline complete; remaining work is SCORM package-path validation.
 - [ ] **PT1 / optional scenario validation priority:** Head injury, extremity fracture, and anaphylaxis have recent manual passes. Soft tissue, partial choking, and CPR still need package-path validation if they are included in the pilot learner path.
-- [ ] **Optional games SCORM adapter:** `game_vitals`, `game_lung_sounds`, `game_bls` each need a `submitNodeResult()` call. Required to meet the "any 2 of 3 optional games" CE criterion.
+- [ ] **Optional games SCORM adapter:** `game_vitals`, `game_lung_sounds`, `game_bls` each need a `submitNodeResult()` call for optional progress telemetry, but they do not block Moodle completion.
 - [ ] **LSM audio asset gap:** `static/data/games/lsm/cards.json` references `audio/lung sounds/LS/F_FC_LLA.wav` for `lsm_crackles_02`, but that file is not present in the repo/package. Restore the asset or remap the card before validating `game_lung_sounds`; this is a pre-existing optional-game data gap and does not block the shell/PAT/DEV full-package gate.
 - [x] **Replay policy:** Additional replay time counts toward CE total; replay scores use best-score semantics and do not overwrite a higher prior score.
 - [ ] **Evidence packet retention period:** Define time-limited retention duration for SCORM deployment evidence packets before pilot launch.

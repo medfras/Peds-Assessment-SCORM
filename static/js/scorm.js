@@ -36,13 +36,13 @@
   const _ALL_NODES = [
     // Map 0 — drills (PAT + DEV required gates; GCS optional)
     "drill_pat", "drill_dev", "drill_gcs",
-    // PM1 — Medical scenarios (any 2 of 4 satisfy CE requirement)
+    // PM1 — Medical scenarios (any 2 of 4 satisfy SCORM pass requirement)
     "scen_asthma", "scen_croup", "scen_diabetes", "scen_seizure",
-    // PT1 — Trauma scenarios (any 2 of 5 satisfy CE requirement)
+    // PT1 — Trauma scenarios (any 2 of 5 satisfy SCORM pass requirement)
     "scen_airway", "scen_anaph", "scen_bleeding", "scen_head", "scen_laceration",
-    // Map 3 — CPR (required)
+    // Map 3 — CPR (optional for Moodle completion)
     "scen_cpr",
-    // Optional games (any 2 of 3 satisfy CE requirement)
+    // Optional games (telemetry/enrichment)
     "game_bls", "game_lung_sounds", "game_vitals",
   ];
 
@@ -153,8 +153,11 @@
       unlocks:  summary.unlocks || { scenarios: false, map3: false },
       status:   summary.lesson_status || "incomplete",
       ce: {
+        id:                  cc.id || "pfd_station1_scorm_pass",
+        title:               cc.title || "Station 1 Pediatric Assessment Pass",
         complete:            !!cc.complete,
         ce_seconds:          cc.ce_seconds || 0,
+        training_time_done:   !!cc.training_time_done,
         pm1_completed:       cc.pm1_completed || 0,
         pm1_required:        cc.pm1_required  || 2,
         pt1_completed:       cc.pt1_completed || 0,

@@ -381,3 +381,5 @@ def test_scorm_suspend_data_preserves_ui_location_for_resume():
     assert "mirror.ui = _uiState" in scorm_js
     assert "function getUiState()" in scorm_js
     assert "function setUiState(ui)" in scorm_js
+    assert "pfd_station1_scorm_pass" in scorm_js
+    assert "training_time_done" in scorm_js

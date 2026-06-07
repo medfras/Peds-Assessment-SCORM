@@ -196,23 +196,18 @@ The SCORM deployment does not store full session history. This limits backend st
 
 ## 6. LMS Status Reporting
 
-Lesson status and score are written to the LMS when the CE challenge is complete. The CE challenge is the authoritative pass condition — not a raw numeric grade threshold.
+Lesson status and score are written to the LMS when the SCORM pass challenge is complete. The challenge is the authoritative pass condition — not a raw numeric grade threshold.
 
 **CE challenge criteria (all must be met):**
-- Orientation completed
-- `drill_pat` + `drill_dev` both completed
 - PM1: any 2 of 4 scenarios completed
 - PT1: any 2 of 5 scenarios completed
-- `scen_cpr` completed
-- Any 2 of 3 optional games completed
-- Total CE time ≥ 3600 s (60 min)
-- Minimum XP ≥ 1100
+- Total training time ≥ 3600 s (60 min), counted from orientation, scenarios, and drills
 
 **Grade formula (backend-computed, written to `cmi.core.score.raw` when CE complete):**
-`(drill_grade × 0.20) + (scenario_avg × 0.80)`
+`scenario_avg`
 
-- `drill_grade` = best 2 of 3 drill scores
-- `scenario_avg` = average of all completed scenario scores (PM1 + PT1 + CPR); null until 2 PM1 + 2 PT1 + CPR all complete
+- `scenario_avg` = average of all completed PM1 + PT1 scenario scores; null until 2 PM1 + 2 PT1 are complete
+- CPR, drills, optional games, orientation, and XP remain visible progress/reward telemetry but are not Moodle pass requirements.
 
 **LMS status reporting (from `scorm.js finish()`):**
 

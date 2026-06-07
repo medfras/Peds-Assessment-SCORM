@@ -50,11 +50,11 @@ router = APIRouter()
 # ── Node registry ─────────────────────────────────────────────────────────────
 #
 # 16 nodes total across 4 maps:
-#   Map 0  — 3 drill nodes  (PAT + DEV required gates; GCS optional)
-#   PM1    — 4 medical scenario nodes  (any 2 of 4 required for CE)
-#   PT1    — 5 trauma scenario nodes   (any 2 of 5 required for CE)
-#   Map 3  — 1 CPR scenario node       (required for CE)
-#   Optional games — 3 nodes           (any 2 of 3 required for CE)
+#   Map 0  — 3 drill nodes  (PAT + DEV unlock PM1/PT1; GCS optional)
+#   PM1    — 4 medical scenario nodes  (any 2 of 4 required for SCORM pass)
+#   PT1    — 5 trauma scenario nodes   (any 2 of 5 required for SCORM pass)
+#   Map 3  — 1 CPR scenario node       (available after PM1/PT1 minimums)
+#   Optional games — 3 nodes
 #
 # Unlock chain:
 #   drill_pat + drill_dev completed → PM1 + PT1 available
@@ -63,7 +63,7 @@ router = APIRouter()
 _DRILL_NODES: frozenset[str] = frozenset({"drill_pat", "drill_dev", "drill_gcs"})
 _REQUIRED_DRILLS: frozenset[str] = frozenset({"drill_pat", "drill_dev"})
 
-# PM1 — Medical scenarios (any 2 of 4 satisfy CE requirement)
+# PM1 — Medical scenarios (any 2 of 4 satisfy SCORM pass requirement)
 _PM1_NODES: frozenset[str] = frozenset({
     "scen_croup",    # Pediatric Croup
     "scen_asthma",   # Pediatric Asthma
@@ -72,7 +72,7 @@ _PM1_NODES: frozenset[str] = frozenset({
 })
 _PEDS_CE_MIN_PM1: int = 2
 
-# PT1 — Trauma scenarios (any 2 of 5 satisfy CE requirement)
+# PT1 — Trauma scenarios (any 2 of 5 satisfy SCORM pass requirement)
 _PT1_NODES: frozenset[str] = frozenset({
     "scen_laceration", # Scalp Laceration (soft tissue trauma)
     "scen_head",       # Closed Head Injury / TBI
@@ -82,7 +82,7 @@ _PT1_NODES: frozenset[str] = frozenset({
 })
 _PEDS_CE_MIN_PT1: int = 2
 
-# Map 3 — CPR (required for CE)
+# Map 3 — CPR (optional for Moodle completion)
 _CPR_NODES: frozenset[str] = frozenset({"scen_cpr"})
 
 _SCENARIO_NODES: frozenset[str] = _PM1_NODES | _PT1_NODES | _CPR_NODES
@@ -121,9 +121,9 @@ _GAME_NODE_MAP: dict[str, str] = {
 
 _NODE_PASS_THRESHOLD = 70
 
-# CE challenge thresholds
+# SCORM pass challenge thresholds
 _PEDS_CE_TARGET_SECONDS: int = 3600  # 1 hour total
-_PEDS_CE_MIN_XP:         int = 1100  # orientation + 2 drills + 5 scenarios + 2 games at ≥70 + extra
+_PEDS_CE_ALLOWED_TIME_TYPES: tuple[str, ...] = ("orientation", "scenario", "drill")
 
 
 # ── Summary computation (pure — no DB) ────────────────────────────────────────
@@ -139,30 +139,26 @@ def _peds_ce_challenge(
     ce_seconds: int,
     user_xp: int,
 ) -> dict:
-    """Return the Pediatric Assessment CE challenge status object.
+    """Return the SCORM course pass challenge status object.
 
     Completion criteria (all must be true):
-      - Orientation done
-      - Both required drills done (drill_pat + drill_dev)
       - Any 2 of 4 PM1 medical scenarios completed
       - Any 2 of 5 PT1 trauma scenarios completed
-      - CPR scenario (Map 3) completed
-      - Any 2 of 3 optional games completed
-      - >= 1 hour (3600 s) accumulated CE time
-      - >= minimum XP
+      - >= 1 hour (3600 s) accumulated training time
+
+    Training time is the same authoritative CE ledger used by challenges, but
+    scoped to orientation, scenario, and drill activity rows only.
     """
     pm1_ok   = pm1_completed_count >= _PEDS_CE_MIN_PM1
     pt1_ok   = pt1_completed_count >= _PEDS_CE_MIN_PT1
     cpr_ok   = cpr_done
     games_ok = optional_games_done_count >= _PEDS_CE_MIN_OPT_GAMES
     ce_ok    = ce_seconds >= _PEDS_CE_TARGET_SECONDS
-    xp_ok    = user_xp >= _PEDS_CE_MIN_XP
-    complete = (
-        orientation_done and required_drills_done
-        and pm1_ok and pt1_ok and cpr_ok
-        and games_ok and ce_ok and xp_ok
-    )
+    xp_ok    = True
+    complete = pm1_ok and pt1_ok and ce_ok
     return {
+        "id":                         "pfd_station1_scorm_pass",
+        "title":                      "Station 1 Pediatric Assessment Pass",
         "complete":                   complete,
         "orientation_done":           orientation_done,
         "drills_done":                required_drills_done,
@@ -176,12 +172,15 @@ def _peds_ce_challenge(
         "optional_games_completed":   optional_games_done_count,
         "optional_games_required":    _PEDS_CE_MIN_OPT_GAMES,
         "optional_games_done":        games_ok,
+        "cpr_required":               False,
+        "optional_games_required_for_pass": False,
         "ce_seconds":                 ce_seconds,
         "ce_target_seconds":          _PEDS_CE_TARGET_SECONDS,
         "ce_minutes":                 round(ce_seconds / 60, 1),
         "ce_target_minutes":          round(_PEDS_CE_TARGET_SECONDS / 60, 1),
+        "training_time_done":         ce_ok,
         "xp":                         user_xp,
-        "xp_required":                _PEDS_CE_MIN_XP,
+        "xp_required":                0,
         "xp_ok":                      xp_ok,
     }
 
@@ -196,10 +195,11 @@ def _compute_attempt_summary(
     """Compute the full attempt summary from stored node state.
 
     Drill grade:   best 2 of 3 completed DRILL node scores. GCS is optional.
-    Scenario avg:  average of all completed scenario scores, once the minimum
-                   CE criteria are met (2 PM1 + 2 PT1 + CPR); null until then.
-    Final score:   (drill_grade × 0.20) + (scenario_avg × 0.80), rounded to int;
-                   null until the minimum scenario threshold is met.
+    Scenario avg:  average of completed PM1/PT1 scenario scores, once the
+                   minimum SCORM pass scenario criteria are met (2 PM1 + 2 PT1);
+                   null until then.
+    Final score:   rounded scenario_avg; null until the minimum scenario
+                   threshold is met.
     lesson_status: "passed" when peds_ce_challenge.complete, else "incomplete".
 
     Unlock chain:
@@ -210,14 +210,14 @@ def _compute_attempt_summary(
     completed: dict = attempt.node_completed or {}
 
     # Required drills gate
-    required_drills_done = all(completed.get(d, False) for d in _REQUIRED_DRILLS)
+    required_drills_done = all(_stored_node_counts_complete(scores, completed, d) for d in _REQUIRED_DRILLS)
 
     # Map-specific scenario counts
-    pm1_completed = [s for s in _PM1_NODES if completed.get(s, False)]
-    pt1_completed = [s for s in _PT1_NODES if completed.get(s, False)]
+    pm1_completed = [s for s in _PM1_NODES if _stored_node_counts_complete(scores, completed, s)]
+    pt1_completed = [s for s in _PT1_NODES if _stored_node_counts_complete(scores, completed, s)]
     pm1_completed_count = len(pm1_completed)
     pt1_completed_count = len(pt1_completed)
-    cpr_done = bool(completed.get("scen_cpr", False))
+    cpr_done = _stored_node_counts_complete(scores, completed, "scen_cpr")
 
     pm1_met = pm1_completed_count >= _PEDS_CE_MIN_PM1
     pt1_met = pt1_completed_count >= _PEDS_CE_MIN_PT1
@@ -230,7 +230,7 @@ def _compute_attempt_summary(
 
     # Drill grade — best 2 of 3 completed drill scores
     completed_drill_scores = sorted(
-        (scores.get(d, 0) for d in _DRILL_NODES if completed.get(d, False)),
+        (scores.get(d, 0) for d in _DRILL_NODES if _stored_node_counts_complete(scores, completed, d)),
         reverse=True,
     )
     if len(completed_drill_scores) >= 2:
@@ -240,9 +240,9 @@ def _compute_attempt_summary(
     else:
         drill_grade = 0.0
 
-    # Scenario average: non-null only when minimum CE criteria are met
-    all_completed_scenarios = pm1_completed + pt1_completed + (["scen_cpr"] if cpr_done else [])
-    min_scenarios_met = pm1_met and pt1_met and cpr_done
+    # Scenario average: non-null only when minimum SCORM pass criteria are met
+    all_completed_scenarios = pm1_completed + pt1_completed
+    min_scenarios_met = pm1_met and pt1_met
     if min_scenarios_met:
         scenario_avg: Optional[float] = (
             sum(scores.get(s, 0) for s in all_completed_scenarios) / len(all_completed_scenarios)
@@ -252,14 +252,11 @@ def _compute_attempt_summary(
 
     # Optional game completions
     optional_games_done_count = sum(
-        1 for g in _OPTIONAL_GAME_NODES if completed.get(g, False)
+        1 for g in _OPTIONAL_GAME_NODES if _stored_node_counts_complete(scores, completed, g)
     )
 
     # Final score and lesson_status
-    if scenario_avg is not None:
-        final_score: Optional[int] = round(drill_grade * 0.20 + scenario_avg * 0.80)
-    else:
-        final_score = None
+    final_score: Optional[int] = round(scenario_avg) if scenario_avg is not None else None
 
     ce_challenge = _peds_ce_challenge(
         required_drills_done=required_drills_done,
@@ -293,7 +290,10 @@ def _compute_attempt_summary(
 async def _get_ce_context(user_id: str, db: AsyncSession) -> "tuple[int, bool, int]":
     """Return (ce_seconds, orientation_done, user_xp) for a SCORM shadow user."""
     ce_result = await db.execute(
-        select(func.sum(CeTimeLog.seconds)).where(CeTimeLog.user_id == user_id)
+        select(func.sum(CeTimeLog.seconds)).where(
+            CeTimeLog.user_id == user_id,
+            CeTimeLog.activity_type.in_(_PEDS_CE_ALLOWED_TIME_TYPES),
+        )
     )
     ce_seconds = int(ce_result.scalar() or 0)
     user = await db.get(User, user_id)
@@ -317,6 +317,17 @@ class ScormNodeResultRequest(BaseModel):
     completed:     bool
     passed:        Optional[bool] = None
     mistake_tags:  Optional[List[str]] = None
+
+
+def _node_result_counts_complete(body: ScormNodeResultRequest, score: int) -> bool:
+    """Return whether a submitted node result satisfies SCORM completion."""
+    passed = body.passed if body.passed is not None else score >= _NODE_PASS_THRESHOLD
+    return bool(body.completed and passed and score >= _NODE_PASS_THRESHOLD)
+
+
+def _stored_node_counts_complete(scores: dict, completed: dict, node_id: str) -> bool:
+    """Return whether persisted node state satisfies completion."""
+    return bool(completed.get(node_id, False)) and int(scores.get(node_id, 0) or 0) >= _NODE_PASS_THRESHOLD
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -542,8 +553,8 @@ async def record_node_result(
 
     # Best-score semantics
     scores[node_id] = max(scores.get(node_id, 0), score)
-    # completed is sticky
-    if body.completed:
+    # completed is sticky, but only passing/on-track node results count.
+    if _node_result_counts_complete(body, score):
         completed[node_id] = True
     if body.mistake_tags is not None:
         mistake_tags[node_id] = body.mistake_tags

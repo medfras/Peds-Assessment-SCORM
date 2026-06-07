@@ -31,14 +31,15 @@ from app.routers.scorm import (
     _PEDS_CE_MIN_OPT_GAMES,
     _PEDS_CE_MIN_PM1,
     _PEDS_CE_MIN_PT1,
-    _PEDS_CE_MIN_XP,
     _PEDS_CE_TARGET_SECONDS,
     _PM1_NODES,
     _PT1_NODES,
     _REQUIRED_DRILLS,
     _SCENARIO_NODES,
     _compute_attempt_summary,
+    _node_result_counts_complete,
     _parse_lms_student_name,
+    ScormNodeResultRequest,
 )
 
 
@@ -60,7 +61,7 @@ def _full_ce_context() -> dict:
     return dict(
         ce_seconds=_PEDS_CE_TARGET_SECONDS,
         orientation_done=True,
-        user_xp=_PEDS_CE_MIN_XP,
+        user_xp=0,
     )
 
 
@@ -73,11 +74,10 @@ def _passing_attempt():
 
 
 def _min_passing_attempt():
-    """Minimum required nodes for CE: drill_pat + drill_dev, 2 PM1, 2 PT1, scen_cpr, 2 games."""
+    """Minimum required nodes for SCORM pass: 2 PM1 + 2 PT1."""
     pm1   = sorted(_PM1_NODES)[:_PEDS_CE_MIN_PM1]
     pt1   = sorted(_PT1_NODES)[:_PEDS_CE_MIN_PT1]
-    games = sorted(_OPTIONAL_GAME_NODES)[:_PEDS_CE_MIN_OPT_GAMES]
-    nodes = list(_REQUIRED_DRILLS) + pm1 + pt1 + list(_CPR_NODES) + games
+    nodes = pm1 + pt1
     return _attempt(
         node_scores={n: 80 for n in nodes},
         node_completed={n: True for n in nodes},
@@ -95,6 +95,36 @@ def test_lms_student_name_parser_handles_moodle_display_formats():
     assert _parse_lms_student_name("(Jon),") == ("Jon", None)
     assert _parse_lms_student_name("Jane Student") == ("Jane", "Student")
     assert _parse_lms_student_name("") == ("Student", None)
+
+
+def test_node_completion_requires_on_track_score():
+    assert _node_result_counts_complete(
+        ScormNodeResultRequest(activity_type="scenario", score=69, completed=True, passed=True),
+        69,
+    ) is False
+    assert _node_result_counts_complete(
+        ScormNodeResultRequest(activity_type="scenario", score=70, completed=True, passed=True),
+        70,
+    ) is True
+    assert _node_result_counts_complete(
+        ScormNodeResultRequest(activity_type="scenario", score=80, completed=True, passed=False),
+        80,
+    ) is False
+
+
+def test_summary_completion_counts_require_on_track_score():
+    pm1 = sorted(_PM1_NODES)[:2]
+    pt1 = sorted(_PT1_NODES)[:2]
+    nodes = pm1 + pt1
+    scores = {n: 80 for n in nodes}
+    scores[pm1[0]] = 69
+    s = _compute_attempt_summary(_attempt(
+        node_scores=scores,
+        node_completed={n: True for n in nodes},
+    ), **_full_ce_context())
+    assert s["peds_ce_challenge"]["pm1_completed"] == 1
+    assert s["peds_ce_challenge"]["pm1_done"] is False
+    assert s["peds_ce_challenge"]["complete"] is False
 
 
 # ── Node registry ─────────────────────────────────────────────────────────────
@@ -288,7 +318,7 @@ def test_drill_grade_optional_games_not_included():
 
 # ── Scenario average and final score ──────────────────────────────────────────
 
-def test_scenario_avg_null_without_cpr():
+def test_scenario_avg_populated_without_cpr_once_pm1_pt1_minimum_met():
     pm1 = sorted(_PM1_NODES)[:2]
     pt1 = sorted(_PT1_NODES)[:2]
     nodes = pm1 + pt1
@@ -296,8 +326,8 @@ def test_scenario_avg_null_without_cpr():
         node_scores={n: 90 for n in nodes},
         node_completed={n: True for n in nodes},
     ))
-    assert s["scenario_avg"] is None
-    assert s["final_score"] is None
+    assert s["scenario_avg"] == pytest.approx(90.0)
+    assert s["final_score"] == 90
 
 
 def test_scenario_avg_null_with_cpr_but_insufficient_pm1():
@@ -325,7 +355,7 @@ def test_scenario_avg_null_with_cpr_but_insufficient_pt1():
 def test_scenario_avg_populated_once_minimum_met():
     pm1 = sorted(_PM1_NODES)[:2]
     pt1 = sorted(_PT1_NODES)[:2]
-    nodes = pm1 + pt1 + ["scen_cpr"]
+    nodes = pm1 + pt1
     s = _compute_attempt_summary(_attempt(
         node_scores={n: 80 for n in nodes},
         node_completed={n: True for n in nodes},
@@ -335,14 +365,14 @@ def test_scenario_avg_populated_once_minimum_met():
 
 
 def test_final_score_uses_all_completed_scenarios():
-    # All PM1 + all PT1 + CPR: avg uses all 10, not just minimum 5
-    nodes = list(_PM1_NODES) + list(_PT1_NODES) + ["scen_cpr"]
-    scenario_scores = {n: (80 if i < 5 else 60) for i, n in enumerate(nodes)}
+    # All PM1 + all PT1: avg uses all 9, not just minimum 4. CPR is telemetry.
+    nodes = list(_PM1_NODES) + list(_PT1_NODES)
+    scenario_scores = {n: (90 if i < 5 else 70) for i, n in enumerate(nodes)}
     s = _compute_attempt_summary(_attempt(
         node_scores=scenario_scores,
         node_completed={n: True for n in nodes},
     ))
-    expected_avg = (80 * 5 + 60 * 5) / 10
+    expected_avg = (90 * 5 + 70 * 4) / 9
     assert s["scenario_avg"] == pytest.approx(expected_avg, abs=0.2)
 
 
@@ -350,16 +380,13 @@ def test_final_score_formula():
     drills = {"drill_pat": 80, "drill_dev": 70}
     pm1 = {n: 75 for n in sorted(_PM1_NODES)[:2]}
     pt1 = {n: 75 for n in sorted(_PT1_NODES)[:2]}
-    cpr = {"scen_cpr": 75}
     s = _compute_attempt_summary(_attempt(
-        node_scores={**drills, **pm1, **pt1, **cpr},
+        node_scores={**drills, **pm1, **pt1},
         node_completed={**{k: True for k in drills}, **{k: True for k in pm1},
-                        **{k: True for k in pt1}, **{k: True for k in cpr}},
+                        **{k: True for k in pt1}},
     ))
-    drill_grade = (80 + 70) / 2   # 75.0
     scenario_avg = 75.0
-    expected = round(drill_grade * 0.20 + scenario_avg * 0.80)
-    assert s["final_score"] == expected
+    assert s["final_score"] == round(scenario_avg)
 
 
 # ── lesson_status is tied to CE challenge ─────────────────────────────────────
@@ -383,7 +410,7 @@ def test_lesson_status_still_incomplete_when_challenge_not_met():
         _passing_attempt(),
         ce_seconds=0,
         orientation_done=True,
-        user_xp=_PEDS_CE_MIN_XP,
+        user_xp=0,
     )
     assert s["lesson_status"] == "incomplete"
 
@@ -395,18 +422,18 @@ def test_peds_ce_challenge_not_complete_by_default():
     assert s["peds_ce_challenge"]["complete"] is False
 
 
-def test_peds_ce_challenge_requires_orientation():
+def test_peds_ce_challenge_exposes_orientation_without_requiring_it():
     s = _compute_attempt_summary(
         _min_passing_attempt(),
         ce_seconds=_PEDS_CE_TARGET_SECONDS,
         orientation_done=False,
-        user_xp=_PEDS_CE_MIN_XP,
+        user_xp=0,
     )
-    assert s["peds_ce_challenge"]["complete"] is False
+    assert s["peds_ce_challenge"]["complete"] is True
     assert s["peds_ce_challenge"]["orientation_done"] is False
 
 
-def test_peds_ce_challenge_requires_required_drills():
+def test_peds_ce_challenge_exposes_required_drills_without_requiring_them():
     # GCS only — no PAT/DEV
     no_req_drills = _attempt(
         node_scores={**{n: 80 for n in _PM1_NODES},
@@ -422,7 +449,7 @@ def test_peds_ce_challenge_requires_required_drills():
     )
     s = _compute_attempt_summary(no_req_drills, **_full_ce_context())
     assert s["peds_ce_challenge"]["drills_done"] is False
-    assert s["peds_ce_challenge"]["complete"] is False
+    assert s["peds_ce_challenge"]["complete"] is True
 
 
 def test_peds_ce_challenge_requires_min_pm1():
@@ -453,17 +480,18 @@ def test_peds_ce_challenge_requires_min_pt1():
     assert s["peds_ce_challenge"]["complete"] is False
 
 
-def test_peds_ce_challenge_requires_cpr():
+def test_peds_ce_challenge_exposes_cpr_without_requiring_it():
     pm1_two = sorted(_PM1_NODES)[:2]
     pt1_two = sorted(_PT1_NODES)[:2]
-    nodes = list(_REQUIRED_DRILLS) + pm1_two + pt1_two + list(_OPTIONAL_GAME_NODES)
+    nodes = pm1_two + pt1_two
     a = _attempt(
         node_scores={n: 80 for n in nodes},
         node_completed={n: True for n in nodes},
     )
     s = _compute_attempt_summary(a, **_full_ce_context())
     assert s["peds_ce_challenge"]["cpr_done"] is False
-    assert s["peds_ce_challenge"]["complete"] is False
+    assert s["peds_ce_challenge"]["cpr_required"] is False
+    assert s["peds_ce_challenge"]["complete"] is True
 
 
 def test_peds_ce_challenge_any_two_pm1_qualify():
@@ -491,11 +519,11 @@ def test_peds_ce_challenge_any_two_pt1_qualify():
     assert s["peds_ce_challenge"]["pt1_done"] is True
 
 
-def test_peds_ce_challenge_requires_optional_games():
+def test_peds_ce_challenge_exposes_optional_games_without_requiring_them():
     pm1_two = sorted(_PM1_NODES)[:2]
     pt1_two = sorted(_PT1_NODES)[:2]
     one_game = sorted(_OPTIONAL_GAME_NODES)[:1]
-    nodes = list(_REQUIRED_DRILLS) + pm1_two + pt1_two + list(_CPR_NODES) + one_game
+    nodes = pm1_two + pt1_two + one_game
     a = _attempt(
         node_scores={n: 80 for n in nodes},
         node_completed={n: True for n in nodes},
@@ -503,7 +531,8 @@ def test_peds_ce_challenge_requires_optional_games():
     s = _compute_attempt_summary(a, **_full_ce_context())
     assert s["peds_ce_challenge"]["optional_games_completed"] == 1
     assert s["peds_ce_challenge"]["optional_games_done"] is False
-    assert s["peds_ce_challenge"]["complete"] is False
+    assert s["peds_ce_challenge"]["optional_games_required_for_pass"] is False
+    assert s["peds_ce_challenge"]["complete"] is True
 
 
 def test_peds_ce_challenge_requires_ce_time():
@@ -511,20 +540,21 @@ def test_peds_ce_challenge_requires_ce_time():
         _min_passing_attempt(),
         ce_seconds=_PEDS_CE_TARGET_SECONDS - 1,
         orientation_done=True,
-        user_xp=_PEDS_CE_MIN_XP,
+        user_xp=0,
     )
     assert s["peds_ce_challenge"]["complete"] is False
 
 
-def test_peds_ce_challenge_requires_min_xp():
+def test_peds_ce_challenge_exposes_xp_without_requiring_it():
     s = _compute_attempt_summary(
         _min_passing_attempt(),
         ce_seconds=_PEDS_CE_TARGET_SECONDS,
         orientation_done=True,
-        user_xp=_PEDS_CE_MIN_XP - 1,
+        user_xp=0,
     )
-    assert s["peds_ce_challenge"]["xp_ok"] is False
-    assert s["peds_ce_challenge"]["complete"] is False
+    assert s["peds_ce_challenge"]["xp_required"] == 0
+    assert s["peds_ce_challenge"]["xp_ok"] is True
+    assert s["peds_ce_challenge"]["complete"] is True
 
 
 def test_peds_ce_challenge_complete_when_all_criteria_met():
@@ -533,14 +563,13 @@ def test_peds_ce_challenge_complete_when_all_criteria_met():
         **_full_ce_context(),
     )
     c = s["peds_ce_challenge"]
+    assert c["id"] == "pfd_station1_scorm_pass"
+    assert c["title"] == "Station 1 Pediatric Assessment Pass"
     assert c["complete"] is True
-    assert c["orientation_done"] is True
-    assert c["drills_done"] is True
     assert c["pm1_done"] is True
     assert c["pt1_done"] is True
-    assert c["cpr_done"] is True
-    assert c["optional_games_done"] is True
     assert c["ce_target_minutes"] == 60.0
+    assert c["training_time_done"] is True
     assert c["xp_ok"] is True
 
 

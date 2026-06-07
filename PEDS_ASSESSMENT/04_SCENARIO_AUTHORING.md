@@ -187,12 +187,12 @@ The Station 1 module uses the same scoring philosophy as the SaaS app:
 - The LLM writes coaching feedback and evaluates bounded qualitative dimensions.
 - Authored clinical education content is surfaced by the LLM, not invented by it.
 
-Station 1 grade formula is defined in `02_MAP_TOPOLOGY.md` and `03_SCORM_ARCHITECTURE.md`:
+Station 1 pass criteria and raw score formula are defined in `02_MAP_TOPOLOGY.md` and `03_SCORM_ARCHITECTURE.md`:
 
-`(drill_grade x 0.20) + (scenario_avg x 0.80)`
+`scenario_avg`
 
-- `drill_grade` = best 2 of 3 completed drill scores.
-- `scenario_avg` = average of all completed scenario scores after the CE scenario minimum is met.
+- `scenario_avg` = average of all completed PM1 + PT1 scenario scores after the 2 PM1 + 2 PT1 scenario minimum is met.
+- `peds_ce_challenge.complete` requires 2 PM1 + 2 PT1 passing/on-track scenarios and 60 minutes of eligible training time.
 - Final LMS pass is based on `peds_ce_challenge.complete`, not a raw score alone.
 
 ## 7. Content Review Checklist

@@ -40,7 +40,7 @@ Instead of the full SaaS map stack, the UI uses 4 distinct Station 1 HTML map vi
 
 *   **Node Buttons:** HTML buttons placed over map locations for drills, scenarios, CPR, and optional games.
 *   **State Indicators:** A green checkmark (✅) overlay appears on a door when `cmi.suspend_data` indicates a score > 0 for that node.
-*   **Global Tracker:** A fixed header replaces the XP bar and shows Station 1 CE progress: required drills, PM1 count, PT1 count, CPR, optional games, and time/XP progress.
+*   **Global Tracker:** A fixed header replaces the XP bar and shows Station 1 progress. Moodle completion is driven by PM1 count, PT1 count, and eligible training time; drills, CPR, optional games, and XP may display as progress/reward telemetry but do not block SCORM completion.
 
 The UI should read node IDs from the SCORM manifest/config and backend attempt summary rather than hardcoding display strings. Labels and artwork can change without changing stored progress or backend attempt summaries.
 

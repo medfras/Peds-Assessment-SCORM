@@ -6058,8 +6058,11 @@ function _normalizeScormState(summaryOrResume = {}) {
     node_completed: completed,
     unlocks: summaryOrResume.unlocks || { scenarios: false, map3: false },
     peds_ce_challenge: {
+      id: ce.id || "pfd_station1_scorm_pass",
+      title: ce.title || "Station 1 Pediatric Assessment Pass",
       complete: !!ce.complete,
       ce_seconds: Number(ce.ce_seconds || 0),
+      training_time_done: !!ce.training_time_done,
       pm1_completed: Number(ce.pm1_completed || 0),
       pm1_required: Number(ce.pm1_required || 2),
       pt1_completed: Number(ce.pt1_completed || 0),

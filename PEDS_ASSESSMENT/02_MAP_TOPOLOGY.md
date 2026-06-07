@@ -7,7 +7,7 @@ The SCORM package launches into Station 1 orientation until orientation is compl
 - **Map 0 — Foundation Drills:** Entry point. Two required drills gate progression to the scenario maps. One optional drill is available at any time.
 - **PM1 — Pediatric Medical:** Four medical scenarios. Unlocked once both required drills are complete. Learner must complete any 2 of 4 to meet CE requirements and unlock Map 3.
 - **PT1 — Pediatric Trauma:** Five trauma scenarios. Unlocked at the same time as PM1. Learner must complete any 2 of 5 to meet CE requirements and unlock Map 3.
-- **Map 3 — CPR:** One required scenario. Unlocked when both PM1 and PT1 minimums are met (2 PM1 + 2 PT1). Must be completed to satisfy CE challenge.
+- **Map 3 — CPR:** One scenario. Unlocked when both PM1 and PT1 minimums are met (2 PM1 + 2 PT1). CPR remains available for training, but it is not required for Moodle pass/completion.
 
 Optional games are accessible from a sidebar or launcher and can be completed in any order.
 
@@ -102,7 +102,7 @@ Unlocked at the same time as PM1. Complete any 2 of 5 to satisfy CE requirements
 
 ---
 
-## 5. Map 3: CPR (Required)
+## 5. Map 3: CPR
 
 Unlocked when 2 PM1 scenarios AND 2 PT1 scenarios are completed.
 
@@ -111,7 +111,7 @@ Unlocked when 2 PM1 scenarios AND 2 PT1 scenarios are completed.
     - *App scenario:* `peds_cardiac_arrest_01_bls`
     - *Focus:* High-quality CPR, AED operation, BLS sequence, ROSC recognition.
 
-**Requirement:** Must be completed (not just unlocked) to satisfy the CE challenge.
+**Requirement:** Optional for Moodle completion. CPR completion remains useful training progress and may contribute time, but it is not part of the SCORM pass challenge.
 
 ---
 
@@ -149,14 +149,13 @@ Backend `unlocks` object:
 
 **Drill grade:** Best 2 of 3 drill scores. Completing `drill_gcs` above either required drill score improves the average; scoring below does not hurt it.
 
-**Scenario average:** Average of all completed scenario scores (PM1 + PT1 + CPR), once the minimum CE scenario criteria are met (2 PM1 + 2 PT1 + CPR). Null until that threshold is met.
+**Scenario average:** Average of all completed PM1 + PT1 scenario scores, once the minimum SCORM pass criteria are met (2 PM1 + 2 PT1). Null until that threshold is met.
 
-**Grade formula:** `(drill_grade × 0.20) + (scenario_avg × 0.80)`
+**Grade formula:** `scenario_avg`
 
 | Component | Weight | Rule |
 |---|---|---|
-| Drills | 20% | Best 2 of 3 drill scores |
-| Scenarios | 80% | Average of all completed scenario scores |
+| Scenarios | 100% | Average of all completed PM1 + PT1 scenario scores |
 
 **Node pass threshold:** 70%. `passed` is tracked per node and affects XP rewards. Completion (not a passing score) is the gate criterion for unlock progression.
 
@@ -168,14 +167,9 @@ Backend `unlocks` object:
 
 | Criterion | Requirement |
 |---|---|
-| Orientation | Completed |
-| Required drills | `drill_pat` + `drill_dev` completed |
-| PM1 scenarios | Any 2 of 4 completed |
-| PT1 scenarios | Any 2 of 5 completed |
-| CPR scenario | `scen_cpr` completed |
-| Optional games | Any 2 of 3 completed |
-| Total CE time | ≥ 60 minutes |
-| Minimum XP | ≥ 1100 XP |
+| PM1 scenarios | Any 2 of 4 completed with passing/on-track scores or higher |
+| PT1 scenarios | Any 2 of 5 completed with passing/on-track scores or higher |
+| Total training time | ≥ 60 minutes from orientation, scenarios, or drills |
 
 `lesson_status` resolves to `"passed"` when all CE challenge criteria are met; otherwise `"incomplete"`.
 
