@@ -12126,7 +12126,7 @@ function _readChallengesCache() {
 }
 
 function _buildChallengesSection() {
-  const active = (_challengesCache || []).filter(ch => ch?.is_active !== false);
+  const active = _activeChallengesForDisplay();
   const openCount = active.filter(ch => !ch?.earned).length;
   const summary = !active.length
     ? "No active challenges"
@@ -12142,6 +12142,94 @@ function _buildChallengesSection() {
   });
 }
 
+function _scormPassChallengeForDisplay() {
+  if (!state.scormEnabled) return null;
+  const summary = _normalizeScormState(state.scormLatestSummary || state.scormResumeState || {});
+  const ce = summary.peds_ce_challenge || {};
+  const pm1Required = Number(ce.pm1_required || 2);
+  const pt1Required = Number(ce.pt1_required || 2);
+  const pm1Done = Math.min(Math.max(0, Number(ce.pm1_completed || 0)), pm1Required);
+  const pt1Done = Math.min(Math.max(0, Number(ce.pt1_completed || 0)), pt1Required);
+  const ceSeconds = Math.max(0, Number(ce.ce_seconds || 0));
+  const ceMinutes = Math.floor(ceSeconds / 60);
+  const xpRequired = Number(ce.xp_required || 950);
+  const xpDone = Math.max(0, Number(ce.xp || 0));
+  const timeDone = !!ce.training_time_done;
+  const xpOk = !!ce.xp_ok;
+  const criteriaDone = [
+    pm1Done >= pm1Required,
+    pt1Done >= pt1Required,
+    timeDone,
+    xpOk,
+  ].filter(Boolean).length;
+
+  return {
+    id: "scorm-peds-ce-challenge",
+    scorm_pass: true,
+    is_active: true,
+    earned: !!ce.complete,
+    icon: "🎯",
+    name: ce.title || "Station 1 Pediatric Assessment Pass",
+    description: "Moodle course completion requirement: finish the required scenario mix, training time, and XP target.",
+    scenarios_total: 4,
+    scenarios_completed: criteriaDone,
+    time_goal_minutes: 60,
+    challenge_ce_seconds: ceSeconds,
+    requirements_progress: [
+      {
+        label: "Complete 2 Pediatric Medical scenarios with on-track scores or higher",
+        completed: pm1Done,
+        needed: pm1Required,
+        progress_text: `${pm1Done}/${pm1Required}`,
+        custom_items: [{
+          label: "Pediatric Medical scenarios",
+          status: `${pm1Done} of ${pm1Required} passing scenarios complete`,
+          complete: pm1Done >= pm1Required,
+        }],
+      },
+      {
+        label: "Complete 2 Pediatric Trauma scenarios with on-track scores or higher",
+        completed: pt1Done,
+        needed: pt1Required,
+        progress_text: `${pt1Done}/${pt1Required}`,
+        custom_items: [{
+          label: "Pediatric Trauma scenarios",
+          status: `${pt1Done} of ${pt1Required} passing scenarios complete`,
+          complete: pt1Done >= pt1Required,
+        }],
+      },
+      {
+        label: "Spend at least 1 hour training",
+        completed: Math.min(ceMinutes, 60),
+        needed: 60,
+        progress_text: `${_fmtMinutes(Math.min(ceMinutes, 60))} of 1h`,
+        custom_items: [{
+          label: "Training time",
+          status: `${_fmtMinutes(ceMinutes)} logged from orientation, drills, and scenarios`,
+          complete: timeDone,
+        }],
+      },
+      {
+        label: "Earn at least 950 XP",
+        completed: Math.min(xpDone, xpRequired),
+        needed: xpRequired,
+        progress_text: `${xpDone.toLocaleString()} of ${xpRequired.toLocaleString()} XP`,
+        custom_items: [{
+          label: "XP",
+          status: `${xpDone.toLocaleString()} of ${xpRequired.toLocaleString()} XP earned`,
+          complete: xpOk,
+        }],
+      },
+    ],
+  };
+}
+
+function _activeChallengesForDisplay() {
+  const agencyChallenges = (_challengesCache || []).filter(ch => ch?.is_active !== false);
+  const scormChallenge = _scormPassChallengeForDisplay();
+  return scormChallenge ? [scormChallenge, ...agencyChallenges] : agencyChallenges;
+}
+
 function _fmtMinutes(mins) {
   if (mins < 60) return `${mins}m`;
   const h = Math.floor(mins / 60);
@@ -12150,6 +12238,7 @@ function _fmtMinutes(mins) {
 }
 
 function _challengeRequirementText(req = {}) {
+  if (req.label && req.progress_text) return `${req.label} · ${req.progress_text}`;
   const label = req.label || "";
   const done = Number(req.completed || 0);
   const needed = Math.max(0, Number(req.needed || 0));
@@ -12272,7 +12361,7 @@ function _renderActiveChallengesModal() {
   const body = el("active-challenges-body");
   const summary = el("active-challenges-summary");
   if (!body) return;
-  const active = (_challengesCache || []).filter(ch => ch?.is_active !== false);
+  const active = _activeChallengesForDisplay();
   const open = active.filter(ch => !ch?.earned).length;
   if (summary) {
     summary.textContent = !active.length
@@ -12319,12 +12408,23 @@ function _renderChallengeDetail(ch = {}) {
     ? reqs.map((req, idx) => {
       const scenarioIds = Array.isArray(req.scenario_ids) ? req.scenario_ids : [];
       const drillIds = Array.isArray(req.drill_ids) ? req.drill_ids : [];
+      const customItems = Array.isArray(req.custom_items) ? req.custom_items : [];
       const completedIds = new Set(Array.isArray(req.completed_ids) ? req.completed_ids.map(String) : []);
       const completedDrillIds = new Set(Array.isArray(req.completed_drill_ids) ? req.completed_drill_ids.map(String) : []);
       const needed = Math.max(0, Number(req.needed || 0));
       const completed = Math.min(Math.max(0, Number(req.completed || 0)), needed);
       const groupComplete = needed > 0 && completed >= needed;
       const itemHtml = [
+        ...customItems.map(item => {
+          const complete = !!item.complete;
+          return `<li class="flex items-start gap-3 rounded-xl border ${complete ? "border-green-300 bg-green-50" : "border-gray-200 bg-white"} px-3 py-2">
+            <span class="mt-0.5 text-sm ${complete ? "text-green-700" : "text-gray-400"}">${complete ? "✓" : "○"}</span>
+            <span class="min-w-0 flex-1">
+              <span class="block text-sm ${complete ? "text-green-950" : "text-gray-800"}">${escapeHTML(item.label || "Requirement")}</span>
+              <span class="block text-[0.68rem] uppercase tracking-wider ${complete ? "text-green-700" : "text-gray-500"}">${escapeHTML(item.status || (complete ? "Complete" : "Not complete"))}</span>
+            </span>
+          </li>`;
+        }),
         ...scenarioIds.map(id => {
           const complete = completedIds.has(String(id));
 	          return `<li class="flex items-start gap-3 rounded-xl border ${complete ? "border-green-300 bg-green-50" : "border-gray-200 bg-white"} px-3 py-2">
@@ -12433,6 +12533,11 @@ async function _openActiveChallengesModal() {
     _buildChallengesSection();
     _renderActiveChallengesModal();
   } catch (err) {
+    if (state.scormEnabled && _scormPassChallengeForDisplay()) {
+      _renderActiveChallengesModal();
+      if (summary) summary.textContent += " · agency challenges unavailable";
+      return;
+    }
     if (summary) summary.textContent = "Could not load challenges.";
     if (body) {
       body.innerHTML = `
@@ -17821,7 +17926,7 @@ el("active-challenges-body")?.addEventListener("click", (event) => {
   }
   const card = event.target.closest?.("[data-challenge-detail-id]");
   if (!card) return;
-  const challenge = (_challengesCache || []).find(ch => String(ch.id) === String(card.dataset.challengeDetailId));
+  const challenge = _activeChallengesForDisplay().find(ch => String(ch.id) === String(card.dataset.challengeDetailId));
   if (challenge) _renderChallengeDetail(challenge);
 });
 el("btn-category-home")?.addEventListener("click", () => {

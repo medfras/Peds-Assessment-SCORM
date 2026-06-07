@@ -383,3 +383,16 @@ def test_scorm_suspend_data_preserves_ui_location_for_resume():
     assert "function setUiState(ui)" in scorm_js
     assert "pfd_station1_scorm_pass" in scorm_js
     assert "training_time_done" in scorm_js
+
+
+def test_scorm_pass_requirements_render_in_active_challenges_modal():
+    app_js = APP_JS.read_text()
+    assert "function _scormPassChallengeForDisplay()" in app_js
+    assert "scorm-peds-ce-challenge" in app_js
+    assert "Pediatric Medical scenarios" in app_js
+    assert "Pediatric Trauma scenarios" in app_js
+    assert "Training time" in app_js
+    assert "950 XP" in app_js
+    assert "custom_items" in app_js
+    assert "function _activeChallengesForDisplay()" in app_js
+    assert "_activeChallengesForDisplay().find" in app_js
