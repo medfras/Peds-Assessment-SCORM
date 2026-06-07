@@ -599,6 +599,10 @@ These items came from MoodleCloud package testing and should be folded back into
 - [ ] Station 1 wrap-up gate: final orientation wrap-up must remain locked until intro, orientation drill, CPR drill, and challenge list are all genuinely complete for the current user/attempt.
 - [ ] Attempt-scoped local UI flags: any local "seen" or map helper flags used in SCORM should be scoped by learner/attempt to avoid one Moodle attempt unlocking another.
 - [ ] TTS voice QA: verify scenario persona TTS voice mappings in the deployed browser path, especially male partner/patient voices such as Jake.
+- [ ] Orientation sidebar gate: while Station 1 orientation is incomplete, production sidebar items must not route learners to Home or off-orientation content. Audit Home, History, Notebook, Training Center, Daily Trivia, Challenges, Leaderboard, My Progress, and map sidebar buttons as a single gate.
+- [ ] Return-target hardening: any screen opened from the orientation map must record its source and return to Station 1 orientation until backend orientation completion is true. History now has this pattern; apply the same rule to Notebook, Training Center, Progress, challenge/trivia flows, and future modal-to-screen transitions.
+- [ ] Read-only modal classification: leaderboard, badges, and simple close-only modals can remain available during orientation if desired, but their close/back paths must not call `buildMenu()` or `showScreen("menu")` while orientation is incomplete.
+- [ ] Off-orientation launch classification: Training Center drills, Daily Trivia/Lexi challenges, repeatable challenges, retake buttons, and notebook "Start" shortcuts should be hidden, disabled, or explicitly re-routed until orientation is complete.
 - [ ] SCORM-only UI trim: hide or re-route SaaS-only surfaces only where needed for SCORM; production Home and map surfaces should remain the canonical UI after orientation.
 - [ ] Optional-game data gap: restore or remap `static/audio/lung sounds/LS/F_FC_LLA.wav` before validating the lung-sounds optional game path.
 

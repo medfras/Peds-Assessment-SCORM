@@ -122,6 +122,21 @@ Target response: batch with cleanup passes.
   - Next step: Audit which surfaces are still in active use and which are zombie paths. Consolidate into two canonical surfaces: one in-scenario (Lexi screen) and one history/replay (last-results modal). Remove or tombstone the rest. Align data shape and theme before adding any new debrief UI.
   - References: [`static/js/app.js:14750`](static/js/app.js), [`docs/PUNCHLIST.md`](docs/PUNCHLIST.md)
 
+- [ ] Orientation-gated navigation must be source-aware
+  - Type: Bug / Release Gate
+  - Area: Frontend / Navigation
+  - Summary: SCORM pilot testing found that opening History from an incomplete Station 1 orientation and pressing Back routed to the production Home screen. The immediate SCORM package fix made History source-aware, but the broader production pattern remains: screens and modals opened from an orientation-gated map can call `buildMenu()` / `showScreen("menu")` or launch off-orientation content without checking whether orientation is complete.
+  - Impact: Learners can accidentally bypass required onboarding/orientation flows, and future modal/screen additions can reintroduce the same bug unless return targets are centralized.
+  - Findings to audit:
+    - `History`: fixed in SCORM package; back returns to orientation while incomplete.
+    - `Notebook`: opened from category sidebar; Back returns to category, but empty-state/start shortcuts can still route to Home.
+    - `Training Center`: opened from category sidebar and can launch drills before orientation is complete unless gated.
+    - `Daily Trivia` / Lexi challenges and repeatable Challenges: can be opened from the category sidebar and may launch off-orientation content.
+    - `Leaderboard`, `Badges`, and simple close-only modals are low risk if close only hides the modal, but should be classified explicitly.
+    - Category Home button must remain hidden/disabled while orientation is incomplete.
+  - Next step: Add a shared `returnTarget` / orientation-gate helper for all screen-opening surfaces. While `orientation_completed_at` is false, any Back/Home/Start/Close path from an orientation-origin surface must return to `showCategoryScreen("station_1")` or remain in-place; off-orientation launch buttons should be hidden/disabled.
+  - References: [`static/js/app.js`](static/js/app.js), [`PEDS_ASSESSMENT/07_PILOT_READINESS_CHECKLIST.md`](PEDS_ASSESSMENT/07_PILOT_READINESS_CHECKLIST.md)
+
 - [x] Restrict overly permissive CORS policy — **Resolved (2026-05-12).** Allowlist-based CORS with `allow_credentials=True`; `settings.allowed_origins` loads the explicit origin list; browser preflight verified. Punchlist entry was not updated when the item was closed in `docs/SAAS_HARDENING_PLAN.md` (S-01).
 
 - [ ] SCORM pilot — result adapter wiring (branch gate blocker)
