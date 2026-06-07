@@ -5915,6 +5915,7 @@ async function authFetch(url, options = {}, _retry = true) {
       return authFetch(url, options, false);
     }
     if (authRedirectOn401) {
+      if (_handleScormAuthExpired()) return res;
       _clearAuth();
       showScreen("login");
     }
@@ -6441,6 +6442,14 @@ function _clearAuth() {
   const switchBtn = el("btn-switch-agency");
   if (adminBtn)  adminBtn.classList.add("hidden");
   if (switchBtn) switchBtn.classList.add("hidden");
+}
+
+function _handleScormAuthExpired() {
+  if (!state.scormEnabled) return false;
+  if (typeof showToast === "function") showToast("Moodle session expired. Exit and relaunch the activity to continue syncing progress.", "error");
+  _releaseScormPreboot?.();
+  _hideScormLaunchStatus?.();
+  return true;
 }
 
 function switchAuthTab(tab) {
@@ -19013,6 +19022,7 @@ async function startScenarioWithOptions(scenarioId, options = {}) {
 
     if (!res.ok) {
       if (res.status === 401) {
+        if (_handleScormAuthExpired()) return false;
         _clearAuth(); switchAuthTab("login");
         showScreen("login"); showError("login-error", "Session expired — please sign in again."); return false;
       }

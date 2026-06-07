@@ -317,6 +317,22 @@ def test_scorm_launch_errors_do_not_show_login_screen():
     assert 'showScreen("login")' not in block
 
 
+def test_scorm_auth_expiry_does_not_redirect_to_saas_login():
+    app_js = APP_JS.read_text()
+    assert "function _handleScormAuthExpired()" in app_js
+    assert "Moodle session expired. Exit and relaunch the activity to continue syncing progress." in app_js
+
+    auth_start = app_js.find("async function authFetch")
+    assert auth_start != -1
+    auth_block = app_js[auth_start:auth_start + 1700]
+    assert "if (_handleScormAuthExpired()) return res;" in auth_block
+
+    scenario_start = app_js.find("async function startScenarioWithOptions")
+    assert scenario_start != -1
+    scenario_block = app_js[scenario_start:scenario_start + 4500]
+    assert "if (_handleScormAuthExpired()) return false;" in scenario_block
+
+
 def test_scorm_minigame_exits_return_to_production_map():
     app_js = APP_JS.read_text()
     assert "function _returnToScormStation1()" in app_js
