@@ -425,7 +425,10 @@ class SwipeGameEngine {
     const imageShell = this._el("image-shell");
     const imageEl    = this._el("card-image");
     const fallbackEl = this._el("image-fallback");
+    const hasImage = Boolean(card.image_url);
+    imageShell?.classList.toggle("text-only", !hasImage);
     if (card.image_url && imageEl && imageShell) {
+      imageShell.classList.remove("hidden");
       fallbackEl?.classList.remove("hidden");
       imageEl.src = card.image_url;
       imageEl.alt = card.alt_text || card.prompt || "card image";
@@ -434,7 +437,7 @@ class SwipeGameEngine {
     } else if (imageShell && imageEl) {
       imageEl.removeAttribute("src");
       imageEl.alt = "";
-      fallbackEl?.classList.remove("hidden");
+      fallbackEl?.classList.add("hidden");
     }
     const caption = (card.mode === "image" || card.mode === "mixed") ? (card.alt_text || "") : "";
     const capEl   = this._el("card-caption");

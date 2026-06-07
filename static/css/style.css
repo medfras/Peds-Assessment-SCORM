@@ -5406,6 +5406,20 @@ body {
   justify-content: center;
 }
 
+.pat-image-shell.text-only {
+  border-color: transparent;
+  background: transparent;
+  min-height: 7.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pat-image-shell.text-only .pat-card-image,
+.pat-image-shell.text-only .pat-image-fallback {
+  display: none;
+}
+
 .pat-overlay {
   position: absolute;
   left: 0;
@@ -5413,6 +5427,19 @@ body {
   bottom: 0;
   padding: 0.9rem 0.95rem 1rem;
   background: linear-gradient(to top, rgba(2, 6, 23, 0.93), rgba(2, 6, 23, 0.62) 55%, rgba(2, 6, 23, 0));
+}
+
+.pat-image-shell.text-only .pat-overlay {
+  position: static;
+  width: 100%;
+  min-height: 7.2rem;
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .pat-answer-flash {
@@ -5595,6 +5622,10 @@ body {
     min-height: 0;
   }
 
+  .pat-phone-shell .pat-image-shell.text-only {
+    min-height: 0;
+  }
+
   .pat-phone-shell .pat-card-image {
     width: 100%;
     height: 100%;
@@ -5604,6 +5635,11 @@ body {
 
   .pat-phone-shell .pat-overlay {
     padding: 0.72rem 0.78rem 0.84rem;
+  }
+
+  .pat-phone-shell .pat-image-shell.text-only .pat-overlay {
+    min-height: 0;
+    flex: 1 1 auto;
   }
 
   .pat-phone-shell #pat-card-text {
@@ -6466,6 +6502,11 @@ body {
   }
 
   .pat-image-shell {
+    height: calc(100svh - 25.2rem);
+    min-height: 20rem;
+  }
+
+  .pat-image-shell.text-only {
     height: calc(100svh - 25.2rem);
     min-height: 20rem;
   }

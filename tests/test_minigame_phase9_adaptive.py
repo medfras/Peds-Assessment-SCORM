@@ -151,6 +151,23 @@ def test_drill_nodes_use_learning_glyph_and_drill_copy():
     assert 'const glyph = g.gameType === "puzzle" ? "🧩" : "🎮";' not in js
 
 
+def test_pat_text_only_cards_hide_image_placeholder_and_center_copy():
+    js = _read("static/js/app.js")
+    css = _read("static/css/style.css")
+
+    assert 'imageShell?.classList.toggle("text-only", !hasImage);' in js
+    assert 'fallbackEl?.classList.add("hidden");' in js
+    assert ".pat-image-shell.text-only" in css
+    assert ".pat-image-shell.text-only .pat-card-image" in css
+    assert ".pat-image-shell.text-only .pat-overlay" in css
+    start = css.index(".pat-image-shell.text-only .pat-overlay")
+    end = css.index(".pat-phone-shell .pat-image-shell.text-only", start)
+    text_only_block = css[start:end]
+    assert "align-items: center;" in text_only_block
+    assert "justify-content: center;" in text_only_block
+    assert "text-align: center;" in text_only_block
+
+
 def test_station1_cpr_training_node_is_labeled_as_drill():
     js = _read("static/js/app.js")
 
