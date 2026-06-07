@@ -327,6 +327,28 @@ def _sanitize_username(raw: str) -> str:
     return safe[:64] or "student"
 
 
+def _parse_lms_student_name(raw: str) -> tuple[str, str | None]:
+    """Normalize Moodle's student name for display-only profile fields."""
+    name = re.sub(r"\s+", " ", (raw or "").strip()).strip(" ,")
+    if not name:
+        return "Student", None
+
+    # Moodle often exposes cmi.core.student_name as "Last, First".
+    if "," in name:
+        last, first = [part.strip(" ()") for part in name.split(",", 1)]
+        if first:
+            return first, last or None
+        if last:
+            return last, None
+
+    parts = [part.strip(" ()") for part in name.split(" ") if part.strip(" ()")]
+    if not parts:
+        return "Student", None
+    if len(parts) == 1:
+        return parts[0], None
+    return parts[0], " ".join(parts[1:])
+
+
 async def _provision_scorm_user(
     db: AsyncSession, *, lms_student_id: str, lms_student_name: str, module_id: str
 ) -> "tuple[User, AgencyMember, Agency]":
@@ -351,17 +373,24 @@ async def _provision_scorm_user(
     username = f"scorm_{module_id}_{_sanitize_username(lms_student_id)}"
     result = await db.execute(select(User).where(User.username == username))
     user = result.scalar_one_or_none()
+    first_name, last_name = _parse_lms_student_name(lms_student_name)
     if not user:
-        display_name = (lms_student_name or "").strip() or username
-        first_name = display_name.split()[0] if display_name else "Student"
         user = User(
             username=username,
             hashed_password=_hash_password(secrets.token_hex(32)),
             first_name=first_name,
+            last_name=last_name,
             is_superuser=False,
         )
         db.add(user)
         await db.flush()
+    elif lms_student_name:
+        # Keep leaderboard/profile display aligned if Moodle later sends a
+        # cleaner name than the original launch.
+        if user.first_name != first_name:
+            user.first_name = first_name
+        if user.last_name != last_name:
+            user.last_name = last_name
 
     # Provision agency membership
     result = await db.execute(

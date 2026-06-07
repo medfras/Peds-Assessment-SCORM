@@ -179,10 +179,15 @@ def test_scorm_home_sidebars_hide_account_controls_and_use_trails_copy():
     html = (ROOT / "static" / "index.html").read_text()
     app_js = APP_JS.read_text()
 
+    assert 'id="btn-menu-history" title="History"' in html
+    assert 'id="category-menu-history" title="History"' in html
     assert 'id="btn-account-settings" class="hidden hv2-nav-item"' in html
     assert 'id="btn-menu-logout" class="hidden hv2-nav-item hv2-nav-item--danger"' in html
     assert 'id="category-account-settings" class="hidden hv2-nav-item"' in html
     assert 'id="category-menu-logout" class="hidden hv2-nav-item hv2-nav-item--danger"' in html
+    assert 'el("category-menu-history")?.addEventListener("click"' in app_js
+    assert "if (state.scormEnabled) return;" in app_js
+    assert "const retakeButton = state.scormEnabled" in app_js
     assert "Trails, unlock progress, and available maps." in app_js
     assert "Trails To / From Current" in app_js
     assert "No connected trails from this map." in app_js

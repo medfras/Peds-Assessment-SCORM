@@ -38,6 +38,7 @@ from app.routers.scorm import (
     _REQUIRED_DRILLS,
     _SCENARIO_NODES,
     _compute_attempt_summary,
+    _parse_lms_student_name,
 )
 
 
@@ -87,6 +88,13 @@ def _min_passing_attempt():
 async def test_shared_auth_extractor_accepts_scorm_bearer_token():
     request = types.SimpleNamespace(cookies={}, headers={"Authorization": "Bearer scorm.jwt.token"})
     assert await _extract_token(request) == "scorm.jwt.token"
+
+
+def test_lms_student_name_parser_handles_moodle_display_formats():
+    assert _parse_lms_student_name("Frastaci, Jonathan") == ("Jonathan", "Frastaci")
+    assert _parse_lms_student_name("(Jon),") == ("Jon", None)
+    assert _parse_lms_student_name("Jane Student") == ("Jane", "Student")
+    assert _parse_lms_student_name("") == ("Student", None)
 
 
 # ── Node registry ─────────────────────────────────────────────────────────────

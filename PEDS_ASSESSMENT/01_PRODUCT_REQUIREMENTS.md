@@ -62,34 +62,35 @@ The station dashboard is trimmed to the minimum surface needed for training navi
 
 | Feature | Main app | SCORM deployment |
 |---|---|---|
-| Map navigation | ✓ | ✓ (Station 1 map only) |
-| Logout | ✓ | ✓ |
+| Map navigation | ✓ | ✓ (Station 1 pediatric flow only) |
+| Logout / sign out | ✓ | ✗ (Moodle owns launch/session exit) |
 | Station 1 / scenario launch | ✓ | ✓ |
-| Challenges | ✓ | ✗ |
-| Training Center | ✓ | ✗ |
-| Trivia | ✓ | ✗ |
-| Leaderboard | ✓ | ✗ |
-| Store / treat economy | ✓ | ✗ |
-| XP and rewards display | ✓ | ✗ |
-| Home page map / hub | ✓ | ✗ |
+| Challenges | ✓ | ✓ (agency challenges only) |
+| Training Center | ✓ | ✓ (pilot-safe drills only) |
+| Trivia | ✓ | ✓ |
+| Leaderboard | ✓ | ✓ (same SCORM agency; Moodle-provisioned learner names) |
+| Store / toy purchasing | ✓ | ✗ |
+| Treat economy | ✓ | ✓ (pilot reward rules only) |
+| XP and rewards display | ✓ | ✓ |
+| Home page map / hub | ✓ | ✓ (production Home after orientation) |
 | Agency/protocol picker | ✓ | ✗ |
 | User registration | ✓ | ✗ (LMS identity) |
-| History archive | ✓ | ✗ (abbreviated, see 4.4) |
+| History archive | ✓ | ✓ (learner-facing completed attempts; no account notes) |
 
 ### 4.4 Navigation Flow
 
 Main app flow: Login → Home → (hub) → Station selection → Map.
 
-SCORM flow: LMS launch → Silent auth → Station 1 orientation → Map 0 (Foundation Drills) → PM1/PT1 branches → Map 3 CPR. This is the entire SCORM package. No home page. No hub. No station selection screen. No other stations.
+SCORM flow: LMS launch → Silent auth → Station 1 orientation → production Home → Station 1 pediatric maps (Map 0, PM1, PT1, Map 3 CPR). Moodle owns identity; the SCORM package does not expose login, registration, account settings, sign out, agency switching, or protocol selection.
 
-On LMS resume, incomplete orientation returns to the Station 1 orientation. Once orientation is complete, the SCORM wrapper reads `cmi.suspend_data`, restores node completion state, and returns the learner directly to the current Station 1 map.
+On LMS resume, incomplete orientation returns to the Station 1 orientation. Once orientation is complete, the SCORM wrapper reads `cmi.suspend_data`, restores node completion state, and returns the learner to the production Home or last saved pediatric map state.
 
 ### 4.5 History and Storage Policy
 
-Full session logs and debrief history are not stored in the SCORM deployment:
+Learners can view their own completed scenario history/debrief summaries in the SCORM deployment. Full raw session logs are still not stored as a learner-facing archive:
 
-- **Chat transcripts:** Used for debrief generation, then not persisted beyond the session. Not stored in the LMS or backend history archive.
-- **Debrief text:** Generated and returned to the client; not stored server-side after delivery.
+- **Chat transcripts:** Used for debrief generation, then not persisted beyond the session. Not stored in the LMS.
+- **Debrief summaries:** Available to the learner through the completed-attempt history surface.
 - **Attempt records:** Backend stores node scores, timestamps, completion flags, and mistake tags only. No full conversation log.
 - **Evidence packets:** Stored with time-limited retention (duration TBD before pilot launch); used for scoring audit only.
 - **`cmi.suspend_data`:** Compact node-score + unlock mirror only. No transcripts, debrief markdown, AI output, or clinical evidence (see `03_SCORM_ARCHITECTURE.md`).

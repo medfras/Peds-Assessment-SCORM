@@ -17789,6 +17789,10 @@ el("category-nav-training")?.addEventListener("click", () => {
 });
 el("category-nav-lexi-challenge")?.addEventListener("click", _openLexiChallenge);
 el("category-menu-notebook")?.addEventListener("click", () => _openNotebookScreen("category", "notes"));
+el("category-menu-history")?.addEventListener("click", () => {
+  buildHistoryPage();
+  showScreen("history");
+});
 el("category-account-settings")?.addEventListener("click", openEditProfileModal);
 el("category-admin-dashboard")?.addEventListener("click", openDashboard);
 el("category-menu-logout")?.addEventListener("click", () => el("btn-menu-logout")?.click());
@@ -18681,6 +18685,11 @@ async function buildHistoryPage(refresh = true) {
     const drillTag = entry.drillMode
       ? `<span class="ml-1.5 text-xs bg-yellow-900/60 border border-yellow-700/50 text-yellow-400 px-1.5 py-0.5 rounded font-semibold">⚡ Drill</span>`
       : "";
+    const retakeButton = state.scormEnabled
+      ? ""
+      : `<button class="btn-history-retake text-xs bg-red-700 hover:bg-red-600 text-white px-3 py-1.5 rounded-lg transition-colors" data-scenario="${entry.scenarioId}">
+          🔄 Retake
+        </button>`;
 
     return `<div class="history-card">
       <div class="history-card-header">
@@ -18703,9 +18712,7 @@ async function buildHistoryPage(refresh = true) {
         <button class="btn-history-debrief text-xs bg-gray-700 hover:bg-gray-600 text-white px-3 py-1.5 rounded-lg transition-colors" data-key="${escapeHTML(String(entry.key))}">
           📄 View Debrief
         </button>
-        <button class="btn-history-retake text-xs bg-red-700 hover:bg-red-600 text-white px-3 py-1.5 rounded-lg transition-colors" data-scenario="${entry.scenarioId}">
-          🔄 Retake
-        </button>
+        ${retakeButton}
       </div>
     </div>`;
   }).join("");
@@ -32259,6 +32266,7 @@ function _relativeTime(iso) {
 const _origBuildHistoryPage = buildHistoryPage;
 buildHistoryPage = async function() {
   await _origBuildHistoryPage.apply(this, arguments);
+  if (state.scormEnabled) return;
   const container = el("history-list");
   if (!container) return;
 

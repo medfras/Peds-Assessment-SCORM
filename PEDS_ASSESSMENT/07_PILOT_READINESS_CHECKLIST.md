@@ -413,7 +413,8 @@ Map readiness checklist:
 - [ ] SCORM auth tolerates empty/null `cmi.core.student_name` and falls back to `student_id` or a generic learner label
 - [ ] SCORM auth endpoint rate-limited
 - [ ] Chat/debrief endpoints rate-limited
-- [ ] SCORM JWTs cannot access admin, agency-management, notes, toys, teams, or leaderboard APIs
+- [ ] SCORM JWTs cannot access admin, agency-management, notes, toys, teams, or store APIs
+- [ ] SCORM JWTs can access learner history and agency leaderboard APIs for the Moodle-provisioned learner account
 - [ ] Per-session token budget enforced server-side (prevents single session from exhausting free-tier daily limits)
 - [ ] Provider errors return safe diagnostic codes — no raw provider errors to SCORM client
 - [ ] Graceful degradation fires before daily API limit is reached
@@ -525,11 +526,12 @@ This is the sequenced implementation checklist for the SCORM branch. Items in Se
 ### Phase 4 — UI trimming
 - [ ] Login and registration screens removed
 - [ ] Agency / MCA / protocol picker removed
-- [ ] Lexi mascot avatar removed; AI coaching label changed to "Instructor" or "Medical Director"
-- [ ] XP bar and treat wallet removed from header; CE progress header in place
+- [ ] Lexi mascot avatar retained for Station 1 orientation and learner coaching
+- [ ] XP bar and treat wallet retained with pilot reward rules
 - [ ] Toy chest and store removed
-- [ ] Leaderboard and team dashboards removed
-- [ ] Training Center and My Progress screens removed
+- [ ] Leaderboard retained; team dashboards removed
+- [ ] Learner history retained; account notes hidden from SCORM history
+- [ ] Training Center and My Progress screens audited for pilot-safe links
 - [ ] Home hub retained after orientation complete
 - [ ] Home and map navigation audited for SCORM-appropriate links
 - [ ] No dead-end links to removed features remain visible
