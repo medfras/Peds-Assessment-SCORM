@@ -164,11 +164,12 @@ def test_scorm_launch_enters_orientation_until_complete_then_home():
     block = app_js[start:end]
     assert "_releaseScormPreboot();" in block
     assert "state.orientationCompletedAt" in block
-    assert '_setScormUiState({ location: "home", map: "map_0" });' in block
+    assert "const uiState = _getScormUiState();" in block
+    assert "uiState?.orientationComplete === true" in block
+    assert '_setScormUiState({ location: "home", map: "map_0", orientationComplete: true });' in block
     assert "buildMenu();" in block
     assert 'showScreen("menu");' in block
     assert "_enterScormOrientationMap();" in block
-    assert "_getScormUiState()" not in block
     assert "_enterScormPedsMap(uiState.map" not in block
     assert 'showCategoryScreen("pediatrics")' not in block
     assert 'showScreen("scorm-station1")' not in block
@@ -189,7 +190,8 @@ def test_scorm_runtime_uses_compact_sim_and_localizes_backend_static_assets():
     mobile_end = app_js.find("function _isHv2MobileTarget()", mobile_start)
     assert mobile_end != -1
     mobile_block = app_js[mobile_start:mobile_end]
-    assert "if (_isScormEmbeddedFrame()) return true;" in mobile_block
+    assert "if (_isScormEmbeddedFrame()) return compact;" in mobile_block
+    assert "if (_isScormEmbeddedFrame()) return true;" not in mobile_block
     assert "state.scormEnabled || document.documentElement.classList.contains(\"scorm-runtime\")" not in mobile_block
     assert "function _getScormUiState()" in app_js
     assert "function _setScormUiState(ui)" in app_js
@@ -205,6 +207,8 @@ def test_scorm_runtime_uses_compact_sim_and_localizes_backend_static_assets():
     assert orientation["personas"]["jake"]["sex"] == "male"
     assert jake_tts["gender"] == "male"
     assert jake_tts["voice_role"] == "patient"
+    assert (ROOT / "static" / "img" / "district-map-1600.jpg").exists()
+    assert (ROOT / "static" / "img" / "district-map.jpg").exists()
 
 
 def test_scorm_station1_wrapup_requires_full_orientation_sequence():
@@ -290,10 +294,11 @@ def test_scorm_adapter_keeps_app_decoupled_from_runtime_wrapper():
 
 def test_scorm_suspend_data_preserves_ui_location_for_resume():
     scorm_js = SCORM_JS.read_text()
-    assert '"ui": { "location": "orientation" | "home" | "peds", "map": "map_0" | "pm1" | "pt1" }' in scorm_js
+    assert '"ui": { "location": "orientation" | "home" | "peds", "map": "map_0" | "pm1" | "pt1", "orientationComplete": true }' in scorm_js
     assert "let _uiState = null;" in scorm_js
     assert "function _sanitizeUiState(ui)" in scorm_js
     assert 'ui.location === "home"' in scorm_js
+    assert "ui.orientationComplete === true" in scorm_js
     assert "mirror.ui = _uiState" in scorm_js
     assert "function getUiState()" in scorm_js
     assert "function setUiState(ui)" in scorm_js

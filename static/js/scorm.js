@@ -22,7 +22,7 @@
  *   "unlocks": { "scenarios": false, "map3": false },
  *   "status": "incomplete",
  *   "ce": { "complete": false, ... },
- *   "ui": { "location": "orientation" | "home" | "peds", "map": "map_0" | "pm1" | "pt1" }
+ *   "ui": { "location": "orientation" | "home" | "peds", "map": "map_0" | "pm1" | "pt1", "orientationComplete": true }
  * }
  */
 
@@ -133,7 +133,9 @@
       : ui.location === "peds" ? "peds" : ui.location === "orientation" ? "orientation" : "";
     if (!location) return null;
     const map = ["map_0", "pm1", "pt1"].includes(ui.map) ? ui.map : "map_0";
-    return { location, map };
+    const sanitized = { location, map };
+    if (ui.orientationComplete === true) sanitized.orientationComplete = true;
+    return sanitized;
   }
 
   function _writeSuspendData(summary) {

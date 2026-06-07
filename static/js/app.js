@@ -5604,10 +5604,10 @@ function _isScormEmbeddedFrame() {
 }
 
 function _isSimMobileTarget() {
-  if (_isScormEmbeddedFrame()) return true;
   const compact = window.matchMedia
     ? window.matchMedia("(max-width: 1024px)").matches
     : (window.innerWidth <= 1024);
+  if (_isScormEmbeddedFrame()) return compact;
   const coarse = window.matchMedia ? window.matchMedia("(pointer: coarse)").matches : false;
   const touch = coarse || (navigator.maxTouchPoints || 0) > 0;
   return !!(compact && touch);
@@ -6082,8 +6082,9 @@ function _storeScormResumeState(summaryOrResume = {}) {
 function _enterScormMapExperience() {
   _releaseScormPreboot();
   _hideScormLaunchStatus();
-  if (state.orientationCompletedAt) {
-    _setScormUiState({ location: "home", map: "map_0" });
+  const uiState = _getScormUiState();
+  if (state.orientationCompletedAt && uiState?.orientationComplete === true) {
+    _setScormUiState({ location: "home", map: "map_0", orientationComplete: true });
     buildMenu();
     showScreen("menu");
     return;
@@ -16969,6 +16970,7 @@ el("btn-scenario-preview-play")?.addEventListener("click", async () => {
       _scenarioPreviewSelection = null;
       hide("modal-scenario-preview");
       _cprBlsReturnDistrictId = null;
+      if (state.scormEnabled) _setScormUiState({ location: "home", map: "map_0", orientationComplete: true });
       buildMenu();
       showScreen("menu");
     } catch (err) {
