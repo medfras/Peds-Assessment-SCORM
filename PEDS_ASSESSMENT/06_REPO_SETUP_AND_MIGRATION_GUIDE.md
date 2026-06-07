@@ -378,6 +378,48 @@ unzip -l pfd_station1_scorm.zip | grep imsmanifest.xml
 - No `window.open()` calls in the package flow
 - Moodle activity configured for embedded/same-window iframe launch, not new window
 
+### MoodleCloud microphone permission workaround
+
+The pilot should keep Moodle's SCORM activity configured as embedded/same-window
+for the first pass. MoodleCloud does not expose a native SCORM activity setting
+for adding `allow="microphone"` to the embedded SCORM iframe, so microphone/STT
+requires a Moodle admin-level page injection.
+
+**Primary path: Additional HTML iframe permission patch**
+
+1. In MoodleCloud, go to **Site administration -> Appearance -> Additional HTML**.
+2. Paste the contents of
+   [`moodlecloud_scorm_microphone_additional_html.html`](moodlecloud_scorm_microphone_additional_html.html)
+   into **Before BODY is closed**.
+3. Save changes and relaunch the SCORM activity in Chrome.
+4. Confirm the SCORM iframe has an `allow` attribute containing `microphone *`.
+5. Click the simulator mic button and confirm Chrome prompts for microphone permission.
+
+The snippet is intentionally guarded:
+
+- It only runs on `/mod/scorm/player.php`.
+- It targets Moodle's SCORM iframe, normally `#scorm_object`.
+- It reloads the iframe only once per page load so the browser registers the new
+  permission policy.
+
+**Risk:** the one-time iframe reload can race Moodle's SCORM player initialization
+on some MoodleCloud builds. If the activity starts showing duplicate auth,
+missing `LMSInitialize`, lost suspend data, or inconsistent `LMSCommit`, remove
+the Additional HTML snippet and use the fallback path below.
+
+**Fallback path: New Window launch**
+
+If Additional HTML is unavailable or the iframe reload proves brittle, change the
+SCORM activity **Display package** setting to **New window**. A top-level SCORM
+window can request microphone permission without an iframe `allow` attribute, but
+the pilot must then add learner/admin instructions for popup blockers and verify
+that Moodle's `window.opener` SCORM API bridge still initializes, commits, and
+finishes reliably.
+
+Do not adopt New Window silently. If the fallback becomes the pilot path, update
+`07_PILOT_READINESS_CHECKLIST.md` and any architecture notes that currently say
+embedded/same-window is required.
+
 ### Uploading to Moodle Cloud
 
 1. Log in to Moodle Cloud as admin.

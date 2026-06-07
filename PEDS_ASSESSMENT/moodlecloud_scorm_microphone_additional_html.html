@@ -1,0 +1,71 @@
+<!--
+  MoodleCloud SCORM microphone pilot workaround.
+
+  Paste into:
+  Site administration -> Appearance -> Additional HTML -> Before BODY is closed
+
+  Purpose:
+  Moodle's embedded SCORM player iframe does not expose a native activity setting
+  for the iframe allow attribute. This guarded script adds microphone permission
+  to Moodle's SCORM iframe and reloads it once so Chrome can prompt the learner.
+
+  Scope:
+  - Runs only on Moodle SCORM player pages.
+  - Targets only the SCORM iframe, usually #scorm_object.
+  - Reloads only once per page load.
+
+  Fallback:
+  If this proves brittle in MoodleCloud, switch the SCORM activity Display
+  package setting to New window and update the pilot checklist/architecture note.
+-->
+<script>
+(function () {
+  "use strict";
+
+  var path = String(window.location && window.location.pathname || "");
+  if (path.indexOf("/mod/scorm/player.php") === -1) return;
+
+  var reloadedKey = "rt_scorm_mic_iframe_reloaded";
+
+  function findScormIframe() {
+    return document.getElementById("scorm_object")
+      || document.querySelector("iframe#scorm_object")
+      || document.querySelector("iframe[src*='/pluginfile.php/'][src*='mod_scorm']")
+      || document.querySelector("iframe[src*='mod/scorm']");
+  }
+
+  function allowMicrophone() {
+    var frame = findScormIframe();
+    if (!frame) return false;
+
+    var currentAllow = frame.getAttribute("allow") || "";
+    var allowParts = currentAllow
+      .split(";")
+      .map(function (part) { return part.trim(); })
+      .filter(Boolean);
+
+    if (!allowParts.some(function (part) { return /^microphone\b/i.test(part); })) {
+      allowParts.push("microphone *");
+    }
+    frame.setAttribute("allow", allowParts.join("; "));
+
+    if (!sessionStorage.getItem(reloadedKey)) {
+      sessionStorage.setItem(reloadedKey, "1");
+      frame.src = frame.src;
+    }
+    return true;
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", allowMicrophone);
+  } else {
+    allowMicrophone();
+  }
+
+  var attempts = 0;
+  var timer = window.setInterval(function () {
+    attempts += 1;
+    if (allowMicrophone() || attempts >= 20) window.clearInterval(timer);
+  }, 250);
+})();
+</script>
