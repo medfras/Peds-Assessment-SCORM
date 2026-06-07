@@ -127,6 +127,7 @@ def test_production_build_script_packages_full_static_tree_for_moodle():
     assert "cp imsmanifest.xml" in script
     assert "js/scorm_config.js" in script
     assert "s#/static/##g" in script
+    assert "s#/static/#../#g" in script
     assert "zip -qr" in script
 
 
@@ -144,6 +145,7 @@ def test_app_bootstrap_has_scorm_launch_branch_and_bearer_bridge():
     assert "window.SCORM_CONFIG" in app_js
     assert "function _isScormLaunch()" in app_js
     assert "function _showScormLaunchError" in app_js
+    assert "function _hideScormLaunchStatus()" in app_js
     assert "function _activateScormAndEnter()" in app_js
     assert "headers.Authorization = `Bearer ${scormToken}`" in app_js
     assert "_activateScormAndEnter().catch" in app_js

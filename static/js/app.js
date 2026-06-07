@@ -5930,6 +5930,14 @@ function _showScormLaunchStatus(message, tone = "info") {
   box.classList.add(tone === "error" ? "is-error" : "is-info");
 }
 
+function _hideScormLaunchStatus() {
+  const box = el("scorm-launch-status");
+  if (!box) return;
+  box.textContent = "";
+  box.classList.add("hidden");
+  box.classList.remove("is-error", "is-info");
+}
+
 function _showScormLaunchError(err) {
   const message = err?.message || "SCORM launch failed. Please relaunch this activity from Moodle.";
   console.error("SCORM launch failed", err);
@@ -6012,6 +6020,7 @@ function _normalizeScormState(summaryOrResume = {}) {
 function _applyScormResumeState(summaryOrResume = {}) {
   state.scormLatestSummary = _normalizeScormState(summaryOrResume);
   state.scormResumeState = state.scormLatestSummary;
+  _hideScormLaunchStatus();
   _renderScormStation1();
 }
 
