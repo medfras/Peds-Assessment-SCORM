@@ -21,7 +21,8 @@
  *   "completed": { "drill_pat": true, "drill_dev": false, ... },
  *   "unlocks": { "scenarios": false, "map3": false },
  *   "status": "incomplete",
- *   "ce": { "complete": false, ... }
+ *   "ce": { "complete": false, ... },
+ *   "ui": { "location": "orientation" | "peds", "map": "map_0" | "pm1" | "pt1" }
  * }
  */
 
@@ -51,6 +52,7 @@
   let _attemptId = null;    // bound after init()
   let _token = null;        // JWT returned by /api/scorm/auth
   let _initialized = false;
+  let _uiState = null;
 
   // ── SCORM 1.2 API finder ────────────────────────────────────────────────────
 
@@ -124,6 +126,14 @@
     return null;
   }
 
+  function _sanitizeUiState(ui) {
+    if (!ui || typeof ui !== "object") return null;
+    const location = ui.location === "peds" ? "peds" : ui.location === "orientation" ? "orientation" : "";
+    if (!location) return null;
+    const map = ["map_0", "pm1", "pt1"].includes(ui.map) ? ui.map : "map_0";
+    return { location, map };
+  }
+
   function _writeSuspendData(summary) {
     if (!_api) return;
     const scores = {};
@@ -150,6 +160,18 @@
         opt_games_required:  cc.optional_games_required  || 2,
       },
     };
+    if (_uiState) mirror.ui = _uiState;
+    _api.LMSSetValue("cmi.suspend_data", JSON.stringify(mirror));
+    _api.LMSCommit("");
+  }
+
+  function _writeUiState(ui) {
+    if (!_api) return;
+    _uiState = _sanitizeUiState(ui);
+    const mirror = _readSuspendData() || { v: _SUSPEND_DATA_VERSION };
+    mirror.v = _SUSPEND_DATA_VERSION;
+    if (_attemptId) mirror.attempt = _attemptId;
+    if (_uiState) mirror.ui = _uiState;
     _api.LMSSetValue("cmi.suspend_data", JSON.stringify(mirror));
     _api.LMSCommit("");
   }
@@ -193,6 +215,8 @@
     // Locate SCORM API or fall back to local dev adapter
     _api = _findScormApi(window) || _buildLocalDevAdapter();
     _api.LMSInitialize("");
+    const priorSuspendData = _readSuspendData();
+    _uiState = _sanitizeUiState(priorSuspendData && priorSuspendData.ui);
 
     // Read student identity from LMS if not passed explicitly
     const lms_student_id   = config.lms_student_id   || _api.LMSGetValue("cmi.core.student_id")   || "dev_student";
@@ -284,6 +308,14 @@
     return _attemptId;
   }
 
+  function getUiState() {
+    return _uiState;
+  }
+
+  function setUiState(ui) {
+    _writeUiState(ui);
+  }
+
   // ── Export ──────────────────────────────────────────────────────────────────
 
   window.RescueTrails = window.RescueTrails || {};
@@ -295,6 +327,8 @@
     finish,
     getAccessToken,
     getAttemptId,
+    getUiState,
+    setUiState,
   };
 
 })();

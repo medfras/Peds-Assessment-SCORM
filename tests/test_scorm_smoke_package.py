@@ -159,13 +159,16 @@ def test_scorm_launch_enters_production_station_or_pediatric_maps():
     app_js = APP_JS.read_text()
     start = app_js.find("function _enterScormMapExperience()")
     assert start != -1
-    end = app_js.find("function _enterScormPedsMap", start)
+    end = app_js.find("function _enterScormOrientationMap", start)
     assert end != -1
     block = app_js[start:end]
     assert "_releaseScormPreboot();" in block
-    assert 'showCategoryScreen("station_1")' in block
+    assert "_getScormUiState()" in block
+    assert 'uiState?.location === "peds"' in block
+    assert "_enterScormPedsMap(uiState.map || \"map_0\")" in block
+    assert "_enterScormOrientationMap();" in block
     assert 'showCategoryScreen("pediatrics")' not in block
-    assert "state.orientationCompletedAt" not in block
+    assert "state.orientationCompletedAt" in block
     assert 'showScreen("scorm-station1")' not in block
 
 
@@ -179,6 +182,8 @@ def test_scorm_runtime_uses_compact_sim_and_localizes_backend_static_assets():
     assert "_scormAssetUrl(arrivalImage)" in app_js
     assert "state.scormEnabled || document.documentElement.classList.contains(\"scorm-runtime\")" in app_js
     assert 'const _SCORM_PEDS_MAP_IDS = new Set(["map_0", "pm1", "pt1"]);' in app_js
+    assert "function _getScormUiState()" in app_js
+    assert "function _setScormUiState(ui)" in app_js
     assert 'function _enterScormPedsMap(mapId = "map_0")' in app_js
     assert '_enterScormPedsMap("map_0");' in app_js
     assert ".scorm-runtime #screen-sim.sim-mobile-active" in css
@@ -256,3 +261,15 @@ def test_scorm_adapter_keeps_app_decoupled_from_runtime_wrapper():
     assert "submitNodeResult" in adapter_js
     assert "getAttemptSummary" in adapter_js
     assert "finish" in adapter_js
+    assert "getUiState" in adapter_js
+    assert "setUiState" in adapter_js
+
+
+def test_scorm_suspend_data_preserves_ui_location_for_resume():
+    scorm_js = SCORM_JS.read_text()
+    assert '"ui": { "location": "orientation" | "peds", "map": "map_0" | "pm1" | "pt1" }' in scorm_js
+    assert "let _uiState = null;" in scorm_js
+    assert "function _sanitizeUiState(ui)" in scorm_js
+    assert "mirror.ui = _uiState" in scorm_js
+    assert "function getUiState()" in scorm_js
+    assert "function setUiState(ui)" in scorm_js

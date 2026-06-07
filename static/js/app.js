@@ -6018,6 +6018,23 @@ function _scormScenariosUnlocked() {
   return !!summary.unlocks.scenarios;
 }
 
+function _getScormUiState() {
+  try {
+    return window.RescueTrails?.["scormAdapter"]?.getUiState?.() || null;
+  } catch {
+    return null;
+  }
+}
+
+function _setScormUiState(ui) {
+  if (!state.scormEnabled) return;
+  try {
+    window.RescueTrails?.["scormAdapter"]?.setUiState?.(ui);
+  } catch (err) {
+    console.warn("[SCORM] UI state save failed", err);
+  }
+}
+
 function _normalizeScormState(summaryOrResume = {}) {
   const scores = summaryOrResume.node_scores || summaryOrResume.scores || {};
   const completed = summaryOrResume.node_completed || summaryOrResume.completed || {};
@@ -6056,6 +6073,18 @@ function _storeScormResumeState(summaryOrResume = {}) {
 function _enterScormMapExperience() {
   _releaseScormPreboot();
   _hideScormLaunchStatus();
+  const uiState = _getScormUiState();
+  if (state.orientationCompletedAt && uiState?.location === "peds") {
+    _enterScormPedsMap(uiState.map || "map_0");
+    return;
+  }
+  _enterScormOrientationMap();
+}
+
+function _enterScormOrientationMap() {
+  _releaseScormPreboot();
+  _hideScormLaunchStatus();
+  _setScormUiState({ location: "orientation", map: "map_0" });
   _categoryView = { mode: "district", districtId: "station_1" };
   showCategoryScreen("station_1");
 }
@@ -6067,6 +6096,7 @@ function _enterScormPedsMap(mapId = "map_0") {
     ? "medical"
     : _pedsJourneyState.currentMap === "pt1" ? "trauma" : "entrance";
   _savePedsJourneyState();
+  _setScormUiState({ location: "peds", map: _pedsJourneyState.currentMap });
   showCategoryScreen("pediatrics");
 }
 
@@ -11225,8 +11255,7 @@ function _renderCategoryMapNav(mode = "district", districtId = null) {
 
     list.querySelector("[data-scorm-map-nav='orientation']")?.addEventListener("click", () => {
       _setCategoryMobileTab("map");
-      _categoryView = { mode: "district", districtId: "station_1" };
-      showCategoryScreen("station_1");
+      _enterScormOrientationMap();
     });
     list.querySelectorAll("[data-category-map-nav]:not([disabled])").forEach(btn => {
       btn.addEventListener("click", () => {
@@ -15375,6 +15404,7 @@ function _renderPedsMap(mapId = null) {
     _savePedsJourneyState();
   }
   const currentMapId = _pedsJourneyState.currentMap || "map_0";
+  if (state.scormEnabled) _setScormUiState({ location: "peds", map: currentMapId });
 
   const mapDef = _PEDS_MAP_BY_ID.get(currentMapId) || PEDS_MAP_DATA[0];
 
@@ -15689,8 +15719,7 @@ function _renderPedsMap(mapId = null) {
     }
     trailNav.classList.remove("hidden");
     trailNav.querySelector("[data-scorm-nav='orientation']")?.addEventListener("click", () => {
-      _categoryView = { mode: "district", districtId: "station_1" };
-      showCategoryScreen("station_1");
+      _enterScormOrientationMap();
     });
     trailNav.querySelectorAll("[data-peds-nav]:not([disabled])").forEach(btn => {
       btn.addEventListener("click", () => _renderPedsMap(btn.getAttribute("data-peds-nav")));

@@ -50,6 +50,16 @@
     runtime.finish(summary);
   }
 
+  function getUiState() {
+    return _runtime()?.getUiState?.() || null;
+  }
+
+  function setUiState(ui) {
+    const runtime = _runtime();
+    if (!runtime) return;
+    runtime.setUiState?.(ui);
+  }
+
   window.RescueTrails = window.RescueTrails || {};
   window.RescueTrails.scormAdapter = {
     isLaunch,
@@ -59,5 +69,7 @@
     submitNodeResult,
     getAttemptSummary,
     finish,
+    getUiState,
+    setUiState,
   };
 })();
