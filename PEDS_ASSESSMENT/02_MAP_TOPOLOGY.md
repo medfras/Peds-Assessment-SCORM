@@ -2,7 +2,7 @@
 
 ## 1. Structural Overview
 
-The SCORM package launches into a Station 1 orientation first, then proceeds directly into this four-map structure with a gated progression chain. There are no other stations, maps, hubs, or course branches in the package.
+The SCORM package launches into Station 1 orientation until orientation is complete. After that gate, learners enter the production Home screen and use the existing pediatric map surfaces for this four-map progression chain.
 
 - **Map 0 — Foundation Drills:** Entry point. Two required drills gate progression to the scenario maps. One optional drill is available at any time.
 - **PM1 — Pediatric Medical:** Four medical scenarios. Unlocked once both required drills are complete. Learner must complete any 2 of 4 to meet CE requirements and unlock Map 3.

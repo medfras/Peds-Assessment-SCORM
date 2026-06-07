@@ -6082,9 +6082,10 @@ function _storeScormResumeState(summaryOrResume = {}) {
 function _enterScormMapExperience() {
   _releaseScormPreboot();
   _hideScormLaunchStatus();
-  const uiState = _getScormUiState();
-  if (state.orientationCompletedAt && uiState?.location === "peds") {
-    _enterScormPedsMap(uiState.map || "map_0");
+  if (state.orientationCompletedAt) {
+    _setScormUiState({ location: "home", map: "map_0" });
+    buildMenu();
+    showScreen("menu");
     return;
   }
   _enterScormOrientationMap();
@@ -6192,7 +6193,8 @@ function _returnToScormStation1() {
   } else if (_categoryView?.mode === "district" && _categoryView?.districtId === "pediatrics") {
     _renderPediatricsJourney({ preserveTrail: true });
   } else {
-    _enterScormMapExperience();
+    buildMenu();
+    showScreen("menu");
   }
   _refreshScormSummary().catch((err) => console.warn("[SCORM] Return refresh failed", err));
   return true;
@@ -11175,7 +11177,7 @@ function _syncCategoryShell(districtId = null) {
 
   setText("category-topbar-mark", districtId === "pediatrics" ? "PED" : (districtId === "other" ? "TC" : "MAP"));
   setText("category-screen-title", categoryLabel);
-  el("btn-category-home")?.classList.toggle("hidden", state.scormEnabled || districtId === "other");
+  el("btn-category-home")?.classList.toggle("hidden", districtId === "other");
   el("btn-category-training-back")?.classList.toggle("hidden", districtId !== "other");
   setText("category-nav-ava", (state.firstName || state.studentName || "?")[0].toUpperCase());
   setText("category-nav-title", `Welcome, ${state.firstName || state.studentName}`);
@@ -15407,11 +15409,6 @@ function _renderPedsMap(mapId = null) {
   } else {
     _restorePedsJourneyState();
   }
-  if (state.scormEnabled && !_scormPedsMapAllowed(_pedsJourneyState.currentMap)) {
-    _pedsJourneyState.currentMap = "map_0";
-    _pedsJourneyState.view = "entrance";
-    _savePedsJourneyState();
-  }
   const currentMapId = _pedsJourneyState.currentMap || "map_0";
   if (state.scormEnabled) _setScormUiState({ location: "peds", map: currentMapId });
 
@@ -16959,10 +16956,6 @@ el("btn-scenario-preview-play")?.addEventListener("click", async () => {
       _scenarioPreviewSelection = null;
       hide("modal-scenario-preview");
       _cprBlsReturnDistrictId = null;
-      if (state.scormEnabled) {
-        _enterScormPedsMap("map_0");
-        return;
-      }
       buildMenu();
       showScreen("menu");
     } catch (err) {
@@ -17763,7 +17756,6 @@ el("active-challenges-body")?.addEventListener("click", (event) => {
   if (challenge) _renderChallengeDetail(challenge);
 });
 el("btn-category-home")?.addEventListener("click", () => {
-  if (_returnToScormStation1()) return;
   buildMenu();
   showScreen("menu");
 });
@@ -31721,7 +31713,7 @@ el("btn-leave-confirm").addEventListener("click", () => {
 
 (function init() {
   if (_isScormLaunch()) {
-    showScreen("scorm-station1");
+    document.documentElement.classList.add("scorm-preboot");
     _showScormLaunchStatus("Connecting to Moodle and loading your Station 1 progress...");
     _activateScormAndEnter().catch((err) => {
       _showScormLaunchError(err);

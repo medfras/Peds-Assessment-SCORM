@@ -104,11 +104,11 @@ Users authenticate through the LMS. No second login is required.
 
 ## 3. Course and Navigation Flow
 
-**LMS launch → Silent auth → Station 1 orientation → Map 0 — Foundation Drills → PM1/PT1 branches → Map 3 CPR**
+**LMS launch → Silent auth → Station 1 orientation gate → production Home → pediatric maps**
 
-There is no home page, hub, station selection screen, broader RescueTrails map, or second course shell in the SCORM deployment. After silent auth, the learner immediately enters the Station 1 orientation. When orientation is completed, the learner proceeds directly to the current Map 0 Foundation Drills screen.
+After silent auth, the learner immediately enters the Station 1 orientation until that orientation is completed. When orientation is completed, the learner proceeds to the existing production Home screen. The Home button in production map views remains visible and returns to Home. SCORM identity, scoring, and LMS resume data are layered onto the production UI; SCORM does not maintain a separate map shell.
 
-The entire SCORM package is this Station 1 course flow:
+The Station 1 pediatric progression remains:
 
 | Map | Unlock condition | Nodes |
 |-----|-----------------|-------|
@@ -117,11 +117,9 @@ The entire SCORM package is this Station 1 course flow:
 | PT1 — Pediatric Trauma | `unlocks.scenarios = true` (same gate) | `scen_laceration`, `scen_head`, `scen_bleeding`, `scen_airway`, `scen_anaph` |
 | Map 3 — CPR | `unlocks.map3 = true` (PM1 ≥ 2 + PT1 ≥ 2 complete) | `scen_cpr` |
 
-Optional games (`game_vitals`, `game_lung_sounds`, `game_bls`) are accessible from any map at any time via a sidebar or launcher.
+Optional games (`game_vitals`, `game_lung_sounds`, `game_bls`) are accessible through the production map/sidebar surfaces.
 
-No other main-app navigation surfaces are rendered: no Training Center, challenges, trivia, leaderboard, store, or XP display.
-
-On LMS resume: if orientation is incomplete, the learner returns to the Station 1 orientation. If orientation is complete, the SCORM wrapper reads `cmi.suspend_data`, parses `unlocks.scenarios` and `unlocks.map3`, applies unlock state to the map, and presents the appropriate Station 1 map — no home page, hub, or station picker.
+On LMS resume: if orientation is incomplete, the learner returns to the Station 1 orientation. If orientation is complete, the learner enters the production Home screen. Backend attempt summary and `cmi.suspend_data` still mirror node completion and unlocks for LMS reporting and progress restoration.
 
 ---
 

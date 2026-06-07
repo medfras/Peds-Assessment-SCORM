@@ -149,14 +149,19 @@ Add a SCORM launch branch at the top of the app bootstrap, before the normal log
 // At app bootstrap — SCORM branch only
 if (window.RescueTrails?.scorm && window.SCORM_CONFIG) {
   const resumeState = await RescueTrails.scorm.init(window.SCORM_CONFIG);
-  _applyScormResumeState(resumeState); // restore node completions + unlocks
-  showScreen("scorm-station1");         // show 4-map shell, not login
+  _storeScormResumeState(resumeState); // store node completions + unlocks
+  if (state.orientationCompletedAt) {
+    buildMenu();
+    showScreen("menu");                // production Home after orientation
+  } else {
+    showCategoryScreen("station_1");   // first launch / incomplete orientation
+  }
 } else {
   showScreen("login"); // normal SaaS path
 }
 ```
 
-`_applyScormResumeState(resumeState)` reads `resumeState.scores`, `resumeState.unlocks`, and `resumeState.peds_ce_challenge` and applies them to the map state. This is the only place resume state enters the frontend — do not read `cmi.suspend_data` directly in `app.js`.
+`_storeScormResumeState(resumeState)` reads `resumeState.scores`, `resumeState.unlocks`, and `resumeState.peds_ce_challenge` and stores them for SCORM progress reporting. Moodle identity and backend profile state determine whether the learner is routed to Station 1 orientation or the production Home screen. Do not read `cmi.suspend_data` directly in `app.js`.
 
 **Pre-flight check:** `POST /api/scorm/auth` returns a short-lived SCORM JWT. Confirm all subsequent `authFetch` calls send `Authorization: Bearer <token>` so the SCORM path does not depend on third-party cookies inside the Moodle iframe. The SCORM token type (`"scorm"`) is accepted by `get_active_context()` in `app/auth.py`, so existing scenario/chat/debrief API calls work with the SCORM bearer token.
 
@@ -240,7 +245,8 @@ Do not build a separate SCORM-only map shell. The SCORM package should launch
 into the same learner-facing UI used by the current production app:
 
 - First launch / incomplete orientation: `showCategoryScreen("station_1")`, using the existing Station 1 direct-node flow (`Lexi Intro` -> `Orientation Tour` -> `CPR Drill` -> `Station 1 Complete`).
-- Orientation complete: `showCategoryScreen("pediatrics")`, using the existing pediatric map renderer for Map 0, PM1, PT1, and connected navigation.
+- Orientation complete: `buildMenu(); showScreen("menu")`, using the existing production Home screen. The Home button in map views remains visible and returns to this screen.
+- Pediatric maps and nodes use the production renderers and navigation. SCORM result submissions update backend attempt progress, but SCORM does not replace or restrict the production map layout.
 - Map art, node positions, popups, locked-node handling, and production copy come from the existing `static/js/app.js` map definitions and `static/css/style.css`; SCORM must not maintain a second set of map layouts.
 - Moodle/SCORM identity and resume state provide auth and LMS persistence only. Backend profile, history, progress, and CE state remain tied to the Moodle-backed SCORM learner account.
 

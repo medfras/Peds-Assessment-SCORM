@@ -487,18 +487,17 @@ This is the sequenced implementation checklist for the SCORM branch. Items in Se
 - [ ] SCORM JWT accepted by `authFetch` for scenario, chat, and debrief calls via explicit `Authorization: Bearer <token>` headers
 - [ ] Silent auth succeeds in both LMS iframe and local dev adapter
 
-### Phase 2 — 4-map UI
-- [ ] `#scorm-station1` shell in `index.html`; hidden until SCORM launch completes
-- [ ] CE progress header renders: drills, PM1, PT1, CPR, games, CE time — all driven by backend summary
-- [ ] Map 0 panel: 3 node buttons (`drill_pat`, `drill_dev`, `drill_gcs`); all visible from the start
-- [ ] PM1 panel: 4 node buttons; locked overlay until `unlocks.scenarios = true`
-- [ ] PT1 panel: 5 node buttons; locked overlay until `unlocks.scenarios = true`
-- [ ] Map 3 panel: 1 node button; locked until `unlocks.map3 = true`
-- [ ] Navigation: Map 0 shows PM1/PT1 nav buttons after unlock; back button on each scenario map
-- [ ] Optional games launcher accessible from all maps at all times
-- [ ] Completed node shows checkmark (✅) and score; locked node is visually distinct from available
-- [ ] Map panels work at common LMS iframe sizes (1024×768 minimum)
-- [ ] Four map background images in place
+### Phase 2 — Production Home and Map UI
+- [ ] SCORM launch keeps preboot active during silent auth; no login or old SCORM shell flash
+- [ ] First launch / incomplete orientation opens the production Station 1 orientation map
+- [ ] Completing Station 1 orientation routes to the production Home screen
+- [ ] Relaunch after orientation complete opens the production Home screen
+- [ ] Home button remains visible in production map views and returns to Home
+- [ ] Pediatric maps use the production renderer, art, node placement, popups, and locked-node handling
+- [ ] Map 0 foundation drill nodes submit SCORM progress without replacing the production map UI
+- [ ] PM1/PT1/CPR progression follows production navigation and backend unlock state
+- [ ] Optional games remain accessible through the production map/sidebar surfaces
+- [ ] Scenario and drill screens work in Moodle New Window mode at desktop size
 
 ### Phase 3 — Completion event wiring
 - [ ] `_APP_TO_SCORM_NODE` reverse map covers all 16 nodes
@@ -531,8 +530,8 @@ This is the sequenced implementation checklist for the SCORM branch. Items in Se
 - [ ] Toy chest and store removed
 - [ ] Leaderboard and team dashboards removed
 - [ ] Training Center and My Progress screens removed
-- [ ] Home hub and station selection screen removed
-- [ ] Non-Station-1 maps removed
+- [ ] Home hub retained after orientation complete
+- [ ] Home and map navigation audited for SCORM-appropriate links
 - [ ] No dead-end links to removed features remain visible
 
 ### Phase 5 — MoodleCloud same-origin, CORS, and auth

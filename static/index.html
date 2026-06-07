@@ -6,18 +6,28 @@
   <title>RescueTrails with Lexi</title>
   <script>
     (function () {
-      var win = window;
-      for (var i = 0; win && i < 8; i += 1) {
-        try {
-          if (win.API) {
-            document.documentElement.classList.add("scorm-preboot");
-            return;
+      function hasScormApi(win) {
+        for (var i = 0; win && i < 8; i += 1) {
+          try {
+            if (win.API) return true;
+            if (!win.parent || win.parent === win) return false;
+            win = win.parent;
+          } catch (_) {
+            return false;
           }
-          if (!win.parent || win.parent === win) return;
-          win = win.parent;
-        } catch (_) {
-          return;
         }
+        return false;
+      }
+      if (hasScormApi(window)) {
+        document.documentElement.classList.add("scorm-preboot");
+        return;
+      }
+      try {
+        if (window.opener && hasScormApi(window.opener)) {
+          document.documentElement.classList.add("scorm-preboot");
+        }
+      } catch (_) {
+        return;
       }
     })();
   </script>
