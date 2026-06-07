@@ -5594,8 +5594,17 @@ function _hideScreenTransitionModals() {
   isPopupOpen = false;
 }
 
+function _isScormEmbeddedFrame() {
+  if (!state.scormEnabled && !document.documentElement.classList.contains("scorm-runtime")) return false;
+  try {
+    return window.self !== window.top;
+  } catch {
+    return true;
+  }
+}
+
 function _isSimMobileTarget() {
-  if (state.scormEnabled || document.documentElement.classList.contains("scorm-runtime")) return true;
+  if (_isScormEmbeddedFrame()) return true;
   const compact = window.matchMedia
     ? window.matchMedia("(max-width: 1024px)").matches
     : (window.innerWidth <= 1024);

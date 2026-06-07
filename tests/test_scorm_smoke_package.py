@@ -180,7 +180,15 @@ def test_scorm_runtime_uses_compact_sim_and_localizes_backend_static_assets():
     assert 'const staticPrefix = `/${"static"}/`;' in app_js
     assert "_scormAssetUrl(s.scene.image || s.patient.image || \"\")" in app_js
     assert "_scormAssetUrl(arrivalImage)" in app_js
-    assert "state.scormEnabled || document.documentElement.classList.contains(\"scorm-runtime\")" in app_js
+    assert "function _isScormEmbeddedFrame()" in app_js
+    assert "window.self !== window.top" in app_js
+    mobile_start = app_js.find("function _isSimMobileTarget()")
+    assert mobile_start != -1
+    mobile_end = app_js.find("function _isHv2MobileTarget()", mobile_start)
+    assert mobile_end != -1
+    mobile_block = app_js[mobile_start:mobile_end]
+    assert "if (_isScormEmbeddedFrame()) return true;" in mobile_block
+    assert "state.scormEnabled || document.documentElement.classList.contains(\"scorm-runtime\")" not in mobile_block
     assert 'const _SCORM_PEDS_MAP_IDS = new Set(["map_0", "pm1", "pt1"]);' in app_js
     assert "function _getScormUiState()" in app_js
     assert "function _setScormUiState(ui)" in app_js
