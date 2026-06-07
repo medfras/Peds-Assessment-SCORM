@@ -207,6 +207,22 @@ def test_scorm_history_back_respects_incomplete_orientation_gate():
     assert block.index(gate) < block.index('showScreen("menu");')
 
 
+def test_scorm_auxiliary_back_buttons_respect_incomplete_orientation_gate():
+    app_js = APP_JS.read_text()
+    for anchor in (
+        'el("btn-progress-back")?.addEventListener("click"',
+        'el("btn-notebook-back")?.addEventListener("click"',
+        'el("btn-notebook-start")?.addEventListener("click"',
+    ):
+        start = app_js.find(anchor)
+        assert start != -1
+        block = app_js[start:start + 650]
+        gate = 'if (state.scormEnabled && !_station1IsComplete())'
+        assert gate in block
+        assert "_enterScormOrientationMap();" in block
+        assert block.index(gate) < block.index("_enterScormOrientationMap();")
+
+
 def test_leaderboard_modal_uses_solid_light_shell():
     html = (ROOT / "static" / "index.html").read_text()
     css = (ROOT / "static" / "css" / "style.css").read_text()
@@ -367,6 +383,16 @@ def test_scorm_debrief_close_returns_to_station_shell():
     assert block.index("resetSessionState();") < block.index("if (_returnToScormStation1()) return;")
 
 
+def test_scorm_leave_confirm_returns_to_production_map():
+    app_js = APP_JS.read_text()
+    start = app_js.find('el("btn-leave-confirm").addEventListener("click"')
+    assert start != -1
+    block = app_js[start:start + 650]
+    assert "resetSessionState();" in block
+    assert "if (_returnToScormStation1()) return;" in block
+    assert block.index("resetSessionState();") < block.index("if (_returnToScormStation1()) return;")
+
+
 def test_scorm_debrief_next_action_button_is_suppressed():
     app_js = APP_JS.read_text()
     start = app_js.find('const nextActionBtn = el("btn-debrief-next-action");')
@@ -392,6 +418,7 @@ def test_scorm_adapter_keeps_app_decoupled_from_runtime_wrapper():
 
 def test_scorm_suspend_data_preserves_ui_location_for_resume():
     scorm_js = SCORM_JS.read_text()
+    app_js = APP_JS.read_text()
     assert '"ui": { "location": "orientation" | "home" | "peds", "map": "map_0" | "pm1" | "pt1", "orientationComplete": true }' in scorm_js
     assert "let _uiState = null;" in scorm_js
     assert "function _sanitizeUiState(ui)" in scorm_js
@@ -402,6 +429,12 @@ def test_scorm_suspend_data_preserves_ui_location_for_resume():
     assert "function setUiState(ui)" in scorm_js
     assert "pfd_station1_scorm_pass" in scorm_js
     assert "training_time_done" in scorm_js
+    start = app_js.find("function _setScormUiState")
+    assert start != -1
+    block = app_js[start:start + 500]
+    assert "const prior = _getScormUiState();" in block
+    assert "prior?.orientationComplete === true" in block
+    assert "next.orientationComplete = true;" in block
 
 
 def test_scorm_pass_requirements_render_in_active_challenges_modal():

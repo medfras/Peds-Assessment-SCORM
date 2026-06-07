@@ -6043,7 +6043,12 @@ function _getScormUiState() {
 function _setScormUiState(ui) {
   if (!state.scormEnabled) return;
   try {
-    window.RescueTrails?.["scormAdapter"]?.setUiState?.(ui);
+    const prior = _getScormUiState();
+    const next = { ...(ui || {}) };
+    if (prior?.orientationComplete === true && next.orientationComplete !== false) {
+      next.orientationComplete = true;
+    }
+    window.RescueTrails?.["scormAdapter"]?.setUiState?.(next);
   } catch (err) {
     console.warn("[SCORM] UI state save failed", err);
   }
@@ -17955,7 +17960,18 @@ el("btn-category-home")?.addEventListener("click", () => {
 });
 el("btn-category-training-back")?.addEventListener("click", _returnFromTrainingCenter);
 el("btn-tc-back")?.addEventListener("click", _returnFromTrainingCenter);
-el("btn-progress-back")?.addEventListener("click", () => { buildMenu(); showScreen(_progressReturnScreen || "menu"); });
+el("btn-progress-back")?.addEventListener("click", () => {
+  if (state.scormEnabled && !_station1IsComplete()) {
+    _enterScormOrientationMap();
+    return;
+  }
+  if (_progressReturnScreen === "category") {
+    showCategoryScreen(_categoryView?.districtId || "pediatrics");
+    return;
+  }
+  buildMenu();
+  showScreen(_progressReturnScreen || "menu");
+});
 el("hv2-my-progress")?.addEventListener("click", _openProgress);
 el("category-open-leaderboard")?.addEventListener("click", _openLeaderboard);
 el("category-open-challenges")?.addEventListener("click", _openActiveChallengesModal);
@@ -31945,6 +31961,7 @@ el("btn-leave-confirm").addEventListener("click", () => {
   _mcClose();
   const catKey = state.scenarioData?.category;
   resetSessionState();
+  if (_returnToScormStation1()) return;
   if (catKey && state.allScenarios.some(s => s.category === catKey)) {
     showCategoryScreen(catKey);
   } else {
@@ -32611,7 +32628,17 @@ function _primeNotebookDataCache() {
   return _fetchNotebookData(false).catch(() => null);
 }
 
-el("btn-notebook-back")?.addEventListener("click", () => showScreen(_notebookReturnScreen || "menu"));
+el("btn-notebook-back")?.addEventListener("click", () => {
+  if (state.scormEnabled && !_station1IsComplete()) {
+    _enterScormOrientationMap();
+    return;
+  }
+  if (_notebookReturnScreen === "category") {
+    showCategoryScreen(_categoryView?.districtId || "pediatrics");
+    return;
+  }
+  showScreen(_notebookReturnScreen || "menu");
+});
 
 function _setNotebookTab(tab) {
   _notebookState.activeTab = tab;
@@ -32881,7 +32908,13 @@ function _renderNotebookCards() {
 }
 
 // Empty-state "Start a scenario" button
-el("btn-notebook-start")?.addEventListener("click", () => showScreen("menu"));
+el("btn-notebook-start")?.addEventListener("click", () => {
+  if (state.scormEnabled && !_station1IsComplete()) {
+    _enterScormOrientationMap();
+    return;
+  }
+  showScreen("menu");
+});
 
 function _renderNotebookConditions() {
   const list    = el("nb-conditions-list");
