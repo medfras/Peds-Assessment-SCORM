@@ -1873,6 +1873,13 @@ body {
   max-width: 100%;
 }
 
+.scorm-runtime #screen-sim.sim-mobile-active #btn-open-treatment,
+.scorm-runtime #screen-sim.sim-mobile-active #btn-drill-feedback {
+  max-width: 100%;
+  white-space: normal;
+  line-height: 1.2;
+}
+
 .scorm-runtime #screen-sim.sim-mobile-active #sim-mobile-tabs {
   display: flex;
   position: fixed;
@@ -1912,6 +1919,11 @@ body {
   overflow: hidden;
 }
 
+.scorm-runtime #screen-sim.sim-mobile-active .sim-panel-left .tab-content {
+  padding-bottom: calc(var(--sim-mobile-tabs-h) + 7rem + env(safe-area-inset-bottom));
+  scroll-padding-bottom: calc(var(--sim-mobile-tabs-h) + 7rem + env(safe-area-inset-bottom));
+}
+
 .scorm-runtime #screen-sim.sim-mobile-active .sim-panel-center #chat-messages {
   padding-bottom: calc(var(--sim-mobile-tabs-h) + var(--sim-mobile-input-h) + 2.4rem + env(safe-area-inset-bottom));
   scroll-padding-bottom: calc(var(--sim-mobile-tabs-h) + var(--sim-mobile-input-h) + 2.8rem + env(safe-area-inset-bottom));
@@ -1930,14 +1942,14 @@ body {
 
 .scorm-runtime #screen-sim.sim-mobile-active .sim-panel-center .sim-chat-compose-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 5.75rem;
+  grid-template-columns: minmax(0, 1fr) 8.35rem;
   align-items: stretch;
   gap: 0.6rem;
 }
 
 .scorm-runtime #screen-sim.sim-mobile-active .sim-panel-center .sim-chat-compose-textarea {
   min-width: 0;
-  min-height: 5rem;
+  min-height: 6rem;
   padding: 0.85rem 0.9rem;
   font-size: 1rem;
   line-height: 1.45;
@@ -1950,6 +1962,23 @@ body {
   min-width: 0;
 }
 
+.scorm-runtime #screen-sim.sim-mobile-active .sim-panel-center .sim-chat-aux-row {
+  display: flex;
+  gap: 0.55rem;
+  align-items: stretch;
+}
+
+.scorm-runtime #screen-sim.sim-mobile-active .sim-panel-center .sim-chat-aux-btn,
+.scorm-runtime #screen-sim.sim-mobile-active .sim-panel-center .sim-chat-tts-btn {
+  flex: 1 1 0;
+  min-height: 3rem;
+  width: 100%;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .scorm-runtime #screen-sim.sim-mobile-active .sim-panel-center .sim-chat-send-btn {
   width: 100%;
   min-height: 3.45rem;
@@ -1959,6 +1988,10 @@ body {
   justify-content: center;
   font-size: 1rem;
   font-weight: 700;
+}
+
+.scorm-runtime #screen-sim.sim-mobile-active .sim-panel-center #btn-tts-toggle {
+  margin-left: 0 !important;
 }
 
 .scorm-runtime #screen-sim.sim-mobile-active .sim-panel-right #lexi-messages {
@@ -1981,6 +2014,11 @@ body {
 .scorm-runtime #btn-voice-dmist,
 .scorm-runtime #btn-voice-narrative,
 .scorm-runtime #btn-mc-stt {
+  display: none !important;
+}
+
+.scorm-runtime #tour-banner,
+.scorm-runtime #tour-tip {
   display: none !important;
 }
 

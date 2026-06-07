@@ -176,7 +176,11 @@ def test_scorm_runtime_uses_compact_sim_and_localizes_backend_static_assets():
     assert "_scormAssetUrl(arrivalImage)" in app_js
     assert "state.scormEnabled || document.documentElement.classList.contains(\"scorm-runtime\")" in app_js
     assert ".scorm-runtime #screen-sim.sim-mobile-active" in css
+    assert ".scorm-runtime #screen-sim.sim-mobile-active .sim-panel-left .tab-content" in css
     assert ".scorm-runtime #btn-voice-input" in css
+    assert ".scorm-runtime #tour-tip" in css
+    assert 'if (_returnToScormStation1()) return;' in app_js
+    assert '_tourDone();' in app_js
     jake_tts = orientation["personas"]["jake"]["tts"]
     assert orientation["personas"]["jake"]["sex"] == "male"
     assert jake_tts["gender"] == "male"

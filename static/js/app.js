@@ -6429,7 +6429,7 @@ let _tourActive = false;
 function _tourDone() {
   localStorage.setItem(_TOUR_KEY, "1");
   _tourActive = false;
-  el("tour-tip").classList.add("hidden");
+  el("tour-tip")?.classList.add("hidden");
   el("tour-banner")?.classList.add("hidden");
 }
 
@@ -6484,6 +6484,12 @@ function _tourAdvance() {
 }
 
 function _maybeShowTourTip(screenName) {
+  if (state.scormEnabled || document.documentElement.classList.contains("scorm-runtime")) {
+    _tourActive = false;
+    el("tour-tip")?.classList.add("hidden");
+    el("tour-banner")?.classList.add("hidden");
+    return;
+  }
   if (!_tourActive) return;
   const step = _TOUR_STEPS[_tourStep];
   if (step && step.screen === screenName) {
@@ -6492,6 +6498,10 @@ function _maybeShowTourTip(screenName) {
 }
 
 function _initTour() {
+  if (state.scormEnabled || document.documentElement.classList.contains("scorm-runtime")) {
+    _tourDone();
+    return;
+  }
   if (localStorage.getItem(_TOUR_KEY)) return; // already done
   if (_tourActive) return; // already running (re-entrant buildMenu call)
   // Show banner and activate tour
@@ -11112,7 +11122,7 @@ function _syncCategoryShell(districtId = null) {
 
   setText("category-topbar-mark", districtId === "pediatrics" ? "PED" : (districtId === "other" ? "TC" : "MAP"));
   setText("category-screen-title", categoryLabel);
-  el("btn-category-home")?.classList.toggle("hidden", districtId === "other");
+  el("btn-category-home")?.classList.toggle("hidden", state.scormEnabled || districtId === "other");
   el("btn-category-training-back")?.classList.toggle("hidden", districtId !== "other");
   setText("category-nav-ava", (state.firstName || state.studentName || "?")[0].toUpperCase());
   setText("category-nav-title", `Welcome, ${state.firstName || state.studentName}`);
@@ -17646,6 +17656,7 @@ el("active-challenges-body")?.addEventListener("click", (event) => {
   if (challenge) _renderChallengeDetail(challenge);
 });
 el("btn-category-home")?.addEventListener("click", () => {
+  if (_returnToScormStation1()) return;
   buildMenu();
   showScreen("menu");
 });
