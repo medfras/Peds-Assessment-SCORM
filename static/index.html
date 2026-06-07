@@ -178,6 +178,78 @@
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════
+     SCORM STATION 1 SHELL
+═══════════════════════════════════════════════════════════ -->
+<div id="screen-scorm-station1" class="hidden scorm-shell">
+  <header class="scorm-topbar">
+    <div>
+      <div class="scorm-kicker">Station 1</div>
+      <h1>Pediatric Assessment Training</h1>
+    </div>
+    <div class="scorm-actions">
+      <button id="btn-scorm-refresh" type="button" class="scorm-secondary-btn">Refresh</button>
+      <button id="btn-scorm-finish" type="button" class="scorm-primary-btn">Exit Module</button>
+    </div>
+  </header>
+
+  <section id="scorm-progress-header" class="scorm-progress-grid" aria-live="polite">
+    <div class="scorm-progress-item"><span>Drills</span><strong id="scorm-status-drills">0/2</strong></div>
+    <div class="scorm-progress-item"><span>PM1</span><strong id="scorm-status-pm1">0/2</strong></div>
+    <div class="scorm-progress-item"><span>PT1</span><strong id="scorm-status-pt1">0/2</strong></div>
+    <div class="scorm-progress-item"><span>CPR</span><strong id="scorm-status-cpr">Pending</strong></div>
+    <div class="scorm-progress-item"><span>Games</span><strong id="scorm-status-games">0/2</strong></div>
+    <div class="scorm-progress-item"><span>CE Time</span><strong id="scorm-status-time">0 min</strong></div>
+  </section>
+
+  <div id="scorm-launch-status" class="hidden scorm-launch-status" role="status" aria-live="polite"></div>
+
+  <main class="scorm-map-grid">
+    <section class="scorm-map-panel" data-scorm-map="map0">
+      <div class="scorm-map-heading">
+        <span>Map 0</span>
+        <h2>Foundation Drills</h2>
+      </div>
+      <div class="scorm-node-list" id="scorm-map0-nodes"></div>
+    </section>
+
+    <section class="scorm-map-panel" data-scorm-map="pm1">
+      <div class="scorm-map-heading">
+        <span>PM1</span>
+        <h2>Pediatric Medical</h2>
+      </div>
+      <div class="scorm-lock-note" id="scorm-pm1-lock">Complete PAT and Development drills to unlock.</div>
+      <div class="scorm-node-list" id="scorm-pm1-nodes"></div>
+    </section>
+
+    <section class="scorm-map-panel" data-scorm-map="pt1">
+      <div class="scorm-map-heading">
+        <span>PT1</span>
+        <h2>Pediatric Trauma</h2>
+      </div>
+      <div class="scorm-lock-note" id="scorm-pt1-lock">Complete PAT and Development drills to unlock.</div>
+      <div class="scorm-node-list" id="scorm-pt1-nodes"></div>
+    </section>
+
+    <section class="scorm-map-panel" data-scorm-map="map3">
+      <div class="scorm-map-heading">
+        <span>Map 3</span>
+        <h2>CPR</h2>
+      </div>
+      <div class="scorm-lock-note" id="scorm-map3-lock">Complete 2 PM1 and 2 PT1 scenarios to unlock.</div>
+      <div class="scorm-node-list" id="scorm-map3-nodes"></div>
+    </section>
+  </main>
+
+  <aside class="scorm-optional-panel">
+    <div class="scorm-map-heading">
+      <span>Optional</span>
+      <h2>Games Launcher</h2>
+    </div>
+    <div class="scorm-node-list scorm-node-list--optional" id="scorm-optional-nodes"></div>
+  </aside>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
      MAIN MENU SCREEN  (V2 — Station Dashboard)
 ═══════════════════════════════════════════════════════════ -->
 <div id="screen-menu" class="hidden">
@@ -267,19 +339,6 @@
         </button>
 
         <div class="hv2-divider"></div>
-
-        <!-- Collectibles -->
-        <div class="hv2-section-hd hv2-txt">Collectibles</div>
-        <button class="hv2-nav-item" id="btn-open-toy-chest" title="Station Display">
-          <div class="hv2-nav-icon-wrap">
-            <div class="hv2-nav-icon">🪙</div>
-            <span id="toy-chest-new-badge" class="hidden hv2-icon-dot"></span>
-          </div>
-          <div class="hv2-nav-body hv2-txt">
-            <div class="hv2-nav-label">Station Display</div>
-            <div class="hv2-nav-sub">Challenge coins · patches · pins</div>
-          </div>
-        </button>
 
         <div class="hv2-divider"></div>
 
@@ -469,170 +528,6 @@
   <footer class="hv2-bottom-bar">
   </footer>
 
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════
-     LEXI'S TOY CHEST MODAL  (collection only — no shop tab)
-═══════════════════════════════════════════════════════════ -->
-<div id="modal-toy-chest" class="hidden fixed inset-0 bg-black/80 flex items-start justify-center p-4 z-[70] overflow-y-auto modal-secondary-wrap">
-  <div class="toy-chest-shell rounded-xl w-full max-w-3xl shadow-2xl my-4">
-    <!-- Header -->
-    <div class="toy-chest-header px-6 py-4 flex items-center justify-between sticky top-0 rounded-t-xl z-10">
-      <div>
-        <h2 class="font-bold text-lg toy-chest-title">🧸 Lexi's Toy Box</h2>
-        <p id="toy-chest-summary" class="text-xs toy-chest-meta mt-0.5"></p>
-      </div>
-      <button id="btn-toy-chest-close" class="ui-close-btn">✕</button>
-    </div>
-    <!-- Collection view -->
-    <div id="toy-chest-collection" class="p-6">
-      <div id="toy-chest-categories" class="space-y-8">
-        <!-- Rendered by JS -->
-      </div>
-      <div id="toy-chest-empty" class="hidden text-center py-12">
-        <div class="text-5xl mb-3">🧸</div>
-        <p class="toy-chest-meta text-sm">No toys yet — complete scenarios to start your collection!</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════
-     SCOUT'S TOY SHOP MODAL
-═══════════════════════════════════════════════════════════ -->
-<div id="modal-scout-shop" class="hidden fixed inset-0 bg-black/80 flex items-start justify-center p-4 z-[70] overflow-y-auto modal-secondary-wrap">
-  <div class="scout-shop-panel rounded-xl w-full max-w-md shadow-2xl my-4">
-    <!-- Header -->
-    <div class="scout-shop-header px-6 py-4 flex items-center justify-between sticky top-0 rounded-t-xl z-10">
-      <div>
-        <h2 class="font-bold text-lg scout-shop-title">Scout's Toy Shop</h2>
-        <p id="scout-shop-subtitle" class="text-xs mt-0.5 scout-shop-subtitle-text"></p>
-      </div>
-      <button id="btn-scout-shop-close" class="text-stone-500 hover:text-stone-200 text-xl leading-none ui-close-btn">✕</button>
-    </div>
-    <!-- Scout avatar + dialogue -->
-    <div class="px-6 pt-5 pb-4 flex items-start gap-4">
-      <div class="scout-avatar-wrap flex-shrink-0">
-        <svg class="scout-avatar-svg" viewBox="0 0 100 108" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Scout">
-          <!-- Left floppy ear -->
-          <ellipse cx="17" cy="58" rx="15" ry="27" fill="#080504" transform="rotate(-9 17 58)"/>
-          <!-- Right floppy ear -->
-          <ellipse cx="83" cy="58" rx="15" ry="27" fill="#080504" transform="rotate(9 83 58)"/>
-          <!-- Head base — near black -->
-          <ellipse cx="50" cy="46" rx="37" ry="34" fill="#070404"/>
-          <!-- Brindle streaks on skull — subtle dark amber on black -->
-          <path d="M 24 26 C 28 17 35 21 33 37" stroke="#3a1c08" stroke-width="5.5" fill="none" opacity="0.55" stroke-linecap="round"/>
-          <path d="M 39 19 C 44 11 51 15 49 32" stroke="#3a1c08" stroke-width="4.5" fill="none" opacity="0.55" stroke-linecap="round"/>
-          <path d="M 57 21 C 63 13 70 17 67 34" stroke="#3a1c08" stroke-width="5" fill="none" opacity="0.55" stroke-linecap="round"/>
-          <path d="M 70 29 C 77 23 81 30 77 43" stroke="#3a1c08" stroke-width="3.5" fill="none" opacity="0.45" stroke-linecap="round"/>
-          <!-- Muzzle base — dark brown -->
-          <ellipse cx="50" cy="63" rx="23" ry="18" fill="#3d1f0a"/>
-          <!-- Nose — black -->
-          <ellipse cx="50" cy="56" rx="11" ry="7" fill="#080402"/>
-          <!-- Nose highlight -->
-          <ellipse cx="46" cy="53.5" rx="2.5" ry="1.5" fill="#1a0e08" opacity="0.5"/>
-          <!-- Nostril shadows -->
-          <ellipse cx="44.5" cy="57.5" rx="2" ry="1.2" fill="#030201" opacity="0.7"/>
-          <ellipse cx="55.5" cy="57.5" rx="2" ry="1.2" fill="#030201" opacity="0.7"/>
-          <!-- Left eye -->
-          <ellipse cx="31" cy="40" rx="8" ry="7" fill="#6e4522"/>
-          <ellipse cx="31" cy="40" rx="5" ry="5.5" fill="#0d0604"/>
-          <circle cx="29" cy="37.5" r="1.8" fill="rgba(255,255,255,0.8)"/>
-          <!-- Right eye -->
-          <ellipse cx="69" cy="40" rx="8" ry="7" fill="#6e4522"/>
-          <ellipse cx="69" cy="40" rx="5" ry="5.5" fill="#0d0604"/>
-          <circle cx="67" cy="37.5" r="1.8" fill="rgba(255,255,255,0.8)"/>
-          <!-- Happy open mouth -->
-          <path d="M 39 72 Q 50 80 61 72" stroke="#6b3a1a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-          <!-- Tongue — goofy/happy -->
-          <ellipse cx="50" cy="78" rx="7" ry="6.5" fill="#d96060"/>
-          <line x1="50" y1="72" x2="50" y2="84.5" stroke="#b04545" stroke-width="1.8"/>
-          <!-- Collar — warm red -->
-          <rect x="15" y="74" width="70" height="11" rx="5.5" fill="#8b1a1a"/>
-          <rect x="44" y="71" width="12" height="17" rx="3" fill="#6d1515"/>
-          <!-- Dog tag with S -->
-          <circle cx="50" cy="91" r="6.5" fill="#c9920a"/>
-          <text x="50" y="95" text-anchor="middle" fill="#6b4c05" font-size="7" font-weight="900" font-family="sans-serif">S</text>
-        </svg>
-      </div>
-      <div class="scout-bubble">
-        <p id="scout-dialogue" class="text-sm leading-relaxed"></p>
-      </div>
-    </div>
-    <!-- Treat balance -->
-    <div class="px-6 pb-3 flex items-center justify-between border-b scout-shop-divider">
-      <p class="text-xs scout-shop-note">Earn-only Epics aren't in stock — earn those by impressing my sister.</p>
-      <span id="scout-treat-count" class="text-amber-400 font-bold text-sm whitespace-nowrap ml-3"></span>
-    </div>
-    <!-- Shop grid -->
-    <div class="p-6">
-      <div id="toy-shop-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-        <!-- Rendered by JS -->
-      </div>
-      <div id="toy-shop-empty" class="hidden text-center py-10">
-        <div class="text-4xl mb-3">📦</div>
-        <p class="scout-shop-note text-sm">Nothing to trade right now — check back after more adventures.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════
-     CONVERGENCE KEY SHOP MODAL
-═══════════════════════════════════════════════════════════ -->
-<div id="modal-convergence-key-shop" class="hidden fixed inset-0 bg-black/80 flex items-start justify-center p-4 z-[70] overflow-y-auto modal-secondary-wrap">
-  <div class="scout-shop-panel rounded-xl w-full max-w-md shadow-2xl my-4">
-    <div class="scout-shop-header px-6 py-4 flex items-center justify-between sticky top-0 rounded-t-xl z-10">
-      <div>
-        <h2 class="font-bold text-lg scout-shop-title">Scout's Key Shop</h2>
-        <p id="convergence-key-shop-subtitle" class="text-xs mt-0.5 scout-shop-subtitle-text"></p>
-      </div>
-      <button id="btn-convergence-key-shop-close" class="text-stone-500 hover:text-stone-200 text-xl leading-none ui-close-btn">✕</button>
-    </div>
-    <div class="px-6 pt-5 pb-4 flex items-start gap-4">
-      <div class="scout-avatar-wrap flex-shrink-0">
-        <svg class="scout-avatar-svg" viewBox="0 0 100 108" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Scout">
-          <ellipse cx="17" cy="58" rx="15" ry="27" fill="#080504" transform="rotate(-9 17 58)"/>
-          <ellipse cx="83" cy="58" rx="15" ry="27" fill="#080504" transform="rotate(9 83 58)"/>
-          <ellipse cx="50" cy="46" rx="37" ry="34" fill="#070404"/>
-          <path d="M 24 26 C 28 17 35 21 33 37" stroke="#3a1c08" stroke-width="5.5" fill="none" opacity="0.55" stroke-linecap="round"/>
-          <path d="M 39 19 C 44 11 51 15 49 32" stroke="#3a1c08" stroke-width="4.5" fill="none" opacity="0.55" stroke-linecap="round"/>
-          <path d="M 57 21 C 63 13 70 17 67 34" stroke="#3a1c08" stroke-width="5" fill="none" opacity="0.55" stroke-linecap="round"/>
-          <path d="M 70 29 C 77 23 81 30 77 43" stroke="#3a1c08" stroke-width="3.5" fill="none" opacity="0.45" stroke-linecap="round"/>
-          <ellipse cx="50" cy="63" rx="23" ry="18" fill="#3d1f0a"/>
-          <ellipse cx="50" cy="56" rx="11" ry="7" fill="#080402"/>
-          <ellipse cx="46" cy="53.5" rx="2.5" ry="1.5" fill="#1a0e08" opacity="0.5"/>
-          <ellipse cx="44.5" cy="57.5" rx="2" ry="1.2" fill="#030201" opacity="0.7"/>
-          <ellipse cx="55.5" cy="57.5" rx="2" ry="1.2" fill="#030201" opacity="0.7"/>
-          <ellipse cx="31" cy="40" rx="8" ry="7" fill="#6e4522"/>
-          <ellipse cx="31" cy="40" rx="5" ry="5.5" fill="#0d0604"/>
-          <circle cx="29" cy="37.5" r="1.8" fill="rgba(255,255,255,0.8)"/>
-          <ellipse cx="69" cy="40" rx="8" ry="7" fill="#6e4522"/>
-          <ellipse cx="69" cy="40" rx="5" ry="5.5" fill="#0d0604"/>
-          <circle cx="67" cy="37.5" r="1.8" fill="rgba(255,255,255,0.8)"/>
-          <path d="M 39 72 Q 50 80 61 72" stroke="#6b3a1a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-          <ellipse cx="50" cy="78" rx="7" ry="6.5" fill="#d96060"/>
-          <line x1="50" y1="72" x2="50" y2="84.5" stroke="#b04545" stroke-width="1.8"/>
-          <rect x="15" y="74" width="70" height="11" rx="5.5" fill="#8b1a1a"/>
-          <rect x="44" y="71" width="12" height="17" rx="3" fill="#6d1515"/>
-          <circle cx="50" cy="91" r="6.5" fill="#c9920a"/>
-          <text x="50" y="95" text-anchor="middle" fill="#6b4c05" font-size="7" font-weight="900" font-family="sans-serif">S</text>
-        </svg>
-      </div>
-      <div class="scout-bubble">
-        <p id="convergence-key-dialogue" class="text-sm leading-relaxed"></p>
-      </div>
-    </div>
-    <div class="px-6 pb-4">
-      <div id="convergence-key-checklist" class="space-y-2 mb-5">
-        <!-- Rendered by JS -->
-      </div>
-      <button id="btn-convergence-key-claim" class="w-full py-3 rounded-lg font-bold text-sm transition-opacity disabled:opacity-40" disabled>
-        Claim Key
-      </button>
-      <p id="convergence-key-status" class="text-center text-xs mt-3 scout-shop-note hidden"></p>
-    </div>
-  </div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════
@@ -1090,11 +985,6 @@
     <div id="new-badges-row" class="hidden px-6 pt-3 debrief-badges-row">
       <div class="text-xs font-bold text-yellow-400 uppercase tracking-widest mb-2">🏅 Badges Earned!</div>
       <div id="new-badges-display" class="flex flex-wrap gap-2"></div>
-    </div>
-    <!-- Toy grant celebration row (injected by JS after /api/me/progress) -->
-    <div id="debrief-toy-row" class="hidden px-6 pt-3">
-      <div class="text-xs font-bold text-amber-400 uppercase tracking-widest mb-2">🧸 Toy Chest!</div>
-      <div id="debrief-toy-display" class="flex flex-wrap gap-3"></div>
     </div>
     <!-- Score breakdown bar -->
     <div id="debrief-subscores" class="hidden px-6 pt-3 pb-1 debrief-subscores-wrap">
@@ -1562,17 +1452,6 @@
         </button>
         <div class="hv2-divider"></div>
 
-        <div class="hv2-section-hd hv2-txt">Collectibles</div>
-        <button class="hv2-nav-item" id="category-open-toy-chest" title="Station Display">
-          <div class="hv2-nav-icon-wrap">
-            <div class="hv2-nav-icon">🪙</div>
-            <span id="category-toy-chest-new-badge" class="hidden hv2-icon-dot"></span>
-          </div>
-          <div class="hv2-nav-body hv2-txt">
-            <div class="hv2-nav-label">Station Display</div>
-            <div class="hv2-nav-sub">Challenge coins · patches · pins</div>
-          </div>
-        </button>
         <div class="hv2-divider"></div>
 
         <button class="hv2-nav-item" id="category-nav-training" title="Training Center">
@@ -5867,8 +5746,10 @@
   </div>
 </div>
 
-
-<script src="/static/js/app.js?v=20260530-map-drill-bridge-v1"></script>
+<script src="/static/js/scorm_config.js?v=20260606-scorm-config-v2"></script>
+<script src="/static/js/scorm.js?v=20260606-scorm-runtime-v2"></script>
+<script src="/static/js/scorm_adapter.js?v=20260606-scorm-adapter-v2"></script>
+<script src="/static/js/app.js?v=20260606-scorm-bootstrap-v2"></script>
 
 </body>
 </html>

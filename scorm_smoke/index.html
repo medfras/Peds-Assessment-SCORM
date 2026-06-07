@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Station 1 SCORM Smoke Test</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+    main {
+      width: min(760px, 100%);
+      border: 1px solid #334155;
+      border-radius: 8px;
+      background: #111827;
+      padding: 24px;
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 24px;
+    }
+    p {
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+    button {
+      border: 0;
+      border-radius: 6px;
+      padding: 10px 14px;
+      margin: 0 8px 8px 0;
+      background: #2563eb;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    button:disabled {
+      cursor: not-allowed;
+      opacity: 0.55;
+    }
+    pre {
+      min-height: 180px;
+      max-height: 380px;
+      overflow: auto;
+      white-space: pre-wrap;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      background: #020617;
+      color: #dbeafe;
+      padding: 12px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Station 1 SCORM Smoke Test</h1>
+    <p>
+      This tiny SCO verifies the Moodle same-origin runtime path before the full
+      Station 1 shell is packaged: initialize SCORM, silently authenticate,
+      submit two drill results, commit suspend data, and finish incomplete.
+    </p>
+    <div>
+      <button id="btn-init" type="button">Initialize + Auth</button>
+      <button id="btn-pat" type="button" disabled>Submit PAT</button>
+      <button id="btn-dev" type="button" disabled>Submit DEV</button>
+      <button id="btn-summary" type="button" disabled>Refresh Summary</button>
+      <button id="btn-finish" type="button" disabled>Finish</button>
+    </div>
+    <pre id="log" aria-live="polite"></pre>
+  </main>
+
+  <script src="scorm_config.js"></script>
+  <script src="js/scorm.js"></script>
+  <script>
+    (function () {
+      "use strict";
+
+      const logEl = document.getElementById("log");
+      const buttons = {
+        init: document.getElementById("btn-init"),
+        pat: document.getElementById("btn-pat"),
+        dev: document.getElementById("btn-dev"),
+        summary: document.getElementById("btn-summary"),
+        finish: document.getElementById("btn-finish"),
+      };
+      let latestSummary = null;
+
+      function log(label, value) {
+        const text = typeof value === "string" ? value : JSON.stringify(value, null, 2);
+        logEl.textContent += `[${new Date().toISOString()}] ${label}\n${text}\n\n`;
+        logEl.scrollTop = logEl.scrollHeight;
+      }
+
+      function setReady(ready) {
+        buttons.pat.disabled = !ready;
+        buttons.dev.disabled = !ready;
+        buttons.summary.disabled = !ready;
+        buttons.finish.disabled = !ready;
+      }
+
+      buttons.init.addEventListener("click", async () => {
+        try {
+          const config = window.SCORM_CONFIG || {};
+          const resume = await window.RescueTrails.scorm.init(config);
+          setReady(true);
+          log("resume_state", resume);
+        } catch (err) {
+          log("init failed", err && err.message ? err.message : String(err));
+        }
+      });
+
+      buttons.pat.addEventListener("click", async () => {
+        try {
+          latestSummary = await window.RescueTrails.scorm.submitNodeResult("drill_pat", {
+            activity_type: "minigame",
+            score: 85,
+            completed: true,
+            passed: true,
+            mistake_tags: [],
+          });
+          log("drill_pat summary", latestSummary);
+        } catch (err) {
+          log("PAT submit failed", err && err.message ? err.message : String(err));
+        }
+      });
+
+      buttons.dev.addEventListener("click", async () => {
+        try {
+          latestSummary = await window.RescueTrails.scorm.submitNodeResult("drill_dev", {
+            activity_type: "minigame",
+            score: 88,
+            completed: true,
+            passed: true,
+            mistake_tags: [],
+          });
+          log("drill_dev summary", latestSummary);
+        } catch (err) {
+          log("DEV submit failed", err && err.message ? err.message : String(err));
+        }
+      });
+
+      buttons.summary.addEventListener("click", async () => {
+        try {
+          latestSummary = await window.RescueTrails.scorm.getAttemptSummary();
+          log("attempt summary", latestSummary);
+        } catch (err) {
+          log("summary failed", err && err.message ? err.message : String(err));
+        }
+      });
+
+      buttons.finish.addEventListener("click", () => {
+        window.RescueTrails.scorm.finish(latestSummary);
+        log("finish", "LMSFinish called");
+      });
+    })();
+  </script>
+</body>
+</html>

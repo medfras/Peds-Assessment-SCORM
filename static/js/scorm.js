@@ -73,6 +73,10 @@
     return _findScormApiInChain(win) || _findScormApiInChain(win && win.opener);
   }
 
+  function isLmsLaunch() {
+    return !!_findScormApi(window);
+  }
+
   // ── Local dev adapter ───────────────────────────────────────────────────────
   // Mirrors the SCORM 1.2 API surface using sessionStorage so the flow works
   // outside an LMS during development and vertical-slice testing.
@@ -156,7 +160,7 @@
     const headers = { "Content-Type": "application/json" };
     if (_token) headers["Authorization"] = `Bearer ${_token}`;
     const resp = await fetch(_backendBase + path, {
-      credentials: "include",
+      credentials: "omit",
       ...opts,
       headers: { ...headers, ...(opts.headers || {}) },
     });
@@ -272,9 +276,25 @@
     _api.LMSFinish("");
   }
 
+  function getAccessToken() {
+    return _token;
+  }
+
+  function getAttemptId() {
+    return _attemptId;
+  }
+
   // ── Export ──────────────────────────────────────────────────────────────────
 
   window.RescueTrails = window.RescueTrails || {};
-  window.RescueTrails.scorm = { init, submitNodeResult, getAttemptSummary, finish };
+  window.RescueTrails.scorm = {
+    isLmsLaunch,
+    init,
+    submitNodeResult,
+    getAttemptSummary,
+    finish,
+    getAccessToken,
+    getAttemptId,
+  };
 
 })();

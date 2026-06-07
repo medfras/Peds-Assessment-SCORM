@@ -22,6 +22,7 @@ from pathlib import Path
 
 import pytest
 
+from app.auth import _extract_token
 from app.routers.scorm import (
     _ALL_NODES,
     _CPR_NODES,
@@ -80,6 +81,12 @@ def _min_passing_attempt():
         node_scores={n: 80 for n in nodes},
         node_completed={n: True for n in nodes},
     )
+
+
+@pytest.mark.asyncio
+async def test_shared_auth_extractor_accepts_scorm_bearer_token():
+    request = types.SimpleNamespace(cookies={}, headers={"Authorization": "Bearer scorm.jwt.token"})
+    assert await _extract_token(request) == "scorm.jwt.token"
 
 
 # ── Node registry ─────────────────────────────────────────────────────────────

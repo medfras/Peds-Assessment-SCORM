@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest
+  identifier="com.rescuetrails.pfd.station1"
+  version="1.0"
+  xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2"
+  xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="
+    http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd
+    http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>1.2</schemaversion>
+  </metadata>
+
+  <organizations default="pfd_station1_org">
+    <organization identifier="pfd_station1_org">
+      <title>Station 1: Pediatric Assessment Training</title>
+      <item identifier="item_station1" identifierref="resource_station1">
+        <title>Station 1: Pediatric Assessment Training</title>
+        <adlcp:masteryscore>70</adlcp:masteryscore>
+      </item>
+    </organization>
+  </organizations>
+
+  <resources>
+    <resource
+      identifier="resource_station1"
+      type="webcontent"
+      adlcp:scormtype="sco"
+      href="index.html">
+      <file href="index.html"/>
+      <file href="js/scorm_config.js"/>
+      <file href="js/scorm.js"/>
+      <file href="js/scorm_adapter.js"/>
+      <file href="js/app.js"/>
+      <file href="css/style.css"/>
+    </resource>
+  </resources>
+</manifest>

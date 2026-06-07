@@ -54,10 +54,18 @@ def _verify_csrf_token(csrf_header: str, session_token: str) -> bool:
 
 
 async def _extract_token(request: Request) -> str:
-    """Read JWT from the httpOnly session cookie."""
+    """Read JWT from the httpOnly session cookie or Authorization bearer header.
+
+    Browser SaaS sessions use the httpOnly cookie. Moodle-hosted SCORM launches
+    cannot rely on third-party cookies, so the packaged SCO sends its scoped JWT
+    explicitly in the Authorization header.
+    """
     token = request.cookies.get("pfd_ems_session")
     if token:
         return token
+    auth_header = request.headers.get("Authorization", "")
+    if auth_header.startswith("Bearer "):
+        return auth_header[7:]
     raise HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Not authenticated",

@@ -20,7 +20,7 @@ The branch gate is intentionally narrow. Do not branch until these items are tru
 
 - [x] **Pilot scenario validation baseline complete** — Recent main-app/manual validation covered the priority pilot scenarios and the final current-run checks for febrile seizure, anaphylaxis, extremity fracture, and head injury. This does not replace SCORM package-path validation.
 
-- [ ] **PAT SCORM vertical slice works** — The contract proof. Flow: SCORM launch → scoped auth/JWT → PAT drill result submitted → backend attempt summary returned → `cmi.suspend_data` written → map unlock/progression state correct. Until this works under real runtime conditions, branch creation is premature.
+- [x] **PAT SCORM vertical slice works** — The contract proof. Flow: SCORM launch → scoped auth/JWT → PAT drill result submitted → backend attempt summary returned → `cmi.suspend_data` written → map unlock/progression state correct. Verified in MoodleCloud smoke run on 2026-06-06: `drill_pat` submitted with `unlocks.scenarios = false`, `drill_dev` submitted with `unlocks.scenarios = true`, refresh returned persisted state, and `LMSFinish` was called.
 
 ### Architecture gates (already satisfied — do not re-open)
 
@@ -466,18 +466,18 @@ Collect these during the 2–5 learner run. Use to calibrate CE caps and NLP pat
 This is the sequenced implementation checklist for the SCORM branch. Items in Sections 3–9 are the content/runtime gates for each individual node or subsystem; this section is the build-order checklist for the branch as a whole.
 
 ### Phase 0 — Repo and vertical slice gate
-- [ ] PAT vertical slice verified: `init()` → `drill_pat` result submitted → suspend_data written → `unlocks.scenarios = false`
-- [ ] `drill_dev` submitted → `unlocks.scenarios = true` confirmed
+- [x] PAT vertical slice verified: `init()` → `drill_pat` result submitted → suspend_data written → `unlocks.scenarios = false`
+- [x] `drill_dev` submitted → `unlocks.scenarios = true` confirmed
 - [ ] Page reload with dev adapter restores prior completion state correctly
 - [ ] Standalone repo created (`cp -r "EMS Simulator" peds-assessment-scorm`), git history severed, pushed to new remote
 
 ### Phase 1 — SCORM launch wiring
-- [ ] MoodleCloud same-origin smoke test built as tiny SCO: local packaged `index.html` + `scorm.js` only
-- [ ] Tiny SCO uploaded to MoodleCloud and `LMSInitialize` succeeds from the Moodle-served page
-- [ ] Tiny SCO calls hosted `/api/scorm/auth` successfully from the MoodleCloud origin
-- [ ] Tiny SCO submits one test node result and commits `cmi.suspend_data` to Moodle
-- [ ] `SCORM_CONFIG` (`backend_base`, `module_id`, `integration_key`) injected from environment-specific SCORM config at page load — not hardcoded in `scorm.js`
-- [ ] `scorm.js` reads hosted backend URL from `SCORM_CONFIG.backend_base`; wrapper source is not patched with `sed`
+- [x] MoodleCloud same-origin smoke test built as tiny SCO: local packaged `index.html` + `scorm.js` only
+- [x] Tiny SCO uploaded to MoodleCloud and `LMSInitialize` succeeds from the Moodle-served page
+- [x] Tiny SCO calls hosted `/api/scorm/auth` successfully from the MoodleCloud origin
+- [x] Tiny SCO submits one test node result and commits `cmi.suspend_data` to Moodle
+- [x] `SCORM_CONFIG` (`backend_base`, `module_id`, `integration_key`) injected from environment-specific SCORM config at page load — not hardcoded in `scorm.js`
+- [x] `scorm.js` reads hosted backend URL from `SCORM_CONFIG.backend_base`; wrapper source is not patched with `sed`
 - [ ] SCORM bootstrap path in `app.js` — `if window.RescueTrails.scorm` skips login and calls `init()`
 - [ ] `_applyScormResumeState()` restores map completions and unlock state from `resume_state`
 - [ ] SCORM JWT accepted by `authFetch` for scenario, chat, and debrief calls via explicit `Authorization: Bearer <token>` headers
@@ -532,37 +532,37 @@ This is the sequenced implementation checklist for the SCORM branch. Items in Se
 - [ ] No dead-end links to removed features remain visible
 
 ### Phase 5 — MoodleCloud same-origin, CORS, and auth
-- [ ] Uploaded ZIP serves the learner-facing SCO from MoodleCloud; no remote SCO launch page is used
-- [ ] `ALLOWED_ORIGINS` in `.env` includes the exact Moodle Cloud SCO origin
-- [ ] `/api/scorm/auth` confirmed in CORS-exempt list in `app/main.py`
-- [ ] SCORM API endpoints accept bearer-token auth without relying on cross-site cookies
-- [ ] Tiny MoodleCloud SCO smoke test passes: `LMSInitialize`, backend auth, test node result, `LMSSetValue("cmi.suspend_data", ...)`, and `LMSCommit`
-- [ ] Any CSP work is limited to optional backend-served diagnostic pages; backend UI iframe embedding is not part of the pilot architecture
+- [x] Uploaded ZIP serves the learner-facing SCO from MoodleCloud; no remote SCO launch page is used
+- [x] `ALLOWED_ORIGINS` in `.env` includes the exact Moodle Cloud SCO origin
+- [x] `/api/scorm/auth` confirmed in CORS-exempt list in `app/main.py`
+- [x] SCORM API endpoints accept bearer-token auth without relying on cross-site cookies
+- [x] Tiny MoodleCloud SCO smoke test passes: `LMSInitialize`, backend auth, test node result, `LMSSetValue("cmi.suspend_data", ...)`, and `LMSCommit`
+- [x] Any CSP work is limited to optional backend-served diagnostic pages; backend UI iframe embedding is not part of the pilot architecture
 
 ### Phase 6 — `imsmanifest.xml` and packaging
-- [ ] `imsmanifest.xml` created; validates against SCORM 1.2 schema
-- [ ] All manifest paths use forward slashes — no backslashes
-- [ ] Single SCO pointing to packaged local `index.html`; `adlcp:masteryscore` = 70
-- [ ] Manifest does not point to an external URL and package does not redirect/iframe to the hosted backend app
-- [ ] `build_scorm.sh` builds ZIP with `imsmanifest.xml` at root
-- [ ] ZIP spot-checked: `unzip -l pfd_station1_scorm.zip | head -5` shows manifest at root
-- [ ] `cmi.suspend_data` full 16-node v3 mirror serialized to JSON and confirmed under 4,096 chars
-- [ ] No `window.open()` calls in the package path
+- [x] `imsmanifest.xml` created; validates against SCORM 1.2 schema
+- [x] All manifest paths use forward slashes — no backslashes
+- [x] Single SCO pointing to packaged local `index.html`; `adlcp:masteryscore` = 70
+- [x] Manifest does not point to an external URL and package does not redirect/iframe to the hosted backend app
+- [x] `build_scorm.sh` builds ZIP with `imsmanifest.xml` at root
+- [x] ZIP spot-checked: `unzip -l pfd_station1_scorm.zip | head -5` shows manifest at root
+- [x] `cmi.suspend_data` full 16-node v3 mirror serialized to JSON and confirmed under 4,096 chars
+- [x] No `window.open()` calls in the package path
 
 ### Phase 7 — Backend deployment
-- [ ] SCORM-specific `.env` values: `SCORM_INTEGRATION_KEY`, `SCORM_AGENCY_FILE`, `SCORM_MODULE_ID`, `ALLOWED_ORIGINS`, `TTS_PROVIDER`
-- [ ] PFD agency JSON exists; `scorm_agency_file` value matches its `agency_file` field
+- [x] SCORM-specific `.env` values: `SCORM_INTEGRATION_KEY`, `SCORM_AGENCY_FILE`, `SCORM_MODULE_ID`, `ALLOWED_ORIGINS`, `TTS_PROVIDER`
+- [x] PFD agency JSON exists; `scorm_agency_file` value matches its `agency_file` field
 - [ ] PFD agency JSON equipment/SOP inventory matches the pilot Postgres agency config before final SCORM packaging
-- [ ] `scorm_attempts` table in production DB (Alembic migration run)
-- [ ] `/live` and `/ready` return 200 over HTTPS
-- [ ] `POST /api/scorm/auth` smoke test returns valid JWT and `scorm_attempt_id`
-- [ ] Node result submission returns correct summary with unlock chain
+- [x] `scorm_attempts` table in production DB (Alembic migration run)
+- [x] `/live` and `/ready` return 200 over HTTPS
+- [x] `POST /api/scorm/auth` smoke test returns valid JWT and `scorm_attempt_id`
+- [x] Node result submission returns correct summary with unlock chain
 - [ ] Sentry (or equivalent) configured; PHI/free-text scrubbing confirmed before outside-user pilot
 - [ ] Per-session token budget enforced; graceful degradation tested with simulated 429
 - [ ] TTS failure does not block scenario text from displaying
 
 ### Phase 8 — Moodle Cloud upload and verification
-- [ ] ZIP uploaded; activity configured: embedded iframe, highest-attempt grading, completion status tracking
+- [x] ZIP uploaded; activity configured: embedded iframe, highest-attempt grading, completion status tracking
 - [ ] "Protect package downloads" verified disabled if Moodle App is in scope
 - [ ] Moodle Cloud subdomain confirmed; backend CORS updated with exact SCO origin
 - [ ] Test launch: no SCORM API errors and no backend CORS/auth errors in browser console
@@ -570,6 +570,7 @@ This is the sequenced implementation checklist for the SCORM branch. Items in Se
 - [ ] Orientation runs end-to-end, transitions to Map 0
 - [ ] `drill_pat` completes → node result submits → `unlocks.scenarios` flips → PM1/PT1 unlock on screen
 - [ ] Full scenario: launches, chats, debriefs, scores, node result submitted to SCORM backend
+- [ ] Optional lung-sounds package-path validation: confirm all LSM/Sound Check referenced audio files are present before testing `game_lung_sounds`
 - [ ] Resume test: close browser mid-session, relaunch from LMS, map state restored from `cmi.suspend_data`
 - [ ] CE challenge complete: `cmi.core.lesson_status = "passed"` written; score visible in Moodle gradebook
 - [ ] Confirmed: no main-app UI elements (login, Lexi, XP bar, toy chest) visible in the package
@@ -594,6 +595,7 @@ This is the sequenced implementation checklist for the SCORM branch. Items in Se
 - [x] **`peds_febrile_seizure_01` validation:** Main-app/manual validation baseline complete; remaining work is SCORM package-path validation.
 - [ ] **PT1 / optional scenario validation priority:** Head injury, extremity fracture, and anaphylaxis have recent manual passes. Soft tissue, partial choking, and CPR still need package-path validation if they are included in the pilot learner path.
 - [ ] **Optional games SCORM adapter:** `game_vitals`, `game_lung_sounds`, `game_bls` each need a `submitNodeResult()` call. Required to meet the "any 2 of 3 optional games" CE criterion.
+- [ ] **LSM audio asset gap:** `static/data/games/lsm/cards.json` references `audio/lung sounds/LS/F_FC_LLA.wav` for `lsm_crackles_02`, but that file is not present in the repo/package. Restore the asset or remap the card before validating `game_lung_sounds`; this is a pre-existing optional-game data gap and does not block the shell/PAT/DEV full-package gate.
 - [x] **Replay policy:** Additional replay time counts toward CE total; replay scores use best-score semantics and do not overwrite a higher prior score.
 - [ ] **Evidence packet retention period:** Define time-limited retention duration for SCORM deployment evidence packets before pilot launch.
 - [ ] **CE challenge progress display:** Decide whether and how to surface per-criterion CE progress to the learner on the map (e.g. "2/4 PM1 complete", time remaining to 60 min).

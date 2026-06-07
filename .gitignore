@@ -32,3 +32,10 @@ notes.md
 
 tests/TEST_CASES/
 app/PEDS_ASSESSMENT/
+
+# SCORM local config and build artifacts
+PEDS_ASSESSMENT/scorm_config.local.json
+scorm_smoke_build/
+pfd_station1_scorm_smoke.zip
+scorm_build/
+pfd_station1_scorm.zip

@@ -118,6 +118,240 @@ body {
   color: var(--ui-text-primary) !important;
 }
 
+.scorm-shell {
+  min-height: 100vh;
+  background: #eef2f7;
+  color: #111827;
+  padding: 18px;
+}
+
+.scorm-topbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: space-between;
+  max-width: 1180px;
+  margin: 0 auto 14px;
+  border-bottom: 1px solid rgba(31, 41, 55, 0.18);
+  padding-bottom: 12px;
+}
+
+.scorm-kicker,
+.scorm-map-heading span {
+  color: #475569;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.scorm-topbar h1,
+.scorm-map-heading h2 {
+  margin: 0;
+  color: #0f172a;
+  letter-spacing: 0;
+}
+
+.scorm-topbar h1 {
+  font-size: 1.55rem;
+  line-height: 1.15;
+}
+
+.scorm-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.scorm-primary-btn,
+.scorm-secondary-btn,
+.scorm-node-btn {
+  border: 1px solid rgba(31, 41, 55, 0.18);
+  border-radius: 6px;
+  min-height: 42px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.scorm-primary-btn {
+  background: #1d4ed8;
+  color: white;
+  padding: 0 14px;
+}
+
+.scorm-secondary-btn {
+  background: white;
+  color: #1f2937;
+  padding: 0 14px;
+}
+
+.scorm-progress-grid,
+.scorm-map-grid,
+.scorm-optional-panel {
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.scorm-progress-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(112px, 1fr));
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.scorm-progress-item {
+  background: white;
+  border: 1px solid rgba(31, 41, 55, 0.13);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.scorm-progress-item span {
+  display: block;
+  color: #64748b;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.scorm-progress-item strong {
+  display: block;
+  margin-top: 3px;
+  color: #0f172a;
+  font-size: 1rem;
+}
+
+.scorm-launch-status {
+  max-width: 1180px;
+  margin: 0 auto 14px;
+  padding: 12px 14px;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  border-radius: 8px;
+  background: #eff6ff;
+  color: #1e3a8a;
+  font-weight: 700;
+}
+
+.scorm-launch-status.is-error {
+  border-color: rgba(220, 38, 38, 0.35);
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+.scorm-map-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.scorm-map-panel,
+.scorm-optional-panel {
+  background: white;
+  border: 1px solid rgba(31, 41, 55, 0.13);
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.scorm-optional-panel {
+  margin-top: 12px;
+}
+
+.scorm-map-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.scorm-map-heading h2 {
+  font-size: 1.05rem;
+}
+
+.scorm-lock-note {
+  display: none;
+  color: #92400e;
+  background: #fffbeb;
+  border: 1px solid rgba(217, 119, 6, 0.25);
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.scorm-map-panel.is-locked .scorm-lock-note {
+  display: block;
+}
+
+.scorm-node-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 8px;
+}
+
+.scorm-node-list--optional {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.scorm-node-btn {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+  text-align: left;
+  background: #f8fafc;
+  color: #111827;
+  padding: 10px 11px;
+}
+
+.scorm-node-btn:hover:not(:disabled) {
+  border-color: rgba(29, 78, 216, 0.45);
+  background: #eff6ff;
+}
+
+.scorm-node-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.62;
+}
+
+.scorm-node-title {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.scorm-node-meta {
+  color: #64748b;
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.scorm-node-score {
+  color: #1d4ed8;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.82rem;
+}
+
+.scorm-node-btn.is-complete {
+  border-color: rgba(22, 163, 74, 0.42);
+  background: #f0fdf4;
+}
+
+@media (max-width: 900px) {
+  .scorm-topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .scorm-progress-grid,
+  .scorm-map-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .menu-shell {
   background: linear-gradient(145deg, #f8fafc 0%, #e7ebf0 52%, #d5dbe5 100%);
 }
@@ -7841,344 +8075,6 @@ body {
   font-weight: 500;
   color: #cbd5e1;
 }
-
-/* ── Scout's Station Swag Shop ──────────────────────────────────── */
-
-.scout-shop-panel {
-  background: #0f172a;
-  border: 1px solid rgba(148, 163, 184, 0.32);
-}
-
-.scout-shop-header {
-  background: #0f172a;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.24);
-}
-
-.scout-shop-title {
-  color: #f8fafc;
-  letter-spacing: 0.01em;
-}
-
-.scout-shop-subtitle-text {
-  color: #94a3b8;
-}
-
-.scout-shop-divider {
-  border-color: rgba(148, 163, 184, 0.18);
-}
-
-.scout-shop-note {
-  color: #94a3b8;
-}
-
-/* Scout avatar */
-.scout-avatar-wrap {
-  width: 80px;
-  height: 80px;
-  flex-shrink: 0;
-}
-
-.scout-avatar-svg {
-  width: 80px;
-  height: 80px;
-  filter: drop-shadow(0 3px 10px rgba(2, 6, 23, 0.5));
-}
-
-/* Scout dialogue bubble */
-.scout-bubble {
-  background: rgba(30, 41, 59, 0.76);
-  border: 1px solid rgba(148, 163, 184, 0.24);
-  border-radius: 0 0.65rem 0.65rem 0.65rem;
-  padding: 0.6rem 0.85rem;
-  color: #cbd5e1;
-  font-size: 0.82rem;
-  line-height: 1.5;
-  font-style: italic;
-  flex: 1;
-}
-
-/* Scout map node */
-.journey-node.scout-shop-node {
-  background: rgba(196, 30, 58, 0.2);
-  border: 2px solid rgba(196, 30, 58, 0.7);
-  border-radius: 50%;
-  width: 42px;
-  height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 10px rgba(196, 30, 58, 0.26);
-  transition: transform 0.15s, box-shadow 0.15s;
-}
-.journey-node.scout-shop-node:hover {
-  transform: scale(1.12);
-  box-shadow: 0 0 16px rgba(196, 30, 58, 0.42);
-}
-.scout-shop-node-icon {
-  font-size: 1.3rem;
-  line-height: 1;
-}
-
-/* ── Shared Menu-Modal System (Badges, Swag Case, Leaderboard, Edit Profile) ── */
-/* Matches the station-light modal-form-shell design language.                  */
-
-.menu-modal-shell {
-  background:
-    radial-gradient(34rem 16rem at 12% -10%, rgba(196, 30, 58, 0.06), transparent 62%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(241, 245, 249, 0.99));
-  border: 1.5px solid rgba(31, 41, 55, 0.18);
-}
-
-.menu-modal-header {
-  background: linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(226, 232, 240, 0.82));
-  border-bottom: 1px solid rgba(31, 41, 55, 0.14);
-}
-
-.menu-modal-title {
-  color: var(--ui-text-primary);
-}
-
-.menu-modal-meta {
-  color: var(--ui-text-muted);
-}
-
-.menu-modal-shell .ui-close-btn {
-  background: rgba(248, 250, 252, 0.78);
-  border-color: rgba(31, 41, 55, 0.16);
-  color: var(--ui-text-muted);
-}
-.menu-modal-shell .ui-close-btn:hover {
-  background: rgba(226, 232, 240, 0.92);
-  border-color: rgba(196, 30, 58, 0.42);
-  color: var(--ui-text-primary);
-}
-
-/* Leaderboard ticker strip — steel band at modal footer */
-.lb-ticker-strip {
-  background: linear-gradient(180deg, rgba(248, 250, 252, 0.9), rgba(226, 232, 240, 0.78));
-  border-top: 1px solid rgba(31, 41, 55, 0.14);
-}
-
-/* ── Lexi's Swag Case / legacy Toy Chest shell ──────────────────── */
-
-.toy-chest-shell {
-  background:
-    radial-gradient(34rem 16rem at 12% -10%, rgba(196, 30, 58, 0.06), transparent 62%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(241, 245, 249, 0.99));
-  border: 1.5px solid rgba(31, 41, 55, 0.18);
-}
-
-.toy-chest-header {
-  background: linear-gradient(180deg, rgba(248, 250, 252, 0.94), rgba(226, 232, 240, 0.82));
-  border-bottom: 1px solid rgba(31, 41, 55, 0.14);
-}
-
-.toy-chest-title {
-  color: var(--ui-text-primary);
-}
-
-.toy-chest-meta {
-  color: var(--ui-text-muted);
-}
-
-.toy-chest-shell .ui-close-btn {
-  background: rgba(248, 250, 252, 0.78);
-  border-color: rgba(31, 41, 55, 0.16);
-  color: var(--ui-text-muted);
-}
-.toy-chest-shell .ui-close-btn:hover {
-  background: rgba(226, 232, 240, 0.92);
-  border-color: rgba(196, 30, 58, 0.42);
-  color: var(--ui-text-primary);
-}
-
-/* Category section */
-.toy-category-block {
-  border-bottom: 1px solid var(--ui-border-soft);
-  padding-bottom: 1.5rem;
-}
-.toy-category-block:last-child {
-  border-bottom: none;
-}
-.toy-category-header {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ui-text-muted);
-  margin-bottom: 0.75rem;
-}
-
-/* Series section */
-.toy-series-block {
-  margin-bottom: 1.25rem;
-}
-.toy-series-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.6rem;
-}
-.toy-series-name {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--ui-text-secondary);
-}
-.toy-new-dot {
-  font-size: 0.6rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  background: var(--ui-blue);
-  color: #ffffff;
-  padding: 0.1rem 0.4rem;
-  border-radius: 9999px;
-  text-transform: uppercase;
-}
-
-/* Toy grid */
-.toy-series-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-  gap: 0.6rem;
-}
-
-/* Toy card base */
-.toy-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.35rem;
-  background: var(--ui-bg-3);
-  border: 1.5px solid var(--ui-border-soft);
-  border-radius: 0.6rem;
-  padding: 0.55rem 0.4rem 0.4rem;
-  text-align: center;
-  transition: transform 0.12s, border-color 0.12s, box-shadow 0.12s;
-}
-.toy-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--ui-border-strong);
-  box-shadow: 0 4px 12px rgba(100,60,5,0.12);
-}
-
-/* Rarity border tints */
-.toy-card--common  { border-color: var(--ui-border-soft); }
-.toy-card--rare    { border-color: rgba(37,99,235,0.4); }
-.toy-card--epic    { border-color: rgba(184,151,15,0.55);
-                     box-shadow: 0 0 10px rgba(184,151,15,0.15); }
-
-/* Locked state */
-.toy-card--locked {
-  opacity: 0.45;
-  filter: grayscale(0.6);
-}
-.toy-card--locked:hover { transform: none; box-shadow: none; }
-.toy-lock-icon {
-  position: absolute;
-  top: 0.25rem;
-  right: 0.3rem;
-  font-size: 0.65rem;
-  opacity: 0.5;
-}
-
-/* Toy image */
-.toy-card-img {
-  width: 52px;
-  height: 52px;
-  object-fit: contain;
-  border-radius: 0.3rem;
-}
-.toy-card-placeholder {
-  width: 52px;
-  height: 52px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  border-radius: 0.3rem;
-  background: var(--ui-border-soft);
-}
-.toy-card-label {
-  font-size: 0.62rem;
-  font-weight: 500;
-  color: var(--ui-text-secondary);
-  line-height: 1.2;
-  word-break: break-word;
-  max-width: 100%;
-}
-.toy-dup-count {
-  font-size: 0.58rem;
-  color: var(--ui-text-muted);
-  margin-left: 0.15rem;
-}
-
-/* Rarity badge */
-.toy-rarity-badge {
-  font-size: 0.55rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 0.1rem 0.4rem;
-  border-radius: 9999px;
-}
-.toy-rarity-badge--common { background: rgba(31,41,55,0.1);  color: var(--ui-text-muted); }
-.toy-rarity-badge--rare   { background: rgba(37,99,235,0.12); color: #1d4ed8; }
-.toy-rarity-badge--epic   { background: rgba(184,151,15,0.14); color: #854d0e; }
-
-/* Shop card */
-.toy-shop-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.4rem;
-  background: rgba(31,41,55,0.8);
-  border: 1px solid rgba(75,85,99,0.4);
-  border-radius: 0.65rem;
-  padding: 0.7rem 0.5rem 0.5rem;
-  text-align: center;
-}
-
-.toy-shop-btn {
-  margin-top: 0.25rem;
-  width: 100%;
-  font-size: 0.68rem;
-  font-weight: 700;
-  padding: 0.3rem 0.5rem;
-  border-radius: 0.4rem;
-  border: none;
-  cursor: pointer;
-  background: rgba(251,191,36,0.85);
-  color: #1f2937;
-  transition: opacity 0.15s;
-}
-.toy-shop-btn:hover { opacity: 0.85; }
-.toy-shop-btn--owned {
-  background: rgba(75,85,99,0.4);
-  color: #6b7280;
-  cursor: default;
-}
-.toy-shop-btn--broke {
-  background: rgba(75,85,99,0.25);
-  color: #4b5563;
-  cursor: not-allowed;
-}
-
-/* Debrief toy cards */
-.toy-debrief-card {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  background: rgba(31,41,55,0.9);
-  border: 1px solid rgba(75,85,99,0.5);
-  border-radius: 0.5rem;
-  padding: 0.35rem 0.65rem;
-  font-size: 0.78rem;
-  color: #e5e7eb;
-}
-.toy-debrief-card--rare  { border-color: rgba(96,165,250,0.5);  }
-.toy-debrief-card--epic  { border-color: rgba(251,191,36,0.6); box-shadow: 0 0 6px rgba(251,191,36,0.2); }
-.toy-rarity-dot { font-size: 0.85rem; }
 
 /* ═══════════════════════════════════════════════════════════════
    SHARED MINI-GAME SHELL — used by TEN-4, A&P, LSM, History, GCS

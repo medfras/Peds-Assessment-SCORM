@@ -3,7 +3,7 @@
    Flow: Login → Menu → Dispatch → Sim → Treatment → DMIST → Narrative → Debrief
    ═══════════════════════════════════════════════════════════════════ */
 
-const API = "";
+const API = ((window.SCORM_CONFIG && (window.SCORM_CONFIG.backend_base || window.SCORM_CONFIG.backendBase)) || "").replace(/\/+$/, "");
 
 let state = {
   sessionId: null,
@@ -41,6 +41,9 @@ let state = {
   availableCustomInventoryLabels: [],
   orientationCompletedAt: null,  // ISO string from /api/me; null = orientation not yet done
   features: {},
+  scormEnabled: false,
+  scormResumeState: null,
+  scormLatestSummary: null,
 };
 
 const PAT_GAME_DURATION_SEC = 60;
@@ -5872,6 +5875,10 @@ async function authFetch(url, options = {}, _retry = true) {
   const { authRedirectOn401 = true, timeoutMs = 0, ...fetchOptions } = options || {};
   const method = String(fetchOptions.method || "GET").toUpperCase();
   const headers = { "Content-Type": "application/json", ...(fetchOptions.headers || {}) };
+  const scormToken = _getScormAccessToken();
+  if (scormToken && !headers.Authorization && !headers.authorization) {
+    headers.Authorization = `Bearer ${scormToken}`;
+  }
   if (method !== "GET" && method !== "HEAD") {
     const csrf = _getCsrfToken();
     if (csrf) headers["X-CSRF-Token"] = csrf;
@@ -5910,6 +5917,261 @@ async function authFetch(url, options = {}, _retry = true) {
   }
   return res;
 }
+
+function _isScormLaunch() {
+  return !!window.RescueTrails?.["scormAdapter"]?.isLaunch?.();
+}
+
+function _showScormLaunchStatus(message, tone = "info") {
+  const box = el("scorm-launch-status");
+  if (!box) return;
+  box.textContent = message;
+  box.classList.remove("hidden", "is-error", "is-info");
+  box.classList.add(tone === "error" ? "is-error" : "is-info");
+}
+
+function _showScormLaunchError(err) {
+  const message = err?.message || "SCORM launch failed. Please relaunch this activity from Moodle.";
+  console.error("SCORM launch failed", err);
+  showScreen("scorm-station1");
+  _showScormLaunchStatus(message, "error");
+  ["scorm-map0-nodes", "scorm-pm1-nodes", "scorm-pt1-nodes", "scorm-map3-nodes", "scorm-optional-nodes"].forEach(id => {
+    const list = el(id);
+    if (list) list.innerHTML = "";
+  });
+}
+
+function _getScormAccessToken() {
+  if (!state.scormEnabled) return "";
+  try {
+    return window.RescueTrails?.["scormAdapter"]?.getAccessToken?.() || "";
+  } catch {
+    return "";
+  }
+}
+
+const _SCORM_NODE_GROUPS = {
+  map0: [
+    { nodeId: "drill_pat", appId: "pat", label: "Doorway Dash", type: "minigame", role: "Required" },
+    { nodeId: "drill_dev", appId: "dev_sort", label: "Development Sort", type: "minigame", role: "Required" },
+    { nodeId: "drill_gcs", appId: "peds_gcs_calculator", label: "Pediatric GCS", type: "minigame", role: "Optional" },
+  ],
+  pm1: [
+    { nodeId: "scen_croup", appId: "peds_croup_01", label: "Croup", type: "scenario" },
+    { nodeId: "scen_asthma", appId: "peds_asthma_01", label: "Asthma", type: "scenario" },
+    { nodeId: "scen_diabetes", appId: "peds_diabetic_emergency_01", label: "Diabetes", type: "scenario" },
+    { nodeId: "scen_seizure", appId: "peds_febrile_seizure_01", label: "Febrile Seizure", type: "scenario" },
+  ],
+  pt1: [
+    { nodeId: "scen_laceration", appId: "peds_trauma_01_soft_tissue", label: "Scalp Laceration", type: "scenario" },
+    { nodeId: "scen_head", appId: "peds_trauma_07_head_injury", label: "Head Injury", type: "scenario" },
+    { nodeId: "scen_bleeding", appId: "peds_trauma_03_extremity", label: "Extremity Injury", type: "scenario" },
+    { nodeId: "scen_airway", appId: "peds_trauma_02_partial_choking", label: "Partial Airway", type: "scenario" },
+    { nodeId: "scen_anaph", appId: "peds_anaphylaxis_01", label: "Anaphylaxis", type: "scenario" },
+  ],
+  map3: [
+    { nodeId: "scen_cpr", appId: "peds_cardiac_arrest_01_bls", label: "Pediatric CPR", type: "scenario" },
+  ],
+  optional: [
+    { nodeId: "game_vitals", appId: "vitals_trend_spotter", label: "Vitals Trend", type: "minigame", role: "Optional" },
+    { nodeId: "game_lung_sounds", appId: "lung_sounds_matcher", label: "Lung Sounds", type: "minigame", role: "Optional" },
+    { nodeId: "game_bls", appId: "cpr_bls_sequence", label: "BLS Sequence", type: "minigame", role: "Optional" },
+  ],
+};
+
+const _SCORM_NODE_BY_APP_ID = Object.values(_SCORM_NODE_GROUPS)
+  .flat()
+  .reduce((acc, node) => {
+    acc[node.appId] = node;
+    return acc;
+  }, {});
+
+function _normalizeScormState(summaryOrResume = {}) {
+  const scores = summaryOrResume.node_scores || summaryOrResume.scores || {};
+  const completed = summaryOrResume.node_completed || summaryOrResume.completed || {};
+  const ce = summaryOrResume.peds_ce_challenge || summaryOrResume.ce || {};
+  return {
+    ...summaryOrResume,
+    node_scores: scores,
+    node_completed: completed,
+    unlocks: summaryOrResume.unlocks || { scenarios: false, map3: false },
+    peds_ce_challenge: {
+      complete: !!ce.complete,
+      ce_seconds: Number(ce.ce_seconds || 0),
+      pm1_completed: Number(ce.pm1_completed || 0),
+      pm1_required: Number(ce.pm1_required || 2),
+      pt1_completed: Number(ce.pt1_completed || 0),
+      pt1_required: Number(ce.pt1_required || 2),
+      cpr_done: !!ce.cpr_done,
+      optional_games_completed: Number(ce.optional_games_completed ?? ce.opt_games_completed ?? 0),
+      optional_games_required: Number(ce.optional_games_required ?? ce.opt_games_required ?? 2),
+    },
+  };
+}
+
+function _applyScormResumeState(summaryOrResume = {}) {
+  state.scormLatestSummary = _normalizeScormState(summaryOrResume);
+  state.scormResumeState = state.scormLatestSummary;
+  _renderScormStation1();
+}
+
+function _setScormPanelLocked(mapKey, locked) {
+  const panel = document.querySelector(`[data-scorm-map="${mapKey}"]`);
+  if (panel) panel.classList.toggle("is-locked", !!locked);
+}
+
+function _completedScormCount(nodes, summary) {
+  return nodes.filter(node => !!summary.node_completed[node.nodeId]).length;
+}
+
+function _renderScormProgress(summary) {
+  const ce = summary.peds_ce_challenge || {};
+  const requiredDrillsDone = _completedScormCount(_SCORM_NODE_GROUPS.map0.slice(0, 2), summary);
+  setText("scorm-status-drills", `${requiredDrillsDone}/2`);
+  setText("scorm-status-pm1", `${ce.pm1_completed || 0}/${ce.pm1_required || 2}`);
+  setText("scorm-status-pt1", `${ce.pt1_completed || 0}/${ce.pt1_required || 2}`);
+  setText("scorm-status-cpr", ce.cpr_done ? "Done" : "Pending");
+  setText("scorm-status-games", `${ce.optional_games_completed || 0}/${ce.optional_games_required || 2}`);
+  setText("scorm-status-time", `${Math.floor((ce.ce_seconds || 0) / 60)} min`);
+}
+
+function _createScormNodeButton(node, summary, locked) {
+  const completed = !!summary.node_completed[node.nodeId];
+  const score = Number(summary.node_scores[node.nodeId] || 0);
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = `scorm-node-btn${completed ? " is-complete" : ""}`;
+  btn.disabled = !!locked;
+  btn.dataset.scormNode = node.nodeId;
+  btn.dataset.appId = node.appId;
+
+  const title = document.createElement("div");
+  title.className = "scorm-node-title";
+  title.textContent = node.label;
+
+  const meta = document.createElement("div");
+  meta.className = "scorm-node-meta";
+  meta.textContent = locked ? "Locked" : completed ? "Complete" : (node.role || (node.type === "scenario" ? "Scenario" : "Game"));
+  title.appendChild(meta);
+
+  const scoreEl = document.createElement("div");
+  scoreEl.className = "scorm-node-score";
+  scoreEl.textContent = completed ? `${score}%` : "";
+
+  btn.appendChild(title);
+  btn.appendChild(scoreEl);
+  btn.addEventListener("click", () => _launchScormNode(node));
+  return btn;
+}
+
+function _renderScormNodeGroup(containerId, nodes, summary, locked = false) {
+  const container = el(containerId);
+  if (!container) return;
+  container.replaceChildren(...nodes.map(node => _createScormNodeButton(node, summary, locked)));
+}
+
+function _renderScormStation1() {
+  if (!state.scormEnabled) return;
+  const summary = _normalizeScormState(state.scormLatestSummary || state.scormResumeState || {});
+  const scenariosLocked = !summary.unlocks.scenarios;
+  const map3Locked = !summary.unlocks.map3;
+
+  _renderScormProgress(summary);
+  _setScormPanelLocked("pm1", scenariosLocked);
+  _setScormPanelLocked("pt1", scenariosLocked);
+  _setScormPanelLocked("map3", map3Locked);
+  _renderScormNodeGroup("scorm-map0-nodes", _SCORM_NODE_GROUPS.map0, summary, false);
+  _renderScormNodeGroup("scorm-pm1-nodes", _SCORM_NODE_GROUPS.pm1, summary, scenariosLocked);
+  _renderScormNodeGroup("scorm-pt1-nodes", _SCORM_NODE_GROUPS.pt1, summary, scenariosLocked);
+  _renderScormNodeGroup("scorm-map3-nodes", _SCORM_NODE_GROUPS.map3, summary, map3Locked);
+  _renderScormNodeGroup("scorm-optional-nodes", _SCORM_NODE_GROUPS.optional, summary, false);
+}
+
+function _returnToScormStation1() {
+  if (!state.scormEnabled) return false;
+  _renderScormStation1();
+  showScreen("scorm-station1");
+  _refreshScormSummary().catch((err) => console.warn("[SCORM] Return refresh failed", err));
+  return true;
+}
+
+function _launchScormNode(node) {
+  if (!node) return;
+  if (node.type === "scenario") {
+    startScenario(node.appId);
+    return;
+  }
+  _playMinigameSelection({
+    type: node.appId,
+    label: node.label,
+    completed: !!state.scormLatestSummary?.node_completed?.[node.nodeId],
+    launchMapId: "scorm",
+  });
+}
+
+async function _refreshScormSummary() {
+  if (!state.scormEnabled) return null;
+  const adapter = window.RescueTrails?.["scormAdapter"];
+  const summary = await adapter.getAttemptSummary();
+  _applyScormResumeState(summary);
+  return state.scormLatestSummary;
+}
+
+async function _onScormNodeComplete(appId, score, completed = true, mistakeTags = []) {
+  if (!state.scormEnabled) return;
+  const node = _SCORM_NODE_BY_APP_ID[appId];
+  if (!node) return;
+  const normalizedScore = Math.max(0, Math.min(100, Math.round(Number(score) || 0)));
+  try {
+    const adapter = window.RescueTrails?.["scormAdapter"];
+    const summary = await adapter.submitNodeResult(node.nodeId, {
+      activity_type: node.type === "scenario" ? "scenario" : "minigame",
+      score: normalizedScore,
+      completed: !!completed,
+      passed: normalizedScore >= 70,
+      mistake_tags: Array.isArray(mistakeTags) ? mistakeTags : [],
+    });
+    _applyScormResumeState(summary);
+  } catch (err) {
+    console.warn("[SCORM] Node completion submit failed", node.nodeId, err);
+    if (typeof showToast === "function") showToast("Progress could not be saved to the LMS yet.", "error");
+  }
+}
+
+window.addEventListener('rt:drillComplete', (event) => {
+  const detail = event.detail || {};
+  _onScormNodeComplete(detail.gameId, detail.score, true, detail.mistakeTags || []);
+});
+
+window.addEventListener('rt:scenarioComplete', (event) => {
+  const detail = event.detail || {};
+  if (detail.isDrill) return;
+  _onScormNodeComplete(detail.scenarioId, detail.score, true, []);
+});
+
+el("btn-scorm-refresh")?.addEventListener("click", async () => {
+  const btn = el("btn-scorm-refresh");
+  btn.disabled = true;
+  try {
+    await _refreshScormSummary();
+  } catch (err) {
+    console.warn("[SCORM] Summary refresh failed", err);
+    if (typeof showToast === "function") showToast("Could not refresh LMS progress.", "error");
+  } finally {
+    btn.disabled = false;
+  }
+});
+
+el("btn-scorm-finish")?.addEventListener("click", async () => {
+  const btn = el("btn-scorm-finish");
+  btn.disabled = true;
+  try {
+    const summary = await _refreshScormSummary().catch(() => state.scormLatestSummary);
+    window.RescueTrails?.["scormAdapter"]?.finish?.(summary);
+  } finally {
+    btn.disabled = false;
+  }
+});
 
 // ── Base JWT — held in memory only, never persisted ──────────────────────────
 let _baseToken = null;
@@ -6364,8 +6626,8 @@ el("btn-switch-agency").addEventListener("click", () => {
 
 /* ── Shared post-auth entry point ─────────────────────────────────── */
 
-async function _activateAndEnter() {
-  // State must be populated via _storeAuthFromContext before calling this function
+async function _activateAndEnter(options = {}) {
+  // State must be populated via _storeAuthFromContext() or _storeAuth() before calling this function.
   _readProgressHistoryCache();
   const scenFetch = _scenarioListPrefetch || authFetch(`${API}/api/scenarios`);
   _scenarioListPrefetch = null; // consume once
@@ -6410,8 +6672,28 @@ async function _activateAndEnter() {
     }
   });
 
-  showScreen("menu");
+  if (options.scormResumeState) {
+    _applyScormResumeState(options.scormResumeState);
+    showScreen("scorm-station1");
+  } else {
+    showScreen("menu");
+  }
   _checkProtocolChangeNotifications();
+}
+
+async function _activateScormAndEnter() {
+  const adapter = window.RescueTrails?.["scormAdapter"];
+  if (!window.SCORM_CONFIG) {
+    throw new Error("SCORM config did not load. Rebuild the package and confirm js/scorm_config.js is present in the uploaded ZIP.");
+  }
+  _showScormLaunchStatus("Connecting to Moodle and loading your Station 1 progress...");
+  const resumeState = await adapter.init();
+  const token = adapter.getAccessToken?.();
+  if (!token) throw new Error("SCORM auth did not return an access token.");
+  state.scormEnabled = true;
+  state.scormResumeState = resumeState;
+  _storeAuth(token);
+  await _activateAndEnter({ scormResumeState: resumeState });
 }
 
 async function _loadAgencyEquipmentAvailability() {
@@ -8215,6 +8497,7 @@ const _patEngine = new SwipeGameEngine({
           ever_completed: !!data.ever_completed,
         };
         if (score >= 70) await _saveMgLearningPage("pat");
+        await _onScormNodeComplete("pat", score, true, Array.isArray(mistakeTags) ? mistakeTags : []);
         await _loadProgressFromServer().catch(() => {});
         if (!el("screen-menu")?.classList.contains("hidden")) buildMenu();
       } else {
@@ -8338,6 +8621,7 @@ const _devSortEngine = new DragSortGameEngine({
         } else {
           el("btn-sort-continue-red-flags")?.classList.add("hidden");
         }
+        await _onScormNodeComplete("dev_sort", score, true, []);
         await _loadProgressFromServer().catch(() => {});
         if (!el("screen-menu")?.classList.contains("hidden")) buildMenu();
       } else {
@@ -9229,6 +9513,7 @@ function _openCprBlsSequenceGameScreen(selection = null) {
 }
 
 function _exitCprBlsSequenceToMap() {
+  if (_returnToScormStation1()) return;
   if (_cprBlsReturnDistrictId === "station_1") {
     _renderStation1Map();
     return;
@@ -9529,6 +9814,7 @@ function _openLsmGameScreen() {
 
 function _exitLsmToMap() {
   _lsmEngine.stop();
+  if (_returnToScormStation1()) return;
   if (_categoryView?.mode === "district" && _categoryView?.districtId === "pediatrics") _renderPediatricsJourney({ preserveTrail: true });
   showScreen("category");
 }
@@ -9721,6 +10007,7 @@ function _openVitalsGameScreen() {
 
 function _exitVitalsToMap() {
   _vitalsGame.stop();
+  if (_returnToScormStation1()) return;
   if (_categoryView?.mode === "district" && _categoryView?.districtId === "pediatrics") _renderPediatricsJourney({ preserveTrail: true });
   showScreen("category");
 }
@@ -9743,6 +10030,7 @@ function _openGcsGameScreen() {
 
 function _exitGcsToMap() {
   _gcsGame.stop();
+  if (_returnToScormStation1()) return;
   if (_categoryView?.mode === "district" && _categoryView?.districtId === "pediatrics") _renderPediatricsJourney({ preserveTrail: true });
   showScreen("category");
 }
@@ -10784,7 +11072,6 @@ function _syncCategoryShell(districtId = null) {
   setText("category-treat-count", el("menu-treat-count")?.textContent || `🦴 ${loadGamification().treats ?? 0} treats`);
 
   el("category-nav-training")?.classList.toggle("hv2-active", districtId === "other");
-  el("category-toy-chest-new-badge")?.classList.toggle("hidden", el("toy-chest-new-badge")?.classList.contains("hidden") ?? true);
   el("category-admin-dashboard")?.classList.toggle("hidden", !_canShowDashboardButtonForRole());
   const iconEl = el("category-screen-icon");
   if (iconEl) iconEl.textContent = icon;
@@ -15235,16 +15522,6 @@ function _renderPedsMap(mapId = null) {
       });
     });
 
-    layer.querySelectorAll("[data-peds-shop]").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const s = mapDef.shop;
-        if (mapDef.isConvergence && mapDef.convergenceKey) {
-          _openConvergenceKeyShop(mapDef.convergenceKey);
-        } else if (s?.district) {
-          _openScoutShop(s.district);
-        }
-      });
-    });
   }
 
   // Trail nav — breadcrumb with home + track shortcuts
@@ -16598,6 +16875,7 @@ function _exitPatGameToMap() {
   _patEngine.stop();
   hide("pat-results");
   hide("pat-results-backdrop");
+  if (_returnToScormStation1()) return;
   if (_categoryView?.mode === "district" && _categoryView?.districtId === "pediatrics") _renderPediatricsJourney({ preserveTrail: true });
   showScreen("category");
 }
@@ -16608,6 +16886,7 @@ function _exitSortGameToMap() {
   hide("btn-sort-continue-red-flags");
   hide("sort-intro-overlay");
   hide("sort-learn-modal");
+  if (_returnToScormStation1()) return;
   if (_categoryView?.mode === "district" && _categoryView?.districtId === "pediatrics") _renderPediatricsJourney({ preserveTrail: true });
   showScreen("category");
 }
@@ -17316,7 +17595,6 @@ el("btn-progress-back")?.addEventListener("click", () => { buildMenu(); showScre
 el("hv2-my-progress")?.addEventListener("click", _openProgress);
 el("category-open-leaderboard")?.addEventListener("click", _openLeaderboard);
 el("category-open-challenges")?.addEventListener("click", _openActiveChallengesModal);
-el("category-open-toy-chest")?.addEventListener("click", () => el("btn-open-toy-chest")?.click());
 el("category-nav-training")?.addEventListener("click", () => {
   _setCategoryMobileTab("map");
   _openTrainingCenter();
@@ -26637,7 +26915,7 @@ async function processDebrief(feedback, score, subscores = null, timeline = null
     : 99;
 
   // ── Server computes all awards — client sends only minimal inputs ───────────
-  let xpGross = 0, xpEarned = 0, assessmentXp = null, narrativeXp = null, treatsEarned = 0, newBadges = [], challengeBadges = [], toyGrants = [];
+  let xpGross = 0, xpEarned = 0, assessmentXp = null, narrativeXp = null, treatsEarned = 0, newBadges = [], challengeBadges = [];
   try {
     const res = await authFetch(`${API}/api/me/progress`, {
       method:  "POST",
@@ -26657,7 +26935,6 @@ async function processDebrief(feedback, score, subscores = null, timeline = null
       treatsEarned = data.treats_earned || 0;
       newBadges    = data.new_badges    || [];
       challengeBadges = data.challenge_badges || [];
-      toyGrants    = data.toy_grants    || [];
     }
   } catch { /* non-fatal — debrief still shows, awards display as 0 */ }
 
@@ -26741,10 +27018,10 @@ async function processDebrief(feedback, score, subscores = null, timeline = null
     },
   }));
 
-  showDebrief(feedback, score, xpEarned, [...newBadges, ...challengeBadges], treatsEarned, subscores, timeline, exemplarDmist, exemplarNarrative, scoreDetail, { assessmentXp, narrativeXp, xpGross }, toyGrants, blufData, rubricDetail);
+  showDebrief(feedback, score, xpEarned, [...newBadges, ...challengeBadges], treatsEarned, subscores, timeline, exemplarDmist, exemplarNarrative, scoreDetail, { assessmentXp, narrativeXp, xpGross }, blufData, rubricDetail);
 }
 
-function showDebrief(feedback, score, xpGained, newBadgeIds, treatsEarned = 0, subscores = null, timeline = null, exemplarDmist = null, exemplarNarrative = null, scoreDetail = null, xpDetail = null, toyGrants = [], blufData = null, rubricDetail = []) {
+function showDebrief(feedback, score, xpGained, newBadgeIds, treatsEarned = 0, subscores = null, timeline = null, exemplarDmist = null, exemplarNarrative = null, scoreDetail = null, xpDetail = null, blufData = null, rubricDetail = []) {
   const scoreEl = el("debrief-score");
   const gradeEl = el("debrief-grade-label");
 
@@ -26839,25 +27116,7 @@ function showDebrief(feedback, score, xpGained, newBadgeIds, treatsEarned = 0, s
     newBadgeIds.forEach((id, i) => setTimeout(() => showBadgeToast(id), 600 + i * 2000));
   }
 
-  // Toy grant celebration
-  const toyRow = el("debrief-toy-row");
-  const toyDisplay = el("debrief-toy-display");
-  if (toyGrants && toyGrants.length > 0 && toyRow && toyDisplay) {
-    const rarityEmoji = { common: "⬜", rare: "🟦", epic: "✨" };
-    toyDisplay.innerHTML = toyGrants.map(g => {
-      const dupNote = g.is_duplicate ? `<span class="text-gray-500 text-xs ml-1">(+${g.treats_awarded}🦴)</span>` : "";
-      return `<div class="toy-debrief-card toy-debrief-card--${g.rarity}">
-        <span class="toy-rarity-dot toy-rarity-dot--${g.rarity}">${rarityEmoji[g.rarity] || "⬜"}</span>
-        <span class="font-semibold">${escapeHTML(g.display_name)}</span>${dupNote}
-      </div>`;
-    }).join("");
-    toyRow.classList.remove("hidden");
-    // Nudge toy chest button badge
-    const chestBadge = el("toy-chest-new-badge");
-    if (chestBadge) chestBadge.classList.remove("hidden");
-  } else if (toyRow) {
-    toyRow.classList.add("hidden");
-  }
+
 
   const _buildDebriefCoachSummary = () => {
     const strengths = [];
@@ -27250,7 +27509,10 @@ function showDebrief(feedback, score, xpGained, newBadgeIds, treatsEarned = 0, s
     nextActionText.textContent = naText;
     nextActionSection?.classList.remove("hidden");
     if (nextActionBtn) {
-      if (naType !== "none") {
+      if (state.scormEnabled) {
+        nextActionBtn.onclick = null;
+        nextActionBtn.classList.add("hidden");
+      } else if (naType !== "none") {
         nextActionBtn.textContent = naType === "minigame" ? "Practice Now ▶" : "Go ▶";
         nextActionBtn.classList.remove("hidden");
         nextActionBtn.onclick = () => {
@@ -27355,6 +27617,7 @@ el("btn-new-session").addEventListener("click", () => {
   const returnDistrictId = _lastDebriefEntry?.returnDistrictId || _sessionReturnDistrictId || null;
   const catKey = state.scenarioData?.category;
   resetSessionState();
+  if (_returnToScormStation1()) return;
   if (returnDistrictId === "station_1") {
     _categoryView = { mode: "district", districtId: "station_1" };
     _renderStation1Map();
@@ -27537,7 +27800,6 @@ function resetSessionState() {
   el("debrief-xp-badge").classList.add("hidden");
   el("debrief-bonus-xp-badge")?.classList.add("hidden");
   el("new-badges-row").classList.add("hidden");
-  el("debrief-toy-row")?.classList.add("hidden");
 
   // Reset lung sound challenge
   _lungSoundUsed = false;
@@ -31273,358 +31535,21 @@ el("btn-leave-confirm").addEventListener("click", () => {
   }
 });
 
-/* ═══════════════════════════════════════════════════════════════════
-   LEXI'S TOY CHEST
-   ═══════════════════════════════════════════════════════════════════ */
-
-const _TOY_RARITY_LABEL = { common: "Common", rare: "Rare", epic: "Epic" };
-const _TOY_RARITY_EMOJI = { common: "⬜", rare: "🟦", epic: "✨" };
-
-const _SCOUT_DIALOGUES = [
-  "Hi, I'm Scout — Lexi's brother. I mostly just want food. But I'll trade some toys for treats.",
-  "Hi. I'm Lexi's brother. I just want snacks. Give me treats, I'll give you toys. Simple.",
-  "Hey. Scout here. Lexi does the training thing. I just want food. Treats for toys — deal?",
-  "I'm Scout. Lexi's the smart one. I'm mostly hungry. But I've got toys if you've got treats.",
-];
-
-// Open toy chest modal and load collection
-el("btn-open-toy-chest").addEventListener("click", () => {
-  show("modal-toy-chest");
-  _loadToyChest();
-});
-
-el("btn-toy-chest-close").addEventListener("click", () => {
-  hide("modal-toy-chest");
-});
-
-el("btn-scout-shop-close").addEventListener("click", () => {
-  hide("modal-scout-shop");
-});
-
-el("btn-convergence-key-shop-close").addEventListener("click", () => {
-  hide("modal-convergence-key-shop");
-});
-
-const _CONVERGENCE_KEY_DIALOGUES = {
-  "key_peds_med_golden_stethoscope": [
-    "You made it through the whole Medical Trail! Let me check your Toy Chest...",
-    "The Golden Stethoscope is special — only the most dedicated medics earn it.",
-    "Medical track complete! Show me all your medical toys and I'll hand over the key.",
-  ],
-  "key_peds_trm_silver_shears": [
-    "The Trauma Trail is no joke — and neither is this key! Let me check your toys.",
-    "Silver Shears go to trauma specialists. Have you collected them all?",
-    "Trauma track complete! Show me your full Toy Chest and the key is yours.",
-  ],
-};
-
-async function _openConvergenceKeyShop({ keyId, label, trackName }) {
-  const dialogueEl = el("convergence-key-dialogue");
-  const subtitleEl = el("convergence-key-shop-subtitle");
-  const checklistEl = el("convergence-key-checklist");
-  const claimBtn = el("btn-convergence-key-claim");
-  const statusEl = el("convergence-key-status");
-
-  const dialogues = _CONVERGENCE_KEY_DIALOGUES[keyId] || ["Let me check your Toy Chest..."];
-  if (dialogueEl) dialogueEl.textContent = dialogues[Math.floor(Math.random() * dialogues.length)];
-  if (subtitleEl) subtitleEl.textContent = `${trackName} Track — Key Award`;
-  if (checklistEl) checklistEl.innerHTML = `<p class="text-xs scout-shop-note text-center py-4">Checking your Toy Chest…</p>`;
-  if (claimBtn) { claimBtn.disabled = true; claimBtn.textContent = "Claim Key"; claimBtn.onclick = null; }
-  if (statusEl) { statusEl.textContent = ""; statusEl.classList.add("hidden"); }
-
-  show("modal-convergence-key-shop");
-
-  async function _attemptClaim(isUserAction = false) {
-    if (isUserAction && claimBtn) { claimBtn.disabled = true; claimBtn.textContent = "Claiming…"; }
-    try {
-      const res = await authFetch(`${API}/api/me/peds/keys/claim`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ key_id: keyId }),
-      });
-      const data = res.ok ? await res.json() : null;
-      const checklist = data?.checklist || [];
-
-      if (checklistEl) {
-        if (!checklist.length) {
-          checklistEl.innerHTML = `<p class="text-xs scout-shop-note text-center py-4">Couldn't load toy checklist.</p>`;
-        } else {
-          checklistEl.innerHTML = checklist.map(t => `
-            <div class="flex items-center gap-3 px-3 py-2 rounded-lg ${t.owned ? "bg-green-900/30" : "bg-stone-800/40"}">
-              <span class="text-base">${t.owned ? "✅" : "⬜"}</span>
-              <span class="text-sm ${t.owned ? "text-green-300" : "text-stone-400"}">${escapeHTML(t.display_name)}</span>
-            </div>`).join("");
-        }
-      }
-
-      if (data?.ok) {
-        const wasNew = !data.already_held;
-        await _loadProgressFromServer();
-        const allKeys = new Set(loadGamification().pedsKeys || []);
-        const pe1Unlocked = allKeys.has("key_peds_med_golden_stethoscope") && allKeys.has("key_peds_trm_silver_shears");
-        if (wasNew && dialogueEl) {
-          dialogueEl.textContent = pe1Unlocked
-            ? `Incredible! You earned the ${label} — and both keys are yours! The Pediatric Emergencies gate is open!`
-            : `Great work! You earned the ${label}! One more key to go before the Pediatric Emergencies gate opens.`;
-        }
-        if (claimBtn) { claimBtn.textContent = `${label} Earned! 🎉`; claimBtn.disabled = true; }
-        const statusMsg = wasNew
-          ? (pe1Unlocked ? "Both keys earned! PE1 is now unlocked." : `${label} earned! Earn the other key to unlock PE1.`)
-          : "Key already in your collection.";
-        if (statusEl) { statusEl.textContent = statusMsg; statusEl.classList.remove("hidden"); }
-        if (wasNew) _renderPedsMap();
-      } else {
-        const missing = (data?.checklist || []).filter(t => !t.owned).length;
-        if (claimBtn) {
-          claimBtn.textContent = missing ? `${missing} Toy${missing !== 1 ? "s" : ""} Still Needed` : "Claim Key";
-          claimBtn.disabled = !!missing;
-          if (!missing) claimBtn.onclick = () => _attemptClaim(true);
-        }
-      }
-    } catch {
-      if (claimBtn) { claimBtn.disabled = false; claimBtn.textContent = isUserAction ? "Try Again" : "Claim Key"; }
-    }
-  }
-
-  await _attemptClaim(false);
-}
-
-function _openScoutShop(district) {
-  const dialogueEl = el("scout-dialogue");
-  const subtitleEl = el("scout-shop-subtitle");
-  if (dialogueEl) {
-    dialogueEl.textContent = _SCOUT_DIALOGUES[Math.floor(Math.random() * _SCOUT_DIALOGUES.length)];
-  }
-  if (subtitleEl) {
-    const districtLabel = {
-      puppy_park:       "Puppy Park",
-      neighborhood_walk: "Neighborhood Walk",
-      doggy_daycare:    "Doggy Daycare",
-      dog_park:         "Training Center",
-    }[district] || district;
-    subtitleEl.textContent = districtLabel;
-  }
-  show("modal-scout-shop");
-  _loadToyShop(district);
-}
-
-async function _loadToyChest() {
-  const categoriesEl = el("toy-chest-categories");
-  const emptyEl = el("toy-chest-empty");
-  const cached = _readToyChestCache();
-  if (cached) _renderToyCollection(cached);
-  else categoriesEl.innerHTML = '<p class="text-gray-500 text-sm text-center py-8">Loading…</p>';
-  emptyEl.classList.add("hidden");
-
-  try {
-    const res = await authFetch(`${API}/api/me/toys`);
-    if (!res.ok) throw new Error();
-    const data = await res.json();
-    _writeToyChestCache(data);
-    _renderToyCollection(data);
-  } catch {
-    if (!cached) categoriesEl.innerHTML = '<p class="text-red-400 text-sm text-center py-8">Failed to load collection.</p>';
-  }
-}
-
-function _toyChestCacheKey() {
-  return `ems_toy_chest:${state.userId || "anon"}:${state.agency_id || "none"}`;
-}
-
-function _writeToyChestCache(data) {
-  if (!data) return;
-  try {
-    localStorage.setItem(_toyChestCacheKey(), JSON.stringify({ fetchedAt: Date.now(), data }));
-  } catch { /* storage may be unavailable */ }
-}
-
-function _readToyChestCache() {
-  try {
-    return JSON.parse(localStorage.getItem(_toyChestCacheKey()) || "null")?.data || null;
-  } catch {
-    return null;
-  }
-}
-
-function _renderToyCollection(data) {
-  const categoriesEl = el("toy-chest-categories");
-  const emptyEl = el("toy-chest-empty");
-  const summaryEl = el("toy-chest-summary");
-
-  const categories = data.categories || [];
-  const allToys   = categories.flatMap(c => c.series.flatMap(s => s.toys));
-  const totalOwned = allToys.filter(t => t.owned).length;
-  const totalToys  = allToys.length;
-  if (summaryEl) summaryEl.textContent = `${totalOwned} / ${totalToys} collected`;
-
-  if (categories.length === 0) {
-    categoriesEl.innerHTML = "";
-    emptyEl.classList.remove("hidden");
-    return;
-  }
-  emptyEl.classList.add("hidden");
-
-  // Check for any new arrivals across all categories → update badge
-  const hasNewArrivals = categories.some(cat =>
-    (cat.series || []).some(s => s.is_new_arrival)
-  );
-  const chestBadge = el("toy-chest-new-badge");
-  if (chestBadge) chestBadge.classList.toggle("hidden", !hasNewArrivals);
-
-  categoriesEl.innerHTML = categories.map(cat => {
-    const seriesBlocks = (cat.series || []).map(series => {
-      const newDot = series.is_new_arrival
-        ? `<span class="toy-new-dot">NEW</span>`
-        : "";
-
-      const toyCards = (series.toys || []).map(toy => {
-        const owned = toy.owned;
-        const rarityClass = `toy-card--${toy.rarity}`;
-        const lockedClass = owned ? "" : " toy-card--locked";
-        const img = toy.image_key
-          ? `<img src="/static/img/toys/${escapeHTML(toy.image_key)}.png" alt="${escapeHTML(toy.display_name)}" class="toy-card-img">`
-          : `<div class="toy-card-placeholder">${_TOY_RARITY_EMOJI[toy.rarity] || "🧸"}</div>`;
-        const dupCount = toy.owned_count > 1 ? `<span class="toy-dup-count">×${toy.owned_count}</span>` : "";
-        return `<div class="toy-card ${rarityClass}${lockedClass}" title="${escapeHTML(toy.display_name)}">
-          ${img}
-          <div class="toy-card-label">${escapeHTML(toy.display_name)}${dupCount}</div>
-          <div class="toy-rarity-badge toy-rarity-badge--${toy.rarity}">${_TOY_RARITY_LABEL[toy.rarity] || toy.rarity}</div>
-          ${!owned ? '<div class="toy-lock-icon">🔒</div>' : ""}
-        </div>`;
-      }).join("");
-
-      return `<div class="toy-series-block" data-series-tag="${escapeHTML(series.series_tag)}" data-new="${series.is_new_arrival ? "1" : "0"}">
-        <div class="toy-series-header">
-          <span class="toy-series-name">${escapeHTML(series.display_name)}</span>${newDot}
-        </div>
-        <div class="toy-series-grid">${toyCards}</div>
-      </div>`;
-    }).join("");
-
-    return `<div class="toy-category-block">
-      <div class="toy-category-header">${escapeHTML(cat.display_name)}</div>
-      ${seriesBlocks || '<p class="text-gray-600 text-xs py-2">No toys in this category yet.</p>'}
-    </div>`;
-  }).join("");
-
-  // Dismiss new-arrival badges when user views each new-arrival series
-  categoriesEl.querySelectorAll(".toy-series-block[data-new='1']").forEach(block => {
-    const tag = block.dataset.seriesTag;
-    if (!tag) return;
-    // Use IntersectionObserver so it fires when user scrolls to the series
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          obs.disconnect();
-          authFetch(`${API}/api/me/toys/series/${encodeURIComponent(tag)}/view`, { method: "POST" }).catch(() => {});
-          block.querySelectorAll(".toy-new-dot").forEach(d => d.remove());
-          block.dataset.new = "0";
-          // Recheck overall badge visibility
-          const remaining = categoriesEl.querySelectorAll(".toy-series-block[data-new='1']").length;
-          if (remaining === 0 && chestBadge) chestBadge.classList.add("hidden");
-        }
-      });
-    }, { threshold: 0.3 });
-    obs.observe(block);
-  });
-}
-
-async function _loadToyShop(district) {
-  const gridEl = el("toy-shop-grid");
-  const emptyEl = el("toy-shop-empty");
-  gridEl.innerHTML = '<p class="text-stone-500 text-sm col-span-full text-center py-8">Loading…</p>';
-  emptyEl.classList.add("hidden");
-
-  try {
-    const url = district
-      ? `${API}/api/toys/shop?district=${encodeURIComponent(district)}`
-      : `${API}/api/toys/shop`;
-    const res = await authFetch(url);
-    if (!res.ok) throw new Error();
-    const data = await res.json();
-    _renderToyShop(data);
-  } catch {
-    gridEl.innerHTML = '<p class="text-red-400 text-sm col-span-full text-center py-8">Failed to load shop.</p>';
-  }
-}
-
-function _renderToyShop(data) {
-  const gridEl = el("toy-shop-grid");
-  const emptyEl = el("toy-shop-empty");
-  const treatCountEl = el("scout-treat-count");
-
-  const toys = data.items || data;
-  const serverTreats = data.treats;
-  const cache = loadGamification();
-  const treats = serverTreats ?? cache.treats ?? 0;
-  if (treatCountEl) treatCountEl.textContent = `🦴 ${treats} treats`;
-
-  if (!toys || toys.length === 0) {
-    gridEl.innerHTML = "";
-    emptyEl.classList.remove("hidden");
-    return;
-  }
-  emptyEl.classList.add("hidden");
-
-  gridEl.innerHTML = toys.map(toy => {
-    const owned = toy.owned;
-    const canAfford = treats >= toy.shop_price;
-    const disabledAttr = (owned || !canAfford) ? "disabled" : "";
-    const btnLabel = owned ? "Owned" : `Buy ${toy.shop_price}🦴`;
-    const btnClass = owned ? "toy-shop-btn toy-shop-btn--owned" : (canAfford ? "toy-shop-btn" : "toy-shop-btn toy-shop-btn--broke");
-    const img = toy.image_key
-      ? `<img src="/static/img/toys/${escapeHTML(toy.image_key)}.png" alt="${escapeHTML(toy.display_name)}" class="toy-card-img">`
-      : `<div class="toy-card-placeholder">${_TOY_RARITY_EMOJI[toy.rarity] || "🧸"}</div>`;
-    const districtAttr = toy.district ? ` data-district="${escapeHTML(toy.district)}"` : "";
-    return `<div class="toy-shop-card toy-card--${toy.rarity}">
-      ${img}
-      <div class="toy-card-label">${escapeHTML(toy.display_name)}</div>
-      <div class="toy-rarity-badge toy-rarity-badge--${toy.rarity}">${_TOY_RARITY_LABEL[toy.rarity] || toy.rarity}</div>
-      <button class="${btnClass}" ${disabledAttr} data-toy-id="${escapeHTML(toy.toy_id || toy.id)}"${districtAttr}>${btnLabel}</button>
-    </div>`;
-  }).join("");
-
-  // Wire purchase buttons
-  gridEl.querySelectorAll(".toy-shop-btn:not([disabled])").forEach(btn => {
-    btn.addEventListener("click", () => _purchaseToy(btn.dataset.toyId, btn.dataset.district));
-  });
-}
-
-async function _purchaseToy(toyId, district) {
-  try {
-    const res = await authFetch(`${API}/api/me/toys/purchase`, {
-      method:  "POST",
-      headers: { "Content-Type": "application/json" },
-      body:    JSON.stringify({ toy_id: toyId }),
-    });
-    const data = await res.json();
-    if (!res.ok) {
-      showToast(data.detail || "Purchase failed.", "error");
-      return;
-    }
-    // Update local treat cache from server-authoritative balance
-    const game = loadGamification();
-    if (data.treats !== undefined) game.treats = data.treats;
-    _progressCache = game;
-    updateTreatDisplay();
-
-    const msg = data.is_duplicate
-      ? `Already owned! Got +${data.treats_awarded}🦴 instead.`
-      : `🧸 ${data.display_name} added to your collection!`;
-    showToast(msg, "success");
-
-    // Refresh shop in place with same district
-    _loadToyShop(district);
-  } catch {
-    showToast("Purchase failed. Try again.", "error");
-  }
-}
 
 /* ═══════════════════════════════════════════════════════════════════
    INIT — restore JWT and profile on page load
    ═══════════════════════════════════════════════════════════════════ */
 
 (function init() {
+  if (_isScormLaunch()) {
+    showScreen("scorm-station1");
+    _showScormLaunchStatus("Connecting to Moodle and loading your Station 1 progress...");
+    _activateScormAndEnter().catch((err) => {
+      _showScormLaunchError(err);
+    });
+    return;
+  }
+
   // Populate agency dropdowns from public API on page load
   // Each agency carries is_open_join so the join-code field can show/hide.
   // _agencyOpenMap is declared at module scope (above init) for access by handleRegister
