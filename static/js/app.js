@@ -11551,7 +11551,7 @@ function _pedsSidebarMapButton(mapId, currentMapId, passedIds, pedsMapCompleted,
   </button>`;
 }
 
-function _renderStation1Sidebar({ introSeen, completed, cprComplete, orientationLocked, cprLocked, completionLocked }) {
+function _renderStation1Sidebar({ introSeen, completed, cprComplete, challengesSeen }) {
   const list = el("category-map-nav-list");
   const subtitle = el("category-map-nav-subtitle");
   if (!list) return;
@@ -11560,7 +11560,7 @@ function _renderStation1Sidebar({ introSeen, completed, cprComplete, orientation
     { label: "Lexi Intro", done: introSeen },
     { label: "Orientation Tour", done: completed },
     { label: "CPR Drill", done: cprComplete },
-    { label: "Challenges Briefing", done: _station1ChallengesSeen() },
+    { label: "Challenges Briefing", done: challengesSeen },
     { label: "Lexi Wrap-up", done: !!state.orientationCompletedAt },
   ];
   const doneCount = requirements.filter(r => r.done).length;
@@ -15031,8 +15031,19 @@ function _renderDistrictComingSoon(districtId) {
 }
 
 // ─── Station 1 Map renderer ─────────────────────────────────────────────────
+function _station1StorageScope() {
+  if (!state.scormEnabled) return "";
+  try {
+    return window.RescueTrails?.["scormAdapter"]?.getAttemptId?.() || "current";
+  } catch {
+    return "current";
+  }
+}
+
 function _station1IntroKey() {
-  return `station1_intro_seen:${state.userId || "anon"}:${state.agency_id || "none"}`;
+  const scope = _station1StorageScope();
+  const scopePart = scope ? `scorm:${scope}:` : "";
+  return `station1_intro_seen:${scopePart}${state.userId || "anon"}:${state.agency_id || "none"}`;
 }
 
 function _station1IntroSeen() {
@@ -15050,7 +15061,9 @@ function _station1MarkIntroSeen() {
 }
 
 function _pedsLexiNodeSeenKey(mapId, nodeId) {
-  return `peds_lexi_node_seen:${state.userId || "anon"}:${state.agency_id || "none"}:${mapId || "map"}:${nodeId || "node"}`;
+  const scope = _station1StorageScope();
+  const scopePart = scope ? `scorm:${scope}:` : "";
+  return `peds_lexi_node_seen:${scopePart}${state.userId || "anon"}:${state.agency_id || "none"}:${mapId || "map"}:${nodeId || "node"}`;
 }
 
 function _pedsLexiNodeSeen(mapId, nodeId) {
@@ -15292,9 +15305,9 @@ function _renderStation1Map() {
 
   const orientationLocked = !introSeen;
   const cprLocked = !completed;
-  const challengesSeen = _station1ChallengesSeen();
-  const completionLocked = !challengesSeen;
   const challengesLocked = !cprComplete;
+  const challengesSeen = !challengesLocked && _station1ChallengesSeen();
+  const completionLocked = !completed || !cprComplete || !challengesSeen;
   const station1Guide = text => _station1GuideBubble({ ...STATION1_GUIDE_BUBBLE_POS, text, align: "center" });
   const guide = !introSeen
     ? station1Guide(_station1IntroBubbleText())
@@ -15345,7 +15358,7 @@ function _renderStation1Map() {
   layer.querySelector('[data-s1-node="intro"]')?.addEventListener("click", _openStation1IntroNode);
   layer.querySelector('[data-s1-node="complete"]')?.addEventListener("click", () => {
     if (completionLocked) {
-      _presentMapNodeSelection(_station1LockSelection("Lexi Wrap-up Locked", "Complete the Challenges briefing before the final Station 1 message."));
+      _presentMapNodeSelection(_station1LockSelection("Lexi Wrap-up Locked", "Complete the Orientation Tour, CPR drill, and Challenges briefing before the final Station 1 message."));
       return;
     }
     _openStation1CompletionNode();
@@ -15394,7 +15407,7 @@ function _renderStation1Map() {
     });
   });
 
-  _renderStation1Sidebar({ introSeen, completed, cprComplete, orientationLocked, cprLocked, completionLocked });
+  _renderStation1Sidebar({ introSeen, completed, cprComplete, challengesSeen });
   _clearDistrictJourneySummary();
 
   showScreen("category");

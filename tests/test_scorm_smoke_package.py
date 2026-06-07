@@ -207,6 +207,20 @@ def test_scorm_runtime_uses_compact_sim_and_localizes_backend_static_assets():
     assert jake_tts["voice_role"] == "patient"
 
 
+def test_scorm_station1_wrapup_requires_full_orientation_sequence():
+    app_js = APP_JS.read_text()
+    assert "function _station1StorageScope()" in app_js
+    assert 'window.RescueTrails?.["scormAdapter"]?.getAttemptId?.()' in app_js
+    assert "const scopePart = scope ? `scorm:${scope}:` : \"\";" in app_js
+    assert "const challengesSeen = !challengesLocked && _station1ChallengesSeen();" in app_js
+    assert "const completionLocked = !completed || !cprComplete || !challengesSeen;" in app_js
+    sidebar_start = app_js.find("function _renderStation1Sidebar")
+    assert sidebar_start != -1
+    sidebar_block = app_js[sidebar_start:sidebar_start + 900]
+    assert "{ label: \"Challenges Briefing\", done: challengesSeen }" in sidebar_block
+    assert "_station1ChallengesSeen()" not in sidebar_block
+
+
 def test_scorm_launch_errors_do_not_show_login_screen():
     app_js = APP_JS.read_text()
     start = app_js.find("if (_isScormLaunch())")
