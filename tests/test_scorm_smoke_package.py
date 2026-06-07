@@ -146,6 +146,7 @@ def test_app_bootstrap_has_scorm_launch_branch_and_bearer_bridge():
     assert "function _isScormLaunch()" in app_js
     assert "function _showScormLaunchError" in app_js
     assert "function _hideScormLaunchStatus()" in app_js
+    assert "function _releaseScormPreboot()" in app_js
     assert "function _enterScormMapExperience()" in app_js
     assert "function _activateScormAndEnter()" in app_js
     assert "headers.Authorization = `Bearer ${scormToken}`" in app_js
@@ -158,6 +159,7 @@ def test_scorm_launch_enters_production_station_or_pediatric_maps():
     start = app_js.find("function _enterScormMapExperience()")
     assert start != -1
     block = app_js[start:start + 700]
+    assert "_releaseScormPreboot();" in block
     assert 'showCategoryScreen("station_1")' in block
     assert 'showCategoryScreen("pediatrics")' in block
     assert 'showScreen("scorm-station1")' not in block

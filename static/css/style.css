@@ -125,7 +125,10 @@ body {
   padding: 18px;
 }
 
-.scorm-preboot #screen-login {
+.scorm-preboot #screen-login,
+.scorm-preboot #screen-menu,
+.scorm-preboot #screen-category,
+.scorm-preboot #screen-scorm-station1 {
   display: none;
 }
 

@@ -5938,9 +5938,14 @@ function _hideScormLaunchStatus() {
   box.classList.remove("is-error", "is-info");
 }
 
+function _releaseScormPreboot() {
+  document.documentElement.classList.remove("scorm-preboot");
+}
+
 function _showScormLaunchError(err) {
   const message = err?.message || "SCORM launch failed. Please relaunch this activity from Moodle.";
   console.error("SCORM launch failed", err);
+  _releaseScormPreboot();
   showScreen("scorm-station1");
   _showScormLaunchStatus(message, "error");
   ["scorm-map0-nodes", "scorm-pm1-nodes", "scorm-pt1-nodes", "scorm-map3-nodes", "scorm-optional-nodes"].forEach(id => {
@@ -6030,6 +6035,7 @@ function _storeScormResumeState(summaryOrResume = {}) {
 }
 
 function _enterScormMapExperience() {
+  _releaseScormPreboot();
   _hideScormLaunchStatus();
   if (!state.orientationCompletedAt) {
     _categoryView = { mode: "district", districtId: "station_1" };
