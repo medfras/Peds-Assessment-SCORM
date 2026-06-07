@@ -163,7 +163,7 @@ def test_scorm_launch_enters_orientation_until_complete_then_home():
     assert end != -1
     block = app_js[start:end]
     assert "_releaseScormPreboot();" in block
-    assert "state.orientationCompletedAt" in block
+    assert "_station1IsComplete()" in block
     assert "const uiState = _getScormUiState();" in block
     assert "uiState?.orientationComplete === true" in block
     assert '_setScormUiState({ location: "home", map: "map_0", orientationComplete: true });' in block
@@ -200,7 +200,7 @@ def test_scorm_history_back_respects_incomplete_orientation_gate():
     assert start != -1
     block = app_js[start:start + 650]
 
-    gate = 'if (state.scormEnabled && !state.orientationCompletedAt)'
+    gate = 'if (state.scormEnabled && !_station1IsComplete())'
     assert gate in block
     assert "_enterScormOrientationMap();" in block
     assert "function _openHistoryScreen(returnTarget = \"menu\")" in app_js
@@ -264,13 +264,44 @@ def test_scorm_station1_wrapup_requires_full_orientation_sequence():
     assert "function _station1StorageScope()" in app_js
     assert 'window.RescueTrails?.["scormAdapter"]?.getAttemptId?.()' in app_js
     assert "const scopePart = scope ? `scorm:${scope}:` : \"\";" in app_js
-    assert "const challengesSeen = !challengesLocked && _station1ChallengesSeen();" in app_js
-    assert "const completionLocked = !completed || !cprComplete || !challengesSeen;" in app_js
+    assert "function _station1RequirementsState(history = null)" in app_js
+    assert "const ready = introSeen && completed && cprComplete && challengesSeen;" in app_js
+    assert "return completedIds.has(STATION1_CPR_SCENARIO_ID);" in app_js
+    assert "const completionLocked = !introSeen || !completed || !cprComplete || !challengesSeen;" in app_js
+    complete_start = app_js.find("async function _completeStation1FromWrapupNode()")
+    assert complete_start != -1
+    complete_block = app_js[complete_start:complete_start + 500]
+    assert "const requirements = _station1RequirementsState();" in complete_block
+    assert "if (!requirements.ready)" in complete_block
     sidebar_start = app_js.find("function _renderStation1Sidebar")
     assert sidebar_start != -1
     sidebar_block = app_js[sidebar_start:sidebar_start + 900]
     assert "{ label: \"Challenges Briefing\", done: challengesSeen }" in sidebar_block
     assert "_station1ChallengesSeen()" not in sidebar_block
+
+
+def test_pediatric_district_is_blocked_until_station1_complete():
+    app_js = APP_JS.read_text()
+    show_start = app_js.find("function showCategoryScreen(categoryKey)")
+    assert show_start != -1
+    show_block = app_js[show_start:show_start + 1100]
+    assert 'if (districtId === "pediatrics")' in show_block
+    assert "!_station1IsComplete()" in show_block
+    assert "Complete Station 1 before entering Pediatric Community Response." in show_block
+    assert '_categoryView = { mode: "district", districtId: "station_1" };' in show_block
+    assert "_renderStation1Map();" in show_block
+
+    enter_start = app_js.find("function _enterScormPedsMap")
+    assert enter_start != -1
+    enter_block = app_js[enter_start:enter_start + 260]
+    assert "if (!_station1IsComplete())" in enter_block
+    assert "_enterScormOrientationMap();" in enter_block
+
+    home_start = app_js.find('el("btn-category-home")?.addEventListener("click"')
+    assert home_start != -1
+    home_block = app_js[home_start:home_start + 260]
+    assert "state.scormEnabled && !_station1IsComplete()" in home_block
+    assert "_enterScormOrientationMap();" in home_block
 
 
 def test_scorm_launch_errors_do_not_show_login_screen():

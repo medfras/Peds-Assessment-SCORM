@@ -6087,7 +6087,7 @@ function _enterScormMapExperience() {
   _releaseScormPreboot();
   _hideScormLaunchStatus();
   const uiState = _getScormUiState();
-  if (state.orientationCompletedAt && uiState?.orientationComplete === true) {
+  if (_station1IsComplete() && uiState?.orientationComplete === true) {
     _setScormUiState({ location: "home", map: "map_0", orientationComplete: true });
     buildMenu();
     showScreen("menu");
@@ -6105,6 +6105,10 @@ function _enterScormOrientationMap() {
 }
 
 function _enterScormPedsMap(mapId = "map_0") {
+  if (!_station1IsComplete()) {
+    _enterScormOrientationMap();
+    return;
+  }
   _categoryView = { mode: "district", districtId: "pediatrics" };
   _pedsJourneyState.currentMap = _scormPedsMapAllowed(mapId) ? mapId : "map_0";
   _pedsJourneyState.view = _pedsJourneyState.currentMap === "pm1"
@@ -10918,7 +10922,7 @@ function _genDistrictMapSVG(history) {
     </pattern>
   </defs>`;
 
-  const stationComplete = !!state.orientationCompletedAt;
+  const stationComplete = _station1IsComplete(_station1RequirementsState(history));
 
   // Render circle node for station_1 (home base, not a polygon zone)
   const homeNodeSvg = ADVENTURE_DISTRICTS.filter(d => d.mapNode).map(d => {
@@ -11061,7 +11065,7 @@ function buildMenu() {
       if (_mapDragMoved) return;
       const district = zone.getAttribute("data-district");
       const districtDef = ADVENTURE_DISTRICTS.find(d => d.id === district);
-      if (districtDef?.prereq === "station_1" && !state.orientationCompletedAt) {
+      if (districtDef?.prereq === "station_1" && !_station1IsComplete()) {
         showToast("Complete Station 1 orientation first — tap the firehouse marker.", "info");
         return;
       }
@@ -11564,19 +11568,26 @@ function _renderStation1Sidebar({ introSeen, completed, cprComplete, challengesS
   const subtitle = el("category-map-nav-subtitle");
   if (!list) return;
   if (subtitle) subtitle.textContent = "Orientation progress and Station 1 access.";
+  const stationComplete = _station1IsComplete({
+    introSeen,
+    completed,
+    cprComplete,
+    challengesSeen,
+    ready: introSeen && completed && cprComplete && challengesSeen,
+  });
   const requirements = [
     { label: "Lexi Intro", done: introSeen },
     { label: "Orientation Tour", done: completed },
     { label: "CPR Drill", done: cprComplete },
     { label: "Challenges Briefing", done: challengesSeen },
-    { label: "Lexi Wrap-up", done: !!state.orientationCompletedAt },
+    { label: "Lexi Wrap-up", done: stationComplete },
   ];
   const doneCount = requirements.filter(r => r.done).length;
   const orientationStep = {
     id: "orientation",
     label: "Orientation",
     unlocked: true,
-    complete: !!state.orientationCompletedAt,
+    complete: stationComplete,
     pct: Math.round((doneCount / requirements.length) * 100),
     requirement: `${doneCount}/${requirements.length} steps complete`,
     requirements,
@@ -11585,9 +11596,9 @@ function _renderStation1Sidebar({ introSeen, completed, cprComplete, challengesS
     id: "station_1",
     label: "Station 1",
     unlocked: true,
-    complete: !!state.orientationCompletedAt,
+    complete: stationComplete,
     pct: orientationStep.pct,
-    requirement: state.orientationCompletedAt ? "Complete" : "Complete Orientation to unlock other districts.",
+    requirement: stationComplete ? "Complete" : "Complete Orientation to unlock other districts.",
     requirements,
   };
   list.innerHTML = `
@@ -11662,12 +11673,12 @@ function _station1RequirementHtml(step) {
 
 function _districtProgress(districtId) {
   const district = ADVENTURE_DISTRICTS.find(d => d.id === districtId);
-  const stationDone = !!state.orientationCompletedAt;
+  const stationDone = _station1IsComplete();
   const prereqMet = !district?.prereq || stationDone;
   const counts = _districtActivityCounts(districtId, true);
   const total = counts.callsTotal + counts.drillsTotal;
   const done = counts.callsComplete + counts.drillsComplete;
-  const stationStarted = !!state.orientationCompletedAt || _station1IntroSeen();
+  const stationStarted = stationDone || _station1IntroSeen();
   const pct = districtId === "station_1"
     ? (stationDone ? 100 : stationStarted ? 25 : 0)
     : !prereqMet
@@ -11691,8 +11702,9 @@ function _districtProgress(districtId) {
 function _districtRequirementHtml(district, progress) {
   const rows = [];
   if (district?.prereq === "station_1") {
-    rows.push(`<li class="map-req-row ${state.orientationCompletedAt ? "done" : "locked"}">
-      <span>${state.orientationCompletedAt ? "✓" : "○"}</span>
+    const stationComplete = _station1IsComplete();
+    rows.push(`<li class="map-req-row ${stationComplete ? "done" : "locked"}">
+      <span>${stationComplete ? "✓" : "○"}</span>
       <strong>Station 1 Orientation</strong>
     </li>`);
   } else {
@@ -15212,14 +15224,11 @@ function _station1IntroBubbleText() {
 }
 
 function _station1CprDrillComplete(completedIds = new Set()) {
-  // Round 3 is the integrated CPR scenario/challenge. Either authored CPR
-  // training scenario counts as prior completion if the learner has already
-  // done one elsewhere.
-  return [...STATION1_CPR_COMPLETION_IDS].some(id => completedIds.has(id));
+  return completedIds.has(STATION1_CPR_SCENARIO_ID);
 }
 
 function _station1WrapSeen() {
-  return !!state.orientationCompletedAt || _pedsLexiNodeSeen("station_1", STATION1_WRAP_NODE_ID);
+  return _station1IsComplete() || _pedsLexiNodeSeen("station_1", STATION1_WRAP_NODE_ID);
 }
 
 function _station1MarkWrapSeen() {
@@ -15227,11 +15236,35 @@ function _station1MarkWrapSeen() {
 }
 
 function _station1ChallengesSeen() {
-  return !!state.orientationCompletedAt || _pedsLexiNodeSeen("station_1", STATION1_CHALLENGES_NODE_ID);
+  return _pedsLexiNodeSeen("station_1", STATION1_CHALLENGES_NODE_ID);
 }
 
 function _station1MarkChallengesSeen() {
   _pedsMarkLexiNodeSeen("station_1", STATION1_CHALLENGES_NODE_ID);
+}
+
+function _station1RequirementsState(history = null) {
+  const scopedHistory = history || loadHistory().filter(h => !h.agencyId || h.agencyId === state.agency_id);
+  const completedIds = new Set(scopedHistory.map(h => h.scenarioId));
+  const introSeen = _station1IntroSeen();
+  const completed = completedIds.has("orientation_01");
+  const cprComplete = _station1CprDrillComplete(completedIds);
+  const challengesSeen = cprComplete && _station1ChallengesSeen();
+  const ready = introSeen && completed && cprComplete && challengesSeen;
+  return { history: scopedHistory, completedIds, introSeen, completed, cprComplete, challengesSeen, ready };
+}
+
+function _station1IsComplete(requirements = null) {
+  const req = requirements || _station1RequirementsState();
+  return !!state.orientationCompletedAt && !!req.ready;
+}
+
+function _station1IncompleteMessage(requirements) {
+  if (!requirements.introSeen) return "Start with the Lexi Intro node before completing Station 1.";
+  if (!requirements.completed) return "Finish the Orientation Tour before completing Station 1.";
+  if (!requirements.cprComplete) return "Complete the Station 1 CPR drill before completing Station 1.";
+  if (!requirements.challengesSeen) return "Open the Challenges Briefing before completing Station 1.";
+  return "Complete all Station 1 requirements before continuing.";
 }
 
 function _latestOrientationSessionId() {
@@ -15241,6 +15274,11 @@ function _latestOrientationSessionId() {
 }
 
 async function _completeStation1FromWrapupNode() {
+  const requirements = _station1RequirementsState();
+  if (!requirements.ready) {
+    showToast(_station1IncompleteMessage(requirements), "error");
+    return false;
+  }
   const sessionId = _latestOrientationSessionId();
   if (!sessionId) {
     showToast("Finish the Orientation Tour before completing Station 1.", "error");
@@ -15266,9 +15304,8 @@ async function _completeStation1FromWrapupNode() {
 
 function _renderStation1Map() {
   const history = loadHistory().filter(h => !h.agencyId || h.agencyId === state.agency_id);
-  const completedIds = new Set(history.map(h => h.scenarioId));
-  const cprComplete = _station1CprDrillComplete(completedIds);
-  const introSeen = _station1IntroSeen() || completedIds.has("orientation_01") || cprComplete || !!state.orientationCompletedAt;
+  const requirements = _station1RequirementsState(history);
+  const { completedIds, introSeen, completed, cprComplete, challengesSeen } = requirements;
 
   setText("category-screen-icon", "🚒");
   setText("category-screen-title", "Station 1");
@@ -15302,9 +15339,8 @@ function _renderStation1Map() {
 
   const scenario = state.allScenarios.find(s => s.id === "orientation_01");
   const cprScenario = state.allScenarios.find(s => s.id === STATION1_CPR_SCENARIO_ID);
-  const completed = completedIds.has("orientation_01");
   const cprLastEntry = history
-    .filter(h => STATION1_CPR_COMPLETION_IDS.has(h.scenarioId))
+    .filter(h => h.scenarioId === STATION1_CPR_SCENARIO_ID)
     .sort((a, b) => (b.key || 0) - (a.key || 0))[0] || null;
   const lastEntry = history
     .filter(h => h.scenarioId === "orientation_01")
@@ -15314,8 +15350,7 @@ function _renderStation1Map() {
   const orientationLocked = !introSeen;
   const cprLocked = !completed;
   const challengesLocked = !cprComplete;
-  const challengesSeen = !challengesLocked && _station1ChallengesSeen();
-  const completionLocked = !completed || !cprComplete || !challengesSeen;
+  const completionLocked = !introSeen || !completed || !cprComplete || !challengesSeen;
   const station1Guide = text => _station1GuideBubble({ ...STATION1_GUIDE_BUBBLE_POS, text, align: "center" });
   const guide = !introSeen
     ? station1Guide(_station1IntroBubbleText())
@@ -15325,7 +15360,7 @@ function _renderStation1Map() {
         ? station1Guide("Next: complete the CPR Drill.")
         : !challengesSeen
           ? station1Guide("Next: check the Challenges Briefing.")
-          : !state.orientationCompletedAt
+          : !_station1IsComplete(requirements)
             ? station1Guide("Final step: click on the Wrap-up to complete your orientation.")
             : station1Guide("Station 1 complete. Now go do some hero stuff!");
 
@@ -15349,11 +15384,11 @@ function _renderStation1Map() {
       style="left:76%; top:69%;">
       ${cprLocked ? `<span class="journey-node-lock" aria-hidden="true">🔒</span>` : `📚${cprComplete ? `<span class="journey-node-complete" aria-hidden="true">✓</span>` : ""}`}
     </button>
-    <button class="journey-node journey-node--lexi ${completionLocked ? "locked" : state.orientationCompletedAt ? "done" : "open"}"
+    <button class="journey-node journey-node--lexi ${completionLocked ? "locked" : _station1IsComplete(requirements) ? "done" : "open"}"
       data-s1-node="complete"
       title="Lexi Wrap-up" aria-label="Lexi Wrap-up"
       style="left:49%; top:44%;">
-      ${completionLocked ? `<span class="journey-node-lock" aria-hidden="true">🔒</span>` : _station1LexiGlyph(!!state.orientationCompletedAt)}
+      ${completionLocked ? `<span class="journey-node-lock" aria-hidden="true">🔒</span>` : _station1LexiGlyph(_station1IsComplete(requirements))}
     </button>
     <button class="journey-node journey-node--lexi ${challengesLocked ? "locked" : challengesSeen ? "done" : "open"}"
       data-s1-node="challenges"
@@ -16902,11 +16937,23 @@ function showCategoryScreen(categoryKey) {
   const districtId = _districtForCategory(categoryKey);
   if (!districtId) {
     if (_showLegacyCategoryList(categoryKey)) return;
+    if (!_station1IsComplete()) {
+      showToast("Complete Station 1 before entering Pediatric Community Response.", "info");
+      _categoryView = { mode: "district", districtId: "station_1" };
+      _renderStation1Map();
+      return;
+    }
     _renderPediatricsJourney();
     _categoryView = { mode: "district", districtId: "pediatrics" };
     return;
   }
   if (districtId === "pediatrics") {
+    if (!_station1IsComplete()) {
+      showToast("Complete Station 1 before entering Pediatric Community Response.", "info");
+      _categoryView = { mode: "district", districtId: "station_1" };
+      _renderStation1Map();
+      return;
+    }
     _renderPediatricsJourney();
     _categoryView = { mode: "district", districtId };
     return;
@@ -17772,6 +17819,10 @@ el("active-challenges-body")?.addEventListener("click", (event) => {
   if (challenge) _renderChallengeDetail(challenge);
 });
 el("btn-category-home")?.addEventListener("click", () => {
+  if (state.scormEnabled && !_station1IsComplete()) {
+    _enterScormOrientationMap();
+    return;
+  }
   buildMenu();
   showScreen("menu");
 });
@@ -17830,7 +17881,7 @@ el("btn-open-badges")?.addEventListener("click", () => {
 el("btn-badges-close")?.addEventListener("click", () => hide("modal-badges"));
 
 el("btn-history-back").addEventListener("click", () => {
-  if (state.scormEnabled && !state.orientationCompletedAt) {
+  if (state.scormEnabled && !_station1IsComplete()) {
     _enterScormOrientationMap();
     return;
   }
