@@ -6093,7 +6093,7 @@ function _enterScormMapExperience() {
   _releaseScormPreboot();
   _hideScormLaunchStatus();
   const uiState = _getScormUiState();
-  if (_station1IsComplete() && uiState?.orientationComplete === true) {
+  if (_station1IsComplete()) {
     _setScormUiState({ location: "home", map: "map_0", orientationComplete: true });
     buildMenu();
     showScreen("menu");
@@ -15365,7 +15365,13 @@ function _station1RequirementsState(history = null) {
   return { history: scopedHistory, completedIds, introSeen, completed, cprComplete, challengesSeen, ready };
 }
 
+function _station1ScormOrientationComplete() {
+  if (!state.scormEnabled) return false;
+  return _getScormUiState()?.orientationComplete === true;
+}
+
 function _station1IsComplete(requirements = null) {
+  if (_station1ScormOrientationComplete()) return true;
   const req = requirements || _station1RequirementsState();
   return !!state.orientationCompletedAt && !!req.ready;
 }
@@ -15404,6 +15410,7 @@ async function _completeStation1FromWrapupNode() {
     throw new Error(err.detail || "Could not complete Station 1.");
   }
   state.orientationCompletedAt = new Date().toISOString();
+  if (state.scormEnabled) _setScormUiState({ location: "home", map: "map_0", orientationComplete: true });
   const meRes = await authFetch(`${API}/api/me`).catch(() => null);
   if (meRes?.ok) {
     const me = await meRes.json().catch(() => null);

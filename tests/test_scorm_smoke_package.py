@@ -164,8 +164,6 @@ def test_scorm_launch_enters_orientation_until_complete_then_home():
     block = app_js[start:end]
     assert "_releaseScormPreboot();" in block
     assert "_station1IsComplete()" in block
-    assert "const uiState = _getScormUiState();" in block
-    assert "uiState?.orientationComplete === true" in block
     assert '_setScormUiState({ location: "home", map: "map_0", orientationComplete: true });' in block
     assert "buildMenu();" in block
     assert 'showScreen("menu");' in block
@@ -266,6 +264,11 @@ def test_scorm_station1_wrapup_requires_full_orientation_sequence():
     assert "const scopePart = scope ? `scorm:${scope}:` : \"\";" in app_js
     assert "function _station1RequirementsState(history = null)" in app_js
     assert "const ready = introSeen && completed && cprComplete && challengesSeen;" in app_js
+    assert "function _station1ScormOrientationComplete()" in app_js
+    assert "_getScormUiState()?.orientationComplete === true" in app_js
+    assert "if (_station1ScormOrientationComplete()) return true;" in app_js
+    assert "return !!state.orientationCompletedAt && !!req.ready;" in app_js
+    assert 'if (state.scormEnabled) _setScormUiState({ location: "home", map: "map_0", orientationComplete: true });' in app_js
     assert "return completedIds.has(STATION1_CPR_SCENARIO_ID);" in app_js
     assert "const completionLocked = !introSeen || !completed || !cprComplete || !challengesSeen;" in app_js
     complete_start = app_js.find("async function _completeStation1FromWrapupNode()")
