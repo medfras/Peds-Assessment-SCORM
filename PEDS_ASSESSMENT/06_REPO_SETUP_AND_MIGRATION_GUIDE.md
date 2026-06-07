@@ -376,16 +376,36 @@ unzip -l pfd_station1_scorm.zip | grep imsmanifest.xml
 - No redirect, iframe, or remote-launch wrapper for the hosted backend app
 - `cmi.suspend_data` serialized form spot-checked to be under 4,096 characters
 - No `window.open()` calls in the package flow
-- Moodle activity configured for embedded/same-window iframe launch, not new window
+- Moodle activity configured for New Window launch for microphone/full-size pilot playback; verify popup behavior before learner pilot
 
-### MoodleCloud microphone permission workaround
+### MoodleCloud microphone playback decision
 
-The pilot should keep Moodle's SCORM activity configured as embedded/same-window
-for the first pass. MoodleCloud does not expose a native SCORM activity setting
-for adding `allow="microphone"` to the embedded SCORM iframe, so microphone/STT
-requires a Moodle admin-level page injection.
+MoodleCloud embedded SCORM playback did not expose microphone access reliably.
+The pilot therefore uses Moodle's **New Window** SCORM display mode for the
+scenario simulator. This gives the SCO a top-level browser context so Chrome can
+request microphone permission normally, and it also restores a larger/full-size
+player surface for the production scenario UI.
 
-**Primary path: Additional HTML iframe permission patch**
+**Active pilot path: New Window launch**
+
+1. In the SCORM activity settings, set **Display package** to **New window**.
+2. Keep **Grading** as Highest attempt / score from SCO.
+3. Keep **Completion tracking** as Completion status (passed/failed).
+4. Launch in Chrome and allow the popup if prompted.
+5. Verify `LMSInitialize`, `LMSCommit`, and resume still work through Moodle's
+   opener-frame SCORM API bridge.
+6. Open a scenario and confirm Chrome prompts for microphone permission when the
+   mic button is clicked.
+
+**Operational risk:** popup blockers may prevent launch for some learners. Add a
+learner instruction near the SCORM activity: allow popups for the MoodleCloud
+site if the module does not open after clicking launch.
+
+**Embedded fallback record: Additional HTML iframe permission patch**
+
+The guarded Additional HTML patch remains documented for auditability and for a
+possible future embedded-mode retry. It was not adopted as the active pilot path
+because the embedded iframe did not provide reliable microphone behavior.
 
 1. In MoodleCloud, go to **Site administration -> Appearance -> Additional HTML**.
 2. Paste the contents of
@@ -405,27 +425,14 @@ The snippet is intentionally guarded:
 **Risk:** the one-time iframe reload can race Moodle's SCORM player initialization
 on some MoodleCloud builds. If the activity starts showing duplicate auth,
 missing `LMSInitialize`, lost suspend data, or inconsistent `LMSCommit`, remove
-the Additional HTML snippet and use the fallback path below.
-
-**Fallback path: New Window launch**
-
-If Additional HTML is unavailable or the iframe reload proves brittle, change the
-SCORM activity **Display package** setting to **New window**. A top-level SCORM
-window can request microphone permission without an iframe `allow` attribute, but
-the pilot must then add learner/admin instructions for popup blockers and verify
-that Moodle's `window.opener` SCORM API bridge still initializes, commits, and
-finishes reliably.
-
-Do not adopt New Window silently. If the fallback becomes the pilot path, update
-`07_PILOT_READINESS_CHECKLIST.md` and any architecture notes that currently say
-embedded/same-window is required.
+the Additional HTML snippet and keep New Window as the pilot path.
 
 ### Uploading to Moodle Cloud
 
 1. Log in to Moodle Cloud as admin.
 2. Create a SCORM activity in the target course.
 3. Upload `pfd_station1_scorm.zip`.
-4. Set **Display:** Embedded (same window).
+4. Set **Display:** New window.
 5. Set **Grading:** Highest attempt; score from SCO.
 6. Set **Completion tracking:** Completion status (passed/failed).
 7. If Moodle App playback is in scope: disable "Protect package downloads" in Site Administration.

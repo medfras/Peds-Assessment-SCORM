@@ -390,12 +390,12 @@ Map readiness checklist:
 - [ ] Lesson status writes `"passed"` when CE challenge complete; `"incomplete"` otherwise (never `"failed"` for in-progress)
 - [ ] Backend remains the source of truth for final grade
 - [ ] No transcripts, debrief text, AI output, or clinical evidence written to `cmi.suspend_data`
-- [ ] No internal package flow depends on `window.open()`
-- [ ] Moodle activity launch mode verified as embedded/same-window iframe, not "new window"
-- [ ] MoodleCloud Additional HTML microphone patch installed for embedded SCORM iframe, or explicitly marked failed with fallback decision recorded
-- [ ] Embedded SCORM iframe inspected in DevTools and confirmed to include `allow` with `microphone *`
-- [ ] Chrome microphone permission prompt verified from inside the SCORM scenario screen
-- [ ] Fallback plan documented: if Additional HTML iframe reload breaks SCORM initialization/commit, switch activity Display package to New window and add popup-blocker learner instructions
+- [ ] No internal package flow depends on `window.open()`; Moodle owns the New Window launch
+- [ ] Moodle activity launch mode verified as New Window for microphone/full-size pilot playback
+- [ ] Moodle opener-frame SCORM API bridge verified: `LMSInitialize`, `LMSCommit`, `LMSFinish`, and resume all work from New Window
+- [ ] Learner/admin instruction added near SCORM activity: allow popups for the MoodleCloud site if launch is blocked
+- [ ] Chrome microphone permission prompt verified from inside the New Window scenario screen
+- [ ] Embedded Additional HTML microphone patch documented as attempted/fallback record, not active pilot path
 - [ ] Learner/admin instructions state JavaScript must be enabled
 - [ ] Moodle App readiness verified if app playback is in scope: "Protect package downloads" disabled in Moodle Cloud Site Administration
 
@@ -566,7 +566,7 @@ This is the sequenced implementation checklist for the SCORM branch. Items in Se
 - [ ] TTS failure does not block scenario text from displaying
 
 ### Phase 8 — Moodle Cloud upload and verification
-- [x] ZIP uploaded; activity configured: embedded iframe, highest-attempt grading, completion status tracking
+- [x] ZIP uploaded; activity configured: New Window, highest-attempt grading, completion status tracking
 - [ ] "Protect package downloads" verified disabled if Moodle App is in scope
 - [ ] Moodle Cloud subdomain confirmed; backend CORS updated with exact SCO origin
 - [ ] Test launch: no SCORM API errors and no backend CORS/auth errors in browser console
@@ -574,7 +574,8 @@ This is the sequenced implementation checklist for the SCORM branch. Items in Se
 - [ ] Orientation runs end-to-end, transitions to Map 0
 - [ ] `drill_pat` completes → node result submits → `unlocks.scenarios` flips → PM1/PT1 unlock on screen
 - [ ] Full scenario: launches, chats, debriefs, scores, node result submitted to SCORM backend
-- [ ] Scenario microphone button visible and tested in Chrome; if blocked by Moodle iframe policy, fallback decision recorded before learner pilot
+- [ ] Scenario microphone button visible and tested in Chrome New Window playback
+- [ ] Scenario screen usable at full-size New Window dimensions; no critical controls below/behind Moodle chrome
 - [ ] Optional lung-sounds package-path validation: confirm all LSM/Sound Check referenced audio files are present before testing `game_lung_sounds`
 - [ ] Resume test: close browser mid-session, relaunch from LMS, map state restored from `cmi.suspend_data`
 - [ ] CE challenge complete: `cmi.core.lesson_status = "passed"` written; score visible in Moodle gradebook
