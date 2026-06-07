@@ -146,10 +146,21 @@ def test_app_bootstrap_has_scorm_launch_branch_and_bearer_bridge():
     assert "function _isScormLaunch()" in app_js
     assert "function _showScormLaunchError" in app_js
     assert "function _hideScormLaunchStatus()" in app_js
+    assert "function _enterScormMapExperience()" in app_js
     assert "function _activateScormAndEnter()" in app_js
     assert "headers.Authorization = `Bearer ${scormToken}`" in app_js
     assert "_activateScormAndEnter().catch" in app_js
     assert "RescueTrails.scorm" not in app_js
+
+
+def test_scorm_launch_enters_production_station_or_pediatric_maps():
+    app_js = APP_JS.read_text()
+    start = app_js.find("function _enterScormMapExperience()")
+    assert start != -1
+    block = app_js[start:start + 700]
+    assert 'showCategoryScreen("station_1")' in block
+    assert 'showCategoryScreen("pediatrics")' in block
+    assert 'showScreen("scorm-station1")' not in block
 
 
 def test_scorm_launch_errors_do_not_show_login_screen():
@@ -162,9 +173,14 @@ def test_scorm_launch_errors_do_not_show_login_screen():
     assert 'showScreen("login")' not in block
 
 
-def test_scorm_minigame_exits_return_to_station_shell():
+def test_scorm_minigame_exits_return_to_production_map():
     app_js = APP_JS.read_text()
     assert "function _returnToScormStation1()" in app_js
+    start = app_js.find("function _returnToScormStation1()")
+    block = app_js[start:start + 650]
+    assert "_renderStation1Map();" in block
+    assert "_renderPediatricsJourney({ preserveTrail: true });" in block
+    assert 'showScreen("scorm-station1")' not in block
     for fn_name in (
         "_exitPatGameToMap",
         "_exitSortGameToMap",
@@ -177,7 +193,7 @@ def test_scorm_minigame_exits_return_to_station_shell():
         assert start != -1, f"{fn_name} missing"
         block = app_js[start:start + 260]
         assert "if (_returnToScormStation1()) return;" in block, (
-            f"{fn_name} must return to scorm-station1 in SCORM mode"
+            f"{fn_name} must return to the production map in SCORM mode"
         )
 
 

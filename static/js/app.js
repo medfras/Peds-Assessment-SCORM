@@ -6024,6 +6024,23 @@ function _applyScormResumeState(summaryOrResume = {}) {
   _renderScormStation1();
 }
 
+function _storeScormResumeState(summaryOrResume = {}) {
+  state.scormLatestSummary = _normalizeScormState(summaryOrResume);
+  state.scormResumeState = state.scormLatestSummary;
+}
+
+function _enterScormMapExperience() {
+  _hideScormLaunchStatus();
+  if (!state.orientationCompletedAt) {
+    _categoryView = { mode: "district", districtId: "station_1" };
+    showCategoryScreen("station_1");
+    return;
+  }
+  _categoryView = { mode: "district", districtId: "pediatrics" };
+  _restorePedsJourneyState();
+  showCategoryScreen("pediatrics");
+}
+
 function _setScormPanelLocked(mapKey, locked) {
   const panel = document.querySelector(`[data-scorm-map="${mapKey}"]`);
   if (panel) panel.classList.toggle("is-locked", !!locked);
@@ -6102,8 +6119,13 @@ function _renderScormStation1() {
 
 function _returnToScormStation1() {
   if (!state.scormEnabled) return false;
-  _renderScormStation1();
-  showScreen("scorm-station1");
+  if (_categoryView?.mode === "district" && _categoryView?.districtId === "station_1") {
+    _renderStation1Map();
+  } else if (_categoryView?.mode === "district" && _categoryView?.districtId === "pediatrics") {
+    _renderPediatricsJourney({ preserveTrail: true });
+  } else {
+    _enterScormMapExperience();
+  }
   _refreshScormSummary().catch((err) => console.warn("[SCORM] Return refresh failed", err));
   return true;
 }
@@ -6672,22 +6694,31 @@ async function _activateAndEnter(options = {}) {
   buildMenu();
   // _loadChallenges and _loadDrillStatus are already fired inside buildMenu() above;
   // omit them here to avoid duplicate concurrent network requests.
-  Promise.allSettled([
-    _loadProgressFromServer(),
-    _loadAgencyEquipmentAvailability(),
-  ]).then(() => {
-    // Targeted re-render: only update sections that depend on the data we just fetched.
-    // Avoid calling buildMenu() here — it re-fires all background loaders a second time.
-    if (!el("screen-menu")?.classList.contains("hidden")) {
-      _renderRightHistory();
-      _buildChallengesSection();
-      _updateRandomDrillCard();
-    }
-  });
+  const isScormEntry = !!options.scormResumeState;
 
-  if (options.scormResumeState) {
-    _applyScormResumeState(options.scormResumeState);
-    showScreen("scorm-station1");
+  if (isScormEntry) {
+    await Promise.allSettled([
+      _loadProgressFromServer(),
+      _loadAgencyEquipmentAvailability(),
+    ]);
+  } else {
+    Promise.allSettled([
+      _loadProgressFromServer(),
+      _loadAgencyEquipmentAvailability(),
+    ]).then(() => {
+      // Targeted re-render: only update sections that depend on the data we just fetched.
+      // Avoid calling buildMenu() here — it re-fires all background loaders a second time.
+      if (!el("screen-menu")?.classList.contains("hidden")) {
+        _renderRightHistory();
+        _buildChallengesSection();
+        _updateRandomDrillCard();
+      }
+    });
+  }
+
+  if (isScormEntry) {
+    _storeScormResumeState(options.scormResumeState);
+    _enterScormMapExperience();
   } else {
     showScreen("menu");
   }

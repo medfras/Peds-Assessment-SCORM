@@ -235,23 +235,20 @@ Call `_onScormNodeComplete` at the completion point for each content type:
 
 ## Phase 4: UI & Map Topology Refactor
 
-**1. Implement the 4-Map Y-Topology**
-Replace the SVG canvas with standard HTML/CSS.
-- Launch directly into Station 1 orientation, then Map 0 after orientation completion.
-- Create 4 background images or map layouts (Map 0 Foundation Drills, PM1 Pediatric Medical, PT1 Pediatric Trauma, Map 3 CPR).
-- Create an HTML `<div>` for each map, showing/hiding them based on navigation.
-- Place standard `<button>` elements over map nodes to trigger drills, optional games, or scenarios.
+**1. Reuse the production Station 1 and pediatric map surfaces**
+Do not build a separate SCORM-only map shell. The SCORM package should launch
+into the same learner-facing UI used by the current production app:
 
-**2. Replace Gamification UI with Progress UI**
-Remove the Treat Wallet and XP bar from the header. Replace it with a simple, professional tracker:
-```html
-<div id="scorm-progress-header">
-  <span>Drills: <span id="status-drills">Pending</span></span>
-  <span>PM1: <span id="status-pm1">0/2</span></span>
-  <span>PT1: <span id="status-pt1">0/2</span></span>
-  <span>CPR: <span id="status-cpr">Pending</span></span>
-</div>
-```
+- First launch / incomplete orientation: `showCategoryScreen("station_1")`, using the existing Station 1 direct-node flow (`Lexi Intro` -> `Orientation Tour` -> `CPR Drill` -> `Station 1 Complete`).
+- Orientation complete: `showCategoryScreen("pediatrics")`, using the existing pediatric map renderer for Map 0, PM1, PT1, and connected navigation.
+- Map art, node positions, popups, locked-node handling, and production copy come from the existing `static/js/app.js` map definitions and `static/css/style.css`; SCORM must not maintain a second set of map layouts.
+- Moodle/SCORM identity and resume state provide auth and LMS persistence only. Backend profile, history, progress, and CE state remain tied to the Moodle-backed SCORM learner account.
+
+**2. Keep SCORM progress as the data bridge, not a replacement UI**
+The SCORM attempt summary continues to mirror node completion, unlocks, lesson
+status, and `cmi.suspend_data`. It should not replace the production map header,
+node popup, Toy Quest, badge, history, or orientation UI unless a future scoped
+trim explicitly removes those features.
 
 ---
 

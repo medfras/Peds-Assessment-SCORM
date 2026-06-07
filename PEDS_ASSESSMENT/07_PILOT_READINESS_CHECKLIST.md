@@ -5,7 +5,7 @@ This checklist defines when the Station 1 Pediatric Assessment Training module i
 It is a pilot gate, not a full SaaS launch gate. The goal is to preserve the clinical/scoring architecture while narrowing the product surface enough to test scenarios, drills, map progression, and LMS behavior safely.
 
 **Deployment target:** Moodle Cloud (2026-05-17)
-**Topology:** 4-map, 16 nodes (v3 suspend data)
+**Topology:** Production Station 1 + pediatric Map 0/PM1/PT1/CPR pilot nodes, mirrored through 16-node SCORM suspend data
 **Last updated:** 2026-06-06
 
 **Bleed-over rule:** No SCORM-specific configuration (hardcoded agency/protocol, trimmed UI, free API keys, guardrails, navigation overrides) is introduced into this repo. All of that lives exclusively in the SCORM branch. Changes in this repo must remain safe for the main program.
@@ -27,7 +27,7 @@ The branch gate is intentionally narrow. Do not branch until these items are tru
 - [x] Standards target fixed: Moodle Cloud native SCORM 1.2 only; no SCORM 2004, xAPI, or SCORM Cloud/Rustici plugin dependency
 - [x] Stable node IDs final in `04_SCENARIO_AUTHORING.md` and `02_MAP_TOPOLOGY.md`
 - [x] Scoring contract matrix complete for every required node
-- [x] 4-map topology implemented: `unlocks.scenarios` (drills gate PM1+PT1) + `unlocks.map3` (2 PM1 + 2 PT1 gate CPR)
+- [x] SCORM attempt topology implemented: `unlocks.scenarios` (pilot gate) + `unlocks.map3` (2 PM1 + 2 PT1 gate CPR), while learner UI reuses the production Station 1 and pediatric map surfaces
 - [x] CE challenge gate implemented: orientation + required drills + 2 PM1 + 2 PT1 + CPR + 2 optional games + ≥3600 s + ≥1100 XP
 - [x] `_SUSPEND_DATA_VERSION = 3` with 16-node shape and CE block
 - [x] `scorm.js finish()` corrected: gates on `peds_ce_challenge.complete`, writes `"incomplete"` not `"failed"` for in-progress learners
@@ -53,11 +53,11 @@ These items are build work, not pre-branch gates. See Section 10 for the full se
 
 - [ ] DMIST calibration validated on live session data (needs 20 staging runs)
 - [ ] 20 staging runs with shadow corroboration; `USE_DETERMINISTIC_CORROBORATION=True` flip pending
-- [ ] SCORM-specific config: hardcoded PFD/Kent County provisioning, trimmed UI, LMS launch → Station 1 orientation → Map 0 path, history/storage policy, free API guardrails — **all in SCORM branch only**
+- [ ] SCORM-specific config: hardcoded PFD/Kent County provisioning, LMS launch -> production Station 1 orientation or last pediatric map, Moodle-account history/storage policy, free API guardrails — **all in SCORM branch only**
 - [ ] Optional TTS gated: `TTS_PROVIDER=browser` default; toggle off sends no paid provider calls; TTS failures do not block scenario completion
 - [ ] AI provider failures return safe `provider_error` frontend diagnostic (already implemented in main app; verify SCORM token path also returns it)
 - [ ] All 16 nodes wired through `_onScormNodeComplete` and validated in package path
-- [ ] Map art and node positioning (4 map backgrounds)
+- [ ] Confirm SCORM package reuses production Station 1, Map 0, PM1, and PT1 art/node positioning exactly
 - [ ] SCORM packaging, tiny MoodleCloud SCO same-origin smoke test, Moodle Cloud upload
 
 ---
