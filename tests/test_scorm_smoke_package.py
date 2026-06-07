@@ -159,10 +159,13 @@ def test_scorm_launch_enters_production_station_or_pediatric_maps():
     app_js = APP_JS.read_text()
     start = app_js.find("function _enterScormMapExperience()")
     assert start != -1
-    block = app_js[start:start + 700]
+    end = app_js.find("function _enterScormPedsMap", start)
+    assert end != -1
+    block = app_js[start:end]
     assert "_releaseScormPreboot();" in block
     assert 'showCategoryScreen("station_1")' in block
-    assert 'showCategoryScreen("pediatrics")' in block
+    assert 'showCategoryScreen("pediatrics")' not in block
+    assert "state.orientationCompletedAt" not in block
     assert 'showScreen("scorm-station1")' not in block
 
 
@@ -175,9 +178,12 @@ def test_scorm_runtime_uses_compact_sim_and_localizes_backend_static_assets():
     assert "_scormAssetUrl(s.scene.image || s.patient.image || \"\")" in app_js
     assert "_scormAssetUrl(arrivalImage)" in app_js
     assert "state.scormEnabled || document.documentElement.classList.contains(\"scorm-runtime\")" in app_js
+    assert 'const _SCORM_PEDS_MAP_IDS = new Set(["map_0", "pm1", "pt1"]);' in app_js
+    assert 'function _enterScormPedsMap(mapId = "map_0")' in app_js
+    assert '_enterScormPedsMap("map_0");' in app_js
     assert ".scorm-runtime #screen-sim.sim-mobile-active" in css
     assert ".scorm-runtime #screen-sim.sim-mobile-active .sim-panel-left .tab-content" in css
-    assert ".scorm-runtime #btn-voice-input" in css
+    assert ".scorm-runtime #btn-voice-input" not in css
     assert ".scorm-runtime #tour-tip" in css
     assert 'if (_returnToScormStation1()) return;' in app_js
     assert '_tourDone();' in app_js

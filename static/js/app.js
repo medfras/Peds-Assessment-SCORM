@@ -6007,6 +6007,16 @@ const _SCORM_NODE_BY_APP_ID = Object.values(_SCORM_NODE_GROUPS)
     acc[node.appId] = node;
     return acc;
   }, {});
+const _SCORM_PEDS_MAP_IDS = new Set(["map_0", "pm1", "pt1"]);
+
+function _scormPedsMapAllowed(mapId) {
+  return _SCORM_PEDS_MAP_IDS.has(String(mapId || ""));
+}
+
+function _scormScenariosUnlocked() {
+  const summary = _normalizeScormState(state.scormLatestSummary || state.scormResumeState || {});
+  return !!summary.unlocks.scenarios;
+}
 
 function _normalizeScormState(summaryOrResume = {}) {
   const scores = summaryOrResume.node_scores || summaryOrResume.scores || {};
@@ -6046,13 +6056,17 @@ function _storeScormResumeState(summaryOrResume = {}) {
 function _enterScormMapExperience() {
   _releaseScormPreboot();
   _hideScormLaunchStatus();
-  if (!state.orientationCompletedAt) {
-    _categoryView = { mode: "district", districtId: "station_1" };
-    showCategoryScreen("station_1");
-    return;
-  }
+  _categoryView = { mode: "district", districtId: "station_1" };
+  showCategoryScreen("station_1");
+}
+
+function _enterScormPedsMap(mapId = "map_0") {
   _categoryView = { mode: "district", districtId: "pediatrics" };
-  _restorePedsJourneyState();
+  _pedsJourneyState.currentMap = _scormPedsMapAllowed(mapId) ? mapId : "map_0";
+  _pedsJourneyState.view = _pedsJourneyState.currentMap === "pm1"
+    ? "medical"
+    : _pedsJourneyState.currentMap === "pt1" ? "trauma" : "entrance";
+  _savePedsJourneyState();
   showCategoryScreen("pediatrics");
 }
 
@@ -11170,11 +11184,29 @@ function _renderCategoryMapNav(mode = "district", districtId = null) {
     const { passedIds, pedsMapCompleted } = _pedsMapCompletionSets();
     const baseUnlockState = _computeMapUnlockState(passedIds, MAP_TOPOLOGY, pedsMapCompleted);
     const unlockState = PEDS_MAP_DEV_UNLOCKED ? null : baseUnlockState;
-    if (subtitle) subtitle.textContent = "Jump between available pediatric maps.";
+    const navMaps = state.scormEnabled
+      ? PEDS_MAP_DATA.filter(mapDef => _scormPedsMapAllowed(mapDef.id))
+      : PEDS_MAP_DATA;
+    if (subtitle) subtitle.textContent = state.scormEnabled
+      ? "Station 1 maps only."
+      : "Jump between available pediatric maps.";
 
-    list.innerHTML = PEDS_MAP_DATA.map(mapDef => {
+    const orientationButton = state.scormEnabled
+      ? `<button type="button" class="category-map-nav-btn" data-scorm-map-nav="orientation">
+          <span class="category-map-nav-ico">🚒</span>
+          <span class="category-map-nav-body">
+            <span class="category-map-nav-title">Orientation</span>
+            <span class="category-map-nav-meta">Station 1 orientation map</span>
+            <span class="category-map-nav-status category-map-nav-status--available">Available</span>
+          </span>
+        </button>`
+      : "";
+
+    list.innerHTML = orientationButton + navMaps.map(mapDef => {
       const unlock = unlockState?.get(mapDef.id);
-      const locked = !!unlockState && !unlock?.unlocked && !unlock?.partial;
+      const locked = state.scormEnabled
+        ? (mapDef.id !== "map_0" && !_scormScenariosUnlocked())
+        : (!!unlockState && !unlock?.unlocked && !unlock?.partial);
       const current = mapDef.id === currentMapId;
       const complete = _mapHasCompletion(mapDef.id, passedIds, pedsMapCompleted);
       const statusText = current ? "Current" : locked ? "Locked" : complete ? "Complete" : "Available";
@@ -11191,6 +11223,11 @@ function _renderCategoryMapNav(mode = "district", districtId = null) {
       </button>`;
     }).join("");
 
+    list.querySelector("[data-scorm-map-nav='orientation']")?.addEventListener("click", () => {
+      _setCategoryMobileTab("map");
+      _categoryView = { mode: "district", districtId: "station_1" };
+      showCategoryScreen("station_1");
+    });
     list.querySelectorAll("[data-category-map-nav]:not([disabled])").forEach(btn => {
       btn.addEventListener("click", () => {
         const mapId = btn.getAttribute("data-category-map-nav");
@@ -15332,6 +15369,11 @@ function _renderPedsMap(mapId = null) {
   } else {
     _restorePedsJourneyState();
   }
+  if (state.scormEnabled && !_scormPedsMapAllowed(_pedsJourneyState.currentMap)) {
+    _pedsJourneyState.currentMap = "map_0";
+    _pedsJourneyState.view = "entrance";
+    _savePedsJourneyState();
+  }
   const currentMapId = _pedsJourneyState.currentMap || "map_0";
 
   const mapDef = _PEDS_MAP_BY_ID.get(currentMapId) || PEDS_MAP_DATA[0];
@@ -15424,10 +15466,17 @@ function _renderPedsMap(mapId = null) {
     });
 
     // Forward exits — apply lock state when unlock enforcement is active
-    mapDef.exits.forEach(exit => {
+    const exits = state.scormEnabled
+      ? mapDef.exits.filter(exit => _scormPedsMapAllowed(exit.to))
+      : mapDef.exits;
+    exits.forEach(exit => {
       const destState = unlockState?.get(exit.to);
-      const isLocked  = unlockState && !destState?.unlocked && !destState?.partial;
-      const isPartial = unlockState && !destState?.unlocked && destState?.partial;
+      const isLocked  = state.scormEnabled
+        ? (exit.to !== "map_0" && !_scormScenariosUnlocked())
+        : (unlockState && !destState?.unlocked && !destState?.partial);
+      const isPartial = state.scormEnabled
+        ? false
+        : (unlockState && !destState?.unlocked && destState?.partial);
       const revealCls = _newlyUnlocked.has(exit.to) ? " peds-fog-reveal" : "";
       const lockCls   = isLocked ? " trail-map-btn--fog-locked" : isPartial ? " trail-map-btn--fog-partial" : "";
       const destLabel = _PEDS_MAP_BY_ID.get(exit.to)?.label || exit.label || "Next";
@@ -15617,16 +15666,32 @@ function _renderPedsMap(mapId = null) {
       ? `🚨 Emergencies <span class="pe1-key-counter">${pe1KeyCount}/2 🔑</span>`
       : "🚨 Emergencies";
 
-    trailNav.innerHTML = [
-      `<button class="district-trail-btn district-trail-home${isEntrance ? " active" : ""}" data-peds-nav="map_0">🏠 Entrance</button>`,
-      `<button class="district-trail-btn${isMedical ? " active" : ""}${pm1Locked ? " locked" : ""}"
-        data-peds-nav="pm1" ${pm1Locked ? "disabled" : ""}>🩺 Medical${pm1Locked ? " 🔒" : ""}</button>`,
-      `<button class="district-trail-btn${isTrauma ? " active" : ""}${pt1Locked ? " locked" : ""}"
-        data-peds-nav="pt1" ${pt1Locked ? "disabled" : ""}>🦴 Trauma${pt1Locked ? " 🔒" : ""}</button>`,
-      `<button class="district-trail-btn${isEmergency ? " active" : ""}${pe1Locked ? " locked" : ""}"
-        data-peds-nav="pe1" ${pe1Locked ? "disabled" : ""}>${pe1Label}</button>`,
-    ].join("");
+    if (state.scormEnabled) {
+      const scenariosLocked = !_scormScenariosUnlocked();
+      trailNav.innerHTML = [
+        `<button class="district-trail-btn district-trail-home" data-scorm-nav="orientation">🚒 Orientation</button>`,
+        `<button class="district-trail-btn${isEntrance ? " active" : ""}" data-peds-nav="map_0">🏠 Map 0</button>`,
+        `<button class="district-trail-btn${currentMapId === "pm1" ? " active" : ""}${scenariosLocked ? " locked" : ""}"
+          data-peds-nav="pm1" ${scenariosLocked ? "disabled" : ""}>🩺 PM1${scenariosLocked ? " 🔒" : ""}</button>`,
+        `<button class="district-trail-btn${currentMapId === "pt1" ? " active" : ""}${scenariosLocked ? " locked" : ""}"
+          data-peds-nav="pt1" ${scenariosLocked ? "disabled" : ""}>🦴 PT1${scenariosLocked ? " 🔒" : ""}</button>`,
+      ].join("");
+    } else {
+      trailNav.innerHTML = [
+        `<button class="district-trail-btn district-trail-home${isEntrance ? " active" : ""}" data-peds-nav="map_0">🏠 Entrance</button>`,
+        `<button class="district-trail-btn${isMedical ? " active" : ""}${pm1Locked ? " locked" : ""}"
+          data-peds-nav="pm1" ${pm1Locked ? "disabled" : ""}>🩺 Medical${pm1Locked ? " 🔒" : ""}</button>`,
+        `<button class="district-trail-btn${isTrauma ? " active" : ""}${pt1Locked ? " locked" : ""}"
+          data-peds-nav="pt1" ${pt1Locked ? "disabled" : ""}>🦴 Trauma${pt1Locked ? " 🔒" : ""}</button>`,
+        `<button class="district-trail-btn${isEmergency ? " active" : ""}${pe1Locked ? " locked" : ""}"
+          data-peds-nav="pe1" ${pe1Locked ? "disabled" : ""}>${pe1Label}</button>`,
+      ].join("");
+    }
     trailNav.classList.remove("hidden");
+    trailNav.querySelector("[data-scorm-nav='orientation']")?.addEventListener("click", () => {
+      _categoryView = { mode: "district", districtId: "station_1" };
+      showCategoryScreen("station_1");
+    });
     trailNav.querySelectorAll("[data-peds-nav]:not([disabled])").forEach(btn => {
       btn.addEventListener("click", () => _renderPedsMap(btn.getAttribute("data-peds-nav")));
     });
@@ -16856,6 +16921,10 @@ el("btn-scenario-preview-play")?.addEventListener("click", async () => {
       _scenarioPreviewSelection = null;
       hide("modal-scenario-preview");
       _cprBlsReturnDistrictId = null;
+      if (state.scormEnabled) {
+        _enterScormPedsMap("map_0");
+        return;
+      }
       buildMenu();
       showScreen("menu");
     } catch (err) {

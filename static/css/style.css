@@ -2010,13 +2010,6 @@ body {
   box-shadow: 0 -8px 18px rgba(2, 6, 23, 0.35);
 }
 
-.scorm-runtime #btn-voice-input,
-.scorm-runtime #btn-voice-dmist,
-.scorm-runtime #btn-voice-narrative,
-.scorm-runtime #btn-mc-stt {
-  display: none !important;
-}
-
 .scorm-runtime #tour-banner,
 .scorm-runtime #tour-tip {
   display: none !important;
