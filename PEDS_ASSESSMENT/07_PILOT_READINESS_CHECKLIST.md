@@ -28,7 +28,7 @@ The branch gate is intentionally narrow. Do not branch until these items are tru
 - [x] Stable node IDs final in `04_SCENARIO_AUTHORING.md` and `02_MAP_TOPOLOGY.md`
 - [x] Scoring contract matrix complete for every required node
 - [x] SCORM attempt topology implemented: `unlocks.scenarios` (pilot gate) + `unlocks.map3` (2 PM1 + 2 PT1 gate CPR), while learner UI reuses the production Station 1 and pediatric map surfaces
-- [x] SCORM pass challenge gate implemented: 2 PM1 + 2 PT1 passing/on-track scenarios + ≥3600 s training time from orientation/scenarios/drills
+- [x] SCORM pass challenge gate implemented: 2 PM1 + 2 PT1 passing/on-track scenarios + ≥3600 s training time from orientation/scenarios/drills + ≥950 XP
 - [x] `_SUSPEND_DATA_VERSION = 3` with 16-node shape and CE block
 - [x] `scorm.js finish()` corrected: gates on `peds_ce_challenge.complete`, writes `"incomplete"` not `"failed"` for in-progress learners
 - [x] Scoring engine hardened:
@@ -147,15 +147,18 @@ Backend attempt summary response (condensed — all 16 node scores present):
 | PM1 scenarios | Any 2 of 4 completed with passing/on-track scores or higher |
 | PT1 scenarios | Any 2 of 5 completed with passing/on-track scores or higher |
 | Total training time | ≥ 3600 s (60 min), counted from orientation, scenarios, and drills |
+| XP | ≥ 950 XP |
 
 **Grade formula (backend-computed):** `scenario_avg`
 
 - `scenario_avg` = average of all completed PM1 + PT1 scenario scores; null until 2 PM1 + 2 PT1 are complete
-- CPR, drills, optional games, orientation, and XP remain progress/reward telemetry but are not Moodle pass requirements.
+- XP target rationale: 950 is reachable with orientation plus four solid passing scenarios, while lower-margin passing learners can close the gap with higher scenario scores, optional drills, or Lexi challenge rounds.
+- CPR, drills, optional games, and orientation remain progress/reward telemetry but are not direct Moodle pass requirements except where they contribute training time/XP.
 
 **LMS reporting:**
 - `cmi.core.lesson_status` = `"passed"` when `peds_ce_challenge.complete === true`, otherwise `"incomplete"`
 - `cmi.core.score.raw` = `final_score` (written only when CE challenge complete)
+- Moodle completion should require SCO status **Passed**. The package does not write SCORM `"completed"`.
 
 **Node pass threshold:** 70%. `passed` is tracked per node and affects XP; it is not a gate criterion for unlock or CE progression. Completion (not passing score) is what gates maps and CE.
 

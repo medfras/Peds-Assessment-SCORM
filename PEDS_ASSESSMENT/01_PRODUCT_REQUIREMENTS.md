@@ -110,7 +110,7 @@ The SCORM client is not an authoritative clinical system. It handles LMS lifecyc
 - SCORM attempt creation, resume, and final grade calculation
 - Scenario session state, deterministic vitals, intervention persistence, scoring, debrief
 - AI provider calls, retry behavior, rate limits, and diagnostics
-- SCORM pass challenge and final score: 2 PM1 + 2 PT1 passing/on-track scenarios plus 60 minutes of eligible training time; `scenario_avg` is written as the LMS raw score when complete
+- SCORM pass challenge and final score: 2 PM1 + 2 PT1 passing/on-track scenarios, 60 minutes of eligible training time, and 950 XP; `scenario_avg` is written as the LMS raw score when complete
 
 **LMS owns:**
 - Learner launch identity (`cmi.core.student_id`, `cmi.core.student_name`)

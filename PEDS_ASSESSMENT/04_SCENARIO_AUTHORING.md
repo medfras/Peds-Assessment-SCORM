@@ -192,7 +192,7 @@ Station 1 pass criteria and raw score formula are defined in `02_MAP_TOPOLOGY.md
 `scenario_avg`
 
 - `scenario_avg` = average of all completed PM1 + PT1 scenario scores after the 2 PM1 + 2 PT1 scenario minimum is met.
-- `peds_ce_challenge.complete` requires 2 PM1 + 2 PT1 passing/on-track scenarios and 60 minutes of eligible training time.
+- `peds_ce_challenge.complete` requires 2 PM1 + 2 PT1 passing/on-track scenarios, 60 minutes of eligible training time, and 950 XP.
 - Final LMS pass is based on `peds_ce_challenge.complete`, not a raw score alone.
 
 ## 7. Content Review Checklist

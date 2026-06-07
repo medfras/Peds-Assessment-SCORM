@@ -123,6 +123,7 @@ _NODE_PASS_THRESHOLD = 70
 
 # SCORM pass challenge thresholds
 _PEDS_CE_TARGET_SECONDS: int = 3600  # 1 hour total
+_PEDS_CE_MIN_XP: int = 950  # orientation + 4 passing scenarios, or optional drill/Lexi stretch work
 _PEDS_CE_ALLOWED_TIME_TYPES: tuple[str, ...] = ("orientation", "scenario", "drill")
 
 
@@ -145,6 +146,7 @@ def _peds_ce_challenge(
       - Any 2 of 4 PM1 medical scenarios completed
       - Any 2 of 5 PT1 trauma scenarios completed
       - >= 1 hour (3600 s) accumulated training time
+      - >= 950 XP
 
     Training time is the same authoritative CE ledger used by challenges, but
     scoped to orientation, scenario, and drill activity rows only.
@@ -154,8 +156,8 @@ def _peds_ce_challenge(
     cpr_ok   = cpr_done
     games_ok = optional_games_done_count >= _PEDS_CE_MIN_OPT_GAMES
     ce_ok    = ce_seconds >= _PEDS_CE_TARGET_SECONDS
-    xp_ok    = True
-    complete = pm1_ok and pt1_ok and ce_ok
+    xp_ok    = user_xp >= _PEDS_CE_MIN_XP
+    complete = pm1_ok and pt1_ok and ce_ok and xp_ok
     return {
         "id":                         "pfd_station1_scorm_pass",
         "title":                      "Station 1 Pediatric Assessment Pass",
@@ -180,7 +182,7 @@ def _peds_ce_challenge(
         "ce_target_minutes":          round(_PEDS_CE_TARGET_SECONDS / 60, 1),
         "training_time_done":         ce_ok,
         "xp":                         user_xp,
-        "xp_required":                0,
+        "xp_required":                _PEDS_CE_MIN_XP,
         "xp_ok":                      xp_ok,
     }
 

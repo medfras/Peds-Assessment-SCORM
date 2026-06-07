@@ -202,12 +202,14 @@ Lesson status and score are written to the LMS when the SCORM pass challenge is 
 - PM1: any 2 of 4 scenarios completed
 - PT1: any 2 of 5 scenarios completed
 - Total training time ≥ 3600 s (60 min), counted from orientation, scenarios, and drills
+- XP ≥ 950
 
 **Grade formula (backend-computed, written to `cmi.core.score.raw` when CE complete):**
 `scenario_avg`
 
 - `scenario_avg` = average of all completed PM1 + PT1 scenario scores; null until 2 PM1 + 2 PT1 are complete
-- CPR, drills, optional games, orientation, and XP remain visible progress/reward telemetry but are not Moodle pass requirements.
+- XP target rationale: 950 is reachable with orientation plus four solid passing scenarios, while lower-margin passing learners can close the gap with higher scenario scores, optional drills, or Lexi challenge rounds.
+- CPR, drills, optional games, and orientation remain visible progress/reward telemetry but are not direct Moodle pass requirements except where they contribute training time/XP.
 
 **LMS status reporting (from `scorm.js finish()`):**
 
@@ -228,6 +230,8 @@ function finish(summary) {
 **Status values:**
 - `"passed"` — CE challenge complete (`peds_ce_challenge.complete === true`)
 - `"incomplete"` — learner is still in progress (never `"failed"` for in-progress)
+
+The package writes SCORM 1.2 `cmi.core.lesson_status = "passed"` when complete. It does not write `"completed"`. Configure Moodle activity completion to require the SCO status **Passed**.
 
 Intermediate node completions trigger `LMSSetValue("cmi.suspend_data", ...)` + `LMSCommit("")` to persist progress but do not write `lesson_status` until `finish()` is called.
 

@@ -31,6 +31,7 @@ from app.routers.scorm import (
     _PEDS_CE_MIN_OPT_GAMES,
     _PEDS_CE_MIN_PM1,
     _PEDS_CE_MIN_PT1,
+    _PEDS_CE_MIN_XP,
     _PEDS_CE_TARGET_SECONDS,
     _PM1_NODES,
     _PT1_NODES,
@@ -61,7 +62,7 @@ def _full_ce_context() -> dict:
     return dict(
         ce_seconds=_PEDS_CE_TARGET_SECONDS,
         orientation_done=True,
-        user_xp=0,
+        user_xp=_PEDS_CE_MIN_XP,
     )
 
 
@@ -427,7 +428,7 @@ def test_peds_ce_challenge_exposes_orientation_without_requiring_it():
         _min_passing_attempt(),
         ce_seconds=_PEDS_CE_TARGET_SECONDS,
         orientation_done=False,
-        user_xp=0,
+        user_xp=_PEDS_CE_MIN_XP,
     )
     assert s["peds_ce_challenge"]["complete"] is True
     assert s["peds_ce_challenge"]["orientation_done"] is False
@@ -545,16 +546,16 @@ def test_peds_ce_challenge_requires_ce_time():
     assert s["peds_ce_challenge"]["complete"] is False
 
 
-def test_peds_ce_challenge_exposes_xp_without_requiring_it():
+def test_peds_ce_challenge_requires_min_xp():
     s = _compute_attempt_summary(
         _min_passing_attempt(),
         ce_seconds=_PEDS_CE_TARGET_SECONDS,
         orientation_done=True,
-        user_xp=0,
+        user_xp=_PEDS_CE_MIN_XP - 1,
     )
-    assert s["peds_ce_challenge"]["xp_required"] == 0
-    assert s["peds_ce_challenge"]["xp_ok"] is True
-    assert s["peds_ce_challenge"]["complete"] is True
+    assert s["peds_ce_challenge"]["xp_required"] == _PEDS_CE_MIN_XP
+    assert s["peds_ce_challenge"]["xp_ok"] is False
+    assert s["peds_ce_challenge"]["complete"] is False
 
 
 def test_peds_ce_challenge_complete_when_all_criteria_met():
