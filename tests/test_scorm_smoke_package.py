@@ -189,6 +189,20 @@ def test_scorm_home_sidebars_hide_account_controls_and_use_trails_copy():
     assert "Paths To / From Current" not in app_js
 
 
+def test_leaderboard_modal_uses_solid_light_shell():
+    html = (ROOT / "static" / "index.html").read_text()
+    css = (ROOT / "static" / "css" / "style.css").read_text()
+
+    assert 'id="modal-leaderboard" class="hidden fixed inset-0 bg-black/45' in html
+    assert "leaderboard-modal-shell bg-white border border-gray-200 rounded-2xl" in html
+    assert "leaderboard-modal-header px-5 py-4 border-b border-gray-200 bg-stone-50" in html
+    assert "leaderboard-modal-body flex-1 min-h-0 overflow-y-auto bg-stone-50" in html
+    assert "#modal-leaderboard .leaderboard-modal-shell" in css
+    assert "#modal-leaderboard .lb-ticker-strip" in css
+    assert "#modal-leaderboard #btn-leaderboard-refresh" in css
+    assert "menu-modal-shell rounded-2xl w-full max-w-sm" not in html
+
+
 def test_scorm_runtime_uses_compact_sim_and_localizes_backend_static_assets():
     app_js = APP_JS.read_text()
     css = (ROOT / "static" / "css" / "style.css").read_text()
