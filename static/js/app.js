@@ -6022,33 +6022,33 @@ const _SCORM_NODE_BY_APP_ID = Object.values(_SCORM_NODE_GROUPS)
     return acc;
   }, {});
 const _SCORM_PEDS_MAP_IDS = new Set(["map_0", "pm1", "pt1"]);
+const _SCORM_PM1_UNLOCK_SCENARIO_ID = "peds_diabetic_emergency_01";
+const _SCORM_PT1_UNLOCK_SCENARIO_ID = "peds_trauma_01_soft_tissue";
 
 function _scormPedsMapAllowed(mapId) {
   return _SCORM_PEDS_MAP_IDS.has(String(mapId || ""));
 }
 
-function _scormScenariosUnlocked() {
-  const summary = _normalizeScormState(state.scormLatestSummary || state.scormResumeState || {});
-  return !!summary.unlocks.scenarios;
-}
-
 function _scormPedsSidebarProgress(mapId = "") {
-  if (!state.scormEnabled) return { unlocked: false, partial: false, complete: false };
+  if (!state.scormEnabled) return { unlocked: false, partial: false, complete: false, pct: 0 };
   const id = String(mapId || "");
   const summary = _normalizeScormState(state.scormLatestSummary || state.scormResumeState || {});
   const ce = summary.peds_ce_challenge || {};
+  const pm1Unlocked = _scormAppComplete(_SCORM_PM1_UNLOCK_SCENARIO_ID);
+  const pt1Unlocked = _scormAppComplete(_SCORM_PT1_UNLOCK_SCENARIO_ID);
   if (id === "map_0") {
-    return { unlocked: true, partial: false, complete: !!ce.drills_done };
+    const pct = (pm1Unlocked ? 50 : 0) + (pt1Unlocked ? 50 : 0);
+    return { unlocked: true, partial: false, complete: pm1Unlocked && pt1Unlocked, pct };
   }
   if (id === "pm1") {
-    const unlocked = !!summary.unlocks.scenarios;
-    return { unlocked, partial: false, complete: !!ce.pm1_done };
+    const complete = !!ce.pm1_done;
+    return { unlocked: pm1Unlocked, partial: false, complete, pct: complete ? 100 : 0 };
   }
   if (id === "pt1") {
-    const unlocked = !!summary.unlocks.scenarios;
-    return { unlocked, partial: false, complete: !!ce.pt1_done };
+    const complete = !!ce.pt1_done;
+    return { unlocked: pt1Unlocked, partial: false, complete, pct: complete ? 100 : 0 };
   }
-  return { unlocked: false, partial: false, complete: false };
+  return { unlocked: false, partial: false, complete: false, pct: 0 };
 }
 
 function _scormNodeCompleteByNodeId(nodeId = "") {
@@ -6066,9 +6066,22 @@ function _scormAppComplete(appId = "") {
   return !!node && _scormNodeCompleteByNodeId(node.nodeId);
 }
 
-function _scormScenarioLocked(appId = "") {
+function _scormMapRouteUnlocked(mapId = "") {
+  if (!state.scormEnabled) return false;
+  const id = String(mapId || "");
+  if (id === "map_0") return true;
+  if (id === "pm1") return _scormAppComplete(_SCORM_PM1_UNLOCK_SCENARIO_ID);
+  if (id === "pt1") return _scormAppComplete(_SCORM_PT1_UNLOCK_SCENARIO_ID);
+  return false;
+}
+
+function _scormScenarioLocked(appId = "", mapId = "") {
   const node = _scormNodeForAppId(appId);
-  return !!(state.scormEnabled && node?.type === "scenario" && !_scormScenariosUnlocked());
+  if (!state.scormEnabled || node?.type !== "scenario") return false;
+  const id = String(mapId || "");
+  if (id === "map_0") return false;
+  if (id === "pm1" || id === "pt1") return !_scormMapRouteUnlocked(id);
+  return false;
 }
 
 function _getScormUiState() {
@@ -15774,7 +15787,7 @@ function _renderPedsMap(mapId = null) {
     exits.forEach(exit => {
       const destState = unlockState?.get(exit.to);
       const isLocked  = state.scormEnabled
-        ? (exit.to !== "map_0" && !_scormScenariosUnlocked())
+        ? !_scormMapRouteUnlocked(exit.to)
         : (unlockState && !destState?.unlocked && !destState?.partial);
       const isPartial = state.scormEnabled
         ? false
@@ -15824,7 +15837,7 @@ function _renderPedsMap(mapId = null) {
     const nodeBtns = mapDef.scenarios.map(s => {
       const isPh = s.id.startsWith("_ph");
       const scenario = isPh ? null : scenarioLookup.get(s.id);
-      const scormLocked = !isPh && _scormScenarioLocked(s.id);
+      const scormLocked = !isPh && _scormScenarioLocked(s.id, currentMapId);
       const completed = !isPh && completedIds.has(s.id);
       const available = PEDS_MAP_DEV_UNLOCKED || (!isPh && !!scenario);
       const statusClass = (isPh || scormLocked) ? "locked" : completed ? "done" : "open";
@@ -15839,7 +15852,7 @@ function _renderPedsMap(mapId = null) {
       const tip = isPh
         ? `${s.label} — Coming Soon`
         : scormLocked
-          ? `${scenarioTitle} — Complete PAT and Development drills to unlock`
+          ? `${scenarioTitle} — Complete the Map 0 route scenario to unlock`
           : completed ? `${scenarioTitle} — Cleared` : `${scenarioTitle} — Available`;
       return `<button class="journey-node ${statusClass}" data-peds-scenario="${s.id}"
         ${isPh ? "disabled" : ""}
@@ -15900,10 +15913,10 @@ function _renderPedsMap(mapId = null) {
         if (!sid || sid.startsWith("_ph")) return;
         const scenario = scenarioLookup.get(sid);
         if (!scenario) return;
-        if (_scormScenarioLocked(sid)) {
+        if (_scormScenarioLocked(sid, currentMapId)) {
           _presentMapNodeSelection(_station1LockSelection(
             "Scenario Locked",
-            "Complete the PAT and Development drills before starting pediatric scenarios.",
+            "Complete the required Map 0 route scenario before starting this trail.",
           ));
           return;
         }
@@ -15990,14 +16003,15 @@ function _renderPedsMap(mapId = null) {
       : "🚨 Emergencies";
 
     if (state.scormEnabled) {
-      const scenariosLocked = !_scormScenariosUnlocked();
+      const pm1Locked = !_scormMapRouteUnlocked("pm1");
+      const pt1Locked = !_scormMapRouteUnlocked("pt1");
       trailNav.innerHTML = [
         `<button class="district-trail-btn district-trail-home" data-scorm-nav="orientation">🚒 Orientation</button>`,
         `<button class="district-trail-btn${isEntrance ? " active" : ""}" data-peds-nav="map_0">🏠 Map 0</button>`,
-        `<button class="district-trail-btn${currentMapId === "pm1" ? " active" : ""}${scenariosLocked ? " locked" : ""}"
-          data-peds-nav="pm1" ${scenariosLocked ? "disabled" : ""}>🩺 PM1${scenariosLocked ? " 🔒" : ""}</button>`,
-        `<button class="district-trail-btn${currentMapId === "pt1" ? " active" : ""}${scenariosLocked ? " locked" : ""}"
-          data-peds-nav="pt1" ${scenariosLocked ? "disabled" : ""}>🦴 PT1${scenariosLocked ? " 🔒" : ""}</button>`,
+        `<button class="district-trail-btn${currentMapId === "pm1" ? " active" : ""}${pm1Locked ? " locked" : ""}"
+          data-peds-nav="pm1" ${pm1Locked ? "disabled" : ""}>🩺 PM1${pm1Locked ? " 🔒" : ""}</button>`,
+        `<button class="district-trail-btn${currentMapId === "pt1" ? " active" : ""}${pt1Locked ? " locked" : ""}"
+          data-peds-nav="pt1" ${pt1Locked ? "disabled" : ""}>🦴 PT1${pt1Locked ? " 🔒" : ""}</button>`,
       ].join("");
     } else {
       trailNav.innerHTML = [
@@ -23003,6 +23017,9 @@ async function applyInterventionAndRecord(interventionId, pcrLabel, { source = "
         body: JSON.stringify({ intervention_name: interventionId, source }),
       }).then(async (res) => {
         const data = await res.json().catch(() => ({}));
+        if (data?.vitals && typeof data.vitals === "object") {
+          _applyCurrentVitalsSnapshot(data.vitals);
+        }
         if (canTriggerImpressionChallenge && data?.challenge_available) {
           _openOrQueueImpressionChallenge(data.challenge_available);
         }
@@ -23014,7 +23031,6 @@ async function applyInterventionAndRecord(interventionId, pcrLabel, { source = "
   addPcrTreatment(pcrLabel, interventionId);
   _appendLexiInterventionFeedback(interventionId, pcrLabel);
   checkReadiness();
-  // Patient presentation is kept current by the vitals WebSocket — no poll needed.
 }
 
 function appendSuggestionChips(suggestions, afterEl) {
@@ -24279,6 +24295,15 @@ function buildReadinessCriteria() {
   return criteria;
 }
 
+function _applyCurrentVitalsSnapshot(vitals = {}) {
+  if (!vitals || typeof vitals !== "object") return;
+  state.currentVitals = vitals;
+  const presentation = vitals.patient_presentation;
+  if (presentation) {
+    setText("pcr-presentation", presentation);
+  }
+}
+
 async function startVitalsWs() {
   // Close any existing connection before opening a new one (e.g. scenario retry).
   if (state.vitalsWs) {
@@ -24306,13 +24331,7 @@ async function startVitalsWs() {
     try {
       const data = JSON.parse(event.data);
       if (data.vitals && typeof data.vitals === "object") {
-        state.currentVitals = data.vitals;
-      }
-
-      // Update patient presentation text (replaces pollPatientPresentation)
-      const presentation = data.vitals?.patient_presentation;
-      if (presentation) {
-        setText("pcr-presentation", presentation);
+        _applyCurrentVitalsSnapshot(data.vitals);
       }
 
       // Sync interventions applied — picks up server-side auto-detected ones

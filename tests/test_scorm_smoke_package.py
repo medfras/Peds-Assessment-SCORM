@@ -462,18 +462,32 @@ def test_scorm_production_peds_maps_use_backend_node_state():
     assert "function _scormAppComplete" in app_js
     assert "function _scormScenarioLocked" in app_js
     assert "function _scormPedsSidebarProgress" in app_js
+    assert "function _scormMapRouteUnlocked" in app_js
+    assert '_SCORM_PM1_UNLOCK_SCENARIO_ID = "peds_diabetic_emergency_01"' in app_js
+    assert '_SCORM_PT1_UNLOCK_SCENARIO_ID = "peds_trauma_01_soft_tissue"' in app_js
     assert 'if (id === "map_0")' in app_js
     assert 'if (id === "pm1")' in app_js
     assert 'if (id === "pt1")' in app_js
+    assert "complete: pm1Unlocked && pt1Unlocked, pct" in app_js
+    assert "pct: complete ? 100 : 0" in app_js
 
     render_start = app_js.find("function _renderPedsMap(mapId")
     assert render_start != -1
-    render_block = app_js[render_start:render_start + 10000]
+    render_block = app_js[render_start:render_start + 14000]
     assert "Object.entries(_SCORM_NODE_BY_APP_ID)" in render_block
     assert "completedIds.add(appId);" in render_block
-    assert "const scormLocked = !isPh && _scormScenarioLocked(s.id);" in render_block
-    assert "Complete PAT and Development drills to unlock" in render_block
+    assert "_scormMapRouteUnlocked(exit.to)" in render_block
+    assert "const scormLocked = !isPh && _scormScenarioLocked(s.id, currentMapId);" in render_block
+    assert "Complete the Map 0 route scenario to unlock" in render_block
     assert "completedGameIds.has(completionId) || _scormAppComplete(completionId)" in render_block
+
+    trail_start = app_js.find('if (state.scormEnabled) {\n      const pm1Locked = !_scormMapRouteUnlocked("pm1");')
+    assert trail_start != -1
+    trail_block = app_js[trail_start:trail_start + 1400]
+    assert 'const pm1Locked = !_scormMapRouteUnlocked("pm1");' in trail_block
+    assert 'const pt1Locked = !_scormMapRouteUnlocked("pt1");' in trail_block
+    assert 'data-peds-nav="pm1" ${pm1Locked ? "disabled" : ""}' in trail_block
+    assert 'data-peds-nav="pt1" ${pt1Locked ? "disabled" : ""}' in trail_block
 
     sidebar_start = app_js.find("function _renderPedsMapSidebar")
     assert sidebar_start != -1
@@ -481,3 +495,19 @@ def test_scorm_production_peds_maps_use_backend_node_state():
     assert "PEDS_MAP_DATA.filter(m => _scormPedsMapAllowed(m.id))" in sidebar_block
     assert "_scormPedsSidebarProgress(m.id)" in sidebar_block
     assert "_scormPedsSidebarProgress(mapId)" in sidebar_block
+
+
+def test_intervention_response_applies_authoritative_vitals_snapshot():
+    app_js = APP_JS.read_text()
+    assert "function _applyCurrentVitalsSnapshot(vitals = {})" in app_js
+
+    apply_start = app_js.find("async function applyInterventionAndRecord")
+    assert apply_start != -1
+    apply_block = app_js[apply_start:apply_start + 2200]
+    assert "data?.vitals && typeof data.vitals === \"object\"" in apply_block
+    assert "_applyCurrentVitalsSnapshot(data.vitals);" in apply_block
+
+    ws_start = app_js.find("async function startVitalsWs")
+    assert ws_start != -1
+    ws_block = app_js[ws_start:ws_start + 2200]
+    assert "_applyCurrentVitalsSnapshot(data.vitals);" in ws_block
