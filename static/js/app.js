@@ -6032,6 +6032,45 @@ function _scormScenariosUnlocked() {
   return !!summary.unlocks.scenarios;
 }
 
+function _scormPedsSidebarProgress(mapId = "") {
+  if (!state.scormEnabled) return { unlocked: false, partial: false, complete: false };
+  const id = String(mapId || "");
+  const summary = _normalizeScormState(state.scormLatestSummary || state.scormResumeState || {});
+  const ce = summary.peds_ce_challenge || {};
+  if (id === "map_0") {
+    return { unlocked: true, partial: false, complete: !!ce.drills_done };
+  }
+  if (id === "pm1") {
+    const unlocked = !!summary.unlocks.scenarios;
+    return { unlocked, partial: false, complete: !!ce.pm1_done };
+  }
+  if (id === "pt1") {
+    const unlocked = !!summary.unlocks.scenarios;
+    return { unlocked, partial: false, complete: !!ce.pt1_done };
+  }
+  return { unlocked: false, partial: false, complete: false };
+}
+
+function _scormNodeCompleteByNodeId(nodeId = "") {
+  if (!state.scormEnabled || !nodeId) return false;
+  const summary = _normalizeScormState(state.scormLatestSummary || state.scormResumeState || {});
+  return !!summary.node_completed?.[nodeId];
+}
+
+function _scormNodeForAppId(appId = "") {
+  return _SCORM_NODE_BY_APP_ID[String(appId || "")] || null;
+}
+
+function _scormAppComplete(appId = "") {
+  const node = _scormNodeForAppId(appId);
+  return !!node && _scormNodeCompleteByNodeId(node.nodeId);
+}
+
+function _scormScenarioLocked(appId = "") {
+  const node = _scormNodeForAppId(appId);
+  return !!(state.scormEnabled && node?.type === "scenario" && !_scormScenariosUnlocked());
+}
+
 function _getScormUiState() {
   try {
     return window.RescueTrails?.["scormAdapter"]?.getUiState?.() || null;
@@ -11242,6 +11281,13 @@ function _pedsMapCompletionSets() {
     const denom = _assessmentMaxFromEntry(h);
     return Math.round((h.score / denom) * 100) >= 70;
   }).map(h => h.scenarioId));
+  if (state.scormEnabled) {
+    Object.entries(_SCORM_NODE_BY_APP_ID).forEach(([appId, node]) => {
+      if (node?.type === "scenario" && _scormNodeCompleteByNodeId(node.nodeId)) {
+        passedIds.add(appId);
+      }
+    });
+  }
   const pedsMapCompleted = new Set(loadGamification().pedsMapCompleted || []);
   return { passedIds, pedsMapCompleted };
 }
@@ -11276,12 +11322,15 @@ function _renderCategoryMapNav(mode = "district", districtId = null) {
       : "";
 
     list.innerHTML = orientationButton + navMaps.map(mapDef => {
+      const scormProgress = state.scormEnabled ? _scormPedsSidebarProgress(mapDef.id) : null;
       const unlock = unlockState?.get(mapDef.id);
       const locked = state.scormEnabled
-        ? (mapDef.id !== "map_0" && !_scormScenariosUnlocked())
+        ? !scormProgress?.unlocked
         : (!!unlockState && !unlock?.unlocked && !unlock?.partial);
       const current = mapDef.id === currentMapId;
-      const complete = _mapHasCompletion(mapDef.id, passedIds, pedsMapCompleted);
+      const complete = state.scormEnabled
+        ? !!scormProgress?.complete
+        : _mapHasCompletion(mapDef.id, passedIds, pedsMapCompleted);
       const statusText = current ? "Current" : locked ? "Locked" : complete ? "Complete" : "Available";
       const statusCls = current ? "current" : locked ? "locked" : complete ? "complete" : "available";
       const icon = mapDef.id === "map_0" ? "🏠" : mapDef.id.startsWith("pm") ? "🩺" : mapDef.id.startsWith("pt") ? "🦴" : "🚨";
@@ -11506,18 +11555,24 @@ function _renderPedsMapSidebar(currentMapId, unlockState, passedIds, pedsMapComp
   const list = el("category-map-nav-list");
   const subtitle = el("category-map-nav-subtitle");
   if (!list) return;
-  if (subtitle) subtitle.textContent = "Trails, unlock progress, and available maps.";
+  if (subtitle) subtitle.textContent = state.scormEnabled
+    ? "Station 1 trails and available maps."
+    : "Trails, unlock progress, and available maps.";
 
   const current = _PEDS_MAP_BY_ID.get(currentMapId) || PEDS_MAP_DATA[0];
   const pathIds = [
     ...(current.parent ? [current.parent] : []),
     ...(current.parents || []).map(p => p.to),
     ...(current.exits || []).map(e => e.to),
-  ].filter(Boolean);
+  ].filter(mapId => mapId && (!state.scormEnabled || _scormPedsMapAllowed(mapId)));
   const uniquePathIds = [...new Set(pathIds)];
-  const allPedsMaps = PEDS_MAP_DATA;
+  const allPedsMaps = state.scormEnabled
+    ? PEDS_MAP_DATA.filter(m => _scormPedsMapAllowed(m.id))
+    : PEDS_MAP_DATA;
   const unlockedPedsMaps = allPedsMaps.filter(m => {
-    const progress = _pedsMapProgress(m.id, passedIds, pedsMapCompleted, unlockState);
+    const progress = state.scormEnabled
+      ? _scormPedsSidebarProgress(m.id)
+      : _pedsMapProgress(m.id, passedIds, pedsMapCompleted, unlockState);
     return progress.unlocked || m.id === currentMapId;
   });
 
@@ -11548,7 +11603,9 @@ function _renderPedsMapSidebar(currentMapId, unlockState, passedIds, pedsMapComp
   list.querySelectorAll("[data-category-map-nav]").forEach(btn => {
     btn.addEventListener("click", () => {
       const mapId = btn.getAttribute("data-category-map-nav");
-      const progress = _pedsMapProgress(mapId, passedIds, pedsMapCompleted, unlockState);
+      const progress = state.scormEnabled
+        ? _scormPedsSidebarProgress(mapId)
+        : _pedsMapProgress(mapId, passedIds, pedsMapCompleted, unlockState);
       if (!progress.unlocked && !progress.partial) {
         _openMapRequirementsPopup(mapId, progress);
         return;
@@ -11562,10 +11619,14 @@ function _renderPedsMapSidebar(currentMapId, unlockState, passedIds, pedsMapComp
 
 function _pedsSidebarMapButton(mapId, currentMapId, passedIds, pedsMapCompleted, unlockState, kind = "map") {
   const mapDef = _PEDS_MAP_BY_ID.get(mapId);
-  const progress = _pedsMapProgress(mapId, passedIds, pedsMapCompleted, unlockState);
+  const progress = state.scormEnabled
+    ? _scormPedsSidebarProgress(mapId)
+    : _pedsMapProgress(mapId, passedIds, pedsMapCompleted, unlockState);
   const current = mapId === currentMapId;
   const locked = !progress.unlocked && !progress.partial;
-  const complete = _mapHasCompletion(mapId, passedIds, pedsMapCompleted);
+  const complete = state.scormEnabled
+    ? !!progress.complete
+    : _mapHasCompletion(mapId, passedIds, pedsMapCompleted);
   const statusText = current ? "Current" : locked ? "Locked" : complete ? "Complete" : progress.partial ? "Partial" : "Available";
   const statusCls = current ? "current" : locked ? "locked" : complete ? "complete" : "available";
   const icon = mapId === "map_0" ? "🏠" : mapId.startsWith("pm") ? "🩺" : mapId.startsWith("pt") ? "🦴" : "🚨";
@@ -15748,6 +15809,13 @@ function _renderPedsMap(mapId = null) {
       const denom = _assessmentMaxFromEntry(h);
       return Math.round((h.score / denom) * 100) >= 70;
     }).map(h => h.scenarioId));
+    if (state.scormEnabled) {
+      Object.entries(_SCORM_NODE_BY_APP_ID).forEach(([appId, node]) => {
+        if (node?.type === "scenario" && _scormNodeCompleteByNodeId(node.nodeId)) {
+          completedIds.add(appId);
+        }
+      });
+    }
     const histByScenario = new Map();
     history.forEach(h => { if (!histByScenario.has(h.scenarioId)) histByScenario.set(h.scenarioId, h); });
     const scenarioLookup = new Map(state.allScenarios.map(s => [s.id, s]));
@@ -15756,16 +15824,23 @@ function _renderPedsMap(mapId = null) {
     const nodeBtns = mapDef.scenarios.map(s => {
       const isPh = s.id.startsWith("_ph");
       const scenario = isPh ? null : scenarioLookup.get(s.id);
+      const scormLocked = !isPh && _scormScenarioLocked(s.id);
       const completed = !isPh && completedIds.has(s.id);
       const available = PEDS_MAP_DEV_UNLOCKED || (!isPh && !!scenario);
-      const statusClass = isPh ? "locked" : completed ? "done" : "open";
+      const statusClass = (isPh || scormLocked) ? "locked" : completed ? "done" : "open";
       const glyph = isPh
         ? `<span class="journey-node-lock" aria-hidden="true">🔒</span>`
-        : completed
+        : scormLocked
+          ? `<span class="journey-node-lock" aria-hidden="true">🔒</span>`
+          : completed
           ? `<span class="journey-node-dot"></span><span class="journey-node-complete" aria-hidden="true">✓</span>`
           : `<span class="journey-node-dot"></span>`;
       const scenarioTitle = _scenarioRevealedTitle(scenario, completed) || s.label;
-      const tip = isPh ? `${s.label} — Coming Soon` : completed ? `${scenarioTitle} — Cleared` : `${scenarioTitle} — Available`;
+      const tip = isPh
+        ? `${s.label} — Coming Soon`
+        : scormLocked
+          ? `${scenarioTitle} — Complete PAT and Development drills to unlock`
+          : completed ? `${scenarioTitle} — Cleared` : `${scenarioTitle} — Available`;
       return `<button class="journey-node ${statusClass}" data-peds-scenario="${s.id}"
         ${isPh ? "disabled" : ""}
         title="${escapeHTML(tip)}" aria-label="${escapeHTML(tip)}"
@@ -15778,7 +15853,7 @@ function _renderPedsMap(mapId = null) {
       const completionId = _mapGameCompletionId(g.id);
       const patCompleted = completionId === "pat" ? !!_patStatusCache?.ever_completed : false;
       const devCompleted = completionId === "dev_sort" ? _devSortGamesSummary().completed === 1 : false;
-      const completed = patCompleted || devCompleted || completedGameIds.has(completionId);
+      const completed = patCompleted || devCompleted || completedGameIds.has(completionId) || _scormAppComplete(completionId);
       const completeMark = completed ? `<span class="journey-node-complete" aria-hidden="true">✓</span>` : "";
       const statusClass = isPh ? "locked" : completed ? "done" : "open";
       const tip = isPh ? `${g.label} — Coming Soon` : completed ? `${g.label} — Complete` : `${g.label}`;
@@ -15825,6 +15900,13 @@ function _renderPedsMap(mapId = null) {
         if (!sid || sid.startsWith("_ph")) return;
         const scenario = scenarioLookup.get(sid);
         if (!scenario) return;
+        if (_scormScenarioLocked(sid)) {
+          _presentMapNodeSelection(_station1LockSelection(
+            "Scenario Locked",
+            "Complete the PAT and Development drills before starting pediatric scenarios.",
+          ));
+          return;
+        }
         _presentMapNodeSelection({
           type: "scenario",
           scenarioId: sid,

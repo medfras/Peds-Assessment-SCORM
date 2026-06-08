@@ -454,3 +454,30 @@ def test_scorm_pass_requirements_render_in_active_challenges_modal():
     assert "custom_items" in app_js
     assert "function _activeChallengesForDisplay()" in app_js
     assert "_activeChallengesForDisplay().find" in app_js
+
+
+def test_scorm_production_peds_maps_use_backend_node_state():
+    app_js = APP_JS.read_text()
+    assert "function _scormNodeCompleteByNodeId" in app_js
+    assert "function _scormAppComplete" in app_js
+    assert "function _scormScenarioLocked" in app_js
+    assert "function _scormPedsSidebarProgress" in app_js
+    assert 'if (id === "map_0")' in app_js
+    assert 'if (id === "pm1")' in app_js
+    assert 'if (id === "pt1")' in app_js
+
+    render_start = app_js.find("function _renderPedsMap(mapId")
+    assert render_start != -1
+    render_block = app_js[render_start:render_start + 10000]
+    assert "Object.entries(_SCORM_NODE_BY_APP_ID)" in render_block
+    assert "completedIds.add(appId);" in render_block
+    assert "const scormLocked = !isPh && _scormScenarioLocked(s.id);" in render_block
+    assert "Complete PAT and Development drills to unlock" in render_block
+    assert "completedGameIds.has(completionId) || _scormAppComplete(completionId)" in render_block
+
+    sidebar_start = app_js.find("function _renderPedsMapSidebar")
+    assert sidebar_start != -1
+    sidebar_block = app_js[sidebar_start:sidebar_start + 3600]
+    assert "PEDS_MAP_DATA.filter(m => _scormPedsMapAllowed(m.id))" in sidebar_block
+    assert "_scormPedsSidebarProgress(m.id)" in sidebar_block
+    assert "_scormPedsSidebarProgress(mapId)" in sidebar_block
