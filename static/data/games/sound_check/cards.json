@@ -41,7 +41,7 @@
   },
   {
     "id": "sound_crackles_02",
-    "audio_url": "/static/audio/lung%20sounds/LS/F_FC_LUA.wav",
+    "audio_url": "/static/audio/lung%20sounds/Crackles_pneumonia.mp3",
     "license_source": "CC BY 4.0 - Torabi Y, Shirani S, Reilly JP. Heart and Lung Sounds Dataset Recorded from a Clinical Manikin using Digital Stethoscope (HLS-CMDS). Mendeley Data V3. doi:10.17632/8972jxbpmp.3",
     "license_cleared": true,
     "prompt": "Play the clip, then choose the best breath-sound finding.",
@@ -121,7 +121,7 @@
   },
   {
     "id": "sound_pleural_rub_01",
-    "audio_url": "/static/audio/lung%20sounds/PleuralFriction.mp3",
+    "audio_url": "/static/audio/lung%20sounds/LS/F_PR_LUA.wav",
     "license_source": "CC0 1.0 - Wikimedia Commons. Pleural Friction Rub audio sample.",
     "license_cleared": true,
     "prompt": "Play the clip, then choose the best breath-sound finding.",

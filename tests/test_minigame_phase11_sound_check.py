@@ -34,6 +34,40 @@ def test_sound_check_data_is_playable_and_licensed():
         assert card.get("follow_up", {}).get("mistake_tag")
 
 
+def test_lung_sounds_matcher_audio_files_exist():
+    cards = _read_json("static/data/games/lsm/cards.json")
+
+    assert len(cards) >= 8
+    for card in cards:
+        assert card["id"].startswith("lsm_")
+        assert card.get("license_source")
+        assert card.get("audio_url", "").startswith("/static/audio/")
+        assert (ROOT / unquote(card["audio_url"].lstrip("/"))).exists()
+        assert card.get("correct")
+
+
+def test_scenario_lung_sound_challenge_audio_files_exist():
+    missing = []
+    for path in (ROOT / "app/scenarios").rglob("*.json"):
+        scenario = json.loads(path.read_text())
+
+        def walk(value):
+            if isinstance(value, dict):
+                audio_file = value.get("audio_file")
+                if isinstance(audio_file, str) and "/static/audio/lung sounds/" in audio_file:
+                    if not (ROOT / unquote(audio_file.lstrip("/"))).exists():
+                        missing.append(f"{path.relative_to(ROOT)}: {audio_file}")
+                for child in value.values():
+                    walk(child)
+            elif isinstance(value, list):
+                for child in value:
+                    walk(child)
+
+        walk(scenario)
+
+    assert missing == []
+
+
 def test_sound_check_metadata_is_authoritative_allowed_game():
     metadata = get_minigame_metadata("sound_check")
 
