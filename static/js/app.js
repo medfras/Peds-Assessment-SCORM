@@ -5032,6 +5032,33 @@ function el(id)    { return document.getElementById(id); }
 function setText(id, val) { const e = el(id); if (e) e.textContent = val; }
 function setHTML(id, val) { const e = el(id); if (e) e.innerHTML = val; }
 
+function _isScormRuntimeUi() {
+  return !!(state.scormEnabled || document.documentElement.classList.contains("scorm-runtime"));
+}
+
+function _applyScormSaasUiTrim() {
+  if (!_isScormRuntimeUi()) return;
+  [
+    "btn-account-settings",
+    "btn-menu-logout",
+    "category-account-settings",
+    "category-menu-logout",
+    "btn-switch-agency",
+  ].forEach(id => {
+    const node = el(id);
+    if (!node) return;
+    node.classList.add("hidden");
+    node.setAttribute("aria-hidden", "true");
+    node.tabIndex = -1;
+  });
+  [
+    "screen-login",
+    "modal-agency-picker",
+    "modal-edit-profile",
+    "modal-leave-agency",
+  ].forEach(id => hide(id));
+}
+
 const DASHBOARD_MOBILE_BLOCK_MAX = 1200;
 
 function _isDashboardMobileBlocked() {
@@ -5531,12 +5558,14 @@ function _hideNavigationOverlays() {
 }
 
 function showScreen(name) {
+  if (_isScormRuntimeUi() && name === "login") name = "menu";
   document.querySelectorAll("[id^='screen-']").forEach(node => hide(node.id));
   _hideNavigationOverlays();
   show(`screen-${name}`);
   if (name === "menu") _syncHv2MobileMode();
   if (name === "category") _syncCategoryMobileMode();
   if (name === "menu") _renderRightDistrictList();
+  _applyScormSaasUiTrim();
   _queueViewportSync(0);
   _maybeShowTourTip(name);
 }
@@ -6405,9 +6434,10 @@ function _storeAuth(token) {
   // Show "Switch Agency" only when user has multiple memberships
   const switchBtn = el("btn-switch-agency");
   if (switchBtn) {
-    if ((p.membership_count ?? 1) > 1) switchBtn.classList.remove("hidden");
-    else                               switchBtn.classList.add("hidden");
+    if (!state.scormEnabled && (p.membership_count ?? 1) > 1) switchBtn.classList.remove("hidden");
+    else                                                      switchBtn.classList.add("hidden");
   }
+  _applyScormSaasUiTrim();
 }
 
 // Populate auth state from /api/auth/context response (cookie-restore path).
@@ -6451,9 +6481,10 @@ function _storeAuthFromContext(ctx) {
   }
   const switchBtn = el("btn-switch-agency");
   if (switchBtn) {
-    if ((ctx.membership_count ?? 1) > 1) switchBtn.classList.remove("hidden");
-    else                                  switchBtn.classList.add("hidden");
+    if (!state.scormEnabled && (ctx.membership_count ?? 1) > 1) switchBtn.classList.remove("hidden");
+    else                                                       switchBtn.classList.add("hidden");
   }
+  _applyScormSaasUiTrim();
 }
 
 function _clearAuth() {
@@ -6732,6 +6763,10 @@ async function handleLogin() {
    ═══════════════════════════════════════════════════════════════════ */
 
 function _showAgencyPicker(memberships) {
+  if (_isScormRuntimeUi()) {
+    hide("modal-agency-picker");
+    return;
+  }
   const list    = el("agency-picker-list");
   const errEl   = el("agency-picker-error");
   const searchEl = el("agency-picker-search");
@@ -6808,6 +6843,10 @@ function _showAgencyPicker(memberships) {
 /* ── Switch Agency button ─────────────────────────────────────────── */
 
 el("btn-switch-agency").addEventListener("click", () => {
+  if (_isScormRuntimeUi()) {
+    _applyScormSaasUiTrim();
+    return;
+  }
   hide("modal-edit-profile");
   authFetch(`${API}/api/me`)
     .then(r => { if (!r.ok) throw new Error("fetch failed"); return r.json(); })
@@ -11094,8 +11133,8 @@ function buildMenu() {
   // Switch Agency button visibility
   const switchBtn = el("btn-switch-agency");
   if (switchBtn) {
-    if ((state._membershipCount ?? 1) > 1) switchBtn.classList.remove("hidden");
-    else                                   switchBtn.classList.add("hidden");
+    if (!state.scormEnabled && (state._membershipCount ?? 1) > 1) switchBtn.classList.remove("hidden");
+    else                                                          switchBtn.classList.add("hidden");
   }
 
   const level = getCurrentLevel(game.xp);
@@ -11184,6 +11223,7 @@ function buildMenu() {
   // Initialize tour for first-time users (students only)
   const isPrivilegedUser = state._role === "admin" || state._role === "instructor" || state._isSuper;
   _syncDashboardMobileVisibility();
+  _applyScormSaasUiTrim();
   if (!isPrivilegedUser) _initTour();
 }
 
@@ -11308,16 +11348,12 @@ function _syncCategoryShell(districtId = null) {
   el("category-admin-dashboard")?.classList.toggle("hidden", !_canShowDashboardButtonForRole());
   const iconEl = el("category-screen-icon");
   if (iconEl) iconEl.textContent = icon;
+  _applyScormSaasUiTrim();
 }
 
 function _pedsMapCompletionSets() {
   const history = loadHistory().filter(h => !h.agencyId || h.agencyId === state.agency_id);
-  const passedIds = new Set(history.filter(h => {
-    if ((h.score ?? null) === null) return false;
-    if (h.criticalFailure?.triggered) return false;
-    const denom = _assessmentMaxFromEntry(h);
-    return Math.round((h.score / denom) * 100) >= 70;
-  }).map(h => h.scenarioId));
+  const passedIds = new Set(history.filter(_scenarioHistoryEntryPassed).map(h => h.scenarioId));
   if (state.scormEnabled) {
     Object.entries(_SCORM_NODE_BY_APP_ID).forEach(([appId, node]) => {
       if (node?.type === "scenario" && _scormNodeCompleteByNodeId(node.nodeId)) {
@@ -11484,12 +11520,7 @@ function _pedsMapProgress(mapId, passedIds, pedsMapCompleted, unlockState) {
 
 function _scenarioPassedHistorySet() {
   const history = loadHistory().filter(h => !h.agencyId || h.agencyId === state.agency_id);
-  return new Set(history.filter(h => {
-    if ((h.score ?? null) === null) return false;
-    if (h.criticalFailure?.triggered) return false;
-    const denom = _assessmentMaxFromEntry(h);
-    return Math.round((h.score / denom) * 100) >= 70;
-  }).map(h => h.scenarioId));
+  return new Set(history.filter(_scenarioHistoryEntryPassed).map(h => h.scenarioId));
 }
 
 function _pedsMapActivityCounts(mapIds = [], passedIds = new Set()) {
@@ -15079,7 +15110,7 @@ function _showLegacyCategoryList(categoryKey) {
   const history = loadHistory();
   // Completion and prerequisites are scoped to the current agency context
   const contextHistory = history.filter(h => !h.agencyId || h.agencyId === state.agency_id);
-  const completedIds = new Set(contextHistory.map(h => h.scenarioId));
+  const completedIds = new Set(contextHistory.filter(_scenarioHistoryEntryPassed).map(h => h.scenarioId));
 
   const container = el("category-scenario-list");
   container.innerHTML = "";
@@ -15097,18 +15128,19 @@ function _showLegacyCategoryList(categoryKey) {
   scenarios.forEach(scenario => {
     const num = scenario.scenario_number ?? "?";
     const attempts = contextHistory.filter(h => h.scenarioId === scenario.id);
-    const completed = attempts.length > 0;
-    const bestAttempt = completed
+    const attempted = attempts.length > 0;
+    const bestAttempt = attempted
       ? attempts.reduce((best, attempt) => {
           const pct = _assessmentPctFromEntry(attempt) ?? 0;
           const bestPct = best ? (_assessmentPctFromEntry(best) ?? 0) : -1;
           return pct > bestPct ? attempt : best;
         }, null)
       : null;
+    const completed = attempts.some(_scenarioHistoryEntryPassed);
     const bestScore = bestAttempt ? (bestAttempt.assessmentScore ?? bestAttempt.score ?? null) : null;
     const bestDenom = bestAttempt ? _assessmentMaxFromEntry(bestAttempt) : 100;
     const bestPct = bestAttempt ? _assessmentPctFromEntry(bestAttempt) : null;
-    const lastAttempt = completed ? attempts[0] : null;
+    const lastAttempt = attempted ? attempts[0] : null;
 
     // Check prerequisites
     const prereqs = scenario.prerequisites ?? [];
@@ -15714,12 +15746,7 @@ function _renderPedsMap(mapId = null) {
 
   // Unlock state (normally null when dev-unlocked)
   const _history = loadHistory().filter(h => !h.agencyId || h.agencyId === state.agency_id);
-  const _passedIds = new Set(_history.filter(h => {
-    if ((h.score ?? null) === null) return false;
-    if (h.criticalFailure?.triggered) return false;
-    const denom = _assessmentMaxFromEntry(h);
-    return Math.round((h.score / denom) * 100) >= 70;
-  }).map(h => h.scenarioId));
+  const _passedIds = new Set(_history.filter(_scenarioHistoryEntryPassed).map(h => h.scenarioId));
   const _pedsMapCompleted = new Set(loadGamification().pedsMapCompleted || []);
   const _baseUnlockState = _computeMapUnlockState(_passedIds, MAP_TOPOLOGY, _pedsMapCompleted);
   const unlockState = (() => {
@@ -15835,12 +15862,7 @@ function _renderPedsMap(mapId = null) {
   const layer = el("district-node-layer");
   if (layer) {
     const history = loadHistory().filter(h => !h.agencyId || h.agencyId === state.agency_id);
-    const completedIds = new Set(history.filter(h => {
-      if ((h.score ?? null) === null) return false;
-      if (h.criticalFailure?.triggered) return false;
-      const denom = _assessmentMaxFromEntry(h);
-      return Math.round((h.score / denom) * 100) >= 70;
-    }).map(h => h.scenarioId));
+    const completedIds = new Set(history.filter(_scenarioHistoryEntryPassed).map(h => h.scenarioId));
     if (state.scormEnabled) {
       Object.entries(_SCORM_NODE_BY_APP_ID).forEach(([appId, node]) => {
         if (node?.type === "scenario" && _scormNodeCompleteByNodeId(node.nodeId)) {
@@ -17222,6 +17244,10 @@ function showCategoryScreen(categoryKey) {
 }
 
 el("btn-menu-logout").addEventListener("click", () => {
+  if (_isScormRuntimeUi()) {
+    _applyScormSaasUiTrim();
+    return;
+  }
   _clearAuth();
   el("login-username").value = "";
   el("login-password").value = "";
@@ -17675,6 +17701,10 @@ el("btn-edit-profile-save").addEventListener("click", saveEditProfile);
 el("btn-join-agency").addEventListener("click", handleJoinAgency);
 
 function openEditProfileModal() {
+  if (_isScormRuntimeUi()) {
+    _applyScormSaasUiTrim();
+    return;
+  }
   el("edit-first-name").value = state.firstName || "";
   el("edit-last-name").value  = "";
   el("edit-email").value      = "";
@@ -17884,6 +17914,10 @@ async function saveEditProfile() {
 }
 
 async function handleJoinAgency() {
+  if (_isScormRuntimeUi()) {
+    _applyScormSaasUiTrim();
+    return;
+  }
   const errEl     = el("join-agency-error");
   const successEl = el("join-agency-success");
   errEl.classList.add("hidden");
@@ -18149,6 +18183,12 @@ function _assessmentPctFromEntry(entry) {
   if (!entry) return null;
   const raw = entry.assessmentScore ?? entry.score;
   return _assessmentPctFromScore(raw, _assessmentMaxFromEntry(entry));
+}
+
+function _scenarioHistoryEntryPassed(entry) {
+  if (!entry || entry.criticalFailure?.triggered) return false;
+  const pct = _assessmentPctFromEntry(entry);
+  return pct !== null && pct >= 70;
 }
 
 function _assessmentStatusMeta(pct, { assessmentOnly = false, criticalFailure = null } = {}) {

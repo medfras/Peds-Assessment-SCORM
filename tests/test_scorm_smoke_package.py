@@ -224,6 +224,44 @@ def test_scorm_home_sidebars_hide_account_controls_and_use_trails_copy():
     assert "Paths To / From Current" not in app_js
 
 
+def test_scorm_runtime_trims_saas_auth_and_agency_controls():
+    app_js = APP_JS.read_text()
+
+    assert "function _applyScormSaasUiTrim()" in app_js
+    trim_start = app_js.find("function _applyScormSaasUiTrim()")
+    assert trim_start != -1
+    trim_block = app_js[trim_start:trim_start + 900]
+    for control_id in [
+        "btn-account-settings",
+        "btn-menu-logout",
+        "category-account-settings",
+        "category-menu-logout",
+        "btn-switch-agency",
+        "screen-login",
+        "modal-agency-picker",
+        "modal-edit-profile",
+    ]:
+        assert control_id in trim_block
+
+    show_start = app_js.find("function showScreen(name)")
+    assert show_start != -1
+    show_block = app_js[show_start:show_start + 450]
+    assert 'if (_isScormRuntimeUi() && name === "login") name = "menu";' in show_block
+    assert "_applyScormSaasUiTrim();" in show_block
+
+    picker_start = app_js.find("function _showAgencyPicker")
+    assert picker_start != -1
+    picker_block = app_js[picker_start:picker_start + 250]
+    assert "if (_isScormRuntimeUi())" in picker_block
+    assert 'hide("modal-agency-picker");' in picker_block
+
+    logout_start = app_js.find('el("btn-menu-logout").addEventListener("click"')
+    assert logout_start != -1
+    logout_block = app_js[logout_start:logout_start + 260]
+    assert "if (_isScormRuntimeUi())" in logout_block
+    assert "_clearAuth();" in logout_block
+
+
 def test_scorm_history_back_returns_incomplete_learner_to_home_map():
     app_js = APP_JS.read_text()
     start = app_js.find('el("btn-history-back").addEventListener("click"')
@@ -314,6 +352,10 @@ def test_scorm_station1_wrapup_requires_full_orientation_sequence():
     assert 'window.RescueTrails?.["scormAdapter"]?.getAttemptId?.()' in app_js
     assert "const scopePart = scope ? `scorm:${scope}:` : \"\";" in app_js
     assert "function _station1RequirementsState(history = null)" in app_js
+    assert "function _scenarioHistoryEntryPassed(entry)" in app_js
+    assert "const pct = _assessmentPctFromEntry(entry);" in app_js
+    assert "return pct !== null && pct >= 70;" in app_js
+    assert "const completedIds = new Set(scopedHistory.map(h => h.scenarioId));" in app_js
     assert "const ready = introSeen && completed && cprComplete && challengesSeen;" in app_js
     assert "function _station1ScormOrientationComplete()" in app_js
     assert "_getScormUiState()?.orientationComplete === true" in app_js
