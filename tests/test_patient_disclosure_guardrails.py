@@ -662,6 +662,18 @@ def test_frontend_manual_pulse_check_reports_quality_not_heart_rate():
     assert '!/\\bpulse\\s*ox' in request_fn
 
 
+def test_frontend_pain_questions_do_not_trigger_avpu_shortcut():
+    source = open("static/js/app.js", encoding="utf-8").read()
+
+    defs_block = source[source.index("const _AUTHORED_VITAL_DEFS"):source.index("function _authoredVitalsBaseline")]
+    avpu_fn = source[source.index("function _userRequestedAvpu"):source.index("async function _recordAvpuAssessment")]
+
+    assert '{ key: "pain"' in defs_block
+    assert "painful stimuli?" in avpu_fn
+    assert "respond(?:ing|s)? to (?:voice|verbal|pain)" in avpu_fn
+    assert "|alert|verbal|pain|unresponsive|" not in avpu_fn
+
+
 def test_frontend_suction_unit_quick_action_prompts_for_suction_confirmation():
     source = open("static/js/app.js", encoding="utf-8").read()
 

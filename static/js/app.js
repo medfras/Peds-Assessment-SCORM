@@ -22046,7 +22046,8 @@ function _userRequestedAvpuOnly(message = "") {
 function _userRequestedAvpu(message = "") {
   const msg = String(message || "");
   if (_userRequestedGcs(msg)) return false;
-  return /\b(avpu|level of consciousness|loc|responsive(?:ness)?|respond(?:ing|s)? to (?:voice|verbal|pain)|alert|verbal|pain|unresponsive|alert\s+and\s+orient|orient(?:ed|ation)?\s+(?:to\s+)?(?:person|place|time|event))\b/i.test(msg)
+  return /\b(avpu|level of consciousness|loc|responsive(?:ness)?|respond(?:ing|s)? to (?:voice|verbal|pain)|respond(?:ing|s)? (?:only )?to painful stimuli?|painful stimuli?|unresponsive|alert\s+and\s+orient|orient(?:ed|ation)?\s+(?:to\s+)?(?:person|place|time|event))\b/i.test(msg)
+    || /\b(?:is|are|appears?|seems?|looks?|patient|pt)\b.{0,24}\b(?:alert|verbal|unresponsive)\b/i.test(msg)
     || /\ba\s*[&+]\s*o(?:\s*[×x]\s*[1-4])?\b/i.test(msg);
 }
 
