@@ -6018,11 +6018,22 @@ function _scormPedsMapAllowed(mapId) {
   return _SCORM_PEDS_MAP_IDS.has(String(mapId || ""));
 }
 
+function _scormVisibleMapScenarioProgress(mapId = "") {
+  const mapDef = _PEDS_MAP_BY_ID.get(String(mapId || ""));
+  const scenarios = (mapDef?.scenarios || []).filter(s => !String(s.id || "").startsWith("_ph"));
+  const completed = scenarios.filter(s => _scormAppComplete(s.id)).length;
+  const total = scenarios.length;
+  return {
+    completed,
+    total,
+    pct: total ? Math.round((completed / total) * 100) : 100,
+    complete: total ? completed >= total : true,
+  };
+}
+
 function _scormPedsSidebarProgress(mapId = "") {
   if (!state.scormEnabled) return { unlocked: false, partial: false, complete: false, pct: 0 };
   const id = String(mapId || "");
-  const summary = _normalizeScormState(state.scormLatestSummary || state.scormResumeState || {});
-  const ce = summary.peds_ce_challenge || {};
   const pm1Unlocked = _scormAppComplete(_SCORM_PM1_UNLOCK_SCENARIO_ID);
   const pt1Unlocked = _scormAppComplete(_SCORM_PT1_UNLOCK_SCENARIO_ID);
   if (id === "map_0") {
@@ -6030,12 +6041,12 @@ function _scormPedsSidebarProgress(mapId = "") {
     return { unlocked: true, partial: false, complete: pm1Unlocked && pt1Unlocked, pct };
   }
   if (id === "pm1") {
-    const complete = !!ce.pm1_done;
-    return { unlocked: pm1Unlocked, partial: false, complete, pct: complete ? 100 : 0 };
+    const progress = _scormVisibleMapScenarioProgress(id);
+    return { unlocked: pm1Unlocked, partial: false, complete: progress.complete, pct: progress.pct };
   }
   if (id === "pt1") {
-    const complete = !!ce.pt1_done;
-    return { unlocked: pt1Unlocked, partial: false, complete, pct: complete ? 100 : 0 };
+    const progress = _scormVisibleMapScenarioProgress(id);
+    return { unlocked: pt1Unlocked, partial: false, complete: progress.complete, pct: progress.pct };
   }
   return { unlocked: false, partial: false, complete: false, pct: 0 };
 }
@@ -22805,7 +22816,7 @@ el("btn-o2-confirm").addEventListener("click", async () => {
     const flow = el("o2-flow-input")?.value || "?";
     const deviceNames = { nc: "Nasal Cannula (NC)", nrb: "Non-Rebreather Mask (NRB)", bvm: "BVM with O₂" };
     if (isBlowby && device === "nrb") {
-      pcrLabel = `Blow-by O₂ via NRB held near face — ${flow} LPM`;
+      pcrLabel = `Blow-by O₂ held near face — ${flow} LPM`;
     } else {
       pcrLabel = `O₂ via ${deviceNames[device] || device.toUpperCase()} — ${flow} LPM`;
     }
@@ -27106,7 +27117,7 @@ el("btn-lung-sound-blowby")?.addEventListener("click", async () => {
   appendUserAction("I am giving blow-by oxygen.", "lung-sound-care-action");
   await applyInterventionAndRecord(
     "o2_blowby",
-    "Blow-by O₂ via NRB held near face — 15 LPM",
+    "Blow-by O₂ held near face — 15 LPM",
     { source: "lung_sound_challenge" }
   );
   showToast("Blow-by oxygen recorded.", "success");

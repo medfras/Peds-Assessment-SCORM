@@ -589,6 +589,7 @@ def test_scorm_production_peds_maps_use_backend_node_state():
     assert "function _scormNodeCompleteByNodeId" in app_js
     assert "function _scormAppComplete" in app_js
     assert "function _scormScenarioLocked" in app_js
+    assert "function _scormVisibleMapScenarioProgress" in app_js
     assert "function _scormPedsSidebarProgress" in app_js
     assert "function _scormMapRouteUnlocked" in app_js
     assert '_SCORM_PM1_UNLOCK_SCENARIO_ID = "peds_diabetic_emergency_01"' in app_js
@@ -597,7 +598,10 @@ def test_scorm_production_peds_maps_use_backend_node_state():
     assert 'if (id === "pm1")' in app_js
     assert 'if (id === "pt1")' in app_js
     assert "complete: pm1Unlocked && pt1Unlocked, pct" in app_js
-    assert "pct: complete ? 100 : 0" in app_js
+    assert 'const scenarios = (mapDef?.scenarios || []).filter(s => !String(s.id || "").startsWith("_ph"));' in app_js
+    assert "const completed = scenarios.filter(s => _scormAppComplete(s.id)).length;" in app_js
+    assert "pct: total ? Math.round((completed / total) * 100) : 100" in app_js
+    assert "complete: progress.complete, pct: progress.pct" in app_js
 
     render_start = app_js.find("function _renderPedsMap(mapId")
     assert render_start != -1

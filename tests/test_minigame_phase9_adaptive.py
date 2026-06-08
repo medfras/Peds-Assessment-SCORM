@@ -151,6 +151,11 @@ def test_drill_nodes_use_learning_glyph_and_drill_copy():
 def test_pat_text_only_cards_hide_image_placeholder_and_center_copy():
     js = _read("static/js/app.js")
     css = _read("static/css/style.css")
+    cards = _read_json("static/data/games/pat/cards.json")
+
+    assert all(card.get("mode") != "image" for card in cards)
+    assert all(not card.get("image_url") for card in cards)
+    assert all(not card.get("alt_text") for card in cards)
 
     assert 'imageShell?.classList.toggle("text-only", !hasImage);' in js
     assert 'fallbackEl?.classList.add("hidden");' in js

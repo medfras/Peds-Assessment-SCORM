@@ -75,6 +75,9 @@ def test_o2_modal_blowby_checkbox_is_visible_and_unchecked_by_default():
     change_block = js[js.index('el("o2-blowby")?.addEventListener("change"'):js.index('el("btn-o2-cancel")')]
 
     assert "hidden" not in label_tag
+    assert "Blow-by held near face" in html
+    assert "Blow-by with NRB held near face" not in html
+    assert "Blow-by O₂ held near face" in js
     assert "blowbyEl.checked = false;" in show_block
     assert 'blowbyLabel.classList.remove("hidden")' in update_block
     assert 'blowbyLabel.classList.add("hidden")' not in update_block

@@ -1,13 +1,11 @@
 [
   {
     "id": "pat_sick_001",
-    "mode": "image",
+    "mode": "text",
     "prompt": "Inconsolable crying with poor eye contact",
     "decision": "sick",
     "bucket": "appearance",
     "ticls": "TICLS: Consolability + Interactiveness",
-    "image_url": "/static/img/minigames/pat/pat_appearance_001.jpg",
-    "alt_text": "Child crying and not engaging caregiver",
     "explanation": "Inconsolable, non-interactive appearance suggests a sick child.",
     "follow_up": {
       "prompt": "What is the best immediate field implication of this PAT finding?",
@@ -20,13 +18,11 @@
   },
   {
     "id": "pat_sick_002",
-    "mode": "image",
+    "mode": "text",
     "prompt": "Limp infant with weak tone",
     "decision": "sick",
     "bucket": "appearance",
     "ticls": "TICLS: Tone",
-    "image_url": "/static/img/minigames/pat/pat_appearance_002.jpg",
-    "alt_text": "Infant appears limp in caregiver arms",
     "explanation": "Abnormal tone is a high-risk Appearance finding.",
     "follow_up": {
       "prompt": "What should weak tone change about your first actions?",
