@@ -215,6 +215,10 @@ def test_cpr_concepts_game_frontend_wiring():
     assert 'id="cprconcepts-nudge-overlay"' in html
     assert 'btn-cprconcepts-nudge-continue' in html
     assert 'btn-cprconcepts-nudge-continue' in js
+    assert 'id="btn-cprconcepts-phase2"' in html
+    assert 'phase2Btn?.classList.toggle("hidden", !unlocked);' in js
+    assert 'el("btn-cprconcepts-phase2")?.addEventListener("click",      _launchCprBlsPhase2FromConcepts);' in js
+    assert "function _launchCprBlsPhase2FromConcepts()" in js
 
     # JS registrations
     assert 'gameId: "cpr_bls_concepts"' in js

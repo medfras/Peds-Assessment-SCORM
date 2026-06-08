@@ -358,7 +358,7 @@ def test_scorm_station1_wrapup_requires_full_orientation_sequence():
     assert "const completedIds = new Set(scopedHistory.map(h => h.scenarioId));" in app_js
     assert "const ready = introSeen && completed && cprComplete && challengesSeen;" in app_js
     assert "function _station1ScormOrientationComplete()" in app_js
-    assert "_getScormUiState()?.orientationComplete === true" in app_js
+    assert "_getScormUiState()?.orientationComplete === true && !!state.orientationCompletedAt" in app_js
     assert "function _station1PersistedComplete()" in app_js
     assert "if (_station1PersistedComplete())" in app_js
     assert "completedIds.add(\"orientation_01\");" in app_js
@@ -601,9 +601,8 @@ def test_scorm_suspend_data_preserves_ui_location_for_resume():
     start = app_js.find("function _setScormUiState")
     assert start != -1
     block = app_js[start:start + 500]
-    assert "const prior = _getScormUiState();" in block
-    assert "prior?.orientationComplete === true" in block
-    assert "next.orientationComplete = true;" in block
+    assert "next.orientationComplete === true && !state.orientationCompletedAt" in block
+    assert "next.orientationComplete = false;" in block
 
 
 def test_scorm_pass_requirements_render_in_active_challenges_modal():

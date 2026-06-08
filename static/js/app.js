@@ -6112,11 +6112,8 @@ function _getScormUiState() {
 function _setScormUiState(ui) {
   if (!state.scormEnabled) return;
   try {
-    const prior = _getScormUiState();
     const next = { ...(ui || {}) };
-    if (prior?.orientationComplete === true && next.orientationComplete !== false) {
-      next.orientationComplete = true;
-    }
+    if (next.orientationComplete === true && !state.orientationCompletedAt) next.orientationComplete = false;
     window.RescueTrails?.["scormAdapter"]?.setUiState?.(next);
   } catch (err) {
     console.warn("[SCORM] UI state save failed", err);
@@ -9734,9 +9731,11 @@ function _makeCprBlsConceptsGame() {
       const questionTotal = Math.max(5, Number(total) || 5);
       const unlocked = Number(correct) >= required;
       const playAgainBtn = el("btn-cprconcepts-play-again");
+      const phase2Btn = el("btn-cprconcepts-phase2");
       const gateNote = el("cprconcepts-gate-note");
 
       if (playAgainBtn) playAgainBtn.textContent = unlocked ? "Play Again" : "Retry Phase 1";
+      phase2Btn?.classList.toggle("hidden", !unlocked);
       if (gateNote) {
         gateNote.textContent = unlocked
           ? `Phase 2 unlocked: ${correct}/${questionTotal} correct.`
@@ -9786,8 +9785,16 @@ function _openCprBlsConceptsGameScreen(selection = null) {
   }
   const playAgainBtn = el("btn-cprconcepts-play-again");
   if (playAgainBtn) playAgainBtn.textContent = "Play Again";
+  el("btn-cprconcepts-phase2")?.classList.add("hidden");
   showScreen("cpr-bls-concepts-game");
   show("cprconcepts-intro-overlay");
+}
+
+function _launchCprBlsPhase2FromConcepts() {
+  hide("cprconcepts-results");
+  hide("cprconcepts-results-backdrop");
+  hide("cprconcepts-nudge-overlay");
+  _openCprBlsSequenceGameScreen({ returnDistrictId: _cprBlsReturnDistrictId });
 }
 
 function _exitCprBlsConceptsToMap() {
@@ -15521,11 +15528,11 @@ function _station1RequirementsState(history = null) {
 
 function _station1ScormOrientationComplete() {
   if (!state.scormEnabled) return false;
-  return _getScormUiState()?.orientationComplete === true;
+  return _getScormUiState()?.orientationComplete === true && !!state.orientationCompletedAt;
 }
 
 function _station1PersistedComplete() {
-  return _station1ScormOrientationComplete() || !!state.orientationCompletedAt;
+  return !!state.orientationCompletedAt;
 }
 
 function _station1IsComplete(requirements = null) {
@@ -17525,6 +17532,7 @@ el("btn-cprconcepts-intro-learn")?.addEventListener("click", () => _openMgEducat
 el("btn-cprconcepts-back")?.addEventListener("click",        _exitCprBlsConceptsToMap);
 el("btn-cprconcepts-start")?.addEventListener("click",       () => _cprBlsConceptsGame.startRound());
 el("btn-cprconcepts-play-again")?.addEventListener("click",  () => _cprBlsConceptsGame.startRound());
+el("btn-cprconcepts-phase2")?.addEventListener("click",      _launchCprBlsPhase2FromConcepts);
 el("btn-cprconcepts-back-map")?.addEventListener("click",    _exitCprBlsConceptsToMap);
 
 /* ── Adult vs. Child A&P game wiring ──────────────────────────── */
