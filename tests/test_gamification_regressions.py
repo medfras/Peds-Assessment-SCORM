@@ -25,8 +25,10 @@ from app.main import (  # noqa: E402
     _effective_subscores,
     _LEXI_RECENT_MISSED_KEYS,
     _build_group_public_state,
+    _PILOT_PEDIATRIC_CHAMPION_SCENARIOS,
     _overlap_recent_missed_keys,
     _remember_missed_lexi_keys_for_user,
+    _session_counts_as_passing_pilot_scenario,
     _validate_adjudication_request,
     post_session_progress,
     refund_treat,
@@ -1217,6 +1219,52 @@ def test_scenario_treats_are_limited_to_perfect_scenarios():
     assert "treats_earned = 1 if is_perfect_scenario else 0" in source
     assert "treats_earned = (xp_gross // 1000) + len(new_badges) + levels_gained" not in source
     assert "award_duplicate_treats = is_perfect_scenario" in source
+
+
+def test_pediatric_champion_uses_all_pilot_scenarios_not_legacy_counts():
+    source = inspect.getsource(post_session_progress)
+
+    assert "await _pilot_pediatric_champion_complete" in source
+    assert 'maybe_badge(\n            "peds_champion"' in source
+    assert '(user.peds_count or 0) >= 5 and (user.peds_trauma_count or 0) >= 5' not in source
+    assert len(_PILOT_PEDIATRIC_CHAMPION_SCENARIOS) == 9
+    assert "peds_cardiac_arrest_01_bls" not in _PILOT_PEDIATRIC_CHAMPION_SCENARIOS
+
+
+def test_pilot_pediatric_champion_session_pass_filter_uses_passed_distinct_pilot_scenarios():
+    passing = types.SimpleNamespace(
+        scenario_id="peds_asthma_01",
+        assessment_score=56,
+        score=0,
+        narrative_data={},
+        score_snapshot={},
+    )
+    failing = types.SimpleNamespace(
+        scenario_id="peds_asthma_01",
+        assessment_score=55,
+        score=0,
+        narrative_data={},
+        score_snapshot={},
+    )
+    critical_failure = types.SimpleNamespace(
+        scenario_id="peds_asthma_01",
+        assessment_score=80,
+        score=100,
+        narrative_data={},
+        score_snapshot={"critical_failure": {"triggered": True}},
+    )
+    non_pilot = types.SimpleNamespace(
+        scenario_id="peds_cardiac_arrest_01_bls",
+        assessment_score=80,
+        score=100,
+        narrative_data={},
+        score_snapshot={},
+    )
+
+    assert _session_counts_as_passing_pilot_scenario(passing)
+    assert not _session_counts_as_passing_pilot_scenario(failing)
+    assert not _session_counts_as_passing_pilot_scenario(critical_failure)
+    assert not _session_counts_as_passing_pilot_scenario(non_pilot)
 
 
 def _group_session(updated_at: datetime) -> LexiGroupSession:

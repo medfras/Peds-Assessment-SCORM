@@ -202,13 +202,13 @@ Lesson status and score are written to the LMS when the SCORM pass challenge is 
 - PM1: any 2 of 4 scenarios completed
 - PT1: any 2 of 5 scenarios completed
 - Total training time ≥ 3600 s (60 min), counted from orientation, scenarios, and drills
-- XP ≥ 950
+- XP ≥ 1200
 
 **Grade formula (backend-computed, written to `cmi.core.score.raw` when CE complete):**
 `scenario_avg`
 
 - `scenario_avg` = average of all completed PM1 + PT1 scenario scores; null until 2 PM1 + 2 PT1 are complete
-- XP target rationale: 950 is reachable with orientation plus four solid passing scenarios, while lower-margin passing learners can close the gap with higher scenario scores, optional drills, or Lexi challenge rounds.
+- XP target rationale: 1200 is reachable with orientation plus four stronger passing scenarios, while lower-margin passing learners can close the gap with higher scenario scores, optional drills, or Lexi challenge rounds.
 - CPR, drills, optional games, and orientation remain visible progress/reward telemetry but are not direct Moodle pass requirements except where they contribute training time/XP.
 
 **LMS status reporting (from `scorm.js finish()`):**

@@ -497,7 +497,8 @@ def test_scorm_pass_requirements_render_in_active_challenges_modal():
     assert "Pediatric Medical scenarios" in app_js
     assert "Pediatric Trauma scenarios" in app_js
     assert "Training time" in app_js
-    assert "950 XP" in app_js
+    assert "Number(ce.xp_required || 1200)" in app_js
+    assert "Earn at least ${xpRequired} XP" in app_js
     assert "custom_items" in app_js
     assert "function _activeChallengesForDisplay()" in app_js
     assert "_activeChallengesForDisplay().find" in app_js

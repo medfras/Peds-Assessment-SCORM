@@ -1153,6 +1153,18 @@ async def _write_feed_event(
 PASSING_SCORE = 70       # normalized 0-100 threshold
 PASSING_PCT   = 0.70     # 70% — used to compute passing on any scale
 
+_PILOT_PEDIATRIC_CHAMPION_SCENARIOS = frozenset({
+    "peds_croup_01",
+    "peds_asthma_01",
+    "peds_diabetic_emergency_01",
+    "peds_febrile_seizure_01",
+    "peds_trauma_01_soft_tissue",
+    "peds_trauma_07_head_injury",
+    "peds_trauma_03_extremity",
+    "peds_trauma_02_partial_choking",
+    "peds_anaphylaxis_01",
+})
+
 
 def _assessment_max_from_subscores(subscores: dict | None) -> int:
     """Return the assessment denominator implied by the stored subscore shape."""
@@ -1953,6 +1965,7 @@ _SYSTEM_BADGE_DEFS = [
     {"id": "road_warrior",   "name": "Road Warrior",         "icon": "🛣️"},
     {"id": "peds_first",     "name": "Peds First",           "icon": "🧒"},
     {"id": "peds_pro",       "name": "Peds Pro",             "icon": "👶"},
+    {"id": "peds_champion",  "name": "Pediatric Champion",   "icon": "👶"},
     {"id": "lexi_rookie",        "name": "Lexi's Rookie",      "icon": "🐾"},
     {"id": "lexi_ace",           "name": "Lexi's Ace",         "icon": "🏅"},
     {"id": "orientation_complete", "name": "Station 1 Cleared", "icon": "🚒"},
@@ -8324,7 +8337,15 @@ async def post_session_progress(
         maybe_badge("speed_demon",    req.elapsed_min > 0 and req.elapsed_min < 8)
         maybe_badge("frequent_flyer", total_sessions_after >= 5)
         maybe_badge("road_warrior",   total_sessions_after >= 10)
-        maybe_badge("peds_champion",  (user.peds_count or 0) >= 5 and (user.peds_trauma_count or 0) >= 5)
+        maybe_badge(
+            "peds_champion",
+            await _pilot_pediatric_champion_complete(
+                user.id,
+                session.agency_id,
+                db,
+                current_session=session,
+            ),
+        )
 
         for badge_id in new_badges:
             meta = _SYSTEM_BADGE_META.get(badge_id)
@@ -13848,6 +13869,55 @@ def _session_critical_failure(session: SimSession) -> dict | None:
         if isinstance(cf, dict) and cf.get("triggered"):
             return cf
     return None
+
+
+def _session_counts_as_passing_pilot_scenario(session: SimSession) -> bool:
+    """Return true when this session passes one of the Station 1 pilot scenarios."""
+    if getattr(session, "scenario_id", None) not in _PILOT_PEDIATRIC_CHAMPION_SCENARIOS:
+        return False
+    if _session_critical_failure(session):
+        return False
+
+    narrative_data = getattr(session, "narrative_data", None) or {}
+    subscores = narrative_data.get("subscores") if isinstance(narrative_data, dict) else None
+    assessment_score = getattr(session, "assessment_score", None)
+    assessment_passed = False
+    if assessment_score is not None:
+        assessment_max = _assessment_max_from_subscores(subscores)
+        assessment_passed = (assessment_score / float(assessment_max)) >= PASSING_PCT
+
+    normalized_score = getattr(session, "score", None)
+    normalized_passed = (normalized_score or 0) >= PASSING_SCORE
+    return assessment_passed or normalized_passed
+
+
+async def _pilot_pediatric_champion_complete(
+    user_id: str,
+    agency_id: str | None,
+    db: AsyncSession,
+    *,
+    current_session: SimSession | None = None,
+) -> bool:
+    """Check distinct passed pilot scenarios instead of legacy category counters."""
+    stmt = select(SimSession).where(
+        SimSession.user_id == user_id,
+        SimSession.scenario_id.in_(_PILOT_PEDIATRIC_CHAMPION_SCENARIOS),
+        SimSession.ended_at.isnot(None),
+    )
+    if agency_id:
+        stmt = stmt.where(SimSession.agency_id == agency_id)
+    if current_session is not None and getattr(current_session, "id", None):
+        stmt = stmt.where(SimSession.id != current_session.id)
+
+    result = await db.execute(stmt)
+    passed_scenarios = {
+        session.scenario_id
+        for session in result.scalars().all()
+        if _session_counts_as_passing_pilot_scenario(session)
+    }
+    if current_session and _session_counts_as_passing_pilot_scenario(current_session):
+        passed_scenarios.add(current_session.scenario_id)
+    return _PILOT_PEDIATRIC_CHAMPION_SCENARIOS.issubset(passed_scenarios)
 
 
 class AdjudicationRequest(BaseModel):

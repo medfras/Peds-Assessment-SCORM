@@ -601,7 +601,7 @@ def test_peds_ce_challenge_complete_when_all_criteria_met():
     )
     c = s["peds_ce_challenge"]
     assert c["id"] == "pfd_station1_scorm_pass"
-    assert c["title"] == "Station 1 Pediatric Assessment Pass"
+    assert c["title"] == "Pediatric Patient Assessment"
     assert c["complete"] is True
     assert c["pm1_done"] is True
     assert c["pt1_done"] is True

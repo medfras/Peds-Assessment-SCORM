@@ -4617,7 +4617,7 @@ const BADGE_DEFS = [
   { id: "speed_demon",       icon: "⚡", name: "Speed Demon",          desc: "Complete a scenario under 8 minutes" },
   { id: "frequent_flyer",    icon: "🚑", name: "Frequent Flyer",       desc: "Complete 5 scenarios" },
   { id: "road_warrior",      icon: "🛣️", name: "Road Warrior",         desc: "Complete 10 scenarios" },
-  { id: "peds_champion",     icon: "👶", name: "Pediatric Champion",   desc: "Pass 5 pediatric medical and 5 pediatric trauma scenarios" },
+  { id: "peds_champion",     icon: "👶", name: "Pediatric Champion",   desc: "Pass all pilot pediatric medical and trauma scenarios" },
   { id: "lexi_rookie",      icon: "🐾", name: "Lexi's Rookie",        desc: "Complete your first round of Lexi's Challenge" },
   { id: "lexi_ace",         icon: "🏅", name: "Lexi's Ace",           desc: "Complete 3 perfect rounds of Lexi's Challenge" },
   { id: "lexi_group_participant", icon: "👥", name: "Group Challenge", desc: "Participate in a live Group Challenge" },
@@ -6140,12 +6140,12 @@ function _normalizeScormState(summaryOrResume = {}) {
     unlocks: summaryOrResume.unlocks || { scenarios: false, map3: false },
     peds_ce_challenge: {
       id: ce.id || "pfd_station1_scorm_pass",
-      title: ce.title || "Station 1 Pediatric Assessment Pass",
+      title: ce.title || "Pediatric Patient Assessment",
       complete: !!ce.complete,
       ce_seconds: Number(ce.ce_seconds || 0),
       training_time_done: !!ce.training_time_done,
       xp: Number(ce.xp || 0),
-      xp_required: Number(ce.xp_required || 950),
+      xp_required: Number(ce.xp_required || 1200),
       xp_ok: !!ce.xp_ok,
       pm1_completed: Number(ce.pm1_completed || 0),
       pm1_required: Number(ce.pm1_required || 2),
@@ -12268,7 +12268,7 @@ function _scormPassChallengeForDisplay() {
   const pt1Done = Math.min(Math.max(0, Number(ce.pt1_completed || 0)), pt1Required);
   const ceSeconds = Math.max(0, Number(ce.ce_seconds || 0));
   const ceMinutes = Math.floor(ceSeconds / 60);
-  const xpRequired = Number(ce.xp_required || 950);
+  const xpRequired = Number(ce.xp_required || 1200);
   const xpDone = Math.max(0, Number(ce.xp || 0));
   const timeDone = !!ce.training_time_done;
   const xpOk = !!ce.xp_ok;
@@ -12281,7 +12281,7 @@ function _scormPassChallengeForDisplay() {
     is_active: true,
     earned: !!ce.complete,
     icon: "🎯",
-    name: ce.title || "Station 1 Pediatric Assessment Pass",
+    name: ce.title || "Pediatric Patient Assessment",
     description: "Moodle course completion requirement: finish the required scenario mix, training time, and XP target.",
     scenarios_total: progressTotal,
     scenarios_completed: progressDone,
@@ -12322,7 +12322,7 @@ function _scormPassChallengeForDisplay() {
         }],
       },
       {
-        label: "Earn at least 950 XP",
+        label: `Earn at least ${xpRequired} XP`,
         completed: Math.min(xpDone, xpRequired),
         needed: xpRequired,
         progress_text: `${xpDone.toLocaleString()} of ${xpRequired.toLocaleString()} XP`,
@@ -23173,11 +23173,37 @@ let _historyCaptureUnlocked = false;
 
 function _manualCspineCommandRequested(message = "") {
   const msg = String(message || "").toLowerCase();
+  if (_cspineExamRequested(msg)) return false;
   return (
     /\b(hold|maintain|stabiliz(?:e|ing)|manual)\b.{0,30}\b(c[\s-]?spine|cervical spine|neck|head)\b/i.test(msg)
     || /\b(c[\s-]?spine|cervical spine|neck|head)\b.{0,30}\b(hold|maintain|stabiliz(?:e|ing)|manual)\b/i.test(msg)
     || /\bmanual\s+in[-\s]?line\s+stabilization\b/i.test(msg)
   ) && !/\b(c[-\s]?collar|cervical collar|collar)\b/i.test(msg);
+}
+
+function _cspineExamRequested(message = "") {
+  const msg = String(message || "");
+  return /\b(?:palpat(?:e|ing)|assess(?:ing)?|check(?:ing)?|examin(?:e|ing)|evaluat(?:e|ing))\b.{0,50}\b(?:c[\s-]?spine|cervical spine|neck)\b/i.test(msg)
+    || /\b(?:c[\s-]?spine|cervical spine|neck)\b.{0,50}\b(?:tenderness|pain|deformity|step[-\s]?off|palpat(?:e|ing)|assess(?:ing)?|check(?:ing)?|exam)\b/i.test(msg);
+}
+
+async function _handleCspineExamAction(message = "", chipId = null, isAction = false) {
+  if (!_cspineExamRequested(message)) return false;
+  const match = _authoredStandardExamFindingForMessage(message)
+    || _authoredStandardExamFindingForMessage("palpate cervical spine");
+  const key = match?.entry?.exam_key || "C-Spine";
+  const value = match?.entry?.finding
+    ? _normalizeExamFindingValue(key, match.entry.finding)
+    : "Cervical spine palpated for midline tenderness, deformity, and step-off. No authored scenario-specific finding is available.";
+  if (isAction) appendUserAction(message, chipId);
+  else appendUserMessage(message);
+  _lastUserChatMessage = message;
+  await addPcrExam(key, value, "authored_standard_exam");
+  appendExamFindingInfo(key, value);
+  appendLexiActionFeedback("focused_exam", LEXI_ACTION_FEEDBACK.focused_exam);
+  checkReadiness();
+  _orientationFlushQueuedCues();
+  return true;
 }
 
 async function _handleManualCspineCommand(message = "", chipId = null, isAction = false) {
@@ -24775,6 +24801,13 @@ async function sendMessage(overrideText = null, options = {}) {
   }
 
   if (await _handleFocusedSecondaryAssessmentAction(message, chipId, isAction)) {
+    if (!overrideText) input.value = "";
+    el("btn-send").disabled = false;
+    input.focus();
+    return;
+  }
+
+  if (await _handleCspineExamAction(message, chipId, isAction)) {
     if (!overrideText) input.value = "";
     el("btn-send").disabled = false;
     input.focus();
@@ -27049,6 +27082,16 @@ el("btn-play-lung-sound")?.addEventListener("click", () => {
     audio.currentTime = 0;
     icon.textContent = "▶";
   }
+});
+
+el("btn-lung-sound-blowby")?.addEventListener("click", async () => {
+  appendUserAction("I am giving blow-by oxygen.", "lung-sound-care-action");
+  await applyInterventionAndRecord(
+    "o2_blowby",
+    "Blow-by O₂ via NRB held near face — 15 LPM",
+    { source: "lung_sound_challenge" }
+  );
+  showToast("Blow-by oxygen recorded.", "success");
 });
 
 el("btn-submit-lung-sound")?.addEventListener("click", () => {

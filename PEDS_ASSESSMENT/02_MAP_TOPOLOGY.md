@@ -170,7 +170,7 @@ Backend `unlocks` object:
 | PM1 scenarios | Any 2 of 4 completed with passing/on-track scores or higher |
 | PT1 scenarios | Any 2 of 5 completed with passing/on-track scores or higher |
 | Total training time | ≥ 60 minutes from orientation, scenarios, or drills |
-| XP | ≥ 950 XP |
+| XP | ≥ 1200 XP |
 
 `lesson_status` resolves to `"passed"` when all CE challenge criteria are met; otherwise `"incomplete"`.
 

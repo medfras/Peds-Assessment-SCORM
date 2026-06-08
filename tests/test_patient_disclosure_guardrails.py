@@ -1371,10 +1371,16 @@ def test_manual_cspine_chat_command_uses_manual_stabilization_not_collar():
     source = open("static/js/app.js", encoding="utf-8").read()
 
     assert "function _manualCspineCommandRequested" in source
+    assert "function _cspineExamRequested" in source
+    assert "function _handleCspineExamAction" in source
+    assert "if (_cspineExamRequested(msg)) return false;" in source
     assert "Spinal Motion Restriction — manual in-line stabilization" in source
     assert "holding manual in-line cervical stabilization now" in source
     response_line = 'const display = "*Alex:* Copy — holding manual in-line cervical stabilization now.";'
     assert response_line in source
+    cspine_exam_pos = source.index("await _handleCspineExamAction(message, chipId, isAction)")
+    manual_pos = source.index("await _handleManualCspineCommand(message, chipId, isAction)")
+    assert cspine_exam_pos < manual_pos
 
 
 def test_pcr_treatment_rows_dedupe_by_intervention_id():
