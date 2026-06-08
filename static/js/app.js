@@ -21104,6 +21104,11 @@ function _openExamRegionModal(region) {
           if (el("screen-sim")?.classList.contains("sim-mobile-active")) _setSimMobileTab("chat");
           return;
         }
+        const handledIntervention = await _handleActionMenuInterventionItem(item, "body-map-procedure");
+        if (handledIntervention) {
+          if (el("screen-sim")?.classList.contains("sim-mobile-active")) _setSimMobileTab("chat");
+          return;
+        }
         sendMessage(item.payload, { isAction: true });
         if (el("screen-sim")?.classList.contains("sim-mobile-active")) _setSimMobileTab("chat");
       }
@@ -21454,7 +21459,7 @@ function _renderActionModal() {
     const btn = document.createElement("button");
     btn.className = "action-sheet-item" + (item.children ? " action-sheet-item--has-children" : "");
     btn.innerHTML = escapeHTML(item.label) + (item.children ? `<span class="action-sheet-item-chevron">›</span>` : "");
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", async () => {
       if (item.children) {
         _actionStack.push({ title: item.label, items: item.children });
         _renderActionModal();
@@ -21486,6 +21491,10 @@ function _renderActionModal() {
       } else if (item.payload) {
         hide("modal-action");
         _actionStack = [];
+        if (await _handleActionMenuInterventionItem(item, "action_menu")) {
+          if (el("screen-sim")?.classList.contains("sim-mobile-active")) _setSimMobileTab("chat");
+          return;
+        }
         sendMessage(item.payload, { isAction: true });
         if (el("screen-sim")?.classList.contains("sim-mobile-active")) _setSimMobileTab("chat");
       }
@@ -22611,6 +22620,47 @@ function findInterventionByLabel(label) {
     }
   }
   return null;
+}
+
+function _actionMenuInterventionCandidate(item = {}) {
+  const id = item.interventionId || item.intervention_id;
+  if (id && _interventionById[id]) return _interventionById[id];
+
+  const direct = [
+    item.label,
+    item.payload,
+    `${item.label || ""} ${item.payload || ""}`,
+  ].filter(Boolean)
+    .map(text => findInterventionByLabel(String(text)))
+    .find(Boolean);
+  if (direct) return direct;
+
+  const text = `${item.label || ""} ${item.payload || ""}`.toLowerCase();
+  const fallbackIds = [];
+  if (/\bdry\s+sterile\s+dress|dry.*dressing|sterile.*dressing\b/.test(text)) {
+    fallbackIds.push("dry_dressing", "direct_pressure");
+  }
+  if (/\bwet\s+(?:or\s+moist\s+)?dress|moist\s+dress|saline\s+dress/.test(text)) {
+    fallbackIds.push("wet_dressing");
+  }
+  if (/\bpressure\s+(?:dressing|bandage)|direct\s+(?:manual\s+)?pressure|bleeding\s+control|control\s+bleed/.test(text)) {
+    fallbackIds.push("direct_pressure");
+  }
+  if (/\bprevent\s+hypothermia|cover(?:ing)?\s+the\s+patient|blanket/.test(text)) {
+    fallbackIds.push("prevent_hypothermia");
+  }
+
+  return fallbackIds.map(candidateId => _interventionById[candidateId]).find(Boolean) || null;
+}
+
+async function _handleActionMenuInterventionItem(item = {}, source = "action_menu") {
+  if (!item?.payload || _isOrientationScenarioActive()) return false;
+  const intervention = _actionMenuInterventionCandidate(item);
+  if (!intervention || intervention.requires_popup || intervention.popup_type) return false;
+  appendUserAction(item.payload, source);
+  _lastUserChatMessage = item.payload;
+  await applyInterventionAndRecord(intervention.id, intervention.label || item.label || item.payload, { source });
+  return true;
 }
 
 // O2 device → intervention ID mapping

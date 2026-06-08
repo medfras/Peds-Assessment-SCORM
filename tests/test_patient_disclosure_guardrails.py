@@ -1388,6 +1388,33 @@ def test_pcr_treatment_rows_dedupe_by_intervention_id():
     assert "addPcrTreatment(iv.label, ivId)" in source
 
 
+def test_action_menu_procedure_buttons_record_matching_interventions_before_chat():
+    source = open("static/js/app.js", encoding="utf-8").read()
+
+    candidate_fn = source[
+        source.index("function _actionMenuInterventionCandidate"):
+        source.index("async function _handleActionMenuInterventionItem")
+    ]
+    handler_fn = source[
+        source.index("async function _handleActionMenuInterventionItem"):
+        source.index("// O2 device")
+    ]
+    main_action_block = source[
+        source.index("function _renderActionModal"):
+        source.index("function _inventoryHasAny")
+    ]
+    body_map_block = source[
+        source.index("function makeItemBtn"):
+        source.index("function getPatientSilhouetteType")
+    ]
+
+    assert 'fallbackIds.push("dry_dressing", "direct_pressure")' in candidate_fn
+    assert "findInterventionByLabel(String(text))" in candidate_fn
+    assert "applyInterventionAndRecord(intervention.id" in handler_fn
+    assert 'await _handleActionMenuInterventionItem(item, "action_menu")' in main_action_block
+    assert 'await _handleActionMenuInterventionItem(item, "body-map-procedure")' in body_map_block
+
+
 def test_head_injury_exemplar_uses_high_flow_nrb_not_nasal_cannula():
     with open("app/scenarios/pediatric/trauma/peds_trauma_07_head_injury.json", encoding="utf-8") as fh:
         scenario = json.load(fh)
