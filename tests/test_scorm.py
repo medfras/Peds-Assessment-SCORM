@@ -778,6 +778,30 @@ def test_app_js_refreshes_scorm_summary_after_lexi_xp_award():
     assert block.index("await _loadProgressFromServer().catch(() => {});") < block.index("await _refreshScormSummary().catch(() => {});")
 
 
+def test_app_js_refreshes_xp_chrome_after_drill_xp_awards():
+    src = _APP_JS.read_text()
+    idx = src.find("async function _mgSubmitResult")
+    assert idx != -1
+    block = src[idx:idx + 2600]
+
+    assert "await _loadProgressFromServer().catch(() => {});" in block
+    assert "_refreshGamificationChrome();" in block
+    assert "await _refreshScormSummary().catch(() => {});" in block
+    assert block.index("await _loadProgressFromServer().catch(() => {});") < block.index("_refreshGamificationChrome();")
+    assert block.index("_refreshGamificationChrome();") < block.index("await _refreshScormSummary().catch(() => {});")
+
+
+def test_app_js_hides_drill_result_scenario_bridges():
+    src = _APP_JS.read_text()
+    idx = src.find("function _syncMgScenarioBridgeAvailability")
+    assert idx != -1
+    block = src[idx:idx + 500]
+
+    assert 'bridge.classList.add("hidden");' in block
+    assert 'bridge.setAttribute("aria-hidden", "true");' in block
+    assert "_currentPedsMapHasPlayableScenario" not in src
+
+
 def test_app_js_does_not_reference_scorm_directly():
     src = _APP_JS.read_text()
     assert "RescueTrails.scorm" not in src, (

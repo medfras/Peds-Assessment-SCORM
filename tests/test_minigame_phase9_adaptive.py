@@ -15,26 +15,23 @@ def _read_json(path: str):
     return json.loads(_read(path))
 
 
-def test_lung_sounds_two_round_scope_interventions_are_wired():
+def test_lung_sounds_pilot_runs_audio_identification_only():
     cards = _read_json("static/data/games/lsm/cards.json")
     playable = [card for card in cards if card.get("license_cleared") is not False]
 
     assert playable
+    # The authored data keeps intervention follow-ups for future expansion, but
+    # the SCORM pilot Lung Sounds drill should not surface an intervention round.
     assert all(card.get("follow_up", {}).get("prompt") for card in playable)
-    for card in playable:
-        choices = card.get("follow_up", {}).get("choices", [])
-        assert choices
-        assert all(isinstance(choice, dict) for choice in choices)
-        assert all(choice.get("label") for choice in choices)
-        assert all(choice.get("min_scope") in {"MFR", "EMT", "AEMT", "Paramedic"} for choice in choices)
-        assert max(int(choice.get("score", 0)) for choice in choices) >= 2
 
     js = _read("static/js/app.js")
     assert 'gameId:       "lung_sounds_matcher"' in js
-    assert "twoRoundInterventions: true" in js
+    lsm_block = js[js.index('gameId:       "lung_sounds_matcher"'):js.index("function _openLsmGameScreen")]
+    assert "twoRoundInterventions: false" in lsm_block
+    assert "follow_up:   null" in lsm_block
     assert "_renderInterventionCard(card)" in js
     assert "_submitInterventionChoice" in js
-    assert 'mode: "two_round_scope"' in js
+    assert 'mode: "audio_identification"' in lsm_block
 
 
 def test_gcs_adaptive_vignettes_require_scale_inference():
@@ -239,13 +236,14 @@ def test_challenge_builder_exposes_drill_requirement_options():
     assert "completed_drill_ids" in _read("app/main.py")
 
 
-def test_drill_try_scenario_bridge_is_guarded_by_playable_map_scenarios():
+def test_drill_try_scenario_bridge_is_hidden_for_pilot():
     js = _read("static/js/app.js")
 
-    assert "function _currentPedsMapHasPlayableScenario()" in js
-    assert 'if (_categoryView?.mode !== "district" || _categoryView?.districtId !== "pediatrics") return false;' in js
-    assert "if (!currentUnlock?.unlocked && !currentUnlock?.partial) return false;" in js
+    assert "function _syncMgScenarioBridgeAvailability(root = document)" in js
     assert 'bridge.querySelector("[id$=\'try-scenario\']")' in js
+    bridge_block = js[js.index("function _syncMgScenarioBridgeAvailability"):js.index("function show(id)")]
+    assert 'bridge.classList.add("hidden")' in bridge_block
+    assert 'bridge.setAttribute("aria-hidden", "true")' in bridge_block
     assert "_syncMgScenarioBridgeAvailability(node);" in js
 
 

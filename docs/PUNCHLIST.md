@@ -98,14 +98,6 @@ Target response: batch with cleanup passes.
 
 ## High
 
-- [ ] Pilot release gate — disable pediatric dev unlock before real learner cohort
-  - Type: Release Gate
-  - Area: Frontend / Progression
-  - Summary: `PEDS_MAP_DEV_UNLOCKED` is currently enabled, which intentionally unlocks pediatric map navigation for testing.
-  - Impact: Useful while manually validating every pilot scenario, but it would invalidate progression/unlock behavior for a real pilot cohort if left enabled.
-  - Next step: Before inviting learners, set the pediatric map to normal progression mode and run a quick orientation → Pediatric Park → PM1/PT1 unlock smoke test.
-  - References: [`static/js/app.js`](static/js/app.js) (`PEDS_MAP_DEV_UNLOCKED`)
-
 - [ ] `_hideNavigationOverlays()` scope is too broad
   - Type: Tech Debt
   - Area: Frontend

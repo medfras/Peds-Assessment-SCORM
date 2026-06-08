@@ -187,7 +187,7 @@ def test_app_bootstrap_has_scorm_launch_branch_and_bearer_bridge():
     assert "RescueTrails.scorm" not in app_js
 
 
-def test_scorm_launch_enters_orientation_until_complete_then_home():
+def test_scorm_launch_defaults_to_home_district_map():
     app_js = APP_JS.read_text()
     start = app_js.find("function _enterScormMapExperience()")
     assert start != -1
@@ -196,10 +196,10 @@ def test_scorm_launch_enters_orientation_until_complete_then_home():
     block = app_js[start:end]
     assert "_releaseScormPreboot();" in block
     assert "_station1IsComplete()" in block
-    assert '_setScormUiState({ location: "home", map: "map_0", orientationComplete: true });' in block
+    assert '_setScormUiState({ location: "home", map: "map_0", orientationComplete: _station1IsComplete() });' in block
     assert "buildMenu();" in block
     assert 'showScreen("menu");' in block
-    assert "_enterScormOrientationMap();" in block
+    assert "_enterScormOrientationMap();" not in block
     assert "_enterScormPedsMap(uiState.map" not in block
     assert 'showCategoryScreen("pediatrics")' not in block
     assert 'showScreen("scorm-station1")' not in block
@@ -224,7 +224,7 @@ def test_scorm_home_sidebars_hide_account_controls_and_use_trails_copy():
     assert "Paths To / From Current" not in app_js
 
 
-def test_scorm_history_back_respects_incomplete_orientation_gate():
+def test_scorm_history_back_returns_incomplete_learner_to_home_map():
     app_js = APP_JS.read_text()
     start = app_js.find('el("btn-history-back").addEventListener("click"')
     assert start != -1
@@ -232,14 +232,15 @@ def test_scorm_history_back_respects_incomplete_orientation_gate():
 
     gate = 'if (state.scormEnabled && !_station1IsComplete())'
     assert gate in block
-    assert "_enterScormOrientationMap();" in block
+    assert "_enterScormOrientationMap();" not in block
+    assert "buildMenu();" in block
     assert "function _openHistoryScreen(returnTarget = \"menu\")" in app_js
     assert 'el("btn-menu-history").addEventListener("click", () => _openHistoryScreen("menu"));' in app_js
     assert 'el("category-menu-history")?.addEventListener("click", () => _openHistoryScreen("category"));' in app_js
     assert block.index(gate) < block.index('showScreen("menu");')
 
 
-def test_scorm_auxiliary_back_buttons_respect_incomplete_orientation_gate():
+def test_scorm_auxiliary_back_buttons_return_incomplete_learner_to_home_map():
     app_js = APP_JS.read_text()
     for anchor in (
         'el("btn-progress-back")?.addEventListener("click"',
@@ -251,8 +252,9 @@ def test_scorm_auxiliary_back_buttons_respect_incomplete_orientation_gate():
         block = app_js[start:start + 650]
         gate = 'if (state.scormEnabled && !_station1IsComplete())'
         assert gate in block
-        assert "_enterScormOrientationMap();" in block
-        assert block.index(gate) < block.index("_enterScormOrientationMap();")
+        assert "_enterScormOrientationMap();" not in block
+        assert "buildMenu();" in block
+        assert block.index(gate) < block.index('showScreen("menu");')
 
 
 def test_leaderboard_modal_uses_solid_light_shell():
@@ -353,13 +355,78 @@ def test_pediatric_district_is_blocked_until_station1_complete():
     assert enter_start != -1
     enter_block = app_js[enter_start:enter_start + 260]
     assert "if (!_station1IsComplete())" in enter_block
-    assert "_enterScormOrientationMap();" in enter_block
+    assert "buildMenu();" in enter_block
+    assert 'showScreen("menu");' in enter_block
 
     home_start = app_js.find('el("btn-category-home")?.addEventListener("click"')
     assert home_start != -1
     home_block = app_js[home_start:home_start + 260]
-    assert "state.scormEnabled && !_station1IsComplete()" in home_block
-    assert "_enterScormOrientationMap();" in home_block
+    assert "state.scormEnabled && !_station1IsComplete()" not in home_block
+    assert "_enterScormOrientationMap();" not in home_block
+    assert "buildMenu();" in home_block
+    assert 'showScreen("menu");' in home_block
+
+
+def test_training_center_drills_are_map_unlock_gated():
+    app_js = APP_JS.read_text()
+
+    assert "const PEDS_MAP_DEV_UNLOCKED = false;" in app_js
+    assert "function _buildAccessibleTrainingCenterMaps()" in app_js
+    build_start = app_js.find("function _buildAccessibleTrainingCenterMaps()")
+    assert build_start != -1
+    build_block = app_js[build_start:build_start + 900]
+    assert 'const accessible = new Set(["station_1"]);' in build_block
+    assert "if (!_station1IsComplete()) return accessible;" in build_block
+    assert 'accessible.add("map_0");' in build_block
+    assert "_computeMapUnlockState(passedIds, MAP_TOPOLOGY, pedsMapCompleted)" in build_block
+
+    filter_start = app_js.find("function _trainingCenterDrillMapUnlocked")
+    assert filter_start != -1
+    filter_block = app_js[filter_start:filter_start + 260]
+    assert "if (!mapId) return _station1IsComplete();" in filter_block
+    assert "return !!accessibleMaps?.has?.(mapId);" in filter_block
+    assert "catalog.filter(g => _trainingCenterDrillMapUnlocked(g, accessibleMaps))" in app_js
+    assert "fullCatalog.filter(g => _trainingCenterDrillMapUnlocked(g, accessibleMaps))" in app_js
+    assert "unlockedIds.has(g.type) || !g.mapId || accessibleMaps.has(g.mapId)" not in app_js
+
+
+def test_locked_pediatric_maps_do_not_render_from_stale_state():
+    app_js = APP_JS.read_text()
+    render_start = app_js.find("function _renderPedsMap(mapId = null)")
+    assert render_start != -1
+    render_block = app_js[render_start:render_start + 1800]
+
+    assert "const currentUnlock = unlockState?.get(currentMapId);" in render_block
+    assert "const currentLocked = state.scormEnabled" in render_block
+    assert "!_scormPedsMapAllowed(currentMapId) || !_scormMapRouteUnlocked(currentMapId)" in render_block
+    assert 'currentMapId !== "map_0" && !currentUnlock?.unlocked && !currentUnlock?.partial' in render_block
+    assert 'currentMapId = "map_0";' in render_block
+    assert "_savePedsJourneyState();" in render_block
+
+
+def test_district_map_station_nodes_match_pilot_layout():
+    app_js = APP_JS.read_text()
+    css = (ROOT / "static" / "css" / "style.css").read_text()
+
+    assert '{ id: "station_1"' in app_js
+    assert 'mapNode: { x: 595, y: 165, label: "Station 1", plannedText: "Start here" }' in app_js
+    assert '{ id: "station_2"' in app_js
+    assert 'title: "Station 2"' in app_js
+    assert 'mapNode: { x: 90, y: 165, label: "Station 2", plannedText: "Planned" }' in app_js
+    assert '{ id: "station_3"' in app_js
+    assert 'title: "Station 3"' in app_js
+    assert 'mapNode: { x: 470, y: 400, label: "Station 3", plannedText: "Planned" }' in app_js
+
+    render_start = app_js.find("function _genDistrictMapSVG(history)")
+    assert render_start != -1
+    render_block = app_js[render_start:render_start + 1600]
+    assert 'const active = d.status === "active";' in render_block
+    assert '${active ? \' role="button" tabindex="0"\' : ""}' in render_block
+    assert 'nodeLabel = d.mapNode.label || d.title' in render_block
+    assert 'class="hv2-station-node-mask"' in render_block
+    assert 'zone.classList.contains("locked")) return;' in app_js
+    assert ".hv2-station-node-mask" in css
+    assert "fill: #f8fafc;" in css
 
 
 def test_scorm_launch_errors_do_not_show_login_screen():
@@ -456,7 +523,7 @@ def test_scorm_adapter_keeps_app_decoupled_from_runtime_wrapper():
     assert "setUiState" in adapter_js
 
 
-def test_scorm_runtime_warns_on_duplicate_launch_without_blocking_progress():
+def test_scorm_runtime_tracks_duplicate_launch_without_learner_toast():
     scorm_js = SCORM_JS.read_text()
     app_js = APP_JS.read_text()
 
@@ -468,7 +535,11 @@ def test_scorm_runtime_warns_on_duplicate_launch_without_blocking_progress():
     assert "rt:scormDuplicateLaunch" in scorm_js
     assert "getDuplicateLaunchWarning" in scorm_js
     assert "function _showScormDuplicateLaunchWarning" in app_js
-    assert 'showToast(message, "warning")' in app_js
+    warning_idx = app_js.find("function _showScormDuplicateLaunchWarning")
+    assert warning_idx != -1
+    warning_block = app_js[warning_idx:warning_idx + 450]
+    assert "showToast" not in warning_block
+    assert "suppressed for learner" in warning_block
     assert 'window.addEventListener("rt:scormDuplicateLaunch"' in app_js
 
 

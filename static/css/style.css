@@ -10941,6 +10941,11 @@ body {
 /* base and grid are gone — real map provides the texture */
 .hv2-dz-base { fill: transparent; }
 .hv2-dz-grid { display: none; }
+.hv2-station-node-mask {
+  fill: #f8fafc;
+  stroke: rgba(148, 163, 184, 0.65);
+  stroke-width: 1.5;
+}
 .hv2-dz-color {
   fill: color-mix(in srgb, var(--d-acc, #475569) 18%, transparent);
   stroke: var(--d-acc, #475569);

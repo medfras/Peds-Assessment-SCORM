@@ -5011,46 +5011,12 @@ async function _loadMenuRankSummary(force = false) {
    UTILITIES
    ═══════════════════════════════════════════════════════════════════ */
 
-function _currentPedsMapHasPlayableScenario() {
-  if (_categoryView?.mode !== "district" || _categoryView?.districtId !== "pediatrics") return false;
-  const mapId = _pedsJourneyState?.currentMap || "map_0";
-  const mapDef = _PEDS_MAP_BY_ID?.get(mapId);
-  if (!mapDef) return false;
-
-  if (!PEDS_MAP_DEV_UNLOCKED) {
-    const { passedIds, pedsMapCompleted } = _pedsMapCompletionSets();
-    const unlockState = _computeMapUnlockState(passedIds, MAP_TOPOLOGY, pedsMapCompleted);
-    const currentUnlock = unlockState.get(mapId);
-    if (!currentUnlock?.unlocked && !currentUnlock?.partial) return false;
-  }
-
-  const availableScenarioIds = new Set((state.allScenarios || []).map(s => s.id).filter(Boolean));
-  return (mapDef.scenarios || []).some(s => {
-    const id = s?.id || "";
-    return id && !id.startsWith("_ph") && availableScenarioIds.has(id);
-  });
-}
-
-const MAP_DRILL_SCENARIO_BRIDGE_DISABLED_MAP_IDS = new Set(["map_0", "pm1", "pt1"]);
-let _activeMgLaunchMapId = null;
-
 function _syncMgScenarioBridgeAvailability(root = document) {
-  const launchMapId = _activeMgLaunchMapId || null;
-  if (launchMapId && MAP_DRILL_SCENARIO_BRIDGE_DISABLED_MAP_IDS.has(launchMapId)) {
-    root.querySelectorAll?.(".mg-bridge").forEach(bridge => {
-      const tryBtn = bridge.querySelector("[id$='try-scenario']");
-      if (!tryBtn) return;
-      bridge.classList.add("hidden");
-      bridge.setAttribute("aria-hidden", "true");
-    });
-    return;
-  }
-  const canTryScenario = _currentPedsMapHasPlayableScenario();
   root.querySelectorAll?.(".mg-bridge").forEach(bridge => {
     const tryBtn = bridge.querySelector("[id$='try-scenario']");
     if (!tryBtn) return;
-    bridge.classList.toggle("hidden", !canTryScenario);
-    bridge.setAttribute("aria-hidden", canTryScenario ? "false" : "true");
+    bridge.classList.add("hidden");
+    bridge.setAttribute("aria-hidden", "true");
   });
 }
 
@@ -6183,14 +6149,9 @@ function _storeScormResumeState(summaryOrResume = {}) {
 function _enterScormMapExperience() {
   _releaseScormPreboot();
   _hideScormLaunchStatus();
-  const uiState = _getScormUiState();
-  if (_station1IsComplete()) {
-    _setScormUiState({ location: "home", map: "map_0", orientationComplete: true });
-    buildMenu();
-    showScreen("menu");
-    return;
-  }
-  _enterScormOrientationMap();
+  _setScormUiState({ location: "home", map: "map_0", orientationComplete: _station1IsComplete() });
+  buildMenu();
+  showScreen("menu");
 }
 
 function _enterScormOrientationMap() {
@@ -6203,7 +6164,8 @@ function _enterScormOrientationMap() {
 
 function _enterScormPedsMap(mapId = "map_0") {
   if (!_station1IsComplete()) {
-    _enterScormOrientationMap();
+    buildMenu();
+    showScreen("menu");
     return;
   }
   _categoryView = { mode: "district", districtId: "pediatrics" };
@@ -6941,9 +6903,7 @@ let _scormDuplicateLaunchWarned = false;
 function _showScormDuplicateLaunchWarning(warning) {
   if (!warning || _scormDuplicateLaunchWarned) return;
   _scormDuplicateLaunchWarned = true;
-  const message = warning.message || "This SCORM activity is already open in another window. Use only one window to avoid progress confusion.";
-  console.warn("[SCORM] Duplicate launch warning", warning);
-  if (typeof showToast === "function") showToast(message, "warning");
+  console.info("[SCORM] Duplicate launch advisory suppressed for learner", warning);
 }
 
 window.addEventListener("rt:scormDuplicateLaunch", (event) => {
@@ -7058,7 +7018,15 @@ const ADVENTURE_DISTRICTS = [
   { id: "station_1",        icon: "🚒", title: "Station 1",                     subtitle: "Orientation & Assessment Foundations",
     blurb: "The firehouse. Complete your orientation before heading out to the districts.",
     status: "active",  legacy: ["orientation"], isHome: true, unlock_ratio: 1.0, unlock_min: 1,
-    mapNode: { x: 295, y: 165 } },
+    mapNode: { x: 595, y: 165, label: "Station 1", plannedText: "Start here" } },
+  { id: "station_2",        icon: "🚒", title: "Station 2",                     subtitle: "Operations Expansion",
+    blurb: "Planned station for hazmat, firefighter operations, and rescue operations.",
+    status: "planned", legacy: [], unlock_ratio: 1.0, unlock_min: 1,
+    mapNode: { x: 90, y: 165, label: "Station 2", plannedText: "Planned" } },
+  { id: "station_3",        icon: "🚒", title: "Station 3",                     subtitle: "Command & Large Incident Expansion",
+    blurb: "Planned station for MCI, incident command, and adult response.",
+    status: "planned", legacy: [], unlock_ratio: 1.0, unlock_min: 1,
+    mapNode: { x: 470, y: 400, label: "Station 3", plannedText: "Planned" } },
   { id: "pediatrics",       icon: "🏫", title: "Pediatric Community Response",  subtitle: "Pediatric Medical & Trauma",
     blurb: "Pediatric medical and trauma — schools, daycares, playgrounds, homes, parks, and public events.",
     status: "active",  legacy: ["pediatric_medical", "pediatric_trauma"], unlock_ratio: 1.0, unlock_min: 1, prereq: "station_1",
@@ -7103,8 +7071,8 @@ const ADVENTURE_DISTRICTS = [
 ];
 
 // ─── Pediatric Map v2 ────────────────────────────────────────────────────────
-// DEV: set true to unlock all nodes for testing
-const PEDS_MAP_DEV_UNLOCKED = true;
+// DEV: set true to unlock all pediatric map nodes for local testing only.
+const PEDS_MAP_DEV_UNLOCKED = false;
 
 // MAP_TOPOLOGY — canonical progression source for unlock rendering.
 // See docs/MAP_GAMEPLAY_DESIGN.md §5. IDs match PEDS_MAP_DATA.id values.
@@ -8188,7 +8156,6 @@ function _hasMgEducation(selection) {
 
 function _playMinigameSelection(selection) {
   if (!selection) return false;
-  _activeMgLaunchMapId = selection.launchMapId || null;
   if (selection.type === "pat")                  { _openPatGameScreen();     return true; }
   if (selection.type === "dev_sort")             { _openDevSortGameScreen(); return true; }
   if (selection.type === "ten4_facesp")          { _openTen4GameScreen();    return true; }
@@ -8744,6 +8711,8 @@ const _patEngine = new SwipeGameEngine({
         if (score >= 70) await _saveMgLearningPage("pat");
         await _onScormNodeComplete("pat", score, true, Array.isArray(mistakeTags) ? mistakeTags : []);
         await _loadProgressFromServer().catch(() => {});
+        _refreshGamificationChrome();
+        await _refreshScormSummary().catch(() => {});
         if (!el("screen-menu")?.classList.contains("hidden")) buildMenu();
       } else {
         setText("pat-server-cap-note", data.detail || "Could not record PAT results.");
@@ -8868,6 +8837,8 @@ const _devSortEngine = new DragSortGameEngine({
         }
         await _onScormNodeComplete("dev_sort", score, true, []);
         await _loadProgressFromServer().catch(() => {});
+        _refreshGamificationChrome();
+        await _refreshScormSummary().catch(() => {});
         if (!el("screen-menu")?.classList.contains("hidden")) buildMenu();
       } else {
         setText("sort-server-cap-note", data.detail || "Could not record drill results.");
@@ -9039,6 +9010,8 @@ async function _mgSubmitResult(gameId, { total, correct, bestStreak, elapsedSec,
         showToast(`Reference card unlocked: ${title}`, "success");
       }
       await _loadProgressFromServer().catch(() => {});
+      _refreshGamificationChrome();
+      await _refreshScormSummary().catch(() => {});
       await _loadChallenges().then(_buildChallengesSection).catch(() => {});
     } else {
       if (capNoteEl) setText(capNoteEl, data.detail || "Could not save results.");
@@ -10027,7 +10000,7 @@ const _lsmEngine = new TapChoiceGame({
   prefix:       "lsm",
   gameId:       "lung_sounds_matcher",
   adaptiveMode: false,
-  twoRoundInterventions: true,
+  twoRoundInterventions: false,
   cardsUrl:     "/static/data/games/lsm/cards.json",
   maxDeckSize:  12,
   fallbackCards: [],
@@ -10043,12 +10016,12 @@ const _lsmEngine = new TapChoiceGame({
       explanation: c.explanation || "",
       mistake_tag: c.mistake_tag || "",
       hint:        c.hint || "",
-      follow_up:   c.follow_up   || null,
+      follow_up:   null,
     };
   },
-  feedback: { onCorrect: (_card) => "Sound identified. Intervention decisions come in Round 2." },
+  feedback: { onCorrect: (_card) => "Sound identified." },
   async onRoundComplete({ total, correct, bestStreak, elapsedSec, mistakeTags, hintCount }) {
-    await _mgSubmitResult("lung_sounds_matcher", { total, correct, bestStreak, elapsedSec, mistakeTags, hintCount, mode: "two_round_scope", sessionElapsedSec: _drillLapTimer.stop() }, "lsm-r-xp", "lsm-server-cap-note");
+    await _mgSubmitResult("lung_sounds_matcher", { total, correct, bestStreak, elapsedSec, mistakeTags, hintCount, mode: "audio_identification", sessionElapsedSec: _drillLapTimer.stop() }, "lsm-r-xp", "lsm-server-cap-note");
   },
 });
 
@@ -11037,17 +11010,19 @@ function _genDistrictMapSVG(history) {
 
   const stationComplete = _station1IsComplete(_station1RequirementsState(history));
 
-  // Render circle node for station_1 (home base, not a polygon zone)
+  // Render station circle nodes. Station 1 is active; future stations are locked markers.
   const homeNodeSvg = ADVENTURE_DISTRICTS.filter(d => d.mapNode).map(d => {
     const { x, y } = d.mapNode;
     const done = d.id === "station_1" && stationComplete;
-    const labelLines = done ? "🚒 Station 1" : "🚒 Station 1";
-    return `<g class="hv2-dz hv2-home-node${done ? " done" : ""}" data-district="${d.id}" role="button" tabindex="0" aria-label="${escapeHTML(d.title)}">
-      <circle cx="${x}" cy="${y}" r="36" class="hv2-dz-base" style="fill-opacity:0.9;"/>
+    const active = d.status === "active";
+    const nodeLabel = d.mapNode.label || d.title;
+    const statusText = done ? "✓ Cleared" : d.mapNode.plannedText || (active ? "Start here" : "Planned");
+    return `<g class="hv2-dz hv2-home-node${done ? " done" : ""}${active ? "" : " locked"}" data-district="${d.id}"${active ? ' role="button" tabindex="0"' : ""} aria-label="${escapeHTML(d.title)}">
+      <circle cx="${x}" cy="${y}" r="38" class="hv2-station-node-mask"/>
       <circle cx="${x}" cy="${y}" r="36" class="hv2-dz-color" style="fill:none;stroke-width:2;opacity:0.8;"/>
       <text x="${x}" y="${y - 6}" class="hv2-dz-icon" text-anchor="middle" font-size="18">${d.icon}</text>
-      <text x="${x}" y="${y + 10}" class="hv2-dz-name" text-anchor="middle" font-size="8">Station 1</text>
-      ${done ? `<text x="${x}" y="${y + 22}" class="hv2-dz-prog" text-anchor="middle" font-size="7">✓ Cleared</text>` : `<text x="${x}" y="${y + 22}" class="hv2-dz-planned" text-anchor="middle" font-size="7">Start here</text>`}
+      <text x="${x}" y="${y + 10}" class="hv2-dz-name" text-anchor="middle" font-size="8">${escapeHTML(nodeLabel)}</text>
+      <text x="${x}" y="${y + 22}" class="${done ? "hv2-dz-prog" : "hv2-dz-planned"}" text-anchor="middle" font-size="7">${escapeHTML(statusText)}</text>
     </g>`;
   }).join("\n");
 
@@ -11182,7 +11157,7 @@ function buildMenu() {
         showToast("Complete Station 1 orientation first — tap the firehouse marker.", "info");
         return;
       }
-      if (zone.classList.contains("locked") && !districtDef?.mapNode) return;
+      if (zone.classList.contains("locked")) return;
       if (district === "pediatrics") {
         _pedsJourneyState.selectedMedicalTrail = 1;
         _pedsJourneyState.selectedTraumaTrail = 1;
@@ -11220,6 +11195,24 @@ function buildMenu() {
   const isPrivilegedUser = state._role === "admin" || state._role === "instructor" || state._isSuper;
   _syncDashboardMobileVisibility();
   if (!isPrivilegedUser) _initTour();
+}
+
+function _refreshGamificationChrome() {
+  const game = loadGamification();
+  const level = getCurrentLevel(game.xp);
+  const nextLevel = getNextLevel(game.xp);
+  const xpText = nextLevel ? `${game.xp} / ${nextLevel.xp} XP` : `${game.xp} XP — MAX`;
+  const pct = nextLevel ? Math.min(100, ((game.xp - level.xp) / (nextLevel.xp - level.xp)) * 100) : 100;
+  setText("menu-level-name", `${level.icon} ${level.name}`);
+  setText("menu-xp-text", xpText);
+  setText("map-xp-level", `${level.icon} ${level.name}`);
+  setText("map-xp-text", xpText);
+  const menuXpFill = el("menu-xp-fill");
+  if (menuXpFill) menuXpFill.style.width = pct + "%";
+  const mapXpFill = el("map-xp-fill");
+  if (mapXpFill) mapXpFill.style.width = pct + "%";
+  setText("menu-treat-count", `🦴 ${game.treats ?? 0} treats`);
+  setText("category-treat-count", `🦴 ${game.treats ?? 0} treats`);
 }
 
 function _updateLoginStreak() {
@@ -15727,10 +15720,7 @@ function _renderPedsMap(mapId = null) {
   } else {
     _restorePedsJourneyState();
   }
-  const currentMapId = _pedsJourneyState.currentMap || "map_0";
-  if (state.scormEnabled) _setScormUiState({ location: "peds", map: currentMapId });
-
-  const mapDef = _PEDS_MAP_BY_ID.get(currentMapId) || PEDS_MAP_DATA[0];
+  let currentMapId = _pedsJourneyState.currentMap || "map_0";
 
   // Unlock state (normally null when dev-unlocked)
   const _history = loadHistory().filter(h => !h.agencyId || h.agencyId === state.agency_id);
@@ -15746,6 +15736,19 @@ function _renderPedsMap(mapId = null) {
     if (!PEDS_MAP_DEV_UNLOCKED) return _baseUnlockState;
     return null;
   })();
+
+  const currentUnlock = unlockState?.get(currentMapId);
+  const currentLocked = state.scormEnabled
+    ? !_scormPedsMapAllowed(currentMapId) || !_scormMapRouteUnlocked(currentMapId)
+    : (!!unlockState && currentMapId !== "map_0" && !currentUnlock?.unlocked && !currentUnlock?.partial);
+  if (currentLocked) {
+    currentMapId = "map_0";
+    _pedsJourneyState.currentMap = currentMapId;
+    _savePedsJourneyState();
+  }
+  if (state.scormEnabled) _setScormUiState({ location: "peds", map: currentMapId });
+
+  const mapDef = _PEDS_MAP_BY_ID.get(currentMapId) || PEDS_MAP_DATA[0];
 
   // Detect newly-unlocked maps for reveal animation (per-session, sessionStorage)
   const _prevSnapshotKey = `peds_unlock_snapshot_${state.userId || "anon"}`;
@@ -16259,46 +16262,30 @@ function _openTrainingCenter(returnTarget = null) {
 
 // ─── Training Center — map accessibility ─────────────────────────────────────
 
-function _buildAccessibleMaps() {
-  // Build map parent index (mapId -> [parentId, ...])
-  const mapParents = new Map();
-  for (const map of PEDS_MAP_DATA) {
-    const parents = [];
-    if (map.parent) parents.push(map.parent);
-    if (Array.isArray(map.parents)) map.parents.forEach(p => parents.push(p.to));
-    mapParents.set(map.id, parents);
+function _buildAccessibleTrainingCenterMaps() {
+  const accessible = new Set(["station_1"]);
+  if (!_station1IsComplete()) return accessible;
+
+  accessible.add("map_0");
+  if (state.scormEnabled) {
+    PEDS_MAP_DATA.forEach(mapDef => {
+      if (_scormMapRouteUnlocked(mapDef.id)) accessible.add(mapDef.id);
+    });
+    return accessible;
   }
 
-  // Build scenario → mapId index
-  const scenarioToMap = new Map();
-  for (const map of PEDS_MAP_DATA) {
-    for (const scen of (map.scenarios || [])) {
-      scenarioToMap.set(scen.id, map.id);
-    }
-  }
-
-  // Determine directly visited maps from session history
-  const history = _historyCache || [];
-  const visited = new Set();
-  visited.add("map_0"); // entrance is always accessible once in the district
-  for (const entry of history) {
-    const mapId = scenarioToMap.get(entry.scenarioId);
-    if (mapId) visited.add(mapId);
-  }
-
-  // Expand to all ancestors (BFS)
-  const accessible = new Set(visited);
-  const queue = [...visited];
-  while (queue.length > 0) {
-    const mapId = queue.shift();
-    for (const parentId of (mapParents.get(mapId) || [])) {
-      if (!accessible.has(parentId)) {
-        accessible.add(parentId);
-        queue.push(parentId);
-      }
-    }
-  }
+  const { passedIds, pedsMapCompleted } = _pedsMapCompletionSets();
+  const unlockState = _computeMapUnlockState(passedIds, MAP_TOPOLOGY, pedsMapCompleted);
+  PEDS_MAP_DATA.forEach(mapDef => {
+    if (unlockState.get(mapDef.id)?.unlocked) accessible.add(mapDef.id);
+  });
   return accessible;
+}
+
+function _trainingCenterDrillMapUnlocked(game, accessibleMaps = new Set()) {
+  const mapId = game?.mapId || null;
+  if (!mapId) return _station1IsComplete();
+  return !!accessibleMaps?.has?.(mapId);
 }
 
 // ─── Training Center domain metadata ─────────────────────────────────────────
@@ -16347,8 +16334,8 @@ async function _renderTrainingCenter() {
     _tcWired = true;
   }
 
-  // Determine which maps are accessible based on session history
-  const accessibleMaps = _buildAccessibleMaps();
+  // Determine which maps are accessible from authoritative campaign unlock state.
+  const accessibleMaps = _buildAccessibleTrainingCenterMaps();
 
   // Fetch unlock state (drills the user has passed at least once)
   let unlockedIds = new Set();
@@ -16361,9 +16348,10 @@ async function _renderTrainingCenter() {
   } catch { /* show drills in available-but-not-passed state on error */ }
   _tcLearningMap = { unlockedIds, unlockedDates, accessibleMaps };
 
-  // Catalog filtered to drills on accessible maps (+ unlocked = always visible)
+  // Catalog filtered to drills on accessible maps. A passed drill stays hidden
+  // until its campaign map is unlocked, so replay access cannot bypass pacing.
   const catalog = _dogParkGameCatalog();
-  const visibleDrills = catalog.filter(g => unlockedIds.has(g.type) || !g.mapId || accessibleMaps.has(g.mapId));
+  const visibleDrills = catalog.filter(g => _trainingCenterDrillMapUnlocked(g, accessibleMaps));
   const unlockedCount = visibleDrills.filter(g => unlockedIds.has(g.type)).length;
   if (countBadge) countBadge.textContent = `${unlockedCount} of ${visibleDrills.length} drills completed`;
 
@@ -16378,9 +16366,9 @@ function _tcRenderBody() {
   const q = _tcSearchQuery.toLowerCase().trim();
   const filter = _tcActiveFilter;
 
-  // Drills visible in TC: on accessible maps, OR already unlocked (unlocked trumps map gating)
+  // Drills visible in TC: only when the campaign map they live on is unlocked.
   const fullCatalog = _dogParkGameCatalog();
-  const accessibleDrills = fullCatalog.filter(g => unlockedIds.has(g.type) || !g.mapId || (accessibleMaps && accessibleMaps.has(g.mapId)));
+  const accessibleDrills = fullCatalog.filter(g => _trainingCenterDrillMapUnlocked(g, accessibleMaps));
 
   // Apply active filter + search
   const visible = accessibleDrills.filter(game => {
@@ -18090,10 +18078,6 @@ el("active-challenges-body")?.addEventListener("click", (event) => {
   if (challenge) _renderChallengeDetail(challenge);
 });
 el("btn-category-home")?.addEventListener("click", () => {
-  if (state.scormEnabled && !_station1IsComplete()) {
-    _enterScormOrientationMap();
-    return;
-  }
   buildMenu();
   showScreen("menu");
 });
@@ -18101,7 +18085,8 @@ el("btn-category-training-back")?.addEventListener("click", _returnFromTrainingC
 el("btn-tc-back")?.addEventListener("click", _returnFromTrainingCenter);
 el("btn-progress-back")?.addEventListener("click", () => {
   if (state.scormEnabled && !_station1IsComplete()) {
-    _enterScormOrientationMap();
+    buildMenu();
+    showScreen("menu");
     return;
   }
   if (_progressReturnScreen === "category") {
@@ -18164,7 +18149,8 @@ el("btn-badges-close")?.addEventListener("click", () => hide("modal-badges"));
 
 el("btn-history-back").addEventListener("click", () => {
   if (state.scormEnabled && !_station1IsComplete()) {
-    _enterScormOrientationMap();
+    buildMenu();
+    showScreen("menu");
     return;
   }
   if (_historyReturnTarget === "category") {
@@ -32878,7 +32864,8 @@ function _primeNotebookDataCache() {
 
 el("btn-notebook-back")?.addEventListener("click", () => {
   if (state.scormEnabled && !_station1IsComplete()) {
-    _enterScormOrientationMap();
+    buildMenu();
+    showScreen("menu");
     return;
   }
   if (_notebookReturnScreen === "category") {
@@ -33158,7 +33145,8 @@ function _renderNotebookCards() {
 // Empty-state "Start a scenario" button
 el("btn-notebook-start")?.addEventListener("click", () => {
   if (state.scormEnabled && !_station1IsComplete()) {
-    _enterScormOrientationMap();
+    buildMenu();
+    showScreen("menu");
     return;
   }
   showScreen("menu");

@@ -22,7 +22,7 @@ def test_lung_sounds_mastery_summary_is_visible_on_results():
     html = _read("static/index.html")
 
     assert "Mastery flow:" in html
-    assert "audio identification and scope-appropriate intervention selection" in html
+    assert "accurate audio identification in this pilot" in html
 
 
 def test_notebook_reference_card_library_exists_and_fetches_endpoint():
