@@ -722,6 +722,7 @@ def test_scorm_js_writes_lesson_status_when_summary_is_persisted():
 # app.js must not reference RescueTrails.scorm directly (no SCORM coupling).
 
 _APP_JS = Path(__file__).parent.parent / "static" / "js" / "app.js"
+_INDEX_HTML = Path(__file__).parent.parent / "static" / "index.html"
 
 
 def test_app_js_dispatches_scenario_complete_event():
@@ -791,14 +792,14 @@ def test_app_js_refreshes_xp_chrome_after_drill_xp_awards():
     assert block.index("_refreshGamificationChrome();") < block.index("await _refreshScormSummary().catch(() => {});")
 
 
-def test_app_js_hides_drill_result_scenario_bridges():
+def test_drill_results_do_not_include_scenario_offramps():
+    html = _INDEX_HTML.read_text()
     src = _APP_JS.read_text()
-    idx = src.find("function _syncMgScenarioBridgeAvailability")
-    assert idx != -1
-    block = src[idx:idx + 500]
 
-    assert 'bridge.classList.add("hidden");' in block
-    assert 'bridge.setAttribute("aria-hidden", "true");' in block
+    assert "Try a Scenario" not in html
+    assert "try-scenario" not in html
+    assert "try-scenario" not in src
+    assert "function _syncMgScenarioBridgeAvailability" not in src
     assert "_currentPedsMapHasPlayableScenario" not in src
 
 

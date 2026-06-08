@@ -5011,23 +5011,11 @@ async function _loadMenuRankSummary(force = false) {
    UTILITIES
    ═══════════════════════════════════════════════════════════════════ */
 
-function _syncMgScenarioBridgeAvailability(root = document) {
-  root.querySelectorAll?.(".mg-bridge").forEach(bridge => {
-    const tryBtn = bridge.querySelector("[id$='try-scenario']");
-    if (!tryBtn) return;
-    bridge.classList.add("hidden");
-    bridge.setAttribute("aria-hidden", "true");
-  });
-}
-
 function show(id)  {
   const node = document.getElementById(id);
   if (!node) {
     console.warn(`show(${id}) skipped: element not found`);
     return;
-  }
-  if (typeof id === "string" && /-results$/.test(id)) {
-    _syncMgScenarioBridgeAvailability(node);
   }
   node.classList.remove("hidden");
   node.removeAttribute("aria-hidden");
@@ -9685,11 +9673,6 @@ const _cprBlsSequenceGame = _makeSequenceGame({
   title: "CPR Mastery: Round 2",
   dataUrl: "/static/data/games/cpr_bls_sequence/cases.json",
   maxDeckSize: 3,
-  onFinish({ score }) {
-    if (_cprBlsReturnDistrictId === "station_1" || score >= 70) {
-      el("btn-cprseq-round2")?.classList.remove("hidden");
-    }
-  },
 });
 
 let _cprBlsConceptsGame = null;
@@ -9711,11 +9694,9 @@ function _makeCprBlsConceptsGame() {
       const required = 4;
       const questionTotal = Math.max(5, Number(total) || 5);
       const unlocked = Number(correct) >= required;
-      const phase2Btn = el("btn-cprconcepts-round3");
       const playAgainBtn = el("btn-cprconcepts-play-again");
       const gateNote = el("cprconcepts-gate-note");
 
-      phase2Btn?.classList.toggle("hidden", !unlocked);
       if (playAgainBtn) playAgainBtn.textContent = unlocked ? "Play Again" : "Retry Phase 1";
       if (gateNote) {
         gateNote.textContent = unlocked
@@ -9738,7 +9719,6 @@ function _ensureCprBlsConceptsGame() {
 function _openCprBlsSequenceGameScreen(selection = null) {
   _cprBlsReturnDistrictId = selection?.returnDistrictId || null;
   _cprBlsSequenceGame.resetUi();
-  el("btn-cprseq-round2")?.classList.add("hidden");
   showScreen("cpr-bls-sequence-game");
   show("cprseq-intro-overlay");
 }
@@ -9760,7 +9740,6 @@ function _openCprBlsConceptsGameScreen(selection = null) {
   const game = _ensureCprBlsConceptsGame();
   _newDrillRun();
   game.resetUi();
-  el("btn-cprconcepts-round3")?.classList.add("hidden");
   const gateNote = el("cprconcepts-gate-note");
   if (gateNote) {
     gateNote.textContent = "";
@@ -17445,7 +17424,6 @@ el("btn-sort-learn-play")?.addEventListener("click", () => {
 el("btn-ten4-start")?.addEventListener("click",        () => _ten4Engine.startRound());
 el("btn-ten4-play-again")?.addEventListener("click",   () => _ten4Engine.startRound());
 el("btn-ten4-back-map")?.addEventListener("click",     _exitTen4ToMap);
-el("btn-ten4-try-scenario")?.addEventListener("click", _exitTen4ToMap);
 el("btn-ten4-back")?.addEventListener("click",         _exitTen4ToMap);
 el("btn-ten4-intro-play")?.addEventListener("click", () => { hide("ten4-intro-overlay"); _ten4Engine.startRound(); });
 el("btn-ten4-intro-back")?.addEventListener("click", _exitTen4ToMap);
@@ -17453,7 +17431,6 @@ el("btn-ten4-intro-learn")?.addEventListener("click", () => _openMgEducation({ t
 el("btn-shockmed-start")?.addEventListener("click",        () => _shockMedEngine.startRound());
 el("btn-shockmed-play-again")?.addEventListener("click",   () => _shockMedEngine.startRound());
 el("btn-shockmed-back-map")?.addEventListener("click",     _exitShockMedToMap);
-el("btn-shockmed-try-scenario")?.addEventListener("click", _exitShockMedToMap);
 el("btn-shockmed-back")?.addEventListener("click",         _exitShockMedToMap);
 el("btn-shockmed-intro-play")?.addEventListener("click", () => { hide("shockmed-intro-overlay"); _shockMedEngine.startRound(); });
 el("btn-shockmed-intro-back")?.addEventListener("click", _exitShockMedToMap);
@@ -17461,7 +17438,6 @@ el("btn-shockmed-intro-learn")?.addEventListener("click", () => _openMgEducation
 el("btn-moi-start")?.addEventListener("click",        () => _moiEngine.startRound());
 el("btn-moi-play-again")?.addEventListener("click",   () => _moiEngine.startRound());
 el("btn-moi-back-map")?.addEventListener("click",     _exitMoiToMap);
-el("btn-moi-try-scenario")?.addEventListener("click", _exitMoiToMap);
 el("btn-moi-back")?.addEventListener("click",         _exitMoiToMap);
 el("btn-moi-intro-play")?.addEventListener("click", () => { hide("moi-intro-overlay"); _moiEngine.startRound(); });
 el("btn-moi-intro-back")?.addEventListener("click", _exitMoiToMap);
@@ -17469,7 +17445,6 @@ el("btn-moi-intro-learn")?.addEventListener("click", () => _openMgEducation({ ty
 el("btn-shocktrauma-start")?.addEventListener("click",        () => _shockTraumaEngine.startRound());
 el("btn-shocktrauma-play-again")?.addEventListener("click",   () => _shockTraumaEngine.startRound());
 el("btn-shocktrauma-back-map")?.addEventListener("click",     _exitShockTraumaToMap);
-el("btn-shocktrauma-try-scenario")?.addEventListener("click", _exitShockTraumaToMap);
 el("btn-shocktrauma-back")?.addEventListener("click",         _exitShockTraumaToMap);
 el("btn-shocktrauma-intro-play")?.addEventListener("click", () => { hide("shocktrauma-intro-overlay"); _shockTraumaEngine.startRound(); });
 el("btn-shocktrauma-intro-back")?.addEventListener("click", _exitShockTraumaToMap);
@@ -17483,7 +17458,6 @@ el("btn-rule9-submit-bsa")?.addEventListener("click", () => _rule9Game.submitBsa
 el("btn-rule9-next")?.addEventListener("click", () => _rule9Game.advance());
 el("btn-rule9-play-again")?.addEventListener("click", () => _rule9Game.startRound());
 el("btn-rule9-back-map")?.addEventListener("click", _exitRule9ToMap);
-el("btn-rule9-try-scenario")?.addEventListener("click", _exitRule9ToMap);
 el("btn-stopbleed-intro-play")?.addEventListener("click", () => { hide("stopbleed-intro-overlay"); _stopBleedGame.startRound(); });
 el("btn-stopbleed-intro-back")?.addEventListener("click", _exitStopBleedToMap);
 el("btn-stopbleed-intro-learn")?.addEventListener("click", () => _openMgEducation({ type: "stop_the_bleed" }, "intro"));
@@ -17492,7 +17466,6 @@ el("btn-stopbleed-submit")?.addEventListener("click", () => _stopBleedGame.submi
 el("btn-stopbleed-next")?.addEventListener("click", () => _stopBleedGame.advance());
 el("btn-stopbleed-play-again")?.addEventListener("click", () => _stopBleedGame.startRound());
 el("btn-stopbleed-back-map")?.addEventListener("click", _exitStopBleedToMap);
-el("btn-stopbleed-try-scenario")?.addEventListener("click", _exitStopBleedToMap);
 el("btn-blsseq-intro-play")?.addEventListener("click", () => { hide("blsseq-intro-overlay"); _blsSequenceGame.startRound(); });
 el("btn-blsseq-intro-back")?.addEventListener("click", _exitBlsSequenceToMap);
 el("btn-blsseq-intro-learn")?.addEventListener("click", () => _openMgEducation({ type: "bls_sequence" }, "intro"));
@@ -17501,7 +17474,6 @@ el("btn-blsseq-submit")?.addEventListener("click", () => _blsSequenceGame.submit
 el("btn-blsseq-next")?.addEventListener("click", () => _blsSequenceGame.advance());
 el("btn-blsseq-play-again")?.addEventListener("click", () => _blsSequenceGame.startRound());
 el("btn-blsseq-back-map")?.addEventListener("click", _exitBlsSequenceToMap);
-el("btn-blsseq-try-scenario")?.addEventListener("click", _exitBlsSequenceToMap);
 el("btn-prioritystack-intro-play")?.addEventListener("click", () => { hide("prioritystack-intro-overlay"); _priorityStackGame.startRound(); });
 el("btn-prioritystack-intro-back")?.addEventListener("click", _exitPriorityStackToMap);
 el("btn-prioritystack-intro-learn")?.addEventListener("click", () => _openMgEducation({ type: "priority_stack" }, "intro"));
@@ -17510,7 +17482,6 @@ el("btn-prioritystack-submit")?.addEventListener("click", () => _priorityStackGa
 el("btn-prioritystack-next")?.addEventListener("click", () => _priorityStackGame.advance());
 el("btn-prioritystack-play-again")?.addEventListener("click", () => _priorityStackGame.startRound());
 el("btn-prioritystack-back-map")?.addEventListener("click", _exitPriorityStackToMap);
-el("btn-prioritystack-try-scenario")?.addEventListener("click", _exitPriorityStackToMap);
 
 /* ── CPR BLS Sequence game wiring ─────────────────────────────── */
 el("btn-cprseq-intro-play")?.addEventListener("click",  () => { hide("cprseq-intro-overlay"); _cprBlsSequenceGame.startRound(); });
@@ -17521,14 +17492,6 @@ el("btn-cprseq-submit")?.addEventListener("click",      () => _cprBlsSequenceGam
 el("btn-cprseq-next")?.addEventListener("click",        () => _cprBlsSequenceGame.advance());
 el("btn-cprseq-play-again")?.addEventListener("click",  () => _cprBlsSequenceGame.startRound());
 el("btn-cprseq-back-map")?.addEventListener("click",    _exitCprBlsSequenceToMap);
-el("btn-cprseq-round2")?.addEventListener("click",      () => {
-  resetSessionState();
-  _sessionReturnDistrictId = _cprBlsReturnDistrictId || null;
-  startScenarioWithOptions(STATION1_CPR_SCENARIO_ID, {
-    startDrill: true,
-    drillSource: "station1_cpr_training",
-  });
-});
 
 /* ── CPR BLS Concepts game wiring ─────────────────────────────── */
 el("btn-cprconcepts-intro-play")?.addEventListener("click",  () => { hide("cprconcepts-intro-overlay"); _cprBlsConceptsGame.startRound(); });
@@ -17538,20 +17501,11 @@ el("btn-cprconcepts-back")?.addEventListener("click",        _exitCprBlsConcepts
 el("btn-cprconcepts-start")?.addEventListener("click",       () => _cprBlsConceptsGame.startRound());
 el("btn-cprconcepts-play-again")?.addEventListener("click",  () => _cprBlsConceptsGame.startRound());
 el("btn-cprconcepts-back-map")?.addEventListener("click",    _exitCprBlsConceptsToMap);
-el("btn-cprconcepts-round3")?.addEventListener("click",      () => {
-  resetSessionState();
-  _sessionReturnDistrictId = _cprBlsReturnDistrictId || null;
-  startScenarioWithOptions(STATION1_CPR_SCENARIO_ID, {
-    startDrill: true,
-    drillSource: "station1_cpr_training",
-  });
-});
 
 /* ── Adult vs. Child A&P game wiring ──────────────────────────── */
 el("btn-ap-start")?.addEventListener("click",        () => _apEngine.startRound());
 el("btn-ap-play-again")?.addEventListener("click",   () => _apEngine.startRound());
 el("btn-ap-back-map")?.addEventListener("click",     _exitApToMap);
-el("btn-ap-try-scenario")?.addEventListener("click", _exitApToMap);
 el("btn-ap-back")?.addEventListener("click",         _exitApToMap);
 el("btn-ap-intro-play")?.addEventListener("click", () => { hide("ap-intro-overlay"); _apEngine.startRound(); });
 el("btn-ap-intro-back")?.addEventListener("click", _exitApToMap);
@@ -17564,7 +17518,6 @@ el("btn-ap-choose-child")?.addEventListener("click", () => { if (_apEngine.activ
 el("btn-lsm-start")?.addEventListener("click",        () => _lsmEngine.startRound());
 el("btn-lsm-play-again")?.addEventListener("click",   () => _lsmEngine.startRound());
 el("btn-lsm-back-map")?.addEventListener("click",     _exitLsmToMap);
-el("btn-lsm-try-scenario")?.addEventListener("click", _exitLsmToMap);
 el("btn-lsm-back")?.addEventListener("click",         _exitLsmToMap);
 el("btn-lsm-intro-play")?.addEventListener("click", () => { hide("lsm-intro-overlay"); _lsmEngine.startRound(); });
 el("btn-lsm-intro-back")?.addEventListener("click", _exitLsmToMap);
@@ -17573,7 +17526,6 @@ el("btn-lsm-next")?.addEventListener("click",       () => _lsmEngine._advance())
 el("btn-sound-start")?.addEventListener("click",        () => _soundEngine.startRound());
 el("btn-sound-play-again")?.addEventListener("click",   () => _soundEngine.startRound());
 el("btn-sound-back-map")?.addEventListener("click",     _exitSoundToMap);
-el("btn-sound-try-scenario")?.addEventListener("click", _exitSoundToMap);
 el("btn-sound-back")?.addEventListener("click",         _exitSoundToMap);
 el("btn-sound-intro-play")?.addEventListener("click", () => { hide("sound-intro-overlay"); _soundEngine.startRound(); });
 el("btn-sound-intro-back")?.addEventListener("click", _exitSoundToMap);
@@ -17582,7 +17534,6 @@ el("btn-sound-next")?.addEventListener("click",       () => _soundEngine._advanc
 el("btn-temp-start")?.addEventListener("click",        () => _tempEngine.startRound());
 el("btn-temp-play-again")?.addEventListener("click",   () => _tempEngine.startRound());
 el("btn-temp-back-map")?.addEventListener("click",     _exitTempToMap);
-el("btn-temp-try-scenario")?.addEventListener("click", _exitTempToMap);
 el("btn-temp-back")?.addEventListener("click",         _exitTempToMap);
 el("btn-temp-intro-play")?.addEventListener("click", () => { hide("temp-intro-overlay"); _tempEngine.startRound(); });
 el("btn-temp-intro-back")?.addEventListener("click", _exitTempToMap);
@@ -17593,7 +17544,6 @@ el("btn-temp-next")?.addEventListener("click",       () => _tempEngine._advance(
 el("btn-hm-start")?.addEventListener("click",        () => _hmEngine.startRound());
 el("btn-hm-play-again")?.addEventListener("click",   () => _hmEngine.startRound());
 el("btn-hm-back-map")?.addEventListener("click",     _exitHmToMap);
-el("btn-hm-try-scenario")?.addEventListener("click", _exitHmToMap);
 el("btn-hm-back")?.addEventListener("click",         _exitHmToMap);
 el("btn-hm-intro-play")?.addEventListener("click", () => {
   hide("hm-intro-overlay");
@@ -17612,7 +17562,6 @@ el("btn-hm-continue-interview")?.addEventListener("click", () => {
 el("btn-ig-start")?.addEventListener("click",        () => _igGame.startRound());
 el("btn-ig-play-again")?.addEventListener("click",   () => _igGame.startRound());
 el("btn-ig-back-map")?.addEventListener("click",     _exitIgToMap);
-el("btn-ig-try-scenario")?.addEventListener("click", _exitIgToMap);
 el("btn-ig-back")?.addEventListener("click",         _openHmGameScreen);
 el("btn-ig-next")?.addEventListener("click",         () => _igGame.advance());
 
@@ -17620,7 +17569,6 @@ el("btn-ig-next")?.addEventListener("click",         () => _igGame.advance());
 el("btn-sb-start")?.addEventListener("click",        () => _sbGame.startRound());
 el("btn-sb-play-again")?.addEventListener("click",   () => _sbGame.startRound());
 el("btn-sb-back-map")?.addEventListener("click",     _exitSbToMap);
-el("btn-sb-try-scenario")?.addEventListener("click", _exitSbToMap);
 el("btn-sb-back")?.addEventListener("click",         _openHmGameScreen);
 el("btn-sb-submit")?.addEventListener("click",       () => _sbGame.submit());
 el("btn-sb-clear")?.addEventListener("click",        () => _sbGame.clearAnswer());
@@ -17630,7 +17578,6 @@ el("btn-sb-next")?.addEventListener("click",         () => _sbGame.advance());
 el("btn-gcs-start")?.addEventListener("click",        () => _gcsGame.startRound());
 el("btn-gcs-play-again")?.addEventListener("click",   () => _gcsGame.startRound());
 el("btn-gcs-back-map")?.addEventListener("click",     _exitGcsToMap);
-el("btn-gcs-try-scenario")?.addEventListener("click", _exitGcsToMap);
 el("btn-gcs-back")?.addEventListener("click",         _exitGcsToMap);
 el("btn-gcs-intro-play")?.addEventListener("click", () => { hide("gcs-intro-overlay"); _gcsGame.startRound(); });
 el("btn-gcs-intro-back")?.addEventListener("click", _exitGcsToMap);
@@ -17641,7 +17588,6 @@ el("btn-gcs-next")?.addEventListener("click",       () => _gcsGame.advance());
 el("btn-aeiou-start")?.addEventListener("click",           () => _aeiouGame.startRound());
 el("btn-aeiou-play-again")?.addEventListener("click",      () => _aeiouGame.startRound());
 el("btn-aeiou-back-map")?.addEventListener("click",        _exitAeiouToMap);
-el("btn-aeiou-try-scenario")?.addEventListener("click",    _exitAeiouToMap);
 el("btn-aeiou-back")?.addEventListener("click",            _exitAeiouToMap);
 el("btn-aeiou-intro-play")?.addEventListener("click",      () => { hide("aeiou-intro-overlay"); _aeiouGame.startRound(); });
 el("btn-aeiou-intro-back")?.addEventListener("click",      _exitAeiouToMap);
@@ -17650,7 +17596,6 @@ el("btn-aeiou-nudge-continue")?.addEventListener("click",  () => _aeiouGame.cont
 el("btn-diffams-start")?.addEventListener("click",           () => _diffAmsGame.startRound());
 el("btn-diffams-play-again")?.addEventListener("click",      () => _diffAmsGame.startRound());
 el("btn-diffams-back-map")?.addEventListener("click",        _exitDiffAmsToMap);
-el("btn-diffams-try-scenario")?.addEventListener("click",    _exitDiffAmsToMap);
 el("btn-diffams-back")?.addEventListener("click",            _exitDiffAmsToMap);
 el("btn-diffams-intro-play")?.addEventListener("click",      () => { hide("diffams-intro-overlay"); _diffAmsGame.startRound(); });
 el("btn-diffams-intro-back")?.addEventListener("click",      _exitDiffAmsToMap);
@@ -17659,7 +17604,6 @@ el("btn-diffams-nudge-continue")?.addEventListener("click",  () => _diffAmsGame.
 el("btn-diffresp-start")?.addEventListener("click",           () => _diffRespGame.startRound());
 el("btn-diffresp-play-again")?.addEventListener("click",      () => _diffRespGame.startRound());
 el("btn-diffresp-back-map")?.addEventListener("click",        _exitDiffRespToMap);
-el("btn-diffresp-try-scenario")?.addEventListener("click",    _exitDiffRespToMap);
 el("btn-diffresp-back")?.addEventListener("click",            _exitDiffRespToMap);
 el("btn-diffresp-intro-play")?.addEventListener("click",      () => { hide("diffresp-intro-overlay"); _diffRespGame.startRound(); });
 el("btn-diffresp-intro-back")?.addEventListener("click",      _exitDiffRespToMap);
@@ -17671,7 +17615,6 @@ el("btn-cprconcepts-nudge-continue")?.addEventListener("click", () => _cprBlsCon
 el("btn-df-start")?.addEventListener("click",        () => _dfEngine.startRound());
 el("btn-df-play-again")?.addEventListener("click",   () => _dfEngine.startRound());
 el("btn-df-back-map")?.addEventListener("click",     _exitDfToMap);
-el("btn-df-try-scenario")?.addEventListener("click", _exitDfToMap);
 el("btn-df-back")?.addEventListener("click",         _exitDfToMap);
 el("btn-df-intro-play")?.addEventListener("click", () => { hide("df-intro-overlay"); _dfEngine.startRound(); });
 el("btn-df-intro-back")?.addEventListener("click", _exitDfToMap);
@@ -17684,7 +17627,6 @@ el("btn-df-choose-further")?.addEventListener("click",    () => { if (_dfEngine.
 el("btn-dmist-start")?.addEventListener("click",        () => _dmistGame.startRound());
 el("btn-dmist-play-again")?.addEventListener("click",   () => _dmistGame.startRound());
 el("btn-dmist-back-map")?.addEventListener("click",     _exitDmistToMap);
-el("btn-dmist-try-scenario")?.addEventListener("click", _exitDmistToMap);
 el("btn-dmist-back")?.addEventListener("click",         _exitDmistToMap);
 el("btn-dmist-intro-play")?.addEventListener("click", () => { hide("dmist-intro-overlay"); _dmistGame.startRound(); });
 el("btn-dmist-intro-back")?.addEventListener("click", _exitDmistToMap);
@@ -17696,7 +17638,6 @@ el("btn-dmist-next-case")?.addEventListener("click",  () => _dmistGame.nextCase(
 el("btn-pivot-start")?.addEventListener("click",        () => _pivotGame.startRound());
 el("btn-pivot-play-again")?.addEventListener("click",   () => _pivotGame.startRound());
 el("btn-pivot-back-map")?.addEventListener("click",     _exitPivotToMap);
-el("btn-pivot-try-scenario")?.addEventListener("click", _exitPivotToMap);
 el("btn-pivot-back")?.addEventListener("click",         _exitPivotToMap);
 el("btn-pivot-intro-play")?.addEventListener("click", () => { hide("pivot-intro-overlay"); _pivotGame.startRound(); });
 el("btn-pivot-intro-back")?.addEventListener("click", _exitPivotToMap);
@@ -17708,7 +17649,6 @@ el("btn-pivot-next-case")?.addEventListener("click",  () => _pivotGame.nextCase(
 el("btn-respd-start")?.addEventListener("click",           () => _respDxGame.startRound());
 el("btn-respd-play-again")?.addEventListener("click",      () => _respDxGame.startRound());
 el("btn-respd-back-map")?.addEventListener("click",        _exitRespDxToMap);
-el("btn-respd-try-scenario")?.addEventListener("click",    _exitRespDxToMap);
 el("btn-respd-back")?.addEventListener("click",            _exitRespDxToMap);
 el("btn-respd-intro-play")?.addEventListener("click",      () => { hide("respd-intro-overlay"); _respDxGame.startRound(); });
 el("btn-respd-intro-back")?.addEventListener("click",      _exitRespDxToMap);
@@ -17719,7 +17659,6 @@ el("btn-respd-next-case")?.addEventListener("click",       () => _respDxGame.nex
 el("btn-vitals-start")?.addEventListener("click",        () => _vitalsGame.startRound());
 el("btn-vitals-play-again")?.addEventListener("click",   () => _vitalsGame.startRound());
 el("btn-vitals-back-map")?.addEventListener("click",     _exitVitalsToMap);
-el("btn-vitals-try-scenario")?.addEventListener("click", _exitVitalsToMap);
 el("btn-vitals-back")?.addEventListener("click",         _exitVitalsToMap);
 el("btn-vitals-intro-play")?.addEventListener("click", () => { hide("vitals-intro-overlay"); _vitalsGame.startRound(); });
 el("btn-vitals-intro-back")?.addEventListener("click", _exitVitalsToMap);

@@ -175,9 +175,8 @@ def test_station1_cpr_training_node_is_labeled_as_drill():
 
     assert 'title="CPR Training Drill" aria-label="CPR Training Drill"' in js
     assert "CPR training drill completed. Replay the three-round flow any time." in js
-    assert 'startScenarioWithOptions(STATION1_CPR_SCENARIO_ID, {' in js
-    assert "startDrill: true" in js
-    assert 'drillSource: "station1_cpr_training"' in js
+    assert 'type: "cpr_bls_concepts"' in js
+    assert 'label: "CPR Mastery Drill"' in js
     assert "start_drill: startDrill" in js
     assert "drill_source: drillSource" in js
     assert "state.drillMode = startDrill;" in js
@@ -241,19 +240,14 @@ def test_challenge_builder_exposes_drill_requirement_options():
     assert "completed_drill_ids" in _read("app/main.py")
 
 
-def test_drill_try_scenario_bridge_is_hidden_for_pilot():
+def test_drill_result_modals_do_not_offer_try_scenario_for_pilot():
+    html = _read("static/index.html")
     js = _read("static/js/app.js")
-    css = _read("static/css/style.css")
 
-    assert "function _syncMgScenarioBridgeAvailability(root = document)" in js
-    assert 'bridge.querySelector("[id$=\'try-scenario\']")' in js
-    bridge_block = js[js.index("function _syncMgScenarioBridgeAvailability"):js.index("function show(id)")]
-    assert 'bridge.classList.add("hidden")' in bridge_block
-    assert 'bridge.setAttribute("aria-hidden", "true")' in bridge_block
-    assert "_syncMgScenarioBridgeAvailability(node);" in js
-    assert ".mg-bridge.hidden" in css
-    assert '.mg-bridge[aria-hidden="true"]' in css
-    assert "display: none !important" in css[css.index(".mg-bridge.hidden"):css.index(".mg-bridge-text")]
+    assert "Try a Scenario" not in html
+    assert "try-scenario" not in html
+    assert "try-scenario" not in js
+    assert "function _syncMgScenarioBridgeAvailability" not in js
 
 
 def test_pediatric_map_drill_completion_uses_learning_unlocks():

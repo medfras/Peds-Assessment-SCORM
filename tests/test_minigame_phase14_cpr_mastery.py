@@ -187,10 +187,8 @@ def test_cpr_sequence_game_frontend_wiring():
     assert 'id="cprseq-order"' in html
     assert 'id="btn-cprseq-submit"' in html
 
-    # Mastery-routing button present and initially hidden
-    assert 'id="btn-cprseq-round2"' in html
-    assert 'id="btn-cprseq-round2" class="hidden' in html or \
-           'hidden' in html[html.index('id="btn-cprseq-round2"'):html.index('id="btn-cprseq-round2"') + 200]
+    # Drill result modals should not route learners directly into scenarios.
+    assert 'id="btn-cprseq-round2"' not in html
 
     # JS registrations
     assert 'gameId: "cpr_bls_sequence"' in js
@@ -210,9 +208,8 @@ def test_cpr_concepts_game_frontend_wiring():
     assert 'id="cprconcepts-pair-grid"' in html
     assert 'id="cprconcepts-results"' in html
 
-    # Mastery-routing button present and initially hidden
-    assert 'id="btn-cprconcepts-round3"' in html
-    assert 'hidden' in html[html.index('id="btn-cprconcepts-round3"'):html.index('id="btn-cprconcepts-round3"') + 200]
+    # Drill result modals should not route learners directly into scenarios.
+    assert 'id="btn-cprconcepts-round3"' not in html
 
     # Nudge overlay wired
     assert 'id="cprconcepts-nudge-overlay"' in html
@@ -231,15 +228,17 @@ def test_cpr_concepts_game_frontend_wiring():
     assert '_cprBlsConceptsGame = _makeCprBlsConceptsGame();' in js
 
 
-def test_cpr_mastery_routing_logic():
-    """Concepts phase must require 4/5 before unlocking the CPR scenario phase."""
+def test_cpr_mastery_does_not_offer_scenario_routing_from_drill_results():
+    """CPR mastery drills can be retried, but should not expose a scenario off-ramp."""
     js = _read("static/js/app.js")
-    assert 'btn-cprseq-round2' in js
-    assert 'btn-cprconcepts-round3' in js
+    html = _read("static/index.html")
+
+    assert 'btn-cprseq-round2' not in js
+    assert 'btn-cprconcepts-round3' not in js
+    assert "Round 3: CPR Scenario" not in html
+    assert "Phase 2: CPR Scenario" not in html
     assert "const required = 4;" in js
     assert 'Score at least ${required}/${questionTotal} correct to unlock Phase 2' in js
-    assert 'phase2Btn?.classList.toggle("hidden", !unlocked)' in js
-    # Round3 button routes to the sequence game (next step in mastery flow)
     assert '_openCprBlsSequenceGameScreen' in js
 
 
