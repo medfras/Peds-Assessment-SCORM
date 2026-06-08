@@ -4,6 +4,7 @@ import json
 import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
+from urllib.parse import unquote
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -112,6 +113,35 @@ def test_scorm_station_shell_uses_map_assets_and_positioned_nodes():
     assert 'x: 52, y: 58' in app_js
 
 
+def test_pilot_referenced_patient_game_assets_exist():
+    croup = json.loads((ROOT / "app/scenarios/pediatric/medical/peds_croup_01.json").read_text())
+    croup_image = croup["patient"]["image"]
+    assert croup_image
+    assert (ROOT / croup_image).exists()
+
+    lsm_cards = json.loads((ROOT / "static/data/games/lsm/cards.json").read_text())
+    missing_audio = []
+    for card in lsm_cards:
+        audio_url = card.get("audio_url") or ""
+        if not audio_url.startswith("/static/"):
+            continue
+        path = unquote(audio_url.split("?", 1)[0]).removeprefix("/static/")
+        if not (ROOT / "static" / path).exists():
+            missing_audio.append(f"{card.get('id')}: {audio_url}")
+    assert missing_audio == []
+
+    dev_sort = json.loads((ROOT / "static/data/games/sorting/peds_dev_milestones.json").read_text())
+    missing_images = []
+    for bucket in dev_sort.get("buckets", []):
+        image_url = bucket.get("image") or ""
+        if not image_url.startswith("/static/"):
+            continue
+        path = unquote(image_url.split("?", 1)[0]).removeprefix("/static/")
+        if not (ROOT / "static" / path).exists():
+            missing_images.append(f"{bucket.get('id')}: {image_url}")
+    assert missing_images == []
+
+
 def test_smoke_build_script_generates_js_config_and_root_zip():
     script = BUILD_SCRIPT.read_text()
     assert "SCORM_CONFIG_FILE" in script
@@ -129,6 +159,7 @@ def test_production_build_script_packages_full_static_tree_for_moodle():
     assert "cp imsmanifest.xml" in script
     assert "js/scorm_config.js" in script
     assert "s#/static/##g" in script
+    assert "find \"${BUILD_PATH}/data\"" in script
     assert "s#/static/#../#g" in script
     assert "zip -qr" in script
 
@@ -244,6 +275,7 @@ def test_scorm_runtime_uses_compact_sim_and_localizes_backend_static_assets():
     orientation = json.loads((ROOT / "app" / "scenarios" / "orientation_01.json").read_text())
     assert "function _scormAssetUrl(url)" in app_js
     assert 'const staticPrefix = `/${"static"}/`;' in app_js
+    assert 'value.startsWith("static/")' in app_js
     assert "_scormAssetUrl(s.scene.image || s.patient.image || \"\")" in app_js
     assert "_scormAssetUrl(arrivalImage)" in app_js
     assert "function _isScormEmbeddedFrame()" in app_js

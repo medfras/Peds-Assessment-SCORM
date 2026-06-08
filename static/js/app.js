@@ -5962,7 +5962,8 @@ function _scormAssetUrl(url) {
   const value = String(url || "");
   if (!state.scormEnabled || !value) return value;
   const staticPrefix = `/${"static"}/`;
-  return value.startsWith(staticPrefix) ? value.slice(staticPrefix.length) : value;
+  if (value.startsWith(staticPrefix)) return value.slice(staticPrefix.length);
+  return value.startsWith("static/") ? value.slice("static/".length) : value;
 }
 
 const _scenarioImagePreloads = new Map();

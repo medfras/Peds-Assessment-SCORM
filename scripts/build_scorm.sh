@@ -41,6 +41,10 @@ LC_ALL=C LANG=C perl -0pi -e 's#/static/##g' \
   "${BUILD_PATH}/index.html" \
   "${BUILD_PATH}/js/app.js"
 
+while IFS= read -r -d '' file; do
+  LC_ALL=C LANG=C perl -0pi -e 's#/static/##g' "${file}"
+done < <(find "${BUILD_PATH}/data" -type f \( -name "*.json" -o -name "*.md" \) -print0)
+
 LC_ALL=C LANG=C perl -0pi -e 's#/static/#../#g' \
   "${BUILD_PATH}/css/style.css"
 

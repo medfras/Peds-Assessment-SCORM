@@ -107,7 +107,7 @@
   },
   {
     "id": "lsm_crackles_02",
-    "audio_url": "/static/audio/lung%20sounds/LS/F_FC_LLA.wav",
+    "audio_url": "/static/audio/lung%20sounds/Crackles_pneumonia.mp3",
     "license_source": "CC BY 4.0 \u2014 Torabi Y, Shirani S, Reilly JP. Heart and Lung Sounds Dataset Recorded from a Clinical Manikin using Digital Stethoscope (HLS-CMDS). Mendeley Data V3. doi:10.17632/8972jxbpmp.3",
     "prompt": "Play the sound, then choose the best match.",
     "correct": "crackles",
