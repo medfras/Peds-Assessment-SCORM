@@ -3560,22 +3560,6 @@ body {
   color: rgba(253, 224, 71, 0.85);
 }
 
-.peds-fog-patch {
-  position: absolute;
-  z-index: 4;
-  pointer-events: none;
-  border-radius: 999px;
-  background:
-    radial-gradient(circle at 50% 50%, rgba(226, 232, 240, 0.8) 0%, rgba(226, 232, 240, 0.95) 26%, rgba(148, 163, 184, 0.22) 55%, rgba(148, 163, 184, 0) 100%),
-    radial-gradient(circle at 32% 52%, rgba(248, 250, 252, 0.58) 0%, rgba(248, 250, 252, 0.72) 32%, rgba(248, 250, 252, 0) 66%),
-    radial-gradient(circle at 68% 40%, rgba(241, 245, 249, 0.46) 0%, rgba(241, 245, 249, 0.62) 30%, rgba(241, 245, 249, 0) 62%);
-  filter: blur(14px) saturate(0.92);
-  opacity: 0.96;
-  box-shadow:
-    0 0 22px rgba(226, 232, 240, 0.28),
-    0 0 54px rgba(148, 163, 184, 0.18);
-}
-
 /* Fog reveal animation — plays once on newly-unlocked exit buttons */
 @keyframes peds-fog-reveal {
   0%   { opacity: 0; filter: blur(6px) brightness(0.4); transform: translateY(2px) scale(0.93); }

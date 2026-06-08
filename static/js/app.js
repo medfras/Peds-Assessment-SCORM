@@ -7057,18 +7057,8 @@ const ADVENTURE_DISTRICTS = [
 // ─── Pediatric Map v2 ────────────────────────────────────────────────────────
 // DEV: set true to unlock all nodes for testing
 const PEDS_MAP_DEV_UNLOCKED = true;
-// DEV: when true, renders fog-of-war locks on the entrance map even while the
-// rest of the pediatric map remains dev-unlocked.
-const PEDS_MAP_TEST_FOG_MAP0 = false;
 
-const MAP_FOG_PATCHES = {
-  "map_0": [
-    { id: "pm1", x: 94.5, y: 10.0, w: 40, h: 32, r: 28 },
-    { id: "pt1", x: 7.0, y: 10.0, w: 40, h: 32, r: -28 },
-  ],
-};
-
-// MAP_TOPOLOGY — canonical progression source for fog/unlock rendering.
+// MAP_TOPOLOGY — canonical progression source for unlock rendering.
 // See docs/MAP_GAMEPLAY_DESIGN.md §5. IDs match PEDS_MAP_DATA.id values.
 // Topology-consuming functions accept this as a parameter for future API swappability.
 // requires: all must have ≥1 completed scenario for full unlock
@@ -15701,12 +15691,7 @@ function _renderPedsMap(mapId = null) {
   const _baseUnlockState = _computeMapUnlockState(_passedIds, MAP_TOPOLOGY, _pedsMapCompleted);
   const unlockState = (() => {
     if (!PEDS_MAP_DEV_UNLOCKED) return _baseUnlockState;
-    if (!(PEDS_MAP_TEST_FOG_MAP0 && currentMapId === "map_0")) return null;
-    const forced = new Map(_baseUnlockState);
-    forced.set("pm1", { unlocked: false, partial: false });
-    forced.set("pt1", { unlocked: false, partial: false });
-    forced.set("pe1", { unlocked: false, partial: false });
-    return forced;
+    return null;
   })();
 
   // Detect newly-unlocked maps for fog reveal animation (per-session, sessionStorage)
@@ -15761,8 +15746,6 @@ function _renderPedsMap(mapId = null) {
       return `left:${p.x}%; top:${p.y}%;`;
     };
     let html = "";
-    const fogPatches = MAP_FOG_PATCHES[currentMapId] || [];
-
     // Single parent back button
     if (mapDef.parent) {
       const parentLabel = _PEDS_MAP_BY_ID.get(mapDef.parent)?.label || "Back";
@@ -15792,11 +15775,6 @@ function _renderPedsMap(mapId = null) {
       const lockCls   = isLocked ? " trail-map-btn--fog-locked" : isPartial ? " trail-map-btn--fog-partial" : "";
       const destLabel = _PEDS_MAP_BY_ID.get(exit.to)?.label || exit.label || "Next";
       const label = isLocked ? "🔒" : destLabel;
-      const fog = fogPatches.find(f => f.id === exit.to);
-      if (fog && isLocked) {
-        html += `<div class="peds-fog-patch" aria-hidden="true"
-          style="left:${fog.x}%;top:${fog.y}%;width:${fog.w}%;height:${fog.h}%;transform:translate(-50%, -50%) rotate(${fog.r || 0}deg);"></div>`;
-      }
       html += `<button class="trail-map-btn trail-map-btn--next${lockCls}${revealCls}"
         data-peds-nav="${exit.to}" ${isLocked ? "disabled aria-disabled='true'" : ""}
         title="${escapeHTML(exit.label)}" style="${_navStyle(exit.pos, 88, 15)}">${label}</button>`;
