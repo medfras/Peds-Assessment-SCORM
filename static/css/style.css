@@ -3544,33 +3544,6 @@ body {
   pointer-events: none;
 }
 
-/* ── Fog-of-war lock styling on exit buttons ──────────────────────────────── */
-
-.trail-map-btn--fog-locked {
-  background: linear-gradient(180deg, rgba(55, 65, 81, 0.95), rgba(31, 41, 55, 0.95));
-  border-color: rgba(107, 114, 128, 0.7);
-  color: rgba(156, 163, 175, 0.9);
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-.trail-map-btn--fog-partial {
-  background: linear-gradient(180deg, rgba(92, 77, 30, 0.92), rgba(63, 51, 15, 0.92));
-  border-color: rgba(180, 130, 30, 0.6);
-  color: rgba(253, 224, 71, 0.85);
-}
-
-/* Fog reveal animation — plays once on newly-unlocked exit buttons */
-@keyframes peds-fog-reveal {
-  0%   { opacity: 0; filter: blur(6px) brightness(0.4); transform: translateY(2px) scale(0.93); }
-  60%  { opacity: 1; filter: blur(0)   brightness(1.2); transform: translateY(-1px) scale(1.04); }
-  100% { opacity: 1; filter: blur(0)   brightness(1);   transform: translateY(0) scale(1); }
-}
-
-.peds-fog-reveal {
-  animation: peds-fog-reveal 0.55s ease-out both;
-}
-
 /* PE1 key gate counter in trail nav */
 .pe1-key-counter {
   font-size: 0.6em;

@@ -15702,7 +15702,7 @@ function _renderPedsMap(mapId = null) {
 
   const mapDef = _PEDS_MAP_BY_ID.get(currentMapId) || PEDS_MAP_DATA[0];
 
-  // Unlock state (normally null when dev-unlocked — unless entrance fog testing is enabled)
+  // Unlock state (normally null when dev-unlocked)
   const _history = loadHistory().filter(h => !h.agencyId || h.agencyId === state.agency_id);
   const _passedIds = new Set(_history.filter(h => {
     if ((h.score ?? null) === null) return false;
@@ -15717,7 +15717,7 @@ function _renderPedsMap(mapId = null) {
     return null;
   })();
 
-  // Detect newly-unlocked maps for fog reveal animation (per-session, sessionStorage)
+  // Detect newly-unlocked maps for reveal animation (per-session, sessionStorage)
   const _prevSnapshotKey = `peds_unlock_snapshot_${state.userId || "anon"}`;
   const _prevSnapshot = (() => { try { return JSON.parse(sessionStorage.getItem(_prevSnapshotKey) || "{}"); } catch { return {}; } })();
   const _newlyUnlocked = new Set();
@@ -15794,11 +15794,10 @@ function _renderPedsMap(mapId = null) {
       const isPartial = state.scormEnabled
         ? false
         : (unlockState && !destState?.unlocked && destState?.partial);
-      const revealCls = _newlyUnlocked.has(exit.to) ? " peds-fog-reveal" : "";
-      const lockCls   = isLocked ? " trail-map-btn--fog-locked" : isPartial ? " trail-map-btn--fog-partial" : "";
+      const lockCls   = isLocked ? " trail-map-btn--locked" : isPartial ? " trail-map-btn--future" : "";
       const destLabel = _PEDS_MAP_BY_ID.get(exit.to)?.label || exit.label || "Next";
       const label = isLocked ? "🔒" : destLabel;
-      html += `<button class="trail-map-btn trail-map-btn--next${lockCls}${revealCls}"
+      html += `<button class="trail-map-btn trail-map-btn--next${lockCls}"
         data-peds-nav="${exit.to}" ${isLocked ? "disabled aria-disabled='true'" : ""}
         title="${escapeHTML(exit.label)}" style="${_navStyle(exit.pos, 88, 15)}">${label}</button>`;
     });

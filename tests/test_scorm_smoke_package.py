@@ -15,6 +15,7 @@ PROD_BUILD_SCRIPT = ROOT / "scripts" / "build_scorm.sh"
 SCORM_JS = ROOT / "static" / "js" / "scorm.js"
 SCORM_ADAPTER_JS = ROOT / "static" / "js" / "scorm_adapter.js"
 APP_JS = ROOT / "static" / "js" / "app.js"
+STYLE_CSS = ROOT / "static" / "css" / "style.css"
 
 
 def test_smoke_manifest_is_scorm_12_single_sco():
@@ -542,3 +543,12 @@ def test_scenario_launch_preloads_scene_images_before_display():
     assert arrival_start != -1
     arrival_block = app_js[arrival_start:arrival_start + 700]
     assert 'arrImg.loading = "eager";' in arrival_block
+
+
+def test_pediatric_maps_do_not_render_fog_of_war_overlay():
+    app_js = APP_JS.read_text()
+    css = STYLE_CSS.read_text()
+    combined = f"{app_js}\n{css}"
+    assert "peds-fog" not in combined
+    assert "trail-map-btn--fog" not in combined
+    assert "peds-fog-patch" not in combined
