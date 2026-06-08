@@ -5965,6 +5965,28 @@ function _scormAssetUrl(url) {
   return value.startsWith(staticPrefix) ? value.slice(staticPrefix.length) : value;
 }
 
+const _scenarioImagePreloads = new Map();
+
+function _preloadImage(url, { priority = "high" } = {}) {
+  const resolved = _scormAssetUrl(url);
+  if (typeof Image === "undefined" || !resolved || _scenarioImagePreloads.has(resolved)) return resolved;
+  const img = new Image();
+  img.decoding = "async";
+  if ("fetchPriority" in img) img.fetchPriority = priority;
+  img.onload = () => _scenarioImagePreloads.set(resolved, "loaded");
+  img.onerror = () => _scenarioImagePreloads.delete(resolved);
+  _scenarioImagePreloads.set(resolved, img);
+  img.src = resolved;
+  return resolved;
+}
+
+function _preloadScenarioImages(scenario = {}) {
+  const patientImage = scenario?.patient?.image || "";
+  const sceneImage = scenario?.scene?.image || "";
+  _preloadImage(sceneImage || patientImage, { priority: "high" });
+  if (patientImage && patientImage !== sceneImage) _preloadImage(patientImage, { priority: "high" });
+}
+
 function _showScormLaunchError(err) {
   const message = err?.message || "SCORM launch failed. Please relaunch this activity from Moodle.";
   console.error("SCORM launch failed", err);
@@ -7711,6 +7733,7 @@ function _prefetchScenarioData(scenarioId) {
   const promise = authFetch(`${API}/api/scenarios/${scenarioId}`)
     .then(r => r.ok ? r.json() : null)
     .then(data => {
+      if (data) _preloadScenarioImages(data);
       if (data && _scenarioPreviewSelection?.scenarioId === scenarioId) {
         _scenarioPreviewDataCache = { scenarioId, data };
       }
@@ -19107,6 +19130,7 @@ async function startScenarioWithOptions(scenarioId, options = {}) {
       scenarioData = _prepareScenarioDataForRuntime(await scenRes.json());
       _lap("scenario JSON parsed");
     }
+    _preloadScenarioImages(scenarioData);
     const warning = _scenarioJurisdictionWarning(scenarioData);
     if (warning && !(await _confirmJurisdictionWarning(warning))) return false;
 
@@ -19906,6 +19930,9 @@ function startSim(opts = {}) {
 
   // Scene tab — patient photo
   if (s.patient.image) {
+    el("pt-photo").loading = "eager";
+    el("pt-photo").decoding = "async";
+    if ("fetchPriority" in el("pt-photo")) el("pt-photo").fetchPriority = "high";
     el("pt-photo").src = _scormAssetUrl(s.patient.image);
     el("pt-photo").classList.remove("hidden");
     el("pt-photo-placeholder").classList.add("hidden");
@@ -19999,6 +20026,9 @@ function startSim(opts = {}) {
   const arrImg = el("arrival-image");
   const arrivalImage = s.scene.image || s.patient.image;
   if (arrivalImage) {
+    arrImg.loading = "eager";
+    arrImg.decoding = "async";
+    if ("fetchPriority" in arrImg) arrImg.fetchPriority = "high";
     arrImg.src = _scormAssetUrl(arrivalImage);
     arrImgContainer.classList.remove("hidden");
   } else {
@@ -20132,6 +20162,9 @@ function _showPatModal() {
   const patImgContainer = el("pat-image-container");
   const patImg = el("pat-image");
   if (s?.patient?.image) {
+    patImg.loading = "eager";
+    patImg.decoding = "async";
+    if ("fetchPriority" in patImg) patImg.fetchPriority = "high";
     patImg.src = _scormAssetUrl(s.patient.image);
     patImgContainer.classList.remove("hidden");
   } else {

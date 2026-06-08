@@ -515,3 +515,30 @@ def test_intervention_response_applies_authoritative_vitals_snapshot():
     assert ws_start != -1
     ws_block = app_js[ws_start:ws_start + 2200]
     assert "_applyCurrentVitalsSnapshot(data.vitals);" in ws_block
+
+
+def test_scenario_launch_preloads_scene_images_before_display():
+    app_js = APP_JS.read_text()
+    assert "const _scenarioImagePreloads = new Map();" in app_js
+    assert "function _preloadScenarioImages(scenario = {})" in app_js
+    assert "_preloadImage(sceneImage || patientImage, { priority: \"high\" });" in app_js
+
+    prefetch_start = app_js.find("function _prefetchScenarioData")
+    assert prefetch_start != -1
+    prefetch_block = app_js[prefetch_start:prefetch_start + 1200]
+    assert "if (data) _preloadScenarioImages(data);" in prefetch_block
+
+    launch_start = app_js.find("async function startScenarioWithOptions")
+    assert launch_start != -1
+    launch_block = app_js[launch_start:launch_start + 2600]
+    assert "_preloadScenarioImages(scenarioData);" in launch_block
+    assert launch_block.index("_preloadScenarioImages(scenarioData);") < launch_block.index('const warning = _scenarioJurisdictionWarning(scenarioData);')
+
+    sim_start = app_js.find("function startSim")
+    assert sim_start != -1
+    sim_block = app_js[sim_start:sim_start + 3600]
+    assert 'el("pt-photo").loading = "eager";' in sim_block
+    arrival_start = app_js.find('const arrImg = el("arrival-image");', sim_start)
+    assert arrival_start != -1
+    arrival_block = app_js[arrival_start:arrival_start + 700]
+    assert 'arrImg.loading = "eager";' in arrival_block
