@@ -11056,10 +11056,8 @@ function _genDistrictMapSVG(history) {
   }).join("\n");
 
   const zones = ADVENTURE_DISTRICTS.filter(d => d.mapZone).map(d => {
-    const scoped    = (state.allScenarios || []).filter(s => (d.legacy || []).includes(s.category));
-    const count     = scoped.length;
-    const completed = scoped.filter(s => history.some(h => h.scenarioId === s.id)).length;
-    const pct       = count > 0 ? Math.round((completed / count) * 100) : 0;
+    const progress  = _districtProgress(d.id);
+    const pct       = progress.pct;
     const prereqMet = !d.prereq || stationComplete;
     const active    = d.status === "active" && prereqMet;
     const { points, lx, ly, label, rot } = d.mapZone;
@@ -11545,6 +11543,7 @@ function _districtActivityCounts(districtId, unlockedOnly = true) {
     const pedsMapCompleted = new Set(loadGamification().pedsMapCompleted || []);
     const unlockState = _computeMapUnlockState(passedIds, MAP_TOPOLOGY, pedsMapCompleted);
     const mapIds = PEDS_MAP_DATA
+      .filter(m => !state.scormEnabled || _scormPedsMapAllowed(m.id))
       .filter(m => !unlockedOnly || m.id === "map_0" || !!unlockState.get(m.id)?.unlocked)
       .map(m => m.id);
     return _pedsMapActivityCounts(mapIds, passedIds);
@@ -11825,8 +11824,8 @@ function _districtProgress(districtId) {
   const stationDone = _station1IsComplete();
   const prereqMet = !district?.prereq || stationDone;
   const counts = _districtActivityCounts(districtId, true);
-  const total = counts.callsTotal + counts.drillsTotal;
-  const done = counts.callsComplete + counts.drillsComplete;
+  const total = counts.callsTotal;
+  const done = counts.callsComplete;
   const stationStarted = stationDone || _station1IntroSeen();
   const pct = districtId === "station_1"
     ? (stationDone ? 100 : stationStarted ? 25 : 0)

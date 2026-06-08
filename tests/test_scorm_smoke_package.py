@@ -671,6 +671,30 @@ def test_scorm_production_peds_maps_use_backend_node_state():
     assert "_scormPedsSidebarProgress(mapId)" in sidebar_block
 
 
+def test_scorm_pediatric_district_progress_counts_pilot_calls_only():
+    app_js = APP_JS.read_text()
+
+    counts_start = app_js.find("function _districtActivityCounts")
+    assert counts_start != -1
+    counts_block = app_js[counts_start:counts_start + 1000]
+    assert '.filter(m => !state.scormEnabled || _scormPedsMapAllowed(m.id))' in counts_block
+    assert "return _pedsMapActivityCounts(mapIds, passedIds);" in counts_block
+
+    progress_start = app_js.find("function _districtProgress")
+    assert progress_start != -1
+    progress_block = app_js[progress_start:progress_start + 700]
+    assert "const total = counts.callsTotal;" in progress_block
+    assert "const done = counts.callsComplete;" in progress_block
+    assert "counts.drillsTotal" not in progress_block
+    assert "counts.drillsComplete" not in progress_block
+
+    svg_start = app_js.find("function _genDistrictMapSVG(history)")
+    assert svg_start != -1
+    svg_block = app_js[svg_start:svg_start + 1800]
+    assert "const progress  = _districtProgress(d.id);" in svg_block
+    assert "history.some(h => h.scenarioId === s.id)" not in svg_block
+
+
 def test_intervention_response_applies_authoritative_vitals_snapshot():
     app_js = APP_JS.read_text()
     assert "function _applyCurrentVitalsSnapshot(vitals = {})" in app_js

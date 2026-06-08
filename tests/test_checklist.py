@@ -1015,6 +1015,28 @@ def test_pfd_codispatch_suppresses_hypoglycemia_als_request_item():
     assert "hypoglycemia.als_request_if_indicated" not in item_ids
 
 
+def test_anaphylaxis_codispatched_als_and_short_scene_items_are_conditional():
+    scenario = json.loads(
+        Path("app/scenarios/pediatric/medical/peds_anaphylaxis_01.json").read_text()
+    )
+    critical = {
+        item["id"]: item
+        for item in scenario["correct_treatment"]["critical_actions"]
+    }
+    recommended_ids = {
+        item["id"]
+        for item in scenario["correct_treatment"]["recommended_actions"]
+    }
+
+    als_item = critical["als_intercept"]
+    assert als_item["required"] is False
+    assert als_item["als_grace"] is True
+    assert "already auto-dispatches ALS" in als_item["description"]
+    assert "reassessment" not in recommended_ids
+    assert "crew is still on scene" in scenario["correct_treatment"]["clinical_decision_points"]["repeat_epi"]
+    assert "scene ends before the 3\u20135 minute reassessment window" in scenario["correct_treatment"]["clinical_decision_points"]["repeat_epi"]
+
+
 def test_agency_without_codispatch_keeps_call_type_als_request_items_when_not_scenario_suppressed():
     croup = json.loads(Path("app/scenarios/pediatric/medical/peds_croup_01.json").read_text())
     diabetic = json.loads(

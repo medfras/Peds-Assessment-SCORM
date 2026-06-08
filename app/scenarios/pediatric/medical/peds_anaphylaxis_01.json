@@ -907,8 +907,9 @@
       },
       {
         "id": "als_intercept",
-        "description": "Confirm ALS intercept/handoff readiness according to the active agency configuration — update ALS with patient weight, epinephrine dose, time, and patient response when ALS is involved",
-        "required": true
+        "description": "If ALS arrives or active radio coordination occurs, update ALS with patient weight, epinephrine dose, administration time, and patient response. Do not penalize learners for not requesting ALS when the active agency configuration already auto-dispatches ALS.",
+        "required": false,
+        "als_grace": true
       }
     ],
     "recommended_actions": [
@@ -933,13 +934,8 @@
         "required": false
       },
       {
-        "id": "reassessment",
-        "description": "Reassess vital signs every 5 minutes post-epinephrine — expect brief HR spike (beta-1 effect); watch for repeat-dose indication if BP remains low at 3–5 min",
-        "required": false
-      },
-      {
         "id": "repeat_epi_consideration",
-        "description": "If patient remains hypotensive at 3–5 minutes post-first dose: may repeat epinephrine IM 0.15 mg × 1 from draw-up supply (maximum 2 total epinephrine doses)",
+        "description": "If the patient remains hypotensive at 3–5 minutes post-first dose and the crew is still on scene: consider repeat epinephrine IM 0.15 mg × 1 from draw-up supply (maximum 2 total epinephrine doses)",
         "required": false
       }
     ],
@@ -957,8 +953,8 @@
       "Methylprednisolone IV/IO/IM (Paramedic skill)"
     ],
     "clinical_decision_points": {
-      "als_trigger": "ALS/intercept expectations are determined by the active agency configuration. If ALS is involved, update immediately with: patient weight (27 kg), epinephrine dose (0.15 mg IM), time administered, and patient response. ALS may administer diphenhydramine IM, establish IV, and assess for repeat epinephrine or push-dose epi need.",
-      "repeat_epi": "If patient remains hypotensive and/or severely symptomatic at 3–5 minutes after first dose: may repeat epinephrine IM 0.15 mg × 1 time if draw-up available. Maximum 2 total epinephrine doses (all sources combined).",
+      "als_trigger": "ALS/intercept expectations are determined by the active agency configuration. If ALS is auto-dispatched, do not require the learner to request ALS again. If ALS arrives or active radio coordination occurs, update ALS with: patient weight (27 kg), epinephrine dose (0.15 mg IM), time administered, and patient response. ALS may administer diphenhydramine IM, establish IV, and assess for repeat epinephrine or push-dose epi need.",
+      "repeat_epi": "If patient remains hypotensive and/or severely symptomatic at 3–5 minutes after first dose and the crew is still on scene: reassess vitals and consider repeat epinephrine IM 0.15 mg × 1 time if draw-up available. Maximum 2 total epinephrine doses (all sources combined). Do not treat this as missed when the scene ends before the 3–5 minute reassessment window.",
       "position_conflict": "Hypotension favors supine with legs elevated; bronchospasm favors sitting. If respiratory distress is severe, allow position of comfort that maximizes breathing. Once epinephrine improves bronchospasm, transition to supine with legs elevated for BP support.",
       "no_autoinjector": "This unit does not carry epinephrine auto-injectors — draw-up epinephrine IM is the standard option on this unit per MCA protocol. Do not delay treatment waiting for ALS.",
       "biphasic_reaction": "All anaphylaxis patients require hospital evaluation — biphasic (delayed) anaphylaxis can occur 1–12 hours after initial reaction without re-exposure. Transport regardless of apparent recovery.",
