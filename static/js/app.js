@@ -6166,6 +6166,15 @@ function _applyScormResumeState(summaryOrResume = {}) {
   _renderScormStation1();
 }
 
+function _refreshScormChallengeDisplays() {
+  if (!state.scormEnabled) return;
+  _buildChallengesSection();
+  const modal = el("modal-active-challenges");
+  if (modal && !modal.classList.contains("hidden")) {
+    _renderActiveChallengesModal();
+  }
+}
+
 function _storeScormResumeState(summaryOrResume = {}) {
   state.scormLatestSummary = _normalizeScormState(summaryOrResume);
   state.scormResumeState = state.scormLatestSummary;
@@ -6334,6 +6343,7 @@ async function _onScormNodeComplete(appId, score, completed = true, mistakeTags 
       mistake_tags: Array.isArray(mistakeTags) ? mistakeTags : [],
     });
     _applyScormResumeState(summary);
+    _refreshScormChallengeDisplays();
   } catch (err) {
     console.warn("[SCORM] Node completion submit failed", node.nodeId, err);
     if (typeof showToast === "function") showToast("Progress could not be saved to the LMS yet.", "error");
@@ -9000,10 +9010,12 @@ async function _mgSubmitResult(gameId, { total, correct, bestStreak, elapsedSec,
     const data = await res.json().catch(() => ({}));
     if (res.ok) {
       _mgProficiencyCache = null;
-      if (xpEl) setText(xpEl, `+${Number(data.xp_earned || 0)} XP`);
+      const xpEarned = Number(data.xp_earned || 0);
+      const remainingXp = Number(data.remaining_xp || 0);
+      if (xpEl) setText(xpEl, `+${xpEarned} XP`);
       if (capNoteEl) setText(capNoteEl, data.xp_capped
-        ? "Daily limit reached — come back tomorrow for more XP."
-        : `${Number(data.remaining_xp || 0)} XP remaining today.`);
+        ? `Saved +${xpEarned} XP. Daily drill XP limit reached for this game.`
+        : `Saved +${xpEarned} XP. ${remainingXp} XP remaining for this game today.`);
 
       window.dispatchEvent(new CustomEvent("rt:drillComplete", {
         detail: {
@@ -13096,6 +13108,7 @@ function _refreshLexiStatusAndMenu(force = false) {
   _loadLexiStatus();
   _loadProgressFromServer().then(() => {
     if (!el("screen-menu")?.classList.contains("hidden")) buildMenu();
+    _refreshScormSummary().catch(() => {});
   }).catch(() => {});
 }
 
@@ -14937,6 +14950,7 @@ async function _lexiShowOutro() {
   // Refresh progress from server so post-round XP/badges stay authoritative.
   if (result) {
     await _loadProgressFromServer().catch(() => {});
+    await _refreshScormSummary().catch(() => {});
     const g = loadGamification();
     buildBadgesSection(g);
     if (!el("screen-menu")?.classList.contains("hidden")) buildMenu();

@@ -36,6 +36,13 @@ def test_minigame_result_model_has_sequence_data_column():
     assert "sequence_data" in MinigameResult.__table__.columns
 
 
+def test_generic_minigames_use_station_drill_xp_caps():
+    source = Path("app/main.py").read_text()
+
+    assert "_MINIGAME_PER_RUN_MAX_XP = 30" in source
+    assert "_MINIGAME_DAILY_CAP_XP = 90" in source
+
+
 def test_minigame_results_migration_adds_hint_count_idempotently():
     source = Path("app/database.py").read_text()
 

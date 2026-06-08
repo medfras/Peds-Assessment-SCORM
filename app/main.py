@@ -2479,9 +2479,10 @@ async def peds_key_claim(
     return {"ok": True, "key_id": req.key_id, "already_held": already_held, "checklist": checklist}
 
 
-# Per-run XP caps for generic mini-games
-_MINIGAME_PER_RUN_MAX_XP = 20
-_MINIGAME_DAILY_CAP_XP = 50
+# Per-run XP caps for generic mini-games. These are Station 1 drill rewards in
+# the SCORM pilot, so keep them aligned with PAT/Development Sort per-run value.
+_MINIGAME_PER_RUN_MAX_XP = 30
+_MINIGAME_DAILY_CAP_XP = 90
 _MINIGAME_LEARNING_PASSING_SCORE = 70
 
 _ALLOWED_MINIGAME_IDS = get_allowed_minigame_ids()

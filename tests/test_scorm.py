@@ -606,6 +606,14 @@ def test_peds_ce_challenge_requires_min_xp():
     assert s["peds_ce_challenge"]["complete"] is False
 
 
+def test_peds_ce_challenge_xp_comes_from_user_xp_total():
+    source = Path("app/routers/scorm.py").read_text()
+
+    assert "user_xp = int((user.xp or 0)) if user else 0" in source
+    assert "peds_ce_challenge" in source
+    assert '"xp":                         user_xp' in source
+
+
 def test_peds_ce_challenge_complete_when_all_criteria_met():
     s = _compute_attempt_summary(
         _min_passing_attempt(),
@@ -746,6 +754,28 @@ def test_app_js_drill_event_has_required_fields():
     block = src[idx:idx + 300]
     for field in ("gameId", "score", "passed", "mistakeTags"):
         assert field in block, f"rt:drillComplete detail missing field: {field}"
+
+
+def test_app_js_refreshes_challenge_display_after_scorm_node_submit():
+    src = _APP_JS.read_text()
+    idx = src.find("async function _onScormNodeComplete")
+    assert idx != -1
+    block = src[idx:idx + 900]
+
+    assert "_applyScormResumeState(summary);" in block
+    assert "_refreshScormChallengeDisplays();" in block
+    assert block.index("_applyScormResumeState(summary);") < block.index("_refreshScormChallengeDisplays();")
+
+
+def test_app_js_refreshes_scorm_summary_after_lexi_xp_award():
+    src = _APP_JS.read_text()
+    idx = src.find("async function _lexiShowOutro")
+    assert idx != -1
+    block = src[idx:idx + 5200]
+
+    assert "await _loadProgressFromServer().catch(() => {});" in block
+    assert "await _refreshScormSummary().catch(() => {});" in block
+    assert block.index("await _loadProgressFromServer().catch(() => {});") < block.index("await _refreshScormSummary().catch(() => {});")
 
 
 def test_app_js_does_not_reference_scorm_directly():
