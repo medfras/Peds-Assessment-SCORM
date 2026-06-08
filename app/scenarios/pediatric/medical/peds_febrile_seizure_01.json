@@ -94,6 +94,7 @@
   },
   "lung_sound_challenge": {
     "enabled": true,
+    "show_blowby_action": true,
     "audio_file": "/static/audio/lung sounds/DeathRattle.mp3",
     "prompt": "Assess Chloe's airway and breath sounds — what do you hear?",
     "accepted_answers": [

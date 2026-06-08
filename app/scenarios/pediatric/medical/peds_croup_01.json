@@ -80,6 +80,7 @@
   },
   "lung_sound_challenge": {
     "enabled": true,
+    "show_blowby_action": true,
     "audio_file": "/static/audio/lung sounds/Croup-Laryngotracheitis-Stridor-Barking-Cough-theSimTech.mp3",
     "prompt": "Auscultate Lily — what do you hear?",
     "correct_choice_id": "inspiratory_stridor",

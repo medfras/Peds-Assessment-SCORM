@@ -238,6 +238,7 @@ def test_challenge_builder_exposes_drill_requirement_options():
 
 def test_drill_try_scenario_bridge_is_hidden_for_pilot():
     js = _read("static/js/app.js")
+    css = _read("static/css/style.css")
 
     assert "function _syncMgScenarioBridgeAvailability(root = document)" in js
     assert 'bridge.querySelector("[id$=\'try-scenario\']")' in js
@@ -245,6 +246,9 @@ def test_drill_try_scenario_bridge_is_hidden_for_pilot():
     assert 'bridge.classList.add("hidden")' in bridge_block
     assert 'bridge.setAttribute("aria-hidden", "true")' in bridge_block
     assert "_syncMgScenarioBridgeAvailability(node);" in js
+    assert ".mg-bridge.hidden" in css
+    assert '.mg-bridge[aria-hidden="true"]' in css
+    assert "display: none !important" in css[css.index(".mg-bridge.hidden"):css.index(".mg-bridge-text")]
 
 
 def test_pediatric_map_drill_completion_uses_learning_unlocks():

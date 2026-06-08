@@ -22698,9 +22698,9 @@ function showO2Popup(intervention) {
   const patientInfo = _deferredPatientInfoParts({ includeDob: false, includeWeight: false }).join(" · ") || "Patient";
   setText("o2-popup-patient-info", `${patientInfo} · SpO₂ ${spo2Val}% · Target ≥ 94%`);
 
-  // Reset blow-by on each open
+  // Reset blow-by on each open; learners explicitly opt into blow-by.
   const blowbyEl = el("o2-blowby");
-  if (blowbyEl) blowbyEl.checked = rawDefaultDevice === "blowby";
+  if (blowbyEl) blowbyEl.checked = false;
 
   // Highlight default device button
   document.querySelectorAll(".o2-device-btn").forEach(btn => {
@@ -22731,12 +22731,12 @@ function updateO2FlowForDevice(btn) {
 
   const blowbyLabel = el("o2-blowby-label");
   const blowby      = el("o2-blowby");
+  if (blowbyLabel) blowbyLabel.classList.remove("hidden");
 
   if (device === "cpap" || device === "bvm" || device === "nc") {
     // CPAP uses pressure / BVM is assisted ventilation. MI pediatric blow-by
     // uses mask hardware held near the face, not nasal cannula tubing.
     if (flowRow) flowRow.classList.toggle("hidden", device === "cpap");
-    if (blowbyLabel) blowbyLabel.classList.add("hidden");
     if (blowby) blowby.checked = false;
   } else {
     if (flowRow) flowRow.classList.remove("hidden");
@@ -22756,7 +22756,6 @@ function updateO2FlowForDevice(btn) {
       const deliveryLabel = isBlowby ? "blow-by" : "standard";
       flowRange.textContent = flowMin === flowMax ? `${flowMin} LPM · ${deliveryLabel}` : `(${flowMin}–${flowMax} LPM · ${deliveryLabel})`;
     }
-    if (blowbyLabel) blowbyLabel.classList.remove("hidden");
   }
 }
 
@@ -22776,6 +22775,11 @@ document.querySelectorAll(".o2-device-btn").forEach(btn => {
 });
 
 el("o2-blowby")?.addEventListener("change", () => {
+  if (el("o2-blowby")?.checked && _o2SelectedDevice !== "nrb") {
+    const nrbBtn = document.querySelector('.o2-device-btn[data-device="nrb"]');
+    nrbBtn?.click();
+    return;
+  }
   const btn = document.querySelector(`.o2-device-btn[data-device="${_o2SelectedDevice || "nrb"}"]`);
   if (btn) updateO2FlowForDevice(btn);
 });
@@ -26295,6 +26299,18 @@ function _lungSoundChoiceId(config = {}) {
   return null;
 }
 
+function _lungSoundShowsBlowbyAction(config = {}) {
+  return config.show_blowby_action === true;
+}
+
+function _syncLungSoundCareAction(config = {}) {
+  const panel = el("lung-sound-care-action-panel");
+  if (!panel) return;
+  const showBlowby = _lungSoundShowsBlowbyAction(config);
+  panel.classList.toggle("hidden", !showBlowby);
+  panel.setAttribute("aria-hidden", showBlowby ? "false" : "true");
+}
+
 function _renderLungSoundChoices(config = {}) {
   const optionsEl = el("lung-sound-options");
   if (!optionsEl) return;
@@ -27055,6 +27071,7 @@ function openLungSoundChallenge(finding) {
     }
     setText("lung-sound-play-icon", "▶");
     setText("lung-sound-prompt", config.prompt || "Listen carefully — what lung sounds do you hear?");
+    _syncLungSoundCareAction(config);
     _renderLungSoundChoices(config);
     el("lung-sound-feedback")?.classList.add("hidden");
     el("btn-lung-sound-continue")?.classList.add("hidden");

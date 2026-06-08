@@ -8778,6 +8778,12 @@ body {
   margin: 0.65rem 0 0.1rem;
   padding-top: 0.6rem;
 }
+.mg-bridge.hidden,
+.mg-bridge[aria-hidden="true"] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
 .mg-bridge-text {
   font-size: 0.72rem;
   color: #cbd5e1;
