@@ -137,6 +137,30 @@ Target response: batch with cleanup passes.
   - Next step: Add a shared `returnTarget` / orientation-gate helper for all screen-opening surfaces. While `orientation_completed_at` is false, any Back/Home/Start/Close path from an orientation-origin surface must return to `showCategoryScreen("station_1")` or remain in-place; off-orientation launch buttons should be hidden/disabled.
   - References: [`static/js/app.js`](static/js/app.js), [`PEDS_ASSESSMENT/07_PILOT_READINESS_CHECKLIST.md`](PEDS_ASSESSMENT/07_PILOT_READINESS_CHECKLIST.md)
 
+- [ ] Backport SCORM pilot deterministic action-routing fixes
+  - Type: Bug / Backport
+  - Area: Frontend / Scenario Runtime / Scoring Evidence
+  - Summary: MoodleCloud pilot testing exposed two deterministic routing gaps that should be carried into production: pain-history questions could be misclassified as AVPU/LOC because the LOC detector matched standalone `pain`, and procedure menu actions could fail to record a treatment unless the learner phrased the same action through Alex/chat.
+  - Impact: Learners can get the wrong authored finding ("Level of Consciousness") when asking about pain, and treatment evidence can be missing from notes/scoring even though the learner used an explicit action control.
+  - Next step: Backport the SCORM fixes and tests: narrow `_userRequestedAvpu()` to AVPU/LOC language only; route action-menu/body-map procedure payloads through scenario intervention matching and `applyInterventionAndRecord()` before chat fallback; confirm dressing/pressure actions credit the right intervention IDs in soft-tissue and burn scenarios.
+  - References: [`static/js/app.js`](static/js/app.js), `tests/test_patient_disclosure_guardrails.py`, SCORM commits `7d5ba96`, `791f729`
+
+- [ ] Backport scenario progression and persistence hardening from SCORM pilot
+  - Type: Bug / Release Gate
+  - Area: Backend / Frontend / Progression
+  - Summary: Pilot testing found progress-reset and premature-clear risks: Station 1 could display cleared when not all requirements were complete, Pediatric Community Response could unlock before Station 1 completion, orientation/node completion could disappear after logout/relogin, and local UI flags could make wrap-up nodes appear complete or unlocked on a fresh attempt.
+  - Impact: Learners may bypass required work or lose earned progress, which undermines course completion validity and instructor trust.
+  - Next step: Make backend state the only authority for Station 1 complete, node complete, map unlocks, and challenge completion. Audit logout/relogin, browser refresh, sidebar navigation, history/back navigation, and repeated attempts for all orientation, Map 0, PM1, PT1, CPR, optional games, and challenge nodes.
+  - References: [`static/js/app.js`](static/js/app.js), [`app/routers/scorm.py`](app/routers/scorm.py), [`PEDS_ASSESSMENT/07_PILOT_READINESS_CHECKLIST.md`](PEDS_ASSESSMENT/07_PILOT_READINESS_CHECKLIST.md)
+
+- [ ] Audit treatment-response vitals trending across all scenarios
+  - Type: Bug / Clinical Correctness
+  - Area: Scenario Runtime / Vitals Engine
+  - Summary: In the diabetic emergency scenario, oral glucose improved GCS but initially did not trend BGL until the SCORM branch fix. Similar post-intervention vitals paths may be silently incomplete in other scenarios.
+  - Impact: Learners may not see physiologic response to correct treatment, and debrief/scoring evidence may not reflect the authored clinical trajectory.
+  - Next step: Backport the diabetic treatment-response fix, then audit all scenarios with post-treatment profiles (`post_treatment`, intervention effects, CPR/ROSC, O2/medication response, reassessment prompts) to ensure affected vitals update deterministically after the required intervention.
+  - References: [`app/scenarios/pediatric`](app/scenarios/pediatric), [`static/js/app.js`](static/js/app.js), `tests/test_scoring_service.py`
+
 - [x] Restrict overly permissive CORS policy — **Resolved (2026-05-12).** Allowlist-based CORS with `allow_credentials=True`; `settings.allowed_origins` loads the explicit origin list; browser preflight verified. Punchlist entry was not updated when the item was closed in `docs/SAAS_HARDENING_PLAN.md` (S-01).
 
 - [ ] SCORM pilot — result adapter wiring (branch gate blocker)
@@ -195,6 +219,31 @@ Target response: batch with cleanup passes.
   - Impact: Not a code blocker while you are actively testing, but live-only issues can still appear after automated coverage passes.
   - Next step: Track one row per pilot scenario with: map launch, image/media render, vitals/exam/history response, treatment path, impression challenge, debrief, notebook/ref updates, and challenge progress.
   - References: [`app/scenarios/pediatric`](app/scenarios/pediatric), [`static/js/app.js`](static/js/app.js), [`PEDS_ASSESSMENT/07_PILOT_READINESS_CHECKLIST.md`](PEDS_ASSESSMENT/07_PILOT_READINESS_CHECKLIST.md)
+
+- [ ] Backport SCORM pilot UI and learner-experience fixes
+  - Type: Bug / UX / Backport
+  - Area: Frontend / Maps / Scenario Runtime
+  - Summary: SCORM package testing exposed several production-app polish/regression fixes that are not SCORM-specific.
+  - Findings to backport or verify:
+    - Scenario desktop layout: full-width desktop/new-window sessions must not collapse into the mobile layout; quick action buttons, chat input, Lexi controls, and turnover controls must stay visible at common laptop sizes.
+    - Scenario arrival image preload: scene/patient presentation image should preload before or during launch to avoid a blank/slow-loading opening moment.
+    - Map fog/cloud overlay: remove or gate fog-of-war overlay if it obscures learner map art or conflicts with the current production design.
+    - Leaderboard modal: use an opaque, challenge-modal-like surface so text is readable over map art.
+    - Active Challenges progress: requirement rows may count correctly while overall progress still shows `0%`; progress percent must aggregate visible requirement state.
+    - Pediatric Doorway Dash: remove empty image placeholders and vertically center text when no image is available.
+    - Home/background assets: missing Home or orientation images should be caught by build/test checks before release.
+    - TTS persona QA: verify deployed voice mapping for male/female patients and partners, especially Jake/Leo-style pediatric orientation and trauma scenes.
+  - Impact: These issues do not all block scoring, but they can make the learner experience look broken or make a scenario effectively unusable.
+  - Next step: Create focused browser checks or screenshot tests for each finding, then backport the SCORM fixes to the production branch where the same code paths exist.
+  - References: [`static/js/app.js`](static/js/app.js), [`static/css/style.css`](static/css/style.css), [`PEDS_ASSESSMENT/07_PILOT_READINESS_CHECKLIST.md`](PEDS_ASSESSMENT/07_PILOT_READINESS_CHECKLIST.md)
+
+- [ ] Backport SCORM pilot learner-history and leaderboard identity checks
+  - Type: Bug / UX / Backport
+  - Area: Frontend / Backend / Identity
+  - Summary: The pilot keeps learners out of the normal login flow while still allowing history and leaderboard access through the Moodle-backed account. Production should preserve the same invariant for any external-identity or SSO launch path.
+  - Impact: History/back navigation can route to the wrong screen, leaderboard rows can show a placeholder or wrong name, and account/signout links can appear in contexts where the learner cannot use them.
+  - Next step: Audit History, Last Results, Debrief Review, Leaderboard, My Progress, sidebar items, Account Settings, and Sign Out under SCORM/SSO-style auth. Ensure learner name comes from the authoritative profile/launch identity and that unavailable account-management actions are hidden or re-routed.
+  - References: [`static/js/app.js`](static/js/app.js), `app/routers/scorm.py`, `app/auth.py`
 
 - [ ] TTS latency and cost optimization follow-up
   - Type: Performance / Enhancement
