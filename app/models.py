@@ -1079,6 +1079,8 @@ class ScormAttempt(Base):
     node_completed    = Column(JSONB, nullable=False, default=dict)
     node_mistake_tags = Column(JSONB, nullable=True)
     status            = Column(String(32), nullable=False, default="incomplete")
+    active_launch_id  = Column(String(64), nullable=True)
+    active_launch_seen_at = Column(DateTime, nullable=True)
     created_at        = Column(DateTime, nullable=False, default=datetime.utcnow)
     updated_at        = Column(DateTime, nullable=False, default=datetime.utcnow)
 

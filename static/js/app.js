@@ -6916,6 +6916,7 @@ async function _activateScormAndEnter() {
   document.documentElement.classList.add("scorm-runtime");
   _showScormLaunchStatus("Connecting to Moodle and loading your Station 1 progress...");
   const resumeState = await adapter.init();
+  _showScormDuplicateLaunchWarning(adapter.getDuplicateLaunchWarning?.());
   const token = adapter.getAccessToken?.();
   if (!token) throw new Error("SCORM auth did not return an access token.");
   state.scormEnabled = true;
@@ -6923,6 +6924,19 @@ async function _activateScormAndEnter() {
   _storeAuth(token);
   await _activateAndEnter({ scormResumeState: resumeState });
 }
+
+let _scormDuplicateLaunchWarned = false;
+function _showScormDuplicateLaunchWarning(warning) {
+  if (!warning || _scormDuplicateLaunchWarned) return;
+  _scormDuplicateLaunchWarned = true;
+  const message = warning.message || "This SCORM activity is already open in another window. Use only one window to avoid progress confusion.";
+  console.warn("[SCORM] Duplicate launch warning", warning);
+  if (typeof showToast === "function") showToast(message, "warning");
+}
+
+window.addEventListener("rt:scormDuplicateLaunch", (event) => {
+  _showScormDuplicateLaunchWarning(event.detail || {});
+});
 
 async function _loadAgencyEquipmentAvailability() {
   try {

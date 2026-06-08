@@ -17,7 +17,7 @@ from __future__ import annotations
 
 import re
 import types
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import pytest
@@ -38,8 +38,10 @@ from app.routers.scorm import (
     _REQUIRED_DRILLS,
     _SCENARIO_NODES,
     _compute_attempt_summary,
+    _duplicate_launch_warning,
     _node_result_counts_complete,
     _parse_lms_student_name,
+    _sanitize_launch_id,
     ScormNodeResultRequest,
 )
 
@@ -52,6 +54,8 @@ def _attempt(node_scores=None, node_completed=None) -> types.SimpleNamespace:
         node_scores=node_scores or {},
         node_completed=node_completed or {},
         status="incomplete",
+        active_launch_id=None,
+        active_launch_seen_at=None,
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow(),
     )
@@ -103,6 +107,28 @@ def test_node_completion_requires_on_track_score():
         ScormNodeResultRequest(activity_type="scenario", score=69, completed=True, passed=True),
         69,
     ) is False
+
+
+def test_duplicate_scorm_launch_warning_is_recent_and_advisory():
+    now = datetime.utcnow()
+    attempt = _attempt()
+    attempt.active_launch_id = "launch-old"
+    attempt.active_launch_seen_at = now - timedelta(seconds=30)
+
+    warning = _duplicate_launch_warning(attempt, "launch-new", now)
+
+    assert warning["code"] == "duplicate_scorm_launch"
+    assert "already be open" in warning["message"]
+    assert _duplicate_launch_warning(attempt, "launch-old", now) is None
+
+    attempt.active_launch_seen_at = now - timedelta(minutes=10)
+    assert _duplicate_launch_warning(attempt, "launch-new", now) is None
+
+
+def test_scorm_launch_id_is_bounded_and_sanitized():
+    assert _sanitize_launch_id("abc-DEF_123!!") == "abc-DEF_123"
+    assert len(_sanitize_launch_id("x" * 100)) == 64
+    assert _sanitize_launch_id("!!!") is None
     assert _node_result_counts_complete(
         ScormNodeResultRequest(activity_type="scenario", score=70, completed=True, passed=True),
         70,

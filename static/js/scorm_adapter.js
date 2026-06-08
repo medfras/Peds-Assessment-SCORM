@@ -32,6 +32,10 @@
     return _runtime()?.getAttemptId?.() || "";
   }
 
+  function getDuplicateLaunchWarning() {
+    return _runtime()?.getDuplicateLaunchWarning?.() || null;
+  }
+
   async function submitNodeResult(nodeId, result) {
     const runtime = _runtime();
     if (!runtime) throw new Error("SCORM runtime is not loaded.");
@@ -66,6 +70,7 @@
     init,
     getAccessToken,
     getAttemptId,
+    getDuplicateLaunchWarning,
     submitNodeResult,
     getAttemptSummary,
     finish,

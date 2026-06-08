@@ -53,6 +53,9 @@
   let _token = null;        // JWT returned by /api/scorm/auth
   let _initialized = false;
   let _uiState = null;
+  let _launchId = null;
+  let _duplicateLaunchWarning = null;
+  let _heartbeatTimer = null;
 
   // ── SCORM 1.2 API finder ────────────────────────────────────────────────────
 
@@ -73,6 +76,26 @@
 
   function _findScormApi(win) {
     return _findScormApiInChain(win) || _findScormApiInChain(win && win.opener);
+  }
+
+  function _makeLaunchId() {
+    try {
+      const bytes = new Uint8Array(16);
+      window.crypto.getRandomValues(bytes);
+      return Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
+    } catch (_) {
+      return `launch_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+    }
+  }
+
+  function _emitDuplicateLaunchWarning(warning) {
+    if (!warning) return;
+    _duplicateLaunchWarning = warning;
+    try {
+      window.dispatchEvent(new CustomEvent("rt:scormDuplicateLaunch", { detail: warning }));
+    } catch (_) {
+      console.warn("[SCORM] Duplicate launch warning", warning);
+    }
   }
 
   function isLmsLaunch() {
@@ -221,6 +244,7 @@
    */
   async function init(config = {}) {
     _backendBase = (config.backend_base || config.backendBase || "").replace(/\/+$/, "");
+    _launchId = _makeLaunchId();
 
     // Locate SCORM API or fall back to local dev adapter
     _api = _findScormApi(window) || _buildLocalDevAdapter();
@@ -240,12 +264,15 @@
         lms_student_name,
         module_id:       config.module_id || "pfd_station1",
         integration_key: config.integration_key,
+        launch_id:       _launchId,
       }),
     });
 
     _token     = authResp.access_token;
     _attemptId = authResp.scorm_attempt_id;
     _initialized = true;
+    if (authResp.launch_warning) _emitDuplicateLaunchWarning(authResp.launch_warning);
+    _startLaunchHeartbeat();
 
     // Write any existing backend state into suspend_data for consistency
     _writeSuspendData({
@@ -257,6 +284,24 @@
     });
 
     return authResp.resume_state;
+  }
+
+  function _startLaunchHeartbeat() {
+    if (_heartbeatTimer) clearInterval(_heartbeatTimer);
+    if (!_attemptId || !_launchId) return;
+    _heartbeatTimer = setInterval(async () => {
+      try {
+        const resp = await _apiFetch(`/api/scorm/attempts/${encodeURIComponent(_attemptId)}/launch-heartbeat`, {
+          method: "POST",
+          body: JSON.stringify({ launch_id: _launchId }),
+        });
+        if (resp && resp.active === false && resp.warning) {
+          _emitDuplicateLaunchWarning(resp.warning);
+        }
+      } catch (err) {
+        console.warn("[SCORM] Launch heartbeat failed", err);
+      }
+    }, 60 * 1000);
   }
 
   /**
@@ -300,6 +345,10 @@
    */
   function finish(summary) {
     if (!_api) return;
+    if (_heartbeatTimer) {
+      clearInterval(_heartbeatTimer);
+      _heartbeatTimer = null;
+    }
     if (summary) {
       const ceComplete = !!(summary.peds_ce_challenge && summary.peds_ce_challenge.complete);
       if (ceComplete && summary.final_score !== null && summary.final_score !== undefined) {
@@ -316,6 +365,10 @@
 
   function getAttemptId() {
     return _attemptId;
+  }
+
+  function getDuplicateLaunchWarning() {
+    return _duplicateLaunchWarning;
   }
 
   function getUiState() {
@@ -337,6 +390,7 @@
     finish,
     getAccessToken,
     getAttemptId,
+    getDuplicateLaunchWarning,
     getUiState,
     setUiState,
   };

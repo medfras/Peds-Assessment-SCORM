@@ -1307,3 +1307,12 @@ async def init_db():
             "ON ce_time_log (user_id, source_id, activity_type) "
             "WHERE source_id IS NOT NULL"
         ))
+        # ── SCORM duplicate launch marker ───────────────────────────────────
+        # Used only for soft learner warnings when the same Moodle user opens
+        # the same SCORM attempt in multiple windows. It never blocks writes.
+        await conn.execute(text(
+            "ALTER TABLE scorm_attempts ADD COLUMN IF NOT EXISTS active_launch_id VARCHAR(64)"
+        ))
+        await conn.execute(text(
+            "ALTER TABLE scorm_attempts ADD COLUMN IF NOT EXISTS active_launch_seen_at TIMESTAMP"
+        ))

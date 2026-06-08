@@ -416,11 +416,25 @@ def test_scorm_adapter_keeps_app_decoupled_from_runtime_wrapper():
     assert "window.RescueTrails.scormAdapter" in adapter_js
     assert "isLmsLaunch" in adapter_js
     assert "getAccessToken" in adapter_js
+    assert "getDuplicateLaunchWarning" in adapter_js
     assert "submitNodeResult" in adapter_js
     assert "getAttemptSummary" in adapter_js
     assert "finish" in adapter_js
     assert "getUiState" in adapter_js
     assert "setUiState" in adapter_js
+
+
+def test_scorm_runtime_warns_on_duplicate_launch_without_blocking_progress():
+    scorm_js = SCORM_JS.read_text()
+    app_js = APP_JS.read_text()
+
+    assert "launch_id:       _launchId" in scorm_js
+    assert "launch-heartbeat" in scorm_js
+    assert "rt:scormDuplicateLaunch" in scorm_js
+    assert "getDuplicateLaunchWarning" in scorm_js
+    assert "function _showScormDuplicateLaunchWarning" in app_js
+    assert 'showToast(message, "warning")' in app_js
+    assert 'window.addEventListener("rt:scormDuplicateLaunch"' in app_js
 
 
 def test_scorm_suspend_data_preserves_ui_location_for_resume():

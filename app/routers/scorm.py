@@ -24,7 +24,7 @@ exclusively in the SCORM branch.
 
 import re
 import secrets
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Request, Response, status
@@ -120,6 +120,7 @@ _GAME_NODE_MAP: dict[str, str] = {
 }
 
 _NODE_PASS_THRESHOLD = 70
+_SCORM_DUPLICATE_LAUNCH_WINDOW_SECONDS = 5 * 60
 
 # SCORM pass challenge thresholds
 _PEDS_CE_TARGET_SECONDS: int = 3600  # 1 hour total
@@ -311,6 +312,7 @@ class ScormAuthRequest(BaseModel):
     lms_student_name: Optional[str] = None
     module_id:        str
     integration_key:  str
+    launch_id:        Optional[str] = None
 
 
 class ScormNodeResultRequest(BaseModel):
@@ -330,6 +332,35 @@ def _node_result_counts_complete(body: ScormNodeResultRequest, score: int) -> bo
 def _stored_node_counts_complete(scores: dict, completed: dict, node_id: str) -> bool:
     """Return whether persisted node state satisfies completion."""
     return bool(completed.get(node_id, False)) and int(scores.get(node_id, 0) or 0) >= _NODE_PASS_THRESHOLD
+
+
+def _sanitize_launch_id(raw: str | None) -> str | None:
+    """Produce a bounded browser-window launch marker for soft duplicate warnings."""
+    if not raw:
+        return None
+    safe = re.sub(r"[^a-zA-Z0-9_\-]", "", raw)
+    return safe[:64] or None
+
+
+def _duplicate_launch_warning(attempt: ScormAttempt, launch_id: str | None, now: datetime) -> dict | None:
+    """Return an advisory duplicate-window warning for the same SCORM attempt."""
+    if not launch_id or not attempt.active_launch_id:
+        return None
+    if attempt.active_launch_id == launch_id:
+        return None
+    seen_at = attempt.active_launch_seen_at
+    if not seen_at:
+        return None
+    if now - seen_at > timedelta(seconds=_SCORM_DUPLICATE_LAUNCH_WINDOW_SECONDS):
+        return None
+    return {
+        "code": "duplicate_scorm_launch",
+        "message": (
+            "This SCORM activity appears to already be open in another window. "
+            "Continuing here is allowed, but use only one window to avoid progress confusion."
+        ),
+        "previous_seen_at": seen_at.isoformat(),
+    }
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -483,6 +514,14 @@ async def scorm_auth(
         if body.lms_student_name and body.lms_student_name != attempt.lms_student_name:
             attempt.lms_student_name = body.lms_student_name
 
+    launch_id = _sanitize_launch_id(body.launch_id)
+    now = datetime.utcnow()
+    launch_warning = _duplicate_launch_warning(attempt, launch_id, now)
+    if launch_id:
+        attempt.active_launch_id = launch_id
+        attempt.active_launch_seen_at = now
+        attempt.updated_at = now
+
     await db.commit()
     await db.refresh(attempt)
 
@@ -507,6 +546,7 @@ async def scorm_auth(
         "agency":           settings.scorm_agency_file,
         "mca":              membership.mca,
         "provider_level":   membership.provider_level,
+        "launch_warning":   launch_warning,
         "resume_state": {
             "scores":       summary["node_scores"],
             "completed":    summary["node_completed"],
@@ -514,6 +554,51 @@ async def scorm_auth(
             "status":       attempt.status,
             "peds_ce_challenge": summary["peds_ce_challenge"],
         },
+    }
+
+
+class ScormLaunchHeartbeatRequest(BaseModel):
+    launch_id: str
+
+
+@router.post("/api/scorm/attempts/{attempt_id}/launch-heartbeat")
+@limiter.limit("30/minute")
+async def scorm_launch_heartbeat(
+    request: Request,
+    attempt_id: str,
+    body: ScormLaunchHeartbeatRequest,
+    ctx: ScormContext = Depends(get_scorm_context),
+    db: AsyncSession = Depends(get_db),
+):
+    """Refresh/check this browser window's SCORM launch marker.
+
+    active=false means another recent window has claimed the same LMS attempt.
+    This is advisory only and must not block learner progress.
+    """
+    if attempt_id != ctx.scorm_attempt_id:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Attempt ID mismatch.")
+    launch_id = _sanitize_launch_id(body.launch_id)
+    if not launch_id:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid launch_id.")
+
+    result = await db.execute(
+        select(ScormAttempt).where(ScormAttempt.attempt_id == attempt_id)
+    )
+    attempt = result.scalar_one_or_none()
+    if not attempt:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Attempt not found.")
+
+    now = datetime.utcnow()
+    if not attempt.active_launch_id or attempt.active_launch_id == launch_id:
+        attempt.active_launch_id = launch_id
+        attempt.active_launch_seen_at = now
+        attempt.updated_at = now
+        await db.commit()
+        return {"active": True, "warning": None}
+
+    return {
+        "active": False,
+        "warning": _duplicate_launch_warning(attempt, launch_id, now),
     }
 
 
