@@ -41,6 +41,7 @@ from app.routers.scorm import (
     _duplicate_launch_warning,
     _node_result_counts_complete,
     _parse_lms_student_name,
+    _scorm_launch_owner,
     _sanitize_launch_id,
     ScormNodeResultRequest,
 )
@@ -55,6 +56,7 @@ def _attempt(node_scores=None, node_completed=None) -> types.SimpleNamespace:
         node_completed=node_completed or {},
         status="incomplete",
         active_launch_id=None,
+        active_launch_owner=None,
         active_launch_seen_at=None,
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow(),
@@ -113,16 +115,24 @@ def test_duplicate_scorm_launch_warning_is_recent_and_advisory():
     now = datetime.utcnow()
     attempt = _attempt()
     attempt.active_launch_id = "launch-old"
+    attempt.active_launch_owner = "student-1"
     attempt.active_launch_seen_at = now - timedelta(seconds=30)
 
-    warning = _duplicate_launch_warning(attempt, "launch-new", now)
+    warning = _duplicate_launch_warning(attempt, "launch-new", now, "student-1")
 
     assert warning["code"] == "duplicate_scorm_launch"
     assert "already be open" in warning["message"]
-    assert _duplicate_launch_warning(attempt, "launch-old", now) is None
+    assert _duplicate_launch_warning(attempt, "launch-old", now, "student-1") is None
+    assert _duplicate_launch_warning(attempt, "launch-new", now, "student-2") is None
 
     attempt.active_launch_seen_at = now - timedelta(minutes=10)
-    assert _duplicate_launch_warning(attempt, "launch-new", now) is None
+    assert _duplicate_launch_warning(attempt, "launch-new", now, "student-1") is None
+
+
+def test_scorm_launch_owner_includes_id_and_display_name():
+    assert _scorm_launch_owner("42", "Frastaci, Jonathan") == "42|FrastaciJonathan"
+    assert _scorm_launch_owner("", "Different User") == "DifferentUser"
+    assert len(_scorm_launch_owner("x" * 100, "y" * 100)) == 128
 
 
 def test_scorm_launch_id_is_bounded_and_sanitized():

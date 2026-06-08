@@ -342,12 +342,35 @@ def _sanitize_launch_id(raw: str | None) -> str | None:
     return safe[:64] or None
 
 
-def _duplicate_launch_warning(attempt: ScormAttempt, launch_id: str | None, now: datetime) -> dict | None:
+def _scorm_launch_owner(lms_student_id: str | None, lms_student_name: str | None) -> str:
+    """Return a bounded owner key for duplicate-window warnings.
+
+    Moodle should provide a unique student_id, but pilot testing showed that
+    some launch modes can surface blank/shared values. Include the display name
+    so the warning never crosses visibly different Moodle users.
+    """
+    raw = f"{lms_student_id or ''}|{lms_student_name or ''}".strip("|")
+    safe = re.sub(r"[^a-zA-Z0-9_\-|]", "", raw)
+    return safe[:128]
+
+
+def _duplicate_launch_warning(
+    attempt: ScormAttempt,
+    launch_id: str | None,
+    now: datetime,
+    launch_owner: str | None = None,
+) -> dict | None:
     """Return an advisory duplicate-window warning for the same SCORM attempt."""
     if not launch_id or not attempt.active_launch_id:
         return None
     if attempt.active_launch_id == launch_id:
         return None
+    active_owner = getattr(attempt, "active_launch_owner", None)
+    if launch_owner:
+        # Legacy attempts may not have owner data yet. Suppress the first warning
+        # and bind the current launch instead of risking a cross-user false alarm.
+        if not active_owner or active_owner != launch_owner:
+            return None
     seen_at = attempt.active_launch_seen_at
     if not seen_at:
         return None
@@ -515,10 +538,12 @@ async def scorm_auth(
             attempt.lms_student_name = body.lms_student_name
 
     launch_id = _sanitize_launch_id(body.launch_id)
+    launch_owner = _scorm_launch_owner(body.lms_student_id, body.lms_student_name)
     now = datetime.utcnow()
-    launch_warning = _duplicate_launch_warning(attempt, launch_id, now)
+    launch_warning = _duplicate_launch_warning(attempt, launch_id, now, launch_owner)
     if launch_id:
         attempt.active_launch_id = launch_id
+        attempt.active_launch_owner = launch_owner
         attempt.active_launch_seen_at = now
         attempt.updated_at = now
 
@@ -529,6 +554,7 @@ async def scorm_auth(
         user, membership, agency,
         attempt_id=attempt.attempt_id,
         module_id=body.module_id,
+        launch_owner=launch_owner,
     )
     _set_auth_cookies(response, token)
 
@@ -589,8 +615,18 @@ async def scorm_launch_heartbeat(
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Attempt not found.")
 
     now = datetime.utcnow()
+    launch_owner = ctx.scorm_launch_owner
     if not attempt.active_launch_id or attempt.active_launch_id == launch_id:
         attempt.active_launch_id = launch_id
+        attempt.active_launch_owner = launch_owner
+        attempt.active_launch_seen_at = now
+        attempt.updated_at = now
+        await db.commit()
+        return {"active": True, "warning": None}
+
+    if launch_owner and getattr(attempt, "active_launch_owner", None) != launch_owner:
+        attempt.active_launch_id = launch_id
+        attempt.active_launch_owner = launch_owner
         attempt.active_launch_seen_at = now
         attempt.updated_at = now
         await db.commit()
@@ -598,7 +634,7 @@ async def scorm_launch_heartbeat(
 
     return {
         "active": False,
-        "warning": _duplicate_launch_warning(attempt, launch_id, now),
+        "warning": _duplicate_launch_warning(attempt, launch_id, now, launch_owner),
     }
 
 

@@ -311,6 +311,7 @@ def _create_scorm_token(
     agency: "Agency",
     attempt_id: str,
     module_id: str,
+    launch_owner: str | None = None,
 ) -> str:
     """Scoped JWT for LMS-provisioned SCORM learners.
 
@@ -335,6 +336,7 @@ def _create_scorm_token(
         "membership_count":  1,
         "scorm_attempt_id":  attempt_id,
         "scorm_module_id":   module_id,
+        "scorm_launch_owner": launch_owner or "",
         "exp":               expire,
     }
     return jwt.encode(payload, settings.app_secret_key, algorithm=settings.jwt_algorithm)
@@ -345,6 +347,7 @@ class ScormContext:
     user_id: str
     scorm_attempt_id: str
     scorm_module_id: str
+    scorm_launch_owner: str
     agency_id: Optional[str]
     provider_level: str
     mca: str
@@ -387,6 +390,7 @@ def get_scorm_context(token: str = Depends(_extract_scorm_token)) -> ScormContex
         user_id=payload["sub"],
         scorm_attempt_id=attempt_id,
         scorm_module_id=payload.get("scorm_module_id", ""),
+        scorm_launch_owner=payload.get("scorm_launch_owner", ""),
         agency_id=payload.get("agency_id"),
         provider_level=payload.get("provider_level", settings.default_provider_level),
         mca=payload.get("mca", settings.default_mca),

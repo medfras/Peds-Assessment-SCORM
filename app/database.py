@@ -1314,5 +1314,8 @@ async def init_db():
             "ALTER TABLE scorm_attempts ADD COLUMN IF NOT EXISTS active_launch_id VARCHAR(64)"
         ))
         await conn.execute(text(
+            "ALTER TABLE scorm_attempts ADD COLUMN IF NOT EXISTS active_launch_owner VARCHAR(128)"
+        ))
+        await conn.execute(text(
             "ALTER TABLE scorm_attempts ADD COLUMN IF NOT EXISTS active_launch_seen_at TIMESTAMP"
         ))
