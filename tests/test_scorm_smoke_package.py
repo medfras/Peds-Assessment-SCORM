@@ -454,6 +454,10 @@ def test_scorm_pass_requirements_render_in_active_challenges_modal():
     assert "custom_items" in app_js
     assert "function _activeChallengesForDisplay()" in app_js
     assert "_activeChallengesForDisplay().find" in app_js
+    assert "const progressDone = pm1Done + pt1Done + (timeDone ? 1 : 0) + (xpOk ? 1 : 0);" in app_js
+    assert "const progressTotal = pm1Required + pt1Required + 2;" in app_js
+    assert "scenarios_total: progressTotal" in app_js
+    assert "scenarios_completed: progressDone" in app_js
 
 
 def test_scorm_production_peds_maps_use_backend_node_state():

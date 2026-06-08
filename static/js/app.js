@@ -12244,12 +12244,8 @@ function _scormPassChallengeForDisplay() {
   const xpDone = Math.max(0, Number(ce.xp || 0));
   const timeDone = !!ce.training_time_done;
   const xpOk = !!ce.xp_ok;
-  const criteriaDone = [
-    pm1Done >= pm1Required,
-    pt1Done >= pt1Required,
-    timeDone,
-    xpOk,
-  ].filter(Boolean).length;
+  const progressDone = pm1Done + pt1Done + (timeDone ? 1 : 0) + (xpOk ? 1 : 0);
+  const progressTotal = pm1Required + pt1Required + 2;
 
   return {
     id: "scorm-peds-ce-challenge",
@@ -12259,8 +12255,8 @@ function _scormPassChallengeForDisplay() {
     icon: "🎯",
     name: ce.title || "Station 1 Pediatric Assessment Pass",
     description: "Moodle course completion requirement: finish the required scenario mix, training time, and XP target.",
-    scenarios_total: 4,
-    scenarios_completed: criteriaDone,
+    scenarios_total: progressTotal,
+    scenarios_completed: progressDone,
     time_goal_minutes: 60,
     challenge_ce_seconds: ceSeconds,
     requirements_progress: [
