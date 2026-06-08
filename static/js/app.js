@@ -15375,6 +15375,19 @@ function _station1RequirementsState(history = null) {
   const completed = completedIds.has("orientation_01");
   const cprComplete = _station1CprDrillComplete(completedIds);
   const challengesSeen = cprComplete && _station1ChallengesSeen();
+  if (_station1PersistedComplete()) {
+    completedIds.add("orientation_01");
+    completedIds.add(STATION1_CPR_SCENARIO_ID);
+    return {
+      history: scopedHistory,
+      completedIds,
+      introSeen: true,
+      completed: true,
+      cprComplete: true,
+      challengesSeen: true,
+      ready: true,
+    };
+  }
   const ready = introSeen && completed && cprComplete && challengesSeen;
   return { history: scopedHistory, completedIds, introSeen, completed, cprComplete, challengesSeen, ready };
 }
@@ -15384,8 +15397,12 @@ function _station1ScormOrientationComplete() {
   return _getScormUiState()?.orientationComplete === true;
 }
 
+function _station1PersistedComplete() {
+  return _station1ScormOrientationComplete() || !!state.orientationCompletedAt;
+}
+
 function _station1IsComplete(requirements = null) {
-  if (_station1ScormOrientationComplete()) return true;
+  if (_station1PersistedComplete()) return true;
   const req = requirements || _station1RequirementsState();
   return !!state.orientationCompletedAt && !!req.ready;
 }
