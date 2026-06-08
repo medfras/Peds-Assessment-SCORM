@@ -36,6 +36,7 @@ from app.auth import (
     ScormContext,
     _assign_agency_default_protocol_profile,
     _create_scorm_token,
+    _extract_token,
     _hash_password,
     _set_auth_cookies,
     get_scorm_context,
@@ -120,7 +121,7 @@ _GAME_NODE_MAP: dict[str, str] = {
 }
 
 _NODE_PASS_THRESHOLD = 70
-_SCORM_DUPLICATE_LAUNCH_WINDOW_SECONDS = 5 * 60
+_SCORM_DUPLICATE_LAUNCH_WINDOW_SECONDS = 90
 
 # SCORM pass challenge thresholds
 _PEDS_CE_TARGET_SECONDS: int = 3600  # 1 hour total
@@ -587,6 +588,20 @@ class ScormLaunchHeartbeatRequest(BaseModel):
     launch_id: str
 
 
+async def _get_scorm_context_from_request(
+    request: Request,
+    db: AsyncSession,
+) -> ScormContext:
+    """Resolve SCORM auth from Authorization header or a beacon token query."""
+    auth = request.headers.get("Authorization") or ""
+    token = _extract_token(auth)
+    if not token:
+        token = request.query_params.get("token")
+    if not token:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Not authenticated")
+    return await get_scorm_context(token=token, db=db)
+
+
 @router.post("/api/scorm/attempts/{attempt_id}/launch-heartbeat")
 @limiter.limit("30/minute")
 async def scorm_launch_heartbeat(
@@ -636,6 +651,40 @@ async def scorm_launch_heartbeat(
         "active": False,
         "warning": _duplicate_launch_warning(attempt, launch_id, now, launch_owner),
     }
+
+
+@router.post("/api/scorm/attempts/{attempt_id}/launch-close")
+@limiter.limit("30/minute")
+async def scorm_launch_close(
+    request: Request,
+    attempt_id: str,
+    body: ScormLaunchHeartbeatRequest,
+    db: AsyncSession = Depends(get_db),
+):
+    """Clear this browser window's launch marker when the SCO is closed."""
+    ctx = await _get_scorm_context_from_request(request, db)
+    if attempt_id != ctx.scorm_attempt_id:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Attempt ID mismatch.")
+    launch_id = _sanitize_launch_id(body.launch_id)
+    if not launch_id:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid launch_id.")
+
+    result = await db.execute(
+        select(ScormAttempt).where(ScormAttempt.attempt_id == attempt_id)
+    )
+    attempt = result.scalar_one_or_none()
+    if not attempt:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Attempt not found.")
+
+    if attempt.active_launch_id == launch_id:
+        attempt.active_launch_id = None
+        attempt.active_launch_owner = None
+        attempt.active_launch_seen_at = None
+        attempt.updated_at = datetime.utcnow()
+        await db.commit()
+        return {"closed": True}
+
+    return {"closed": False}
 
 
 @router.post("/api/scorm/attempts/{attempt_id}/nodes/{node_id}/result")

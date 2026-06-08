@@ -56,6 +56,7 @@
   let _launchId = null;
   let _duplicateLaunchWarning = null;
   let _heartbeatTimer = null;
+  let _launchClosed = false;
 
   // ── SCORM 1.2 API finder ────────────────────────────────────────────────────
 
@@ -168,6 +169,7 @@
     const completed = {};
     _ALL_NODES.forEach((n) => { completed[n] = summary.node_completed ? !!summary.node_completed[n] : false; });
     const cc = summary.peds_ce_challenge || {};
+    const ccId = cc.id || "pfd_station1_scorm_pass";
     const mirror = {
       v:        _SUSPEND_DATA_VERSION,
       attempt:  _attemptId,
@@ -176,13 +178,13 @@
       unlocks:  summary.unlocks || { scenarios: false, map3: false },
       status:   summary.lesson_status || "incomplete",
       ce: {
-        id:                  cc.id || "pfd_station1_scorm_pass",
-        title:               cc.title || "Pediatric Patient Assessment",
+        id:                  ccId,
+        title:               ccId === "pfd_station1_scorm_pass" ? "Pediatric Patient Assessment" : (cc.title || "Pediatric Patient Assessment"),
         complete:            !!cc.complete,
         ce_seconds:          cc.ce_seconds || 0,
         training_time_done:   !!cc.training_time_done,
         xp:                  cc.xp || 0,
-        xp_required:         cc.xp_required || 1200,
+        xp_required:         ccId === "pfd_station1_scorm_pass" ? 1200 : (cc.xp_required || 1200),
         xp_ok:               !!cc.xp_ok,
         pm1_completed:       cc.pm1_completed || 0,
         pm1_required:        cc.pm1_required  || 2,
@@ -195,6 +197,13 @@
     };
     if (_uiState) mirror.ui = _uiState;
     _api.LMSSetValue("cmi.suspend_data", JSON.stringify(mirror));
+    const ceComplete = !!(summary.peds_ce_challenge && summary.peds_ce_challenge.complete);
+    if (ceComplete && summary.final_score !== null && summary.final_score !== undefined) {
+      _api.LMSSetValue("cmi.core.score.raw", String(summary.final_score));
+      _api.LMSSetValue("cmi.core.score.min", "0");
+      _api.LMSSetValue("cmi.core.score.max", "100");
+    }
+    _api.LMSSetValue("cmi.core.lesson_status", ceComplete ? "passed" : "incomplete");
     _api.LMSCommit("");
   }
 
@@ -304,6 +313,42 @@
     }, 60 * 1000);
   }
 
+  function _stopLaunchHeartbeat() {
+    if (_heartbeatTimer) {
+      clearInterval(_heartbeatTimer);
+      _heartbeatTimer = null;
+    }
+  }
+
+  function _notifyLaunchClosed() {
+    if (_launchClosed || !_attemptId || !_launchId || !_token) return;
+    _launchClosed = true;
+    _stopLaunchHeartbeat();
+    const url = `${_backendBase}/api/scorm/attempts/${encodeURIComponent(_attemptId)}/launch-close`;
+    const body = JSON.stringify({ launch_id: _launchId });
+    try {
+      if (navigator.sendBeacon) {
+        const blob = new Blob([body], { type: "application/json" });
+        if (navigator.sendBeacon(`${url}?token=${encodeURIComponent(_token)}`, blob)) return;
+      }
+    } catch (_) {}
+    try {
+      fetch(url, {
+        method: "POST",
+        credentials: "omit",
+        keepalive: true,
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${_token}`,
+        },
+        body,
+      }).catch(() => {});
+    } catch (_) {}
+  }
+
+  window.addEventListener("pagehide", _notifyLaunchClosed);
+  window.addEventListener("beforeunload", _notifyLaunchClosed);
+
   /**
    * submitNodeResult(nodeId, result) — submit a drill or scenario score.
    *
@@ -345,16 +390,16 @@
    */
   function finish(summary) {
     if (!_api) return;
-    if (_heartbeatTimer) {
-      clearInterval(_heartbeatTimer);
-      _heartbeatTimer = null;
-    }
+    _notifyLaunchClosed();
     if (summary) {
       const ceComplete = !!(summary.peds_ce_challenge && summary.peds_ce_challenge.complete);
       if (ceComplete && summary.final_score !== null && summary.final_score !== undefined) {
         _api.LMSSetValue("cmi.core.score.raw", String(summary.final_score));
+        _api.LMSSetValue("cmi.core.score.min", "0");
+        _api.LMSSetValue("cmi.core.score.max", "100");
       }
       _api.LMSSetValue("cmi.core.lesson_status", ceComplete ? "passed" : "incomplete");
+      _api.LMSCommit("");
     }
     _api.LMSFinish("");
   }

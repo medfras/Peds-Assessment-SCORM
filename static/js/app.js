@@ -6133,19 +6133,20 @@ function _normalizeScormState(summaryOrResume = {}) {
   const scores = summaryOrResume.node_scores || summaryOrResume.scores || {};
   const completed = summaryOrResume.node_completed || summaryOrResume.completed || {};
   const ce = summaryOrResume.peds_ce_challenge || summaryOrResume.ce || {};
+  const ceId = ce.id || "pfd_station1_scorm_pass";
   return {
     ...summaryOrResume,
     node_scores: scores,
     node_completed: completed,
     unlocks: summaryOrResume.unlocks || { scenarios: false, map3: false },
     peds_ce_challenge: {
-      id: ce.id || "pfd_station1_scorm_pass",
-      title: ce.title || "Pediatric Patient Assessment",
+      id: ceId,
+      title: ceId === "pfd_station1_scorm_pass" ? "Pediatric Patient Assessment" : (ce.title || "Pediatric Patient Assessment"),
       complete: !!ce.complete,
       ce_seconds: Number(ce.ce_seconds || 0),
       training_time_done: !!ce.training_time_done,
       xp: Number(ce.xp || 0),
-      xp_required: Number(ce.xp_required || 1200),
+      xp_required: ceId === "pfd_station1_scorm_pass" ? 1200 : Number(ce.xp_required || 1200),
       xp_ok: !!ce.xp_ok,
       pm1_completed: Number(ce.pm1_completed || 0),
       pm1_required: Number(ce.pm1_required || 2),
@@ -12281,7 +12282,7 @@ function _scormPassChallengeForDisplay() {
     is_active: true,
     earned: !!ce.complete,
     icon: "🎯",
-    name: ce.title || "Pediatric Patient Assessment",
+    name: "Pediatric Patient Assessment",
     description: "Moodle course completion requirement: finish the required scenario mix, training time, and XP target.",
     scenarios_total: progressTotal,
     scenarios_completed: progressDone,

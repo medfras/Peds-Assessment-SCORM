@@ -462,6 +462,9 @@ def test_scorm_runtime_warns_on_duplicate_launch_without_blocking_progress():
 
     assert "launch_id:       _launchId" in scorm_js
     assert "launch-heartbeat" in scorm_js
+    assert "launch-close" in scorm_js
+    assert "navigator.sendBeacon" in scorm_js
+    assert 'window.addEventListener("pagehide", _notifyLaunchClosed)' in scorm_js
     assert "rt:scormDuplicateLaunch" in scorm_js
     assert "getDuplicateLaunchWarning" in scorm_js
     assert "function _showScormDuplicateLaunchWarning" in app_js
@@ -498,6 +501,8 @@ def test_scorm_pass_requirements_render_in_active_challenges_modal():
     assert "Pediatric Trauma scenarios" in app_js
     assert "Training time" in app_js
     assert "Number(ce.xp_required || 1200)" in app_js
+    assert 'title: ceId === "pfd_station1_scorm_pass" ? "Pediatric Patient Assessment"' in app_js
+    assert 'xp_required: ceId === "pfd_station1_scorm_pass" ? 1200' in app_js
     assert "Earn at least ${xpRequired} XP" in app_js
     assert "custom_items" in app_js
     assert "function _activeChallengesForDisplay()" in app_js

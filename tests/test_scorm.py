@@ -139,6 +139,18 @@ def test_scorm_launch_id_is_bounded_and_sanitized():
     assert _sanitize_launch_id("abc-DEF_123!!") == "abc-DEF_123"
     assert len(_sanitize_launch_id("x" * 100)) == 64
     assert _sanitize_launch_id("!!!") is None
+
+
+def test_scorm_router_exposes_launch_close_endpoint_for_window_unload():
+    src = Path(__file__).parent.parent.joinpath("app", "routers", "scorm.py").read_text()
+
+    assert '"/api/scorm/attempts/{attempt_id}/launch-close"' in src
+    assert "async def scorm_launch_close" in src
+    assert "attempt.active_launch_id = None" in src
+    assert "_SCORM_DUPLICATE_LAUNCH_WINDOW_SECONDS = 90" in src
+
+
+def test_node_result_completion_requires_completed_and_passing_score():
     assert _node_result_counts_complete(
         ScormNodeResultRequest(activity_type="scenario", score=70, completed=True, passed=True),
         70,
@@ -672,6 +684,20 @@ def test_scorm_js_finish_writes_incomplete_not_failed():
     assert '"failed"' not in body, (
         'finish() must not write "failed" — use "incomplete" for in-progress learners'
     )
+
+
+def test_scorm_js_writes_lesson_status_when_summary_is_persisted():
+    src = _SCORM_JS.read_text()
+    start = src.index("function _writeSuspendData(summary)")
+    end = src.index("function _writeUiState", start)
+    body = src[start:end]
+
+    assert "peds_ce_challenge" in body
+    assert 'LMSSetValue("cmi.core.lesson_status", ceComplete ? "passed" : "incomplete")' in body
+    assert 'LMSSetValue("cmi.core.score.raw", String(summary.final_score))' in body
+    assert 'LMSSetValue("cmi.core.score.min", "0")' in body
+    assert 'LMSSetValue("cmi.core.score.max", "100")' in body
+    assert "LMSCommit" in body
 
 
 # ── app.js completion event contract ─────────────────────────────────────────

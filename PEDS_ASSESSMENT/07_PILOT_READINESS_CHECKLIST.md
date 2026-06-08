@@ -160,7 +160,7 @@ Backend attempt summary response (condensed — all 16 node scores present):
 - `cmi.core.score.raw` = `final_score` (written only when CE challenge complete)
 - Moodle completion should require SCO status **Passed**. The package does not write SCORM `"completed"`.
 
-**Node pass threshold:** 70%. `passed` is tracked per node and affects XP; it is not a gate criterion for unlock or CE progression. Completion (not passing score) is what gates maps and CE.
+**Node pass threshold:** 70%. Stored node completion must be `completed=true` with score ≥70 to count for unlocks and CE progression.
 
 **Replay policy:** Best-score semantics — a replay that scores lower does not overwrite the current best. Additional CE time accumulated on replay counts toward the CE total.
 
