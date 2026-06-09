@@ -630,6 +630,17 @@ def test_scorm_pass_requirements_render_in_active_challenges_modal():
     assert "complete:            isPfdPassChallenge ? passComplete : !!cc.complete" in scorm_js
 
 
+def test_frontend_awards_refresh_gamification_chrome_without_waiting_for_navigation():
+    app_js = APP_JS.read_text()
+    assert "function _applyGamificationAward(" in app_js
+    assert "_loadProgressFromServer(options = {})" in app_js
+    assert "if (minXp !== null) _progressCache.xp = Math.max(Number(_progressCache.xp || 0), minXp);" in app_js
+    assert "_applyGamificationAward({ xpEarned });" in app_js
+    assert "_applyGamificationAward({ xpEarned: Number(data.xp_earned || 0) });" in app_js
+    assert "_applyGamificationAward({ xpEarned: xp, newBadges: badges });" in app_js
+    assert "_refreshGamificationChrome();" in app_js
+
+
 def test_scorm_production_peds_maps_use_backend_node_state():
     app_js = APP_JS.read_text()
     assert "function _scormNodeCompleteByNodeId" in app_js

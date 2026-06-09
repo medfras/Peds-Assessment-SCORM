@@ -4832,14 +4832,18 @@ const _PROGRESS_DEFAULTS = () => ({
   pedsMapCompleted: [], pedsKeys: [],
 });
 
-async function _loadProgressFromServer() {
+async function _loadProgressFromServer(options = {}) {
   try {
     const previousScores = _progressCache?.minigameBestScores || {};
+    const minXp = Number.isFinite(Number(options.minXp)) ? Math.max(0, Number(options.minXp)) : null;
+    const minTreats = Number.isFinite(Number(options.minTreats)) ? Math.max(0, Number(options.minTreats)) : null;
     const [progRes, histRes] = await Promise.all([
       authFetch(`${API}/api/me/progress`),
       authFetch(`${API}/api/me/sessions?limit=50`),
     ]);
     _progressCache = progRes.ok ? await progRes.json() : (_progressCache || _PROGRESS_DEFAULTS());
+    if (minXp !== null) _progressCache.xp = Math.max(Number(_progressCache.xp || 0), minXp);
+    if (minTreats !== null) _progressCache.treats = Math.max(Number(_progressCache.treats || 0), minTreats);
     const serverScores = _progressCache?.minigameBestScores || {};
     const mergedScores = { ...serverScores };
     Object.entries(previousScores).forEach(([gameId, score]) => {
@@ -4882,6 +4886,21 @@ function _readProgressHistoryCache() {
 
 function loadGamification() {
   return _progressCache || _PROGRESS_DEFAULTS();
+}
+
+function _applyGamificationAward({ xpEarned = 0, treatsEarned = 0, newBadges = [], challengeBadges = [] } = {}) {
+  const game = { ...loadGamification() };
+  const badges = Array.isArray(game.badges) ? [...game.badges] : [];
+  game.xp = Math.max(0, Number(game.xp || 0)) + Math.max(0, Number(xpEarned || 0));
+  game.treats = Math.max(0, Number(game.treats ?? 0)) + Math.max(0, Number(treatsEarned || 0));
+  [...(newBadges || []), ...(challengeBadges || [])].forEach(id => {
+    if (id && !badges.includes(id)) badges.push(id);
+  });
+  game.badges = badges;
+  _progressCache = game;
+  _writeProgressHistoryCache();
+  _refreshGamificationChrome();
+  return game;
 }
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -8765,9 +8784,10 @@ const _patEngine = new SwipeGameEngine({
           remaining_xp:   Number(data.remaining_xp || 0),
           ever_completed: !!data.ever_completed,
         };
+        _applyGamificationAward({ xpEarned: Number(data.xp_earned || 0) });
         if (score >= 70) await _saveMgLearningPage("pat");
         await _onScormNodeComplete("pat", score, true, Array.isArray(mistakeTags) ? mistakeTags : []);
-        await _loadProgressFromServer().catch(() => {});
+        await _loadProgressFromServer({ minXp: _progressCache?.xp, minTreats: _progressCache?.treats }).catch(() => {});
         _refreshGamificationChrome();
         await _refreshScormSummary().catch(() => {});
         if (!el("screen-menu")?.classList.contains("hidden")) buildMenu();
@@ -8886,6 +8906,7 @@ const _devSortEngine = new DragSortGameEngine({
           remaining_xp: Number(data.remaining_xp || 0),
           ever_completed: !!data.ever_completed,
         };
+        _applyGamificationAward({ xpEarned: Number(data.xp_earned || 0) });
         if (score >= 70) {
           await _saveMgLearningPage("dev_sort");
           el("btn-sort-continue-red-flags")?.classList.remove("hidden");
@@ -8893,7 +8914,7 @@ const _devSortEngine = new DragSortGameEngine({
           el("btn-sort-continue-red-flags")?.classList.add("hidden");
         }
         await _onScormNodeComplete("dev_sort", score, true, []);
-        await _loadProgressFromServer().catch(() => {});
+        await _loadProgressFromServer({ minXp: _progressCache?.xp, minTreats: _progressCache?.treats }).catch(() => {});
         _refreshGamificationChrome();
         await _refreshScormSummary().catch(() => {});
         if (!el("screen-menu")?.classList.contains("hidden")) buildMenu();
@@ -9045,6 +9066,7 @@ async function _mgSubmitResult(gameId, { total, correct, bestStreak, elapsedSec,
         ? `Saved +${xpEarned} XP. Daily drill XP limit reached for this game.`
         : `Saved +${xpEarned} XP. ${remainingXp} XP remaining for this game today.`);
       if (!_progressCache) _progressCache = _PROGRESS_DEFAULTS();
+      _applyGamificationAward({ xpEarned });
       const bestScores = {
         ...(_progressCache.minigameBestScores || {}),
         [gameId]: Math.max(Number(_progressCache.minigameBestScores?.[gameId] || 0), score),
@@ -9073,7 +9095,7 @@ async function _mgSubmitResult(gameId, { total, correct, bestStreak, elapsedSec,
         const title = firstCard?.title || firstCard?.card_id || "Reference card";
         showToast(`Reference card unlocked: ${title}`, "success");
       }
-      await _loadProgressFromServer().catch(() => {});
+      await _loadProgressFromServer({ minXp: _progressCache?.xp, minTreats: _progressCache?.treats }).catch(() => {});
       _refreshGamificationChrome();
       await _refreshScormSummary().catch(() => {});
       await _loadChallenges().then(_buildChallengesSection).catch(() => {});
@@ -14988,7 +15010,9 @@ async function _lexiShowOutro() {
 
   // Refresh progress from server so post-round XP/badges stay authoritative.
   if (result) {
-    await _loadProgressFromServer().catch(() => {});
+    _applyGamificationAward({ xpEarned: xp, newBadges: badges });
+    await _loadProgressFromServer({ minXp: _progressCache?.xp, minTreats: _progressCache?.treats }).catch(() => {});
+    _refreshGamificationChrome();
     await _refreshScormSummary().catch(() => {});
     const g = loadGamification();
     buildBadgesSection(g);
@@ -27641,10 +27665,14 @@ async function processDebrief(feedback, score, subscores = null, timeline = null
       if (!game.badges.includes(id)) game.badges.push(id);
     });
     _progressCache = game;
+    _writeProgressHistoryCache();
+    _refreshGamificationChrome();
   }
   // Session counter always increments locally for tour/badge threshold checks
   game.sessions = (game.sessions || 0) + 1;
   _progressCache = game;
+  _writeProgressHistoryCache();
+  _refreshGamificationChrome();
 
   // ── Challenge badge side-effects ───────────────────────────────────────────
   if (challengeBadges.length > 0) {
