@@ -1465,10 +1465,26 @@ def test_action_menu_procedure_buttons_record_matching_interventions_before_chat
     ]
 
     assert 'fallbackIds.push("dry_dressing", "direct_pressure")' in candidate_fn
+    assert 'if (/\\bprimary\\s+survey\\b/i.test(itemText)) return null;' in candidate_fn
     assert "findInterventionByLabel(String(text))" in candidate_fn
     assert "applyInterventionAndRecord(intervention.id" in handler_fn
     assert 'await _handleActionMenuInterventionItem(item, "action_menu")' in main_action_block
     assert 'await _handleActionMenuInterventionItem(item, "body-map-procedure")' in body_map_block
+
+
+def test_primary_survey_action_does_not_say_addressing_or_match_dressing_substring():
+    source = open("static/js/app.js", encoding="utf-8").read()
+    scenario_text = open("app/scenarios/pediatric/trauma/peds_trauma_01_soft_tissue.json", encoding="utf-8").read()
+    scenario = json.loads(scenario_text)
+
+    assert "I am performing a primary survey and checking for immediate life threats." in source
+    assert "I am performing a primary survey and addressing immediate life threats." not in source
+
+    direct_pressure = scenario["vitals"]["interventions"]["direct_pressure"]
+    patterns = "\n".join(direct_pressure["detection_patterns"])
+    assert "\ndressing\n" not in f"\n{patterns}\n"
+    assert "\\bdress(?:ing)?\\b" in patterns
+    assert '"(?i)(direct\\\\s+(?:manual\\\\s+)?pressure|pressure\\\\s+(?:dressing|bandage)|\\\\bdress(?:ing)?\\\\b' in scenario_text
 
 
 def test_head_injury_exemplar_uses_high_flow_nrb_not_nasal_cannula():

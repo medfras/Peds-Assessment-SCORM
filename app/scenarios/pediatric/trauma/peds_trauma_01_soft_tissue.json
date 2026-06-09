@@ -489,12 +489,12 @@
         "label": "Direct Pressure & Pressure Dressing",
         "within_bls_scope": true,
         "detection_patterns": [
-          "direct pressure",
+          "direct\\s+(?:manual\\s+)?pressure",
           "apply pressure",
           "hold pressure",
           "press.*wound",
-          "dressing",
-          "pressure dressing",
+          "\\bdress(?:ing)?\\b",
+          "pressure\\s+(?:dressing|bandage)",
           "wrap his head",
           "gauze",
           "bandage"
@@ -1170,7 +1170,7 @@
         "intervention_key": "direct_pressure"
       },
       "tier2_patterns": [
-        "(?i)(direct pressure|pressure dressing|dressing|hemorrhage|bleeding|compress|wound)"
+        "(?i)(direct\\s+(?:manual\\s+)?pressure|pressure\\s+(?:dressing|bandage)|\\bdress(?:ing)?\\b|hemorrhage|bleeding|compress(?:ion)?|wound)"
       ],
       "done_feedback": "Direct pressure applied to scalp laceration — correct hemorrhage control for highly vascular scalp injuries.",
       "missed_feedback": "Direct pressure not applied — scalp lacerations bleed profusely due to the vascularity of the galea; hemorrhage control must precede secondary assessment.",

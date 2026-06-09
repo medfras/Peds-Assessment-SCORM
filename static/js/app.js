@@ -21330,7 +21330,7 @@ const ACTION_EQUIPMENT = [
 const ACTION_PROCEDURES = [
   { label: "Assessment / Positioning", children: [
     { label: "Pediatric Assessment Triangle",       payload: "I am performing the Pediatric Assessment Triangle." },
-    { label: "Primary Survey",                      payload: "I am performing a primary survey and addressing immediate life threats." },
+    { label: "Primary Survey",                      payload: "I am performing a primary survey and checking for immediate life threats." },
     { label: "Secondary Assessment",                payload: "I am performing a secondary assessment." },
     { label: "Stroke Scale",                        payload: "I am performing a stroke scale assessment." },
     { label: "Position of Comfort",                 payload: "I am placing the patient in a position of comfort." },
@@ -22673,6 +22673,7 @@ function findInterventionByLabel(label) {
 function _actionMenuInterventionCandidate(item = {}) {
   const itemText = `${item.label || ""} ${item.payload || ""}`;
   if (_cspineExamRequested(itemText)) return null;
+  if (/\bprimary\s+survey\b/i.test(itemText)) return null;
 
   const id = item.interventionId || item.intervention_id;
   if (id && _interventionById[id]) return _interventionById[id];
