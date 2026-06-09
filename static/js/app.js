@@ -9022,6 +9022,13 @@ async function _mgSubmitResult(gameId, { total, correct, bestStreak, elapsedSec,
       if (capNoteEl) setText(capNoteEl, data.xp_capped
         ? `Saved +${xpEarned} XP. Daily drill XP limit reached for this game.`
         : `Saved +${xpEarned} XP. ${remainingXp} XP remaining for this game today.`);
+      if (!_progressCache) _progressCache = _PROGRESS_DEFAULTS();
+      const bestScores = {
+        ...(_progressCache.minigameBestScores || {}),
+        [gameId]: Math.max(Number(_progressCache.minigameBestScores?.[gameId] || 0), score),
+      };
+      _progressCache = { ..._progressCache, minigameBestScores: bestScores };
+      _writeProgressHistoryCache();
 
       window.dispatchEvent(new CustomEvent("rt:drillComplete", {
         detail: {
@@ -9729,19 +9736,17 @@ function _makeCprBlsConceptsGame() {
     onFinish({ correct, total }) {
       const required = 4;
       const questionTotal = Math.max(5, Number(total) || 5);
-      const unlocked = Number(correct) >= required;
+      const passed = Number(correct) >= required;
       const playAgainBtn = el("btn-cprconcepts-play-again");
-      const phase2Btn = el("btn-cprconcepts-phase2");
       const gateNote = el("cprconcepts-gate-note");
 
-      if (playAgainBtn) playAgainBtn.textContent = unlocked ? "Play Again" : "Retry Phase 1";
-      phase2Btn?.classList.toggle("hidden", !unlocked);
+      if (playAgainBtn) playAgainBtn.textContent = passed ? "Play Again" : "Retry CPR Drill";
       if (gateNote) {
-        gateNote.textContent = unlocked
-          ? `Phase 2 unlocked: ${correct}/${questionTotal} correct.`
-          : `Score at least ${required}/${questionTotal} correct to unlock Phase 2. Retry Phase 1.`;
-        gateNote.classList.toggle("text-green-400", unlocked);
-        gateNote.classList.toggle("text-amber-400", !unlocked);
+        gateNote.textContent = passed
+          ? `CPR drill complete: ${correct}/${questionTotal} correct.`
+          : `Score at least ${required}/${questionTotal} correct to complete the CPR drill.`;
+        gateNote.classList.toggle("text-green-400", passed);
+        gateNote.classList.toggle("text-amber-400", !passed);
       }
     },
   });
@@ -9785,16 +9790,8 @@ function _openCprBlsConceptsGameScreen(selection = null) {
   }
   const playAgainBtn = el("btn-cprconcepts-play-again");
   if (playAgainBtn) playAgainBtn.textContent = "Play Again";
-  el("btn-cprconcepts-phase2")?.classList.add("hidden");
   showScreen("cpr-bls-concepts-game");
   show("cprconcepts-intro-overlay");
-}
-
-function _launchCprBlsPhase2FromConcepts() {
-  hide("cprconcepts-results");
-  hide("cprconcepts-results-backdrop");
-  hide("cprconcepts-nudge-overlay");
-  _openCprBlsSequenceGameScreen({ returnDistrictId: _cprBlsReturnDistrictId });
 }
 
 function _exitCprBlsConceptsToMap() {
@@ -15483,7 +15480,8 @@ function _station1IntroBubbleText() {
 }
 
 function _station1CprDrillComplete(completedIds = new Set()) {
-  return completedIds.has(STATION1_CPR_SCENARIO_ID);
+  return completedIds.has(STATION1_CPR_SCENARIO_ID)
+    || Number(loadGamification().minigameBestScores?.cpr_bls_concepts || 0) >= 70;
 }
 
 function _station1WrapSeen() {
@@ -15722,8 +15720,8 @@ function _renderStation1Map() {
       label: "CPR Mastery Drill",
       completed: cprComplete,
       statusText: cprComplete
-        ? "CPR training drill completed. Replay the three-round flow any time."
-        : "Round 1: match CPR metrics. Round 2: order the Chain of Survival. Round 3: run the CPR scenario.",
+        ? "CPR training drill completed. Replay the CPR metrics drill any time."
+        : "Answer the CPR metric questions. Score at least 4 out of 5 to complete the drill.",
       detailHtml: `
         <figure class="scenario-preview-image-card">
           <img src="${STATION1_CPR_IMAGE}" alt="CPR training mannequin" loading="lazy" />
@@ -17532,7 +17530,6 @@ el("btn-cprconcepts-intro-learn")?.addEventListener("click", () => _openMgEducat
 el("btn-cprconcepts-back")?.addEventListener("click",        _exitCprBlsConceptsToMap);
 el("btn-cprconcepts-start")?.addEventListener("click",       () => _cprBlsConceptsGame.startRound());
 el("btn-cprconcepts-play-again")?.addEventListener("click",  () => _cprBlsConceptsGame.startRound());
-el("btn-cprconcepts-phase2")?.addEventListener("click",      _launchCprBlsPhase2FromConcepts);
 el("btn-cprconcepts-back-map")?.addEventListener("click",    _exitCprBlsConceptsToMap);
 
 /* ── Adult vs. Child A&P game wiring ──────────────────────────── */

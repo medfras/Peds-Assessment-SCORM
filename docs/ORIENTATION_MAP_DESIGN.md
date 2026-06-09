@@ -113,27 +113,30 @@ The "any submitted run" threshold for learning cards during orientation is an ex
 
 ### Node Layout
 
-Four nodes. Linear path — no branching. Lexi starts at the entry anchor (bay door) on first load.
+Five nodes. Linear path — no branching. Lexi starts at the entry anchor on first load.
 
 ```
 [Entry Anchor — Bay Door]
         |
         ▼ trail
-[Node 1 — Run Room: Lexi Introduction]
+[Node 1 — Lexi Introduction]
         |
         ▼ trail
-[Node 2 — Main Bay: History Maker Mini-Game]
+[Node 2 — Orientation Tour Scenario]
         |
         ▼ trail
-[Node 3 — Main Bay: GCS Calculator Mini-Game]
+[Node 3 — CPR Metrics Drill]
         |
         ▼ trail
-[Node 4 — Training Room: Orientation Scenario]
+[Node 4 — Challenges Briefing]
+        |
+        ▼ trail
+[Node 5 — Lexi Wrap-up]
         |
         ▼ (completion → home page)
 ```
 
-**Node count rationale:** The current map architecture enforces a 1:1 relationship between nodes and game/scenario content. Assigning two mini-games to a single node would require a playlist wrapper that doesn't yet exist. Splitting into separate nodes keeps the architecture clean and gives each game its own completion gate and Lexi commentary.
+**Node count rationale:** The Station 1 map is a guided onboarding path. The orientation scenario teaches the scenario UI, the CPR metrics drill satisfies the Station 1 CPR requirement, the challenges briefing introduces the pass requirements, and the wrap-up marks Station 1 complete.
 
 #### Node 1 — Day Room: Lexi Introduction
 
@@ -149,38 +152,41 @@ Four nodes. Linear path — no branching. Lexi starts at the entry anchor (bay d
 >
 > First, let's head into the main bay and grab your gear bag."
 
-#### Node 2 — Main Bay: CPR Mastery Round 1 Mini-Game
-
-- **Type:** Mini-game node
-- **Game:** `cpr_bls_sequence` (AHA BLS Chain of Survival sequence order)
-- **Rationale:** CPR is the single skill every EMS provider uses before any other. The sequence game introduces the platform's drag-and-order mechanic and establishes the AHA BLS algorithm before the student enters any graded district.
-- **Completion threshold:** Any submitted run.
-- **XP/treats:** Standard mini-game awards apply.
-- **Unlock:** Unlocks after Node 1 completes.
-
-**Node tap dialogue (before starting):**
-> "First drill: CPR sequencing. Every call — pediatric, adult, trauma — can become a cardiac arrest. Place the steps of the BLS algorithm in the correct order and commit before the reveal. Complete the drill to earn a reference card for your notebook."
-
-**Mastery-flow button in orientation:** If the learner scores ≥70% on Round 1, the "Round 2: CPR Metrics →" button appears in the results panel. This is an in-game shortcut directly to `cpr_bls_concepts`. In orientation, Node 3 is the next map node regardless — the button is a convenience, not a gate. Learners who score below 70 close the results and tap Node 3 from the map. Both paths reach the same place. No special-casing of the mastery button is needed for orientation mode.
-
-#### Node 3 — Main Bay: CPR Mastery Round 2 Mini-Game
-
-- **Type:** Mini-game node
-- **Game:** `cpr_bls_concepts` (AHA CPR metric pair match — depth, rate, ratios, CCF)
-- **Rationale:** Pairing Round 1 (sequence) with Round 2 (metrics) introduces the pair-match UI mechanic and covers the key numeric targets (rate, depth, recoil, C:V ratios, CCF) before the student encounters them in a real scenario.
-- **Completion threshold:** Any submitted run.
-- **XP/treats:** Standard mini-game awards apply.
-- **Unlock:** Unlocks after Node 1 completes. Node 4 unlocks only after both Node 2 and Node 3 are complete.
-
-**Node tap dialogue (before starting):**
-> "Round 2 — the numbers. Match each CPR parameter to its AHA target. Rate, depth, recoil, ratios, compression fraction. These numbers decide outcomes."
-
-#### Node 4 — Training Room: Orientation Scenario
+#### Node 2 — Training Room: Orientation Tour Scenario
 
 - **Type:** Scenario node
 - **Scenario ID:** `orientation_01`
+- **Unlock:** Unlocks after Node 1 completes.
+- **Completion trigger:** Narrative submitted → `POST /api/me/orientation/complete` called → debrief screen shows with a **"Start your shift"** button.
+
+#### Node 3 — Main Bay: CPR Metrics Drill
+
+- **Type:** Mini-game node
+- **Game:** `cpr_bls_concepts` (AHA CPR metric pair match — depth, rate, ratios, CCF)
+- **Rationale:** CPR is the single skill every EMS provider uses before any other. The metrics drill introduces the key numeric targets before the student enters any graded district.
+- **Completion threshold:** Score at least 70%.
+- **XP/treats:** Standard mini-game awards apply.
+- **Unlock:** Unlocks after Node 2 completes.
+
+**Node tap dialogue (before starting):**
+> "CPR metrics. Every call — pediatric, adult, trauma — can become a cardiac arrest. Match each CPR parameter to its AHA target. Complete the drill to earn a reference card for your notebook."
+
+#### Node 4 — Challenges Briefing
+
+- **Type:** Dialogue node
+- **Interaction:** Tapping opens the Station 1 pass/complete challenge briefing.
+- **Completion:** Auto-completes when the briefing is dismissed.
 - **Unlock:** Unlocks after Node 3 completes.
-- **Completion trigger:** Narrative submitted → `POST /api/me/orientation/complete` called → debrief screen shows with a **"Start your shift"** button that routes to the home page.
+
+**Node tap dialogue (before starting):**
+> "Let's review what counts for your Pediatric Patient Assessment challenge before you head into the district maps."
+
+#### Node 5 — Lexi Wrap-up
+
+- **Type:** Dialogue node
+- **Interaction:** Tapping opens Lexi's Station 1 completion message.
+- **Completion:** Marks Station 1 complete and routes to the home page/district map.
+- **Unlock:** Unlocks after Node 4 completes.
 
 ---
 
@@ -389,7 +395,7 @@ When the user replays orientation from the home page (`replay=true` URL param or
 | **Q3 — Existing users with zero sessions** | Accounts with zero sessions and `orientation_completed_at = NULL` will be routed into orientation. This is the correct behavior — a registered account with no completed sessions genuinely hasn't used the platform. Admin-created bulk/test accounts are handled via the superuser bypass (superusers are never routed to orientation) or by the admin reset endpoint. No account-age logic is added. |
 | **Q4 — `orientation_01` in scenario selection** | Blocked from all browsing UIs. The `is_orientation: true` flag is the authoritative gate — any endpoint that lists or randomly selects scenarios must filter it out. |
 | **Q5 — Turnover flow vs old DMIST** | Orientation teaches the current "turnover patient care when ready" flow: orange readiness button → turnover report → narrative. The old DMIST screen is not referenced. Guidance cues and the premise text have been updated accordingly. |
-| **Q6 — Orientation node completion persistence** | Each node tracks its own completion state, derived from existing server-side records where possible — no new orientation-specific gate table needed. **Node 1** (dialogue dismiss): localStorage only, scoped to `pfd_orientation_node1_<user_id>`. **Node 2** (`cpr_bls_sequence`): complete when user has any `cpr_bls_sequence` completion record. **Node 3** (`cpr_bls_concepts`): complete when user has any `cpr_bls_concepts` completion record. **Node 4** (scenario): complete when `orientation_completed_at` is non-null. On the map, completed nodes render a visual checkmark/done state. Tapping a completed node still opens it — replay is always allowed — but the node does not need to be re-completed to progress. When a user returns to the orientation map (replay mode), all previously completed nodes show as done and can be skipped freely. Users who completed the CPR games through another path (e.g., Dog Park or PM3 map) will see those nodes already marked done on first orientation visit — correct, since they already have the material. Node 4 (the orientation scenario) unlocks only after both Node 2 and Node 3 are complete. |
+| **Q6 — Orientation node completion persistence** | Each node tracks its own completion state, derived from existing server-side records where possible. **Node 1** (intro dismiss) and **Node 4** (challenges briefing dismiss) are local Station 1 progression flags. **Node 2** (`orientation_01`) is complete when the orientation scenario completion record exists. **Node 3** (`cpr_bls_concepts`) is complete when the best CPR metrics drill score is at least 70%. **Node 5** (wrap-up) is complete when `orientation_completed_at` is non-null. On the map, completed nodes render a visual checkmark/done state. Tapping a completed node still opens it — replay is always allowed — but the node does not need to be re-completed to progress. |
 
 ---
 

@@ -604,27 +604,24 @@ Because AMS symptoms heavily overlap (e.g., diaphoresis fits Hypoglycemia and Al
 
 ### AHA BLS CPR Mastery Flow
 
-**Proposed stable IDs:** `cpr_bls_sequence` (Round 1) → `cpr_bls_concepts` (Round 2) → `drill_peds_cpr_mannequin` (Round 3)  
-**Primary engines:** `SequenceOrderGame` → `PairMatchGame` → CPR Challenge HUD (via Scenario Wrapper)  
+**Stable IDs:** `cpr_bls_concepts` for the Station 1 completion drill; `cpr_bls_sequence` remains optional reinforcement.  
+**Primary engines:** `PairMatchGame`; optional `SequenceOrderGame` reinforcement.  
 **Primary skill:** AHA BLS CPR algorithm sequence, critical metrics (ratios/depths), and high-performance code execution.
 
-**Core interaction loop & Mastery Flow:**
-The learner experiences this as a single 3-round gauntlet. Passing one round immediately unlocks and routes to the next.
+**Core interaction loop:**
+For the SCORM pilot, Station 1 CPR completion is intentionally short: passing the CPR metrics pair-match drill completes the CPR drill requirement and unlocks the AHA CPR reference card. Drill result modals do not route directly into scenarios or a second CPR phase.
 
-1.  **Round 1: Chain of Survival (Order of Operations)**
-    *   **Engine:** `SequenceOrderGame`
-    *   **Interaction:** The learner is presented with 6–7 mixed steps of the AHA BLS Pediatric/Adult algorithm. They must drag or assign numbers to place them in the exact correct order. Full sequence commit before reveal. Partial credit for steps in the correct position.
-2.  **Round 2: Key Concepts (The Numbers)**
+1.  **Station 1 Drill: Key Concepts (The Numbers)**
     *   **Engine:** `PairMatchGame`
     *   **Interaction:** 3 rapid-fire boards of 6 cards (3 pairs each). The learner must pair the patient/rescuer context with the correct AHA metric (e.g., *Adult Compression Ratio* ↔ *30:2*).
-3.  **Round 3: Practical Application (Mannequin Drill)**
-    *   **Engine:** CPR Challenge HUD (via Scenario Wrapper)
-    *   **Interaction:** The "Next Round" button from Round 2 launches a lightweight, text-light scenario (e.g., `drill_peds_cpr_mannequin`). The dispatch sets the scene in the Station Training Room. The learner physically executes the knowledge they just reviewed using the CPR Challenge HUD.
+2.  **Optional Reinforcement: Chain of Survival (Order of Operations)**
+    *   **Engine:** `SequenceOrderGame`
+    *   **Interaction:** The learner is presented with mixed steps of the AHA BLS Pediatric/Adult algorithm and orders them before reveal.
 
-**Reward:** Passing the final HUD drill triggers the `newly_unlocked_reference_cards` system to award the **"AHA CPR & Resuscitation Guide"**.
+**Reward:** Passing `cpr_bls_concepts` triggers the `newly_unlocked_reference_cards` system to award the **"AHA CPR & Resuscitation Guide"**.
 
 **Implementation strategy:** 
-Because the CPR HUD relies deeply on the `SimSession` backend timeline validation, Round 3 is built as a standard scenario. On the Round 2 "Results" screen, the Next Action button is configured to call `startScenario("drill_peds_cpr_mannequin")`, fulfilling the 3-round design seamlessly without a massive architectural rewrite.
+The integrated CPR scenario/mannequin drill remains deferred. It should be added as a separately authored scenario or challenge later, not as an automatic drill result handoff in the SCORM pilot.
 
 ---
 
@@ -1553,11 +1550,11 @@ These items were originally deferred pending infrastructure decisions, external 
   - `static/data/games/cpr_bls_concepts/game.json` — 3 rounds × 3 pairs: compression mechanics, C:V ratios, code quality metrics.
 - [ ] **Author micro-scenario wrapper**
   - `drill_peds_cpr_mannequin.json` — lightweight text scenario triggering `cpr_challenge` in pediatric mode.
-- [x] **Wire the 3-Round Gauntlet routing**
-  - `cpr_bls_sequence` score ≥ 70 shows "Round 2: CPR Metrics →" button routing to `cpr_bls_concepts`.
-  - `cpr_bls_concepts` score ≥ 70 shows "Round 3: Mannequin Drill →" button (shows "coming soon" toast until drill scenario is authored).
+- [x] **Wire Station 1 CPR drill completion**
+  - `cpr_bls_concepts` score ≥ 70 completes the Station 1 CPR drill.
+  - Drill result modals do not route directly into a scenario or second CPR phase during the pilot.
 - [x] **Register metadata and reference card**
-  - `cpr_bls_sequence` and `cpr_bls_concepts` registered in `app/minigame_metadata.py` with `ref_aha_cpr_guide` reference card (unlocks after both games passed).
+  - `cpr_bls_sequence` and `cpr_bls_concepts` registered in `app/minigame_metadata.py` with `ref_aha_cpr_guide` reference card (unlocks after `cpr_bls_concepts` is passed).
 
 ---
 

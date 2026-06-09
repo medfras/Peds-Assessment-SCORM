@@ -172,14 +172,14 @@ def test_pat_text_only_cards_hide_image_placeholder_and_center_copy():
 
 def test_station1_cpr_training_node_is_labeled_as_drill():
     js = _read("static/js/app.js")
+    main = _read("app/main.py")
 
     assert 'title="CPR Training Drill" aria-label="CPR Training Drill"' in js
-    assert "CPR training drill completed. Replay the three-round flow any time." in js
+    assert "CPR training drill completed. Replay the CPR metrics drill any time." in js
+    assert "minigameBestScores?.cpr_bls_concepts" in js
+    assert '"minigameBestScores": minigame_best_scores' in main
     assert 'type: "cpr_bls_concepts"' in js
     assert 'label: "CPR Mastery Drill"' in js
-    assert "start_drill: startDrill" in js
-    assert "drill_source: drillSource" in js
-    assert "state.drillMode = startDrill;" in js
     assert "CPR Training Scenario" not in js
     assert "CPR training scenario completed" not in js
 

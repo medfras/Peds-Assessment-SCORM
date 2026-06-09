@@ -143,10 +143,10 @@ def test_cpr_games_pass_threshold_is_70():
 
 def test_cpr_games_mastery_flow():
     seq = get_minigame_metadata("cpr_bls_sequence")
-    assert seq["mastery_flow"] == {"previous": "cpr_bls_concepts", "next": "adult_cardiac_arrest_01_bls"}
+    assert seq["mastery_flow"] is None
 
     concepts = get_minigame_metadata("cpr_bls_concepts")
-    assert concepts["mastery_flow"] == {"next": "cpr_bls_sequence"}
+    assert concepts["mastery_flow"] is None
 
 
 def test_cpr_games_reference_card():
@@ -154,8 +154,7 @@ def test_cpr_games_reference_card():
         meta = get_minigame_metadata(game_id)
         card = meta["reference_card"]
         assert card["id"] == "ref_aha_cpr_guide"
-        assert "cpr_bls_sequence" in card["unlock_condition"]["all_passed"]
-        assert "cpr_bls_concepts" in card["unlock_condition"]["all_passed"]
+        assert card["unlock_condition"]["all_passed"] == ["cpr_bls_concepts"]
 
 
 def test_ref_aha_cpr_guide_content():
@@ -211,14 +210,15 @@ def test_cpr_concepts_game_frontend_wiring():
     # Drill result modals should not route learners directly into scenarios.
     assert 'id="btn-cprconcepts-round3"' not in html
 
-    # Nudge overlay wired
+    # Round-transition nudge support remains available for other PairMatch variants.
     assert 'id="cprconcepts-nudge-overlay"' in html
     assert 'btn-cprconcepts-nudge-continue' in html
     assert 'btn-cprconcepts-nudge-continue' in js
-    assert 'id="btn-cprconcepts-phase2"' in html
-    assert 'phase2Btn?.classList.toggle("hidden", !unlocked);' in js
-    assert 'el("btn-cprconcepts-phase2")?.addEventListener("click",      _launchCprBlsPhase2FromConcepts);' in js
-    assert "function _launchCprBlsPhase2FromConcepts()" in js
+    assert 'id="btn-cprconcepts-phase2"' not in html
+    assert "btn-cprconcepts-phase2" not in js
+    assert "_launchCprBlsPhase2FromConcepts" not in js
+    assert 'if (score >= 70 && _MG_LEARNING_PAGES[gameId])' in js
+    assert 'await _saveMgLearningPage(gameId);' in js
 
     # JS registrations
     assert 'gameId: "cpr_bls_concepts"' in js
@@ -232,24 +232,26 @@ def test_cpr_concepts_game_frontend_wiring():
     assert '_cprBlsConceptsGame = _makeCprBlsConceptsGame();' in js
 
 
-def test_cpr_mastery_does_not_offer_scenario_routing_from_drill_results():
-    """CPR mastery drills can be retried, but should not expose a scenario off-ramp."""
+def test_cpr_mastery_completes_after_phase1_without_scenario_handoff():
+    """Station 1 CPR mastery completes after the CPR concepts drill pass."""
     js = _read("static/js/app.js")
     html = _read("static/index.html")
 
+    assert "Play Phase 2" not in html
     assert 'btn-cprseq-round2' not in js
     assert 'btn-cprconcepts-round3' not in js
     assert "Round 3: CPR Scenario" not in html
-    assert "Phase 2: CPR Scenario" not in html
     assert "const required = 4;" in js
-    assert 'Score at least ${required}/${questionTotal} correct to unlock Phase 2' in js
-    assert '_openCprBlsSequenceGameScreen' in js
+    assert 'Score at least ${required}/${questionTotal} correct to complete the CPR drill.' in js
+    assert "Answer the CPR metric questions. Score at least 4 out of 5 to complete the drill." in js
+    assert '_openCprBlsSequenceGameScreen({ returnDistrictId: _cprBlsReturnDistrictId });' not in js
+    assert "startScenarioWithOptions(STATION1_CPR_SCENARIO_ID" not in js
 
 
 def test_phase14_checklist_data_and_metadata_closed():
     doc = _read("docs/MINIGAMES_DESIGN.md")
     assert "- [x] **Author sequence and pair-match data**" in doc
-    assert "- [x] **Wire the 3-Round Gauntlet routing**" in doc
+    assert "- [x] **Wire Station 1 CPR drill completion**" in doc
     assert "- [x] **Register metadata and reference card**" in doc
     # Micro-scenario wrapper correctly left pending
     assert "- [ ] **Author micro-scenario wrapper**" in doc

@@ -2308,6 +2308,7 @@ async def get_my_progress(
         select(PedsKey.key_id).where(PedsKey.user_id == ctx.user_id)
     )
     ce_seconds = await _get_user_ce_seconds(ctx.user_id, db)
+    minigame_best_scores = await _best_challenge_drill_scores(user=user, db=db)
 
     return {
         "xp":              user.xp or 0,
@@ -2321,6 +2322,7 @@ async def get_my_progress(
         "pedsMapCompleted": [r for (r,) in peds_progress_res.all()],
         "pedsKeys":         [r for (r,) in peds_keys_res.all()],
         "ceSeconds":        ce_seconds,
+        "minigameBestScores": minigame_best_scores,
     }
 
 
