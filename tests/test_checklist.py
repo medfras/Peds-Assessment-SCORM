@@ -823,10 +823,11 @@ def test_pilot_focused_trauma_scenarios_suppress_irrelevant_full_body_survey_row
     assert extremity_ids.isdisjoint(broad_survey_ids - {"ems.trauma.upper_left_pmsc"})
 
     head_injury = json.loads((scenario_root / "peds_trauma_07_head_injury.json").read_text())
-    head_injury_ids = {i.id for i in load_checklist(head_injury, level="EMT", mca="mi_base", agency_id=None)}
-    assert "ems.trauma.neck_c_spine" in head_injury_ids
-    assert "ems.trauma.chest_inspect" in head_injury_ids
-    assert "ems.trauma.abdomen_inspect_palpate" in head_injury_ids
+    head_injury_ids = {i.id for i in _load_active_checklist(head_injury)}
+    assert head_injury_ids.isdisjoint(broad_survey_ids)
+    assert "head_injury.neuro_assessment" in head_injury_ids
+    assert "head_injury.pupil_assessment" in head_injury_ids
+    assert "head_injury.dcap_btls_head" in head_injury_ids
 
 
 def test_head_injury_uses_reusable_call_type_rubric_for_focused_items():

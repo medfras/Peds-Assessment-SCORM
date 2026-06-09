@@ -907,16 +907,6 @@ def test_head_injury_structured_exam_rows_credit_neuro_and_general_head_items():
         "head_injury.neuro_assessment",
         "head_injury.pupil_assessment",
         "head_injury.dcap_btls_head",
-        "ems.trauma.head_scalp_ears",
-        "ems.trauma.head_eyes",
-        "ems.trauma.head_mouth_nose_face",
-        "ems.trauma.neck_trachea",
-        "ems.trauma.neck_jugular_veins",
-        "ems.trauma.neck_c_spine",
-        "ems.trauma.chest_inspect",
-        "ems.trauma.chest_palpate",
-        "ems.trauma.abdomen_inspect_palpate",
-        "ems.trauma.pelvis_assess",
     ]:
         state = adjudicate(
             [by_id[item_id]],

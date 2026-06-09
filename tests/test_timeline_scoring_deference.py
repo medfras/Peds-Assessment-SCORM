@@ -447,6 +447,7 @@ def test_head_injury_scenario_does_not_show_neuro_reassessment_timeline_requirem
     timeline = _build_session_timeline(session, scenario)
 
     assert _find_timeline(timeline, "Reassess GCS and pupils") is None
+    assert _find_timeline(timeline, "DCAP-BTLS assessment of head") is None
 
 
 def test_head_injury_neuro_reassessment_recommended_action_is_omitted():

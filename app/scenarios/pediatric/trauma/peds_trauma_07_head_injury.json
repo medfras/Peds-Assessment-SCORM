@@ -919,31 +919,6 @@
         }
       },
       {
-        "id": "dcap_btls_head",
-        "description": "DCAP-BTLS assessment of head — palpate for deformity, step-off, tenderness, and swelling",
-        "required": true,
-        "protocol_indicated": true,
-        "evidence": {
-          "finding_types": [
-            "exam"
-          ],
-          "intervention_ids": [
-            "dcap_btls_head_neck"
-          ],
-          "finding_key_patterns": [
-            "dcap[-\\s]?btls.*head",
-            "DCAP[-\\s]?BTLS Assessment.*Head",
-            "head.*dcap",
-            "head assessment",
-            "scalp assessment"
-          ],
-          "transcript_patterns": [
-            "(?i)(dcap[-\\s]?btls.{0,60}(head|scalp|ears?)|(head|scalp|ears?).{0,60}dcap[-\\s]?btls|palpat.*head|inspect.*head|check.*head|feel.*head|assess.*head|head.*tenderness|head.*step.?off|head.*deformity)"
-          ],
-          "min_matches": 1
-        }
-      },
-      {
         "id": "smr",
         "description": "Apply spinal motion restriction — mechanism (fall > 3 ft) plus altered mental status (confusion) makes SMR clearly indicated",
         "required": true,
@@ -1220,6 +1195,150 @@
     "professionalism"
   ],
   "checklist": [
+    {
+      "id": "ems.trauma.head_scalp_ears",
+      "description": "Suppressed for closed-head-injury pilot: focused head/scalp DCAP-BTLS is scored by the reusable head-injury rubric instead of the inherited full trauma survey row.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.head_eyes",
+      "description": "Suppressed for closed-head-injury pilot: pupil assessment is scored by the reusable head-injury rubric instead of the inherited full trauma survey row.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.head_mouth_nose_face",
+      "description": "Suppressed for closed-head-injury pilot: detailed mouth/nose/face trauma survey is not required for this focused TBI rep unless prompted by findings.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.neck_trachea",
+      "description": "Suppressed for closed-head-injury pilot: tracheal-position survey is not required for this focused TBI rep.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.neck_jugular_veins",
+      "description": "Suppressed for closed-head-injury pilot: jugular vein assessment is not required for this focused TBI rep.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.neck_c_spine",
+      "description": "Suppressed for closed-head-injury pilot: spinal precautions are scored by the reusable head-injury rubric and SMR protocol item.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.chest_inspect",
+      "description": "Suppressed for closed-head-injury pilot: detailed chest inspection is not required by this focused TBI presentation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.chest_palpate",
+      "description": "Suppressed for closed-head-injury pilot: chest palpation is not required by this focused TBI presentation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.chest_auscultate",
+      "description": "Suppressed for closed-head-injury pilot: chest auscultation is not required beyond primary breathing assessment for this focused TBI presentation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.abdomen_inspect_palpate",
+      "description": "Suppressed for closed-head-injury pilot: abdominal trauma assessment is not required by this focused TBI presentation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.pelvis_assess",
+      "description": "Suppressed for closed-head-injury pilot: pelvic trauma assessment is not required by this focused TBI presentation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.genitalia_perineum_as_needed",
+      "description": "Suppressed for closed-head-injury pilot: genitalia/perineum assessment is not indicated by this focused TBI presentation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.lower_left_pmsc",
+      "description": "Suppressed for closed-head-injury pilot: left lower-extremity PMSC is not required by this focused TBI presentation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.lower_right_pmsc",
+      "description": "Suppressed for closed-head-injury pilot: right lower-extremity PMSC is not required by this focused TBI presentation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.upper_left_pmsc",
+      "description": "Suppressed for closed-head-injury pilot: left upper-extremity PMSC is not required by this focused TBI presentation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.upper_right_pmsc",
+      "description": "Suppressed for closed-head-injury pilot: right upper-extremity PMSC is not required by this focused TBI presentation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.posterior_thorax",
+      "description": "Suppressed for closed-head-injury pilot: posterior thorax survey is not required by this focused TBI presentation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
+    {
+      "id": "ems.trauma.lumbar_buttocks",
+      "description": "Suppressed for closed-head-injury pilot: lumbar/buttocks survey is not required by this focused TBI presentation.",
+      "subtype": "assessment",
+      "category": "clinical_performance",
+      "point_value": 0,
+      "deprecated": true
+    },
     {
       "id": "peds_trauma_07_head_injury.pat_assessment",
       "description": "PAT completed — appearance (dull, glassy, not crying = sick), work of breathing (non-labored), circulation to skin (pale, diaphoretic) assessed",
