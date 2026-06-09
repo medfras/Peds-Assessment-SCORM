@@ -170,6 +170,17 @@
     _ALL_NODES.forEach((n) => { completed[n] = summary.node_completed ? !!summary.node_completed[n] : false; });
     const cc = summary.peds_ce_challenge || {};
     const ccId = cc.id || "pfd_station1_scorm_pass";
+    const isPfdPassChallenge = ccId === "pfd_station1_scorm_pass";
+    const ceSeconds = Number(cc.ce_seconds || 0);
+    const xp = Number(cc.xp || 0);
+    const xpRequired = isPfdPassChallenge ? 1200 : Number(cc.xp_required || 1200);
+    const pm1Completed = Number(cc.pm1_completed || 0);
+    const pm1Required = Number(cc.pm1_required || 2);
+    const pt1Completed = Number(cc.pt1_completed || 0);
+    const pt1Required = Number(cc.pt1_required || 2);
+    const trainingTimeDone = isPfdPassChallenge ? ceSeconds >= 3600 : !!cc.training_time_done;
+    const xpOk = isPfdPassChallenge ? xp >= xpRequired : !!cc.xp_ok;
+    const passComplete = pm1Completed >= pm1Required && pt1Completed >= pt1Required && trainingTimeDone && xpOk;
     const mirror = {
       v:        _SUSPEND_DATA_VERSION,
       attempt:  _attemptId,
@@ -179,17 +190,17 @@
       status:   summary.lesson_status || "incomplete",
       ce: {
         id:                  ccId,
-        title:               ccId === "pfd_station1_scorm_pass" ? "Pediatric Patient Assessment" : (cc.title || "Pediatric Patient Assessment"),
-        complete:            !!cc.complete,
-        ce_seconds:          cc.ce_seconds || 0,
-        training_time_done:   !!cc.training_time_done,
-        xp:                  cc.xp || 0,
-        xp_required:         ccId === "pfd_station1_scorm_pass" ? 1200 : (cc.xp_required || 1200),
-        xp_ok:               !!cc.xp_ok,
-        pm1_completed:       cc.pm1_completed || 0,
-        pm1_required:        cc.pm1_required  || 2,
-        pt1_completed:       cc.pt1_completed || 0,
-        pt1_required:        cc.pt1_required  || 2,
+        title:               isPfdPassChallenge ? "Pediatric Patient Assessment" : (cc.title || "Pediatric Patient Assessment"),
+        complete:            isPfdPassChallenge ? passComplete : !!cc.complete,
+        ce_seconds:          ceSeconds,
+        training_time_done:   trainingTimeDone,
+        xp,
+        xp_required:         xpRequired,
+        xp_ok:               xpOk,
+        pm1_completed:       pm1Completed,
+        pm1_required:        pm1Required,
+        pt1_completed:       pt1Completed,
+        pt1_required:        pt1Required,
         cpr_done:            !!cc.cpr_done,
         opt_games_completed: cc.optional_games_completed || 0,
         opt_games_required:  cc.optional_games_required  || 2,

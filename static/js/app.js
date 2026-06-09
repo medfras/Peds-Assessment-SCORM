@@ -6132,6 +6132,19 @@ function _normalizeScormState(summaryOrResume = {}) {
   const completed = summaryOrResume.node_completed || summaryOrResume.completed || {};
   const ce = summaryOrResume.peds_ce_challenge || summaryOrResume.ce || {};
   const ceId = ce.id || "pfd_station1_scorm_pass";
+  const isPfdPassChallenge = ceId === "pfd_station1_scorm_pass";
+  const ceSeconds = Number(ce.ce_seconds || 0);
+  const xp = Number(ce.xp || 0);
+  const xpRequired = isPfdPassChallenge ? 1200 : Number(ce.xp_required || 1200);
+  const pm1Completed = Number(ce.pm1_completed || 0);
+  const pm1Required = Number(ce.pm1_required || 2);
+  const pt1Completed = Number(ce.pt1_completed || 0);
+  const pt1Required = Number(ce.pt1_required || 2);
+  const trainingTimeDone = isPfdPassChallenge ? ceSeconds >= 3600 : !!ce.training_time_done;
+  const xpOk = isPfdPassChallenge ? xp >= xpRequired : !!ce.xp_ok;
+  const pm1Done = pm1Completed >= pm1Required;
+  const pt1Done = pt1Completed >= pt1Required;
+  const passComplete = pm1Done && pt1Done && trainingTimeDone && xpOk;
   return {
     ...summaryOrResume,
     node_scores: scores,
@@ -6139,17 +6152,19 @@ function _normalizeScormState(summaryOrResume = {}) {
     unlocks: summaryOrResume.unlocks || { scenarios: false, map3: false },
     peds_ce_challenge: {
       id: ceId,
-      title: ceId === "pfd_station1_scorm_pass" ? "Pediatric Patient Assessment" : (ce.title || "Pediatric Patient Assessment"),
-      complete: !!ce.complete,
-      ce_seconds: Number(ce.ce_seconds || 0),
-      training_time_done: !!ce.training_time_done,
-      xp: Number(ce.xp || 0),
-      xp_required: ceId === "pfd_station1_scorm_pass" ? 1200 : Number(ce.xp_required || 1200),
-      xp_ok: !!ce.xp_ok,
-      pm1_completed: Number(ce.pm1_completed || 0),
-      pm1_required: Number(ce.pm1_required || 2),
-      pt1_completed: Number(ce.pt1_completed || 0),
-      pt1_required: Number(ce.pt1_required || 2),
+      title: isPfdPassChallenge ? "Pediatric Patient Assessment" : (ce.title || "Pediatric Patient Assessment"),
+      complete: isPfdPassChallenge ? passComplete : !!ce.complete,
+      ce_seconds: ceSeconds,
+      training_time_done: trainingTimeDone,
+      xp,
+      xp_required: xpRequired,
+      xp_ok: xpOk,
+      pm1_completed: pm1Completed,
+      pm1_required: pm1Required,
+      pm1_done: pm1Done,
+      pt1_completed: pt1Completed,
+      pt1_required: pt1Required,
+      pt1_done: pt1Done,
       cpr_done: !!ce.cpr_done,
       optional_games_completed: Number(ce.optional_games_completed ?? ce.opt_games_completed ?? 0),
       optional_games_required: Number(ce.optional_games_required ?? ce.opt_games_required ?? 2),

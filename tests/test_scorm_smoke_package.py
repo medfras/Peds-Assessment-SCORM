@@ -607,22 +607,27 @@ def test_scorm_suspend_data_preserves_ui_location_for_resume():
 
 def test_scorm_pass_requirements_render_in_active_challenges_modal():
     app_js = APP_JS.read_text()
+    scorm_js = SCORM_JS.read_text()
     assert "function _scormPassChallengeForDisplay()" in app_js
     assert "scorm-peds-ce-challenge" in app_js
     assert "Pediatric Medical scenarios" in app_js
     assert "Pediatric Trauma scenarios" in app_js
     assert "Training time" in app_js
     assert "Number(ce.xp_required || 1200)" in app_js
-    assert 'title: ceId === "pfd_station1_scorm_pass" ? "Pediatric Patient Assessment"' in app_js
-    assert 'xp_required: ceId === "pfd_station1_scorm_pass" ? 1200' in app_js
+    assert 'title: isPfdPassChallenge ? "Pediatric Patient Assessment"' in app_js
+    assert "xp_required: xpRequired" in app_js
     assert "Earn at least ${xpRequired} XP" in app_js
     assert "custom_items" in app_js
     assert "function _activeChallengesForDisplay()" in app_js
     assert "_activeChallengesForDisplay().find" in app_js
+    assert "const xpOk = isPfdPassChallenge ? xp >= xpRequired : !!ce.xp_ok;" in app_js
+    assert "complete: isPfdPassChallenge ? passComplete : !!ce.complete" in app_js
     assert "const progressDone = pm1Done + pt1Done + (timeDone ? 1 : 0) + (xpOk ? 1 : 0);" in app_js
     assert "const progressTotal = pm1Required + pt1Required + 2;" in app_js
     assert "scenarios_total: progressTotal" in app_js
     assert "scenarios_completed: progressDone" in app_js
+    assert "const xpOk = isPfdPassChallenge ? xp >= xpRequired : !!cc.xp_ok;" in scorm_js
+    assert "complete:            isPfdPassChallenge ? passComplete : !!cc.complete" in scorm_js
 
 
 def test_scorm_production_peds_maps_use_backend_node_state():
