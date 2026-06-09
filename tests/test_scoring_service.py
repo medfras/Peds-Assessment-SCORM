@@ -820,6 +820,70 @@ def test_head_injury_dcap_btls_head_exam_satisfies_focused_head_item():
     assert partner_head_dcap.state == "satisfied"
 
 
+def test_head_injury_structured_exam_rows_credit_neuro_and_general_head_items():
+    from app.rubric_loader import compose_active_checklist, load_call_type_rubric
+
+    scenario_path = Path(__file__).resolve().parents[1] / "app/scenarios/pediatric/trauma/peds_trauma_07_head_injury.json"
+    scenario = json.loads(scenario_path.read_text())
+    rubric = load_call_type_rubric("head_injury", "training")
+    composed = compose_active_checklist(
+        base_items=load_checklist(scenario, level="EMT", mca="mi_base", agency_id=None),
+        rubric=rubric,
+        provider_level="EMT",
+        scenario=scenario,
+    )
+    by_id = {item.id: item for item in composed.items}
+    findings = [
+        _finding("GCS", "14 (E4 V4 M6)", finding_type="vital", fid=1, source="gcs_modal"),
+        _finding(
+            "Neurological Assessment",
+            "GCS 14/15 (E4 V4 M6); Patient is alert but confused; Pupils: R 4 mm sluggish, L 3 mm brisk",
+            finding_type="exam",
+            fid=2,
+            source="student_stated_exam",
+        ),
+        _finding("Pupils", "R 4 mm sluggish, L 3 mm brisk", finding_type="exam", fid=3, source="student_stated_exam"),
+        _finding("LOC", "No loss of consciousness; cried right after; vomited once", finding_type="history", fid=4, source="ai_roleplay_tag"),
+        _finding("Vomiting", "Vomited once about 2 minutes after fall", finding_type="history", fid=5, source="ai_roleplay_tag"),
+        _finding(
+            "DCAP-BTLS Assessment — Head",
+            "Head/scalp DCAP-BTLS assessed: no visible scalp laceration or external hemorrhage; assess for deformity, step-off, tenderness, and swelling.",
+            finding_type="exam",
+            fid=6,
+            source="student_stated_exam",
+        ),
+        _finding(
+            "Facial / Mouth / Nose Assessment",
+            "Face, mouth, and nose assessed for DCAP-BTLS and visible injury.",
+            finding_type="exam",
+            fid=7,
+            source="student_stated_exam",
+        ),
+    ]
+
+    for item_id in [
+        "head_injury.neuro_assessment",
+        "head_injury.pupil_assessment",
+        "head_injury.dcap_btls_head",
+        "ems.trauma.head_scalp_ears",
+        "ems.trauma.head_eyes",
+        "ems.trauma.head_mouth_nose_face",
+    ]:
+        state = adjudicate(
+            [by_id[item_id]],
+            interventions=[],
+            session_findings=findings,
+            session_events=[],
+            chat_messages=[],
+            scene_entry=None,
+            submitted_dmist=None,
+            submitted_narrative=None,
+            scenario=scenario,
+            legacy_ai_categories=frozenset(),
+        )[0]
+        assert state.state == "satisfied", item_id
+
+
 def test_soft_tissue_mechanism_screen_uses_structured_mechanism_and_loc_history():
     scenario_path = Path(__file__).resolve().parents[1] / "app/scenarios/pediatric/trauma/peds_trauma_01_soft_tissue.json"
     scenario = json.loads(scenario_path.read_text())

@@ -23143,8 +23143,46 @@ async function applyInterventionAndRecord(interventionId, pcrLabel, { source = "
   }
 
   addPcrTreatment(pcrLabel, interventionId);
+  await _recordStructuredExamFindingsForIntervention(interventionId);
   _appendLexiInterventionFeedback(interventionId, pcrLabel);
   checkReadiness();
+}
+
+async function _recordStructuredExamFindingsForIntervention(interventionId) {
+  const id = String(interventionId || "");
+  const writes = [];
+  const authoredValue = (key, fallback = "") => {
+    const def = _AUTHORED_VITAL_DEFS.find(d => d.key === key);
+    const formatted = def ? _formatAuthoredVitalValue(def, { useDisplay: true }) : null;
+    if (formatted && !formatted.unavailable && formatted.value) return formatted.value;
+    return fallback;
+  };
+
+  if (id === "neuro_assessment") {
+    const gcs = state.scenarioData?.patient?.gcs_assessment;
+    const gcsText = gcs?.total
+      ? `GCS ${gcs.total}/15 (E${gcs.e} V${gcs.v} M${gcs.m})`
+      : "GCS/AVPU assessed";
+    const gcsVitalText = gcs?.total ? `${gcs.total} (E${gcs.e} V${gcs.v} M${gcs.m})` : "Assessed";
+    const locText = state.scenarioData?.patient?.avpu_assessment?.description || "Level of consciousness assessed.";
+    const pupilsText = authoredValue("pupils", "Pupils assessed for size, equality, and reactivity.");
+    const eventsText = state.scenarioData?.history?.events_leading_to_call || "LOC and vomiting history assessed.";
+    _vitalsBatch = { GCS: gcsVitalText };
+    writes.push(...(flushVitalsBlock({ GCS: "gcs_modal", default: "gcs_modal" }) || []));
+    writes.push(addPcrExam("Neurological Assessment", `${gcsText}; ${locText}; Pupils: ${pupilsText}`, "student_stated_exam"));
+    writes.push(addPcrExam("Pupils", pupilsText, "student_stated_exam"));
+    writes.push(addPcrExam("AVPU / LOC", locText, "student_stated_exam"));
+    writes.push(addPcrHistory("LOC", eventsText, "ai_roleplay_tag"));
+    writes.push(addPcrHistory("Vomiting", eventsText, "ai_roleplay_tag"));
+  } else if (id === "dcap_btls_head_neck") {
+    const headFinding = "Head/scalp DCAP-BTLS assessed: no visible scalp laceration or external hemorrhage; assess for deformity, step-off, tenderness, and swelling.";
+    const faceFinding = "Face, mouth, and nose assessed for DCAP-BTLS and visible injury.";
+    writes.push(addPcrExam("DCAP-BTLS Assessment — Head", headFinding, "student_stated_exam"));
+    writes.push(addPcrExam("Head Assessment", headFinding, "student_stated_exam"));
+    writes.push(addPcrExam("Facial / Mouth / Nose Assessment", faceFinding, "student_stated_exam"));
+  }
+
+  await Promise.allSettled(writes.filter(Boolean));
 }
 
 function appendSuggestionChips(suggestions, afterEl) {
