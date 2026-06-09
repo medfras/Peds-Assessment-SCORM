@@ -15481,15 +15481,11 @@ function _station1IntroBubbleText() {
 
 function _station1CprDrillBestScore() {
   const scores = loadGamification().minigameBestScores || {};
-  return Math.max(
-    Number(scores.cpr_bls_concepts || 0),
-    Number(scores.game_bls || 0),
-  );
+  return Number(scores.cpr_bls_concepts || 0);
 }
 
-function _station1CprDrillComplete(completedIds = new Set()) {
-  return completedIds.has(STATION1_CPR_SCENARIO_ID)
-    || _station1CprDrillBestScore() >= 70;
+function _station1CprDrillComplete() {
+  return _station1CprDrillBestScore() >= 70;
 }
 
 function _station1WrapSeen() {
@@ -15513,21 +15509,8 @@ function _station1RequirementsState(history = null) {
   const completedIds = new Set(scopedHistory.map(h => h.scenarioId));
   const introSeen = _station1IntroSeen();
   const completed = completedIds.has("orientation_01");
-  const cprComplete = _station1CprDrillComplete(completedIds);
+  const cprComplete = _station1CprDrillComplete();
   const challengesSeen = cprComplete && _station1ChallengesSeen();
-  if (_station1PersistedComplete()) {
-    completedIds.add("orientation_01");
-    completedIds.add(STATION1_CPR_SCENARIO_ID);
-    return {
-      history: scopedHistory,
-      completedIds,
-      introSeen: true,
-      completed: true,
-      cprComplete: true,
-      challengesSeen: true,
-      ready: true,
-    };
-  }
   const ready = introSeen && completed && cprComplete && challengesSeen;
   return { history: scopedHistory, completedIds, introSeen, completed, cprComplete, challengesSeen, ready };
 }

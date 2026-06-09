@@ -360,17 +360,14 @@ def test_scorm_station1_wrapup_requires_full_orientation_sequence():
     assert "function _station1ScormOrientationComplete()" in app_js
     assert "_getScormUiState()?.orientationComplete === true && !!state.orientationCompletedAt" in app_js
     assert "function _station1PersistedComplete()" in app_js
-    assert "if (_station1PersistedComplete())" in app_js
-    assert "completedIds.add(\"orientation_01\");" in app_js
-    assert "completedIds.add(STATION1_CPR_SCENARIO_ID);" in app_js
-    assert "introSeen: true" in app_js
-    assert "challengesSeen: true" in app_js
     assert "if (_station1PersistedComplete()) return true;" in app_js
     assert "return !!state.orientationCompletedAt && !!req.ready;" in app_js
     assert 'if (state.scormEnabled) _setScormUiState({ location: "home", map: "map_0", orientationComplete: true });' in app_js
-    assert "return completedIds.has(STATION1_CPR_SCENARIO_ID)" in app_js
+    assert "return completedIds.has(STATION1_CPR_SCENARIO_ID)" not in app_js
     assert "function _station1CprDrillBestScore()" in app_js
     assert "_station1CprDrillBestScore() >= 70" in app_js
+    assert "Number(scores.cpr_bls_concepts || 0)" in app_js
+    assert "Number(scores.game_bls || 0)" not in app_js
     assert '{ nodeId: "game_bls", appId: "cpr_bls_concepts"' in app_js
     assert "const completionLocked = !introSeen || !completed || !cprComplete || !challengesSeen;" in app_js
     complete_start = app_js.find("async function _completeStation1FromWrapupNode()")
