@@ -74,6 +74,7 @@ from app.models import (
     SimSession,
     Intervention,
     ChatMessage,
+    LexiChatMessage,
     SessionFinding,
     AdjudicatedOutcome,
     SessionEvent,
@@ -5416,13 +5417,13 @@ async def _lexi_group_phase_worker():
             await asyncio.sleep(1)
 
 
-_TTL_CHAT_DAYS = 30   # delete ChatMessage rows older than this
+_TTL_CHAT_DAYS = 30   # delete raw chat rows older than this
 _TTL_SCRUB_INTERVAL_SECONDS = 86_400  # run once per day
 
 async def _ttl_scrub_worker():
     """Daily background task that purges raw transcript data from completed sessions
     older than _TTL_CHAT_DAYS.  Retains scored metadata and generated debriefs.
-    Deletes ChatMessage rows; nulls dmist_report; strips narrative_data['narrative'].
+    Deletes raw chat rows; nulls dmist_report; strips narrative_data['narrative'].
     This implements the 30-day retention policy documented in the HLD (§6 Security)."""
     while True:
         try:
@@ -5441,6 +5442,11 @@ async def _ttl_scrub_worker():
                     await db.execute(
                         ChatMessage.__table__.delete().where(
                             ChatMessage.session_id.in_(expired_ids)
+                        )
+                    )
+                    await db.execute(
+                        LexiChatMessage.__table__.delete().where(
+                            LexiChatMessage.session_id.in_(expired_ids)
                         )
                     )
                     # Bulk-delete session findings (transitional ingestion rows contain
@@ -12512,6 +12518,20 @@ def _auto_detect_interventions(message: str, session: SimSession, scenario: dict
 
 # ── Lexi hint chat ────────────────────────────────────────────────────────────
 
+def _lexi_log_user_content(req: LexiRequest) -> str:
+    """Return learner-facing text for Lexi QA logs.
+
+    The debrief coach primes the first request with hidden debrief context in the
+    message body.  Store only the learner's actual question when that marker is
+    present, so QA review does not duplicate the entire context prompt.
+    """
+    text_value = str(req.message or "")
+    marker = "Learner question:"
+    if req.mode == "debrief" and marker in text_value:
+        return text_value.rsplit(marker, 1)[-1].strip()
+    return text_value.strip()
+
+
 @app.post("/api/lexi")
 @limiter.limit(f"{settings.rate_limit_lexi}/minute")
 async def lexi_chat(request: Request, req: LexiRequest, ctx: ActiveContext = Depends(get_active_context)):
@@ -12527,6 +12547,7 @@ async def lexi_chat(request: Request, req: LexiRequest, ctx: ActiveContext = Dep
         )
         snapshot = {
             "start_time":     session.start_time,
+            "user_id":        session.user_id,
             "provider_level": session.provider_level,
             "mca":            session.mca,
             "interventions":  [{"name": i.name, "applied_at": i.applied_at} for i in session.interventions],
@@ -12559,25 +12580,53 @@ async def lexi_chat(request: Request, req: LexiRequest, ctx: ActiveContext = Dep
             _ep_ic_result = (_ep_ic or {}).get("result") if _ep_ic else None
             snapshot["condition_locked"] = _sc_ic_enabled and _ep_ic_result not in ("correct", "acceptable")
 
+        db.add(LexiChatMessage(
+            session_id=session.id,
+            user_id=session.user_id,
+            mode=req.mode or "scenario",
+            role="user",
+            content=_lexi_log_user_content(req),
+            timestamp=datetime.utcnow(),
+        ))
+        await db.commit()
+
     async def generate():
         yielded = False
+        full_response: list[str] = []
         for attempt in range(2):
             try:
                 async for chunk in get_lexi_response(
                     req.message, req.history, snapshot, scenario, agency_dict,
                     treat_hint=req.treat_hint, mode=req.mode
                 ):
+                    full_response.append(chunk)
                     yield f"data: {json.dumps({'text': chunk})}\n\n"
                     yielded = True
             except Exception as e:
-                yield f"data: {json.dumps({'text': f'[Lexi error: {str(e)[:120]}]'})}\n\n"
+                error_text = f"[Lexi error: {str(e)[:120]}]"
+                full_response.append(error_text)
+                yield f"data: {json.dumps({'text': error_text})}\n\n"
                 yielded = True
             if yielded:
                 break
             log.warning("lexi.empty_stream_retry", session_id=req.session_id, attempt=attempt + 1)
         if not yielded:
             log.warning("lexi.empty_stream", session_id=req.session_id)
-            yield f"data: {json.dumps({'text': '[No response — please try again]'})}\n\n"
+            fallback_text = "[No response — please try again]"
+            full_response.append(fallback_text)
+            yield f"data: {json.dumps({'text': fallback_text})}\n\n"
+        response_text = "".join(full_response).strip()
+        if response_text:
+            async with async_session_factory() as save_db:
+                save_db.add(LexiChatMessage(
+                    session_id=req.session_id,
+                    user_id=snapshot["user_id"],
+                    mode=req.mode or "scenario",
+                    role="model",
+                    content=response_text,
+                    timestamp=datetime.utcnow(),
+                ))
+                await save_db.commit()
         yield "data: [DONE]\n\n"
 
     return StreamingResponse(generate(), media_type="text/event-stream")

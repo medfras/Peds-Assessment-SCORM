@@ -433,6 +433,27 @@ class ChatMessage(Base):
     session = relationship("SimSession", back_populates="messages")
 
 
+class LexiChatMessage(Base):
+    """Persist Lexi side-panel and debrief-coach turns for short-term QA review.
+
+    This is intentionally separate from scenario ChatMessage because Lexi coaching
+    is educational support, not in-character scenario transcript.
+    """
+    __tablename__ = "lexi_chat_messages"
+    __table_args__ = (
+        Index("ix_lexi_chat_messages_session_time", "session_id", "timestamp"),
+        Index("ix_lexi_chat_messages_user_time", "user_id", "timestamp"),
+    )
+
+    id         = Column(Integer, primary_key=True, autoincrement=True)
+    session_id = Column(String, ForeignKey("sessions.id"), nullable=False)
+    user_id    = Column(String, ForeignKey("users.id"), nullable=False, index=True)
+    mode       = Column(String, nullable=False, default="scenario")  # "scenario" | "debrief"
+    role       = Column(String, nullable=False)  # "user" | "model"
+    content    = Column(Text, nullable=False)
+    timestamp  = Column(DateTime, default=datetime.utcnow)
+
+
 class SessionFinding(Base):
     """Structured assessment findings captured during a simulation.
 

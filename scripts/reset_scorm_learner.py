@@ -56,6 +56,7 @@ USER_PROGRESS_TABLES = (
     "peds_map_progress",
     "peds_keys",
     "student_scenario_history",
+    "lexi_chat_messages",
     "user_notes",
     "user_toys",
     "user_pity_counters",
