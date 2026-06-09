@@ -449,7 +449,7 @@ def test_head_injury_scenario_does_not_show_neuro_reassessment_timeline_requirem
     assert _find_timeline(timeline, "Reassess GCS and pupils") is None
 
 
-def test_head_injury_neuro_reassessment_requires_post_intervention_gcs_and_pupils():
+def test_head_injury_neuro_reassessment_recommended_action_is_omitted():
     scenario = {
         "correct_treatment": {
             "recommended_actions": [
@@ -475,13 +475,11 @@ def test_head_injury_neuro_reassessment_requires_post_intervention_gcs_and_pupil
     )
 
     timeline = _build_session_timeline(session, scenario)
-    item = _find_timeline(timeline, "Reassess GCS and pupils")
 
-    assert item is not None
-    assert item["status"] == "missed"
+    assert _find_timeline(timeline, "Reassess GCS and pupils") is None
 
 
-def test_head_injury_neuro_reassessment_credits_repeated_gcs_and_pupils():
+def test_head_injury_neuro_reassessment_omitted_even_when_repeated():
     scenario = {
         "correct_treatment": {
             "recommended_actions": [
@@ -506,42 +504,8 @@ def test_head_injury_neuro_reassessment_credits_repeated_gcs_and_pupils():
     )
 
     timeline = _build_session_timeline(session, scenario)
-    item = _find_timeline(timeline, "Reassess GCS and pupils")
 
-    assert item is not None
-    assert item["status"] == "applied"
-
-
-def test_head_injury_neuro_reassessment_credits_gcs_and_pupils_immediately_after_intervention():
-    scenario = {
-        "correct_treatment": {
-            "recommended_actions": [
-                {
-                    "id": "reassess_neuro",
-                    "description": "Reassess GCS and pupils before ALS handoff and continue trending if care is extended",
-                    "required": False,
-                }
-            ],
-        },
-    }
-    t0 = datetime.utcnow()
-    session = _session(
-        t0,
-        interventions=[_intervention("o2_nrb", t0 + timedelta(seconds=60))],
-        findings=[
-            _finding("GCS", "14/15", "vital", t0 + timedelta(seconds=45)),
-            _finding("Pupils", "R 4 mm sluggish; L 3 mm brisk", "exam", t0 + timedelta(seconds=50)),
-            _finding("GCS", "14/15", "vital", t0 + timedelta(seconds=65)),
-            _finding("Pupils", "R 4 mm sluggish; L 3 mm brisk", "exam", t0 + timedelta(seconds=66)),
-        ],
-    )
-
-    timeline = _build_session_timeline(session, scenario)
-    item = _find_timeline(timeline, "Reassess GCS and pupils")
-
-    assert item is not None
-    assert item["status"] == "applied"
-    assert item["elapsed_min"] == 1.1
+    assert _find_timeline(timeline, "Reassess GCS and pupils") is None
 
 
 def test_scored_critical_action_falls_back_to_transcript_evidence_timestamp():
