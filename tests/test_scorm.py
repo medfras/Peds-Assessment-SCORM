@@ -809,7 +809,7 @@ def test_app_js_refreshes_scorm_summary_after_lexi_xp_award():
     assert idx != -1
     block = src[idx:idx + 5200]
 
-    progress_refresh = "await _loadProgressFromServer({ minXp: _progressCache?.xp, minTreats: _progressCache?.treats }).catch(() => {});"
+    progress_refresh = "await _loadProgressFromServer().catch(() => {});"
     assert progress_refresh in block
     assert "_applyGamificationAward({ xpEarned: xp, newBadges: badges });" in block
     assert "await _refreshScormSummary().catch(() => {});" in block
@@ -822,7 +822,7 @@ def test_app_js_refreshes_scorm_summary_after_scenario_xp_award():
     assert idx != -1
     block = src[idx:idx + 3600]
 
-    progress_refresh = "await _loadProgressFromServer({ minXp: _progressCache?.xp, minTreats: _progressCache?.treats }).catch(() => {});"
+    progress_refresh = "await _loadProgressFromServer().catch(() => {});"
     assert progress_refresh in block
     assert "_refreshGamificationChrome();" in block
     assert "await _refreshScormSummary().catch(() => {});" in block
@@ -837,7 +837,7 @@ def test_app_js_refreshes_xp_chrome_after_drill_xp_awards():
     assert idx != -1
     block = src[idx:idx + 3600]
 
-    progress_refresh = "await _loadProgressFromServer({ minXp: _progressCache?.xp, minTreats: _progressCache?.treats }).catch(() => {});"
+    progress_refresh = "await _loadProgressFromServer().catch(() => {});"
     assert "_applyGamificationAward({ xpEarned });" in block
     assert progress_refresh in block
     assert "_refreshGamificationChrome();" in block

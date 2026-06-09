@@ -8786,7 +8786,7 @@ const _patEngine = new SwipeGameEngine({
         _applyGamificationAward({ xpEarned: Number(data.xp_earned || 0) });
         if (score >= 70) await _saveMgLearningPage("pat");
         await _onScormNodeComplete("pat", score, true, Array.isArray(mistakeTags) ? mistakeTags : []);
-        await _loadProgressFromServer({ minXp: _progressCache?.xp, minTreats: _progressCache?.treats }).catch(() => {});
+        await _loadProgressFromServer().catch(() => {});
         _refreshGamificationChrome();
         await _refreshScormSummary().catch(() => {});
         if (!el("screen-menu")?.classList.contains("hidden")) buildMenu();
@@ -8913,7 +8913,7 @@ const _devSortEngine = new DragSortGameEngine({
           el("btn-sort-continue-red-flags")?.classList.add("hidden");
         }
         await _onScormNodeComplete("dev_sort", score, true, []);
-        await _loadProgressFromServer({ minXp: _progressCache?.xp, minTreats: _progressCache?.treats }).catch(() => {});
+        await _loadProgressFromServer().catch(() => {});
         _refreshGamificationChrome();
         await _refreshScormSummary().catch(() => {});
         if (!el("screen-menu")?.classList.contains("hidden")) buildMenu();
@@ -9094,7 +9094,7 @@ async function _mgSubmitResult(gameId, { total, correct, bestStreak, elapsedSec,
         const title = firstCard?.title || firstCard?.card_id || "Reference card";
         showToast(`Reference card unlocked: ${title}`, "success");
       }
-      await _loadProgressFromServer({ minXp: _progressCache?.xp, minTreats: _progressCache?.treats }).catch(() => {});
+      await _loadProgressFromServer().catch(() => {});
       _refreshGamificationChrome();
       await _refreshScormSummary().catch(() => {});
       await _loadChallenges().then(_buildChallengesSection).catch(() => {});
@@ -15012,7 +15012,7 @@ async function _lexiShowOutro() {
   // Refresh progress from server so post-round XP/badges stay authoritative.
   if (result) {
     _applyGamificationAward({ xpEarned: xp, newBadges: badges });
-    await _loadProgressFromServer({ minXp: _progressCache?.xp, minTreats: _progressCache?.treats }).catch(() => {});
+    await _loadProgressFromServer().catch(() => {});
     _refreshGamificationChrome();
     await _refreshScormSummary().catch(() => {});
     const g = loadGamification();
@@ -15617,6 +15617,10 @@ async function _completeStation1FromWrapupNode() {
     const me = await meRes.json().catch(() => null);
     state.orientationCompletedAt = me?.orientation_completed_at || state.orientationCompletedAt;
   }
+  await _loadProgressFromServer().catch(() => {});
+  _refreshGamificationChrome();
+  await _refreshScormSummary().catch(() => {});
+  _refreshScormChallengeDisplays();
   showToast("Station 1 complete. Check Challenges any time from the sidebar.", "success");
   return true;
 }
@@ -27778,7 +27782,7 @@ async function processDebrief(feedback, score, subscores = null, timeline = null
   }
 
   if (xpEarned > 0 || treatsEarned > 0 || newBadges.length || challengeBadges.length) {
-    await _loadProgressFromServer({ minXp: _progressCache?.xp, minTreats: _progressCache?.treats }).catch(() => {});
+    await _loadProgressFromServer().catch(() => {});
     _refreshGamificationChrome();
     await _refreshScormSummary().catch(() => {});
     _refreshScormChallengeDisplays();

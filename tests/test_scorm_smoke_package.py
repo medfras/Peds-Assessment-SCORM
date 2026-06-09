@@ -372,9 +372,13 @@ def test_scorm_station1_wrapup_requires_full_orientation_sequence():
     assert "const completionLocked = !introSeen || !completed || !cprComplete || !challengesSeen;" in app_js
     complete_start = app_js.find("async function _completeStation1FromWrapupNode()")
     assert complete_start != -1
-    complete_block = app_js[complete_start:complete_start + 500]
+    complete_block = app_js[complete_start:complete_start + 1400]
     assert "const requirements = _station1RequirementsState();" in complete_block
     assert "if (!requirements.ready)" in complete_block
+    assert "await _loadProgressFromServer().catch(() => {});" in complete_block
+    assert "_refreshGamificationChrome();" in complete_block
+    assert "await _refreshScormSummary().catch(() => {});" in complete_block
+    assert "_refreshScormChallengeDisplays();" in complete_block
     sidebar_start = app_js.find("function _renderStation1Sidebar")
     assert sidebar_start != -1
     sidebar_block = app_js[sidebar_start:sidebar_start + 900]
