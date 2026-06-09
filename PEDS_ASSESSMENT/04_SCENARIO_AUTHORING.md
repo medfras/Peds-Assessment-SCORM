@@ -101,9 +101,7 @@ Primary objectives:
 - Identify concerning head-injury findings, including unequal/sluggish pupils.
 - Apply spinal motion restriction for mechanism plus altered mental status.
 - Apply high-flow oxygen per suspected TBI/head injury protocol.
-- Reassess GCS and pupils before ALS handoff and during extended care when completed in-session.
-
-Backend-authoritative evidence should include GCS, LOC/vomiting history, pupil assessment, head DCAP-BTLS, SMR intervention, O2 NRB intervention, and neuro reassessment only when both GCS and pupils are repeated after intervention.
+Backend-authoritative evidence should include GCS, LOC/vomiting history, pupil assessment, head DCAP-BTLS, SMR intervention, and O2 NRB intervention.
 
 #### `peds_trauma_03_extremity`
 

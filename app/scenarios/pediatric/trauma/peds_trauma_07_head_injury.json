@@ -919,7 +919,7 @@
         }
       },
       {
-        "id": "dcap_btls_head_neck",
+        "id": "dcap_btls_head",
         "description": "DCAP-BTLS assessment of head — palpate for deformity, step-off, tenderness, and swelling",
         "required": true,
         "protocol_indicated": true,
@@ -969,11 +969,6 @@
       {
         "id": "rapid_transport",
         "description": "Initiate transport promptly — do not delay on scene; request ALS rendezvous if not already arranged",
-        "required": false
-      },
-      {
-        "id": "reassess_neuro",
-        "description": "Reassess GCS and pupils before ALS handoff and continue trending if care is extended",
         "required": false
       }
     ],
@@ -1118,8 +1113,7 @@
           "Expedite transport — do not delay on scene"
         ],
         "additional_expectations": [
-          "Recognize unequal pupils as a focal neurological finding requiring urgent transport",
-          "Reassess GCS and pupils before ALS handoff and continue trending if care is extended"
+          "Recognize unequal pupils as a focal neurological finding requiring urgent transport"
         ],
         "grace_items": [
           "Blood glucose check is not penalized if done — ruled out hypoglycemia is good practice",
@@ -1134,8 +1128,7 @@
           "Anticipate advanced airway need if GCS drops to 8 or below"
         ],
         "additional_expectations": [
-          "IV/IO consideration documented — explain decision to defer (stable presentation) or initiate (deteriorating)",
-          "Reassess GCS and pupils every 3–5 minutes during extended care — communicate trends to ALS or the receiving facility"
+          "IV/IO consideration documented — explain decision to defer (stable presentation) or initiate (deteriorating)"
         ],
         "grace_items": [
           "IV not required at baseline GCS 14 with SpO2 98% — documenting the decision to defer is sufficient",

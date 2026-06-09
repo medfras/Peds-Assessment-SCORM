@@ -307,7 +307,7 @@ def test_head_injury_dcap_btls_critical_action_accepts_exam_menu_procedure():
         "correct_treatment": {
             "critical_actions": [
                 {
-                    "id": "dcap_btls_head_neck",
+                    "id": "dcap_btls_head",
                     "description": "DCAP-BTLS assessment of head — palpate for deformity, step-off, tenderness, and swelling",
                     "required": True,
                     "protocol_indicated": True,
@@ -354,7 +354,7 @@ def test_head_injury_dcap_btls_evidence_overrides_stale_missed_checklist_state()
         "correct_treatment": {
             "critical_actions": [
                 {
-                    "id": "dcap_btls_head_neck",
+                    "id": "dcap_btls_head",
                     "description": "DCAP-BTLS assessment of head — palpate for deformity, step-off, tenderness, and swelling",
                     "required": True,
                     "protocol_indicated": True,
@@ -396,6 +396,57 @@ def test_head_injury_dcap_btls_evidence_overrides_stale_missed_checklist_state()
     assert item is not None
     assert item["status"] == "applied"
     assert item["elapsed_min"] == 0.6
+
+
+def test_head_injury_dcap_btls_critical_action_accepts_rubric_done_state():
+    scenario = {
+        "correct_treatment": {
+            "critical_actions": [
+                {
+                    "id": "dcap_btls_head",
+                    "description": "DCAP-BTLS assessment of head — palpate for deformity, step-off, tenderness, and swelling",
+                    "required": True,
+                    "protocol_indicated": True,
+                    "evidence": {
+                        "finding_types": ["exam"],
+                        "intervention_ids": ["dcap_btls_head_neck"],
+                        "finding_key_patterns": ["dcap[-\\s]?btls.*head"],
+                        "min_matches": 1,
+                    },
+                }
+            ],
+        },
+    }
+    t0 = datetime.utcnow()
+    session = _session(
+        t0,
+        checklist_states=_checklist_states([
+            {"item_id": "head_injury.dcap_btls_head", "state": "satisfied", "earned_points": 5},
+        ]),
+    )
+
+    timeline = _build_session_timeline(session, scenario)
+    item = _find_timeline(timeline, "DCAP-BTLS assessment of head")
+
+    assert item is not None
+    assert item["status"] == "applied"
+
+
+def test_head_injury_scenario_does_not_show_neuro_reassessment_timeline_requirement():
+    scenario = load_scenario("peds_trauma_07_head_injury")
+    t0 = datetime.utcnow()
+    session = _session(
+        t0,
+        interventions=[_intervention("o2_nrb", t0 + timedelta(seconds=60))],
+        findings=[
+            _finding("GCS", "14/15", "vital", t0 + timedelta(seconds=45)),
+            _finding("Pupils", "R 4 mm sluggish; L 3 mm brisk", "exam", t0 + timedelta(seconds=50)),
+        ],
+    )
+
+    timeline = _build_session_timeline(session, scenario)
+
+    assert _find_timeline(timeline, "Reassess GCS and pupils") is None
 
 
 def test_head_injury_neuro_reassessment_requires_post_intervention_gcs_and_pupils():
