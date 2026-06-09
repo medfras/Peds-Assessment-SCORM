@@ -679,9 +679,15 @@ def _finish_body() -> str:
 
 
 def test_scorm_js_finish_gates_on_ce_challenge():
-    assert "peds_ce_challenge" in _finish_body(), (
-        "finish() must gate on peds_ce_challenge.complete, not final_score"
+    assert "_summaryPassGate(summary)" in _finish_body(), (
+        "finish() must recompute the PFD pass gate before writing Moodle status"
     )
+    src = _SCORM_JS.read_text()
+    gate_start = src.index("function _summaryPassGate(summary)")
+    gate_end = src.index("function finish(summary)", gate_start)
+    gate_body = src[gate_start:gate_end]
+    assert "peds_ce_challenge" in gate_body
+    assert "xp >= xpRequired" in gate_body
 
 
 def test_scorm_js_finish_writes_incomplete_not_failed():
@@ -701,6 +707,7 @@ def test_scorm_js_writes_lesson_status_when_summary_is_persisted():
     body = src[start:end]
 
     assert "peds_ce_challenge" in body
+    assert 'const ceComplete = isPfdPassChallenge ? passComplete : !!(summary.peds_ce_challenge && summary.peds_ce_challenge.complete);' in body
     assert 'LMSSetValue("cmi.core.lesson_status", ceComplete ? "passed" : "incomplete")' in body
     assert '"cmi.core.score.raw"' in body
     assert ': "0",' in body
@@ -719,6 +726,8 @@ def test_scorm_js_incomplete_summary_resets_score_raw_for_moodle_mastery_overrid
         assert '"cmi.core.score.raw"' in body
         assert "ceComplete && summary.final_score !== null && summary.final_score !== undefined" in body
         assert ': "0",' in body
+    assert "function _summaryPassGate(summary)" in src
+    assert "xp >= xpRequired" in src
 
 
 # ── app.js completion event contract ─────────────────────────────────────────

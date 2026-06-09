@@ -631,6 +631,8 @@ def test_scorm_pass_requirements_render_in_active_challenges_modal():
     assert "scenarios_completed: progressDone" in app_js
     assert "const xpOk = isPfdPassChallenge ? xp >= xpRequired : !!cc.xp_ok;" in scorm_js
     assert "complete:            isPfdPassChallenge ? passComplete : !!cc.complete" in scorm_js
+    assert "function _summaryPassGate(summary)" in scorm_js
+    assert "const ceComplete = _summaryPassGate(summary);" in scorm_js
 
 
 def test_frontend_awards_refresh_gamification_chrome_without_waiting_for_navigation():

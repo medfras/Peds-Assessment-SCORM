@@ -929,6 +929,7 @@
           ],
           "finding_key_patterns": [
             "dcap[-\\s]?btls.*head",
+            "DCAP[-\\s]?BTLS Assessment.*Head",
             "head.*dcap",
             "head assessment",
             "scalp assessment"
@@ -969,7 +970,7 @@
       },
       {
         "id": "reassess_neuro",
-        "description": "Reassess GCS and pupils during transport — trend is critical",
+        "description": "Reassess GCS and pupils before ALS handoff and continue trending if care is extended",
         "required": false
       }
     ],

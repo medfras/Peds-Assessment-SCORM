@@ -208,7 +208,7 @@
     };
     if (_uiState) mirror.ui = _uiState;
     _api.LMSSetValue("cmi.suspend_data", JSON.stringify(mirror));
-    const ceComplete = !!(summary.peds_ce_challenge && summary.peds_ce_challenge.complete);
+    const ceComplete = isPfdPassChallenge ? passComplete : !!(summary.peds_ce_challenge && summary.peds_ce_challenge.complete);
     _api.LMSSetValue("cmi.core.score.min", "0");
     _api.LMSSetValue("cmi.core.score.max", "100");
     _api.LMSSetValue(
@@ -219,6 +219,24 @@
     );
     _api.LMSSetValue("cmi.core.lesson_status", ceComplete ? "passed" : "incomplete");
     _api.LMSCommit("");
+  }
+
+  function _summaryPassGate(summary) {
+    const cc = summary?.peds_ce_challenge || {};
+    const ccId = cc.id || "pfd_station1_scorm_pass";
+    const isPfdPassChallenge = ccId === "pfd_station1_scorm_pass";
+    if (!isPfdPassChallenge) return !!cc.complete;
+    const ceSeconds = Number(cc.ce_seconds || 0);
+    const xp = Number(cc.xp || 0);
+    const xpRequired = 1200;
+    const pm1Completed = Number(cc.pm1_completed || 0);
+    const pm1Required = Number(cc.pm1_required || 2);
+    const pt1Completed = Number(cc.pt1_completed || 0);
+    const pt1Required = Number(cc.pt1_required || 2);
+    return pm1Completed >= pm1Required
+      && pt1Completed >= pt1Required
+      && ceSeconds >= 3600
+      && xp >= xpRequired;
   }
 
   function _writeUiState(ui) {
@@ -406,7 +424,7 @@
     if (!_api) return;
     _notifyLaunchClosed();
     if (summary) {
-      const ceComplete = !!(summary.peds_ce_challenge && summary.peds_ce_challenge.complete);
+      const ceComplete = _summaryPassGate(summary);
       _api.LMSSetValue("cmi.core.score.min", "0");
       _api.LMSSetValue("cmi.core.score.max", "100");
       _api.LMSSetValue(

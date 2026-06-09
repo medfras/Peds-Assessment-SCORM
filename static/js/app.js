@@ -20914,7 +20914,6 @@ const BM_REGION_EXAMS = {
     { label: "Level of Consciousness", payload: "I am assessing level of consciousness using AVPU." },
     { label: "Pupils",                 payload: "I am assessing pupils for size, equality, and reactivity to light." },
     { label: "Facial Assessment",      payload: "I am assessing the face for asymmetry, droop, and DCAP-BTLS." },
-    { label: "GCS",                    payload: "I am calculating a Glasgow Coma Scale — eye opening, verbal, and motor response." },
   ], procedures: [
     { label: "Direct Pressure",                      payload: "I am applying firm direct pressure to the head wound to control hemorrhage." },
     { label: "Pressure Dressing / Bandage",          payload: "I am applying a pressure dressing and bandage to the head wound to control hemorrhage." },
@@ -23241,7 +23240,7 @@ async function _handleCspineExamAction(message = "", chipId = null, isAction = f
   if (isAction) appendUserAction(message, chipId);
   else appendUserMessage(message);
   _lastUserChatMessage = message;
-  await addPcrExam(key, value, "authored_standard_exam");
+  await addPcrExam(key, value, "student_stated_exam");
   appendExamFindingInfo(key, value);
   appendLexiActionFeedback("focused_exam", LEXI_ACTION_FEEDBACK.focused_exam);
   checkReadiness();
@@ -23795,7 +23794,7 @@ function _standardExamEntrySide(entry = {}) {
 function _messageLooksLikeStandardExam(message = "") {
   const msg = String(message || "");
   return /\b(?:assess(?:ing)?|inspect(?:ing)?|palpat(?:e|ing)|check(?:ing)?|evaluate|exam(?:ine|ining)?|reassess(?:ing)?|recheck(?:ing)?)\b/i.test(msg)
-    && /\b(?:dcap|btls|cms|pms|pulse|radial|pedal|dorsalis|posterior tibial|cap(?:illary)? refill|sensation|sensory|motor|movement|move|wiggle|grip|hand|forearm|arm|leg|foot|toe|distal|abdomen|pelvis|neck|spine|face)\b/i.test(msg);
+    && /\b(?:dcap|btls|cms|pms|pulse|pupils?|eyes?|perrla|radial|pedal|dorsalis|posterior tibial|cap(?:illary)? refill|sensation|sensory|motor|movement|move|wiggle|grip|hand|forearm|arm|leg|foot|toe|distal|abdomen|pelvis|neck|spine|face)\b/i.test(msg);
 }
 
 function _standardExamAliasScore(message = "", entry = {}) {
@@ -23910,7 +23909,7 @@ async function _handleAuthoredStandardExamAction(message, chipId = null, isActio
   _lastUserChatMessage = message;
   const key = match.entry.exam_key || match.entry.label || "Exam Finding";
   const value = _normalizeExamFindingValue(key, match.entry.finding);
-  await addPcrExam(key, value, "authored_standard_exam");
+  await addPcrExam(key, value, "student_stated_exam");
   if (_examFindingShouldRenderChatCallout(key, value)) appendExamFindingInfo(key, value);
   await _maybeRecordCmsAssessmentFromMessage(message, { ...match.entry, _id: match.id });
   appendLexiActionFeedback("focused_exam", LEXI_ACTION_FEEDBACK.focused_exam);

@@ -711,6 +711,20 @@ def test_head_injury_pupil_assessment_accepts_neuro_assessment_procedure():
         scenario=scenario,
         legacy_ai_categories=frozenset(),
     )[0]
+    pupil_exam = adjudicate(
+        [item],
+        interventions=[],
+        session_findings=[
+            _finding("Pupils", "R 4 mm sluggish; L 3 mm brisk", finding_type="exam", source="student_stated_exam"),
+        ],
+        session_events=[],
+        chat_messages=[],
+        scene_entry=None,
+        submitted_dmist=None,
+        submitted_narrative=None,
+        scenario=scenario,
+        legacy_ai_categories=frozenset(),
+    )[0]
     gcs_only = adjudicate(
         [item],
         interventions=[],
@@ -727,7 +741,48 @@ def test_head_injury_pupil_assessment_accepts_neuro_assessment_procedure():
     )[0]
 
     assert neuro_procedure.state == "satisfied"
+    assert pupil_exam.state == "satisfied"
     assert gcs_only.state == "not_satisfied"
+
+
+def test_head_injury_dcap_btls_head_exam_satisfies_focused_head_item():
+    from app.rubric_loader import compose_active_checklist, load_call_type_rubric
+
+    scenario_path = Path(__file__).resolve().parents[1] / "app/scenarios/pediatric/trauma/peds_trauma_07_head_injury.json"
+    scenario = json.loads(scenario_path.read_text())
+    rubric = load_call_type_rubric("head_injury", "training")
+    composed = compose_active_checklist(
+        base_items=load_checklist(scenario, level="EMT", mca="mi_base", agency_id=None),
+        rubric=rubric,
+        provider_level="EMT",
+        scenario=scenario,
+    )
+    item = next(
+        item for item in composed.items
+        if item.id == "head_injury.dcap_btls_head"
+    )
+
+    head_dcap = adjudicate(
+        [item],
+        interventions=[],
+        session_findings=[
+            _finding(
+                "DCAP-BTLS Assessment — Head",
+                "No deformity, contusions, abrasions, punctures, burns, tenderness, lacerations, or swelling noted.",
+                finding_type="exam",
+                source="student_stated_exam",
+            ),
+        ],
+        session_events=[],
+        chat_messages=[],
+        scene_entry=None,
+        submitted_dmist=None,
+        submitted_narrative=None,
+        scenario=scenario,
+        legacy_ai_categories=frozenset(),
+    )[0]
+
+    assert head_dcap.state == "satisfied"
 
 
 def test_soft_tissue_mechanism_screen_uses_structured_mechanism_and_loc_history():
