@@ -209,11 +209,14 @@
     if (_uiState) mirror.ui = _uiState;
     _api.LMSSetValue("cmi.suspend_data", JSON.stringify(mirror));
     const ceComplete = !!(summary.peds_ce_challenge && summary.peds_ce_challenge.complete);
-    if (ceComplete && summary.final_score !== null && summary.final_score !== undefined) {
-      _api.LMSSetValue("cmi.core.score.raw", String(summary.final_score));
-      _api.LMSSetValue("cmi.core.score.min", "0");
-      _api.LMSSetValue("cmi.core.score.max", "100");
-    }
+    _api.LMSSetValue("cmi.core.score.min", "0");
+    _api.LMSSetValue("cmi.core.score.max", "100");
+    _api.LMSSetValue(
+      "cmi.core.score.raw",
+      ceComplete && summary.final_score !== null && summary.final_score !== undefined
+        ? String(summary.final_score)
+        : "0",
+    );
     _api.LMSSetValue("cmi.core.lesson_status", ceComplete ? "passed" : "incomplete");
     _api.LMSCommit("");
   }
@@ -404,11 +407,14 @@
     _notifyLaunchClosed();
     if (summary) {
       const ceComplete = !!(summary.peds_ce_challenge && summary.peds_ce_challenge.complete);
-      if (ceComplete && summary.final_score !== null && summary.final_score !== undefined) {
-        _api.LMSSetValue("cmi.core.score.raw", String(summary.final_score));
-        _api.LMSSetValue("cmi.core.score.min", "0");
-        _api.LMSSetValue("cmi.core.score.max", "100");
-      }
+      _api.LMSSetValue("cmi.core.score.min", "0");
+      _api.LMSSetValue("cmi.core.score.max", "100");
+      _api.LMSSetValue(
+        "cmi.core.score.raw",
+        ceComplete && summary.final_score !== null && summary.final_score !== undefined
+          ? String(summary.final_score)
+          : "0",
+      );
       _api.LMSSetValue("cmi.core.lesson_status", ceComplete ? "passed" : "incomplete");
       _api.LMSCommit("");
     }

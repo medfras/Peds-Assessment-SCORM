@@ -702,10 +702,23 @@ def test_scorm_js_writes_lesson_status_when_summary_is_persisted():
 
     assert "peds_ce_challenge" in body
     assert 'LMSSetValue("cmi.core.lesson_status", ceComplete ? "passed" : "incomplete")' in body
-    assert 'LMSSetValue("cmi.core.score.raw", String(summary.final_score))' in body
+    assert '"cmi.core.score.raw"' in body
+    assert ': "0",' in body
     assert 'LMSSetValue("cmi.core.score.min", "0")' in body
     assert 'LMSSetValue("cmi.core.score.max", "100")' in body
     assert "LMSCommit" in body
+
+
+def test_scorm_js_incomplete_summary_resets_score_raw_for_moodle_mastery_override():
+    src = _SCORM_JS.read_text()
+    write_start = src.index("function _writeSuspendData(summary)")
+    write_end = src.index("function _writeUiState", write_start)
+    finish_start = src.index("function finish(summary)")
+    finish_end = src.index("function getAccessToken", finish_start)
+    for body in (src[write_start:write_end], src[finish_start:finish_end]):
+        assert '"cmi.core.score.raw"' in body
+        assert "ceComplete && summary.final_score !== null && summary.final_score !== undefined" in body
+        assert ': "0",' in body
 
 
 # ── app.js completion event contract ─────────────────────────────────────────
