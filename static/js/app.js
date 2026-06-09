@@ -6017,7 +6017,7 @@ const _SCORM_NODE_GROUPS = {
   optional: [
     { nodeId: "game_vitals", appId: "vitals_trend_spotter", label: "Vitals Trend", type: "minigame", role: "Optional" },
     { nodeId: "game_lung_sounds", appId: "lung_sounds_matcher", label: "Lung Sounds", type: "minigame", role: "Optional" },
-    { nodeId: "game_bls", appId: "cpr_bls_sequence", label: "BLS Sequence", type: "minigame", role: "Optional" },
+    { nodeId: "game_bls", appId: "cpr_bls_concepts", label: "CPR Metrics", type: "minigame", role: "Optional" },
   ],
 };
 
@@ -15479,9 +15479,17 @@ function _station1IntroBubbleText() {
   return `Hi ${firstName}! Welcome to ${agencyName} Station 1! I'm Lexi, the station dog and your personal training companion. Click the Intro Node below to begin training.`;
 }
 
+function _station1CprDrillBestScore() {
+  const scores = loadGamification().minigameBestScores || {};
+  return Math.max(
+    Number(scores.cpr_bls_concepts || 0),
+    Number(scores.game_bls || 0),
+  );
+}
+
 function _station1CprDrillComplete(completedIds = new Set()) {
   return completedIds.has(STATION1_CPR_SCENARIO_ID)
-    || Number(loadGamification().minigameBestScores?.cpr_bls_concepts || 0) >= 70;
+    || _station1CprDrillBestScore() >= 70;
 }
 
 function _station1WrapSeen() {

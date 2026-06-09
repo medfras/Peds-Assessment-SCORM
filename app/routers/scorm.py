@@ -91,7 +91,7 @@ _SCENARIO_NODES: frozenset[str] = _PM1_NODES | _PT1_NODES | _CPR_NODES
 _OPTIONAL_GAME_NODES: frozenset[str] = frozenset({
     "game_vitals",      # Vitals Trend Spotter
     "game_lung_sounds", # Lung Sounds Matcher
-    "game_bls",         # CPR/BLS Sequence
+    "game_bls",         # CPR Metrics
 })
 _PEDS_CE_MIN_OPT_GAMES: int = 2
 
@@ -117,7 +117,7 @@ _GAME_NODE_MAP: dict[str, str] = {
     "drill_gcs":        "peds_gcs_calculator",
     "game_vitals":      "vitals_trend_spotter",
     "game_lung_sounds": "lung_sounds_matcher",
-    "game_bls":         "cpr_bls_sequence",
+    "game_bls":         "cpr_bls_concepts",
 }
 
 _NODE_PASS_THRESHOLD = 70

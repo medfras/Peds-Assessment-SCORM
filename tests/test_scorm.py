@@ -783,7 +783,7 @@ def test_app_js_refreshes_xp_chrome_after_drill_xp_awards():
     src = _APP_JS.read_text()
     idx = src.find("async function _mgSubmitResult")
     assert idx != -1
-    block = src[idx:idx + 2600]
+    block = src[idx:idx + 3600]
 
     assert "await _loadProgressFromServer().catch(() => {});" in block
     assert "_refreshGamificationChrome();" in block

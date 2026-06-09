@@ -176,7 +176,9 @@ def test_station1_cpr_training_node_is_labeled_as_drill():
 
     assert 'title="CPR Training Drill" aria-label="CPR Training Drill"' in js
     assert "CPR training drill completed. Replay the CPR metrics drill any time." in js
-    assert "minigameBestScores?.cpr_bls_concepts" in js
+    assert "function _station1CprDrillBestScore()" in js
+    assert "Number(scores.cpr_bls_concepts || 0)" in js
+    assert "Number(scores.game_bls || 0)" in js
     assert '"minigameBestScores": minigame_best_scores' in main
     assert 'type: "cpr_bls_concepts"' in js
     assert 'label: "CPR Mastery Drill"' in js
