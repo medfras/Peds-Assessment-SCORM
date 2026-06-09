@@ -4834,11 +4834,18 @@ const _PROGRESS_DEFAULTS = () => ({
 
 async function _loadProgressFromServer() {
   try {
+    const previousScores = _progressCache?.minigameBestScores || {};
     const [progRes, histRes] = await Promise.all([
       authFetch(`${API}/api/me/progress`),
       authFetch(`${API}/api/me/sessions?limit=50`),
     ]);
     _progressCache = progRes.ok ? await progRes.json() : (_progressCache || _PROGRESS_DEFAULTS());
+    const serverScores = _progressCache?.minigameBestScores || {};
+    const mergedScores = { ...serverScores };
+    Object.entries(previousScores).forEach(([gameId, score]) => {
+      mergedScores[gameId] = Math.max(Number(mergedScores[gameId] || 0), Number(score || 0));
+    });
+    _progressCache = { ...(_progressCache || _PROGRESS_DEFAULTS()), minigameBestScores: mergedScores };
     _historyCache  = histRes.ok ? await histRes.json() : (_historyCache || []);
     _writeProgressHistoryCache();
   } catch {
