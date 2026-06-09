@@ -268,6 +268,40 @@ def test_scored_timeline_item_uses_evidence_timestamp_when_available():
     assert item["elapsed_min"] == 1.5
 
 
+def test_critical_action_evidence_can_use_intervention_ids_for_assessment_procedures():
+    scenario = {
+        "correct_treatment": {
+            "critical_actions": [
+                {
+                    "id": "pupil_assessment",
+                    "description": "Assess pupils bilaterally for size, equality, and reactivity",
+                    "required": True,
+                    "protocol_indicated": True,
+                    "evidence": {
+                        "intervention_ids": ["neuro_assessment"],
+                        "min_matches": 1,
+                    },
+                }
+            ],
+        },
+    }
+    t0 = datetime.utcnow()
+    done_at = t0 + timedelta(seconds=36)
+    session = _session(
+        t0,
+        interventions=[
+            _intervention("neuro_assessment", done_at),
+        ],
+    )
+
+    timeline = _build_session_timeline(session, scenario)
+    item = _find_timeline(timeline, "Assess pupils")
+
+    assert item is not None
+    assert item["status"] == "applied"
+    assert item["elapsed_min"] == 0.6
+
+
 def test_head_injury_neuro_reassessment_requires_post_intervention_gcs_and_pupils():
     scenario = {
         "correct_treatment": {

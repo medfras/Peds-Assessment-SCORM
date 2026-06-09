@@ -89,6 +89,10 @@
           "finding_type": "exam",
           "key_pattern": "(?i)\\bpupils?\\b|perrla|pupil.*reactive|reactive.*pupil|pupil.*sluggish|sluggish.*pupil|pupil.*unequal|unequal.*pupil|pupil.*asymm|asymm.*pupil",
           "eligible_source_roles": ["ems_performed_exam"]
+        },
+        {
+          "type": "intervention",
+          "intervention_key": "neuro_assessment"
         }
       ],
       "tier2_patterns": [

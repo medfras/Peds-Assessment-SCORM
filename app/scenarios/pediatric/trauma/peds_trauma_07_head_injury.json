@@ -900,6 +900,9 @@
             "pupil.*asymm",
             "asymm.*pupil"
           ],
+          "intervention_ids": [
+            "neuro_assessment"
+          ],
           "transcript_patterns": [
             "\\bpupils?\\b",
             "perrla",

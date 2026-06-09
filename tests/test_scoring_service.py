@@ -680,6 +680,56 @@ def test_head_injury_dcap_btls_head_accepts_structured_exam_finding():
     assert vague_head_pain.state == "not_satisfied"
 
 
+def test_head_injury_pupil_assessment_accepts_neuro_assessment_procedure():
+    from app.rubric_loader import compose_active_checklist, load_call_type_rubric
+
+    scenario_path = Path(__file__).resolve().parents[1] / "app/scenarios/pediatric/trauma/peds_trauma_07_head_injury.json"
+    scenario = json.loads(scenario_path.read_text())
+    rubric = load_call_type_rubric("head_injury", "training")
+    composed = compose_active_checklist(
+        base_items=load_checklist(scenario, level="EMT", mca="mi_base", agency_id=None),
+        rubric=rubric,
+        provider_level="EMT",
+        scenario=scenario,
+    )
+    item = next(
+        item for item in composed.items
+        if item.id == "head_injury.pupil_assessment"
+    )
+
+    neuro_procedure = adjudicate(
+        [item],
+        interventions=[
+            _intervention("neuro_assessment"),
+        ],
+        session_findings=[],
+        session_events=[],
+        chat_messages=[],
+        scene_entry=None,
+        submitted_dmist=None,
+        submitted_narrative=None,
+        scenario=scenario,
+        legacy_ai_categories=frozenset(),
+    )[0]
+    gcs_only = adjudicate(
+        [item],
+        interventions=[],
+        session_findings=[
+            _finding("GCS", "14/15", finding_type="vital", source="gcs_modal"),
+        ],
+        session_events=[],
+        chat_messages=[],
+        scene_entry=None,
+        submitted_dmist=None,
+        submitted_narrative=None,
+        scenario=scenario,
+        legacy_ai_categories=frozenset(),
+    )[0]
+
+    assert neuro_procedure.state == "satisfied"
+    assert gcs_only.state == "not_satisfied"
+
+
 def test_soft_tissue_mechanism_screen_uses_structured_mechanism_and_loc_history():
     scenario_path = Path(__file__).resolve().parents[1] / "app/scenarios/pediatric/trauma/peds_trauma_01_soft_tissue.json"
     scenario = json.loads(scenario_path.read_text())

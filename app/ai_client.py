@@ -5771,9 +5771,13 @@ def _build_evidence_packet(
             return False
         finding_types = set(evidence.get("finding_types") or [])
         finding_key_patterns = evidence.get("finding_key_patterns") or []
+        intervention_ids = set(evidence.get("intervention_ids") or [])
         transcript_patterns = evidence.get("transcript_patterns") or []
         min_matches = max(1, int(evidence.get("min_matches", 1) or 1))
         hits: set[str] = set()
+        for intervention_id in intervention_ids:
+            if intervention_id in _applied_ids:
+                hits.add(f"iv:{intervention_id}")
         for pattern in transcript_patterns:
             if re.search(pattern, _transcript_text, re.IGNORECASE):
                 hits.add(f"tx:{pattern}")

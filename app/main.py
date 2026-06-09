@@ -11878,11 +11878,18 @@ def _build_session_timeline(
 
         finding_types = set(evidence.get("finding_types") or [])
         finding_key_patterns = evidence.get("finding_key_patterns") or []
+        intervention_ids = set(evidence.get("intervention_ids") or [])
         transcript_patterns = evidence.get("transcript_patterns") or []
         min_matches = max(1, int(evidence.get("min_matches", 1) or 1))
 
         matches: set[str] = set()
         first_ts = None
+
+        for intervention in session.interventions:
+            if intervention.name in intervention_ids:
+                matches.add(f"iv:{intervention.name}")
+                if first_ts is None:
+                    first_ts = intervention.applied_at
 
         for m in user_message_rows:
             content = (m.content or "")
