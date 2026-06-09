@@ -26970,7 +26970,7 @@ async function _recordAuthoredVitalsRequest(message, options = {}) {
       capturedVitalKeys.add(def.key);
       lines.push(`${formatted.label} is ${spokenValue}.`);
     } else {
-      findingWrites.push(addPcrExam(formatted.label, formatted.value, "authored_vitals"));
+      findingWrites.push(addPcrExam(formatted.label, formatted.value, "partner_reported_exam"));
       examLines.push({ label: formatted.label, value: formatted.value });
     }
   });

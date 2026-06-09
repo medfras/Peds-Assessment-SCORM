@@ -1501,6 +1501,10 @@ def test_body_map_pupil_exam_persists_scoring_finding_and_head_menu_omits_gcs():
         source.index("async function _handleAuthoredStandardExamAction"):
         source.index("function _historyResponseMapSpeaker")
     ]
+    authored_vitals_request = source[
+        source.index("async function _recordAuthoredVitalsRequest"):
+        source.index("function _cprAdditionalActionFindingSpec")
+    ]
 
     assert 'label: "Pupils"' in head_menu
     assert "I am assessing pupils for size, equality, and reactivity to light." in head_menu
@@ -1508,6 +1512,7 @@ def test_body_map_pupil_exam_persists_scoring_finding_and_head_menu_omits_gcs():
     assert "pupils?" in standard_exam_matcher
     assert 'await addPcrExam(key, value, "student_stated_exam");' in authored_exam_handler
     assert '"authored_standard_exam"' not in authored_exam_handler
+    assert 'addPcrExam(formatted.label, formatted.value, "partner_reported_exam")' in authored_vitals_request
 
 
 def test_head_injury_exemplar_uses_high_flow_nrb_not_nasal_cannula():

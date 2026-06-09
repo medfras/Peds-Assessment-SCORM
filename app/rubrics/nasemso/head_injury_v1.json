@@ -21,7 +21,7 @@
   ],
   "source_role_map": {
     "ems_performed_exam": {
-      "training": ["authored_vitals", "student_stated_exam", "gcs_modal"],
+      "training": ["authored_vitals", "partner_reported_exam", "student_stated_exam", "gcs_modal"],
       "qaqi": ["epcr_exam", "epcr_neuro", "monitor_import"]
     },
     "challenge_calculated_gcs": {

@@ -725,6 +725,20 @@ def test_head_injury_pupil_assessment_accepts_neuro_assessment_procedure():
         scenario=scenario,
         legacy_ai_categories=frozenset(),
     )[0]
+    partner_pupil_exam = adjudicate(
+        [item],
+        interventions=[],
+        session_findings=[
+            _finding("Pupils", "R 4 mm sluggish; L 3 mm brisk", finding_type="exam", source="partner_reported_exam"),
+        ],
+        session_events=[],
+        chat_messages=[],
+        scene_entry=None,
+        submitted_dmist=None,
+        submitted_narrative=None,
+        scenario=scenario,
+        legacy_ai_categories=frozenset(),
+    )[0]
     gcs_only = adjudicate(
         [item],
         interventions=[],
@@ -742,6 +756,7 @@ def test_head_injury_pupil_assessment_accepts_neuro_assessment_procedure():
 
     assert neuro_procedure.state == "satisfied"
     assert pupil_exam.state == "satisfied"
+    assert partner_pupil_exam.state == "satisfied"
     assert gcs_only.state == "not_satisfied"
 
 
@@ -781,8 +796,28 @@ def test_head_injury_dcap_btls_head_exam_satisfies_focused_head_item():
         scenario=scenario,
         legacy_ai_categories=frozenset(),
     )[0]
+    partner_head_dcap = adjudicate(
+        [item],
+        interventions=[],
+        session_findings=[
+            _finding(
+                "DCAP-BTLS Assessment — Head",
+                "No deformity, contusions, abrasions, punctures, burns, tenderness, lacerations, or swelling noted.",
+                finding_type="exam",
+                source="partner_reported_exam",
+            ),
+        ],
+        session_events=[],
+        chat_messages=[],
+        scene_entry=None,
+        submitted_dmist=None,
+        submitted_narrative=None,
+        scenario=scenario,
+        legacy_ai_categories=frozenset(),
+    )[0]
 
     assert head_dcap.state == "satisfied"
+    assert partner_head_dcap.state == "satisfied"
 
 
 def test_soft_tissue_mechanism_screen_uses_structured_mechanism_and_loc_history():
