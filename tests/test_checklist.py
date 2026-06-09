@@ -561,6 +561,29 @@ def test_croup_uses_medical_rubric_only_and_als_handoff_is_not_checklist_scored(
     assert "peds_croup_01.als_intercept" not in ids
 
 
+def test_croup_active_rubric_credits_scene_entry_pat_and_simulator_wob_sources():
+    scenario_path = Path(__file__).resolve().parents[1] / "app/scenarios/pediatric/medical/peds_croup_01.json"
+    scenario = json.loads(scenario_path.read_text())
+
+    items = _load_active_checklist(scenario)
+    by_id = {item.id: item for item in items}
+
+    croup_pat = by_id["croup.pat_assessment"]
+    assert croup_pat.tier1_match is not None
+    assert croup_pat.tier1_match.source == "scene_entry"
+    assert croup_pat.tier1_match.scene_entry_path == "pat_assessment"
+
+    rr_wob = by_id["croup.rr_wob_assessed"]
+    assert rr_wob.requirement_logic == "all"
+    assert len(rr_wob.tier1_matches) == 2
+    wob = next(match for match in rr_wob.tier1_matches if match.finding_type == "exam")
+    assert set(wob.eligible_sources or []) >= {
+        "partner_reported_exam",
+        "student_stated_exam",
+        "lung_sound_challenge",
+    }
+
+
 def test_diabetic_screen_and_oral_glucose_sequence_follow_protocol_exception():
     scenario_path = Path(__file__).resolve().parents[1] / "app/scenarios/pediatric/medical/peds_diabetic_emergency_01.json"
     scenario = json.loads(scenario_path.read_text())
@@ -1337,3 +1360,21 @@ def test_mca_expansion_filter_does_not_compare_against_mca_string():
     assert "unit_test_expansion.narcan_admin" not in ids, (
         "MCA string must not substitute for expansion key — filter must use mca_expansions set"
     )
+
+
+def test_febrile_seizure_recovery_position_and_history_have_structured_credit_paths():
+    scenario = json.loads(Path("app/scenarios/pediatric/medical/peds_febrile_seizure_01.json").read_text(encoding="utf-8"))
+    items = {item.id: item for item in load_checklist(scenario, level="EMT", mca="mi_base", agency_id=None)}
+
+    protect = items["peds_febrile_seizure_01.protect_from_injury"]
+    assert protect.tier1_match.source == "intervention"
+    assert set(protect.tier1_match.intervention_keys) == {"protect_from_injury", "recovery_position"}
+
+    seizure_history = items["peds_febrile_seizure_01.seizure_history"]
+    assert seizure_history.requirement_logic == "all"
+    assert len(seizure_history.tier1_matches) == 2
+    assert all(match.source == "finding" for match in seizure_history.tier1_matches)
+    assert all(match.finding_type == "history" for match in seizure_history.tier1_matches)
+    patterns = "\n".join(match.finding_key_pattern for match in seizure_history.tier1_matches)
+    assert "seizure duration" in patterns
+    assert "medications" in patterns

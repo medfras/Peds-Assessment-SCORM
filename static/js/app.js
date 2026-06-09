@@ -19590,6 +19590,7 @@ function _capturePcrHeaderFinding(key = "", value = "") {
   if (/^(?:patient\s+|pt\s+)?name$/i.test(k) && patientScoped && _pcrHeaderValueMatchesPatientName(v)) {
     state.pcrHeader.name = v;
     _markSceneNameKnown(v);
+    _postFinding("history", "Patient Name", v, "ai_roleplay_tag");
     captured = true;
   }
   if (/^(?:patient\s+|pt\s+)?age$/i.test(k) && patientScoped && _lastUserMessageRequestsPatientAge()) {
@@ -26442,18 +26443,6 @@ function _lungSoundChoiceId(config = {}) {
   return null;
 }
 
-function _lungSoundShowsBlowbyAction(config = {}) {
-  return config.show_blowby_action === true;
-}
-
-function _syncLungSoundCareAction(config = {}) {
-  const panel = el("lung-sound-care-action-panel");
-  if (!panel) return;
-  const showBlowby = _lungSoundShowsBlowbyAction(config);
-  panel.classList.toggle("hidden", !showBlowby);
-  panel.setAttribute("aria-hidden", showBlowby ? "false" : "true");
-}
-
 function _renderLungSoundChoices(config = {}) {
   const optionsEl = el("lung-sound-options");
   if (!optionsEl) return;
@@ -26695,7 +26684,9 @@ function _userRequestsSuctionAirway(message = "") {
   const msg = String(message || "");
   if (_userPreparingSuctionOnly(msg)) return false;
   return /\b(?:suction(?:ing)?|clear(?:ing)?)\b.{0,50}\b(?:airway|mouth|oral|secretions?|saliva|fluids?)\b/i.test(msg)
-    || /\b(?:airway|mouth|oral|secretions?|saliva|fluids?)\b.{0,50}\b(?:suction|clear)\b/i.test(msg);
+    || /\b(?:airway|mouth|oral|secretions?|saliva|fluids?)\b.{0,50}\b(?:suction|clear)\b/i.test(msg)
+    || /\b(?:suction(?:ing|ed)?|use(?:d)?\s+suction)\b.{0,40}\b(?:her|him|them|patient|pt|child|infant|baby|chloe)\b/i.test(msg)
+    || /\b(?:her|him|them|patient|pt|child|infant|baby|chloe)\b.{0,40}\b(?:suction(?:ing|ed)?|use(?:d)?\s+suction)\b/i.test(msg);
 }
 
 function _userRequestsProtectFromInjury(message = "") {
@@ -27214,7 +27205,6 @@ function openLungSoundChallenge(finding) {
     }
     setText("lung-sound-play-icon", "▶");
     setText("lung-sound-prompt", config.prompt || "Listen carefully — what lung sounds do you hear?");
-    _syncLungSoundCareAction(config);
     _renderLungSoundChoices(config);
     el("lung-sound-feedback")?.classList.add("hidden");
     el("btn-lung-sound-continue")?.classList.add("hidden");
@@ -27243,16 +27233,6 @@ el("btn-play-lung-sound")?.addEventListener("click", () => {
     audio.currentTime = 0;
     icon.textContent = "▶";
   }
-});
-
-el("btn-lung-sound-blowby")?.addEventListener("click", async () => {
-  appendUserAction("I am giving blow-by oxygen.", "lung-sound-care-action");
-  await applyInterventionAndRecord(
-    "o2_blowby",
-    "Blow-by O₂ held near face — 15 LPM",
-    { source: "lung_sound_challenge" }
-  );
-  showToast("Blow-by oxygen recorded.", "success");
 });
 
 el("btn-submit-lung-sound")?.addEventListener("click", () => {
@@ -27791,6 +27771,13 @@ async function processDebrief(feedback, score, subscores = null, timeline = null
     _loadChallenges().then(() => { buildBadgesSection(game); _buildChallengesSection(); });
   } else {
     _loadChallenges().then(_buildChallengesSection).catch(() => {});
+  }
+
+  if (xpEarned > 0 || treatsEarned > 0 || newBadges.length || challengeBadges.length) {
+    await _loadProgressFromServer({ minXp: _progressCache?.xp, minTreats: _progressCache?.treats }).catch(() => {});
+    _refreshGamificationChrome();
+    await _refreshScormSummary().catch(() => {});
+    _refreshScormChallengeDisplays();
   }
 
   // ── Update local history cache ─────────────────────────────────────────────

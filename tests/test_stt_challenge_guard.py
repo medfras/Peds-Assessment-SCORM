@@ -1,5 +1,4 @@
 from pathlib import Path
-import json
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -21,31 +20,16 @@ def test_challenge_modals_disable_stt_microphones():
     assert "if (_isChallengeModalOpenForStt())" in js
 
 
-def test_lung_sound_challenge_keeps_blowby_as_care_action_not_answer_choice():
+def test_lung_sound_challenge_has_no_blowby_care_action_or_answer_choice():
     html = (ROOT / "static/index.html").read_text()
     js = (ROOT / "static/js/app.js").read_text()
     choices_block = js[js.index("const _LUNG_SOUND_CHOICES"):js.index("// Matches any lung sounds EXAM tag variant")]
 
-    assert 'id="btn-lung-sound-blowby"' in html
-    assert 'id="lung-sound-care-action-panel"' in html
-    assert "function _syncLungSoundCareAction(config = {})" in js
-    assert 'config.show_blowby_action === true' in js
-    assert 'applyInterventionAndRecord(\n    "o2_blowby"' in js
-    assert "lung_sound_challenge" in js
+    assert 'id="btn-lung-sound-blowby"' not in html
+    assert 'id="lung-sound-care-action-panel"' not in html
+    assert "function _syncLungSoundCareAction(config = {})" not in js
+    assert "btn-lung-sound-blowby" not in js
     assert "blowby" not in choices_block
-
-
-def test_lung_sound_blowby_button_is_scenario_opt_in():
-    root = ROOT / "app/scenarios/pediatric"
-    asthma = json.loads((root / "medical/peds_asthma_01.json").read_text())
-    croup = json.loads((root / "medical/peds_croup_01.json").read_text())
-    febrile = json.loads((root / "medical/peds_febrile_seizure_01.json").read_text())
-    choking = json.loads((root / "trauma/peds_trauma_02_partial_choking.json").read_text())
-
-    assert asthma["lung_sound_challenge"].get("show_blowby_action") is not True
-    assert croup["lung_sound_challenge"]["show_blowby_action"] is True
-    assert febrile["lung_sound_challenge"]["show_blowby_action"] is True
-    assert choking["lung_sound_challenge"]["show_blowby_action"] is True
 
 
 def test_lung_sound_continue_closes_modal_and_resets_audio():

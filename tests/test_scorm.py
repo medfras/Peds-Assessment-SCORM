@@ -816,6 +816,21 @@ def test_app_js_refreshes_scorm_summary_after_lexi_xp_award():
     assert block.index(progress_refresh) < block.index("await _refreshScormSummary().catch(() => {});")
 
 
+def test_app_js_refreshes_scorm_summary_after_scenario_xp_award():
+    src = _APP_JS.read_text()
+    idx = src.find("async function processDebrief")
+    assert idx != -1
+    block = src[idx:idx + 3600]
+
+    progress_refresh = "await _loadProgressFromServer({ minXp: _progressCache?.xp, minTreats: _progressCache?.treats }).catch(() => {});"
+    assert progress_refresh in block
+    assert "_refreshGamificationChrome();" in block
+    assert "await _refreshScormSummary().catch(() => {});" in block
+    assert "_refreshScormChallengeDisplays();" in block
+    assert block.index(progress_refresh) < block.index("await _refreshScormSummary().catch(() => {});")
+    assert block.index("await _refreshScormSummary().catch(() => {});") < block.index("_refreshScormChallengeDisplays();")
+
+
 def test_app_js_refreshes_xp_chrome_after_drill_xp_awards():
     src = _APP_JS.read_text()
     idx = src.find("async function _mgSubmitResult")

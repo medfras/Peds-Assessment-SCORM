@@ -229,6 +229,11 @@
       "label": "Patient identity / demographics",
       "speaker": "Ms. Hernandez",
       "triggers": [
+        "name and dob",
+        "name dob",
+        "name and date of birth",
+        "name age dob",
+        "name age and dob",
         "what is his name",
         "what's his name",
         "patient name",

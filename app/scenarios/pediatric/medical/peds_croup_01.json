@@ -447,6 +447,27 @@
         "treatment suggestions"
       ]
     },
+    "allergies_medications": {
+      "label": "SAMPLE Allergies and Medications",
+      "triggers": [
+        "allergies and medications",
+        "allergies meds",
+        "allergies and meds",
+        "any allergies or medications",
+        "does she have allergies or medications",
+        "is she allergic to anything and does she take any medications"
+      ],
+      "answer": "No known allergies. No medications, and we haven't given her anything tonight.",
+      "tags": [
+        "[[HISTORY: Allergies=no known allergies]]",
+        "[[HISTORY: Medications=no daily medications; nothing given tonight]]"
+      ],
+      "do_not_include": [
+        "diagnosis",
+        "treatment suggestions",
+        "pmh"
+      ]
+    },
     "medications": {
       "label": "SAMPLE Medications",
       "triggers": [

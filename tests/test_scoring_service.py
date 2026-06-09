@@ -219,6 +219,84 @@ def test_trauma_reassessment_credits_post_intervention_neuro_reassessment():
     assert states[0].evidence_references[0].source_type == "post_intervention_finding"
 
 
+def test_extremity_fracture_credits_post_splint_cms_from_exam_finding():
+    scenario = json.loads(Path("app/scenarios/pediatric/trauma/peds_trauma_03_extremity.json").read_text())
+    item = next(
+        i
+        for i in load_checklist(scenario, level="EMT", mca="mi_base", agency_id=None)
+        if i.id == "peds_trauma_03_extremity.cms_post_assessment"
+    )
+
+    states = _try_adjudicate_for_tests(
+        [item],
+        interventions=[_intervention("splinting", minute=2)],
+        findings=[
+            _finding_ts_typed(
+                "Left Hand CMS",
+                "Radial pulse present; cap refill 3 seconds; sensation remains fuzzy but intact.",
+                "exam",
+                fid=1,
+                minute=3,
+            ),
+        ],
+    )
+
+    assert states[0].state == "satisfied"
+    assert states[0].evidence_references[0].source_type == "post_intervention_finding"
+
+
+def test_extremity_fracture_demographics_credit_patient_name_and_dob_findings():
+    scenario = {
+        "id": "unit_test_extremity_demo",
+        "category": "pediatric_trauma",
+        "turnover_target": "als",
+        "base_patient_care_rubric": "nremt_trauma_v1",
+        "checklist": [],
+    }
+    items = load_checklist(scenario, level="EMT", mca="mi_base", agency_id=None)
+    wanted = {
+        item.id: item
+        for item in items
+        if item.id in {"ems.trauma.patient_name", "ems.trauma.patient_age_dob"}
+    }
+
+    states = _try_adjudicate_for_tests(
+        [wanted["ems.trauma.patient_name"], wanted["ems.trauma.patient_age_dob"]],
+        findings=[
+            _finding_ts_typed("Patient Name", "Emily", "history", fid=1, minute=1),
+            _finding_ts_typed("Patient Date of Birth", "October 3", "history", fid=2, minute=1),
+        ],
+    )
+
+    assert [state.state for state in states] == ["satisfied", "satisfied"]
+
+
+def test_medical_demographics_credit_patient_name_and_dob_findings():
+    scenario = {
+        "id": "unit_test_anaphylaxis_demo",
+        "category": "pediatric_medical",
+        "turnover_target": "als",
+        "base_patient_care_rubric": "nremt_e202_medical_v1",
+        "checklist": [],
+    }
+    items = load_checklist(scenario, level="EMT", mca="mi_base", agency_id=None)
+    wanted = {
+        item.id: item
+        for item in items
+        if item.id in {"ems.medical.patient_name", "ems.medical.patient_age_dob"}
+    }
+
+    states = _try_adjudicate_for_tests(
+        [wanted["ems.medical.patient_name"], wanted["ems.medical.patient_age_dob"]],
+        findings=[
+            _finding_ts_typed("Patient Name", "Jayden", "history", fid=1, minute=1),
+            _finding_ts_typed("Patient Date of Birth", "July 8", "history", fid=2, minute=1),
+        ],
+    )
+
+    assert [state.state for state in states] == ["satisfied", "satisfied"]
+
+
 def test_trauma_secondary_assessment_quick_action_satisfies_atomic_nremt_body_survey_items():
     scenario = {
         "id": "unit_test_trauma_secondary_quick_action",

@@ -527,6 +527,15 @@ def test_frontend_deferred_pcr_history_tags_require_supported_demographic_contex
     assert "Ignoring deferred PCR demographic tag not supported by user/chat context" in process_fn
 
 
+def test_frontend_patient_name_header_capture_persists_scoring_evidence():
+    source = open("static/js/app.js", encoding="utf-8").read()
+
+    capture_fn = source[source.index("function _capturePcrHeaderFinding"):source.index("function _pcrFindingShouldRenderOnlyInHeader")]
+
+    assert '_postFinding("history", "Patient Name", v, "ai_roleplay_tag");' in capture_fn
+    assert capture_fn.index("state.pcrHeader.name = v;") < capture_fn.index('_postFinding("history", "Patient Name", v, "ai_roleplay_tag");')
+
+
 def test_frontend_pcr_notes_sort_opqrst_and_sample_items_canonically():
     source = open("static/js/app.js", encoding="utf-8").read()
 
@@ -995,6 +1004,7 @@ def test_frontend_recovery_position_action_has_deterministic_partner_response():
 
 def test_febrile_seizure_suction_credit_requires_actual_suctioning_not_preparation():
     scenario = json.loads(Path("app/scenarios/pediatric/medical/peds_febrile_seizure_01.json").read_text(encoding="utf-8"))
+    source = open("static/js/app.js", encoding="utf-8").read()
 
     suction_patterns = scenario["vitals"]["interventions"]["suction_airway"]["detection_patterns"]
     assert "\\bsuction\\b" not in suction_patterns
@@ -1012,6 +1022,9 @@ def test_febrile_seizure_suction_credit_requires_actual_suctioning_not_preparati
     checklist_patterns = "\n".join(checklist_item["tier2_patterns"])
     assert "(suction|" not in critical_patterns
     assert "(suction|" not in checklist_patterns
+    suction_fn = source[source.index("function _userRequestsSuctionAirway"):source.index("function _userRequestsProtectFromInjury")]
+    assert "patient|pt|child|infant|baby|chloe" in suction_fn
+    assert "suction(?:ing|ed)?" in suction_fn
 
 
 def test_febrile_seizure_age_question_does_not_reveal_name_or_dob():
@@ -1126,6 +1139,15 @@ def test_febrile_seizure_compound_history_questions_are_authored_complete_answer
     assert "[[history: patient age=" in demo_weight_payload
     assert "[[history: patient date of birth=" in demo_weight_payload
     assert "[[history: patient weight=" in demo_weight_payload
+
+
+def test_croup_allergies_medications_pair_records_both_sample_fields():
+    scenario = json.loads(Path("app/scenarios/pediatric/medical/peds_croup_01.json").read_text(encoding="utf-8"))
+    entry = scenario["history_response_map"]["allergies_medications"]
+
+    assert "allergies and medications" in entry["triggers"]
+    assert any(tag.startswith("[[HISTORY: Allergies=") for tag in entry["tags"])
+    assert any(tag.startswith("[[HISTORY: Medications=") for tag in entry["tags"])
 
 
 def test_frontend_patient_name_history_map_requires_patient_name_context():

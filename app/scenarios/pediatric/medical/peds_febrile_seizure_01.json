@@ -1265,7 +1265,8 @@
         "required": true,
         "protocol_indicated": true,
         "intervention_ids": [
-          "protect_from_injury"
+          "protect_from_injury",
+          "recovery_position"
         ],
         "evidence": {
           "transcript_patterns": [
@@ -1823,7 +1824,10 @@
       "schema_version": "1.0",
       "tier1_match": {
         "source": "intervention",
-        "intervention_key": "protect_from_injury"
+        "intervention_keys": [
+          "protect_from_injury",
+          "recovery_position"
+        ]
       },
       "tier2_patterns": [
         "(?i)(protect.*injur|prevent.*injur|keep.*safe.*injur|safe.*from.*injur|clear.*area|move.*object|pad|do not restrain|don't restrain|nothing.*mouth|do not put.*mouth)"
@@ -1852,6 +1856,19 @@
       "tier3_confidence_threshold": null,
       "schema_version": "1.0",
       "tier1_match": null,
+      "tier1_matches": [
+        {
+          "source": "finding",
+          "finding_type": "history",
+          "finding_key_pattern": "(?i)^(?:seizure onset|seizure duration|seizure status|seizure type|prior seizures)$"
+        },
+        {
+          "source": "finding",
+          "finding_type": "history",
+          "finding_key_pattern": "(?i)^medications$"
+        }
+      ],
+      "requirement_logic": "all",
       "tier2_patterns": [
         "(?i)(?=.*\\b(?:how long|duration|started|began|ongoing|still|before you got here)\\b)(?=.*\\b(?:seiz|shak|jerk|convuls|generalized|focal))",
         "(?i)(?=.*\\b(?:prior|previous|before|first|ever|history)\\b)(?=.*\\bseiz)"

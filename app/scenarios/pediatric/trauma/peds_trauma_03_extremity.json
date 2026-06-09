@@ -190,6 +190,11 @@
       "label": "Patient identity / demographics",
       "speaker": "Laura",
       "triggers": [
+        "name and dob",
+        "name dob",
+        "name and date of birth",
+        "name age dob",
+        "name age and dob",
         "what is her name",
         "what's her name",
         "patient name",
@@ -1270,6 +1275,14 @@
         "source": "intervention",
         "intervention_key": "assess_cms_post"
       },
+      "tier1_alternatives": [
+        {
+          "source": "post_intervention_finding",
+          "finding_type": "exam",
+          "finding_key_pattern": "(?i)(left\\s+hand\\s+cms|left\\s+forearm|left\\s+hand|cms|pms|radial\\s+pulse|cap\\s*refill|sensation|sensory|motor|movement|grip)",
+          "finding_value_pattern": "(?i)(radial|pulse|cap\\s*refill|sensation|fuzzy|tingly|motor|move|movement|grip|left\\s+hand)"
+        }
+      ],
       "tier2_patterns": [
         "(?i)(?:reassess|recheck|check).*\\bCMS\\b",
         "(?i)(?=.*\\b(?:after|post|following)\\b)(?=.*\\bsplint)(?=.*\\b(?:circulation|cap refill|pulse|motor|move|movement|sensation|sensory|numb|tingly|distal)\\b)"
