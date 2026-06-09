@@ -1435,6 +1435,8 @@ def _load_effective_checklist_for_session(
     session,
     scenario: dict,
     ctx: EffectiveContext,
+    *,
+    prefer_persisted_snapshot: bool = True,
 ) -> list[ChecklistItem]:
     """
     Resolve the effective checklist for this session.
@@ -1444,7 +1446,7 @@ def _load_effective_checklist_for_session(
     """
     states_blob = session.checklist_states or {}
     stored_defs = states_blob.get("checklist_definitions") if isinstance(states_blob, dict) else None
-    if stored_defs:
+    if prefer_persisted_snapshot and stored_defs:
         try:
             return [ChecklistItem.model_validate(item) for item in stored_defs]
         except Exception as exc:
@@ -1501,6 +1503,8 @@ async def adjudicate_and_persist(
     session,
     scenario: dict,
     db: AsyncSession,
+    *,
+    prefer_persisted_checklist_snapshot: bool = True,
 ) -> AdjudicatedPacket | None:
     """
     Run adjudication and write results to the five Phase 1 columns — §18 Phase 4.
@@ -1521,7 +1525,12 @@ async def adjudicate_and_persist(
     ctx = resolve_context(session, scenario)
 
     from app.config import settings as _cfg
-    base_checklist = _load_effective_checklist_for_session(session, scenario, ctx)
+    base_checklist = _load_effective_checklist_for_session(
+        session,
+        scenario,
+        ctx,
+        prefer_persisted_snapshot=prefer_persisted_checklist_snapshot,
+    )
     if not base_checklist:
         return None
 

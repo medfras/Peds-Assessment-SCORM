@@ -8861,6 +8861,51 @@ async def get_my_sessions(
         )
         agency_names = {row.id: row.name for row in a_result.all()}
 
+    async def _refresh_stale_history_artifacts(s: SimSession) -> None:
+        """Repair deterministic debrief artifacts stored before pilot rubric fixes."""
+        nd = s.narrative_data or {}
+        haystack = f"{nd.get('timeline') or ''}\n{nd.get('rubric_detail') or ''}"
+        stale_needles = (
+            "DCAP-BTLS assessment of head",
+            "Reassess GCS and pupils during transport",
+            "Neck assessment: checks position of trachea",
+        )
+        if not any(needle in haystack for needle in stale_needles):
+            return
+        try:
+            agency_dict = await load_agency(s.agency_id, db)
+            scenario = adapt_scenario_to_context(
+                load_scenario(s.scenario_id),
+                agency_dict,
+                s.mca,
+                s.effective_protocol_excerpt,
+            )
+        except (FileNotFoundError, KeyError):
+            return
+        _det_packet = await adjudicate_and_persist(
+            s,
+            scenario,
+            db,
+            prefer_persisted_checklist_snapshot=False,
+        )
+        if _det_packet is None:
+            return
+        refreshed = dict(s.narrative_data or {})
+        refreshed["timeline"] = _build_session_timeline(
+            s,
+            scenario,
+            agency_dict,
+            scene_entry=s.scene_entry,
+            session_events=await _load_session_events_for_timeline(s.id, db),
+        )
+        refreshed["rubric_detail"] = _build_session_rubric_detail(s)
+        s.narrative_data = refreshed
+        flag_modified(s, "narrative_data")
+        await db.commit()
+
+    for session in sessions:
+        await _refresh_stale_history_artifacts(session)
+
     def _scenario_title(scenario_id: str) -> str:
         try:
             return load_scenario(scenario_id).get("title", scenario_id)
@@ -14532,7 +14577,12 @@ async def submit_narrative(
         # the authoritative item state contract after a session has already been
         # debriefed; rebuilding display rows from stale session.checklist_states
         # would faithfully preserve the old bug.
-        _det_packet_cached = await adjudicate_and_persist(session, scenario, db)
+        _det_packet_cached = await adjudicate_and_persist(
+            session,
+            scenario,
+            db,
+            prefer_persisted_checklist_snapshot=False,
+        )
         stored = dict(session.narrative_data or {})
         _cached_timeline = _build_session_timeline(
             session,
@@ -14795,7 +14845,12 @@ async def skip_narrative(
         #
         # Re-adjudicate before rebuilding so cached sessions pick up scenario
         # checklist contract changes instead of reusing stale checklist_states.
-        _det_packet_cached_skip = await adjudicate_and_persist(session, scenario, db)
+        _det_packet_cached_skip = await adjudicate_and_persist(
+            session,
+            scenario,
+            db,
+            prefer_persisted_checklist_snapshot=False,
+        )
         stored = dict(session.narrative_data or {})
         _cached_skip_timeline = _build_session_timeline(
             session,
