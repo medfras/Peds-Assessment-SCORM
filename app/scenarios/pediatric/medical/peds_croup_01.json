@@ -789,7 +789,7 @@
         }
       },
       "o2_nrb": {
-        "label": "High-flow O2 via NRB mask (15 LPM)",
+        "label": "Secured NRB mask strapped to face (15 LPM)",
         "blow_by_equivalent": true,
         "blow_by_label": "Blow-by O2 (NRB held near face — blow-by technique)",
         "within_bls_scope": true,
@@ -814,10 +814,10 @@
             "rate_modifier": 1.2
           }
         },
-        "notes": "High-flow O2 delivery option; blow-by technique required for agitated infants.",
+        "notes": "Oxygen is appropriate; for agitated infants with croup, use the least-agitating tolerated delivery method. Pediatric NC is preferred when tolerated; blow-by uses NRB hardware held near the face at high flow.",
         "indication_gate": {
           "status": "not_indicated_now",
-          "reason": "A secured NRB mask is not recommended for agitated infants with croup — it worsens agitation and stridor. Use blow-by technique (held near face, not secured). Secured NRB is only appropriate if SpO2 drops below 88% with decreased LOC.",
+          "reason": "Oxygen is appropriate for this patient; the safety issue is delivery method. Do not strap or hold a sealed NRB mask tightly to an agitated infant with croup because it can worsen crying, agitation, and stridor. Use the least-agitating tolerated method instead: pediatric nasal cannula if tolerated, or high-flow blow-by with the NRB held near the face. A secured NRB is reserved for severe hypoxia or decreased LOC when tolerated or necessary.",
           "allowed_when": [
             "spo2_below_88",
             "decreased_loc",

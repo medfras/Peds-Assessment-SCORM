@@ -1002,6 +1002,18 @@ def test_agency_codispatch_suppresses_call_type_als_request_items():
     assert "hypoglycemia.als_request_if_indicated" not in diabetic_ids
 
 
+def test_croup_secured_nrb_guidance_does_not_imply_withholding_oxygen():
+    croup = json.loads(Path("app/scenarios/pediatric/medical/peds_croup_01.json").read_text())
+    nrb = croup["vitals"]["interventions"]["o2_nrb"]
+
+    assert nrb["label"] == "Secured NRB mask strapped to face (15 LPM)"
+    assert "High-flow O2 via NRB mask" not in nrb["label"]
+    reason = nrb["indication_gate"]["reason"]
+    assert "Oxygen is appropriate" in reason
+    assert "least-agitating tolerated method" in reason
+    assert "high-flow blow-by with the NRB held near the face" in reason
+
+
 def test_pfd_codispatch_suppresses_hypoglycemia_als_request_item():
     diabetic = json.loads(
         Path("app/scenarios/pediatric/medical/peds_diabetic_emergency_01.json").read_text()
