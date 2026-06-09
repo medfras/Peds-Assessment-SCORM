@@ -32,6 +32,7 @@ from app.main import (  # noqa: E402
     _session_counts_as_passing_scenario,
     _session_progress_pct,
     _validate_adjudication_request,
+    _xp_for_assessment,
     post_session_progress,
     refund_treat,
     spend_treat,
@@ -1221,6 +1222,12 @@ def test_scenario_treats_are_limited_to_perfect_scenarios():
     assert "treats_earned = 1 if is_perfect_scenario else 0" in source
     assert "treats_earned = (xp_gross // 1000) + len(new_badges) + levels_gained" not in source
     assert "award_duplicate_treats = is_perfect_scenario" in source
+
+
+def test_scenario_assessment_xp_is_tiered_so_85_to_89_is_not_a_delta():
+    assert _xp_for_assessment(85, 100, 500) == 250
+    assert _xp_for_assessment(89, 100, 500) == 250
+    assert _xp_for_assessment(90, 100, 500) == 375
 
 
 def test_pediatric_champion_uses_all_pilot_scenarios_not_legacy_counts():

@@ -1,6 +1,11 @@
 from types import SimpleNamespace
 
-from app.main import PASSING_SCORE, _check_requirement_met, _empty_challenge_progress
+from app.main import (
+    PASSING_SCORE,
+    _challenge_requirement_progress,
+    _check_requirement_met,
+    _empty_challenge_progress,
+)
 
 
 def test_specific_requirement_can_be_satisfied_by_passing_drills():
@@ -86,3 +91,40 @@ def test_repeatable_challenge_without_attempt_counts_orientation_as_one_requirem
     assert progress["scenarios_total"] == 5
     assert progress["requirements_progress"][0]["needed"] == 1
     assert progress["requirements_progress"][1]["needed"] == 4
+
+
+def test_min_xp_requirement_uses_user_total_xp_and_reports_single_requirement():
+    req = {"type": "min_xp", "min_xp": 1200, "label": "Earn at least 1200 XP"}
+    user = SimpleNamespace(xp=1030)
+
+    assert not _check_requirement_met(req, {}, user=user)
+    progress = _challenge_requirement_progress(req, best_scores={}, user=user)
+    assert progress["completed"] == 0
+    assert progress["needed"] == 1
+    assert progress["progress_text"] == "1,030 of 1,200 XP"
+    assert progress["custom_items"][0] == {
+        "label": "XP",
+        "status": "1,030 of 1,200 XP earned",
+        "complete": False,
+    }
+
+    user.xp = 1200
+    assert _check_requirement_met(req, {}, user=user)
+    progress = _challenge_requirement_progress(req, best_scores={}, user=user)
+    assert progress["completed"] == 1
+    assert progress["needed"] == 1
+    assert progress["custom_items"][0]["complete"] is True
+
+
+def test_empty_challenge_progress_exposes_min_xp_requirement_as_one_requirement():
+    challenge = SimpleNamespace(
+        requirements=[{"type": "min_xp", "min_xp": 1200, "label": "Earn at least 1200 XP"}],
+        scenario_ids=[],
+        time_goal_minutes=None,
+    )
+
+    progress = _empty_challenge_progress(challenge)
+
+    assert progress["scenarios_total"] == 1
+    assert progress["requirements_progress"][0]["needed"] == 1
+    assert progress["requirements_progress"][0]["progress_text"] == "0 of 1,200 XP"

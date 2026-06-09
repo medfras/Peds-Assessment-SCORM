@@ -1540,6 +1540,10 @@ def _req_drill_ids(req: dict) -> list[str]:
     return req.get("drill_ids") or []
 
 
+def _req_min_xp(req: dict) -> int:
+    return max(0, int(req.get("min_xp") or req.get("xp_required") or req.get("required_xp") or 0))
+
+
 def _canonical_challenge_drill_id(drill_id: str) -> str:
     aliases = {
         "drill_pat": "pat",
@@ -1608,6 +1612,9 @@ def _check_requirement_met(
     if rtype == "min_ce_minutes":
         return ce_seconds >= int(req.get("minutes", 0)) * 60
 
+    if rtype == "min_xp":
+        return user is not None and int(user.xp or 0) >= _req_min_xp(req)
+
     ids = _req_scenario_ids(req)
     drill_ids = _req_drill_ids(req)
     best_drill_scores = best_drill_scores or {}
@@ -1627,6 +1634,95 @@ def _check_requirement_met(
         completed = sum(1 for sid in ids if best_scores.get(sid, 0) >= PASSING_SCORE) + len(drill_done)
         return completed >= needed
     return False
+
+
+def _format_challenge_minutes(seconds: int) -> str:
+    minutes = max(0, int(seconds // 60))
+    if minutes < 60:
+        return f"{minutes}m"
+    hours = minutes // 60
+    remainder = minutes % 60
+    return f"{hours}h {remainder}m" if remainder else f"{hours}h"
+
+
+def _challenge_requirement_progress(
+    req: dict,
+    *,
+    best_scores: dict,
+    best_drill_scores: dict | None = None,
+    user: "User | None" = None,
+    ce_seconds: int = 0,
+    revealed_scenario_ids: set[str] | None = None,
+) -> dict:
+    ids = _req_scenario_ids(req)
+    drill_ids = _req_drill_ids(req)
+    rtype = req.get("type", "specific")
+    revealed_scenario_ids = revealed_scenario_ids or set()
+    best_drill_scores = best_drill_scores or {}
+
+    done = [sid for sid in ids if best_scores.get(sid, 0) >= PASSING_SCORE]
+    drill_done = [
+        did for did in drill_ids
+        if best_drill_scores.get(_canonical_challenge_drill_id(did), 0) >= _challenge_drill_pass_threshold(did)
+    ]
+
+    item_count = len(ids) + len(drill_ids)
+    needed = req.get("count", item_count) if rtype == "any_n" else item_count
+    completed_count = len(done) + len(drill_done)
+    progress_text = None
+    custom_items = None
+
+    if rtype == "orientation_complete":
+        needed = 1
+        completed_count = 1 if _check_requirement_met(req, best_scores, user=user, ce_seconds=ce_seconds, best_drill_scores=best_drill_scores) else 0
+    elif rtype == "min_ce_minutes":
+        target_minutes = max(0, int(req.get("minutes", 0)))
+        target_seconds = target_minutes * 60
+        complete = ce_seconds >= target_seconds
+        needed = 1
+        completed_count = 1 if complete else 0
+        logged = min(max(0, ce_seconds), target_seconds)
+        progress_text = f"{_format_challenge_minutes(logged)} of {_format_challenge_minutes(target_seconds)}"
+        if not complete:
+            progress_text += f" · {_format_challenge_minutes(max(0, target_seconds - ce_seconds))} remaining"
+        custom_items = [{
+            "label": req.get("item_label") or "Training time",
+            "status": (
+                f"{_format_challenge_minutes(target_seconds)} logged from orientation, drills, and scenarios"
+                if complete
+                else f"{_format_challenge_minutes(logged)} logged from orientation, drills, and scenarios · {_format_challenge_minutes(max(0, target_seconds - ce_seconds))} remaining"
+            ),
+            "complete": complete,
+        }]
+    elif rtype == "min_xp":
+        xp_required = _req_min_xp(req)
+        xp_done = max(0, int((user.xp or 0) if user else 0))
+        complete = xp_done >= xp_required
+        needed = 1
+        completed_count = 1 if complete else 0
+        progress_text = f"{xp_done:,} of {xp_required:,} XP"
+        custom_items = [{
+            "label": req.get("item_label") or "XP",
+            "status": f"{xp_done:,} of {xp_required:,} XP earned",
+            "complete": complete,
+        }]
+
+    progress = {
+        "type":          rtype,
+        "label":         req.get("label", ""),
+        "scenario_ids":  ids,
+        "scenario_titles": _challenge_scenario_titles(ids, revealed_scenario_ids),
+        "drill_ids":     drill_ids,
+        "completed_ids": done,
+        "completed_drill_ids": drill_done,
+        "completed":     min(completed_count, needed),
+        "needed":        needed,
+    }
+    if progress_text:
+        progress["progress_text"] = progress_text
+    if custom_items:
+        progress["custom_items"] = custom_items
+    return progress
 
 
 def _challenge_activity_ids(requirements: list[dict]) -> set[str]:
@@ -1788,38 +1884,21 @@ async def _challenge_progress_for_window(
     req_progress = []
     total_needed = total_done = 0
     for req in requirements:
-        ids = _req_scenario_ids(req)
-        drill_ids = _req_drill_ids(req)
-        rtype = req.get("type", "specific")
-        done = [sid for sid in ids if best_scores.get(sid, 0) >= PASSING_SCORE]
-        drill_done = [
-            did for did in drill_ids
-            if best_drill_scores.get(_canonical_challenge_drill_id(did), 0) >= _challenge_drill_pass_threshold(did)
-        ]
-        item_count = len(ids) + len(drill_ids)
-        needed = req.get("count", item_count) if rtype == "any_n" else item_count
-        if rtype in ("orientation_complete", "min_ce_minutes"):
-            needed = 1
-            completed_count = 1 if _check_requirement_met(req, best_scores, user=user, ce_seconds=ce_seconds, best_drill_scores=best_drill_scores) else 0
-        else:
-            completed_count = len(done) + len(drill_done)
-        req_progress.append({
-            "type":          rtype,
-            "label":         req.get("label", ""),
-            "scenario_ids":  ids,
-            "scenario_titles": _challenge_scenario_titles(ids, label_reveal_ids),
-            "drill_ids":     drill_ids,
-            "completed_ids": done,
-            "completed_drill_ids": drill_done,
-            "completed":     min(completed_count, needed),
-            "needed":        needed,
-        })
-        total_done += min(completed_count, needed)
-        total_needed += needed
+        progress = _challenge_requirement_progress(
+            req,
+            best_scores=best_scores,
+            best_drill_scores=best_drill_scores,
+            user=user,
+            ce_seconds=ce_seconds,
+            revealed_scenario_ids=label_reveal_ids,
+        )
+        req_progress.append(progress)
+        total_done += int(progress["completed"])
+        total_needed += int(progress["needed"])
 
     score_requirements = [
         req for req in requirements
-        if _req_scenario_ids(req) or _req_drill_ids(req) or req.get("type") in ("orientation_complete", "min_ce_minutes")
+        if _req_scenario_ids(req) or _req_drill_ids(req) or req.get("type") in ("orientation_complete", "min_ce_minutes", "min_xp")
     ]
     requirements_met = bool(requirements) and (
         all(
@@ -1851,12 +1930,13 @@ def _empty_challenge_progress(ch: Challenge, revealed_scenario_ids: set[str] | N
     for req in requirements:
         ids = _req_scenario_ids(req)
         drill_ids = _req_drill_ids(req)
+        rtype = req.get("type", "specific")
         item_count = len(ids) + len(drill_ids)
-        needed = req.get("count", item_count) if req.get("type") == "any_n" else item_count
-        if req.get("type") in ("orientation_complete", "min_ce_minutes"):
+        needed = req.get("count", item_count) if rtype == "any_n" else item_count
+        if rtype in ("orientation_complete", "min_ce_minutes", "min_xp"):
             needed = 1
         total_needed += needed
-        req_progress.append({
+        progress = {
             "type": req.get("type", "specific"),
             "label": req.get("label", ""),
             "scenario_ids": ids,
@@ -1866,7 +1946,16 @@ def _empty_challenge_progress(ch: Challenge, revealed_scenario_ids: set[str] | N
             "completed_drill_ids": [],
             "completed": 0,
             "needed": needed,
-        })
+        }
+        if rtype == "min_xp":
+            xp_required = _req_min_xp(req)
+            progress["progress_text"] = f"0 of {xp_required:,} XP"
+            progress["custom_items"] = [{
+                "label": req.get("item_label") or "XP",
+                "status": f"0 of {xp_required:,} XP earned",
+                "complete": False,
+            }]
+        req_progress.append(progress)
     return {
         "requirements_progress": req_progress,
         "scenarios_completed": 0,
@@ -10752,37 +10841,26 @@ async def list_challenges(
         total_needed = total_done = 0
         all_scenario_ids: set[str] = set()
         all_activity_ids: set[str] = set()
+        challenge_ce_seconds = sum(
+            ce_by_activity.get(activity_id, 0)
+            for activity_id in _challenge_activity_ids(requirements)
+        )
         for req in requirements:
-            ids    = _req_scenario_ids(req)
-            drill_ids = _req_drill_ids(req)
-            rtype  = req.get("type", "specific")
-            done   = [sid for sid in ids if best_scores.get(sid, 0) >= PASSING_SCORE]
-            drill_done = [
-                did for did in drill_ids
-                if best_drill_scores.get(_canonical_challenge_drill_id(did), 0) >= _challenge_drill_pass_threshold(did)
-            ]
-            item_count = len(ids) + len(drill_ids)
-            needed = req.get("count", item_count) if rtype == "any_n" else item_count
-            completed_count = len(done) + len(drill_done)
-            req_progress.append({
-                "type":          rtype,
-                "label":         req.get("label", ""),
-                "scenario_ids":  ids,
-                "scenario_titles": _challenge_scenario_titles(ids, completed_scenario_ids),
-                "drill_ids":     drill_ids,
-                "completed_ids": done,
-                "completed_drill_ids": drill_done,
-                "completed":     min(completed_count, needed),
-                "needed":        needed,
-            })
-            total_done   += min(completed_count, needed)
-            total_needed += needed
-            all_scenario_ids.update(ids)
-            all_activity_ids.update(ids)
-            for drill_id in drill_ids:
+            progress = _challenge_requirement_progress(
+                req,
+                best_scores=best_scores,
+                best_drill_scores=best_drill_scores,
+                user=user,
+                ce_seconds=challenge_ce_seconds,
+                revealed_scenario_ids=completed_scenario_ids,
+            )
+            req_progress.append(progress)
+            total_done += int(progress["completed"])
+            total_needed += int(progress["needed"])
+            all_scenario_ids.update(progress["scenario_ids"])
+            all_activity_ids.update(progress["scenario_ids"])
+            for drill_id in progress["drill_ids"]:
                 all_activity_ids.update(_challenge_drill_activity_ids(drill_id))
-
-        challenge_ce_seconds = sum(ce_by_activity.get(aid, 0) for aid in all_activity_ids)
 
         out = _challenge_out(ch, earned_badge_ids)
         out["requirements_progress"]  = req_progress
@@ -11000,26 +11078,15 @@ async def admin_challenge_members(
             best_scores = {sid: score for (u, sid), score in all_best.items() if u == uid}
             best_drill_scores = await _best_challenge_drill_scores(user=user, db=db)
             req_progress = []
+            challenge_ce_seconds = await _get_challenge_ce_seconds(uid, list(_challenge_activity_ids(requirements)), db)
             for req in requirements:
-                ids   = _req_scenario_ids(req)
-                drill_ids = _req_drill_ids(req)
-                rtype = req.get("type", "specific")
-                done  = [sid for sid in ids if best_scores.get(sid, 0) >= PASSING_SCORE]
-                drill_done = [
-                    did for did in drill_ids
-                    if best_drill_scores.get(_canonical_challenge_drill_id(did), 0) >= _challenge_drill_pass_threshold(did)
-                ]
-                item_count = len(ids) + len(drill_ids)
-                needed = req.get("count", item_count) if rtype == "any_n" else item_count
-                completed_count = len(done) + len(drill_done)
-                req_progress.append({
-                    "type":          rtype,
-                    "label":         req.get("label", ""),
-                    "completed":     min(completed_count, needed),
-                    "needed":        needed,
-                    "completed_ids": done,
-                    "completed_drill_ids": drill_done,
-                })
+                req_progress.append(_challenge_requirement_progress(
+                    req,
+                    best_scores=best_scores,
+                    best_drill_scores=best_drill_scores,
+                    user=user,
+                    ce_seconds=challenge_ce_seconds,
+                ))
             earned = badge_id in set(user.badges or [])
         display_name = " ".join(filter(None, [user.first_name, user.last_name])) or user.username
         output.append({
