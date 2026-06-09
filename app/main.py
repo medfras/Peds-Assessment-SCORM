@@ -12146,8 +12146,15 @@ def _build_session_timeline(
             status = "out_of_order" if _is_out_of_order(ca, done_at) else "applied"
             _add_timeline_item(display, status, _elapsed(done_at) if done_at else None)
             continue
+        evidence_at = _first_action_evidence_time(ca) if ca.get("evidence") else None
+        if evidence_at:
+            status = "out_of_order" if _is_out_of_order(ca, evidence_at) else "applied"
+            _add_timeline_item(display, status, _elapsed(evidence_at))
+            continue
         # If the scoring engine adjudicated this item and it is not satisfied, trust its
-        # verdict rather than falling back to intervention timestamps or evidence heuristics.
+        # verdict rather than falling back to intervention timestamps or non-evidence
+        # heuristics. Explicit structured evidence above can still rescue stale stored
+        # checklist state from older rubric/scenario versions.
         _ca_state = _item_state_value(ca_id)
         if _ca_state is not None and _ca_state not in ("satisfied", "partial"):
             if _ca_state != "not_applicable":
@@ -12157,10 +12164,7 @@ def _build_session_timeline(
             status = "out_of_order" if _is_out_of_order(ca, done_at) else "applied"
             _add_timeline_item(display, status, _elapsed(done_at))
         elif ca.get("evidence"):
-            evidence_at = _first_action_evidence_time(ca)
-            if evidence_at:
-                _add_timeline_item(display, "applied", _elapsed(evidence_at))
-            elif ca.get("protocol_indicated"):
+            if ca.get("protocol_indicated"):
                 _add_timeline_item(display, "missed")
             elif ca_required:
                 _add_timeline_item(display, "missed")
@@ -12209,9 +12213,10 @@ def _build_session_timeline(
                 min_reassess_at = first_intervention_at + timedelta(seconds=60)
                 neuro_reassess = rec_id == "reassess_neuro" or ("gcs" in desc_lower and "pupil" in desc_lower)
                 if neuro_reassess:
+                    neuro_min_reassess_at = first_intervention_at
                     post_neuro_rows = [
                         f for f in findings
-                        if f.captured_at and f.captured_at >= min_reassess_at
+                        if f.captured_at and f.captured_at >= neuro_min_reassess_at
                         and re.search(r"\bgcs\b|\bpupils?\b", f.key or "", re.IGNORECASE)
                     ]
                     observed_neuro = set()
