@@ -868,6 +868,8 @@
           "transcript_patterns": [
             "\\bgcs\\b",
             "\\bloc\\b",
+            "level of consciousness",
+            "avpu",
             "loss of consciousness",
             "vomit",
             "orient",
@@ -919,8 +921,17 @@
         "required": true,
         "protocol_indicated": true,
         "evidence": {
+          "finding_types": [
+            "exam"
+          ],
+          "finding_key_patterns": [
+            "dcap[-\\s]?btls.*head",
+            "head.*dcap",
+            "head assessment",
+            "scalp assessment"
+          ],
           "transcript_patterns": [
-            "(?i)(dcap|btls|palpat.*head|check.*head|feel.*head|assess.*head|head.*tenderness|head.*step.?off|head.*deformity)"
+            "(?i)(dcap[-\\s]?btls.{0,60}(head|scalp|ears?)|(head|scalp|ears?).{0,60}dcap[-\\s]?btls|palpat.*head|inspect.*head|check.*head|feel.*head|assess.*head|head.*tenderness|head.*step.?off|head.*deformity)"
           ],
           "min_matches": 1
         }

@@ -67,7 +67,7 @@
         }
       ],
       "tier2_patterns": [
-        "(?i)(GCS|AVPU|neurolog|LOC|loss of consciousness|vomit|mental status|alert|orient|confused|glasgow)"
+        "(?i)(GCS|AVPU|neurolog|LOC|level of consciousness|loss of consciousness|vomit|mental status|alert|orient|confused|glasgow)"
       ],
       "done_feedback": "Neurological assessment performed — formal GCS with E/V/M subscores and LOC/vomiting history documented.",
       "missed_feedback": "Complete neurological assessment not performed — AVPU or confusion alone is not a formal head-injury neuro package. Calculate GCS with E/V/M subscores and obtain LOC plus vomiting history.",
@@ -110,12 +110,18 @@
       "protocol_refs": ["nasemso_head_injury"],
       "evidence_requirements": [
         {
+          "type": "finding",
+          "finding_type": "exam",
+          "key_pattern": "(?i)(DCAP[-\\s]?BTLS.*head|head.*DCAP|head assessment|scalp assessment)",
+          "eligible_source_roles": ["ems_performed_exam"]
+        },
+        {
           "type": "intervention",
           "intervention_key": "dcap_btls_head_neck"
         }
       ],
       "tier2_patterns": [
-        "(?i)(dcap|btls|palpat.*head|check.*head|feel.*head|assess.*head|head.*deformity|head.*contusion|head.*tenderness|head.*step.?off)"
+        "(?i)(dcap[-\\s]?btls.{0,60}(head|scalp|ears?)|(head|scalp|ears?).{0,60}dcap[-\\s]?btls|palpat.*head|inspect.*head|check.*head|feel.*head|assess.*head|head.*deformity|head.*contusion|head.*tenderness|head.*step.?off)"
       ],
       "done_feedback": "Focused head DCAP-BTLS assessment performed — scalp/skull tenderness, deformity, and step-offs documented.",
       "missed_feedback": "Focused head DCAP-BTLS assessment not performed — scalp lacerations, tenderness, swelling, and skull step-offs are structural findings that change triage and neuro concern.",

@@ -497,6 +497,8 @@ POSITIVE_SAMPLES: list[tuple[str, str]] = [
      "Let me check pupils — equal and reactive. GCS is 14, he's confused"),
     ("head_injury.neuro_assessment",
      "AVPU is alert but oriented times two, checking mental status"),
+    ("head_injury.neuro_assessment",
+     "I checked pupils, LOC, AVPU, and calculated GCS"),
     ("head_injury.pupil_assessment",
      "Let me check pupils — right is sluggish, left is reactive"),
     ("head_injury.pupil_assessment",
@@ -506,6 +508,8 @@ POSITIVE_SAMPLES: list[tuple[str, str]] = [
      "I'm palpating the head — DCAP-BTLS, checking for step-off or midline tenderness"),
     ("head_injury.dcap_btls_head",
      "Assess the head for tenderness, any deformity or contusion"),
+    ("head_injury.dcap_btls_head",
+     "I examined the head for DCAP-BTLS"),
 
     ("head_injury.smr",
      "Applying cervical collar and manual in-line stabilization, spinal motion restriction"),

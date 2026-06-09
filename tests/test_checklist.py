@@ -476,6 +476,30 @@ def test_trauma_region_patterns_require_exam_language():
     assert not re.search(posterior_pattern, "Hold c-spine and apply spinal motion restriction")
 
 
+def test_trauma_head_assessment_structured_exam_matches_head_and_eye_items():
+    scenario = {
+        "id": "unit_test_trauma_structured_head_exam",
+        "category": "pediatric_trauma",
+        "turnover_target": "als",
+        "base_patient_care_rubric": "nremt_trauma_v1",
+        "checklist": [],
+    }
+
+    items = load_checklist(scenario, level="EMT", mca="mi_base", agency_id=None)
+    head_scalp = next(i for i in items if i.id == "ems.trauma.head_scalp_ears")
+    head_eyes = next(i for i in items if i.id == "ems.trauma.head_eyes")
+
+    assert head_scalp.tier1_match is not None
+    assert head_scalp.tier1_match.finding_type == "exam"
+    assert re.search(head_scalp.tier1_match.finding_key_pattern or "", "DCAP-BTLS Head")
+    assert not re.search(head_scalp.tier1_match.finding_key_pattern or "", "Headache")
+
+    assert head_eyes.tier1_match is not None
+    assert head_eyes.tier1_match.finding_type == "exam"
+    assert re.search(head_eyes.tier1_match.finding_key_pattern or "", "Pupils")
+    assert not re.search(head_eyes.tier1_match.finding_key_pattern or "", "GCS")
+
+
 def test_trauma_secondary_assessment_is_atomic_nremt_point_breakdown():
     scenario = {
         "id": "unit_test_trauma_secondary_atomic",

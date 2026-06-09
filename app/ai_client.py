@@ -1250,6 +1250,17 @@ _MISSED_ITEM_POSITIVE_RULES: dict[str, tuple[re.Pattern, re.Pattern]] = {
             re.IGNORECASE,
         ),
     ),
+    "head_injury.dcap_btls_head": (
+        re.compile(r"\b(head|scalp|ears?|dcap|btls)\b", re.IGNORECASE),
+        re.compile(
+            r"\b("
+            r"dcap[-\s]?btls.{0,60}(?:head|scalp|ears?)|"
+            r"(?:head|scalp|ears?).{0,60}dcap[-\s]?btls|"
+            r"(?:inspect(?:ed|ing)?|palpat(?:ed|ing)?|assess(?:ed|ing)?|check(?:ed|ing)?|examin(?:ed|ing)?)\s+.*\b(?:head|scalp|ears?)\b"
+            r")\b",
+            re.IGNORECASE,
+        ),
+    ),
     "peds_trauma_01_soft_tissue.neuro_assessment": (
         re.compile(r"\bpupils?\b|\bperrl\b|\bloss of consciousness\b|\bLOC\b|\bvomit|\bneuro(?:logic|logical)?", re.IGNORECASE),
         re.compile(

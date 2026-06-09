@@ -630,6 +630,56 @@ def test_head_injury_neuro_package_requires_formal_gcs_and_loc_vomiting_history(
     assert complete_stable_history_keys.state == "satisfied"
 
 
+def test_head_injury_dcap_btls_head_accepts_structured_exam_finding():
+    from app.rubric_loader import compose_active_checklist, load_call_type_rubric
+
+    scenario_path = Path(__file__).resolve().parents[1] / "app/scenarios/pediatric/trauma/peds_trauma_07_head_injury.json"
+    scenario = json.loads(scenario_path.read_text())
+    rubric = load_call_type_rubric("head_injury", "training")
+    composed = compose_active_checklist(
+        base_items=load_checklist(scenario, level="EMT", mca="mi_base", agency_id=None),
+        rubric=rubric,
+        provider_level="EMT",
+        scenario=scenario,
+    )
+    item = next(
+        item for item in composed.items
+        if item.id == "head_injury.dcap_btls_head"
+    )
+
+    structured_exam = adjudicate(
+        [item],
+        interventions=[],
+        session_findings=[
+            _finding("DCAP-BTLS Head", "No deformity or step-off noted", finding_type="exam", source="ems_performed_exam"),
+        ],
+        session_events=[],
+        chat_messages=[],
+        scene_entry=None,
+        submitted_dmist=None,
+        submitted_narrative=None,
+        scenario=scenario,
+        legacy_ai_categories=frozenset(),
+    )[0]
+    vague_head_pain = adjudicate(
+        [item],
+        interventions=[],
+        session_findings=[
+            _finding("Headache", "Reports head pain", finding_type="exam", source="ems_performed_exam"),
+        ],
+        session_events=[],
+        chat_messages=[],
+        scene_entry=None,
+        submitted_dmist=None,
+        submitted_narrative=None,
+        scenario=scenario,
+        legacy_ai_categories=frozenset(),
+    )[0]
+
+    assert structured_exam.state == "satisfied"
+    assert vague_head_pain.state == "not_satisfied"
+
+
 def test_soft_tissue_mechanism_screen_uses_structured_mechanism_and_loc_history():
     scenario_path = Path(__file__).resolve().parents[1] / "app/scenarios/pediatric/trauma/peds_trauma_01_soft_tissue.json"
     scenario = json.loads(scenario_path.read_text())
