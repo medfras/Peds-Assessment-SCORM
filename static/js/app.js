@@ -6062,9 +6062,13 @@ function _scormPedsMapAllowed(mapId) {
 }
 
 function _scormVisibleMapScenarioProgress(mapId = "") {
-  const mapDef = _PEDS_MAP_BY_ID.get(String(mapId || ""));
-  const scenarios = (mapDef?.scenarios || []).filter(s => !String(s.id || "").startsWith("_ph"));
-  const completed = scenarios.filter(s => _scormAppComplete(s.id)).length;
+  const mapIdText = String(mapId || "");
+  const groupKey = mapIdText === "map_0" ? "map0" : mapIdText;
+  const scormNodes = (_SCORM_NODE_GROUPS[groupKey] || []).filter(node => node.type === "scenario");
+  const scenarios = scormNodes.length
+    ? scormNodes
+    : ((_PEDS_MAP_BY_ID.get(mapIdText)?.scenarios || []).filter(s => !String(s.id || "").startsWith("_ph")));
+  const completed = scenarios.filter(s => _scormAppComplete(s.appId || s.id)).length;
   const total = scenarios.length;
   return {
     completed,
@@ -21541,6 +21545,10 @@ function _renderActionModal() {
       } else if (item.payload) {
         hide("modal-action");
         _actionStack = [];
+        if (await _handleAuthoredStandardExamAction(item.payload, "action-menu-exam", true)) {
+          if (el("screen-sim")?.classList.contains("sim-mobile-active")) _setSimMobileTab("chat");
+          return;
+        }
         if (await _handleActionMenuInterventionItem(item, "action_menu")) {
           if (el("screen-sim")?.classList.contains("sim-mobile-active")) _setSimMobileTab("chat");
           return;
@@ -23366,7 +23374,9 @@ function _historyMapTriggerMatches(message = "", trigger = "") {
   const msg = _normalizeHistoryMapText(message);
   const trig = _normalizeHistoryMapText(trigger);
   if (!msg || !trig) return false;
-  return msg.includes(trig) || trig.includes(msg) || _historyMapOrderedTokenMatch(msg, trig);
+  const msgPhrase = ` ${msg} `;
+  const trigPhrase = ` ${trig} `;
+  return msgPhrase.includes(trigPhrase) || trigPhrase.includes(msgPhrase) || _historyMapOrderedTokenMatch(msg, trig);
 }
 
 function _historyMapOrderedTokenMatch(messageText = "", triggerText = "") {

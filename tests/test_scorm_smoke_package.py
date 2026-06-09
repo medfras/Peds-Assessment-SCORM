@@ -660,8 +660,9 @@ def test_scorm_production_peds_maps_use_backend_node_state():
     assert 'if (id === "pm1")' in app_js
     assert 'if (id === "pt1")' in app_js
     assert "complete: pm1Unlocked && pt1Unlocked, pct" in app_js
-    assert 'const scenarios = (mapDef?.scenarios || []).filter(s => !String(s.id || "").startsWith("_ph"));' in app_js
-    assert "const completed = scenarios.filter(s => _scormAppComplete(s.id)).length;" in app_js
+    assert 'const groupKey = mapIdText === "map_0" ? "map0" : mapIdText;' in app_js
+    assert 'const scormNodes = (_SCORM_NODE_GROUPS[groupKey] || []).filter(node => node.type === "scenario");' in app_js
+    assert "const completed = scenarios.filter(s => _scormAppComplete(s.appId || s.id)).length;" in app_js
     assert "pct: total ? Math.round((completed / total) * 100) : 100" in app_js
     assert "complete: progress.complete, pct: progress.pct" in app_js
 
@@ -689,6 +690,17 @@ def test_scorm_production_peds_maps_use_backend_node_state():
     assert "PEDS_MAP_DATA.filter(m => _scormPedsMapAllowed(m.id))" in sidebar_block
     assert "_scormPedsSidebarProgress(m.id)" in sidebar_block
     assert "_scormPedsSidebarProgress(mapId)" in sidebar_block
+
+
+def test_lung_sound_results_modal_is_viewport_bounded():
+    css = STYLE_CSS.read_text()
+    assert "#screen-lsm-game #lsm-results" in css
+    block_start = css.index("#screen-lsm-game #lsm-results")
+    block = css[block_start:css.index(".mg-result-grid", block_start)]
+    assert "top: 1rem;" in block
+    assert "bottom: 1rem;" in block
+    assert "max-height: none;" in block
+    assert "translateX(-50%)" in block
 
 
 def test_scorm_pediatric_district_progress_counts_pilot_calls_only():

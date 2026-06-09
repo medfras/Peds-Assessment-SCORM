@@ -180,6 +180,7 @@ def test_extremity_scenario_authors_pain_and_side_specific_exam_aliases():
     assert "function _scenarioCmsTargetMatchesMessage" in source
     assert "function _hasAppliedOrRecordedIntervention" in source
     assert "_maybeRecordCmsAssessmentFromMessage(" in source
+    assert '"action-menu-exam"' in source
     assert "assess_cms_post" in source
     assert scenario["chat_placeholder"] == "Ask questions or give EMS instructions..."
     assert scenario["vitals"]["baseline"]["pain"]["value"].startswith("9/10")
@@ -1213,6 +1214,10 @@ def test_frontend_history_response_map_prefers_complete_sample_entry():
 
     assert "function _historyMapMessageRequestsCompoundSample" in source
     assert "function _historyMapOrderedTokenMatch" in trigger_lookup
+    assert "msgPhrase.includes(trigPhrase)" in trigger_lookup
+    assert "trigPhrase.includes(msgPhrase)" in trigger_lookup
+    assert "msg.includes(trig)" not in trigger_lookup
+    assert "trig.includes(msg)" not in trigger_lookup
     assert "if (isCompleteSampleEntry && !_historyMapMessageRequestsCompoundSample(message)) return null;" in entry_lookup
     assert "priorityBonus" in entry_lookup
     assert "completeSampleBonus" in entry_lookup

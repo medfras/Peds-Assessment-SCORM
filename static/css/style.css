@@ -8654,6 +8654,12 @@ body {
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
 }
 .mg-results h3 { font-size: 1rem; font-weight: 800; color: #f8fafc; margin-bottom: 0.6rem; }
+#screen-lsm-game #lsm-results {
+  top: 1rem;
+  bottom: 1rem;
+  max-height: none;
+  transform: translateX(-50%);
+}
 .mg-result-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
