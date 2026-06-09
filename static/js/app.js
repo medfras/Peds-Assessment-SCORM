@@ -4834,7 +4834,6 @@ const _PROGRESS_DEFAULTS = () => ({
 
 async function _loadProgressFromServer(options = {}) {
   try {
-    const previousScores = _progressCache?.minigameBestScores || {};
     const minXp = Number.isFinite(Number(options.minXp)) ? Math.max(0, Number(options.minXp)) : null;
     const minTreats = Number.isFinite(Number(options.minTreats)) ? Math.max(0, Number(options.minTreats)) : null;
     const [progRes, histRes] = await Promise.all([
@@ -4844,12 +4843,7 @@ async function _loadProgressFromServer(options = {}) {
     _progressCache = progRes.ok ? await progRes.json() : (_progressCache || _PROGRESS_DEFAULTS());
     if (minXp !== null) _progressCache.xp = Math.max(Number(_progressCache.xp || 0), minXp);
     if (minTreats !== null) _progressCache.treats = Math.max(Number(_progressCache.treats || 0), minTreats);
-    const serverScores = _progressCache?.minigameBestScores || {};
-    const mergedScores = { ...serverScores };
-    Object.entries(previousScores).forEach(([gameId, score]) => {
-      mergedScores[gameId] = Math.max(Number(mergedScores[gameId] || 0), Number(score || 0));
-    });
-    _progressCache = { ...(_progressCache || _PROGRESS_DEFAULTS()), minigameBestScores: mergedScores };
+    _progressCache = { ...(_progressCache || _PROGRESS_DEFAULTS()) };
     _historyCache  = histRes.ok ? await histRes.json() : (_historyCache || []);
     _writeProgressHistoryCache();
   } catch {
