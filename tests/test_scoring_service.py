@@ -846,8 +846,8 @@ def test_head_injury_structured_exam_rows_credit_neuro_and_general_head_items():
         _finding("LOC", "No loss of consciousness; cried right after; vomited once", finding_type="history", fid=4, source="ai_roleplay_tag"),
         _finding("Vomiting", "Vomited once about 2 minutes after fall", finding_type="history", fid=5, source="ai_roleplay_tag"),
         _finding(
-            "DCAP-BTLS Assessment — Head",
-            "Head/scalp DCAP-BTLS assessed: no visible scalp laceration or external hemorrhage; assess for deformity, step-off, tenderness, and swelling.",
+            "DCAP-BTLS Head",
+            "Head/scalp DCAP-BTLS assessed for deformity, contusions, abrasions, punctures, burns, tenderness, lacerations, swelling, and skull step-off; no visible scalp laceration or external hemorrhage noted.",
             finding_type="exam",
             fid=6,
             source="student_stated_exam",

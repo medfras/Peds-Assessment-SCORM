@@ -23143,7 +23143,12 @@ async function applyInterventionAndRecord(interventionId, pcrLabel, { source = "
   }
 
   addPcrTreatment(pcrLabel, interventionId);
-  await _recordStructuredExamFindingsForIntervention(interventionId);
+  const structuredExamFindings = await _recordStructuredExamFindingsForIntervention(interventionId);
+  (structuredExamFindings || []).forEach(({ key, value }) => {
+    if (_examFindingShouldRenderChatCallout(key, value)) {
+      appendExamFindingInfo(key, value);
+    }
+  });
   _appendLexiInterventionFeedback(interventionId, pcrLabel);
   checkReadiness();
 }
@@ -23151,6 +23156,11 @@ async function applyInterventionAndRecord(interventionId, pcrLabel, { source = "
 async function _recordStructuredExamFindingsForIntervention(interventionId) {
   const id = String(interventionId || "");
   const writes = [];
+  const displayFindings = [];
+  const recordExam = (key, value, source = "student_stated_exam", { display = true } = {}) => {
+    writes.push(addPcrExam(key, value, source));
+    if (display) displayFindings.push({ key, value });
+  };
   const authoredValue = (key, fallback = "") => {
     const def = _AUTHORED_VITAL_DEFS.find(d => d.key === key);
     const formatted = def ? _formatAuthoredVitalValue(def, { useDisplay: true }) : null;
@@ -23169,20 +23179,22 @@ async function _recordStructuredExamFindingsForIntervention(interventionId) {
     const eventsText = state.scenarioData?.history?.events_leading_to_call || "LOC and vomiting history assessed.";
     _vitalsBatch = { GCS: gcsVitalText };
     writes.push(...(flushVitalsBlock({ GCS: "gcs_modal", default: "gcs_modal" }) || []));
-    writes.push(addPcrExam("Neurological Assessment", `${gcsText}; ${locText}; Pupils: ${pupilsText}`, "student_stated_exam"));
-    writes.push(addPcrExam("Pupils", pupilsText, "student_stated_exam"));
-    writes.push(addPcrExam("AVPU / LOC", locText, "student_stated_exam"));
+    recordExam("Neurological Assessment", `${gcsText}; ${locText}; Pupils: ${pupilsText}`);
+    recordExam("Pupils", pupilsText);
+    recordExam("AVPU / LOC", locText, "student_stated_exam", { display: false });
     writes.push(addPcrHistory("LOC", eventsText, "ai_roleplay_tag"));
     writes.push(addPcrHistory("Vomiting", eventsText, "ai_roleplay_tag"));
   } else if (id === "dcap_btls_head_neck") {
-    const headFinding = "Head/scalp DCAP-BTLS assessed: no visible scalp laceration or external hemorrhage; assess for deformity, step-off, tenderness, and swelling.";
+    const headFinding = "Head/scalp DCAP-BTLS assessed for deformity, contusions, abrasions, punctures, burns, tenderness, lacerations, swelling, and skull step-off; no visible scalp laceration or external hemorrhage noted.";
     const faceFinding = "Face, mouth, and nose assessed for DCAP-BTLS and visible injury.";
-    writes.push(addPcrExam("DCAP-BTLS Assessment — Head", headFinding, "student_stated_exam"));
-    writes.push(addPcrExam("Head Assessment", headFinding, "student_stated_exam"));
-    writes.push(addPcrExam("Facial / Mouth / Nose Assessment", faceFinding, "student_stated_exam"));
+    recordExam("DCAP-BTLS Head", headFinding);
+    recordExam("Head Assessment", headFinding, "student_stated_exam", { display: false });
+    recordExam("Scalp Assessment", headFinding, "student_stated_exam", { display: false });
+    recordExam("Facial / Mouth / Nose Assessment", faceFinding, "student_stated_exam", { display: false });
   }
 
   await Promise.allSettled(writes.filter(Boolean));
+  return displayFindings;
 }
 
 function appendSuggestionChips(suggestions, afterEl) {

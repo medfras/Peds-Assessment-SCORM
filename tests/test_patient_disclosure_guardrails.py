@@ -1518,11 +1518,12 @@ def test_body_map_pupil_exam_persists_scoring_finding_and_head_menu_omits_gcs():
     assert '"authored_standard_exam"' not in authored_exam_handler
     assert 'addPcrExam(formatted.label, formatted.value, "partner_reported_exam")' in authored_vitals_request
     assert 'id === "neuro_assessment"' in intervention_exam_helper
-    assert 'addPcrExam("Pupils", pupilsText, "student_stated_exam")' in intervention_exam_helper
+    assert 'recordExam("Pupils", pupilsText)' in intervention_exam_helper
     assert 'flushVitalsBlock({ GCS: "gcs_modal", default: "gcs_modal" })' in intervention_exam_helper
     assert 'addPcrHistory("LOC", eventsText, "ai_roleplay_tag")' in intervention_exam_helper
     assert 'id === "dcap_btls_head_neck"' in intervention_exam_helper
-    assert 'addPcrExam("DCAP-BTLS Assessment — Head"' in intervention_exam_helper
+    assert 'recordExam("DCAP-BTLS Head"' in intervention_exam_helper
+    assert "appendExamFindingInfo(key, value)" in source
 
 
 def test_head_injury_exemplar_uses_high_flow_nrb_not_nasal_cannula():
