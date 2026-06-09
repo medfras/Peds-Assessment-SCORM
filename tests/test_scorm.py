@@ -746,6 +746,19 @@ def test_app_js_scenario_event_has_required_fields():
     block = src[idx:idx + 300]
     for field in ("scenarioId", "sessionId", "score", "passed", "isDrill"):
         assert field in block, f"rt:scenarioComplete detail missing field: {field}"
+    pre_block = src[max(0, idx - 350):idx + 300]
+    assert "const assessmentPct = _assessmentPctFromScore(" in pre_block
+    assert "const scenarioPassed = !scoreDetail?.criticalFailure?.triggered" in pre_block
+    assert "passed:  scenarioPassed" in block
+    assert "passed:  score !== null && score >= 70" not in block
+
+
+def test_scorm_scenario_submit_uses_explicit_pass_result_not_raw_score_threshold():
+    src = _APP_JS.read_text()
+
+    assert "async function _onScormNodeComplete(appId, score, completed = true, mistakeTags = [], passedOverride = null)" in src
+    assert 'const passed = typeof passedOverride === "boolean" ? passedOverride : normalizedScore >= 70;' in src
+    assert "_onScormNodeComplete(detail.scenarioId, detail.score, true, [], detail.passed);" in src
 
 
 def test_app_js_drill_event_has_required_fields():

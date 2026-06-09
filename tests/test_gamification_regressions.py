@@ -29,6 +29,8 @@ from app.main import (  # noqa: E402
     _overlap_recent_missed_keys,
     _remember_missed_lexi_keys_for_user,
     _session_counts_as_passing_pilot_scenario,
+    _session_counts_as_passing_scenario,
+    _session_progress_pct,
     _validate_adjudication_request,
     post_session_progress,
     refund_treat,
@@ -1265,6 +1267,35 @@ def test_pilot_pediatric_champion_session_pass_filter_uses_passed_distinct_pilot
     assert not _session_counts_as_passing_pilot_scenario(failing)
     assert not _session_counts_as_passing_pilot_scenario(critical_failure)
     assert not _session_counts_as_passing_pilot_scenario(non_pilot)
+
+
+def test_progress_gates_normalize_raw_assessment_scores_with_rubric_maxes():
+    needs_work = types.SimpleNamespace(
+        assessment_score=78,
+        score=78,
+        narrative_data={
+            "subscores": {
+                "_maxes": {
+                    "clinical_performance": 65,
+                    "scope_adherence": 20,
+                    "dmist": 15,
+                    "professionalism": 15,
+                }
+            }
+        },
+        score_snapshot={},
+    )
+    on_track = types.SimpleNamespace(
+        assessment_score=81,
+        score=81,
+        narrative_data=needs_work.narrative_data,
+        score_snapshot={},
+    )
+
+    assert _session_progress_pct(needs_work) == 68
+    assert not _session_counts_as_passing_scenario(needs_work)
+    assert _session_progress_pct(on_track) == 70
+    assert _session_counts_as_passing_scenario(on_track)
 
 
 def _group_session(updated_at: datetime) -> LexiGroupSession:

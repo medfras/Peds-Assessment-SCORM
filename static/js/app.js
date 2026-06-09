@@ -6356,18 +6356,19 @@ async function _refreshScormSummary() {
   return state.scormLatestSummary;
 }
 
-async function _onScormNodeComplete(appId, score, completed = true, mistakeTags = []) {
+async function _onScormNodeComplete(appId, score, completed = true, mistakeTags = [], passedOverride = null) {
   if (!state.scormEnabled) return;
   const node = _SCORM_NODE_BY_APP_ID[appId];
   if (!node) return;
   const normalizedScore = Math.max(0, Math.min(100, Math.round(Number(score) || 0)));
+  const passed = typeof passedOverride === "boolean" ? passedOverride : normalizedScore >= 70;
   try {
     const adapter = window.RescueTrails?.["scormAdapter"];
     const summary = await adapter.submitNodeResult(node.nodeId, {
       activity_type: node.type === "scenario" ? "scenario" : "minigame",
       score: normalizedScore,
       completed: !!completed,
-      passed: normalizedScore >= 70,
+      passed,
       mistake_tags: Array.isArray(mistakeTags) ? mistakeTags : [],
     });
     _applyScormResumeState(summary);
@@ -6386,7 +6387,7 @@ window.addEventListener('rt:drillComplete', (event) => {
 window.addEventListener('rt:scenarioComplete', (event) => {
   const detail = event.detail || {};
   if (detail.isDrill) return;
-  _onScormNodeComplete(detail.scenarioId, detail.score, true, []);
+  _onScormNodeComplete(detail.scenarioId, detail.score, true, [], detail.passed);
 });
 
 el("btn-scorm-refresh")?.addEventListener("click", async () => {
@@ -27731,12 +27732,17 @@ async function processDebrief(feedback, score, subscores = null, timeline = null
 
   state.lastScore = score;
 
+  const assessmentPct = _assessmentPctFromScore(
+    scoreDetail?.assessmentScore ?? score,
+    _assessmentMaxFromSubscores(subscores),
+  );
+  const scenarioPassed = !scoreDetail?.criticalFailure?.triggered && assessmentPct !== null && assessmentPct >= 70;
   window.dispatchEvent(new CustomEvent("rt:scenarioComplete", {
     detail: {
       scenarioId: state.scenarioId,
       sessionId:  state.sessionId,
       score,
-      passed:  score !== null && score >= 70,
+      passed:  scenarioPassed,
       isDrill: !!state.drillMode,
     },
   }));

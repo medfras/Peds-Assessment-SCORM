@@ -1467,27 +1467,27 @@ async def _get_unlocked_drill_ids(user_id: str, agency_id: Optional[str], db: As
     if not agency_id:
         return []
     rows_result = await db.execute(
-        select(SimSession.scenario_id, SimSession.score, SimSession.narrative_data).where(
+        select(SimSession).where(
             SimSession.user_id == user_id,
             SimSession.agency_id == agency_id,
             SimSession.ended_at.isnot(None),
         )
     )
     unlocked = set()
-    for row in rows_result.all():
-        nd = row.narrative_data or {}
+    for session in rows_result.scalars().all():
+        nd = session.narrative_data or {}
         if nd.get("drill"):
             continue
-        if (row.score or 0) < PASSING_SCORE:
+        if not _session_counts_as_passing_scenario(session):
             continue
         # Keep list resilient to deleted/renamed scenario files.
         try:
-            sc = load_scenario(row.scenario_id)
+            sc = load_scenario(session.scenario_id)
         except Exception:
             continue
         if sc.get("is_orientation"):
             continue
-        unlocked.add(row.scenario_id)
+        unlocked.add(session.scenario_id)
     return sorted(unlocked)
 
 
@@ -1751,18 +1751,15 @@ async def _challenge_progress_for_window(
     if ended_at is not None:
         session_filters.append(SimSession.ended_at <= ended_at)
 
-    sessions_result = await db.execute(
-        select(SimSession.scenario_id, SimSession.score, SimSession.narrative_data)
-        .where(*session_filters)
-    )
+    sessions_result = await db.execute(select(SimSession).where(*session_filters))
     best_scores: dict[str, int] = {}
     completed_scenario_ids: set[str] = set()
-    for row in sessions_result.all():
-        sid, score, nd = row.scenario_id, (row.score or 0), (row.narrative_data or {})
+    for session in sessions_result.scalars().all():
+        sid, nd = session.scenario_id, (session.narrative_data or {})
         if nd.get("drill"):
             continue
         completed_scenario_ids.add(sid)
-        best_scores[sid] = max(best_scores.get(sid, 0), score)
+        best_scores[sid] = max(best_scores.get(sid, 0), _session_progress_pct(session))
     label_reveal_ids = revealed_scenario_ids if revealed_scenario_ids is not None else completed_scenario_ids
     best_drill_scores: dict[str, int] = {}
     if user is not None:
@@ -2083,18 +2080,18 @@ async def _check_and_award_challenges(
     # Best score per scenario_id for this user at this agency
     # Drill sessions are excluded from score-based requirements (they have no real score)
     sessions_result = await db.execute(
-        select(SimSession.scenario_id, SimSession.score, SimSession.narrative_data).where(
+        select(SimSession).where(
             SimSession.user_id   == user.id,
             SimSession.agency_id == agency_id,
             SimSession.ended_at.isnot(None),
         )
     )
     best_scores: dict[str, int] = {}
-    for row in sessions_result.all():
-        sid, score, nd = row.scenario_id, (row.score or 0), (row.narrative_data or {})
+    for session in sessions_result.scalars().all():
+        sid, nd = session.scenario_id, (session.narrative_data or {})
         if nd.get("drill"):
             continue  # drill sessions don't satisfy score-based prerequisites
-        best_scores[sid] = max(best_scores.get(sid, 0), score)
+        best_scores[sid] = max(best_scores.get(sid, 0), _session_progress_pct(session))
 
     # Total CE seconds — used by min_ce_minutes requirement type
     ce_seconds = await _get_user_ce_seconds(user.id, db)
@@ -10656,21 +10653,21 @@ async def list_challenges(
     # Fetch user's completed full sessions at this agency for progress tracking
     # Drill sessions are excluded — they don't satisfy prerequisites
     sessions_result = await db.execute(
-        select(SimSession.scenario_id, SimSession.score, SimSession.narrative_data).where(
+        select(SimSession).where(
             SimSession.user_id   == ctx.user_id,
             SimSession.agency_id == ctx.agency_id,
             SimSession.ended_at.isnot(None),
         )
     )
-    completed_rows = sessions_result.all()
+    completed_rows = sessions_result.scalars().all()
     best_scores: dict[str, int] = {}
     completed_scenario_ids: set[str] = set()
-    for row in completed_rows:
-        sid, score, nd = row.scenario_id, (row.score or 0), (row.narrative_data or {})
+    for session in completed_rows:
+        sid, nd = session.scenario_id, (session.narrative_data or {})
         if nd.get("drill"):
             continue  # drill sessions don't satisfy challenge prerequisites
         completed_scenario_ids.add(sid)
-        best_scores[sid] = max(best_scores.get(sid, 0), score)
+        best_scores[sid] = max(best_scores.get(sid, 0), _session_progress_pct(session))
 
     badges_row = (await db.execute(
         select(User.badges).where(User.id == ctx.user_id)
@@ -10965,18 +10962,18 @@ async def admin_challenge_members(
                 completed_attempt_count_by_user[attempt.user_id] = completed_attempt_count_by_user.get(attempt.user_id, 0) + 1
 
     s_result = await db.execute(
-        select(SimSession.user_id, SimSession.scenario_id, SimSession.score, SimSession.narrative_data).where(
+        select(SimSession).where(
             SimSession.agency_id == ch.agency_id,
             SimSession.ended_at.isnot(None),
         )
     )
     all_best: dict[tuple, int] = {}
-    for row in s_result.all():
-        nd = row.narrative_data or {}
+    for session in s_result.scalars().all():
+        nd = session.narrative_data or {}
         if nd.get("drill"):
             continue  # drill sessions don't satisfy challenge prerequisites
-        key = (row.user_id, row.scenario_id)
-        all_best[key] = max(all_best.get(key, 0), row.score or 0)
+        key = (session.user_id, session.scenario_id)
+        all_best[key] = max(all_best.get(key, 0), _session_progress_pct(session))
 
     output = []
     for uid in user_ids:
@@ -13864,6 +13861,21 @@ def _session_assessment_pct(session: SimSession) -> int:
     return _assessment_pct(getattr(session, "assessment_score", None), subs)
 
 
+def _session_progress_pct(session: SimSession) -> int:
+    """Return the score percentage used for progression gates.
+
+    Full-scenario assessment scores are stored as raw points whose denominator
+    varies by rubric. Use the stored subscore maxes when present so a 78/115
+    "Needs Work" attempt is not treated as a 78% passing attempt.
+    """
+    if getattr(session, "assessment_score", None) is not None:
+        return _session_assessment_pct(session)
+    normalized_score = getattr(session, "score", None)
+    if normalized_score is None:
+        return 0
+    return max(0, min(100, int(round(float(normalized_score)))))
+
+
 def _session_critical_failure(session: SimSession) -> dict | None:
     """Return the persisted critical-failure payload, if any."""
     snap = getattr(session, "score_snapshot", None) or {}
@@ -13874,24 +13886,18 @@ def _session_critical_failure(session: SimSession) -> dict | None:
     return None
 
 
+def _session_counts_as_passing_scenario(session: SimSession) -> bool:
+    """Return true when a completed full scenario meets the on-track threshold."""
+    if _session_critical_failure(session):
+        return False
+    return _session_progress_pct(session) >= PASSING_SCORE
+
+
 def _session_counts_as_passing_pilot_scenario(session: SimSession) -> bool:
     """Return true when this session passes one of the Station 1 pilot scenarios."""
     if getattr(session, "scenario_id", None) not in _PILOT_PEDIATRIC_CHAMPION_SCENARIOS:
         return False
-    if _session_critical_failure(session):
-        return False
-
-    narrative_data = getattr(session, "narrative_data", None) or {}
-    subscores = narrative_data.get("subscores") if isinstance(narrative_data, dict) else None
-    assessment_score = getattr(session, "assessment_score", None)
-    assessment_passed = False
-    if assessment_score is not None:
-        assessment_max = _assessment_max_from_subscores(subscores)
-        assessment_passed = (assessment_score / float(assessment_max)) >= PASSING_PCT
-
-    normalized_score = getattr(session, "score", None)
-    normalized_passed = (normalized_score or 0) >= PASSING_SCORE
-    return assessment_passed or normalized_passed
+    return _session_counts_as_passing_scenario(session)
 
 
 async def _pilot_pediatric_champion_complete(
