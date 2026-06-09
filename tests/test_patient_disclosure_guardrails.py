@@ -1147,6 +1147,43 @@ def test_diabetic_chief_concern_can_volunteer_patient_name_when_authored():
     assert "[[HISTORY: Patient Chief Complaint=acting strange and confused]]" in chief["tags"]
 
 
+def test_head_injury_name_question_does_not_reveal_age_or_dob():
+    scenario = json.loads((PROJECT_ROOT / "app/scenarios/pediatric/trauma/peds_trauma_07_head_injury.json").read_text(encoding="utf-8"))
+
+    entry = scenario["history_response_map"]["patient_name"]
+    payload = json.dumps({"answer": entry["answer"], "tags": entry["tags"]}, ensure_ascii=False).lower()
+
+    assert "marcus" in payload
+    assert "8 years old" not in payload
+    assert "8-year-old" not in payload
+    assert "birthday" not in payload
+    assert "date of birth" not in payload
+    assert "may 13" not in payload
+
+    resolved = _resolve_history_response_entry("what's his name?", scenario, preferred_addressee="family")
+    assert resolved is not None
+    key, narrowed = resolved
+    assert key == "patient_name"
+    assert narrowed["answer"] == "His name is Marcus."
+    assert narrowed["tags"] == ["[[HISTORY: Patient Name=Marcus]]"]
+
+
+def test_head_injury_full_demographics_requires_explicit_bundled_request():
+    scenario = json.loads((PROJECT_ROOT / "app/scenarios/pediatric/trauma/peds_trauma_07_head_injury.json").read_text(encoding="utf-8"))
+
+    resolved = _resolve_history_response_entry("can I get his name age and date of birth?", scenario, preferred_addressee="family")
+    assert resolved is not None
+    key, entry = resolved
+
+    assert key == "patient_identity_full"
+    assert "Marcus" in entry["answer"]
+    assert "8 years old" in entry["answer"]
+    assert "May 13" in entry["answer"]
+    assert "[[HISTORY: Patient Name=Marcus]]" in entry["tags"]
+    assert "[[HISTORY: Patient Age=8-year-old male]]" in entry["tags"]
+    assert "[[HISTORY: Patient Date of Birth=May 13]]" in entry["tags"]
+
+
 def test_frontend_history_response_map_prefers_complete_sample_entry():
     source = open("static/js/app.js", encoding="utf-8").read()
     entry_lookup = source[source.index("function _historyMapEntryMatchScore"):source.index("function _applyHistoryResponseEntryTags")]

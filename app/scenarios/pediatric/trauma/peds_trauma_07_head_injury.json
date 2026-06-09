@@ -202,18 +202,87 @@
     ]
   },
   "history_response_map": {
-    "patient_identity": {
-      "label": "Patient identity / demographics",
+    "patient_name": {
+      "label": "Patient name",
       "speaker": "Susan",
       "triggers": [
         "what is his name",
         "what's his name",
-        "patient name",
+        "patient name"
+      ],
+      "answer": "His name is Marcus.",
+      "tags": [
+        "[[HISTORY: Patient Name=Marcus]]"
+      ],
+      "notes": "Patient-scoped name only. Do not volunteer age, date of birth, or weight unless separately asked.",
+      "do_not_include": [
+        "age unless asked",
+        "date of birth unless asked",
+        "weight unless asked",
+        "mechanism details",
+        "neurologic findings",
+        "medical history",
+        "treatment suggestions"
+      ]
+    },
+    "patient_age": {
+      "label": "Patient age",
+      "speaker": "Susan",
+      "triggers": [
         "how old is he",
-        "age",
+        "patient age",
+        "age"
+      ],
+      "answer": "He's 8 years old.",
+      "tags": [
+        "[[HISTORY: Patient Age=8-year-old male]]"
+      ],
+      "notes": "Patient-scoped age only. Do not volunteer name, date of birth, or weight unless separately asked.",
+      "do_not_include": [
+        "name unless asked",
+        "date of birth unless asked",
+        "weight unless asked",
+        "mechanism details",
+        "neurologic findings",
+        "medical history",
+        "treatment suggestions"
+      ]
+    },
+    "patient_dob": {
+      "label": "Patient date of birth",
+      "speaker": "Susan",
+      "triggers": [
         "date of birth",
         "dob",
         "birthday"
+      ],
+      "answer": "His birthday is May 13.",
+      "tags": [
+        "[[HISTORY: Patient Date of Birth=May 13]]"
+      ],
+      "notes": "Patient-scoped date of birth only. Do not volunteer name, age, or weight unless separately asked.",
+      "do_not_include": [
+        "name unless asked",
+        "age unless asked",
+        "weight unless asked",
+        "mechanism details",
+        "neurologic findings",
+        "medical history",
+        "treatment suggestions"
+      ]
+    },
+    "patient_identity_full": {
+      "label": "Patient demographics",
+      "speaker": "Susan",
+      "triggers": [
+        "name age and date of birth",
+        "name age dob",
+        "name date of birth",
+        "name and dob",
+        "name and date of birth",
+        "patient demographics",
+        "identify him",
+        "id him"
       ],
       "answer": "His name is Marcus. He's 8 years old. His birthday is May 13.",
       "tags": [
@@ -221,7 +290,7 @@
         "[[HISTORY: Patient Age=8-year-old male]]",
         "[[HISTORY: Patient Date of Birth=May 13]]"
       ],
-      "notes": "Patient-scoped demographics only.",
+      "notes": "Use only for explicit bundled demographics requests.",
       "do_not_include": [
         "weight unless asked",
         "mechanism details",
