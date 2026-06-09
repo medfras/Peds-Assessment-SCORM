@@ -23844,7 +23844,7 @@ function _standardExamEntrySide(entry = {}) {
 function _messageLooksLikeStandardExam(message = "") {
   const msg = String(message || "");
   return /\b(?:assess(?:ing)?|inspect(?:ing)?|palpat(?:e|ing)|check(?:ing)?|evaluate|exam(?:ine|ining)?|reassess(?:ing)?|recheck(?:ing)?)\b/i.test(msg)
-    && /\b(?:dcap|btls|cms|pms|pulse|pupils?|eyes?|perrla|radial|pedal|dorsalis|posterior tibial|cap(?:illary)? refill|sensation|sensory|motor|movement|move|wiggle|grip|hand|forearm|arm|leg|foot|toe|distal|abdomen|pelvis|neck|spine|face)\b/i.test(msg);
+    && /\b(?:dcap|btls|cms|pms|pulse|pupils?|eyes?|perrla|radial|pedal|dorsalis|posterior tibial|cap(?:illary)? refill|sensation|sensory|motor|movement|move|wiggle|grip|hand|forearm|arm|leg|foot|toe|distal|abdomen|pelvis|neck|spine|face|chest|thorax)\b/i.test(msg);
 }
 
 function _standardExamAliasScore(message = "", entry = {}) {
@@ -23885,6 +23885,60 @@ function _authoredStandardExamFindingForMessage(message = "") {
     .filter(match => match.score > 0)
     .sort((a, b) => (b.score - a.score));
   return matches[0] || null;
+}
+
+function _defaultStandardExamFindingForMessage(message = "") {
+  if (!_messageLooksLikeStandardExam(message)) return null;
+  const msg = String(message || "").toLowerCase();
+  if (/\b(head|scalp|ears?)\b/.test(msg) && /\b(dcap|btls|palpat|inspect|assess|check|examin)\b/.test(msg)) {
+    return {
+      exam_key: "DCAP-BTLS Head",
+      finding: "Head/scalp DCAP-BTLS assessed for deformity, contusions, abrasions, punctures, burns, tenderness, lacerations, swelling, and skull step-off; no visible injury or external hemorrhage noted.",
+    };
+  }
+  if (/\b(face|facial|mouth|nose)\b/.test(msg)) {
+    return {
+      exam_key: "Facial / Mouth / Nose Assessment",
+      finding: "Face assessed for asymmetry, droop, and DCAP-BTLS: no facial droop, asymmetry, deformity, tenderness, swelling, or visible injury noted.",
+    };
+  }
+  if (/\b(jvd|jugular|neck veins?)\b/.test(msg)) {
+    return {
+      exam_key: "Jugular Veins / JVD",
+      finding: "Jugular veins assessed: no jugular vein distension noted.",
+    };
+  }
+  if (/\b(trachea|tracheal)\b/.test(msg)) {
+    return {
+      exam_key: "Tracheal Position",
+      finding: "Trachea assessed and found midline without deviation.",
+    };
+  }
+  if (/\b(neck|cervical|c-?spine|spine)\b/.test(msg)) {
+    return {
+      exam_key: "Neck / Cervical Spine Assessment",
+      finding: "Neck and cervical spine assessed for DCAP-BTLS, midline tenderness, deformity, and step-off; no abnormal finding noted.",
+    };
+  }
+  if (/\b(chest|thorax)\b/.test(msg)) {
+    return {
+      exam_key: "Chest Assessment",
+      finding: "Chest inspected and palpated for DCAP-BTLS: no chest wall deformity, tenderness, crepitus, instability, or visible trauma noted.",
+    };
+  }
+  if (/\b(abdomen|belly)\b/.test(msg)) {
+    return {
+      exam_key: "Abdomen Assessment",
+      finding: "Abdomen inspected and palpated: soft, non-distended, and non-tender; no visible trauma noted.",
+    };
+  }
+  if (/\b(pelvis|pelvic)\b/.test(msg)) {
+    return {
+      exam_key: "Pelvis Assessment",
+      finding: "Pelvis assessed: stable without tenderness, deformity, or visible trauma.",
+    };
+  }
+  return null;
 }
 
 function _messageLooksLikeCmsAssessment(message = "") {
@@ -23953,15 +24007,17 @@ async function _maybeRecordCmsAssessmentFromMessage(message = "", examEntry = nu
 
 async function _handleAuthoredStandardExamAction(message, chipId = null, isAction = false) {
   const match = _authoredStandardExamFindingForMessage(message);
-  if (!match?.entry?.finding) return false;
+  const fallback = !match?.entry?.finding ? _defaultStandardExamFindingForMessage(message) : null;
+  const entry = match?.entry?.finding ? match.entry : fallback;
+  if (!entry?.finding) return false;
   if (isAction) appendUserAction(message, chipId);
   else appendUserMessage(message);
   _lastUserChatMessage = message;
-  const key = match.entry.exam_key || match.entry.label || "Exam Finding";
-  const value = _normalizeExamFindingValue(key, match.entry.finding);
+  const key = entry.exam_key || entry.label || "Exam Finding";
+  const value = _normalizeExamFindingValue(key, entry.finding);
   await addPcrExam(key, value, "student_stated_exam");
   if (_examFindingShouldRenderChatCallout(key, value)) appendExamFindingInfo(key, value);
-  await _maybeRecordCmsAssessmentFromMessage(message, { ...match.entry, _id: match.id });
+  await _maybeRecordCmsAssessmentFromMessage(message, { ...entry, _id: match?.id || "default_standard_exam" });
   appendLexiActionFeedback("focused_exam", LEXI_ACTION_FEEDBACK.focused_exam);
   checkReadiness();
   _orientationFlushQueuedCues();

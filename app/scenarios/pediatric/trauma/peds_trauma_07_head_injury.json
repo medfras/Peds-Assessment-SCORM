@@ -927,6 +927,9 @@
           "finding_types": [
             "exam"
           ],
+          "intervention_ids": [
+            "dcap_btls_head_neck"
+          ],
           "finding_key_patterns": [
             "dcap[-\\s]?btls.*head",
             "DCAP[-\\s]?BTLS Assessment.*Head",
@@ -1132,7 +1135,7 @@
         ],
         "additional_expectations": [
           "IV/IO consideration documented — explain decision to defer (stable presentation) or initiate (deteriorating)",
-          "Reassess GCS and pupils every 3–5 minutes en route — communicate trends to receiving facility"
+          "Reassess GCS and pupils every 3–5 minutes during extended care — communicate trends to ALS or the receiving facility"
         ],
         "grace_items": [
           "IV not required at baseline GCS 14 with SpO2 98% — documenting the decision to defer is sufficient",

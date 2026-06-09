@@ -302,13 +302,60 @@ def test_critical_action_evidence_can_use_intervention_ids_for_assessment_proced
     assert item["elapsed_min"] == 0.6
 
 
+def test_head_injury_dcap_btls_critical_action_accepts_exam_menu_procedure():
+    scenario = {
+        "correct_treatment": {
+            "critical_actions": [
+                {
+                    "id": "dcap_btls_head_neck",
+                    "description": "DCAP-BTLS assessment of head — palpate for deformity, step-off, tenderness, and swelling",
+                    "required": True,
+                    "protocol_indicated": True,
+                    "evidence": {
+                        "finding_types": ["exam"],
+                        "intervention_ids": ["dcap_btls_head_neck"],
+                        "finding_key_patterns": [
+                            "dcap[-\\s]?btls.*head",
+                            "head.*dcap",
+                            "head assessment",
+                            "scalp assessment",
+                        ],
+                        "min_matches": 1,
+                    },
+                }
+            ],
+        },
+    }
+    t0 = datetime.utcnow()
+    done_at = t0 + timedelta(seconds=32)
+    session = _session(
+        t0,
+        interventions=[_intervention("dcap_btls_head_neck", done_at)],
+        findings=[
+            _finding(
+                "DCAP-BTLS Head",
+                "Head/scalp DCAP-BTLS assessed for deformity, tenderness, swelling, and skull step-off.",
+                "exam",
+                done_at,
+            )
+        ],
+    )
+
+    timeline = _build_session_timeline(session, scenario)
+    item = _find_timeline(timeline, "DCAP-BTLS assessment of head")
+
+    assert item is not None
+    assert item["status"] == "applied"
+    assert item["elapsed_min"] == 0.5
+
+
 def test_head_injury_neuro_reassessment_requires_post_intervention_gcs_and_pupils():
     scenario = {
         "correct_treatment": {
             "recommended_actions": [
                 {
                     "id": "reassess_neuro",
-                    "description": "Reassess GCS and pupils during transport — trend is critical",
+                    "description": "Reassess GCS and pupils before ALS handoff and continue trending if care is extended",
                     "required": False,
                 }
             ],
@@ -340,7 +387,7 @@ def test_head_injury_neuro_reassessment_credits_repeated_gcs_and_pupils():
             "recommended_actions": [
                 {
                     "id": "reassess_neuro",
-                    "description": "Reassess GCS and pupils during transport — trend is critical",
+                    "description": "Reassess GCS and pupils before ALS handoff and continue trending if care is extended",
                     "required": False,
                 }
             ],

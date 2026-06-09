@@ -1526,6 +1526,34 @@ def test_body_map_pupil_exam_persists_scoring_finding_and_head_menu_omits_gcs():
     assert "appendExamFindingInfo(key, value)" in source
 
 
+def test_standard_exam_actions_have_normal_fallback_findings_for_unmapped_regions():
+    source = open("static/js/app.js", encoding="utf-8").read()
+    standard_exam_matcher = source[
+        source.index("function _messageLooksLikeStandardExam"):
+        source.index("function _standardExamAliasScore")
+    ]
+    fallback_handler = source[
+        source.index("function _defaultStandardExamFindingForMessage"):
+        source.index("function _messageLooksLikeCmsAssessment")
+    ]
+    authored_exam_handler = source[
+        source.index("async function _handleAuthoredStandardExamAction"):
+        source.index("function _historyResponseMapSpeaker")
+    ]
+
+    assert "face|chest|thorax" in standard_exam_matcher
+    assert "DCAP-BTLS Head" in fallback_handler
+    assert "Facial / Mouth / Nose Assessment" in fallback_handler
+    assert "Jugular Veins / JVD" in fallback_handler
+    assert "Tracheal Position" in fallback_handler
+    assert "Neck / Cervical Spine Assessment" in fallback_handler
+    assert "no facial droop, asymmetry, deformity, tenderness, swelling, or visible injury noted" in fallback_handler
+    assert "Chest Assessment" in fallback_handler
+    assert "no chest wall deformity, tenderness, crepitus, instability, or visible trauma noted" in fallback_handler
+    assert "_defaultStandardExamFindingForMessage(message)" in authored_exam_handler
+    assert 'appendExamFindingInfo(key, value)' in authored_exam_handler
+
+
 def test_head_injury_exemplar_uses_high_flow_nrb_not_nasal_cannula():
     with open("app/scenarios/pediatric/trauma/peds_trauma_07_head_injury.json", encoding="utf-8") as fh:
         scenario = json.load(fh)

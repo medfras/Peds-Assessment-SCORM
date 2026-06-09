@@ -859,6 +859,48 @@ def test_head_injury_structured_exam_rows_credit_neuro_and_general_head_items():
             fid=7,
             source="student_stated_exam",
         ),
+        _finding(
+            "Tracheal Position",
+            "Trachea assessed and found midline without deviation.",
+            finding_type="exam",
+            fid=11,
+            source="student_stated_exam",
+        ),
+        _finding(
+            "Jugular Veins / JVD",
+            "Jugular veins assessed: no jugular vein distension noted.",
+            finding_type="exam",
+            fid=12,
+            source="student_stated_exam",
+        ),
+        _finding(
+            "Neck / Cervical Spine Assessment",
+            "Neck and cervical spine assessed for DCAP-BTLS, midline tenderness, deformity, and step-off.",
+            finding_type="exam",
+            fid=13,
+            source="student_stated_exam",
+        ),
+        _finding(
+            "Chest Assessment",
+            "Chest inspected and palpated for DCAP-BTLS: no chest wall deformity, tenderness, crepitus, instability, or visible trauma noted.",
+            finding_type="exam",
+            fid=8,
+            source="student_stated_exam",
+        ),
+        _finding(
+            "Abdomen Assessment",
+            "Abdomen inspected and palpated: soft, non-distended, and non-tender; no visible trauma noted.",
+            finding_type="exam",
+            fid=9,
+            source="student_stated_exam",
+        ),
+        _finding(
+            "Pelvis Assessment",
+            "Pelvis assessed: stable without tenderness, deformity, or visible trauma.",
+            finding_type="exam",
+            fid=10,
+            source="student_stated_exam",
+        ),
     ]
 
     for item_id in [
@@ -868,6 +910,13 @@ def test_head_injury_structured_exam_rows_credit_neuro_and_general_head_items():
         "ems.trauma.head_scalp_ears",
         "ems.trauma.head_eyes",
         "ems.trauma.head_mouth_nose_face",
+        "ems.trauma.neck_trachea",
+        "ems.trauma.neck_jugular_veins",
+        "ems.trauma.neck_c_spine",
+        "ems.trauma.chest_inspect",
+        "ems.trauma.chest_palpate",
+        "ems.trauma.abdomen_inspect_palpate",
+        "ems.trauma.pelvis_assess",
     ]:
         state = adjudicate(
             [by_id[item_id]],
