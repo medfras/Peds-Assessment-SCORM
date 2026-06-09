@@ -12342,7 +12342,7 @@ function _scormPassChallengeForDisplay() {
   const pm1Done = Math.min(Math.max(0, Number(ce.pm1_completed || 0)), pm1Required);
   const pt1Done = Math.min(Math.max(0, Number(ce.pt1_completed || 0)), pt1Required);
   const ceSeconds = Math.max(0, Number(ce.ce_seconds || 0));
-  const ceMinutes = Math.floor(ceSeconds / 60);
+  const ceMinutes = Math.min(Math.floor(ceSeconds / 60), 60);
   const xpRequired = Number(ce.xp_required || 1200);
   const xpDone = Math.max(0, Number(ce.xp || 0));
   const timeDone = !!ce.training_time_done;
@@ -12387,12 +12387,14 @@ function _scormPassChallengeForDisplay() {
       },
       {
         label: "Spend at least 1 hour training",
-        completed: Math.min(ceMinutes, 60),
+        completed: ceMinutes,
         needed: 60,
-        progress_text: `${_fmtMinutes(Math.min(ceMinutes, 60))} of 1h`,
+        progress_text: `${_fmtMinutes(ceMinutes)} of 1h${timeDone ? "" : ` · ${_fmtMinutes(60 - ceMinutes)} remaining`}`,
         custom_items: [{
           label: "Training time",
-          status: `${_fmtMinutes(ceMinutes)} logged from orientation, drills, and scenarios`,
+          status: timeDone
+            ? "1 hour logged from orientation, drills, and scenarios"
+            : `${_fmtMinutes(ceMinutes)} logged from orientation, drills, and scenarios · ${_fmtMinutes(60 - ceMinutes)} remaining`,
           complete: timeDone,
         }],
       },
@@ -12486,7 +12488,7 @@ function _renderActiveChallengeCard(ch = {}) {
   const earned = !!ch.earned;
 
   const timeGoal = Number(ch.time_goal_minutes || 0);
-  const timeDone = timeGoal ? Math.round((ch.challenge_ce_seconds || 0) / 60) : 0;
+  const timeDone = timeGoal ? Math.min(Math.round((ch.challenge_ce_seconds || 0) / 60), timeGoal) : 0;
   const timePct  = timeGoal ? Math.min(100, Math.round((timeDone / timeGoal) * 100)) : 0;
   const timeRemaining = timeGoal ? Math.max(0, timeGoal - timeDone) : 0;
   const timeBar = timeGoal ? `
@@ -12680,7 +12682,7 @@ function _renderChallengeDetail(ch = {}) {
             ${(() => {
               const tg = Number(ch.time_goal_minutes || 0);
               if (!tg) return "";
-              const td = Math.round((ch.challenge_ce_seconds || 0) / 60);
+              const td = Math.min(Math.round((ch.challenge_ce_seconds || 0) / 60), tg);
               const tp = Math.min(100, Math.round((td / tg) * 100));
               const tr = Math.max(0, tg - td);
               return `<div class="mt-3">

@@ -613,6 +613,9 @@ def test_scorm_pass_requirements_render_in_active_challenges_modal():
     assert "Pediatric Medical scenarios" in app_js
     assert "Pediatric Trauma scenarios" in app_js
     assert "Training time" in app_js
+    assert "const ceMinutes = Math.min(Math.floor(ceSeconds / 60), 60);" in app_js
+    assert "1 hour logged from orientation, drills, and scenarios" in app_js
+    assert "remaining" in app_js
     assert "Number(ce.xp_required || 1200)" in app_js
     assert 'title: isPfdPassChallenge ? "Pediatric Patient Assessment"' in app_js
     assert "xp_required: xpRequired" in app_js
