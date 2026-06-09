@@ -1410,6 +1410,7 @@ def test_manual_cspine_chat_command_uses_manual_stabilization_not_collar():
     assert "function _manualCspineCommandRequested" in source
     assert "function _cspineExamRequested" in source
     assert "function _handleCspineExamAction" in source
+    assert "if (_cspineExamRequested(itemText)) return null;" in source
     assert "if (_cspineExamRequested(msg)) return false;" in source
     assert "Spinal Motion Restriction — manual in-line stabilization" in source
     assert "holding manual in-line cervical stabilization now" in source
@@ -1418,6 +1419,18 @@ def test_manual_cspine_chat_command_uses_manual_stabilization_not_collar():
     cspine_exam_pos = source.index("await _handleCspineExamAction(message, chipId, isAction)")
     manual_pos = source.index("await _handleManualCspineCommand(message, chipId, isAction)")
     assert cspine_exam_pos < manual_pos
+
+
+def test_head_injury_smr_patterns_do_not_match_cspine_exam_only():
+    scenario = json.loads((PROJECT_ROOT / "app/scenarios/pediatric/trauma/peds_trauma_07_head_injury.json").read_text(encoding="utf-8"))
+    patterns = scenario["vitals"]["interventions"]["smr"]["detection_patterns"]
+    joined = "\n".join(patterns).lower()
+
+    assert "\nspinal\n" not in f"\n{joined}\n"
+    assert "\ncervical\n" not in f"\n{joined}\n"
+    assert "\nc-spine\n" not in f"\n{joined}\n"
+    assert "spinal motion restriction" in patterns
+    assert "cervical spine precautions?" in patterns
 
 
 def test_pcr_treatment_rows_dedupe_by_intervention_id():

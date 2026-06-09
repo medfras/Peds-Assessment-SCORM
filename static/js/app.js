@@ -22670,6 +22670,9 @@ function findInterventionByLabel(label) {
 }
 
 function _actionMenuInterventionCandidate(item = {}) {
+  const itemText = `${item.label || ""} ${item.payload || ""}`;
+  if (_cspineExamRequested(itemText)) return null;
+
   const id = item.interventionId || item.intervention_id;
   if (id && _interventionById[id]) return _interventionById[id];
 
@@ -22682,7 +22685,7 @@ function _actionMenuInterventionCandidate(item = {}) {
     .find(Boolean);
   if (direct) return direct;
 
-  const text = `${item.label || ""} ${item.payload || ""}`.toLowerCase();
+  const text = itemText.toLowerCase();
   const fallbackIds = [];
   if (/\bdry\s+sterile\s+dress|dry.*dressing|sterile.*dressing\b/.test(text)) {
     fallbackIds.push("dry_dressing", "direct_pressure");
