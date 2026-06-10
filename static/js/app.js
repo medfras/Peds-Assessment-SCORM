@@ -11585,7 +11585,17 @@ function _pedsMapActivityCounts(mapIds = [], passedIds = new Set()) {
   };
 }
 
+function _scormPediatricDistrictActivityCounts() {
+  const mapIds = PEDS_MAP_DATA
+    .filter(m => _scormPedsMapAllowed(m.id))
+    .map(m => m.id);
+  return _pedsMapActivityCounts(mapIds, _scenarioPassedHistorySet());
+}
+
 function _districtActivityCounts(districtId, unlockedOnly = true) {
+  if (state.scormEnabled && districtId === "pediatrics") {
+    return _scormPediatricDistrictActivityCounts();
+  }
   const { passedIds, pedsMapCompleted } = _pedsMapCompletionSets();
   if (districtId === "pediatrics") {
     const unlockState = _computeMapUnlockState(passedIds, MAP_TOPOLOGY, pedsMapCompleted);
@@ -11874,7 +11884,9 @@ function _districtProgress(districtId) {
   const total = counts.callsTotal;
   const done = counts.callsComplete;
   const stationStarted = stationDone || _station1IntroSeen();
-  const pct = districtId === "station_1"
+  const pct = state.scormEnabled && districtId === "pediatrics"
+    ? (total > 0 ? Math.round((done / total) * 100) : 0)
+    : districtId === "station_1"
     ? (stationDone ? 100 : stationStarted ? 25 : 0)
     : !prereqMet
       ? 0

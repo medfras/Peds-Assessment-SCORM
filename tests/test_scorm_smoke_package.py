@@ -737,9 +737,18 @@ def test_scorm_pediatric_district_progress_counts_pilot_calls_only():
     assert "Object.entries(_SCORM_NODE_BY_APP_ID)" in passed_block
     assert "passedIds.add(appId);" in passed_block
 
+    scorm_counts_start = app_js.find("function _scormPediatricDistrictActivityCounts")
+    assert scorm_counts_start != -1
+    scorm_counts_block = app_js[scorm_counts_start:scorm_counts_start + 500]
+    assert ".filter(m => _scormPedsMapAllowed(m.id))" in scorm_counts_block
+    assert ".map(m => m.id)" in scorm_counts_block
+    assert "return _pedsMapActivityCounts(mapIds, _scenarioPassedHistorySet());" in scorm_counts_block
+
     counts_start = app_js.find("function _districtActivityCounts")
     assert counts_start != -1
     counts_block = app_js[counts_start:counts_start + 1000]
+    assert 'if (state.scormEnabled && districtId === "pediatrics")' in counts_block
+    assert "return _scormPediatricDistrictActivityCounts();" in counts_block
     assert "const { passedIds, pedsMapCompleted } = _pedsMapCompletionSets();" in counts_block
     assert '.filter(m => !state.scormEnabled || _scormPedsMapAllowed(m.id))' in counts_block
     assert "return _pedsMapActivityCounts(mapIds, passedIds);" in counts_block
@@ -749,6 +758,8 @@ def test_scorm_pediatric_district_progress_counts_pilot_calls_only():
     progress_block = app_js[progress_start:progress_start + 700]
     assert "const total = counts.callsTotal;" in progress_block
     assert "const done = counts.callsComplete;" in progress_block
+    assert 'state.scormEnabled && districtId === "pediatrics"' in progress_block
+    assert "Math.round((done / total) * 100)" in progress_block
     assert "counts.drillsTotal" not in progress_block
     assert "counts.drillsComplete" not in progress_block
 
