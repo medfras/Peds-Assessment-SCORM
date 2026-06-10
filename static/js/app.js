@@ -6054,16 +6054,6 @@ const _SCORM_NODE_BY_NODE_ID = Object.values(_SCORM_NODE_GROUPS)
     return acc;
   }, {});
 const _SCORM_PEDS_MAP_IDS = new Set(["map_0", "pm1", "pt1"]);
-const _SCORM_PEDS_DISTRICT_SCENARIO_NODE_IDS = [
-  "scen_diabetes",
-  "scen_laceration",
-  "scen_croup",
-  "scen_seizure",
-  "scen_asthma",
-  "scen_head",
-  "scen_bleeding",
-  "scen_anaph",
-];
 const _SCORM_PM1_UNLOCK_SCENARIO_ID = "peds_diabetic_emergency_01";
 const _SCORM_PT1_UNLOCK_SCENARIO_ID = "peds_trauma_01_soft_tissue";
 
@@ -11619,13 +11609,12 @@ function _pedsMapActivityCounts(mapIds = [], passedIds = new Set()) {
 
 function _scormPediatricDistrictActivityCounts() {
   const passedIds = _scenarioPassedHistorySet();
+  const scenarioIds = PEDS_MAP_DATA
+    .filter(m => _scormPedsMapAllowed(m.id))
+    .flatMap(m => (m.scenarios || []).filter(s => !String(s.id || "").startsWith("_ph")).map(s => s.id));
   return {
-    callsComplete: _SCORM_PEDS_DISTRICT_SCENARIO_NODE_IDS
-      .filter(nodeId => {
-        const appId = _SCORM_NODE_BY_NODE_ID[nodeId]?.appId;
-        return _scormNodeCompleteByNodeId(nodeId) || (appId && passedIds.has(appId));
-      }).length,
-    callsTotal: _SCORM_PEDS_DISTRICT_SCENARIO_NODE_IDS.length,
+    callsComplete: scenarioIds.filter(appId => passedIds.has(appId) || _scormAppComplete(appId)).length,
+    callsTotal: scenarioIds.length,
     drillsComplete: 0,
     drillsTotal: 0,
   };
