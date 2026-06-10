@@ -6923,10 +6923,12 @@ async function _activateAndEnter(options = {}) {
   state.features = meData.features || {};
   _seedTeamChallengeFeatureFlagFromState();
 
+  const isScormEntry = !!options.scormResumeState;
+  if (isScormEntry) _storeScormResumeState(options.scormResumeState);
+
   buildMenu();
   // _loadChallenges and _loadDrillStatus are already fired inside buildMenu() above;
   // omit them here to avoid duplicate concurrent network requests.
-  const isScormEntry = !!options.scormResumeState;
 
   if (isScormEntry) {
     await Promise.allSettled([
@@ -6949,7 +6951,6 @@ async function _activateAndEnter(options = {}) {
   }
 
   if (isScormEntry) {
-    _storeScormResumeState(options.scormResumeState);
     _enterScormMapExperience();
   } else {
     showScreen("menu");

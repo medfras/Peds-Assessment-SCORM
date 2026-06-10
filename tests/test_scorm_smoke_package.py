@@ -187,6 +187,16 @@ def test_app_bootstrap_has_scorm_launch_branch_and_bearer_bridge():
     assert "RescueTrails.scorm" not in app_js
 
 
+def test_scorm_resume_state_is_stored_before_home_map_first_render():
+    app_js = APP_JS.read_text()
+    start = app_js.find("async function _activateAndEnter")
+    assert start != -1
+    block = app_js[start:start + 2600]
+    assert "const isScormEntry = !!options.scormResumeState;" in block
+    assert "if (isScormEntry) _storeScormResumeState(options.scormResumeState);" in block
+    assert block.index("if (isScormEntry) _storeScormResumeState(options.scormResumeState);") < block.index("buildMenu();")
+
+
 def test_scorm_launch_defaults_to_home_district_map():
     app_js = APP_JS.read_text()
     start = app_js.find("function _enterScormMapExperience()")
