@@ -6048,6 +6048,16 @@ const _SCORM_NODE_BY_APP_ID = Object.values(_SCORM_NODE_GROUPS)
     return acc;
   }, {});
 const _SCORM_PEDS_MAP_IDS = new Set(["map_0", "pm1", "pt1"]);
+const _SCORM_PEDS_DISTRICT_SCENARIO_NODE_IDS = [
+  "scen_diabetes",
+  "scen_laceration",
+  "scen_croup",
+  "scen_seizure",
+  "scen_asthma",
+  "scen_head",
+  "scen_bleeding",
+  "scen_anaph",
+];
 const _SCORM_PM1_UNLOCK_SCENARIO_ID = "peds_diabetic_emergency_01";
 const _SCORM_PT1_UNLOCK_SCENARIO_ID = "peds_trauma_01_soft_tissue";
 
@@ -11586,10 +11596,13 @@ function _pedsMapActivityCounts(mapIds = [], passedIds = new Set()) {
 }
 
 function _scormPediatricDistrictActivityCounts() {
-  const mapIds = PEDS_MAP_DATA
-    .filter(m => _scormPedsMapAllowed(m.id))
-    .map(m => m.id);
-  return _pedsMapActivityCounts(mapIds, _scenarioPassedHistorySet());
+  return {
+    callsComplete: _SCORM_PEDS_DISTRICT_SCENARIO_NODE_IDS
+      .filter(nodeId => _scormNodeCompleteByNodeId(nodeId)).length,
+    callsTotal: _SCORM_PEDS_DISTRICT_SCENARIO_NODE_IDS.length,
+    drillsComplete: 0,
+    drillsTotal: 0,
+  };
 }
 
 function _districtActivityCounts(districtId, unlockedOnly = true) {

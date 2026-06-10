@@ -760,9 +760,15 @@ def test_scorm_pediatric_district_progress_counts_pilot_calls_only():
     scorm_counts_start = app_js.find("function _scormPediatricDistrictActivityCounts")
     assert scorm_counts_start != -1
     scorm_counts_block = app_js[scorm_counts_start:scorm_counts_start + 500]
-    assert ".filter(m => _scormPedsMapAllowed(m.id))" in scorm_counts_block
-    assert ".map(m => m.id)" in scorm_counts_block
-    assert "return _pedsMapActivityCounts(mapIds, _scenarioPassedHistorySet());" in scorm_counts_block
+    assert "_SCORM_PEDS_DISTRICT_SCENARIO_NODE_IDS" in app_js
+    assert '"scen_diabetes"' in app_js
+    assert '"scen_laceration"' in app_js
+    assert '"scen_airway"' not in app_js[
+        app_js.find("const _SCORM_PEDS_DISTRICT_SCENARIO_NODE_IDS"):
+        app_js.find("const _SCORM_PM1_UNLOCK_SCENARIO_ID")
+    ]
+    assert ".filter(nodeId => _scormNodeCompleteByNodeId(nodeId)).length" in scorm_counts_block
+    assert "callsTotal: _SCORM_PEDS_DISTRICT_SCENARIO_NODE_IDS.length" in scorm_counts_block
 
     counts_start = app_js.find("function _districtActivityCounts")
     assert counts_start != -1
