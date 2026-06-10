@@ -11397,15 +11397,7 @@ function _syncCategoryShell(districtId = null) {
 }
 
 function _pedsMapCompletionSets() {
-  const history = loadHistory().filter(h => !h.agencyId || h.agencyId === state.agency_id);
-  const passedIds = new Set(history.filter(_scenarioHistoryEntryPassed).map(h => h.scenarioId));
-  if (state.scormEnabled) {
-    Object.entries(_SCORM_NODE_BY_APP_ID).forEach(([appId, node]) => {
-      if (node?.type === "scenario" && _scormNodeCompleteByNodeId(node.nodeId)) {
-        passedIds.add(appId);
-      }
-    });
-  }
+  const passedIds = _scenarioPassedHistorySet();
   const pedsMapCompleted = new Set(loadGamification().pedsMapCompleted || []);
   return { passedIds, pedsMapCompleted };
 }
@@ -11565,7 +11557,15 @@ function _pedsMapProgress(mapId, passedIds, pedsMapCompleted, unlockState) {
 
 function _scenarioPassedHistorySet() {
   const history = loadHistory().filter(h => !h.agencyId || h.agencyId === state.agency_id);
-  return new Set(history.filter(_scenarioHistoryEntryPassed).map(h => h.scenarioId));
+  const passedIds = new Set(history.filter(_scenarioHistoryEntryPassed).map(h => h.scenarioId));
+  if (state.scormEnabled) {
+    Object.entries(_SCORM_NODE_BY_APP_ID).forEach(([appId, node]) => {
+      if (node?.type === "scenario" && _scormNodeCompleteByNodeId(node.nodeId)) {
+        passedIds.add(appId);
+      }
+    });
+  }
+  return passedIds;
 }
 
 function _pedsMapActivityCounts(mapIds = [], passedIds = new Set()) {
@@ -11585,9 +11585,8 @@ function _pedsMapActivityCounts(mapIds = [], passedIds = new Set()) {
 }
 
 function _districtActivityCounts(districtId, unlockedOnly = true) {
-  const passedIds = _scenarioPassedHistorySet();
+  const { passedIds, pedsMapCompleted } = _pedsMapCompletionSets();
   if (districtId === "pediatrics") {
-    const pedsMapCompleted = new Set(loadGamification().pedsMapCompleted || []);
     const unlockState = _computeMapUnlockState(passedIds, MAP_TOPOLOGY, pedsMapCompleted);
     const mapIds = PEDS_MAP_DATA
       .filter(m => !state.scormEnabled || _scormPedsMapAllowed(m.id))
@@ -15554,10 +15553,11 @@ function _station1MarkChallengesSeen() {
 function _station1RequirementsState(history = null) {
   const scopedHistory = history || loadHistory().filter(h => !h.agencyId || h.agencyId === state.agency_id);
   const completedIds = new Set(scopedHistory.map(h => h.scenarioId));
-  const introSeen = _station1IntroSeen();
-  const completed = completedIds.has("orientation_01");
-  const cprComplete = _station1CprDrillComplete();
-  const challengesSeen = cprComplete && _station1ChallengesSeen();
+  const persistedComplete = _station1PersistedComplete();
+  const introSeen = persistedComplete || _station1IntroSeen();
+  const completed = persistedComplete || completedIds.has("orientation_01");
+  const cprComplete = persistedComplete || _station1CprDrillComplete();
+  const challengesSeen = persistedComplete || (cprComplete && _station1ChallengesSeen());
   const ready = introSeen && completed && cprComplete && challengesSeen;
   return { history: scopedHistory, completedIds, introSeen, completed, cprComplete, challengesSeen, ready };
 }
@@ -15792,8 +15792,7 @@ function _renderPedsMap(mapId = null) {
 
   // Unlock state (normally null when dev-unlocked)
   const _history = loadHistory().filter(h => !h.agencyId || h.agencyId === state.agency_id);
-  const _passedIds = new Set(_history.filter(_scenarioHistoryEntryPassed).map(h => h.scenarioId));
-  const _pedsMapCompleted = new Set(loadGamification().pedsMapCompleted || []);
+  const { passedIds: _passedIds, pedsMapCompleted: _pedsMapCompleted } = _pedsMapCompletionSets();
   const _baseUnlockState = _computeMapUnlockState(_passedIds, MAP_TOPOLOGY, _pedsMapCompleted);
   const unlockState = (() => {
     if (!PEDS_MAP_DEV_UNLOCKED) return _baseUnlockState;

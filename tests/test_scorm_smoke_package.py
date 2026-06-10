@@ -356,6 +356,11 @@ def test_scorm_station1_wrapup_requires_full_orientation_sequence():
     assert "const pct = _assessmentPctFromEntry(entry);" in app_js
     assert "return pct !== null && pct >= 70;" in app_js
     assert "const completedIds = new Set(scopedHistory.map(h => h.scenarioId));" in app_js
+    assert "const persistedComplete = _station1PersistedComplete();" in app_js
+    assert "const introSeen = persistedComplete || _station1IntroSeen();" in app_js
+    assert 'const completed = persistedComplete || completedIds.has("orientation_01");' in app_js
+    assert "const cprComplete = persistedComplete || _station1CprDrillComplete();" in app_js
+    assert "const challengesSeen = persistedComplete || (cprComplete && _station1ChallengesSeen());" in app_js
     assert "const ready = introSeen && completed && cprComplete && challengesSeen;" in app_js
     assert "function _station1ScormOrientationComplete()" in app_js
     assert "_getScormUiState()?.orientationComplete === true && !!state.orientationCompletedAt" in app_js
@@ -675,6 +680,7 @@ def test_scorm_production_peds_maps_use_backend_node_state():
     render_block = app_js[render_start:render_start + 14000]
     assert "Object.entries(_SCORM_NODE_BY_APP_ID)" in render_block
     assert "completedIds.add(appId);" in render_block
+    assert "const { passedIds: _passedIds, pedsMapCompleted: _pedsMapCompleted } = _pedsMapCompletionSets();" in render_block
     assert "_scormMapRouteUnlocked(exit.to)" in render_block
     assert "const scormLocked = !isPh && _scormScenarioLocked(s.id, currentMapId);" in render_block
     assert "Complete the Map 0 route scenario to unlock" in render_block
@@ -710,9 +716,21 @@ def test_lung_sound_results_modal_is_viewport_bounded():
 def test_scorm_pediatric_district_progress_counts_pilot_calls_only():
     app_js = APP_JS.read_text()
 
+    completion_sets_start = app_js.find("function _pedsMapCompletionSets")
+    assert completion_sets_start != -1
+    completion_sets_block = app_js[completion_sets_start:completion_sets_start + 1000]
+    assert "const passedIds = _scenarioPassedHistorySet();" in completion_sets_block
+
+    passed_start = app_js.find("function _scenarioPassedHistorySet")
+    assert passed_start != -1
+    passed_block = app_js[passed_start:passed_start + 1000]
+    assert "Object.entries(_SCORM_NODE_BY_APP_ID)" in passed_block
+    assert "passedIds.add(appId);" in passed_block
+
     counts_start = app_js.find("function _districtActivityCounts")
     assert counts_start != -1
     counts_block = app_js[counts_start:counts_start + 1000]
+    assert "const { passedIds, pedsMapCompleted } = _pedsMapCompletionSets();" in counts_block
     assert '.filter(m => !state.scormEnabled || _scormPedsMapAllowed(m.id))' in counts_block
     assert "return _pedsMapActivityCounts(mapIds, passedIds);" in counts_block
 
