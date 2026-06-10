@@ -6047,6 +6047,12 @@ const _SCORM_NODE_BY_APP_ID = Object.values(_SCORM_NODE_GROUPS)
     acc[node.appId] = node;
     return acc;
   }, {});
+const _SCORM_NODE_BY_NODE_ID = Object.values(_SCORM_NODE_GROUPS)
+  .flat()
+  .reduce((acc, node) => {
+    acc[node.nodeId] = node;
+    return acc;
+  }, {});
 const _SCORM_PEDS_MAP_IDS = new Set(["map_0", "pm1", "pt1"]);
 const _SCORM_PEDS_DISTRICT_SCENARIO_NODE_IDS = [
   "scen_diabetes",
@@ -6204,6 +6210,7 @@ function _applyScormResumeState(summaryOrResume = {}) {
   state.scormResumeState = state.scormLatestSummary;
   _hideScormLaunchStatus();
   _renderScormStation1();
+  _refreshScormVisibleProgressViews();
 }
 
 function _refreshScormChallengeDisplays() {
@@ -6218,6 +6225,20 @@ function _refreshScormChallengeDisplays() {
 function _storeScormResumeState(summaryOrResume = {}) {
   state.scormLatestSummary = _normalizeScormState(summaryOrResume);
   state.scormResumeState = state.scormLatestSummary;
+}
+
+function _refreshScormVisibleProgressViews() {
+  if (!state.scormEnabled) return;
+  if (!el("screen-menu")?.classList.contains("hidden")) {
+    buildMenu();
+    return;
+  }
+  if (el("screen-category")?.classList.contains("hidden")) return;
+  if (_categoryView?.mode === "district" && _categoryView?.districtId === "pediatrics") {
+    _renderPediatricsJourney({ preserveTrail: true });
+  } else if (_categoryView?.mode === "district" && _categoryView?.districtId === "station_1") {
+    _renderStation1Map();
+  }
 }
 
 function _enterScormMapExperience() {
@@ -6945,6 +6966,7 @@ async function _activateAndEnter(options = {}) {
       _loadProgressFromServer(),
       _loadAgencyEquipmentAvailability(),
     ]);
+    _refreshScormVisibleProgressViews();
   } else {
     Promise.allSettled([
       _loadProgressFromServer(),
@@ -11596,9 +11618,13 @@ function _pedsMapActivityCounts(mapIds = [], passedIds = new Set()) {
 }
 
 function _scormPediatricDistrictActivityCounts() {
+  const passedIds = _scenarioPassedHistorySet();
   return {
     callsComplete: _SCORM_PEDS_DISTRICT_SCENARIO_NODE_IDS
-      .filter(nodeId => _scormNodeCompleteByNodeId(nodeId)).length,
+      .filter(nodeId => {
+        const appId = _SCORM_NODE_BY_NODE_ID[nodeId]?.appId;
+        return _scormNodeCompleteByNodeId(nodeId) || (appId && passedIds.has(appId));
+      }).length,
     callsTotal: _SCORM_PEDS_DISTRICT_SCENARIO_NODE_IDS.length,
     drillsComplete: 0,
     drillsTotal: 0,

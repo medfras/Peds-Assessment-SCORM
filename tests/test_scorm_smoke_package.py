@@ -195,6 +195,7 @@ def test_scorm_resume_state_is_stored_before_home_map_first_render():
     assert "const isScormEntry = !!options.scormResumeState;" in block
     assert "if (isScormEntry) _storeScormResumeState(options.scormResumeState);" in block
     assert block.index("if (isScormEntry) _storeScormResumeState(options.scormResumeState);") < block.index("buildMenu();")
+    assert "_refreshScormVisibleProgressViews();" in block
 
 
 def test_scorm_launch_defaults_to_home_district_map():
@@ -761,13 +762,16 @@ def test_scorm_pediatric_district_progress_counts_pilot_calls_only():
     assert scorm_counts_start != -1
     scorm_counts_block = app_js[scorm_counts_start:scorm_counts_start + 500]
     assert "_SCORM_PEDS_DISTRICT_SCENARIO_NODE_IDS" in app_js
+    assert "const _SCORM_NODE_BY_NODE_ID" in app_js
     assert '"scen_diabetes"' in app_js
     assert '"scen_laceration"' in app_js
     assert '"scen_airway"' not in app_js[
         app_js.find("const _SCORM_PEDS_DISTRICT_SCENARIO_NODE_IDS"):
         app_js.find("const _SCORM_PM1_UNLOCK_SCENARIO_ID")
     ]
-    assert ".filter(nodeId => _scormNodeCompleteByNodeId(nodeId)).length" in scorm_counts_block
+    assert "const passedIds = _scenarioPassedHistorySet();" in scorm_counts_block
+    assert "const appId = _SCORM_NODE_BY_NODE_ID[nodeId]?.appId;" in scorm_counts_block
+    assert "_scormNodeCompleteByNodeId(nodeId) || (appId && passedIds.has(appId))" in scorm_counts_block
     assert "callsTotal: _SCORM_PEDS_DISTRICT_SCENARIO_NODE_IDS.length" in scorm_counts_block
 
     counts_start = app_js.find("function _districtActivityCounts")
