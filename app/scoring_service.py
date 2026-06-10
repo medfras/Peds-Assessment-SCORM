@@ -1609,7 +1609,7 @@ async def adjudicate_and_persist(
     if isinstance(existing_snapshot, dict) and existing_snapshot.get("adjudication_input_hash"):
         db.add(AdjudicationRevision(
             session_id=session.id,
-            superseded_at=datetime.now(timezone.utc),
+            superseded_at=datetime.utcnow(),
             input_hash=existing_snapshot["adjudication_input_hash"],
             checklist_states=session.checklist_states,
             score_snapshot=existing_snapshot,

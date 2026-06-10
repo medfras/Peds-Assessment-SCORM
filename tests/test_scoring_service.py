@@ -21,6 +21,16 @@ from app.scoring_service import adjudicate, compute_scores, _compute_critical_fa
 # ── Fixtures ──────────────────────────────────────────────────────────────────
 
 
+def test_adjudication_revision_timestamp_is_naive_utc_for_db_driver():
+    """asyncpg rejects aware datetimes for TIMESTAMP WITHOUT TIME ZONE columns."""
+    source = (Path(__file__).resolve().parents[1] / "app" / "scoring_service.py").read_text()
+    revision_start = source.find("db.add(AdjudicationRevision(")
+    assert revision_start != -1
+    revision_block = source[revision_start:revision_start + 500]
+    assert "superseded_at=datetime.utcnow()" in revision_block
+    assert "superseded_at=datetime.now(timezone.utc)" not in revision_block
+
+
 def _item(
     item_id: str = "test_item",
     subtype: str = "assessment",
