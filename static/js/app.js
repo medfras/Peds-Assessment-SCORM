@@ -6068,7 +6068,8 @@ function _scormVisibleMapScenarioProgress(mapId = "") {
   const scenarios = scormNodes.length
     ? scormNodes
     : ((_PEDS_MAP_BY_ID.get(mapIdText)?.scenarios || []).filter(s => !String(s.id || "").startsWith("_ph")));
-  const completed = scenarios.filter(s => _scormAppComplete(s.appId || s.id)).length;
+  const passedIds = _scenarioPassedHistorySet();
+  const completed = scenarios.filter(s => _scormVisibleScenarioComplete(s.appId || s.id, passedIds)).length;
   const total = scenarios.length;
   return {
     completed,
@@ -6081,8 +6082,9 @@ function _scormVisibleMapScenarioProgress(mapId = "") {
 function _scormPedsSidebarProgress(mapId = "") {
   if (!state.scormEnabled) return { unlocked: false, partial: false, complete: false, pct: 0 };
   const id = String(mapId || "");
-  const pm1Unlocked = _scormAppComplete(_SCORM_PM1_UNLOCK_SCENARIO_ID);
-  const pt1Unlocked = _scormAppComplete(_SCORM_PT1_UNLOCK_SCENARIO_ID);
+  const passedIds = _scenarioPassedHistorySet();
+  const pm1Unlocked = _scormVisibleScenarioComplete(_SCORM_PM1_UNLOCK_SCENARIO_ID, passedIds);
+  const pt1Unlocked = _scormVisibleScenarioComplete(_SCORM_PT1_UNLOCK_SCENARIO_ID, passedIds);
   if (id === "map_0") {
     const pct = (pm1Unlocked ? 50 : 0) + (pt1Unlocked ? 50 : 0);
     return { unlocked: true, partial: false, complete: pm1Unlocked && pt1Unlocked, pct };
@@ -6111,6 +6113,13 @@ function _scormNodeForAppId(appId = "") {
 function _scormAppComplete(appId = "") {
   const node = _scormNodeForAppId(appId);
   return !!node && _scormNodeCompleteByNodeId(node.nodeId);
+}
+
+function _scormVisibleScenarioComplete(appId = "", passedIds = null) {
+  const id = String(appId || "");
+  if (!id) return false;
+  const completedIds = passedIds || _scenarioPassedHistorySet();
+  return completedIds.has(id) || _scormAppComplete(id);
 }
 
 function _scormMapRouteUnlocked(mapId = "") {
@@ -11613,7 +11622,7 @@ function _scormPediatricDistrictActivityCounts() {
     .filter(m => _scormPedsMapAllowed(m.id))
     .flatMap(m => (m.scenarios || []).filter(s => !String(s.id || "").startsWith("_ph")).map(s => s.id));
   return {
-    callsComplete: scenarioIds.filter(appId => passedIds.has(appId) || _scormAppComplete(appId)).length,
+    callsComplete: scenarioIds.filter(appId => _scormVisibleScenarioComplete(appId, passedIds)).length,
     callsTotal: scenarioIds.length,
     drillsComplete: 0,
     drillsTotal: 0,

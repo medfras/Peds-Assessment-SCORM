@@ -702,7 +702,7 @@ def test_scorm_production_peds_maps_use_backend_node_state():
     assert "complete: pm1Unlocked && pt1Unlocked, pct" in app_js
     assert 'const groupKey = mapIdText === "map_0" ? "map0" : mapIdText;' in app_js
     assert 'const scormNodes = (_SCORM_NODE_GROUPS[groupKey] || []).filter(node => node.type === "scenario");' in app_js
-    assert "const completed = scenarios.filter(s => _scormAppComplete(s.appId || s.id)).length;" in app_js
+    assert "const completed = scenarios.filter(s => _scormVisibleScenarioComplete(s.appId || s.id, passedIds)).length;" in app_js
     assert "pct: total ? Math.round((completed / total) * 100) : 100" in app_js
     assert "complete: progress.complete, pct: progress.pct" in app_js
 
@@ -765,7 +765,7 @@ def test_scorm_pediatric_district_progress_counts_pilot_calls_only():
     assert "PEDS_MAP_DATA" in scorm_counts_block
     assert ".filter(m => _scormPedsMapAllowed(m.id))" in scorm_counts_block
     assert '.filter(s => !String(s.id || "").startsWith("_ph")).map(s => s.id)' in scorm_counts_block
-    assert "passedIds.has(appId) || _scormAppComplete(appId)" in scorm_counts_block
+    assert "_scormVisibleScenarioComplete(appId, passedIds)" in scorm_counts_block
     assert "callsTotal: scenarioIds.length" in scorm_counts_block
 
     counts_start = app_js.find("function _districtActivityCounts")
