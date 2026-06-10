@@ -358,6 +358,26 @@ def test_scorm_runtime_uses_compact_sim_and_localizes_backend_static_assets():
 
 def test_scorm_station1_wrapup_requires_full_orientation_sequence():
     app_js = APP_JS.read_text()
+    main_py = (ROOT / "app" / "main.py").read_text()
+    scorm_py = (ROOT / "app" / "routers" / "scorm.py").read_text()
+
+    assert "_STATION1_ORIENTATION_NODES: frozenset[str]" in scorm_py
+    assert '"station1_intro"' in scorm_py
+    assert '"station1_orientation"' in scorm_py
+    assert '"station1_cpr"' in scorm_py
+    assert '"station1_challenges"' in scorm_py
+    assert '"station1_wrapup"' in scorm_py
+    assert "_STATION1_ORIENTATION_NODES | _DRILL_NODES" in scorm_py
+    assert '"orientation_node_map": _ORIENTATION_NODE_MAP' in scorm_py
+
+    complete_endpoint_start = main_py.find("async def complete_orientation(")
+    assert complete_endpoint_start != -1
+    complete_endpoint_block = main_py[complete_endpoint_start:complete_endpoint_start + 2200]
+    assert "select(ScormAttempt)" in complete_endpoint_block
+    assert "scorm_router._STATION1_ORIENTATION_NODES" in complete_endpoint_block
+    assert "node_completed[node_id] = True" in complete_endpoint_block
+    assert "node_scores[node_id] = max" in complete_endpoint_block
+
     assert "function _station1StorageScope()" in app_js
     assert 'window.RescueTrails?.["scormAdapter"]?.getAttemptId?.()' in app_js
     assert "const scopePart = scope ? `scorm:${scope}:` : \"\";" in app_js

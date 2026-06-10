@@ -109,6 +109,7 @@ from app.models import (
     WsTicket,
     RefreshToken,
     CeTimeLog,
+    ScormAttempt,
 )
 from app.scenario_engine import load_scenario, list_scenarios, get_public_scenario_data, adapt_scenario_to_context, list_mcas, build_intervention_clinical_snapshot
 from app.scenarios.vocabulary import (
@@ -4364,6 +4365,22 @@ async def complete_orientation(
         raise HTTPException(status_code=400, detail="Session is not an orientation session")
 
     result = await _orientation_complete_internal(current_user)
+    attempt_result = await db.execute(
+        select(ScormAttempt).where(
+            ScormAttempt.user_id == current_user.id,
+            ScormAttempt.module_id == settings.scorm_module_id,
+        )
+    )
+    scorm_attempt = attempt_result.scalar_one_or_none()
+    if scorm_attempt:
+        node_completed = dict(scorm_attempt.node_completed or {})
+        node_scores = dict(scorm_attempt.node_scores or {})
+        for node_id in scorm_router._STATION1_ORIENTATION_NODES:
+            node_completed[node_id] = True
+            node_scores[node_id] = max(int(node_scores.get(node_id, 0) or 0), 100)
+        scorm_attempt.node_completed = node_completed
+        scorm_attempt.node_scores = node_scores
+        scorm_attempt.updated_at = datetime.utcnow()
     if not result.get("already_complete"):
         _record_ce_time(
             db,

@@ -50,7 +50,9 @@ router = APIRouter()
 
 # ── Node registry ─────────────────────────────────────────────────────────────
 #
-# 16 nodes total across 4 maps:
+# 21 nodes total across Station 1 orientation + 4 maps:
+#   Station 1 — 5 orientation progress nodes. These mirror the firehouse
+#               orientation UI only; they do not affect SCORM pass scoring.
 #   Map 0  — 3 drill nodes  (PAT + DEV unlock PM1/PT1; GCS optional)
 #   PM1    — 4 medical scenario nodes  (any 2 of 4 required for SCORM pass)
 #   PT1    — 5 trauma scenario nodes   (any 2 of 5 required for SCORM pass)
@@ -60,6 +62,14 @@ router = APIRouter()
 # Unlock chain:
 #   drill_pat + drill_dev completed → PM1 + PT1 available
 #   2 PM1 + 2 PT1 completed        → Map 3 (CPR) available
+
+_STATION1_ORIENTATION_NODES: frozenset[str] = frozenset({
+    "station1_intro",
+    "station1_orientation",
+    "station1_cpr",
+    "station1_challenges",
+    "station1_wrapup",
+})
 
 _DRILL_NODES: frozenset[str] = frozenset({"drill_pat", "drill_dev", "drill_gcs"})
 _REQUIRED_DRILLS: frozenset[str] = frozenset({"drill_pat", "drill_dev"})
@@ -95,7 +105,7 @@ _OPTIONAL_GAME_NODES: frozenset[str] = frozenset({
 })
 _PEDS_CE_MIN_OPT_GAMES: int = 2
 
-_ALL_NODES: frozenset[str] = _DRILL_NODES | _SCENARIO_NODES | _OPTIONAL_GAME_NODES
+_ALL_NODES: frozenset[str] = _STATION1_ORIENTATION_NODES | _DRILL_NODES | _SCENARIO_NODES | _OPTIONAL_GAME_NODES
 
 # Maps SCORM node ID → app scenario/game ID for frontend launch routing
 _SCENARIO_NODE_MAP: dict[str, str] = {
@@ -118,6 +128,14 @@ _GAME_NODE_MAP: dict[str, str] = {
     "game_vitals":      "vitals_trend_spotter",
     "game_lung_sounds": "lung_sounds_matcher",
     "game_bls":         "cpr_bls_concepts",
+}
+
+_ORIENTATION_NODE_MAP: dict[str, str] = {
+    "station1_intro":       "lexi_intro",
+    "station1_orientation": "orientation_01",
+    "station1_cpr":         "cpr_bls_concepts",
+    "station1_challenges":  "challenge_briefing",
+    "station1_wrapup":      "lexi_wrapup",
 }
 
 _NODE_PASS_THRESHOLD = 70
@@ -212,6 +230,12 @@ def _compute_attempt_summary(
     """
     scores: dict    = attempt.node_scores    or {}
     completed: dict = attempt.node_completed or {}
+    summary_scores = dict(scores)
+    summary_completed = dict(completed)
+    if orientation_done:
+        for node in _STATION1_ORIENTATION_NODES:
+            summary_scores[node] = max(summary_scores.get(node, 0), 100)
+            summary_completed[node] = True
 
     # Required drills gate
     required_drills_done = all(_stored_node_counts_complete(scores, completed, d) for d in _REQUIRED_DRILLS)
@@ -276,8 +300,8 @@ def _compute_attempt_summary(
 
     return {
         "attempt_id":          attempt.attempt_id,
-        "node_scores":         {n: scores.get(n, 0) for n in sorted(_ALL_NODES)},
-        "node_completed":      {n: bool(completed.get(n, False)) for n in sorted(_ALL_NODES)},
+        "node_scores":         {n: summary_scores.get(n, 0) for n in sorted(_ALL_NODES)},
+        "node_completed":      {n: bool(summary_completed.get(n, False)) for n in sorted(_ALL_NODES)},
         "unlocks":             unlocks,
         "drill_grade":         round(drill_grade, 1),
         "scenario_avg":        round(scenario_avg, 1) if scenario_avg is not None else None,
@@ -286,6 +310,7 @@ def _compute_attempt_summary(
         "peds_ce_challenge":   ce_challenge,
         "scenario_node_map":   _SCENARIO_NODE_MAP,
         "game_node_map":       _GAME_NODE_MAP,
+        "orientation_node_map": _ORIENTATION_NODE_MAP,
     }
 
 

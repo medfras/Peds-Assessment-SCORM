@@ -37,6 +37,7 @@ from app.routers.scorm import (
     _PT1_NODES,
     _REQUIRED_DRILLS,
     _SCENARIO_NODES,
+    _STATION1_ORIENTATION_NODES,
     _compute_attempt_summary,
     _duplicate_launch_warning,
     _node_result_counts_complete,
@@ -129,6 +130,24 @@ def test_duplicate_scorm_launch_warning_is_recent_and_advisory():
     assert _duplicate_launch_warning(attempt, "launch-new", now, "student-1") is None
 
 
+def test_orientation_done_exposes_station1_nodes_without_affecting_pass_math():
+    s = _compute_attempt_summary(
+        _attempt(),
+        ce_seconds=0,
+        orientation_done=True,
+        user_xp=0,
+    )
+
+    for node in _STATION1_ORIENTATION_NODES:
+        assert s["node_completed"][node] is True
+        assert s["node_scores"][node] == 100
+
+    assert s["unlocks"]["scenarios"] is False
+    assert s["peds_ce_challenge"]["complete"] is False
+    assert s["lesson_status"] == "incomplete"
+    assert s["orientation_node_map"]["station1_orientation"] == "orientation_01"
+
+
 def test_scorm_launch_owner_includes_id_and_display_name():
     assert _scorm_launch_owner("42", "Frastaci, Jonathan") == "42|FrastaciJonathan"
     assert _scorm_launch_owner("", "Different User") == "DifferentUser"
@@ -184,14 +203,19 @@ def test_node_registry_completeness():
     assert _PT1_NODES <= _SCENARIO_NODES <= _ALL_NODES
     assert _CPR_NODES <= _SCENARIO_NODES <= _ALL_NODES
     assert _OPTIONAL_GAME_NODES <= _ALL_NODES
+    assert _STATION1_ORIENTATION_NODES <= _ALL_NODES
+    assert _STATION1_ORIENTATION_NODES.isdisjoint(_DRILL_NODES)
+    assert _STATION1_ORIENTATION_NODES.isdisjoint(_SCENARIO_NODES)
+    assert _STATION1_ORIENTATION_NODES.isdisjoint(_OPTIONAL_GAME_NODES)
     assert _DRILL_NODES.isdisjoint(_SCENARIO_NODES)
     assert _DRILL_NODES.isdisjoint(_OPTIONAL_GAME_NODES)
     assert _SCENARIO_NODES.isdisjoint(_OPTIONAL_GAME_NODES)
     assert _PM1_NODES.isdisjoint(_PT1_NODES)
     assert _PM1_NODES.isdisjoint(_CPR_NODES)
     assert _PT1_NODES.isdisjoint(_CPR_NODES)
-    # 3 drills + 4 PM1 + 5 PT1 + 1 CPR + 3 optional games = 16
-    assert len(_ALL_NODES) == 16
+    # 5 Station 1 + 3 drills + 4 PM1 + 5 PT1 + 1 CPR + 3 optional games = 21
+    assert len(_ALL_NODES) == 21
+    assert len(_STATION1_ORIENTATION_NODES) == 5
     assert len(_DRILL_NODES) == 3
     assert len(_PM1_NODES) == 4
     assert len(_PT1_NODES) == 5
