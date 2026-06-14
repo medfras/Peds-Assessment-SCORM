@@ -8,7 +8,9 @@
 
 # Local environment files (if you use them later)
 .env
+.env.fto-report
 *.log
+reports/
 
 # VS Code specific
 .vscode/

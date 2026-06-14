@@ -40,6 +40,7 @@ from app.routers.scorm import (
     _STATION1_ORIENTATION_NODES,
     _compute_attempt_summary,
     _duplicate_launch_warning,
+    _get_scorm_context_from_request,
     _node_result_counts_complete,
     _parse_lms_student_name,
     _scorm_launch_owner,
@@ -96,6 +97,48 @@ def _min_passing_attempt():
 async def test_shared_auth_extractor_accepts_scorm_bearer_token():
     request = types.SimpleNamespace(cookies={}, headers={"Authorization": "Bearer scorm.jwt.token"})
     assert await _extract_token(request) == "scorm.jwt.token"
+
+
+@pytest.mark.asyncio
+async def test_launch_close_context_resolver_accepts_bearer_without_db_kwarg(monkeypatch):
+    calls = {}
+
+    def fake_get_scorm_context(*, token):
+        calls["token"] = token
+        return types.SimpleNamespace(scorm_attempt_id="attempt-1")
+
+    monkeypatch.setattr("app.routers.scorm.get_scorm_context", fake_get_scorm_context)
+    request = types.SimpleNamespace(
+        headers={"Authorization": "Bearer scorm.jwt.token"},
+        cookies={},
+        query_params={},
+    )
+
+    ctx = await _get_scorm_context_from_request(request)
+
+    assert calls["token"] == "scorm.jwt.token"
+    assert ctx.scorm_attempt_id == "attempt-1"
+
+
+@pytest.mark.asyncio
+async def test_launch_close_context_resolver_accepts_beacon_query_token(monkeypatch):
+    calls = {}
+
+    def fake_get_scorm_context(*, token):
+        calls["token"] = token
+        return types.SimpleNamespace(scorm_attempt_id="attempt-1")
+
+    monkeypatch.setattr("app.routers.scorm.get_scorm_context", fake_get_scorm_context)
+    request = types.SimpleNamespace(
+        headers={},
+        cookies={},
+        query_params={"token": "scorm.jwt.beacon"},
+    )
+
+    ctx = await _get_scorm_context_from_request(request)
+
+    assert calls["token"] == "scorm.jwt.beacon"
+    assert ctx.scorm_attempt_id == "attempt-1"
 
 
 def test_lms_student_name_parser_handles_moodle_display_formats():

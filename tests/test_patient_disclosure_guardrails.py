@@ -21,7 +21,13 @@ from app.ai_client import (  # noqa: E402
     _message_looks_like_explicit_assessment_action,
     _resolve_history_response_entry,
 )
-from app.scenario_engine import get_public_scenario_data, load_scenario, _public_intervention_fto_guidance
+from app.pediatric_length_based_tape import band_for_weight
+from app.scenario_engine import (
+    _public_intervention_fto_guidance,
+    adapt_scenario_to_context,
+    get_public_scenario_data,
+    load_scenario,
+)
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -38,6 +44,64 @@ def test_universal_patient_disclosure_contract_blocks_unsolicited_coaching():
     assert "what can we do for you?" in contract.lower()
     assert "not an EMS care plan" in contract
     assert "Do not emit HISTORY or EXAM tags" in contract
+
+
+def test_pediatric_length_based_tape_reference_is_deterministic_for_patient_weight():
+    scenario = load_scenario("peds_anaphylaxis_01")
+    adapted = adapt_scenario_to_context(scenario, {}, "mi_base")
+
+    ref = adapted["patient"]["length_based_tape"]
+
+    assert ref["color"] == "Orange"
+    assert ref["weight_kg_range"] == "24-29 kg"
+    assert ref["weight_lb_range"] == "52-64 lb"
+    assert ref["age_range"] == "7-9 years"
+    public = get_public_scenario_data(adapted)
+    assert public["patient"]["length_based_tape"]["color"] == "Orange"
+
+
+def test_michigan_length_based_tape_black_adult_band_is_open_ended():
+    assert band_for_weight(36)["color"] == "Green"
+    assert band_for_weight(37)["color"] == "Black"
+    assert band_for_weight(37)["weight_kg_range"] == ">36 kg"
+    assert band_for_weight(37)["age_range"] == ">14 years"
+
+
+def test_pediatric_length_based_tape_supports_agency_band_overrides():
+    agency = {
+        "pediatric_length_based_tape": {
+            "id": "local_tape_v1",
+            "label": "Local pediatric tape",
+            "band_overrides": {
+                "orange": {
+                    "length_cm_range": "local orange measurement",
+                    "equipment_note": "local kit shelf 4",
+                }
+            },
+        }
+    }
+
+    band = band_for_weight(27, agency)
+
+    assert band["system_id"] == "local_tape_v1"
+    assert band["system_label"] == "Local pediatric tape"
+    assert band["color"] == "Orange"
+    assert band["length_cm_range"] == "local orange measurement"
+    assert band["equipment_note"] == "local kit shelf 4"
+
+
+def test_broselow_history_question_uses_adapted_tape_measurement_context():
+    scenario = load_scenario("peds_croup_01")
+    adapted = adapt_scenario_to_context(scenario, {}, "mi_base")
+
+    resolved = _resolve_history_response_entry("what broselow color and measurement is she", adapted)
+
+    assert resolved is not None
+    _, entry = resolved
+    payload = json.dumps(entry, ensure_ascii=False).lower()
+    assert "red" in payload
+    assert "17-20 lb" in payload
+    assert "7-10 months" in payload
 
 
 def test_realism_rules_include_universal_contract_for_all_personas():

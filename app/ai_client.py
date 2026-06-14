@@ -3267,6 +3267,35 @@ Capabilities: {json.dumps(p.get('capabilities', []))}
         f"Turnover target: {_turnover_target} ({_turnover_label})\n"
         f"Advanced monitoring on this unit: {_monitoring_avail_str}"
     )
+    _tape_ref = patient.get("length_based_tape") if isinstance(patient, dict) else None
+    if isinstance(_tape_ref, dict) and _tape_ref.get("color"):
+        _tape_lb_range = (
+            f" ({_tape_ref.get('weight_lb_range')})"
+            if _tape_ref.get("weight_lb_range")
+            else ""
+        )
+        _tape_optional_lines = []
+        if _tape_ref.get("age_range"):
+            _tape_optional_lines.append(f"Age range: {_tape_ref.get('age_range')}")
+        if _tape_ref.get("length_cm_range"):
+            _tape_optional_lines.append(f"Length range: {_tape_ref.get('length_cm_range')}")
+        _tape_optional_block = (
+            "\n".join(_tape_optional_lines) + "\n"
+            if _tape_optional_lines
+            else ""
+        )
+        _pediatric_tape_block = (
+            "## PEDIATRIC LENGTH-BASED TAPE REFERENCE\n"
+            f"System: {_tape_ref.get('system_label') or 'length-based tape'}\n"
+            f"Patient weight: {_tape_ref.get('patient_weight_display') or patient.get('weight_display')}\n"
+            f"Color zone: {_tape_ref.get('color')}\n"
+            f"Weight range: {_tape_ref.get('weight_kg_range')}{_tape_lb_range}\n"
+            f"{_tape_optional_block}"
+            "If asked about Broselow, length-based tape, tape color, or tape measurement, use this block exactly. "
+            "Do not infer another color, weight range, length range, equipment size, or medication dose from memory."
+        )
+    else:
+        _pediatric_tape_block = ""
 
     return f"""You are facilitating an EMT training simulation. Roleplay ONLY as the characters present on scene. Never break character or mention AI.
 
@@ -3291,6 +3320,7 @@ IMPORTANT: All scope-of-practice rulings, available interventions, and protocol 
 {patient['name']}, {patient.get('age_display') or f"{patient['age']}-year-old {patient['sex']}"}, {patient['weight_display']}
 Chief Complaint: {patient['chief_complaint']}
 General Impression: {patient['general_impression']}
+{f'{chr(10)}{_pediatric_tape_block}' if _pediatric_tape_block else ''}
 
 ## CLINICAL FACTS (known by characters — revealed only when asked)
 PMH: {', '.join(history['pmh']) if isinstance(history['pmh'], list) else history['pmh']}

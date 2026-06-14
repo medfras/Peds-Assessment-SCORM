@@ -12776,7 +12776,11 @@ async def record_finding(
             captured_at=_now,
         ).on_conflict_do_update(
             index_elements=["session_id", "finding_type", "key"],
-            index_where=SessionFinding.finding_type == "history",
+            # This must be a literal predicate so PostgreSQL can match the
+            # partial unique index uq_session_finding_history_key. A bound
+            # parameter here compiles to "finding_type = $n" and fails with
+            # "no unique or exclusion constraint matching" in production.
+            index_where=text("finding_type = 'history'"),
             set_={"value": _val, "source": _src, "captured_at": _now},
         )
         await db.execute(stmt)

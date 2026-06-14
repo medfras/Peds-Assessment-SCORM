@@ -64,6 +64,7 @@ from functools import lru_cache
 from pathlib import Path
 
 from app.logging_config import get_logger
+from app.pediatric_length_based_tape import patient_tape_reference, tape_reference_sentence
 from app.protocol_engine import action_ids_for_intervention, get_resolved_protocol
 from app.scenarios.vocabulary import validate_scenario, ScenarioVocabularyError
 
@@ -502,6 +503,56 @@ def adapt_scenario_to_context(
             except FileNotFoundError:
                 pass
 
+    # ── Pediatric length-based tape reference ────────────────────────────────
+    # Patient weight in scenario JSON is authoritative. Compute tape color and
+    # measurement data deterministically, with optional state/agency overrides,
+    # before the adapted scenario reaches AI prompts or the frontend.
+    patient = adapted.get("patient")
+    if isinstance(patient, dict):
+        tape_ref = patient_tape_reference(patient, agency)
+        if tape_ref:
+            patient = dict(patient)
+            patient["length_based_tape"] = tape_ref
+            adapted["patient"] = patient
+
+            response_map = adapted.get("history_response_map")
+            tape_sentence = tape_reference_sentence(patient, agency)
+            if isinstance(response_map, dict) and tape_sentence:
+                updated_map = {}
+                for key, entry in response_map.items():
+                    if not isinstance(entry, dict):
+                        updated_map[key] = entry
+                        continue
+                    triggers = " ".join(str(t) for t in entry.get("triggers") or []).lower()
+                    raw_tags = entry.get("tags") or ([entry["tag"]] if entry.get("tag") else [])
+                    tag_text = " ".join(str(t) for t in raw_tags).lower()
+                    tape_related = (
+                        key == "patient_weight"
+                        or "broselow" in triggers
+                        or "broslow" in triggers
+                        or "patient weight" in tag_text
+                    )
+                    if tape_related:
+                        entry = dict(entry)
+                        answer = str(entry.get("answer") or "").strip()
+                        if "broselow" not in answer.lower() and "length-based" not in answer.lower():
+                            entry["answer"] = f"{answer} {tape_sentence}".strip()
+                        tape_tag = f"[[HISTORY: Length-Based Tape = {tape_ref['color']} zone]]"
+                        if entry.get("tag"):
+                            tags = [entry["tag"]]
+                            entry.pop("tag", None)
+                            entry["tags"] = tags
+                        tags = [
+                            str(tag)
+                            for tag in entry.get("tags") or []
+                            if str(tag).strip()
+                        ]
+                        if not any("length-based tape" in tag.lower() for tag in tags):
+                            tags.append(tape_tag)
+                            entry["tags"] = tags
+                    updated_map[key] = entry
+                adapted["history_response_map"] = updated_map
+
     # ── MCA expansion scope adaptation ───────────────────────────────────────
     # Interventions tagged with "required_expansion" are only within BLS scope
     # if the session MCA has selected that expansion. If not, flip within_bls_scope
@@ -792,6 +843,7 @@ def get_public_scenario_data(scenario: dict) -> dict:
                 f"{scenario['patient']['age']}-year-old {scenario['patient']['sex']}",
             ),
             "weight_display": scenario["patient"]["weight_display"],
+            "length_based_tape": scenario["patient"].get("length_based_tape"),
             "pcr_demographics_deferred": scenario["patient"].get("pcr_demographics_deferred", False),
             "chief_complaint": scenario["patient"]["chief_complaint"],
             "general_impression": scenario["patient"]["general_impression"],

@@ -36,7 +36,6 @@ from app.auth import (
     ScormContext,
     _assign_agency_default_protocol_profile,
     _create_scorm_token,
-    _extract_token,
     _hash_password,
     _set_auth_cookies,
     get_scorm_context,
@@ -615,16 +614,19 @@ class ScormLaunchHeartbeatRequest(BaseModel):
 
 async def _get_scorm_context_from_request(
     request: Request,
-    db: AsyncSession,
 ) -> ScormContext:
     """Resolve SCORM auth from Authorization header or a beacon token query."""
-    auth = request.headers.get("Authorization") or ""
-    token = _extract_token(auth)
+    token = None
+    auth = request.headers.get("Authorization", "")
+    if auth.startswith("Bearer "):
+        token = auth[7:]
+    if not token:
+        token = request.cookies.get("pfd_ems_session")
     if not token:
         token = request.query_params.get("token")
     if not token:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Not authenticated")
-    return await get_scorm_context(token=token, db=db)
+    return get_scorm_context(token=token)
 
 
 @router.post("/api/scorm/attempts/{attempt_id}/launch-heartbeat")
@@ -687,7 +689,7 @@ async def scorm_launch_close(
     db: AsyncSession = Depends(get_db),
 ):
     """Clear this browser window's launch marker when the SCO is closed."""
-    ctx = await _get_scorm_context_from_request(request, db)
+    ctx = await _get_scorm_context_from_request(request)
     if attempt_id != ctx.scorm_attempt_id:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Attempt ID mismatch.")
     launch_id = _sanitize_launch_id(body.launch_id)
