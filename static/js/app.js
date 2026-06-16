@@ -18364,6 +18364,7 @@ function _normalizeHistoryEntryForDisplay(entry = {}) {
       : Array.isArray(entry.rubric_detail)
         ? entry.rubric_detail
         : [],
+    scoreNotes: entry.scoreNotes || entry.score_notes || {},
     pcrSnapshotHtml: entry.pcrSnapshotHtml || entry.pcr_snapshot_html || "",
     pcrNotes: entry.pcrNotes || entry.pcr_notes || null,
     topTakeaways: Array.isArray(entry.topTakeaways)
@@ -18758,6 +18759,82 @@ function _renderRubricDetailPanel(rubricDetail, heading = "✅ Rubric Detail", e
   </div>`;
 }
 
+function _scoreNoteLabel(key = "") {
+  const labels = {
+    clinical_performance: "Clinical Performance",
+    protocols_treatment: "Protocols & Treatment",
+    scope_adherence: "Scope Adherence",
+    dmist: "DMIST / Handoff",
+    professionalism: "Professionalism",
+    narrative: "Narrative Bonus",
+  };
+  return labels[key] || String(key || "Scoring").replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+}
+
+function _scoreNoteRows(scoreNotes = {}) {
+  if (!scoreNotes || typeof scoreNotes !== "object") return [];
+  return Object.entries(scoreNotes)
+    .filter(([, note]) => String(note || "").trim())
+    .map(([key, note]) => ({
+      label: _scoreNoteLabel(key),
+      detail: String(note || "").trim(),
+      source: "score_note",
+    }));
+}
+
+function _missedTimelineRows(timeline = []) {
+  return (Array.isArray(timeline) ? timeline : [])
+    .filter(row => ["missed", "out_of_order", "contradicted"].includes(String(row?.status || "")) && String(row?.action || "").trim())
+    .slice(0, 8)
+    .map(row => ({
+      label: row.status === "out_of_order" ? "Timing / Sequence" : "Missed Action",
+      detail: row.action,
+      source: "timeline",
+    }));
+}
+
+function _missedRubricRows(rubricDetail = []) {
+  const rows = [];
+  (Array.isArray(rubricDetail) ? rubricDetail : []).forEach(group => {
+    (Array.isArray(group?.items) ? group.items : []).forEach(item => {
+      const status = String(item?.status || "");
+      const points = Number(item?.points || 0);
+      const earned = Number(item?.earned || 0);
+      if (status === "satisfied" || earned >= points || points <= 0) return;
+      rows.push({
+        label: group?.label || group?.category || "Rubric",
+        detail: `${item?.label || item?.id || "Rubric item"} (${earned}/${points})${item?.notes ? ` - ${item.notes}` : ""}`,
+        source: "rubric",
+      });
+    });
+  });
+  return rows.slice(0, 10);
+}
+
+function _renderMissedPointsHtml({ scoreNotes = {}, timeline = [], rubricDetail = [] } = {}) {
+  const noteRows = _scoreNoteRows(scoreNotes);
+  const timelineRows = _missedTimelineRows(timeline);
+  const rubricRows = _missedRubricRows(rubricDetail);
+  const seen = new Set();
+  const rows = [...noteRows, ...timelineRows, ...rubricRows].filter(row => {
+    const key = `${row.label}|${row.detail}`.toLowerCase();
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+  if (!rows.length) return "";
+  return rows.map(row => {
+    const sourceLabel = row.source === "score_note" ? "Score note" : row.source === "timeline" ? "Timeline" : "Rubric";
+    return `<div class="rounded-lg border border-gray-800 bg-gray-900/70 p-2.5">
+      <div class="flex items-center justify-between gap-3">
+        <div class="text-xs font-bold uppercase tracking-widest text-gray-300">${escapeHTML(row.label)}</div>
+        <div class="text-[10px] uppercase tracking-widest text-gray-500">${escapeHTML(sourceLabel)}</div>
+      </div>
+      <div class="mt-1 text-sm text-gray-100 leading-relaxed">${escapeHTML(row.detail)}</div>
+    </div>`;
+  }).join("");
+}
+
 function _buildCoachFeedbackHtml(entry) {
   const score = entry?.assessmentScore ?? entry?.score;
   const denom = _assessmentMaxFromEntry(entry);
@@ -18772,11 +18849,22 @@ function _buildCoachFeedbackHtml(entry) {
   // Strip sections 8 & 9 when condition is locked — defense-in-depth against cached
   // pre-fix entries that may still carry the full debrief text client-side.
   const locked = _isConditionLocked(entry?.impressionChallenge);
+  const missedHtml = _renderMissedPointsHtml({
+    scoreNotes: entry?.scoreNotes,
+    timeline,
+    rubricDetail: entry?.rubricDetail,
+  });
+  const missedPanel = missedHtml && !locked
+    ? `<div class="mt-4 border border-amber-900/60 bg-amber-950/20 rounded-lg p-3">
+      <div class="text-xs font-bold text-amber-300 uppercase tracking-widest mb-2">Missed Points & Deduction Reasons</div>
+      <div class="space-y-2">${missedHtml}</div>
+    </div>`
+    : "";
   const rawDebrief = entry?.debrief || "";
   const debriefText = locked
     ? (_splitDebriefForModal(rawDebrief).mainMarkdown || "No debrief feedback available.")
     : (rawDebrief || "No debrief feedback available.");
-  return `${scoreRow}<div class="debrief-prose">${renderMarkdown(debriefText)}</div>${timelineHtml}${rubricHtml}`;
+  return `${scoreRow}<div class="debrief-prose">${renderMarkdown(debriefText)}</div>${missedPanel}${timelineHtml}${rubricHtml}`;
 }
 
 function _isCoachMobileTarget() {
@@ -27460,6 +27548,7 @@ el("btn-drill-feedback").addEventListener("click", async () => {
       cprChallengeSummary: data.cpr_challenge_summary || null,
       debriefLexiHints: data.debrief_lexi_hints || [],
       referenceMarkdown: data.reference_markdown || "",
+      scoreNotes: data.score_notes || data.scoreNotes || {},
     };
     await processDebrief(data.feedback, data.score, null, data.timeline, null, null,
       { assessmentScore: null, narrativeScore: null, narrativeSkipped: false },
@@ -27614,7 +27703,7 @@ el("btn-skip-narrative")?.addEventListener("click", async () => {
       try {
         await processDebrief(data.feedback, data.score, data.subscores, data.timeline, data.exemplar_dmist, null,
           { assessmentScore: data.assessment_score, narrativeScore: null, narrativeSkipped: true, criticalFailure: data.critical_failure || null },
-          { topTakeaways: data.top_takeaways || [], reflectionPrompts: data.reflection_prompts || [], nextAction: data.next_action || "", nextActionTargetType: data.next_action_target_type || "none", nextActionTargetId: data.next_action_target_id || null, impressionChallenge: data.impression_challenge || null, dmistPrimaryImpression: data.dmist_primary_impression || null, cprChallengeSummary: data.cpr_challenge_summary || null, debriefLexiHints: data.debrief_lexi_hints || [], referenceMarkdown: data.reference_markdown || "" },
+          { topTakeaways: data.top_takeaways || [], reflectionPrompts: data.reflection_prompts || [], nextAction: data.next_action || "", nextActionTargetType: data.next_action_target_type || "none", nextActionTargetId: data.next_action_target_id || null, impressionChallenge: data.impression_challenge || null, dmistPrimaryImpression: data.dmist_primary_impression || null, cprChallengeSummary: data.cpr_challenge_summary || null, debriefLexiHints: data.debrief_lexi_hints || [], referenceMarkdown: data.reference_markdown || "", scoreNotes: data.score_notes || data.scoreNotes || {} },
           data.rubric_detail || []);
       } catch (err) {
         console.error("Failed to render skipped-narrative debrief:", err);
@@ -27702,7 +27791,7 @@ el("btn-submit-narrative").addEventListener("click", async () => {
       try {
         await processDebrief(data.feedback, data.score, data.subscores, data.timeline, data.exemplar_dmist, data.exemplar_narrative,
           { assessmentScore: data.assessment_score, narrativeScore: data.narrative_score, narrativeSkipped: false, criticalFailure: data.critical_failure || null },
-          { topTakeaways: data.top_takeaways || [], reflectionPrompts: data.reflection_prompts || [], nextAction: data.next_action || "", nextActionTargetType: data.next_action_target_type || "none", nextActionTargetId: data.next_action_target_id || null, impressionChallenge: data.impression_challenge || null, dmistPrimaryImpression: data.dmist_primary_impression || null, cprChallengeSummary: data.cpr_challenge_summary || null, debriefLexiHints: data.debrief_lexi_hints || [], referenceMarkdown: data.reference_markdown || "" },
+          { topTakeaways: data.top_takeaways || [], reflectionPrompts: data.reflection_prompts || [], nextAction: data.next_action || "", nextActionTargetType: data.next_action_target_type || "none", nextActionTargetId: data.next_action_target_id || null, impressionChallenge: data.impression_challenge || null, dmistPrimaryImpression: data.dmist_primary_impression || null, cprChallengeSummary: data.cpr_challenge_summary || null, debriefLexiHints: data.debrief_lexi_hints || [], referenceMarkdown: data.reference_markdown || "", scoreNotes: data.score_notes || data.scoreNotes || {} },
           data.rubric_detail || []);
       } catch (err) {
         console.error("Failed to render narrative debrief:", err);
@@ -27861,6 +27950,7 @@ async function processDebrief(feedback, score, subscores = null, timeline = null
     exemplarDmist:        exemplarDmist,
     exemplarNarrative:    exemplarNarrative,
     referenceMarkdown:    blufData?.referenceMarkdown    ?? "",
+    scoreNotes:           blufData?.scoreNotes           ?? {},
     impressionChallenge:    blufData?.impressionChallenge    ?? null,
     dmistPrimaryImpression: blufData?.dmistPrimaryImpression ?? null,
     topTakeaways:           blufData?.topTakeaways           ?? [],
@@ -28158,6 +28248,22 @@ function showDebrief(feedback, score, xpGained, newBadgeIds, treatsEarned = 0, s
     subscoresEl.classList.remove("hidden");
   } else {
     subscoresEl.classList.add("hidden");
+  }
+
+  // ── Structured missed points / deduction reasons ─────────────────────────
+  const missedSection = el("debrief-missed-points-section");
+  const missedList = el("debrief-missed-points-list");
+  const missedHtml = _renderMissedPointsHtml({
+    scoreNotes: blufData?.scoreNotes || {},
+    timeline,
+    rubricDetail,
+  });
+  if (missedSection && missedList && missedHtml && !conditionLocked) {
+    missedList.innerHTML = missedHtml;
+    missedSection.classList.remove("hidden");
+  } else {
+    missedSection?.classList.add("hidden");
+    if (missedList) missedList.innerHTML = "";
   }
 
   // ── CPR challenge feedback ───────────────────────────────────────────────

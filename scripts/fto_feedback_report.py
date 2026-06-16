@@ -387,6 +387,172 @@ def _render_subscores(subscores: dict[str, Any]) -> str:
     return "\n".join(rows)
 
 
+_REPORT_PROF_GREETING_RE = re.compile(r"\b(hi|hello|hey|good\s+(morning|afternoon|evening)|my\s+name\s+is|i('?m| am)\s+\w+)\b", re.I)
+_REPORT_PROF_AGENCY_RE = re.compile(
+    r"\b(with|from)\s+(the\s+)?(?:\w+\s+){0,4}(fire|ems|ambulance|rescue|department|medic)\b"
+    r"|\b(i'?m|i am)\s+(?:an?\s+)?(firefighter|emt|emr|paramedic|medic|first.?responder)\b",
+    re.I,
+)
+_REPORT_PROF_ACTION_RE = re.compile(
+    r"\b("
+    r"i('| a)?m\s+(?:just\s+)?going to|we('?re| are)\s+(?:just\s+)?going to|"
+    r"let me|i need to|we need to|i('| a)?m\s+checking|we('?re| are)\s+checking|"
+    r"i('| a)?m\s+getting|we('?re| are)\s+getting|"
+    r"(?:roll|turn|place|put|position|keep)\s+(?:her|him|them|the\s+(?:baby|child|infant|patient))?.{0,30}\b(?:side|recovery\s+position)|"
+    r"protect\s+(?:her|him|their|the\s+(?:baby|child|infant|patient))?.{0,30}\b(?:airway|injur(?:y|ies)|safe|safety)"
+    r")\b",
+    re.I,
+)
+_REPORT_PROF_CAREGIVER_RE = re.compile(
+    r"\b(mom|mother|dad|father|parent|ma['’]?am|sir|what(?:'s| is)\s+going\s+on|what\s+happened|tell\s+me\s+what)\b",
+    re.I,
+)
+_REPORT_PROF_EMPATHY_RE = re.compile(
+    r"\b(we('?re| are) here to help|you('?re| are) doing great|i know this is scary|"
+    r"we('?ll| will) help|i'?m sorry|i am sorry|it('?s| is) okay|you('?re| are) okay|help her|help him|help you)\b",
+    re.I,
+)
+
+
+def _student_transcript_text(row: dict[str, Any]) -> str:
+    return "\n".join(
+        str(msg.get("content") or "")
+        for msg in row.get("transcript") or []
+        if str(msg.get("role") or "").lower() in {"user", "student"}
+    )
+
+
+def _professionalism_cues(row: dict[str, Any]) -> list[tuple[str, bool]]:
+    text = _student_transcript_text(row)
+    if not text.strip():
+        return []
+    return [
+        ("Greeting or self-introduction", bool(_REPORT_PROF_GREETING_RE.search(text))),
+        ("Agency or responder-role introduction", bool(_REPORT_PROF_AGENCY_RE.search(text))),
+        ("Explained actions or care plan", bool(_REPORT_PROF_ACTION_RE.search(text))),
+        ("Addressed caregiver/family", bool(_REPORT_PROF_CAREGIVER_RE.search(text))),
+        ("Reassurance or empathy language", bool(_REPORT_PROF_EMPATHY_RE.search(text))),
+    ]
+
+
+def _score_note_rows(row: dict[str, Any]) -> list[str]:
+    notes = row.get("score_notes") or {}
+    subscores = row.get("subscores") or {}
+    labels = {key: label for key, label, _max in _subscore_defs(subscores)}
+    if "narrative" in subscores:
+        labels["narrative"] = "Narrative Bonus"
+    rows = []
+    for key, label in labels.items():
+        if key not in subscores:
+            continue
+        max_score = int((subscores.get("_maxes") or {}).get(key) or (20 if key == "narrative" else 10))
+        if key in {"clinical_performance", "protocols_treatment", "scope_adherence"}:
+            max_score = next((m for k, _label, m in _subscore_defs(subscores) if k == key), max_score)
+        value = int(subscores.get(key) or 0)
+        if value >= max_score and key not in notes:
+            continue
+        note = str(notes.get(key) or "").strip()
+        if not note:
+            note = "No stored score note for this category; use the timeline/rubric rows below for the concrete missed items."
+        rows.append(
+            '<div class="deduction-row">'
+            f'<strong>{html.escape(label)}</strong>'
+            f'<span>{html.escape(str(value))}/{html.escape(str(max_score))}</span>'
+            f'<p>{html.escape(note)}</p>'
+            "</div>"
+        )
+    return rows
+
+
+def _missed_timeline_rows(row: dict[str, Any]) -> list[str]:
+    rows = []
+    for item in row.get("timeline") or []:
+        status = str(item.get("status") or "")
+        if status not in {"missed", "out_of_order"}:
+            continue
+        rows.append(
+            '<li>'
+            f'<strong>{html.escape(status.replace("_", " ").title())}:</strong> '
+            f'{html.escape(str(item.get("action") or item.get("item_id") or "Timeline item"))}'
+            "</li>"
+        )
+    return rows
+
+
+def _missed_rubric_rows(row: dict[str, Any]) -> list[str]:
+    rows = []
+    for group in row.get("rubric_detail") or []:
+        group_title = str(group.get("title") or group.get("category") or "Rubric")
+        for item in group.get("items") or []:
+            done = bool(item.get("satisfied") or item.get("status") == "satisfied")
+            if done:
+                continue
+            label = item.get("description") or item.get("label") or item.get("item_id") or "Rubric item"
+            points = ""
+            if item.get("earned_points") is not None or item.get("possible_points") is not None:
+                points = f' ({item.get("earned_points", 0)}/{item.get("possible_points", item.get("point_value", ""))})'
+            rows.append(
+                '<li>'
+                f'<strong>{html.escape(group_title)}:</strong> {html.escape(str(label))}{html.escape(points)}'
+                "</li>"
+            )
+    return rows
+
+
+def _render_professionalism_cues(row: dict[str, Any]) -> str:
+    cues = _professionalism_cues(row)
+    if not cues:
+        return ""
+    rows = "\n".join(
+        f'<li class="{"cue-yes" if present else "cue-no"}">'
+        f'{"✓" if present else "x"} {html.escape(label)}'
+        "</li>"
+        for label, present in cues
+    )
+    return (
+        '<div class="deduction-subblock">'
+        "<h3>Professionalism Cues Detected From Student Chat</h3>"
+        f"<ul>{rows}</ul>"
+        '<p class="muted">These cues mirror the report-side check used to explain likely professionalism deductions; the stored backend subscore remains authoritative.</p>'
+        "</div>"
+    )
+
+
+def _render_missed_points(row: dict[str, Any]) -> str:
+    score_notes = _score_note_rows(row)
+    timeline = _missed_timeline_rows(row)
+    rubric = _missed_rubric_rows(row)
+    prof_cues = _render_professionalism_cues(row)
+
+    note_html = (
+        "\n".join(score_notes)
+        if score_notes
+        else '<p class="muted">No category-level score notes were stored for this run.</p>'
+    )
+    timeline_html = (
+        f'<ul class="deduction-list">{"".join(timeline)}</ul>'
+        if timeline
+        else '<p class="muted">No missed or out-of-order timeline rows were stored.</p>'
+    )
+    rubric_html = (
+        f'<ul class="deduction-list">{"".join(rubric)}</ul>'
+        if rubric
+        else '<p class="muted">No not-done rubric rows were stored.</p>'
+    )
+    return (
+        '<section class="deduction-section">'
+        "<h2>Missed Points & Deduction Reasons</h2>"
+        '<div class="deduction-subblock"><h3>Category Notes</h3>'
+        f"{note_html}</div>"
+        f"{prof_cues}"
+        '<div class="deduction-subblock"><h3>Missed Timeline Items</h3>'
+        f"{timeline_html}</div>"
+        '<div class="deduction-subblock"><h3>Not-Done Rubric Items</h3>'
+        f"{rubric_html}</div>"
+        "</section>"
+    )
+
+
 def _fto_summary(row: dict[str, Any]) -> str:
     timeline = row["timeline"]
     score = row["assessment_score"] if row["assessment_score"] is not None else row["score"]
@@ -571,6 +737,26 @@ def _export_payload(row: dict[str, Any], score_text: str, status_label: str) -> 
             "status": status_label,
         },
         "subscores": row.get("subscores") or {},
+        "score_notes": row.get("score_notes") or {},
+        "missed_points": {
+            "timeline": [
+                item for item in (row.get("timeline") or [])
+                if str(item.get("status") or "") in {"missed", "out_of_order"}
+            ],
+            "rubric": [
+                {
+                    "group": group.get("title") or group.get("category") or "Rubric",
+                    "item": item,
+                }
+                for group in (row.get("rubric_detail") or [])
+                for item in (group.get("items") or [])
+                if not bool(item.get("satisfied") or item.get("status") == "satisfied")
+            ],
+            "professionalism_cues": [
+                {"label": label, "detected": detected}
+                for label, detected in _professionalism_cues(row)
+            ],
+        },
         "fto_summary": {
             "feedback": row.get("debrief_markdown") or row.get("feedback") or "",
         },
@@ -625,6 +811,7 @@ def _render_session(row: dict[str, Any]) -> str:
       </header>
       {_fto_summary(row)}
       <section><h2>Score Breakdown</h2>{_render_subscores(row["subscores"])}</section>
+      {_render_missed_points(row)}
       {_render_pcr_notes(row.get("pcr_notes"))}
       {_render_submitted_documents(row)}
       <section><h2>Full Debrief</h2><div class="debrief-prose">{_render_markdown(feedback)}</div></section>
@@ -651,6 +838,9 @@ def _row_search_text(row: dict[str, Any]) -> str:
         row.get("debrief_markdown"),
         row.get("dmist_report"),
         row.get("submitted_narrative"),
+        json.dumps(row.get("score_notes") or {}, default=str),
+        json.dumps(row.get("timeline") or {}, default=str),
+        json.dumps(row.get("rubric_detail") or {}, default=str),
         json.dumps(row.get("pcr_notes") or {}, default=str),
     ]
     parts.extend(str(msg.get("content") or "") for msg in row.get("transcript") or [])
@@ -739,6 +929,18 @@ def _html_doc(rows: list[dict[str, Any]]) -> str:
   .bar {{ height:8px; background:#dbe3ee; border-radius:999px; overflow:hidden; }}
   .bar i {{ display:block; height:100%; background:var(--blue); }}
   .bonus .bar i {{ background:#8b5cf6; }}
+  .deduction-section {{ background:#fffdf7; }}
+  .deduction-subblock {{ border:1px solid #f1e2bd; border-radius:12px; padding:14px; margin:12px 0; background:#fffaf0; }}
+  .deduction-subblock h3 {{ margin:0 0 10px; font-size:16px; color:#854d0e; }}
+  .deduction-row {{ display:grid; grid-template-columns:190px 80px 1fr; gap:12px; align-items:start; border-top:1px solid #f4e8c9; padding:10px 0; }}
+  .deduction-row:first-child {{ border-top:0; }}
+  .deduction-row strong {{ color:#0f172a; }}
+  .deduction-row span {{ font-weight:900; color:#b45309; }}
+  .deduction-row p {{ margin:0; line-height:1.45; }}
+  .deduction-list {{ margin:0; padding-left:22px; }}
+  .deduction-list li {{ margin:7px 0; line-height:1.45; }}
+  .cue-yes {{ color:#047857; }}
+  .cue-no {{ color:#b91c1c; }}
   .pcr-note-block {{ border:1px solid #e2e8f0; border-radius:12px; padding:14px; margin:12px 0; background:#fbfdff; }}
   .pcr-note-block h3 {{ margin:0 0 10px; font-size:16px; }}
   .pcr-note-item {{ display:grid; grid-template-columns:180px 1fr 150px; gap:12px; padding:7px 0; border-top:1px solid #edf2f7; }}
@@ -843,6 +1045,12 @@ def _html_doc(rows: list[dict[str, Any]]) -> str:
       const max = data.subscores?._maxes?.[key] ?? "";
       addCsvRow(rows, "score_breakdown", key, "", "", max ? `${{value}}/${{max}}` : value, "", "", "", "");
     }});
+    Object.entries(data.score_notes || {{}}).forEach(([key, value]) => {{
+      addCsvRow(rows, "score_notes", key, "", "", "", "", "", "", value || "");
+    }});
+    ((data.missed_points || {{}}).professionalism_cues || []).forEach(item => {{
+      addCsvRow(rows, "professionalism_cues", item.label || "", item.detected ? "detected" : "not_detected", "", "", "", "", "", "");
+    }});
     const pcr = data.pcr_notes || {{}};
     ["patientId", "complaint", "dispatch", "presentation"].forEach(key => {{
       if (pcr[key]) addCsvRow(rows, "pcr_notes", key, "", "", "", "", "", "", pcr[key]);
@@ -866,6 +1074,9 @@ def _html_doc(rows: list[dict[str, Any]]) -> str:
     (data.timeline || []).forEach(item => {{
       addCsvRow(rows, "timeline", item.action || item.item_id || "", item.status || "", item.elapsed_min ?? "", "", "", "", "", item.notes || "");
     }});
+    ((data.missed_points || {{}}).timeline || []).forEach(item => {{
+      addCsvRow(rows, "missed_timeline", item.action || item.item_id || "", item.status || "", item.elapsed_min ?? "", "", "", "", "", item.notes || "");
+    }});
     (data.rubric_detail || []).forEach(group => {{
       (group.items || []).forEach(item => {{
         const done = item.satisfied || item.status === "satisfied" ? "done" : "not_done";
@@ -875,6 +1086,14 @@ def _html_doc(rows: list[dict[str, Any]]) -> str:
           : "";
         addCsvRow(rows, `rubric:${{group.title || group.category || ""}}`, label, done, "", points, "", "", "", item.notes || "");
       }});
+    }});
+    ((data.missed_points || {{}}).rubric || []).forEach(entry => {{
+      const item = entry.item || {{}};
+      const label = item.description || item.label || item.item_id || "";
+      const points = item.earned_points !== undefined || item.possible_points !== undefined
+        ? `${{item.earned_points ?? 0}}/${{item.possible_points ?? item.point_value ?? ""}}`
+        : "";
+      addCsvRow(rows, `missed_rubric:${{entry.group || ""}}`, label, "not_done", "", points, "", "", "", item.notes || "");
     }});
     (data.scenario_transcript || []).forEach(msg => {{
       addCsvRow(rows, "scenario_transcript", "", "", "", "", msg.role || "", "", msg.timestamp || "", msg.content || "");
@@ -1181,6 +1400,7 @@ async def _fetch_rows(args: argparse.Namespace) -> list[dict[str, Any]]:
             "treatments": treatments,
         }
         row["subscores"] = nd.get("subscores") or score_snapshot.get("subscores") or {}
+        row["score_notes"] = nd.get("score_notes") or {}
         row["submitted_narrative"] = str(nd.get("narrative") or "").strip()
         row["timeline"] = nd.get("timeline") or []
         row["rubric_detail"] = nd.get("rubric_detail") or []
