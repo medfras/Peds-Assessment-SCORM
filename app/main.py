@@ -11720,7 +11720,7 @@ async def chat(request: Request, req: ChatRequest, ctx: ActiveContext = Depends(
 
         agency_dict = await load_agency(session.agency_id, db)
         scenario = adapt_scenario_to_context(load_scenario(session.scenario_id), agency_dict, session.mca, session.effective_protocol_excerpt)
-        _auto_detect_interventions(req.message, session, scenario, db)
+        auto_intervention_ids = _auto_detect_interventions(req.message, session, scenario, db)
         db.add(ChatMessage(
             session_id=session.id,
             role="user",
@@ -11749,6 +11749,7 @@ async def chat(request: Request, req: ChatRequest, ctx: ActiveContext = Depends(
                 }
                 for ev in (session.events or [])
             ],
+            "auto_interventions_from_message": auto_intervention_ids,
         }
 
     async def generate():
@@ -12504,8 +12505,9 @@ def _build_session_rubric_detail(session: SimSession) -> list[dict]:
     return ordered
 
 
-def _auto_detect_interventions(message: str, session: SimSession, scenario: dict, db: AsyncSession):
+def _auto_detect_interventions(message: str, session: SimSession, scenario: dict, db: AsyncSession) -> list[str]:
     already_applied = {i.name for i in session.interventions}
+    detected: list[str] = []
     msg_lower = message.lower()
     for intervention_id, int_data in scenario["vitals"]["interventions"].items():
         if intervention_id in already_applied:
@@ -12531,7 +12533,9 @@ def _auto_detect_interventions(message: str, session: SimSession, scenario: dict
                     occurred_at=_auto_at,
                 ))
                 already_applied.add(intervention_id)
+                detected.append(intervention_id)
                 break
+    return detected
 
 
 # ── Lexi hint chat ────────────────────────────────────────────────────────────

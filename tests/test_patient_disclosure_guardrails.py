@@ -10,6 +10,8 @@ from app.ai_client import (  # noqa: E402
     _UNIVERSAL_PATIENT_DISCLOSURE_CONTRACT,
     _build_history_response_map_prompt,
     _build_initial_complaint_prompt,
+    _build_auto_intervention_directive,
+    _build_deterministic_history_response,
     _build_realism_rules,
     _build_resolved_history_directive,
     _build_scene_routing_directive,
@@ -2024,6 +2026,41 @@ def test_soft_tissue_bare_how_ignores_stale_patient_hint_after_trauma_opener():
     assert mechanism[0] == "mechanism_details"
     assert "coffee table" in mechanism[1]["answer"]
     assert "weighs" not in mechanism[1]["answer"].lower()
+
+
+def test_soft_tissue_bare_how_deterministic_response_cannot_drift_to_weight():
+    with open("app/scenarios/pediatric/trauma/peds_trauma_01_soft_tissue.json", encoding="utf-8") as fh:
+        scenario = json.load(fh)
+
+    mechanism = _resolve_history_response_entry(
+        "how",
+        scenario,
+        preferred_addressee="family",
+    )
+
+    assert mechanism is not None
+    text = _build_deterministic_history_response(mechanism[0], mechanism[1], scenario)
+    assert text is not None
+    assert "(father)" in text
+    assert "coffee table" in text
+    assert "[[HISTORY: Events=" in text
+    assert "weigh" not in text.lower()
+    assert "length-based" not in text.lower()
+
+
+def test_auto_detected_apply_dressing_intervention_is_forced_into_chat_tag():
+    with open("app/scenarios/pediatric/trauma/peds_trauma_01_soft_tissue.json", encoding="utf-8") as fh:
+        scenario = json.load(fh)
+
+    directive = _build_auto_intervention_directive(
+        {"auto_interventions_from_message": ["direct_pressure"]},
+        scenario,
+    )
+
+    assert "backend has just recorded" in directive
+    assert "Direct Pressure & Pressure Dressing" in directive
+    assert "[[INTERVENTION: Direct Pressure & Pressure Dressing]]" in directive
+    assert "already done by someone else" in directive
 
 
 def test_orientation_questions_route_to_communicative_patient_before_partner_or_family():

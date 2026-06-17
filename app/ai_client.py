@@ -2989,6 +2989,47 @@ def _history_speaker_for_entry(entry: dict, scenario: dict | None = None) -> str
     return _preferred_history_speaker(scenario) or "patient/family"
 
 
+def _visible_history_speaker_for_entry(entry: dict, scenario: dict | None = None) -> str:
+    """Return the learner-facing speaker label for a deterministic history reply."""
+    speaker = _history_speaker_for_entry(entry, scenario)
+    if not isinstance(scenario, dict):
+        return speaker or "patient/family"
+
+    speaker_norm = speaker.strip().lower()
+    personas = scenario.get("personas")
+    if isinstance(personas, dict):
+        for persona in personas.values():
+            if not isinstance(persona, dict):
+                continue
+            names = {
+                str(persona.get("name") or "").strip().lower(),
+                *(str(alias).strip().lower() for alias in persona.get("aliases", []) if str(alias).strip()),
+            }
+            if speaker_norm in {name for name in names if name}:
+                relation = str(persona.get("relation") or persona.get("relationship") or "").strip()
+                return relation or str(persona.get("role") or speaker).strip() or speaker
+
+    return speaker or "patient/family"
+
+
+def _build_deterministic_history_response(entry_key: str, entry: dict, scenario: dict | None = None) -> str | None:
+    """Build a direct authored response for a resolved history map entry.
+
+    The history response map is a deterministic disclosure boundary. Returning
+    the authored answer directly prevents the model from substituting adjacent
+    details such as weight when the learner asked a mechanism follow-up.
+    """
+    answer = str(entry.get("answer") or "").strip()
+    if not answer:
+        return None
+
+    speaker = _visible_history_speaker_for_entry(entry, scenario)
+    tags = [str(tag).strip() for tag in _history_entry_tags(entry) if str(tag).strip()]
+    lines = [f"({speaker})", answer]
+    lines.extend(tags)
+    return "\n".join(lines)
+
+
 def _preferred_history_speaker(scenario: dict | None = None) -> str:
     if not isinstance(scenario, dict):
         return ""
@@ -3037,6 +3078,35 @@ def _build_resolved_history_directive(entry_key: str, entry: dict, scenario: dic
         parts.append(f" Do NOT include: {', '.join(str(d) for d in do_not_include)}.")
     parts.append(" Do not substitute another map entry.]")
     return "".join(parts)
+
+
+def _intervention_label_for_chat_tag(intervention_id: str, scenario: dict) -> str:
+    interventions = ((scenario.get("vitals") or {}).get("interventions") or {}) if isinstance(scenario, dict) else {}
+    data = interventions.get(intervention_id) if isinstance(interventions, dict) else None
+    if isinstance(data, dict) and data.get("label"):
+        return str(data["label"]).strip()
+    return intervention_id
+
+
+def _build_auto_intervention_directive(session: dict, scenario: dict) -> str:
+    """Tell the model exactly which backend-authoritative intervention this turn recorded."""
+    intervention_ids = [
+        str(value).strip()
+        for value in (session.get("auto_interventions_from_message") or [])
+        if str(value).strip()
+    ]
+    if not intervention_ids:
+        return ""
+
+    labels = [_intervention_label_for_chat_tag(intervention_id, scenario) for intervention_id in intervention_ids]
+    tag_lines = " ".join(f"[[INTERVENTION: {label}]]" for label in labels if label)
+    label_text = "; ".join(labels)
+    return (
+        f"[ENGINE DIRECTIVE: The backend has just recorded the learner-directed intervention(s): {label_text}. "
+        "Alex must briefly acknowledge that the intervention is being done now or is now in place. "
+        "Do not say it was already done by someone else unless the learner explicitly described prior care. "
+        f"Append these exact intervention tag(s): {tag_lines}]"
+    )
 
 
 def _build_history_response_map_prompt(scenario: dict) -> str:
@@ -3802,10 +3872,18 @@ async def stream_chat_response(
             entry_key=entry_key,
             user_message=user_message[:80],
         )
+        deterministic_response = _build_deterministic_history_response(entry_key, resolved_entry, scenario)
+        if deterministic_response:
+            yield deterministic_response
+            return
         engine_directive = _build_resolved_history_directive(entry_key, resolved_entry, scenario)
         effective_user_message = f"{engine_directive}\n{user_message}"
     else:
         effective_user_message = user_message
+
+    intervention_directive = _build_auto_intervention_directive(session, scenario)
+    if intervention_directive:
+        effective_user_message = f"{intervention_directive}\n{effective_user_message}"
 
     # Only include the last 6 messages to stay within Groq TPM limits.
     # The system prompt already carries all clinical context, so older turns
