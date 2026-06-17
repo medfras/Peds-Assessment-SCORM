@@ -12210,24 +12210,24 @@ def _build_session_timeline(
             ca_required_raw is False
             or str(ca_required_raw).lower() in {"false", "optional", "bonus"}
         )
+        # If the scoring engine adjudicated this item, trust that verdict before
+        # applying legacy evidence heuristics. This keeps the learner-facing
+        # timeline from showing a green check when the rubric says the same
+        # action was not satisfied.
+        _ca_state = _item_state_value(ca_id)
         if _item_state_done(ca_id):
             done_at = done_at or _item_state_evidence_time(ca_id) or _first_action_evidence_time(ca)
             status = "out_of_order" if _is_out_of_order(ca, done_at) else "applied"
             _add_timeline_item(display, status, _elapsed(done_at) if done_at else None)
             continue
+        if _ca_state is not None and _ca_state not in ("satisfied", "partial"):
+            if _ca_state != "not_applicable":
+                _add_timeline_item(display, "missed")
+            continue
         evidence_at = _first_action_evidence_time(ca) if ca.get("evidence") else None
         if evidence_at:
             status = "out_of_order" if _is_out_of_order(ca, evidence_at) else "applied"
             _add_timeline_item(display, status, _elapsed(evidence_at))
-            continue
-        # If the scoring engine adjudicated this item and it is not satisfied, trust its
-        # verdict rather than falling back to intervention timestamps or non-evidence
-        # heuristics. Explicit structured evidence above can still rescue stale stored
-        # checklist state from older rubric/scenario versions.
-        _ca_state = _item_state_value(ca_id)
-        if _ca_state is not None and _ca_state not in ("satisfied", "partial"):
-            if _ca_state != "not_applicable":
-                _add_timeline_item(display, "missed")
             continue
         if done_at:
             status = "out_of_order" if _is_out_of_order(ca, done_at) else "applied"

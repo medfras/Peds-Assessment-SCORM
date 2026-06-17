@@ -724,6 +724,44 @@ class TestRecommendedActionDeference:
 class TestCriticalActionDeference:
     """Scoring engine verdict must override intervention-timestamp fallback for critical actions."""
 
+    def test_scoring_missed_overrides_partial_evidence_match(self):
+        """A loose evidence match must not turn the timeline green when the
+        checklist engine adjudicated the same critical action as not satisfied."""
+        scenario = {
+            "correct_treatment": {
+                "critical_actions": [
+                    {
+                        "id": "neuro_assessment",
+                        "description": "Perform neurological assessment — GCS/AVPU, pupils, ask about LOC and vomiting",
+                        "required": True,
+                        "evidence": {
+                            "finding_types": ["exam", "vital"],
+                            "finding_key_patterns": [r"\bgcs\b", r"\bpupils?\b", r"\bloc\b", r"avpu"],
+                            "transcript_patterns": [r"\bgcs\b", r"\bloc\b", r"loss of consciousness"],
+                            "min_matches": 1,
+                        },
+                    }
+                ],
+            },
+        }
+        t0 = datetime.utcnow()
+        session = _session(
+            t0,
+            checklist_states=_checklist_states([
+                {"item_id": "neuro_assessment", "state": "not_satisfied", "earned_points": 0},
+            ]),
+            findings=[
+                _finding("GCS", "15/15", "vital", t0 + timedelta(seconds=30)),
+            ],
+        )
+
+        timeline = _build_session_timeline(session, scenario)
+        item = _find_timeline(timeline, "neurological assessment")
+
+        assert item is not None
+        assert item["status"] == "missed"
+        assert "elapsed_min" not in item or item["elapsed_min"] is None
+
     def test_scoring_missed_overrides_intervention_applied(self):
         """If an intervention was applied but the scoring engine adjudicated the
         corresponding item as missed (e.g., out-of-scope or wrong source), the
