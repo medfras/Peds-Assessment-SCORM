@@ -1972,6 +1972,32 @@ def test_short_how_followup_in_trauma_routes_to_mechanism_not_weight():
     assert greeting is None
 
 
+def test_soft_tissue_bare_how_after_broad_opener_stays_on_mechanism():
+    with open("app/scenarios/pediatric/trauma/peds_trauma_01_soft_tissue.json", encoding="utf-8") as fh:
+        scenario = json.load(fh)
+
+    messages = [
+        {"role": "user", "content": "hi im jon what happened"},
+        {"role": "assistant", "content": "(father)\nHe fell and cut his head."},
+    ]
+    addressee = _infer_scene_followup_addressee(
+        "how",
+        scenario,
+        messages=messages,
+    )
+    mechanism = _resolve_history_response_entry(
+        "how",
+        scenario,
+        preferred_addressee=addressee,
+    )
+
+    assert addressee == "family"
+    assert mechanism is not None
+    assert mechanism[0] == "mechanism_details"
+    assert "coffee table" in mechanism[1]["answer"]
+    assert "weighs" not in mechanism[1]["answer"].lower()
+
+
 def test_orientation_questions_route_to_communicative_patient_before_partner_or_family():
     with open("app/scenarios/pediatric/trauma/peds_trauma_01_soft_tissue.json", encoding="utf-8") as fh:
         scenario = json.load(fh)

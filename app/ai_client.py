@@ -1780,6 +1780,10 @@ def _message_looks_like_explicit_assessment_action(user_message: str) -> bool:
 
 
 def _speaker_from_model_text(text: str) -> str | None:
+    for match in reversed(list(re.finditer(r"(?:^|\n)\s*\(([^)\n]{1,80})\)\s*(?:\n|$)", text or ""))):
+        speaker = match.group(1).strip()
+        if speaker:
+            return speaker
     for match in reversed(list(re.finditer(r"(?:^|\n)\s*\*?([^:\n*]{1,80})\*?\s*:", text or ""))):
         speaker = match.group(1).strip()
         if speaker:
