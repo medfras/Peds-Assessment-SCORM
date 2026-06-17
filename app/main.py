@@ -138,7 +138,21 @@ from app.cpr_challenge import CPRChallengeError, CPRScoreContext, score_cpr_chal
 from app.procedure_engine import load_procedure, list_procedures
 from app.vitals_engine import calculate_vitals
 from app.dmist_utils import extract_primary_impression_from_dmist
-from app.ai_client import stream_chat_response, evaluate_and_generate_debrief, get_lexi_response, generate_lexi_questions, get_medical_control_response, simple_completion, get_practice_coach_response, _effective_level, AiProviderError, _compose_reference_section
+from app.ai_client import (
+    stream_chat_response,
+    evaluate_and_generate_debrief,
+    get_lexi_response,
+    generate_lexi_questions,
+    get_medical_control_response,
+    simple_completion,
+    get_practice_coach_response,
+    _effective_level,
+    AiProviderError,
+    _assemble_fixed_debrief,
+    _compose_reference_section,
+    _compose_scored_section,
+    _render_dmist_component_summary,
+)
 from app.scoring_service import adjudicate_and_persist, extract_deterministic_subscores, compute_scores, _compute_critical_failure_status
 from app.checklist import load_checklist, ChecklistItem, ChecklistItemState
 from app.minigame_metadata import (
@@ -1277,6 +1291,64 @@ def _synchronize_debrief_scores(
     out = out.rstrip()
 
     return out
+
+
+def _repair_cached_debrief_structure(
+    session: SimSession,
+    scenario: dict,
+    feedback: str,
+    *,
+    include_narrative: bool,
+) -> str:
+    """Apply backend-owned FTO debrief structure to cached stored feedback.
+
+    Fresh debrief generation already runs through ``_assemble_fixed_debrief`` in
+    ``evaluate_and_generate_debrief``. Cached paths must do the same, otherwise
+    older model-shaped markdown can keep replaying after a browser refresh or
+    history reload even though deterministic timeline/rubric rows were rebuilt.
+    """
+    if not feedback:
+        return feedback
+
+    nd = session.narrative_data or {}
+    subscores = _effective_subscores(session) or nd.get("subscores") or {}
+    synced = _synchronize_debrief_scores(
+        feedback,
+        subscores,
+        scenario,
+        include_narrative=include_narrative,
+    )
+
+    rendered_clinical = _compose_scored_section(
+        session,
+        "clinical_performance",
+        scenario=scenario,
+    )
+    rendered_protocols = _compose_scored_section(
+        session,
+        "protocols_treatment",
+        scenario=scenario,
+    )
+    evidence_packet = session.evidence_packet or {}
+    rendered_handoff = _render_dmist_component_summary(
+        evidence_packet.get("deterministic_dmist")
+    )
+    include_protocols = bool(
+        rendered_protocols
+        or "protocols_treatment" in subscores
+        or (
+            isinstance(session.score_snapshot, dict)
+            and "protocols_treatment" in (session.score_snapshot.get("categories") or {})
+        )
+    )
+    return _assemble_fixed_debrief(
+        synced,
+        rendered_clinical=rendered_clinical,
+        rendered_protocols=rendered_protocols,
+        rendered_handoff=rendered_handoff,
+        include_narrative=include_narrative,
+        include_protocols=include_protocols,
+    )
 
 
 async def _generate_debrief_with_retry(
@@ -8999,7 +9071,14 @@ async def get_my_sessions(
             _hist_sc = {}
         _hist_sc_ic_enabled = bool((_hist_sc.get("impression_challenge") or {}).get("enabled"))
         _hist_qualifying = not _hist_sc_ic_enabled or _hist_ic_result in ("correct", "acceptable")
-        _hist_debrief = (s.feedback or "") if _hist_qualifying else _redact_reference_sections(s.feedback or "")
+        _hist_include_narrative = bool(getattr(s, "narrative_attempted", False))
+        _hist_repaired_feedback = _repair_cached_debrief_structure(
+            s,
+            _hist_sc,
+            s.feedback or "",
+            include_narrative=_hist_include_narrative,
+        )
+        _hist_debrief = _hist_repaired_feedback if _hist_qualifying else _redact_reference_sections(_hist_repaired_feedback or "")
         return {
             "key":             s.id,
             "scenarioId":      s.scenario_id,
@@ -14687,10 +14766,10 @@ async def submit_narrative(
             flag_modified(session, "narrative_data")
             await db.commit()
         _eff_subscores = _effective_subscores(session) or stored.get("subscores") or {}
-        _synced_feedback = _synchronize_debrief_scores(
-            session.feedback,
-            _eff_subscores,
+        _synced_feedback = _repair_cached_debrief_structure(
+            session,
             scenario,
+            session.feedback,
             include_narrative=True,
         )
         _ep_cached = session.evidence_packet or {}
@@ -14958,10 +15037,10 @@ async def skip_narrative(
             await db.commit()
         _eff_score = _effective_score(session)
         _eff_subscores = _effective_subscores(session) or stored.get("subscores") or {}
-        _synced_feedback = _synchronize_debrief_scores(
-            session.feedback,
-            _eff_subscores,
+        _synced_feedback = _repair_cached_debrief_structure(
+            session,
             scenario,
+            session.feedback,
             include_narrative=False,
         )
         _ep_cached_skip = session.evidence_packet or {}
