@@ -1598,6 +1598,21 @@ class TestNormalizeDebriefSectionHeaders:
         assert "oral glucose.\n\n**2. Protocols & Treatment**" in normalized
         assert "\n**3. Scope of Practice**\n" in normalized
 
+    def test_splits_inline_unnumbered_backend_section_headers(self):
+        raw = (
+            "3 additional lower-priority rubric gap(s) are available in Rubric Detail. "
+            "## Protocols & Treatments\n"
+            "Reference: Michigan Trauma.\n"
+            "✓ Direct pressure.\n"
+            "DMIST was sparse. ## Patient Communication\n"
+            "The student was task-focused."
+        )
+
+        normalized = _normalize_debrief_section_headers(raw)
+
+        assert "Rubric Detail.\n\n## Protocols & Treatments\n" in normalized
+        assert "DMIST was sparse.\n\n## Patient Communication\n" in normalized
+
     def test_unrendered_backend_placeholders_do_not_leak_to_debrief(self):
         raw = (
             "**2. Protocols & Treatment**\n"

@@ -735,6 +735,17 @@ _DEBRIEF_SECTION_TITLES: dict[int, str] = {
     10: "Patient Care Narrative Evaluation",
 }
 
+_DEBRIEF_FIXED_SECTION_LABELS = (
+    "FTO Summary",
+    "What Went Well",
+    "What Could Be Better",
+    "Protocols & Treatments",
+    "Handoff & Communication",
+    "Patient Communication",
+    "Narrative",
+    "Case Study",
+)
+
 
 def _normalize_debrief_section_headers(debrief_text: str) -> str:
     """Make model-emitted debrief section headings parseable and visually stable.
@@ -746,6 +757,28 @@ def _normalize_debrief_section_headers(debrief_text: str) -> str:
     text = debrief_text or ""
     if not text:
         return text
+
+    def _canonical_fixed_label(raw_label: str) -> str:
+        normalized = re.sub(r"\s+", " ", str(raw_label or "")).strip()
+        for label in _DEBRIEF_FIXED_SECTION_LABELS:
+            if re.fullmatch(
+                re.escape(label).replace(r"\ ", r"\s+").replace(r"\&", r"(?:&|and)"),
+                normalized,
+                flags=re.IGNORECASE,
+            ):
+                return label
+        return normalized
+
+    fixed_label_pattern = "|".join(
+        re.escape(label).replace(r"\ ", r"\s+").replace(r"\&", r"(?:&|and)")
+        for label in _DEBRIEF_FIXED_SECTION_LABELS
+    )
+    text = re.sub(
+        rf"(?<!\n)([.!?])\s+(?:\*\*)?(?:#{{1,3}}\s*)?({fixed_label_pattern})(?::)?(?:\*\*)?",
+        lambda m: f"{m.group(1)}\n\n## {_canonical_fixed_label(m.group(2))}",
+        text,
+        flags=re.IGNORECASE,
+    )
 
     for num, title in _DEBRIEF_SECTION_TITLES.items():
         escaped_title = re.escape(title).replace(r"\ ", r"\s+")
