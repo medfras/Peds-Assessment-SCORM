@@ -2754,6 +2754,29 @@ def _history_entry_matches_addressee(entry: dict, scenario: dict, preferred_addr
     return False
 
 
+def _history_entry_looks_like_mechanism(entry_key: str, entry: dict) -> bool:
+    """Return True for authored injury/event mechanism entries."""
+    tags_blob = " ".join(str(tag or "") for tag in _history_entry_tags(entry))
+    haystack = " ".join(
+        str(part or "")
+        for part in [
+            entry_key,
+            entry.get("label"),
+            " ".join(str(trigger or "") for trigger in (entry.get("triggers") or [])),
+            tags_blob,
+        ]
+    )
+    if re.search(r"\b(broad opener|chief concern|chief complaint)\b", haystack, re.IGNORECASE):
+        return False
+    if re.search(r"\[\[\s*HISTORY:\s*Events\s*[:=]", tags_blob, re.IGNORECASE):
+        return True
+    return bool(re.search(
+        r"\b(mechanism|moi|events?)\b",
+        haystack,
+        re.IGNORECASE,
+    ))
+
+
 def _resolve_history_response_entry(
     user_message: str,
     scenario: dict,
@@ -2788,18 +2811,9 @@ def _resolve_history_response_entry(
         for key, entry in response_map.items():
             if not isinstance(entry, dict):
                 continue
-            if not _history_entry_matches_addressee(entry, scenario, preferred_addressee):
-                continue
-            haystack = " ".join(
-                str(part or "")
-                for part in [
-                    key,
-                    entry.get("label"),
-                    " ".join(str(trigger or "") for trigger in (entry.get("triggers") or [])),
-                ]
-            )
-            if re.search(r"\b(mechanism|fall|fell|trip|tripped|hit|struck|land(?:ed)?)\b", haystack, re.IGNORECASE):
+            if _history_entry_looks_like_mechanism(key, entry):
                 return (key, _narrow_demographic_history_entry(entry, user_message, scenario))
+        return None
 
     best_key: str | None = None
     best_score = -1

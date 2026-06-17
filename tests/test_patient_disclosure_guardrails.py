@@ -2010,6 +2010,22 @@ def test_soft_tissue_bare_how_after_broad_opener_stays_on_mechanism():
     assert "weighs" not in mechanism[1]["answer"].lower()
 
 
+def test_soft_tissue_bare_how_ignores_stale_patient_hint_after_trauma_opener():
+    with open("app/scenarios/pediatric/trauma/peds_trauma_01_soft_tissue.json", encoding="utf-8") as fh:
+        scenario = json.load(fh)
+
+    mechanism = _resolve_history_response_entry(
+        "how",
+        scenario,
+        preferred_addressee="patient",
+    )
+
+    assert mechanism is not None
+    assert mechanism[0] == "mechanism_details"
+    assert "coffee table" in mechanism[1]["answer"]
+    assert "weighs" not in mechanism[1]["answer"].lower()
+
+
 def test_orientation_questions_route_to_communicative_patient_before_partner_or_family():
     with open("app/scenarios/pediatric/trauma/peds_trauma_01_soft_tissue.json", encoding="utf-8") as fh:
         scenario = json.load(fh)
