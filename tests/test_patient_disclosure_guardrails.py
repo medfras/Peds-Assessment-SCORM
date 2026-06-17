@@ -1420,6 +1420,18 @@ def test_frontend_debrief_strips_generated_takeaways_and_reflection_from_main_pr
     assert "Case\\\\s+Study" in source
 
 
+def test_frontend_debrief_normalizes_inline_missed_item_lists():
+    source = open("static/js/app.js", encoding="utf-8").read()
+    normalize_fn = source[source.index("function _normalizeDebriefText"):source.index("function _normalizeDebriefSectionHeadersForDisplay")]
+    inline_fn = source[source.index("function _normalizeDebriefInlineListsForDisplay"):source.index("function _splitDebriefForModal")]
+
+    assert "_normalizeDebriefInlineListsForDisplay" in normalize_fn
+    assert "What Went Well|What Could Be Better" in inline_fn
+    assert "looksLikeGap(part)" in inline_fn
+    assert "## What Could Be Better" in inline_fn
+    assert "out.push(`- ${part}`);" in inline_fn
+
+
 def test_professionalism_prompt_uses_nasemso_affective_domain_attributes():
     source = open("app/ai_client.py", encoding="utf-8").read()
     prof_fn = source[source.index("async def _run_professionalism_review"):source.index("def _build_evidence_packet")]

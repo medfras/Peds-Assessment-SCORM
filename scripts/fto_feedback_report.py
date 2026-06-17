@@ -248,7 +248,7 @@ def _row_status_tone(row: dict[str, Any]) -> str:
 
 def _render_markdown(md: str) -> str:
     """Small renderer for stored debrief markdown; avoids adding a dependency."""
-    text_in = (md or "").strip()
+    text_in = _normalize_debrief_markdown_for_report(md)
     if not text_in:
         return "<p>No debrief feedback available.</p>"
     out: list[str] = []
@@ -285,6 +285,83 @@ def _render_markdown(md: str) -> str:
     rendered = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", rendered)
     rendered = re.sub(r"`(.+?)`", r"<code>\1</code>", rendered)
     return rendered
+
+
+def _normalize_debrief_markdown_for_report(markdown: str) -> str:
+    """Normalize stored debrief markdown before local report rendering.
+
+    Older generated debriefs occasionally packed section headers and dash
+    bullets into one paragraph, which made missed items appear under the wrong
+    visual section. Keep this report renderer defensive so stored historical
+    rows remain readable.
+    """
+    text = str(markdown or "").replace("\r", "").strip()
+    if not text:
+        return ""
+
+    headings = [
+        r"FTO\s+Summary",
+        r"What\s+Went\s+Well",
+        r"What\s+Could\s+Be\s+Better",
+        r"Protocols?\s*&\s*Treatments?",
+        r"Handoff\s*&\s*Communication",
+        r"Patient\s+Communication",
+        r"Narrative",
+        r"Case\s+Study",
+        r"Rubric\s+Detail(?:\s+—[^\n]*)?",
+    ]
+    for title_pattern in headings:
+        text = re.sub(
+            rf"([^\n])\s+(?:#{{1,3}}\s*)({title_pattern})(?=\s|$)",
+            r"\1\n\n## \2",
+            text,
+            flags=re.I,
+        )
+        text = re.sub(
+            rf"(?im)^[ \t]*(?:#{{1,3}}\s*)?({title_pattern})[ \t]*$",
+            r"## \1",
+            text,
+        )
+
+    normalized_lines: list[str] = []
+    active_list_section = ""
+    gap_re = re.compile(r"\b(not|missed|missing|incomplete|not completed|not assessed|not documented|no credit)\b", re.I)
+    for raw_line in text.splitlines():
+        line = raw_line.rstrip()
+        stripped = line.strip()
+        section_match = re.match(r"^#{1,3}\s+(What Went Well|What Could Be Better)\b", stripped, re.I)
+        if section_match:
+            active_list_section = section_match.group(1).lower()
+            normalized_lines.append(line)
+            continue
+        if re.match(r"^#{1,3}\s+", stripped):
+            active_list_section = ""
+            normalized_lines.append(line)
+            continue
+        if (
+            active_list_section
+            and not re.match(r"^[-•*]\s+", stripped)
+            and re.search(r"\s-\s", stripped)
+        ):
+            parts = [
+                part.strip()
+                for part in re.split(r"\s+-\s+(?=[A-Z0-9])", stripped)
+                if part.strip()
+            ]
+            if len(parts) >= 2:
+                moved_to_gaps = active_list_section == "what could be better"
+                for part in parts:
+                    if active_list_section == "what went well" and not moved_to_gaps and gap_re.search(part):
+                        normalized_lines.append("")
+                        normalized_lines.append("## What Could Be Better")
+                        moved_to_gaps = True
+                    normalized_lines.append(f"- {part}")
+                if moved_to_gaps:
+                    active_list_section = "what could be better"
+                continue
+        normalized_lines.append(line)
+
+    return re.sub(r"\n{3,}", "\n\n", "\n".join(normalized_lines)).strip()
 
 
 def _clock(entry: dict[str, Any]) -> str:

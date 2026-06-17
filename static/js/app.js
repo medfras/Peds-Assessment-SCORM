@@ -5243,12 +5243,35 @@ function _normalizeDebriefText(input) {
     .replace(/\r/g, "")
     .trim();
 
-  return _demoteCaseLearningSubsectionNumbers(_normalizeDebriefSectionHeadersForDisplay(text));
+  return _demoteCaseLearningSubsectionNumbers(
+    _normalizeDebriefInlineListsForDisplay(
+      _normalizeDebriefSectionHeadersForDisplay(text)
+    )
+  );
 }
 
 function _normalizeDebriefSectionHeadersForDisplay(markdown = "") {
   let text = String(markdown || "");
   if (!text) return "";
+
+  const unnumberedHeadings = [
+    "FTO\\s+Summary",
+    "What\\s+Went\\s+Well",
+    "What\\s+Could\\s+Be\\s+Better",
+    "Protocols?\\s*&\\s*Treatments?",
+    "Handoff\\s*&\\s*Communication",
+    "Patient\\s+Communication",
+    "Narrative",
+    "Case\\s+Study",
+    "Rubric\\s+Detail(?:\\s+—[^\\n]*)?",
+  ];
+  unnumberedHeadings.forEach((titlePattern) => {
+    const inlineRe = new RegExp(`([^\\n])\\s+(?:#{1,3}\\s*)(${titlePattern})(?=\\s|$)`, "gi");
+    const lineRe = new RegExp(`^[ \\t]*(?:#{1,3}\\s*)?(${titlePattern})[ \\t]*$`, "gim");
+    text = text
+      .replace(inlineRe, "$1\n\n## $2")
+      .replace(lineRe, "## $1");
+  });
 
   const headings = [
     [1, "(?:Clinical\\s+Performance(?:\\s*\\(Assessment\\))?|Patient\\s+Overview)"],
@@ -5288,6 +5311,51 @@ function _normalizeDebriefSectionHeadersForDisplay(markdown = "") {
   });
 
   return text.replace(/\n{3,}/g, "\n\n").trim();
+}
+
+function _normalizeDebriefInlineListsForDisplay(markdown = "") {
+  const lines = String(markdown || "").split("\n");
+  const out = [];
+  let activeListSection = "";
+  const looksLikeGap = (part = "") => /\b(not|missed|missing|incomplete|not completed|not assessed|not documented|no credit)\b/i.test(String(part || ""));
+  const listSectionRe = /^#{1,3}\s+(What Went Well|What Could Be Better)\b/i;
+  const anyHeadingRe = /^#{1,3}\s+/;
+  lines.forEach((rawLine) => {
+    const line = String(rawLine || "");
+    const trimmed = line.trim();
+    const headingMatch = trimmed.match(listSectionRe);
+    if (headingMatch) {
+      activeListSection = headingMatch[1].toLowerCase();
+      out.push(line);
+      return;
+    }
+    if (anyHeadingRe.test(trimmed)) {
+      activeListSection = "";
+      out.push(line);
+      return;
+    }
+    if (!activeListSection || /^[-•*]\s+/.test(trimmed) || !/\s-\s/.test(trimmed)) {
+      out.push(line);
+      return;
+    }
+
+    const parts = trimmed.split(/\s+-\s+(?=[A-Z0-9])/).map(part => part.trim()).filter(Boolean);
+    if (parts.length < 2) {
+      out.push(line);
+      return;
+    }
+    let movedToGaps = activeListSection === "what could be better";
+    parts.forEach(part => {
+      if (activeListSection === "what went well" && !movedToGaps && looksLikeGap(part)) {
+        out.push("");
+        out.push("## What Could Be Better");
+        movedToGaps = true;
+      }
+      out.push(`- ${part}`);
+    });
+    if (movedToGaps) activeListSection = "what could be better";
+  });
+  return out.join("\n").replace(/\n{3,}/g, "\n\n").trim();
 }
 
 function _splitDebriefForModal(input) {
