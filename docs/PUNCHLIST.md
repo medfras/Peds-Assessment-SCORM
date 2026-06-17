@@ -135,6 +135,7 @@ Target response: batch with cleanup passes.
     - `Daily Trivia` / Lexi challenges and repeatable Challenges: can be opened from the category sidebar and may launch off-orientation content.
     - `Leaderboard`, `Badges`, and simple close-only modals are low risk if close only hides the modal, but should be classified explicitly.
     - Category Home button must remain hidden/disabled while orientation is incomplete.
+    - Home/district map default launch and Station 1 orientation flow must be intentional: first launch can route to the district map with Station 1 available, but Station 1 completion must remain the backend unlock gate for Pediatric Community Response.
   - Next step: Add a shared `returnTarget` / orientation-gate helper for all screen-opening surfaces. While `orientation_completed_at` is false, any Back/Home/Start/Close path from an orientation-origin surface must return to `showCategoryScreen("station_1")` or remain in-place; off-orientation launch buttons should be hidden/disabled.
   - References: [`static/js/app.js`](static/js/app.js), [`PEDS_ASSESSMENT/07_PILOT_READINESS_CHECKLIST.md`](PEDS_ASSESSMENT/07_PILOT_READINESS_CHECKLIST.md)
 
@@ -151,8 +152,16 @@ Target response: batch with cleanup passes.
   - Area: Backend / Frontend / Progression
   - Summary: Pilot testing found progress-reset and premature-clear risks: Station 1 could display cleared when not all requirements were complete, Pediatric Community Response could unlock before Station 1 completion, orientation/node completion could disappear after logout/relogin, and local UI flags could make wrap-up nodes appear complete or unlocked on a fresh attempt.
   - Impact: Learners may bypass required work or lose earned progress, which undermines course completion validity and instructor trust.
-  - Next step: Make backend state the only authority for Station 1 complete, node complete, map unlocks, and challenge completion. Audit logout/relogin, browser refresh, sidebar navigation, history/back navigation, and repeated attempts for all orientation, Map 0, PM1, PT1, CPR, optional games, and challenge nodes.
+  - Next step: Make backend state the only authority for Station 1 complete, node complete, map unlocks, and challenge completion. Audit logout/relogin, browser refresh, sidebar navigation, history/back navigation, and repeated attempts for all orientation, Map 0, PM1, PT1, CPR, optional games, and challenge nodes. Confirm pediatric district unlocks only after Station 1 completion; Map 0 navigation locks still require diabetic to unlock PM1 and soft tissue to unlock PT1; Training Center should only show drills whose map is unlocked.
   - References: [`static/js/app.js`](static/js/app.js), [`app/routers/scorm.py`](app/routers/scorm.py), [`PEDS_ASSESSMENT/07_PILOT_READINESS_CHECKLIST.md`](PEDS_ASSESSMENT/07_PILOT_READINESS_CHECKLIST.md)
+
+- [ ] Backport pilot persistence, cache, and re-adjudication safeguards
+  - Type: Bug / Reliability / Backport
+  - Area: Backend / Data / Scoring
+  - Summary: Pilot testing exposed backend persistence edge cases that can make learners appear to lose or retain stale state: Station 1 orientation nodes were not all persisted, stale mini-game caches survived resets, cached debriefs could continue using old rubric/timeline logic, adjudication revision inserts hit timezone-aware vs timezone-naive timestamp errors, and Lexi chat transcripts needed explicit persistence for audit/review.
+  - Impact: Relaunch/relogin can show incorrect completion, test-user resets can leave "already complete" nodes, scoring fixes may not apply to new attempts if cached artifacts are reused, and pilot support lacks reliable chat/debrief evidence.
+  - Next step: Backport the persistence fixes as backend-first changes: persist all node completions that influence progression; clear or version mini-game caches during resets; force rubric version checks before displaying cached debriefs; standardize timestamp handling for adjudication revisions; persist Lexi/debrief/chat records with the production retention policy.
+  - References: [`app/routers/scorm.py`](app/routers/scorm.py), [`app/models.py`](app/models.py), [`app/scoring_service.py`](app/scoring_service.py), SCORM commits `02bc42a`, `38bc0b4`, `401b8d7`, `b8d26f3`, `d5e30f8`, `66cf692`
 
 - [ ] Backport SCORM pilot scoring/progress display consistency fixes
   - Type: Bug / Scoring Integrity / Backport
@@ -161,6 +170,14 @@ Target response: batch with cleanup passes.
   - Impact: Learners and instructors cannot trust the displayed completion state, Moodle completion may become legally/training inaccurate, and repeated/relaunch attempts can appear to lose or invent progress.
   - Next step: Centralize display state around backend checklist states, SCORM attempt summaries, and stored node completion. Add regression tests for: debrief timeline vs rubric detail, scenario `needs_work` vs completed, XP/challenge XP aggregation, Moodle lesson status, district/map percent derivation, logout/relogin persistence, and relaunch after database reset.
   - References: [`app/routers/scorm.py`](app/routers/scorm.py), [`static/js/app.js`](static/js/app.js), [`scripts/fto_feedback_report.py`](scripts/fto_feedback_report.py), SCORM commits `aafd307`, `af02ac8`, `c096762`
+
+- [ ] Backport pilot challenge, XP, and reward rule changes
+  - Type: Bug / Product Rule / Backport
+  - Area: Backend / Frontend / Rewards / Progression
+  - Summary: The SCORM pilot refined the pass/completion contract: course pass is based on a named pediatric assessment challenge, scenario completion requires on-track/passing status, XP is part of the challenge gate, drills and Lexi challenges must update XP immediately, treats are not broadly awarded for scenarios, and scenario treats should be reserved for perfect-score cases.
+  - Impact: Production can over-reward low-quality attempts, undercount drill/challenge XP, show stale XP in the top chrome, or mark a learner complete before all clinical/XP/time requirements are satisfied.
+  - Next step: Backport reward/challenge rules with server-side tests for: highest-attempt XP aggregation, challenge XP vs total XP parity, top-bar refresh after drills/scenarios/Lexi challenges, treat award eligibility by activity type, scenario perfect-score treat awards only, and completion gating on all configured challenge requirements.
+  - References: [`docs/REWARDS.md`](docs/REWARDS.md), [`static/js/app.js`](static/js/app.js), [`app/routers/scorm.py`](app/routers/scorm.py), SCORM commits `093b0ca`, `0183be6`, `11cfd1c`, `a2ee8e5`, `6e5d180`
 
 - [ ] Backport SCORM pilot scenario evidence and rubric QA fixes
   - Type: Bug / Clinical Correctness / Backport
@@ -191,19 +208,15 @@ Target response: batch with cleanup passes.
 - [ ] SCORM pilot — result adapter wiring (branch gate blocker)
   - Type: Enhancement / Release Gate
   - Area: Frontend
-  - Summary: The SCORM backend (auth endpoint, attempt model, attempt summary, `cmi.suspend_data` mirror, `finish()` LMS reporting) is complete. The one remaining code gap is the frontend result adapter: drills and scenarios must call `RescueTrails.scorm.submitNodeResult(nodeId, result)` on completion so the backend attempt record is updated and the suspend data mirror is written. Until this is wired, the PAT vertical slice gate cannot be verified and the branch is premature.
-  - Remaining work (in `app.js`, SCORM branch only):
-    - On drill completion: call `RescueTrails.scorm.submitNodeResult(nodeId, { activity_type: "minigame", score, completed, passed, mistake_tags })`
-    - On scenario debrief close: call `RescueTrails.scorm.submitNodeResult(nodeId, { activity_type: "scenario", session_id, score, completed, passed })`
-    - On module exit / LMS finish: call `RescueTrails.scorm.finish(summary)` with the latest attempt summary
-  - Pre-branch gate items still open:
-    - `peds_febrile_seizure_01` live validation (automated: PASS — 1705 tests, gold standard adjudication, tier2 matchers, disclosure guardrails, static assets all verified; remaining: live browser session to confirm UI rendering, lung sound challenge audio, chat personas, and debrief generation)
-    - PAT SCORM vertical slice end-to-end (launch → auth → drill result → suspend data → map unlock)
-  - Architecture complete (do not re-open):
-    - 4-map 16-node topology (`unlocks.scenarios`, `unlocks.map3`), v3 suspend data
-    - CE challenge gate (`_peds_ce_challenge()`), `finish()` correctness (passes `"incomplete"` not `"failed"`)
-    - `scorm.js` local dev adapter, `_writeSuspendData()`, `submitNodeResult()` API
-  - References: `PEDS_ASSESSMENT/03_SCORM_ARCHITECTURE.md`, `PEDS_ASSESSMENT/07_PILOT_READINESS_CHECKLIST.md`, `static/js/scorm.js`
+  - Summary: The pilot implementation proved the SCORM result adapter pattern: LMS launch/auth, drill/scenario node result submission, `cmi.suspend_data` mirror, `finish()` status reporting, bearer-token auth from the package, and result refresh after summary load. The original branch-gate wording is now stale for the SCORM repo, but the pattern should be retained for any production LMS/SSO packaging effort.
+  - Production backport concerns:
+    - Result submission must happen through the backend attempt model, not browser-only state.
+    - `finish()` should report incomplete until all challenge requirements pass; Moodle "passed" must not be driven by mastery score alone.
+    - New-window playback may be needed for microphone support; embedded playback needs an iframe `allow="microphone"` path or a documented fallback.
+    - Duplicate-launch warnings must be scoped to the same learner/session, not triggered by another learner's open attempt.
+    - SCORM package builds must include only referenced assets and verify manifest-root packaging.
+  - Next step: Update the production SCORM/LMS architecture docs from the pilot outcome and keep regression coverage for auth, result submission, suspend-data restore, finish status, duplicate launch scoping, and microphone/new-window launch mode.
+  - References: `PEDS_ASSESSMENT/03_SCORM_ARCHITECTURE.md`, `PEDS_ASSESSMENT/07_PILOT_READINESS_CHECKLIST.md`, `static/js/scorm.js`, SCORM commits `51c19e3`, `621f8f0`, `a0a21dc`, `f172794`
 
 - [ ] Pilot anomaly logging — NLP-miss vs. learner-error distinction
   - Type: Observability / Pilot Gate
@@ -250,6 +263,7 @@ Target response: batch with cleanup passes.
   - Area: Frontend / Maps / Scenario Runtime
   - Summary: SCORM package testing exposed several production-app polish/regression fixes that are not SCORM-specific.
   - Findings to backport or verify:
+    - District map layout: station circles should sit at the intended district-line intersections; district lines should visually terminate beneath station circles rather than showing through them; planned future stations should be styled as planned/locked.
     - Scenario desktop layout: full-width desktop/new-window sessions must not collapse into the mobile layout; quick action buttons, chat input, Lexi controls, and turnover controls must stay visible at common laptop sizes.
     - Scenario arrival image preload: scene/patient presentation image should preload before or during launch to avoid a blank/slow-loading opening moment.
     - Map fog/cloud overlay: remove or gate fog-of-war overlay if it obscures learner map art or conflicts with the current production design.
@@ -268,7 +282,7 @@ Target response: batch with cleanup passes.
   - Area: Frontend / Backend / Identity
   - Summary: The pilot keeps learners out of the normal login flow while still allowing history and leaderboard access through the Moodle-backed account. Production should preserve the same invariant for any external-identity or SSO launch path.
   - Impact: History/back navigation can route to the wrong screen, leaderboard rows can show a placeholder or wrong name, and account/signout links can appear in contexts where the learner cannot use them.
-  - Next step: Audit History, Last Results, Debrief Review, Leaderboard, My Progress, sidebar items, Account Settings, and Sign Out under SCORM/SSO-style auth. Ensure learner name comes from the authoritative profile/launch identity and that unavailable account-management actions are hidden or re-routed.
+  - Next step: Audit History, Last Results, Debrief Review, Leaderboard, My Progress, Training Center, sidebar items, Login/Register, agency picker, Account Settings, and Sign Out under SCORM/SSO-style auth. Ensure learner name comes from the authoritative profile/launch identity and that unavailable account-management actions are hidden or re-routed.
   - References: [`static/js/app.js`](static/js/app.js), `app/routers/scorm.py`, `app/auth.py`
 
 - [ ] Productize pilot FTO review/reporting workflow
