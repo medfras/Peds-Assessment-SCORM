@@ -23579,6 +23579,10 @@ function _historyMapTriggerMatches(message = "", trigger = "") {
   if (!msg || !trig) return false;
   const msgPhrase = ` ${msg} `;
   const trigPhrase = ` ${trig} `;
+  const messageTokens = msg.split(" ").filter(Boolean);
+  if (messageTokens.length < 2 && msg !== trig) {
+    return msgPhrase.includes(trigPhrase);
+  }
   return msgPhrase.includes(trigPhrase) || trigPhrase.includes(msgPhrase) || _historyMapOrderedTokenMatch(msg, trig);
 }
 

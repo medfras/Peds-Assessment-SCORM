@@ -1302,6 +1302,7 @@ def test_frontend_history_response_map_prefers_complete_sample_entry():
     assert "function _historyMapOrderedTokenMatch" in trigger_lookup
     assert "msgPhrase.includes(trigPhrase)" in trigger_lookup
     assert "trigPhrase.includes(msgPhrase)" in trigger_lookup
+    assert "messageTokens.length < 2 && msg !== trig" in trigger_lookup
     assert "msg.includes(trig)" not in trigger_lookup
     assert "trig.includes(msg)" not in trigger_lookup
     assert "if (isCompleteSampleEntry && !_historyMapMessageRequestsCompoundSample(message)) return null;" in entry_lookup
