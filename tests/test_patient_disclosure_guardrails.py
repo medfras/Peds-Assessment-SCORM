@@ -1297,8 +1297,10 @@ def test_frontend_history_response_map_prefers_complete_sample_entry():
     source = open("static/js/app.js", encoding="utf-8").read()
     entry_lookup = source[source.index("function _historyMapEntryMatchScore"):source.index("function _applyHistoryResponseEntryTags")]
     trigger_lookup = source[source.index("function _historyMapTriggerMatches"):source.index("function _historyMapMessageRequestsCompoundSample")]
+    scenario_entry_lookup = source[source.index("function _scenarioHistoryResponseMapEntry"):source.index("function _applyHistoryResponseEntryTags")]
 
     assert "function _historyMapMessageRequestsCompoundSample" in source
+    assert "function _bareHowMechanismHistoryEntry" in source
     assert "function _historyMapOrderedTokenMatch" in trigger_lookup
     assert "msgPhrase.includes(trigPhrase)" in trigger_lookup
     assert "trigPhrase.includes(msgPhrase)" in trigger_lookup
@@ -1309,6 +1311,7 @@ def test_frontend_history_response_map_prefers_complete_sample_entry():
     assert "priorityBonus" in entry_lookup
     assert "completeSampleBonus" in entry_lookup
     assert "Signs and Symptoms" in entry_lookup
+    assert "_bareHowMechanismHistoryEntry(responseMap, message)" in scenario_entry_lookup
     assert "Last Oral Intake" in entry_lookup
     assert "Events" in entry_lookup
     assert "candidates.sort" in entry_lookup

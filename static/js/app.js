@@ -23645,6 +23645,38 @@ function _historyMapEntryMatchScore(entry = {}, message = "", originalIndex = 0)
   };
 }
 
+function _historyMapEntryLooksLikeMechanism(entry = {}, entryKey = "") {
+  const tags = Array.isArray(entry.tags) ? entry.tags : (entry.tag ? [entry.tag] : []);
+  const tagsBlob = tags.join(" ");
+  const haystack = _normalizeHistoryMapText([
+    entryKey,
+    entry.label,
+    Array.isArray(entry.triggers) ? entry.triggers.join(" ") : "",
+    tagsBlob,
+  ].filter(Boolean).join(" "));
+  if (/\b(broad opener|chief concern|chief complaint)\b/.test(haystack)) return false;
+  if (/\[\[\s*HISTORY:\s*Events\s*[:=]/i.test(tagsBlob)) return true;
+  return /\b(mechanism|moi|events?)\b/.test(haystack);
+}
+
+function _bareHowMechanismHistoryEntry(responseMap = {}, message = "") {
+  const msg = _normalizeHistoryMapText(message);
+  if (!["how", "how did it happen", "how did that happen"].includes(msg)) return null;
+  const initial = [
+    state.scenarioData?.initial_complaint?.lay_summary,
+    state.scenarioData?.initial_complaint?.text,
+    state.scenarioData?.dispatch,
+  ].filter(Boolean).join(" ");
+  if (!/\b(fall|fell|trip|tripped|hit|struck|land(?:ed)?|cut|injur(?:y|ed))\b/i.test(initial)) return null;
+  for (const [key, entry] of Object.entries(responseMap)) {
+    if (!entry || typeof entry !== "object" || !entry.answer) continue;
+    if (_historyMapEntryLooksLikeMechanism(entry, key)) {
+      return _narrowDemographicHistoryEntry(entry, message);
+    }
+  }
+  return null;
+}
+
 function _applyHistoryResponseMapTag(tag = "") {
   const match = String(tag || "").match(/\[\[\s*(EXAM|HISTORY):\s*([^\]=:]+)\s*[:=]\s*([^\]]+)\]\]/i);
   if (!match) return false;
@@ -23916,6 +23948,8 @@ function _applyScenarioHistoryResponseMapTags(message = "", responseText = "") {
 function _scenarioHistoryResponseMapEntry(message = "") {
   const responseMap = state.scenarioData?.history_response_map;
   if (!responseMap || typeof responseMap !== "object") return null;
+  const bareHowMechanism = _bareHowMechanismHistoryEntry(responseMap, message);
+  if (bareHowMechanism) return bareHowMechanism;
   const candidates = [];
   Object.values(responseMap).forEach((entry, originalIndex) => {
     if (!entry || typeof entry !== "object" || !entry.answer) return;
