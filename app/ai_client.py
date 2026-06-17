@@ -2742,6 +2742,28 @@ def _resolve_history_response_entry(
     if not normalized_msg:
         return None
 
+    if normalized_msg in {"how", "how did that happen", "how did it happen"}:
+        initial_summary = ""
+        if isinstance(scenario.get("initial_complaint"), dict):
+            initial_summary = str(scenario.get("initial_complaint", {}).get("lay_summary") or "")
+        if not re.search(r"\b(fall|fell|trip|tripped|hit|struck|land(?:ed)?|cut|injur(?:y|ed))\b", initial_summary, re.IGNORECASE):
+            return None
+        for key, entry in response_map.items():
+            if not isinstance(entry, dict):
+                continue
+            if not _history_entry_matches_addressee(entry, scenario, preferred_addressee):
+                continue
+            haystack = " ".join(
+                str(part or "")
+                for part in [
+                    key,
+                    entry.get("label"),
+                    " ".join(str(trigger or "") for trigger in (entry.get("triggers") or [])),
+                ]
+            )
+            if re.search(r"\b(mechanism|fall|fell|trip|tripped|hit|struck|land(?:ed)?)\b", haystack, re.IGNORECASE):
+                return (key, _narrow_demographic_history_entry(entry, user_message, scenario))
+
     best_key: str | None = None
     best_score = -1
 

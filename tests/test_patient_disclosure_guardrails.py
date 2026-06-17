@@ -1951,6 +1951,27 @@ def test_soft_tissue_mechanism_and_loc_history_map_emit_structured_tags():
     assert "[[HISTORY: LOC=" in json.dumps(loc[1])
 
 
+def test_short_how_followup_in_trauma_routes_to_mechanism_not_weight():
+    with open("app/scenarios/pediatric/trauma/peds_trauma_01_soft_tissue.json", encoding="utf-8") as fh:
+        scenario = json.load(fh)
+
+    mechanism = _resolve_history_response_entry(
+        "how",
+        scenario,
+        preferred_addressee="family",
+    )
+    greeting = _resolve_history_response_entry(
+        "how are you",
+        scenario,
+        preferred_addressee="patient",
+    )
+
+    assert mechanism is not None
+    assert mechanism[0] == "mechanism_details"
+    assert "coffee table" in mechanism[1]["answer"]
+    assert greeting is None
+
+
 def test_orientation_questions_route_to_communicative_patient_before_partner_or_family():
     with open("app/scenarios/pediatric/trauma/peds_trauma_01_soft_tissue.json", encoding="utf-8") as fh:
         scenario = json.load(fh)
