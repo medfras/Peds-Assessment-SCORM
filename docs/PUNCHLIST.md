@@ -114,6 +114,15 @@ Target response: batch with cleanup passes.
   - Next step: Audit which surfaces are still in active use and which are zombie paths. Consolidate into two canonical surfaces: one in-scenario (Lexi screen) and one history/replay (last-results modal). Remove or tombstone the rest. Align data shape and theme before adding any new debrief UI.
   - References: [`static/js/app.js:14750`](static/js/app.js), [`docs/PUNCHLIST.md`](docs/PUNCHLIST.md)
 
+- [ ] Replace markdown-blob FTO debrief with structured report skeleton
+  - Type: Tech Debt / Scoring Integrity
+  - Area: Backend / Frontend / AI
+  - Summary: SCORM pilot testing showed that the learner FTO report is still partly a model-generated markdown blob. The modal shell is fixed, but the "Full Debrief" body can still let model-written headings merge, disappear, or appear in the wrong section. Production should use a fixed report skeleton and populate known slots.
+  - Impact: Learners and instructors can see inconsistent section order, "What Could Be Better" content inside "What Went Well", missing professionalism explanations, inconsistent DMIST formatting, and unclear reasons for point deductions.
+  - Next step: Define a structured debrief response schema with fixed fields such as `fto_summary`, `went_well`, `could_be_better`, `protocols_treatments`, `dmist`, `professionalism`, `narrative_feedback`, `case_study`, `key_takeaways`, `reflection_prompts`, and `score_notes`. Backend scoring/checklist/DMIST/professionalism services should fill deterministic fields; the LLM may only write bounded prose inside allowed fields. Frontend debriefs and `scripts/fto_feedback_report.py` should render those fields into fixed slots instead of trusting model-authored headings.
+  - Pilot fixes to backport: section-header normalization, clearer missed-point explanations, timeline/rubric consistency fixes.
+  - References: [`app/ai_client.py`](app/ai_client.py), [`static/js/app.js`](static/js/app.js), [`scripts/fto_feedback_report.py`](scripts/fto_feedback_report.py), [`docs/SCENARIO_EVALUATION_ARCHITECTURE.md`](docs/SCENARIO_EVALUATION_ARCHITECTURE.md)
+
 - [ ] Orientation-gated navigation must be source-aware
   - Type: Bug / Release Gate
   - Area: Frontend / Navigation
@@ -132,10 +141,10 @@ Target response: batch with cleanup passes.
 - [ ] Backport SCORM pilot deterministic action-routing fixes
   - Type: Bug / Backport
   - Area: Frontend / Scenario Runtime / Scoring Evidence
-  - Summary: MoodleCloud pilot testing exposed two deterministic routing gaps that should be carried into production: pain-history questions could be misclassified as AVPU/LOC because the LOC detector matched standalone `pain`, and procedure menu actions could fail to record a treatment unless the learner phrased the same action through Alex/chat.
-  - Impact: Learners can get the wrong authored finding ("Level of Consciousness") when asking about pain, and treatment evidence can be missing from notes/scoring even though the learner used an explicit action control.
-  - Next step: Backport the SCORM fixes and tests: narrow `_userRequestedAvpu()` to AVPU/LOC language only; route action-menu/body-map procedure payloads through scenario intervention matching and `applyInterventionAndRecord()` before chat fallback; confirm dressing/pressure actions credit the right intervention IDs in soft-tissue and burn scenarios.
-  - References: [`static/js/app.js`](static/js/app.js), `tests/test_patient_disclosure_guardrails.py`, SCORM commits `7d5ba96`, `791f729`
+  - Summary: MoodleCloud pilot testing exposed deterministic routing gaps that should be carried into production: pain-history questions could be misclassified as AVPU/LOC, procedure menu actions could fail to record treatments, short trauma follow-ups like "how" could route to weight/Broselow instead of mechanism, and length-based tape answers needed deterministic Michigan ranges rather than LLM improvisation.
+  - Impact: Learners can get the wrong authored finding, treatment evidence can be missing from notes/scoring even though the learner used an explicit control, caregiver follow-up questions can return unrelated SAMPLE/demographic facts, and pediatric weight/zone guidance can drift from local/state references.
+  - Next step: Backport the SCORM fixes and tests: narrow `_userRequestedAvpu()` to AVPU/LOC language only; route action-menu/body-map procedure payloads through scenario intervention matching and `applyInterventionAndRecord()` before chat fallback; route short trauma follow-ups to mechanism history without catching conversational "how are you" greetings; add deterministic pediatric length-based tape references with agency/state overrides.
+  - References: [`static/js/app.js`](static/js/app.js), [`app/pediatric_length_based_tape.py`](app/pediatric_length_based_tape.py), `tests/test_patient_disclosure_guardrails.py`, SCORM commits `7d5ba96`, `791f729`, `9432200`, `be1c5fa`
 
 - [ ] Backport scenario progression and persistence hardening from SCORM pilot
   - Type: Bug / Release Gate
@@ -144,6 +153,30 @@ Target response: batch with cleanup passes.
   - Impact: Learners may bypass required work or lose earned progress, which undermines course completion validity and instructor trust.
   - Next step: Make backend state the only authority for Station 1 complete, node complete, map unlocks, and challenge completion. Audit logout/relogin, browser refresh, sidebar navigation, history/back navigation, and repeated attempts for all orientation, Map 0, PM1, PT1, CPR, optional games, and challenge nodes.
   - References: [`static/js/app.js`](static/js/app.js), [`app/routers/scorm.py`](app/routers/scorm.py), [`PEDS_ASSESSMENT/07_PILOT_READINESS_CHECKLIST.md`](PEDS_ASSESSMENT/07_PILOT_READINESS_CHECKLIST.md)
+
+- [ ] Backport SCORM pilot scoring/progress display consistency fixes
+  - Type: Bug / Scoring Integrity / Backport
+  - Area: Backend / Frontend / SCORM / Progression
+  - Summary: Pilot testing found several places where learner-facing progress disagreed with backend scoring state: timeline items showed missed while rubric detail credited them, "Needs Work" attempts could show green completion, map/district percentages displayed `0%`, `41%`, or `88%` despite completed nodes, challenge XP differed from overall XP by 50, and Moodle could report passing before all challenge requirements were met.
+  - Impact: Learners and instructors cannot trust the displayed completion state, Moodle completion may become legally/training inaccurate, and repeated/relaunch attempts can appear to lose or invent progress.
+  - Next step: Centralize display state around backend checklist states, SCORM attempt summaries, and stored node completion. Add regression tests for: debrief timeline vs rubric detail, scenario `needs_work` vs completed, XP/challenge XP aggregation, Moodle lesson status, district/map percent derivation, logout/relogin persistence, and relaunch after database reset.
+  - References: [`app/routers/scorm.py`](app/routers/scorm.py), [`static/js/app.js`](static/js/app.js), [`scripts/fto_feedback_report.py`](scripts/fto_feedback_report.py), SCORM commits `aafd307`, `af02ac8`, `c096762`
+
+- [ ] Backport SCORM pilot scenario evidence and rubric QA fixes
+  - Type: Bug / Clinical Correctness / Backport
+  - Area: Scenario Runtime / Scoring / Scenario Content
+  - Summary: Live pilot runs exposed scenario-specific evidence gaps that should be addressed in production scenario content and shared scoring helpers, not patched one scenario at a time.
+  - Findings to backport or verify:
+    - Closed head injury: align rubric shape with other pilot trauma scenarios unless a full head-to-toe secondary is intentionally required; remove non-transport "during transport" requirements for non-transport agencies; ensure head DCAP, pupils, LOC/AVPU/GCS, and spinal findings appear in PCR notes and score consistently from exam menu and chat.
+    - Soft tissue/scalp laceration: keep timeline, rubric, and FTO summary synchronized for direct pressure, neuro assessment, mechanism, baseline vitals, and reassessment after hemorrhage control.
+    - Croup: clarify oxygen guidance so it never implies withholding oxygen; prefer blow-by/least-agitating delivery language when appropriate; verify PAT, allergies, medications, respiratory rate, and work-of-breathing credit.
+    - Febrile seizure: suctioning via chat should credit airway management; recovery position should count for airway protection and injury prevention; medication history should score when obtained.
+    - Extremity fracture: individual CMS component checks from the exam menu should return findings and count before and after splinting; caregiver-provided name/DOB/age should credit demographics.
+    - Anaphylaxis and diabetic emergencies: caregiver-provided patient name/demographics should populate PCR notes and score.
+    - Lung sounds and development drills: remove erroneous blow-by O2 controls from lung sound drill flow, keep drill results on-screen, and verify every lung-sound/audio/toybox asset referenced by pilot content exists in the package.
+  - Impact: Correct learner actions can be marked missed, incorrect FTO coaching can be generated, and scenario feedback may teach the wrong lesson.
+  - Next step: Create a pilot scenario QA matrix with one test case per finding and promote shared evidence parsing fixes into the runtime/scoring layer. Where scenario JSON differs only because of legacy rubric shape, align it with the shared rubric scaffold.
+  - References: [`app/scenarios/pediatric`](app/scenarios/pediatric), [`app/scenarios/vocabulary.py`](app/scenarios/vocabulary.py), [`docs/SCENARIO_DESIGN_EMS.md`](docs/SCENARIO_DESIGN_EMS.md), [`docs/rubric_templates/ems_standard_v1.md`](docs/rubric_templates/ems_standard_v1.md)
 
 - [ ] Audit treatment-response vitals trending across all scenarios
   - Type: Bug / Clinical Correctness
@@ -224,6 +257,7 @@ Target response: batch with cleanup passes.
     - Active Challenges progress: requirement rows may count correctly while overall progress still shows `0%`; progress percent must aggregate visible requirement state.
     - Pediatric Doorway Dash: remove empty image placeholders and vertically center text when no image is available.
     - Home/background assets: missing Home or orientation images should be caught by build/test checks before release.
+    - Pilot media inventory: croup patient image, lung sound audio references, and pediatric development toybox images should have package/build-time coverage so learner-facing activities never launch with missing media.
     - TTS persona QA: verify deployed voice mapping for male/female patients and partners, especially Jake/Leo-style pediatric orientation and trauma scenes.
   - Impact: These issues do not all block scoring, but they can make the learner experience look broken or make a scenario effectively unusable.
   - Next step: Create focused browser checks or screenshot tests for each finding, then backport the SCORM fixes to the production branch where the same code paths exist.
@@ -236,6 +270,14 @@ Target response: batch with cleanup passes.
   - Impact: History/back navigation can route to the wrong screen, leaderboard rows can show a placeholder or wrong name, and account/signout links can appear in contexts where the learner cannot use them.
   - Next step: Audit History, Last Results, Debrief Review, Leaderboard, My Progress, sidebar items, Account Settings, and Sign Out under SCORM/SSO-style auth. Ensure learner name comes from the authoritative profile/launch identity and that unavailable account-management actions are hidden or re-routed.
   - References: [`static/js/app.js`](static/js/app.js), `app/routers/scorm.py`, `app/auth.py`
+
+- [ ] Productize pilot FTO review/reporting workflow
+  - Type: Enhancement / Observability
+  - Area: Backend / Reporting / Instructor Tools
+  - Summary: The SCORM pilot added a local `scripts/fto_feedback_report.py` utility for reviewing scenario attempts with filters, pagination, date/time, PCR notes, DMIST, narrative, CSV export, and print/PDF-friendly views. Production needs an intentional instructor/admin workflow rather than relying on local scripts and direct database access.
+  - Impact: Pilot QA can inspect debrief quality, but instructors do not yet have a supported way to review learner FTO feedback, chat/action history, PCR notes, DMIST, and narrative in one auditable view.
+  - Next step: Decide whether this becomes an internal admin route, instructor dashboard feature, or retained local support script. If productized, enforce tenant boundaries server-side, redact/flag PHI risk, preserve the 30-day chat/log purge policy, and expose filters for learner, agency, scenario, date/time, status, and score band.
+  - References: [`scripts/fto_feedback_report.py`](scripts/fto_feedback_report.py), [`docs/SAAS_HARDENING_PLAN.md`](docs/SAAS_HARDENING_PLAN.md)
 
 - [ ] TTS latency and cost optimization follow-up
   - Type: Performance / Enhancement
