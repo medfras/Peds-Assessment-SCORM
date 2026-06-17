@@ -2734,6 +2734,56 @@ def _history_entry_tags(entry: dict) -> list[str]:
     return entry.get("tags") or ([entry["tag"]] if entry.get("tag") else [])
 
 
+_HISTORY_TAG_RE = re.compile(r"\[\[\s*HISTORY:\s*([^:=\]]+)\s*[:=]\s*([^\]]+)\]\]", re.I)
+
+
+def _clean_history_tag_part(value: str) -> str:
+    return re.sub(r"\s+", " ", str(value or "").replace("*", "").strip())
+
+
+def authored_history_findings_from_text(text: str, scenario: dict | None) -> list[dict[str, str]]:
+    """Extract only scenario-authored HISTORY tags from a chat response.
+
+    Chat HISTORY tags are useful scoring evidence, but model output is not an
+    authoritative fact source.  This function only accepts key/value pairs that
+    exactly match tags authored in the scenario history_response_map, so backend
+    persistence mirrors deterministic scenario content instead of trusting an
+    arbitrary model-generated tag.
+    """
+    if not text or not isinstance(scenario, dict):
+        return []
+    response_map = scenario.get("history_response_map")
+    if not isinstance(response_map, dict):
+        return []
+
+    allowed: dict[tuple[str, str], tuple[str, str]] = {}
+    for entry in response_map.values():
+        if not isinstance(entry, dict):
+            continue
+        for raw_tag in _history_entry_tags(entry):
+            match = _HISTORY_TAG_RE.search(str(raw_tag or ""))
+            if not match:
+                continue
+            key = _clean_history_tag_part(match.group(1))
+            value = _clean_history_tag_part(match.group(2))
+            if key and value:
+                allowed[(key.casefold(), value.casefold())] = (key, value)
+
+    findings: list[dict[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+    for match in _HISTORY_TAG_RE.finditer(str(text or "")):
+        raw_key = _clean_history_tag_part(match.group(1))
+        raw_value = _clean_history_tag_part(match.group(2))
+        lookup = (raw_key.casefold(), raw_value.casefold())
+        authored = allowed.get(lookup)
+        if not authored or lookup in seen:
+            continue
+        seen.add(lookup)
+        key, value = authored
+        findings.append({"key": key, "value": value})
+    return findings
+
+
 def _patient_pronouns(scenario: dict | None = None) -> dict[str, str]:
     patient = scenario.get("patient") if isinstance(scenario, dict) else None
     sex = str((patient or {}).get("sex") or (patient or {}).get("gender") or "").strip().lower()

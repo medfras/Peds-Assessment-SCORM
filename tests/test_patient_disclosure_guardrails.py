@@ -8,6 +8,7 @@ from app.ai_client import (  # noqa: E402
     _NON_EMS_PERSONA_BOUNDARY,
     _PROFESSIONALISM_AFFECTIVE_DOMAIN_GUIDANCE,
     _UNIVERSAL_PATIENT_DISCLOSURE_CONTRACT,
+    authored_history_findings_from_text,
     _build_history_response_map_prompt,
     _build_initial_complaint_prompt,
     _build_auto_intervention_directive,
@@ -46,6 +47,25 @@ def test_universal_patient_disclosure_contract_blocks_unsolicited_coaching():
     assert "what can we do for you?" in contract.lower()
     assert "not an EMS care plan" in contract
     assert "Do not emit HISTORY or EXAM tags" in contract
+
+
+def test_authored_history_findings_extracts_only_scenario_map_tags():
+    scenario = load_scenario("peds_trauma_01_soft_tissue")
+
+    text = (
+        "He was running in the living room and tripped. "
+        "[[HISTORY: Events=running in the living room, tripped on the rug, struck the corner of the coffee table]] "
+        "[[HISTORY: Allergies=made up allergy]]"
+    )
+
+    findings = authored_history_findings_from_text(text, scenario)
+
+    assert findings == [
+        {
+            "key": "Events",
+            "value": "running in the living room, tripped on the rug, struck the corner of the coffee table",
+        }
+    ]
 
 
 def test_pediatric_length_based_tape_reference_is_deterministic_for_patient_weight():

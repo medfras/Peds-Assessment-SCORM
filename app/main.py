@@ -149,6 +149,7 @@ from app.ai_client import (
     _effective_level,
     AiProviderError,
     _assemble_fixed_debrief,
+    authored_history_findings_from_text,
     _compose_reference_section,
     _compose_scored_section,
     _render_dmist_component_summary,
@@ -8965,8 +8966,6 @@ async def get_my_sessions(
             "Reassess GCS and pupils during transport",
             "Neck assessment: checks position of trachea",
         )
-        if not any(needle in haystack for needle in stale_needles):
-            return
         try:
             agency_dict = await load_agency(s.agency_id, db)
             scenario = adapt_scenario_to_context(
@@ -8976,6 +8975,16 @@ async def get_my_sessions(
                 s.effective_protocol_excerpt,
             )
         except (FileNotFoundError, KeyError):
+            return
+        backfilled = await _backfill_authored_history_findings_from_messages(
+            session_id=s.id,
+            scenario=scenario,
+            db=db,
+        )
+        if backfilled:
+            await db.commit()
+            await db.refresh(s, attribute_names=["findings"])
+        if not backfilled and not any(needle in haystack for needle in stale_needles):
             return
         _det_packet = await adjudicate_and_persist(
             s,
@@ -11872,6 +11881,12 @@ async def chat(request: Request, req: ChatRequest, ctx: ActiveContext = Depends(
                 content=ai_text,
                 timestamp=datetime.utcnow(),
             ))
+            await _persist_authored_history_findings_from_text(
+                session_id=session_snapshot["id"],
+                scenario=scenario,
+                text=ai_text,
+                db=save_db,
+            )
             await save_db.commit()
 
             # Check primary survey milestone after every AI turn.
@@ -12827,6 +12842,86 @@ def _normalize_finding_value(finding_type: str, key: str, value: str) -> str:
         clean = re.sub(r"(?i)\babrasions?\s*/\s*lacerations?\b", "laceration", clean)
         clean = re.sub(r"(?i)\blacerations?\s*/\s*abrasions?\b", "laceration", clean)
     return clean
+
+
+async def _persist_authored_history_findings_from_text(
+    *,
+    session_id: str,
+    scenario: dict,
+    text: str,
+    db: AsyncSession,
+) -> int:
+    """Persist authored scenario HISTORY tags as backend findings.
+
+    Frontend tag parsing remains useful for the live PCR view, but deterministic
+    scoring should not depend on browser timing.  Only tags that exactly match
+    scenario-authored history_response_map entries are accepted here.
+    """
+    findings = authored_history_findings_from_text(text, scenario)
+    if not findings:
+        return 0
+
+    keys = [str(finding.get("key") or "")[:200] for finding in findings if finding.get("key")]
+    existing: dict[str, str] = {}
+    if keys:
+        result = await db.execute(
+            select(SessionFinding.key, SessionFinding.value)
+            .where(SessionFinding.session_id == session_id)
+            .where(SessionFinding.finding_type == "history")
+            .where(SessionFinding.key.in_(keys))
+        )
+        existing = {str(row.key): str(row.value or "") for row in result.all()}
+
+    captured_at = datetime.utcnow()
+    count = 0
+    for finding in findings:
+        key = str(finding.get("key") or "")[:200]
+        value = _normalize_finding_value(
+            "history",
+            key,
+            str(finding.get("value") or ""),
+        )[:1000]
+        if not key or not value:
+            continue
+        if existing.get(key) == value:
+            continue
+        stmt = pg_insert(SessionFinding).values(
+            session_id=session_id,
+            finding_type="history",
+            key=key,
+            value=value,
+            source="ai_roleplay_tag",
+            captured_at=captured_at,
+        ).on_conflict_do_update(
+            index_elements=["session_id", "finding_type", "key"],
+            index_where=text("finding_type = 'history'"),
+            set_={"value": value, "source": "ai_roleplay_tag", "captured_at": captured_at},
+        )
+        await db.execute(stmt)
+        count += 1
+    return count
+
+
+async def _backfill_authored_history_findings_from_messages(
+    *,
+    session_id: str,
+    scenario: dict,
+    db: AsyncSession,
+) -> int:
+    result = await db.execute(
+        select(ChatMessage.content)
+        .where(ChatMessage.session_id == session_id)
+        .where(ChatMessage.role == "model")
+    )
+    persisted = 0
+    for content in result.scalars().all():
+        persisted += await _persist_authored_history_findings_from_text(
+            session_id=session_id,
+            scenario=scenario,
+            text=content or "",
+            db=db,
+        )
+    return persisted
 
 
 @app.post("/api/sessions/{session_id}/findings", status_code=204)
@@ -14537,6 +14632,14 @@ async def re_debrief(
 
     agency_dict = await load_agency(session.agency_id, db)
     scenario = adapt_scenario_to_context(load_scenario(session.scenario_id), agency_dict, session.mca, session.effective_protocol_excerpt)
+    _backfilled_history = await _backfill_authored_history_findings_from_messages(
+        session_id=session.id,
+        scenario=scenario,
+        db=db,
+    )
+    if _backfilled_history:
+        await db.commit()
+        await db.refresh(session, attribute_names=["findings"])
 
     existing_nd = session.narrative_data or {}
     narrative_dict = {
@@ -14731,6 +14834,14 @@ async def submit_narrative(
         # the authoritative item state contract after a session has already been
         # debriefed; rebuilding display rows from stale session.checklist_states
         # would faithfully preserve the old bug.
+        _backfilled_history = await _backfill_authored_history_findings_from_messages(
+            session_id=session.id,
+            scenario=scenario,
+            db=db,
+        )
+        if _backfilled_history:
+            await db.commit()
+            await db.refresh(session, attribute_names=["findings"])
         _det_packet_cached = await adjudicate_and_persist(
             session,
             scenario,
@@ -14801,6 +14912,14 @@ async def submit_narrative(
         }
 
     # ── Phase 4: deterministic adjudication before AI debrief ────────────────
+    _backfilled_history = await _backfill_authored_history_findings_from_messages(
+        session_id=session.id,
+        scenario=scenario,
+        db=db,
+    )
+    if _backfilled_history:
+        await db.commit()
+        await db.refresh(session, attribute_names=["findings"])
     _det_packet = await adjudicate_and_persist(session, scenario, db)
 
     # ── Next Action routing (computed pre-LLM from deterministic signals) ─────
@@ -15001,6 +15120,14 @@ async def skip_narrative(
         #
         # Re-adjudicate before rebuilding so cached sessions pick up scenario
         # checklist contract changes instead of reusing stale checklist_states.
+        _backfilled_history_skip = await _backfill_authored_history_findings_from_messages(
+            session_id=session.id,
+            scenario=scenario,
+            db=db,
+        )
+        if _backfilled_history_skip:
+            await db.commit()
+            await db.refresh(session, attribute_names=["findings"])
         _det_packet_cached_skip = await adjudicate_and_persist(
             session,
             scenario,
@@ -15073,6 +15200,14 @@ async def skip_narrative(
         }
 
     # ── Phase 4: deterministic adjudication before AI debrief ────────────────
+    _backfilled_history_skip = await _backfill_authored_history_findings_from_messages(
+        session_id=session.id,
+        scenario=scenario,
+        db=db,
+    )
+    if _backfilled_history_skip:
+        await db.commit()
+        await db.refresh(session, attribute_names=["findings"])
     _det_packet = await adjudicate_and_persist(session, scenario, db)
 
     # ── Next Action routing (computed pre-LLM from deterministic signals) ─────
