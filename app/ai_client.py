@@ -938,6 +938,125 @@ def _format_fixed_debrief_section(title: str, body: str) -> str:
     return f"## {title}\n{body}"
 
 
+_DEBRIEF_GAP_PHRASE_RE = re.compile(
+    r"\b("
+    r"not|missed|missing|incomplete|not completed|not assessed|not documented|"
+    r"no credit|priority fix|should have|needs?|requires?|must|omitted"
+    r")\b",
+    re.IGNORECASE,
+)
+
+
+def _split_debrief_inline_items(body: str) -> list[str]:
+    """Return bullet-like items from a debrief section body.
+
+    Models sometimes collapse a list into one paragraph with `" - "` separators.
+    Normalize those fragments so backend-owned sections stay visually stable.
+    """
+    items: list[str] = []
+    for raw_line in str(body or "").splitlines():
+        stripped = raw_line.strip()
+        if not stripped:
+            continue
+        stripped = re.sub(r"^[-•*]\s+", "", stripped)
+        stripped = re.sub(r"\s+(Why it matters:)", r" - \1", stripped, flags=re.IGNORECASE)
+        parts = [
+            part.strip()
+            for part in re.split(r"\s+-\s+(?=[A-Z0-9])", stripped)
+            if part.strip()
+        ]
+        items.extend(parts or [stripped])
+    return items
+
+
+def _normalize_debrief_strength_gap_sections(debrief_text: str) -> str:
+    """Keep missed-item language out of the What Went Well section.
+
+    Deterministic scored blocks are the source of truth, but the model can still
+    return historical or malformed markdown where gap bullets are glued into the
+    strengths paragraph. This function enforces the learner-facing skeleton:
+    strengths stay under What Went Well; gaps move to What Could Be Better.
+    """
+    text = (debrief_text or "").strip()
+    if not text:
+        return text
+
+    preamble, sections = _split_debrief_sections(text)
+    if not sections:
+        return text
+
+    went_well_bodies = sections.get("what_went_well") or []
+    could_better_bodies = sections.get("what_could_be_better") or []
+    if not went_well_bodies and not could_better_bodies:
+        return text
+
+    strengths: list[str] = []
+    moved_gaps: list[str] = []
+    for body in went_well_bodies:
+        for item in _split_debrief_inline_items(body):
+            is_gap = bool(_DEBRIEF_GAP_PHRASE_RE.search(item)) or item.lower().startswith("why it matters:")
+            if is_gap:
+                moved_gaps.append(item)
+            else:
+                strengths.append(item)
+
+    gaps: list[str] = moved_gaps[:]
+    for body in could_better_bodies:
+        gaps.extend(_split_debrief_inline_items(body))
+
+    ordered_keys = [
+        "fto",
+        "what_went_well",
+        "what_could_be_better",
+        "protocols",
+        "scope",
+        "handoff",
+        "patient_communication",
+        "narrative",
+        "case_study",
+    ]
+    titles = {
+        "fto": "FTO Summary",
+        "what_went_well": "What Went Well",
+        "what_could_be_better": "What Could Be Better",
+        "protocols": "Protocols & Treatments",
+        "scope": "Scope Alert",
+        "handoff": "Handoff & Communication",
+        "patient_communication": "Patient Communication",
+        "narrative": "Narrative",
+        "case_study": "Case Study",
+    }
+
+    rebuilt: list[str] = []
+    if preamble:
+        rebuilt.append(preamble)
+    for key in ordered_keys:
+        if key == "what_went_well":
+            body = "\n".join(f"- {item}" for item in strengths)
+            if body:
+                rebuilt.append(_format_fixed_debrief_section(titles[key], body))
+            continue
+        if key == "what_could_be_better":
+            body = "\n".join(f"- {item}" for item in gaps)
+            if body:
+                rebuilt.append(_format_fixed_debrief_section(titles[key], body))
+            continue
+        for body in sections.get(key, []):
+            cleaned = "\n".join(_split_debrief_inline_items(body)) if key in {"protocols", "handoff"} else body.strip()
+            if cleaned:
+                rebuilt.append(_format_fixed_debrief_section(titles.get(key, key), cleaned))
+
+    # Preserve any sections the fixed skeleton does not explicitly know about.
+    for key, bodies in sections.items():
+        if key in set(ordered_keys):
+            continue
+        for body in bodies:
+            if body.strip():
+                rebuilt.append(_format_fixed_debrief_section(key.replace("_", " ").title(), body.strip()))
+
+    return re.sub(r"\n{3,}", "\n\n", "\n\n".join(rebuilt)).strip()
+
+
 def _render_dmist_component_summary(dmist_result: dict | None) -> str:
     """Render deterministic DMIST scoring as student-facing feedback.
 
@@ -1015,9 +1134,12 @@ def _assemble_fixed_debrief(
         if could_better:
             blocks.append(_format_fixed_debrief_section("What Could Be Better", could_better))
 
-    protocols = (rendered_protocols or "").strip()
-    if include_protocols and protocols:
-        blocks.append(protocols)
+    rendered_protocol_block = (rendered_protocols or "").strip()
+    protocol_body = _first_useful_debrief_body(sections, "protocols")
+    if include_protocols and rendered_protocol_block:
+        blocks.append(rendered_protocol_block)
+    elif include_protocols and protocol_body:
+        blocks.append(_format_fixed_debrief_section("Protocols & Treatments", protocol_body))
 
     scope = _first_useful_debrief_body(sections, "scope")
     if scope:
@@ -1040,8 +1162,9 @@ def _assemble_fixed_debrief(
         blocks.append(_format_fixed_debrief_section("Case Study", case_study))
 
     if not blocks:
-        return text
-    return re.sub(r"\n{3,}", "\n\n", "\n\n".join(blocks)).strip()
+        return _normalize_debrief_strength_gap_sections(text)
+    assembled = re.sub(r"\n{3,}", "\n\n", "\n\n".join(blocks)).strip()
+    return _normalize_debrief_strength_gap_sections(assembled)
 
 
 def _ensure_narrative_feedback_section(

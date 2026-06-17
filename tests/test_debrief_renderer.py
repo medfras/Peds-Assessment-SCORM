@@ -608,6 +608,35 @@ class TestComposeScoredSection:
         assert "The model says T missed ALS disposition" not in result
         assert "T - Treatment/Transport: full credit" in result
 
+    def test_fixed_debrief_moves_inline_missed_items_out_of_what_went_well(self):
+        result = _assemble_fixed_debrief(
+            "## FTO Summary\nSolid core performance.\n\n"
+            "## What Went Well\n"
+            "Direct pressure applied to scalp laceration — correct hemorrhage control. "
+            "- PAT completed — alert child assessed before hands-on contact. "
+            "- Mechanism assessed — how the child fell was obtained. "
+            "Why it matters: Any head trauma requires a documented neurological baseline. "
+            "- Considers stabilization of the spine — not completed. "
+            "- Obtains baseline vital signs including blood pressure, pulse, and respirations — not completed. "
+            "## Protocols & Treatments\n"
+            "Reference: Michigan Trauma. ✓ Direct pressure applied.\n\n"
+            "## Handoff & Communication\nDMIST score: 4/10\n\n"
+            "## Case Study\nCase body.",
+            include_narrative=False,
+        )
+
+        went_well = result.split("## What Could Be Better", 1)[0]
+        could_better = result.split("## What Could Be Better", 1)[1]
+        assert "Direct pressure applied" in went_well
+        assert "PAT completed" in went_well
+        assert "Mechanism assessed" in went_well
+        assert "Considers stabilization" not in went_well
+        assert "baseline vital signs" not in went_well
+        assert "Considers stabilization" in could_better
+        assert "baseline vital signs" in could_better
+        assert "Why it matters: Any head trauma requires" in could_better
+        assert result.index("## What Could Be Better") < result.index("## Protocols & Treatments")
+
     def test_dmist_summary_does_not_report_t_missing_disposition_when_t_full_credit(self):
         summary = _render_dmist_component_summary({
             "score": 7,

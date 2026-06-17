@@ -325,7 +325,11 @@ def _normalize_debrief_markdown_for_report(markdown: str) -> str:
 
     normalized_lines: list[str] = []
     active_list_section = ""
-    gap_re = re.compile(r"\b(not|missed|missing|incomplete|not completed|not assessed|not documented|no credit)\b", re.I)
+    gap_re = re.compile(
+        r"\b(not|missed|missing|incomplete|not completed|not assessed|not documented|"
+        r"no credit|priority fix|should have|needs?|requires?|must|omitted)\b",
+        re.I,
+    )
     for raw_line in text.splitlines():
         line = raw_line.rstrip()
         stripped = line.strip()
@@ -343,6 +347,7 @@ def _normalize_debrief_markdown_for_report(markdown: str) -> str:
             and not re.match(r"^[-•*]\s+", stripped)
             and re.search(r"\s-\s", stripped)
         ):
+            stripped = re.sub(r"\s+(Why it matters:)", r" - \1", stripped, flags=re.I)
             parts = [
                 part.strip()
                 for part in re.split(r"\s+-\s+(?=[A-Z0-9])", stripped)
@@ -351,7 +356,8 @@ def _normalize_debrief_markdown_for_report(markdown: str) -> str:
             if len(parts) >= 2:
                 moved_to_gaps = active_list_section == "what could be better"
                 for part in parts:
-                    if active_list_section == "what went well" and not moved_to_gaps and gap_re.search(part):
+                    is_gap = gap_re.search(part) or part.lower().startswith("why it matters:")
+                    if active_list_section == "what went well" and not moved_to_gaps and is_gap:
                         normalized_lines.append("")
                         normalized_lines.append("## What Could Be Better")
                         moved_to_gaps = True
