@@ -1301,6 +1301,7 @@ def test_frontend_history_response_map_prefers_complete_sample_entry():
 
     assert "function _historyMapMessageRequestsCompoundSample" in source
     assert "function _bareHowMechanismHistoryEntry" in source
+    assert "function _eventsHistoryValueForMechanismEntry" in source
     assert "function _historyMapOrderedTokenMatch" in trigger_lookup
     assert "msgPhrase.includes(trigPhrase)" in trigger_lookup
     assert "trigPhrase.includes(msgPhrase)" in trigger_lookup
@@ -1314,6 +1315,7 @@ def test_frontend_history_response_map_prefers_complete_sample_entry():
     assert "_bareHowMechanismHistoryEntry(responseMap, message)" in scenario_entry_lookup
     assert "Last Oral Intake" in entry_lookup
     assert "Events" in entry_lookup
+    assert 'addPcrHistory("Events", eventsValue, "ai_roleplay_tag")' in source
     assert "candidates.sort" in entry_lookup
 
 

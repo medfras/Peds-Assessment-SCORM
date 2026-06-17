@@ -23659,6 +23659,17 @@ function _historyMapEntryLooksLikeMechanism(entry = {}, entryKey = "") {
   return /\b(mechanism|moi|events?)\b/.test(haystack);
 }
 
+function _eventsHistoryValueForMechanismEntry(entry = {}) {
+  if (!entry || typeof entry !== "object" || !_historyMapEntryLooksLikeMechanism(entry)) return "";
+  const tags = Array.isArray(entry.tags) ? entry.tags : (entry.tag ? [entry.tag] : []);
+  for (const tag of tags) {
+    const match = String(tag || "").match(/\[\[\s*HISTORY:\s*Events\s*[:=]\s*([^\]]+)\]\]/i);
+    const value = match?.[1]?.replace(/[*_]/g, "").trim();
+    if (value) return value;
+  }
+  return String(entry.answer || "").replace(/\[\[[^\]]+\]\]/g, "").trim();
+}
+
 function _bareHowMechanismHistoryEntry(responseMap = {}, message = "") {
   const msg = _normalizeHistoryMapText(message);
   if (!["how", "how did it happen", "how did that happen"].includes(msg)) return null;
@@ -23965,12 +23976,23 @@ function _scenarioHistoryResponseMapEntry(message = "") {
 function _applyHistoryResponseEntryTags(entry, message = "") {
   if (!entry || typeof entry !== "object") return 0;
   let applied = 0;
+  let appliedEvents = false;
   const responseText = entry.answer || "";
   const tags = Array.isArray(entry.tags) ? entry.tags : (entry.tag ? [entry.tag] : []);
   tags.forEach(tag => {
     if (!_historyMapTagAllowedForContext(tag, message, responseText)) return;
-    if (_applyHistoryResponseMapTag(tag)) applied += 1;
+    if (_applyHistoryResponseMapTag(tag)) {
+      applied += 1;
+      if (/\[\[\s*HISTORY:\s*Events\s*[:=]/i.test(String(tag || ""))) appliedEvents = true;
+    }
   });
+  if (!appliedEvents) {
+    const eventsValue = _eventsHistoryValueForMechanismEntry(entry);
+    if (eventsValue) {
+      addPcrHistory("Events", eventsValue, "ai_roleplay_tag");
+      applied += 1;
+    }
+  }
   _captureDeferredPcrHeaderFromPlainText(responseText);
   return applied;
 }
