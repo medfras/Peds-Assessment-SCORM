@@ -1220,7 +1220,7 @@
     },
     {
       "id": "peds_trauma_01_soft_tissue.mechanism_screen",
-      "description": "Mechanism of injury assessed — height of fall, surface type, and any LOC duration asked to stratify concussion risk",
+      "description": "Mechanism of injury assessed — how the child fell and what object or surface was struck to stratify concussion risk",
       "subtype": "screen",
       "category": "clinical_performance",
       "point_value": 5,
@@ -1235,28 +1235,20 @@
       "tier3_permitted": false,
       "tier3_confidence_threshold": null,
       "schema_version": "1.0",
-      "requirement_logic": "all",
-      "tier1_matches": [
-        {
-          "source": "finding",
-          "finding_type": "history",
-          "finding_key_pattern": "(?i)^Events$",
-          "finding_value_pattern": "(?i)(running|tripp?ed|rug|coffee table|table corner|hit|struck|fall|fell)"
-        },
-        {
-          "source": "finding",
-          "finding_type": "history",
-          "finding_key_pattern": "(?i)^(LOC|Loss of Consciousness|Events)$",
-          "finding_value_pattern": "(?i)(no\\s+(?:loss of consciousness|LOC)|never\\s+lost|did\\s+not\\s+lose|didn't\\s+lose|cried\\s+immediately|started\\s+crying\\s+right\\s+away)"
-        }
-      ],
+      "requirement_logic": "any",
+      "tier1_match": {
+        "source": "finding",
+        "finding_type": "history",
+        "finding_key_pattern": "(?i)^Events$",
+        "finding_value_pattern": "(?i)(running|tripp?ed|rug|coffee table|table corner|hit|struck|fall|fell)"
+      },
       "tier2_patterns": [
         "(?i)(how\\s+(?:far|high).*fall|fall.*from|height|how high|what.*(?:land|surface)|surface|concrete|grass|hardwood|tile|rug|carpet)",
         "(?i)(?=.*\\b(?:fall|fell|tripp?ed|hit|struck)\\b)(?=.*\\b(?:rug|carpet|coffee table|table corner|surface|ground|floor)\\b)(?=.*\\b(?:LOC|loss of consciousness|passed out|cried immediately|no loss)\\b)"
       ],
-      "done_feedback": "Mechanism assessed — fall height, surface, and LOC duration obtained; consistent with isolated scalp laceration, not high-energy TBI.",
-      "missed_feedback": "Mechanism not assessed — fall height and surface type determine injury severity; fall > 3 feet or LOC changes the field impression and transport decision.",
-      "clinical_rationale": "In pediatric head trauma, fall height greater than standing height, hard surface, and any LOC are PECARN criteria predictors of significant intracranial injury.",
+      "done_feedback": "Mechanism assessed — how the child fell and what was struck were obtained; supports head injury risk stratification.",
+      "missed_feedback": "Mechanism not assessed — how the child fell and what object or surface was struck help determine injury severity and field impression.",
+      "clinical_rationale": "In pediatric head trauma, fall height, impact surface or object, and LOC history are PECARN criteria predictors of significant intracranial injury.",
       "common_error": "Treating all head lacerations the same regardless of mechanism — a fall from standing height is different from a fall down stairs or from a table."
     },
     {

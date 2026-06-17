@@ -151,6 +151,40 @@ class TestComposeScoredSection:
         assert "## What Could Be Better" in result
         assert "O2 not given." in result
 
+    def test_missed_items_stay_under_what_could_be_better(self):
+        defs = [
+            _def("cp.direct_pressure", "Direct pressure", done_feedback="Direct pressure applied.", point_value=10),
+            _def("cp.pat", "PAT", done_feedback="PAT completed.", point_value=5),
+            _def("cp.neuro", "Neuro", missed_feedback="Neuro assessment missing.", point_value=7),
+            _def("cp.mechanism", "Mechanism", missed_feedback="Mechanism not assessed.", point_value=5),
+            _def("cp.vitals", "Vitals", missed_feedback="Vitals missing.", point_value=4),
+            _def("cp.sample", "SAMPLE", missed_feedback="SAMPLE history missing.", point_value=3),
+            _def("cp.head", "Head exam", missed_feedback="Head exam missing.", point_value=2),
+            _def("cp.reassess", "Reassessment", missed_feedback="Reassessment missing.", point_value=1),
+        ]
+        states = [
+            _state("cp.direct_pressure", "satisfied", earned=10),
+            _state("cp.pat", "satisfied", earned=5),
+            _state("cp.neuro", "missed", earned=0),
+            _state("cp.mechanism", "missed", earned=0),
+            _state("cp.vitals", "missed", earned=0),
+            _state("cp.sample", "missed", earned=0),
+            _state("cp.head", "missed", earned=0),
+            _state("cp.reassess", "missed", earned=0),
+        ]
+        session = _make_session(defs, states)
+
+        result = _compose_scored_section(session, "clinical_performance")
+
+        went_well = result.split("## What Could Be Better", 1)[0]
+        could_better = result.split("## What Could Be Better", 1)[1]
+        assert "Direct pressure applied." in went_well
+        assert "PAT completed." in went_well
+        assert "Neuro assessment missing." not in went_well
+        assert "Mechanism not assessed." not in went_well
+        assert "Neuro assessment missing." in could_better
+        assert "additional lower-priority rubric gap" in could_better
+
     def test_generic_base_items_are_not_used_as_strength_filler(self):
         defs = [
             _def(

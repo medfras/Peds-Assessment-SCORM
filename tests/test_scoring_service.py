@@ -1011,7 +1011,7 @@ def test_head_injury_structured_exam_rows_credit_neuro_and_general_head_items():
         assert state.state == "satisfied", item_id
 
 
-def test_soft_tissue_mechanism_screen_uses_structured_mechanism_and_loc_history():
+def test_soft_tissue_mechanism_screen_uses_structured_mechanism_history():
     scenario_path = Path(__file__).resolve().parents[1] / "app/scenarios/pediatric/trauma/peds_trauma_01_soft_tissue.json"
     scenario = json.loads(scenario_path.read_text())
     item = next(
@@ -1024,6 +1024,25 @@ def test_soft_tissue_mechanism_screen_uses_structured_mechanism_and_loc_history(
         interventions=[],
         session_findings=[
             _finding("Patient Chief Complaint", "head cut after fall", finding_type="history", fid=1),
+        ],
+        session_events=[],
+        chat_messages=[],
+        scene_entry=None,
+        submitted_dmist=None,
+        submitted_narrative=None,
+        scenario=scenario,
+        legacy_ai_categories=frozenset(),
+    )[0]
+    mechanism_only = adjudicate(
+        [item],
+        interventions=[],
+        session_findings=[
+            _finding(
+                "Events",
+                "running in the living room, tripped on the rug, struck the corner of the coffee table",
+                finding_type="history",
+                fid=2,
+            ),
         ],
         session_events=[],
         chat_messages=[],
@@ -1060,8 +1079,9 @@ def test_soft_tissue_mechanism_screen_uses_structured_mechanism_and_loc_history(
     )[0]
 
     assert item.allowed_tiers == [1]
-    assert item.requirement_logic == "all"
+    assert item.requirement_logic == "any"
     assert chief_only.state == "not_satisfied"
+    assert mechanism_only.state == "satisfied"
     assert complete.state == "satisfied"
 
 
