@@ -23670,9 +23670,13 @@ function _eventsHistoryValueForMechanismEntry(entry = {}) {
   return String(entry.answer || "").replace(/\[\[[^\]]+\]\]/g, "").trim();
 }
 
-function _bareHowMechanismHistoryEntry(responseMap = {}, message = "") {
+function _messageIsBareMechanismHow(message = "") {
   const msg = _normalizeHistoryMapText(message);
-  if (!["how", "how did it happen", "how did that happen"].includes(msg)) return null;
+  return ["how", "how did it happen", "how did that happen"].includes(msg);
+}
+
+function _bareHowMechanismHistoryEntry(responseMap = {}, message = "") {
+  if (!_messageIsBareMechanismHow(message)) return null;
   const initial = [
     state.scenarioData?.initial_complaint?.lay_summary,
     state.scenarioData?.initial_complaint?.text,
@@ -25381,6 +25385,10 @@ async function sendMessage(overrideText = null, options = {}) {
   if (mappedHistoryEntry) {
     _historyCaptureUnlocked = true;
     _applyHistoryResponseEntryTags(mappedHistoryEntry, message);
+    if (_messageIsBareMechanismHow(message)) {
+      const eventsValue = _eventsHistoryValueForMechanismEntry(mappedHistoryEntry);
+      if (eventsValue) addPcrHistory("Events", eventsValue, "ai_roleplay_tag");
+    }
     _captureKnownSceneNamesFromExchange(message, mappedHistoryEntry.answer);
     const speaker = _historyResponseMapSpeaker(mappedHistoryEntry);
     const display = `*${speaker}:* ${mappedHistoryEntry.answer}`;
