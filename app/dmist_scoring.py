@@ -123,9 +123,18 @@ def _element_patterns(element: str) -> list[str]:
         weight_numbers = re.findall(r"\b\d+(?:\.\d+)?\b", e)
         weight_terms = []
         for number in weight_numbers[:4]:
-            weight_terms.append(rf"\b{re.escape(number)}\s*(?:kg|kilos?|kilograms?|lb|lbs|pounds?)\b")
+            weight_terms.append(rf"\b{re.escape(number)}\s*(?:kg|kilos?|kilograms?|lb|lbs|pounds?|#)\b?")
         patterns.extend(weight_terms or [r"\bweight\b"])
         patterns.append(r"\bweight\b")
+        patterns.append(r"\b(?:broselow|broslow|length[- ]?based).{0,30}\b(?:gray|pink|red|purple|yellow|white|blue|orange|green)\b")
+        patterns.append(r"\b(?:gray|pink|red|purple|yellow|white|blue|orange|green)\b.{0,30}\b(?:broselow|broslow|length[- ]?based)\b")
+    if "type 1" in e or "known diabetic" in e or "diabet" in e or "dm" in e:
+        patterns.append(r"\b(?:type\s*1|t1d|dm1|diabet(?:es|ic)?|known diabetic|pmh(?:x)?\s*dm1)\b")
+    if "insulin pump" in e or "omnipod" in e:
+        patterns.append(r"\b(?:insulin\s+pump|omnipod|pump)\b")
+    if "cgm" in e or "bg reading" in e or "bgl" in e or "blood glucose" in e:
+        patterns.append(r"\b(?:cgm|dexcom|continuous glucose|blood glucose|blood sugar|bgl|bg|glucose)\b.{0,30}\b(?:38|low|mg/dl)\b")
+        patterns.append(r"\b(?:38|low)\b.{0,30}\b(?:cgm|dexcom|blood glucose|blood sugar|bgl|bg|glucose|mg/dl)\b")
     if "female" in e:
         patterns.append(r"\bfemale\b|\bgirl\b")
     if "male" in e:
@@ -160,8 +169,8 @@ def _element_patterns(element: str) -> list[str]:
         patterns.append(r"\bdirect pressure\b|\bpressure dressing\b|\bdressing\b|\bbandag|\bcontrolled\b")
     if "neuro" in e or "gcs" in e or "avpu" in e:
         patterns.append(r"\bgcs\b|\bavpu\b|\ba\s*(?:and|&)\s*o\b|\ba\W*o\b|\boriented\b|\balert\b|\bpupils?\b|\bperrl\b")
-    if "confused" in e or "disoriented" in e:
-        patterns.append(r"\bconfus(?:ed|ion)\b|\bdisorient(?:ed|ation)?\b|\bgcs\s*(?:of\s*)?14\b|\bgcs\s*14\b")
+    if "confused" in e or "disoriented" in e or "altered mental status" in e:
+        patterns.append(r"\bconfus(?:ed|ion)\b|\bdisorient(?:ed|ation)?\b|\bams\b|\baltered mental status\b|\bgcs\s*(?:of\s*)?14\b|\bgcs\s*14\b")
     if "pupil" in e or "eye" in e:
         patterns.append(
             r"(?:pupils?|eyes?).{0,45}(?:unequal|on\s+equal|sluggish|react(?:ive|ivity)?|brisk|\d\s*mm)|"
@@ -350,13 +359,25 @@ def _score_demographics(text: str, patient: dict[str, Any]) -> DmistComponentSco
     )
     checks.append((
         "age",
-        bool(re.search(rf"\b(?:\d+|{age_words})\s*[- ]?\s*(?:month|months|year|years|yr|yrs|yo|yom|yof)\b|\binfant\b|\badult\b", normalized)),
+        bool(
+            re.search(rf"\b(?:\d+|{age_words})\s*[- ]?\s*(?:month|months|year|years|yr|yrs|yo|yom|yof)\b|\binfant\b|\badult\b", normalized)
+            or (
+                patient.get("age") is not None
+                and re.search(rf"\b(?:age\s*)?{re.escape(str(patient.get('age')))}\b", normalized)
+                and (not name or re.search(rf"\b{re.escape(name.lower())}\b", normalized))
+            )
+        ),
     ))
     sex = str(patient.get("sex") or "").lower()
     if sex:
         checks.append(("sex", bool(re.search(rf"\b{re.escape(sex)}\b|\b(?:boy|girl|male|female|yom|yof)\b", normalized))))
     if pediatric:
-        checks.append(("pediatric weight", bool(re.search(r"\b\d+(?:\.\d+)?\s*kg\b|\b\d+\s*(?:lb|lbs|pounds?)\b|\bweight\b", normalized))))
+        checks.append(("pediatric weight", bool(re.search(
+            r"\b\d+(?:\.\d+)?\s*kg\b|\b\d+\s*(?:lb|lbs|pounds?)\b|\b\d+\s*#|\bweight\b|"
+            r"\b(?:broselow|broslow|length[- ]?based).{0,30}\b(?:gray|pink|red|purple|yellow|white|blue|orange|green)\b|"
+            r"\b(?:gray|pink|red|purple|yellow|white|blue|orange|green)\b.{0,30}\b(?:broselow|broslow|length[- ]?based)\b",
+            normalized,
+        ))))
     matched = [label for label, ok in checks if ok]
     missing = [label for label, ok in checks if not ok]
     if pediatric and missing:

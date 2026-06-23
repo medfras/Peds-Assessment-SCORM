@@ -1140,11 +1140,11 @@
       "T": {
         "description": "Transfer/disposition — current patient status, treatment response, and readiness for ALS handoff",
         "required_elements": [
+          "oral glucose administered",
           "patient improving or current status at handoff (primary)",
-          "disposition or transfer to ALS (primary)",
-          "insulin pump on board — ALS awareness item (supplementary)"
+          "BGL post-treatment value or trend (primary)"
         ],
-        "scoring_note": "T covers current patient status, response to treatment (oral glucose), and transfer readiness. Medications, allergies, and PMH belong in M/D — do not require them here. Insulin pump awareness is supplementary context, not required for full T credit.",
+        "scoring_note": "T covers oral glucose administration plus response/current status. Do not require a transport plan or explicit ALS-arrival statement for full T credit in a non-transport/co-dispatched ALS context. Insulin pump awareness is useful supplementary context, not required for full T credit.",
         "corroboration_source": "any"
       }
     },

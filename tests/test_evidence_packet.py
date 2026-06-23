@@ -994,6 +994,17 @@ class TestProfessionalismHardening:
         assert "no direct caregiver acknowledgment or address detected" not in reasons
         assert reasons == ["no reassurance or empathy language detected"]
 
+    def test_agency_abbreviation_counts_as_responder_role_intro(self):
+        score, reasons = _compute_professionalism_hardened_constraints(
+            student_transcript="hi im allison from pfd\nhave you taken his sugar",
+            greeting_detected=True,
+            prof_ceiling=10,
+            is_peds=True,
+        )
+
+        assert score >= 6
+        assert "no agency or responder-role introduction detected" not in reasons
+
     def test_score_note_sanitizer_removes_false_bgl_and_greeting_claims(self):
         session = types.SimpleNamespace(
             findings=[

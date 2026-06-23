@@ -470,15 +470,23 @@ def _render_subscores(subscores: dict[str, Any]) -> str:
     return "\n".join(rows)
 
 
-_REPORT_PROF_GREETING_RE = re.compile(r"\b(hi|hello|hey|good\s+(morning|afternoon|evening)|my\s+name\s+is|i('?m| am)\s+\w+)\b", re.I)
+_REPORT_PROF_GREETING_RE = re.compile(
+    r"\b(hi|hello|hey|good\s+(morning|afternoon|evening)|my\s+name\s+is|"
+    r"(?:i'?m|i\s+am)\s+\w+\s+(?:with|from)|"
+    r"i'?m\s+an?\s+(?:emt|paramedic|medic|firefighter|first\s+responder)|"
+    r"i'?m\s+here\s+to\s+help)\b",
+    re.I,
+)
 _REPORT_PROF_AGENCY_RE = re.compile(
-    r"\b(with|from)\s+(the\s+)?(?:\w+\s+){0,4}(fire|ems|ambulance|rescue|department|medic)\b"
+    r"\b(with|from)\s+(the\s+)?(?:\w+\s+){0,4}(fire|ems|ambulance|rescue|department|medic|pfd|fd)\b"
     r"|\b(i'?m|i am)\s+(?:an?\s+)?(firefighter|emt|emr|paramedic|medic|first.?responder)\b",
     re.I,
 )
 _REPORT_PROF_ACTION_RE = re.compile(
     r"\b("
     r"i('| a)?m\s+(?:just\s+)?going to|we('?re| are)\s+(?:just\s+)?going to|"
+    r"i('| a)?m\s+(?:preparing|applying|using|placing|putting|checking|assessing)|"
+    r"we('?re| are)\s+(?:preparing|applying|using|placing|putting|checking|assessing)|"
     r"let me|i need to|we need to|i('| a)?m\s+checking|we('?re| are)\s+checking|"
     r"i('| a)?m\s+getting|we('?re| are)\s+getting|"
     r"(?:roll|turn|place|put|position|keep)\s+(?:her|him|them|the\s+(?:baby|child|infant|patient))?.{0,30}\b(?:side|recovery\s+position)|"

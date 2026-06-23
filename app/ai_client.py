@@ -4943,7 +4943,7 @@ def _compute_professionalism_hardened_constraints(
 
     _agency_intro = bool(
         re.search(
-            r"\b(with|from)\s+(the\s+)?(?:\w+\s+){0,4}(fire|ems|ambulance|rescue|department|medic)\b",
+            r"\b(with|from)\s+(the\s+)?(?:\w+\s+){0,4}(fire|ems|ambulance|rescue|department|medic|pfd|fd)\b",
             text,
         )
         or re.search(

@@ -1,4 +1,7 @@
-from scripts.fto_feedback_report import _normalize_debrief_markdown_for_report
+from scripts.fto_feedback_report import (
+    _normalize_debrief_markdown_for_report,
+    _professionalism_cues,
+)
 
 
 def test_report_normalizes_inline_feedback_sections_and_missed_bullets():
@@ -21,3 +24,26 @@ def test_report_normalizes_inline_feedback_sections_and_missed_bullets():
     assert "- Mechanism not assessed." in could_better
     assert "- Vitals missing." in could_better
     assert rest.startswith("\nReference: Michigan protocol")
+
+
+def test_professionalism_cues_do_not_treat_action_statement_as_intro():
+    cues = dict(_professionalism_cues({
+        "transcript": [
+            {"role": "user", "content": "I am preparing a nasal cannula for oxygen administration."},
+            {"role": "user", "content": "2 lpm"},
+        ]
+    }))
+
+    assert cues["Greeting or self-introduction"] is False
+    assert cues["Explained actions or care plan"] is True
+
+
+def test_professionalism_cues_detect_agency_abbreviation_intro():
+    cues = dict(_professionalism_cues({
+        "transcript": [
+            {"role": "user", "content": "hi im allison from pfd"},
+        ]
+    }))
+
+    assert cues["Greeting or self-introduction"] is True
+    assert cues["Agency or responder-role introduction"] is True

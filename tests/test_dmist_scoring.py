@@ -35,6 +35,12 @@ def _soft_tissue_scenario() -> dict:
     )
 
 
+def _diabetic_scenario() -> dict:
+    return json.loads(
+        Path("app/scenarios/pediatric/medical/peds_diabetic_emergency_01.json").read_text(encoding="utf-8")
+    )
+
+
 def _head_injury_scenario() -> dict:
     return json.loads(
         Path("app/scenarios/pediatric/trauma/peds_trauma_07_head_injury.json").read_text(encoding="utf-8")
@@ -201,6 +207,33 @@ def test_asthma_dmist_t_full_credit_for_albuterol_and_response_without_als_plan(
     assert "treatment response" in result.components["T"].matched
 
 
+def test_diabetic_dmist_accepts_concise_ems_shorthand_and_glucose_response():
+    result = score_dmist(
+        "this is an 8 YOM, AMS, 60# PMHx DM1\n\n"
+        "we got BGL 38, admin 15g oral glucose and improved to 64, no allergies, dexcom is acting up",
+        scenario=_diabetic_scenario(),
+        applied_intervention_ids={"blood_glucose_check", "oral_glucose"},
+        findings=[
+            _finding("Blood Glucose", "38 mg/dL"),
+            _finding("Blood Glucose", "64.8 mg/dL"),
+            _finding("SpO2", "99 %"),
+            _finding("Heart Rate", "112 bpm"),
+        ],
+        turnover_target="als",
+    )
+
+    assert result.components["D"].matched == ["age", "sex", "pediatric weight"]
+    assert result.components["D"].missing == ["name"]
+    assert result.components["M"].score >= 1
+    assert "Type 1 DM / known diabetic" in result.components["M"].matched
+    assert "CGM alarm or BG reading (~38 mg/dL)" in result.components["M"].matched
+    assert result.components["I"].score >= 1
+    assert result.components["T"].score == 2
+    assert "oral glucose administered" in result.components["T"].matched
+    assert "BGL post-treatment value or trend (primary)" in result.components["T"].matched
+    assert result.score >= 6
+
+
 def test_legacy_intervention_i_config_is_ignored_for_corrected_illness_scoring():
     scenario = {
         "turnover_target": "als",
@@ -282,6 +315,28 @@ def test_soft_tissue_dmist_credits_mechanism_neuro_signs_and_treatment_response(
     assert result.components["S"].score >= 1
     assert result.components["T"].score == 2
     assert result.score >= 8
+
+
+def test_soft_tissue_dmist_accepts_name_age_and_broselow_size_shorthand():
+    result = score_dmist(
+        "leo is 4, bumped his head, no pain, controlled bleeding, green on broslow, "
+        "no history, normal appearing",
+        scenario=_soft_tissue_scenario(),
+        applied_intervention_ids={"direct_pressure"},
+        findings=[
+            _finding("SpO2", "99 %"),
+            _finding("GCS", "15/15"),
+            _finding("Pupils", "PERRL", finding_type="exam"),
+            _finding("Pain", "8/10 sharp head pain", finding_type="exam"),
+        ],
+        turnover_target="als",
+    )
+
+    assert result.components["D"].matched == ["name", "age", "pediatric weight"]
+    assert result.components["D"].missing == ["sex"]
+    assert "fall mechanism" in result.components["M"].missing
+    assert "neuro status" in result.components["T"].missing
+    assert result.score >= 5
 
 
 def test_head_injury_dmist_does_not_credit_smr_without_applied_intervention():
