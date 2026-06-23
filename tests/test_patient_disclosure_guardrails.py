@@ -17,12 +17,14 @@ from app.ai_client import (  # noqa: E402
     _build_resolved_history_directive,
     _build_scene_routing_directive,
     _build_standard_exam_findings_prompt,
+    _build_deterministic_standard_exam_response,
     _compute_professionalism_hardened_constraints,
     _professionalism_floor_for_transcript,
     _infer_scene_addressee,
     _infer_scene_followup_addressee,
     _message_looks_like_explicit_assessment_action,
     _resolve_history_response_entry,
+    _resolve_standard_exam_finding,
 )
 from app.pediatric_length_based_tape import band_for_weight
 from app.scenario_engine import (
@@ -1620,6 +1622,23 @@ def test_soft_tissue_scenario_has_no_spinal_injury_indications():
     assert "no painful distracting injury" in nexus_finding
     assert "nexus negative" in nexus_finding
     assert "not indicated" in nexus_finding
+
+
+def test_soft_tissue_nexus_exam_resolves_as_authored_exam_not_history():
+    scenario = json.loads((PROJECT_ROOT / "app/scenarios/pediatric/trauma/peds_trauma_01_soft_tissue.json").read_text(encoding="utf-8"))
+
+    resolved = _resolve_standard_exam_finding("nexus exam", scenario)
+    assert resolved is not None
+    key, entry = resolved
+    response = _build_deterministic_standard_exam_response(key, entry)
+
+    assert key == "nexus_cspine"
+    assert response is not None
+    assert response.startswith("*Alex:*")
+    assert "[[EXAM: NEXUS Cervical Spine=" in response
+    assert "NEXUS negative" in response
+    assert "No, he never lost consciousness" not in response
+    assert "His name is Leo" not in response
 
 
 def test_frontend_standard_exam_gate_accepts_nexus_exam_requests():

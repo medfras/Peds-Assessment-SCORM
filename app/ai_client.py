@@ -3183,6 +3183,62 @@ def _build_deterministic_history_response(entry_key: str, entry: dict, scenario:
     return "\n".join(lines)
 
 
+def _standard_exam_alias_score(user_message: str, entry: dict) -> int:
+    msg = _normalize_history_map_text(user_message)
+    if not msg:
+        return 0
+    aliases = [
+        entry.get("exam_key"),
+        entry.get("label"),
+        *(entry.get("aliases") or []),
+    ]
+    best = 0
+    for alias in aliases:
+        normalized = _normalize_history_map_text(str(alias or ""))
+        if not normalized:
+            continue
+        if normalized in msg:
+            best = max(best, len(normalized) + 20)
+            continue
+        words = [
+            word
+            for word in normalized.split()
+            if len(word) > 2 and word not in {"the", "and", "for", "with", "assessment", "assess", "checking", "check"}
+        ]
+        if not words:
+            continue
+        hits = sum(1 for word in words if re.search(rf"\b{re.escape(word)}\b", msg))
+        if hits >= min(len(words), 2):
+            best = max(best, hits * 5)
+    return best
+
+
+def _resolve_standard_exam_finding(user_message: str, scenario: dict) -> tuple[str, dict] | None:
+    findings = scenario.get("standard_exam_findings")
+    if not isinstance(findings, dict) or not findings:
+        return None
+
+    candidates: list[tuple[int, str, dict]] = []
+    for key, entry in findings.items():
+        if not isinstance(entry, dict) or not entry.get("finding"):
+            continue
+        score = _standard_exam_alias_score(user_message, entry)
+        if score > 0:
+            candidates.append((score, str(key), entry))
+    if not candidates:
+        return None
+    candidates.sort(key=lambda item: (-item[0], item[1]))
+    return (candidates[0][1], candidates[0][2])
+
+
+def _build_deterministic_standard_exam_response(entry_key: str, entry: dict) -> str | None:
+    finding = str(entry.get("finding") or "").strip()
+    if not finding:
+        return None
+    key = str(entry.get("exam_key") or entry.get("label") or entry_key or "Exam Finding").strip()
+    return f"*Alex:* {finding}\n[[EXAM: {key}={finding}]]"
+
+
 def _preferred_history_speaker(scenario: dict | None = None) -> str:
     if not isinstance(scenario, dict):
         return ""
@@ -4013,6 +4069,19 @@ async def stream_chat_response(
     )
     if not addressee_hint:
         addressee_hint = _infer_scene_addressee(user_message, scenario)
+
+    resolved_exam = _resolve_standard_exam_finding(user_message, scenario)
+    if resolved_exam:
+        entry_key, exam_entry = resolved_exam
+        _log.debug(
+            "ai.standard_exam_resolver.matched",
+            entry_key=entry_key,
+            user_message=user_message[:80],
+        )
+        deterministic_exam_response = _build_deterministic_standard_exam_response(entry_key, exam_entry)
+        if deterministic_exam_response:
+            yield deterministic_exam_response
+            return
 
     # Deterministically resolve the best history_response_map entry before AI sees the message.
     # This prevents the AI from choosing a narrower entry (e.g. diabetes_history) when the student
