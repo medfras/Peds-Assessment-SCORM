@@ -24000,6 +24000,7 @@ function _applyHistoryResponseEntryTags(entry, message = "") {
     }
   }
   _captureDeferredPcrHeaderFromPlainText(responseText);
+  _captureKnownSceneNamesFromExchange(message, responseText);
   return applied;
 }
 

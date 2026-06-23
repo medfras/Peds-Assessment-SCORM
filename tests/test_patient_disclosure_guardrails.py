@@ -1343,6 +1343,7 @@ def test_frontend_history_response_map_prefers_complete_sample_entry():
     entry_lookup = source[source.index("function _historyMapEntryMatchScore"):source.index("function _applyHistoryResponseEntryTags")]
     trigger_lookup = source[source.index("function _historyMapTriggerMatches"):source.index("function _historyMapMessageRequestsCompoundSample")]
     scenario_entry_lookup = source[source.index("function _scenarioHistoryResponseMapEntry"):source.index("function _applyHistoryResponseEntryTags")]
+    apply_tags_fn = source[source.index("function _applyHistoryResponseEntryTags"):source.index("function _speakerRoleBeforeIndex")]
 
     assert "function _historyMapMessageRequestsCompoundSample" in source
     assert '.replace(/\\bwhats\\b/g, "what is")' in normalizer
@@ -1365,6 +1366,7 @@ def test_frontend_history_response_map_prefers_complete_sample_entry():
     assert "Last Oral Intake" in entry_lookup
     assert "Events" in entry_lookup
     assert 'addPcrHistory("Events", eventsValue, "ai_roleplay_tag")' in source
+    assert "_captureKnownSceneNamesFromExchange(message, responseText)" in apply_tags_fn
     assert "candidates.sort" in entry_lookup
 
 
