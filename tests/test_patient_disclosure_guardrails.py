@@ -1325,13 +1325,28 @@ def test_soft_tissue_name_age_dob_combined_question_returns_all_requested_demogr
     assert "Patient Weight" not in json.dumps(entry)
 
 
+def test_soft_tissue_plain_whats_name_question_returns_patient_name_tag():
+    scenario = json.loads((PROJECT_ROOT / "app/scenarios/pediatric/trauma/peds_trauma_01_soft_tissue.json").read_text(encoding="utf-8"))
+
+    resolved = _resolve_history_response_entry("whats his name", scenario, preferred_addressee="family")
+    assert resolved is not None
+    key, entry = resolved
+
+    assert key == "patient_identity"
+    assert entry["answer"] == "His name is Leo."
+    assert entry["tag"] == "[[HISTORY: Patient Name=Leo]]"
+
+
 def test_frontend_history_response_map_prefers_complete_sample_entry():
     source = open("static/js/app.js", encoding="utf-8").read()
+    normalizer = source[source.index("function _normalizeHistoryMapText"):source.index("function _historyMapTriggerMatches")]
     entry_lookup = source[source.index("function _historyMapEntryMatchScore"):source.index("function _applyHistoryResponseEntryTags")]
     trigger_lookup = source[source.index("function _historyMapTriggerMatches"):source.index("function _historyMapMessageRequestsCompoundSample")]
     scenario_entry_lookup = source[source.index("function _scenarioHistoryResponseMapEntry"):source.index("function _applyHistoryResponseEntryTags")]
 
     assert "function _historyMapMessageRequestsCompoundSample" in source
+    assert '.replace(/\\bwhats\\b/g, "what is")' in normalizer
+    assert '.replace(/\\bwhos\\b/g, "who is")' in normalizer
     assert "function _bareHowMechanismHistoryEntry" in source
     assert "function _eventsHistoryValueForMechanismEntry" in source
     assert "function _messageIsBareMechanismHow" in source

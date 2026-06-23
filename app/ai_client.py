@@ -2826,6 +2826,13 @@ _SAMPLE_COMPONENT_PATTERNS = (
 )
 
 
+def _normalize_history_map_text(text: str) -> str:
+    raw = str(text or "").lower()
+    raw = re.sub(r"\bwhat(?:'|’)s\b|\bwhats\b", "what is", raw)
+    raw = re.sub(r"\bwho(?:'|’)s\b|\bwhos\b", "who is", raw)
+    return _WS_RE.sub(" ", _PUNCT_RE.sub(" ", raw)).strip()
+
+
 def _history_entry_tags(entry: dict) -> list[str]:
     return entry.get("tags") or ([entry["tag"]] if entry.get("tag") else [])
 
@@ -2909,7 +2916,7 @@ def _patient_history_tag_values(entry: dict) -> dict[str, str]:
 
 
 def _requested_demographic_fields(user_message: str) -> set[str]:
-    msg = _WS_RE.sub(" ", _PUNCT_RE.sub(" ", user_message.lower())).strip()
+    msg = _normalize_history_map_text(user_message)
     fields: set[str] = set()
     if re.search(r"\b(?:name|who is|identify|id)\b", msg):
         fields.add("name")
@@ -3067,7 +3074,7 @@ def _resolve_history_response_entry(
     if not isinstance(response_map, dict) or not response_map:
         return None
 
-    normalized_msg = _WS_RE.sub(" ", _PUNCT_RE.sub(" ", user_message.lower())).strip()
+    normalized_msg = _normalize_history_map_text(user_message)
     if not normalized_msg:
         return None
 
@@ -3102,7 +3109,7 @@ def _resolve_history_response_entry(
 
         entry_best = -1
         for trigger in triggers:
-            normalized_trigger = _WS_RE.sub(" ", _PUNCT_RE.sub(" ", str(trigger).lower())).strip()
+            normalized_trigger = _normalize_history_map_text(str(trigger))
             if normalized_trigger and normalized_trigger in normalized_msg:
                 entry_best = max(entry_best, len(normalized_trigger))
 
