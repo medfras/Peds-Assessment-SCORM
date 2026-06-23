@@ -610,7 +610,7 @@
         "midline tenderness",
         "neck assessment"
       ],
-      "finding": "no midline cervical spine tenderness, deformity, or step-off; neck pain not reported; patient remains alert with GCS 15, so spinal motion restriction is not automatically indicated but C-spine should be considered and reassessed if symptoms change",
+      "finding": "no midline cervical spine tenderness, deformity, or step-off; neck pain not reported; patient remains alert and age-appropriate, so spinal motion restriction is not automatically indicated but C-spine should be considered and reassessed if symptoms change",
       "notes": "Use for focused spine assessment after the fall/head impact. Do not invent high-risk spinal findings for this low-energy mechanism."
     },
     "full_spinal_assessment": {
@@ -635,7 +635,7 @@
         "full spine assessment",
         "full spinal assessment"
       ],
-      "finding": "Full spinal assessment completed: cervical, thoracic, lumbar, and sacral spine without midline tenderness, deformity, or step-off; no neck or back pain reported; motor and sensory function intact in all extremities. NEXUS cervical-spine criteria are negative: no posterior midline cervical tenderness, no focal neurologic deficit, normal alertness/GCS 15, no intoxication, and no painful distracting injury. Cervical collar and spinal motion restriction are not indicated for this presentation.",
+      "finding": "Full spinal assessment completed: cervical, thoracic, lumbar, and sacral spine without midline tenderness, deformity, or step-off; no neck or back pain reported; motor and sensory function intact in all extremities. NEXUS cervical-spine criteria are negative: no posterior midline cervical tenderness, no focal neurologic deficit, normal alertness, no intoxication, and no painful distracting injury. Cervical collar and spinal motion restriction are not indicated for this presentation.",
       "notes": "Use when the learner asks for a spinal exam, spinal assessment, spine clearance, or NEXUS. The isolated scalp laceration is not authored as a painful distracting injury in this scenario."
     }
   },

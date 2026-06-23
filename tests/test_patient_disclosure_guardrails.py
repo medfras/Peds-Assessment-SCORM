@@ -1617,12 +1617,14 @@ def test_soft_tissue_scenario_has_no_spinal_injury_indications():
     assert "no midline cervical spine tenderness" in cspine
     assert "deformity" in cspine
     assert "step-off" in cspine
+    assert "gcs 15" not in cspine
     assert "not automatically indicated" in cspine
     assert "spinal assessment" not in scenario["standard_exam_findings"]["c_spine_assessment"]["aliases"]
     assert "nexus exam" in spinal["aliases"]
     assert "spinal assessment" in spinal["aliases"]
     assert "cervical, thoracic, lumbar, and sacral spine" in spinal_finding
     assert "motor and sensory function intact" in spinal_finding
+    assert "gcs 15" not in spinal_finding
     assert "no painful distracting injury" in spinal_finding
     assert "not indicated" in spinal_finding
 
@@ -1641,6 +1643,7 @@ def test_soft_tissue_nexus_exam_resolves_as_authored_exam_not_history():
     assert "[[EXAM: Full Spinal Assessment / NEXUS=" in response
     assert "cervical, thoracic, lumbar, and sacral spine" in response
     assert "NEXUS cervical-spine criteria are negative" in response
+    assert "GCS 15" not in response
     assert "No, he never lost consciousness" not in response
     assert "His name is Leo" not in response
 
@@ -1658,6 +1661,7 @@ def test_soft_tissue_spinal_exam_phrases_resolve_to_full_spinal_finding():
         assert response is not None
         assert "[[EXAM: Full Spinal Assessment / NEXUS=" in response
         assert "cervical, thoracic, lumbar, and sacral spine" in response
+        assert "GCS 15" not in response
         assert "normal alignment, neurologically intact" not in response
 
 
@@ -1672,6 +1676,7 @@ def test_soft_tissue_cervical_specific_phrases_stay_cspine_only():
     assert key == "c_spine_assessment"
     assert response is not None
     assert "[[EXAM: C-Spine=" in response
+    assert "GCS 15" not in response
     assert "cervical, thoracic, lumbar, and sacral spine" not in response
 
 
