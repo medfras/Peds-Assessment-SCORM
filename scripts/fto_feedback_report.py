@@ -701,6 +701,43 @@ def _render_messages(title: str, messages: list[dict[str, Any]]) -> str:
     return f"<section><h2>{html.escape(title)}</h2>{''.join(rows)}</section>"
 
 
+def _activity_label(row: dict[str, Any]) -> str:
+    kind = str(row.get("kind") or "")
+    if kind == "message":
+        role = str(row.get("role") or "")
+        mode = row.get("mode")
+        return f"{role}{f' / {mode}' if mode else ''}"
+    if kind == "finding":
+        finding_type = str(row.get("finding_type") or "finding")
+        key = str(row.get("key") or "")
+        source = str(row.get("source") or "")
+        return " / ".join(part for part in [finding_type, key, source] if part)
+    if kind == "intervention":
+        return "treatment"
+    if kind == "event":
+        event_type = str(row.get("event_type") or "event")
+        event_key = str(row.get("event_key") or "")
+        source = str(row.get("source") or "")
+        return " / ".join(part for part in [event_type, event_key, source] if part)
+    return kind or "activity"
+
+
+def _render_activity_log(activity: list[dict[str, Any]]) -> str:
+    if not activity:
+        return '<section><h2>Scenario Activity Log</h2><p class="muted">No activity rows stored.</p></section>'
+    rows = []
+    for item in activity:
+        kind = str(item.get("kind") or "activity")
+        meta = f'{_activity_label(item)} · {_fmt_dt(item.get("timestamp"))}'
+        rows.append(
+            f'<div class="chat-row activity-{html.escape(kind)}">'
+            f'<div class="chat-meta">{html.escape(meta)}</div>'
+            f'<div>{html.escape(str(item.get("content") or ""))}</div>'
+            "</div>"
+        )
+    return f"<section><h2>Scenario Activity Log</h2>{''.join(rows)}</section>"
+
+
 def _render_pcr_items(items: list[dict[str, Any]], *, treatment: bool = False) -> str:
     if not items:
         return '<p class="muted">No entries stored.</p>'
@@ -852,6 +889,7 @@ def _export_payload(row: dict[str, Any], score_text: str, status_label: str) -> 
         },
         "timeline": row.get("timeline") or [],
         "rubric_detail": row.get("rubric_detail") or [],
+        "scenario_activity": row.get("scenario_activity") or [],
         "scenario_transcript": row.get("transcript") or [],
         "lexi_chats": row.get("lexi_messages") or [],
     }
@@ -900,6 +938,7 @@ def _render_session(row: dict[str, Any]) -> str:
       <section><h2>Full Debrief</h2><div class="debrief-prose">{_render_markdown(feedback)}</div></section>
       <section><h2>What Happened — Intervention Timeline</h2>{_render_timeline(row["timeline"])}</section>
       <section><h2>Rubric Detail — Done / Not Done</h2>{_render_rubric(row["rubric_detail"])}</section>
+      {_render_activity_log(row.get("scenario_activity") or [])}
       {_render_messages("Scenario Transcript", row["transcript"])}
       {_render_messages("Lexi / Debrief Chats", row["lexi_messages"])}
       <script type="application/json" id="export-{html.escape(record_id)}">{export_json}</script>
@@ -1181,6 +1220,20 @@ def _html_doc(rows: list[dict[str, Any]]) -> str:
     (data.scenario_transcript || []).forEach(msg => {{
       addCsvRow(rows, "scenario_transcript", "", "", "", "", msg.role || "", "", msg.timestamp || "", msg.content || "");
     }});
+    (data.scenario_activity || []).forEach(item => {{
+      addCsvRow(
+        rows,
+        "scenario_activity",
+        item.kind || "",
+        item.status || "",
+        "",
+        "",
+        item.role || item.finding_type || item.event_type || "",
+        item.mode || item.source || "",
+        item.timestamp || "",
+        item.content || ""
+      );
+    }});
     (data.lexi_chats || []).forEach(msg => {{
       addCsvRow(rows, "lexi_chats", "", "", "", "", msg.role || "", msg.mode || "", msg.timestamp || "", msg.content || "");
     }});
@@ -1432,6 +1485,14 @@ async def _fetch_rows(args: argparse.Namespace) -> list[dict[str, Any]]:
                 ORDER BY applied_at, id
             """).bindparams(bindparam("session_ids", expanding=True))
             intervention_rows = [dict(row) for row in (await db.execute(intervention_stmt, {"session_ids": session_ids})).mappings().all()]
+
+            event_stmt = text("""
+                SELECT session_id, event_type, event_key, event_data, source, occurred_at
+                FROM session_events
+                WHERE session_id IN :session_ids
+                ORDER BY occurred_at, id
+            """).bindparams(bindparam("session_ids", expanding=True))
+            event_rows = [dict(row) for row in (await db.execute(event_stmt, {"session_ids": session_ids})).mappings().all()]
     finally:
         await engine.dispose()
 
@@ -1447,6 +1508,9 @@ async def _fetch_rows(args: argparse.Namespace) -> list[dict[str, Any]]:
     by_session_interventions: dict[str, list[dict[str, Any]]] = {sid: [] for sid in session_ids}
     for row in intervention_rows:
         by_session_interventions.setdefault(row["session_id"], []).append(row)
+    by_session_events: dict[str, list[dict[str, Any]]] = {sid: [] for sid in session_ids}
+    for row in event_rows:
+        by_session_events.setdefault(row["session_id"], []).append(row)
 
     for row in session_rows:
         nd = _loads(row.get("narrative_data"), {})
@@ -1472,6 +1536,55 @@ async def _fetch_rows(args: argparse.Namespace) -> list[dict[str, Any]]:
             }
             for intervention in by_session_interventions.get(row["session_id"], [])
         ]
+        activity: list[dict[str, Any]] = []
+        for msg in by_session_messages.get(row["session_id"], []):
+            activity.append({
+                "kind": "message",
+                "role": msg.get("role") or "",
+                "content": msg.get("content") or "",
+                "timestamp": msg.get("timestamp"),
+            })
+        for finding in by_session_findings.get(row["session_id"], []):
+            key = str(finding.get("key") or "")
+            value = str(finding.get("value") or "")
+            finding_type = str(finding.get("finding_type") or "")
+            activity.append({
+                "kind": "finding",
+                "finding_type": finding_type,
+                "key": key,
+                "value": value,
+                "source": finding.get("source") or "",
+                "timestamp": finding.get("captured_at"),
+                "content": f"{finding_type.title()}: {key} = {value}",
+            })
+        for intervention in by_session_interventions.get(row["session_id"], []):
+            label = _intervention_label(scenario, intervention.get("name") or "")
+            activity.append({
+                "kind": "intervention",
+                "intervention_id": intervention.get("name") or "",
+                "source": "interventions",
+                "timestamp": intervention.get("applied_at"),
+                "content": f"Treatment performed: {label}",
+            })
+        for event in by_session_events.get(row["session_id"], []):
+            event_data = _loads(event.get("event_data"), {})
+            detail = ""
+            if isinstance(event_data, dict) and event_data:
+                useful = {
+                    key: value for key, value in event_data.items()
+                    if key in {"label", "value", "notes", "result", "score", "outcome", "intervention_id"}
+                }
+                if useful:
+                    detail = " — " + ", ".join(f"{key}: {value}" for key, value in useful.items())
+            activity.append({
+                "kind": "event",
+                "event_type": event.get("event_type") or "",
+                "event_key": event.get("event_key") or "",
+                "source": event.get("source") or "",
+                "timestamp": event.get("occurred_at"),
+                "content": f"Event: {event.get('event_type') or ''} / {event.get('event_key') or ''}{detail}",
+            })
+        activity.sort(key=lambda item: (_iso_dt(item.get("timestamp")) or "", str(item.get("kind") or "")))
         row["pcr_notes"] = {
             "patientId": _scenario_patient_line(scenario),
             "complaint": patient.get("chief_complaint") or scenario.get("chief_complaint") or "",
@@ -1488,6 +1601,7 @@ async def _fetch_rows(args: argparse.Namespace) -> list[dict[str, Any]]:
         row["timeline"] = nd.get("timeline") or []
         row["rubric_detail"] = nd.get("rubric_detail") or []
         row["critical_failure"] = nd.get("critical_failure") or score_snapshot.get("critical_failure") or None
+        row["scenario_activity"] = activity
         row["transcript"] = by_session_messages.get(row["session_id"], [])
         row["lexi_messages"] = by_session_lexi.get(row["session_id"], [])
         row["scenario_title"] = str(scenario.get("title") or _scenario_title(row["scenario_id"]))
