@@ -790,7 +790,7 @@ def test_soft_tissue_head_injury_uses_focused_secondary_survey_not_full_body_sur
     assert "ems.trauma.head_scalp_ears" in ids
     assert "ems.trauma.head_eyes" in ids
     assert "ems.trauma.neck_c_spine" in ids
-    assert "ems.trauma.spine_protection" in ids
+    assert "ems.trauma.spine_protection" not in ids
     assert "peds_trauma_01_soft_tissue.neuro_baseline" in ids
     assert "peds_trauma_01_soft_tissue.neuro_history" in ids
     assert "peds_trauma_01_soft_tissue.direct_pressure" in ids

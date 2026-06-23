@@ -33,7 +33,7 @@
     ]
   },
   "agency_context": "",
-  "spinal_injury_possible": true,
+  "spinal_injury_possible": false,
   "non_transport_agency": false,
   "multiple_patients_possible": false,
   "diagnostics_indicated": false,

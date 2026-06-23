@@ -1601,6 +1601,17 @@ def test_manual_cspine_chat_command_uses_manual_stabilization_not_collar():
     assert cspine_exam_pos < manual_pos
 
 
+def test_soft_tissue_scenario_has_no_spinal_injury_indications():
+    scenario = json.loads((PROJECT_ROOT / "app/scenarios/pediatric/trauma/peds_trauma_01_soft_tissue.json").read_text(encoding="utf-8"))
+    cspine = scenario["standard_exam_findings"]["c_spine_assessment"]["finding"].lower()
+
+    assert scenario["spinal_injury_possible"] is False
+    assert "no midline cervical spine tenderness" in cspine
+    assert "deformity" in cspine
+    assert "step-off" in cspine
+    assert "not automatically indicated" in cspine
+
+
 def test_head_injury_smr_patterns_do_not_match_cspine_exam_only():
     scenario = json.loads((PROJECT_ROOT / "app/scenarios/pediatric/trauma/peds_trauma_07_head_injury.json").read_text(encoding="utf-8"))
     patterns = scenario["vitals"]["interventions"]["smr"]["detection_patterns"]
