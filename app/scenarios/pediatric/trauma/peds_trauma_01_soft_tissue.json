@@ -605,10 +605,6 @@
         "c spine",
         "c-spine",
         "cervical spine",
-        "spinal exam",
-        "spinal assessment",
-        "spine exam",
-        "spine assessment",
         "neck tenderness",
         "palpate cervical spine",
         "midline tenderness",
@@ -617,9 +613,9 @@
       "finding": "no midline cervical spine tenderness, deformity, or step-off; neck pain not reported; patient remains alert with GCS 15, so spinal motion restriction is not automatically indicated but C-spine should be considered and reassessed if symptoms change",
       "notes": "Use for focused spine assessment after the fall/head impact. Do not invent high-risk spinal findings for this low-energy mechanism."
     },
-    "nexus_cspine": {
-      "label": "NEXUS Cervical Spine",
-      "exam_key": "NEXUS Cervical Spine",
+    "full_spinal_assessment": {
+      "label": "Full Spinal Assessment / NEXUS",
+      "exam_key": "Full Spinal Assessment / NEXUS",
       "aliases": [
         "nexus",
         "nexus exam",
@@ -629,10 +625,18 @@
         "nexus c-spine",
         "clear c spine",
         "clear c-spine",
-        "spinal clearance"
+        "spinal clearance",
+        "spinal exam",
+        "spinal assessment",
+        "spine exam",
+        "spine assessment",
+        "full spine exam",
+        "full spinal exam",
+        "full spine assessment",
+        "full spinal assessment"
       ],
-      "finding": "NEXUS criteria assessed: no posterior midline cervical spine tenderness, no focal neurologic deficit, normal alertness/GCS 15, no intoxication, and no painful distracting injury. NEXUS negative; cervical collar and spinal motion restriction are not indicated for this presentation.",
-      "notes": "Use when the learner asks to perform NEXUS or clear the cervical spine. The isolated scalp laceration is not authored as a painful distracting injury in this scenario."
+      "finding": "Full spinal assessment completed: cervical, thoracic, lumbar, and sacral spine without midline tenderness, deformity, or step-off; no neck or back pain reported; motor and sensory function intact in all extremities. NEXUS cervical-spine criteria are negative: no posterior midline cervical tenderness, no focal neurologic deficit, normal alertness/GCS 15, no intoxication, and no painful distracting injury. Cervical collar and spinal motion restriction are not indicated for this presentation.",
+      "notes": "Use when the learner asks for a spinal exam, spinal assessment, spine clearance, or NEXUS. The isolated scalp laceration is not authored as a painful distracting injury in this scenario."
     }
   },
   "personas": {

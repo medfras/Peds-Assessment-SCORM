@@ -1610,18 +1610,21 @@ def test_manual_cspine_chat_command_uses_manual_stabilization_not_collar():
 def test_soft_tissue_scenario_has_no_spinal_injury_indications():
     scenario = json.loads((PROJECT_ROOT / "app/scenarios/pediatric/trauma/peds_trauma_01_soft_tissue.json").read_text(encoding="utf-8"))
     cspine = scenario["standard_exam_findings"]["c_spine_assessment"]["finding"].lower()
-    nexus = scenario["standard_exam_findings"]["nexus_cspine"]
-    nexus_finding = nexus["finding"].lower()
+    spinal = scenario["standard_exam_findings"]["full_spinal_assessment"]
+    spinal_finding = spinal["finding"].lower()
 
     assert scenario["spinal_injury_possible"] is False
     assert "no midline cervical spine tenderness" in cspine
     assert "deformity" in cspine
     assert "step-off" in cspine
     assert "not automatically indicated" in cspine
-    assert "nexus exam" in nexus["aliases"]
-    assert "no painful distracting injury" in nexus_finding
-    assert "nexus negative" in nexus_finding
-    assert "not indicated" in nexus_finding
+    assert "spinal assessment" not in scenario["standard_exam_findings"]["c_spine_assessment"]["aliases"]
+    assert "nexus exam" in spinal["aliases"]
+    assert "spinal assessment" in spinal["aliases"]
+    assert "cervical, thoracic, lumbar, and sacral spine" in spinal_finding
+    assert "motor and sensory function intact" in spinal_finding
+    assert "no painful distracting injury" in spinal_finding
+    assert "not indicated" in spinal_finding
 
 
 def test_soft_tissue_nexus_exam_resolves_as_authored_exam_not_history():
@@ -1632,16 +1635,17 @@ def test_soft_tissue_nexus_exam_resolves_as_authored_exam_not_history():
     key, entry = resolved
     response = _build_deterministic_standard_exam_response(key, entry)
 
-    assert key == "nexus_cspine"
+    assert key == "full_spinal_assessment"
     assert response is not None
     assert response.startswith("*Alex:*")
-    assert "[[EXAM: NEXUS Cervical Spine=" in response
-    assert "NEXUS negative" in response
+    assert "[[EXAM: Full Spinal Assessment / NEXUS=" in response
+    assert "cervical, thoracic, lumbar, and sacral spine" in response
+    assert "NEXUS cervical-spine criteria are negative" in response
     assert "No, he never lost consciousness" not in response
     assert "His name is Leo" not in response
 
 
-def test_soft_tissue_spinal_exam_phrases_resolve_to_authored_cspine_finding():
+def test_soft_tissue_spinal_exam_phrases_resolve_to_full_spinal_finding():
     scenario = json.loads((PROJECT_ROOT / "app/scenarios/pediatric/trauma/peds_trauma_01_soft_tissue.json").read_text(encoding="utf-8"))
 
     for phrase in ["conduct a spinal exam", "conduct a spinal assessment"]:
@@ -1650,11 +1654,25 @@ def test_soft_tissue_spinal_exam_phrases_resolve_to_authored_cspine_finding():
         key, entry = resolved
         response = _build_deterministic_standard_exam_response(key, entry)
 
-        assert key == "c_spine_assessment"
+        assert key == "full_spinal_assessment"
         assert response is not None
-        assert "[[EXAM: C-Spine=" in response
-        assert "no midline cervical spine tenderness" in response
+        assert "[[EXAM: Full Spinal Assessment / NEXUS=" in response
+        assert "cervical, thoracic, lumbar, and sacral spine" in response
         assert "normal alignment, neurologically intact" not in response
+
+
+def test_soft_tissue_cervical_specific_phrases_stay_cspine_only():
+    scenario = json.loads((PROJECT_ROOT / "app/scenarios/pediatric/trauma/peds_trauma_01_soft_tissue.json").read_text(encoding="utf-8"))
+
+    resolved = _resolve_standard_exam_finding("palpate cervical spine", scenario)
+    assert resolved is not None
+    key, entry = resolved
+    response = _build_deterministic_standard_exam_response(key, entry)
+
+    assert key == "c_spine_assessment"
+    assert response is not None
+    assert "[[EXAM: C-Spine=" in response
+    assert "cervical, thoracic, lumbar, and sacral spine" not in response
 
 
 def test_frontend_standard_exam_gate_accepts_nexus_exam_requests():
