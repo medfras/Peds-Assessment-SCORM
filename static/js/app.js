@@ -26167,6 +26167,17 @@ function _cleanSpeakerText(text = "") {
 }
 
 function _parseLeadingSpeakerLine(line = "") {
+  const trimmed = String(line || "").trim();
+  const parentheticalSpeaker = trimmed.match(/^\(([A-Za-z][A-Za-z.'\-\s]{1,40})\)\s*:?\s*(.*)$/);
+  if (parentheticalSpeaker) {
+    const speaker = _normalizeSpeakerName(parentheticalSpeaker[1]);
+    if (_speakerRoleHint(speaker)) {
+      return {
+        speaker,
+        content: _cleanSpeakerText(parentheticalSpeaker[2]),
+      };
+    }
+  }
   const match = String(line || "").trim().match(
     /^(?:\*\*|\*|__|_)?\s*([A-Za-z][A-Za-z.'-]{0,20}(?:\s+[A-Za-z][A-Za-z.'-]{0,20}){0,3}(?:\s*\([^)]{1,30}\))?)\s*(?:\*\*|\*|__|_)?\s*:\s*(?:\*\*|\*|__|_)?\s*(.*)$/
   );

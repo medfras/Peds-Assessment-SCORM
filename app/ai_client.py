@@ -3178,7 +3178,7 @@ def _build_deterministic_history_response(entry_key: str, entry: dict, scenario:
 
     speaker = _visible_history_speaker_for_entry(entry, scenario)
     tags = [str(tag).strip() for tag in _history_entry_tags(entry) if str(tag).strip()]
-    lines = [f"({speaker})", answer]
+    lines = [f"*{speaker}:* {answer}"]
     lines.extend(tags)
     return "\n".join(lines)
 

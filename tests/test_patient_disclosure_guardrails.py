@@ -1374,6 +1374,8 @@ def test_frontend_dialogue_parser_does_not_treat_sample_labels_as_speakers():
     source = open("static/js/app.js", encoding="utf-8").read()
     parser = source[source.index("function _parseLeadingSpeakerLine"):source.index("function _parseAiDialogueChunks")]
 
+    assert "parentheticalSpeaker" in parser
+    assert "_speakerRoleHint(speaker)" in parser
     assert "function _looksLikeHistorySectionLabel" in parser
     assert "if (_looksLikeHistorySectionLabel(fallbackMatch[1])) return null;" in parser
     assert "signs(?: and symptoms)?" in parser
@@ -2143,7 +2145,7 @@ def test_soft_tissue_bare_how_deterministic_response_cannot_drift_to_weight():
     assert mechanism is not None
     text = _build_deterministic_history_response(mechanism[0], mechanism[1], scenario)
     assert text is not None
-    assert "(father)" in text
+    assert "*father:*" in text
     assert "coffee table" in text
     assert "[[HISTORY: Events=" in text
     assert "weigh" not in text.lower()
