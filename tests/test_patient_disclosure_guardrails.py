@@ -1641,11 +1641,28 @@ def test_soft_tissue_nexus_exam_resolves_as_authored_exam_not_history():
     assert "His name is Leo" not in response
 
 
+def test_soft_tissue_spinal_exam_phrases_resolve_to_authored_cspine_finding():
+    scenario = json.loads((PROJECT_ROOT / "app/scenarios/pediatric/trauma/peds_trauma_01_soft_tissue.json").read_text(encoding="utf-8"))
+
+    for phrase in ["conduct a spinal exam", "conduct a spinal assessment"]:
+        resolved = _resolve_standard_exam_finding(phrase, scenario)
+        assert resolved is not None
+        key, entry = resolved
+        response = _build_deterministic_standard_exam_response(key, entry)
+
+        assert key == "c_spine_assessment"
+        assert response is not None
+        assert "[[EXAM: C-Spine=" in response
+        assert "no midline cervical spine tenderness" in response
+        assert "normal alignment, neurologically intact" not in response
+
+
 def test_frontend_standard_exam_gate_accepts_nexus_exam_requests():
     source = open("static/js/app.js", encoding="utf-8").read()
     gate_fn = source[source.index("function _messageLooksLikeStandardExam"):source.index("function _standardExamAliasScore")]
 
     assert "perform" in gate_fn
+    assert "conduct" in gate_fn
     assert "nexus" in gate_fn
 
 
