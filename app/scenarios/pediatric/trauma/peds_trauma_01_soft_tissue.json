@@ -217,6 +217,64 @@
         "treatment suggestions"
       ]
     },
+    "patient_name_age_dob": {
+      "label": "Patient name, age, and date of birth",
+      "speaker": "David",
+      "priority": true,
+      "triggers": [
+        "name age dob",
+        "name age and dob",
+        "name age date of birth",
+        "name age and date of birth",
+        "name age birthday",
+        "what is his name age dob",
+        "what's his name age dob"
+      ],
+      "answer": "His name is Leo. He's 4 years old. His birthday is April 9.",
+      "tags": [
+        "[[HISTORY: Patient Name=Leo]]",
+        "[[HISTORY: Patient Age=4-year-old male]]",
+        "[[HISTORY: Patient Date of Birth=April 9]]"
+      ],
+      "notes": "Priority combined demographics entry. Use when the learner asks for name, age, and DOB together. Do not provide weight unless asked.",
+      "do_not_include": [
+        "weight unless asked",
+        "mechanism details",
+        "loss of consciousness status",
+        "medical history",
+        "medications",
+        "treatment suggestions"
+      ]
+    },
+    "patient_age_dob": {
+      "label": "Patient age and date of birth",
+      "speaker": "David",
+      "priority": true,
+      "triggers": [
+        "age and dob",
+        "age dob",
+        "age and date of birth",
+        "age date of birth",
+        "age and birthday",
+        "old and dob",
+        "old and date of birth"
+      ],
+      "answer": "He's 4 years old. His birthday is April 9.",
+      "tags": [
+        "[[HISTORY: Patient Age=4-year-old male]]",
+        "[[HISTORY: Patient Date of Birth=April 9]]"
+      ],
+      "notes": "Priority combined demographics entry. Use when the learner asks for age and DOB together. Do not provide name or weight unless asked.",
+      "do_not_include": [
+        "name unless asked",
+        "weight unless asked",
+        "mechanism details",
+        "loss of consciousness status",
+        "medical history",
+        "medications",
+        "treatment suggestions"
+      ]
+    },
     "patient_age": {
       "label": "Patient age",
       "speaker": "David",

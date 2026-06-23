@@ -1293,6 +1293,38 @@ def test_head_injury_full_demographics_requires_explicit_bundled_request():
     assert "[[HISTORY: Patient Date of Birth=May 13]]" in entry["tags"]
 
 
+def test_soft_tissue_age_dob_combined_question_returns_both():
+    scenario = json.loads((PROJECT_ROOT / "app/scenarios/pediatric/trauma/peds_trauma_01_soft_tissue.json").read_text(encoding="utf-8"))
+
+    resolved = _resolve_history_response_entry("age and dob", scenario, preferred_addressee="family")
+    assert resolved is not None
+    key, entry = resolved
+
+    assert key == "patient_age_dob"
+    assert "4 years old" in entry["answer"]
+    assert "April 9" in entry["answer"]
+    assert "[[HISTORY: Patient Age=4-year-old male]]" in entry["tags"]
+    assert "[[HISTORY: Patient Date of Birth=April 9]]" in entry["tags"]
+    assert "Patient Name" not in json.dumps(entry)
+
+
+def test_soft_tissue_name_age_dob_combined_question_returns_all_requested_demographics():
+    scenario = json.loads((PROJECT_ROOT / "app/scenarios/pediatric/trauma/peds_trauma_01_soft_tissue.json").read_text(encoding="utf-8"))
+
+    resolved = _resolve_history_response_entry("whats his name age dob", scenario, preferred_addressee="family")
+    assert resolved is not None
+    key, entry = resolved
+
+    assert key == "patient_name_age_dob"
+    assert "Leo" in entry["answer"]
+    assert "4 years old" in entry["answer"]
+    assert "April 9" in entry["answer"]
+    assert "[[HISTORY: Patient Name=Leo]]" in entry["tags"]
+    assert "[[HISTORY: Patient Age=4-year-old male]]" in entry["tags"]
+    assert "[[HISTORY: Patient Date of Birth=April 9]]" in entry["tags"]
+    assert "Patient Weight" not in json.dumps(entry)
+
+
 def test_frontend_history_response_map_prefers_complete_sample_entry():
     source = open("static/js/app.js", encoding="utf-8").read()
     entry_lookup = source[source.index("function _historyMapEntryMatchScore"):source.index("function _applyHistoryResponseEntryTags")]
