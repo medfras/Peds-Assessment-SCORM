@@ -1604,12 +1604,26 @@ def test_manual_cspine_chat_command_uses_manual_stabilization_not_collar():
 def test_soft_tissue_scenario_has_no_spinal_injury_indications():
     scenario = json.loads((PROJECT_ROOT / "app/scenarios/pediatric/trauma/peds_trauma_01_soft_tissue.json").read_text(encoding="utf-8"))
     cspine = scenario["standard_exam_findings"]["c_spine_assessment"]["finding"].lower()
+    nexus = scenario["standard_exam_findings"]["nexus_cspine"]
+    nexus_finding = nexus["finding"].lower()
 
     assert scenario["spinal_injury_possible"] is False
     assert "no midline cervical spine tenderness" in cspine
     assert "deformity" in cspine
     assert "step-off" in cspine
     assert "not automatically indicated" in cspine
+    assert "nexus exam" in nexus["aliases"]
+    assert "no painful distracting injury" in nexus_finding
+    assert "nexus negative" in nexus_finding
+    assert "not indicated" in nexus_finding
+
+
+def test_frontend_standard_exam_gate_accepts_nexus_exam_requests():
+    source = open("static/js/app.js", encoding="utf-8").read()
+    gate_fn = source[source.index("function _messageLooksLikeStandardExam"):source.index("function _standardExamAliasScore")]
+
+    assert "perform" in gate_fn
+    assert "nexus" in gate_fn
 
 
 def test_head_injury_smr_patterns_do_not_match_cspine_exam_only():

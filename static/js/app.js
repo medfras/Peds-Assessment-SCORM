@@ -24123,8 +24123,8 @@ function _standardExamEntrySide(entry = {}) {
 
 function _messageLooksLikeStandardExam(message = "") {
   const msg = String(message || "");
-  return /\b(?:assess(?:ing)?|inspect(?:ing)?|palpat(?:e|ing)|check(?:ing)?|evaluate|exam(?:ine|ining)?|reassess(?:ing)?|recheck(?:ing)?)\b/i.test(msg)
-    && /\b(?:dcap|btls|cms|pms|pulse|pupils?|eyes?|perrla|radial|pedal|dorsalis|posterior tibial|cap(?:illary)? refill|sensation|sensory|motor|movement|move|wiggle|grip|hand|forearm|arm|leg|foot|toe|distal|abdomen|pelvis|neck|spine|face|chest|thorax)\b/i.test(msg);
+  return /\b(?:assess(?:ing)?|inspect(?:ing)?|palpat(?:e|ing)|check(?:ing)?|evaluate|perform(?:ing)?|exam(?:ine|ining)?|reassess(?:ing)?|recheck(?:ing)?)\b/i.test(msg)
+    && /\b(?:nexus|dcap|btls|cms|pms|pulse|pupils?|eyes?|perrla|radial|pedal|dorsalis|posterior tibial|cap(?:illary)? refill|sensation|sensory|motor|movement|move|wiggle|grip|hand|forearm|arm|leg|foot|toe|distal|abdomen|pelvis|neck|spine|face|chest|thorax)\b/i.test(msg);
 }
 
 function _standardExamAliasScore(message = "", entry = {}) {

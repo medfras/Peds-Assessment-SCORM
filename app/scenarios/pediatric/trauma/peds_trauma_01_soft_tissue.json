@@ -612,6 +612,23 @@
       ],
       "finding": "no midline cervical spine tenderness, deformity, or step-off; neck pain not reported; patient remains alert with GCS 15, so spinal motion restriction is not automatically indicated but C-spine should be considered and reassessed if symptoms change",
       "notes": "Use for focused spine assessment after the fall/head impact. Do not invent high-risk spinal findings for this low-energy mechanism."
+    },
+    "nexus_cspine": {
+      "label": "NEXUS Cervical Spine",
+      "exam_key": "NEXUS Cervical Spine",
+      "aliases": [
+        "nexus",
+        "nexus exam",
+        "nexus cervical spine",
+        "nexus criteria",
+        "nexus c spine",
+        "nexus c-spine",
+        "clear c spine",
+        "clear c-spine",
+        "spinal clearance"
+      ],
+      "finding": "NEXUS criteria assessed: no posterior midline cervical spine tenderness, no focal neurologic deficit, normal alertness/GCS 15, no intoxication, and no painful distracting injury. NEXUS negative; cervical collar and spinal motion restriction are not indicated for this presentation.",
+      "notes": "Use when the learner asks to perform NEXUS or clear the cervical spine. The isolated scalp laceration is not authored as a painful distracting injury in this scenario."
     }
   },
   "personas": {
