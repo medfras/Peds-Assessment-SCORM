@@ -105,6 +105,7 @@ from app.ai_client import (  # noqa: E402
     _sanitize_credited_item_contradictions,
     _sanitize_credited_item_list,
     _sanitize_missed_item_overcredit,
+    _sanitize_professionalism_intro_contradictions,
     _sanitize_score_notes,
     _is_json_mode_validation_error,
     get_lexi_response,
@@ -1049,6 +1050,17 @@ class TestProfessionalismHardening:
 
         assert detected is True
         assert "Andrew" in description
+
+    def test_debrief_text_sanitizer_removes_false_intro_claim(self):
+        cleaned = _sanitize_professionalism_intro_contradictions(
+            "## Patient Communication\n"
+            "The student greeted the patient ('hi leo, what happened') but did not introduce themselves. "
+            "They should add more reassurance.",
+            greeting_detected=True,
+        )
+
+        assert "did not introduce" not in cleaned.lower()
+        assert "reassurance" in cleaned.lower()
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

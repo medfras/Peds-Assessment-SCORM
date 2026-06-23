@@ -810,8 +810,8 @@
         }
       },
       {
-        "id": "neuro_history",
-        "description": "Ask head-injury red-flag history — loss of consciousness and vomiting",
+        "id": "loc_history",
+        "description": "Ask head-injury red-flag history — loss of consciousness",
         "required": true,
         "protocol_indicated": true,
         "evidence": {
@@ -820,13 +820,33 @@
           ],
           "finding_key_patterns": [
             "\\bloc\\b",
-            "loss of consciousness",
-            "vomit"
+            "loss of consciousness"
           ],
           "transcript_patterns": [
             "\\bloc\\b",
             "loss of consciousness",
+            "lost consciousness",
+            "lose consciousness"
+          ],
+          "min_matches": 1
+        }
+      },
+      {
+        "id": "vomiting_history",
+        "description": "Ask head-injury red-flag history — vomiting",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "finding_types": [
+            "history"
+          ],
+          "finding_key_patterns": [
             "vomit"
+          ],
+          "transcript_patterns": [
+            "vomit",
+            "throw up",
+            "thrown up"
           ],
           "min_matches": 1
         }
@@ -846,7 +866,8 @@
       {
         "id": "reassess_vitals",
         "description": "Reassess vitals and neuro status after bleeding controlled",
-        "required": false
+        "required": false,
+        "reassessment_min_seconds": 0
       }
     ],
     "out_of_scope_bls": [
@@ -1312,11 +1333,11 @@
       "common_error": "Controlling the scalp bleed but failing to document a neuro baseline and LOC history."
     },
     {
-      "id": "peds_trauma_01_soft_tissue.neuro_history",
-      "description": "Head-injury red-flag history obtained — loss of consciousness and vomiting screened",
+      "id": "peds_trauma_01_soft_tissue.loc_history",
+      "description": "Head-injury red-flag history obtained — loss of consciousness screened",
       "subtype": "screen",
       "category": "clinical_performance",
-      "point_value": 3,
+      "point_value": 1,
       "required": "required",
       "applicable_levels": [],
       "requires_mca_expansion": null,
@@ -1332,16 +1353,49 @@
       "tier1_match": {
         "source": "finding",
         "finding_type": "history",
-        "finding_key_pattern": "(?i)^(LOC|Loss of Consciousness|Vomiting|Nausea/Vomiting|Events)$",
-        "finding_value_pattern": "(?i)(no\\s+(?:loss of consciousness|LOC)|never\\s+lost|did\\s+not\\s+lose|didn't\\s+lose|cried\\s+immediately|started\\s+crying\\s+right\\s+away|no\\s+vomit|no\\s+vomiting|has\\s+not\\s+(?:vomited|thrown\\s+up)|did\\s+not\\s+(?:vomit|throw\\s+up))"
+        "finding_key_pattern": "(?i)^(LOC|Loss of Consciousness|Events)$",
+        "finding_value_pattern": "(?i)(no\\s+(?:loss of consciousness|LOC)|never\\s+lost|did\\s+not\\s+lose|didn't\\s+lose|cried\\s+immediately|started\\s+crying\\s+right\\s+away)"
       },
       "tier2_patterns": [
-        "(?i)(?=.*\\b(?:LOC|loss of consciousness|lose consciousness|unconscious)\\b)(?=.*\\bvomit\\w*)"
+        "(?i)\\b(?:LOC|loss of consciousness|lost consciousness|lose consciousness|unconscious)\\b"
       ],
-      "done_feedback": "Head-injury red-flag history obtained — LOC and vomiting were screened for TBI risk.",
-      "missed_feedback": "LOC/vomiting history not obtained — pediatric head trauma needs focused red-flag history even when the child appears alert.",
-      "clinical_rationale": "LOC and vomiting history are key pediatric head-injury risk stratification elements.",
-      "common_error": "Documenting the child as alert but not asking the caregiver about LOC or vomiting."
+      "done_feedback": "LOC history obtained — loss of consciousness was screened for TBI risk.",
+      "missed_feedback": "LOC history not obtained — pediatric head trauma needs focused loss-of-consciousness history even when the child appears alert.",
+      "clinical_rationale": "Loss of consciousness is a key pediatric head-injury risk stratification element.",
+      "common_error": "Documenting the child as alert but not asking the caregiver whether there was any loss of consciousness."
+    },
+    {
+      "id": "peds_trauma_01_soft_tissue.vomiting_history",
+      "description": "Head-injury red-flag history obtained — vomiting screened",
+      "subtype": "screen",
+      "category": "clinical_performance",
+      "point_value": 2,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1,
+        2
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "requirement_logic": "any",
+      "tier1_match": {
+        "source": "finding",
+        "finding_type": "history",
+        "finding_key_pattern": "(?i)^(Vomiting|Nausea/Vomiting|Events)$",
+        "finding_value_pattern": "(?i)(no\\s+vomit|no\\s+vomiting|has\\s+not\\s+(?:vomited|thrown\\s+up)|did\\s+not\\s+(?:vomit|throw\\s+up))"
+      },
+      "tier2_patterns": [
+        "(?i)\\b(?:vomit\\w*|throw\\s+up|thrown\\s+up)\\b"
+      ],
+      "done_feedback": "Vomiting history obtained — vomiting was screened for TBI risk.",
+      "missed_feedback": "Vomiting history not obtained — pediatric head trauma needs focused vomiting history even when the child appears alert.",
+      "clinical_rationale": "Vomiting after head injury is a key pediatric TBI red-flag screen.",
+      "common_error": "Asking about LOC but not asking whether the child vomited after the head strike."
     },
     {
       "id": "peds_trauma_01_soft_tissue.mechanism_screen",

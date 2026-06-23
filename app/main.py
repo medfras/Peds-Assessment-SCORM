@@ -12380,7 +12380,11 @@ def _build_session_timeline(
                 # Always show reassessment in the timeline when there were interventions
                 # to reassess — item appears as "missed" if criteria not met.
                 rec_required = True
-                min_reassess_at = first_intervention_at + timedelta(seconds=60)
+                try:
+                    min_reassess_seconds = max(0, int(rec.get("reassessment_min_seconds", 60)))
+                except (TypeError, ValueError):
+                    min_reassess_seconds = 60
+                min_reassess_at = first_intervention_at + timedelta(seconds=min_reassess_seconds)
                 neuro_reassess = rec_id == "reassess_neuro" or ("gcs" in desc_lower and "pupil" in desc_lower)
                 if neuro_reassess:
                     neuro_min_reassess_at = first_intervention_at

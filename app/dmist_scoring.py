@@ -350,11 +350,11 @@ def _score_demographics(text: str, patient: dict[str, Any]) -> DmistComponentSco
     )
     checks.append((
         "age",
-        bool(re.search(rf"\b(?:\d+|{age_words})\s*[- ]?\s*(?:month|year)|\binfant\b|\badult\b", normalized)),
+        bool(re.search(rf"\b(?:\d+|{age_words})\s*[- ]?\s*(?:month|months|year|years|yr|yrs|yo|yom|yof)\b|\binfant\b|\badult\b", normalized)),
     ))
     sex = str(patient.get("sex") or "").lower()
     if sex:
-        checks.append(("sex", bool(re.search(rf"\b{re.escape(sex)}\b|\b(?:boy|girl|male|female)\b", normalized))))
+        checks.append(("sex", bool(re.search(rf"\b{re.escape(sex)}\b|\b(?:boy|girl|male|female|yom|yof)\b", normalized))))
     if pediatric:
         checks.append(("pediatric weight", bool(re.search(r"\b\d+(?:\.\d+)?\s*kg\b|\b\d+\s*(?:lb|lbs|pounds?)\b|\bweight\b", normalized))))
     matched = [label for label, ok in checks if ok]

@@ -1613,7 +1613,9 @@ def _session_has_glucometer_bgl(session) -> bool:
 
 _INTRODUCTION_GAP_RE = re.compile(
     r"\b(?:no|missing|without)\s+"
-    r"(?:greeting|self[\s\-\u2010-\u2015\u2212]*introduction|introduction)\b",
+    r"(?:greeting|self[\s\-\u2010-\u2015\u2212]*introduction|introduction)\b|"
+    r"\b(?:did\s+not|didn't|does\s+not|doesn't|failed\s+to|omitted\s+to)\s+"
+    r"introduce\b",
     re.IGNORECASE,
 )
 _NON_TRANSPORT_PLAN_RE = re.compile(
@@ -1688,6 +1690,29 @@ def _sanitize_score_notes(
             cleaned.pop("professionalism", None)
 
     return cleaned
+
+
+def _sanitize_professionalism_intro_contradictions(
+    debrief_text: str,
+    *,
+    greeting_detected: bool,
+) -> str:
+    """Remove student-facing intro critiques that contradict detected intro evidence."""
+    if not debrief_text or not greeting_detected or not _INTRODUCTION_GAP_RE.search(debrief_text):
+        return debrief_text
+
+    sentences = re.split(r"(?<=[.!?])\s+", debrief_text)
+    kept: list[str] = []
+    removed = False
+    for sentence in sentences:
+        if _INTRODUCTION_GAP_RE.search(sentence):
+            removed = True
+            continue
+        kept.append(sentence)
+    if not removed:
+        return debrief_text
+    _log.warning("ai.debrief.professionalism_intro_contradiction_removed")
+    return " ".join(s for s in kept if s).strip()
 
 
 def _has_missed_specific_reassessment(
@@ -9522,6 +9547,10 @@ No text, commentary, or whitespace outside the JSON object. The JSON must be par
     debrief_text = _sanitize_missed_item_overcredit(
         debrief_text,
         missed_item_ids=_missed_item_ids,
+    )
+    debrief_text = _sanitize_professionalism_intro_contradictions(
+        debrief_text,
+        greeting_detected=_greeting_detected,
     )
     score_notes = _sanitize_score_notes(
         score_notes,

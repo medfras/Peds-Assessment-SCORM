@@ -385,6 +385,22 @@ def test_pediatric_weight_required_but_adult_weight_not_required():
     assert adult_result.components["D"].score == 2
 
 
+def test_demographics_accepts_pediatric_yom_shorthand():
+    result = score_dmist(
+        "D: Leo, 4 yom.\nM: fall.\nI: scalp cut.\nS: GCS 15.\nT: dressing applied.",
+        scenario=_soft_tissue_scenario(),
+        applied_intervention_ids={"pressure_dressing"},
+        findings=[_finding("GCS", "15/15")],
+        turnover_target="als",
+    )
+
+    assert "age" in result.components["D"].matched
+    assert "sex" in result.components["D"].matched
+    assert "age" not in result.components["D"].missing
+    assert "sex" not in result.components["D"].missing
+    assert result.components["D"].missing == ["pediatric weight"]
+
+
 def test_generic_shadow_scoring_handles_scenarios_without_dmist_components():
     adult = {
         "turnover_target": "hospital",

@@ -509,6 +509,26 @@ def test_head_injury_neuro_reassessment_omitted_even_when_repeated():
     assert _find_timeline(timeline, "Reassess GCS and pupils") is None
 
 
+def test_soft_tissue_reassessment_allows_immediate_post_bleeding_control_vitals():
+    scenario = load_scenario("peds_trauma_01_soft_tissue")
+    t0 = datetime.utcnow()
+    session = _session(
+        t0,
+        interventions=[_intervention("pressure_dressing", t0 + timedelta(seconds=210))],
+        findings=[
+            _finding("Heart Rate", "130 bpm", "vital", t0 + timedelta(seconds=228)),
+            _finding("Blood Pressure", "100/65 mmHg", "vital", t0 + timedelta(seconds=228)),
+            _finding("GCS", "15/15", "vital", t0 + timedelta(seconds=229)),
+        ],
+    )
+
+    timeline = _build_session_timeline(session, scenario)
+    item = _find_timeline(timeline, "Reassess vitals and neuro status")
+
+    assert item is not None
+    assert item["status"] == "applied"
+
+
 def test_scored_critical_action_falls_back_to_transcript_evidence_timestamp():
     scenario = {
         "correct_treatment": {
