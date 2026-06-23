@@ -28133,7 +28133,9 @@ async function processDebrief(feedback, score, subscores = null, timeline = null
     detail: {
       scenarioId: state.scenarioId,
       sessionId:  state.sessionId,
-      score,
+      score:      assessmentPct,
+      rawScore:   scoreDetail?.assessmentScore ?? score,
+      scoreMax:   _assessmentMaxFromSubscores(subscores),
       passed:  scenarioPassed,
       isDrill: !!state.drillMode,
     },

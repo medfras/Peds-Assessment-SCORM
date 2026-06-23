@@ -804,7 +804,7 @@ def test_scorm_js_incomplete_summary_resets_score_raw_for_moodle_mastery_overrid
 #
 # Contract:
 #   rt:scenarioComplete — fired in processDebrief() after score is set.
-#     detail: { scenarioId, sessionId, score, passed, isDrill }
+#     detail: { scenarioId, sessionId, score, rawScore, scoreMax, passed, isDrill }
 #   rt:drillComplete — fired in _mgSubmitResult() on successful server submit.
 #     detail: { gameId, score, passed, mistakeTags }
 #
@@ -832,11 +832,14 @@ def test_app_js_scenario_event_has_required_fields():
     src = _APP_JS.read_text()
     idx = src.find('"rt:scenarioComplete"')
     assert idx != -1
-    block = src[idx:idx + 300]
-    for field in ("scenarioId", "sessionId", "score", "passed", "isDrill"):
+    block = src[idx:idx + 420]
+    for field in ("scenarioId", "sessionId", "score", "rawScore", "scoreMax", "passed", "isDrill"):
         assert field in block, f"rt:scenarioComplete detail missing field: {field}"
     pre_block = src[max(0, idx - 350):idx + 300]
     assert "const assessmentPct = _assessmentPctFromScore(" in pre_block
+    assert "score:      assessmentPct" in block
+    assert "rawScore:   scoreDetail?.assessmentScore ?? score" in block
+    assert "scoreMax:   _assessmentMaxFromSubscores(subscores)" in block
     assert "const scenarioPassed = !scoreDetail?.criticalFailure?.triggered" in pre_block
     assert "passed:  scenarioPassed" in block
     assert "passed:  score !== null && score >= 70" not in block
@@ -848,6 +851,7 @@ def test_scorm_scenario_submit_uses_explicit_pass_result_not_raw_score_threshold
     assert "async function _onScormNodeComplete(appId, score, completed = true, mistakeTags = [], passedOverride = null)" in src
     assert 'const passed = typeof passedOverride === "boolean" ? passedOverride : normalizedScore >= 70;' in src
     assert "_onScormNodeComplete(detail.scenarioId, detail.score, true, [], detail.passed);" in src
+    assert "score:      assessmentPct" in src
 
 
 def test_app_js_drill_event_has_required_fields():
