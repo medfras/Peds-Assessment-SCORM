@@ -792,7 +792,10 @@ class TestDebriefSanitizers:
 
         result = _sanitize_missed_item_overcredit(
             markdown,
-            missed_item_ids={"peds_trauma_01_soft_tissue.neuro_assessment"},
+            missed_item_ids={
+                "peds_trauma_01_soft_tissue.neuro_baseline",
+                "peds_trauma_01_soft_tissue.neuro_history",
+            },
         )
 
         assert "performed a focused neuro exam" not in result
@@ -800,13 +803,35 @@ class TestDebriefSanitizers:
         assert "no loss of consciousness" not in result
         assert "Continue monitoring for vomiting" in result
 
+    def test_missed_neck_assessment_removes_manual_stabilization_overclaim(self):
+        markdown = (
+            "## Case Study\n"
+            "Direct pressure was applied. Manual in-line stabilization was maintained "
+            "and a cervical collar was applied before ALS handoff."
+        )
+
+        result = _sanitize_missed_item_overcredit(
+            markdown,
+            missed_item_ids={"ems.trauma.neck_c_spine"},
+        )
+
+        assert "Manual in-line stabilization was maintained" not in result
+        assert "cervical collar was applied" not in result
+        assert "Direct pressure was applied" in result
+
     def test_case_study_guardrails_flag_missed_neuro_package(self):
         defs = [
             _def(
-                "peds_trauma_01_soft_tissue.neuro_assessment",
-                "Neurological assessment performed — GCS/AVPU, pupils, and questions about LOC at time of injury and vomiting asked",
+                "peds_trauma_01_soft_tissue.neuro_baseline",
+                "Neurological baseline performed — GCS/AVPU or mental status plus pupils documented",
                 missed_feedback="Complete neurological assessment not documented.",
-                point_value=7,
+                point_value=4,
+            ),
+            _def(
+                "peds_trauma_01_soft_tissue.neuro_history",
+                "Head-injury red-flag history obtained — loss of consciousness and vomiting screened",
+                missed_feedback="LOC/vomiting history not obtained.",
+                point_value=3,
             ),
             _def(
                 "peds_trauma_01_soft_tissue.reassess_vitals",
@@ -816,7 +841,8 @@ class TestDebriefSanitizers:
             ),
         ]
         states = [
-            _state("peds_trauma_01_soft_tissue.neuro_assessment", "not_satisfied", earned=0),
+            _state("peds_trauma_01_soft_tissue.neuro_baseline", "not_satisfied", earned=0),
+            _state("peds_trauma_01_soft_tissue.neuro_history", "not_satisfied", earned=0),
             _state("peds_trauma_01_soft_tissue.reassess_vitals", "not_satisfied", earned=0),
         ]
         session = _make_session(defs, states)

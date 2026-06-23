@@ -105,6 +105,7 @@ from app.ai_client import (  # noqa: E402
     _sanitize_credited_item_contradictions,
     _sanitize_credited_item_list,
     _sanitize_missed_item_overcredit,
+    _sanitize_score_notes,
     _is_json_mode_validation_error,
     get_lexi_response,
     get_practice_coach_response,
@@ -974,6 +975,51 @@ class TestProfessionalismHardening:
         assert "no explanation of actions or care plan detected" in reasons
         assert "no direct caregiver acknowledgment or address detected" in reasons
         assert "no reassurance or empathy language detected" in reasons
+
+    def test_named_fire_department_and_applying_actions_count(self):
+        score, reasons = _compute_professionalism_hardened_constraints(
+            student_transcript=(
+                "I am Andrew with Plainfield fire department, may I examine your son?\n"
+                "I am preparing a non-rebreather mask for oxygen administration.\n"
+                "I am applying a properly sized cervical collar."
+            ),
+            greeting_detected=True,
+            prof_ceiling=10,
+            is_peds=True,
+        )
+        assert score == 9
+        assert "no agency or responder-role introduction detected" not in reasons
+        assert "no explanation of actions or care plan detected" not in reasons
+        assert "no direct caregiver acknowledgment or address detected" not in reasons
+        assert reasons == ["no reassurance or empathy language detected"]
+
+    def test_score_note_sanitizer_removes_false_bgl_and_greeting_claims(self):
+        session = types.SimpleNamespace(
+            findings=[
+                types.SimpleNamespace(
+                    finding_type="vital",
+                    key="Blood Glucose",
+                    value="105 mg/dL",
+                    source="glucometer_check",
+                )
+            ]
+        )
+        cleaned = _sanitize_score_notes(
+            {
+                "dmist": "2 pts deducted — blood glucose value listed without an actual check; treatment section omitted patient response.",
+                "professionalism": "3 pts deducted — no greeting, no reassurance.",
+            },
+            session=session,
+            greeting_detected=True,
+            professionalism_score=7,
+            professionalism_max=10,
+            professionalism_breakdown="Professionalism lost points for no reassurance or empathy language detected.",
+        )
+
+        assert "blood glucose" not in cleaned["dmist"].lower()
+        assert "treatment section omitted patient response" in cleaned["dmist"]
+        assert "no greeting" not in cleaned["professionalism"].lower()
+        assert "no reassurance" in cleaned["professionalism"].lower()
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

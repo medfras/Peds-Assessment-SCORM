@@ -1430,6 +1430,41 @@ _MISSED_ITEM_POSITIVE_RULES: dict[str, tuple[re.Pattern, re.Pattern]] = {
             re.IGNORECASE,
         ),
     ),
+    "peds_trauma_01_soft_tissue.neuro_history": (
+        re.compile(r"\bloss of consciousness\b|\bLOC\b|\bvomit|\bcried\s+right\s+away|\bcried\s+immediately\b", re.IGNORECASE),
+        re.compile(
+            r"\b("
+            r"(?:no|without)\s+(?:loss of consciousness|LOC|vomit|vomiting)|"
+            r"(?:cried\s+(?:right\s+away|immediately))|"
+            r"(?:LOC|loss of consciousness|vomit(?:ing)?)\s+(?:was|were|is|are)?\s*(?:asked|assessed|documented|noted|screened)"
+            r")\b",
+            re.IGNORECASE,
+        ),
+    ),
+    "peds_trauma_01_soft_tissue.neuro_baseline": (
+        re.compile(r"\bpupils?\b|\bperrl\b|\bAVPU\b|\bGCS\b|\bmental status\b|\bneuro(?:logic|logical)?", re.IGNORECASE),
+        re.compile(
+            r"\b("
+            r"(?:pupils?|perrl)\s+(?:were|are|was|is)\s+(?:equal|reactive|checked|assessed|documented|noted)|"
+            r"(?:checked|assessed|documented|noted)\s+.*\bpupils?\b|"
+            r"(?:AVPU|GCS|mental status)\s+(?:was|were|is|are)?\s*(?:checked|assessed|documented|noted)?|"
+            r"(?:neurolog(?:ical)?\s+assessment|neuro\s+exam)\s+(?:was|is|performed|completed|done)|"
+            r"(?:performed|completed|did)\s+(?:a\s+)?(?:focused\s+|complete\s+|full\s+)?(?:neurolog(?:ical)?\s+assessment|neuro\s+exam)"
+            r")\b",
+            re.IGNORECASE,
+        ),
+    ),
+    "ems.trauma.neck_c_spine": (
+        re.compile(r"\b(c[- ]?spine|cervical|neck|spinal|spine|SMR|manual in[- ]line|stabilization|collar)\b", re.IGNORECASE),
+        re.compile(
+            r"\b("
+            r"(?:manual\s+in[- ]line\s+)?(?:stabilization|spinal motion restriction|SMR)\s+(?:was|were|is|are)?\s*(?:maintained|applied|performed|done)|"
+            r"(?:cervical\s+)?collar\s+(?:was|were|is|are)?\s*(?:applied|placed)|"
+            r"(?:checked|assessed|palpated|documented|noted)\s+.*\b(?:c[- ]?spine|cervical|neck)\b"
+            r")\b",
+            re.IGNORECASE,
+        ),
+    ),
     "peds_febrile_seizure_01.suction_airway": (
         re.compile(r"\bsuction(?:ed|ing)?\b|\boral\s+secretions?\b|\bpooled\s+(?:saliva|secretions?)\b", re.IGNORECASE),
         re.compile(
@@ -1558,6 +1593,67 @@ def _sanitize_missed_item_overcredit(debrief_text: str, *, missed_item_ids: set[
         return debrief_text
     if removed:
         _log.warning("ai.debrief.missed_item_overcredit_removed")
+    return cleaned
+
+
+def _session_has_glucometer_bgl(session) -> bool:
+    """Return whether the run includes an on-scene glucometer/fingerstick BGL."""
+    for finding in getattr(session, "findings", None) or []:
+        if str(getattr(finding, "finding_type", "") or "").lower() != "vital":
+            continue
+        key = str(getattr(finding, "key", "") or "")
+        source = str(getattr(finding, "source", "") or "")
+        if (
+            re.search(r"\b(?:blood\s*glucose|glucose|bgl)\b", key, re.IGNORECASE)
+            and source == "glucometer_check"
+        ):
+            return True
+    return False
+
+
+def _sanitize_score_notes(
+    score_notes: dict,
+    *,
+    session,
+    greeting_detected: bool,
+    professionalism_score: int | None,
+    professionalism_max: int,
+    professionalism_breakdown: str,
+) -> dict:
+    """Remove score-note claims that contradict backend facts before storage."""
+    cleaned = dict(score_notes or {})
+    dmist_note = str(cleaned.get("dmist") or "")
+    if dmist_note and _session_has_glucometer_bgl(session):
+        # The model sometimes treats any documented BGL as unsupported even when the
+        # authoritative finding source is an EMS glucometer check.
+        cleaned_note = re.sub(
+            r"(?:\s*\d+\s*pts?\s+deducted\s*[—-]\s*)?"
+            r"[^.;&\n]*(?:blood\s*glucose|glucose|BGL)[^.;&\n]*"
+            r"(?:[.;&]\s*)?",
+            "",
+            dmist_note,
+            flags=re.IGNORECASE,
+        ).strip(" ;.-")
+        if cleaned_note:
+            cleaned["dmist"] = cleaned_note
+        else:
+            cleaned["dmist"] = (
+                "DMIST lost points for omitted or incomplete handoff elements; "
+                "the documented blood glucose was supported by the run record."
+            )
+
+    prof_note = str(cleaned.get("professionalism") or "")
+    if greeting_detected and re.search(r"\b(?:no|missing|without)\s+(?:greeting|self[-\s]?introduction|introduction)\b", prof_note, re.IGNORECASE):
+        if professionalism_score is not None and professionalism_score < professionalism_max:
+            summary = (professionalism_breakdown or "").strip()
+            cleaned["professionalism"] = (
+                summary
+                if summary
+                else "Professionalism lost points for limited reassurance, action explanation, or caregiver engagement; greeting/self-introduction was detected."
+            )
+        else:
+            cleaned.pop("professionalism", None)
+
     return cleaned
 
 
@@ -4585,7 +4681,9 @@ def _detect_greeting(student_messages) -> tuple[bool, str]:
 _ACTION_EXPLANATION_RE = re.compile(
     r"\b("
     r"i('| a)?m\s+(?:just\s+)?going to|"
+    r"i('| a)?m\s+(?:preparing|applying|using|placing|putting|checking|assessing)|"
     r"we('?re| are)\s+(?:just\s+)?going to|"
+    r"we('?re| are)\s+(?:preparing|applying|using|placing|putting|checking|assessing)|"
     r"we('?re| are)\s+going to|"
     r"let me|"
     r"i need to|"
@@ -4608,7 +4706,7 @@ _PEDS_AIRWAY_SAFETY_EXPLANATION_RE = re.compile(
 )
 _CAREGIVER_ACKNOWLEDGMENT_RE = re.compile(
     r"\b("
-    r"mom|mother|dad|father|parent|sarah|mike|jennifer|ma['’]?am|sir|"
+    r"mom|mother|dad|father|parent|son|daughter|child|kid|sarah|mike|jennifer|ma['’]?am|sir|"
     r"what(?:'s| is)\s+going\s+on|what\s+happened|tell\s+me\s+what|walk\s+me\s+through"
     r")\b"
 )
@@ -4709,7 +4807,16 @@ def _compute_professionalism_hardened_constraints(
         ceiling = max(0, ceiling - points)
         reasons.append(reason)
 
-    _agency_intro = bool(re.search(r"\b(with|from)\s+(the\s+)?(fire|ems|ambulance|rescue|department|medic)\b", text))
+    _agency_intro = bool(
+        re.search(
+            r"\b(with|from)\s+(the\s+)?(?:\w+\s+){0,4}(fire|ems|ambulance|rescue|department|medic)\b",
+            text,
+        )
+        or re.search(
+            r"\b(i'?m|i am)\s+(?:an?\s+)?(firefighter|emt|emr|paramedic|medic|first.?responder)\b",
+            text,
+        )
+    )
     _action_explained = bool(
         _ACTION_EXPLANATION_RE.search(text)
         or _PEDS_AIRWAY_SAFETY_EXPLANATION_RE.search(text)
@@ -9306,6 +9413,14 @@ No text, commentary, or whitespace outside the JSON object. The JSON must be par
     debrief_text = _sanitize_missed_item_overcredit(
         debrief_text,
         missed_item_ids=_missed_item_ids,
+    )
+    score_notes = _sanitize_score_notes(
+        score_notes,
+        session=session,
+        greeting_detected=_greeting_detected,
+        professionalism_score=_p6_prof,
+        professionalism_max=_professionalism_max,
+        professionalism_breakdown=_p6_prof_breakdown,
     )
 
     # Assemble structured_extras — merge backend routing data with LLM-generated coaching.

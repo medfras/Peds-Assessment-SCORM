@@ -282,9 +282,9 @@ POSITIVE_SAMPLES: list[tuple[str, str]] = [
     ("peds_trauma_01_soft_tissue.direct_pressure",
      "Let me put a pressure dressing on that wound to stop the hemorrhage"),
 
-    ("peds_trauma_01_soft_tissue.neuro_assessment",
+    ("peds_trauma_01_soft_tissue.neuro_baseline",
      "Can you check his pupils? And what's the GCS?"),
-    ("peds_trauma_01_soft_tissue.neuro_assessment",
+    ("peds_trauma_01_soft_tissue.neuro_history",
      "Did he lose consciousness at any point? Any vomiting since the fall?"),
 
     ("peds_trauma_01_soft_tissue.mechanism_screen",
@@ -765,11 +765,11 @@ NEGATIVE_SAMPLES: list[tuple[str, str]] = [
     ("peds_trauma_01_soft_tissue.direct_pressure",
      "How far did he fall? What surface did he land on?"),
 
-    ("peds_trauma_01_soft_tissue.neuro_assessment",
+    ("peds_trauma_01_soft_tissue.neuro_baseline",
      "Apply direct pressure to the wound with a dressing"),
-    ("peds_trauma_01_soft_tissue.neuro_assessment",
+    ("peds_trauma_01_soft_tissue.neuro_history",
      "Let me prepare for transport to the pediatric ER"),
-    ("peds_trauma_01_soft_tissue.neuro_assessment",
+    ("peds_trauma_01_soft_tissue.neuro_history",
      "I calculated GCS 15/15."),
 
     ("peds_trauma_01_soft_tissue.mechanism_screen",

@@ -701,8 +701,8 @@
         }
       },
       {
-        "id": "neuro_assessment",
-        "description": "Perform neurological assessment — GCS/AVPU, pupils, ask about LOC and vomiting",
+        "id": "neuro_baseline",
+        "description": "Perform neurological baseline assessment — GCS/AVPU or mental status and pupils",
         "required": true,
         "protocol_indicated": true,
         "evidence": {
@@ -713,19 +713,39 @@
           "finding_key_patterns": [
             "\\bpupils?\\b",
             "\\bgcs\\b",
-            "\\bloc\\b",
             "mental",
-            "avpu",
-            "vomit"
+            "avpu"
           ],
           "transcript_patterns": [
             "\\bpupils?\\b",
             "\\bgcs\\b",
+            "mental status",
+            "avpu",
+            "neuro"
+          ],
+          "min_matches": 2
+        }
+      },
+      {
+        "id": "neuro_history",
+        "description": "Ask head-injury red-flag history — loss of consciousness and vomiting",
+        "required": true,
+        "protocol_indicated": true,
+        "evidence": {
+          "finding_types": [
+            "history"
+          ],
+          "finding_key_patterns": [
             "\\bloc\\b",
             "loss of consciousness",
             "vomit"
           ],
-          "min_matches": 2
+          "transcript_patterns": [
+            "\\bloc\\b",
+            "loss of consciousness",
+            "vomit"
+          ],
+          "min_matches": 1
         }
       }
     ],
@@ -1178,11 +1198,11 @@
       "common_error": "Estimating blood loss as 'minor' because the wound looks small — scalp lacerations often bleed far more than their size suggests; apply direct pressure regardless."
     },
     {
-      "id": "peds_trauma_01_soft_tissue.neuro_assessment",
-      "description": "Neurological assessment performed — GCS/AVPU or mental status plus LOC history documented",
+      "id": "peds_trauma_01_soft_tissue.neuro_baseline",
+      "description": "Neurological baseline performed — GCS/AVPU or mental status plus pupils documented",
       "subtype": "assessment",
       "category": "clinical_performance",
-      "point_value": 7,
+      "point_value": 4,
       "required": "required",
       "applicable_levels": [],
       "requires_mca_expansion": null,
@@ -1194,29 +1214,51 @@
       "tier3_permitted": false,
       "tier3_confidence_threshold": null,
       "schema_version": "1.0",
-      "requirement_logic": "all",
-      "tier1_matches": [
-        {
-          "source": "finding",
-          "finding_type": "exam",
-          "finding_key_pattern": "(?i)(GCS|AVPU|LOC|level of consciousness|mental status|pupils?)",
-          "finding_value_pattern": "(?i)(alert|oriented|respond|GCS|\\b1[3-5]\\b|E\\d\\s*V\\d\\s*M\\d|equal|reactive|PERRL)"
-        },
-        {
-          "source": "finding",
-          "finding_type": "history",
-          "finding_key_pattern": "(?i)^(LOC|Loss of Consciousness|Events)$",
-          "finding_value_pattern": "(?i)(no\\s+(?:loss of consciousness|LOC)|never\\s+lost|did\\s+not\\s+lose|didn't\\s+lose|cried\\s+immediately|started\\s+crying\\s+right\\s+away)"
-        }
-      ],
+      "requirement_logic": "any",
+      "tier1_match": {
+        "source": "finding",
+        "finding_key_pattern": "(?i)(GCS|AVPU|LOC|level of consciousness|mental status|pupils?)",
+        "finding_value_pattern": "(?i)(alert|oriented|respond|GCS|\\b1[3-5]\\b|E\\d\\s*V\\d\\s*M\\d|equal|reactive|PERRL)"
+      },
       "tier2_patterns": [
-        "(?i)(?=.*\\b(?:GCS|AVPU|neurolog|mental status|alert|respond)\\b)(?=.*\\bpupils?\\b)",
-        "(?i)(?=.*\\b(?:LOC|loss of consciousness|lose consciousness|unconscious)\\b)(?=.*\\bvomit\\w*)"
+        "(?i)(?=.*\\b(?:GCS|AVPU|neurolog|mental status|alert|respond)\\b)(?=.*\\bpupils?\\b)"
       ],
-      "done_feedback": "Neurological baseline documented — GCS/AVPU or mental status plus LOC history supports TBI risk screening.",
-      "missed_feedback": "Neurological baseline not documented — pediatric head trauma needs at least GCS/AVPU or mental status plus LOC history; pupils and vomiting history strengthen the screen.",
+      "done_feedback": "Neurological baseline documented — GCS/AVPU or mental status and pupil findings support TBI risk screening.",
+      "missed_feedback": "Neurological baseline not documented — pediatric head trauma needs at least GCS/AVPU or mental status and pupil findings.",
       "clinical_rationale": "Any head trauma requires a documented neurological baseline; GCS/AVPU and LOC history determine whether additional TBI red flags need urgent escalation.",
       "common_error": "Controlling the scalp bleed but failing to document a neuro baseline and LOC history."
+    },
+    {
+      "id": "peds_trauma_01_soft_tissue.neuro_history",
+      "description": "Head-injury red-flag history obtained — loss of consciousness and vomiting screened",
+      "subtype": "screen",
+      "category": "clinical_performance",
+      "point_value": 3,
+      "required": "required",
+      "applicable_levels": [],
+      "requires_mca_expansion": null,
+      "agency_applicable": true,
+      "allowed_tiers": [
+        1
+      ],
+      "preferred_tier": 1,
+      "tier3_permitted": false,
+      "tier3_confidence_threshold": null,
+      "schema_version": "1.0",
+      "requirement_logic": "any",
+      "tier1_match": {
+        "source": "finding",
+        "finding_type": "history",
+        "finding_key_pattern": "(?i)^(LOC|Loss of Consciousness|Vomiting|Nausea/Vomiting|Events)$",
+        "finding_value_pattern": "(?i)(no\\s+(?:loss of consciousness|LOC)|never\\s+lost|did\\s+not\\s+lose|didn't\\s+lose|cried\\s+immediately|started\\s+crying\\s+right\\s+away|no\\s+vomit|no\\s+vomiting|has\\s+not\\s+(?:vomited|thrown\\s+up)|did\\s+not\\s+(?:vomit|throw\\s+up))"
+      },
+      "tier2_patterns": [
+        "(?i)(?=.*\\b(?:LOC|loss of consciousness|lose consciousness|unconscious)\\b)(?=.*\\bvomit\\w*)"
+      ],
+      "done_feedback": "Head-injury red-flag history obtained — LOC and vomiting were screened for TBI risk.",
+      "missed_feedback": "LOC/vomiting history not obtained — pediatric head trauma needs focused red-flag history even when the child appears alert.",
+      "clinical_rationale": "LOC and vomiting history are key pediatric head-injury risk stratification elements.",
+      "common_error": "Documenting the child as alert but not asking the caregiver about LOC or vomiting."
     },
     {
       "id": "peds_trauma_01_soft_tissue.mechanism_screen",

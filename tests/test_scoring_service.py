@@ -1085,16 +1085,20 @@ def test_soft_tissue_mechanism_screen_uses_structured_mechanism_history():
     assert complete.state == "satisfied"
 
 
-def test_soft_tissue_neuro_assessment_credits_structured_gcs_and_loc_history():
+def test_soft_tissue_neuro_baseline_and_history_score_separately():
     scenario_path = Path(__file__).resolve().parents[1] / "app/scenarios/pediatric/trauma/peds_trauma_01_soft_tissue.json"
     scenario = json.loads(scenario_path.read_text())
-    item = next(
+    baseline_item = next(
         item for item in load_checklist(scenario, level="EMT", mca="mi_base", agency_id=None)
-        if item.id == "peds_trauma_01_soft_tissue.neuro_assessment"
+        if item.id == "peds_trauma_01_soft_tissue.neuro_baseline"
+    )
+    history_item = next(
+        item for item in load_checklist(scenario, level="EMT", mca="mi_base", agency_id=None)
+        if item.id == "peds_trauma_01_soft_tissue.neuro_history"
     )
 
     baseline_only = adjudicate(
-        [item],
+        [baseline_item, history_item],
         interventions=[],
         session_findings=[
             _finding("GCS", "15 (E4 V5 M6)", finding_type="exam", fid=1),
@@ -1106,9 +1110,9 @@ def test_soft_tissue_neuro_assessment_credits_structured_gcs_and_loc_history():
         submitted_narrative=None,
         scenario=scenario,
         legacy_ai_categories=frozenset(),
-    )[0]
+    )
     complete = adjudicate(
-        [item],
+        [baseline_item, history_item],
         interventions=[],
         session_findings=[
             _finding("GCS", "15 (E4 V5 M6)", finding_type="exam", fid=1),
@@ -1121,12 +1125,16 @@ def test_soft_tissue_neuro_assessment_credits_structured_gcs_and_loc_history():
         submitted_narrative=None,
         scenario=scenario,
         legacy_ai_categories=frozenset(),
-    )[0]
+    )
 
-    assert item.allowed_tiers == [1]
-    assert item.requirement_logic == "all"
-    assert baseline_only.state == "not_satisfied"
-    assert complete.state == "satisfied"
+    assert baseline_item.allowed_tiers == [1]
+    assert baseline_item.requirement_logic == "any"
+    assert history_item.allowed_tiers == [1]
+    assert history_item.requirement_logic == "any"
+    assert baseline_only[0].state == "satisfied"
+    assert baseline_only[1].state == "not_satisfied"
+    assert complete[0].state == "satisfied"
+    assert complete[1].state == "satisfied"
 
 
 def test_tier1_history_finding_credits_sample_allergies():
