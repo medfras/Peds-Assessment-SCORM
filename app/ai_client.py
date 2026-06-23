@@ -87,7 +87,7 @@ _REQUIRED_DEBRIEF_SUBSCORES = (
 # Regex used by _detect_greeting to find introductions/greetings in the first few student messages.
 _GREETING_RE = re.compile(
     r"\bhi\b|\bhello\b|\bhey\b|\bgood\s+(morning|afternoon|evening)\b"
-    r"|my name is|i'?m\s+\w+\s+(with|from)\b"
+    r"|my name is|(?:i'?m|i\s+am)\s+\w+\s+(with|from)\b"
     r"|i'?m\s+an?\s+(emt|paramedic|medic|firefighter|first\s+responder)"
     r"|what'?s\s+going\s+on|what\s+happened|i'?m\s+here\s+to\s+help",
     re.IGNORECASE,
@@ -1611,10 +1611,35 @@ def _session_has_glucometer_bgl(session) -> bool:
     return False
 
 
+_INTRODUCTION_GAP_RE = re.compile(
+    r"\b(?:no|missing|without)\s+"
+    r"(?:greeting|self[\s\-\u2010-\u2015\u2212]*introduction|introduction)\b",
+    re.IGNORECASE,
+)
+_NON_TRANSPORT_PLAN_RE = re.compile(
+    r"(?:\s*(?:,|;|\band\b)?\s*)"
+    r"(?:an?\s+)?(?:explicit\s+)?"
+    r"(?:(?:ALS|EMS)\s+)?(?:handoff\s*/\s*)?"
+    r"(?:transport|disposition)\s+plan\b",
+    re.IGNORECASE,
+)
+
+
+def _strip_non_transport_plan_claim(note: str) -> str:
+    """Remove transport-plan-only feedback when the agency does not transport."""
+    cleaned = _NON_TRANSPORT_PLAN_RE.sub("", note or "")
+    cleaned = re.sub(r"\s+", " ", cleaned)
+    cleaned = re.sub(r"\s+([,.;])", r"\1", cleaned)
+    cleaned = re.sub(r"([—-])\s*(?:,|;|\band\b)\s*", r"\1 ", cleaned, flags=re.IGNORECASE)
+    cleaned = re.sub(r"\b(?:and|or)\s*([.;])", r"\1", cleaned, flags=re.IGNORECASE)
+    return cleaned.strip(" ,;.-")
+
+
 def _sanitize_score_notes(
     score_notes: dict,
     *,
     session,
+    non_transport_agency: bool = False,
     greeting_detected: bool,
     professionalism_score: int | None,
     professionalism_max: int,
@@ -1642,8 +1667,16 @@ def _sanitize_score_notes(
                 "the documented blood glucose was supported by the run record."
             )
 
+    dmist_note = str(cleaned.get("dmist") or "")
+    if dmist_note and non_transport_agency and re.search(r"\b(?:transport|disposition)\s+plan\b", dmist_note, re.IGNORECASE):
+        cleaned_note = _strip_non_transport_plan_claim(dmist_note)
+        if cleaned_note:
+            cleaned["dmist"] = cleaned_note
+        else:
+            cleaned.pop("dmist", None)
+
     prof_note = str(cleaned.get("professionalism") or "")
-    if greeting_detected and re.search(r"\b(?:no|missing|without)\s+(?:greeting|self[-\s]?introduction|introduction)\b", prof_note, re.IGNORECASE):
+    if greeting_detected and _INTRODUCTION_GAP_RE.search(prof_note):
         if professionalism_score is not None and professionalism_score < professionalism_max:
             summary = (professionalism_breakdown or "").strip()
             cleaned["professionalism"] = (
@@ -9493,6 +9526,10 @@ No text, commentary, or whitespace outside the JSON object. The JSON must be par
     score_notes = _sanitize_score_notes(
         score_notes,
         session=session,
+        non_transport_agency=bool(
+            ((_evidence_packet.get("scenario_context") or {}).get("non_transport_agency"))
+            or ((_evidence_packet.get("transport") or {}).get("non_transport_agency"))
+        ),
         greeting_detected=_greeting_detected,
         professionalism_score=_p6_prof,
         professionalism_max=_professionalism_max,

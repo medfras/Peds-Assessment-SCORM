@@ -1010,6 +1010,7 @@ class TestProfessionalismHardening:
                 "professionalism": "3 pts deducted — no greeting, no reassurance.",
             },
             session=session,
+            non_transport_agency=False,
             greeting_detected=True,
             professionalism_score=7,
             professionalism_max=10,
@@ -1020,6 +1021,34 @@ class TestProfessionalismHardening:
         assert "treatment section omitted patient response" in cleaned["dmist"]
         assert "no greeting" not in cleaned["professionalism"].lower()
         assert "no reassurance" in cleaned["professionalism"].lower()
+
+    def test_score_note_sanitizer_removes_non_transport_plan_and_hyphenated_intro_claims(self):
+        cleaned = _sanitize_score_notes(
+            {
+                "dmist": "4 pts deducted — omitted patient weight and explicit ALS handoff/transport plan.",
+                "professionalism": "5 pts deducted — no self‑introduction, no explanation of actions, and no reassurance or empathy toward patient and caregiver.",
+            },
+            session=types.SimpleNamespace(findings=[]),
+            non_transport_agency=True,
+            greeting_detected=True,
+            professionalism_score=5,
+            professionalism_max=10,
+            professionalism_breakdown="Professionalism lost points for no explanation of actions or care plan detected; no reassurance or empathy language detected.",
+        )
+
+        assert "transport plan" not in cleaned["dmist"].lower()
+        assert "patient weight" in cleaned["dmist"].lower()
+        assert "self" not in cleaned["professionalism"].lower()
+        assert "introduction" not in cleaned["professionalism"].lower()
+        assert "explanation" in cleaned["professionalism"].lower()
+
+    def test_greeting_detector_accepts_plain_i_am_with_agency_intro(self):
+        detected, description = _detect_greeting(
+            [types.SimpleNamespace(content="I am Andrew with Plainfield fire department, may I examine your son?")]
+        )
+
+        assert detected is True
+        assert "Andrew" in description
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
