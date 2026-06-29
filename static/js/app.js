@@ -27113,7 +27113,19 @@ function _unsupportedProcedureFtoGuidance(message = "") {
     return "Do not perform: **Traction splint**.\n\nA traction splint is for an indicated femur/femoral shaft fracture. This scenario does not have a femur fracture finding, so applying traction would be inappropriate and could harm the patient.";
   }
 
+  if (/\b(?:cpap|continuous\s+positive\s+airway\s+pressure)\b/i.test(msg)
+      && !/\b(?:cpap|continuous\s+positive\s+airway\s+pressure)\b/.test(scenarioText)) {
+    return "Do not perform: **CPAP**.\n\nCPAP is for selected patients with respiratory distress or hypoxia who can tolerate the mask and meet protocol indications. This scenario does not have a CPAP indication, so applying CPAP would be inappropriate.";
+  }
+
   return "";
+}
+
+function _unsupportedProcedureAttemptLabel(message = "") {
+  if (/\b(?:cpap|continuous\s+positive\s+airway\s+pressure)\b/i.test(String(message || ""))) {
+    return "CPAP attempted when not indicated";
+  }
+  return "Unsupported procedure attempted";
 }
 
 async function _handleFtoBlockedInterventionAttempt(message, chipId = null, isAction = false) {
@@ -27128,7 +27140,7 @@ async function _handleFtoBlockedInterventionAttempt(message, chipId = null, isAc
   _recordInappropriateInterventionAttempt({
     category: iv ? _ftoAttemptPenaltyCategory(iv, guidance) : "clinical_performance",
     attemptType: iv?.within_bls_scope === false ? "out_of_scope_intervention" : "inappropriate_intervention",
-    label: iv?.label || "Unsupported procedure attempted",
+    label: iv?.label || _unsupportedProcedureAttemptLabel(message),
     reason: guidance.replace(/[*_]/g, " ").replace(/\s+/g, " ").trim(),
     penaltyPoints: iv?.within_bls_scope === false ? 3 : 3,
   });

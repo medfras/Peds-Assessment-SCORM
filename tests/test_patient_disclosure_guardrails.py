@@ -915,8 +915,12 @@ def test_frontend_raw_action_fto_gate_blocks_inappropriate_interventions_before_
     assert "function _handleFtoBlockedInterventionAttempt" in source
     assert "findInterventionByLabel(message)" in source
     assert "function _unsupportedProcedureFtoGuidance" in source
+    assert "function _unsupportedProcedureAttemptLabel" in source
     assert "function _ftoAttemptPenaltyCategory" in source
     assert "A traction splint is for an indicated femur/femoral shaft fracture" in source
+    assert "Do not perform: **CPAP**" in source
+    assert "CPAP attempted when not indicated" in source
+    assert "This scenario does not have a CPAP indication" in source
 
     send_prefix = source[source.index("async function sendMessage"):source.index("const authoredVitalsDefs")]
     fto_gate_pos = send_prefix.index("_handleFtoBlockedInterventionAttempt")
