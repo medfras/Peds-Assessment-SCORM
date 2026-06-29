@@ -47,3 +47,14 @@ def test_professionalism_cues_detect_agency_abbreviation_intro():
 
     assert cues["Greeting or self-introduction"] is True
     assert cues["Agency or responder-role introduction"] is True
+
+
+def test_professionalism_cues_detect_past_tense_treatment_explanation():
+    cues = dict(_professionalism_cues({
+        "transcript": [
+            {"role": "user", "content": "he seems to be having another asthma attack, we gave him some albuterol. Does he usually keep some at home?"},
+        ]
+    }))
+
+    assert cues["Explained actions or care plan"] is True
+    assert cues["Addressed caregiver/family"] is True

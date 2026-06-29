@@ -568,6 +568,18 @@ def test_frontend_rejects_vital_tags_from_non_ems_sources():
     assert "last|prior|previous|home|before ems" in source
 
 
+def test_frontend_ai_vital_tags_persist_with_scoring_eligible_sources():
+    source = open("static/js/app.js", encoding="utf-8").read()
+    process_tags = source[source.index("function processAiTags"):source.index("function _stripUnrequestedVitalLines")]
+
+    assert "const vitalTagSources = {};" in process_tags
+    assert 'vitalTagSources[key] = /\\b(?:blood\\s*glucose|blood\\s*sugar|bgl|glucose)\\b/i.test(key)' in process_tags
+    assert '? "glucometer_check"' in process_tags
+    assert ': "authored_vitals";' in process_tags
+    assert 'flushVitalsBlock({ ...vitalTagSources, default: "authored_vitals" });' in process_tags
+    assert 'flushVitalsBlock();' not in process_tags
+
+
 def test_frontend_derives_relative_dob_from_age_display_when_age_missing():
     source = open("static/js/app.js", encoding="utf-8").read()
 
@@ -1470,6 +1482,26 @@ def test_professionalism_gives_partial_floor_for_intro_without_agency():
     assert "no agency or responder-role introduction detected" in reasons
     assert ceiling >= 8
     assert floor >= 6
+
+
+def test_professionalism_counts_past_tense_treatment_explanation_to_parent():
+    transcript = (
+        "Hi, my name is Katie, I'm sorry you're not feeling good.\n"
+        "he seems to be having another asthma attack, we gave him some albuterol. "
+        "Does he usually keep some at home?"
+    )
+
+    ceiling, reasons = _compute_professionalism_hardened_constraints(
+        student_transcript=transcript,
+        greeting_detected=True,
+        prof_ceiling=10,
+        is_peds=True,
+    )
+
+    assert "no explanation of actions or care plan detected" not in reasons
+    assert "no direct caregiver acknowledgment or address detected" not in reasons
+    assert "no reassurance or empathy language detected" not in reasons
+    assert ceiling >= 7
 
 
 def test_frontend_blood_glucose_treatment_is_reported_with_vitals_not_info_card():

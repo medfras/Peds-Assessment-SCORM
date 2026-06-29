@@ -747,7 +747,7 @@
             "rate_modifier": 0.7
           }
         },
-        "notes": "CPAP at 5 cmH2O provides positive end-expiratory pressure, reduces work of breathing, and improves oxygenation. Use with caution in pediatric patients — requires patient cooperation (age 4 may not tolerate). Can be used alongside albuterol SVN. Monitor for vomiting and barotrauma.",
+        "notes": "CPAP at 5 cmH2O provides positive end-expiratory pressure, reduces work of breathing, and improves oxygenation. It is a conditional escalation for persistent or worsening respiratory distress/hypoxia after initial oxygen and bronchodilator therapy, when the child is alert enough to tolerate the mask and an appropriately sized mask is available. If Liam improves after albuterol, CPAP is not expected; continue oxygen as needed and reassess. Monitor for vomiting and barotrauma.",
         "requires_popup": true,
         "popup_type": "oxygen",
         "popup_default": {
@@ -1124,7 +1124,8 @@
       "Oxygenation and ventilation should be addressed before extended history — do NOT penalize brief delay in SAMPLE/OPQRST if the student appropriately initiated protocol-aligned respiratory support first.",
       "Albuterol SVN 2.5 mg via nebulizer is the critical BLS intervention — this is the single most important action for this scenario.",
       "Tachycardia after albuterol administration is expected and normal — do NOT penalize if student documents or mentions it as a side effect.",
-      "SpO2 of 94% in a 4-year-old is below normal (pediatric normal >95%) — credit for recognizing this as a hypoxia indicator."
+      "SpO2 of 94% in a 4-year-old is below normal (pediatric normal >95%) — credit for recognizing this as a hypoxia indicator.",
+      "CPAP is a viable protocol option for pediatric asthma/bronchospasm when distress or hypoxia persists or worsens after initial oxygen/bronchodilator therapy and the child can tolerate an appropriately sized mask. Do not require CPAP when Liam improves after albuterol."
     ],
     "dmist_considerations": [
       "D: Name, age/sex, and pediatric weight.",
@@ -1304,7 +1305,7 @@
         ],
         "grace_items": [
           "Same grace items as EMT level.",
-          "CPAP not indicated for this presentation (bronchospasm, not pulmonary edema)."
+          "CPAP is not expected after clear albuterol response, but is a viable escalation if respiratory distress or hypoxia persists/worsens and an appropriate pediatric mask is available."
         ]
       },
       "Paramedic": {

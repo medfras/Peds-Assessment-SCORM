@@ -489,13 +489,19 @@ _REPORT_PROF_ACTION_RE = re.compile(
     r"we('?re| are)\s+(?:preparing|applying|using|placing|putting|checking|assessing)|"
     r"let me|i need to|we need to|i('| a)?m\s+checking|we('?re| are)\s+checking|"
     r"i('| a)?m\s+getting|we('?re| are)\s+getting|"
+    r"i('| a)?ve\s+(?:given|administered|started|applied)|"
+    r"we('?ve| have)\s+(?:given|administered|started|applied)|"
+    r"we\s+gave|"
     r"(?:roll|turn|place|put|position|keep)\s+(?:her|him|them|the\s+(?:baby|child|infant|patient))?.{0,30}\b(?:side|recovery\s+position)|"
     r"protect\s+(?:her|him|their|the\s+(?:baby|child|infant|patient))?.{0,30}\b(?:airway|injur(?:y|ies)|safe|safety)"
     r")\b",
     re.I,
 )
 _REPORT_PROF_CAREGIVER_RE = re.compile(
-    r"\b(mom|mother|dad|father|parent|ma['’]?am|sir|what(?:'s| is)\s+going\s+on|what\s+happened|tell\s+me\s+what)\b",
+    r"\b(mom|mother|dad|father|parent|ma['’]?am|sir|what(?:'s| is)\s+going\s+on|what\s+happened|tell\s+me\s+what|"
+    r"does\s+(?:he|she|your\s+(?:son|daughter|child|kid))|"
+    r"has\s+(?:he|she|your\s+(?:son|daughter|child|kid))|"
+    r"is\s+(?:he|she|your\s+(?:son|daughter|child|kid)))\b",
     re.I,
 )
 _REPORT_PROF_EMPATHY_RE = re.compile(

@@ -4826,6 +4826,9 @@ _ACTION_EXPLANATION_RE = re.compile(
     r"we('?re| are)\s+checking|"
     r"i('| a)?m\s+getting|"
     r"we('?re| are)\s+getting|"
+    r"i('| a)?ve\s+(?:given|administered|started|applied)|"
+    r"we('?ve| have)\s+(?:given|administered|started|applied)|"
+    r"we\s+gave|"
     r"i('| a)?m\s+(?:just\s+)?going to check|"
     r"i('| a)?m\s+(?:just\s+)?going to give|"
     r"i('| a)?m\s+(?:just\s+)?going to listen"
@@ -4841,7 +4844,10 @@ _PEDS_AIRWAY_SAFETY_EXPLANATION_RE = re.compile(
 _CAREGIVER_ACKNOWLEDGMENT_RE = re.compile(
     r"\b("
     r"mom|mother|dad|father|parent|son|daughter|child|kid|sarah|mike|jennifer|ma['’]?am|sir|"
-    r"what(?:'s| is)\s+going\s+on|what\s+happened|tell\s+me\s+what|walk\s+me\s+through"
+    r"what(?:'s| is)\s+going\s+on|what\s+happened|tell\s+me\s+what|walk\s+me\s+through|"
+    r"does\s+(?:he|she|your\s+(?:son|daughter|child|kid))\b|"
+    r"has\s+(?:he|she|your\s+(?:son|daughter|child|kid))\b|"
+    r"is\s+(?:he|she|your\s+(?:son|daughter|child|kid))\b"
     r")\b"
 )
 

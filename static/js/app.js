@@ -24366,6 +24366,7 @@ function processAiTags(text, options = {}) {
   const intRegex   = /\[\[\s*INTERVENTION:\s*([^\]]+)\]\]/gi;
 
   _vitalsBatch = {};
+  const vitalTagSources = {};
   _pendingPopupQueue = [];
 
   if (!persistAuthoritative) {
@@ -24387,6 +24388,9 @@ function processAiTags(text, options = {}) {
     const key = m[1].replace(/[*_]/g, '').trim();
     if (/^gcs$/i.test(key) && !explicitGcsRequested) continue;
     _vitalsBatch[key] = m[2].replace(/[*_]/g, '').trim();
+    vitalTagSources[key] = /\b(?:blood\s*glucose|blood\s*sugar|bgl|glucose)\b/i.test(key)
+      ? "glucometer_check"
+      : "authored_vitals";
   }
   while ((m = examRegex.exec(text))  !== null) {
     const key = m[1].replace(/[*_]/g, '').trim();
@@ -24432,7 +24436,9 @@ function processAiTags(text, options = {}) {
     }
   }
 
-  if (Object.keys(_vitalsBatch).length > 0) flushVitalsBlock();
+  if (Object.keys(_vitalsBatch).length > 0) {
+    flushVitalsBlock({ ...vitalTagSources, default: "authored_vitals" });
+  }
 
   return text.replace(/\[\[\s*(VITAL|EXAM|HISTORY|INTERVENTION):[^\]]+\]\]/gi, "").replace(/\n{3,}/g, "\n\n").trim();
 }
