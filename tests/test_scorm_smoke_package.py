@@ -294,30 +294,33 @@ def test_frontend_history_waits_for_server_refresh_before_empty_state():
 
     assert "let _historyCacheLoaded = false;" in app_js
     assert "let _historyRefreshPromise = null;" in app_js
+    assert "let _historyLoadError = \"\";" in app_js
     assert "await Promise.allSettled([" in app_js
     assert "function _refreshHistoryDependentViews()" in app_js
     assert "_refreshHistoryDependentViews();" in app_js
 
     history_start = app_js.find("async function buildHistoryPage")
     assert history_start != -1
-    history_block = app_js[history_start:history_start + 1800]
+    history_block = app_js[history_start:history_start + 2600]
     assert "Loading recent calls" in history_block
     assert "No completed scenarios yet" in history_block
+    assert "Could not load scenario history" in history_block
     assert "refresh && !_historyCacheLoaded" in history_block
     assert "_refreshHistoryCache()" in history_block
 
 
-def test_backend_history_endpoint_continues_when_artifact_refresh_fails():
+def test_backend_history_endpoint_is_read_only_and_does_not_repair_artifacts_inline():
     main_py = (ROOT / "app" / "main.py").read_text()
     start = main_py.find("@app.get(\"/api/me/sessions\")")
     assert start != -1
-    block = main_py[start:start + 12000]
+    end = main_py.find("\n\n@app.put(\"/api/me/membership\")", start)
+    assert end != -1
+    block = main_py[start:end]
 
-    assert "for session in sessions:" in block
-    assert "await _refresh_stale_history_artifacts(session)" in block
-    assert "except Exception as exc:" in block
-    assert "await db.rollback()" in block
-    assert "history_artifact_refresh_failed" in block
+    assert "SimSession.ended_at.isnot(None)" in block
+    assert "await _refresh_stale_history_artifacts(session)" not in block
+    assert "history_artifact_refresh_failed" not in block
+    assert "await db.commit()" not in block
     assert "return [_session_dict(s) for s in sessions]" in block
 
 

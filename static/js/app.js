@@ -4632,6 +4632,7 @@ let _progressCache = null;
 let _historyCache  = null;
 let _historyCacheLoaded = false;
 let _historyRefreshPromise = null;
+let _historyLoadError = "";
 let _menuRankCache = { agencyId: null, data: null, fetchedAt: 0, loading: false };
 let _leaderboardModalCache = { agencyId: null, data: null, fetchedAt: 0 };
 let _historyDebriefActiveEntry = null;
@@ -4853,6 +4854,7 @@ async function _loadProgressFromServer(options = {}) {
       if (Array.isArray(historyData)) {
         _historyCache = historyData;
         _historyCacheLoaded = true;
+        _historyLoadError = "";
         _refreshHistoryDependentViews();
       }
     } else if (!_historyCache) {
@@ -4887,6 +4889,7 @@ function _readProgressHistoryCache() {
     if (Array.isArray(cached?.history) && !_historyCache) {
       _historyCache = cached.history;
       _historyCacheLoaded = true;
+      _historyLoadError = "";
     }
     return !!cached;
   } catch {
@@ -4954,11 +4957,16 @@ async function _refreshHistoryCache() {
         if (Array.isArray(data)) {
           _historyCache = data;
           _historyCacheLoaded = true;
+          _historyLoadError = "";
           _refreshHistoryDependentViews();
         }
         _writeProgressHistoryCache();
+      } else {
+        _historyLoadError = `History could not load (${r.status}).`;
       }
-    } catch { /* keep existing cache */ }
+    } catch {
+      _historyLoadError = "History could not load. Check your connection and try again.";
+    }
     if (!_historyCache) _historyCache = [];
     return _historyCache;
   })();
@@ -6580,6 +6588,7 @@ function _storeAuth(token) {
   _historyCache = null;
   _historyCacheLoaded = false;
   _historyRefreshPromise = null;
+  _historyLoadError = "";
   _challengesCache = null;
   _invalidateNotebookCache();
   _leaderboardModalCache = { agencyId: null, data: null, fetchedAt: 0 };
@@ -6635,6 +6644,7 @@ function _storeAuthFromContext(ctx) {
   _historyCache = null;
   _historyCacheLoaded = false;
   _historyRefreshPromise = null;
+  _historyLoadError = "";
   _challengesCache = null;
   _invalidateNotebookCache();
   _leaderboardModalCache = { agencyId: null, data: null, fetchedAt: 0 };
@@ -6682,6 +6692,7 @@ function _clearAuth() {
   _historyCache          = null;
   _historyCacheLoaded    = false;
   _historyRefreshPromise = null;
+  _historyLoadError      = "";
   _invalidateNotebookCache();
   _menuRankCache         = { agencyId: null, data: null, fetchedAt: 0, loading: false };
   _pedsAssignmentsCache  = null;
@@ -19240,6 +19251,23 @@ async function buildHistoryPage(refresh = true) {
       <p class="text-lg font-semibold">Loading recent calls…</p>
     </div>`;
   };
+  const showLoadError = () => {
+    if (!container) return;
+    container.innerHTML = `<div class="text-center text-red-300 py-16">
+      <div class="text-5xl mb-4">⚠️</div>
+      <p class="text-lg font-semibold">Could not load scenario history.</p>
+      <p class="text-sm mt-1 text-red-200/80">${escapeHTML(_historyLoadError || "Try again in a moment.")}</p>
+      <button class="mt-4 text-xs bg-red-700 hover:bg-red-600 text-white px-3 py-1.5 rounded-lg transition-colors" data-history-retry>Retry</button>
+    </div>`;
+    container.querySelector("[data-history-retry]")?.addEventListener("click", () => {
+      _historyLoadError = "";
+      buildHistoryPage(true);
+    });
+  };
+  if (_historyLoadError && !loadHistory().length) {
+    showLoadError();
+    return;
+  }
   if ((!_historyCache || (!_historyCacheLoaded && !loadHistory().length)) && container) {
     showLoading();
     if (refresh) {
@@ -19252,6 +19280,10 @@ async function buildHistoryPage(refresh = true) {
   const h = loadHistory();
 
   if (h.length === 0) {
+    if (_historyLoadError) {
+      showLoadError();
+      return;
+    }
     if (refresh && !_historyCacheLoaded) {
       showLoading();
       _refreshHistoryCache()
