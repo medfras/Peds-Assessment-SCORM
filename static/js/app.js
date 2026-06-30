@@ -18948,12 +18948,12 @@ function _renderMissedPointsHtml({ scoreNotes = {}, timeline = [], rubricDetail 
   if (!rows.length) return "";
   return rows.map(row => {
     const sourceLabel = row.source === "score_note" ? "Score note" : row.source === "timeline" ? "Timeline" : "Rubric";
-    return `<div class="rounded-lg border border-gray-300 bg-white p-2.5">
+    return `<div class="debrief-missed-point-card rounded-lg border border-gray-300 bg-white p-2.5">
       <div class="flex items-center justify-between gap-3">
-        <div class="text-xs font-bold uppercase tracking-widest text-gray-800">${escapeHTML(row.label)}</div>
-        <div class="text-[10px] uppercase tracking-widest text-slate-600">${escapeHTML(sourceLabel)}</div>
+        <div class="debrief-missed-point-label text-xs font-bold uppercase tracking-widest text-gray-800">${escapeHTML(row.label)}</div>
+        <div class="debrief-missed-point-source text-[10px] uppercase tracking-widest text-slate-600">${escapeHTML(sourceLabel)}</div>
       </div>
-      <div class="mt-1 text-sm text-gray-950 leading-relaxed">${escapeHTML(row.detail)}</div>
+      <div class="debrief-missed-point-detail mt-1 text-sm text-gray-950 leading-relaxed">${escapeHTML(row.detail)}</div>
     </div>`;
   }).join("");
 }

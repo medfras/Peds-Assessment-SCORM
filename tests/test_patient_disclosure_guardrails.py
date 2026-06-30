@@ -1553,11 +1553,16 @@ def test_frontend_debrief_normalizes_inline_missed_item_lists():
 
 def test_frontend_missed_points_cards_use_dark_text_on_light_background():
     source = open("static/js/app.js", encoding="utf-8").read()
+    styles = open("static/css/style.css", encoding="utf-8").read()
     render_fn = source[source.index("function _renderMissedPointsHtml"):source.index("function _buildCoachFeedbackHtml")]
 
+    assert "debrief-missed-point-card" in render_fn
+    assert "debrief-missed-point-detail" in render_fn
     assert "bg-white" in render_fn
     assert "text-gray-950" in render_fn
     assert "text-gray-100" not in render_fn
+    assert "#modal-history-debrief .debrief-missed-point-detail" in styles
+    assert "color: #030712 !important;" in styles
 
 
 def test_professionalism_prompt_uses_nasemso_affective_domain_attributes():

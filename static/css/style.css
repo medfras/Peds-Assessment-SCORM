@@ -7137,6 +7137,35 @@ body {
   color: var(--ui-text-secondary) !important;
 }
 
+#modal-debrief .debrief-missed-point-card,
+#modal-history-debrief .debrief-missed-point-card,
+#modal-last-results .debrief-missed-point-card,
+#screen-debrief-lexi .debrief-missed-point-card {
+  background: #ffffff !important;
+  border-color: #d1d5db !important;
+}
+
+#modal-debrief .debrief-missed-point-label,
+#modal-history-debrief .debrief-missed-point-label,
+#modal-last-results .debrief-missed-point-label,
+#screen-debrief-lexi .debrief-missed-point-label {
+  color: #1f2937 !important;
+}
+
+#modal-debrief .debrief-missed-point-source,
+#modal-history-debrief .debrief-missed-point-source,
+#modal-last-results .debrief-missed-point-source,
+#screen-debrief-lexi .debrief-missed-point-source {
+  color: #475569 !important;
+}
+
+#modal-debrief .debrief-missed-point-detail,
+#modal-history-debrief .debrief-missed-point-detail,
+#modal-last-results .debrief-missed-point-detail,
+#screen-debrief-lexi .debrief-missed-point-detail {
+  color: #030712 !important;
+}
+
 /* Keep light-theme feedback action buttons readable even when modal-wide
    Tailwind color overrides remap .text-white for report content. */
 #btn-last-results-lexi,
