@@ -9008,7 +9008,19 @@ async def get_my_sessions(
         await db.commit()
 
     for session in sessions:
-        await _refresh_stale_history_artifacts(session)
+        try:
+            await _refresh_stale_history_artifacts(session)
+        except Exception as exc:
+            try:
+                await db.rollback()
+            except Exception:
+                pass
+            log.warning(
+                "history_artifact_refresh_failed",
+                session_id=str(session.id),
+                scenario_id=session.scenario_id,
+                error=str(exc),
+            )
 
     def _scenario_title(scenario_id: str) -> str:
         try:

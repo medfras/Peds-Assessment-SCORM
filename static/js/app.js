@@ -4630,6 +4630,8 @@ const BADGE_DEFS = [
 // Falls back to safe defaults if the server hasn't responded yet.
 let _progressCache = null;
 let _historyCache  = null;
+let _historyCacheLoaded = false;
+let _historyRefreshPromise = null;
 let _menuRankCache = { agencyId: null, data: null, fetchedAt: 0, loading: false };
 let _leaderboardModalCache = { agencyId: null, data: null, fetchedAt: 0 };
 let _historyDebriefActiveEntry = null;
@@ -4836,15 +4838,26 @@ async function _loadProgressFromServer(options = {}) {
   try {
     const minXp = Number.isFinite(Number(options.minXp)) ? Math.max(0, Number(options.minXp)) : null;
     const minTreats = Number.isFinite(Number(options.minTreats)) ? Math.max(0, Number(options.minTreats)) : null;
-    const [progRes, histRes] = await Promise.all([
+    const [progResult, histResult] = await Promise.allSettled([
       authFetch(`${API}/api/me/progress`),
       authFetch(`${API}/api/me/sessions?limit=50`),
     ]);
-    _progressCache = progRes.ok ? await progRes.json() : (_progressCache || _PROGRESS_DEFAULTS());
+    const progRes = progResult.status === "fulfilled" ? progResult.value : null;
+    const histRes = histResult.status === "fulfilled" ? histResult.value : null;
+    _progressCache = progRes?.ok ? await progRes.json() : (_progressCache || _PROGRESS_DEFAULTS());
     if (minXp !== null) _progressCache.xp = Math.max(Number(_progressCache.xp || 0), minXp);
     if (minTreats !== null) _progressCache.treats = Math.max(Number(_progressCache.treats || 0), minTreats);
     _progressCache = { ...(_progressCache || _PROGRESS_DEFAULTS()) };
-    _historyCache  = histRes.ok ? await histRes.json() : (_historyCache || []);
+    if (histRes?.ok) {
+      const historyData = await histRes.json();
+      if (Array.isArray(historyData)) {
+        _historyCache = historyData;
+        _historyCacheLoaded = true;
+        _refreshHistoryDependentViews();
+      }
+    } else if (!_historyCache) {
+      _historyCache = [];
+    }
     _writeProgressHistoryCache();
   } catch {
     _readProgressHistoryCache();
@@ -4871,7 +4884,10 @@ function _readProgressHistoryCache() {
   try {
     const cached = JSON.parse(localStorage.getItem(_progressHistoryCacheKey()) || "null");
     if (cached?.progress && !_progressCache) _progressCache = cached.progress;
-    if (Array.isArray(cached?.history) && !_historyCache) _historyCache = cached.history;
+    if (Array.isArray(cached?.history) && !_historyCache) {
+      _historyCache = cached.history;
+      _historyCacheLoaded = true;
+    }
     return !!cached;
   } catch {
     return false;
@@ -4929,16 +4945,35 @@ function addHistoryEntry(entry) {
 }
 
 async function _refreshHistoryCache() {
+  if (_historyRefreshPromise) return _historyRefreshPromise;
+  _historyRefreshPromise = (async () => {
+    try {
+      const r = await authFetch(`${API}/api/me/sessions`);
+      if (r.ok) {
+        const data = await r.json();
+        if (Array.isArray(data)) {
+          _historyCache = data;
+          _historyCacheLoaded = true;
+          _refreshHistoryDependentViews();
+        }
+        _writeProgressHistoryCache();
+      }
+    } catch { /* keep existing cache */ }
+    if (!_historyCache) _historyCache = [];
+    return _historyCache;
+  })();
   try {
-    const r = await authFetch(`${API}/api/me/sessions`);
-    if (r.ok) {
-      const data = await r.json();
-      if (Array.isArray(data)) _historyCache = data;
-      _writeProgressHistoryCache();
-    }
-  } catch { /* keep existing cache */ }
-  if (!_historyCache) _historyCache = [];
-  return _historyCache;
+    return await _historyRefreshPromise;
+  } finally {
+    _historyRefreshPromise = null;
+  }
+}
+
+function _refreshHistoryDependentViews() {
+  _renderRightHistory();
+  if (!el("screen-history")?.classList.contains("hidden")) {
+    buildHistoryPage(false);
+  }
 }
 
 function _findHistoryEntryByKey(key) {
@@ -6543,6 +6578,8 @@ function _storeAuth(token) {
   state.features = {};
   _progressCache = null;
   _historyCache = null;
+  _historyCacheLoaded = false;
+  _historyRefreshPromise = null;
   _challengesCache = null;
   _invalidateNotebookCache();
   _leaderboardModalCache = { agencyId: null, data: null, fetchedAt: 0 };
@@ -6596,6 +6633,8 @@ function _storeAuthFromContext(ctx) {
   state.features = {};
   _progressCache = null;
   _historyCache = null;
+  _historyCacheLoaded = false;
+  _historyRefreshPromise = null;
   _challengesCache = null;
   _invalidateNotebookCache();
   _leaderboardModalCache = { agencyId: null, data: null, fetchedAt: 0 };
@@ -6641,6 +6680,8 @@ function _clearAuth() {
   state.features = {};
   _progressCache         = null;
   _historyCache          = null;
+  _historyCacheLoaded    = false;
+  _historyRefreshPromise = null;
   _invalidateNotebookCache();
   _menuRankCache         = { agencyId: null, data: null, fetchedAt: 0, loading: false };
   _pedsAssignmentsCache  = null;
@@ -7042,9 +7083,12 @@ async function _activateAndEnter(options = {}) {
       // Targeted re-render: only update sections that depend on the data we just fetched.
       // Avoid calling buildMenu() here — it re-fires all background loaders a second time.
       if (!el("screen-menu")?.classList.contains("hidden")) {
-        _renderRightHistory();
+        _refreshHistoryDependentViews();
         _buildChallengesSection();
         _updateRandomDrillCard();
+      }
+      if (!el("screen-history")?.classList.contains("hidden")) {
+        _refreshHistoryDependentViews();
       }
     });
   }
@@ -19189,11 +19233,15 @@ async function buildHistoryPage(refresh = true) {
   const container = el("history-list");
   setText("history-student-name", state.firstName || state.studentName || "");
   if (!_historyCache) _readProgressHistoryCache();
-  if (!_historyCache && container) {
+  const showLoading = () => {
+    if (!container) return;
     container.innerHTML = `<div class="text-center text-gray-500 py-16">
       <div class="text-5xl mb-4">📋</div>
       <p class="text-lg font-semibold">Loading recent calls…</p>
     </div>`;
+  };
+  if ((!_historyCache || (!_historyCacheLoaded && !loadHistory().length)) && container) {
+    showLoading();
     if (refresh) {
       _refreshHistoryCache()
         .then(() => buildHistoryPage(false))
@@ -19204,6 +19252,13 @@ async function buildHistoryPage(refresh = true) {
   const h = loadHistory();
 
   if (h.length === 0) {
+    if (refresh && !_historyCacheLoaded) {
+      showLoading();
+      _refreshHistoryCache()
+        .then(() => buildHistoryPage(false))
+        .catch(() => buildHistoryPage(false));
+      return;
+    }
     container.innerHTML = `<div class="text-center text-gray-500 py-16">
       <div class="text-5xl mb-4">📋</div>
       <p class="text-lg font-semibold">No completed scenarios yet.</p>
