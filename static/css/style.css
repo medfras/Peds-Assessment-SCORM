@@ -7137,6 +7137,25 @@ body {
   color: var(--ui-text-secondary) !important;
 }
 
+#modal-history-debrief-content .last-results-report .debrief-prose p,
+#modal-history-debrief-content .last-results-report .debrief-prose li,
+#last-results-content .last-results-report .debrief-prose p,
+#last-results-content .last-results-report .debrief-prose li {
+  color: #1f2937 !important;
+}
+
+#modal-history-debrief-content .last-results-report .debrief-prose h2,
+#last-results-content .last-results-report .debrief-prose h2 {
+  color: #0f172a !important;
+}
+
+#modal-history-debrief-content .last-results-report .debrief-prose h3,
+#last-results-content .last-results-report .debrief-prose h3,
+#modal-history-debrief-content .last-results-report .debrief-prose strong,
+#last-results-content .last-results-report .debrief-prose strong {
+  color: #111827 !important;
+}
+
 #modal-debrief .debrief-missed-point-card,
 #modal-history-debrief .debrief-missed-point-card,
 #modal-last-results .debrief-missed-point-card,
