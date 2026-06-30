@@ -12593,3 +12593,29 @@ body {
 [id^="modal-"] > * {
   pointer-events: auto;
 }
+
+/* Final contrast guard for generated missed-points cards. Keep this late in
+   the stylesheet so legacy modal/theme overrides cannot wash out the details. */
+#modal-debrief .debrief-missed-point-card,
+#modal-history-debrief .debrief-missed-point-card,
+#modal-last-results .debrief-missed-point-card,
+#screen-debrief-lexi .debrief-missed-point-card {
+  background: #ffffff !important;
+  color: #030712 !important;
+  -webkit-text-fill-color: #030712 !important;
+  opacity: 1 !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+#modal-debrief .debrief-missed-point-card *,
+#modal-history-debrief .debrief-missed-point-card *,
+#modal-last-results .debrief-missed-point-card *,
+#screen-debrief-lexi .debrief-missed-point-card * {
+  color: #030712 !important;
+  -webkit-text-fill-color: #030712 !important;
+  opacity: 1 !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  text-shadow: none !important;
+}

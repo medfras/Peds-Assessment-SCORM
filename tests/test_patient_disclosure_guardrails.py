@@ -1571,6 +1571,8 @@ def test_frontend_missed_points_cards_use_dark_text_on_light_background():
     assert "#modal-history-debrief-content .last-results-report .debrief-prose p" in styles
     assert "#last-results-content .last-results-report .debrief-prose p" in styles
     assert "color: #1f2937 !important;" in styles
+    assert "#modal-history-debrief .debrief-missed-point-card *" in styles
+    assert "text-shadow: none !important;" in styles
 
 
 def test_professionalism_prompt_uses_nasemso_affective_domain_attributes():
