@@ -18953,7 +18953,7 @@ function _renderMissedPointsHtml({ scoreNotes = {}, timeline = [], rubricDetail 
         <div class="debrief-missed-point-label text-xs font-bold uppercase tracking-widest text-gray-800" style="color:#1f2937!important;">${escapeHTML(row.label)}</div>
         <div class="debrief-missed-point-source text-[10px] uppercase tracking-widest text-slate-600" style="color:#475569!important;">${escapeHTML(sourceLabel)}</div>
       </div>
-      <div class="debrief-missed-point-detail mt-1 text-sm text-gray-950 leading-relaxed" style="color:#030712!important;">${escapeHTML(row.detail)}</div>
+      <div class="debrief-missed-point-detail mt-1 text-sm text-gray-950 leading-relaxed" style="color:#030712!important;-webkit-text-fill-color:#030712!important;opacity:1!important;filter:none!important;mix-blend-mode:normal!important;">${escapeHTML(row.detail)}</div>
     </div>`;
   }).join("");
 }

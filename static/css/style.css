@@ -7162,6 +7162,9 @@ body {
 #screen-debrief-lexi .debrief-missed-point-card {
   background: #ffffff !important;
   border-color: #d1d5db !important;
+  opacity: 1 !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
 }
 
 #modal-debrief .debrief-missed-point-label,
@@ -7183,6 +7186,10 @@ body {
 #modal-last-results .debrief-missed-point-detail,
 #screen-debrief-lexi .debrief-missed-point-detail {
   color: #030712 !important;
+  -webkit-text-fill-color: #030712 !important;
+  opacity: 1 !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
 }
 
 /* Keep light-theme feedback action buttons readable even when modal-wide

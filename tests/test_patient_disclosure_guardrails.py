@@ -1561,9 +1561,13 @@ def test_frontend_missed_points_cards_use_dark_text_on_light_background():
     assert "bg-white" in render_fn
     assert "text-gray-950" in render_fn
     assert "color:#030712!important" in render_fn
+    assert "-webkit-text-fill-color:#030712!important" in render_fn
+    assert "opacity:1!important" in render_fn
     assert "text-gray-100" not in render_fn
     assert "#modal-history-debrief .debrief-missed-point-detail" in styles
     assert "color: #030712 !important;" in styles
+    assert "-webkit-text-fill-color: #030712 !important;" in styles
+    assert "mix-blend-mode: normal !important;" in styles
     assert "#modal-history-debrief-content .last-results-report .debrief-prose p" in styles
     assert "#last-results-content .last-results-report .debrief-prose p" in styles
     assert "color: #1f2937 !important;" in styles
