@@ -1072,9 +1072,10 @@ def _html_doc(rows: list[dict[str, Any]]) -> str:
   .deduction-row:first-child {{ border-top:0; }}
   .deduction-row strong {{ color:#0f172a; }}
   .deduction-row span {{ font-weight:900; color:#b45309; }}
-  .deduction-row p {{ margin:0; line-height:1.45; }}
+  .deduction-row p {{ margin:0; line-height:1.45; color:#030712 !important; }}
   .deduction-list {{ margin:0; padding-left:22px; }}
-  .deduction-list li {{ margin:7px 0; line-height:1.45; }}
+  .deduction-list li {{ margin:7px 0; line-height:1.45; color:#030712 !important; }}
+  .deduction-list li strong {{ color:#0f172a !important; }}
   .cue-yes {{ color:#047857; }}
   .cue-no {{ color:#b91c1c; }}
   .pcr-note-block {{ border:1px solid #e2e8f0; border-radius:12px; padding:14px; margin:12px 0; background:#fbfdff; }}

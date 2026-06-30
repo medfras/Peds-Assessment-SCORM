@@ -95,7 +95,7 @@ def test_drill_launch_routes_are_distinct_for_gcs_cpr_and_ams():
         assert route["intro_button"] in html
         assert route["engine_start"] in js
 
-    assert '<script src="/static/js/app.js?v=20260630-debrief-contrast-v2"></script>' in html
+    assert '<script src="/static/js/app.js?v=20260630-debrief-contrast-v3"></script>' in html
 
 
 def test_orientation_treatment_repeats_med_control_prompt_until_logged():

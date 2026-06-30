@@ -1,4 +1,5 @@
 from scripts.fto_feedback_report import (
+    _html_doc,
     _normalize_debrief_markdown_for_report,
     _professionalism_cues,
 )
@@ -58,3 +59,11 @@ def test_professionalism_cues_detect_past_tense_treatment_explanation():
 
     assert cues["Explained actions or care plan"] is True
     assert cues["Addressed caregiver/family"] is True
+
+
+def test_report_missed_points_styles_force_dark_text():
+    result = _html_doc([])
+
+    assert ".deduction-row p" in result
+    assert "color:#030712 !important" in result
+    assert ".deduction-list li strong" in result
