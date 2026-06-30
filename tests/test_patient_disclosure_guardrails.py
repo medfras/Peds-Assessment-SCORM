@@ -1551,6 +1551,15 @@ def test_frontend_debrief_normalizes_inline_missed_item_lists():
     assert "out.push(`- ${part}`);" in inline_fn
 
 
+def test_frontend_missed_points_cards_use_dark_text_on_light_background():
+    source = open("static/js/app.js", encoding="utf-8").read()
+    render_fn = source[source.index("function _renderMissedPointsHtml"):source.index("function _buildCoachFeedbackHtml")]
+
+    assert "bg-white" in render_fn
+    assert "text-gray-950" in render_fn
+    assert "text-gray-100" not in render_fn
+
+
 def test_professionalism_prompt_uses_nasemso_affective_domain_attributes():
     source = open("app/ai_client.py", encoding="utf-8").read()
     prof_fn = source[source.index("async def _run_professionalism_review"):source.index("def _build_evidence_packet")]
