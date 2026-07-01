@@ -14,7 +14,7 @@ from pathlib import Path
 
 import pytest
 
-from app.checklist import ChecklistItem, TierOneMatchSpec, TimingConstraint, load_checklist
+from app.checklist import ChecklistItem, ChecklistItemState, TierOneMatchSpec, TimingConstraint, load_checklist
 from app.scoring_service import adjudicate, compute_scores, _compute_critical_failure_status, _try_tier2, _try_tier1, _shadow_compose_call_type_rubric, _synthetic_inappropriate_attempt_penalties
 
 
@@ -2227,6 +2227,28 @@ def test_critical_failure_status_ignores_satisfied_critical_item():
         ],
         [item],
     )
+    assert status is None
+
+
+def test_extremity_trauma_airway_gap_and_realignment_miss_are_not_critical_failures():
+    scenario_path = Path(__file__).resolve().parents[1] / "app/scenarios/pediatric/trauma/peds_trauma_03_extremity.json"
+    scenario = json.loads(scenario_path.read_text())
+    effective_checklist = load_checklist(scenario, level="EMT", mca="mi_base", agency_id=None)
+
+    airway = next(item for item in effective_checklist if item.id == "ems.trauma.airway")
+    realignment = next(item for item in effective_checklist if item.id == "peds_trauma_03_extremity.fracture_realignment")
+
+    assert airway.critical_failure is False
+    assert realignment.critical_failure is False
+
+    status = _compute_critical_failure_status(
+        [
+            ChecklistItemState(item_id=airway.id, state="not_satisfied", earned_points=0),
+            ChecklistItemState(item_id=realignment.id, state="not_satisfied", earned_points=0),
+        ],
+        effective_checklist,
+    )
+
     assert status is None
 
 

@@ -427,7 +427,7 @@ def test_trauma_primary_survey_gaps_do_not_trigger_station_fail_by_default():
     breathing = next(i for i in items if i.id == "ems.trauma.breathing")
     circulation = next(i for i in items if i.id == "ems.trauma.circulation")
 
-    assert airway.critical_failure is True
+    assert airway.critical_failure is False
     assert breathing.critical_failure is False
     assert circulation.critical_failure is False
 
