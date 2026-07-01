@@ -2236,14 +2236,17 @@ def test_extremity_trauma_airway_gap_and_realignment_miss_are_not_critical_failu
     effective_checklist = load_checklist(scenario, level="EMT", mca="mi_base", agency_id=None)
 
     airway = next(item for item in effective_checklist if item.id == "ems.trauma.airway")
+    transport = next(item for item in effective_checklist if item.id == "ems.trauma.priority_transport")
     realignment = next(item for item in effective_checklist if item.id == "peds_trauma_03_extremity.fracture_realignment")
 
     assert airway.critical_failure is False
+    assert transport.critical_failure is False
     assert realignment.critical_failure is False
 
     status = _compute_critical_failure_status(
         [
             ChecklistItemState(item_id=airway.id, state="not_satisfied", earned_points=0),
+            ChecklistItemState(item_id=transport.id, state="not_satisfied", earned_points=0),
             ChecklistItemState(item_id=realignment.id, state="not_satisfied", earned_points=0),
         ],
         effective_checklist,

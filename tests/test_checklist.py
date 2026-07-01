@@ -432,6 +432,20 @@ def test_trauma_primary_survey_gaps_do_not_trigger_station_fail_by_default():
     assert circulation.critical_failure is False
 
 
+def test_pediatric_trauma_scenarios_do_not_inherit_generic_airway_or_transport_critical_failures():
+    scenario_dir = Path(__file__).resolve().parents[1] / "app/scenarios/pediatric/trauma"
+    for scenario_path in scenario_dir.glob("*.json"):
+        scenario = json.loads(scenario_path.read_text())
+        if scenario.get("base_patient_care_rubric") != "nremt_trauma_v1":
+            continue
+
+        items = load_checklist(scenario, level="EMT", mca="mi_base", agency_id=None)
+        critical_by_id = {item.id: item for item in items if item.critical_failure}
+
+        assert "ems.trauma.airway" not in critical_by_id, scenario_path.name
+        assert "ems.trauma.priority_transport" not in critical_by_id, scenario_path.name
+
+
 def test_trauma_extremity_patterns_require_assessment_language():
     scenario = {
         "id": "unit_test_trauma_extremity_patterns",
