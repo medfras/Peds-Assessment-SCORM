@@ -195,6 +195,23 @@ Target response: batch with cleanup passes.
   - Next step: Create a pilot scenario QA matrix with one test case per finding and promote shared evidence parsing fixes into the runtime/scoring layer. Where scenario JSON differs only because of legacy rubric shape, align it with the shared rubric scaffold.
   - References: [`app/scenarios/pediatric`](app/scenarios/pediatric), [`app/scenarios/vocabulary.py`](app/scenarios/vocabulary.py), [`docs/SCENARIO_DESIGN_EMS.md`](docs/SCENARIO_DESIGN_EMS.md), [`docs/rubric_templates/ems_standard_v1.md`](docs/rubric_templates/ems_standard_v1.md)
 
+- [ ] Backport post-audit SCORM pilot fixes
+  - Type: Bug / Release Gate / Backport
+  - Area: Backend / Frontend / SCORM / Reporting / Scenario Runtime
+  - Summary: After the initial SCORM backport punchlist entry was added, pilot support produced a second wave of targeted fixes that are easy to miss if they are only implied by the broader backport categories.
+  - Findings to backport or verify:
+    - Debrief missed-points contrast: history/replay debrief cards must render missed-point detail text in readable dark text across all debrief surfaces, including model-generated or inline-styled detail blocks.
+    - Scenario history endpoint safety: history/debrief fetch paths must be read-only and must not mutate completion, unlock, or last-result state.
+    - History loading resilience: history/sidebar/replay loading should tolerate empty, partial, or stale result payloads without silently showing no runs.
+    - Unsupported CPAP blocking: CPAP attempts should be blocked or rejected when the scenario/action catalog does not support CPAP, and unsupported procedures must not be recorded as performed.
+    - SCORM score normalization: scenario scores sent to SCORM/progression summaries must use the correct dynamic score maximum rather than assuming fixed denominators.
+    - Authored exam routing priority: standard authored exam requests should resolve to exam findings before generic history/chat routing can consume them.
+    - Mechanism follow-up persistence: short trauma mechanism follow-ups must persist to PCR/session evidence so scoring, DMIST, and FTO reports see the same mechanism facts the learner obtained.
+    - FTO report evidence visibility: FTO review reports should include quick actions, authored exams, treatments, scoring cue alignment, and scenario activity entries so instructors can audit what the learner actually did.
+  - Impact: Without these fixes, production can show unreadable debrief deductions, history screens can appear empty, read endpoints can accidentally change learner state, SCORM unlock decisions can use the wrong score basis, and instructor reports can omit clinically relevant actions.
+  - Next step: Backport and regression-test the post-audit fixes as a named bundle. Include read-only history endpoint tests, score-normalization tests, unsupported-procedure tests, exam-routing priority tests, mechanism persistence tests, FTO activity-log rendering checks, and browser verification for missed-points contrast.
+  - References: [`static/js/app.js`](static/js/app.js), [`static/css/style.css`](static/css/style.css), [`app/routers/scorm.py`](app/routers/scorm.py), [`scripts/fto_feedback_report.py`](scripts/fto_feedback_report.py), SCORM commits `3966b62`-`1d822bc`, `7792a21`, `7653d0b`, `4b1a156`, `5d7f264`, `104df14`, `dc76895`, `0910d6b`, `f0cfbc2`, `3fe2d13`, `f2a93d2`
+
 - [ ] Audit treatment-response vitals trending across all scenarios
   - Type: Bug / Clinical Correctness
   - Area: Scenario Runtime / Vitals Engine
