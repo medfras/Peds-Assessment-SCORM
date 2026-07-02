@@ -2,9 +2,9 @@
 
 **Status:** Active Planning  
 **Last Updated:** 2026-04-28 (Phases 1–4 complete; Phase 4 unit tests added; Phases 5–7 staged)  
-**Scope:** Phased implementation of the learning system roadmap (PUNCHLIST.md §Implementation Roadmap). Each phase is a shippable unit. Do not begin a phase until the preceding phase is deployed and passing CI.
+**Scope:** Phased implementation of the learning system roadmap (SCORM_TRIAL_PUNCHLIST.md §Implementation Roadmap). Each phase is a shippable unit. Do not begin a phase until the preceding phase is deployed and passing CI.
 
-**Roadmap reorder note:** Items 5 and 6 in the original PUNCHLIST roadmap are swapped here. The shared challenge shell must be built before the primary impression challenge, since the impression challenge uses the single-choice plugin. The PUNCHLIST.md roadmap table already reflects this reordered sequence.
+**Roadmap reorder note:** Items 5 and 6 in the original PUNCHLIST roadmap are swapped here. The shared challenge shell must be built before the primary impression challenge, since the impression challenge uses the single-choice plugin. The SCORM_TRIAL_PUNCHLIST.md roadmap table already reflects this reordered sequence.
 
 ---
 
@@ -419,8 +419,8 @@
 
 ## Out of Scope for This Plan
 
-- **Remove Team Challenges from Generic Agencies** (PUNCHLIST.md line 170) — separate feature, no dependency on learning system. Track separately; implement when touching team/agency authorization code.
-- **Treat Management economy changes** (PUNCHLIST.md) — backend-only, no dependency on this plan. Can be scheduled independently.
+- **Remove Team Challenges from Generic Agencies** (SCORM_TRIAL_PUNCHLIST.md line 170) — separate feature, no dependency on learning system. Track separately; implement when touching team/agency authorization code.
+- **Treat Management economy changes** (SCORM_TRIAL_PUNCHLIST.md) — backend-only, no dependency on this plan. Can be scheduled independently.
 - **Confidence calibration** (LEARNING_DESIGN.md §5) — deferred; no design gates passed yet.
 - **Random Call scenario variation** (patient name/image surface changes) — deferred decision; does not block SM-2 algorithm.
 
@@ -433,4 +433,4 @@ Before declaring any phase complete:
 - [ ] `node --check static/js/app.js` passes (no syntax errors)
 - [ ] Full test suite passes (`pytest`)
 - [ ] Relevant design doc updated to reflect implementation status
-- [ ] PUNCHLIST.md roadmap table status column updated
+- [ ] SCORM_TRIAL_PUNCHLIST.md roadmap table status column updated

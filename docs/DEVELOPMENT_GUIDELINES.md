@@ -481,7 +481,7 @@ Use this document together with the project's detailed design docs:
 - `AI_ARCHITECTURE.md` — model integration patterns, prompt design, and constraints
 - `SCENARIO_DESIGN_EMS.md` — canonical scenario authoring reference: all JSON fields, scoring rubric, vocabulary contract, ALS vitals, rubric template system
 - `docs/rubric_templates/ems_standard_v1.md` — base rubric template and scaffold for all scenarios
-- `PUNCHLIST.md` — known issues, tech debt, compliance gaps, and in-progress work
+- `SCORM_TRIAL_PUNCHLIST.md` — known issues, tech debt, compliance gaps, and in-progress work
 - feature-specific design docs — deeper subsystem mechanics
 
 **Tiebreaker:** If a design doc is silent on a decision, default to the most conservative interpretation of this document's mandates and explicitly call out the gap so the design doc can be updated. Do not fill gaps by drifting toward convenience.
@@ -507,7 +507,7 @@ Use this document together with the project's detailed design docs:
 | Immersive Mode Design | `docs/IMMERSIVE_MODE_DESIGN.md` | UI layout, jump bag, body map, and quick-action architecture |
 | Gamification & Rewards | `docs/REWARDS.md` | XP math, treat drops, toy rarity, and pity timer rules |
 | Pediatric Map Design | `docs/PEDIATRIC_MAP_DESIGN.md` | Scenario progression, convergence gates, and mini-game placement |
-| Punchlist | `docs/PUNCHLIST.md` | Known issues, technical debt, and planned enhancements by severity |
+| Punchlist | `docs/SCORM_TRIAL_PUNCHLIST.md` | Known issues, technical debt, and planned enhancements by severity |
 
 When adding a new scenario, an agent or contributor's first read should be `docs/SCENARIO_DESIGN_EMS.md`. All other scenario-authoring references must link there, not to `app/scenarios/scenario_design_ems.md` (which is a redirect stub only).
 

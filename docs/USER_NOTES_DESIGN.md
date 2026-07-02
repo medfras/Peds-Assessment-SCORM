@@ -347,6 +347,6 @@ No notes match your filters.  [Clear filters]
 
 When Phase 1 is ready to implement:
 
-- Replace the current open "User Notes" item in `PUNCHLIST.md` with two items: one for Phase 1 MVP and one for Phase 2 Notebook.
+- Replace the current open "User Notes" item in `SCORM_TRIAL_PUNCHLIST.md` with two items: one for Phase 1 MVP and one for Phase 2 Notebook.
 - Add a reference to this doc in `CLAUDE.md` under Canonical Docs.
 - Add the `user_notes` migration to the migration sequence in `docs/DEVELOPMENT_GUIDELINES.md`.

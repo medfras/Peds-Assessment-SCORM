@@ -112,7 +112,7 @@ Target response: batch with cleanup passes.
   - Summary: Four surfaces handle post-session feedback: `modal-last-results`, `modal-history-debrief`, `modal-debrief`, and `screen-debrief-lexi`. They share overlapping data shapes but have separate styling, back-navigation rules, and button wiring. Each was added incrementally and the contracts between them are implicit.
   - Impact: Inconsistent feedback display; divergent CSS theming between surfaces (currently papered over by 80+ lines of `!important` overrides); recurring bugs when one surface is updated but the others are not. New debrief features must be implemented in multiple places.
   - Next step: Audit which surfaces are still in active use and which are zombie paths. Consolidate into two canonical surfaces: one in-scenario (Lexi screen) and one history/replay (last-results modal). Remove or tombstone the rest. Align data shape and theme before adding any new debrief UI.
-  - References: [`static/js/app.js:14750`](static/js/app.js), [`docs/PUNCHLIST.md`](docs/PUNCHLIST.md)
+  - References: [`static/js/app.js:14750`](static/js/app.js), [`docs/SCORM_TRIAL_PUNCHLIST.md`](docs/SCORM_TRIAL_PUNCHLIST.md)
 
 - [ ] Replace markdown-blob FTO debrief with structured report skeleton
   - Type: Tech Debt / Scoring Integrity

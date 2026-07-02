@@ -1749,4 +1749,4 @@ The following patterns are explicitly correct and should be preserved as the pla
 
 ---
 
-*This document supersedes ad-hoc security notes in `PUNCHLIST.md` for items covered above. Cross-reference `PUNCHLIST.md` for items not covered here. Update this document as phases complete. When DB-01 (Alembic) is adopted, update `DEVELOPMENT_GUIDELINES.md` section 4.2 first. BIZ-01 (billing) should be evaluated against the timeline for paid tier launch — it is not required for a monitored free pilot but must be complete before any commercial rollout.*
+*This document supersedes ad-hoc security notes in `SCORM_TRIAL_PUNCHLIST.md` for items covered above. Cross-reference `SCORM_TRIAL_PUNCHLIST.md` for items not covered here. Update this document as phases complete. When DB-01 (Alembic) is adopted, update `DEVELOPMENT_GUIDELINES.md` section 4.2 first. BIZ-01 (billing) should be evaluated against the timeline for paid tier launch — it is not required for a monitored free pilot but must be complete before any commercial rollout.*
